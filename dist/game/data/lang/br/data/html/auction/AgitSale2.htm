@@ -1,0 +1,31 @@
+<html noscrollbar>
+    <title>Leilão de Clan Hall</title>
+    <body>
+        O preço padrão do sistema para este salão de clã é <font color="aaccff">%AGIT_LAST_PRICE%</font> adena, e o último preço de negociação foi <font color="aaccff">%AGIT_LAST_PRICE%</font> adena.<br>
+        O valor recebido ao final do leilão é o valor restante após a dedução do <font color="LEVEL">imposto de transação (10%)</font> do preço do lance vencedor. Qual valor você gostaria de definir como preço padrão do leilão (preço mínimo de lance)?
+        <table width=270 border=0>
+            <tr>
+                <td width=220 align=right><edit var=minbid width=230 align=right type=number></td>
+                <td width=40 align=right>Adena</td>
+            </tr>
+        </table>
+        Por quantos dias você quer que o leilão dure?
+        <table width=270 border=0>
+            <tr>
+                <td width=270 align=right><combobox width=50 var=day list="7;3;1"></td>
+            </tr>
+        </table>
+        Explique sobre o Clan Hall. 
+        <multiedit var="comment" width=270>
+        <img src="L2UI.SquareBlank" width=270 height=10>
+        <img src="L2UI.SquareWhite" width=270 height=1>
+        <img src="L2UI.SquareBlank" width=270 height=5>
+        <table width=270 border=0>
+            <tr>
+                <td width=110></td>
+                <td width=80 align=center><button action="%AGIT_LINK_BACK%" value="Voltar" width=80 height=27 back="L2UI_CT1.Button_DF_Down" fore="L2UI_CT1.Button_DF"></td>
+                <td width=80 align=center><button action="bypass -h npc_%objectId%_auction $day $minbid" value="Vender" width=80 height=27 back="L2UI_CT1.Button_DF_Down" fore="L2UI_CT1.Button_DF"></td>
+            </tr>
+        </table>
+    </body>
+</html>

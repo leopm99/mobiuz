@@ -1,0 +1,18 @@
+<html noscrollbar>
+    <title>Leilão de Clan Hall</title>
+    <body>
+        Quando um lance em leilão é cancelado, a taxa de transação (<font color="LEVEL">10% do valor do lance</font>) não pode ser devolvida.<br>
+        O preço de lance para este salão do clã é <font color="aaccff">%AGIT_BID%</font> adena. Após a dedução do imposto de transação, você receberá de volta os <font color="aaccff">%AGIT_BID_REMAIN%</font> adena restantes. Deseja cancelar seu lance?
+        <img src="L2UI.SquareBlank" width=270 height=10>
+        <img src="L2UI.SquareWhite" width=270 height=1>
+        <img src="L2UI.SquareBlank" width=270 height=5>
+        <br>
+        <table width=270 border=0>
+            <tr>
+                <td width=80></td>
+                <td width=80 align=center><button action="%AGIT_LINK_BACK%" value="Voltar" width=80 height=27 back="L2UI_CT1.Button_DF_Down" fore="L2UI_CT1.Button_DF"></td>
+                <td width=80 align=center><button action="bypass -h npc_%objectId%_doCancelBid" value="Cancelar Lance" width=105 height=27 back="L2UI_CT1.Button_DF_Down" fore="L2UI_CT1.Button_DF"></td>
+            </tr>
+        </table>
+    </body>
+</html>

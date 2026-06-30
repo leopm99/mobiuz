@@ -1,0 +1,74 @@
+<html noscrollbar>
+    <title>Leilão de Clan Hall</title>
+    <body>
+        <center>Informações dos Clans participantes</center>
+        <img src="L2UI.SquareWhite" width=270 height=1>
+        <img src="L2UI.SquareBlank" width=1 height=3>
+        <table width=280 border=0>
+            <tr>
+                <td width=140><font color="a2a0a2">Name do clan hall</font></td>
+                <td width=140><font color="b09979">%AGIT_NAME%</font></td>
+            </tr>
+            <tr>
+                <td><font color="a2a0a2">Posse do clan</font></td>
+                <td><font color="b09979">%OWNER_PLEDGE_NAME%</font></td>
+            </tr>
+            <tr>
+                <td><font color="a2a0a2">Lider do clan</font></td>
+                <td><font color="b09979">%OWNER_PLEDGE_MASTER%</font></td>
+            </tr>
+            <tr>
+                <td><font color="a2a0a2">Tamanho do hall</font></td>
+                <td><font color="b09979">%AGIT_SIZE% rating</font> (grade)</td>
+            </tr>
+            <tr>
+                <td><font color="a2a0a2">Aluguel</font></td>
+                <td><font color="b09979">%AGIT_LEASE%</font> adena<font color="LEVEL">/week</font></td>
+            </tr>
+            <tr>
+                <td><font color="a2a0a2">Local do hall</font></td>
+                <td>%AGIT_LOCATION%</td>
+            </tr>
+        </table>
+        <img src="L2UI.SquareGray" width=270 height=1>
+        <img src="L2UI.SquareBlank" width=1 height=3>
+        <table width=280 border=0>
+            <tr>
+                <td width=140><font color="a2a0a2">Termino do leilão</font></td>
+                <td width=140><font color="b09979">%AGIT_AUCTION_END%</font></td>
+            </tr>
+            <tr>
+                <td><font color="a2a0a2">Tempo restante</font></td>
+                <td><font color="b09979">%AGIT_AUCTION_REMAIN%</font></td>
+            </tr>
+            <tr>
+                <td><font color="a2a0a2">Lance mínimo</font></td>
+                <td><font color="b09979">%AGIT_AUCTION_MINBID%</font> adena</td>
+            </tr>
+            <tr>
+                <td><font color="ccc0cc">Bid price</font></td>
+                <td><font color="aaccff">%AGIT_AUCTION_MYBID%</font> adena</td>
+            </tr>
+        </table>
+        <table width=280 border=0 bgcolor=333333>
+            <tr>
+                <td width=280>%AGIT_AUCTION_DESC%</td>
+            </tr>
+        </table>
+        <img src="L2UI.SquareBlank" width=270 height=10>
+        <img src="L2UI.SquareWhite" width=270 height=1>
+        <img src="L2UI.SquareBlank" width=270 height=5>
+        <table width=145 border=0>
+            <tr>
+                <td width=140></td>
+                <td width=80 align=center><button action="bypass -h npc_%objectId%_cancelBid" value="Cancelar" width=80 height=27 back="L2UI_CT1.Button_DF_Down" fore="L2UI_CT1.Button_DF"></td>
+                <td width=80 align=center><button action="bypass -h npc_%objectId%_bidlist" value="Lista de Candidatos" width=130 height=27 back="L2UI_CT1.Button_DF_Down" fore="L2UI_CT1.Button_DF"></td>
+            </tr>
+            <tr>
+                <td width=110></td>
+                <td width=80 align=center><button action="%AGIT_LINK_BACK%" value="Voltar" width=80 height=27 back="L2UI_CT1.Button_DF_Down" fore="L2UI_CT1.Button_DF"></td>
+                <td width=80 align=center><button action="bypass -h npc_%objectId%_rebid" value="Novo Lance" width=100 height=27 back="L2UI_CT1.Button_DF_Down" fore="L2UI_CT1.Button_DF"></td>
+            </tr>
+        </table>
+    </body>
+</html>
