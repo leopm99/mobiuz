@@ -124,7 +124,7 @@ public class CreatureFollowTaskManager
 						return;
 					}
 					
-					final int followRange = range == -1 ? Rnd.get(50, 100) : range;
+					final int followRange = range == -1 ? Rnd.get(60, 80) : range;
 					if (!creature.isInsideRadius3D(followTarget, followRange))
 					{
 						if (!creature.isInsideRadius3D(followTarget, 3000))
