@@ -412,23 +412,65 @@ public class Spawn extends Location
 		// If random spawn system is enabled.
 		if (Config.ENABLE_RANDOM_MONSTER_SPAWNS && (getHeading() != -1) && npc.isMonster() && !npc.isQuestMonster() && !WalkingManager.getInstance().isTargeted(npc) && (getInstanceId() == 0) && !getTemplate().isUndying() && !npc.isRaid() && !npc.isRaidMinion() && !npc.isFlying() && (water == null) && !Config.MOBS_LIST_NOT_RANDOM.contains(npc.getId()))
 		{
-			final int randX = newlocx + Rnd.get(Config.MOB_MIN_SPAWN_RANGE, Config.MOB_MAX_SPAWN_RANGE);
-			final int randY = newlocy + Rnd.get(Config.MOB_MIN_SPAWN_RANGE, Config.MOB_MAX_SPAWN_RANGE);
-			if (GeoData.getInstance().canMove(newlocx, newlocy, newlocz, randX, randY, newlocz, getInstanceId()) //
-				&& GeoData.getInstance().canSeeTarget(newlocx, newlocy, newlocz, randX, randY, newlocz, getInstanceId()))
+			// Guarda a posicao original do spawn para usar como base e como fallback.
+			final int baseX = newlocx;
+			final int baseY = newlocy;
+			final int baseZ = newlocz;
+			
+			boolean found = false;
+			
+			// Tenta ate 5 vezes achar um ponto aleatorio valido ao redor do spawn.
+			for (int i = 0; i < 5; i++)
 			{
+				final int randX = baseX + Rnd.get(Config.MOB_MIN_SPAWN_RANGE, Config.MOB_MAX_SPAWN_RANGE);
+				final int randY = baseY + Rnd.get(Config.MOB_MIN_SPAWN_RANGE, Config.MOB_MAX_SPAWN_RANGE);
+				
+				// Calcula a altura do chao no ponto aleatorio antes de validar o movimento.
+				final int geoZ = GeoData.getInstance().getSpawnHeight(randX, randY, baseZ);
+				
+				// Rejeita pontos com muita diferenca de altura (arvore, telhado, penhasco).
+				// Preferimos manter o mob no spawn original a coloca-lo numa altura suspeita.
+				if (Math.abs(geoZ - baseZ) > 50)
+				{
+					continue;
+				}
+				
+				// Valida o caminho e a linha de visao ate o ponto aleatorio usando o Z real do destino.
+				if (!GeoData.getInstance().canMove(baseX, baseY, baseZ, randX, randY, geoZ, getInstanceId()))
+				{
+					continue;
+				}
+				
+				if (!GeoData.getInstance().canSeeTarget(baseX, baseY, baseZ, randX, randY, geoZ, getInstanceId()))
+				{
+					continue;
+				}
+				
+				// Ponto valido encontrado.
 				newlocx = randX;
 				newlocy = randY;
-				setXYZ(newlocx, newlocy, newlocz);
-				setHeading(-1);
+				newlocz = geoZ;
+				found = true;
+				break;
 			}
+			
+			// Se nenhum ponto valido foi encontrado, mantem o spawn original.
+			if (!found)
+			{
+				newlocx = baseX;
+				newlocy = baseY;
+				newlocz = baseZ;
+			}
+			
+			setXYZ(newlocx, newlocy, newlocz);
+			setHeading(-1);
 		}
 		
 		// Correct Z of monsters.
 		if (npc.isMonster() && !npc.isFlying() && (water == null))
 		{
 			// Do not correct Z distances greater than 300.
-			final int geoZ = GeoData.getInstance().getHeight(newlocx, newlocy, newlocz);
+			final int geoZ = GeoData.getInstance().getSpawnHeight(newlocx, newlocy, newlocz);
 			if (LocationUtil.calculateDistance(newlocx, newlocy, newlocz, newlocx, newlocy, geoZ, true, true) < 300)
 			{
 				newlocz = geoZ;

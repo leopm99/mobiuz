@@ -42,65 +42,6 @@
 		<npc id="20670" count="2" respawnDelay="25" /> <!-- Crimson Drake -->
 		<npc id="20671" count="1" respawnDelay="25" /> <!-- Kadios -->
 	</spawn>
-	<spawn zone="aden06_2518_30">
-		<territory minZ="-3784" maxZ="-3184">
-			<node x="187216" y="17084" />
-			<node x="188904" y="15960" />
-			<node x="190400" y="16356" />
-			<node x="191836" y="21036" />
-			<node x="188032" y="19568" />
-		</territory>
-		<npc id="20672" count="4" respawnDelay="25" /> <!-- Trives -->
-		<npc id="20673" count="5" respawnDelay="25" /> <!-- Falibati -->
-		<npc id="20674" count="5" respawnDelay="25" /> <!-- Doom Knight -->
-	</spawn>
-	<spawn zone="aden06_2518_31">
-		<territory minZ="-3768" maxZ="-3468">
-			<node x="187256" y="22280" />
-			<node x="187724" y="21144" />
-			<node x="191332" y="22760" />
-			<node x="187724" y="24400" />
-		</territory>
-		<npc id="20672" count="4" respawnDelay="25" /> <!-- Trives -->
-		<npc id="20673" count="3" respawnDelay="25" /> <!-- Falibati -->
-		<npc id="20674" count="4" respawnDelay="25" /> <!-- Doom Knight -->
-	</spawn>
-	<spawn zone="aden06_2518_32">
-		<territory minZ="-3660" maxZ="-3260">
-			<node x="183976" y="14016" />
-			<node x="186328" y="14152" />
-			<node x="187664" y="19764" />
-			<node x="185116" y="19164" />
-			<node x="184084" y="17544" />
-		</territory>
-		<npc id="18001" count="4" respawnDelay="25" /> <!-- Blood Queen -->
-		<npc id="20670" count="5" respawnDelay="25" /> <!-- Crimson Drake -->
-		<npc id="20671" count="4" respawnDelay="25" /> <!-- Kadios -->
-	</spawn>
-	<spawn zone="aden06_2518_33">
-		<territory minZ="-3764" maxZ="-3064">
-			<node x="185652" y="21252" />
-			<node x="186900" y="21204" />
-			<node x="187104" y="25460" />
-			<node x="184224" y="26016" />
-			<node x="184388" y="23060" />
-		</territory>
-		<npc id="18001" count="3" respawnDelay="25" /> <!-- Blood Queen -->
-		<npc id="20670" count="5" respawnDelay="25" /> <!-- Crimson Drake -->
-		<npc id="20671" count="4" respawnDelay="25" /> <!-- Kadios -->
-	</spawn>
-	<spawn zone="aden06_2518_34">
-		<territory minZ="-3808" maxZ="-3008">
-			<node x="181316" y="27036" />
-			<node x="187656" y="25320" />
-			<node x="188040" y="28996" />
-			<node x="186684" y="30864" />
-			<node x="181824" y="31088" />
-		</territory>
-		<npc id="18001" count="8" respawnDelay="25" /> <!-- Blood Queen -->
-		<npc id="20670" count="8" respawnDelay="25" /> <!-- Crimson Drake -->
-		<npc id="20671" count="8" respawnDelay="25" /> <!-- Kadios -->
-	</spawn>
 	<spawn zone="aden06_2518_36">
 		<territory minZ="-2848" maxZ="-2448">
 			<node x="182952" y="9880" />
@@ -158,5 +99,52 @@
 		<npc id="20672" count="2" respawnDelay="25" /> <!-- Trives -->
 		<npc id="20673" count="2" respawnDelay="25" /> <!-- Falibati -->
 		<npc id="20674" count="2" respawnDelay="25" /> <!-- Doom Knight -->
+	</spawn>
+	<spawn zone="theForbiddenGateway">
+		<npc id="20673" x="190445" y="17120" z="-3757" heading="6649" respawnDelay="25" /> <!-- Falibati -->
+		<npc id="20673" x="189136" y="18202" z="-3726" heading="50584" respawnDelay="25" /> <!-- Falibati -->
+		<npc id="20672" x="189082" y="18626" z="-3702" heading="17705" respawnDelay="25" /> <!-- Trives -->
+		<npc id="20674" x="190587" y="19639" z="-3752" heading="4737" respawnDelay="25" /> <!-- Doom Knight -->
+		<npc id="20673" x="191062" y="20085" z="-3752" heading="7754" respawnDelay="25" /> <!-- Falibati -->
+		<npc id="20674" x="190036" y="18028" z="-3765" heading="40066" respawnDelay="25" /> <!-- Doom Knight -->
+		<npc id="20674" x="188810" y="19034" z="-3728" heading="12350" respawnDelay="25" /> <!-- Doom Knight -->
+		<npc id="18001" x="185949" y="18870" z="-3354" heading="31900" respawnDelay="25" /> <!-- Blood Queen -->
+		<npc id="20670" x="185121" y="17408" z="-3324" heading="34826" respawnDelay="25" /> <!-- Crimson Drake -->
+		<npc id="18001" x="185507" y="16937" z="-3313" heading="49886" respawnDelay="25" /> <!-- Blood Queen -->
+		<npc id="20670" x="185535" y="16202" z="-3318" heading="49549" respawnDelay="25" /> <!-- Crimson Drake -->
+		<npc id="18001" x="185349" y="15337" z="-3300" heading="51374" respawnDelay="25" /> <!-- Blood Queen -->
+		<npc id="20671" x="184969" y="15658" z="-3318" heading="19255" respawnDelay="25" /> <!-- Kadios -->
+		<npc id="20670" x="184356" y="14970" z="-3324" heading="32467" respawnDelay="25" /> <!-- Crimson Drake -->
+		<npc id="20672" x="189690" y="22455" z="-3752" heading="52752" respawnDelay="25" /> <!-- Trives -->
+		<npc id="18001" x="185334" y="22419" z="-3341" heading="43032" respawnDelay="25" /> <!-- Blood Queen -->
+		<npc id="20670" x="185489" y="21647" z="-3356" heading="45591" respawnDelay="25" /> <!-- Crimson Drake -->
+		<npc id="20671" x="186039" y="21757" z="-3351" heading="60027" respawnDelay="25" /> <!-- Kadios -->
+		<npc id="20671" x="185270" y="22933" z="-3335" heading="19427" respawnDelay="25" /> <!-- Kadios -->
+		<npc id="20670" x="185813" y="25102" z="-3348" heading="10623" respawnDelay="25" /> <!-- Crimson Drake -->
+		<npc id="18001" x="185078" y="24221" z="-3338" heading="20172" respawnDelay="25" /> <!-- Blood Queen -->
+		<npc id="20671" x="185279" y="25095" z="-3315" heading="27542" respawnDelay="25" /> <!-- Kadios -->
+		<npc id="20670" x="184639" y="25707" z="-3338" heading="27419" respawnDelay="25" /> <!-- Crimson Drake -->
+		<npc id="20671" x="186481" y="27892" z="-3675" heading="6186" respawnDelay="25" /> <!-- Kadios -->
+		<npc id="18001" x="187258" y="27806" z="-3688" heading="58486" respawnDelay="25" /> <!-- Blood Queen -->
+		<npc id="20670" x="186590" y="28628" z="-3705" heading="22543" respawnDelay="25" /> <!-- Crimson Drake -->
+		<npc id="20671" x="184911" y="29599" z="-3726" heading="21097" respawnDelay="25" /> <!-- Kadios -->
+		<npc id="20671" x="183195" y="28405" z="-3722" heading="61098" respawnDelay="25" /> <!-- Kadios -->
+		<npc id="20670" x="182104" y="28088" z="-3688" heading="35682" respawnDelay="25" /> <!-- Crimson Drake -->
+		<npc id="18001" x="183780" y="28611" z="-3730" heading="17709" respawnDelay="25" /> <!-- Blood Queen -->
+		<npc id="20672" x="188468" y="23228" z="-3723" heading="5963" respawnDelay="60" /> <!-- Trives -->
+		<npc id="20674" x="188818" y="22638" z="-3732" heading="53669" respawnDelay="60" /> <!-- Doom Knight -->
+		<npc id="20674" x="189656" y="21293" z="-3696" heading="52949" respawnDelay="60" /> <!-- Doom Knight -->
+		<npc id="20674" x="191150" y="21456" z="-3696" heading="62928" respawnDelay="60" /> <!-- Doom Knight -->
+		<npc id="20674" x="189859" y="23085" z="-3752" heading="28580" respawnDelay="60" /> <!-- Doom Knight -->
+		<npc id="20673" x="189034" y="22937" z="-3731" heading="32916" respawnDelay="60" /> <!-- Falibati -->
+		<npc id="20673" x="188451" y="23206" z="-3722" heading="7091" respawnDelay="60" /> <!-- Falibati -->
+		<npc id="20673" x="190392" y="21792" z="-3696" heading="55207" respawnDelay="60" /> <!-- Falibati -->
+		<npc id="20673" x="191673" y="22134" z="-3696" heading="2721" respawnDelay="60" /> <!-- Falibati -->
+		<npc id="20672" x="190300" y="21117" z="-3696" heading="40028" respawnDelay="60" /> <!-- Trives -->
+		<npc id="20672" x="191132" y="21787" z="-3696" heading="7071" respawnDelay="60" /> <!-- Trives -->
+		<npc id="20672" x="190000" y="18727" z="-3753" heading="59266" respawnDelay="60" /> <!-- Trives -->
+		<npc id="20673" x="189832" y="19277" z="-3745" heading="19476" respawnDelay="60" /> <!-- Falibati -->
+		<npc id="20673" x="191574" y="18154" z="-3694" heading="62020" respawnDelay="60" /> <!-- Falibati -->
+		<npc id="20671" x="185359" y="17390" z="-3326" heading="18428" respawnDelay="60" /> <!-- Kadios -->
 	</spawn>
 </list>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list enabled="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/spawns.xsd">
+	<spawn zone="forsakenPlains">
+		<npc id="21021" x="170447" y="41196" z="-4891" heading="20512" respawnDelay="27" /> <!-- Sharp Talon Tiger -->
+		<npc id="20649" x="173332" y="44154" z="-4919" heading="63607" respawnDelay="60" /> <!-- Hamrut -->
+		<npc id="20650" x="175069" y="43763" z="-4847" heading="64519" respawnDelay="60" /> <!-- Kranrot -->
+		<npc id="21022" x="172801" y="41467" z="-4978" heading="58554" respawnDelay="27" /> <!-- Fallen Orc Captain -->
+		<npc id="21020" x="170723" y="41149" z="-4896" heading="51498" respawnDelay="27" /> <!-- Fallen Orc Shaman -->
+		<npc id="21020" x="170274" y="41439" z="-4900" heading="26786" respawnDelay="27" /> <!-- Fallen Orc Shaman -->
+		<npc id="21021" x="169216" y="41843" z="-4904" heading="35621" respawnDelay="27" /> <!-- Sharp Talon Tiger -->
+		<npc id="20679" x="169120" y="43742" z="-4848" heading="21766" respawnDelay="27" /> <!-- Marsh Stalker -->
+		<npc id="21021" x="173106" y="43026" z="-4968" heading="16563" respawnDelay="27" /> <!-- Sharp Talon Tiger -->
+		<npc id="20680" x="172552" y="43892" z="-4959" heading="22159" respawnDelay="27" /> <!-- Marsh Drake -->
+		<npc id="21020" x="171781" y="42991" z="-4984" heading="57445" respawnDelay="27" /> <!-- Fallen Orc Shaman -->
+		<npc id="20650" x="171321" y="43305" z="-4910" heading="21220" respawnDelay="60" /> <!-- Kranrot -->
+		<npc id="21022" x="178061" y="41118" z="-3698" heading="18684" respawnDelay="27" /> <!-- Fallen Orc Captain -->
+		<npc id="21021" x="177737" y="41067" z="-3729" heading="34396" respawnDelay="27" /> <!-- Sharp Talon Tiger -->
+		<npc id="21020" x="178993" y="41942" z="-3784" heading="1982" respawnDelay="27" /> <!-- Fallen Orc Shaman -->
+		<npc id="21021" x="181698" y="41497" z="-3696" heading="19632" respawnDelay="27" /> <!-- Sharp Talon Tiger -->
+		<npc id="21018" x="179646" y="40648" z="-3753" heading="37449" respawnDelay="27" /> <!-- Ancient Gargoyle -->
+		<npc id="21019" x="180577" y="37465" z="-4824" heading="21496" respawnDelay="27" /> <!-- Fallen Orc Archer -->
+		<npc id="21018" x="170112" y="37573" z="-4280" heading="10881" respawnDelay="27" /> <!-- Ancient Gargoyle -->
+		<npc id="21020" x="170196" y="37066" z="-4259" heading="39950" respawnDelay="27" /> <!-- Fallen Orc Shaman -->
+		<npc id="20680" x="165756" y="38714" z="-3685" heading="14443" respawnDelay="27" /> <!-- Marsh Drake -->
+		<npc id="21017" x="165843" y="39516" z="-3687" heading="12386" respawnDelay="27" /> <!-- Fallen Orc -->
+		<npc id="20679" x="164541" y="40392" z="-3603" heading="27762" respawnDelay="27" /> <!-- Marsh Stalker -->
+		<npc id="20680" x="165722" y="40602" z="-3719" heading="60673" respawnDelay="27" /> <!-- Marsh Drake -->
+		<npc id="20679" x="166149" y="39680" z="-3687" heading="57892" respawnDelay="27" /> <!-- Marsh Stalker -->
+		<npc id="20680" x="164861" y="39566" z="-3682" heading="45345" respawnDelay="27" /> <!-- Marsh Drake -->
+		<npc id="20680" x="163835" y="40031" z="-3402" heading="30103" respawnDelay="27" /> <!-- Marsh Drake -->
+	</spawn>
+</list>

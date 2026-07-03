@@ -1,57 +1,230 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list enabled="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/spawns.xsd">
-	<spawn zone="aden23_2519_01">
-		<territory minZ="-6072" maxZ="-5572">
-			<node x="172467" y="53837" />
-			<node x="176223" y="53110" />
-			<node x="177496" y="57409" />
-			<node x="173992" y="59487" />
-			<node x="171647" y="55312" />
-		</territory>
-		<npc id="20965" count="18" respawnDelay="70" respawnRandom="15" /> <!-- Chimera Piece -->
-		<npc id="20970" count="16" respawnDelay="70" respawnRandom="15" /> <!-- Soldier of Ancient Times -->
-		<npc id="20966" count="16" respawnDelay="70" respawnRandom="15" /> <!-- Changed Creation -->
-	</spawn>
-	<spawn zone="aden23_2519_02">
-		<territory minZ="-6072" maxZ="-5572">
-			<node x="175583" y="52825" />
-			<node x="179200" y="51623" />
-			<node x="182800" y="55943" />
-			<node x="177383" y="57572" />
-		</territory>
-		<npc id="20965" count="6" respawnDelay="70" respawnRandom="15" /> <!-- Chimera Piece -->
-		<npc id="20970" count="6" respawnDelay="70" respawnRandom="15" /> <!-- Soldier of Ancient Times -->
-		<npc id="20966" count="6" respawnDelay="70" respawnRandom="15" /> <!-- Changed Creation -->
-		<npc id="20967" count="12" respawnDelay="70" respawnRandom="15" /> <!-- Past Creature -->
-		<npc id="20971" count="6" respawnDelay="70" respawnRandom="15" /> <!-- Warrior of Ancient Times -->
-		<npc id="20972" count="12" respawnDelay="70" respawnRandom="15" /> <!-- Shaman of Ancient Times -->
-	</spawn>
-	<spawn zone="aden23_2519_03">
-		<territory minZ="-6112" maxZ="-5612">
-			<node x="179116" y="51628" />
-			<node x="182542" y="48378" />
-			<node x="186097" y="51828" />
-			<node x="182545" y="55789" />
-		</territory>
-		<npc id="20967" count="10" respawnDelay="70" respawnRandom="15" /> <!-- Past Creature -->
-		<npc id="20971" count="10" respawnDelay="70" respawnRandom="15" /> <!-- Warrior of Ancient Times -->
-		<npc id="20972" count="10" respawnDelay="70" respawnRandom="15" /> <!-- Shaman of Ancient Times -->
-		<npc id="20973" count="8" respawnDelay="70" respawnRandom="15" /> <!-- Forgotten Ancient People -->
-		<npc id="20968" count="6" respawnDelay="70" respawnRandom="15" /> <!-- Nonexistent Man -->
-		<npc id="20969" count="6" respawnDelay="70" respawnRandom="15" /> <!-- Giant's Shadow -->
-	</spawn>
-	<spawn zone="aden23_2519_04">
-		<territory minZ="-6116" maxZ="-5616">
-			<node x="188630" y="47013" />
-			<node x="187622" y="48613" />
-			<node x="189047" y="49729" />
-			<node x="187063" y="52435" />
-			<node x="182230" y="48533" />
-			<node x="187258" y="45770" />
-		</territory>
-		<npc id="20973" count="14" respawnDelay="70" respawnRandom="15" /> <!-- Forgotten Ancient People -->
-		<npc id="20968" count="16" respawnDelay="70" respawnRandom="15" /> <!-- Nonexistent Man -->
-		<npc id="20969" count="16" respawnDelay="70" respawnRandom="15" /> <!-- Giant's Shadow -->
-		<npc id="20971" count="6" respawnDelay="70" respawnRandom="15" /> <!-- Warrior of Ancient Times -->
+	<spawn zone="silentValley">
+		<npc id="20971" x="180922" y="51165" z="-5978" heading="37919" respawnDelay="70" /> <!-- Warrior of Ancient Times -->
+		<npc id="20970" x="173514" y="56164" z="-5965" heading="3953" respawnDelay="70" /> <!-- Soldier of Ancient Times -->
+		<npc id="20970" x="173956" y="56603" z="-5954" heading="63920" respawnDelay="70" /> <!-- Soldier of Ancient Times -->
+		<npc id="20965" x="174295" y="55191" z="-6034" heading="57207" respawnDelay="60" /> <!-- Chimera Piece -->
+		<npc id="20965" x="174043" y="53753" z="-5984" heading="47347" respawnDelay="60" /> <!-- Chimera Piece -->
+		<npc id="20965" x="175919" y="53554" z="-5991" heading="64584" respawnDelay="60" /> <!-- Chimera Piece -->
+		<npc id="20965" x="175857" y="54719" z="-5997" heading="16934" respawnDelay="60" /> <!-- Chimera Piece -->
+		<npc id="20965" x="175764" y="56327" z="-5948" heading="16987" respawnDelay="60" /> <!-- Chimera Piece -->
+		<npc id="20965" x="177470" y="55150" z="-5975" heading="56351" respawnDelay="60" /> <!-- Chimera Piece -->
+		<npc id="20965" x="179079" y="54342" z="-5994" heading="65369" respawnDelay="60" /> <!-- Chimera Piece -->
+		<npc id="20965" x="180657" y="54076" z="-5984" heading="62688" respawnDelay="60" /> <!-- Chimera Piece -->
+		<npc id="20965" x="182358" y="52525" z="-5993" heading="57287" respawnDelay="60" /> <!-- Chimera Piece -->
+		<npc id="20965" x="183620" y="51131" z="-5998" heading="55973" respawnDelay="60" /> <!-- Chimera Piece -->
+		<npc id="20965" x="184529" y="50165" z="-6001" heading="57463" respawnDelay="60" /> <!-- Chimera Piece -->
+		<npc id="20965" x="185441" y="49274" z="-6001" heading="57463" respawnDelay="60" /> <!-- Chimera Piece -->
+		<npc id="20965" x="184384" y="48299" z="-5966" heading="32991" respawnDelay="60" /> <!-- Chimera Piece -->
+		<npc id="20965" x="183232" y="49421" z="-5895" heading="24206" respawnDelay="60" /> <!-- Chimera Piece -->
+		<npc id="20965" x="182203" y="50514" z="-5972" heading="24296" respawnDelay="60" /> <!-- Chimera Piece -->
+		<npc id="20965" x="181034" y="51712" z="-6004" heading="24534" respawnDelay="60" /> <!-- Chimera Piece -->
+		<npc id="20965" x="179999" y="52270" z="-5968" heading="28332" respawnDelay="60" /> <!-- Chimera Piece -->
+		<npc id="20965" x="178256" y="53195" z="-5973" heading="27526" respawnDelay="60" /> <!-- Chimera Piece -->
+		<npc id="20965" x="180277" y="53138" z="-6027" heading="60941" respawnDelay="60" /> <!-- Chimera Piece -->
+		<npc id="20965" x="182079" y="51787" z="-6070" heading="57510" respawnDelay="60" /> <!-- Chimera Piece -->
+		<npc id="20965" x="183730" y="50307" z="-6074" heading="57928" respawnDelay="60" /> <!-- Chimera Piece -->
+		<npc id="20965" x="186105" y="48195" z="-6017" heading="58569" respawnDelay="60" /> <!-- Chimera Piece -->
+		<npc id="20965" x="187291" y="48163" z="-5952" heading="2682" respawnDelay="60" /> <!-- Chimera Piece -->
+		<npc id="20965" x="174246" y="56268" z="-5969" heading="25415" respawnDelay="60" /> <!-- Chimera Piece -->
+		<npc id="20970" x="173450" y="54523" z="-5990" heading="51922" respawnDelay="60" /> <!-- Soldier of Ancient Times -->
+		<npc id="20970" x="175017" y="53625" z="-5980" heading="60023" respawnDelay="60" /> <!-- Soldier of Ancient Times -->
+		<npc id="20970" x="176044" y="53434" z="-5972" heading="62203" respawnDelay="60" /> <!-- Soldier of Ancient Times -->
+		<npc id="20970" x="177195" y="53246" z="-5968" heading="64244" respawnDelay="60" /> <!-- Soldier of Ancient Times -->
+		<npc id="20970" x="178649" y="52713" z="-5955" heading="60242" respawnDelay="60" /> <!-- Soldier of Ancient Times -->
+		<npc id="20970" x="179494" y="52171" z="-5952" heading="59279" respawnDelay="60" /> <!-- Soldier of Ancient Times -->
+		<npc id="20970" x="181116" y="52359" z="-6027" heading="7798" respawnDelay="60" /> <!-- Soldier of Ancient Times -->
+		<npc id="20970" x="182830" y="52126" z="-6008" heading="62169" respawnDelay="60" /> <!-- Soldier of Ancient Times -->
+		<npc id="20970" x="182785" y="50750" z="-6020" heading="44835" respawnDelay="60" /> <!-- Soldier of Ancient Times -->
+		<npc id="20970" x="182702" y="49695" z="-5980" heading="48539" respawnDelay="60" /> <!-- Soldier of Ancient Times -->
+		<npc id="20970" x="183075" y="48783" z="-5957" heading="54131" respawnDelay="60" /> <!-- Soldier of Ancient Times -->
+		<npc id="20970" x="184660" y="47882" z="-5954" heading="61248" respawnDelay="60" /> <!-- Soldier of Ancient Times -->
+		<npc id="20970" x="185938" y="47499" z="-5957" heading="62611" respawnDelay="60" /> <!-- Soldier of Ancient Times -->
+		<npc id="20970" x="187069" y="48819" z="-5947" heading="12787" respawnDelay="60" /> <!-- Soldier of Ancient Times -->
+		<npc id="20970" x="186249" y="50230" z="-5946" heading="22492" respawnDelay="60" /> <!-- Soldier of Ancient Times -->
+		<npc id="20970" x="185348" y="51037" z="-5946" heading="26121" respawnDelay="60" /> <!-- Soldier of Ancient Times -->
+		<npc id="20970" x="183922" y="50977" z="-6017" heading="34725" respawnDelay="60" /> <!-- Soldier of Ancient Times -->
+		<npc id="20970" x="181620" y="53387" z="-5990" heading="23509" respawnDelay="60" /> <!-- Soldier of Ancient Times -->
+		<npc id="20970" x="181044" y="54651" z="-5944" heading="21313" respawnDelay="60" /> <!-- Soldier of Ancient Times -->
+		<npc id="20970" x="179493" y="55600" z="-5948" heading="26158" respawnDelay="60" /> <!-- Soldier of Ancient Times -->
+		<npc id="20970" x="176735" y="55736" z="-5973" heading="18585" respawnDelay="60" /> <!-- Soldier of Ancient Times -->
+		<npc id="20970" x="175503" y="55881" z="-5982" heading="37399" respawnDelay="60" /> <!-- Soldier of Ancient Times -->
+		<npc id="20970" x="174608" y="55818" z="-6008" heading="31349" respawnDelay="60" /> <!-- Soldier of Ancient Times -->
+		<npc id="20970" x="176540" y="54433" z="-6030" heading="59951" respawnDelay="60" /> <!-- Soldier of Ancient Times -->
+		<npc id="20970" x="177717" y="54169" z="-6033" heading="64567" respawnDelay="60" /> <!-- Soldier of Ancient Times -->
+		<npc id="20970" x="179207" y="53732" z="-6031" heading="62131" respawnDelay="60" /> <!-- Soldier of Ancient Times -->
+		<npc id="20966" x="180735" y="53938" z="-6014" heading="1759" respawnDelay="60" /> <!-- Changed Creation -->
+		<npc id="20966" x="181298" y="52790" z="-6035" heading="50325" respawnDelay="60" /> <!-- Changed Creation -->
+		<npc id="20966" x="181778" y="51078" z="-6001" heading="52941" respawnDelay="60" /> <!-- Changed Creation -->
+		<npc id="20966" x="182427" y="50158" z="-5956" heading="55871" respawnDelay="60" /> <!-- Changed Creation -->
+		<npc id="20966" x="183354" y="49690" z="-6006" heading="60850" respawnDelay="60" /> <!-- Changed Creation -->
+		<npc id="20966" x="183693" y="48840" z="-5972" heading="52167" respawnDelay="60" /> <!-- Changed Creation -->
+		<npc id="20966" x="185379" y="48620" z="-6004" heading="299" respawnDelay="60" /> <!-- Changed Creation -->
+		<npc id="20966" x="187021" y="49152" z="-5942" heading="6650" respawnDelay="60" /> <!-- Changed Creation -->
+		<npc id="20966" x="186814" y="49890" z="-5935" heading="21512" respawnDelay="60" /> <!-- Changed Creation -->
+		<npc id="20966" x="186300" y="51343" z="-5907" heading="18117" respawnDelay="60" /> <!-- Changed Creation -->
+		<npc id="20966" x="185352" y="51846" z="-5910" heading="34996" respawnDelay="60" /> <!-- Changed Creation -->
+		<npc id="20966" x="183271" y="51642" z="-6015" heading="26375" respawnDelay="60" /> <!-- Changed Creation -->
+		<npc id="20966" x="182152" y="52941" z="-5984" heading="24747" respawnDelay="60" /> <!-- Changed Creation -->
+		<npc id="20966" x="181757" y="54420" z="-5939" heading="11476" respawnDelay="60" /> <!-- Changed Creation -->
+		<npc id="20966" x="181786" y="55561" z="-5890" heading="17175" respawnDelay="60" /> <!-- Changed Creation -->
+		<npc id="20966" x="179647" y="55250" z="-5955" heading="30146" respawnDelay="60" /> <!-- Changed Creation -->
+		<npc id="20966" x="177215" y="56312" z="-5957" heading="22451" respawnDelay="60" /> <!-- Changed Creation -->
+		<npc id="20966" x="176053" y="56982" z="-5906" heading="29761" respawnDelay="60" /> <!-- Changed Creation -->
+		<npc id="20966" x="174721" y="57110" z="-5935" heading="31849" respawnDelay="60" /> <!-- Changed Creation -->
+		<npc id="20966" x="174135" y="55439" z="-6005" heading="47645" respawnDelay="60" /> <!-- Changed Creation -->
+		<npc id="20966" x="174200" y="53874" z="-5995" heading="50190" respawnDelay="60" /> <!-- Changed Creation -->
+		<npc id="20966" x="175432" y="53187" z="-5958" heading="61004" respawnDelay="60" /> <!-- Changed Creation -->
+		<npc id="20966" x="176872" y="52754" z="-5948" heading="62553" respawnDelay="60" /> <!-- Changed Creation -->
+		<npc id="20966" x="178599" y="53040" z="-5963" heading="64459" respawnDelay="60" /> <!-- Changed Creation -->
+		<npc id="20966" x="179219" y="51976" z="-5948" heading="53854" respawnDelay="60" /> <!-- Changed Creation -->
+		<npc id="20966" x="180294" y="51121" z="-5946" heading="59168" respawnDelay="60" /> <!-- Changed Creation -->
+		<npc id="20967" x="182015" y="50251" z="-5952" heading="49860" respawnDelay="60" /> <!-- Past Creature -->
+		<npc id="20967" x="182500" y="48797" z="-5943" heading="53914" respawnDelay="60" /> <!-- Past Creature -->
+		<npc id="20967" x="183277" y="48293" z="-5943" heading="62517" respawnDelay="60" /> <!-- Past Creature -->
+		<npc id="20967" x="184887" y="47885" z="-5969" heading="61603" respawnDelay="60" /> <!-- Past Creature -->
+		<npc id="20967" x="186482" y="48081" z="-5979" heading="2467" respawnDelay="60" /> <!-- Past Creature -->
+		<npc id="20967" x="187498" y="49223" z="-5912" heading="12294" respawnDelay="60" /> <!-- Past Creature -->
+		<npc id="20967" x="186996" y="50025" z="-5909" heading="23285" respawnDelay="60" /> <!-- Past Creature -->
+		<npc id="20967" x="186073" y="51259" z="-5912" heading="21601" respawnDelay="60" /> <!-- Past Creature -->
+		<npc id="20967" x="185335" y="51679" z="-5924" heading="29205" respawnDelay="60" /> <!-- Past Creature -->
+		<npc id="20967" x="184430" y="51268" z="-5946" heading="37643" respawnDelay="60" /> <!-- Past Creature -->
+		<npc id="20967" x="183336" y="50845" z="-6042" heading="36553" respawnDelay="60" /> <!-- Past Creature -->
+		<npc id="20967" x="182629" y="51218" z="-6064" heading="26436" respawnDelay="60" /> <!-- Past Creature -->
+		<npc id="20967" x="183529" y="52667" z="-5902" heading="8739" respawnDelay="60" /> <!-- Past Creature -->
+		<npc id="20967" x="183580" y="53519" z="-5873" heading="17275" respawnDelay="60" /> <!-- Past Creature -->
+		<npc id="20967" x="181988" y="52781" z="-6001" heading="38017" respawnDelay="60" /> <!-- Past Creature -->
+		<npc id="20967" x="181396" y="53175" z="-6013" heading="25067" respawnDelay="60" /> <!-- Past Creature -->
+		<npc id="20967" x="181650" y="54488" z="-5930" heading="9489" respawnDelay="60" /> <!-- Past Creature -->
+		<npc id="20967" x="181776" y="55297" z="-5880" heading="20766" respawnDelay="60" /> <!-- Past Creature -->
+		<npc id="20967" x="178867" y="55180" z="-5954" heading="30964" respawnDelay="60" /> <!-- Past Creature -->
+		<npc id="20967" x="176850" y="56347" z="-5941" heading="23364" respawnDelay="60" /> <!-- Past Creature -->
+		<npc id="20967" x="174586" y="57832" z="-5895" heading="23800" respawnDelay="60" /> <!-- Past Creature -->
+		<npc id="20967" x="173336" y="54166" z="-5968" heading="39612" respawnDelay="60" /> <!-- Past Creature -->
+		<npc id="20968" x="173823" y="53446" z="-5956" heading="29363" respawnDelay="60" /> <!-- Nonexistent Man -->
+		<npc id="20968" x="175481" y="53953" z="-6029" heading="7384" respawnDelay="60" /> <!-- Nonexistent Man -->
+		<npc id="20968" x="177158" y="53840" z="-6020" heading="63035" respawnDelay="60" /> <!-- Nonexistent Man -->
+		<npc id="20968" x="178827" y="52593" z="-5955" heading="57818" respawnDelay="60" /> <!-- Nonexistent Man -->
+		<npc id="20968" x="180368" y="51487" z="-5952" heading="59434" respawnDelay="60" /> <!-- Nonexistent Man -->
+		<npc id="20968" x="181960" y="49639" z="-5941" heading="51942" respawnDelay="60" /> <!-- Nonexistent Man -->
+		<npc id="20968" x="182524" y="48622" z="-5936" heading="55223" respawnDelay="60" /> <!-- Nonexistent Man -->
+		<npc id="20968" x="183554" y="48464" z="-5942" heading="64385" respawnDelay="60" /> <!-- Nonexistent Man -->
+		<npc id="20968" x="185077" y="48102" z="-5996" heading="62949" respawnDelay="60" /> <!-- Nonexistent Man -->
+		<npc id="20968" x="187387" y="47391" z="-5960" heading="61016" respawnDelay="60" /> <!-- Nonexistent Man -->
+		<npc id="20968" x="186979" y="49236" z="-5947" heading="18267" respawnDelay="60" /> <!-- Nonexistent Man -->
+		<npc id="20968" x="185780" y="49531" z="-5979" heading="31638" respawnDelay="60" /> <!-- Nonexistent Man -->
+		<npc id="20968" x="184909" y="50991" z="-5953" heading="21698" respawnDelay="60" /> <!-- Nonexistent Man -->
+		<npc id="20968" x="183127" y="53066" z="-5894" heading="19753" respawnDelay="60" /> <!-- Nonexistent Man -->
+		<npc id="20968" x="181874" y="54197" z="-5908" heading="18838" respawnDelay="60" /> <!-- Nonexistent Man -->
+		<npc id="20968" x="181466" y="55353" z="-5877" heading="22244" respawnDelay="60" /> <!-- Nonexistent Man -->
+		<npc id="20968" x="179551" y="56160" z="-5905" heading="23825" respawnDelay="60" /> <!-- Nonexistent Man -->
+		<npc id="20968" x="177414" y="55378" z="-5968" heading="29587" respawnDelay="60" /> <!-- Nonexistent Man -->
+		<npc id="20968" x="176583" y="56215" z="-5939" heading="23085" respawnDelay="60" /> <!-- Nonexistent Man -->
+		<npc id="20968" x="175195" y="57133" z="-5920" heading="27705" respawnDelay="60" /> <!-- Nonexistent Man -->
+		<npc id="20968" x="174691" y="57737" z="-5910" heading="20103" respawnDelay="60" /> <!-- Nonexistent Man -->
+		<npc id="20968" x="173706" y="55845" z="-5983" heading="45090" respawnDelay="60" /> <!-- Nonexistent Man -->
+		<npc id="20968" x="178177" y="54161" z="-6028" heading="52431" respawnDelay="60" /> <!-- Nonexistent Man -->
+		<npc id="20968" x="180699" y="52945" z="-6050" heading="59889" respawnDelay="60" /> <!-- Nonexistent Man -->
+		<npc id="20969" x="181883" y="52322" z="-6054" heading="61022" respawnDelay="60" /> <!-- Giant's Shadow -->
+		<npc id="20969" x="183131" y="52857" z="-5906" heading="6649" respawnDelay="60" /> <!-- Giant's Shadow -->
+		<npc id="20969" x="182560" y="50920" z="-6008" heading="45895" respawnDelay="60" /> <!-- Giant's Shadow -->
+		<npc id="20969" x="182128" y="49516" z="-5951" heading="46048" respawnDelay="60" /> <!-- Giant's Shadow -->
+		<npc id="20969" x="183016" y="48370" z="-5927" heading="61161" respawnDelay="60" /> <!-- Giant's Shadow -->
+		<npc id="20969" x="185864" y="47770" z="-5978" heading="65116" respawnDelay="60" /> <!-- Giant's Shadow -->
+		<npc id="20969" x="187008" y="47321" z="-5888" heading="63071" respawnDelay="60" /> <!-- Giant's Shadow -->
+		<npc id="20969" x="187414" y="48801" z="-5901" heading="20497" respawnDelay="60" /> <!-- Giant's Shadow -->
+		<npc id="20969" x="186602" y="50241" z="-5914" heading="23182" respawnDelay="60" /> <!-- Giant's Shadow -->
+		<npc id="20969" x="185711" y="51890" z="-5885" heading="21412" respawnDelay="60" /> <!-- Giant's Shadow -->
+		<npc id="20969" x="184002" y="50391" z="-6024" heading="42426" respawnDelay="60" /> <!-- Giant's Shadow -->
+		<npc id="20969" x="183722" y="52715" z="-5893" heading="12837" respawnDelay="60" /> <!-- Giant's Shadow -->
+		<npc id="20969" x="181709" y="52994" z="-5985" heading="32973" respawnDelay="60" /> <!-- Giant's Shadow -->
+		<npc id="20969" x="182215" y="54755" z="-5888" heading="7704" respawnDelay="60" /> <!-- Giant's Shadow -->
+		<npc id="20969" x="182224" y="55578" z="-5880" heading="17016" respawnDelay="60" /> <!-- Giant's Shadow -->
+		<npc id="20969" x="180162" y="55039" z="-5948" heading="36282" respawnDelay="60" /> <!-- Giant's Shadow -->
+		<npc id="20969" x="179063" y="55993" z="-5946" heading="24866" respawnDelay="60" /> <!-- Giant's Shadow -->
+		<npc id="20969" x="177923" y="55110" z="-5980" heading="35421" respawnDelay="60" /> <!-- Giant's Shadow -->
+		<npc id="20969" x="176862" y="56715" z="-5930" heading="18192" respawnDelay="60" /> <!-- Giant's Shadow -->
+		<npc id="20969" x="175651" y="56783" z="-5946" heading="28554" respawnDelay="60" /> <!-- Giant's Shadow -->
+		<npc id="20969" x="174847" y="55216" z="-6037" heading="52586" respawnDelay="60" /> <!-- Giant's Shadow -->
+		<npc id="20971" x="173887" y="56718" z="-5960" heading="11879" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="174619" y="57257" z="-5949" heading="3782" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="175785" y="57294" z="-5905" heading="64996" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="176461" y="56768" z="-5927" heading="56831" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="177256" y="56202" z="-5952" heading="59468" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="178359" y="55060" z="-5959" heading="58613" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="179647" y="54768" z="-5979" heading="58801" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="180295" y="54507" z="-5981" heading="62250" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="181106" y="54287" z="-5964" heading="62831" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="182152" y="52845" z="-5991" heading="54667" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="182902" y="52507" z="-5950" heading="61684" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="183811" y="51246" z="-5997" heading="55093" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="185900" y="51749" z="-5911" heading="8717" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="186204" y="51281" z="-5916" heading="55169" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="186263" y="49851" z="-5939" heading="48689" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="187339" y="49555" z="-5914" heading="924" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="187725" y="49516" z="-5896" heading="60920" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="187783" y="47791" z="-5939" heading="49506" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="186694" y="47746" z="-5981" heading="24996" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="185265" y="48186" z="-6022" heading="30006" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="184042" y="48763" z="-5996" heading="26562" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="182644" y="49198" z="-5958" heading="30116" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="182193" y="50310" z="-5962" heading="20205" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="181393" y="51532" z="-6047" heading="22803" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="179688" y="51709" z="-5945" heading="31652" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="179796" y="53040" z="-6003" heading="12485" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="178029" y="53110" z="-5974" heading="35760" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="176369" y="52946" z="-5939" heading="34021" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="174899" y="53976" z="-6006" heading="23627" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20971" x="173148" y="53592" z="-5950" heading="34779" respawnDelay="60" /> <!-- Warrior of Ancient Times -->
+		<npc id="20972" x="173823" y="54139" z="-5995" heading="8923" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20972" x="175046" y="54597" z="-6042" heading="1966" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20972" x="176910" y="53715" z="-5999" heading="57968" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20972" x="178565" y="53567" z="-6012" heading="305" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20972" x="179727" y="52960" z="-6000" heading="55483" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20972" x="180695" y="51686" z="-5987" heading="56133" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20972" x="181773" y="51734" z="-6044" heading="2310" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20972" x="182096" y="49460" z="-5941" heading="46819" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20972" x="182566" y="48402" z="-5933" heading="54360" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20972" x="184915" y="47515" z="-5950" heading="63698" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20972" x="186113" y="48398" z="-5992" heading="7410" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20972" x="186626" y="49576" z="-5950" heading="18253" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20972" x="186387" y="50809" z="-5924" heading="18416" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20972" x="185158" y="51633" z="-5930" heading="29421" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20972" x="183045" y="52805" z="-5912" heading="23534" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20972" x="182677" y="52908" z="-5941" heading="23386" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20972" x="181957" y="54432" z="-5912" heading="15375" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20972" x="181723" y="55797" z="-5880" heading="18461" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20972" x="180475" y="54992" z="-5940" heading="39414" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20972" x="179287" y="55065" z="-5976" heading="30855" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20972" x="177374" y="56746" z="-5914" heading="19101" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20972" x="175916" y="56584" z="-5950" heading="38683" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20972" x="175072" y="57164" z="-5947" heading="25109" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20972" x="174187" y="58099" z="-5892" heading="17657" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20972" x="173911" y="55920" z="-5986" heading="48458" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20972" x="173603" y="54706" z="-6009" heading="44593" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20972" x="173404" y="53940" z="-5966" heading="46897" respawnDelay="60" /> <!-- Shaman of Ancient Times -->
+		<npc id="20973" x="173404" y="53940" z="-5966" heading="46897" respawnDelay="60" /> <!-- Forgotten Ancient People -->
+		<npc id="20973" x="175014" y="54699" z="-6021" heading="3091" respawnDelay="60" /> <!-- Forgotten Ancient People -->
+		<npc id="20973" x="176284" y="55060" z="-6013" heading="2849" respawnDelay="60" /> <!-- Forgotten Ancient People -->
+		<npc id="20973" x="177565" y="54299" z="-6003" heading="54908" respawnDelay="60" /> <!-- Forgotten Ancient People -->
+		<npc id="20973" x="178551" y="54038" z="-6010" heading="65252" respawnDelay="60" /> <!-- Forgotten Ancient People -->
+		<npc id="20973" x="179440" y="53022" z="-5988" heading="55710" respawnDelay="60" /> <!-- Forgotten Ancient People -->
+		<npc id="20973" x="180159" y="51585" z="-5948" heading="53738" respawnDelay="60" /> <!-- Forgotten Ancient People -->
+		<npc id="20973" x="181105" y="50879" z="-5951" heading="59189" respawnDelay="60" /> <!-- Forgotten Ancient People -->
+		<npc id="20973" x="182128" y="49905" z="-5948" heading="53398" respawnDelay="60" /> <!-- Forgotten Ancient People -->
+		<npc id="20973" x="183205" y="48911" z="-5959" heading="57964" respawnDelay="60" /> <!-- Forgotten Ancient People -->
+		<npc id="20973" x="184899" y="48873" z="-6045" heading="435" respawnDelay="60" /> <!-- Forgotten Ancient People -->
+		<npc id="20973" x="184531" y="49795" z="-5952" heading="17339" respawnDelay="60" /> <!-- Forgotten Ancient People -->
+		<npc id="20973" x="184253" y="51089" z="-5957" heading="18817" respawnDelay="60" /> <!-- Forgotten Ancient People -->
+		<npc id="20973" x="183539" y="52498" z="-5902" heading="13035" respawnDelay="60" /> <!-- Forgotten Ancient People -->
+		<npc id="20973" x="183383" y="53314" z="-5878" heading="18807" respawnDelay="60" /> <!-- Forgotten Ancient People -->
+		<npc id="20973" x="181421" y="54902" z="-5908" heading="19199" respawnDelay="60" /> <!-- Forgotten Ancient People -->
+		<npc id="20973" x="179422" y="55954" z="-5936" heading="25812" respawnDelay="60" /> <!-- Forgotten Ancient People -->
+		<npc id="20973" x="177518" y="55351" z="-5986" heading="28382" respawnDelay="60" /> <!-- Forgotten Ancient People -->
+		<npc id="20973" x="177147" y="57087" z="-5898" heading="16777" respawnDelay="60" /> <!-- Forgotten Ancient People -->
+		<npc id="20973" x="176517" y="57534" z="-5878" heading="26331" respawnDelay="60" /> <!-- Forgotten Ancient People -->
+		<npc id="20973" x="174901" y="56753" z="-5948" heading="35850" respawnDelay="60" /> <!-- Forgotten Ancient People -->
+		<npc id="20973" x="175710" y="55967" z="-5989" heading="62694" respawnDelay="60" /> <!-- Forgotten Ancient People -->
 	</spawn>
 </list>
