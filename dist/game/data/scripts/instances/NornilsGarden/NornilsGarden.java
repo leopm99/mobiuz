@@ -484,6 +484,16 @@ public class NornilsGarden extends AbstractInstance
 	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = event;
+		
+		if ((npc.getId() == 32258) && event.equalsIgnoreCase("exit"))
+		{
+			if (player.getInstanceId() > 0)
+			{
+				super.teleportPlayer(player, EXIT_PPL, 0);
+			}
+			return null;
+		}
+		
 		final QuestState st = getQuestState(player, false);
 		if (st == null)
 		{
@@ -499,13 +509,6 @@ public class NornilsGarden extends AbstractInstance
 			catch (Exception e)
 			{
 				// Not Important.
-			}
-		}
-		else if ((npc.getId() == 32258) && event.equalsIgnoreCase("exit"))
-		{
-			if (player.getInstanceId() > 0)
-			{
-				super.teleportPlayer(player, EXIT_PPL, 0);
 			}
 		}
 		else if (ArrayUtil.contains(FINAL_GATES, npc.getId()))
