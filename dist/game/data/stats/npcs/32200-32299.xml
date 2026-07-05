@@ -2315,7 +2315,7 @@
 		<ai type="BALANCED" />
 		<collision>
 			<radius normal="54" />
-			<height normal="245" />
+			<height normal="200" />
 		</collision>
 	</npc>
 	<npc id="32256" level="70" type="Folk" name="Icon of the Present">
@@ -2356,7 +2356,7 @@
 		<ai type="BALANCED" />
 		<collision>
 			<radius normal="54" />
-			<height normal="245" />
+			<height normal="200" />
 		</collision>
 	</npc>
 	<npc id="32257" level="70" type="Folk" name="Icon of the Future">
@@ -2397,7 +2397,7 @@
 		<ai type="BALANCED" />
 		<collision>
 			<radius normal="54" />
-			<height normal="245" />
+			<height normal="200" />
 		</collision>
 	</npc>
 	<npc id="32258" level="70" type="Folk" name="Menacing Machine">
