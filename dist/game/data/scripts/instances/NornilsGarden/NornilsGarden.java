@@ -226,6 +226,13 @@ public class NornilsGarden extends AbstractInstance
 		addTalkId(FINAL_GATES);
 		addAttackId(HERB_JAR);
 		addAttackId(18362); // first garden guard
+		
+		final int[] keyIds = new int[GATEKEEPERS.length];
+		for (int i = 0; i < GATEKEEPERS.length; i++)
+		{
+			keyIds[i] = GATEKEEPERS[i][1];
+		}
+		registerQuestItems(keyIds);
 	}
 	
 	@Override
@@ -487,6 +494,10 @@ public class NornilsGarden extends AbstractInstance
 		
 		if ((npc.getId() == 32258) && event.equalsIgnoreCase("exit"))
 		{
+			for (int[] gk : GATEKEEPERS)
+			{
+				takeItems(player, gk[1], -1);
+			}
 			if (player.getInstanceId() > 0)
 			{
 				super.teleportPlayer(player, EXIT_PPL, 0);
