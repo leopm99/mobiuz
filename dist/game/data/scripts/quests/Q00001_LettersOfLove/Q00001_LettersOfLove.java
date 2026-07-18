@@ -28,6 +28,33 @@ import ai.others.NewbieGuide.NewbieGuide;
 
 /**
  * Letters of Love (1)
+ * <p>
+ * <b>Nivel minimo:</b> 2 | <b>Tipo:</b> Missao de entrega | <b>Repetivel:</b> Nao<br>
+ * <b>Inicio:</b> Fale com Darin na Talking Island Village.
+ * </p>
+ * <b>Passo 1 - Delivery of Love Letters:</b><br>
+ * Darin se apaixonou pela Gatekeeper Roxxy, mas e timido demais para se declarar.
+ * Ele pede que voce entregue sua carta de amor a ela.<br>
+ * <i>Alvo: Gatekeeper Roxxy (30006)</i>
+ * <br><br>
+ * <b>Passo 2 - Roxxy's Kerchief:</b><br>
+ * Roxxy le a carta e revela que tambem o admira. Ela pede que voce entregue
+ * seu lenco a Darin como resposta.<br>
+ * <i>Alvo: Darin (30048)</i>
+ * <br><br>
+ * <b>Passo 3 - Baulro's Magic Potion:</b><br>
+ * Darin fica encantado ao saber que Roxxy o admira e quer convida-la para um encontro.
+ * Ele pede que voce busque uma pocao do amor que o Magister Baulro prometeu a ele,
+ * no templo.<br>
+ * <i>Alvo: Magister Baulro (30033)</i>
+ * <br><br>
+ * <b>Passo 4 - Water that Brings Out Courage:</b><br>
+ * Baulro admite que enganou Darin sobre a pocao - na verdade era apenas agua da torneira,
+ * para dar-lhe coragem. Entregue o frasco a Darin na praca da vila.<br>
+ * <i>Alvo: Darin (30048)</i>
+ * <br><br>
+ * <b>Recompensa:</b> Necklace of Knowledge (906) + XP/Adena.
+ *
  * @author Zoey76
  */
 public class Q00001_LettersOfLove extends Quest

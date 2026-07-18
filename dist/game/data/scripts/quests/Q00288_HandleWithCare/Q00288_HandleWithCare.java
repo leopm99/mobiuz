@@ -97,7 +97,29 @@ public class Q00288_HandleWithCare extends Quest
 				if (qs.isCond(2) || qs.isCond(3))
 				{
 					ItemHolder reward = null;
-					if (hasQuestItems(player, MIDDLE_GRADE_LIZARD_SCALE))
+					if (hasQuestItems(player, HIGH_GRADE_LIZARD_SCALE))
+					{
+						takeItems(player, HIGH_GRADE_LIZARD_SCALE, 1);
+						final int rnd = getRandom(10);
+						if (rnd == 0)
+						{
+							reward = REWARDS[0];
+						}
+						else if (rnd < 5)
+						{
+							reward = REWARDS[1];
+						}
+						else if (rnd < 8)
+						{
+							reward = REWARDS[2];
+						}
+						else
+						{
+							reward = REWARDS[3];
+						}
+						giveItems(player, REWARDS[4]);
+					}
+					else if (hasQuestItems(player, MIDDLE_GRADE_LIZARD_SCALE))
 					{
 						takeItems(player, MIDDLE_GRADE_LIZARD_SCALE, 1);
 						final int rnd = getRandom(10);
@@ -125,28 +147,6 @@ public class Q00288_HandleWithCare extends Quest
 						{
 							reward = REWARDS[5];
 						}
-					}
-					else if (hasQuestItems(player, HIGH_GRADE_LIZARD_SCALE))
-					{
-						takeItems(player, HIGH_GRADE_LIZARD_SCALE, 1);
-						final int rnd = getRandom(10);
-						if (rnd == 0)
-						{
-							reward = REWARDS[0];
-						}
-						else if (rnd < 5)
-						{
-							reward = REWARDS[1];
-						}
-						else if (rnd < 8)
-						{
-							reward = REWARDS[2];
-						}
-						else
-						{
-							reward = REWARDS[3];
-						}
-						giveItems(player, REWARDS[4]);
 					}
 					if (reward != null)
 					{
@@ -204,7 +204,7 @@ public class Q00288_HandleWithCare extends Quest
 				{
 					htmltext = "32741-06.html";
 				}
-				if (qs.isCond(2) && hasQuestItems(player, HIGH_GRADE_LIZARD_SCALE))
+				else if (qs.isCond(3) && hasQuestItems(player, HIGH_GRADE_LIZARD_SCALE))
 				{
 					htmltext = "32741-07.html";
 				}

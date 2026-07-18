@@ -21,6 +21,7 @@ import com.l2journey.gameserver.model.actor.Player;
 import com.l2journey.gameserver.model.quest.Quest;
 import com.l2journey.gameserver.model.quest.QuestState;
 import com.l2journey.gameserver.model.quest.State;
+import com.l2journey.gameserver.util.ArrayUtil;
 
 import quests.Q00249_PoisonedPlainsOfTheLizardmen.Q00249_PoisonedPlainsOfTheLizardmen;
 
@@ -37,6 +38,16 @@ public class Q00423_TakeYourBestShot extends Quest
 	
 	// Monster
 	private static final int TANTA_GUARD = 18862;
+	private static final int[] TANTA_LIZARDMEN =
+	{
+		22768,
+		22769,
+		22770,
+		22771,
+		22772,
+		22773,
+		22774
+	};
 	
 	// Item
 	private static final int SEER_UGOROS_PASS = 15496;
@@ -51,6 +62,7 @@ public class Q00423_TakeYourBestShot extends Quest
 		addTalkId(JOHNNY, BATRACOS);
 		addFirstTalkId(BATRACOS);
 		addKillId(TANTA_GUARD);
+		addKillId(TANTA_LIZARDMEN);
 	}
 	
 	@Override
@@ -105,7 +117,17 @@ public class Q00423_TakeYourBestShot extends Quest
 	public void onKill(Npc npc, Player killer, boolean isSummon)
 	{
 		final QuestState qs = getQuestState(killer, false);
-		if ((qs != null) && qs.isCond(1))
+		if ((qs == null) || !qs.isStarted() || (qs.getCond() != 1))
+		{
+			return;
+		}
+
+		final int npcId = npc.getId();
+		if (ArrayUtil.contains(TANTA_LIZARDMEN, npcId) && (getRandom(100) < 2))
+		{
+			addSpawn(TANTA_GUARD, killer.getX(), killer.getY(), killer.getZ(), 0, false, 120000);
+		}
+		else if ((npcId == TANTA_GUARD) && !hasQuestItems(killer, SEER_UGOROS_PASS))
 		{
 			qs.setCond(2, true);
 		}

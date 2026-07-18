@@ -295,6 +295,7 @@ public class Q00255_Tutorial extends Quest
 				break;
 			}
 		}
+		
 		return "";
 	}
 	
@@ -324,6 +325,7 @@ public class Q00255_Tutorial extends Quest
 				{
 					pass = -pass;
 				}
+				
 				tutorialEvent(talker, pass);
 			}
 			else if (event.startsWith("TC:"))
@@ -334,6 +336,7 @@ public class Q00255_Tutorial extends Quest
 			{
 				questionMarkClicked(talker, Integer.parseInt(event.substring(3)));
 			}
+			
 			return null;
 		}
 		
@@ -402,6 +405,7 @@ public class Q00255_Tutorial extends Quest
 						{
 							playTutorialVoice(talker, "tutorial_voice_009b");
 						}
+						
 						qs.setMemoStateEx(1, 1);
 						break;
 					}
@@ -427,6 +431,7 @@ public class Q00255_Tutorial extends Quest
 						{
 							playTutorialVoice(talker, "tutorial_voice_009b");
 						}
+						
 						qs.setMemoStateEx(1, 1);
 						break;
 					}
@@ -470,6 +475,7 @@ public class Q00255_Tutorial extends Quest
 						{
 							playTutorialVoice(talker, "tutorial_voice_009c");
 						}
+						
 						qs.setMemoStateEx(1, 1);
 						break;
 					}
@@ -511,6 +517,7 @@ public class Q00255_Tutorial extends Quest
 					}
 					break;
 				}
+				
 				eventRoien(eventId, talker, npc, qs);
 				break;
 			}
@@ -531,6 +538,7 @@ public class Q00255_Tutorial extends Quest
 					}
 					break;
 				}
+				
 				eventJundin(eventId, talker, npc, qs);
 				break;
 			}
@@ -546,6 +554,7 @@ public class Q00255_Tutorial extends Quest
 					}
 					break;
 				}
+				
 				eventNerupa(eventId, talker, npc, qs);
 				break;
 			}
@@ -561,6 +570,7 @@ public class Q00255_Tutorial extends Quest
 					}
 					break;
 				}
+				
 				eventForemanLaferon(eventId, talker, npc, qs);
 				break;
 			}
@@ -576,6 +586,7 @@ public class Q00255_Tutorial extends Quest
 					}
 					break;
 				}
+				
 				eventGuardianVullkus(eventId, talker, npc, qs);
 				break;
 			}
@@ -591,10 +602,12 @@ public class Q00255_Tutorial extends Quest
 					}
 					break;
 				}
+				
 				eventSubelderPerwan(eventId, talker, npc, qs);
 				break;
 			}
 		}
+		
 		return "";
 	}
 	
@@ -674,10 +687,12 @@ public class Q00255_Tutorial extends Quest
 						break;
 					}
 				}
+				
 				if (!hasQuestItems(talker, TUTORIAL_GUIDE))
 				{
 					giveItems(talker, TUTORIAL_GUIDE, 1);
 				}
+				
 				startQuestTimer((talker.getObjectId() + 1000000) + "", 30000, null, qs.getPlayer());
 				qs.setMemoStateEx(1, -3);
 				break;
@@ -876,6 +891,7 @@ public class Q00255_Tutorial extends Quest
 							break;
 						}
 					}
+					
 					playTutorialVoice(talker, "tutorial_voice_007");
 					qs.setMemoState(memoFlag | 2);
 					if (qs.getMemoStateEx(1) <= 0)
@@ -942,12 +958,14 @@ public class Q00255_Tutorial extends Quest
 						break;
 					}
 				}
+				
 				if (!talker.isMageClass())
 				{
 					playTutorialVoice(talker, "tutorial_voice_014");
 					showQuestionMark(talker, 9);
 					playSound(talker, QuestSound.ITEMSOUND_QUEST_TUTORIAL);
 				}
+				
 				enableTutorialEvent(qs, memoFlag | 134217728);
 				qs.setMemoState(memoState & ~1024);
 				break;
@@ -992,8 +1010,10 @@ public class Q00255_Tutorial extends Quest
 							break;
 						}
 					}
+					
 					qs.setMemoState(memoState & ~2048);
 				}
+				
 				enableTutorialEvent(qs, memoFlag | 268435456);
 				break;
 			}
@@ -1006,6 +1026,7 @@ public class Q00255_Tutorial extends Quest
 					playSound(talker, QuestSound.ITEMSOUND_QUEST_TUTORIAL);
 					qs.setMemoState(memoState & ~268435456);
 				}
+				
 				enableTutorialEvent(qs, memoFlag | 536870912);
 				break;
 			}
@@ -1037,6 +1058,7 @@ public class Q00255_Tutorial extends Quest
 						break;
 					}
 				}
+				
 				enableTutorialEvent(qs, memoFlag | 1073741824);
 				break;
 			}
@@ -1054,6 +1076,7 @@ public class Q00255_Tutorial extends Quest
 						break;
 					}
 				}
+				
 				enableTutorialEvent(qs, memoFlag | 67108864);
 				break;
 			}
@@ -1082,6 +1105,7 @@ public class Q00255_Tutorial extends Quest
 					playSound(talker, QuestSound.ITEMSOUND_QUEST_TUTORIAL);
 					qs.setMemoState(memoState & ~16777216);
 				}
+				
 				enableTutorialEvent(qs, memoFlag | 32);
 				break;
 			}
@@ -1094,6 +1118,7 @@ public class Q00255_Tutorial extends Quest
 					playSound(talker, QuestSound.ITEMSOUND_QUEST_TUTORIAL);
 					qs.setMemoState(memoState & ~16384);
 				}
+				
 				enableTutorialEvent(qs, memoFlag | 64);
 				break;
 			}
@@ -1106,6 +1131,7 @@ public class Q00255_Tutorial extends Quest
 					playSound(talker, QuestSound.ITEMSOUND_QUEST_TUTORIAL);
 					qs.setMemoState(memoState & ~33554432);
 				}
+				
 				enableTutorialEvent(qs, memoFlag | 32768);
 				break;
 			}
@@ -1127,6 +1153,7 @@ public class Q00255_Tutorial extends Quest
 					playSound(talker, QuestSound.ITEMSOUND_QUEST_TUTORIAL);
 					qs.setMemoState(memoState & ~32);
 				}
+				
 				enableTutorialEvent(qs, memoFlag | 16384);
 				break;
 			}
@@ -1138,6 +1165,7 @@ public class Q00255_Tutorial extends Quest
 					playSound(talker, QuestSound.ITEMSOUND_QUEST_TUTORIAL);
 					qs.setMemoState(memoState & ~64);
 				}
+				
 				enableTutorialEvent(qs, memoFlag | 128);
 				break;
 			}
@@ -1149,6 +1177,7 @@ public class Q00255_Tutorial extends Quest
 					playSound(talker, QuestSound.ITEMSOUND_QUEST_TUTORIAL);
 					qs.setMemoState(memoState & ~128);
 				}
+				
 				enableTutorialEvent(qs, memoFlag | 33554432);
 				break;
 			}
@@ -1651,6 +1680,7 @@ public class Q00255_Tutorial extends Quest
 				{
 					qs.setMemoStateEx(1, -5);
 				}
+				
 				switch (talker.getPlayerClass())
 				{
 					case FIGHTER:
@@ -1700,6 +1730,7 @@ public class Q00255_Tutorial extends Quest
 						break;
 					}
 				}
+				
 				qs.setMemoState(memoFlag | 2);
 				break;
 			}
@@ -1747,6 +1778,7 @@ public class Q00255_Tutorial extends Quest
 						break;
 					}
 				}
+				
 				qs.setMemoState(memoFlag | 2);
 				break;
 			}
@@ -1806,6 +1838,7 @@ public class Q00255_Tutorial extends Quest
 						break;
 					}
 				}
+				
 				showTutorialHTML(talker, "tutorial-11.html");
 				break;
 			}
@@ -2281,6 +2314,7 @@ public class Q00255_Tutorial extends Quest
 							break;
 						}
 					}
+					
 					playSound(talker, QuestSound.ITEMSOUND_QUEST_TUTORIAL);
 					break;
 				}
@@ -2291,6 +2325,7 @@ public class Q00255_Tutorial extends Quest
 					break;
 				}
 			}
+			
 			enableTutorialEvent(qs, memoState);
 		}
 		else
@@ -2575,26 +2610,32 @@ public class Q00255_Tutorial extends Quest
 						removeNRMemo(qs, 636 + territoryWarState);
 					}
 				}
+				
 				if (haveNRMemo(qs, 739) && (getNRMemoState(qs, 739) > 0))
 				{
 					setNRMemoState(qs, 739, 0);
 				}
+				
 				if (haveNRMemo(qs, Q729_PROTECT_THE_TERRITORY_CATAPULT))
 				{
 					removeNRMemo(qs, 729);
 				}
+				
 				if (haveNRMemo(qs, Q730_PROTECT_THE_SUPPLIES_SAFE))
 				{
 					removeNRMemo(qs, 730);
 				}
+				
 				if (haveNRMemo(qs, Q731_PROTECT_THE_MILITARY_ASSOCIATION_LEADER))
 				{
 					removeNRMemo(qs, 731);
 				}
+				
 				if (haveNRMemo(qs, Q732_PROTECT_THE_RELIGIOUS_ASSOCIATION_LEADER))
 				{
 					removeNRMemo(qs, 732);
 				}
+				
 				if (haveNRMemo(qs, Q733_PROTECT_THE_ECONOMIC_ASSOCIATION_LEADER))
 				{
 					removeNRMemo(qs, 733);
@@ -2620,6 +2661,7 @@ public class Q00255_Tutorial extends Quest
 						addExpAndSp(talker, 0, 50);
 						qs.setMemoStateEx(1, 4);
 					}
+					
 					if (talker.isMageClass() && (qs.getMemoStateEx(1) <= 3))
 					{
 						if (talker.getPlayerClass() == PlayerClass.ORC_MAGE)
@@ -2632,9 +2674,11 @@ public class Q00255_Tutorial extends Quest
 							giveItems(talker, SPIRITSHOT_NO_GRADE_FOR_BEGINNERS, 100);
 							playTutorialVoice(talker, "tutorial_voice_027");
 						}
+						
 						addExpAndSp(talker, 0, 50);
 						qs.setMemoStateEx(1, 4);
 					}
+					
 					startQuestTimer(npc.getId() + "", 60000, npc, talker);
 					takeItems(talker, RECOMMENDATION_1, 1);
 					showHtmlFile(talker, "30008-002.html");
@@ -2670,6 +2714,7 @@ public class Q00255_Tutorial extends Quest
 						giveItems(talker, SOULSHOT_NO_GRADE_FOR_BEGINNERS, 200);
 						addExpAndSp(talker, 0, 50);
 					}
+					
 					if (talker.isMageClass() && (getQuestItemsCount(talker, SOULSHOT_NO_GRADE_FOR_BEGINNERS) <= 200) && (getQuestItemsCount(talker, SPIRITSHOT_NO_GRADE_FOR_BEGINNERS) <= 100))
 					{
 						if (talker.getPlayerClass() == PlayerClass.ORC_MAGE)
@@ -2682,14 +2727,17 @@ public class Q00255_Tutorial extends Quest
 							playTutorialVoice(talker, "tutorial_voice_027");
 							giveItems(talker, SPIRITSHOT_NO_GRADE_FOR_BEGINNERS, 200);
 						}
+						
 						addExpAndSp(talker, 0, 50);
 					}
+					
 					takeItems(talker, RECOMMENDATION_2, 1);
 					startQuestTimer(npc.getId() + "", 60000, npc, talker);
 					if (qs.getMemoStateEx(1) <= 3)
 					{
 						qs.setMemoStateEx(1, 4);
 					}
+					
 					showHtmlFile(talker, "30017-002.html");
 				}
 				break;
@@ -2724,6 +2772,7 @@ public class Q00255_Tutorial extends Quest
 						giveItems(talker, SOULSHOT_NO_GRADE_FOR_BEGINNERS, 200);
 						addExpAndSp(talker, 0, 50);
 					}
+					
 					if (talker.isMageClass() && (getQuestItemsCount(talker, SOULSHOT_NO_GRADE_FOR_BEGINNERS) <= 200) && (getQuestItemsCount(talker, SPIRITSHOT_NO_GRADE_FOR_BEGINNERS) <= 100))
 					{
 						if (talker.getPlayerClass() == PlayerClass.ORC_MAGE)
@@ -2736,14 +2785,17 @@ public class Q00255_Tutorial extends Quest
 							playTutorialVoice(talker, "tutorial_voice_027");
 							giveItems(talker, SPIRITSHOT_NO_GRADE_FOR_BEGINNERS, 200);
 						}
+						
 						addExpAndSp(talker, 0, 50);
 					}
+					
 					takeItems(talker, BLOOD_OF_MITRAELL, 1);
 					startQuestTimer(npc.getId() + "", 60000, npc, talker);
 					if (qs.getMemoStateEx(1) <= 3)
 					{
 						qs.setMemoStateEx(1, 4);
 					}
+					
 					showHtmlFile(talker, "30129-002.html");
 				}
 				break;
@@ -2779,18 +2831,21 @@ public class Q00255_Tutorial extends Quest
 						giveItems(talker, SOULSHOT_NO_GRADE_FOR_BEGINNERS, 200);
 						addExpAndSp(talker, 0, 50);
 					}
+					
 					if (talker.isMageClass() && (getQuestItemsCount(talker, SOULSHOT_NO_GRADE_FOR_BEGINNERS) <= 200) && (getQuestItemsCount(talker, SPIRITSHOT_NO_GRADE_FOR_BEGINNERS) <= 100))
 					{
 						playTutorialVoice(talker, "tutorial_voice_027");
 						giveItems(talker, SPIRITSHOT_NO_GRADE_FOR_BEGINNERS, 200);
 						addExpAndSp(talker, 0, 50);
 					}
+					
 					takeItems(talker, LEAF_OF_THE_MOTHER_TREE, 1);
 					startQuestTimer(npc.getId() + "", 60000, npc, talker);
 					if (qs.getMemoStateEx(1) <= 3)
 					{
 						qs.setMemoStateEx(1, 4);
 					}
+					
 					showHtmlFile(talker, "30370-002.html");
 				}
 				break;
@@ -2826,18 +2881,21 @@ public class Q00255_Tutorial extends Quest
 						giveItems(talker, SOULSHOT_NO_GRADE_FOR_BEGINNERS, 200);
 						addExpAndSp(talker, 0, 50);
 					}
+					
 					if (talker.isMageClass() && (getQuestItemsCount(talker, SOULSHOT_NO_GRADE_FOR_BEGINNERS) <= 200) && (getQuestItemsCount(talker, SPIRITSHOT_NO_GRADE_FOR_BEGINNERS) <= 100))
 					{
 						playTutorialVoice(talker, "tutorial_voice_027");
 						giveItems(talker, SPIRITSHOT_NO_GRADE_FOR_BEGINNERS, 100);
 						addExpAndSp(talker, 0, 50);
 					}
+					
 					takeItems(talker, LICENSE_OF_MINER, 1);
 					startQuestTimer(npc.getId() + "", 60000, npc, talker);
 					if (qs.getMemoStateEx(1) <= 3)
 					{
 						qs.setMemoStateEx(1, 4);
 					}
+					
 					showHtmlFile(talker, "30528-002.html");
 				}
 				break;
@@ -2872,11 +2930,13 @@ public class Q00255_Tutorial extends Quest
 					{
 						qs.setMemoStateEx(1, 4);
 					}
+					
 					if (getQuestItemsCount(talker, SOULSHOT_NO_GRADE_FOR_BEGINNERS) <= 200)
 					{
 						giveItems(talker, SOULSHOT_NO_GRADE_FOR_BEGINNERS, 200);
 						addExpAndSp(talker, 0, 50);
 					}
+					
 					playTutorialVoice(talker, "tutorial_voice_026");
 					showHtmlFile(talker, "30573-002.html");
 				}
@@ -2909,6 +2969,7 @@ public class Q00255_Tutorial extends Quest
 				addExpAndSp(talker, 0, 50);
 				qs.setMemoStateEx(1, 4);
 			}
+			
 			takeItems(talker, DIPLOMA, -1);
 			startQuestTimer(npc.getId() + "", 60000, npc, talker);
 			addRadar(talker, -119692, 44504, 380);
@@ -2969,6 +3030,7 @@ public class Q00255_Tutorial extends Quest
 				playTutorialVoice(talker, "tutorial_voice_026");
 				
 			}
+			
 			if (talker.isMageClass() && !hasQuestItems(talker, SOULSHOT_NO_GRADE_FOR_BEGINNERS) && !hasQuestItems(talker, SPIRITSHOT_NO_GRADE_FOR_BEGINNERS))
 			{
 				if (talker.getPlayerClass() == PlayerClass.ORC_MAGE)
@@ -2982,6 +3044,7 @@ public class Q00255_Tutorial extends Quest
 					giveItems(talker, SPIRITSHOT_NO_GRADE_FOR_BEGINNERS, 100);
 				}
 			}
+			
 			showHtmlFile(talker, "30009-003.html");
 		}
 		else if (qs.getMemoStateEx(1) == 3)
@@ -3031,6 +3094,7 @@ public class Q00255_Tutorial extends Quest
 		{
 			showHtmlFile(talker, "30019-002.html");
 		}
+		
 		if (((qs.getMemoStateEx(1) == 0) || (qs.getMemoStateEx(1) == 1) || (qs.getMemoStateEx(1) == 2)) && hasQuestItems(talker, BLUE_GEMSTONE))
 		{
 			takeItems(talker, BLUE_GEMSTONE, -1);
@@ -3044,6 +3108,7 @@ public class Q00255_Tutorial extends Quest
 				giveItems(talker, SOULSHOT_NO_GRADE_FOR_BEGINNERS, 200);
 				playTutorialVoice(talker, "tutorial_voice_026");
 			}
+			
 			if (talker.isMageClass() && !hasQuestItems(talker, SOULSHOT_NO_GRADE_FOR_BEGINNERS) && !hasQuestItems(talker, SPIRITSHOT_NO_GRADE_FOR_BEGINNERS))
 			{
 				if (talker.getPlayerClass() == PlayerClass.ORC_MAGE)
@@ -3057,6 +3122,7 @@ public class Q00255_Tutorial extends Quest
 					giveItems(talker, SPIRITSHOT_NO_GRADE_FOR_BEGINNERS, 100);
 				}
 			}
+			
 			showHtmlFile(talker, "30019-003.html");
 		}
 		else if (qs.getMemoStateEx(1) == 3)
@@ -3146,6 +3212,7 @@ public class Q00255_Tutorial extends Quest
 				playTutorialVoice(talker, "tutorial_voice_026");
 				giveItems(talker, SOULSHOT_NO_GRADE_FOR_BEGINNERS, 200);
 			}
+			
 			if (talker.isMageClass() && !hasQuestItems(talker, SOULSHOT_NO_GRADE_FOR_BEGINNERS) && !hasQuestItems(talker, SPIRITSHOT_NO_GRADE_FOR_BEGINNERS))
 			{
 				if (talker.getPlayerClass() == PlayerClass.ORC_MAGE)
@@ -3233,6 +3300,7 @@ public class Q00255_Tutorial extends Quest
 				playTutorialVoice(talker, "tutorial_voice_026");
 				giveItems(talker, SOULSHOT_NO_GRADE_FOR_BEGINNERS, 200);
 			}
+			
 			if (talker.isMageClass() && !hasQuestItems(talker, SOULSHOT_NO_GRADE_FOR_BEGINNERS) && !hasQuestItems(talker, SPIRITSHOT_NO_GRADE_FOR_BEGINNERS))
 			{
 				if (talker.getPlayerClass() == PlayerClass.ORC_MAGE)
@@ -3323,6 +3391,7 @@ public class Q00255_Tutorial extends Quest
 				playTutorialVoice(talker, "tutorial_voice_026");
 				giveItems(talker, SOULSHOT_NO_GRADE_FOR_BEGINNERS, 200);
 			}
+			
 			if (talker.isMageClass() && !hasQuestItems(talker, SOULSHOT_NO_GRADE_FOR_BEGINNERS) && !hasQuestItems(talker, SPIRITSHOT_NO_GRADE_FOR_BEGINNERS))
 			{
 				if (talker.getPlayerClass() == PlayerClass.ORC_MAGE)
@@ -3422,6 +3491,7 @@ public class Q00255_Tutorial extends Quest
 			{
 				giveItems(talker, SOULSHOT_NO_GRADE_FOR_BEGINNERS, 200);
 			}
+			
 			playTutorialVoice(talker, "tutorial_voice_026");
 		}
 		else if (qs.getMemoStateEx(1) == 3)
