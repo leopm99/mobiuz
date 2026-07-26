@@ -192,6 +192,7 @@ public class EffectMasterHandler
 		SummonPet.class,
 		SummonTrap.class,
 		Sweeper.class,
+		SweepManaHeal.class,
 		TakeCastle.class,
 		TakeFort.class,
 		TakeFortStart.class,

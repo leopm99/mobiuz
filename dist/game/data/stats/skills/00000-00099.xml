@@ -4489,7 +4489,7 @@
 		</enchant1effects>
 		<enchant2effects>
 			<effect name="Sweeper" />
-			<effect name="ManaHealByLevel">
+			<effect name="SweepManaHeal">
 				<param power="#ench2DrainMp" />
 			</effect>
 			<effect name="ConsumeBody" />

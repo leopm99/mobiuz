@@ -829,8 +829,11 @@
 	<item id="22274" type="EtcItem" name="PC Transformation Scroll Box - Event">
 		<!-- Gift that can be received after connecting for two hours from a PC Cafe. The box contains 1 Transformation Scroll. Which one could it be? -->
 		<set name="icon" val="icon.etc_pi_gift_box_i04" />
+		<set name="default_action" val="SKILL_REDUCE" />
 		<set name="material" val="COTTON" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ItemSkills" />
+		<set name="item_skill" val="22388-1" /> <!-- PC Café Transformation Stick Box -->
 	</item>
 	<item id="22275" type="EtcItem" name="PC Gift Box - Event">
 		<!-- Gift that can be received after connecting for one hour from a PC Cafe. Double click to receive a special gift that can only obtained in a PC Cafe. -->
