@@ -108,13 +108,19 @@ public class AutoPlayTaskManager
 					if (creature.isAlikeDead() || !isTargetModeValid(targetMode, player, creature))
 					{
 						// Logic for Spoil (254/302) skill.
-						if (creature.isMonster() && creature.isDead() && (player.getAutoUseSettings().getAutoSkills().contains(254) || player.getAutoUseSettings().getAutoSkills().contains(302)))
+						if (creature.isMonster() && creature.isDead())
 						{
-							Skill sweeper = player.getKnownSkill(444);
-							if (sweeper == null)
+							Skill sweeper = null;
+							
+							if (player.getAutoUseSettings().getAutoSkills().contains(302)) // Spoil
 							{
-								sweeper = player.getKnownSkill(42);
+								sweeper = player.getKnownSkill(444); // Sweeper
 							}
+							else if (player.getAutoUseSettings().getAutoSkills().contains(254)) // Spoil Festival
+							{
+								sweeper = player.getKnownSkill(42); // Sweeper Festival
+							}
+							
 							if (sweeper != null)
 							{
 								final Monster monster = target.asMonster();
