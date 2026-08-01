@@ -106,18 +106,26 @@ public class GameServerThread extends Thread
 					break;
 				}
 				
-				final byte[] data = new byte[length - 2];
+				final int dataLength = length - 2;
+				// Body must hold at least one full Blowfish block, otherwise decrypt() reads out of bounds.
+				if ((dataLength < 8) || ((dataLength % 8) != 0))
+				{
+					LOGGER.warning("Invalid packet length (" + length + ") sent to the server, closing connection.(LS)");
+					break;
+				}
+				
+				final byte[] data = new byte[dataLength];
 				int receivedBytes = 0;
 				int newBytes = 0;
-				int left = length - 2;
-				while ((newBytes != -1) && (receivedBytes < (length - 2)))
+				int left = dataLength;
+				while ((newBytes != -1) && (receivedBytes < dataLength))
 				{
 					newBytes = _in.read(data, receivedBytes, left);
 					receivedBytes += newBytes;
 					left -= newBytes;
 				}
 				
-				if (receivedBytes != (length - 2))
+				if (receivedBytes != dataLength)
 				{
 					LOGGER.warning("Incomplete Packet is sent to the server, closing connection.(LS)");
 					break;
@@ -140,6 +148,12 @@ public class GameServerThread extends Thread
 			final String serverName = getServerId() != -1 ? "[" + getServerId() + "] " + GameServerTable.getInstance().getServerNameById(getServerId()) : "(" + _connectionIPAddress + ")";
 			final String msg = "GameServer " + serverName + ": Connection lost: " + e.getMessage();
 			LOGGER.info(msg);
+		}
+		catch (RuntimeException e)
+		{
+			// Guards against malformed/unexpected packets so the thread closes cleanly instead of dying uncaught.
+			final String serverName = getServerId() != -1 ? "[" + getServerId() + "] " + GameServerTable.getInstance().getServerNameById(getServerId()) : "(" + _connectionIPAddress + ")";
+			LOGGER.warning("GameServer " + serverName + ": Unexpected error while processing packet, closing connection: " + e);
 		}
 		finally
 		{
