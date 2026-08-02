@@ -585,12 +585,6 @@ public class AdminSpawn implements IAdminCommandHandler
 			template = NpcData.getInstance().getTemplateByName(monsterId.replace('_', ' '));
 		}
 		
-		if (!Config.FAKE_PLAYERS_ENABLED && template.isFakePlayer())
-		{
-			activeChar.sendPacket(SystemMessageId.YOUR_TARGET_CANNOT_BE_FOUND);
-			return;
-		}
-		
 		try
 		{
 			final Spawn spawn = new Spawn(template);

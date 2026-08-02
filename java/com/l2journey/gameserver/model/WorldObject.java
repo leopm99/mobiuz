@@ -418,15 +418,6 @@ public abstract class WorldObject extends ListenersContainer implements IPositio
 	}
 	
 	/**
-	 * Verify if object is a fake player.
-	 * @return {@code true} if object is a fake player, {@code false} otherwise.
-	 */
-	public boolean isFakePlayer()
-	{
-		return false;
-	}
-	
-	/**
 	 * Verifies if this object is a fence.
 	 * @return {@code true} if object is Fence, {@code false} otherwise.
 	 */

@@ -52,7 +52,7 @@ public class Guard extends Attackable
 	@Override
 	public boolean isAutoAttackable(Creature attacker)
 	{
-		if (attacker.isMonster() && !attacker.isFakePlayer())
+		if (attacker.isMonster())
 		{
 			return true;
 		}
@@ -157,13 +157,6 @@ public class Guard extends Attackable
 		
 		boolean interact = interactValue;
 		if (EventsConfig.FACTION_SYSTEM_ENABLED && EventsConfig.FACTION_GUARDS_ENABLED && ((player.isGood() && getTemplate().isClan(EventsConfig.FACTION_EVIL_TEAM_NAME)) || (player.isEvil() && getTemplate().isClan(EventsConfig.FACTION_GOOD_TEAM_NAME))))
-		{
-			interact = false;
-			// TODO: Fix normal targeting
-			player.getAI().setIntention(Intention.ATTACK, this);
-		}
-		
-		if (isFakePlayer() && isInCombat())
 		{
 			interact = false;
 			// TODO: Fix normal targeting

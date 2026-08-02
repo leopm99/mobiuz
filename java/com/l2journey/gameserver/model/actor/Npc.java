@@ -66,7 +66,6 @@ import com.l2journey.gameserver.model.actor.enums.creature.Race;
 import com.l2journey.gameserver.model.actor.enums.creature.Team;
 import com.l2journey.gameserver.model.actor.enums.npc.AISkillScope;
 import com.l2journey.gameserver.model.actor.enums.npc.AIType;
-import com.l2journey.gameserver.model.actor.holders.npc.FakePlayerHolder;
 import com.l2journey.gameserver.model.actor.instance.ClanHallManager;
 import com.l2journey.gameserver.model.actor.instance.Doorman;
 import com.l2journey.gameserver.model.actor.instance.Fisherman;
@@ -100,9 +99,7 @@ import com.l2journey.gameserver.model.siege.Castle;
 import com.l2journey.gameserver.model.siege.Fort;
 import com.l2journey.gameserver.model.siege.clanhalls.SiegableHall;
 import com.l2journey.gameserver.model.skill.Skill;
-import com.l2journey.gameserver.model.stats.Formulas;
 import com.l2journey.gameserver.model.variables.NpcVariables;
-import com.l2journey.gameserver.model.zone.ZoneId;
 import com.l2journey.gameserver.model.zone.type.TownZone;
 import com.l2journey.gameserver.network.NpcStringId;
 import com.l2journey.gameserver.network.SystemMessageId;
@@ -110,16 +107,10 @@ import com.l2journey.gameserver.network.enums.ChatType;
 import com.l2journey.gameserver.network.serverpackets.AbstractNpcInfo;
 import com.l2journey.gameserver.network.serverpackets.ActionFailed;
 import com.l2journey.gameserver.network.serverpackets.ExChangeNpcState;
-import com.l2journey.gameserver.network.serverpackets.ExPrivateStoreSetWholeMsg;
-import com.l2journey.gameserver.network.serverpackets.FakePlayerInfo;
 import com.l2journey.gameserver.network.serverpackets.MagicSkillUse;
 import com.l2journey.gameserver.network.serverpackets.NpcHtmlMessage;
 import com.l2journey.gameserver.network.serverpackets.NpcSay;
-import com.l2journey.gameserver.network.serverpackets.PrivateStoreMsgBuy;
-import com.l2journey.gameserver.network.serverpackets.PrivateStoreMsgSell;
-import com.l2journey.gameserver.network.serverpackets.RecipeShopMsg;
 import com.l2journey.gameserver.network.serverpackets.ServerObjectInfo;
-import com.l2journey.gameserver.network.serverpackets.SystemMessage;
 import com.l2journey.gameserver.taskmanagers.DecayTaskManager;
 import com.l2journey.gameserver.taskmanagers.ItemsAutoDestroyTaskManager;
 import com.l2journey.gameserver.util.Broadcast;
@@ -162,7 +153,6 @@ public class Npc extends Creature
 	private boolean _isWalker = false;
 	private boolean _isTalkable = getTemplate().isTalkable();
 	private final boolean _isQuestMonster = getTemplate().isQuestMonster();
-	private final boolean _isFakePlayer = getTemplate().isFakePlayer();
 	
 	private int _currentLHandId; // normally this shouldn't change from the template, but there exist exceptions
 	private int _currentRHandId; // normally this shouldn't change from the template, but there exist exceptions
@@ -305,7 +295,7 @@ public class Npc extends Creature
 	 */
 	public boolean isRandomAnimationEnabled()
 	{
-		return !_isFakePlayer && _isRandomAnimationEnabled;
+		return _isRandomAnimationEnabled;
 	}
 	
 	public void setRandomWalking(boolean enabled)
@@ -417,11 +407,7 @@ public class Npc extends Creature
 				return;
 			}
 			
-			if (_isFakePlayer)
-			{
-				player.sendPacket(new FakePlayerInfo(this));
-			}
-			else if (getRunSpeed() == 0)
+			if (getRunSpeed() == 0)
 			{
 				player.sendPacket(new ServerObjectInfo(this, player));
 			}
@@ -1233,73 +1219,6 @@ public class Npc extends Creature
 		
 		final Weapon weapon = (killer != null) ? killer.getActiveWeaponItem() : null;
 		_killingBlowWeaponId = (weapon != null) ? weapon.getId() : 0;
-		if (_isFakePlayer && (killer != null) && killer.isPlayable())
-		{
-			final Player player = killer.asPlayer();
-			if (isScriptValue(0) && (getKarma() < 0))
-			{
-				if (Config.FAKE_PLAYER_KILL_KARMA)
-				{
-					player.setKarma(player.getKarma() + Formulas.calculateKarmaGain(player.getPkKills(), killer.isSummon()));
-					player.setPkKills(player.getPkKills() + 1);
-					player.broadcastUserInfo();
-					player.checkItemRestriction();
-					// pk item rewards
-					if (Config.REWARD_PK_ITEM)
-					{
-						if (!(Config.DISABLE_REWARDS_IN_INSTANCES && (getInstanceId() != 0)) && //
-							!(Config.DISABLE_REWARDS_IN_PVP_ZONES && isInsideZone(ZoneId.PVP)))
-						{
-							player.addItem(ItemProcessType.REWARD, Config.REWARD_PK_ITEM_ID, Config.REWARD_PK_ITEM_AMOUNT, this, Config.REWARD_PK_ITEM_MESSAGE);
-						}
-					}
-					// announce pk
-					if (Config.ANNOUNCE_PK_PVP && !player.isGM())
-					{
-						final String msg = Config.ANNOUNCE_PK_MSG.replace("$killer", player.getName()).replace("$target", getName());
-						if (Config.ANNOUNCE_PK_PVP_NORMAL_MESSAGE)
-						{
-							final SystemMessage sm = new SystemMessage(SystemMessageId.S1_3);
-							sm.addString(msg);
-							Broadcast.toAllOnlinePlayers(sm);
-						}
-						else
-						{
-							Broadcast.toAllOnlinePlayers(msg, false);
-						}
-					}
-				}
-			}
-			else if (Config.FAKE_PLAYER_KILL_PVP)
-			{
-				player.setPvpKills(player.getPvpKills() + 1);
-				player.broadcastUserInfo();
-				// pvp item rewards
-				if (Config.REWARD_PVP_ITEM)
-				{
-					if (!(Config.DISABLE_REWARDS_IN_INSTANCES && (getInstanceId() != 0)) && //
-						!(Config.DISABLE_REWARDS_IN_PVP_ZONES && isInsideZone(ZoneId.PVP)))
-					{
-						player.addItem(ItemProcessType.REWARD, Config.REWARD_PVP_ITEM_ID, Config.REWARD_PVP_ITEM_AMOUNT, this, Config.REWARD_PVP_ITEM_MESSAGE);
-					}
-				}
-				// announce pvp
-				if (Config.ANNOUNCE_PK_PVP && !player.isGM())
-				{
-					final String msg = Config.ANNOUNCE_PVP_MSG.replace("$killer", player.getName()).replace("$target", getName());
-					if (Config.ANNOUNCE_PK_PVP_NORMAL_MESSAGE)
-					{
-						final SystemMessage sm = new SystemMessage(SystemMessageId.S1_3);
-						sm.addString(msg);
-						Broadcast.toAllOnlinePlayers(sm);
-					}
-					else
-					{
-						Broadcast.toAllOnlinePlayers(msg, false);
-					}
-				}
-			}
-		}
 		
 		DecayTaskManager.getInstance().add(this);
 		return true;
@@ -1527,45 +1446,7 @@ public class Npc extends Creature
 	{
 		if (isVisibleFor(player))
 		{
-			if (_isFakePlayer)
-			{
-				player.sendPacket(new FakePlayerInfo(this));
-				
-				// Private store message support.
-				final FakePlayerHolder fakePlayerInfo = getTemplate().getFakePlayerInfo();
-				final int storeType = fakePlayerInfo.getPrivateStoreType();
-				if (storeType > 0)
-				{
-					final String message = fakePlayerInfo.getPrivateStoreMessage();
-					if (!message.isEmpty())
-					{
-						switch (storeType)
-						{
-							case 1: // Sell
-							{
-								player.sendPacket(new PrivateStoreMsgSell(getObjectId(), message));
-								break;
-							}
-							case 3: // Buy
-							{
-								player.sendPacket(new PrivateStoreMsgBuy(getObjectId(), message));
-								break;
-							}
-							case 5: // Manufacture
-							{
-								player.sendPacket(new RecipeShopMsg(getObjectId(), message));
-								break;
-							}
-							case 8: // Package Sell
-							{
-								player.sendPacket(new ExPrivateStoreSetWholeMsg(getObjectId(), message));
-								break;
-							}
-						}
-					}
-				}
-			}
-			else if (getRunSpeed() == 0)
+			if (getRunSpeed() == 0)
 			{
 				player.sendPacket(new ServerObjectInfo(this, player));
 			}
@@ -1722,20 +1603,7 @@ public class Npc extends Creature
 	@Override
 	public void rechargeShots(boolean physical, boolean magic)
 	{
-		if (_isFakePlayer && Config.FAKE_PLAYER_USE_SHOTS)
-		{
-			if (physical)
-			{
-				Broadcast.toSelfAndKnownPlayersInRadius(this, new MagicSkillUse(this, this, 2154, 1, 0, 0), 600);
-				setChargedShot(ShotType.SOULSHOTS, true);
-			}
-			if (magic)
-			{
-				Broadcast.toSelfAndKnownPlayersInRadius(this, new MagicSkillUse(this, this, 2159, 1, 0, 0), 600);
-				setChargedShot(ShotType.SPIRITSHOTS, true);
-			}
-		}
-		else if ((_soulshotamount > 0) || (_spiritshotamount > 0))
+		if ((_soulshotamount > 0) || (_spiritshotamount > 0))
 		{
 			if (physical)
 			{
@@ -2018,12 +1886,6 @@ public class Npc extends Creature
 	public int getKillingBlowWeapon()
 	{
 		return _killingBlowWeaponId;
-	}
-	
-	@Override
-	public boolean isFakePlayer()
-	{
-		return _isFakePlayer;
 	}
 	
 	/**

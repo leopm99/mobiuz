@@ -36,7 +36,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.StampedLock;
@@ -65,7 +64,6 @@ import com.l2journey.gameserver.managers.CaptchaManager;
 import com.l2journey.gameserver.managers.IdManager;
 import com.l2journey.gameserver.managers.InstanceManager;
 import com.l2journey.gameserver.managers.MapRegionManager;
-import com.l2journey.gameserver.managers.QuestManager;
 import com.l2journey.gameserver.managers.TerritoryWarManager;
 import com.l2journey.gameserver.managers.ZoneManager;
 import com.l2journey.gameserver.model.AccessLevel;
@@ -156,7 +154,6 @@ import com.l2journey.gameserver.network.serverpackets.ChangeMoveType;
 import com.l2journey.gameserver.network.serverpackets.ChangeWaitType;
 import com.l2journey.gameserver.network.serverpackets.ExBrAgathionEnergyInfo;
 import com.l2journey.gameserver.network.serverpackets.ExRotation;
-import com.l2journey.gameserver.network.serverpackets.FakePlayerInfo;
 import com.l2journey.gameserver.network.serverpackets.FlyToLocation;
 import com.l2journey.gameserver.network.serverpackets.MagicSkillCanceled;
 import com.l2journey.gameserver.network.serverpackets.MagicSkillLaunched;
@@ -308,7 +305,6 @@ public abstract class Creature extends WorldObject
 	private int _seenCreatureRange = Config.ALT_PARTY_RANGE;
 	
 	/** Uma lista contendo os itens dropados deste fake player. */
-	private final List<Item> _fakePlayerDrops = new CopyOnWriteArrayList<>();
 	
 	private OnCreatureAttack _onCreatureAttack = null;
 	private OnCreatureAttacked _onCreatureAttacked = null;
@@ -1261,17 +1257,6 @@ public abstract class Creature extends WorldObject
 				_attackEndTime = currentTime + TimeUnit.MILLISECONDS.toNanos(Integer.MAX_VALUE);
 			}
 			
-			if (isFakePlayer() && !Config.FAKE_PLAYER_AUTO_ATTACKABLE && (target.isPlayable() || target.isFakePlayer()))
-			{
-				final Npc npc = asNpc();
-				if (!npc.isScriptValue(1))
-				{
-					npc.setScriptValue(1); // in combat
-					broadcastInfo(); // update flag status
-					QuestManager.getInstance().getQuest("PvpFlaggingStopTask").notifyEvent("FLAG_CHECK", npc, null);
-				}
-			}
-			
 			// Marca o atacante se for um Player fora de area PvP
 			if ((player != null) && !player.isInsideZone(ZoneId.PVP) && (player != target)) // Previne jogadores de serem marcados em Zonas PvP.
 			{
@@ -1588,9 +1573,7 @@ public abstract class Creature extends WorldObject
 				{
 					// Pula o alvo principal.
 					
-					
 					// Pula alvo morto ou fingindo de morto.
-					
 					
 					// Verifica se o alvo e auto atacavel.
 					// Verifica se o alvo esta dentro do angulo de ataque.
@@ -3143,11 +3126,7 @@ public abstract class Creature extends WorldObject
 					return;
 				}
 				
-				if (isFakePlayer())
-				{
-					player.sendPacket(new FakePlayerInfo(asNpc()));
-				}
-				else if (_stat.getRunSpeed() == 0)
+				if (_stat.getRunSpeed() == 0)
 				{
 					player.sendPacket(new ServerObjectInfo(asNpc(), player));
 				}
@@ -4021,11 +4000,7 @@ public abstract class Creature extends WorldObject
 							return;
 						}
 						
-						if (isFakePlayer())
-						{
-							player.sendPacket(new FakePlayerInfo(asNpc()));
-						}
-						else if (_stat.getRunSpeed() == 0)
+						if (_stat.getRunSpeed() == 0)
 						{
 							player.sendPacket(new ServerObjectInfo(asNpc(), player));
 						}
@@ -4787,10 +4762,6 @@ public abstract class Creature extends WorldObject
 					try
 					{
 						// Player seguindo uma rota de contorno para atacar: o destino ajustado pelo
-						// offset (gtx/gty) deriva enquanto o player circula o obstaculo, mesmo com o
-						// alvo parado. Sem tolerancia a rota seria abandonada e recalculada a cada
-						// tick do follow, fazendo o moveCheck clampar de novo na borda do obstaculo e
-						// recomecar os "passinhos" no meio do caminho. Enquanto a rota ainda termina
 						// perto do destino pedido (alvo nao se moveu muito), mantemos a rota.
 						final boolean playerAttackPath = isPlayer() && hasAI() && (getAI().getIntention() == Intention.ATTACK);
 						if ((playerAttackPath && (Math.hypot(originalX - _move.geoPathAccurateTx, originalY - _move.geoPathAccurateTy) < 200)) //
@@ -4843,16 +4814,11 @@ public abstract class Creature extends WorldObject
 				final boolean blockedInCombat = isAttackable() && isInCombat() && ((originalDistance - distance) > 5);
 				
 				// Player atacando alvo: com directMove o engine move em linha reta e PULA o pathfinding.
-				// Se a linha reta passa rente a um obstaculo, o CORPO do player (raio de colisao) raspa
-				// na quina e o movimento trava em "passinhos", mesmo quando o ponto central nao e bloqueado
-				// (o clamp e pequeno, abaixo do threshold). Em vez de medir o clamp, verificamos um CORREDOR
-				// com a largura do corpo + folga ao longo da rota ate o alvo: se qualquer lado do corredor
-				// encosta num obstaculo, forcamos o pathfinding para gerar a rota de contorno. Apos a rota
-				// ser criada, a proxima chamada cai no early-return de isOnGeodataPath() acima e o player
-				// segue a rota (via moveToNextRoutePoint disparado pelo ARRIVED), sem voltar a raspar/travar.
+				// segue a rota (via moveToNextRoutePoint disparado pelo ARRIVED), sem travar.
+				final Creature attackTarget = directMove ? getAI().getFollowTarget() : null;
+				final boolean attackingMonster = (attackTarget != null) && attackTarget.isMonster();
 				final int attackClearance = getTemplate().getCollisionRadius() + 50;
-				final boolean blockedPlayerAttack = directMove && !isOnGeodataPath() && !GeoData.getInstance().canMoveCorridor(curX, curY, curZ, originalX, originalY, originalZ, getInstanceId(), attackClearance);
-				
+				final boolean blockedPlayerAttack = directMove && attackingMonster && !isOnGeodataPath() && !GeoData.getInstance().canMoveCorridor(curX, curY, curZ, originalX, originalY, originalZ, getInstanceId(), attackClearance);
 				// Verificacao de Pathfinding.
 				if ((blockedPlayerAttack || (!directMove && (((originalDistance - distance) > pathfindingThreshold) || dangerousFall || blockedInCombat))) && !isAfraid() && !isInVehicle)
 				{
@@ -5263,11 +5229,6 @@ public abstract class Creature extends WorldObject
 		}
 		
 		// Verifica se fake players devem agredir uns aos outros.
-		if (isFakePlayer() && !Config.FAKE_PLAYER_AGGRO_FPC && target.isFakePlayer())
-		{
-			return;
-		}
-		
 		if ((isNpc() && target.isAlikeDead()) || target.isDead() || (!isInSurroundingRegion(target) && !isDoor()))
 		{
 			// getAI().setIntention(Intention.ACTIVE, null);
@@ -5594,7 +5555,7 @@ public abstract class Creature extends WorldObject
 	
 	public boolean isInsidePeaceZone(WorldObject attacker, WorldObject target)
 	{
-		if ((target == null) || !((target.isPlayable() || target.isFakePlayer()) && attacker.isPlayable()) || isInTownWarEvent() || InstanceManager.getInstance().getInstance(getInstanceId()).isPvP())
+		if ((target == null) || !(target.isPlayable() && attacker.isPlayable()) || isInTownWarEvent() || InstanceManager.getInstance().getInstance(getInstanceId()).isPvP())
 		{
 			return false;
 		}
@@ -6390,11 +6351,6 @@ public abstract class Creature extends WorldObject
 							}
 						}
 					}
-					
-					if (target.isFakePlayer() && !Config.FAKE_PLAYER_AUTO_ATTACKABLE)
-					{
-						player.updatePvPStatus();
-					}
 				}
 				
 				// Mobs no alcance 1000 veem a magia
@@ -6443,20 +6399,6 @@ public abstract class Creature extends WorldObject
 						{
 							// Notifica a AI do alvo sobre o ataque
 							creature.getAI().notifyAction(Action.ATTACKED, this);
-						}
-					}
-					
-					if (isFakePlayer()) // fake player ataca jogador
-					{
-						if (target.isPlayable() || target.isFakePlayer())
-						{
-							final Npc npc = asNpc();
-							if (!npc.isScriptValue(1))
-							{
-								npc.setScriptValue(1); // in combat
-								npc.broadcastInfo(); // update flag status
-								QuestManager.getInstance().getQuest("PvpFlaggingStopTask").notifyEvent("FLAG_CHECK", npc, null);
-							}
 						}
 					}
 				}
@@ -7478,11 +7420,6 @@ public abstract class Creature extends WorldObject
 	public void setCursorKeyMovement(boolean value)
 	{
 		_cursorKeyMovement = value;
-	}
-	
-	public List<Item> getFakePlayerDrops()
-	{
-		return _fakePlayerDrops;
 	}
 	
 	public void addBuffInfoTime(BuffInfo info)

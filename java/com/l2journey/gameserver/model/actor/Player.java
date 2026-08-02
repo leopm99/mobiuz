@@ -4769,10 +4769,6 @@ public class Player extends Playable
 	{
 		super.doAttack(target);
 		setRecentFakeDeath(false);
-		if (target.isFakePlayer() && !Config.FAKE_PLAYER_AUTO_ATTACKABLE)
-		{
-			updatePvPStatus();
-		}
 	}
 	
 	@Override
@@ -5350,52 +5346,48 @@ public class Player extends Playable
 		if (killer != null)
 		{
 			final Player pk = killer.asPlayer();
-			final boolean fpcKill = killer.isFakePlayer();
-			if ((pk != null) || fpcKill)
+			if (pk != null)
 			{
 				if ((getParty() != null) && (getParty().getUCState() instanceof UCTeam))
 				{
 					((UCTeam) getParty().getUCState()).onKill(this, pk);
 				}
 				
-				if (pk != null)
+				if (EventDispatcher.getInstance().hasListener(EventType.ON_PLAYER_PVP_KILL, this))
 				{
-					if (EventDispatcher.getInstance().hasListener(EventType.ON_PLAYER_PVP_KILL, this))
+					EventDispatcher.getInstance().notifyEventAsync(new OnPlayerPvPKill(pk, this), this);
+				}
+				
+				// Hitman Event - check if victim is a target
+				if (EventsConfig.HITMAN_ENABLED)
+				{
+					HitmanManager.getInstance().onPlayerKill(pk, this);
+				}
+				
+				// pvp/pk item rewards
+				if (!(Config.DISABLE_REWARDS_IN_INSTANCES && (getInstanceId() != 0)) && //
+					!(Config.DISABLE_REWARDS_IN_PVP_ZONES && isInsideZone(ZoneId.PVP)))
+				{
+					// pvp
+					if (Config.REWARD_PVP_ITEM && (_pvpFlag != 0))
 					{
-						EventDispatcher.getInstance().notifyEventAsync(new OnPlayerPvPKill(pk, this), this);
+						pk.addItem(ItemProcessType.REWARD, Config.REWARD_PVP_ITEM_ID, Config.REWARD_PVP_ITEM_AMOUNT, this, Config.REWARD_PVP_ITEM_MESSAGE);
 					}
 					
-					// Hitman Event - check if victim is a target
-					if (EventsConfig.HITMAN_ENABLED)
+					// pk
+					if (Config.REWARD_PK_ITEM && (_pvpFlag == 0))
 					{
-						HitmanManager.getInstance().onPlayerKill(pk, this);
-					}
-					
-					// pvp/pk item rewards
-					if (!(Config.DISABLE_REWARDS_IN_INSTANCES && (getInstanceId() != 0)) && //
-						!(Config.DISABLE_REWARDS_IN_PVP_ZONES && isInsideZone(ZoneId.PVP)))
-					{
-						// pvp
-						if (Config.REWARD_PVP_ITEM && (_pvpFlag != 0))
-						{
-							pk.addItem(ItemProcessType.REWARD, Config.REWARD_PVP_ITEM_ID, Config.REWARD_PVP_ITEM_AMOUNT, this, Config.REWARD_PVP_ITEM_MESSAGE);
-						}
-						
-						// pk
-						if (Config.REWARD_PK_ITEM && (_pvpFlag == 0))
-						{
-							pk.addItem(ItemProcessType.REWARD, Config.REWARD_PK_ITEM_ID, Config.REWARD_PK_ITEM_AMOUNT, this, Config.REWARD_PK_ITEM_MESSAGE);
-						}
+						pk.addItem(ItemProcessType.REWARD, Config.REWARD_PK_ITEM_ID, Config.REWARD_PK_ITEM_AMOUNT, this, Config.REWARD_PK_ITEM_MESSAGE);
 					}
 				}
 				
 				// announce pvp/pk
-				if (Config.ANNOUNCE_PK_PVP && (((pk != null) && !pk.isGM()) || fpcKill))
+				if (Config.ANNOUNCE_PK_PVP && !pk.isGM())
 				{
 					String msg = "";
 					if (_pvpFlag == 0)
 					{
-						msg = Config.ANNOUNCE_PK_MSG.replace("$killer", pk != null ? pk.getName() : killer.getName()).replace("$target", getName());
+						msg = Config.ANNOUNCE_PK_MSG.replace("$killer", pk.getName()).replace("$target", getName());
 						if (Config.ANNOUNCE_PK_PVP_NORMAL_MESSAGE)
 						{
 							final SystemMessage sm = new SystemMessage(SystemMessageId.S1);
@@ -5423,11 +5415,6 @@ public class Player extends Playable
 					}
 				}
 				
-				if (fpcKill && Config.FAKE_PLAYER_KILL_KARMA && (_pvpFlag == 0) && (getKarma() <= 0))
-				{
-					killer.setKarma(killer.getKarma() + 150);
-					killer.broadcastInfo();
-				}
 			}
 			
 			broadcastStatusUpdate();

@@ -33,11 +33,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.logging.Logger;
 
 import com.l2journey.Config;
 import com.l2journey.commons.util.Rnd;
-import com.l2journey.gameserver.data.sql.CharInfoTable;
 import com.l2journey.gameserver.data.xml.ItemData;
 import com.l2journey.gameserver.data.xml.NpcData;
 import com.l2journey.gameserver.model.StatSet;
@@ -51,7 +49,6 @@ import com.l2journey.gameserver.model.actor.enums.player.PlayerClass;
 import com.l2journey.gameserver.model.actor.enums.player.Sex;
 import com.l2journey.gameserver.model.actor.holders.npc.DropGroupHolder;
 import com.l2journey.gameserver.model.actor.holders.npc.DropHolder;
-import com.l2journey.gameserver.model.actor.holders.npc.FakePlayerHolder;
 import com.l2journey.gameserver.model.actor.stat.PlayerStat;
 import com.l2journey.gameserver.model.item.ItemTemplate;
 import com.l2journey.gameserver.model.item.holders.ItemHolder;
@@ -64,7 +61,7 @@ import com.l2journey.gameserver.util.MathUtil;
  */
 public class NpcTemplate extends CreatureTemplate
 {
-	private static final Logger LOGGER = Logger.getLogger(NpcTemplate.class.getName());
+	// private static final Logger LOGGER = Logger.getLogger(NpcTemplate.class.getName());
 	
 	private int _id;
 	private int _displayId;
@@ -93,8 +90,6 @@ public class NpcTemplate extends CreatureTemplate
 	private boolean _randomWalk;
 	private boolean _randomAnimation;
 	private boolean _flying;
-	private boolean _fakePlayer;
-	private FakePlayerHolder _fakePlayerInfo;
 	private boolean _canMove;
 	private boolean _noSleepMode;
 	private boolean _passableDoor;
@@ -165,17 +160,6 @@ public class NpcTemplate extends CreatureTemplate
 		_randomWalk = set.getBoolean("randomWalk", !_type.equals("Guard"));
 		_randomAnimation = set.getBoolean("randomAnimation", true);
 		_flying = set.getBoolean("flying", false);
-		_fakePlayer = set.getBoolean("fakePlayer", false);
-		if (_fakePlayer)
-		{
-			_fakePlayerInfo = new FakePlayerHolder(set);
-			
-			// Check if a character with the same name already exists.
-			if (CharInfoTable.getInstance().getIdByName(_name) > 0)
-			{
-				LOGGER.info(getClass().getSimpleName() + ": Fake player id [" + _id + "] conflict. A real player with name [" + _name + "] already exists.");
-			}
-		}
 		_canMove = (set.getDouble("baseWalkSpd", 1d) <= 0.1) || set.getBoolean("canMove", true);
 		_noSleepMode = set.getBoolean("noSleepMode", false);
 		_passableDoor = set.getBoolean("passableDoor", false);
@@ -407,16 +391,6 @@ public class NpcTemplate extends CreatureTemplate
 	public boolean isFlying()
 	{
 		return _flying;
-	}
-	
-	public boolean isFakePlayer()
-	{
-		return _fakePlayer;
-	}
-	
-	public FakePlayerHolder getFakePlayerInfo()
-	{
-		return _fakePlayerInfo;
 	}
 	
 	public boolean canMove()

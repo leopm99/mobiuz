@@ -1012,10 +1012,6 @@ public abstract class Summon extends Playable
 		{
 			setTarget(target);
 			getAI().setIntention(Intention.ATTACK, target);
-			if (target.isFakePlayer() && !Config.FAKE_PLAYER_AUTO_ATTACKABLE)
-			{
-				_owner.updatePvPStatus();
-			}
 		}
 	}
 	

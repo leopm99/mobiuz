@@ -72,11 +72,6 @@ public class Monster extends Attackable
 	@Override
 	public boolean isAutoAttackable(Creature attacker)
 	{
-		if (isFakePlayer())
-		{
-			return Config.FAKE_PLAYER_AUTO_ATTACKABLE || isInCombat() || attacker.isMonster() || (getScriptValue() > 0);
-		}
-		
 		// Check if the Monster target is aggressive
 		if (Config.GUARD_ATTACK_AGGRO_MOB && isAggressive() && (attacker instanceof Guard))
 		{
@@ -85,7 +80,7 @@ public class Monster extends Attackable
 		
 		if (attacker.isMonster())
 		{
-			return attacker.isFakePlayer();
+			return false;
 		}
 		
 		// Anything considers monsters friendly except Players, Attackables (Guards, Friendly NPC), Traps and EffectPoints.

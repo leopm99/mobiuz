@@ -138,7 +138,7 @@ public class Action extends ClientPacket
 			}
 			case 1:
 			{
-				if (!player.isGM() && (!(obj.isNpc() && Config.ALT_GAME_VIEWNPC) || obj.isFakePlayer()))
+				if (!player.isGM() && !(obj.isNpc() && Config.ALT_GAME_VIEWNPC))
 				{
 					obj.onAction(player, false);
 				}

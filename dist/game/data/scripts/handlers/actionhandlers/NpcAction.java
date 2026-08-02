@@ -30,7 +30,6 @@ package handlers.actionhandlers;
 
 import com.l2journey.Config;
 import com.l2journey.commons.util.Rnd;
-import com.l2journey.gameserver.GeoData;
 import com.l2journey.gameserver.ai.Intention;
 import com.l2journey.gameserver.handler.IActionHandler;
 import com.l2journey.gameserver.model.WorldObject;
@@ -136,10 +135,6 @@ public class NpcAction implements IActionHandler
 					if (Config.PLAYER_MOVEMENT_BLOCK_TIME > 0)
 					{
 						player.updateNotMoveUntil();
-					}
-					if (npc.isFakePlayer() && GeoData.getInstance().canSeeTarget(player, npc))
-					{
-						player.getAI().setIntention(Intention.FOLLOW, npc);
 					}
 				}
 			}

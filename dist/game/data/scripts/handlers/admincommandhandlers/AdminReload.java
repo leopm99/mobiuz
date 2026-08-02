@@ -43,7 +43,6 @@ import com.l2journey.gameserver.data.xml.SkillData;
 import com.l2journey.gameserver.data.xml.TransformData;
 import com.l2journey.gameserver.handler.IAdminCommandHandler;
 import com.l2journey.gameserver.managers.CursedWeaponsManager;
-import com.l2journey.gameserver.managers.FakePlayerChatManager;
 import com.l2journey.gameserver.managers.QuestManager;
 import com.l2journey.gameserver.managers.WalkingManager;
 import com.l2journey.gameserver.managers.ZoneManager;
@@ -261,12 +260,6 @@ public class AdminReload implements IAdminCommandHandler
 				{
 					PrimeShopData.getInstance().load();
 					AdminData.getInstance().broadcastMessageToGMs(activeChar.getName() + ": Reloaded item mall data.");
-					break;
-				}
-				case "fakeplayerchat":
-				{
-					FakePlayerChatManager.getInstance().load();
-					AdminData.getInstance().broadcastMessageToGMs(activeChar.getName() + ": Reloaded Fake Player Chat data.");
 					break;
 				}
 				case "localisations":

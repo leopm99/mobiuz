@@ -30,9 +30,7 @@ package handlers.chathandlers;
 
 import com.l2journey.Config;
 import com.l2journey.EventsConfig;
-import com.l2journey.gameserver.data.xml.FakePlayerData;
 import com.l2journey.gameserver.handler.IChatHandler;
-import com.l2journey.gameserver.managers.FakePlayerChatManager;
 import com.l2journey.gameserver.model.BlockList;
 import com.l2journey.gameserver.model.World;
 import com.l2journey.gameserver.model.actor.Player;
@@ -69,28 +67,6 @@ public class ChatWhisper implements IChatHandler
 		// Return if no target is set
 		if (target == null)
 		{
-			return;
-		}
-		
-		if (Config.FAKE_PLAYERS_ENABLED && (FakePlayerData.getInstance().getProperName(target) != null))
-		{
-			if (FakePlayerData.getInstance().isTalkable(target))
-			{
-				if (Config.FAKE_PLAYER_CHAT)
-				{
-					final String name = FakePlayerData.getInstance().getProperName(target);
-					activeChar.sendPacket(new CreatureSay(activeChar, type, "->" + name, text));
-					FakePlayerChatManager.getInstance().manageChat(activeChar, name, text);
-				}
-				else
-				{
-					activeChar.sendPacket(SystemMessageId.THAT_PERSON_IS_IN_MESSAGE_REFUSAL_MODE);
-				}
-			}
-			else
-			{
-				activeChar.sendPacket(SystemMessageId.THAT_PLAYER_IS_NOT_ONLINE);
-			}
 			return;
 		}
 		

@@ -124,7 +124,6 @@ public class Config
 	private static final String BOSS_ANNOUNCEMENTS_CONFIG_FILE = "./config/npcs/bossannouncements.ini";
 	private static final String CHAMPION_MONSTERS_CONFIG_FILE = "./config/npcs/championmonsters.ini";
 	private static final String DELEVEL_MANAGER_CONFIG_FILE = "./config/npcs/delevelmanager.ini";
-	private static final String FAKE_PLAYERS_CONFIG_FILE = "./config/npcs/fakeplayers.ini";
 	private static final String GRACIASEEDS_CONFIG_FILE = "./config/npcs/graciaseeds.ini";
 	private static final String GRANDBOSS_CONFIG_FILE = "./config/npcs/grandboss.ini";
 	private static final String MERCHANT_ZERO_SELL_PRICE_CONFIG_FILE = "./config/npcs/merchantzerosellprice.ini";
@@ -613,21 +612,6 @@ public class Config
 	public static int DELEVEL_MANAGER_ITEMID;
 	public static int DELEVEL_MANAGER_ITEMCOUNT;
 	public static int DELEVEL_MANAGER_MINIMUM_DELEVEL;
-	
-	// --------------------------------------------------
-	// Jogadores Falsos
-	// --------------------------------------------------
-	public static boolean FAKE_PLAYERS_ENABLED;
-	public static boolean FAKE_PLAYER_CHAT;
-	public static boolean FAKE_PLAYER_USE_SHOTS;
-	public static boolean FAKE_PLAYER_KILL_PVP;
-	public static boolean FAKE_PLAYER_KILL_KARMA;
-	public static boolean FAKE_PLAYER_AUTO_ATTACKABLE;
-	public static boolean FAKE_PLAYER_AGGRO_MONSTERS;
-	public static boolean FAKE_PLAYER_AGGRO_PLAYERS;
-	public static boolean FAKE_PLAYER_AGGRO_FPC;
-	public static boolean FAKE_PLAYER_CAN_DROP_ITEMS;
-	public static boolean FAKE_PLAYER_CAN_PICKUP;
 	
 	// --------------------------------------------------
 	// Sementes de Gracia
@@ -1651,7 +1635,6 @@ public class Config
 			loadBossAnnouncementsConfig();
 			loadChampionMonsterConfig();
 			loadDelevelManagerConfig();
-			loadFakePlayerConfig();
 			loadGraciaSeedsConfig();
 			loadGrandBossConfig();
 			loadMerchantZeroSellPriceConfig();
@@ -2403,25 +2386,6 @@ public class Config
 		DELEVEL_MANAGER_ITEMID = delevelManagerConfig.getInt("RequiredItemId", 4356);
 		DELEVEL_MANAGER_ITEMCOUNT = delevelManagerConfig.getInt("RequiredItemCount", 2);
 		DELEVEL_MANAGER_MINIMUM_DELEVEL = delevelManagerConfig.getInt("MinimumDelevel", 20);
-	}
-	
-	/**
-	 * Carrega o arquivo fakePlayerConfig (se existir).
-	 */
-	private static void loadFakePlayerConfig()
-	{
-		final ConfigReader fakePlayerConfig = new ConfigReader(FAKE_PLAYERS_CONFIG_FILE);
-		FAKE_PLAYERS_ENABLED = fakePlayerConfig.getBoolean("EnableFakePlayers", false);
-		FAKE_PLAYER_CHAT = fakePlayerConfig.getBoolean("FakePlayerChat", false);
-		FAKE_PLAYER_USE_SHOTS = fakePlayerConfig.getBoolean("FakePlayerUseShots", false);
-		FAKE_PLAYER_KILL_PVP = fakePlayerConfig.getBoolean("FakePlayerKillsRewardPvP", false);
-		FAKE_PLAYER_KILL_KARMA = fakePlayerConfig.getBoolean("FakePlayerUnflaggedKillsKarma", false);
-		FAKE_PLAYER_AUTO_ATTACKABLE = fakePlayerConfig.getBoolean("FakePlayerAutoAttackable", false);
-		FAKE_PLAYER_AGGRO_MONSTERS = fakePlayerConfig.getBoolean("FakePlayerAggroMonsters", false);
-		FAKE_PLAYER_AGGRO_PLAYERS = fakePlayerConfig.getBoolean("FakePlayerAggroPlayers", false);
-		FAKE_PLAYER_AGGRO_FPC = fakePlayerConfig.getBoolean("FakePlayerAggroFPC", false);
-		FAKE_PLAYER_CAN_DROP_ITEMS = fakePlayerConfig.getBoolean("FakePlayerCanDropItems", false);
-		FAKE_PLAYER_CAN_PICKUP = fakePlayerConfig.getBoolean("FakePlayerCanPickup", false);
 	}
 	
 	/**

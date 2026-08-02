@@ -76,7 +76,6 @@ import com.l2journey.gameserver.model.item.ItemTemplate;
 import com.l2journey.gameserver.model.item.holders.ItemHolder;
 import com.l2journey.gameserver.model.item.instance.Item;
 import com.l2journey.gameserver.model.skill.Skill;
-import com.l2journey.gameserver.model.skill.holders.SkillHolder;
 import com.l2journey.gameserver.model.stats.Stat;
 import com.l2journey.gameserver.network.SystemMessageId;
 import com.l2journey.gameserver.network.enums.ChatType;
@@ -291,7 +290,7 @@ public class Attackable extends Npc
 	
 	public synchronized boolean getMustRewardExpSP()
 	{
-		return _mustGiveExpSp && !isFakePlayer();
+		return _mustGiveExpSp;
 	}
 	
 	/**
@@ -782,12 +781,6 @@ public class Attackable extends Npc
 			return;
 		}
 		
-		// Verifica se jogadores falsos devem agredir uns aos outros.
-		if (isFakePlayer() && !Config.FAKE_PLAYER_AGGRO_FPC && attacker.isFakePlayer())
-		{
-			return;
-		}
-		
 		// Obtem o AggroInfo da Criatura atacante da _aggroList do Atacavel
 		final AggroInfo ai = _aggroList.computeIfAbsent(attacker, AggroInfo::new);
 		ai.addDamage(damage);
@@ -861,10 +854,7 @@ public class Attackable extends Npc
 				((AttackableAI) getAI()).setGlobalAggro(-25);
 				clearAggroList();
 				getAI().setIntention(Intention.ACTIVE);
-				if (!isFakePlayer())
-				{
-					setWalking();
-				}
+				setWalking();
 			}
 			
 			return;
@@ -882,10 +872,7 @@ public class Attackable extends Npc
 			((AttackableAI) getAI()).setGlobalAggro(-25);
 			clearAggroList();
 			getAI().setIntention(Intention.ACTIVE);
-			if (!isFakePlayer())
-			{
-				setWalking();
-			}
+			setWalking();
 		}
 	}
 	
@@ -1084,41 +1071,6 @@ public class Attackable extends Npc
 		// Nao dropa nada se o ultimo atacante ou dono nao for jogador
 		if (player == null)
 		{
-			// a menos que seja um jogador falso e eles possam dropar itens
-			if (mainDamageDealer.isFakePlayer() && Config.FAKE_PLAYER_CAN_DROP_ITEMS)
-			{
-				final Collection<ItemHolder> deathItems = npcTemplate.calculateDrops(DropType.DROP, this, mainDamageDealer);
-				if (deathItems != null)
-				{
-					for (ItemHolder drop : deathItems)
-					{
-						final ItemTemplate item = ItemData.getInstance().getTemplate(drop.getId());
-						// Verifica se o modo autoLoot esta ativo
-						if (Config.AUTO_LOOT_ITEM_IDS.contains(item.getId()) || isFlying() || (!item.hasExImmediateEffect() && ((!_isRaid && Config.AUTO_LOOT) || (_isRaid && Config.AUTO_LOOT_RAIDS))))
-						{
-							// nao faz nada
-						}
-						else if (Config.AUTO_LOOT_HERBS && item.hasExImmediateEffect())
-						{
-							for (SkillHolder skillHolder : item.getSkills())
-							{
-								doSimultaneousCast(skillHolder.getSkill());
-							}
-							mainDamageDealer.broadcastInfo(); // ? verificar se isso e necessario
-						}
-						else
-						{
-							final Item droppedItem = dropItem(mainDamageDealer, drop); // dropa o item no chao
-							if (Config.FAKE_PLAYER_CAN_PICKUP)
-							{
-								mainDamageDealer.getFakePlayerDrops().add(droppedItem);
-							}
-						}
-					}
-					deathItems.clear();
-				}
-			}
-			
 			return;
 		}
 		
@@ -1505,18 +1457,7 @@ public class Attackable extends Npc
 		// Limpa recompensa do Colhedor
 		_harvestItem.set(null);
 		
-		// jogadores falsos
-		if (isFakePlayer())
-		{
-			getFakePlayerDrops().clear(); // Limpa drops existentes de jogador falso
-			setKarma(0); // reseta karma
-			setScriptValue(0); // remove flag pvp
-			setRunning(); // nao andar
-		}
-		else
-		{
-			setWalking();
-		}
+		setWalking();
 		
 		// Limpa estado de Semeado modificado
 		_seeded = false;

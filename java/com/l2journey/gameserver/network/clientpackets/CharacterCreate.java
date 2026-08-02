@@ -35,7 +35,6 @@ import com.l2journey.Config;
 import com.l2journey.EventsConfig;
 import com.l2journey.commons.util.StringUtil;
 import com.l2journey.gameserver.data.sql.CharInfoTable;
-import com.l2journey.gameserver.data.xml.FakePlayerData;
 import com.l2journey.gameserver.data.xml.InitialEquipmentData;
 import com.l2journey.gameserver.data.xml.InitialShortcutData;
 import com.l2journey.gameserver.data.xml.PlayerTemplateData;
@@ -121,7 +120,7 @@ public class CharacterCreate extends ClientPacket
 		}
 		
 		// Last Verified: May 30, 2009 - Gracia Final
-		if ((FakePlayerData.getInstance().getProperName(_name) != null) || !StringUtil.isAlphaNumeric(_name) || !isValidName(_name))
+		if (!StringUtil.isAlphaNumeric(_name) || !isValidName(_name))
 		{
 			client.sendPacket(new CharCreateFail(CharCreateFail.REASON_INCORRECT_NAME));
 			return;

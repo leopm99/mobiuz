@@ -118,7 +118,6 @@ import com.l2journey.gameserver.managers.DailyRewardManager;
 import com.l2journey.gameserver.managers.DayNightSpawnManager;
 import com.l2journey.gameserver.managers.DimensionalRiftManager;
 import com.l2journey.gameserver.managers.EventDropManager;
-import com.l2journey.gameserver.managers.FakePlayerChatManager;
 import com.l2journey.gameserver.managers.FishingChampionshipManager;
 import com.l2journey.gameserver.managers.FortManager;
 import com.l2journey.gameserver.managers.FortSiegeManager;
@@ -291,7 +290,6 @@ public class GameServer
 		SkillLearnData.getInstance();
 		NpcData.getInstance();
 		LevelUpCrystalData.getInstance();
-		FakePlayerChatManager.getInstance();
 		WalkingManager.getInstance();
 		StaticObjectData.getInstance();
 		ItemAuctionManager.getInstance();

@@ -103,7 +103,7 @@ public class SpawnData implements IXmlReader
 		{
 			// Log a warning for invalid NPC IDs outside the fake player range [80000, 89999].
 			// This hardcoded check provides a resource-constrained solution to prevent unnecessary logging.
-			if (Config.FAKE_PLAYERS_ENABLED || ((npcId < 80000) && (npcId > 89999)))
+			if ((npcId < 80000) && (npcId > 89999))
 			{
 				LOGGER.warning(getClass().getSimpleName() + ": Requested spawn for non-existing NPC: " + npcId + ".");
 			}
@@ -113,11 +113,6 @@ public class SpawnData implements IXmlReader
 		if (npcTemplate.isType("SiegeGuard") || npcTemplate.isType("RaidBoss") || (!Config.ALLOW_CLASS_MASTERS && npcTemplate.isType("ClassMaster")))
 		{
 			// Do not spawn.
-			return false;
-		}
-		
-		if (!Config.FAKE_PLAYERS_ENABLED && npcTemplate.isFakePlayer())
-		{
 			return false;
 		}
 		

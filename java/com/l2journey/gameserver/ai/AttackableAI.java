@@ -38,7 +38,6 @@ import com.l2journey.commons.threads.ThreadPool;
 import com.l2journey.commons.util.Rnd;
 import com.l2journey.gameserver.GeoData;
 import com.l2journey.gameserver.managers.DimensionalRiftManager;
-import com.l2journey.gameserver.managers.ItemsOnGroundManager;
 import com.l2journey.gameserver.model.Location;
 import com.l2journey.gameserver.model.Spawn;
 import com.l2journey.gameserver.model.World;
@@ -66,11 +65,9 @@ import com.l2journey.gameserver.model.events.holders.actor.npc.attackable.OnAtta
 import com.l2journey.gameserver.model.events.holders.actor.npc.attackable.OnAttackableHate;
 import com.l2journey.gameserver.model.events.returns.TerminateReturn;
 import com.l2journey.gameserver.model.groups.Party;
-import com.l2journey.gameserver.model.item.instance.Item;
 import com.l2journey.gameserver.model.skill.AbnormalType;
 import com.l2journey.gameserver.model.skill.AbnormalVisualEffect;
 import com.l2journey.gameserver.model.skill.Skill;
-import com.l2journey.gameserver.model.skill.holders.SkillHolder;
 import com.l2journey.gameserver.model.skill.targets.TargetType;
 import com.l2journey.gameserver.model.zone.ZoneId;
 import com.l2journey.gameserver.taskmanagers.AttackableThinkTaskManager;
@@ -480,79 +477,6 @@ public class AttackableAI extends CreatureAI
 					return;
 				}
 				
-				if (npc.isFakePlayer() && npc.isAggressive())
-				{
-					final List<Item> droppedItems = npc.getFakePlayerDrops();
-					if (droppedItems.isEmpty())
-					{
-						Creature nearestTarget = null;
-						double closestDistance = Double.MAX_VALUE;
-						for (Creature t : World.getInstance().getVisibleObjectsInRange(npc, Creature.class, npc.getAggroRange()))
-						{
-							if ((t == _actor) || (t == null) || t.isDead())
-							{
-								continue;
-							}
-							
-							if ((Config.FAKE_PLAYER_AGGRO_FPC && t.isFakePlayer()) //
-								|| (Config.FAKE_PLAYER_AGGRO_MONSTERS && t.isMonster() && !t.isFakePlayer()) //
-								|| (Config.FAKE_PLAYER_AGGRO_PLAYERS && t.isPlayer()))
-							{
-								final long hating = npc.getHating(t);
-								final double distance = npc.calculateDistance2D(t);
-								if ((hating == 0) && (closestDistance > distance))
-								{
-									nearestTarget = t;
-									closestDistance = distance;
-								}
-							}
-						}
-						
-						if (nearestTarget != null)
-						{
-							npc.addDamageHate(nearestTarget, 0, 1);
-						}
-					}
-					else if (!npc.isInCombat()) // deve pegar itens
-					{
-						final int itemIndex = npc.getFakePlayerDrops().size() - 1; // last item dropped - can also use 0 for first item dropped
-						final Item droppedItem = npc.getFakePlayerDrops().get(itemIndex);
-						if ((droppedItem != null) && droppedItem.isSpawned())
-						{
-							if (npc.calculateDistance2D(droppedItem) > 50)
-							{
-								moveTo(droppedItem);
-							}
-							else
-							{
-								npc.getFakePlayerDrops().remove(itemIndex);
-								droppedItem.pickupMe(npc);
-								if (Config.SAVE_DROPPED_ITEM)
-								{
-									ItemsOnGroundManager.getInstance().removeObject(droppedItem);
-								}
-								
-								if (droppedItem.getTemplate().hasExImmediateEffect())
-								{
-									for (SkillHolder skillHolder : droppedItem.getTemplate().getSkills())
-									{
-										npc.doSimultaneousCast(skillHolder.getSkill());
-									}
-									npc.broadcastInfo(); // ? check if this is necessary
-								}
-							}
-						}
-						else
-						{
-							npc.getFakePlayerDrops().remove(itemIndex);
-						}
-						
-						npc.setRunning();
-					}
-					
-					return;
-				}
-				
 				/*
 				 * Verifica se este e um spawn de mob de festival. Se for, verifica se o gatilho de aggro e um participante do festival...se sim, move para atacar.
 				 */
@@ -568,19 +492,6 @@ public class AttackableAI extends CreatureAI
 				// Para cada Creature verifica se o alvo e atacavel automaticamente
 				if (isAggressiveTowards(target)) // verifica agressao
 				{
-					if (target.isFakePlayer())
-					{
-						if (!npc.isFakePlayer() || (npc.isFakePlayer() && Config.FAKE_PLAYER_AGGRO_FPC))
-						{
-							final long hating = npc.getHating(target);
-							if (hating == 0)
-							{
-								npc.addDamageHate(target, 0, 0);
-							}
-						}
-						
-						return;
-					}
 					if (target.isPlayable() && EventDispatcher.getInstance().hasListener(EventType.ON_NPC_HATE, getActiveChar()))
 					{
 						final TerminateReturn term = EventDispatcher.getInstance().notifyEvent(new OnAttackableHate(getActiveChar(), target.asPlayer(), target.isSummon()), getActiveChar(), TerminateReturn.class);
@@ -888,10 +799,7 @@ public class AttackableAI extends CreatureAI
 			// Lista de aggro sera limpa naturalmente quando HP/MP regenerarem completamente.
 			setTarget(null);
 			
-			if (!_actor.isFakePlayer())
-			{
-				npc.setWalking();
-			}
+			npc.setWalking();
 			
 			// Monstro teleporta para spawn
 			if (npc.isMonster() && (npc.getSpawn() != null) && (npc.getInstanceId() == 0) && (npc.isInCombat() || World.getInstance().getVisibleObjects(npc, Player.class).isEmpty()))

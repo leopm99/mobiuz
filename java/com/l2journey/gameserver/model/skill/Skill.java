@@ -982,7 +982,7 @@ public class Skill
 	
 	public boolean checkCondition(Creature creature, WorldObject object, boolean itemOrWeapon)
 	{
-		if (creature.isFakePlayer() || (creature.isGM() && !Config.GM_SKILL_RESTRICTION))
+		if (creature.isGM() && !Config.GM_SKILL_RESTRICTION)
 		{
 			return true;
 		}

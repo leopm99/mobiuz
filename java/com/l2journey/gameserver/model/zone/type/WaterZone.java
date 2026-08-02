@@ -26,7 +26,6 @@ import com.l2journey.gameserver.model.actor.Player;
 import com.l2journey.gameserver.model.zone.ZoneId;
 import com.l2journey.gameserver.model.zone.ZoneType;
 import com.l2journey.gameserver.network.serverpackets.AbstractNpcInfo;
-import com.l2journey.gameserver.network.serverpackets.FakePlayerInfo;
 import com.l2journey.gameserver.network.serverpackets.ServerObjectInfo;
 
 public class WaterZone extends ZoneType
@@ -58,11 +57,7 @@ public class WaterZone extends ZoneType
 		{
 			World.getInstance().forEachVisibleObject(creature, Player.class, player ->
 			{
-				if (creature.isFakePlayer())
-				{
-					player.sendPacket(new FakePlayerInfo(creature.asNpc()));
-				}
-				else if (creature.getRunSpeed() == 0)
+				if (creature.getRunSpeed() == 0)
 				{
 					player.sendPacket(new ServerObjectInfo(creature.asNpc(), player));
 				}
@@ -96,11 +91,7 @@ public class WaterZone extends ZoneType
 		{
 			World.getInstance().forEachVisibleObject(creature, Player.class, player ->
 			{
-				if (creature.isFakePlayer())
-				{
-					player.sendPacket(new FakePlayerInfo(creature.asNpc()));
-				}
-				else if (creature.getRunSpeed() == 0)
+				if (creature.getRunSpeed() == 0)
 				{
 					player.sendPacket(new ServerObjectInfo(creature.asNpc(), player));
 				}
