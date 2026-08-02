@@ -74,9 +74,9 @@ Range das mensagens do Sel Mahun foi limitada ao redor do Npc
 Fix na movimentacao visual dos monstros contornando obstaculos
 Npc Delevel Manager refeito
 Abas da communityBoard retail reconstruidas
-Fix em algumas quests que estavam quebradas (14 Quests)
-Fix em Vários itens (38 itens)
-Fix em várias skills (152 skills)
+Fix em algumas quests que estavam quebradas
+Fix em Vários itens
+Fix em várias skills
 
 
 ==================================================================================================
