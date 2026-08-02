@@ -174,6 +174,7 @@ import com.l2journey.gameserver.taskmanagers.ItemLifeTimeTaskManager;
 import com.l2journey.gameserver.taskmanagers.ItemsAutoDestroyTaskManager;
 import com.l2journey.gameserver.taskmanagers.PersistentTaskManager;
 import com.l2journey.gameserver.util.Broadcast;
+import com.l2journey.tools.dashboard.DashboardControlServer;
 
 public class GameServer
 {
@@ -216,6 +217,7 @@ public class GameServer
 		printSection("World");
 		InstanceManager.getInstance();
 		World.getInstance();
+		DashboardControlServer.start();
 		MapRegionManager.getInstance();
 		AnnouncementsTable.getInstance();
 		GlobalVariablesManager.getInstance();
