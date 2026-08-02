@@ -44,6 +44,7 @@ import com.l2journey.gameserver.model.instancezone.InstanceWorld;
 import com.l2journey.gameserver.model.quest.QuestState;
 import com.l2journey.gameserver.model.skill.holders.SkillHolder;
 import com.l2journey.gameserver.model.zone.ZoneType;
+import com.l2journey.gameserver.network.serverpackets.MagicSkillUse;
 
 import instances.AbstractInstance;
 import quests.Q00129_PailakaDevilsLegacy.Q00129_PailakaDevilsLegacy;
@@ -61,6 +62,7 @@ public class PailakaDevilsLegacy extends AbstractInstance
 	private static final int POWDER_KEG = 18622; // Powder Keg
 	private static final int TREASURE_BOX = 32495; // Treasure Chest
 	private static final int ADVENTURER2 = 32511; // Dwarf Adventurer
+	
 	// Items
 	private static final int ANTIDOTE_POTION = 13048; // Pailaka Antidote
 	private static final int DIVINE_POTION = 13049; // Divine Soul
@@ -68,6 +70,7 @@ public class PailakaDevilsLegacy extends AbstractInstance
 	private static final int SHIELD = 13032; // Pailaka Instant Shield
 	private static final int DEFENCE_POTION = 13059; // Long-Range Defense Increasing Potion
 	private static final int HEALING_POTION = 13033; // Quick Healing Potion
+	
 	// Skills
 	private static final SkillHolder ENERGY = new SkillHolder(5712, 1); // Energy Ditch
 	private static final SkillHolder BOOM = new SkillHolder(5714, 1); // Boom Up
@@ -89,6 +92,7 @@ public class PailakaDevilsLegacy extends AbstractInstance
 		new Location(85144, -208855, -3341, 33380),
 		new Location(85139, -208630, -3339, 31777),
 	};
+	
 	// Misc
 	private static final int TEMPLATE_ID = 44;
 	private static final int ZONE = 20109;
@@ -140,15 +144,31 @@ public class PailakaDevilsLegacy extends AbstractInstance
 							follower.setTarget(lematanNpc);
 							follower.doCast(ENERGY.getSkill());
 						}
+						
 						startQuestTimer("FOLLOWER_CAST", 15000, lematanNpc, null);
+					}
+					break;
+				}
+				case "LEMATAN_MOVE_RETRY":
+				{
+					if (!npc.isDead() && npc.isScriptValue(1))
+					{
+						npc.setRunning();
+						npc.getAI().setIntention(Intention.MOVE_TO, LEMATAN_PORT_POINT);
+						startQuestTimer("LEMATAN_MOVE_RETRY", 5000, npc, null);
 					}
 					break;
 				}
 				case "LEMATAN_TELEPORT":
 				{
+					if (npc.isDead())
+					{
+						break;
+					}
+					
 					npc.asAttackable().clearAggroList();
 					npc.disableCoreAI(false);
-					npc.teleToLocation(LEMATAN_PORT);
+					npc.teleToLocation(LEMATAN_PORT, world.getInstanceId(), 0);
 					npc.getVariables().set("ON_SHIP", 1);
 					npc.getSpawn().setLocation(LEMATAN_PORT);
 					final List<Npc> followerslist = world.getParameters().getList("followerslist", Npc.class, new ArrayList<>());
@@ -159,6 +179,7 @@ public class PailakaDevilsLegacy extends AbstractInstance
 						follower.setImmobilized(true);
 						followerslist.add(follower);
 					}
+					
 					world.setParameter("followerslist", followerslist);
 					startQuestTimer("FOLLOWER_CAST", 4000, world.getParameters().getObject("lematanNpc", Npc.class), null);
 					break;
@@ -175,6 +196,7 @@ public class PailakaDevilsLegacy extends AbstractInstance
 				}
 			}
 		}
+		
 		return htmltext;
 	}
 	
@@ -210,6 +232,7 @@ public class PailakaDevilsLegacy extends AbstractInstance
 						npc.setScriptValue(1);
 						npc.setRunning();
 						npc.getAI().setIntention(Intention.MOVE_TO, LEMATAN_PORT_POINT);
+						startQuestTimer("LEMATAN_MOVE_RETRY", 5000, npc, null);
 					}
 					break;
 				}
@@ -251,6 +274,7 @@ public class PailakaDevilsLegacy extends AbstractInstance
 								break;
 							}
 						}
+						
 						npc.setScriptValue(1);
 						startQuestTimer("DELETE", 3000, npc, attacker);
 					}
@@ -270,6 +294,7 @@ public class PailakaDevilsLegacy extends AbstractInstance
 			{
 				_follower.deleteMe();
 			}
+			
 			world.getParameters().remove("followerslist");
 			addSpawn(ADVENTURER2, ADVENTURER_LOC, false, 0, false, npc.getInstanceId());
 		}
@@ -309,8 +334,10 @@ public class PailakaDevilsLegacy extends AbstractInstance
 						{
 							summon.getAI().stopAITask();
 						}
+						
 						summon.setTarget(null);
 					}
+					
 					summon.decayMe();
 					creature.asPlayer().setPet(null);
 				}
@@ -321,9 +348,10 @@ public class PailakaDevilsLegacy extends AbstractInstance
 	@Override
 	public void onMoveFinished(Npc npc)
 	{
-		if (npc.getLocation() == LEMATAN_PORT_POINT)
+		if (npc.isScriptValue(1))
 		{
-			npc.doCast(AV_TELEPORT.getSkill());
+			npc.setScriptValue(2);
+			npc.broadcastPacket(new MagicSkillUse(npc, npc, AV_TELEPORT.getSkillId(), AV_TELEPORT.getSkillLevel(), 2000, 0));
 			startQuestTimer("LEMATAN_TELEPORT", 2000, npc, null);
 		}
 	}
@@ -336,6 +364,7 @@ public class PailakaDevilsLegacy extends AbstractInstance
 			world.addAllowed(player);
 			world.setParameter("lematanNpc", addSpawn(LEMATAN, LEMATAN_SPAWN, false, 0, false, world.getInstanceId()));
 		}
+		
 		teleportPlayer(player, TELEPORT, world.getInstanceId());
 	}
 	

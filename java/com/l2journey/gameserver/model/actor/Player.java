@@ -11800,6 +11800,18 @@ public class Player extends Playable
 		
 		try
 		{
+			if (_krateiArena != null)
+			{
+				_krateiArena.removePlayer(this);
+			}
+		}
+		catch (Exception e)
+		{
+			LOGGER.log(Level.SEVERE, "deleteMe()", e);
+		}
+		
+		try
+		{
 			_isOnline = false;
 			_offlinePlay = false;
 			abortAttack();

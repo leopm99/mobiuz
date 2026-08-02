@@ -365,6 +365,7 @@ public class KrateiArena
 					removeAllEffects(player);
 					player.teleToLocation(-70381, -70937, -1428, 0, true);
 					player.setKrateiArena(null);
+					player.setRegisteredOnEvent(false);
 					player.sendPacket(ExPVPMatchCCRetire.STATIC);
 					player.setCanRevive(true);
 				}

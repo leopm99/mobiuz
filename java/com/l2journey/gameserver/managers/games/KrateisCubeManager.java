@@ -322,6 +322,18 @@ public class KrateisCubeManager implements IXmlReader
 					arena.waitTimeInfo();
 					isActive = true;
 				}
+				else
+				{
+					// Match will not start, revert players to their registered state.
+					for (KrateiCubePlayer pl : arena.getPlayers().values())
+					{
+						if ((pl != null) && pl.isInside())
+						{
+							pl.setIsInside(false);
+							pl.setIsRegister(true);
+						}
+					}
+				}
 			}
 		}
 		

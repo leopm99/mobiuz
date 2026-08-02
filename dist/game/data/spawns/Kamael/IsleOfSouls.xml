@@ -1021,7 +1021,6 @@
 		<npc id="22239" x="-100300" y="60002" z="-3456" heading="16788" respawnDelay="60" />
 		<npc id="22239" x="-99955" y="60354" z="-3456" heading="28986" respawnDelay="60" />
 		<npc id="22238" x="-99574" y="59788" z="-3496" heading="58158" respawnDelay="60" />
-		<npc id="22242" x="-96034" y="57216" z="-3008" heading="57633" respawnDelay="60" />
 		<npc id="32185" x="-95571" y="52496" z="-2024" heading="18720" respawnDelay="60" />
 		<npc id="32184" x="-95500" y="52164" z="-2024" heading="51276" respawnDelay="60" />
 		<npc id="22240" x="-93542" y="54710" z="-2520" heading="34893" respawnDelay="60" />
@@ -1423,6 +1422,92 @@
 		<npc id="32189" x="-74016" y="51932" z="-3680" heading="0" respawnDelay="60" />
 		<npc id="32190" x="-74016" y="52896" z="-3680" heading="0" respawnDelay="60" />
 	</spawn>
+	<spawn zone="aden49_1719_01">
+		<territory minZ="-2598" maxZ="-2198">
+			<node x="-97305" y="49440" />
+			<node x="-92319" y="49659" />
+			<node x="-91930" y="51013" />
+			<node x="-92965" y="52413" />
+		</territory>
+		<npc id="22240" count="10" respawnDelay="15" /> <!-- Muertos Scout -->
+		<npc id="22241" count="10" respawnDelay="15" /> <!-- Colossus -->
+	</spawn>
+	<spawn zone="aden49_1719_02">
+		<territory minZ="-2986" maxZ="-2186">
+			<node x="-92235" y="52027" />
+			<node x="-89876" y="51738" />
+			<node x="-87236" y="53037" />
+			<node x="-85931" y="54956" />
+			<node x="-85496" y="57395" />
+			<node x="-89224" y="58498" />
+			<node x="-93806" y="54577" />
+		</territory>
+		<npc id="22240" count="4" respawnDelay="15" /> <!-- Muertos Scout -->
+		<npc id="22241" count="8" respawnDelay="15" /> <!-- Colossus -->
+		<npc id="22242" count="1" respawnDelay="15" /> <!-- Muertos Warrior -->
+	</spawn>
+	<spawn zone="aden49_1719_03">
+		<territory minZ="-3665" maxZ="-2265">
+			<node x="-81914" y="50487" />
+			<node x="-79144" y="50974" />
+			<node x="-76442" y="53336" />
+			<node x="-80867" y="54629" />
+			<node x="-84010" y="57310" />
+			<node x="-85525" y="56190" />
+			<node x="-85600" y="54143" />
+		</territory>
+		<npc id="22240" count="1" respawnDelay="15" /> <!-- Muertos Scout -->
+		<npc id="22241" count="1" respawnDelay="15" /> <!-- Colossus -->
+		<npc id="22242" count="1" respawnDelay="15" /> <!-- Muertos Warrior -->
+	</spawn>
+	<spawn zone="aden49_1719_04">
+		<territory minZ="-3735" maxZ="-2435">
+			<node x="-81194" y="43339" />
+			<node x="-76618" y="42360" />
+			<node x="-73900" y="44691" />
+			<node x="-74318" y="48641" />
+			<node x="-76449" y="51725" />
+			<node x="-79974" y="48454" />
+		</territory>
+		<npc id="22242" count="1" respawnDelay="15" /> <!-- Muertos Warrior -->
+		<npc id="22244" count="1" respawnDelay="15" /> <!-- Crimson Spider -->
+	</spawn>
+	<spawn zone="aden49_1719_05">
+		<territory minZ="-3317" maxZ="-2317">
+			<node x="-84748" y="45178" />
+			<node x="-82248" y="43602" />
+			<node x="-81663" y="47728" />
+			<node x="-80513" y="49710" />
+			<node x="-84738" y="46843" />
+		</territory>
+		<npc id="22243" count="2" respawnDelay="15" /> <!-- Muertos Captain -->
+		<npc id="22244" count="3" respawnDelay="15" /> <!-- Crimson Spider -->
+		<npc id="22245" count="3" respawnDelay="15" /> <!-- Muertos Lieutenant -->
+	</spawn>
+	<spawn zone="aden49_1719_08">
+		<territory minZ="-2565" maxZ="-1865">
+			<node x="-90253" y="35700" />
+			<node x="-88158" y="35992" />
+			<node x="-86725" y="39120" />
+			<node x="-90095" y="38780" />
+			<node x="-92462" y="38110" />
+		</territory>
+		<npc id="22241" count="2" respawnDelay="15" /> <!-- Colossus -->
+		<npc id="22242" count="3" respawnDelay="15" /> <!-- Muertos Warrior -->
+		<npc id="22243" count="5" respawnDelay="15" /> <!-- Muertos Captain -->
+	</spawn>
+	<spawn zone="aden49_1719_10">
+		<territory minZ="-3315" maxZ="-2515">
+			<node x="-87157" y="47981" />
+			<node x="-84598" y="47774" />
+			<node x="-81978" y="49495" />
+			<node x="-83507" y="50735" />
+			<node x="-86303" y="49787" />
+		</territory>
+		<npc id="22243" count="2" respawnDelay="15" /> <!-- Muertos Captain -->
+		<npc id="22244" count="1" respawnDelay="15" /> <!-- Crimson Spider -->
+		<npc id="22245" count="1" respawnDelay="15" /> <!-- Muertos Lieutenant -->
+	</spawn>
 	<spawn zone="aden49_1719_11">
 		<territory minZ="-3035" maxZ="-2401">
 			<node x="-89083" y="46939" />
@@ -1430,6 +1515,8 @@
 			<node x="-87305" y="48201" />
 			<node x="-89225" y="47403" />
 		</territory>
+		<npc id="22244" count="1" respawnDelay="15" /> <!-- Crimson Spider -->
+		<npc id="22245" count="1" respawnDelay="15" /> <!-- Muertos Lieutenant -->
 		<npc id="22246" count="1" respawnDelay="15" /> <!-- Muertos Commander -->
 	</spawn>
 	<spawn zone="aden49_1719_12">
@@ -1440,6 +1527,8 @@
 			<node x="-89939" y="47295" />
 			<node x="-93199" y="46189" />
 		</territory>
+		<npc id="22244" count="2" respawnDelay="15" /> <!-- Crimson Spider -->
+		<npc id="22245" count="2" respawnDelay="15" /> <!-- Muertos Lieutenant -->
 		<npc id="22246" count="2" respawnDelay="15" /> <!-- Muertos Commander -->
 	</spawn>
 	<spawn zone="aden49_1719_13">
@@ -1450,6 +1539,8 @@
 			<node x="-91944" y="45076" />
 			<node x="-93363" y="43383" />
 		</territory>
+		<npc id="22244" count="2" respawnDelay="15" /> <!-- Crimson Spider -->
+		<npc id="22245" count="2" respawnDelay="15" /> <!-- Muertos Lieutenant -->
 		<npc id="22246" count="2" respawnDelay="15" /> <!-- Muertos Commander -->
 	</spawn>
 	<spawn zone="aden49_1719_14">
@@ -1460,6 +1551,8 @@
 			<node x="-93231" y="45561" />
 			<node x="-94817" y="44084" />
 		</territory>
+		<npc id="22244" count="2" respawnDelay="15" /> <!-- Crimson Spider -->
+		<npc id="22245" count="2" respawnDelay="15" /> <!-- Muertos Lieutenant -->
 		<npc id="22246" count="2" respawnDelay="15" /> <!-- Muertos Commander -->
 	</spawn>
 	<spawn zone="aden49_1719_15">
@@ -1469,6 +1562,8 @@
 			<node x="-93746" y="46534" />
 			<node x="-95375" y="45292" />
 		</territory>
+		<npc id="22244" count="2" respawnDelay="15" /> <!-- Crimson Spider -->
+		<npc id="22245" count="2" respawnDelay="15" /> <!-- Muertos Lieutenant -->
 		<npc id="22246" count="2" respawnDelay="15" /> <!-- Muertos Commander -->
 	</spawn>
 	<spawn zone="aden49_1719_16">
@@ -1479,6 +1574,8 @@
 			<node x="-95473" y="45395" />
 			<node x="-98189" y="45473" />
 		</territory>
+		<npc id="22244" count="2" respawnDelay="15" /> <!-- Crimson Spider -->
+		<npc id="22245" count="2" respawnDelay="15" /> <!-- Muertos Lieutenant -->
 		<npc id="22246" count="2" respawnDelay="15" /> <!-- Muertos Commander -->
 	</spawn>
 </list>

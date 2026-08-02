@@ -100,7 +100,6 @@
 		<npc id="20790" count="2" respawnDelay="40" respawnRandom="20" /> <!-- Dailaon -->
 		<npc id="20791" count="2" respawnDelay="40" respawnRandom="20" /> <!-- Crokian Warrior -->
 		<npc id="20793" count="2" respawnDelay="40" respawnRandom="20" /> <!-- Nos -->
-		<npc id="20793" count="2" respawnDelay="40" respawnRandom="20" /> <!-- Nos -->
 	</spawn>
 	<spawn zone="innadril13_2324_croc06">
 		<territory minZ="-3764" maxZ="-3564">
@@ -114,7 +113,6 @@
 		<npc id="20790" count="2" respawnDelay="40" respawnRandom="20" /> <!-- Dailaon -->
 		<npc id="20791" count="1" respawnDelay="40" respawnRandom="20" /> <!-- Crokian Warrior -->
 		<npc id="20793" count="1" respawnDelay="40" respawnRandom="20" /> <!-- Nos -->
-		<npc id="20793" count="1" respawnDelay="40" respawnRandom="20" /> <!-- Nos -->
 	</spawn>
 	<spawn zone="innadril13_2324_croc07">
 		<territory minZ="-2896" maxZ="-2496">
@@ -127,7 +125,6 @@
 		<npc id="20789" count="2" respawnDelay="40" respawnRandom="20" /> <!-- Crokian -->
 		<npc id="20790" count="2" respawnDelay="40" respawnRandom="20" /> <!-- Dailaon -->
 		<npc id="20791" count="2" respawnDelay="40" respawnRandom="20" /> <!-- Crokian Warrior -->
-		<npc id="20793" count="2" respawnDelay="40" respawnRandom="20" /> <!-- Nos -->
 		<npc id="20793" count="2" respawnDelay="40" respawnRandom="20" /> <!-- Nos -->
 	</spawn>
 	<spawn zone="innadril13_2324_lien01">

@@ -621,17 +621,11 @@
 		<npc id="18587" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Begrudged Maid -->
 		<npc id="18588" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18591" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Boy -->
 		<npc id="18592" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18588" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 	</spawn>
 	<spawn zone="etc10_1715_002">
@@ -646,17 +640,11 @@
 		<npc id="18587" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Begrudged Maid -->
 		<npc id="18588" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18591" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Boy -->
 		<npc id="18592" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18588" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 	</spawn>
 	<spawn zone="etc10_1715_003">
@@ -671,17 +659,11 @@
 		<npc id="18587" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Begrudged Maid -->
 		<npc id="18588" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18591" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Boy -->
 		<npc id="18592" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18588" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 	</spawn>
 	<spawn zone="etc10_1715_004">
@@ -696,17 +678,11 @@
 		<npc id="18587" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Begrudged Maid -->
 		<npc id="18588" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18591" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Boy -->
 		<npc id="18592" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18588" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 	</spawn>
 	<spawn zone="etc10_1715_005">
@@ -721,17 +697,11 @@
 		<npc id="18587" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Begrudged Maid -->
 		<npc id="18588" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18591" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Boy -->
 		<npc id="18592" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18588" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 	</spawn>
 	<spawn zone="etc10_1715_006">
@@ -746,17 +716,11 @@
 		<npc id="18587" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Begrudged Maid -->
 		<npc id="18588" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18591" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Boy -->
 		<npc id="18592" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18588" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 	</spawn>
 	<spawn zone="etc10_1715_007">
@@ -771,17 +735,11 @@
 		<npc id="18587" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Begrudged Maid -->
 		<npc id="18588" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18591" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Boy -->
 		<npc id="18592" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18588" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 	</spawn>
 	<spawn zone="etc10_1715_008">
@@ -796,17 +754,11 @@
 		<npc id="18587" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Begrudged Maid -->
 		<npc id="18588" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18591" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Boy -->
 		<npc id="18592" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18588" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 	</spawn>
 	<spawn zone="etc10_1715_009">
@@ -821,17 +773,11 @@
 		<npc id="18587" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Begrudged Maid -->
 		<npc id="18588" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18591" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Boy -->
 		<npc id="18592" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18588" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 	</spawn>
 	<spawn zone="etc10_1715_010">
@@ -846,17 +792,11 @@
 		<npc id="18587" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Begrudged Maid -->
 		<npc id="18588" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18591" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Boy -->
 		<npc id="18592" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18588" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 	</spawn>
 	<spawn zone="etc10_1715_011">
@@ -871,17 +811,11 @@
 		<npc id="18587" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Begrudged Maid -->
 		<npc id="18588" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18591" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Boy -->
 		<npc id="18592" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18588" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 	</spawn>
 	<spawn zone="etc10_1715_012">
@@ -896,17 +830,11 @@
 		<npc id="18587" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Begrudged Maid -->
 		<npc id="18588" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18591" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Boy -->
 		<npc id="18592" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18588" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 	</spawn>
 	<spawn zone="etc10_1715_013">
@@ -921,17 +849,11 @@
 		<npc id="18587" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Begrudged Maid -->
 		<npc id="18588" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18591" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Boy -->
 		<npc id="18592" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18588" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 	</spawn>
 	<spawn zone="etc10_1715_014">
@@ -946,17 +868,11 @@
 		<npc id="18587" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Begrudged Maid -->
 		<npc id="18588" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18591" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Boy -->
 		<npc id="18592" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18588" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 	</spawn>
 	<spawn zone="etc10_1715_015">
@@ -971,17 +887,11 @@
 		<npc id="18587" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Begrudged Maid -->
 		<npc id="18588" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18591" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Boy -->
 		<npc id="18592" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18588" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 	</spawn>
 	<spawn zone="etc10_1715_016">
@@ -996,17 +906,11 @@
 		<npc id="18587" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Begrudged Maid -->
 		<npc id="18588" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18591" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Boy -->
 		<npc id="18592" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18588" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 	</spawn>
 	<spawn zone="etc10_1715_017">
@@ -1021,17 +925,11 @@
 		<npc id="18587" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Begrudged Maid -->
 		<npc id="18588" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18591" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Boy -->
 		<npc id="18592" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18588" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 	</spawn>
 	<spawn zone="etc10_1715_018">
@@ -1046,17 +944,11 @@
 		<npc id="18587" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Begrudged Maid -->
 		<npc id="18588" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18591" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Boy -->
 		<npc id="18592" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18588" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 	</spawn>
 	<spawn zone="etc10_1715_019">
@@ -1071,17 +963,11 @@
 		<npc id="18587" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Begrudged Maid -->
 		<npc id="18588" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18591" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Boy -->
 		<npc id="18592" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18588" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 	</spawn>
 	<spawn zone="etc10_1715_020">
@@ -1096,17 +982,11 @@
 		<npc id="18587" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Begrudged Maid -->
 		<npc id="18588" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18591" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Boy -->
 		<npc id="18592" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18588" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 	</spawn>
 	<spawn zone="etc10_1715_021">
@@ -1121,17 +1001,11 @@
 		<npc id="18587" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Begrudged Maid -->
 		<npc id="18588" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18591" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Boy -->
 		<npc id="18592" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18588" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 	</spawn>
 	<spawn zone="etc10_1715_022">
@@ -1146,17 +1020,11 @@
 		<npc id="18587" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Begrudged Maid -->
 		<npc id="18588" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18591" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Boy -->
 		<npc id="18592" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18588" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 	</spawn>
 	<spawn zone="etc10_1715_023">
@@ -1171,17 +1039,11 @@
 		<npc id="18587" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Begrudged Maid -->
 		<npc id="18588" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18591" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Boy -->
 		<npc id="18592" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18588" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 	</spawn>
 	<spawn zone="etc10_1715_024">
@@ -1196,17 +1058,11 @@
 		<npc id="18587" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Begrudged Maid -->
 		<npc id="18588" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18591" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Boy -->
 		<npc id="18592" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18588" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 	</spawn>
 	<spawn zone="etc10_1715_025">
@@ -1221,17 +1077,11 @@
 		<npc id="18587" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Begrudged Maid -->
 		<npc id="18588" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18591" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Boy -->
 		<npc id="18592" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18588" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Hunting Ground Keeper -->
 		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18589" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
-		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18590" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18582" count="1" respawnDelay="300" respawnRandom="300" chaseRange="2000" /> <!-- Turned Girl - Kratei's Fortune -->
 	</spawn>
@@ -1243,21 +1093,15 @@
 			<node x="-53271" y="-86434" />
 		</territory>
 		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18594" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Guide -->
 		<npc id="18595" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18596" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
 		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18599" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Manager -->
 		<npc id="18600" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 	</spawn>
 	<spawn zone="etc10_1815_002">
@@ -1268,21 +1112,15 @@
 			<node x="-51264" y="-86441" />
 		</territory>
 		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18594" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Guide -->
 		<npc id="18595" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18596" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
 		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18599" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Manager -->
 		<npc id="18600" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 	</spawn>
 	<spawn zone="etc10_1815_003">
@@ -1293,21 +1131,15 @@
 			<node x="-49268" y="-86432" />
 		</territory>
 		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18594" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Guide -->
 		<npc id="18595" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18596" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
 		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18599" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Manager -->
 		<npc id="18600" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 	</spawn>
 	<spawn zone="etc10_1815_004">
@@ -1318,21 +1150,15 @@
 			<node x="-47258" y="-86440" />
 		</territory>
 		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18594" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Guide -->
 		<npc id="18595" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18596" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
 		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18599" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Manager -->
 		<npc id="18600" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 	</spawn>
 	<spawn zone="etc10_1815_005">
@@ -1343,21 +1169,15 @@
 			<node x="-45263" y="-86436" />
 		</territory>
 		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18594" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Guide -->
 		<npc id="18595" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18596" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
 		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18599" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Manager -->
 		<npc id="18600" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 	</spawn>
 	<spawn zone="etc10_1815_006">
@@ -1368,21 +1188,15 @@
 			<node x="-53257" y="-84440" />
 		</territory>
 		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18594" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Guide -->
 		<npc id="18595" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18596" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
 		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18599" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Manager -->
 		<npc id="18600" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 	</spawn>
 	<spawn zone="etc10_1815_007">
@@ -1393,21 +1207,15 @@
 			<node x="-51242" y="-84416" />
 		</territory>
 		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18594" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Guide -->
 		<npc id="18595" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18596" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
 		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18599" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Manager -->
 		<npc id="18600" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 	</spawn>
 	<spawn zone="etc10_1815_008">
@@ -1418,21 +1226,15 @@
 			<node x="-49258" y="-84435" />
 		</territory>
 		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18594" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Guide -->
 		<npc id="18595" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18596" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
 		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18599" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Manager -->
 		<npc id="18600" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 	</spawn>
 	<spawn zone="etc10_1815_009">
@@ -1443,21 +1245,15 @@
 			<node x="-47257" y="-84440" />
 		</territory>
 		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18594" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Guide -->
 		<npc id="18595" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18596" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
 		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18599" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Manager -->
 		<npc id="18600" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 	</spawn>
 	<spawn zone="etc10_1815_010">
@@ -1468,21 +1264,15 @@
 			<node x="-45253" y="-84435" />
 		</territory>
 		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18594" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Guide -->
 		<npc id="18595" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18596" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
 		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18599" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Manager -->
 		<npc id="18600" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 	</spawn>
 	<spawn zone="etc10_1815_011">
@@ -1493,21 +1283,15 @@
 			<node x="-53235" y="-82420" />
 		</territory>
 		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18594" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Guide -->
 		<npc id="18595" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18596" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
 		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18599" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Manager -->
 		<npc id="18600" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 	</spawn>
 	<spawn zone="etc10_1815_012">
@@ -1518,21 +1302,15 @@
 			<node x="-51240" y="-82414" />
 		</territory>
 		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18594" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Guide -->
 		<npc id="18595" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18596" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
 		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18599" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Manager -->
 		<npc id="18600" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 	</spawn>
 	<spawn zone="etc10_1815_013">
@@ -1543,21 +1321,15 @@
 			<node x="-49237" y="-82419" />
 		</territory>
 		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18594" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Guide -->
 		<npc id="18595" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18596" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
 		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18599" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Manager -->
 		<npc id="18600" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 	</spawn>
 	<spawn zone="etc10_1815_014">
@@ -1568,21 +1340,15 @@
 			<node x="-47242" y="-82426" />
 		</territory>
 		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18594" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Guide -->
 		<npc id="18595" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18596" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
 		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18599" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Manager -->
 		<npc id="18600" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 	</spawn>
 	<spawn zone="etc10_1815_015">
@@ -1593,21 +1359,15 @@
 			<node x="-45244" y="-82418" />
 		</territory>
 		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18594" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Guide -->
 		<npc id="18595" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18596" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
 		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18599" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Manager -->
 		<npc id="18600" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 	</spawn>
 	<spawn zone="etc10_1815_016">
@@ -1618,21 +1378,15 @@
 			<node x="-53241" y="-80421" />
 		</territory>
 		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18594" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Guide -->
 		<npc id="18595" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18596" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
 		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18599" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Manager -->
 		<npc id="18600" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 	</spawn>
 	<spawn zone="etc10_1815_017">
@@ -1643,21 +1397,15 @@
 			<node x="-51241" y="-80418" />
 		</territory>
 		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18594" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Guide -->
 		<npc id="18595" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18596" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
 		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18599" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Manager -->
 		<npc id="18600" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 	</spawn>
 	<spawn zone="etc10_1815_018">
@@ -1668,21 +1416,15 @@
 			<node x="-49238" y="-80419" />
 		</territory>
 		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18594" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Guide -->
 		<npc id="18595" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18596" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
 		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18599" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Manager -->
 		<npc id="18600" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 	</spawn>
 	<spawn zone="etc10_1815_019">
@@ -1693,21 +1435,15 @@
 			<node x="-47236" y="-80419" />
 		</territory>
 		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18594" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Guide -->
 		<npc id="18595" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18596" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
 		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18599" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Manager -->
 		<npc id="18600" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 	</spawn>
 	<spawn zone="etc10_1815_020">
@@ -1718,21 +1454,15 @@
 			<node x="-45238" y="-80420" />
 		</territory>
 		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18594" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Guide -->
 		<npc id="18595" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18596" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
 		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18599" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Manager -->
 		<npc id="18600" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 	</spawn>
 	<spawn zone="etc10_1815_021">
@@ -1743,21 +1473,15 @@
 			<node x="-53236" y="-78422" />
 		</territory>
 		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18594" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Guide -->
 		<npc id="18595" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18596" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
 		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18599" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Manager -->
 		<npc id="18600" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 	</spawn>
 	<spawn zone="etc10_1815_022">
@@ -1768,21 +1492,15 @@
 			<node x="-51236" y="-78423" />
 		</territory>
 		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18594" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Guide -->
 		<npc id="18595" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18596" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
 		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18599" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Manager -->
 		<npc id="18600" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 	</spawn>
 	<spawn zone="etc10_1815_023">
@@ -1793,21 +1511,15 @@
 			<node x="-49245" y="-78422" />
 		</territory>
 		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18594" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Guide -->
 		<npc id="18595" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18596" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
 		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18599" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Manager -->
 		<npc id="18600" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 	</spawn>
 	<spawn zone="etc10_1815_024">
@@ -1818,21 +1530,15 @@
 			<node x="-47269" y="-78447" />
 		</territory>
 		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18594" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Guide -->
 		<npc id="18595" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18596" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
 		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18599" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Manager -->
 		<npc id="18600" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 	</spawn>
 	<spawn zone="etc10_1815_025">
@@ -1843,21 +1549,15 @@
 			<node x="-45238" y="-78424" />
 		</territory>
 		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18594" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Guide -->
 		<npc id="18595" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Baroness' Employee -->
 		<npc id="18596" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Cursed Gardener -->
 		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="10" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18599" count="1" respawnDelay="15" chaseRange="2000" /> <!-- Mansion Manager -->
 		<npc id="18600" count="2" respawnDelay="20" chaseRange="2000" /> <!-- Kratei's Steward -->
 		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
-		<npc id="18593" count="2" respawnDelay="10" chaseRange="2000" /> <!-- Housekeeper -->
 		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18597" count="2" respawnDelay="15" chaseRange="2000" /> <!-- Begrudged Maid -->
-		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18598" count="1" respawnDelay="20" chaseRange="2000" /> <!-- Cursed Head Maid -->
 		<npc id="18582" count="1" respawnDelay="300" respawnRandom="300" chaseRange="2000" /> <!-- Turned Girl - Kratei's Fortune -->
 	</spawn>

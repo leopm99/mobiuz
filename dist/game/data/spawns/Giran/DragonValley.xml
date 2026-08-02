@@ -7,9 +7,10 @@
 			<node x="78989" y="107200" />
 			<node x="81543" y="106601" />
 		</territory>
-		<npc id="20242" count="1" respawnDelay="30" respawnRandom="5" chaseRange="2500" /> <!-- Dustwind Gargoyle -->
-		<npc id="20134" count="5" respawnDelay="30" respawnRandom="5" chaseRange="2500" /> <!-- Cave Maiden -->
-		<npc id="20246" count="5" respawnDelay="30" respawnRandom="5" chaseRange="2500" /> <!-- Cave Keeper -->
+		<npc id="20242" count="1" respawnDelay="36" chaseRange="2500" /> <!-- Dustwind Gargoyle -->
+		<npc id="20134" count="5" respawnDelay="22" chaseRange="2500" /> <!-- Cave Maiden -->
+		<npc id="20246" count="5" respawnDelay="22" chaseRange="2500" /> <!-- Cave Keeper -->
+		<npc id="18001" count="2" respawnDelay="36" chaseRange="2500" /> <!-- Blood Queen -->
 	</spawn>
 	<spawn zone="giran06_cave_02">
 		<territory minZ="-3500" maxZ="-2500">
@@ -19,11 +20,11 @@
 			<node x="73889" y="105509" />
 			<node x="75463" y="104704" />
 		</territory>
-		<npc id="20239" count="2" respawnDelay="30" respawnRandom="5" chaseRange="2500" /> <!-- Cave Servant Captain -->
-		<npc id="20238" count="2" respawnDelay="30" respawnRandom="5" chaseRange="2500" /> <!-- Cave Servant Warrior -->
-		<npc id="20236" count="2" respawnDelay="30" respawnRandom="5" chaseRange="2500" /> <!-- Cave Servant -->
-		<npc id="20235" count="1" respawnDelay="30" respawnRandom="5" chaseRange="2500" /> <!-- Shackle -->
-		<npc id="20237" count="2" respawnDelay="30" respawnRandom="5" chaseRange="2500" /> <!-- Cave Servant Archer -->
+		<npc id="20239" count="2" respawnDelay="36" chaseRange="2500" /> <!-- Cave Servant Captain -->
+		<npc id="20238" count="2" respawnDelay="36" chaseRange="2500" /> <!-- Cave Servant Warrior -->
+		<npc id="20236" count="2" respawnDelay="36" chaseRange="2500" /> <!-- Cave Servant -->
+		<npc id="20235" count="2" respawnDelay="36" chaseRange="2500" /> <!-- Shackle -->
+		<npc id="20237" count="2" respawnDelay="36" chaseRange="2500" /> <!-- Cave Servant Archer -->
 	</spawn>
 	<spawn zone="giran06_cave_03">
 		<territory minZ="-3500" maxZ="-2000">
@@ -32,11 +33,10 @@
 			<node x="75027" y="109423" />
 			<node x="78477" y="108061" />
 		</territory>
-		<npc id="20146" count="2" respawnDelay="30" respawnRandom="5" chaseRange="2500" /> <!-- Headless Knight -->
-		<npc id="20246" count="5" respawnDelay="30" respawnRandom="5" chaseRange="2500" /> <!-- Cave Keeper -->
-		<npc id="20240" count="2" respawnDelay="30" respawnRandom="5" chaseRange="2500" /> <!-- Royal Cave Servant -->
-		<npc id="20134" count="5" respawnDelay="30" respawnRandom="5" chaseRange="2500" /> <!-- Cave Maiden -->
-		<npc id="20241" count="2" respawnDelay="40" respawnRandom="10" chaseRange="2500" /> <!-- Hunter Gargoyle -->
-		<npc id="20235" count="1" respawnDelay="30" respawnRandom="5" chaseRange="2500" /> <!-- Shackle -->
+		<npc id="20146" count="2" respawnDelay="36" chaseRange="2500" /> <!-- Headless Knight -->
+		<npc id="20246" count="5" respawnDelay="22" chaseRange="2500" /> <!-- Cave Keeper -->
+		<npc id="20240" count="2" respawnDelay="36" chaseRange="2500" /> <!-- Royal Cave Servant -->
+		<npc id="20134" count="5" respawnDelay="22" chaseRange="2500" /> <!-- Cave Maiden -->
+		<npc id="20241" count="2" respawnDelay="36" chaseRange="2500" /> <!-- Hunter Gargoyle -->
 	</spawn>
 </list>

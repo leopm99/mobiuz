@@ -9,6 +9,8 @@
 			<node x="-51008" y="181772" />
 			<node x="-55048" y="180964" />
 		</territory>
+		<npc id="21012" count="2" respawnDelay="25" /> <!-- Magical Eye -->
+		<npc id="21013" count="1" respawnDelay="25" /> <!-- Ol Mahum Van Archer -->
 		<npc id="21014" count="3" respawnDelay="25" /> <!-- Lesser Warlike Tyrant -->
 	</spawn>
 	<spawn zone="gludio36_1823_05">
@@ -19,6 +21,7 @@
 			<node x="-55592" y="183052" />
 			<node x="-56804" y="181812" />
 		</territory>
+		<npc id="21012" count="2" respawnDelay="25" /> <!-- Magical Eye -->
 		<npc id="21014" count="2" respawnDelay="25" /> <!-- Lesser Warlike Tyrant -->
 	</spawn>
 	<spawn zone="gludio36_1823_06">
@@ -29,6 +32,8 @@
 			<node x="-46744" y="185368" />
 			<node x="-48096" y="185568" />
 		</territory>
+		<npc id="21012" count="1" respawnDelay="25" /> <!-- Magical Eye -->
+		<npc id="21013" count="1" respawnDelay="25" /> <!-- Ol Mahum Van Archer -->
 		<npc id="21014" count="3" respawnDelay="25" /> <!-- Lesser Warlike Tyrant -->
 	</spawn>
 	<spawn zone="gludio36_1823_07">
@@ -38,6 +43,7 @@
 			<node x="-44864" y="190220" />
 			<node x="-46472" y="190852" />
 		</territory>
+		<npc id="21012" count="2" respawnDelay="25" /> <!-- Magical Eye -->
 		<npc id="21014" count="3" respawnDelay="25" /> <!-- Lesser Warlike Tyrant -->
 	</spawn>
 	<spawn zone="gludio36_1823_08">
@@ -49,6 +55,7 @@
 			<node x="-44184" y="190444" />
 			<node x="-42187" y="189347" />
 		</territory>
+		<npc id="21013" count="1" respawnDelay="25" /> <!-- Ol Mahum Van Archer -->
 		<npc id="21014" count="3" respawnDelay="25" /> <!-- Lesser Warlike Tyrant -->
 		<npc id="21015" count="3" respawnDelay="25" /> <!-- Ol Mahum Van Leader -->
 	</spawn>
@@ -1028,18 +1035,6 @@
 		<npc id="20075" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Larva -->
 		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
 		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20075" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Larva -->
-		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20075" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Larva -->
-		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20075" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Larva -->
-		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20075" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Larva -->
-		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
 	</spawn>
 	<spawn zone="gludio05_1923_08">
 		<territory minZ="-5428" maxZ="-5228">
@@ -1053,18 +1048,6 @@
 		<npc id="20082" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
 		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
 		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20082" count="2" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
-		<npc id="20084" count="2" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="2" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20082" count="2" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
-		<npc id="20084" count="2" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="2" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20082" count="2" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
-		<npc id="20084" count="2" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="2" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20082" count="2" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
-		<npc id="20084" count="2" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="2" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
 		<npc id="20082" count="2" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
 		<npc id="20084" count="2" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
 		<npc id="20086" count="2" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
@@ -1086,18 +1069,6 @@
 		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
 		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
 		<npc id="20081" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Overseer -->
-		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20081" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Overseer -->
-		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20081" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Overseer -->
-		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20081" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Overseer -->
-		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20081" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Overseer -->
 	</spawn>
 	<spawn zone="gludio05_1923_12">
 		<territory minZ="-5433" maxZ="-5243">
@@ -1107,18 +1078,6 @@
 			<node x="-13992" y="182154" />
 			<node x="-14048" y="181918" />
 		</territory>
-		<npc id="20082" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20082" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20082" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20082" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
 		<npc id="20082" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
 		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
 		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
@@ -1177,16 +1136,6 @@
 		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
 		<npc id="20082" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
 		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20082" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20082" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20082" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
 	</spawn>
 	<spawn zone="gludio05_1923_19">
 		<territory minZ="-5358" maxZ="-5178">
@@ -1198,8 +1147,6 @@
 			<node x="-15900" y="178311" />
 		</territory>
 		<npc id="20082" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
 	</spawn>
 	<spawn zone="gludio05_1923_20">
 		<territory minZ="-5355" maxZ="-5175">
@@ -1261,24 +1208,6 @@
 		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
 		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
 		<npc id="20088" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20088" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20088" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20088" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20088" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20088" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20088" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
 	</spawn>
 	<spawn zone="gludio05_1923_29">
 		<territory minZ="-5556" maxZ="-5376">
@@ -1307,12 +1236,6 @@
 		<npc id="20087" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
 		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
 		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20087" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20087" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
 	</spawn>
 	<spawn zone="gludio05_1923_32">
 		<territory minZ="-5563" maxZ="-5313">
@@ -1321,24 +1244,6 @@
 			<node x="-16463" y="181375" />
 			<node x="-16481" y="181149" />
 		</territory>
-		<npc id="20087" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20087" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20087" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20087" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20087" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20087" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
 		<npc id="20087" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
 		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
 		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
@@ -1365,30 +1270,6 @@
 			<node x="-19294" y="183406" />
 			<node x="-19558" y="183573" />
 		</territory>
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20090" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant Leader -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20090" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant Leader -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20090" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant Leader -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20090" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant Leader -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20090" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant Leader -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20090" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant Leader -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20090" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant Leader -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20090" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant Leader -->
 		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
 		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
 		<npc id="20090" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant Leader -->
@@ -1436,15 +1317,6 @@
 		<npc id="20075" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Larva -->
 		<npc id="20079" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
 		<npc id="20075" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Larva -->
-		<npc id="20079" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20075" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Larva -->
-		<npc id="20079" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20075" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Larva -->
-		<npc id="20079" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20075" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Larva -->
-		<npc id="20079" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20075" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Larva -->
-		<npc id="20079" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
 	</spawn>
 	<spawn zone="gludio05_1923_41">
 		<territory minZ="-5291" maxZ="-5081">
@@ -1454,12 +1326,6 @@
 			<node x="-29223" y="175486" />
 			<node x="-29411" y="175096" />
 		</territory>
-		<npc id="20075" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Larva -->
-		<npc id="20079" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20075" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Larva -->
-		<npc id="20079" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20075" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Larva -->
-		<npc id="20079" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
 		<npc id="20075" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Larva -->
 		<npc id="20079" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
 		<npc id="20075" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Larva -->
@@ -1538,12 +1404,6 @@
 		<npc id="20084" count="2" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
 		<npc id="20082" count="2" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
 		<npc id="20084" count="2" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20082" count="2" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
-		<npc id="20084" count="2" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20082" count="2" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
-		<npc id="20084" count="2" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20082" count="2" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
-		<npc id="20084" count="2" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
 	</spawn>
 	<spawn zone="gludio05_1923_50">
 		<territory minZ="-5353" maxZ="-5173">
@@ -1562,18 +1422,6 @@
 		<npc id="20081" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Overseer -->
 		<npc id="20082" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
 		<npc id="20084" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20079" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20081" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Overseer -->
-		<npc id="20082" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
-		<npc id="20084" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20079" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20081" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Overseer -->
-		<npc id="20082" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
-		<npc id="20084" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20079" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20081" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Overseer -->
-		<npc id="20082" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
-		<npc id="20084" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
 	</spawn>
 	<spawn zone="gludio05_1923_53">
 		<territory minZ="-5442" maxZ="-5262">
@@ -1586,19 +1434,9 @@
 		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
 		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
 		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
 		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
 		<npc id="20089" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
 		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20089" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20089" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
 	</spawn>
 	<spawn zone="gludio05_1923_54">
 		<territory minZ="-5442" maxZ="-5262">
@@ -1618,12 +1456,6 @@
 		<npc id="20087" count="3" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
 		<npc id="20088" count="3" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
 		<npc id="20089" count="3" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20087" count="3" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="3" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="3" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20087" count="3" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="3" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="3" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
 	</spawn>
 	<spawn zone="gludio05_1923_55">
 		<territory minZ="-5280" maxZ="-5100">
@@ -1633,10 +1465,6 @@
 			<node x="-27984" y="177947" />
 			<node x="-28715" y="177249" />
 		</territory>
-		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
 		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
 		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
 		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
@@ -1667,12 +1495,6 @@
 			<node x="-27223" y="177489" />
 			<node x="-26971" y="177230" />
 		</territory>
-		<npc id="20080" count="2" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20081" count="2" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Overseer -->
-		<npc id="20080" count="2" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20081" count="2" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Overseer -->
-		<npc id="20080" count="2" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20081" count="2" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Overseer -->
 		<npc id="20080" count="2" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
 		<npc id="20081" count="2" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Overseer -->
 		<npc id="20080" count="2" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
@@ -1728,12 +1550,6 @@
 		<npc id="20088" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
 		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
 		<npc id="20088" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
 	</spawn>
 	<spawn zone="gludio05_1923_67">
 		<territory minZ="-5361" maxZ="-5181">
@@ -1777,54 +1593,6 @@
 		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
 		<npc id="20088" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
 		<npc id="20089" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
 	</spawn>
 	<spawn zone="gludio05_1923_73">
 		<territory minZ="-5451" maxZ="-5231">
@@ -1842,12 +1610,6 @@
 		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
 		<npc id="20089" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
 		<npc id="20090" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant Leader -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20089" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20090" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant Leader -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20089" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20090" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant Leader -->
 	</spawn>
 	<spawn zone="gludio05_1923_77">
 		<territory minZ="-5365" maxZ="-5185">
@@ -1862,18 +1624,6 @@
 		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
 		<npc id="20088" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
 		<npc id="20090" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant Leader -->
-		<npc id="20087" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20087" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20087" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20087" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
 		<npc id="20087" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
 		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
 		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
@@ -1904,30 +1654,6 @@
 		<npc id="20087" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
 		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
 		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20087" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20087" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20087" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20087" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20087" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20087" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20087" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20087" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20088" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Ant Warrior Captain -->
-		<npc id="20089" count="1" respawnDelay="70" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
 	</spawn>
 	<spawn zone="gludio05_1923_78">
 		<territory minZ="-5365" maxZ="-5185">
@@ -1938,12 +1664,6 @@
 			<node x="-28792" y="183383" />
 			<node x="-29049" y="183421" />
 		</territory>
-		<npc id="20089" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20090" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant Leader -->
-		<npc id="20089" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20090" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant Leader -->
-		<npc id="20089" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
-		<npc id="20090" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant Leader -->
 		<npc id="20089" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
 		<npc id="20090" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant Leader -->
 		<npc id="20089" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Noble Ant -->
@@ -2053,36 +1773,6 @@
 		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
 		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
 		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20086" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Guard -->
-		<npc id="20087" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Soldier -->
 	</spawn>
 	<spawn zone="gludio05_1923_134">
 		<territory minZ="-5550" maxZ="-5370">
@@ -2130,24 +1820,6 @@
 		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
 		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
 		<npc id="20081" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Overseer -->
-		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20081" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Overseer -->
-		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20081" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Overseer -->
-		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20081" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Overseer -->
-		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20081" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Overseer -->
-		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20081" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Overseer -->
-		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20081" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Overseer -->
 	</spawn>
 	<spawn zone="gludio05_1923_114">
 		<territory minZ="-5576" maxZ="-5376">
@@ -2156,24 +1828,6 @@
 			<node x="-21669" y="188662" />
 			<node x="-21875" y="188865" />
 		</territory>
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20082" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20082" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20082" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20082" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20082" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20082" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
-		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
 		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
 		<npc id="20082" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Recruit -->
 		<npc id="20084" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Patrol -->
@@ -2192,12 +1846,6 @@
 			<node x="-23937" y="190018" />
 			<node x="-24459" y="189501" />
 		</territory>
-		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20081" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Overseer -->
-		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20081" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Overseer -->
 		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
 		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
 		<npc id="20081" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Overseer -->
@@ -2234,18 +1882,6 @@
 		<npc id="20075" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Larva -->
 		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
 		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20075" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Larva -->
-		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20075" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Larva -->
-		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20075" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Larva -->
-		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20075" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Larva -->
-		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
 	</spawn>
 	<spawn zone="gludio05_1923_126">
 		<territory minZ="-5478" maxZ="-5298">
@@ -2270,14 +1906,6 @@
 		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
 		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
 		<npc id="20075" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Larva -->
-		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20075" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Larva -->
-		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
-		<npc id="20075" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Larva -->
-		<npc id="20079" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant -->
-		<npc id="20080" count="1" respawnDelay="60" respawnRandom="20" chaseRange="2500" /> <!-- Ant Captain -->
 	</spawn>
 	<spawn zone="gludio05_1923_132">
 		<territory minZ="-5577" maxZ="-5397">
