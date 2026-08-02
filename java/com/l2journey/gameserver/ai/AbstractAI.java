@@ -494,8 +494,13 @@ public abstract class AbstractAI
 			}
 			
 			// Prevent possible extra calls to this function (there is none?), also don't send movetopawn packets too often.
+			// Playable actors (players/summons) actively FOLLOWING (not attack-chasing) are excluded from this
+			// throttle: their follow tick already runs at a controlled, faster interval (see
+			// CreatureFollowTaskManager.PLAYABLE_FOLLOW_INTERVAL) so the fixed-destination MoveToLocation is
+			// recalculated often enough to look smooth. Combat chase (Intention.ATTACK) keeps the original
+			// throttle untouched, since it is driven by the AI think loop and not by the follow task manager.
 			final int gameTime = GameTimeTaskManager.getInstance().getGameTicks();
-			if (_actor.isMoving() && (_target == pawn))
+			if ((!_actor.isPlayable() || (_intention != Intention.FOLLOW)) && _actor.isMoving() && (_target == pawn))
 			{
 				if (_clientMovingToPawnOffset == offset)
 				{
@@ -790,7 +795,16 @@ public abstract class AbstractAI
 		_followTarget = target;
 		if (range == -1)
 		{
-			CreatureFollowTaskManager.getInstance().addNormalFollow(_actor, range);
+			// Playable actors (players/summons) get a faster follow tick so the fixed-destination
+			// MoveToLocation is recalculated often enough to look smooth (see moveToPawn() below).
+			if (_actor.isPlayable())
+			{
+				CreatureFollowTaskManager.getInstance().addPlayableFollow(_actor, range);
+			}
+			else
+			{
+				CreatureFollowTaskManager.getInstance().addNormalFollow(_actor, range);
+			}
 		}
 		else
 		{

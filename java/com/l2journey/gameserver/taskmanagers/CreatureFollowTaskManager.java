@@ -46,14 +46,22 @@ import com.l2journey.gameserver.model.zone.ZoneId;
  */
 public class CreatureFollowTaskManager
 {
+	// Tick interval (ms) used for Playable followers (players/summons) on the "normal" follow.
+	// Kept much lower than the NPC/pet interval so a fixed-destination MoveToLocation is recalculated
+	// often enough to look smooth, without falling back to MoveToPawn (which caused observer desync).
+	private static final int PLAYABLE_FOLLOW_INTERVAL = 300;
+	
 	protected static final Map<Creature, Integer> NORMAL_FOLLOW_CREATURES = new ConcurrentHashMap<>();
+	protected static final Map<Creature, Integer> PLAYABLE_FOLLOW_CREATURES = new ConcurrentHashMap<>();
 	protected static final Map<Creature, Integer> ATTACK_FOLLOW_CREATURES = new ConcurrentHashMap<>();
 	protected static boolean _workingNormal = false;
+	protected static boolean _workingPlayable = false;
 	protected static boolean _workingAttack = false;
 	
 	protected CreatureFollowTaskManager()
 	{
 		ThreadPool.schedulePriorityTaskAtFixedRate(new CreatureFollowNormalTask(), 1000, 1000);
+		ThreadPool.schedulePriorityTaskAtFixedRate(new CreatureFollowPlayableTask(), PLAYABLE_FOLLOW_INTERVAL, PLAYABLE_FOLLOW_INTERVAL);
 		ThreadPool.schedulePriorityTaskAtFixedRate(new CreatureFollowAttackTask(), 500, 500);
 	}
 	
@@ -77,6 +85,29 @@ public class CreatureFollowTaskManager
 			}
 			
 			_workingNormal = false;
+		}
+	}
+	
+	protected class CreatureFollowPlayableTask implements Runnable
+	{
+		@Override
+		public void run()
+		{
+			if (_workingPlayable)
+			{
+				return;
+			}
+			_workingPlayable = true;
+			
+			if (!PLAYABLE_FOLLOW_CREATURES.isEmpty())
+			{
+				for (Entry<Creature, Integer> entry : PLAYABLE_FOLLOW_CREATURES.entrySet())
+				{
+					follow(entry.getKey(), entry.getValue());
+				}
+			}
+			
+			_workingPlayable = false;
 		}
 	}
 	
@@ -158,12 +189,25 @@ public class CreatureFollowTaskManager
 	
 	public boolean isFollowing(Creature creature)
 	{
-		return NORMAL_FOLLOW_CREATURES.containsKey(creature) || ATTACK_FOLLOW_CREATURES.containsKey(creature);
+		return NORMAL_FOLLOW_CREATURES.containsKey(creature) || PLAYABLE_FOLLOW_CREATURES.containsKey(creature) || ATTACK_FOLLOW_CREATURES.containsKey(creature);
 	}
 	
 	public void addNormalFollow(Creature creature, int range)
 	{
 		NORMAL_FOLLOW_CREATURES.putIfAbsent(creature, range);
+		follow(creature, range);
+	}
+	
+	/**
+	 * Same as {@link #addNormalFollow(Creature, int)} but ticks at {@link #PLAYABLE_FOLLOW_INTERVAL} instead of 1s.
+	 * Used for Playable actors (players/summons) so the fixed-destination MoveToLocation is recalculated often
+	 * enough to look smooth, without reverting to MoveToPawn (which caused observer desync).
+	 * @param creature
+	 * @param range
+	 */
+	public void addPlayableFollow(Creature creature, int range)
+	{
+		PLAYABLE_FOLLOW_CREATURES.putIfAbsent(creature, range);
 		follow(creature, range);
 	}
 	
@@ -176,6 +220,7 @@ public class CreatureFollowTaskManager
 	public void remove(Creature creature)
 	{
 		NORMAL_FOLLOW_CREATURES.remove(creature);
+		PLAYABLE_FOLLOW_CREATURES.remove(creature);
 		ATTACK_FOLLOW_CREATURES.remove(creature);
 	}
 	

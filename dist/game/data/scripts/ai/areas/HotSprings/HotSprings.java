@@ -28,7 +28,10 @@
  */
 package ai.areas.HotSprings;
 
+import java.util.List;
+
 import com.l2journey.gameserver.data.xml.SkillData;
+import com.l2journey.gameserver.model.WorldObject;
 import com.l2journey.gameserver.model.actor.Creature;
 import com.l2journey.gameserver.model.actor.Npc;
 import com.l2journey.gameserver.model.actor.Player;
@@ -50,25 +53,42 @@ public class HotSprings extends AbstractNpcAI
 	private static final int NEPENTHES = 21319;
 	private static final int ATROX = 21321;
 	private static final int BANDERSNATCH = 21322;
+	
 	// Skills
 	private static final int RHEUMATISM = 4551;
 	private static final int CHOLERA = 4552;
 	private static final int FLU = 4553;
 	private static final int MALARIA = 4554;
+	
 	// Misc
 	private static final int DISEASE_CHANCE = 10;
 	
 	private HotSprings()
 	{
 		addAttackId(BANDERSNATCHLING, FLAVA, ATROXSPAWN, NEPENTHES, ATROX, BANDERSNATCH);
+		addSkillSeeId(BANDERSNATCHLING, FLAVA, ATROXSPAWN, NEPENTHES, ATROX, BANDERSNATCH);
 	}
 	
 	@Override
 	public void onAttack(Npc npc, Player attacker, int damage, boolean isSummon)
 	{
+		spreadDisease(npc, attacker);
+	}
+	
+	@Override
+	public void onSkillSee(Npc npc, Player caster, Skill skill, List<WorldObject> targets, boolean isSummon)
+	{
+		if (targets.contains(npc))
+		{
+			spreadDisease(npc, caster);
+		}
+	}
+	
+	private void spreadDisease(Npc npc, Creature creature)
+	{
 		if (getRandom(100) < DISEASE_CHANCE)
 		{
-			tryToInfect(npc, attacker, MALARIA);
+			tryToInfect(npc, creature, MALARIA);
 		}
 		
 		if (getRandom(100) < DISEASE_CHANCE)
@@ -78,19 +98,19 @@ public class HotSprings extends AbstractNpcAI
 				case BANDERSNATCHLING:
 				case ATROX:
 				{
-					tryToInfect(npc, attacker, RHEUMATISM);
+					tryToInfect(npc, creature, RHEUMATISM);
 					break;
 				}
 				case FLAVA:
 				case NEPENTHES:
 				{
-					tryToInfect(npc, attacker, CHOLERA);
+					tryToInfect(npc, creature, CHOLERA);
 					break;
 				}
 				case ATROXSPAWN:
 				case BANDERSNATCH:
 				{
-					tryToInfect(npc, attacker, FLU);
+					tryToInfect(npc, creature, FLU);
 					break;
 				}
 			}
