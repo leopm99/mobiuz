@@ -1574,7 +1574,6 @@ public class Config
 	// --------------------------------------------------
 	public static String LOGIN_BIND_ADDRESS;
 	public static int PORT_LOGIN;
-	public static boolean ACCEPT_NEW_GAMESERVER;
 	public static List<String> GAME_SERVER_ALLOWED_HOSTS;
 	public static int LOGIN_TRY_BEFORE_BAN;
 	public static int LOGIN_BLOCK_AFTER_BAN;
@@ -3925,7 +3924,6 @@ public class Config
 			LOGGER.log(Level.WARNING, "Error setting datapack root!", e);
 			DATAPACK_ROOT = new File(".");
 		}
-		ACCEPT_NEW_GAMESERVER = loginConfig.getBoolean("AcceptNewGameServer", true);
 		GAME_SERVER_ALLOWED_HOSTS = new ArrayList<>();
 		for (String host : loginConfig.getString("GameServerAllowedHosts", "").split(","))
 		{

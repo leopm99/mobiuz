@@ -88,11 +88,9 @@ public class GameServerThread extends Thread
 		}
 		if (!isAllowedGameserverIP(_connectionIPAddress))
 		{
-			// Port 9014 is reachable from the public internet, so random scanners/bots
-			// keep connecting and sending non-L2J bytes, tripping "Invalid packet length"
-			// warnings. Reject unknown IPs before any handshake/read happens when a
-			// GameServerAllowedHosts allowlist is configured.
-			LOGGER.info("GameServerRegistration: IP Address " + _connectionIPAddress + " is not in the allowed GameServer host list, closing connection.");
+			// GameServerAllowedHosts is an intentional, admin-maintained list (loginserver.ini).
+			// No automatic ban is applied here - just a silent reject of this connection.
+			LOGGER.fine("GameServerRegistration: IP Address " + _connectionIPAddress + " is not in the allowed GameServer host list, closing connection.");
 			forceClose(LoginServerFail.REASON_IP_BANNED);
 			return;
 		}
