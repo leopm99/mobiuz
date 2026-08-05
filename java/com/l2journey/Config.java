@@ -1575,6 +1575,7 @@ public class Config
 	public static String LOGIN_BIND_ADDRESS;
 	public static int PORT_LOGIN;
 	public static boolean ACCEPT_NEW_GAMESERVER;
+	public static List<String> GAME_SERVER_ALLOWED_HOSTS;
 	public static int LOGIN_TRY_BEFORE_BAN;
 	public static int LOGIN_BLOCK_AFTER_BAN;
 	public static boolean LOGIN_SERVER_SCHEDULE_RESTART;
@@ -3925,6 +3926,14 @@ public class Config
 			DATAPACK_ROOT = new File(".");
 		}
 		ACCEPT_NEW_GAMESERVER = loginConfig.getBoolean("AcceptNewGameServer", true);
+		GAME_SERVER_ALLOWED_HOSTS = new ArrayList<>();
+		for (String host : loginConfig.getString("GameServerAllowedHosts", "").split(","))
+		{
+			if (!host.isBlank())
+			{
+				GAME_SERVER_ALLOWED_HOSTS.add(host.trim());
+			}
+		}
 		LOGIN_TRY_BEFORE_BAN = loginConfig.getInt("LoginTryBeforeBan", 5);
 		LOGIN_BLOCK_AFTER_BAN = loginConfig.getInt("LoginBlockAfterBan", 900);
 		LOGIN_SERVER_SCHEDULE_RESTART = loginConfig.getBoolean("LoginRestartSchedule", false);

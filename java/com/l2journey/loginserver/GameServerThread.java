@@ -39,6 +39,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
+import com.l2journey.Config;
 import com.l2journey.commons.crypt.NewCrypt;
 import com.l2journey.commons.network.base.BaseWritablePacket;
 import com.l2journey.commons.util.TraceUtil;
@@ -83,6 +84,16 @@ public class GameServerThread extends Thread
 			LOGGER.info("GameServerRegistration: IP Address " + _connectionIPAddress + " is on Banned IP list.");
 			forceClose(LoginServerFail.REASON_IP_BANNED);
 			// Ensure no further processing for this connection.
+			return;
+		}
+		if (!isAllowedGameserverIP(_connectionIPAddress))
+		{
+			// Port 9014 is reachable from the public internet, so random scanners/bots
+			// keep connecting and sending non-L2J bytes, tripping "Invalid packet length"
+			// warnings. Reject unknown IPs before any handshake/read happens when a
+			// GameServerAllowedHosts allowlist is configured.
+			LOGGER.info("GameServerRegistration: IP Address " + _connectionIPAddress + " is not in the allowed GameServer host list, closing connection.");
+			forceClose(LoginServerFail.REASON_IP_BANNED);
 			return;
 		}
 		
@@ -224,6 +235,17 @@ public class GameServerThread extends Thread
 		return false;
 	}
 	
+	/**
+	 * Checks the configured GameServer host allowlist (loginserver.ini, GameServerAllowedHosts).<br>
+	 * When the list is empty, every IP is allowed (default, backwards-compatible behavior).
+	 * @param ipAddress
+	 * @return {@code true} if the IP may proceed to the registration handshake.
+	 */
+	public static boolean isAllowedGameserverIP(String ipAddress)
+	{
+		return Config.GAME_SERVER_ALLOWED_HOSTS.isEmpty() || Config.GAME_SERVER_ALLOWED_HOSTS.contains(ipAddress);
+	}
+	
 	public GameServerThread(Socket con)
 	{
 		_socket = con;
@@ -321,7 +343,7 @@ public class GameServerThread extends Thread
 	 */
 	public void setGameHosts(String[] hosts)
 	{
-		LOGGER.info("Updated Gameserver [" + getServerId() + "] " + GameServerTable.getInstance().getServerNameById(getServerId()) + " IP's:");
+		LOGGER.info("Updated Gameserver [" + getServerId() + "] " + GameServerTable.getInstance().getServerNameById(getServerId()) + " IP's (connected from " + _connectionIPAddress + "):");
 		_gsi.clearServerAddresses();
 		for (int i = 0; i < hosts.length; i += 2)
 		{
