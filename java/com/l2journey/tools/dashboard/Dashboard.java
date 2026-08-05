@@ -37,7 +37,6 @@ import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -99,10 +98,6 @@ public final class Dashboard
 	private volatile int _playersOnline;
 	private final AtomicBoolean _queryingMetrics = new AtomicBoolean();
 	private final AtomicBoolean _queryingStatus = new AtomicBoolean();
-	private final JCheckBox _autoRestart = new JCheckBox("AUTO RESTART");
-	private volatile long _lastAutoRestart;
-	// Janela de tolerancia apos um inicio/parada/reinicio manual, durante a qual ruido de encerramento (ex: "connection refused") nao deve acionar o Auto Restart.
-	private volatile long _lastManualAction;
 	private volatile ProcessMetrics _loginMetrics = ProcessMetrics.EMPTY;
 	private volatile ProcessMetrics _gameMetrics = ProcessMetrics.EMPTY;
 	private volatile int _refreshTick;
@@ -147,6 +142,8 @@ public final class Dashboard
 		frame.setLocationByPlatform(true);
 		frame.setContentPane(content());
 		frame.setVisible(true);
+		// Fonte so pode ser derivada apos setVisible(): antes disso o Frame (AWT pesado) ainda nao tem font resolvida (getFont() == null).
+		resizeFont(frame, 12);
 		restoreConsole("login", "loginserver", _loginConsole);
 		restoreConsole("game", "gameserver", _gameConsole);
 		new Timer(2000, event -> refresh()).start();
@@ -196,9 +193,9 @@ public final class Dashboard
 		content.add(header(), BorderLayout.NORTH);
 		final JTabbedPane tabs = new JTabbedPane();
 		tabs.setFont(tabs.getFont().deriveFont(Font.BOLD, 14f));
-		tabs.addTab("  RESUMO  ", summary());
-		tabs.addTab("  LOGIN SERVER  ", consoleTab("Console de inicializacao - LoginServer", _loginConsole));
+		tabs.addTab("  HOME  ", summary());
 		tabs.addTab("  GAME SERVER  ", consoleTab("Console de inicializacao - GameServer", _gameConsole));
+		tabs.addTab("  LOGIN SERVER  ", consoleTab("Console de inicializacao - LoginServer", _loginConsole));
 		content.add(tabs, BorderLayout.CENTER);
 		_tabs = tabs;
 		return content;
@@ -212,7 +209,7 @@ public final class Dashboard
 	{
 		if (_tabs != null)
 		{
-			_tabs.setSelectedIndex(type.equals("login") ? 1 : 2);
+			_tabs.setSelectedIndex(type.equals("login") ? 2 : 1);
 		}
 	}
 	
@@ -278,36 +275,12 @@ public final class Dashboard
 			"Multisells",
 			"Buylists"
 		}, item -> command("RELOAD " + item.toUpperCase(Locale.ROOT))));
-		bar.add(toolButton("Announce", new String[]
-		{
-			"Normal",
-			"Critical"
-		}, this::announce));
+		bar.add(toolButton("Announce", () -> announce("Normal")));
 		bar.add(toolButton("Logs", new String[]
 		{
 			"View",
 			"Delete"
 		}, this::logs));
-		bar.add(toolButton("Font", new String[]
-		{
-			"12",
-			"14",
-			"16",
-			"21",
-			"27",
-			"33"
-		}, item -> changeFont(Integer.parseInt(item))));
-		_autoRestart.setOpaque(false);
-		_autoRestart.setForeground(GREEN);
-		_autoRestart.setFont(_autoRestart.getFont().deriveFont(Font.BOLD, 11f));
-		_autoRestart.addActionListener(event ->
-		{
-			if (_autoRestart.isSelected() && (JOptionPane.showConfirmDialog(null, "O Auto Restart pode reiniciar servicos automaticamente ao detectar falhas de login ou entrada no mundo. Deseja ativar?", "Alerta", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) != JOptionPane.YES_OPTION))
-			{
-				_autoRestart.setSelected(false);
-			}
-		});
-		bar.add(_autoRestart);
 		return bar;
 	}
 	
@@ -327,6 +300,18 @@ public final class Dashboard
 			menu.add(entry);
 		}
 		button.addActionListener(event -> menu.show(button, 0, button.getHeight()));
+		return button;
+	}
+	
+	private JButton toolButton(String name, Runnable action)
+	{
+		final JButton button = new JButton(name);
+		button.setMargin(new java.awt.Insets(4, 8, 4, 8));
+		button.setFont(button.getFont().deriveFont(Font.BOLD, 11f));
+		button.setForeground(GOLD);
+		button.setBackground(CARD);
+		button.setFocusPainted(false);
+		button.addActionListener(event -> action.run());
 		return button;
 	}
 	
@@ -365,14 +350,6 @@ public final class Dashboard
 			catch (IOException e)
 			{
 			}
-		}
-	}
-	
-	private void changeFont(int size)
-	{
-		for (java.awt.Window window : java.awt.Window.getWindows())
-		{
-			resizeFont(window, size);
 		}
 	}
 	
@@ -457,11 +434,9 @@ public final class Dashboard
 			return;
 		}
 		final int seconds = delaySeconds(selection);
-		_lastManualAction = System.currentTimeMillis();
 		final Timer timer = new Timer(seconds * 1000, event ->
 		{
 			((Timer) event.getSource()).stop();
-			_lastManualAction = System.currentTimeMillis();
 			stop(processName, console);
 			if (restart)
 			{
@@ -479,7 +454,6 @@ public final class Dashboard
 		final Timer timer = new Timer(5000, event ->
 		{
 			((Timer) event.getSource()).stop();
-			_lastManualAction = System.currentTimeMillis();
 			launch(type, console);
 		});
 		timer.setRepeats(false);
@@ -541,22 +515,6 @@ public final class Dashboard
 		return button;
 	}
 	
-	private void startSequence()
-	{
-		if (!find("loginserver").isPresent())
-		{
-			launch("login", _loginConsole);
-		}
-		new Timer(3000, event ->
-		{
-			((Timer) event.getSource()).stop();
-			if (!find("gameserver").isPresent())
-			{
-				launch("game", _gameConsole);
-			}
-		}).start();
-	}
-	
 	private void launch(String type, JTextArea output)
 	{
 		if (find(type + "server").isPresent())
@@ -565,7 +523,6 @@ public final class Dashboard
 			JOptionPane.showMessageDialog(null, "Ja existe uma sessao ativa. Encerre-a antes de iniciar outra.", "Sessao ja ativa", JOptionPane.WARNING_MESSAGE);
 			return;
 		}
-		_lastManualAction = System.currentTimeMillis();
 		final String script = type.equals("login") ? "startLoginServer.bat" : "startGameServer.bat";
 		final Path directory = ROOT.resolve(type);
 		if (!Files.isRegularFile(directory.resolve(script)))
@@ -593,65 +550,12 @@ public final class Dashboard
 			while ((line = reader.readLine()) != null)
 			{
 				append(output, line);
-				autoRecover(type, line);
 			}
 		}
 		catch (IOException e)
 		{
 			append(output, "[Dashboard] Console encerrado.");
 		}
-	}
-	
-	private void autoRecover(String type, String line)
-	{
-		if (!_autoRestart.isSelected())
-		{
-			return;
-		}
-		if ((System.currentTimeMillis() - _lastManualAction) < 20000)
-		{
-			return;
-		}
-		final String failure = line.toLowerCase(Locale.ROOT);
-		final boolean loginFailure = type.equals("login") && (failure.contains("bindexception") || failure.contains("address already in use") || failure.contains("fatal") || failure.contains("unable to start"));
-		final boolean gameFailure = type.equals("game") && (failure.contains("connection refused") || failure.contains("cannot connect to login") || failure.contains("fatal") || failure.contains("unable to start"));
-		if (!loginFailure && !gameFailure)
-		{
-			return;
-		}
-		final long now = System.currentTimeMillis();
-		if ((now - _lastAutoRestart) < 60000)
-		{
-			return;
-		}
-		_lastAutoRestart = now;
-		append(type.equals("login") ? _loginConsole : _gameConsole, "[JourneyDash] Auto Restart detectou falha critica.");
-		SwingUtilities.invokeLater(() ->
-		{
-			if (gameFailure)
-			{
-				stop("gameserver", _gameConsole);
-				stop("loginserver", _loginConsole);
-				final Timer timer = new Timer(3000, event ->
-				{
-					((Timer) event.getSource()).stop();
-					startSequence();
-				});
-				timer.setRepeats(false);
-				timer.start();
-			}
-			else
-			{
-				stop("loginserver", _loginConsole);
-				final Timer timer = new Timer(3000, event ->
-				{
-					((Timer) event.getSource()).stop();
-					launch("login", _loginConsole);
-				});
-				timer.setRepeats(false);
-				timer.start();
-			}
-		});
 	}
 	
 	private void stop(String name, JTextArea output)
