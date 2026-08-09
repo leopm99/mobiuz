@@ -2,12 +2,7 @@
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/npcs.xsd">
 	<npc id="29001" level="40" type="GrandBoss" name="Queen Ant">
 		<!-- Confirmed CT2.5 -->
-		<parameters>
-			<minions name="Privates">
-				<npc id="29003" count="6" respawnTime="10" weightPoint="1" />
-				<npc id="29005" count="8" respawnTime="360" weightPoint="1" />
-			</minions>
-		</parameters>
+		<!-- Minions now spawned via QueenAnt.xml (script-controlled), see ai/bosses/QueenAnt -->
 		<race>BUG</race>
 		<sex>FEMALE</sex>
 		<acquire exp="2179535" sp="140740" raidPoints="1680" />
@@ -1270,7 +1265,6 @@
 		</ai>
 		<dropLists>
 			<drop>
-				<item id="6658" min="1" max="1" chance="100" /> <!-- Ring of Baium -->
 				<item id="8620" min="5" max="15" chance="100" /> <!-- Ancient Book: Divine Inspiration (Manuscript) -->
 				<group chance="30">
 					<item id="80" min="1" max="1" chance="20" /> <!-- Tallum Blade -->
@@ -3149,7 +3143,7 @@
 			<height normal="58" />
 		</collision>
 	</npc>
-	<npc id="29054" level="78" type="RaidBoss" name="Benom" title="Triol's Leader"> <!-- Retail level is 75 -->
+	<npc id="29054" level="75" type="RaidBoss" name="Benom" title="Triol's Leader"> <!-- Retail level is 75 -->
 		<!-- Confirmed CT2.5 -->
 		<parameters>
 			<skill name="PhysicalSpecial" id="4993" level="1" /> <!-- Venom - Strike -->
@@ -3160,7 +3154,7 @@
 		<race>DEMONIC</race>
 		<sex>MALE</sex>
 		<equipment rhand="8203" lhand="8203" /> <!-- rhand: Monster Only (Venom Sword) lhand: Monster Only (Venom Sword) -->
-		<acquire exp="2703946" sp="1757872" raidPoints="5288" />
+		<acquire exp="2499951" sp="1757872" raidPoints="5288" />
 		<stats str="60" int="76" dex="73" wit="70" con="57" men="80">
 			<vitals hp="568382.4" hpRegen="357" mp="4071.06" mpRegen="8.1" />
 			<attack physical="4510" magical="3279" random="30" critical="4" accuracy="4.75" attackSpeed="253" type="DUAL" range="40" distance="80" width="120" />

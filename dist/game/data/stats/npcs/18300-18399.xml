@@ -3701,7 +3701,7 @@
 			<skill id="4416" level="2" /> <!-- Magic Creatures -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="500" isAggressive="false">
+		<ai type="BALANCED" aggroRange="450" clanHelpRange="500">
 			<clanList>
 				<clan>ORACLE</clan>
 			</clanList>
@@ -3756,7 +3756,7 @@
 			<skill id="4597" level="10" /> <!-- Bleed -->
 		</skillList>
 		<exCrtEffect>false</exCrtEffect>
-		<ai type="BALANCED" aggroRange="450" clanHelpRange="500" isAggressive="false">
+		<ai type="BALANCED" aggroRange="450" clanHelpRange="500">
 			<clanList>
 				<clan>ORACLE</clan>
 			</clanList>

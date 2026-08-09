@@ -9969,7 +9969,7 @@
 		<statUse name="MP" value="240" />
 	</item>
 	<item id="925" recipeId="13723" name="mk_star_stone_high_mp_potion" craftLevel="9" type="common" successRate="100">
-		<ingredient id="14009" count="8" />
+		<ingredient id="14010" count="8" />
 		<production id="14041" count="1" />
 		<statUse name="MP" value="240" />
 	</item>

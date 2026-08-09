@@ -37,7 +37,6 @@ import com.l2journey.gameserver.ai.Intention;
 import com.l2journey.gameserver.managers.InstanceManager;
 import com.l2journey.gameserver.model.Location;
 import com.l2journey.gameserver.model.World;
-import com.l2journey.gameserver.model.WorldObject;
 import com.l2journey.gameserver.model.actor.Creature;
 import com.l2journey.gameserver.model.actor.Npc;
 import com.l2journey.gameserver.model.actor.Player;
@@ -46,7 +45,10 @@ import com.l2journey.gameserver.model.quest.QuestSound;
 import com.l2journey.gameserver.model.quest.QuestState;
 import com.l2journey.gameserver.model.skill.holders.SkillHolder;
 import com.l2journey.gameserver.model.zone.ZoneType;
+import com.l2journey.gameserver.network.serverpackets.AutoAttackStart;
+import com.l2journey.gameserver.network.serverpackets.MagicSkillUse;
 import com.l2journey.gameserver.network.serverpackets.SpecialCamera;
+import com.l2journey.gameserver.taskmanagers.AttackStanceTaskManager;
 import com.l2journey.gameserver.util.LocationUtil;
 
 import instances.AbstractInstance;
@@ -60,16 +62,20 @@ public class PailakaInjuredDragon extends AbstractInstance
 {
 	// NPCs
 	private static final int KETRA_ORC_SUPPORTER_2 = 32512;
+	
 	// Monsters
 	private static final int LATANA = 18660;
 	private static final int LATANA_SKILL_USE = 18661;
 	private static final int INJURED_DRAGON_CAMERA_1 = 18603;
 	private static final int INJURED_DRAGON_CAMERA_2 = 18604;
+	private static final int INJURED_DRAGON_TARGET = 18605;
+	
 	// Animals
 	private static final int GRAZING_ANTELOPE = 18637;
 	private static final int GRAZING_BANDERSNATCH = 18643;
 	private static final int GRAZING_FLAVA = 18647;
 	private static final int GRAZING_ELDER_ANTELOPE = 18651;
+	
 	// Guards
 	private static final int VARKA_SILENOS_RECRUIT = 18635;
 	private static final int VARKA_SILENOS_FOOTMAN = 18636;
@@ -81,6 +87,7 @@ public class PailakaInjuredDragon extends AbstractInstance
 	private static final int VARKA_COMMANDER = 18654;
 	private static final int VARKA_HEAD_GUARD = 18655;
 	private static final int PROPHET_GUARD = 18657;
+	
 	// Wizards
 	private static final int VARKA_SILENOS_SHAMAN = 18640;
 	private static final int VARKA_SILENOS_PRIEST = 18641;
@@ -91,24 +98,31 @@ public class PailakaInjuredDragon extends AbstractInstance
 	private static final int VARKA_HEAD_MAGUS = 18656;
 	private static final int DISCIPLE_OF_PROPHET = 18658;
 	private static final int VARKA_PROPHET = 18659;
+	
 	// Skills
 	private static final SkillHolder ANGER = new SkillHolder(5718, 1);
 	private static final SkillHolder PRESENTATION_THE_RISE_OF_LATANA = new SkillHolder(5759, 1);
 	private static final SkillHolder STUN = new SkillHolder(5716, 1);
 	private static final SkillHolder ELECTRIC_FLAME = new SkillHolder(5715, 1);
 	private static final SkillHolder FIRE_BREATH = new SkillHolder(5717, 1);
+	
 	// Drops
 	private static final int PAILAKA_INSTANT_SHIELD = 13032;
 	private static final int QUICK_HEALING_POTION = 13033;
+	
 	// Items
 	private static final int SPEAR_OF_SILENOS = 13052;
 	private static final int ENHANCED_SPEAR_OF_SILENOS = 13053;
 	private static final int WEAPON_UPGRADE_STAGE_1 = 13056;
 	private static final int WEAPON_UPGRADE_STAGE_2 = 13057;
+	
 	// AI Parameters
 	private static final double HP_ANGER_ACTIVATION = 0.3;
+	
 	// Locations
 	private static final Location ENTRY_POINT = new Location(125738, -40933, -3770);
+	private static final Location TARGET_POINT = new Location(105465, -41817, -1768);
+	
 	// Misc
 	private static final int INSTANCE_ID = 45;
 	// @formatter:off
@@ -145,6 +159,7 @@ public class PailakaInjuredDragon extends AbstractInstance
 		{
 			world.addAllowed(player);
 		}
+		
 		teleportPlayer(player, ENTRY_POINT, world.getInstanceId(), false);
 	}
 	
@@ -160,55 +175,74 @@ public class PailakaInjuredDragon extends AbstractInstance
 			}
 			case "LATANA_500":
 			{
-				startQuestTimer("LATANA_501", 1000, npc, player);
+				// She stays on the ground until timer 502, which is the shot that lifts her.
+				spawnIntroTarget(npc);
+				startQuestTimer("LATANA_501", 3000, npc, player);
+				break;
+			}
+			case "LATANA_STANCE":
+			{
+				// The client drops the standing pose whenever it redraws the npc,
+				// and the cinematic camera makes it redraw, so the pose has to be reasserted until the cinematic is over.
+				keepUpright(npc);
+				if (npc.getVariables().getBoolean("cinematic", false))
+				{
+					startQuestTimer("LATANA_STANCE", 1500, npc, player);
+				}
 				break;
 			}
 			case "LATANA_501":
 			{
-				// TODO: npc.addEffectActionDesire(npc, 0, 91 * 1000 / 30, 10000);
 				startQuestTimer("LATANA_502", 3000, npc, player);
 				break;
 			}
 			case "LATANA_502":
 			{
-				npc.setTarget(player);
-				npc.doCast(PRESENTATION_THE_RISE_OF_LATANA.getSkill());
+				// Skill 5759 is the one that lifts her, so she goes into combat here and stays up.
+				castOnIntroTarget(npc, PRESENTATION_THE_RISE_OF_LATANA);
+				npc.disableCoreAI(false);
+				addAttackDesire(npc, player, 1);
+				startStanceLoop(npc, player);
 				startQuestTimer("LATANA_503", 9700, npc, player);
 				break;
 			}
 			case "LATANA_503":
 			{
-				npc.setTarget(player);
-				npc.doCast(STUN.getSkill());
+				keepUpright(npc);
+				castOnIntroTarget(npc, STUN);
 				startQuestTimer("LATANA_504", 6030, npc, player);
 				break;
 			}
 			case "LATANA_504":
 			{
+				keepUpright(npc);
 				startQuestTimer("LATANA_505", 4000, npc, player);
 				break;
 			}
 			case "LATANA_505":
 			{
+				keepUpright(npc);
 				startQuestTimer("LATANA_2000", 1000, npc, player);
 				break;
 			}
 			case "LATANA_600":
 			{
+				startStanceLoop(npc, player);
+				spawnIntroTarget(npc);
 				startQuestTimer("LATANA_602", 2000, npc, player);
 				break;
 			}
 			case "LATANA_602":
 			{
-				npc.setTarget(player);
+				// Electric Flame is an aura, Latana casts it on herself.
+				npc.setTarget(npc);
 				npc.doCast(ELECTRIC_FLAME.getSkill());
 				startQuestTimer("LATANA_603", 2500, npc, player);
 				break;
 			}
 			case "LATANA_603":
 			{
-				npc.setTarget(player);
-				npc.doCast(STUN.getSkill());
+				castOnIntroTarget(npc, STUN);
 				startQuestTimer("LATANA_604", 6030, npc, player);
 				break;
 			}
@@ -219,6 +253,11 @@ public class PailakaInjuredDragon extends AbstractInstance
 			}
 			case "LATANA_2000":
 			{
+				// Both cinematic paths hand the fight back before this runs, but this loop is the one thing that always reaches her,
+				// so it repeats the handover rather than trust a chain of timers.
+				npc.disableCoreAI(false);
+				keepUpright(npc);
+				
 				if (player == null)
 				{
 					startQuestTimer("LATANA_2000", 3000, npc, null);
@@ -243,6 +282,7 @@ public class PailakaInjuredDragon extends AbstractInstance
 						// if (npc.inMyTerritory(player)) {
 						final Npc latanSkillUse = addSpawn(LATANA_SKILL_USE, player, false, 0, false, player.getInstanceId());
 						latanSkillUse.getVariables().set("param1", npc);
+						latanSkillUse.getVariables().set("param2", player);
 						// }
 					}
 					else
@@ -250,6 +290,7 @@ public class PailakaInjuredDragon extends AbstractInstance
 						npc.setTarget(player);
 						npc.doCast(FIRE_BREATH.getSkill());
 					}
+					
 					startQuestTimer("LATANA_2000", 6000, npc, player);
 				}
 				break;
@@ -273,8 +314,7 @@ public class PailakaInjuredDragon extends AbstractInstance
 			}
 			case "LATANA_SKILL_USE_2002":
 			{
-				// TODO: Check if we should use npc.doDie(null) or npc.decayMe()
-				// npc.decayMe();
+				npc.deleteMe();
 				break;
 			}
 			// Cameras
@@ -323,7 +363,8 @@ public class PailakaInjuredDragon extends AbstractInstance
 			case "INJURED_DRAGON_CAMERA_1_1007":
 			{
 				player.sendPacket(new SpecialCamera(npc, 300, -3, 5, 3500, 15000, 6000, 0, 6, 1, 0, 0));
-				// startQuestTimer("INJURED_DRAGON_CAMERA_1_9999", 10000, npc, player);
+				endCinematic(npc);
+				startQuestTimer("INJURED_DRAGON_CAMERA_9999", 10000, npc, null);
 				break;
 			}
 			case "INJURED_DRAGON_CAMERA_1_2000":
@@ -347,27 +388,13 @@ public class PailakaInjuredDragon extends AbstractInstance
 			case "INJURED_DRAGON_CAMERA_1_2003":
 			{
 				player.sendPacket(new SpecialCamera(npc, 300, 180, 5, 1500, 15000, 3000, 0, 6, 1, 1, 0));
-				startQuestTimer("INJURED_DRAGON_CAMERA_1_9999", 3000, npc, player);
+				endCinematic(npc);
+				startQuestTimer("INJURED_DRAGON_CAMERA_9999", 3000, npc, null);
 				break;
 			}
-			case "INJURED_DRAGON_CAMERA_1_9999":
+			case "INJURED_DRAGON_CAMERA_9999":
 			{
-				final InstanceWorld world = InstanceManager.getInstance().getWorld(npc.getInstanceId());
-				if (world != null)
-				{
-					final Npc latana = world.getNpc(LATANA);
-					if (latana != null)
-					{
-						latana.setInvul(false);
-						latana.setParalyzed(false);
-					}
-				}
-				break;
-			}
-			case "INJURED_DRAGON_CAMERA_1_3000":
-			{
-				// TODO: npc.lookNeighbor(2000);
-				// startQuestTimer("INJURED_DRAGON_CAMERA_1_3000", 10000, npc, player);
+				npc.deleteMe();
 				break;
 			}
 			case "INJURED_DRAGON_CAMERA_2_1000":
@@ -390,29 +417,47 @@ public class PailakaInjuredDragon extends AbstractInstance
 			case "INJURED_DRAGON_CAMERA_2_1002":
 			{
 				player.sendPacket(new SpecialCamera(npc, 360, 200, 5, 1000, 15000, 2000, -15, 10, 1, 1, 0));
+				startQuestTimer("INJURED_DRAGON_CAMERA_9999", 10000, npc, null);
 				break;
 			}
 			case "SCE_BOSS_2ND_SKILL":
 			{
-				final WorldObject target = npc.getTarget();
-				if ((target != null) && (player != null) && (npc.calculateDistance2D(player) < 900))
+				// Latana is the one casting. Retail aims at the marker, but the marker is a non attackable Folk, so the fan would resolve to nothing.
+				// It stands on the player, so aim there instead.
+				final Npc latana = npc.getVariables().getObject("param1", Npc.class);
+				final Player victim = npc.getVariables().getObject("param2", Player.class);
+				if ((latana != null) && (victim != null) && (latana.calculateDistance2D(npc) <= 900))
 				{
-					npc.setTarget(player);
-					npc.doCast(STUN.getSkill());
+					latana.setTarget(victim);
+					latana.doCast(STUN.getSkill());
 				}
 				break;
 			}
 			case "SCE_RATANA_CAMERA_START":
 			{
+				final InstanceWorld world = InstanceManager.getInstance().getWorld(npc.getInstanceId());
+				if (world == null)
+				{
+					break;
+				}
+				
+				// The shots are framed from the camera NPC, which stands still, not from the moving boss.
+				final Npc camera = world.getNpc(INJURED_DRAGON_CAMERA_1);
+				if (camera == null)
+				{
+					break;
+				}
+				
 				switch (npc.getScriptValue())
 				{
 					case 1:
 					{
-						startQuestTimer("INJURED_DRAGON_CAMERA_1_1000", 10, npc, player);
+						startQuestTimer("INJURED_DRAGON_CAMERA_1_1000", 10, camera, player);
+						break;
 					}
 					case 2:
 					{
-						startQuestTimer("INJURED_DRAGON_CAMERA_1_2000", 10, npc, player);
+						startQuestTimer("INJURED_DRAGON_CAMERA_1_2000", 10, camera, player);
 					}
 				}
 				break;
@@ -536,9 +581,12 @@ public class PailakaInjuredDragon extends AbstractInstance
 		{
 			case LATANA:
 			{
-				npc.setInvul(true);
-				npc.setParalyzed(true);
 				npc.setLethalable(false);
+				npc.disableCoreAI(true);
+				
+				// The template carries her retail walk and run speeds, but retail never issues a pursuit: its combat loop only asks for melee once the player is already within 100 units, and no handler delegates to the parent class.
+				// Immobilizing her is how that reads here, and it puts the AI on the movementDisable path, which casts at range and melees what comes close.
+				npc.setImmobilized(true);
 				break;
 			}
 			case LATANA_SKILL_USE:
@@ -571,8 +619,8 @@ public class PailakaInjuredDragon extends AbstractInstance
 		{
 			case LATANA:
 			{
-				addSpawn(INJURED_DRAGON_CAMERA_2, 105974, -41794, -1784, 32768, false, 0, false, killer.getInstanceId());
-				addSpawn(KETRA_ORC_SUPPORTER_2, killer.getX() + 100, killer.getY() + 100, killer.getZ(), 0, false, 0, false, killer.getInstanceId());
+				addSpawn(INJURED_DRAGON_CAMERA_2, 105974, -41794, -1784, 32768, false, 0, false, npc.getInstanceId());
+				addSpawn(KETRA_ORC_SUPPORTER_2, npc.getX() + 100, npc.getY() + 100, npc.getZ(), 0, false, 0, false, npc.getInstanceId());
 				break;
 			}
 			case GRAZING_ANTELOPE:
@@ -594,6 +642,7 @@ public class PailakaInjuredDragon extends AbstractInstance
 				
 				// Spawns Mage Type silenos behind the one that was killed.
 				spawnMageBehind(npc, killer, VARKA_SILENOS_MEDIUM);
+				
 				// Check if all the first row have been killed. Despawn mages.
 				checkIfLastInWall(npc);
 				break;
@@ -608,6 +657,7 @@ public class PailakaInjuredDragon extends AbstractInstance
 				
 				// Spawns Mage Type silenos behind the one that was killed.
 				spawnMageBehind(npc, killer, VARKA_SILENOS_PRIEST);
+				
 				// Check if all the first row have been killed. Despawn mages.
 				checkIfLastInWall(npc);
 				break;
@@ -622,6 +672,7 @@ public class PailakaInjuredDragon extends AbstractInstance
 				
 				// Spawns Mage Type silenos behind the one that was killed.
 				spawnMageBehind(npc, killer, VARKA_SILENOS_SHAMAN);
+				
 				// Check if all the first row have been killed. Despawn mages.
 				checkIfLastInWall(npc);
 				break;
@@ -637,6 +688,7 @@ public class PailakaInjuredDragon extends AbstractInstance
 				
 				// Spawns Mage Type silenos behind the one that was killed.
 				spawnMageBehind(npc, killer, VARKA_SILENOS_SEER);
+				
 				// Check if all the first row have been killed. Despawn mages.
 				checkIfLastInWall(npc);
 				break;
@@ -652,6 +704,7 @@ public class PailakaInjuredDragon extends AbstractInstance
 				
 				// Spawns Mage Type silenos behind the one that was killed.
 				spawnMageBehind(npc, killer, VARKA_SILENOS_MAGUS);
+				
 				// Check if all the first row have been killed. Despawn mages.
 				checkIfLastInWall(npc);
 				break;
@@ -666,6 +719,7 @@ public class PailakaInjuredDragon extends AbstractInstance
 				
 				// Spawns Mage Type silenos behind the one that was killed.
 				spawnMageBehind(npc, killer, DISCIPLE_OF_PROPHET);
+				
 				// Check if all the first row have been killed. Despawn mages.
 				checkIfLastInWall(npc);
 				break;
@@ -680,6 +734,7 @@ public class PailakaInjuredDragon extends AbstractInstance
 				
 				// Spawns Mage Type silenos behind the one that was killed.
 				spawnMageBehind(npc, killer, VARKA_HEAD_MAGUS);
+				
 				// Check if all the first row have been killed. Despawn mages.
 				checkIfLastInWall(npc);
 				break;
@@ -694,10 +749,66 @@ public class PailakaInjuredDragon extends AbstractInstance
 				
 				// Spawns Mage Type silenos behind the one that was killed.
 				spawnMageBehind(npc, killer, VARKA_SILENOS_GREAT_SEER);
+				
 				// Check if all the first row have been killed. Despawn mages.
 				checkIfLastInWall(npc);
 				break;
 			}
+		}
+	}
+	
+	// Spawns the marker Latana aims her opening skills at, and remembers it on her.
+	private void spawnIntroTarget(Npc latana)
+	{
+		final Npc target = addSpawn(INJURED_DRAGON_TARGET, TARGET_POINT.getX(), TARGET_POINT.getY(), TARGET_POINT.getZ(), 0, false, 60000, false, latana.getInstanceId());
+		latana.getVariables().set("c_ai1", target);
+	}
+	
+	// The cinematic shots are display casts.
+	// The marker is a non attackable Folk, so a real cast would resolve to an empty target list and every target type except AURA is dropped in that case.
+	private void castOnIntroTarget(Npc latana, SkillHolder holder)
+	{
+		final Npc target = latana.getVariables().getObject("c_ai1", Npc.class);
+		if ((target == null) || !target.isSpawned())
+		{
+			return;
+		}
+		
+		latana.setTarget(target);
+		latana.broadcastPacket(new MagicSkillUse(latana, target, holder.getSkillId(), holder.getSkillLevel(), holder.getSkill().getHitTime(), 0));
+	}
+	
+	// Latana lies on the ground whenever she is out of combat stance.
+	// The task keeps the server from calling the stance off, and the packet is what actually puts the client in the standing pose.
+	// AbstractAI.clientStartAutoAttack refuses to send it while the core AI is disabled, hence the direct broadcast.
+	private void keepUpright(Npc latana)
+	{
+		AttackStanceTaskManager.getInstance().addAttackStanceTask(latana);
+		latana.broadcastPacket(new AutoAttackStart(latana.getObjectId()));
+	}
+	
+	private void startStanceLoop(Npc latana, Player player)
+	{
+		latana.getVariables().set("cinematic", true);
+		keepUpright(latana);
+		startQuestTimer("LATANA_STANCE", 1500, latana, player);
+	}
+	
+	// The last camera shot is where the cinematic really ends, so that is where Latana takes over.
+	private void endCinematic(Npc camera)
+	{
+		final InstanceWorld world = InstanceManager.getInstance().getWorld(camera.getInstanceId());
+		if (world == null)
+		{
+			return;
+		}
+		
+		final Npc latana = world.getNpc(LATANA);
+		if (latana != null)
+		{
+			latana.getVariables().set("cinematic", false);
+			latana.disableCoreAI(false);
+			keepUpright(latana);
 		}
 	}
 	
@@ -833,7 +944,7 @@ public class PailakaInjuredDragon extends AbstractInstance
 				{
 					switch (npcs.getId())
 					{
-						case VARKA_SILENOS_GREAT_MAGUS:
+						case VARKA_SILENOS_MAGUS:
 						case DISCIPLE_OF_PROPHET:
 						{
 							npcs.abortCast();

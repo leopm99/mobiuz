@@ -2,6 +2,10 @@
 <list enabled="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/spawns.xsd">
 	<spawn name="21_16">
 		<npc id="4312" x="43319" y="-47412" z="-792" heading="7788" respawnDelay="60" /> <!-- Prophet -->
+		<npc id="31386" x="59612" y="-42775" z="-2996" heading="13152" respawnDelay="60" periodOfDay="day" /> <!-- Violet -->
+		<npc id="31387" x="58782" y="-42652" z="-3004" heading="0" respawnDelay="60" periodOfDay="day" /> <!-- Kurstin -->
+		<npc id="31388" x="59618" y="-41675" z="-3003" heading="-20280" respawnDelay="60" periodOfDay="day" /> <!-- Mina -->
+		<npc id="31389" x="60162" y="-42069" z="-3003" heading="-29168" respawnDelay="60" periodOfDay="day" /> <!-- Dorian -->
 		<npc id="18119" x="48801" y="-47523" z="-3785" heading="0" respawnDelay="60" periodOfDay="night" /> <!-- Corpse of Deadman -->
 		<npc id="18119" x="48902" y="-48413" z="-3785" heading="0" respawnDelay="60" periodOfDay="night" /> <!-- Corpse of Deadman -->
 		<npc id="18119" x="49305" y="-47345" z="-3785" heading="0" respawnDelay="60" periodOfDay="night" /> <!-- Corpse of Deadman -->

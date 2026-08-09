@@ -1033,7 +1033,7 @@
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="mpInitialConsume" val="#mpInitialConsume" />
 		<set name="power" val="#power" />
-		<set name="reuseDelay" val="1000" />
+		<set name="reuseDelay" val="1200" />
 		<effects>
 			<effect name="MagicalDamage" />
 		</effects>
@@ -3047,7 +3047,7 @@
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="mpInitialConsume" val="#mpInitialConsume" />
 		<set name="power" val="#power" />
-		<set name="reuseDelay" val="1000" />
+		<set name="reuseDelay" val="1200" />
 		<enchant1 name="magicLevel" val="#enchMagicLvl" />
 		<enchant1 name="power" val="#ench1Power" />
 		<enchant2 name="magicLevel" val="#enchMagicLvl" />
@@ -3245,7 +3245,7 @@
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="mpInitialConsume" val="#mpInitialConsume" />
 		<set name="power" val="#power" />
-		<set name="reuseDelay" val="1000" />
+		<set name="reuseDelay" val="1200" />
 		<enchant1 name="magicLevel" val="#enchMagicLvl" />
 		<enchant1 name="power" val="#ench1Power" />
 		<enchant2 name="magicLevel" val="#enchMagicLvl" />

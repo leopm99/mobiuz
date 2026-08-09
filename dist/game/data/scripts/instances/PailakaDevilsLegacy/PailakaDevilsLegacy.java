@@ -75,6 +75,11 @@ public class PailakaDevilsLegacy extends AbstractInstance
 	private static final SkillHolder ENERGY = new SkillHolder(5712, 1); // Energy Ditch
 	private static final SkillHolder BOOM = new SkillHolder(5714, 1); // Boom Up
 	private static final SkillHolder AV_TELEPORT = new SkillHolder(4671, 1); // AV - Teleport
+	private static final SkillHolder WATER_CANNON = new SkillHolder(5708, 1); // Water Cannon
+	private static final SkillHolder WHIRLPOOL = new SkillHolder(5709, 1); // Whirlpool
+	private static final SkillHolder TRIPLE_SWORD = new SkillHolder(5710, 1); // Triple Sword
+	private static final SkillHolder POWER_OF_RAGE = new SkillHolder(5711, 1); // Power of Rage
+	private static final SkillHolder SUMMON_PRESENTATION = new SkillHolder(5756, 1); // Presentation - Summon Follower
 	// Locations
 	private static final Location TELEPORT = new Location(76427, -219045, -3780);
 	private static final Location LEMATAN_SPAWN = new Location(88108, -209252, -3744, 6425);
@@ -149,6 +154,56 @@ public class PailakaDevilsLegacy extends AbstractInstance
 					}
 					break;
 				}
+				case "LEMATAN_GROUND_SKILLS":
+				{
+					if (npc.isDead() || !npc.isScriptValue(0))
+					{
+						break;
+					}
+					
+					// Water Cannon lands on three attacks in ten, the core AI swings on the rest.
+					final Creature groundTarget = npc.asAttackable().getMostHated();
+					if ((groundTarget != null) && (getRandom(100) < 30))
+					{
+						npc.setTarget(groundTarget);
+						npc.doCast(WATER_CANNON.getSkill());
+					}
+					
+					startQuestTimer("LEMATAN_GROUND_SKILLS", 5000, npc, null);
+					break;
+				}
+				case "LEMATAN_SHIP_SKILLS":
+				{
+					if (npc.isDead())
+					{
+						break;
+					}
+					
+					// He fights only on the deck, so a target that has drawn away drags him back aboard.
+					final Creature shipTarget = npc.asAttackable().getMostHated();
+					if ((shipTarget != null) && (npc.calculateDistance3D(shipTarget) > 800))
+					{
+						npc.teleToLocation(LEMATAN_PORT, world.getInstanceId(), 0);
+					}
+					
+					// Power of Rage buffs Lematan himself and is rolled before the attack skills.
+					if (getRandom(100) < 10)
+					{
+						npc.setTarget(npc);
+						npc.doCast(POWER_OF_RAGE.getSkill());
+					}
+					
+					// Half the ticks cast, and that cast is an even split between the two ship skills.
+					if ((shipTarget != null) && (getRandom(100) < 50))
+					{
+						final SkillHolder skill = getRandom(2) == 0 ? WHIRLPOOL : TRIPLE_SWORD;
+						npc.setTarget(shipTarget);
+						npc.doCast(skill.getSkill());
+					}
+					
+					startQuestTimer("LEMATAN_SHIP_SKILLS", 15000, npc, null);
+					break;
+				}
 				case "LEMATAN_MOVE_RETRY":
 				{
 					if (!npc.isDead() && npc.isScriptValue(1))
@@ -171,6 +226,8 @@ public class PailakaDevilsLegacy extends AbstractInstance
 					npc.teleToLocation(LEMATAN_PORT, world.getInstanceId(), 0);
 					npc.getVariables().set("ON_SHIP", 1);
 					npc.getSpawn().setLocation(LEMATAN_PORT);
+					npc.setTarget(npc);
+					npc.doCast(SUMMON_PRESENTATION.getSkill());
 					final List<Npc> followerslist = world.getParameters().getList("followerslist", Npc.class, new ArrayList<>());
 					for (Location loc : FOLLOWERS_LOC)
 					{
@@ -182,6 +239,7 @@ public class PailakaDevilsLegacy extends AbstractInstance
 					
 					world.setParameter("followerslist", followerslist);
 					startQuestTimer("FOLLOWER_CAST", 4000, world.getParameters().getObject("lematanNpc", Npc.class), null);
+					startQuestTimer("LEMATAN_SHIP_SKILLS", 10, npc, null);
 					break;
 				}
 				case "TELEPORT":
@@ -226,6 +284,11 @@ public class PailakaDevilsLegacy extends AbstractInstance
 				}
 				case LEMATAN:
 				{
+					if (npc.isScriptValue(0) && (getQuestTimer("LEMATAN_GROUND_SKILLS", npc, null) == null))
+					{
+						startQuestTimer("LEMATAN_GROUND_SKILLS", 1000, npc, null);
+					}
+					
 					if (npc.isScriptValue(0) && (npc.getCurrentHp() < (npc.getMaxHp() * 0.5)))
 					{
 						npc.disableCoreAI(true);

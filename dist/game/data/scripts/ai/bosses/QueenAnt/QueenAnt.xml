@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../xsd/minions.xsd">
+	<!-- Queen Ant Minions Configuration -->
+	<!-- 
+		npcId: ID do NPC minion
+		x, y, z: Coordenadas de spawn (valores simbolicos, ajustar manualmente)
+		respawnTime: Tempo de respawn em segundos
+	-->
+	
+	<!-- Queen Ant Larva (ID: 29002) -->
+	<minion npcId="29002" x="-21600" y="179482" z="-5846" respawnTime="60" />
+	
+	<!-- Nurse Ant (ID: 29003) -->
+	<minion npcId="29003" x="-21159" y="181584" z="-5727" respawnTime="10" />
+	<minion npcId="29003" x="-21498" y="181696" z="-5727" respawnTime="10" />
+	<minion npcId="29003" x="-21993" y="181467" z="-5727" respawnTime="10" />
+	<minion npcId="29003" x="-21480" y="181119" z="-5739" respawnTime="10" />
+	<minion npcId="29003" x="-21782" y="181078" z="-5747" respawnTime="10" />
+	<minion npcId="29003" x="-21748" y="181272" z="-5727" respawnTime="10" />
+	
+	<!-- Court Guard Ant (ID: 29005) -->
+	<minion npcId="29005" x="-21121" y="182612" z="-5727" respawnTime="280" />
+	<minion npcId="29005" x="-21440" y="182820" z="-5727" respawnTime="280" />
+	<minion npcId="29005" x="-21528" y="182319" z="-5727" respawnTime="280" />
+	<minion npcId="29005" x="-22111" y="182186" z="-5727" respawnTime="280" />
+	<minion npcId="29005" x="-22202" y="182873" z="-5727" respawnTime="280" />
+	<minion npcId="29005" x="-21032" y="182825" z="-5727" respawnTime="280" />
+	<minion npcId="29005" x="-20912" y="181875" z="-5727" respawnTime="280" />
+	<minion npcId="29005" x="-21866" y="181903" z="-5727" respawnTime="280" />
+</list>

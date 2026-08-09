@@ -1605,7 +1605,7 @@
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="mpInitialConsume" val="#mpConsume_Init" />
 		<set name="power" val="#power" />
-		<set name="reuseDelay" val="1000" />
+		<set name="reuseDelay" val="1200" />
 		<enchant1 name="magicLevel" val="#enchMagicLvl" />
 		<enchant2 name="elementPower" val="#enchElementPower" />
 		<enchant2 name="magicLevel" val="#enchMagicLvl" />
