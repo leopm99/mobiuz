@@ -144,7 +144,7 @@
 		<set name="isDebuff" val="true" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
 		<set name="lvlBonusRate" val="1" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="80" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="power" val="#pvePower" />
 		<set name="pvpPower" val="#pvpPower" />
@@ -183,7 +183,7 @@
 		<set name="hitTime" val="4000" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="1" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="80" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="power" val="#pvePower" />
 		<set name="pvpPower" val="#pvpPower" />
@@ -212,7 +212,7 @@
 		<set name="effectPoint" val="#effectPoints" />
 		<set name="fanRange" val="0,0,900,100" />
 		<set name="hitTime" val="1000" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="80" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="power" val="#pvePower" />
 		<set name="pvpPower" val="#pvpPower" />
@@ -241,7 +241,7 @@
 		<set name="element" val="1" /> <!-- Water -->
 		<set name="elementPower" val="20" />
 		<set name="hitTime" val="4000" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="80" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="power" val="#pvePower" />
 		<set name="pvpPower" val="#pvpPower" />
@@ -268,7 +268,7 @@
 		<set name="affectRange" val="80" />
 		<set name="effectPoint" val="#effectPoints" />
 		<set name="hitTime" val="4000" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="80" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="power" val="#pvePower" />
 		<set name="pvpPower" val="#pvpPower" />
@@ -305,7 +305,7 @@
 		<set name="isDebuff" val="true" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
 		<set name="lvlBonusRate" val="1" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="80" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="power" val="#pvePower" />
 		<set name="pvpPower" val="#pvpPower" />
@@ -349,7 +349,7 @@
 		<set name="hitTime" val="4000" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="1" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="80" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="power" val="#pvePower" />
 		<set name="pvpPower" val="#pvpPower" />
@@ -399,7 +399,7 @@
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
 		<set name="itemConsumeCount" val="2" />
 		<set name="itemConsumeId" val="1461" /> <!-- Crystal (A-Grade) -->
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="mpConsume" val="145" />
 		<set name="reuseDelay" val="45000" />
 		<conditions>
@@ -444,7 +444,7 @@
 		<set name="effectPoint" val="679" />
 		<set name="hitTime" val="2500" />
 		<set name="isMagic" val="3" /> <!-- Dance Skill -->
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="mpConsume" val="60" />
 		<set name="reuseDelay" val="240000" />
 		<effects>
@@ -469,7 +469,7 @@
 		<set name="effectPoint" val="679" />
 		<set name="hitTime" val="2500" />
 		<set name="isMagic" val="3" /> <!-- Dance Skill -->
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="mpConsume" val="60" />
 		<set name="reuseDelay" val="240000" />
 		<conditions msgId="113" addName="1">
@@ -541,7 +541,7 @@
 		<set name="effectPoint" val="150" />
 		<set name="hitTime" val="900" />
 		<set name="hpConsume" val="80" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="mpConsume" val="20" />
 		<set name="reuseDelay" val="75000" />
 		<conditions msgId="113" addName="1">
@@ -564,7 +564,7 @@
 		<set name="effectPoint" val="150" />
 		<set name="hitTime" val="900" />
 		<set name="hpConsume" val="80" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="mpConsume" val="20" />
 		<set name="reuseDelay" val="75000" />
 		<conditions msgId="113" addName="1">
@@ -1232,7 +1232,7 @@
 		<set name="effectPoint" val="-343" />
 		<set name="effectRange" val="400" />
 		<set name="hitTime" val="1700" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="mpConsume" val="70" />
 		<set name="nextActionAttack" val="true" />
 		<set name="power" val="4312" />
@@ -1255,7 +1255,7 @@
 		<set name="abnormalType" val="COUNTER_SKILL" />
 		<set name="effectPoint" val="340" />
 		<set name="hitTime" val="500" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="mpConsume" val="29" />
 		<set name="reuseDelay" val="75000" />
 		<effects>
@@ -1286,7 +1286,7 @@
 		<set name="hitTime" val="1080" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="1" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="mpConsume" val="35" />
 		<set name="nextActionAttack" val="true" />
 		<set name="overHit" val="true" />
@@ -1431,7 +1431,7 @@
 		<set name="hitTime" val="10800" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="2" />
-		<set name="magicLevel" val="56" />
+		<set name="magicLevel" val="55" />
 		<set name="mpConsume" val="68" />
 		<set name="nextActionAttack" val="true" />
 		<set name="overHit" val="true" />
@@ -2385,7 +2385,7 @@
 		<set name="fanRange" val="0,0,900,45" />
 		<set name="hitTime" val="3000" />
 		<set name="isPvPOnly" val="true" />
-		<set name="magicLevel" val="82" />
+		<set name="magicLevel" val="83" />
 		<set name="mpConsume" val="162" />
 		<set name="nextActionAttack" val="true" />
 		<set name="overHit" val="true" />

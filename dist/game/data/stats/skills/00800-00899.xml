@@ -2389,7 +2389,7 @@
 		<set name="abnormalType" val="MULTI_BUFF" />
 		<set name="hitTime" val="1500" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="75" />
 		<set name="mpConsume" val="69" />
 		<set name="reuseDelay" val="8000" />
 		<effects>
@@ -2411,7 +2411,7 @@
 		<set name="abnormalType" val="MULTI_BUFF" />
 		<set name="hitTime" val="1500" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="75" />
 		<set name="mpConsume" val="70" />
 		<set name="reuseDelay" val="8000" />
 		<effects>
@@ -2444,7 +2444,7 @@
 		<set name="effectPoint" val="#effectPoints" />
 		<set name="effectRange" val="400" />
 		<set name="hitTime" val="1000" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="80" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="nextActionAttack" val="true" />
 		<set name="power" val="#pvePower" />
@@ -2472,7 +2472,7 @@
 		<set name="effectPoint" val="#effectPoints" />
 		<set name="effectRange" val="1500" />
 		<set name="hitTime" val="4000" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="80" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="power" val="#pvePower" />
 		<set name="pvpPower" val="#pvpPower" />
@@ -2499,7 +2499,7 @@
 		<set name="affectRange" val="100" />
 		<set name="effectPoint" val="#effectPoints" />
 		<set name="hitTime" val="4000" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="80" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="power" val="#pvePower" />
 		<set name="pvpPower" val="#pvpPower" />
@@ -2533,7 +2533,7 @@
 		<set name="hitTime" val="4000" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="1" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="80" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="power" val="#pvePower" />
 		<set name="pvpPower" val="#pvpPower" />

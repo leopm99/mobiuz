@@ -3071,7 +3071,7 @@
 		<!-- Soldat Estoc - Focus -->
 		<ingredient count="1" id="9230" />
 		<!-- Ancient Adena -->
-		<ingredient count="14500" id="5575" />
+		<ingredient count="14550" id="5575" />
 		<!-- Soldat Estoc -->
 		<production count="1" id="9228" />
 	</item>
@@ -3087,7 +3087,7 @@
 		<!-- Chevalier Rapier - Guidance -->
 		<ingredient count="1" id="9241" />
 		<!-- Ancient Adena -->
-		<ingredient count="14550" id="5575" />
+		<ingredient count="35700" id="5575" />
 		<!-- Chevalier Rapier -->
 		<production count="1" id="9240" />
 	</item>
@@ -3095,7 +3095,7 @@
 		<!-- Chevalier Rapier - Back Blow -->
 		<ingredient count="1" id="9242" />
 		<!-- Ancient Adena -->
-		<ingredient count="14500" id="5575" />
+		<ingredient count="35700" id="5575" />
 		<!-- Chevalier Rapier -->
 		<production count="1" id="9240" />
 	</item>
@@ -3103,7 +3103,7 @@
 		<!-- Chevalier Rapier - Rsk. Evasion -->
 		<ingredient count="1" id="9243" />
 		<!-- Ancient Adena -->
-		<ingredient count="14550" id="5575" />
+		<ingredient count="35700" id="5575" />
 		<!-- Chevalier Rapier -->
 		<production count="1" id="9240" />
 	</item>
@@ -3111,7 +3111,7 @@
 		<!-- Chevalier Rapier - Focus -->
 		<ingredient count="1" id="9245" />
 		<!-- Ancient Adena -->
-		<ingredient count="14550" id="5575" />
+		<ingredient count="35700" id="5575" />
 		<!-- Chevalier Rapier -->
 		<production count="1" id="9244" />
 	</item>
@@ -3119,7 +3119,7 @@
 		<!-- Chevalier Rapier - Critical Damage -->
 		<ingredient count="1" id="9246" />
 		<!-- Ancient Adena -->
-		<ingredient count="14550" id="5575" />
+		<ingredient count="35700" id="5575" />
 		<!-- Chevalier Rapier -->
 		<production count="1" id="9244" />
 	</item>
@@ -3127,7 +3127,7 @@
 		<!-- Chevalier Rapier - Haste -->
 		<ingredient count="1" id="9247" />
 		<!-- Ancient Adena -->
-		<ingredient count="14550" id="5575" />
+		<ingredient count="35700" id="5575" />
 		<!-- Chevalier Rapier -->
 		<production count="1" id="9244" />
 	</item>
@@ -3135,7 +3135,7 @@
 		<!-- Chevalier Rapier - Critical Damage -->
 		<ingredient count="1" id="9249" />
 		<!-- Ancient Adena -->
-		<ingredient count="14550" id="5575" />
+		<ingredient count="35700" id="5575" />
 		<!-- Chevalier Rapier -->
 		<production count="1" id="9248" />
 	</item>
@@ -3143,7 +3143,7 @@
 		<!-- Chevalier Rapier - Critical Poison -->
 		<ingredient count="1" id="9250" />
 		<!-- Ancient Adena -->
-		<ingredient count="14550" id="5575" />
+		<ingredient count="35700" id="5575" />
 		<!-- Chevalier Rapier -->
 		<production count="1" id="9248" />
 	</item>
@@ -3151,7 +3151,7 @@
 		<!-- Chevalier Rapier - Haste -->
 		<ingredient count="1" id="9251" />
 		<!-- Ancient Adena -->
-		<ingredient count="14550" id="5575" />
+		<ingredient count="35700" id="5575" />
 		<!-- Chevalier Rapier -->
 		<production count="1" id="9248" />
 	</item>
@@ -3159,7 +3159,7 @@
 		<!-- Chevalier Rapier - Focus -->
 		<ingredient count="1" id="9253" />
 		<!-- Ancient Adena -->
-		<ingredient count="14550" id="5575" />
+		<ingredient count="35700" id="5575" />
 		<!-- Chevalier Rapier -->
 		<production count="1" id="9252" />
 	</item>
@@ -3167,7 +3167,7 @@
 		<!-- Chevalier Rapier - Critical Drain -->
 		<ingredient count="1" id="9254" />
 		<!-- Ancient Adena -->
-		<ingredient count="14550" id="5575" />
+		<ingredient count="35700" id="5575" />
 		<!-- Chevalier Rapier -->
 		<production count="1" id="9252" />
 	</item>
@@ -3175,7 +3175,7 @@
 		<!-- Chevalier Rapier - Critical Poison -->
 		<ingredient count="1" id="9255" />
 		<!-- Ancient Adena -->
-		<ingredient count="14550" id="5575" />
+		<ingredient count="35700" id="5575" />
 		<!-- Chevalier Rapier -->
 		<production count="1" id="9252" />
 	</item>
@@ -4437,7 +4437,7 @@
 	</item>
 	<item>
 		<!-- Kaim Vanul's Bones - Earth - Mana Up -->
-		<ingredient count="1" id="10998" />
+		<ingredient count="1" id="10999" />
 		<!-- Ancient Adena -->
 		<ingredient count="169500" id="5575" />
 		<!-- Kaim Vanul's Bones - Earth -->
@@ -5543,7 +5543,7 @@
 		<!-- Doomchanter - Concentration - Light -->
 		<ingredient count="1" id="11022" />
 		<!-- Ancient Adena -->
-		<ingredient count="210000" id="5575" />
+		<ingredient count="200000" id="5575" />
 		<!-- Doomchanter - Concentration -->
 		<production count="1" id="11021" />
 	</item>
@@ -5551,7 +5551,7 @@
 		<!-- Doomchanter - Concentration - Critical Bleed -->
 		<ingredient count="1" id="11023" />
 		<!-- Ancient Adena -->
-		<ingredient count="210000" id="5575" />
+		<ingredient count="200000" id="5575" />
 		<!-- Doomchanter - Concentration -->
 		<production count="1" id="11021" />
 	</item>
@@ -5559,7 +5559,7 @@
 		<!-- Doomchanter - Concentration - Mana Up -->
 		<ingredient count="1" id="11024" />
 		<!-- Ancient Adena -->
-		<ingredient count="210000" id="5575" />
+		<ingredient count="200000" id="5575" />
 		<!-- Doomchanter - Concentration -->
 		<production count="1" id="11021" />
 	</item>

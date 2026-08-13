@@ -1008,7 +1008,7 @@
 		<set name="operateType" val="A1" />
 		<set name="targetType" val="SELF" />
 		<set name="blockedInOlympiad" val="true" />
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="85" />
 		<set name="reuseDelay" val="600" />
 		<effects>
 			<effect name="SummonNpc">
@@ -1020,7 +1020,7 @@
 		<set name="operateType" val="A1" />
 		<set name="targetType" val="SELF" />
 		<set name="blockedInOlympiad" val="true" />
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="85" />
 		<set name="reuseDelay" val="600" />
 		<effects>
 			<effect name="SummonNpc">
@@ -1033,7 +1033,7 @@
 		<set name="targetType" val="SELF" />
 		<set name="blockedInOlympiad" val="true" />
 		<set name="despawnDelay" val="1800000" />
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="85" />
 		<set name="reuseDelay" val="600" />
 		<effects>
 			<effect name="SummonNpc">
@@ -1045,7 +1045,7 @@
 		<set name="operateType" val="A1" />
 		<set name="targetType" val="SELF" />
 		<set name="blockedInOlympiad" val="true" />
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="85" />
 		<set name="reuseDelay" val="600" />
 		<effects>
 			<effect name="SummonNpc">

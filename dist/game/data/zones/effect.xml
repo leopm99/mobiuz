@@ -1775,6 +1775,7 @@
 		<stat name="skillIdLvl" val="6171-1;" /> <!-- s_area_stakato_nest_replete_power -->
 		<stat name="chance" val="100" />
 		<!-- stat name="unitTick" val="90" / -->
+		<stat name="targetClass" val="Npc" />
 		<stat name="default_enabled" val="false" />
 		<stat name="reuse" val="3000" /> <!-- Guess -->
 		<stat name="showDangerIcon" val="false" /> <!-- Guess -->

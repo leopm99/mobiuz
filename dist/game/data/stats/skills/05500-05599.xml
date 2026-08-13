@@ -1096,7 +1096,7 @@
 		<set name="abnormalType" val="SEED_OF_KNIGHT" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="isTriggeredSkill" val="true" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<effects>
 			<effect name="TriggerSkillByDamageReceived">
 				<param attackerType="Creature" minAttackerLevel="1" maxAttackerLevel="100" />
@@ -1127,7 +1127,7 @@
 		<set name="abnormalType" val="SEED_OF_KNIGHT" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="isTriggeredSkill" val="true" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<effects>
 			<effect name="TriggerSkillByDamageReceived">
 				<param attackerType="Creature" minAttackerLevel="1" maxAttackerLevel="100" />
@@ -1159,7 +1159,7 @@
 		<set name="abnormalType" val="SEED_OF_KNIGHT" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="isTriggeredSkill" val="true" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<effects>
 			<effect name="TriggerSkillByDamageReceived">
 				<param attackerType="Creature" minAttackerLevel="1" maxAttackerLevel="100" />
@@ -1190,7 +1190,7 @@
 		<set name="abnormalType" val="SEED_OF_KNIGHT" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="isTriggeredSkill" val="true" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<effects>
 			<effect name="TriggerSkillByDamageReceived">
 				<param attackerType="Creature" minAttackerLevel="1" maxAttackerLevel="100" />
@@ -1248,7 +1248,7 @@
 		<set name="effectRange" val="900" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="isTriggeredSkill" val="true" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="power" val="47" />
 		<effects>
 			<effect name="MagicalDamage" />
@@ -1270,7 +1270,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="isTriggeredSkill" val="true" />
 		<set name="lvlBonusRate" val="2" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<effects>
 			<effect name="Debuff">
 				<mul stat="runSpd" val="0.7" />
@@ -1293,7 +1293,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="isTriggeredSkill" val="true" />
 		<set name="lvlBonusRate" val="2" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<effects>
 			<effect name="Debuff">
 				<mul stat="pAtkSpd" val="0.77" />

@@ -511,8 +511,8 @@
 		<set name="hitTime" val="15000" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
 		<set name="magicLevel" val="56" />
-		<set name="mpConsume" val="36" />
-		<set name="mpInitialConsume" val="144" />
+		<set name="mpConsume" val="144" />
+		<set name="mpInitialConsume" val="36" />
 		<set name="reuseDelay" val="150000" />
 		<conditions>
 			<and>
@@ -544,8 +544,8 @@
 		<set name="itemConsumeCount" val="3" />
 		<set name="itemConsumeId" val="3031" /> <!-- Spirit Ore -->
 		<set name="magicLevel" val="66" />
-		<set name="mpConsume" val="64" />
-		<set name="mpInitialConsume" val="256" />
+		<set name="mpConsume" val="256" />
+		<set name="mpInitialConsume" val="64" />
 		<set name="reuseDelay" val="900000" />
 		<conditions>
 			<and>
@@ -1532,8 +1532,8 @@
 		<set name="itemConsumeCount" val="4" />
 		<set name="itemConsumeId" val="8615" /> <!-- Summoning Crystal -->
 		<set name="magicLevel" val="78" />
-		<set name="mpConsume" val="57" />
-		<set name="mpInitialConsume" val="227" />
+		<set name="mpConsume" val="227" />
+		<set name="mpInitialConsume" val="57" />
 		<set name="reuseDelay" val="600000" />
 		<set name="staticReuse" val="true" />
 		<conditions>

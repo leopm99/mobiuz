@@ -423,19 +423,6 @@ public class KrateiArena
 		_watcherTask = ThreadPool.schedule(this::changeWatchers, getParams().getInt("watcherRotationTime") * 1000);
 	}
 	
-	public void chaneWatcher(Npc npc)
-	{
-		if (_watchers.contains(npc))
-		{
-			npc.deleteMe();
-			final Npc newNpc = Quest.addSpawn(npc.getId() == 18602 ? 18601 : 18602, npc.getLocation(), false, 0);
-			newNpc.disableCoreAI(true);
-			newNpc.setImmobilized(true);
-			_watchers.add(newNpc);
-			_watchers.remove(npc);
-		}
-	}
-	
 	private Map<Player, Integer> getParticipants()
 	{
 		final Map<Player, Integer> participants = new HashMap<>();

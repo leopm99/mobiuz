@@ -1585,7 +1585,7 @@
 		<set name="effectPoint" val="679" />
 		<set name="hitTime" val="2500" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="mpConsume" val="29" />
 		<set name="mpInitialConsume" val="8" />
 		<set name="reuseDelay" val="15000" />
@@ -1619,7 +1619,7 @@
 		<set name="ignoreShld" val="true" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="1" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="mpConsume" val="80" />
 		<set name="overHit" val="true" />
 		<set name="power" val="8409" />
@@ -1663,7 +1663,7 @@
 		<set name="hitTime" val="1000" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="1" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="mpConsume" val="87" />
 		<set name="reuseDelay" val="75000" />
 		<set name="trait" val="DERANGEMENT" />
@@ -1842,7 +1842,7 @@
 		<set name="abnormalVisualEffect" val="ULTIMATE_DEFENCE" />
 		<set name="effectPoint" val="679" />
 		<set name="hitTime" val="1000" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="mpConsume" val="36" />
 		<set name="reuseDelay" val="900000" />
 		<effects>
@@ -1866,7 +1866,7 @@
 		<set name="abnormalVisualEffect" val="ULTIMATE_DEFENCE" />
 		<set name="effectPoint" val="679" />
 		<set name="hitTime" val="1000" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="mpConsume" val="36" />
 		<set name="reuseDelay" val="900000" />
 		<effects>
@@ -1890,7 +1890,7 @@
 		<set name="abnormalVisualEffect" val="ULTIMATE_DEFENCE" />
 		<set name="effectPoint" val="679" />
 		<set name="hitTime" val="1000" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="mpConsume" val="36" />
 		<set name="reuseDelay" val="900000" />
 		<effects>
@@ -2070,7 +2070,7 @@
 		<set name="hitTime" val="1200" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="1" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="mpConsume" val="37" />
 		<set name="overHit" val="true" />
 		<set name="reuseDelay" val="15000" />
@@ -2102,7 +2102,7 @@
 		<set name="effectRange" val="650" />
 		<set name="fanRange" val="0,0,500,60" />
 		<set name="hitTime" val="1200" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="mpConsume" val="160" />
 		<set name="overHit" val="true" />
 		<set name="power" val="7475" />
@@ -2252,7 +2252,7 @@
 		<set name="effectPoint" val="138" />
 		<set name="hitTime" val="2500" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="mpConsume" val="29" />
 		<set name="mpInitialConsume" val="8" />
 		<set name="reuseDelay" val="15000" />
@@ -2279,7 +2279,7 @@
 		<set name="effectPoint" val="835" />
 		<set name="hitTime" val="1800" />
 		<set name="hpConsume" val="1253" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="reuseDelay" val="150000" />
 		<conditions msgId="113" addName="1">
 			<player active_effect_id_lvl="5562,3" />
@@ -2314,7 +2314,7 @@
 		<set name="effectPoint" val="138" />
 		<set name="hitTime" val="2500" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="mpConsume" val="29" />
 		<set name="mpInitialConsume" val="8" />
 		<set name="reuseDelay" val="15000" />
@@ -2345,7 +2345,7 @@
 		<set name="elementPower" val="20" />
 		<set name="hitTime" val="1800" />
 		<set name="hpConsume" val="1253" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="reuseDelay" val="150000" />
 		<conditions msgId="113" addName="1">
 			<player active_effect_id_lvl="5563,3" />
@@ -2375,7 +2375,7 @@
 		<set name="effectPoint" val="138" />
 		<set name="hitTime" val="2500" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="mpConsume" val="29" />
 		<set name="mpInitialConsume" val="8" />
 		<set name="reuseDelay" val="15000" />
@@ -2402,7 +2402,7 @@
 		<set name="effectPoint" val="835" />
 		<set name="hitTime" val="1800" />
 		<set name="hpConsume" val="1253" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="reuseDelay" val="150000" />
 		<conditions msgId="113" addName="1">
 			<player active_effect_id_lvl="5564,3" />
@@ -2438,7 +2438,7 @@
 		<set name="effectRange" val="1400" />
 		<set name="fanRange" val="0,0,900,40" />
 		<set name="hitTime" val="3500" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="mpConsume" val="120" />
 		<set name="overHit" val="true" />
 		<set name="power" val="7475" />
@@ -2467,7 +2467,7 @@
 		<set name="isDebuff" val="true" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
 		<set name="lvlBonusRate" val="1" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="mpConsume" val="52" />
 		<set name="power" val="69" />
 		<set name="reuseDelay" val="5000" />

@@ -1198,7 +1198,7 @@
 		<set name="isDebuff" val="true" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
 		<set name="lvlBonusRate" val="2" />
-		<set name="magicLevel" val="84" />
+		<set name="magicLevel" val="75" />
 		<set name="trait" val="HOLD" />
 		<effects>
 			<effect name="Root" />

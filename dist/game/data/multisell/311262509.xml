@@ -6712,6 +6712,12 @@
 		<production count="1" id="21966" />
 	</item>
 	<item>
+		<!-- Blood Brother - Great Gale - Health -->
+		<ingredient count="1" id="21969" />
+		<!-- Blood Brother - Great Gale -->
+		<production count="1" id="21966" />
+	</item>
+	<item>
 		<!-- Mardil's Fan - M. Atk. -->
 		<ingredient count="1" id="21974" />
 		<!-- Mardil's Fan -->

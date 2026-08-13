@@ -2488,7 +2488,7 @@
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14219" /> <!-- Forgotten Scroll - Magician's Will -->
 		<set name="learnSkillId" val="945" />
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="81" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -2511,7 +2511,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14220" /> <!-- Forgotten Scroll - Silent Mind -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="81" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -2534,7 +2534,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14221" /> <!-- Forgotten Scroll - Turn Stone -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="81" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -2557,7 +2557,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14222" /> <!-- This Forgotten Scroll can be used by Fortune Seekers level 83 and above to learn Lucky Strike. -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="81" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -2580,7 +2580,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14223" /> <!-- This Forgotten Scroll can be used by Doombringers level 83 and above to learn Eye for Eye. -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="81" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -2603,7 +2603,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14224" /> <!-- Forgotten Scroll - Curse of Desparion -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="81" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -2626,7 +2626,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14225" /> <!-- Forgotten Scroll - Counter Critical -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="81" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -2649,7 +2649,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14226" /> <!-- Forgotten Scroll - Onslaught of Pa'agrio -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="81" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -2672,7 +2672,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14227" /> <!-- Forgotten Scroll - Great Fury -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="81" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -2695,7 +2695,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="13552" /> <!-- Spellbook - Flying Final Form -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="840" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -2718,7 +2718,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="13553" /> <!-- Spellbook - Aurabird Falcon -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="841" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -2740,7 +2740,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="13554" /> <!-- Spellbook - Aurabird Owl -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="842" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>

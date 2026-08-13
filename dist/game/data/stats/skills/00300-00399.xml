@@ -2388,7 +2388,7 @@
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="1461" /> <!-- Crystal (A-Grade) -->
-		<set name="magicLevel" val="60" />
+		<set name="magicLevel" val="66" />
 		<set name="mpConsume" val="366" />
 		<set name="reuseDelay" val="600000" />
 		<set name="capsuled_items_skill" val="#extractableItems" />
@@ -4532,7 +4532,7 @@
 		<set name="abnormalType" val="DETECT_WEAKNESS" />
 		<set name="effectPoint" val="669" />
 		<set name="hitTime" val="2000" />
-		<set name="magicLevel" val="77" />
+		<set name="magicLevel" val="78" />
 		<set name="mpConsume" val="71" />
 		<set name="reuseDelay" val="3000" />
 		<enchant1 name="magicLevel" val="#enchMagicLvl" />

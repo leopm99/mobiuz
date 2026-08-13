@@ -41,7 +41,7 @@ import ai.AbstractNpcAI;
 
 /**
  * Queen Shyeed AI
- * @author malyelfik
+ * @author malyelfik, KingHanker
  */
 public class QueenShyeed extends AbstractNpcAI
 {
@@ -52,9 +52,9 @@ public class QueenShyeed extends AbstractNpcAI
 	private static final int RESPAWN = 86400000; // 24 h
 	private static final int RANDOM_RESPAWN = 43200000; // 12 h
 	// Zones
-	// private static final EffectZone MOB_BUFF_ZONE = ZoneManager.getInstance().getZoneById(200103, EffectZone.class);
+	private static final EffectZone MOB_BUFF_ZONE = ZoneManager.getInstance().getZoneById(200103, EffectZone.class);
 	private static final EffectZone MOB_BUFF_DISPLAY_ZONE = ZoneManager.getInstance().getZoneById(200104, EffectZone.class);
-	private static final EffectZone PC_BUFF_ZONE = ZoneManager.getInstance().getZoneById(200105, EffectZone.class);
+	private static final EffectZone FULL_AUTHORITY_ZONE = ZoneManager.getInstance().getZoneById(200105, EffectZone.class);
 	
 	private QueenShyeed()
 	{
@@ -90,7 +90,7 @@ public class QueenShyeed extends AbstractNpcAI
 	{
 		npc.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.SHYEED_S_CRY_IS_STEADILY_DYING_DOWN);
 		startRespawn();
-		PC_BUFF_ZONE.setEnabled(true);
+		FULL_AUTHORITY_ZONE.setEnabled(true);
 	}
 	
 	private void spawnShyeed()
@@ -99,14 +99,24 @@ public class QueenShyeed extends AbstractNpcAI
 		final long remain = respawn != 0 ? respawn - System.currentTimeMillis() : 0;
 		if (remain > 0)
 		{
+			// Boss is dead and waiting to respawn. Zone "_enabled" flags only live in
+			// memory and reset to the XML default (false) on every server restart, so
+			// they must be restored here to match the persisted respawn state,
+			// otherwise a restart during this window leaves the whole area unbuffed.
+			MOB_BUFF_ZONE.setEnabled(false);
+			MOB_BUFF_DISPLAY_ZONE.setEnabled(false);
+			FULL_AUTHORITY_ZONE.setEnabled(true);
 			startQuestTimer("respawn", remain, null, null);
 			return;
 		}
+		// Zones must be enabled before spawning, otherwise the boss and her minions
+		// (spawned synchronously by addSpawn) won't be registered in the zone's
+		// character list, since it only registers creatures while the zone is enabled.
+		FULL_AUTHORITY_ZONE.setEnabled(false);
+		MOB_BUFF_ZONE.setEnabled(true);
+		MOB_BUFF_DISPLAY_ZONE.setEnabled(true);
 		final Npc npc = addSpawn(SHYEED, SHYEED_LOC, false, 0);
 		startQuestTimer("despawn", 10800000, npc, null);
-		PC_BUFF_ZONE.setEnabled(false);
-		// MOB_BUFF_ZONE.setEnabled(true);
-		MOB_BUFF_DISPLAY_ZONE.setEnabled(true);
 	}
 	
 	private void startRespawn()
@@ -114,7 +124,7 @@ public class QueenShyeed extends AbstractNpcAI
 		final int respawnTime = RESPAWN - getRandom(RANDOM_RESPAWN);
 		GlobalVariablesManager.getInstance().set("QueenShyeedRespawn", Long.toString(System.currentTimeMillis() + respawnTime));
 		startQuestTimer("respawn", respawnTime, null, null);
-		// MOB_BUFF_ZONE.setEnabled(false);
+		MOB_BUFF_ZONE.setEnabled(false);
 		MOB_BUFF_DISPLAY_ZONE.setEnabled(false);
 	}
 	

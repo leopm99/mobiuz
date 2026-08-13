@@ -729,7 +729,7 @@
 		<set name="abnormalTime" val="8" />
 		<set name="abnormalType" val="COUNTER_CRITICAL_TRIGGER" />
 		<set name="isTriggeredSkill" val="true" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="reuseDelay" val="15000" />
 		<effects>
 			<effect name="Buff">
@@ -749,7 +749,7 @@
 		<set name="abnormalType" val="ATTACK_TIME_DOWN_SPECIAL" />
 		<set name="affectRange" val="1000" />
 		<set name="isTriggeredSkill" val="true" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="reuseDelay" val="15000" />
 		<effects>
 			<effect name="Buff">
@@ -1010,7 +1010,7 @@
 		<set name="isDebuff" val="true" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="isTriggeredSkill" val="true" />
-		<set name="magicLevel" val="83" />
+		<set name="magicLevel" val="81" />
 		<set name="soulMaxConsumeCount" val="5" />
 		<set name="trait" val="PARALYZE" />
 		<effects>

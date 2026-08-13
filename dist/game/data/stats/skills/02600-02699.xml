@@ -698,7 +698,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14200" /> <!-- Forgotten Scroll - Summon Imperial Phoenix -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="81" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -721,7 +721,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14207" /> <!-- Forgotten Scroll - Deflect Magic -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="81" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -744,7 +744,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14198" /> <!-- Forgotten Scroll - Song of Purification -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="81" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -767,7 +767,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14199" /> <!-- Forgotten Scroll - Dance of Berserker -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="81" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -790,7 +790,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14208" /> <!-- Forgotten Scroll - Final Secret -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="81" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -813,7 +813,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14201" /> <!-- Forgotten Scroll - Maximum Force Focus -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="81" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -836,7 +836,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14202" /> <!-- Forgotten Scroll - Maximum Sonic Focus -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="81" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -859,7 +859,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14209" /> <!-- Forgotten Scroll - Hide -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="81" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -905,7 +905,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14211" /> <!-- Forgotten Scroll - Seven Arrow -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="81" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -928,7 +928,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14212" /> <!-- Forgotten Scroll - Enlightenment - Wizard -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="81" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -951,7 +951,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14213" /> <!-- Forgotten Scroll - Enlightenment - Healer -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="81" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -974,7 +974,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14214" /> <!-- Forgotten Scroll - Chant of Movement -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="72" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -997,7 +997,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14215" /> <!-- Forgotten Scroll - Combat of Pa'agrio -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="70" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -1020,7 +1020,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14216" /> <!-- Forgotten Scroll - Critical of Pa'agrio -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="74" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -1043,7 +1043,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14217" /> <!-- Forgotten Scroll - Condition of Pa'agrio -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="72" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -1066,7 +1066,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14218" /> <!-- Forgotten Scroll - Dual Blow -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="81" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -1089,7 +1089,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14204" /> <!-- Forgotten Scroll - Spirit of the Cat -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="81" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -1112,7 +1112,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14206" /> <!-- Forgotten Scroll - Spirit of the Phantom -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="81" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>
@@ -1135,7 +1135,7 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="14205" /> <!-- Forgotten Scroll - Spirit of the Unicorn -->
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="81" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>

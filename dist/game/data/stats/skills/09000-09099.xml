@@ -1538,7 +1538,7 @@
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="17036" /> <!-- Forgotten Scroll - Magician's Will - For Events -->
 		<set name="learnSkillId" val="945" />
-		<set name="magicLevel" val="1" />
+		<set name="magicLevel" val="81" />
 		<conditions msgId="113" addName="1">
 			<and>
 				<not>

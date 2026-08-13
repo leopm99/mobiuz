@@ -3463,7 +3463,7 @@
 		<set name="affectLimit" val="9-10" />
 		<set name="affectRange" val="200" />
 		<set name="hitTime" val="500" />
-		<set name="magicLevel" val="78" />
+		<set name="magicLevel" val="28" />
 		<set name="mpConsume" val="12" />
 		<set name="reuseDelay" val="3000" />
 		<effects>

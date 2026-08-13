@@ -1600,7 +1600,7 @@
 		<set name="hitTime" val="#hitTime" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="1" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="80" />
 		<set name="mpConsume" val="70" />
 		<set name="reuseDelay" val="1000" />
 		<set name="trait" val="DERANGEMENT" />

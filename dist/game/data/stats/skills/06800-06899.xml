@@ -675,7 +675,7 @@
 		<set name="elementPower" val="20" />
 		<set name="hitTime" val="3000" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="81" />
 		<set name="mpConsume" val="123" />
 		<set name="power" val="300" />
 		<set name="reuseDelay" val="3000" />
@@ -702,7 +702,7 @@
 		<set name="element" val="5" /> <!-- Dark -->
 		<set name="elementPower" val="20" />
 		<set name="hitTime" val="3000" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="82" />
 		<set name="mpConsume" val="100" />
 		<set name="power" val="3000" />
 		<set name="reuseDelay" val="3000" />
@@ -732,7 +732,7 @@
 		<set name="element" val="5" /> <!-- Dark -->
 		<set name="elementPower" val="20" />
 		<set name="hitTime" val="3000" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="81" />
 		<set name="mpConsume" val="80" />
 		<set name="power" val="3000" />
 		<set name="reuseDelay" val="3000" />
@@ -751,7 +751,7 @@
 		<set name="elementPower" val="20" />
 		<set name="hitTime" val="4000" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="81" />
 		<set name="mpConsume" val="80" />
 		<set name="power" val="100" />
 		<set name="reuseDelay" val="3000" />
@@ -777,7 +777,7 @@
 		<set name="isDebuff" val="true" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
 		<set name="lvlBonusRate" val="2" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="82" />
 		<set name="mpConsume" val="80" />
 		<set name="removedOnDamage" val="true" />
 		<set name="reuseDelay" val="1000" />
@@ -803,7 +803,7 @@
 		<set name="isDebuff" val="true" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
 		<set name="lvlBonusRate" val="2" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="82" />
 		<set name="mpConsume" val="73" />
 		<set name="reuseDelay" val="1000" />
 		<effects>
@@ -820,7 +820,7 @@
 		<set name="elementPower" val="20" />
 		<set name="hitTime" val="4000" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="82" />
 		<set name="power" val="150" />
 		<set name="reuseDelay" val="1000" />
 		<effects>
@@ -841,7 +841,7 @@
 		<set name="element" val="5" /> <!-- Dark -->
 		<set name="elementPower" val="20" />
 		<set name="hitTime" val="2500" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="83" />
 		<set name="mpConsume" val="80" />
 		<set name="power" val="15000" />
 		<set name="reuseDelay" val="3000" />
@@ -866,7 +866,7 @@
 		<set name="element" val="5" /> <!-- Dark -->
 		<set name="elementPower" val="20" />
 		<set name="hitTime" val="2500" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="83" />
 		<set name="mpConsume" val="80" />
 		<set name="power" val="15000" />
 		<set name="reuseDelay" val="3000" />
@@ -884,7 +884,7 @@
 		<set name="element" val="5" /> <!-- Dark -->
 		<set name="elementPower" val="20" />
 		<set name="hitTime" val="2000" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="83" />
 		<set name="mpConsume" val="80" />
 		<set name="power" val="15000" />
 		<set name="reuseDelay" val="3000" />
@@ -905,7 +905,7 @@
 		<set name="effectPoint" val="100" />
 		<set name="hitTime" val="2000" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="83" />
 		<set name="mpConsume" val="75" />
 		<set name="reuseDelay" val="30000" />
 		<effects>
@@ -932,7 +932,7 @@
 		<set name="hitTime" val="2500" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="1" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="83" />
 		<set name="mpConsume" val="80" />
 		<set name="reuseDelay" val="3000" />
 		<set name="trait" val="POISON" />
@@ -959,7 +959,7 @@
 		<set name="hitTime" val="3000" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="1" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="83" />
 		<set name="mpConsume" val="80" />
 		<set name="reuseDelay" val="3000" />
 		<set name="trait" val="POISON" />
@@ -986,7 +986,7 @@
 		<set name="hitTime" val="2500" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="1" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="83" />
 		<set name="mpConsume" val="80" />
 		<set name="reuseDelay" val="3000" />
 		<set name="trait" val="POISON" />
@@ -1006,7 +1006,7 @@
 		<set name="elementPower" val="20" />
 		<set name="hitTime" val="3000" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="83" />
 		<set name="power" val="200" />
 		<set name="reuseDelay" val="3000" />
 		<effects>
@@ -1025,7 +1025,7 @@
 		<set name="elementPower" val="20" />
 		<set name="hitTime" val="3000" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="83" />
 		<set name="power" val="150" />
 		<set name="reuseDelay" val="3000" />
 		<effects>
@@ -1048,7 +1048,7 @@
 		<set name="hitTime" val="3000" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
 		<set name="isSuicideAttack" val="true" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="83" />
 		<set name="power" val="300" />
 		<effects>
 			<effect name="MagicalDamage" />
@@ -1064,7 +1064,7 @@
 		<set name="elementPower" val="20" />
 		<set name="hitTime" val="2000" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="83" />
 		<set name="mpConsume" val="123" />
 		<set name="power" val="100" />
 		<set name="reuseDelay" val="3000" />
@@ -1085,7 +1085,7 @@
 		<set name="elementPower" val="20" />
 		<set name="hitTime" val="2500" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="83" />
 		<set name="mpConsume" val="122" />
 		<set name="power" val="100" />
 		<set name="reuseDelay" val="3000" />
@@ -1103,7 +1103,7 @@
 		<set name="elementPower" val="20" />
 		<set name="hitTime" val="5000" />
 		<set name="isSuicideAttack" val="true" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="83" />
 		<set name="mpConsume" val="80" />
 		<set name="power" val="300" />
 		<effects>
@@ -1129,7 +1129,7 @@
 		<set name="hitTime" val="1500" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="2" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="83" />
 		<set name="reuseDelay" val="2000" />
 		<effects>
 			<effect name="Debuff">
@@ -1146,7 +1146,7 @@
 		<set name="elementPower" val="20" />
 		<set name="hitTime" val="2500" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="83" />
 		<set name="power" val="150" />
 		<set name="reuseDelay" val="3000" />
 		<effects>
@@ -1172,7 +1172,7 @@
 		<set name="hitTime" val="2500" />
 		<set name="isDebuff" val="true" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="83" />
 		<set name="reuseDelay" val="3000" />
 		<effects>
 			<effect name="DamOverTime" ticks="1">
@@ -1190,7 +1190,7 @@
 		<set name="element" val="5" /> <!-- Dark -->
 		<set name="elementPower" val="20" />
 		<set name="hitTime" val="2000" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="83" />
 		<set name="mpConsume" val="80" />
 		<set name="power" val="15000" />
 		<set name="reuseDelay" val="3000" />
@@ -1208,7 +1208,7 @@
 		<set name="element" val="5" /> <!-- Dark -->
 		<set name="elementPower" val="20" />
 		<set name="hitTime" val="2000" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="83" />
 		<set name="mpConsume" val="80" />
 		<set name="power" val="15000" />
 		<set name="reuseDelay" val="3000" />
@@ -1251,7 +1251,7 @@
 		<set name="elementPower" val="20" />
 		<set name="hitTime" val="3000" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="83" />
 		<set name="power" val="100" />
 		<set name="reuseDelay" val="3000" />
 		<effects>
@@ -1294,7 +1294,7 @@
 		<set name="element" val="5" /> <!-- Dark -->
 		<set name="elementPower" val="20" />
 		<set name="hitTime" val="2500" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="84" />
 		<set name="mpConsume" val="89" />
 		<set name="power" val="15000" />
 		<set name="reuseDelay" val="3000" />
@@ -1314,7 +1314,7 @@
 		<set name="hitTime" val="2500" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="1" />
-		<set name="magicLevel" val="85" />
+		<set name="magicLevel" val="84" />
 		<set name="reuseDelay" val="5000" />
 		<effects>
 			<effect name="Petrification" />
@@ -1355,7 +1355,7 @@
 		<set name="effectPoint" val="100" />
 		<set name="effectRange" val="1800" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
-		<set name="magicLevel" val="-1" />
+		<set name="magicLevel" val="80" />
 		<effects>
 			<effect name="Buff">
 				<mul stat="critRate" val="#critRate" />

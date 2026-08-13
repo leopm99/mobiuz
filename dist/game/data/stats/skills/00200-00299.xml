@@ -5913,7 +5913,7 @@
 		<set name="effectPoint" val="379" />
 		<set name="hitTime" val="2500" />
 		<set name="isMagic" val="3" /> <!-- Dance Skill -->
-		<set name="magicLevel" val="43" />
+		<set name="magicLevel" val="40" />
 		<set name="mpConsume" val="60" />
 		<set name="reuseDelay" val="3000" />
 		<enchant1 name="abnormalTime" val="#ench1AbnormalTimes" />
@@ -6180,7 +6180,7 @@
 		<set name="effectPoint" val="408" />
 		<set name="hitTime" val="2500" />
 		<set name="isMagic" val="3" /> <!-- Dance Skill -->
-		<set name="magicLevel" val="49" />
+		<set name="magicLevel" val="43" />
 		<set name="mpConsume" val="60" />
 		<set name="reuseDelay" val="3000" />
 		<enchant1 name="abnormalTime" val="#ench1AbnormalTimes" />

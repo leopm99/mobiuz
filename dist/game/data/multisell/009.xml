@@ -86,8 +86,6 @@
 		<ingredient count="120" id="8357" />
 		<!-- Jade Colored Fish Scale -->
 		<ingredient count="100" id="8359" />
-		<!-- Adena -->
-		<ingredient count="15000" id="57" />
 		<!-- Recipe: Pirate's Eye Patch (100%) -->
 		<production count="1" id="6924" />
 	</item>
@@ -98,8 +96,6 @@
 		<ingredient count="120" id="8354" />
 		<!-- Green Colored Fish Scale -->
 		<ingredient count="110" id="8353" />
-		<!-- Adena -->
-		<ingredient count="15000" id="57" />
 		<!-- Recipe: Lady's Hair Pin (100%) -->
 		<production count="1" id="6923" />
 	</item>
@@ -110,8 +106,6 @@
 		<ingredient count="120" id="8354" />
 		<!-- Green Colored Fish Scale -->
 		<ingredient count="110" id="8353" />
-		<!-- Adena -->
-		<ingredient count="15000" id="57" />
 		<!-- Recipe: Monocle (100%) -->
 		<production count="1" id="6925" />
 	</item>
@@ -122,8 +116,6 @@
 		<ingredient count="120" id="8354" />
 		<!-- Green Colored Fish Scale -->
 		<ingredient count="110" id="8353" />
-		<!-- Adena -->
-		<ingredient count="15000" id="57" />
 		<!-- Recipe - Outlaw's Eyepatch (100%) -->
 		<production count="1" id="7690" />
 	</item>
@@ -134,8 +126,6 @@
 		<ingredient count="120" id="8354" />
 		<!-- Green Colored Fish Scale -->
 		<ingredient count="110" id="8353" />
-		<!-- Adena -->
-		<ingredient count="15000" id="57" />
 		<!-- Recipe - Maiden's Hairpin (100%) -->
 		<production count="1" id="7691" />
 	</item>
@@ -146,8 +136,6 @@
 		<ingredient count="120" id="8354" />
 		<!-- Green Colored Fish Scale -->
 		<ingredient count="110" id="8353" />
-		<!-- Adena -->
-		<ingredient count="15000" id="57" />
 		<!-- Recipe: Forget-me-not Hairpin (100%) -->
 		<production count="1" id="7699" />
 	</item>
@@ -158,8 +146,6 @@
 		<ingredient count="120" id="8354" />
 		<!-- Green Colored Fish Scale -->
 		<ingredient count="110" id="8353" />
-		<!-- Adena -->
-		<ingredient count="15000" id="57" />
 		<!-- Recipe: Daisy Hairpin (100%) -->
 		<production count="1" id="7700" />
 	</item>

@@ -2470,8 +2470,8 @@
 		<set name="hitTime" val="3000" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
 		<set name="magicLevel" val="81" />
-		<set name="mpConsume" val="31" />
-		<set name="mpInitialConsume" val="145" />
+		<set name="mpConsume" val="116" />
+		<set name="mpInitialConsume" val="29" />
 		<set name="power" val="199" /> <!-- Inflicts additional non-attribute damage if the target is a monster -->
 		<set name="pvpPower" val="141" />
 		<set name="reuseDelay" val="15000" />
@@ -2495,8 +2495,8 @@
 		<set name="hitTime" val="2000" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
 		<set name="magicLevel" val="82" />
-		<set name="mpConsume" val="27" />
-		<set name="mpInitialConsume" val="123" />
+		<set name="mpConsume" val="98" />
+		<set name="mpInitialConsume" val="25" />
 		<set name="power" val="302" /> <!-- Inflicts additional non-attribute damage if the target is a monster -->
 		<set name="pvpPower" val="178" />
 		<set name="reuseDelay" val="10000" />

@@ -3616,7 +3616,7 @@
 		<!-- Dynasty Dual Daggers -->
 		<ingredient count="1" id="13882" />
 		<!-- Neolithic Crystal - S -->
-		<ingredient count="1" id="14680" />
+		<ingredient count="1" id="14681" />
 		<!-- Dynasty Dual Daggers - Great Gale -->
 		<production count="1" id="14526" />
 	</item>
@@ -4091,5 +4091,112 @@
 		<ingredient count="1" id="21579" />
 		<!-- Vesper Dual Daggers - Gale -->
 		<production count="1" id="16148" />
+	</item>
+	<item>
+		<ingredient count="1" id="21919" />
+		<!-- Neolithic Crystal - S84 -->
+		<ingredient count="1" id="21579" />
+		<production count="1" id="21927" />
+	</item>
+	<item>
+		<ingredient count="1" id="21920" />
+		<!-- Neolithic Crystal - S84 -->
+		<ingredient count="1" id="21579" />
+		<production count="1" id="21928" />
+	</item>
+	<item>
+		<ingredient count="1" id="21921" />
+		<!-- Neolithic Crystal - S84 -->
+		<ingredient count="1" id="21579" />
+		<production count="1" id="21929" />
+	</item>
+	<item>
+		<ingredient count="1" id="21922" />
+		<!-- Neolithic Crystal - S84 -->
+		<ingredient count="1" id="21579" />
+		<production count="1" id="21930" />
+	</item>
+	<item>
+		<ingredient count="1" id="21935" />
+		<ingredient count="1" id="14681" />
+		<production count="1" id="21937" />
+	</item>
+	<item>
+		<ingredient count="1" id="21939" />
+		<!-- Neolithic Crystal - S84 -->
+		<ingredient count="1" id="21579" />
+		<production count="1" id="21947" />
+	</item>
+	<item>
+		<ingredient count="1" id="21940" />
+		<!-- Neolithic Crystal - S84 -->
+		<ingredient count="1" id="21579" />
+		<production count="1" id="21948" />
+	</item>
+	<item>
+		<ingredient count="1" id="21941" />
+		<!-- Neolithic Crystal - S84 -->
+		<ingredient count="1" id="21579" />
+		<production count="1" id="21949" />
+	</item>
+	<item>
+		<ingredient count="1" id="21942" />
+		<!-- Neolithic Crystal - S84 -->
+		<ingredient count="1" id="21579" />
+		<production count="1" id="21950" />
+	</item>
+	<item>
+		<ingredient count="1" id="21955" />
+		<!-- Neolithic Crystal - S -->
+		<ingredient count="1" id="14680" />
+		<production count="1" id="21957" />
+	</item>
+	<item>
+		<ingredient count="1" id="21959" />
+		<!-- Neolithic Crystal - S -->
+		<ingredient count="1" id="14680" />
+		<production count="1" id="21966" />
+	</item>
+	<item>
+		<ingredient count="1" id="21960" />
+		<!-- Neolithic Crystal - S -->
+		<ingredient count="1" id="14680" />
+		<production count="1" id="21967" />
+	</item>
+	<item>
+		<ingredient count="1" id="21961" />
+		<!-- Neolithic Crystal - S -->
+		<ingredient count="1" id="14680" />
+		<production count="1" id="21968" />
+	</item>
+	<item>
+		<ingredient count="1" id="21962" />
+		<!-- Neolithic Crystal - S -->
+		<ingredient count="1" id="14680" />
+		<production count="1" id="21969" />
+	</item>
+	<item>
+		<ingredient count="1" id="21973" />
+		<!-- Neolithic Crystal - A -->
+		<ingredient count="1" id="14679" />
+		<production count="1" id="21977" />
+	</item>
+	<item>
+		<ingredient count="1" id="21974" />
+		<!-- Neolithic Crystal - A -->
+		<ingredient count="1" id="14679" />
+		<production count="1" id="21978" />
+	</item>
+	<item>
+		<ingredient count="1" id="21975" />
+		<!-- Neolithic Crystal - A -->
+		<ingredient count="1" id="14679" />
+		<production count="1" id="21979" />
+	</item>
+	<item>
+		<ingredient count="1" id="21976" />
+		<!-- Neolithic Crystal - A -->
+		<ingredient count="1" id="14679" />
+		<production count="1" id="21980" />
 	</item>
 </list>
