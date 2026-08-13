@@ -1200,6 +1200,7 @@
 		<table name="#abnormalLevels">1 2</table>
 		<table name="#magicLevel">30 70</table>
 		<table name="#pAtkSpd">1.15 1.33</table>
+		<set name="icon" val="icon.skill1086" />
 		<set name="operateType" val="A2" />
 		<set name="targetType" val="ONE" />
 		<set name="abnormalLevel" val="#abnormalLevels" />
@@ -1217,6 +1218,7 @@
 		<table name="#abnormalLevels">1 2 3</table>
 		<table name="#magicLevel">20 40 60</table>
 		<table name="#rCrit">1.15 1.25 1.3</table>
+		<set name="icon" val="icon.skill1077" />
 		<set name="operateType" val="A2" />
 		<set name="targetType" val="ONE" />
 		<set name="abnormalLevel" val="#abnormalLevels" />
@@ -1251,6 +1253,7 @@
 		<table name="#abnormalLevels">1 2 3</table>
 		<table name="#magicLevel">20 40 60</table>
 		<table name="#pAtk">1.08 1.12 1.15</table>
+		<set name="icon" val="icon.skill1068" />
 		<set name="operateType" val="A2" />
 		<set name="targetType" val="ONE" />
 		<set name="abnormalLevel" val="#abnormalLevels" />

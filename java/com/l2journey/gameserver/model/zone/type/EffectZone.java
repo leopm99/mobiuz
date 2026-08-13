@@ -319,7 +319,7 @@ public class EffectZone extends ZoneType
 			
 			for (Creature character : getCharactersInside())
 			{
-				if ((character != null) && character.isPlayer() && !character.isDead() && (Rnd.get(100) < _chance))
+				if ((character != null) && !character.isDead() && (Rnd.get(100) < _chance))
 				{
 					for (Entry<Integer, Integer> e : _skills.entrySet())
 					{
