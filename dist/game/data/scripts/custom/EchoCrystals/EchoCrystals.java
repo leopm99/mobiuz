@@ -34,7 +34,6 @@ import java.util.Map;
 import com.l2journey.commons.util.StringUtil;
 import com.l2journey.gameserver.model.actor.Npc;
 import com.l2journey.gameserver.model.actor.Player;
-import com.l2journey.gameserver.model.quest.QuestState;
 
 import ai.AbstractNpcAI;
 
@@ -114,8 +113,7 @@ public class EchoCrystals extends AbstractNpcAI
 	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = "";
-		final QuestState qs = player.getQuestState(EchoCrystals.class.getSimpleName());
-		if ((qs != null) && StringUtil.isNumeric(event))
+		if (StringUtil.isNumeric(event))
 		{
 			final int score = Integer.parseInt(event);
 			if (SCORES.containsKey(score))
