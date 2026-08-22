@@ -169,13 +169,42 @@
 		<!-- Level 3: Increases Resistance to fear attacks by 60%. -->
 		<!-- Level 4: Increases Resistance to fear attacks by 80%. -->
 		<!-- Level 5: Increases Resistance to fear attacks by 100%. -->
+		<table name="#trait_derangement">20 40 60 80 100</table>
 		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
+		<set name="magicLevel" val="1" />
+		<effects>
+			<effect name="DefenceTrait">
+				<param DERANGEMENT="#trait_derangement" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23318" levels="1" name="Cat the Ranger Boots">
 		<!-- Recovers the master's HP by 10%. For 1 minute(s), receives power from Cat the Ranger to increase the master's Resistance to debuff attacks by 80%, Resistance to buff canceling attacks by 40%, Speed by 10%, P. Def. by 20%, and M. Def. by 20%. Does not receive preemptive attacks from monsters. Reuse delay 10 minutes. -->
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="operateType" val="A2" />
+		<set name="targetType" val="OWNER_PET" />
+		<set name="abnormalLevel" val="1" />
+		<set name="abnormalTime" val="60" />
+		<set name="abnormalType" val="BUFF_QUEEN_OF_CAT" />
+		<set name="blockedInOlympiad" val="true" />
+		<set name="castRange" val="400" />
+		<set name="effectRange" val="900" />
+		<set name="isTriggeredSkill" val="true" />
+		<set name="magicLevel" val="70" />
+		<set name="reuseDelay" val="600000" />
+		<effects>
+			<effect name="HealPercent">
+				<param power="10" />
+			</effect>
+			<effect name="Buff">
+				<sub stat="debuffVuln" val="80" />
+				<sub stat="cancelVuln" val="40" />
+				<mul stat="runSpd" val="1.1" />
+				<mul stat="pDef" val="1.2" />
+				<mul stat="mDef" val="1.2" />
+			</effect>
+			<effect name="SilentMove" />
+		</effects>
 	</skill>
 	<skill id="23319" levels="1" name="Blood Seeker">
 		<!-- HP is decreased momentarily from bleeding. -->
