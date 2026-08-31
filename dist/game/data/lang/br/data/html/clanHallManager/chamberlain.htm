@@ -1,14 +1,13 @@
 <html noscrollbar>
-	<title>Clan Hall Manager</title>
 	<body>
 		Saudações, meu senhor.<br1>
 		Aguardando suas ordens!<br><br><br>
 		<center>
-		<button value="Abrir e Fechar Portas" action="bypass -h npc_%objectId%_door" width=200 height=31 back="L2UI_CT1.OlympiadWnd_DF_Info_Down" fore="L2UI_CT1.OlympiadWnd_DF_Info">
-		<button value="Expulsar Invasores" action="bypass -h npc_%objectId%_banish_foreigner list" width=200 height=31 back="L2UI_CT1.OlympiadWnd_DF_Info_Down" fore="L2UI_CT1.OlympiadWnd_DF_Info">
-		<button value="Funções do Clan Hall" action="bypass -h npc_%objectId%_functions" width=200 height=31 back="L2UI_CT1.OlympiadWnd_DF_Info_Down" fore="L2UI_CT1.OlympiadWnd_DF_Info">
-		<button value="Banco do Clan Hall" action="bypass -h npc_%objectId%_manage_vault" width=200 height=31 back="L2UI_ct1.OlympiadWnd_DF_BuyEtc_Down" fore="L2UI_ct1.OlympiadWnd_DF_BuyEtc">
-		<button value="Gestão do Clan Hall" action="bypass -h npc_%objectId%_manage" width=200 height=31 back="L2UI_CT1.OlympiadWnd_DF_Info_Down" fore="L2UI_CT1.OlympiadWnd_DF_Info">
+		<a action="bypass -h npc_%objectId%_door">Abrir e fechar as portas</a><br>
+		<a action="bypass -h npc_%objectId%_banish_foreigner list">Expulsar invasores</a><br>
+		<a action="bypass -h npc_%objectId%_functions">Funções do Clan hall</a><br>
+		<a action="bypass -h npc_%objectId%_manage_vault">Banco do Clan hall</a><br>
+		<a action="bypass -h npc_%objectId%_manage">Gestão do Clan hall</a>
 		</center>
 	</body>
 </html>
