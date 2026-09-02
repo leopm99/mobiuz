@@ -1290,7 +1290,7 @@
 		<!-- Spirit's power: Cannot damage the spirit for 10 seconds. Exclusive use for the Reckless Spirit of Fire. -->
 		<set name="icon" val="icon.skill0211" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="2" />
 		<set name="abnormalTime" val="10" />
 		<set name="abnormalType" val="BR_EVENT_BUF1" />
@@ -1299,12 +1299,15 @@
 		<set name="isDebuff" val="true" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="-1" />
+		<effects>
+			<effect name="Invincible" />
+		</effects>
 	</skill>
 	<skill id="23071" levels="1" name="Blue Flame">
 		<!-- Spirit's power: Cannot damage the spirit for 8 seconds. Exclusive use for the Spirit of Fire. -->
 		<set name="icon" val="icon.skill0213" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="1" />
 		<set name="abnormalTime" val="8" />
 		<set name="abnormalType" val="BR_EVENT_BUF1" />
@@ -1313,6 +1316,9 @@
 		<set name="isDebuff" val="true" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="-1" />
+		<effects>
+			<effect name="Invincible" />
+		</effects>
 	</skill>
 	<skill id="23072" levels="1" name="Eva's Authority">
 		<!-- For 70 seconds, attacks the spirit using Eva's Authority. -->

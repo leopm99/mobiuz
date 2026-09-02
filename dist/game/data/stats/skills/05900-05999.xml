@@ -946,10 +946,13 @@
 		<!-- Able to see the summoned spirit perform cute tricks. -->
 		<set name="icon" val="icon.skill_agathion_cute" />
 		<set name="operateType" val="A1" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="hitTime" val="3000" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="85" />
+		<conditions msgId="2292">
+			<player agathionId="13162" />
+		</conditions>
 	</skill>
 	<skill id="5955" levels="1" name="Agathion Cute Trick - Joy">
 		<!-- Able to see the summoned spirit perform cute tricks. -->

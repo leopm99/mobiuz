@@ -101,7 +101,13 @@
 	<skill id="22407" levels="1" name="PC Cafe Energy">
 		<!-- For 60 minutes, recovers Vitality when Exp. is acquired through hunting. -->
 		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
+		<set name="magicLevel" val="1" />
+		<effects>
+			<effect name="Buff">
+				<sub stat="vitalityConsumeRate" val="10" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22408" levels="1" name="Enchantment Tool Box">
 		<set name="operateType" val="P" />
@@ -110,6 +116,13 @@
 	<skill id="22409" levels="1" name="Rune of Fate">
 		<!-- Increases acquired XP and SP by 200%. -->
 		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
+		<set name="magicLevel" val="1" />
+		<effects>
+			<effect name="Buff">
+				<add stat="bonusExp" val="200" />
+				<add stat="bonusSp" val="200" />
+			</effect>
+		</effects>
 	</skill>
 </list>

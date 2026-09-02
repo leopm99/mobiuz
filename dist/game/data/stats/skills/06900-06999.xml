@@ -129,8 +129,15 @@
 	</skill>
 	<skill id="6916" levels="1" name="Antharas's Cute Tricks">
 		<!-- You can see the summoned spirit's cute tricks. -->
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="icon" val="icon.skill_agathion_cute" />
+		<set name="operateType" val="A1" />
+		<set name="targetType" val="SELF" />
+		<set name="hitTime" val="3000" />
+		<set name="isMagic" val="2" /> <!-- Static Skill -->
+		<set name="magicLevel" val="85" />
+		<conditions msgId="2292">
+			<player agathionId="16077" />
+		</conditions>
 	</skill>
 	<skill id="6917" levels="1" name="Kanna's Splendor">
 		<!-- Able to see the summoned spirit's splendor. -->
