@@ -38,19 +38,63 @@
 		<set name="targetType" val="NONE" />
 	</skill>
 	<skill id="23305" levels="1" name="Zinenze Agathion - Yunbokhwan">
-		<!-- Restores all HP/MP/CP and becomes invincible for 5 seconds. But can only be used when HP is below 30%. -->
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<!-- Instantly restores all HP, MP, and CP, and becomes invincible for 5 seconds. Can only be used when HP is below 30%. Reuse delay is 12 hours. -->
+		<set name="icon" val="icon.skill_agathion_special" />
+		<set name="operateType" val="A2" />
+		<set name="targetType" val="SELF" />
+		<set name="abnormalLevel" val="26" />
+		<set name="abnormalTime" val="5" />
+		<set name="abnormalType" val="INVINCIBILITY" />
+		<set name="abnormalVisualEffect" val="INVINCIBILITY" />
+		<set name="activateRate" val="0" />
+		<set name="blockedInOlympiad" val="true" />
+		<set name="hitTime" val="2000" />
+		<set name="isMagic" val="2" /> <!-- Static Skill -->
+		<set name="magicLevel" val="-1" />
+		<set name="removedOnAnyActionExceptMove" val="false" />
+		<set name="reuseDelay" val="43200000" />
+		<conditions msgId="113" addName="1">
+			<and>
+				<player agathionId="1599" />
+				<player hp="30" />
+			</and>
+		</conditions>
+		<effects>
+			<effect name="Invincible" />
+			<effect name="CpHealPercent">
+				<param power="100" />
+			</effect>
+			<effect name="HealPercent">
+				<param power="100" />
+			</effect>
+			<effect name="ManaHealPercent">
+				<param power="100" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23306" levels="1" name="Zinenze Agathion Cute Trick">
 		<!-- Able to see the summoned Zinenze perform cute tricks. -->
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="icon" val="icon.skill_agathion_cute" />
+		<set name="operateType" val="A1" />
+		<set name="targetType" val="SELF" />
+		<set name="hitTime" val="3000" />
+		<set name="isMagic" val="2" /> <!-- Static Skill -->
+		<set name="magicLevel" val="85" />
+		<conditions msgId="2292">
+			<player agathionId="1599" />
+		</conditions>
 	</skill>
 	<skill id="23307" levels="1" name="Enze Agathion Cute Trick">
 		<!-- Able to see the summoned Enze perform cute tricks. -->
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="icon" val="icon.skill_agathion_cute" />
+		<set name="operateType" val="A1" />
+		<set name="targetType" val="SELF" />
+		<set name="hitTime" val="3000" />
+		<set name="isMagic" val="2" /> <!-- Static Skill -->
+		<set name="magicLevel" val="85" />
+		<conditions msgId="2292">
+			<player agathionId="1600" />
+		</conditions>
 	</skill>
 	<skill id="23308" levels="1" name="Totem's Energy - Body">
 		<!-- Increases HP Recovery Bonus by 30% and decreases damage from the topography by 80% through the mysterious totem's energy. The energy disappears when the totem becomes out of range. -->
@@ -133,8 +177,15 @@
 		<!-- Level 3: Increases Resistance to action-inhibiting attacks by 60%. -->
 		<!-- Level 4: Increases Resistance to action-inhibiting attacks by 80%. -->
 		<!-- Level 5: Increases Resistance to action-inhibiting attacks by 100%. -->
+		<table name="#trait_shock">20 40 60 80 100</table>
 		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
+		<set name="magicLevel" val="1" />
+		<effects>
+			<effect name="DefenceTrait">
+				<param SHOCK="#trait_shock" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23314" levels="5" name="Control Prohibit Immunity">
 		<!-- Level 1: Increases Resistance to control-inhibiting attacks by 20%. -->
@@ -142,8 +193,15 @@
 		<!-- Level 3: Increases Resistance to control-inhibiting attacks by 60%. -->
 		<!-- Level 4: Increases Resistance to control-inhibiting attacks by 80%. -->
 		<!-- Level 5: Increases Resistance to control-inhibiting attacks by 100%. -->
+		<table name="#trait_hold">20 40 60 80 100</table>
 		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
+		<set name="magicLevel" val="1" />
+		<effects>
+			<effect name="DefenceTrait">
+				<param HOLD="#trait_hold" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23315" levels="5" name="Paralysis Immunity Enhance">
 		<!-- Level 1: Increases Resistance to paralysis attacks by 20%. -->
@@ -151,8 +209,15 @@
 		<!-- Level 3: Increases Resistance to paralysis attacks by 60%. -->
 		<!-- Level 4: Increases Resistance to paralysis attacks by 80%. -->
 		<!-- Level 5: Increases Resistance to paralysis attacks by 100%. -->
+		<table name="#trait_paralyze">20 40 60 80 100</table>
 		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
+		<set name="magicLevel" val="1" />
+		<effects>
+			<effect name="DefenceTrait">
+				<param PARALYZE="#trait_paralyze" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23316" levels="5" name="Petrification Immunity Enhance">
 		<!-- Level 1: Increases Resistance to petrification attacks by 20%. -->
@@ -160,8 +225,15 @@
 		<!-- Level 3: Increases Resistance to petrification attacks by 60%. -->
 		<!-- Level 4: Increases Resistance to petrification attacks by 80%. -->
 		<!-- Level 5: Increases Resistance to petrification attacks by 100%. -->
+		<table name="#trait_turn_stone">20 40 60 80 100</table>
 		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
+		<set name="magicLevel" val="1" />
+		<effects>
+			<effect name="DefenceTrait">
+				<param TURN_STONE="#trait_turn_stone" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23317" levels="5" name="Fear Immunity Enhance">
 		<!-- Level 1: Increases Resistance to fear attacks by 20%. -->
@@ -398,23 +470,71 @@
 	</skill>
 	<skill id="23333" levels="1" name="Agathion's New Year's Wish">
 		<!-- Through the power of the Lantern Agathion, Vitality is maintained and not consumed. -->
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="icon" val="icon.skill_agathion_cute" />
+		<set name="operateType" val="A2" />
+		<set name="targetType" val="SELF" />
+		<set name="abnormalLevel" val="2" />
+		<set name="abnormalTime" val="3600" />
+		<set name="abnormalType" val="VP_KEEP" />
+		<set name="abnormalVisualEffect" val="VP_KEEP" />
+		<set name="hitTime" val="2000" />
+		<set name="isMagic" val="2" /> <!-- Static Skill -->
+		<set name="magicLevel" val="-1" />
+		<set name="reuseDelay" val="86400000" />
+		<conditions msgId="2292">
+			<player agathionId="1604" />
+		</conditions>
+		<effects>
+			<effect name="Buff">
+				<mul stat="vitalityConsumeRate" val="0" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23334" levels="1" name="Lantern Agathion Cute Trick">
 		<!-- Able to see the summoned Lantern's perform cute tricks. -->
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="icon" val="icon.skill_agathion_cute" />
+		<set name="operateType" val="A1" />
+		<set name="targetType" val="SELF" />
+		<set name="hitTime" val="3000" />
+		<set name="isMagic" val="2" /> <!-- Static Skill -->
+		<set name="magicLevel" val="85" />
+		<conditions msgId="2292">
+			<player agathionId="1604" />
+		</conditions>
 	</skill>
 	<skill id="23335" levels="1" name="Agathion's New Year's Wish">
 		<!-- Vitality is maintained with the power of Juju Agathion. -->
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="icon" val="icon.skill_agathion_cute" />
+		<set name="operateType" val="A2" />
+		<set name="targetType" val="SELF" />
+		<set name="abnormalLevel" val="2" />
+		<set name="abnormalTime" val="3600" />
+		<set name="abnormalType" val="VP_KEEP" />
+		<set name="abnormalVisualEffect" val="VP_KEEP" />
+		<set name="hitTime" val="2000" />
+		<set name="isMagic" val="2" /> <!-- Static Skill -->
+		<set name="magicLevel" val="-1" />
+		<set name="reuseDelay" val="86400000" />
+		<conditions msgId="2292">
+			<player agathionId="1605" />
+		</conditions>
+		<effects>
+			<effect name="Buff">
+				<mul stat="vitalityConsumeRate" val="0" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23336" levels="1" name="Juju Agathion Cute Trick">
 		<!-- Summoned Juju performs cute tricks. -->
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="icon" val="icon.skill_agathion_cute" />
+		<set name="operateType" val="A1" />
+		<set name="targetType" val="SELF" />
+		<set name="hitTime" val="3000" />
+		<set name="isMagic" val="2" /> <!-- Static Skill -->
+		<set name="magicLevel" val="85" />
+		<conditions msgId="2292">
+			<player agathionId="1605" />
+		</conditions>
 	</skill>
 	<skill id="23337" levels="1" name="Juju Agathion's Gift 1">
 		<set name="operateType" val="P" />
