@@ -20,9 +20,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.l2journey.Config;
+import com.l2journey.gameserver.model.actor.Player;
 import com.l2journey.gameserver.model.clan.Clan;
 import com.l2journey.gameserver.model.item.enums.ItemProcessType;
 import com.l2journey.gameserver.model.itemcontainer.Inventory;
+import com.l2journey.gameserver.network.SystemMessageId;
+import com.l2journey.gameserver.network.serverpackets.SystemMessage;
 
 /**
  * Class managing periodical events with castle
@@ -31,6 +34,7 @@ import com.l2journey.gameserver.model.itemcontainer.Inventory;
 public class FortUpdater implements Runnable
 {
 	private static final Logger LOGGER = Logger.getLogger(FortUpdater.class.getName());
+	private static final int CASTLE_SUPPLY_REPUTATION_COST = 2;
 	
 	private final Clan _clan;
 	private final Fort _fort;
@@ -68,7 +72,30 @@ public class FortUpdater implements Runnable
 						{
 							_clan.getWarehouse().destroyItemByItemId(ItemProcessType.FEE, Inventory.ADENA_ID, Config.FS_FEE_FOR_CASTLE, null, null);
 							_fort.getContractedCastle().addToTreasuryNoTax(Config.FS_FEE_FOR_CASTLE);
-							_fort.raiseSupplyLeveL();
+							
+							final Clan castleClan = _fort.getContractedCastle().getOwner();
+							if ((castleClan != null) && (castleClan.getReputationScore() >= CASTLE_SUPPLY_REPUTATION_COST))
+							{
+								castleClan.takeReputationScore(CASTLE_SUPPLY_REPUTATION_COST);
+								_fort.raiseSupplyLeveL();
+							}
+							else
+							{
+								final SystemMessage sm = new SystemMessage(SystemMessageId.THE_SUPPLY_ITEMS_HAVE_NOT_BEEN_PROVIDED_BECAUSE_THE_CASTLE_YOU_ARE_IN_CONTRACT_WITH_DOESN_T_HAVE_ENOUGH_CLAN_REPUTATION);
+								final Player fortressLeader = _clan.getLeader().getPlayer();
+								if (fortressLeader != null)
+								{
+									fortressLeader.sendPacket(sm);
+								}
+								if (castleClan != null)
+								{
+									final Player castleLeader = castleClan.getLeader().getPlayer();
+									if (castleLeader != null)
+									{
+										castleLeader.sendPacket(sm);
+									}
+								}
+							}
 						}
 						else
 						{

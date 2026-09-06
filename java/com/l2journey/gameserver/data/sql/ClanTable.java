@@ -46,6 +46,7 @@ import com.l2journey.commons.threads.ThreadPool;
 import com.l2journey.commons.util.StringUtil;
 import com.l2journey.gameserver.communitybbs.Manager.ForumsBBSManager;
 import com.l2journey.gameserver.managers.CHSiegeManager;
+import com.l2journey.gameserver.managers.CastleManager;
 import com.l2journey.gameserver.managers.ClanHallAuctionManager;
 import com.l2journey.gameserver.managers.FortManager;
 import com.l2journey.gameserver.managers.FortSiegeManager;
@@ -63,6 +64,7 @@ import com.l2journey.gameserver.model.events.holders.clan.OnClanWarFinish;
 import com.l2journey.gameserver.model.events.holders.clan.OnClanWarStart;
 import com.l2journey.gameserver.model.item.enums.ItemProcessType;
 import com.l2journey.gameserver.model.residences.ClanHallAuction;
+import com.l2journey.gameserver.model.siege.Castle;
 import com.l2journey.gameserver.model.siege.Fort;
 import com.l2journey.gameserver.model.siege.FortSiege;
 import com.l2journey.gameserver.model.siege.Siege;
@@ -334,10 +336,10 @@ public class ClanTable
 			
 			if (castleId != 0)
 			{
-				try (PreparedStatement ps = con.prepareStatement("UPDATE castle SET taxPercent = 0 WHERE id = ?"))
+				final Castle castle = CastleManager.getInstance().getCastleById(castleId);
+				if ((castle != null) && (clan == castle.getOwner()))
 				{
-					ps.setInt(1, castleId);
-					ps.execute();
+					castle.removeOwner(clan);
 				}
 			}
 			

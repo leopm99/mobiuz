@@ -592,6 +592,15 @@ public class Castle extends AbstractResidence
 			removeFunction(fc);
 		}
 		_function.clear();
+		
+		// Break the blood oath contract of any Fortress sworn to this castle.
+		for (Fort fort : FortManager.getInstance().getForts())
+		{
+			if ((fort.getFortState() == 2) && (fort.getContractedCastleId() == getResidenceId()))
+			{
+				fort.setFortState(1, 0);
+			}
+		}
 	}
 	
 	public void setTaxPercent(int taxPercent)

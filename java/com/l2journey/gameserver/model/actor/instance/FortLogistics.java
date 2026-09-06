@@ -141,7 +141,11 @@ public class FortLogistics extends Merchant
 		{
 			if (isMyLord(player))
 			{
-				if (getFort().getSiege().isInProgress())
+				if (getFort().getFortState() != 2)
+				{
+					html.setFile(player, "data/html/fortress/logistics-1.htm"); // no contract with a castle, no supply
+				}
+				else if (getFort().getSiege().isInProgress())
 				{
 					html.setFile(player, "data/html/fortress/logistics-siege.htm");
 				}
