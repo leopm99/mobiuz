@@ -432,6 +432,21 @@
 	<admin command="forge_values" accessLevel="100" />
 	<admin command="forge_send" accessLevel="100" />
 
+	<!-- ADMIN PHANTOM -->
+	<admin command="phantom_start_10" accessLevel="70" />
+	<admin command="phantom_start_60" accessLevel="70" />
+	<admin command="phantom_stop_10" accessLevel="70" />
+	<admin command="phantom_stop_all" accessLevel="70" />
+	<admin command="phantom_reload_xml" accessLevel="70" />
+	<admin command="phantom_pload" accessLevel="70" />
+	<admin command="phantom_create_10" accessLevel="70" />
+	<admin command="phantom_create_60" accessLevel="70" />
+	<admin command="phantom_go" accessLevel="70" />
+	<admin command="phantom_bring" accessLevel="70" />
+	<admin command="phantom_kill" accessLevel="70" />
+	<admin command="phantom_debug" accessLevel="70" />
+	<admin command="phantom_menu" accessLevel="70" />
+
 	<!-- ADMIN PLEDGE -->
 	<admin command="pledge" accessLevel="100" />
 

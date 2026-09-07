@@ -13126,7 +13126,8 @@ public class Player extends Playable
 			String targetName = target.getName();
 			if (Config.MULTILANG_ENABLE && target.isNpc())
 			{
-				final String[] localisation = NpcNameLocalisationData.getInstance().getLocalisation(_lang, target.getId());
+				// getLang() ao inves de _lang: o campo pode ser null (ex: players criados em runtime, como os Phantoms)
+				final String[] localisation = NpcNameLocalisationData.getInstance().getLocalisation(getLang(), target.getId());
 				if (localisation != null)
 				{
 					targetName = localisation[0];

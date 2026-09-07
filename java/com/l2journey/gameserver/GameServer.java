@@ -168,6 +168,7 @@ import com.l2journey.gameserver.network.GameClient;
 import com.l2journey.gameserver.network.GamePacketHandler;
 import com.l2journey.gameserver.network.NpcStringId;
 import com.l2journey.gameserver.network.SystemMessageId;
+import com.l2journey.gameserver.model.phantom.PhantomManager;
 import com.l2journey.gameserver.scripting.ScriptEngineManager;
 import com.l2journey.gameserver.taskmanagers.GameTimeTaskManager;
 import com.l2journey.gameserver.taskmanagers.ItemLifeTimeTaskManager;
@@ -358,6 +359,8 @@ public class GameServer
 		{
 			LOGGER.log(Level.WARNING, "Failed to execute script list!", e);
 		}
+		
+		new PhantomManager();
 		
 		SpawnData.getInstance();
 		DayNightSpawnManager.getInstance().trim().notifyChangeMode();

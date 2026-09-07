@@ -120,6 +120,7 @@ import handlers.admincommandhandlers.AdminPForge;
 import handlers.admincommandhandlers.AdminPathNode;
 import handlers.admincommandhandlers.AdminPcCafePoints;
 import handlers.admincommandhandlers.AdminPetition;
+import handlers.admincommandhandlers.AdminPhantom;
 import handlers.admincommandhandlers.AdminPlayerWarehouse;
 import handlers.admincommandhandlers.AdminPledge;
 import handlers.admincommandhandlers.AdminPremium;
@@ -412,6 +413,7 @@ public class MasterHandler
 			AdminPcCafePoints.class,
 			AdminPetition.class,
 			AdminPForge.class,
+			AdminPhantom.class,
 			AdminPlayerWarehouse.class,
 			AdminPledge.class,
 			AdminZones.class,
