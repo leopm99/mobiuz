@@ -908,7 +908,8 @@ public class PhantomEquipment
 		List<Integer> newKit = new ArrayList<>();
 		newKit.add(customWeaponId); // Adicionamos a arma
 		
-		if (customShieldId != 0)
+		// Escudo so entra no kit se a arma nao for de duas maos
+		if (!isTwoHanded && (customShieldId != 0))
 		{
 			newKit.add(customShieldId);
 		}

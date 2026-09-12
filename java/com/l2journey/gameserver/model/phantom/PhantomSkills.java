@@ -224,6 +224,12 @@ public class PhantomSkills
 		
 		Skill attackSkill = bot.getKnownSkill(skillId);
 		
+		// Nunca usamos skills banidas como skill de ataque automatico
+		if (BANNED_ATTACK_SKILLS.contains(skillId))
+		{
+			return null;
+		}
+		
 		// Verificamos se tem a skill, se nao esta em cooldown e se tem MP suficiente
 		if ((attackSkill != null) && !bot.isSkillDisabled(attackSkill) && (bot.getCurrentMp() >= attackSkill.getMpConsume()))
 		{
@@ -345,7 +351,7 @@ public class PhantomSkills
 			}
 		}
 		
-		if (hasActiveSummon)
+		if (hasActiveSummon && (summon != null))
 		{
 			if (LocationUtil.calculateDistance(bot, summon, false, false) > 2500)
 			{

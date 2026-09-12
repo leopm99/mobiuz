@@ -904,6 +904,17 @@ public class PhantomAI
 			bot.getAI().setIntention(Intention.IDLE);
 			return;
 		}
+		
+		// Desiste da perseguicao se o alvo fugiu para muito longe (ex: PK/PvP atravessando o mapa)
+		if ((target != null) && (LocationUtil.calculateDistance(bot, target, true, false) > MAX_CHASE_DISTANCE))
+		{
+			bot.abortAttack();
+			bot.abortCast();
+			bot.setTarget(null);
+			bot.getAI().setIntention(Intention.ACTIVE);
+			ULTIMO_TARGET.remove(bot.getObjectId());
+			return;
+		}
 
 		if ((bot.getParty() != null) && (target instanceof com.l2journey.gameserver.model.actor.Attackable))
 		{
