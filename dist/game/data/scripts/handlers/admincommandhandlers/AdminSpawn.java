@@ -381,18 +381,21 @@ public class AdminSpawn implements IAdminCommandHandler
 			{
 				// Split the command into an array of words.
 				final String[] params = command.split(" ");
-				final StringBuilder searchParam = new StringBuilder();
-				int pos = -1;
 				
-				// Concatenate all words in the command except the first and last word.
-				for (String param : params)
+				// If there are more than two words and the last one is numeric, treat it as the teleport index.
+				int endIndex = params.length;
+				if ((params.length > 2) && StringUtil.isNumeric(params[params.length - 1]))
 				{
-					pos++;
-					if ((pos > 0) && (pos < (params.length - 1)))
-					{
-						searchParam.append(param);
-						searchParam.append(" ");
-					}
+					teleportIndex = Integer.parseInt(params[params.length - 1]);
+					endIndex = params.length - 1;
+				}
+				
+				// Concatenate all words in the command except the first one and the teleport index (if any).
+				final StringBuilder searchParam = new StringBuilder();
+				for (int i = 1; i < endIndex; i++)
+				{
+					searchParam.append(params[i]);
+					searchParam.append(" ");
 				}
 				
 				final String searchString = searchParam.toString().trim();
@@ -405,16 +408,6 @@ public class AdminSpawn implements IAdminCommandHandler
 				{
 					// Otherwise, use it as the NPC name and look up the NPC ID.
 					npcId = NpcData.getInstance().getTemplateByName(searchString).getId();
-				}
-				
-				// If there are more than two words in the command, try to parse the last word as the teleport index.
-				if (params.length > 2)
-				{
-					final String lastParam = params[params.length - 1];
-					if (StringUtil.isNumeric(lastParam))
-					{
-						teleportIndex = Integer.parseInt(lastParam);
-					}
 				}
 			}
 			catch (Exception e)

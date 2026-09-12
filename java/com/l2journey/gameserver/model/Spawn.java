@@ -82,6 +82,8 @@ public class Spawn extends Location
 	private int _respawnMaxDelay;
 	/** Maximum distance monsters can be pulled away from spawn. */
 	private int _chaseRange = 0;
+	/** Custom random walk radius around the spawn location, overrides {@link Config#MAX_DRIFT_RANGE} when set. */
+	private int _randomWalkRange = 0;
 	/** The generic constructor of Npc managed by this Spawn */
 	private Constructor<? extends Npc> _constructor;
 	/** If True an Npc is respawned each time that another is killed */
@@ -626,6 +628,16 @@ public class Spawn extends Location
 	public int getChaseRange()
 	{
 		return _chaseRange;
+	}
+	
+	public void setRandomWalkRange(int randomWalkRange)
+	{
+		_randomWalkRange = randomWalkRange;
+	}
+	
+	public int getRandomWalkRange()
+	{
+		return _randomWalkRange;
 	}
 	
 	public void setSpawnTerritory(NpcSpawnTerritory territory)

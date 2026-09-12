@@ -60,7 +60,6 @@
 		<npc id="30733" x="-97211" y="258230" z="-3544" heading="57343" respawnDelay="60" /> <!-- Guard -->
 		<npc id="30733" x="-87847" y="250564" z="-3608" heading="4096" respawnDelay="60" /> <!-- Guard -->
 		<npc id="30733" x="-87406" y="250079" z="-3592" heading="8192" respawnDelay="60" /> <!-- Guard -->
-		<npc id="30733" x="-77978" y="250458" z="-3544" heading="36863" respawnDelay="60" /> <!-- Guard -->
 		<npc id="30990" x="-84143" y="244637" z="-3728" heading="41000" respawnDelay="60" /> <!-- Lottery Ticket Seller -->
 		<npc id="31031" x="-82795" y="243147" z="-3718" heading="16384" respawnDelay="5" /> <!-- Broadcasting Tower -->
 		<npc id="31032" x="-97475" y="231246" z="-3608" heading="14380" respawnDelay="60" /> <!-- Guard -->
@@ -70,9 +69,7 @@
 		<npc id="31032" x="-87718" y="238995" z="-3608" heading="8594" respawnDelay="60" /> <!-- Guard -->
 		<npc id="31032" x="-87346" y="254668" z="-3720" heading="25594" respawnDelay="60" /> <!-- Guard -->
 		<npc id="31032" x="-86666" y="237396" z="-3696" heading="54603" respawnDelay="60" /> <!-- Guard -->
-		<npc id="31032" x="-83171" y="246286" z="-3640" heading="36185" respawnDelay="60" /> <!-- Guard -->
 		<npc id="31032" x="-82901" y="253704" z="-3728" heading="18004" respawnDelay="60" /> <!-- Guard -->
-		<npc id="31032" x="-82178" y="245112" z="-3720" heading="61401" respawnDelay="60" /> <!-- Guard -->
 		<npc id="31032" x="-82045" y="239424" z="-3688" heading="53735" respawnDelay="60" /> <!-- Guard -->
 		<npc id="31032" x="-75001" y="255290" z="-3208" heading="20103" respawnDelay="60" /> <!-- Guard -->
 		<npc id="31356" x="-81920" y="243892" z="-3714" heading="7000" respawnDelay="60" /> <!-- Remy -->
@@ -85,5 +82,8 @@
 		<npc id="31776" x="-86080" y="241488" z="-3728" heading="57000" respawnDelay="60" /> <!-- Adventure Guildsman -->
 		<npc id="32478" x="-81920" y="243360" z="-3728" heading="40000" respawnDelay="60" /> <!-- Dimensional Merchant -->
 		<npc id="35103" x="-83536" y="243280" z="-3728" heading="24400" respawnDelay="60" /> <!-- Manor Manager -->
+		<npc id="30733" x="-78053" y="250443" z="-3549" heading="42893" respawnDelay="60" randomWalkRange="200" /> <!-- Guard -->
+		<npc id="31032" x="-82518" y="246149" z="-3683" heading="24696" respawnDelay="60" /> <!-- Guard -->
+		<npc id="31032" x="-81313" y="245044" z="-3727" heading="6172" respawnDelay="60" /> <!-- Guard -->
 	</spawn>
 </list>

@@ -352,7 +352,7 @@ public class AttackableAI extends CreatureAI
 				{
 					intention = Intention.ACTIVE;
 				}
-				else if ((npc.getSpawn() != null) && !npc.isInsideRadius3D(npc.getSpawn().getLocation(), Config.MAX_DRIFT_RANGE + Config.MAX_DRIFT_RANGE))
+				else if ((npc.getSpawn() != null) && !npc.isInsideRadius3D(npc.getSpawn().getLocation(), 2 * (npc.getSpawn().getRandomWalkRange() > 0 ? npc.getSpawn().getRandomWalkRange() : Config.MAX_DRIFT_RANGE)))
 				{
 					intention = Intention.ACTIVE;
 				}
@@ -553,7 +553,7 @@ public class AttackableAI extends CreatureAI
 		}
 		
 		// Ordena este attackable retornar ao seu spawn porque nao ha alvo para atacar
-		if (!npc.isWalker() && (npc.getSpawn() != null) && (npc.calculateDistance2D(npc.getSpawn()) > Config.MAX_DRIFT_RANGE) && ((getTarget() == null) || getTarget().isInvisible() || (getTarget().isPlayer() && !Config.ATTACKABLES_CAMP_PLAYER_CORPSES && getTarget().asPlayer().isAlikeDead())))
+		if (!npc.isWalker() && (npc.getSpawn() != null) && (npc.calculateDistance2D(npc.getSpawn()) > (npc.getSpawn().getRandomWalkRange() > 0 ? npc.getSpawn().getRandomWalkRange() : Config.MAX_DRIFT_RANGE)) && ((getTarget() == null) || getTarget().isInvisible() || (getTarget().isPlayer() && !Config.ATTACKABLES_CAMP_PLAYER_CORPSES && getTarget().asPlayer().isAlikeDead())))
 		{
 			npc.setWalking();
 			npc.returnHome();
@@ -664,19 +664,20 @@ public class AttackableAI extends CreatureAI
 			int x1 = npc.getSpawn().getX();
 			int y1 = npc.getSpawn().getY();
 			int z1 = npc.getSpawn().getZ();
-			if (npc.isInsideRadius2D(x1, y1, 0, Config.MAX_DRIFT_RANGE))
+			final int driftRange = npc.getSpawn().getRandomWalkRange() > 0 ? npc.getSpawn().getRandomWalkRange() : Config.MAX_DRIFT_RANGE;
+			if (npc.isInsideRadius2D(x1, y1, 0, driftRange))
 			{
-				final int deltaX = Rnd.get(Config.MAX_DRIFT_RANGE * 2); // x
-				int deltaY = Rnd.get(deltaX, Config.MAX_DRIFT_RANGE * 2); // distance
+				final int deltaX = Rnd.get(driftRange * 2); // x
+				int deltaY = Rnd.get(deltaX, driftRange * 2); // distance
 				deltaY = (int) Math.sqrt((deltaY * deltaY) - (deltaX * deltaX)); // y
-				x1 = (deltaX + x1) - Config.MAX_DRIFT_RANGE;
-				y1 = (deltaY + y1) - Config.MAX_DRIFT_RANGE;
+				x1 = (deltaX + x1) - driftRange;
+				y1 = (deltaY + y1) - driftRange;
 				z1 = npc.getZ();
 			}
 			
 			// Move o ator para Localizacao (x,y,z) no lado do servidor E do cliente enviando pacote Servidor->Cliente MoveToLocation (broadcast)
 			final Location moveLoc = _actor.isFlying() ? new Location(x1, y1, z1) : GeoData.getInstance().moveCheck(npc.getX(), npc.getY(), npc.getZ(), x1, y1, z1, npc.getInstanceId());
-			if (LocationUtil.calculateDistance(npc.getSpawn(), moveLoc, false, false) <= Config.MAX_DRIFT_RANGE)
+			if (LocationUtil.calculateDistance(npc.getSpawn(), moveLoc, false, false) <= driftRange)
 			{
 				moveTo(moveLoc.getX(), moveLoc.getY(), moveLoc.getZ());
 			}
