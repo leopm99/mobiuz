@@ -1222,6 +1222,7 @@
 		<table name="#mpConsume">16 39</table>
 		<table name="#mpInitialConsume">4 10</table>
 		<table name="#pAtkSpd">1.15 1.33</table>
+		<set name="icon" val="icon.skill1086" />
 		<set name="operateType" val="A2" />
 		<set name="targetType" val="CLAN" />
 		<set name="abnormalLevel" val="#abnormalLevels" />
