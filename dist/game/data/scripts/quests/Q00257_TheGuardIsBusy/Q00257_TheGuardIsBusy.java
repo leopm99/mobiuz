@@ -131,7 +131,7 @@ public class Q00257_TheGuardIsBusy extends Quest
 	public void onKill(Npc npc, Player killer, boolean isSummon)
 	{
 		final QuestState qs = getQuestState(killer, false);
-		if (qs == null)
+		if ((qs == null) || !qs.isStarted())
 		{
 			return;
 		}
