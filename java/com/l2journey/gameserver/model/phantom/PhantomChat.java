@@ -7,7 +7,7 @@ import com.l2journey.gameserver.network.serverpackets.CreatureSay;
 
 public class PhantomChat
 {
-	// Mensagens que falam quando morrem
+	// Mensagens que dizem quando morrem
 	public static final String[] DEATH_MESSAGES =
 	{
 		"lag...",
@@ -19,7 +19,7 @@ public class PhantomChat
 		"altos petes"
 	};
 	
-	// Mensagens casuais ditas no ar enquanto farmam ou caminham
+	// Mensagens casuais que dizem ao ar enquanto farmam ou caminham
 	private static final String[] CASUAL_MESSAGES =
 	{
 		"alguien para rb?",
@@ -35,7 +35,7 @@ public class PhantomChat
 		"Sale Party?? GOgo",
 		"altos petes"
 	};
-	// Mensagens usadas para RESPONDER quando um jogador real fala com eles (por geral ou PM)
+	// Mensagens que usam para RESPONDER quando um jogador real fala com eles (por geral ou PM)
 	private static final String[] RESPONSES =
 	{
 		"jaja mal",
@@ -63,7 +63,7 @@ public class PhantomChat
 	{
 		if (isPrivate && (sender != null))
 		{
-			// Responde por sussurro (PM)
+			// Responde por Whisper (PM)
 			sender.sendPacket(new CreatureSay(bot, ChatType.WHISPER, bot.getName(), text));
 		}
 		else
@@ -74,7 +74,7 @@ public class PhantomChat
 	}
 	
 	/**
-	 * Dispara uma resposta do bot usando o sistema de frases aleatorias.
+	 * Mantemos este nome de metodo (requestGemini) para NAO quebrar a compatibilidade com o script PhantomAI, mas agora usa nosso sistema de frases aleatorias.
 	 * @param bot
 	 * @param sender
 	 * @param prompt
@@ -94,14 +94,14 @@ public class PhantomChat
 		
 		String replyText;
 		
-		// Se for mensagem privada, ou se for por geral mas decidimos responder ao alvo
+		// Se e uma mensagem privada, ou se e por geral mas decidimos responder ao target
 		if (isPrivate || ((sender != null) && (Rnd.get(100) < 50)))
 		{
 			replyText = RESPONSES[Rnd.get(RESPONSES.length)];
 		}
 		else
 		{
-			// Solta uma frase casual no ar
+			// Soltar uma frase casual ao ar
 			replyText = CASUAL_MESSAGES[Rnd.get(CASUAL_MESSAGES.length)];
 		}
 		
@@ -109,7 +109,7 @@ public class PhantomChat
 	}
 	
 	/**
-	 * Método extra por si otros scripts necesitan forzar el mensaje de muerte
+	 * Metodo extra caso outros scripts precisem forcar a mensagem de morte
 	 * @param bot
 	 */
 	public static void sayDeathMessage(Player bot)

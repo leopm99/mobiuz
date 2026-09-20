@@ -12,12 +12,12 @@ public class PhantomWalk
 {
 	// === CONFIGURACAO DE CAMINHADA ===
 	public static boolean ENABLE_TOWN_WALKING = false;
-
+	
 	private static final Map<Integer, Long> _lastTownVisit = new ConcurrentHashMap<>();
 	private static final Map<Integer, Boolean> _isResting = new ConcurrentHashMap<>();
 	private static final Map<Integer, Long> _restingStartTime = new ConcurrentHashMap<>();
 	
-	// NOVOS MAPAS: para controlar as caminhadas e descansos dentro da cidade
+	// NOVOS MAPAS: Para controlar as caminhadas e descansos dentro da cidade
 	private static final Map<Integer, Integer> _walkCount = new ConcurrentHashMap<>();
 	private static final Map<Integer, Integer> _targetWalks = new ConcurrentHashMap<>();
 	private static final Map<Integer, Boolean> _isWaitingInTown = new ConcurrentHashMap<>();
@@ -99,21 +99,21 @@ public class PhantomWalk
 				{
 					_isWaitingInTown.put(objectId, false);
 					_walkCount.put(objectId, 0);
-					_targetWalks.put(objectId, Rnd.get(100) < 50 ? 2 : 3); // Escolhe aleatoriamente se vai caminhar 2 ou 3 vezes
+					_targetWalks.put(objectId, Rnd.get(100) < 50 ? 2 : 3); // Escolhe aleatoriamente se caminhara 2 ou 3 vezes
 				}
 				else
 				{
-					// Esta no seu tempo de espera de 2 minutos, nao faz nada (fica parado)
+					// Esta em seu tempo de espera de 2 minutos, nao faz nada (fica parado)
 					return;
 				}
 			}
 			
-			// Se nao estiver esperando, processamos as caminhadas
+			// Se nao esta esperando, processamos as caminhadas
 			if (!bot.isMoving())
 			{
 				long lastWalk = _lastWalkActionTime.getOrDefault(objectId, 0L);
 				
-					// Cooldown de 12 segundos para dar tempo de chegarem ao destino antes de iniciar a proxima caminhada
+				// Cooldown de 12 segundos para dar tempo de terminarem de chegar ao destino antes de iniciar a proxima caminhada
 				if ((currentTime - lastWalk) > 12000)
 				{
 					int currentWalks = _walkCount.getOrDefault(objectId, 0);
@@ -188,7 +188,7 @@ public class PhantomWalk
 		{
 			return new Location(116589 + spreadX, 76268 + spreadY, -2723); // Hunter (Lvl 52 a 60)
 		}
-        if (lvl >= 40)
+		if (lvl >= 40)
 		{
 			return new Location(82611 + spreadX, 148719 + spreadY, -3469); // Giran (Lvl 40 a 60)
 		}
@@ -196,7 +196,7 @@ public class PhantomWalk
 		{
 			return new Location(18810 + spreadX, 145240 + spreadY, -3130); // Dion (Lvl 20 a 39)
 		}
-		// Se nao atendeu nenhuma das condicoes anteriores, e nivel 19 ou menor.
+		// Se nao cumpriu nenhuma das condicoes anteriores, e nivel 19 ou menor.
 		return new Location(-14372 + spreadX, 123051 + spreadY, -3117); // Gludio (Lvl 19 ou menos)
 	}
 	

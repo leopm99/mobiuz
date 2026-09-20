@@ -22,7 +22,7 @@ public class PhantomState
 	public static final Map<Integer, Long> LAST_AI_TRACE = new ConcurrentHashMap<>();
 	public static final Map<Integer, Long> CITY_REST_UNTIL = new ConcurrentHashMap<>();
 	public static final Map<Integer, Long> LAST_SELF_BUFF = new ConcurrentHashMap<>();
-	public static final Map<Integer, Long> LAST_ATTACK_TIME = new ConcurrentHashMap<>(); 
+	public static final Map<Integer, Long> LAST_ATTACK_TIME = new ConcurrentHashMap<>();
 	public static final Map<Integer, Location> LAST_POS = new ConcurrentHashMap<>();
 	public static final Map<Integer, Long> STUCK_TIMER = new ConcurrentHashMap<>();
 	public static final Set<Integer> AGGRESSIVE_PHANTOMS = ConcurrentHashMap.newKeySet();
@@ -42,7 +42,7 @@ public class PhantomState
 		LAST_AI_TRACE.put(objectId, 0L);
 		CITY_REST_UNTIL.put(objectId, 0L);
 		LAST_SELF_BUFF.put(objectId, 0L);
-		LAST_ATTACK_TIME.put(objectId, 0L); 
+		LAST_ATTACK_TIME.put(objectId, 0L);
 		
 		// Reutilizamos ou atualizamos a referencia sem saturar a memoria com instanciacoes inuteis
 		LAST_POS.computeIfAbsent(objectId, k -> new Location(0, 0, 0));
@@ -72,7 +72,7 @@ public class PhantomState
 		LAST_AI_TRACE.remove(objectId);
 		CITY_REST_UNTIL.remove(objectId);
 		LAST_SELF_BUFF.remove(objectId);
-		LAST_ATTACK_TIME.remove(objectId); 
+		LAST_ATTACK_TIME.remove(objectId);
 		
 		// Limpeza estrita
 		LAST_POS.remove(objectId);
@@ -96,9 +96,9 @@ public class PhantomState
 		LAST_AI_TRACE.clear();
 		CITY_REST_UNTIL.clear();
 		LAST_SELF_BUFF.clear();
-		LAST_ATTACK_TIME.clear(); 
+		LAST_ATTACK_TIME.clear();
 		LAST_POS.clear();
-		STUCK_TIMER.clear();		
+		STUCK_TIMER.clear();
 		NPC_ANCHORS.clear();
 		AGGRESSIVE_PHANTOMS.clear();
 		PK_PHANTOMS.clear();

@@ -25,7 +25,7 @@ public class PhantomGenerator
 		10, // Human Mystic
 		25, // Elven Mystic
 		38, // Dark Mystic
-		49  // Orc Mystic
+		49 // Orc Mystic
 	};
 	
 	private static final int[] RACES =
@@ -33,7 +33,7 @@ public class PhantomGenerator
 		0, // Human
 		1, // Elf
 		2, // Dark Elf
-		3  // Orc
+		3 // Orc
 	};
 	
 	// --------------------------------------------------------------------------
@@ -41,20 +41,67 @@ public class PhantomGenerator
 	// --------------------------------------------------------------------------
 	private static final String[] SYL_1 =
 	{
-		"A", "Be", "Ca", "Da", "El", "Fa", "Ga", "He", "I", "Ka",
-		"La", "Ma", "Na", "O", "Pa", "Ra", "Sa", "Ta", "Va", "Za"
+		"A",
+		"Be",
+		"Ca",
+		"Da",
+		"El",
+		"Fa",
+		"Ga",
+		"He",
+		"I",
+		"Ka",
+		"La",
+		"Ma",
+		"Na",
+		"O",
+		"Pa",
+		"Ra",
+		"Sa",
+		"Ta",
+		"Va",
+		"Za"
 	};
 	
 	private static final String[] SYL_2 =
 	{
-		"la", "me", "ni", "ro", "su", "da", "fe", "gi", "ko", "lu",
-		"ma", "ne", "pi", "ra", "se", "to", "vu", "za"
+		"la",
+		"me",
+		"ni",
+		"ro",
+		"su",
+		"da",
+		"fe",
+		"gi",
+		"ko",
+		"lu",
+		"ma",
+		"ne",
+		"pi",
+		"ra",
+		"se",
+		"to",
+		"vu",
+		"za"
 	};
 	
 	private static final String[] SYL_3 =
 	{
-		"s", "n", "r", "l", "th", "x", "dor", "mar", "nis", "las",
-		"mus", "ria", "tia", "nia", "wyn"
+		"s",
+		"n",
+		"r",
+		"l",
+		"th",
+		"x",
+		"dor",
+		"mar",
+		"nis",
+		"las",
+		"mus",
+		"ria",
+		"tia",
+		"nia",
+		"wyn"
 	};
 	
 	// --------------------------------------------------------------------------
@@ -130,7 +177,7 @@ public class PhantomGenerator
 	// --------------------------------------------------------------------------
 	private static void saveXML()
 	{
-		try (FileWriter fw = new FileWriter("config/npcs/phantomplayers.xml");
+		try (FileWriter fw = new FileWriter("config/PhantomPlayers.xml");
 			PrintWriter pw = new PrintWriter(fw))
 		{
 			pw.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<list>");

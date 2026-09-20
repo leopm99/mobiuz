@@ -20,15 +20,14 @@ import com.l2journey.gameserver.model.phantom.PhantomChat;
 import com.l2journey.gameserver.model.phantom.PhantomClan;
 import com.l2journey.gameserver.model.phantom.PhantomEngine;
 import com.l2journey.gameserver.model.phantom.PhantomEquipment;
+import com.l2journey.gameserver.model.phantom.PhantomGeo;
+import com.l2journey.gameserver.model.phantom.PhantomHuntingSpots;
 import com.l2journey.gameserver.model.phantom.PhantomManager;
 import com.l2journey.gameserver.model.phantom.PhantomSkills;
 import com.l2journey.gameserver.model.phantom.PhantomState;
 import com.l2journey.gameserver.model.phantom.PhantomWalk;
 import com.l2journey.gameserver.model.skill.Skill;
 import com.l2journey.gameserver.util.LocationUtil;
-
-import com.l2journey.gameserver.model.phantom.PhantomGeo;
-import com.l2journey.gameserver.model.phantom.PhantomHuntingSpots;
 
 public class PhantomAI
 {
@@ -48,13 +47,13 @@ public class PhantomAI
 	private static final Map<Integer, Long> LAST_KITE_TIME = new ConcurrentHashMap<>();
 	private static final Map<Integer, Long> LAST_FIGHTER_SKILL_TIME = new ConcurrentHashMap<>();
 	
-	// CORRECAO RAM: adicionamos relogios para nao saturar de requisicoes de pocoes
+	// CORRECAO RAM: Adicionamos relogios para nao saturar de requisicoes de pocoes
 	private static final Map<Integer, Long> LAST_HP_POTION_TIME = new ConcurrentHashMap<>();
 	private static final Map<Integer, Long> LAST_MP_POTION_TIME = new ConcurrentHashMap<>();
 	
-	// CORRECAO: a sintaxe foi limpa e agora e usada para o Target Lock
-	private static final Map<Integer, Monster> ULTIMO_TARGET = new ConcurrentHashMap<>();	
-
+	// CORRECAO: A sintaxe foi limpa e agora e usada para o Target Lock
+	private static final Map<Integer, Monster> ULTIMO_TARGET = new ConcurrentHashMap<>();
+	
 	public static void unregisterBot(int objectId)
 	{
 		EQUIPPED_PHANTOMS.remove(objectId);
@@ -63,7 +62,7 @@ public class PhantomAI
 		LAST_FIGHTER_SKILL_TIME.remove(objectId);
 		ULTIMO_TARGET.remove(objectId); // Limpeza do Target Lock
 		
-		// CORRECAO RAM: limpamos os relogios de pocoes
+		// CORRECAO RAM: Limpamos os relogios de pocoes
 		LAST_HP_POTION_TIME.remove(objectId);
 		LAST_MP_POTION_TIME.remove(objectId);
 		
@@ -79,15 +78,20 @@ public class PhantomAI
 		LAST_FIGHTER_SKILL_TIME.clear();
 		ULTIMO_TARGET.clear(); // Limpeza do Target Lock
 		
-		// CORRECAO RAM: limpamos os relogios
+		// CORRECAO RAM: Limpamos os relogios
 		LAST_HP_POTION_TIME.clear();
 		LAST_MP_POTION_TIME.clear();
 	}
 	
-	// CICLO PRINCIPAL DE IA
+	// CICLO PRINCIPAL DA IA
 	public static void thinkAndFarm(Player bot)
 	{
 		if ((bot == null) || bot.isDead())
+		{
+			return;
+		}
+		
+		if (!PhantomEngine.isRunning || !PhantomEngine.activePhantoms.contains(bot))
 		{
 			return;
 		}
@@ -130,19 +134,39 @@ public class PhantomAI
 		int ssId = 1463;
 		int bssId = 3947;
 		
-		if (currentLevel >= 76) { ssId = 1462; bssId = 3952; }
-		else if (currentLevel >= 61) { ssId = 1467; bssId = 3951; }
-		else if (currentLevel >= 52) { ssId = 1466; bssId = 3950; }
-		else if (currentLevel >= 40) { ssId = 1465; bssId = 3949; }
-		else if (currentLevel >= 20) { ssId = 1464; bssId = 3948; }
-
+		if (currentLevel >= 76)
+		{
+			ssId = 1462;
+			bssId = 3952;
+		}
+		else if (currentLevel >= 61)
+		{
+			ssId = 1467;
+			bssId = 3951;
+		}
+		else if (currentLevel >= 52)
+		{
+			ssId = 1466;
+			bssId = 3950;
+		}
+		else if (currentLevel >= 40)
+		{
+			ssId = 1465;
+			bssId = 3949;
+		}
+		else if (currentLevel >= 20)
+		{
+			ssId = 1464;
+			bssId = 3948;
+		}
+		
 		int lastLevel = LAST_SKILL_LEVEL.getOrDefault(botId, 0);
 		if (currentLevel > lastLevel)
 		{
 			bot.giveAvailableSkills(true, true, true);
 			LAST_SKILL_LEVEL.put(botId, currentLevel);
 			
-			// OTIMIZACAO: ativamos os soulshots somente ao nascer ou ao mudar de grau
+			// OTIMIZACAO: So ativamos os soulshots ao nascer ou ao mudar de grau
 			bot.addAutoSoulShot(ssId);
 			bot.addAutoSoulShot(bssId);
 		}
@@ -181,7 +205,7 @@ public class PhantomAI
 		{
 			return;
 		}
-
+		
 		if (PhantomHuntingSpots.relocateForLevelIfNeeded(bot))
 		{
 			trace(bot, "teleport por nivel");
@@ -213,12 +237,12 @@ public class PhantomAI
 			executeAttackPlan(bot, victim);
 			return;
 		}
-
+		
 		Monster target = findFarmTarget(bot);
 		
 		if (target != null)
 		{
-
+			
 			if (bot.getParty() != null)
 			{
 				for (Player miembro : bot.getParty().getMembers())
@@ -230,7 +254,7 @@ public class PhantomAI
 					}
 				}
 			}
-
+			
 			if (bot.getAI().getIntention() == Intention.IDLE)
 			{
 				bot.getAI().setIntention(Intention.ACTIVE);
@@ -239,12 +263,12 @@ public class PhantomAI
 			PhantomState.EMPTY_TARGET_COUNTERS.put(botId, 0);
 			if (tryKite(bot, target))
 			{
-				return; 
+				return;
 			}
 			
 			if (bot.getTarget() != target)
 			{
-				// Limpeza extra ao trocar de target para evitar animacoes travadas
+				// Limpeza extra ao trocar de alvo para evitar animacoes travadas
 				bot.abortAttack();
 				bot.abortCast();
 				bot.setTarget(target);
@@ -374,7 +398,7 @@ public class PhantomAI
 		{
 			bot.getInventory().addItem(ItemProcessType.NONE, 1460, 2000, bot, null);
 		}
-
+		
 		if (!EQUIPPED_PHANTOMS.containsKey(botId))
 		{
 			if (bot.getInventory().getInventoryItemCount(ssId, -1) < 500)
@@ -417,7 +441,7 @@ public class PhantomAI
 			}
 		}
 	}
-
+	
 	private static boolean handleLifeGoal(Player bot)
 	{
 		int objectId = bot.getObjectId();
@@ -602,7 +626,7 @@ public class PhantomAI
 				continue;
 			}
 			
-			if ((p.isAttackingNow() || p.isCastingNow()) && (p.getTarget() == bot || (bot.getSummon() != null && p.getTarget() == bot.getSummon())))
+			if ((p.isAttackingNow() || p.isCastingNow()) && ((p.getTarget() == bot) || ((bot.getSummon() != null) && (p.getTarget() == bot.getSummon()))))
 			{
 				return p;
 			}
@@ -653,15 +677,15 @@ public class PhantomAI
 			if (!currentLocked.isDead() && currentTargetValid(bot, currentLocked))
 			{
 				double dist = LocationUtil.calculateDistance(bot, currentLocked, true, false);
-				if (dist <= 3500 && PhantomGeo.canSeeTarget(bot, currentLocked))
+				if ((dist <= 3500) && PhantomGeo.canSeeTarget(bot, currentLocked))
 				{
 					return currentLocked; // Retornamos o mesmo alvo sem recalcular
 				}
 			}
-			// Se o alvo salvo morreu, desapareceu ou foi muito longe, esquecemos dele
+			// Se o alvo salvo morreu, desapareceu ou foi muito longe, esquecemos ele
 			ULTIMO_TARGET.remove(botId);
 		}
-
+		
 		Monster closestAggroMob = null;
 		double bestAggroDistance = Double.MAX_VALUE;
 		
@@ -686,7 +710,7 @@ public class PhantomAI
 			
 			double distance = LocationUtil.calculateDistance(bot, m, true, false);
 			
-			boolean isAttackingUs = (m.getTarget() == bot) || (bot.getSummon() != null && m.getTarget() == bot.getSummon());
+			boolean isAttackingUs = (m.getTarget() == bot) || ((bot.getSummon() != null) && (m.getTarget() == bot.getSummon()));
 			
 			if (isAttackingUs)
 			{
@@ -701,7 +725,7 @@ public class PhantomAI
 			}
 			else
 			{
-				if (!m.isChampion() && m != bot.getTarget())
+				if (!m.isChampion() && (m != bot.getTarget()))
 				{
 					if (isTargetedByAnother(bot, m))
 					{
@@ -718,7 +742,7 @@ public class PhantomAI
 				}
 			}
 		}
-
+		
 		if (closestAggroMob != null)
 		{
 			PhantomState.STUCK_COUNTERS.put(botId, 0);
@@ -735,31 +759,31 @@ public class PhantomAI
 		
 		return null;
 	}
-
+	
 	// Pequena funcao auxiliar para evitar um erro de Null Pointer
 	private static boolean currentTargetValid(Player bot, Monster m)
 	{
-		return m != null && m.isSpawned() && m.isAttackable();
+		return (m != null) && m.isSpawned() && m.isAttackable();
 	}
-
+	
 	private static boolean isTargetedByAnother(Player bot, Monster m)
 	{
-		if (m.getTarget() == bot || (bot.getSummon() != null && m.getTarget() == bot.getSummon()))
+		if ((m.getTarget() == bot) || ((bot.getSummon() != null) && (m.getTarget() == bot.getSummon())))
 		{
 			return false;
 		}
-
+		
 		if (m.getTarget() != null)
 		{
 			boolean targetingBot = (m.getTarget() == bot);
-			boolean targetingPet = (bot.getSummon() != null && m.getTarget() == bot.getSummon());
+			boolean targetingPet = ((bot.getSummon() != null) && (m.getTarget() == bot.getSummon()));
 			
 			if (!targetingBot && !targetingPet)
 			{
 				return true;
 			}
 		}
-
+		
 		for (Player p : World.getInstance().getVisibleObjectsInRange(m, Player.class, 1000))
 		{
 			if ((p != null) && (p != bot) && !p.isAlikeDead())
@@ -778,10 +802,10 @@ public class PhantomAI
 	{
 		int objectId = bot.getObjectId();
 		
-		ULTIMO_TARGET.remove(objectId); // Quebramos o Lock se ja nao houver monstros
-
+		ULTIMO_TARGET.remove(objectId); // Quebramos o Lock se nao houver mais monstros
+		
 		Intention currentIntention = bot.getAI().getIntention();
-		if (currentIntention == Intention.ATTACK || currentIntention == Intention.CAST || currentIntention == Intention.MOVE_TO)
+		if ((currentIntention == Intention.ATTACK) || (currentIntention == Intention.CAST) || (currentIntention == Intention.MOVE_TO))
 		{
 			bot.abortAttack();
 			bot.abortCast();
@@ -812,50 +836,50 @@ public class PhantomAI
 	public static boolean tryKite(Player bot, Monster mob)
 	{
 		int classId = bot.getActiveClass();
-		boolean isArcher = (classId == 9 || classId == 24 || classId == 37 || classId == 109 || classId == 92 || classId == 102 || classId == 130 || classId == 134);
+		boolean isArcher = ((classId == 9) || (classId == 24) || (classId == 37) || (classId == 109) || (classId == 92) || (classId == 102) || (classId == 130) || (classId == 134));
 		
 		if (!isArcher)
 		{
 			return false;
 		}
-
+		
 		long now = System.currentTimeMillis();
 		long lastKite = LAST_KITE_TIME.getOrDefault(bot.getObjectId(), 0L);
 		
 		// 1. Proteger o movimento enquanto foge
-		if (bot.isMoving() && (now - lastKite < 2500))
+		if (bot.isMoving() && ((now - lastKite) < 2500))
 		{
 			return true;
 		}
-
-		// 2. Cooldown 
-		if (now - lastKite < 5000)
+		
+		// 2. Cooldown
+		if ((now - lastKite) < 5000)
 		{
 			return false;
 		}
-
+		
 		// 3. INTELIGENCIA HUMANA
 		if (mob.getCurrentHpPercent() <= 40)
 		{
 			return false;
 		}
-
+		
 		double distance = LocationUtil.calculateDistance(bot, mob, true, false);
 		
-		// 4. RADAR  
+		// 4. RADAR
 		if (distance > 350)
 		{
 			return false;
 		}
-
-		// 5. DISTANCIA DE FUGA: 
-		int kiteDistance = 350; 
+		
+		// 5. DISTANCIA DE FUGA:
+		int kiteDistance = 350;
 		double angle = Math.atan2(bot.getY() - mob.getY(), bot.getX() - mob.getX());
 		
 		int newX = (int) (bot.getX() + (kiteDistance * Math.cos(angle)));
 		int newY = (int) (bot.getY() + (kiteDistance * Math.sin(angle)));
 		int newZ = bot.getZ();
-
+		
 		LAST_KITE_TIME.put(bot.getObjectId(), now);
 		
 		bot.abortAttack();
@@ -864,7 +888,7 @@ public class PhantomAI
 		Location loc = new Location(newX, newY, newZ);
 		bot.getAI().setIntention(Intention.MOVE_TO, loc);
 		
-		return true; 
+		return true;
 	}
 	
 	private static boolean canUseSummons(Player bot)
@@ -874,22 +898,22 @@ public class PhantomAI
 		switch (classId)
 		{
 			case 6: // Dark Avenger
-            case 91: // Hell Knight
-            case 5: // Paladin
-            case 90: // Phoenix Knight
-            case 33: // Shillien Knight
-            case 106: // Shillien Templar
-            case 20: // Temple Knight
-            case 99: // Eva's Templar
-            case 14: // Warlock
-            case 96: // Arcana Lord
-            case 28: // Elemental Summoner
-            case 104: // Elemental Master
-            case 41: // Phantom Summoner
-            case 111: // Spectral Master
-            case 56: // Artisan (Anao)
-            case 57: // Warsmith (Anao)
-            case 118: // Maestro (Anao)
+			case 91: // Hell Knight
+			case 5: // Paladin
+			case 90: // Phoenix Knight
+			case 33: // Shillien Knight
+			case 106: // Shillien Templar
+			case 20: // Temple Knight
+			case 99: // Eva's Templar
+			case 14: // Warlock
+			case 96: // Arcana Lord
+			case 28: // Elemental Summoner
+			case 104: // Elemental Master
+			case 41: // Phantom Summoner
+			case 111: // Spectral Master
+			case 56: // Artisan (Anao)
+			case 57: // Warsmith (Anao)
+			case 118: // Mestre (Anao)
 				return true;
 			default:
 				return false;
@@ -920,13 +944,13 @@ public class PhantomAI
 		{
 			for (Player member : bot.getParty().getMembers())
 			{
-				if ((member != null) && (member.getClient() != null)) 
+				if ((member != null) && (member.getClient() != null))
 				{
 					((com.l2journey.gameserver.model.actor.Attackable) target).addDamageHate(member, 1, 0);
 				}
 			}
 		}
-
+		
 		// NOVO SISTEMA ANTI-PAREDES
 		if (!PhantomGeo.canSeeTarget(bot, target))
 		{
@@ -934,13 +958,13 @@ public class PhantomAI
 			Location detourPos = PhantomGeo.getRandomReachableLocation(bot, 200);
 			
 			// Se encontrou um desvio valido, vai para la
-			if (detourPos != null && detourPos.getX() != bot.getX())
+			if ((detourPos != null) && (detourPos.getX() != bot.getX()))
 			{
 				bot.getAI().setIntention(Intention.MOVE_TO, detourPos);
 				return;
 			}
 			
-			// 2. Se nao encontrar caminho valido para contornar, abandona o target (esta atras de uma parede intransponivel)
+			// 2. Se nao encontra caminho valido para contornar, abandona o alvo (esta atras de uma parede intransponivel)
 			bot.abortAttack();
 			bot.abortCast();
 			bot.setTarget(null);
@@ -970,7 +994,9 @@ public class PhantomAI
 		{
 			Skill bestMagic = PhantomSkills.getMageAttackSkill(bot, target);
 			if (bestMagic == null)
+			{
 				bestMagic = PhantomSkills.getBestOffensiveSkill(bot);
+			}
 			
 			if ((bestMagic != null) && (bot.getCurrentMpPercent() > 15) && !bot.isSkillDisabled(bestMagic))
 			{
@@ -1024,11 +1050,14 @@ public class PhantomAI
 	
 	private static void useHpPotion(Player bot)
 	{
-		// CORRECAO RAM: cooldown de 10 segundos
+		// CORRECAO RAM: Cooldown de 10 segundos
 		long now = System.currentTimeMillis();
 		long lastPot = LAST_HP_POTION_TIME.getOrDefault(bot.getObjectId(), 0L);
-		if (now - lastPot < 10000) return;
-
+		if ((now - lastPot) < 10000)
+		{
+			return;
+		}
+		
 		Item potion = bot.getInventory().getItemByItemId(1539);
 		if (potion != null)
 		{
@@ -1044,11 +1073,14 @@ public class PhantomAI
 	
 	private static void useManaPotion(Player bot)
 	{
-		// CORRECAO RAM: cooldown de 10 segundos para nao spammar os logs
+		// CORRECAO RAM: Cooldown de 10 segundos para nao spammear os logs
 		long now = System.currentTimeMillis();
 		long lastPot = LAST_MP_POTION_TIME.getOrDefault(bot.getObjectId(), 0L);
-		if (now - lastPot < 10000) return;
-
+		if ((now - lastPot) < 10000)
+		{
+			return;
+		}
+		
 		Item potion = bot.getInventory().getItemByItemId(728);
 		if (potion != null)
 		{
@@ -1067,8 +1099,7 @@ public class PhantomAI
 	{
 		if (Rnd.get(100) < 1)
 		{
-			Player nearby = World.getInstance().getVisibleObjectsInRange(bot, Player.class, 1000).stream()
-				.filter(p -> !p.isDead() && !PhantomEngine.activePhantoms.contains(p)).findFirst().orElse(null);
+			Player nearby = World.getInstance().getVisibleObjectsInRange(bot, Player.class, 1000).stream().filter(p -> !p.isDead() && !PhantomEngine.activePhantoms.contains(p)).findFirst().orElse(null);
 			
 			if (nearby != null)
 			{

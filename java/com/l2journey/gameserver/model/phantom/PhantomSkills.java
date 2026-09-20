@@ -18,25 +18,32 @@ public class PhantomSkills
 {
 	private static final int SPIRIT_ORE = 3031;
 	private static final int PET_SOULSHOT = 20332;
-	private static final int[] CRYSTALS = { 1458, 1459, 1460, 1461, 1462 };
+	private static final int[] CRYSTALS =
+	{
+		1458,
+		1459,
+		1460,
+		1461,
+		1462
+	};
 	private static final List<Integer> CUBIC_SKILL_IDS = Arrays.asList(22, 278, 33, 10, 67, 449, 1280, 1281, 1279);
-	private static final List<Integer> BANNED_ATTACK_SKILLS = Arrays.asList(162, 228, 1400, 1181, 1147,314, 315, 316, 328, 329, 330);
+	private static final List<Integer> BANNED_ATTACK_SKILLS = Arrays.asList(162, 228, 1400, 1181, 1147, 314, 315, 316, 328, 329, 330);
 	private static final Map<String, Long> CAST_TIMERS = new ConcurrentHashMap<>();
 	private static final Map<Integer, Integer> FIGHTER_ATTACK_PROFILES = new ConcurrentHashMap<>();
 	private static final Map<Integer, MageAttackProfile> MAGE_ATTACK_PROFILES = new ConcurrentHashMap<>();
-
-	private static final List<Integer> SUMMON_SKILL_IDS = Arrays.asList(
-		1334, // Cursed Man (Necromancer)
+	private static final List<Integer> FORBIDDEN_FALLBACK = Arrays.asList(1151, 1159, 1288, 1266, 1267, 1417);
+	
+	private static final List<Integer> SUMMON_SKILL_IDS = Arrays.asList(1334, // Cursed Man (Necromancer)
 		1278, // Silhouette (Phantom Summoner)
 		1227, // Kai the Cat (Warlock)
 		1226, // Merrow the Unicorn (Elemental Summoner)
-		283,  // Pantera DA 
-		912,  // Imperial Phoenix
+		283, // Pantera DA
+		912, // Imperial Phoenix
 		1277, // Mew the Cat (Elven Wizard)
 		1276, // Kat the Cat (Human Wizard)
 		1128, // Shadow (Dark Wizard)
 		1111, // Reanimated Man (Human Wizard/Necro)
-		25    // Mechanic Golem (Artisan)
+		25 // Mechanic Golem (Artisan)
 	);
 	
 	static
@@ -56,76 +63,76 @@ public class PhantomSkills
 		registerMageProfile(103, 1235, 0); // Mystic Muse: Hydro Blast + Surrender to Water (3a classe)
 		registerMageProfile(28, 1114, 0); // Elemental Summoner: Aqua Swirl
 		registerMageProfile(104, 1114, 0); // Elemental Master: Aqua Swirl (3a classe)
-
-		// Linha de magos elfos negros
+		
+		// Linha de magos sombrios
 		registerMageProfile(39, 1178, 0); // Dark Wizard: Twister
-		registerMageProfile(40, 1239, 0); // Spellhowler: Hurricane + Surrender to Wind		
+		registerMageProfile(40, 1239, 0); // Spellhowler: Hurricane + Surrender to Wind
 		registerMageProfile(110, 1239, 0); // Storm Screamer: Hurricane + Surrender to Wind (3a classe)
 		registerMageProfile(41, 1530, 0); // Phantom Summoner: Death Spike
 		registerMageProfile(111, 1530, 0); // Spectral Master: Death Spike (3a classe)
 		
 		// --- Skills para Guerreiros Lvl 40-85 ---
-		registerFighterProfile(3, 920);    // Warlord
-		registerFighterProfile(89, 920);    // Dreadnought
-		registerFighterProfile(33, 223);    // shilen knight
-		registerFighterProfile(106, 223);   // shilen templar
-		registerFighterProfile(23, 30);     // Plains Walker
-		registerFighterProfile(22, 16);     // Elven Scout
-		registerFighterProfile(24, 101);    // silver ranger
-		registerFighterProfile(101, 30);    // wind rider
-		registerFighterProfile(34, 986);    // Blade Dancer
-		registerFighterProfile(107, 986);   // spectral Dancer
-		registerFighterProfile(57, 260);    // Warsmith
-		registerFighterProfile(118, 260);   // maestro
-		registerFighterProfile(55, 263);   // Bounty Hunter
-		registerFighterProfile(117, 263);   // Fortune Seeker		
-		registerFighterProfile(5, 92);     // Paladin
-		registerFighterProfile(90, 400);    // phoenix knight
-		registerFighterProfile(6, 92);     // Dark Avenger
-		registerFighterProfile(91, 401);    // hell knight
-		registerFighterProfile(8, 263);      // Treasure Hunter
-		registerFighterProfile(93, 263);     // adventur		
-		registerFighterProfile(9, 101);      // Hawkeye
-		registerFighterProfile(92, 56);     // sagitarius
-		registerFighterProfile(20, 984);    // Temple Knight
-		registerFighterProfile(99, 400);    // evas templar
-		registerFighterProfile(21, 986);    // SwordSinger
-		registerFighterProfile(100, 986);   // Sword mouse
-		registerFighterProfile(37, 56);     // Phantom Ranger
-		registerFighterProfile(109, 56);    // ghost sentinel
-		registerFighterProfile(46, 190);     // Destroyer		
-		registerFighterProfile(113, 315);   // titan			
-		registerFighterProfile(48, 280);    // Tyrant
-		registerFighterProfile(114, 280);   // grand khavatari
-		registerFighterProfile(127, 468);   // Berserker
-		registerFighterProfile(131, 468);   // doombrenger
-		registerFighterProfile(128, 478);   // Male Soul Breaker
-		registerFighterProfile(132, 478);   // male soul hound
-		registerFighterProfile(129, 478);   // Female Soul Breaker
-		registerFighterProfile(133, 478);   // Female soul hound
-		registerFighterProfile(130, 507);   // Arbalester
-		registerFighterProfile(134, 507);   // trickster
-		registerFighterProfile(36, 263);    // abyss walker
-		registerFighterProfile(108, 263);   // ghost hunter
-		registerFighterProfile(2, 1);       // gladiator
-		registerFighterProfile(88, 1);      // duelist
-
-		// Skills para Guerreiros Lvl 10 
-		registerFighterProfile(0, 3);       // Human Fighter
-		registerFighterProfile(1, 3);       // warrior
-		registerFighterProfile(4, 3);       // human knight
-		registerFighterProfile(7, 16);      // rogue
-		registerFighterProfile(32, 3);      // palus knight
-		registerFighterProfile(35, 16);     // assassin
-		registerFighterProfile(56, 100);    // artisan
-		registerFighterProfile(45, 29);     // orc raider
-		registerFighterProfile(19, 3);      // elven knight
-		registerFighterProfile(44, 3);      // Orc Fighter
-		registerFighterProfile(125, 468);   // Trooper
-	    registerFighterProfile(18, 3);      // elven Fighter
-	    registerFighterProfile(31, 3);      // Dark Fighter
-		//registerFighterProfile(54, 100);  // scavenger
-				
+		registerFighterProfile(3, 920); // Warlord
+		registerFighterProfile(89, 920); // Dreadnought
+		registerFighterProfile(33, 223); // shilen knight
+		registerFighterProfile(106, 223); // shilen templar
+		registerFighterProfile(23, 30); // Plains Walker
+		registerFighterProfile(22, 16); // Elven Scout
+		registerFighterProfile(24, 101); // silver ranger
+		registerFighterProfile(101, 30); // wind rider
+		registerFighterProfile(34, 986); // Blade Dancer
+		registerFighterProfile(107, 986); // spectral Dancer
+		registerFighterProfile(57, 260); // Warsmith
+		registerFighterProfile(118, 260); // maestro
+		registerFighterProfile(55, 263); // Bounty Hunter
+		registerFighterProfile(117, 263); // Fortune Seeker
+		registerFighterProfile(5, 92); // Paladin
+		registerFighterProfile(90, 400); // phoenix knight
+		registerFighterProfile(6, 92); // Dark Avenger
+		registerFighterProfile(91, 401); // hell knight
+		registerFighterProfile(8, 263); // Treasure Hunter
+		registerFighterProfile(93, 263); // adventur
+		registerFighterProfile(9, 101); // Hawkeye
+		registerFighterProfile(92, 56); // sagitarius
+		registerFighterProfile(20, 984); // Temple Knight
+		registerFighterProfile(99, 400); // evas templar
+		registerFighterProfile(21, 986); // SwordSinger
+		registerFighterProfile(100, 986); // Sword mouse
+		registerFighterProfile(37, 56); // Phantom Ranger
+		registerFighterProfile(109, 56); // ghost sentinel
+		registerFighterProfile(46, 190); // Destroyer
+		registerFighterProfile(113, 315); // titan
+		registerFighterProfile(48, 280); // Tyrant
+		registerFighterProfile(114, 280); // grand khavatari
+		registerFighterProfile(127, 468); // Berserker
+		registerFighterProfile(131, 468); // doombrenger
+		registerFighterProfile(128, 478); // Male Soul Breaker
+		registerFighterProfile(132, 478); // male soul hound
+		registerFighterProfile(129, 478); // Female Soul Breaker
+		registerFighterProfile(133, 478); // Female soul hound
+		registerFighterProfile(130, 507); // Arbalester
+		registerFighterProfile(134, 507); // trickster
+		registerFighterProfile(36, 263); // abyss walker
+		registerFighterProfile(108, 263); // ghost hunter
+		registerFighterProfile(2, 1); // gladiator
+		registerFighterProfile(88, 1); // duelist
+		
+		// Skills para Guerreiros Lvl 10
+		registerFighterProfile(0, 3); // Human Fighter
+		registerFighterProfile(1, 3); // warrior
+		registerFighterProfile(4, 3); // human knight
+		registerFighterProfile(7, 16); // rogue
+		registerFighterProfile(32, 3); // palus knight
+		registerFighterProfile(35, 16); // assassin
+		registerFighterProfile(56, 100); // artisan
+		registerFighterProfile(45, 29); // orc raider
+		registerFighterProfile(19, 3); // elven knight
+		registerFighterProfile(44, 3); // Orc Fighter
+		registerFighterProfile(125, 468); // Trooper
+		registerFighterProfile(18, 3); // elven Fighter
+		registerFighterProfile(31, 3); // Dark Fighter
+		// registerFighterProfile(54, 100); // scavenger
+		
 	}
 	
 	private static void registerMageProfile(int classId, int mainNukeId, int debuffId)
@@ -172,24 +179,24 @@ public class PhantomSkills
 		MageAttackProfile profile = MAGE_ATTACK_PROFILES.get(classId);
 		if (profile == null)
 		{
-			return null; 
+			return null;
 		}
 		
 		Skill debuff = bot.getKnownSkill(profile.debuffId);
 		Skill mainNuke = bot.getKnownSkill(profile.mainNukeId);
 		
-		if (debuff != null && target != null && !bot.isSkillDisabled(debuff) && (bot.getCurrentMp() >= debuff.getMpConsume()))
+		if ((debuff != null) && (target != null) && !bot.isSkillDisabled(debuff) && (bot.getCurrentMp() >= debuff.getMpConsume()))
 		{
 			if (!target.isAffectedBySkill(debuff.getId()))
 			{
-				if (debuff.getCastRange() > 0 && LocationUtil.calculateDistance(bot, target, true, false) <= debuff.getCastRange())
+				if ((debuff.getCastRange() > 0) && (LocationUtil.calculateDistance(bot, target, true, false) <= debuff.getCastRange()))
 				{
-					return debuff; 
+					return debuff;
 				}
 			}
 		}
 		
-		if (mainNuke != null && !bot.isSkillDisabled(mainNuke) && (bot.getCurrentMp() >= mainNuke.getMpConsume()))
+		if ((mainNuke != null) && !bot.isSkillDisabled(mainNuke) && (bot.getCurrentMp() >= mainNuke.getMpConsume()))
 		{
 			if ((target != null) && (mainNuke.getCastRange() > 0))
 			{
@@ -198,7 +205,7 @@ public class PhantomSkills
 					return null;
 				}
 			}
-			return mainNuke; 
+			return mainNuke;
 		}
 		
 		return null;
@@ -207,7 +214,7 @@ public class PhantomSkills
 	// Metodo para obter a skill de ataque do guerreiro ---
 	public static Skill getFighterAttackSkill(Player bot, Creature target)
 	{
-		// Se for mago ou nao existir, ignoramos
+		// Se e mago ou nao existe, ignoramos
 		if ((bot == null) || bot.isMageClass())
 		{
 			return null;
@@ -216,7 +223,7 @@ public class PhantomSkills
 		int classId = getPlayerClassId(bot);
 		Integer skillId = FIGHTER_ATTACK_PROFILES.get(classId);
 		
-		// Se nao tiver skill registrada para sua classe
+		// Se nao tem skill registrada para sua classe
 		if (skillId == null)
 		{
 			return null;
@@ -230,7 +237,7 @@ public class PhantomSkills
 			return null;
 		}
 		
-		// Verificamos se tem a skill, se nao esta em cooldown e se tem MP suficiente
+		// Verificamos se tem a skill, se nao esta em cooldown e tem MP suficiente
 		if ((attackSkill != null) && !bot.isSkillDisabled(attackSkill) && (bot.getCurrentMp() >= attackSkill.getMpConsume()))
 		{
 			return attackSkill;
@@ -253,7 +260,7 @@ public class PhantomSkills
 	
 	public static boolean handleCombatSummons(Player bot, Creature target)
 	{
-		if (bot == null || bot.isCastingNow())
+		if ((bot == null) || bot.isCastingNow())
 		{
 			return true;
 		}
@@ -281,7 +288,7 @@ public class PhantomSkills
 		}
 		
 		Summon summon = bot.getSummon();
-		boolean hasActiveSummon = summon != null && !summon.isDead();
+		boolean hasActiveSummon = (summon != null) && !summon.isDead();
 		
 		if (!hasActiveSummon)
 		{
@@ -295,7 +302,7 @@ public class PhantomSkills
 						String key = bot.getObjectId() + "_summon";
 						long lastCast = CAST_TIMERS.getOrDefault(key, 0L);
 						
-						if (System.currentTimeMillis() - lastCast > 10000)
+						if ((System.currentTimeMillis() - lastCast) > 10000)
 						{
 							CAST_TIMERS.put(key, System.currentTimeMillis());
 							bot.stopMove(null);
@@ -339,7 +346,7 @@ public class PhantomSkills
 						String key = bot.getObjectId() + "_cubic_" + cubicId;
 						long lastCast = CAST_TIMERS.getOrDefault(key, 0L);
 						
-						if (System.currentTimeMillis() - lastCast > 900000)
+						if ((System.currentTimeMillis() - lastCast) > 900000)
 						{
 							CAST_TIMERS.put(key, System.currentTimeMillis());
 							bot.stopMove(null);
@@ -360,9 +367,14 @@ public class PhantomSkills
 			else
 			{
 				givePhantomPetBuffs(summon);
-				bot.addAutoSoulShot(PET_SOULSHOT);
 				
-				if (target != null && summon.getTarget() != target)
+				// Validacao para nao mandar a ordem se ja esta ativado
+				if (!bot.getAutoSoulShot().contains(PET_SOULSHOT))
+				{
+					bot.addAutoSoulShot(PET_SOULSHOT);
+				}
+				
+				if ((target != null) && (summon.getTarget() != target))
 				{
 					summon.setTarget(target);
 					summon.getAI().setIntention(Intention.ATTACK, target);
@@ -375,47 +387,83 @@ public class PhantomSkills
 	
 	public static Skill getBestOffensiveSkill(Player bot)
 	{
-		if (bot == null) return null;
+		if (bot == null)
+		{
+			return null;
+		}
 		
-		List<Integer> FORBIDDEN_FALLBACK = Arrays.asList(
-			1151, 1159, 1288, 1266, 1267, 1417  
-		);
-
-		return bot.getAllSkills().stream()
-			.filter(s -> s != null)
-			.filter(s -> !s.isPassive() && s.isMagic() && s.getPower() > 0)
-			.filter(s -> !FORBIDDEN_FALLBACK.contains(s.getId()))
-			.filter(s -> s.getCastRange() >= 400)
-			.filter(s -> !bot.isSkillDisabled(s) && bot.getCurrentMp() >= s.getMpConsume())
-			.sorted((s1, s2) -> Double.compare(s2.getPower(), s1.getPower()))
-			.findFirst()
-			.orElse(null);
+		return bot.getAllSkills().stream().filter(s -> s != null).filter(s -> !s.isPassive() && s.isMagic() && (s.getPower() > 0)).filter(s -> !FORBIDDEN_FALLBACK.contains(s.getId())).filter(s -> s.getCastRange() >= 400).filter(s -> !bot.isSkillDisabled(s) && (bot.getCurrentMp() >= s.getMpConsume())).sorted((s1, s2) -> Double.compare(s2.getPower(), s1.getPower())).findFirst().orElse(null);
 	}
 	
-    public static void applyBasicBuffs(Player bot)
-    {
-    if (bot.getEffectList().getBuffCount() < 5)
-    {
-        boolean isMage = bot.isMageClass();
-        
-        int[] mageBuffs = {1085, 1059, 1303, 1078, 1389, 1062, 1045, 1048, 1204, 1036, 1040, 1413, 273, 276, 365, 264, 267, 304};
-        int[] fighterBuffs = {1086, 1068, 1077, 1542, 1045, 1048, 1388, 1242, 1240, 1268, 1204, 1040, 1036, 1062, 1413, 271, 274, 275, 269, 264, 267, 304, 310};
-
-		int[] buffsToApply = isMage ? mageBuffs : fighterBuffs;
-
-        for (int id : buffsToApply)
-        {
-            int maxLevel = SkillData.getInstance().getMaxLevel(id);
-            Skill buff = SkillData.getInstance().getSkill(id, maxLevel); 
-            
-            if (buff != null)
-            {
-                buff.applyEffects(bot, bot);
-            }
-          }
-       }
-    }
-
+	public static void applyBasicBuffs(Player bot)
+	{
+		if (bot.getEffectList().getBuffCount() < 5)
+		{
+			boolean isMage = bot.isMageClass();
+			
+			int[] mageBuffs =
+			{
+				1085,
+				1059,
+				1303,
+				1078,
+				1389,
+				1062,
+				1045,
+				1048,
+				1204,
+				1036,
+				1040,
+				1413,
+				273,
+				276,
+				365,
+				264,
+				267,
+				304
+			};
+			int[] fighterBuffs =
+			{
+				1086,
+				1068,
+				1077,
+				1542,
+				1045,
+				1048,
+				1388,
+				1242,
+				1240,
+				1268,
+				1204,
+				1040,
+				1036,
+				1062,
+				1413,
+				271,
+				274,
+				275,
+				269,
+				264,
+				267,
+				304,
+				310
+			};
+			
+			int[] buffsToApply = isMage ? mageBuffs : fighterBuffs;
+			
+			for (int id : buffsToApply)
+			{
+				int maxLevel = SkillData.getInstance().getMaxLevel(id);
+				Skill buff = SkillData.getInstance().getSkill(id, maxLevel);
+				
+				if (buff != null)
+				{
+					buff.applyEffects(bot, bot);
+				}
+			}
+		}
+	}
+	
 	public static void givePhantomPetBuffs(Summon pet)
 	{
 		if ((pet == null) || pet.isDead())
@@ -429,10 +477,92 @@ public class PhantomSkills
 		}
 		
 		int[][] buffs =
-		{ 
-		{ 1086, 2 },{ 1204, 2 },{ 1068, 3 },{ 1040, 1 },{ 1077, 3 },{ 1242, 3 },{ 310, 1 },{ 1062, 1 },{ 1036, 1 },{ 915, 1 },{ 1268, 4 },
-        { 1240, 1 },{ 271, 1 },{ 274, 1 },{ 275, 1 },{ 269, 1 },{ 264, 1 },{ 267, 1 },{ 277, 1 },{ 1363, 1 },{ 1078, 1 }
-        };
+		{
+			{
+				1086,
+				2
+			},
+			{
+				1204,
+				2
+			},
+			{
+				1068,
+				3
+			},
+			{
+				1040,
+				1
+			},
+			{
+				1077,
+				3
+			},
+			{
+				1242,
+				3
+			},
+			{
+				310,
+				1
+			},
+			{
+				1062,
+				1
+			},
+			{
+				1036,
+				1
+			},
+			{
+				915,
+				1
+			},
+			{
+				1268,
+				4
+			},
+			{
+				1240,
+				1
+			},
+			{
+				271,
+				1
+			},
+			{
+				274,
+				1
+			},
+			{
+				275,
+				1
+			},
+			{
+				269,
+				1
+			},
+			{
+				264,
+				1
+			},
+			{
+				267,
+				1
+			},
+			{
+				277,
+				1
+			},
+			{
+				1363,
+				1
+			},
+			{
+				1078,
+				1
+			}
+		};
 		
 		for (int[] buffInfo : buffs)
 		{
@@ -443,10 +573,10 @@ public class PhantomSkills
 			}
 		}
 	}
-
+	
 	public static boolean handleSelfBuffs(Player bot)
 	{
-		if (bot == null || bot.isDead() || bot.isCastingNow())
+		if ((bot == null) || bot.isDead() || bot.isCastingNow())
 		{
 			return false;
 		}
@@ -459,7 +589,7 @@ public class PhantomSkills
 			int rapidShotId = 99;
 			Skill rapidShot = bot.getKnownSkill(rapidShotId);
 			
-			if (rapidShot != null && !bot.isAffectedBySkill(rapidShotId) && !bot.isSkillDisabled(rapidShot))
+			if ((rapidShot != null) && !bot.isAffectedBySkill(rapidShotId) && !bot.isSkillDisabled(rapidShot))
 			{
 				if (bot.getCurrentMp() >= rapidShot.getMpConsume())
 				{
@@ -471,7 +601,7 @@ public class PhantomSkills
 		}
 		return false;
 	}
-
+	
 	public static void unregisterBot(int objectId)
 	{
 		CAST_TIMERS.entrySet().removeIf(entry -> entry.getKey().startsWith(objectId + "_"));

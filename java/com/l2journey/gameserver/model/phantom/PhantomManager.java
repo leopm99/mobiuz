@@ -15,7 +15,6 @@ import com.l2journey.gameserver.model.actor.Player;
 import com.l2journey.gameserver.network.enums.ChatType;
 import com.l2journey.gameserver.network.serverpackets.CreatureSay;
 
-
 public class PhantomManager implements IVoicedCommandHandler
 {
 	// Inicializamos o Logger oficial do console
@@ -43,9 +42,9 @@ public class PhantomManager implements IVoicedCommandHandler
 		VoicedCommandHandler.getInstance().registerHandler(this);
 		
 		LOGGER.info("[Phantom System L2Journey]: By Mafias");
-
-		// INICIALIZACAO AUTOMATICA DINAMICA:
-		com.l2journey.commons.threads.ThreadPool.schedule(() -> 
+		
+		// ARRANQUE AUTOMATICO DINAMICO:
+		com.l2journey.commons.threads.ThreadPool.schedule(() ->
 		{
 			// Lemos exatamente quantos bots voce tinha criados/salvos no seu XML
 			int botsGuardados = PhantomConfig.PHANTOM_IDS.size();
@@ -53,7 +52,7 @@ public class PhantomManager implements IVoicedCommandHandler
 			if (botsGuardados > 0)
 			{
 				LOGGER.info("[Phantom System L2Journey]: Iniciando " + botsGuardados + " bots automaticamente...");
-				PhantomEngine.startBatch(botsGuardados, null); 
+				PhantomEngine.startBatch(botsGuardados, null);
 			}
 		}, 60000);
 	}

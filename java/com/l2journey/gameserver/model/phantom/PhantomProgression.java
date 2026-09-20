@@ -4,33 +4,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.l2journey.commons.util.Rnd;
+import com.l2journey.gameserver.data.xml.ExperienceData;
 import com.l2journey.gameserver.model.actor.Player;
 import com.l2journey.gameserver.model.actor.enums.player.PlayerClass;
 import com.l2journey.gameserver.model.item.enums.ItemProcessType;
 import com.l2journey.gameserver.model.item.instance.Item;
-import com.l2journey.gameserver.data.xml.ExperienceData; 
 
 public class PhantomProgression
 {
 	private static final int KARMIAN_TUNIC = 438;
 	private static final int KARMIAN_STOCKINGS = 470;
-
+	
 	private static final String VAR_LEVEL_CAP = "PHANTOM_MAX_LEVEL_CAP";
-    private static final PlayerClass[] PLAYER_CLASS_VALUES = PlayerClass.values();
-
+	private static final PlayerClass[] PLAYER_CLASS_VALUES = PlayerClass.values();
+	
 	private static int phantomCounter = 0;
-
+	
 	public static void checkProgression(Player bot)
 	{
 		if (bot == null)
 		{
 			return;
 		}
-
+		
 		enforceLevelCap(bot);
 		checkLowLevelItems(bot);
 		handleClassChange(bot, bot.getLevel());
 	}
+	
 	// LEVEL CAP POR QUANTIDADE EXATA DE BOTS
 	private static void enforceLevelCap(Player bot)
 	{
@@ -38,9 +39,9 @@ public class PhantomProgression
 		{
 			assignLevelCapByQuantity(bot);
 		}
-
+		
 		int levelCap = bot.getVariables().getInt(VAR_LEVEL_CAP, 85);
-
+		
 		if (bot.getLevel() >= levelCap)
 		{
 			long maxExpForCap = ExperienceData.getInstance().getExpForLevel(levelCap);
@@ -48,22 +49,22 @@ public class PhantomProgression
 			{
 				bot.getStat().setExp(maxExpForCap);
 			}
-
-			if (!bot.getVariables().getBoolean("expoff_checked", false)) 
+			
+			if (!bot.getVariables().getBoolean("expoff_checked", false))
 			{
-				bot.getVariables().set("expoff", "true"); 
+				bot.getVariables().set("expoff", "true");
 				bot.getVariables().set("expoff_checked", true);
-
+				
 				PhantomManager.logToFile(bot.getName(), "Llegó al límite (Nivel " + levelCap + "). Exp bloqueada permanentemente.");
 			}
 		}
 	}
-
+	
 	private static synchronized void assignLevelCapByQuantity(Player bot)
 	{
 		phantomCounter++;
 		int cap;
-
+		
 		if (phantomCounter <= 5)
 		{
 			cap = 10; // 1-5: Lvl 10 (Grau NG)
@@ -92,32 +93,32 @@ public class PhantomProgression
 		{
 			cap = 85; // 31-60: Lvl 85 (Grau S)
 		}
-
+		
 		// Reiniciamos o ciclo ao chegar a 60 bots (corrigido)
 		if (phantomCounter >= 60)
 		{
 			phantomCounter = 0;
 		}
-
+		
 		bot.getVariables().set(VAR_LEVEL_CAP, cap);
 		
 		PhantomManager.logToFile(bot.getName(), "Límite asignado: Nivel " + cap + " (Bot #" + phantomCounter + " del ciclo)");
 	}
-
+	
 	private static void checkLowLevelItems(Player bot)
 	{
-		if (bot.isMageClass() && bot.getLevel() < 40)
+		if (bot.isMageClass() && (bot.getLevel() < 40))
 		{
 			List<Item> itemsToDestroy = new ArrayList<>();
 			
 			for (Item item : bot.getInventory().getItems())
 			{
-				if (item != null && (item.getId() == KARMIAN_TUNIC || item.getId() == KARMIAN_STOCKINGS))
+				if ((item != null) && ((item.getId() == KARMIAN_TUNIC) || (item.getId() == KARMIAN_STOCKINGS)))
 				{
 					itemsToDestroy.add(item);
 				}
 			}
-
+			
 			for (Item item : itemsToDestroy)
 			{
 				if (item.isEquipped())
@@ -128,20 +129,23 @@ public class PhantomProgression
 			}
 		}
 	}
-
+	
 	private static void handleClassChange(Player bot, int lvl)
 	{
 		PlayerClass currentClass = bot.getPlayerClass();
-		if (currentClass == null) return;
-
+		if (currentClass == null)
+		{
+			return;
+		}
+		
 		int classLevel = currentClass.level();
-		boolean needsClassChange = ((lvl >= 20) && (classLevel == 0))
-								|| ((lvl >= 40) && (classLevel == 1))
-								|| ((lvl >= 76) && (classLevel == 2))
-								|| ((lvl >= 85) && (classLevel == 3));
-
-		if (!needsClassChange) return;
-
+		boolean needsClassChange = ((lvl >= 20) && (classLevel == 0)) || ((lvl >= 40) && (classLevel == 1)) || ((lvl >= 76) && (classLevel == 2)) || ((lvl >= 85) && (classLevel == 3));
+		
+		if (!needsClassChange)
+		{
+			return;
+		}
+		
 		List<PlayerClass> nextClasses = new ArrayList<>();
 		for (PlayerClass cid : PLAYER_CLASS_VALUES)
 		{
@@ -150,39 +154,51 @@ public class PhantomProgression
 				nextClasses.add(cid);
 			}
 		}
-
-		if (nextClasses.isEmpty()) return;
-
+		
+		if (nextClasses.isEmpty())
+		{
+			return;
+		}
+		
 		PlayerClass newClass = null;
 		int chance = Rnd.get(100);
-
+		
 		switch (currentClass)
 		{
-			case MAGE: 
+			case MAGE:
 				newClass = (chance < 85) ? PlayerClass.WIZARD : PlayerClass.CLERIC;
 				break;
-			case ELVEN_MAGE: 
+			case ELVEN_MAGE:
 				newClass = (chance < 85) ? PlayerClass.ELVEN_WIZARD : PlayerClass.ORACLE;
 				break;
-			case DARK_MAGE: 
+			case DARK_MAGE:
 				newClass = (chance < 85) ? PlayerClass.DARK_WIZARD : PlayerClass.SHILLIEN_ORACLE;
 				break;
-			case WIZARD: 
-				if (chance < 40) newClass = PlayerClass.SORCERER;           
-				else if (chance < 80) newClass = PlayerClass.NECROMANCER; 
-				else newClass = PlayerClass.WARLOCK;                    
+			case WIZARD:
+				if (chance < 40)
+				{
+					newClass = PlayerClass.SORCERER;
+				}
+				else if (chance < 80)
+				{
+					newClass = PlayerClass.NECROMANCER;
+				}
+				else
+				{
+					newClass = PlayerClass.WARLOCK;
+				}
 				break;
 		}
-
+		
 		if (newClass == null)
 		{
 			newClass = nextClasses.get(Rnd.get(nextClasses.size()));
 		}
-
+		
 		bot.setPlayerClass(newClass.getId());
 		bot.setBaseClass(newClass.getId());
 		bot.broadcastUserInfo();
-
+		
 		PhantomManager.logToFile(bot.getName(), "Cambio de clase: " + currentClass + " -> " + newClass);
 	}
 }

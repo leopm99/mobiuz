@@ -8,12 +8,11 @@ import com.l2journey.gameserver.model.item.enums.ItemProcessType;
 import com.l2journey.gameserver.model.item.instance.Item;
 import com.l2journey.gameserver.network.serverpackets.ExAutoSoulShot;
 
-
 public class PhantomEquipment
 {
 	private static final int INVENTORY_CLEAN_LIMIT = 25;
 	
-	// --- SEM GRAU (Nivel 1 ao 19) ---
+	// --- NO-GRADE (Nivel 1 ao 19) ---
 	private static final int[] MAGE_KIT_NG =
 	{
 		1104,
@@ -430,7 +429,7 @@ public class PhantomEquipment
 		// Verificacao especial para armadura leve
 		boolean isLight = !isMage && isLightArmorClass(bot.getBaseClass());
 		
-		// Identificamos se o bot e da raca Kamael (Classes 123 a 136)
+		// Identificamos se o bot e raca Kamael (Classes 123 a 136)
 		boolean isKamael = (bot.getBaseClass() >= 123) && (bot.getBaseClass() <= 136);
 		
 		if (lvl >= 84)
@@ -846,7 +845,7 @@ public class PhantomEquipment
 			case 132:
 			case 133:
 			case 135:
-				isTwoHanded = false; // O Rapier permite escudo/sigil
+				isTwoHanded = false; // O Rapier permite escudo/sigilo
 				if (lvl >= 84)
 				{
 					customWeaponId = 15905; // Heavenstare Rapier
@@ -904,7 +903,7 @@ public class PhantomEquipment
 				break;
 		}
 		
-		// Montamos um novo kit filtrando escudos se o bot usa armas de duas maos
+		// Montamos um novo Kit filtrando escudos se o bot usa armas de duas maos
 		List<Integer> newKit = new ArrayList<>();
 		newKit.add(customWeaponId); // Adicionamos a arma
 		
@@ -940,7 +939,7 @@ public class PhantomEquipment
 		int[] kitCorrecto = getActiveKit(bot);
 		boolean isKamael = ((bot.getBaseClass() >= 123) && (bot.getBaseClass() <= 136));
 		
-		// 1. Limpamos o lixo
+		// 1. Limpamos lixo
 		for (Item item : bot.getInventory().getItems())
 		{
 			// Protegemos Adena, Soulshots E FLECHAS
@@ -950,7 +949,7 @@ public class PhantomEquipment
 			}
 			
 			boolean isShieldNg = (item.getId() == 19);
-			// Destroi se: nao esta no kit, OU e Kamael e e o escudo ID 19 (regra forcada)
+			// Destroi se: Nao esta no kit, OU e Kamael e e o escudo ID 19 (Regra forcada)
 			boolean shouldDestroy = !isItemInKit(item.getId(), kitCorrecto) || (isKamael && isShieldNg);
 			
 			if (item.isEquipable() && shouldDestroy)
@@ -963,7 +962,7 @@ public class PhantomEquipment
 			}
 		}
 		
-		// 2. Montamos a lista do que esta faltando
+		// 2. Montamos a lista do que falta
 		List<Integer> faltantes = new ArrayList<>();
 		for (int id : kitCorrecto)
 		{
@@ -1001,7 +1000,7 @@ public class PhantomEquipment
 		int[] kitCorrecto = getActiveKit(bot);
 		
 		// ==========================================
-		// PASSO 1: Equipar set, joias e armas PRIMEIRO
+		// PASSO 1: Equipar Set, Joias e Armas PRIMEIRO
 		// ==========================================
 		for (Item item : bot.getInventory().getItems())
 		{
@@ -1133,7 +1132,7 @@ public class PhantomEquipment
 					item.setEnchantLevel(targetEnchant);
 				}
 				
-				// Equipamos o item (arma/roupa)
+				// Equipamos o item (Arma/Roupa)
 				if (!item.isEquipped())
 				{
 					bot.getInventory().equipItem(item);
@@ -1142,7 +1141,7 @@ public class PhantomEquipment
 		}
 		
 		// ==========================================
-		// PASSO 2: Equipar municao CORRETA EXATA
+		// PASSO 2: Equipar Municao CORRETA EXATA
 		// ==========================================
 		int lvl = bot.getLevel();
 		int targetAmmoId = -1;
@@ -1183,7 +1182,7 @@ public class PhantomEquipment
 			}
 		}
 		
-		// Se for Kamael, buscamos EXATAMENTE a municao correspondente e equipamos
+		// Se e Kamael, buscamos EXATAMENTE sua municao correspondente e a equipamos
 		if (targetAmmoId != -1)
 		{
 			for (Item item : bot.getInventory().getItems())
@@ -1193,7 +1192,7 @@ public class PhantomEquipment
 					if (!item.isEquipped())
 					{
 						bot.getInventory().equipItem(item);
-						break; // Uma vez equipada, paramos a busca
+						break; // Uma vez que a equipou, cortamos a busca
 					}
 				}
 			}
@@ -1209,7 +1208,7 @@ public class PhantomEquipment
 		{
 			for (Item item : bot.getInventory().getItems())
 			{
-				// Protegemos flechas para nao apagar por engano
+				// Protegemos flechas para que nao sejam apagadas por erro
 				if (!item.isEquipped() && (item.getId() != 57) && !isShot(item.getId()) && !isArrow(item.getId()))
 				{
 					bot.destroyItem(ItemProcessType.DESTROY, item, bot, false);
@@ -1228,30 +1227,30 @@ public class PhantomEquipment
 		int lvl = bot.getLevel();
 		int shotId;
 		
-		// IDs atualizados: os magos agora recebem BLESSED Spiritshots (3947 a 3952)
+		// IDs atualizados: Os magos agora recebem BLESSED Spiritshots (3947 a 3952)
 		if (lvl >= 76)
 		{
-			shotId = isMage ? 3952 : 1467; // Grau S (BSS: 3952 | SS: 1467)
+			shotId = isMage ? 3952 : 1467; // S-Grade (BSS: 3952 | SS: 1467)
 		}
 		else if (lvl >= 61)
 		{
-			shotId = isMage ? 3951 : 1466; // Grau A (BSS: 3951 | SS: 1466)
+			shotId = isMage ? 3951 : 1466; // A-Grade (BSS: 3951 | SS: 1466)
 		}
 		else if (lvl >= 52)
 		{
-			shotId = isMage ? 3950 : 1465; // Grau B (BSS: 3950 | SS: 1465)
+			shotId = isMage ? 3950 : 1465; // B-Grade (BSS: 3950 | SS: 1465)
 		}
 		else if (lvl >= 40)
 		{
-			shotId = isMage ? 3949 : 1464; // Grau C (BSS: 3949 | SS: 1464)
+			shotId = isMage ? 3949 : 1464; // C-Grade (BSS: 3949 | SS: 1464)
 		}
 		else if (lvl >= 20)
 		{
-			shotId = isMage ? 3948 : 1463; // Grau D (BSS: 3948 | SS: 1463)
+			shotId = isMage ? 3948 : 1463; // D-Grade (BSS: 3948 | SS: 1463)
 		}
 		else
 		{
-			shotId = isMage ? 3947 : 1835; // Sem Grau (BSS: 3947 | SS: 1835)
+			shotId = isMage ? 3947 : 1835; // No-Grade (BSS: 3947 | SS: 1835)
 		}
 		
 		if (bot.getInventory().getInventoryItemCount(shotId, -1) < 500)
@@ -1267,13 +1266,13 @@ public class PhantomEquipment
 		bot.sendPacket(new ExAutoSoulShot(shotId, 1));
 	}
 	
-	// --- SISTEMA INDEPENDENTE PARA FLECHAS E VIROTES ---
+	// --- SISTEMA INDEPENDENTE PARA AS FLECHAS E VIROTES ---
 	private static void ensureArrows(Player bot)
 	{
 		int classId = bot.getBaseClass();
 		// Arqueiros normais (Humanos, Elfos, Elfos Negros)
 		boolean isArcher = ((classId == 9) || (classId == 24) || (classId == 37) || (classId == 92) || (classId == 102) || (classId == 109));
-		// Arqueiros Kamael (usam Balestra e Virotes)
+		// Arqueiros Kamael (Usam Besta e Virotes)
 		boolean isKamaelArcher = ((classId == 130) || (classId == 134));
 		
 		if (!isArcher && !isKamaelArcher)
@@ -1286,7 +1285,7 @@ public class PhantomEquipment
 		
 		if (isKamaelArcher)
 		{
-			// Virotes (Bolts) para Balestras
+			// Virotes (Bolts) para Bestas
 			if (lvl >= 84)
 			{
 				ammoId = 9637; // Bolts S
@@ -1364,16 +1363,16 @@ public class PhantomEquipment
 		}
 		if (itemId == 1539)
 		{
-			return true; // Pocao de Cura
+			return true; // Healing Potion
 		}
 		
-		return (// Soulshots (Guerreiros)
-		(itemId == 1835) || (itemId == 1463) || (itemId == 1464) || (itemId == 1465) || (itemId == 1466) || (itemId == 1467) || (// Spiritshots normais (caso tenha sobrado algum antigo no inventario)
-		itemId == 2509) || (itemId == 2510) || (itemId == 2511) || (itemId == 2512) || (itemId == 2513) || (itemId == 2514) || (// Blessed Spiritshots (Magos - novos IDs para nao serem apagados)
+		return (// Soulshots (Fighters)
+		(itemId == 1835) || (itemId == 1463) || (itemId == 1464) || (itemId == 1465) || (itemId == 1466) || (itemId == 1467) || (// Spiritshots Normais (Caso tenha sobrado algum antigo no inventario)
+		itemId == 2509) || (itemId == 2510) || (itemId == 2511) || (itemId == 2512) || (itemId == 2513) || (itemId == 2514) || (// Blessed Spiritshots (Magos - Novos IDs para que nao sejam apagados)
 		itemId == 3947) || (itemId == 3948) || (itemId == 3949) || (itemId == 3950) || (itemId == 3951) || (itemId == 3952));
 	}
 	
-	// IDENTIFICADOR DE FLECHAS E BOLTS ---
+	// IDENTIFICADOR DE FLECHAS Y VOLT ---
 	static boolean isArrow(int itemId)
 	{
 		return ((itemId == 1341) || (itemId == 1342) || (itemId == 1343) || (itemId == 1344) || (itemId == 1345) || (itemId == 17) || (itemId == 9632) || (itemId == 9633) || (itemId == 9634) || (itemId == 9635) || (itemId == 9636) || (itemId == 9637));
@@ -1382,7 +1381,7 @@ public class PhantomEquipment
 	// IDENTIFICADOR DE ESCUDOS ---
 	private static boolean isShield(int id)
 	{
-		// Adicionado o ID 19 (Escudo Sem Grau)
+		// Adicionado o ID 19 (Escudo No-Grade)
 		return (id == 19) || (id == 2493) || (id == 107) || (id == 110) || (id == 9441) || (id == 2498) || (id == 2497) || (id == 15587);
 	}
 	
@@ -1391,7 +1390,7 @@ public class PhantomEquipment
 		int lvl = bot.getLevel();
 		int ssValido, bssValido, arrowValido, boltValido;
 		
-		// 1. Definimos qual e o UNICO item que ele deveria ter conforme o grau atual
+		// 1. Definimos qual e o UNICO que deveria ter conforme seu grau atual
 		if (lvl >= 76)
 		{
 			ssValido = 1467;
@@ -1444,13 +1443,13 @@ public class PhantomEquipment
 			}
 			int id = item.getId();
 			
-			// Identificamos a qual categoria o item pertence
+			// Identificamos a qual categoria pertence o item
 			boolean esCualquierSS = ((id >= 1463) && (id <= 1467)) || (id == 1835);
 			boolean esCualquierBSS = ((id >= 3947) && (id <= 3952));
 			boolean esCualquierArrow = ((id >= 1341) && (id <= 1345)) || (id == 17);
 			boolean esCualquierBolt = ((id >= 9632) && (id <= 9637));
 			
-			// Se for um Shot ou municao MAS NAO for o valido do seu grau, destruimos
+			// Se e um Shot ou Municao MAS NAO e o valido do seu grau, destruimos
 			if ((esCualquierSS && (id != ssValido)) || (esCualquierBSS && (id != bssValido)) || (esCualquierArrow && (id != arrowValido)) || (esCualquierBolt && (id != boltValido)))
 			{
 				bot.getInventory().destroyItemByItemId(ItemProcessType.NONE, id, item.getCount(), bot, null);
@@ -1460,13 +1459,13 @@ public class PhantomEquipment
 		// 3. --- CONTROLE DE EXCESSO DE PESO POR CONSUMIVEIS ---
 		int maxPots = 500;
 		
-		long hpPots = bot.getInventory().getInventoryItemCount(1539, -1); // Pocao de HP
+		long hpPots = bot.getInventory().getInventoryItemCount(1539, -1); // Pocao HP
 		if (hpPots > maxPots)
 		{
 			bot.getInventory().destroyItemByItemId(ItemProcessType.NONE, 1539, hpPots - maxPots, bot, null);
 		}
 		
-		long mpPots = bot.getInventory().getInventoryItemCount(728, -1); // Pocao de MP
+		long mpPots = bot.getInventory().getInventoryItemCount(728, -1); // Pocao MP
 		if (mpPots > maxPots)
 		{
 			bot.getInventory().destroyItemByItemId(ItemProcessType.NONE, 728, mpPots - maxPots, bot, null);

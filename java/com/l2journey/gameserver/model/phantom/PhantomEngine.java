@@ -1,7 +1,7 @@
 package com.l2journey.gameserver.model.phantom;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -19,13 +19,11 @@ import com.l2journey.gameserver.model.item.instance.Item;
 public class PhantomEngine
 {
 	public static final List<Player> activePhantoms = new CopyOnWriteArrayList<>();
-	
-	// Mapa para controlar o tempo de conexao de cada bot
 	private static final Map<Integer, Long> FATIGUE_TIMES = new ConcurrentHashMap<>();
 	
 	public static boolean isRunning = false;
 	
-	// Filtro de limpeza para remover equipamento indesejado (Karmian) ao nascer
+	// Filtro de limpeza para eliminar equipamento indesejado (Karmian) ao nascer
 	public static void forceWipe(Player bot)
 	{
 		if ((bot == null) || !bot.isMageClass() || (bot.getLevel() >= 40))
@@ -59,13 +57,14 @@ public class PhantomEngine
 		}
 	}
 	
-	public static void startBatch(int count, Player gm)
+	// ADICIONADO "synchronized" PARA EVITAR CLONAGENS SE FOR CHAMADO MULTIPLAS VEZES NO MESMO MILISSEGUNDO
+	public static synchronized void startBatch(int count, Player gm)
 	{
-		if (isRunning)
+		if (isRunning && (gm != null))
 		{
 			PhantomManager.logToFile("SYSTEM", "Sistema ya estaba corriendo. Agregando lote de " + count + ".");
 		}
-		else
+		else if (!isRunning)
 		{
 			PhantomManager.startLogSession("PHANTOM_START");
 			isRunning = true;
@@ -114,7 +113,7 @@ public class PhantomEngine
 		}
 	}
 	
-	public static void createAndStart(int count, Player gm)
+	public static synchronized void createAndStart(int count, Player gm)
 	{
 		if (!isRunning)
 		{
@@ -153,20 +152,26 @@ public class PhantomEngine
 	// Desconexao e purga total de RAM para um bot
 	public static void disconnectPhantom(Player p)
 	{
-		if (p == null) return;
+		if (p == null)
+		{
+			return;
+		}
 		try
 		{
-			// Purgamos ele de todos os mapas internos (limpeza de RAM)
+			// 1. Purgamos ele dos mapas internos
 			activePhantoms.remove(p);
-			FATIGUE_TIMES.remove(p.getObjectId()); // Limpamos seu temporizador de fadiga
+			FATIGUE_TIMES.remove(p.getObjectId());
 			PhantomWalk.removeBot(p);
 			PhantomAI.unregisterBot(p.getObjectId());
 			PhantomState.unregister(p.getObjectId());
 			PhantomState.REVIVING_PHANTOMS.remove(p.getObjectId());
 			
+			// --- 2. INICIO DE PURGA PROFUNDA DE RAM ---
+			p.setTarget(null);
 			p.abortAttack();
 			p.abortCast();
-			p.setTarget(null);
+			p.stopMove(null);
+			p.stopAllEffects();
 			
 			if (p.getSummon() != null)
 			{
@@ -175,8 +180,22 @@ public class PhantomEngine
 			
 			if (p.isOnline())
 			{
+				if (p.isSpawned())
+				{
+					p.decayMe();
+				}
+				// Salvamos os itens/stats antes de apaga-lo
+				try
+				{
+					p.store(true);
+				}
+				catch (Exception ignored)
+				{
+				}
 				p.deleteMe();
+				p.setOnlineStatus(false, true);
 			}
+			World.getInstance().removeObject(p);
 		}
 		catch (Exception e)
 		{
@@ -187,7 +206,7 @@ public class PhantomEngine
 	public static int stopSome(int count, Player gm)
 	{
 		int stopped = 0;
-		// Usamos uma lista temporaria para nao ter conflitos ao remover enquanto iteramos
+		// Usamos uma lista temporaria para nao ter conflitos ao apagar
 		List<Player> toStop = new ArrayList<>();
 		
 		for (Player p : activePhantoms)
@@ -223,7 +242,7 @@ public class PhantomEngine
 	public static void stopSystem(Player gm)
 	{
 		isRunning = false;
-		// Iteramos sobre uma copia da lista para garantir a remocao completa
+		// Iteramos sobre uma copia da lista para garantir o apagamento completo
 		for (Player p : new ArrayList<>(activePhantoms))
 		{
 			disconnectPhantom(p);
@@ -297,14 +316,34 @@ public class PhantomEngine
 			phantom.setInvisible(false);
 			phantom.setEnteredWorld();
 			
-			// ACA ESTA O ADICIONAL PARA RECARREGAR OS CRISTAIS E SS AO NASCER
+			// AQUI ESTA O ADICIONAL PARA RECARREGAR OS CRISTAIS E SS AO NASCER
 			int ssId = 1463; // Pode ajustar isso dinamicamente conforme o grau
-			int bssId = 3947; 
-			if (phantom.getLevel() >= 76) { ssId = 1462; bssId = 3952; }
-			else if (phantom.getLevel() >= 61) { ssId = 1467; bssId = 3951; }
-			else if (phantom.getLevel() >= 52) { ssId = 1466; bssId = 3950; }
-			else if (phantom.getLevel() >= 40) { ssId = 1465; bssId = 3949; }
-			else if (phantom.getLevel() >= 20) { ssId = 1464; bssId = 3948; }
+			int bssId = 3947;
+			if (phantom.getLevel() >= 76)
+			{
+				ssId = 1462;
+				bssId = 3952;
+			}
+			else if (phantom.getLevel() >= 61)
+			{
+				ssId = 1467;
+				bssId = 3951;
+			}
+			else if (phantom.getLevel() >= 52)
+			{
+				ssId = 1466;
+				bssId = 3950;
+			}
+			else if (phantom.getLevel() >= 40)
+			{
+				ssId = 1465;
+				bssId = 3949;
+			}
+			else if (phantom.getLevel() >= 20)
+			{
+				ssId = 1464;
+				bssId = 3948;
+			}
 			PhantomAI.handleItemRefill(phantom, phantom.getObjectId(), ssId, bssId);
 			
 			if (creationSpawn)
@@ -338,7 +377,7 @@ public class PhantomEngine
 			phantom.broadcastUserInfo();
 		}
 		
-		// SISTEMA DE FADIGA: atribuimos um tempo de jogo aleatorio entre 5 e 8 horas
+		// SISTEMA DE FADIGA: Atribuimos um tempo de jogo aleatorio entre 5 e 8 horas
 		long fatigueTime = System.currentTimeMillis() + (Rnd.get(5, 8) * 60 * 60 * 1000L);
 		FATIGUE_TIMES.put(phantom.getObjectId(), fatigueTime);
 	}
@@ -378,7 +417,7 @@ public class PhantomEngine
 				return;
 			}
 			
-			// SISTEMA ANTI-LEAK: se o bot desapareceu do mundo, cortamos a IA e limpamos a RAM
+			// SISTEMA ANTI-LEAK: Se o bot desapareceu do mundo, cortamos a IA e limpamos a RAM
 			if (World.getInstance().getPlayer(bot.getObjectId()) == null)
 			{
 				disconnectPhantom(bot);
@@ -386,14 +425,15 @@ public class PhantomEngine
 			}
 			
 			// --- NOVO: SISTEMA DE FADIGA E ROTACAO ---
-			if (FATIGUE_TIMES.containsKey(bot.getObjectId()) && System.currentTimeMillis() > FATIGUE_TIMES.get(bot.getObjectId()))
+			if (FATIGUE_TIMES.containsKey(bot.getObjectId()) && (System.currentTimeMillis() > FATIGUE_TIMES.get(bot.getObjectId())))
 			{
 				PhantomManager.logToFile(bot.getName(), "Fatiga alcanzada. Se desconecta para limpiar RAM.");
 				disconnectPhantom(bot);
 				
-				// Programamos para outro bot entrar e substitui-lo em 4 a 6 minutos
-				long reconnectDelay = Rnd.get(4, 6) * 60 * 1000L;
-				ThreadPool.schedule(() -> 
+				// AGORA ALEATORIZADO POR SEGUNDOS (240 a 420 segs = 4 a 7 min)
+				// Isso evita que todos disparem o timer no mesmo milissegundo exato.
+				long reconnectDelay = Rnd.get(240, 420) * 1000L;
+				ThreadPool.schedule(() ->
 				{
 					if (isRunning)
 					{
@@ -453,7 +493,7 @@ public class PhantomEngine
 			}
 			finally
 			{
-				// Aqui esta a verificacao de encerramento
+				// Aqui esta a checagem de encerramento
 				if (isRunning && activePhantoms.contains(bot))
 				{
 					startPhantomAI(bot);
