@@ -379,10 +379,10 @@ public class RecipeManager
 			_items = listItems(true); // Esta linha realmente retira os materiais do inventario.
 			if (_items != null)
 			{
-				if (Rnd.get(100) < _recipeList.getSuccessRate())
+				final boolean success = Rnd.get(100) < _recipeList.getSuccessRate();
+				if (success)
 				{
 					rewardPlayer();
-					updateMakeInfo(true);
 				}
 				else
 				{
@@ -403,15 +403,17 @@ public class RecipeManager
 					{
 						_target.sendPacket(SystemMessageId.YOU_FAILED_AT_MIXING_THE_ITEM);
 					}
-					updateMakeInfo(false);
 				}
+				
+				// A contagem da janela de criacao vem do inventario do cliente, entao a lista precisa chegar antes do updateMakeInfo.
+				_target.sendItemList(false);
+				updateMakeInfo(success);
 			}
 			// Atualiza a barra de carga e mana da janela de craft.
 			updateCurMp();
 			updateCurLoad();
 			_activeMakers.remove(_player.getObjectId());
 			_player.setCrafting(false);
-			_target.sendItemList(false);
 		}
 		
 		private void updateMakeInfo(boolean success)
@@ -745,7 +747,6 @@ public class RecipeManager
 				// crafting mais rapido gera menos XP. E possivel usar ALT_GAME_CREATION_XP_RATE/SP para ajustar o XP/SP ganho, padrao = 1.
 				_player.addExpAndSp((int) _player.calcStat(Stat.EXPSP_RATE, _exp * Config.ALT_GAME_CREATION_XP_RATE * Config.ALT_GAME_CREATION_SPEED, null, null), (int) _player.calcStat(Stat.EXPSP_RATE, _sp * Config.ALT_GAME_CREATION_SP_RATE * Config.ALT_GAME_CREATION_SPEED, null, null));
 			}
-			updateMakeInfo(true); // Sucesso.
 		}
 	}
 	

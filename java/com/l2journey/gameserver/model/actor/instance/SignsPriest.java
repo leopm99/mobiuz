@@ -115,6 +115,7 @@ public class SignsPriest extends Npc
 						player.sendPacket(SystemMessageId.YOU_DO_NOT_HAVE_ENOUGH_ADENA);
 						break;
 					}
+					
 					player.getInventory().addItem(ItemProcessType.REWARD, SevenSigns.RECORD_SEVEN_SIGNS_ID, 1, player, this);
 					sm = new SystemMessage(SystemMessageId.YOU_HAVE_EARNED_S1);
 					sm.addItemName(SevenSigns.RECORD_SEVEN_SIGNS_ID);
@@ -167,7 +168,7 @@ public class SignsPriest extends Npc
 							break;
 						}
 					}
-					else if ((cabal == SevenSigns.CABAL_DAWN) && Config.ALT_GAME_CASTLE_DAWN) // dawn
+					else if ((cabal == SevenSigns.CABAL_DAWN) && Config.ALT_GAME_CASTLE_DAWN && (player.getPlayerClass().level() >= 2)) // dawn
 					{
 						// clans without castle need to pay participation fee
 						final Clan clan = player.getClan();
@@ -209,6 +210,47 @@ public class SignsPriest extends Npc
 				case 4: // Join a Cabal - SevenSigns 4 [0]1 x
 				{
 					final int newSeal = Integer.parseInt(command.substring(15));
+					// The join dialog refuses characters without a class transfer, a direct bypass has to refuse them as well.
+					if (player.getPlayerClass().level() == 0)
+					{
+						if (this instanceof DawnPriest)
+						{
+							showChatWindow(player, 33, "dawn_firstclass", false);
+						}
+						else
+						{
+							showChatWindow(player, 33, "dusk_firstclass", false);
+						}
+						return;
+					}
+
+					// A crafted join has to match what the priest offers, its own side and one of the three seals.
+					if ((newSeal < SevenSigns.SEAL_AVARICE) || (newSeal > SevenSigns.SEAL_STRIFE) || (cabal != ((this instanceof DawnPriest) ? SevenSigns.CABAL_DAWN : SevenSigns.CABAL_DUSK)))
+					{
+						return;
+					}
+					
+					// Joining is only offered during the competition period.
+					if (!SevenSigns.getInstance().isCompetitionPeriod())
+					{
+						showChatWindow(player);
+						return;
+					}
+					
+					// A member rejoining would switch sides and keep the contribution score.
+					if (SevenSigns.getInstance().getPlayerCabal(player.getObjectId()) != SevenSigns.CABAL_NULL)
+					{
+						if (this instanceof DawnPriest)
+						{
+							showChatWindow(player, 33, "dawn_member", false);
+						}
+						else
+						{
+							showChatWindow(player, 33, "dusk_member", false);
+						}
+						return;
+					}
+
 					if (player.getPlayerClass().level() >= 1)
 					{
 						// even if in htmls is said that ally can have castle too, but it is not
@@ -218,8 +260,11 @@ public class SignsPriest extends Npc
 							showChatWindow(player, SevenSigns.SEVEN_SIGNS_HTML_PATH + "signs_33_dusk_no.htm");
 							return;
 						}
+						
 						// If the player is trying to join the Lords of Dawn, check if they are carrying a Lord's certificate. If not then try to take the required amount of adena instead.
-						if (Config.ALT_GAME_CASTLE_DAWN && (cabal == SevenSigns.CABAL_DAWN))
+						// The fee only applies after the second class transfer, the castle restriction on Dusk still applies after the first (C3 retail).
+						if (Config.ALT_GAME_CASTLE_DAWN && (cabal == SevenSigns.CABAL_DAWN) && (player.getPlayerClass().level() >= 2))
+
 						{
 							boolean allowJoinDawn = false;
 							if ((clan != null) && (clan.getCastleId() > 0))
@@ -242,6 +287,7 @@ public class SignsPriest extends Npc
 							}
 						}
 					}
+					
 					SevenSigns.getInstance().setPlayerInfo(player.getObjectId(), cabal, newSeal);
 					if (cabal == SevenSigns.CABAL_DAWN)
 					{
@@ -304,12 +350,6 @@ public class SignsPriest extends Npc
 				case 21:
 				{
 					final int contribStoneId = Integer.parseInt(command.substring(14, 18));
-					final Item contribBlueStones = player.getInventory().getItemByItemId(SevenSigns.SEAL_STONE_BLUE_ID);
-					final Item contribGreenStones = player.getInventory().getItemByItemId(SevenSigns.SEAL_STONE_GREEN_ID);
-					final Item contribRedStones = player.getInventory().getItemByItemId(SevenSigns.SEAL_STONE_RED_ID);
-					final long contribBlueStoneCount = contribBlueStones == null ? 0 : contribBlueStones.getCount();
-					final long contribGreenStoneCount = contribGreenStones == null ? 0 : contribGreenStones.getCount();
-					final long contribRedStoneCount = contribRedStones == null ? 0 : contribRedStones.getCount();
 					long score = SevenSigns.getInstance().getPlayerContribScore(player.getObjectId());
 					long contributionCount = 0;
 					boolean contribStonesFound = false;
@@ -338,29 +378,17 @@ public class SignsPriest extends Npc
 					{
 						case SevenSigns.SEAL_STONE_BLUE_ID:
 						{
-							blueContrib = (Config.ALT_MAXIMUM_PLAYER_CONTRIB - score) / SevenSigns.BLUE_CONTRIB_POINTS;
-							if (blueContrib > contribBlueStoneCount)
-							{
-								blueContrib = contributionCount;
-							}
+							blueContrib = Math.min(contributionCount, (Config.ALT_MAXIMUM_PLAYER_CONTRIB - score) / SevenSigns.BLUE_CONTRIB_POINTS);
 							break;
 						}
 						case SevenSigns.SEAL_STONE_GREEN_ID:
 						{
-							greenContrib = (Config.ALT_MAXIMUM_PLAYER_CONTRIB - score) / SevenSigns.GREEN_CONTRIB_POINTS;
-							if (greenContrib > contribGreenStoneCount)
-							{
-								greenContrib = contributionCount;
-							}
+							greenContrib = Math.min(contributionCount, (Config.ALT_MAXIMUM_PLAYER_CONTRIB - score) / SevenSigns.GREEN_CONTRIB_POINTS);
 							break;
 						}
 						case SevenSigns.SEAL_STONE_RED_ID:
 						{
-							redContrib = (Config.ALT_MAXIMUM_PLAYER_CONTRIB - score) / SevenSigns.RED_CONTRIB_POINTS;
-							if (redContrib > contribRedStoneCount)
-							{
-								redContrib = contributionCount;
-							}
+							redContrib = Math.min(contributionCount, (Config.ALT_MAXIMUM_PLAYER_CONTRIB - score) / SevenSigns.RED_CONTRIB_POINTS);
 							break;
 						}
 					}
@@ -373,6 +401,7 @@ public class SignsPriest extends Npc
 						msg.addLong(redContrib);
 						player.sendPacket(msg);
 					}
+					
 					if ((greenContrib > 0) && player.destroyItemByItemId(ItemProcessType.FEE, SevenSigns.SEAL_STONE_GREEN_ID, greenContrib, this, false))
 					{
 						contribStonesFound = true;
@@ -381,6 +410,7 @@ public class SignsPriest extends Npc
 						msg.addLong(greenContrib);
 						player.sendPacket(msg);
 					}
+					
 					if ((blueContrib > 0) && player.destroyItemByItemId(ItemProcessType.FEE, SevenSigns.SEAL_STONE_BLUE_ID, blueContrib, this, false))
 					{
 						contribStonesFound = true;
@@ -390,7 +420,12 @@ public class SignsPriest extends Npc
 						player.sendPacket(msg);
 					}
 					
-					if (!contribStonesFound)
+					if ((contributionCount > 0) && ((redContrib + greenContrib + blueContrib) <= 0))
+					{
+						// A requested amount that does not fit under the contribution limit.
+						player.sendPacket(SystemMessageId.CONTRIBUTION_LEVEL_HAS_EXCEEDED_THE_LIMIT_YOU_MAY_NOT_CONTINUE);
+					}
+					else if (!contribStonesFound)
 					{
 						if (this instanceof DawnPriest)
 						{
@@ -431,7 +466,7 @@ public class SignsPriest extends Npc
 					final long redStoneCount = redStones == null ? 0 : redStones.getCount();
 					long contribScore = SevenSigns.getInstance().getPlayerContribScore(player.getObjectId());
 					boolean stonesFound = false;
-					if (contribScore == Config.ALT_MAXIMUM_PLAYER_CONTRIB)
+					if (contribScore >= Config.ALT_MAXIMUM_PLAYER_CONTRIB)
 					{
 						player.sendPacket(SystemMessageId.CONTRIBUTION_LEVEL_HAS_EXCEEDED_THE_LIMIT_YOU_MAY_NOT_CONTINUE);
 					}
@@ -502,6 +537,7 @@ public class SignsPriest extends Npc
 									msg.addLong(redContribCount);
 									player.sendPacket(msg);
 								}
+								
 								if ((greenContribCount > 0) && player.destroyItemByItemId(ItemProcessType.FEE, SevenSigns.SEAL_STONE_GREEN_ID, greenContribCount, this, false))
 								{
 									stonesFound = true;
@@ -510,6 +546,7 @@ public class SignsPriest extends Npc
 									msg.addLong(greenContribCount);
 									player.sendPacket(msg);
 								}
+								
 								if ((blueContribCount > 0) && player.destroyItemByItemId(ItemProcessType.FEE, SevenSigns.SEAL_STONE_BLUE_ID, blueContribCount, this, false))
 								{
 									stonesFound = true;
@@ -519,7 +556,12 @@ public class SignsPriest extends Npc
 									player.sendPacket(msg);
 								}
 								
-								if (!stonesFound)
+								if (!stonesFound && ((redStoneCount + greenStoneCount + blueStoneCount) > 0))
+								{
+									// Stones are carried, but none fit under the contribution limit.
+									player.sendPacket(SystemMessageId.CONTRIBUTION_LEVEL_HAS_EXCEEDED_THE_LIMIT_YOU_MAY_NOT_CONTINUE);
+								}
+								else if (!stonesFound)
 								{
 									if (this instanceof DawnPriest)
 									{
@@ -603,6 +645,7 @@ public class SignsPriest extends Npc
 						showChatWindow(player, SevenSigns.SEVEN_SIGNS_HTML_PATH + "blkmrkt_3.htm");
 						break;
 					}
+					
 					if (ancientAdenaAmount < ancientAdenaConvert)
 					{
 						showChatWindow(player, SevenSigns.SEVEN_SIGNS_HTML_PATH + "blkmrkt_4.htm");
@@ -739,10 +782,12 @@ public class SignsPriest extends Npc
 							{
 								player.destroyItemByItemId(ItemProcessType.FEE, SevenSigns.SEAL_STONE_BLUE_ID, blueStoneCountAll, this, true);
 							}
+							
 							if (greenStoneCountAll > 0)
 							{
 								player.destroyItemByItemId(ItemProcessType.FEE, SevenSigns.SEAL_STONE_GREEN_ID, greenStoneCountAll, this, true);
 							}
+							
 							if (redStoneCountAll > 0)
 							{
 								player.destroyItemByItemId(ItemProcessType.FEE, SevenSigns.SEAL_STONE_RED_ID, redStoneCountAll, this, true);

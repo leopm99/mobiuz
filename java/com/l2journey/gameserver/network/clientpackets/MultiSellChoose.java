@@ -109,7 +109,6 @@ public class MultiSellChoose extends ClientPacket
 		
 		if (!getClient().getFloodProtectors().canUseMultiSell() || (_amount < 1) || (_amount > Config.MULTISELL_AMOUNT_LIMIT))
 		{
-			player.setMultiSell(null);
 			return;
 		}
 		

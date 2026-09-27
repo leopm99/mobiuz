@@ -22,16 +22,21 @@ package com.l2journey.gameserver.network.serverpackets;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.l2journey.commons.network.WritableBuffer;
 import com.l2journey.gameserver.data.xml.RecipeData;
+import com.l2journey.gameserver.data.xml.SkillTreeData;
 import com.l2journey.gameserver.model.RecipeList;
+import com.l2journey.gameserver.model.SkillLearn;
 import com.l2journey.gameserver.model.actor.Player;
+import com.l2journey.gameserver.model.actor.enums.player.PlayerClass;
 import com.l2journey.gameserver.model.item.ItemTemplate;
 import com.l2journey.gameserver.model.item.WarehouseItem;
+import com.l2journey.gameserver.model.item.holders.ItemHolder;
 import com.l2journey.gameserver.model.item.instance.Item;
 import com.l2journey.gameserver.model.item.type.CrystalType;
 import com.l2journey.gameserver.model.item.type.EtcItemType;
@@ -84,6 +89,7 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 			PacketLogger.warning("Error while sending withdraw request to: " + player.getName());
 			return;
 		}
+		
 		switch (itemtype)
 		{
 			case WEAPON:
@@ -153,6 +159,7 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 				break;
 			}
 		}
+		
 		try
 		{
 			switch (sortorder)
@@ -160,15 +167,15 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 				case A2Z:
 				case Z2A:
 				{
-					Collections.sort(_objects, new WarehouseItemNameComparator(sortorder));
+					_objects.sort(new WarehouseItemNameComparator(sortorder));
 					break;
 				}
 				case GRADE:
 				{
 					if ((itemtype == WarehouseListType.ARMOR) || (itemtype == WarehouseListType.WEAPON))
 					{
-						Collections.sort(_objects, new WarehouseItemNameComparator(A2Z));
-						Collections.sort(_objects, new WarehouseItemGradeComparator(A2Z));
+						_objects.sort(new WarehouseItemNameComparator(A2Z));
+						_objects.sort(new WarehouseItemGradeComparator(A2Z));
 					}
 					break;
 				}
@@ -176,8 +183,8 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 				{
 					if (itemtype == WarehouseListType.RECIPE)
 					{
-						Collections.sort(_objects, new WarehouseItemNameComparator(A2Z));
-						Collections.sort(_objects, new WarehouseItemRecipeComparator(A2Z));
+						_objects.sort(new WarehouseItemNameComparator(A2Z));
+						_objects.sort(new WarehouseItemRecipeComparator(A2Z));
 					}
 					break;
 				}
@@ -185,8 +192,8 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 				{
 					if (itemtype == WarehouseListType.MATERIAL)
 					{
-						Collections.sort(_objects, new WarehouseItemNameComparator(A2Z));
-						Collections.sort(_objects, new WarehouseItemTypeComparator(A2Z));
+						_objects.sort(new WarehouseItemNameComparator(A2Z));
+						_objects.sort(new WarehouseItemTypeComparator(A2Z));
 					}
 					break;
 				}
@@ -194,8 +201,8 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 				{
 					if (itemtype == WarehouseListType.ARMOR)
 					{
-						Collections.sort(_objects, new WarehouseItemNameComparator(A2Z));
-						Collections.sort(_objects, new WarehouseItemBodypartComparator(A2Z));
+						_objects.sort(new WarehouseItemNameComparator(A2Z));
+						_objects.sort(new WarehouseItemBodypartComparator(A2Z));
 					}
 					break;
 				}
@@ -270,10 +277,12 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 			{
 				return (order == A2Z ? Z2A : A2Z);
 			}
+			
 			if ((o2.getType2() == ItemTemplate.TYPE2_MONEY) && (o1.getType2() != ItemTemplate.TYPE2_MONEY))
 			{
 				return (order == A2Z ? A2Z : Z2A);
 			}
+			
 			final String s1 = o1.getItemName();
 			final String s2 = o2.getItemName();
 			return (order == A2Z ? s1.compareTo(s2) : s2.compareTo(s1));
@@ -301,24 +310,28 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 			{
 				return (order == A2Z ? Z2A : A2Z);
 			}
+			
 			if ((o2.getType2() == ItemTemplate.TYPE2_MONEY) && (o1.getType2() != ItemTemplate.TYPE2_MONEY))
 			{
 				return (order == A2Z ? A2Z : Z2A);
 			}
+			
 			if ((o1.isEtcItem() && (o1.getItemType() == EtcItemType.RECIPE)) && (o2.isEtcItem() && (o2.getItemType() == EtcItemType.RECIPE)))
 			{
 				try
 				{
 					final RecipeList rp1 = rd.getRecipeByItemId(o1.getItemId());
-					final RecipeList rp2 = rd.getRecipeByItemId(o2.getItemId());
 					if (rp1 == null)
 					{
 						return (order == A2Z ? A2Z : Z2A);
 					}
+					
+					final RecipeList rp2 = rd.getRecipeByItemId(o2.getItemId());
 					if (rp2 == null)
 					{
 						return (order == A2Z ? Z2A : A2Z);
 					}
+					
 					final Integer i1 = rp1.getLevel();
 					final Integer i2 = rp2.getLevel();
 					return (order == A2Z ? i1.compareTo(i2) : i2.compareTo(i1));
@@ -328,6 +341,7 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 					return 0;
 				}
 			}
+			
 			final String s1 = o1.getItemName();
 			final String s2 = o2.getItemName();
 			return (order == A2Z ? s1.compareTo(s2) : s2.compareTo(s1));
@@ -353,10 +367,12 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 			{
 				return (order == A2Z ? Z2A : A2Z);
 			}
+			
 			if ((o2.getType2() == ItemTemplate.TYPE2_MONEY) && (o1.getType2() != ItemTemplate.TYPE2_MONEY))
 			{
 				return (order == A2Z ? A2Z : Z2A);
 			}
+			
 			final Integer i1 = o1.getBodyPart();
 			final Integer i2 = o2.getBodyPart();
 			return (order == A2Z ? i1.compareTo(i2) : i2.compareTo(i1));
@@ -382,10 +398,12 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 			{
 				return (order == A2Z ? Z2A : A2Z);
 			}
+			
 			if ((o2.getType2() == ItemTemplate.TYPE2_MONEY) && (o1.getType2() != ItemTemplate.TYPE2_MONEY))
 			{
 				return (order == A2Z ? A2Z : Z2A);
 			}
+			
 			final CrystalType i1 = o1.getItemGrade();
 			final CrystalType i2 = o2.getItemGrade();
 			return (order == A2Z ? i1.compareTo(i2) : i2.compareTo(i1));
@@ -411,10 +429,12 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 			{
 				return (order == A2Z ? Z2A : A2Z);
 			}
+			
 			if ((o2.getType2() == ItemTemplate.TYPE2_MONEY) && (o1.getType2() != ItemTemplate.TYPE2_MONEY))
 			{
 				return (order == A2Z ? A2Z : Z2A);
 			}
+			
 			try
 			{
 				final MaterialType i1 = o1.getItem().getMaterialType();
@@ -446,6 +466,7 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 				list.add(new WarehouseItem(item));
 			}
 		}
+		
 		return list;
 	}
 	
@@ -466,6 +487,7 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 				list.add(new WarehouseItem(item));
 			}
 		}
+		
 		return list;
 	}
 	
@@ -486,6 +508,7 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 				list.add(new WarehouseItem(item));
 			}
 		}
+		
 		return list;
 	}
 	
@@ -506,6 +529,7 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 				list.add(new WarehouseItem(item));
 			}
 		}
+		
 		return list;
 	}
 	
@@ -526,6 +550,7 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 				list.add(new WarehouseItem(item));
 			}
 		}
+		
 		return list;
 	}
 	
@@ -546,6 +571,7 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 				list.add(new WarehouseItem(item));
 			}
 		}
+		
 		return list;
 	}
 	
@@ -558,14 +584,28 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 	 */
 	private List<WarehouseItem> createSpellbookList(Collection<Item> items)
 	{
+		// Books are the items required to learn class skills.
+		final Set<Integer> bookIds = new HashSet<>();
+		for (PlayerClass playerClass : PlayerClass.values())
+		{
+			for (SkillLearn skillLearn : SkillTreeData.getInstance().getCompleteClassSkillTree(playerClass).values())
+			{
+				for (ItemHolder requiredItem : skillLearn.getRequiredItems())
+				{
+					bookIds.add(requiredItem.getId());
+				}
+			}
+		}
+		
 		final List<WarehouseItem> list = new ArrayList<>();
 		for (Item item : items)
 		{
-			if (((item.isEtcItem() && (!item.getItemName().toUpperCase().startsWith("AMULET"))) || (item.getTemplate().getType2() == ItemTemplate.TYPE2_MONEY)) && (list.size() < MAX_SORT_LIST_ITEMS))
+			if (((item.isEtcItem() && bookIds.contains(item.getId()) && (!item.getItemName().toUpperCase().startsWith("AMULET"))) || (item.getTemplate().getType2() == ItemTemplate.TYPE2_MONEY)) && (list.size() < MAX_SORT_LIST_ITEMS))
 			{
 				list.add(new WarehouseItem(item));
 			}
 		}
+		
 		return list;
 	}
 	
@@ -586,6 +626,7 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 				list.add(new WarehouseItem(item));
 			}
 		}
+		
 		return list;
 	}
 	
@@ -606,6 +647,7 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 				list.add(new WarehouseItem(item));
 			}
 		}
+		
 		return list;
 	}
 	
@@ -626,6 +668,7 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 				list.add(new WarehouseItem(item));
 			}
 		}
+		
 		return list;
 	}
 	
@@ -646,6 +689,7 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 				list.add(new WarehouseItem(item));
 			}
 		}
+		
 		return list;
 	}
 	
@@ -666,6 +710,7 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 				list.add(new WarehouseItem(item));
 			}
 		}
+		
 		return list;
 	}
 	
@@ -685,6 +730,7 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 				list.add(new WarehouseItem(item));
 			}
 		}
+		
 		return list;
 	}
 	
@@ -718,6 +764,7 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 			{
 				buffer.writeInt(0);
 			}
+			
 			buffer.writeInt(item.getMana());
 			buffer.writeInt(item.getTime());
 			buffer.writeShort(item.getAttackElementType());
@@ -726,11 +773,13 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 			{
 				buffer.writeShort(item.getElementDefAttr(i));
 			}
+			
 			// Enchant Effects
 			for (int op : item.getEnchantOptions())
 			{
 				buffer.writeShort(op);
 			}
+			
 			buffer.writeInt(item.getObjectId());
 		}
 	}

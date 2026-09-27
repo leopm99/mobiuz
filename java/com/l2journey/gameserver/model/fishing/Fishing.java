@@ -190,14 +190,9 @@ public class Fishing implements Runnable
 		
 		try
 		{
+			// The fish state shown to the player must follow the mode alone.
+			// Including the deceptive mode here would match the reversed actions and hide the deception.
 			if (_mode == 1)
-			{
-				if (_deceptiveMode == 0)
-				{
-					_fishCurHp += (int) _regenHp;
-				}
-			}
-			else if (_deceptiveMode == 1)
 			{
 				_fishCurHp += (int) _regenHp;
 			}

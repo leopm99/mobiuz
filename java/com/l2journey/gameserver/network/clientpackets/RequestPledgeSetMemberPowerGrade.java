@@ -32,6 +32,7 @@ import com.l2journey.gameserver.model.actor.Player;
 import com.l2journey.gameserver.model.clan.Clan;
 import com.l2journey.gameserver.model.clan.ClanAccess;
 import com.l2journey.gameserver.model.clan.ClanMember;
+import com.l2journey.gameserver.network.serverpackets.PledgeReceivePowerInfo;
 
 /**
  * Format: (ch) Sd
@@ -78,6 +79,16 @@ public class RequestPledgeSetMemberPowerGrade extends ClientPacket
 		}
 		
 		member.setPowerGrade(_powerGrade);
+		
+		// An online member keeps the privileges of the old rank until refreshed.
+		final Player memberPlayer = member.getPlayer();
+		if (memberPlayer != null)
+		{
+			memberPlayer.setClanPrivileges(clan.getRankPrivs(_powerGrade));
+			memberPlayer.updateUserInfo();
+		}
+		
 		clan.broadcastClanStatus();
+		player.sendPacket(new PledgeReceivePowerInfo(member));
 	}
 }

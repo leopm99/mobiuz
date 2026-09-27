@@ -596,6 +596,10 @@ public class TradeList
 			_owner.sendInventoryUpdate(ownerIU);
 			_partner.sendInventoryUpdate(partnerIU);
 			
+			// The client drops part of the update when the trade window closes, so the full list is sent as well.
+			_owner.sendItemList(false);
+			_partner.sendItemList(false);
+			
 			// Update current load as well
 			StatusUpdate playerSU = new StatusUpdate(_owner);
 			playerSU.addAttribute(StatusUpdate.CUR_LOAD, _owner.getCurrentLoad());

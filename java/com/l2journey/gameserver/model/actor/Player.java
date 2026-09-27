@@ -3632,6 +3632,8 @@ public class Player extends Playable
 	 */
 	public boolean destroyItem(ItemProcessType process, Item item, long count, WorldObject reference, boolean sendMessage)
 	{
+		final boolean wasEquipped = item.isEquipped();
+		final int equippedSlot = item.getLocationSlot();
 		final Item destoyedItem = _inventory.destroyItem(process, item, count, this, reference);
 		if (destoyedItem == null)
 		{
@@ -3647,6 +3649,13 @@ public class Player extends Playable
 		final InventoryUpdate playerIU = new InventoryUpdate();
 		playerIU.addItem(destoyedItem);
 		sendInventoryUpdate(playerIU);
+		
+		if (wasEquipped && (destoyedItem.getCount() == 0))
+		{
+			// The paperdoll slot still references the destroyed item, the client leaves it there when the last one is used up.
+			_inventory.unEquipItemInSlot(equippedSlot);
+			sendItemList(false);
+		}
 		
 		// Update current load as well
 		final StatusUpdate su = new StatusUpdate(this);
@@ -9029,6 +9038,22 @@ public class Player extends Playable
 			return false;
 		}
 		
+		// Pumping and reeling are refused here, so that no reuse delay is applied when there is no fish to fight.
+		if ((_fishCombat == null) && skill.hasEffectType(EffectType.FISHING))
+		{
+			if (skill.getId() == CommonSkill.PUMPING.getId())
+			{
+				sendPacket(SystemMessageId.YOU_MAY_ONLY_USE_THE_PUMPING_SKILL_WHILE_YOU_ARE_FISHING);
+			}
+			else
+			{
+				sendPacket(SystemMessageId.YOU_MAY_ONLY_USE_THE_REELING_SKILL_WHILE_YOU_ARE_FISHING);
+			}
+			
+			sendPacket(ActionFailed.STATIC_PACKET);
+			return false;
+		}
+		
 		if (_observerMode)
 		{
 			sendPacket(SystemMessageId.OBSERVERS_CANNOT_PARTICIPATE);
@@ -12201,7 +12226,8 @@ public class Player extends Playable
 		fish.clear();
 		sendPacket(SystemMessageId.YOU_CAST_YOUR_LINE_AND_START_TO_FISH);
 		
-		if (!GameTimeTaskManager.getInstance().isNight() && _lure.isNightLure())
+		// Night lures only catch at night, ordinary lures only during the day.
+		if (GameTimeTaskManager.getInstance().isNight() != _lure.isNightLure())
 		{
 			_fish.setFishGroup(-1);
 		}
@@ -12575,7 +12601,8 @@ public class Player extends Playable
 	
 	public void startFishCombat(boolean isNoob, boolean isUpperGrade)
 	{
-		_fishCombat = new Fishing(this, _fish, isNoob, isUpperGrade, _lure.getId());
+		// Every night lure fights like a night catch, the fish turns deceptive and reverses reeling and pumping.
+		_fishCombat = new Fishing(this, _fish, isNoob, isUpperGrade || _lure.isNightLure(), _lure.getId());
 	}
 	
 	public void endFishing(boolean win)
