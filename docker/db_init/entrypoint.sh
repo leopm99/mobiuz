@@ -3,8 +3,17 @@ set -e
 DB_HOST="${DB_HOST:-db}"
 DB_PORT="${DB_PORT:-3306}"
 
-mysql_exec() {
-  mysql -h "$DB_HOST" -P "$DB_PORT" -u root -p"$MYSQL_ROOT_PASSWORD" -N -s "$MYSQL_DATABASE" -e "$1"
+INSTALLER_JAR="/opt/l2j/db_installer/Database_Installer.jar"
+SQL_DIR="/opt/l2j/sql"
+
+run_installer() {
+  scope="$1"
+  java -jar "$INSTALLER_JAR" \
+    --console \
+    -h "$DB_HOST" -p "$DB_PORT" -u root -pw "$MYSQL_ROOT_PASSWORD" \
+    -d "$MYSQL_DATABASE" \
+    --sql-dir "$SQL_DIR" \
+    --scope "$scope"
 }
 
 table_exists() {
@@ -29,23 +38,17 @@ for i in $(seq 1 30); do
 done
 
 if table_exists "account_data" || table_exists "gameservers"; then
-  echo "Login schema already present, skipping Database_Installer_LS."
+  echo "Login schema already present, skipping Database_Installer (login)."
 else
-  echo "Running Database_Installer_LS (login)..."
-  java -cp "/opt/l2j/libs/*:/opt/l2j/db_installer/Database_Installer_LS.jar" \
-    com.l2journey.tools.dbinstaller.LauncherLS \
-    -h "$DB_HOST" -p "$DB_PORT" -u root -pw "$MYSQL_ROOT_PASSWORD" \
-    -d "$MYSQL_DATABASE" -m i -dir /opt/l2j/sql/login/
+  echo "Running Database_Installer (login)..."
+  run_installer login
 fi
 
 if table_exists "items" || table_exists "characters"; then
-  echo "Game schema already present, skipping Database_Installer_GS."
+  echo "Game schema already present, skipping Database_Installer (game)."
 else
-  echo "Running Database_Installer_GS (game)..."
-  java -cp "/opt/l2j/libs/*:/opt/l2j/db_installer/Database_Installer_GS.jar" \
-    com.l2journey.tools.dbinstaller.LauncherGS \
-    -h "$DB_HOST" -p "$DB_PORT" -u root -pw "$MYSQL_ROOT_PASSWORD" \
-    -d "$MYSQL_DATABASE" -m i -dir /opt/l2j/sql/game/
+  echo "Running Database_Installer (game)..."
+  run_installer game
 fi
 
 if [ -d /opt/l2j/sql/updates ] && [ -n "$(find /opt/l2j/sql/updates -maxdepth 1 -name '*.sql' 2>/dev/null)" ]; then
@@ -67,6 +70,25 @@ if [ -d /opt/l2j/sql/updates ] && [ -n "$(find /opt/l2j/sql/updates -maxdepth 1 
     echo "Applying $f"
     mysql -h "$DB_HOST" -P "$DB_PORT" -u root -p"$MYSQL_ROOT_PASSWORD" "$MYSQL_DATABASE" < "$f"
   done
+fi
+
+# LoginServer rejects unknown hexids. Keep gameservers in sync with the GameServer hexid.txt.
+HEXID_FILE="/opt/l2j/hexid.txt"
+if table_exists "gameservers" && [ -f "$HEXID_FILE" ]; then
+  HEXID="$(grep -E '^HexID=' "$HEXID_FILE" | cut -d= -f2- | tr -d '\r')"
+  SERVER_ID="$(grep -E '^ServerID=' "$HEXID_FILE" | cut -d= -f2- | tr -d '\r')"
+  SERVER_ID="${SERVER_ID:-1}"
+  case "$SERVER_ID" in
+    ''|*[!0-9]*) SERVER_ID=1 ;;
+  esac
+  if [ -n "$HEXID" ]; then
+    echo "Syncing gameservers registration (server_id=${SERVER_ID}) to match hexid.txt..."
+    mysql -h "$DB_HOST" -P "$DB_PORT" -u root -p"$MYSQL_ROOT_PASSWORD" "$MYSQL_DATABASE" -e \
+      "INSERT INTO gameservers (server_id, hexid, host) VALUES (${SERVER_ID}, '${HEXID}', '')
+       ON DUPLICATE KEY UPDATE hexid=VALUES(hexid);"
+  else
+    echo "Warning: HexID missing from ${HEXID_FILE}; skipping gameservers sync."
+  fi
 fi
 
 echo "Database installation complete."

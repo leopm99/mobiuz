@@ -1,34 +1,18 @@
 # ---------------------------------------------------------------------------
-# L2Journey DB Init - Runs Java DB installers (LauncherLS, LauncherGS) + updates
+# L2Journey DB Init - Runs prebuilt Database_Installer.jar + SQL updates
 # ---------------------------------------------------------------------------
-# Stage 1: Build with JDK 24 + Ant (same as login/game)
-# ---------------------------------------------------------------------------
-FROM eclipse-temurin:24-jdk AS builder
-
-RUN apt-get update && apt-get install -y --no-install-recommends ant && rm -rf /var/lib/apt/lists/*
-
-WORKDIR /build
-
-COPY build.xml .
-COPY java ./java
-COPY dist ./dist
-
-RUN ant compile jar
-
-# ---------------------------------------------------------------------------
-# Stage 2: Runtime - JRE + MariaDB client + installer JARs + sql
-# ---------------------------------------------------------------------------
-FROM eclipse-temurin:24-jre
+FROM eclipse-temurin:25-jre
 
 RUN apt-get update && apt-get install -y --no-install-recommends mariadb-client && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /opt/l2j
 
-# Installer JARs (manifest Class-Path expects ../libs/*)
-COPY --from=builder /build/build/dist/db_installer/Database_Installer_LS.jar ./db_installer/
-COPY --from=builder /build/build/dist/db_installer/Database_Installer_GS.jar ./db_installer/
-COPY --from=builder /build/dist/libs ./libs
-COPY --from=builder /build/dist/db_installer/sql ./sql
+# Installer JAR (manifest Class-Path expects ../libs/*)
+COPY dist/db_installer/Database_Installer.jar ./db_installer/
+COPY dist/libs ./libs
+COPY dist/db_installer/sql ./sql
+# Fallback when the image is run without Compose. docker-compose.yml bind-mounts the host file over this path.
+COPY dist/game/config/ipconfig/hexid.txt ./hexid.txt
 
 COPY docker/db_init/entrypoint.sh /entrypoint.sh
 RUN sed -i 's/\r$//' /entrypoint.sh && chmod +x /entrypoint.sh

@@ -33,6 +33,9 @@ services:
       DB_PORT: "3306"
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-l2j}
       MYSQL_DATABASE: ${MYSQL_DATABASE:-l2journey}
+    volumes:
+      # Host file overrides the copy baked into the image so a re-run picks up hexid edits.
+      - ./dist/game/config/ipconfig/hexid.txt:/opt/l2j/hexid.txt:ro
     restart: "no"
     networks:
       - l2journey
@@ -80,6 +83,7 @@ services:
     volumes:
       - ./docker/config/game/database.ini:/opt/l2journey/game/config/database.ini:ro
       - ./docker/config/game/server.ini:/opt/l2journey/game/config/server.ini:ro
+      - ./dist/game/config/ipconfig/hexid.txt:/opt/l2journey/game/config/ipconfig/hexid.txt:ro
     networks:
       - l2journey
 
