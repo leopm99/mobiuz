@@ -1,9 +1,9 @@
 # ---------------------------------------------------------------------------
 # L2Journey Login Server - Multi-stage build from source
 # ---------------------------------------------------------------------------
-# Stage 1: Build with JDK 24 + Ant
+# Stage 1: Build with JDK 25 + Ant
 # ---------------------------------------------------------------------------
-FROM eclipse-temurin:24-jdk AS builder
+FROM eclipse-temurin:25-jdk AS builder
 
 # Install Ant (Debian/Ubuntu)
 RUN apt-get update && apt-get install -y --no-install-recommends ant && rm -rf /var/lib/apt/lists/*
@@ -21,7 +21,7 @@ RUN ant compile jar
 # ---------------------------------------------------------------------------
 # Stage 2: Runtime with JRE only
 # ---------------------------------------------------------------------------
-FROM eclipse-temurin:24-jre
+FROM eclipse-temurin:25-jre
 
 WORKDIR /opt/l2journey
 
