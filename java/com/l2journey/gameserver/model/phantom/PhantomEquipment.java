@@ -2,7 +2,11 @@ package com.l2journey.gameserver.model.phantom;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.Logger;
 
+import com.l2journey.gameserver.data.xml.ItemData;
 import com.l2journey.gameserver.model.actor.Player;
 import com.l2journey.gameserver.model.item.enums.ItemProcessType;
 import com.l2journey.gameserver.model.item.instance.Item;
@@ -10,7 +14,9 @@ import com.l2journey.gameserver.network.serverpackets.ExAutoSoulShot;
 
 public class PhantomEquipment
 {
+	private static final Logger LOGGER = Logger.getLogger(PhantomEquipment.class.getName());
 	private static final int INVENTORY_CLEAN_LIMIT = 25;
+	private static final Set<Integer> REPORTED_MISSING_ITEMS = ConcurrentHashMap.newKeySet();
 	
 	// --- NO-GRADE (Nivel 1 ao 19) ---
 	private static final int[] MAGE_KIT_NG =
@@ -74,7 +80,6 @@ public class PhantomEquipment
 		850,
 		881,
 		913,
-		25502,
 		627,
 		8187
 	};
@@ -91,7 +96,6 @@ public class PhantomEquipment
 		850,
 		881,
 		913,
-		25502,
 		8187
 	};
 	private static final int[] HEAVY_KIT_D =
@@ -108,7 +112,6 @@ public class PhantomEquipment
 		850,
 		881,
 		913,
-		25502,
 		8187
 	};
 	
@@ -127,7 +130,6 @@ public class PhantomEquipment
 		857,
 		888,
 		888,
-		25502,
 		2494,
 		8187
 	};
@@ -145,7 +147,6 @@ public class PhantomEquipment
 		857,
 		888,
 		888,
-		25502,
 		8187
 	};
 	private static final int[] HEAVY_KIT_C =
@@ -162,7 +163,6 @@ public class PhantomEquipment
 		857,
 		888,
 		888,
-		25502,
 		8187
 	};
 	
@@ -176,7 +176,6 @@ public class PhantomEquipment
 		5720,
 		5736,
 		10495,
-		25502,
 		926,
 		864,
 		864,
@@ -193,7 +192,6 @@ public class PhantomEquipment
 		5739,
 		5723,
 		2417,
-		25502,
 		10495,
 		926,
 		864,
@@ -211,7 +209,6 @@ public class PhantomEquipment
 		2416,
 		5718,
 		5734,
-		25502,
 		10495,
 		926,
 		864,
@@ -230,7 +227,6 @@ public class PhantomEquipment
 		5779,
 		5767,
 		512,
-		25502,
 		6657,
 		10497,
 		862,
@@ -256,7 +252,6 @@ public class PhantomEquipment
 		893,
 		6660,
 		496,
-		25502,
 		8187,
 		14925
 	};
@@ -274,7 +269,6 @@ public class PhantomEquipment
 		893,
 		6660,
 		496,
-		25502,
 		8187,
 		14925
 	};
@@ -291,7 +285,6 @@ public class PhantomEquipment
 		9440,
 		12812,
 		10500,
-		25502,
 		6657,
 		858,
 		496,
@@ -314,7 +307,6 @@ public class PhantomEquipment
 		858,
 		858,
 		889,
-		25502,
 		496,
 		6660,
 		8187,
@@ -333,7 +325,6 @@ public class PhantomEquipment
 		858,
 		889,
 		6657,
-		25502,
 		496,
 		6660,
 		8187,
@@ -351,7 +342,6 @@ public class PhantomEquipment
 		15586,
 		15588,
 		10500,
-		25502,
 		6657,
 		858,
 		496,
@@ -374,7 +364,6 @@ public class PhantomEquipment
 		858,
 		858,
 		889,
-		25502,
 		496,
 		6660,
 		8187,
@@ -393,7 +382,6 @@ public class PhantomEquipment
 		858,
 		889,
 		6657,
-		25502,
 		496,
 		6660,
 		8187,
@@ -979,6 +967,15 @@ public class PhantomEquipment
 		
 		for (int itemId : faltantes)
 		{
+			if (ItemData.getInstance().getTemplate(itemId) == null)
+			{
+				if (REPORTED_MISSING_ITEMS.add(itemId))
+				{
+					LOGGER.warning("Phantom kit item does not exist and will be skipped. Item ID: " + itemId);
+				}
+				continue;
+			}
+			
 			bot.addItem(ItemProcessType.REWARD, itemId, 1, bot, false);
 		}
 	}
