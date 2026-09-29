@@ -52,8 +52,8 @@ public class PhantomMenu
 		html.append("<img src=\"L2UI.SquareWhite\" width=260 height=1><br>");
 		
 		// --- ESTATISTICAS ---
-		html.append("En Linea: <font color=\"00FF00\">").append(totalPhantoms).append("</font> | ");
-		html.append("Pagina: <font color=\"LEVEL\">").append(page + 1).append("</font>/").append(maxPages + 1).append("</font><br>");
+		html.append("Online: <font color=\"00FF00\">").append(totalPhantoms).append("</font> | ");
+		html.append("Page: <font color=\"LEVEL\">").append(page + 1).append("</font>/").append(maxPages + 1).append("</font><br>");
 		
 		// --- LOGS E CLASSES ---
 		html.append("<table width=260><tr>");
@@ -65,31 +65,31 @@ public class PhantomMenu
 		
 		// --- ACOES DE SPAWN ---
 		html.append("<table width=260 cellpadding=0 cellspacing=0><tr>");
-		html.append("<td><button value=\"Iniciar 10\" action=\"bypass -h phantom_start_10\" width=125 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
-		html.append("<td><button value=\"Iniciar 60\" action=\"bypass -h phantom_start_60\" width=125 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
+		html.append("<td><button value=\"Start 10\" action=\"bypass -h admin_phantom_start_10\" width=125 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
+		html.append("<td><button value=\"Start 60\" action=\"bypass -h admin_phantom_start_60\" width=125 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
 		html.append("</tr><tr>");
-		html.append("<td><button value=\"Crear 10\" action=\"bypass -h phantom_create_10\" width=125 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
-		html.append("<td><button value=\"Crear 60\" action=\"bypass -h phantom_create_60\" width=125 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
+		html.append("<td><button value=\"Create 10\" action=\"bypass -h admin_phantom_create_10\" width=125 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
+		html.append("<td><button value=\"Create 60\" action=\"bypass -h admin_phantom_create_60\" width=125 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
 		html.append("</tr></table>");
 		
 		// --- SISTEMA E CONTROLE (Botoes grandes) ---
 		html.append("<table width=260 cellpadding=0 cellspacing=0><tr>");
-		html.append("<td><button value=\"Desc. 10\" action=\"bypass -h phantom_stop_10\" width=125 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
-		html.append("<td><button value=\"Detener Todo\" action=\"bypass -h phantom_stop_all\" width=125 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
+		html.append("<td><button value=\"Stop 10\" action=\"bypass -h admin_phantom_stop_10\" width=125 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
+		html.append("<td><button value=\"Stop All\" action=\"bypass -h admin_phantom_stop_all\" width=125 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
 		html.append("</tr></table>");
 		
 		// --- OS 3 BOTOES COMPACTOS ---
 		html.append("<table width=260 cellpadding=0 cellspacing=0><tr>");
-		html.append("<td width=86 align=center><button value=\"Rec.XML\" action=\"bypass -h phantom_reload_xml\" width=82 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
-		html.append("<td width=86 align=center><button value=\"Rec.Scripts\" action=\"bypass -h phantom_pload\" width=82 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
-		html.append("<td width=88 align=center><button value=\"Logs ON/Off\" action=\"bypass -h phantom_debug\" width=82 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
+		html.append("<td width=86 align=center><button value=\"Reload XML\" action=\"bypass -h admin_phantom_reload_xml\" width=82 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
+		html.append("<td width=86 align=center><button value=\"Reload\" action=\"bypass -h admin_phantom_pload\" width=82 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
+		html.append("<td width=88 align=center><button value=\"Logs ON/Off\" action=\"bypass -h admin_phantom_debug\" width=82 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
 		html.append("</tr></table><br>");
 		
 		// --- LISTA DE BOTS ---
 		html.append("<table width=260>");
 		if (totalPhantoms == 0)
 		{
-			html.append("<tr><td><center>No hay bots activos.</center></td></tr>");
+			html.append("<tr><td><center>No active bots.</center></td></tr>");
 		}
 		else
 		{
@@ -106,9 +106,9 @@ public class PhantomMenu
 				
 				html.append("<tr>");
 				html.append("<td width=130>").append(p.getName()).append(" Lv").append(p.getLevel()).append(" - ").append(className).append("</td>");
-				html.append("<td width=30><button value=\"Ir\" action=\"bypass -h phantom_go ").append(p.getName()).append("\" width=25 height=20 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
-				html.append("<td width=45><button value=\"Traer\" action=\"bypass -h phantom_bring ").append(p.getName()).append("\" width=40 height=20 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
-				html.append("<td width=35><button value=\"Kill\" action=\"bypass -h phantom_kill ").append(p.getName()).append("\" width=30 height=20 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
+				html.append("<td width=30><button value=\"Go\" action=\"bypass -h admin_phantom_go ").append(p.getName()).append("\" width=25 height=20 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
+				html.append("<td width=45><button value=\"Bring\" action=\"bypass -h admin_phantom_bring ").append(p.getName()).append("\" width=40 height=20 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
+				html.append("<td width=35><button value=\"Kill\" action=\"bypass -h admin_phantom_kill ").append(p.getName()).append("\" width=30 height=20 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
 				html.append("</tr>");
 			}
 		}
@@ -116,9 +116,9 @@ public class PhantomMenu
 		
 		// --- NAVEGACAO ---
 		html.append("<table width=200><tr>");
-		html.append("<td><button value=\"<Back\" action=\"bypass -h phantom_menu ").append(page - 1).append("\" width=60 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
-		html.append("<td><button value=\"Refresh\" action=\"bypass -h phantom_menu ").append(page).append("\" width=60 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
-		html.append("<td><button value=\"Nex>\" action=\"bypass -h phantom_menu ").append(page + 1).append("\" width=60 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
+		html.append("<td><button value=\"<Back\" action=\"bypass -h admin_phantom_menu ").append(page - 1).append("\" width=60 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
+		html.append("<td><button value=\"Refresh\" action=\"bypass -h admin_phantom_menu ").append(page).append("\" width=60 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
+		html.append("<td><button value=\"Next>\" action=\"bypass -h admin_phantom_menu ").append(page + 1).append("\" width=60 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
 		html.append("</tr></table>");
 		
 		html.append("</center></body></html>");

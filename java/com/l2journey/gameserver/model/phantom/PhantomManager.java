@@ -141,7 +141,7 @@ public class PhantomManager implements IVoicedCommandHandler
 		else if (command.equalsIgnoreCase("pload"))
 		{
 			PhantomConfig.loadXML();
-			player.sendMessage("XML de Phantoms recargado.");
+			player.sendMessage("Phantom XML reloaded.");
 			return true;
 		}
 		else if (command.equalsIgnoreCase("pcreate"))
@@ -156,7 +156,7 @@ public class PhantomManager implements IVoicedCommandHandler
 				}
 				catch (NumberFormatException e)
 				{
-					player.sendMessage("Uso: .pcreate 10");
+					player.sendMessage("Usage: .pcreate 10");
 					return true;
 				}
 			}
@@ -187,7 +187,7 @@ public class PhantomManager implements IVoicedCommandHandler
 			}
 			else
 			{
-				player.sendMessage("El Phantom no esta farmeando.");
+				player.sendMessage("That phantom is not farming.");
 			}
 			
 			return true;
@@ -199,7 +199,7 @@ public class PhantomManager implements IVoicedCommandHandler
 		}
 		else if (command.equalsIgnoreCase("pdebug"))
 		{
-			player.sendMessage("Logs TXT: " + (toggleDebug() ? "ENCENDIDO" : "APAGADO"));
+			player.sendMessage("Text logs: " + (toggleDebug() ? "ON" : "OFF"));
 			return true;
 		}
 		
