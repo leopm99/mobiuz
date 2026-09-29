@@ -52,7 +52,7 @@ public class PhantomEngine
 		
 		if (gm != null)
 		{
-			gm.sendMessage(">> Sistema Phantom iniciado.");
+			gm.sendMessage("Phantom system started.");
 			PhantomMenu.showMenu(gm);
 		}
 	}
@@ -108,7 +108,7 @@ public class PhantomEngine
 		
 		if (gm != null)
 		{
-			gm.sendMessage(">>> Se iniciaron " + loadedCount + " phantoms.");
+			gm.sendMessage("Started " + loadedCount + " phantoms.");
 			PhantomMenu.showMenu(gm);
 		}
 	}
@@ -144,7 +144,7 @@ public class PhantomEngine
 		
 		if (gm != null)
 		{
-			gm.sendMessage(">> Se crearon " + createdCount + " phantoms.");
+			gm.sendMessage("Created " + createdCount + " phantoms.");
 			PhantomMenu.showMenu(gm);
 		}
 	}
@@ -233,7 +233,7 @@ public class PhantomEngine
 		}
 		if (gm != null)
 		{
-			gm.sendMessage(">>> Se desconectaron " + stopped + " phantoms.");
+			gm.sendMessage("Disconnected " + stopped + " phantoms.");
 			PhantomMenu.showMenu(gm);
 		}
 		return stopped;
@@ -256,7 +256,7 @@ public class PhantomEngine
 		
 		if (gm != null)
 		{
-			gm.sendMessage(">>> Sistema Phantom detenido y memoria purgada.");
+			gm.sendMessage("Phantom system stopped.");
 		}
 	}
 	

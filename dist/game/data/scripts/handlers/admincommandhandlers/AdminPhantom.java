@@ -71,7 +71,7 @@ public class AdminPhantom implements IAdminCommandHandler
 		else if (command.equals("admin_phantom_reload_xml"))
 		{
 			PhantomConfig.loadXML();
-			player.sendMessage("XML de Phantoms recargado.");
+			player.sendMessage("Phantom XML reloaded.");
 			PhantomMenu.showMenu(player, 0);
 			return true;
 		}
@@ -85,7 +85,7 @@ public class AdminPhantom implements IAdminCommandHandler
 			PhantomState.clear();
 			PhantomWalk.clearAll();
 
-			player.sendMessage(">> ¡Scripts, XML y zonas de los Phantoms recargados!");
+			player.sendMessage("Phantom scripts, XML, and hunting zones reloaded.");
 			PhantomMenu.showMenu(player, 0);
 			return true;
 		}
@@ -104,12 +104,12 @@ public class AdminPhantom implements IAdminCommandHandler
 			if (phantom != null)
 			{
 				Location loc = new Location(player.getX(), player.getY(), player.getZ(), player.getHeading());
-				PhantomEngine.movePhantomTo(phantom, loc, "Traido por GM");
-				player.sendMessage("Trajiste a " + phantom.getName() + ".");
+				PhantomEngine.movePhantomTo(phantom, loc, "Brought by GM");
+				player.sendMessage("Brought " + phantom.getName() + ".");
 			}
 			else
 			{
-				player.sendMessage("Phantom no encontrado.");
+				player.sendMessage("Phantom not found.");
 			}
 			return true;
 		}
@@ -124,7 +124,7 @@ public class AdminPhantom implements IAdminCommandHandler
 		}
 		else if (command.equals("admin_phantom_debug"))
 		{
-			player.sendMessage("Logs TXT: " + (PhantomManager.toggleDebug() ? "ENCENDIDO" : "APAGADO"));
+			player.sendMessage("Text logs: " + (PhantomManager.toggleDebug() ? "ON" : "OFF"));
 			PhantomMenu.showMenu(player, 0);
 			return true;
 		}
