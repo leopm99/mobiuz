@@ -435,6 +435,7 @@
 	<admin command="phantom_stop_all" accessLevel="70" />
 	<admin command="phantom_reload_xml" accessLevel="70" />
 	<admin command="phantom_pload" accessLevel="70" />
+	<admin command="phantom_restore_db" accessLevel="70" />
 	<admin command="phantom_create_10" accessLevel="70" />
 	<admin command="phantom_create_60" accessLevel="70" />
 	<admin command="phantom_go" accessLevel="70" />

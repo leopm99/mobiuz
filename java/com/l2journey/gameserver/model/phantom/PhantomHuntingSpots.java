@@ -51,7 +51,7 @@ public class PhantomHuntingSpots
 		}
 		
 		// Anuncio limpo que se adapta ao formato do console
-		LOGGER.info("[Phantom Hunting Spots]: Cargados " + total + " coordenadas en " + SPOTS_BY_LEVEL.size() + " niveles.");
+		LOGGER.info("[Phantom Hunting Spots]: Loaded " + total + " coordinates across " + SPOTS_BY_LEVEL.size() + " levels.");
 	}
 	
 	public static boolean relocateForLevelIfNeeded(Player bot)
@@ -225,7 +225,7 @@ public class PhantomHuntingSpots
 		}
 		catch (Exception e)
 		{
-			PhantomManager.logToFile("SPOT_LOADER", "Error leyendo NPCs " + file.getName() + ": " + e.getMessage());
+			PhantomManager.logToFile("SPOT_LOADER", "Error reading NPCs " + file.getName() + ": " + e.getMessage());
 		}
 	}
 	
@@ -347,7 +347,7 @@ public class PhantomHuntingSpots
 		}
 		catch (Exception e)
 		{
-			PhantomManager.logToFile("SPOT_LOADER", "Error leyendo spawns " + file.getName() + ": " + e.getMessage());
+			PhantomManager.logToFile("SPOT_LOADER", "Error reading spawns " + file.getName() + ": " + e.getMessage());
 		}
 	}
 	

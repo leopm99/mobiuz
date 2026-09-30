@@ -8,6 +8,7 @@ import com.l2journey.gameserver.network.serverpackets.NpcHtmlMessage;
 public class PhantomMenu
 {
 	private static final int PAGE_SIZE = 10;
+	private static final String BUTTON_SKIN = " back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\">";
 	
 	public static void showMenu(Player player)
 	{
@@ -65,24 +66,24 @@ public class PhantomMenu
 		
 		// --- ACOES DE SPAWN ---
 		html.append("<table width=260 cellpadding=0 cellspacing=0><tr>");
-		html.append("<td><button value=\"Start 10\" action=\"bypass -h admin_phantom_start_10\" width=125 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
-		html.append("<td><button value=\"Start 60\" action=\"bypass -h admin_phantom_start_60\" width=125 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
+		html.append("<td>").append(button("Start 10", "admin_phantom_start_10", 125, 22)).append("</td>");
+		html.append("<td>").append(button("Start 60", "admin_phantom_start_60", 125, 22)).append("</td>");
 		html.append("</tr><tr>");
-		html.append("<td><button value=\"Create 10\" action=\"bypass -h admin_phantom_create_10\" width=125 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
-		html.append("<td><button value=\"Create 60\" action=\"bypass -h admin_phantom_create_60\" width=125 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
+		html.append("<td>").append(button("Create 10", "admin_phantom_create_10", 125, 22)).append("</td>");
+		html.append("<td>").append(button("Create 60", "admin_phantom_create_60", 125, 22)).append("</td>");
 		html.append("</tr></table>");
 		
 		// --- SISTEMA E CONTROLE (Botoes grandes) ---
 		html.append("<table width=260 cellpadding=0 cellspacing=0><tr>");
-		html.append("<td><button value=\"Stop 10\" action=\"bypass -h admin_phantom_stop_10\" width=125 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
-		html.append("<td><button value=\"Stop All\" action=\"bypass -h admin_phantom_stop_all\" width=125 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
+		html.append("<td>").append(button("Stop 10", "admin_phantom_stop_10", 125, 22)).append("</td>");
+		html.append("<td>").append(button("Stop All", "admin_phantom_stop_all", 125, 22)).append("</td>");
 		html.append("</tr></table>");
 		
 		// --- OS 3 BOTOES COMPACTOS ---
 		html.append("<table width=260 cellpadding=0 cellspacing=0><tr>");
-		html.append("<td width=86 align=center><button value=\"Reload XML\" action=\"bypass -h admin_phantom_reload_xml\" width=82 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
-		html.append("<td width=86 align=center><button value=\"Reload\" action=\"bypass -h admin_phantom_pload\" width=82 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
-		html.append("<td width=88 align=center><button value=\"Logs ON/Off\" action=\"bypass -h admin_phantom_debug\" width=82 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
+		html.append("<td width=86 align=center>").append(button("Reload XML", "admin_phantom_reload_xml", 82, 22)).append("</td>");
+		html.append("<td width=86 align=center>").append(button("Reload", "admin_phantom_pload", 82, 22)).append("</td>");
+		html.append("<td width=88 align=center>").append(button("Logs ON/Off", "admin_phantom_debug", 82, 22)).append("</td>");
 		html.append("</tr></table><br>");
 		
 		// --- LISTA DE BOTS ---
@@ -106,9 +107,9 @@ public class PhantomMenu
 				
 				html.append("<tr>");
 				html.append("<td width=130>").append(p.getName()).append(" Lv").append(p.getLevel()).append(" - ").append(className).append("</td>");
-				html.append("<td width=30><button value=\"Go\" action=\"bypass -h admin_phantom_go ").append(p.getName()).append("\" width=25 height=20 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
-				html.append("<td width=45><button value=\"Bring\" action=\"bypass -h admin_phantom_bring ").append(p.getName()).append("\" width=40 height=20 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
-				html.append("<td width=35><button value=\"Kill\" action=\"bypass -h admin_phantom_kill ").append(p.getName()).append("\" width=30 height=20 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
+				html.append("<td width=30>").append(button("Go", "admin_phantom_go " + p.getName(), 25, 20)).append("</td>");
+				html.append("<td width=45>").append(button("Bring", "admin_phantom_bring " + p.getName(), 40, 20)).append("</td>");
+				html.append("<td width=35>").append(button("Kill", "admin_phantom_kill " + p.getName(), 30, 20)).append("</td>");
 				html.append("</tr>");
 			}
 		}
@@ -116,9 +117,9 @@ public class PhantomMenu
 		
 		// --- NAVEGACAO ---
 		html.append("<table width=200><tr>");
-		html.append("<td><button value=\"<Back\" action=\"bypass -h admin_phantom_menu ").append(page - 1).append("\" width=60 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
-		html.append("<td><button value=\"Refresh\" action=\"bypass -h admin_phantom_menu ").append(page).append("\" width=60 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
-		html.append("<td><button value=\"Next>\" action=\"bypass -h admin_phantom_menu ").append(page + 1).append("\" width=60 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"></td>");
+		html.append("<td>").append(button("<Back", "admin_phantom_menu " + (page - 1), 60, 22)).append("</td>");
+		html.append("<td>").append(button("Refresh", "admin_phantom_menu " + page, 60, 22)).append("</td>");
+		html.append("<td>").append(button("Next>", "admin_phantom_menu " + (page + 1), 60, 22)).append("</td>");
 		html.append("</tr></table>");
 		
 		html.append("</center></body></html>");
@@ -126,5 +127,10 @@ public class PhantomMenu
 		NpcHtmlMessage msg = new NpcHtmlMessage();
 		msg.setHtml(html.toString());
 		player.sendPacket(msg);
+	}
+	
+	private static String button(String value, String action, int width, int height)
+	{
+		return "<button value=\"" + value + "\" action=\"bypass -h " + action + "\" width=" + width + " height=" + height + BUTTON_SKIN;
 	}
 }
