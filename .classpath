@@ -14,5 +14,11 @@
 	<classpathentry kind="lib" path="dist/libs/geoengine.jar"/>
 	<classpathentry including="**/*.java" kind="src" path="dist/game/data/scripts"/>
 	<classpathentry kind="src" path="java"/>
+	<classpathentry kind="src" path="test/java" output="build/test-bin">
+		<attributes>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="test/lib/junit-platform-console-standalone-6.1.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

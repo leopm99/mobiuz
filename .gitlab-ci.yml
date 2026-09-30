@@ -1,0 +1,23 @@
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS
+      when: never
+    - if: $CI_COMMIT_BRANCH
+
+stages:
+  - test
+
+unit-test:
+  stage: test
+  image: eclipse-temurin:25-jdk
+  before_script:
+    - apt-get update && apt-get install -y --no-install-recommends ant
+  script:
+    - ant test
+  artifacts:
+    when: always
+    reports:
+      junit: build/test-results/TEST-*.xml
+    paths:
+      - build/test-results/
