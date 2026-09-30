@@ -103,24 +103,24 @@ public class AdminGmChat implements IAdminCommandHandler
 	 */
 	private void handleGmChat(String command, Player activeChar)
 	{
-		try
+		final int offset;
+		final String usage;
+		if (command.startsWith("admin_gmchat_menu"))
 		{
-			int offset = 0;
-			String text;
-			if (command.startsWith("admin_gmchat_menu"))
-			{
-				offset = 18;
-			}
-			else
-			{
-				offset = 13;
-			}
-			text = command.substring(offset);
-			AdminData.getInstance().broadcastToGMs(new CreatureSay(null, ChatType.ALLIANCE, activeChar.getName(), text));
+			offset = 18;
+			usage = "Usage: //gmchat_menu <message>";
 		}
-		catch (StringIndexOutOfBoundsException e)
+		else
 		{
-			// Who cares?
+			offset = 13;
+			usage = "Usage: //gmchat <message>";
 		}
+		if (command.length() <= offset)
+		{
+			activeChar.sendSysMessage(usage);
+			return;
+		}
+		final String text = command.substring(offset);
+		AdminData.getInstance().broadcastToGMs(new CreatureSay(null, ChatType.ALLIANCE, activeChar.getName(), text));
 	}
 }
