@@ -5,6 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import com.l2journey.PhantomConfig;
 import com.l2journey.commons.util.Rnd;
+import com.l2journey.gameserver.GeoData;
 import com.l2journey.gameserver.handler.IItemHandler;
 import com.l2journey.gameserver.handler.ItemHandler;
 import com.l2journey.gameserver.model.Location;
@@ -40,6 +41,8 @@ public class PhantomAI
 	private static final int CITY_REST_MAX_TIME = 45000;
 	
 	private static final int MAX_CHASE_DISTANCE = 10000;
+	private static final int LOOT_SCAN_RANGE = 200;
+	private static final int LOOT_PICKUP_RANGE = 70;
 	
 	// MAPAS DE ESTADO
 	private static final Map<Integer, Boolean> EQUIPPED_PHANTOMS = new ConcurrentHashMap<>();
@@ -235,6 +238,12 @@ public class PhantomAI
 			ULTIMO_TARGET.remove(botId); // Quebrar fixacao de mob se houver PK
 			bot.setTarget(victim);
 			executeAttackPlan(bot, victim);
+			return;
+		}
+		
+		// Loot own drops before selecting the next farm target.
+		if (!hasLiveLockedFarmTarget(bot) && tryPickupLoot(bot))
+		{
 			return;
 		}
 		
@@ -665,6 +674,74 @@ public class PhantomAI
 		{
 			bot.startPvPFlag();
 		}
+	}
+	
+	private static boolean hasLiveLockedFarmTarget(Player bot)
+	{
+		Monster locked = ULTIMO_TARGET.get(bot.getObjectId());
+		if ((locked == null) || locked.isDead() || !currentTargetValid(bot, locked))
+		{
+			return false;
+		}
+		
+		double dist = LocationUtil.calculateDistance(bot, locked, true, false);
+		return (dist <= 3500) && PhantomGeo.canSeeTarget(bot, locked);
+	}
+	
+	/**
+	 * Picks up nearby ground loot that belongs to this phantom (or is unprotected).
+	 * @return {@code true} if the bot is moving to loot or picked something up this tick
+	 */
+	private static boolean tryPickupLoot(Player bot)
+	{
+		Item closest = null;
+		double bestDistance = Double.MAX_VALUE;
+		
+		for (Item droppedItem : World.getInstance().getVisibleObjectsInRange(bot, Item.class, LOOT_SCAN_RANGE))
+		{
+			if ((droppedItem == null) || !droppedItem.isSpawned())
+			{
+				continue;
+			}
+			
+			if (droppedItem.isProtected() && (droppedItem.getOwnerId() != bot.getObjectId()))
+			{
+				continue;
+			}
+			
+			if (!GeoData.getInstance().canMove(bot.getX(), bot.getY(), bot.getZ(), droppedItem.getX(), droppedItem.getY(), droppedItem.getZ(), bot.getInstanceId()))
+			{
+				continue;
+			}
+			
+			double distance = bot.calculateDistance2D(droppedItem);
+			if (distance < bestDistance)
+			{
+				bestDistance = distance;
+				closest = droppedItem;
+			}
+		}
+		
+		if (closest == null)
+		{
+			return false;
+		}
+		
+		bot.abortAttack();
+		bot.abortCast();
+		bot.setTarget(null);
+		
+		if (bestDistance > LOOT_PICKUP_RANGE)
+		{
+			if (!bot.isMoving())
+			{
+				bot.getAI().setIntention(Intention.MOVE_TO, closest);
+			}
+			return true;
+		}
+		
+		bot.doPickupItem(closest);
+		return true;
 	}
 	
 	private static Monster findFarmTarget(Player bot)
