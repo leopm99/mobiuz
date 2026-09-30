@@ -1,3 +1,5 @@
 /bin/
 /build/
 .env
+dist/game/data/geodata/*
+!dist/game/data/geodata/Readme.txt
