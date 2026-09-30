@@ -10,6 +10,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - Empty-list boot restore of `phantom_ai` characters into `phantomplayers.xml`, plus `admin_phantom_restore_db`
 
+### Changed
+
+- Phantom players pick up their own ground loot before selecting the next farm target
+
 ## [2026-09-30]
 
 ### Added
