@@ -93,14 +93,20 @@ public class AdminSkill implements IAdminCommandHandler
 		}
 		else if (command.startsWith("admin_remove_skills"))
 		{
+			final StringTokenizer st = new StringTokenizer(command);
+			if (st.countTokens() < 2)
+			{
+				activeChar.sendSysMessage("Usage: //remove_skills <page>");
+				return true;
+			}
+			st.nextToken();
 			try
 			{
-				final String val = command.substring(20);
-				removeSkillsPage(activeChar, Integer.parseInt(val));
+				removeSkillsPage(activeChar, Integer.parseInt(st.nextToken()));
 			}
-			catch (StringIndexOutOfBoundsException e)
+			catch (NumberFormatException e)
 			{
-				// Not important.
+				activeChar.sendSysMessage("Usage: //remove_skills <page>");
 			}
 		}
 		else if (command.startsWith("admin_skill_list"))
@@ -145,15 +151,14 @@ public class AdminSkill implements IAdminCommandHandler
 		}
 		else if (command.startsWith("admin_skill_index"))
 		{
-			try
+			final StringTokenizer st = new StringTokenizer(command);
+			if (st.countTokens() < 2)
 			{
-				final String val = command.substring(18);
-				AdminHtml.showAdminHtml(activeChar, "skills/" + val + ".htm");
+				activeChar.sendSysMessage("Usage: //skill_index <page>");
+				return true;
 			}
-			catch (StringIndexOutOfBoundsException e)
-			{
-				// Not important.
-			}
+			st.nextToken();
+			AdminHtml.showAdminHtml(activeChar, "skills/" + st.nextToken() + ".htm");
 		}
 		else if (command.startsWith("admin_add_skill"))
 		{

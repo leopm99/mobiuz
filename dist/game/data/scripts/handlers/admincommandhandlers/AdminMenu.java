@@ -82,23 +82,35 @@ public class AdminMenu implements IAdminCommandHandler
 		}
 		else if (command.startsWith("admin_recall_char_menu"))
 		{
-			try
+			final StringTokenizer st = new StringTokenizer(command);
+			if (st.countTokens() < 2)
 			{
-				final String targetName = command.substring(23);
-				final Player player = World.getInstance().getPlayer(targetName);
-				teleportCharacter(player, activeChar.getLocation(), activeChar, "Admin is teleporting you.");
-				activeChar.setTarget(null);
+				activeChar.sendSysMessage("Usage: //recall_char_menu <player_name>");
+				return true;
 			}
-			catch (StringIndexOutOfBoundsException e)
+			st.nextToken();
+			final String targetName = st.nextToken();
+			final Player player = World.getInstance().getPlayer(targetName);
+			if (player == null)
 			{
-				// Not important.
+				activeChar.sendPacket(SystemMessageId.INVALID_TARGET);
+				return true;
 			}
+			teleportCharacter(player, activeChar.getLocation(), activeChar, "Admin is teleporting you.");
+			activeChar.setTarget(null);
 		}
 		else if (command.startsWith("admin_recall_party_menu"))
 		{
 			try
 			{
-				final String targetName = command.substring(24);
+				final StringTokenizer st = new StringTokenizer(command);
+				if (st.countTokens() < 2)
+				{
+					activeChar.sendSysMessage("Usage: //recall_party_menu <player_name>");
+					return true;
+				}
+				st.nextToken();
+				final String targetName = st.nextToken();
 				final Player player = World.getInstance().getPlayer(targetName);
 				if (player == null)
 				{
@@ -127,7 +139,14 @@ public class AdminMenu implements IAdminCommandHandler
 		{
 			try
 			{
-				final String targetName = command.substring(23);
+				final StringTokenizer st = new StringTokenizer(command);
+				if (st.countTokens() < 2)
+				{
+					activeChar.sendSysMessage("Usage: //recall_clan_menu <player_name>");
+					return true;
+				}
+				st.nextToken();
+				final String targetName = st.nextToken();
 				final Player player = World.getInstance().getPlayer(targetName);
 				if (player == null)
 				{
@@ -154,23 +173,23 @@ public class AdminMenu implements IAdminCommandHandler
 		}
 		else if (command.startsWith("admin_goto_char_menu"))
 		{
-			try
+			final StringTokenizer st = new StringTokenizer(command);
+			if (st.countTokens() < 2)
 			{
-				final String targetName = command.substring(21);
-				final Player player = World.getInstance().getPlayer(targetName);
-				if (player == null)
-				{
-					activeChar.sendPacket(SystemMessageId.THAT_PLAYER_IS_NOT_CURRENTLY_ONLINE);
-					return true;
-				}
-				
-				activeChar.setInstanceId(player.getInstanceId());
-				teleportToCharacter(activeChar, player);
+				activeChar.sendSysMessage("Usage: //goto_char_menu <player_name>");
+				return true;
 			}
-			catch (StringIndexOutOfBoundsException e)
+			st.nextToken();
+			final String targetName = st.nextToken();
+			final Player player = World.getInstance().getPlayer(targetName);
+			if (player == null)
 			{
-				// Not important.
+				activeChar.sendPacket(SystemMessageId.THAT_PLAYER_IS_NOT_CURRENTLY_ONLINE);
+				return true;
 			}
+			
+			activeChar.setInstanceId(player.getInstanceId());
+			teleportToCharacter(activeChar, player);
 		}
 		else if (command.equals("admin_kill_menu"))
 		{

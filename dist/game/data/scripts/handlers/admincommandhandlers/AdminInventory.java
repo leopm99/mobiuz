@@ -53,8 +53,19 @@ public class AdminInventory implements IAdminCommandHandler
 		}
 		else if (command.contains(ADMIN_COMMANDS[1]))
 		{
-			String val = command.substring(ADMIN_COMMANDS[1].length() + 1);
-			player.destroyItem(ItemProcessType.DESTROY, Integer.parseInt(val), player.getInventory().getItemByObjectId(Integer.parseInt(val)).getCount(), null, true);
+			if (!st.hasMoreTokens())
+			{
+				player.sendSysMessage("Usage: //delete_item <objectId>");
+				return false;
+			}
+			final int objectId = Integer.parseInt(st.nextToken());
+			final Item item = player.getInventory().getItemByObjectId(objectId);
+			if (item == null)
+			{
+				player.sendSysMessage("Item not found.");
+				return false;
+			}
+			player.destroyItem(ItemProcessType.DESTROY, objectId, item.getCount(), null, true);
 			showItemsPage(player, 0);
 		}
 		

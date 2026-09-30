@@ -216,24 +216,22 @@ public class AdminCreateItem implements IAdminCommandHandler
 		}
 		else if (command.startsWith("admin_delete_item"))
 		{
-			final String val = command.substring(18);
-			final StringTokenizer st = new StringTokenizer(val);
-			int idval = 0;
-			long numval = 0;
-			if (st.countTokens() == 2)
+			final StringTokenizer st = new StringTokenizer(command);
+			if (st.countTokens() < 2)
 			{
-				final String id = st.nextToken();
-				idval = Integer.parseInt(id);
-				final String num = st.nextToken();
-				numval = Long.parseLong(num);
+				activeChar.sendSysMessage("Usage: //delete_item <objectId> [count]");
+				return false;
 			}
-			else if (st.countTokens() == 1)
+			st.nextToken();
+			final int idval = Integer.parseInt(st.nextToken());
+			long numval = st.hasMoreTokens() ? Long.parseLong(st.nextToken()) : 1;
+			final WorldObject object = World.getInstance().findObject(idval);
+			if (!(object instanceof Item))
 			{
-				final String id = st.nextToken();
-				idval = Integer.parseInt(id);
-				numval = 1;
+				activeChar.sendSysMessage("Item not found.");
+				return false;
 			}
-			final Item item = (Item) World.getInstance().findObject(idval);
+			final Item item = (Item) object;
 			final int ownerId = item.getOwnerId();
 			if (ownerId > 0)
 			{
@@ -261,9 +259,21 @@ public class AdminCreateItem implements IAdminCommandHandler
 		}
 		else if (command.startsWith("admin_use_item"))
 		{
-			final String val = command.substring(15);
-			final int idval = Integer.parseInt(val);
-			final Item item = (Item) World.getInstance().findObject(idval);
+			final StringTokenizer st = new StringTokenizer(command);
+			if (st.countTokens() < 2)
+			{
+				activeChar.sendSysMessage("Usage: //use_item <objectId>");
+				return false;
+			}
+			st.nextToken();
+			final int idval = Integer.parseInt(st.nextToken());
+			final WorldObject object = World.getInstance().findObject(idval);
+			if (!(object instanceof Item))
+			{
+				activeChar.sendSysMessage("Item not found.");
+				return false;
+			}
+			final Item item = (Item) object;
 			final int ownerId = item.getOwnerId();
 			if (ownerId > 0)
 			{

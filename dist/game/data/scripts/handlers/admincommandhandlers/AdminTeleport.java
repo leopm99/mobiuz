@@ -123,8 +123,13 @@ public class AdminTeleport implements IAdminCommandHandler
 		{
 			try
 			{
-				final String val = command.substring(11);
-				final StringTokenizer st = new StringTokenizer(val);
+				final StringTokenizer st = new StringTokenizer(command);
+				if (st.countTokens() < 4)
+				{
+					activeChar.sendSysMessage("Usage: //walk <x> <y> <z>");
+					return true;
+				}
+				st.nextToken();
 				final int x = Integer.parseInt(st.nextToken());
 				final int y = Integer.parseInt(st.nextToken());
 				final int z = Integer.parseInt(st.nextToken());
@@ -132,7 +137,7 @@ public class AdminTeleport implements IAdminCommandHandler
 			}
 			catch (Exception e)
 			{
-				// Not important.
+				activeChar.sendSysMessage("Usage: //walk <x> <y> <z>");
 			}
 		}
 		else if (command.startsWith("admin_move_to"))
