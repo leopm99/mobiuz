@@ -65,6 +65,7 @@ public class BeastFarm extends AbstractNpcAI
 	private static final int SKILL_BLESSED_CRYSTAL_SPICE = 9052;
 	private static final int SKILL_SGRADE_GOLDEN_SPICE = 9053;
 	private static final int SKILL_SGRADE_CRYSTAL_SPICE = 9054;
+	private static final String BEAST_NAME_TOKEN = "%name%";
 	private static final int[] TAMED_BEASTS =
 	{
 		18869,
@@ -232,12 +233,57 @@ public class BeastFarm extends AbstractNpcAI
 		GROWTH_CAPABLE_MONSTERS.put(18898, temp);
 		
 		// Tamed beasts data
-		TAMED_BEAST_DATA.add(new TamedBeastSkillHolder("%name% of Focus", new SkillHolder(6432, 1), new SkillHolder(6668, 1)));
-		TAMED_BEAST_DATA.add(new TamedBeastSkillHolder("%name% of Guiding", new SkillHolder(6433, 1), new SkillHolder(6670, 1)));
-		TAMED_BEAST_DATA.add(new TamedBeastSkillHolder("%name% of Swifth", new SkillHolder(6434, 1), new SkillHolder(6667, 1)));
-		TAMED_BEAST_DATA.add(new TamedBeastSkillHolder("Berserker %name%", new SkillHolder(6671, 1)));
-		TAMED_BEAST_DATA.add(new TamedBeastSkillHolder("%name% of Protect", new SkillHolder(6669, 1), new SkillHolder(6672, 1)));
-		TAMED_BEAST_DATA.add(new TamedBeastSkillHolder("%name% of Vigor", new SkillHolder(6431, 1), new SkillHolder(6666, 1)));
+		TAMED_BEAST_DATA.add(new TamedBeastSkillHolder(BEAST_NAME_TOKEN + " of Focus", new SkillHolder(6432, 1), new SkillHolder(6668, 1)));
+		TAMED_BEAST_DATA.add(new TamedBeastSkillHolder(BEAST_NAME_TOKEN + " of Guiding", new SkillHolder(6433, 1), new SkillHolder(6670, 1)));
+		TAMED_BEAST_DATA.add(new TamedBeastSkillHolder(BEAST_NAME_TOKEN + " of Swifth", new SkillHolder(6434, 1), new SkillHolder(6667, 1)));
+		TAMED_BEAST_DATA.add(new TamedBeastSkillHolder("Berserker " + BEAST_NAME_TOKEN, new SkillHolder(6671, 1)));
+		TAMED_BEAST_DATA.add(new TamedBeastSkillHolder(BEAST_NAME_TOKEN + " of Protect", new SkillHolder(6669, 1), new SkillHolder(6672, 1)));
+		TAMED_BEAST_DATA.add(new TamedBeastSkillHolder(BEAST_NAME_TOKEN + " of Vigor", new SkillHolder(6431, 1), new SkillHolder(6666, 1)));
+	}
+	
+	private static String speciesName(int npcId)
+	{
+		switch (npcId)
+		{
+			case 18869:
+			{
+				return "Alpine Kookaburra";
+			}
+			case 18870:
+			{
+				return "Alpine Cougar";
+			}
+			case 18871:
+			{
+				return "Alpine Buffalo";
+			}
+			case 18872:
+			{
+				return "Alpine Grendel";
+			}
+			default:
+			{
+				return null;
+			}
+		}
+	}
+	
+	private static boolean isSpiceSkill(int skillId)
+	{
+		return (skillId == SKILL_GOLDEN_SPICE) || (skillId == SKILL_CRYSTAL_SPICE) || (skillId == SKILL_BLESSED_GOLDEN_SPICE) || (skillId == SKILL_BLESSED_CRYSTAL_SPICE) || (skillId == SKILL_SGRADE_GOLDEN_SPICE) || (skillId == SKILL_SGRADE_CRYSTAL_SPICE);
+	}
+	
+	private static int foodForSkill(int skillId)
+	{
+		if ((skillId == SKILL_GOLDEN_SPICE) || (skillId == SKILL_BLESSED_GOLDEN_SPICE))
+		{
+			return GOLDEN_SPICE;
+		}
+		if ((skillId == SKILL_CRYSTAL_SPICE) || (skillId == SKILL_BLESSED_CRYSTAL_SPICE))
+		{
+			return CRYSTAL_SPICE;
+		}
+		return 0;
 	}
 	
 	public void spawnNext(Npc npc, Player player, int nextNpcId, int food)
@@ -248,12 +294,7 @@ public class BeastFarm extends AbstractNpcAI
 			FEED_INFO.remove(npc.getObjectId());
 		}
 		// despawn the old mob
-		// TODO: same code? FIXED?
-		/*
-		 * if (_GrowthCapableMobs.get(npc.getNpcId()).getGrowthLevel() == 0) { npc.deleteMe(); } else {
-		 */
 		npc.deleteMe();
-		// }
 		
 		// if this is finally a trained mob, then despawn any other trained mobs that the
 		// player might have and initialize the Tamed Beast.
@@ -262,28 +303,10 @@ public class BeastFarm extends AbstractNpcAI
 			final TamedBeast nextNpc = new TamedBeast(nextNpcId, player, food, npc.getX(), npc.getY(), npc.getZ(), true);
 			final TamedBeastSkillHolder beast = getRandomEntry(TAMED_BEAST_DATA);
 			String name = beast.getName();
-			switch (nextNpcId)
+			final String species = speciesName(nextNpcId);
+			if (species != null)
 			{
-				case 18869:
-				{
-					name = name.replace("%name%", "Alpine Kookaburra");
-					break;
-				}
-				case 18870:
-				{
-					name = name.replace("%name%", "Alpine Cougar");
-					break;
-				}
-				case 18871:
-				{
-					name = name.replace("%name%", "Alpine Buffalo");
-					break;
-				}
-				case 18872:
-				{
-					name = name.replace("%name%", "Alpine Grendel");
-					break;
-				}
+				name = name.replace(BEAST_NAME_TOKEN, species);
 			}
 			nextNpc.setName(name);
 			nextNpc.broadcastPacket(new AbstractNpcInfo.NpcInfo(nextNpc, player));
@@ -313,6 +336,30 @@ public class BeastFarm extends AbstractNpcAI
 		}
 	}
 	
+	private void growOrAggro(Npc npc, Player caster, int objectId, int npcId, int skillId, int growthLevel, int food)
+	{
+		// do nothing if this mob doesn't eat the specified food (food gets consumed but has no effect).
+		final int newNpcId = GROWTH_CAPABLE_MONSTERS.get(npcId).getLeveledNpcId(skillId);
+		if (newNpcId == -1)
+		{
+			if (growthLevel == 0)
+			{
+				FEED_INFO.remove(objectId);
+				npc.setRunning();
+				npc.asAttackable().addDamageHate(caster, 0, 1);
+				npc.getAI().setIntention(Intention.ATTACK, caster);
+			}
+			return;
+		}
+		else if ((growthLevel > 0) && (FEED_INFO.get(objectId) != caster.getObjectId()))
+		{
+			// check if this is the same player as the one who raised it from growth 0.
+			// if no, then do not allow a chance to raise the pet (food gets consumed but has no effect).
+			return;
+		}
+		spawnNext(npc, caster, newNpcId, food);
+	}
+	
 	@Override
 	public void onSkillSee(Npc npc, Player caster, Skill skill, List<WorldObject> targets, boolean isSummon)
 	{
@@ -327,7 +374,7 @@ public class BeastFarm extends AbstractNpcAI
 		final int npcId = npc.getId();
 		final int skillId = skill.getId();
 		// check if the npc and skills used are valid for this script. Exit if invalid.
-		if (!ArrayUtil.contains(FEEDABLE_BEASTS, npcId) || ((skillId != SKILL_GOLDEN_SPICE) && (skillId != SKILL_CRYSTAL_SPICE) && (skillId != SKILL_BLESSED_GOLDEN_SPICE) && (skillId != SKILL_BLESSED_CRYSTAL_SPICE) && (skillId != SKILL_SGRADE_GOLDEN_SPICE) && (skillId != SKILL_SGRADE_CRYSTAL_SPICE)))
+		if (!ArrayUtil.contains(FEEDABLE_BEASTS, npcId) || !isSpiceSkill(skillId))
 		{
 			return;
 		}
@@ -352,39 +399,12 @@ public class BeastFarm extends AbstractNpcAI
 		// display the social action of the beast eating the food.
 		npc.broadcastSocialAction(2);
 		
-		int food = 0;
-		if ((skillId == SKILL_GOLDEN_SPICE) || (skillId == SKILL_BLESSED_GOLDEN_SPICE))
-		{
-			food = GOLDEN_SPICE;
-		}
-		else if ((skillId == SKILL_CRYSTAL_SPICE) || (skillId == SKILL_BLESSED_CRYSTAL_SPICE))
-		{
-			food = CRYSTAL_SPICE;
-		}
+		final int food = foodForSkill(skillId);
 		
 		// if this pet can't grow, it's all done.
 		if (GROWTH_CAPABLE_MONSTERS.containsKey(npcId))
 		{
-			// do nothing if this mob doesn't eat the specified food (food gets consumed but has no effect).
-			final int newNpcId = GROWTH_CAPABLE_MONSTERS.get(npcId).getLeveledNpcId(skillId);
-			if (newNpcId == -1)
-			{
-				if (growthLevel == 0)
-				{
-					FEED_INFO.remove(objectId);
-					npc.setRunning();
-					npc.asAttackable().addDamageHate(caster, 0, 1);
-					npc.getAI().setIntention(Intention.ATTACK, caster);
-				}
-				return;
-			}
-			else if ((growthLevel > 0) && (FEED_INFO.get(objectId) != caster.getObjectId()))
-			{
-				// check if this is the same player as the one who raised it from growth 0.
-				// if no, then do not allow a chance to raise the pet (food gets consumed but has no effect).
-				return;
-			}
-			spawnNext(npc, caster, newNpcId, food);
+			growOrAggro(npc, caster, objectId, npcId, skillId, growthLevel, food);
 		}
 		else
 		{
@@ -406,31 +426,31 @@ public class BeastFarm extends AbstractNpcAI
 	// all mobs that grow by eating
 	private static class GrowthCapableMob
 	{
-		private final int _chance;
-		private final int _growthLevel;
-		private final int _tameNpcId;
-		private final Map<Integer, Integer> _skillSuccessNpcIdList = new HashMap<>();
+		private final int chance;
+		private final int growthLevel;
+		private final int tameNpcId;
+		private final Map<Integer, Integer> skillSuccessNpcIdList = new HashMap<>();
 		
 		public GrowthCapableMob(int chance, int growthLevel, int tameNpcId)
 		{
-			_chance = chance;
-			_growthLevel = growthLevel;
-			_tameNpcId = tameNpcId;
+			this.chance = chance;
+			this.growthLevel = growthLevel;
+			this.tameNpcId = tameNpcId;
 		}
 		
 		public void addNpcIdForSkillId(int skillId, int npcId)
 		{
-			_skillSuccessNpcIdList.put(skillId, npcId);
+			skillSuccessNpcIdList.put(skillId, npcId);
 		}
 		
 		public int getGrowthLevel()
 		{
-			return _growthLevel;
+			return growthLevel;
 		}
 		
 		public int getLeveledNpcId(int skillId)
 		{
-			if (!_skillSuccessNpcIdList.containsKey(skillId))
+			if (!skillSuccessNpcIdList.containsKey(skillId))
 			{
 				return -1;
 			}
@@ -440,26 +460,26 @@ public class BeastFarm extends AbstractNpcAI
 				{
 					if (getRandom(100) < SPECIAL_SPICE_CHANCES[1])
 					{
-						return _skillSuccessNpcIdList.get(skillId);
+						return skillSuccessNpcIdList.get(skillId);
 					}
 					else if ((skillId == SKILL_BLESSED_GOLDEN_SPICE) || (skillId == SKILL_SGRADE_GOLDEN_SPICE))
 					{
-						return _skillSuccessNpcIdList.get(SKILL_GOLDEN_SPICE);
+						return skillSuccessNpcIdList.get(SKILL_GOLDEN_SPICE);
 					}
 					else
 					{
-						return _skillSuccessNpcIdList.get(SKILL_CRYSTAL_SPICE);
+						return skillSuccessNpcIdList.get(SKILL_CRYSTAL_SPICE);
 					}
 				}
 				return -1;
 			}
-			else if ((_growthLevel == 2) && (getRandom(100) < TAME_CHANCE))
+			else if ((growthLevel == 2) && (getRandom(100) < TAME_CHANCE))
 			{
-				return _tameNpcId;
+				return tameNpcId;
 			}
-			else if (getRandom(100) < _chance)
+			else if (getRandom(100) < chance)
 			{
-				return _skillSuccessNpcIdList.get(skillId);
+				return skillSuccessNpcIdList.get(skillId);
 			}
 			else
 			{
@@ -490,7 +510,8 @@ public class BeastFarm extends AbstractNpcAI
 		}
 	}
 	
-	public static void main(String[] args)
+	@SuppressWarnings("unused")
+	public static void main(String[] args) // NOSONAR java:S1172 - script loader requires String[] signature
 	{
 		new BeastFarm();
 	}
