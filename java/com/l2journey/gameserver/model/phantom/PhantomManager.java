@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.l2journey.PhantomConfig;
@@ -43,16 +44,25 @@ public class PhantomManager implements IVoicedCommandHandler
 		
 		LOGGER.info("[Phantom System L2Journey]: By Mafias");
 		
+		if (PhantomConfig.PHANTOM_IDS.isEmpty())
+		{
+			int restored = PhantomConfig.restoreFromDatabase();
+			LOGGER.info("[Phantom System L2Journey]: Restored " + restored + " phantoms from the database.");
+		}
+		else
+		{
+			LOGGER.info("[Phantom System L2Journey]: Phantom list already has " + PhantomConfig.PHANTOM_IDS.size() + " ids; skipping database restore.");
+		}
+		
 		// ARRANQUE AUTOMATICO DINAMICO:
 		com.l2journey.commons.threads.ThreadPool.schedule(() ->
 		{
-			// Lemos exatamente quantos bots voce tinha criados/salvos no seu XML
-			int botsGuardados = PhantomConfig.PHANTOM_IDS.size();
+			int savedBots = PhantomConfig.PHANTOM_IDS.size();
 			
-			if (botsGuardados > 0)
+			if (savedBots > 0)
 			{
-				LOGGER.info("[Phantom System L2Journey]: Iniciando " + botsGuardados + " bots automaticamente...");
-				PhantomEngine.startBatch(botsGuardados, null);
+				LOGGER.info("[Phantom System L2Journey]: Starting " + savedBots + " bots automatically...");
+				PhantomEngine.startBatch(savedBots, null);
 			}
 		}, 60000);
 	}
@@ -60,7 +70,7 @@ public class PhantomManager implements IVoicedCommandHandler
 	public static void startLogSession(String reason)
 	{
 		_sessionLogFile = "log/PhantomManager-" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss")) + ".txt";
-		logToFile("SYSTEM", "Nueva sesion de logs: " + reason);
+		logToFile("SYSTEM", "New log session: " + reason);
 	}
 	
 	public static void logToFile(String botName, String action)
@@ -77,6 +87,7 @@ public class PhantomManager implements IVoicedCommandHandler
 		}
 		catch (IOException e)
 		{
+			LOGGER.log(Level.WARNING, "Failed to write phantom log file.", e);
 		}
 		
 		try (FileWriter fw = new FileWriter(_sessionLogFile, true);
@@ -86,6 +97,7 @@ public class PhantomManager implements IVoicedCommandHandler
 		}
 		catch (IOException e)
 		{
+			LOGGER.log(Level.WARNING, "Failed to write phantom session log file.", e);
 		}
 	}
 	

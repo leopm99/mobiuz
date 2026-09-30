@@ -3,6 +3,7 @@ package com.l2journey.gameserver.model.phantom;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.l2journey.PhantomConfig;
 import com.l2journey.commons.util.Rnd;
 import com.l2journey.gameserver.data.sql.CharInfoTable;
 import com.l2journey.gameserver.data.xml.PlayerTemplateData;
@@ -14,8 +15,6 @@ import com.l2journey.gameserver.model.actor.templates.PlayerTemplate;
 
 public class PhantomFactory
 {
-	private static final String ACCOUNT_NAME = "phantom_ai";
-	
 	// Separamos os guerreiros dos magos
 	private static final PlayerClass[] FIGHTER_CLASSES =
 	{
@@ -257,7 +256,7 @@ public class PhantomFactory
 			
 			PlayerAppearance appearance = new PlayerAppearance(face, hairColor, hairStyle, female);
 			
-			Player phantom = Player.create(template, ACCOUNT_NAME, name, appearance);
+			Player phantom = Player.create(template, PhantomConfig.PHANTOM_ACCOUNT_NAME, name, appearance);
 			
 			if (phantom == null)
 			{
@@ -278,13 +277,13 @@ public class PhantomFactory
 			
 			phantom.storeMe();
 			
-			PhantomManager.logToFile(name, "Creado automaticamente. Race=" + race + " Class=" + playerClass);
+			PhantomManager.logToFile(name, "Created automatically. Race=" + race + " Class=" + playerClass);
 			
 			return phantom;
 		}
 		catch (Exception e)
 		{
-			PhantomManager.logException("AUTO_CREATE", "Error creando phantom", e);
+			PhantomManager.logException("AUTO_CREATE", "Error creating phantom", e);
 			
 			return null;
 		}

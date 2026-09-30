@@ -25,6 +25,7 @@ public class AdminPhantom implements IAdminCommandHandler
 		"admin_phantom_stop_all",
 		"admin_phantom_reload_xml",
 		"admin_phantom_pload",
+		"admin_phantom_restore_db",
 		"admin_phantom_create_10",
 		"admin_phantom_create_60",
 		"admin_phantom_go",
@@ -33,7 +34,7 @@ public class AdminPhantom implements IAdminCommandHandler
 		"admin_phantom_debug",
 		"admin_phantom_menu"
 	};
-
+	
 	@Override
 	public boolean useAdminCommand(String command, Player player)
 	{
@@ -80,14 +81,18 @@ public class AdminPhantom implements IAdminCommandHandler
 			PhantomConfig.init();
 			PhantomConfig.loadXML();
 			PhantomHuntingSpots.load();
-
+			
 			PhantomAI.clearRuntimeState();
 			PhantomState.clear();
 			PhantomWalk.clearAll();
-
+			
 			player.sendMessage("Phantom scripts, XML, and hunting zones reloaded.");
 			PhantomMenu.showMenu(player, 0);
 			return true;
+		}
+		else if (command.equals("admin_phantom_restore_db"))
+		{
+			return restoreFromDatabase(player);
 		}
 		else if (command.startsWith("admin_phantom_go "))
 		{
@@ -130,26 +135,38 @@ public class AdminPhantom implements IAdminCommandHandler
 		}
 		else if (command.startsWith("admin_phantom_menu"))
 		{
-			int page = 0;
-			try
-			{
-				String[] parts = command.split(" ");
-				if (parts.length > 1)
-				{
-					page = Integer.parseInt(parts[1]);
-				}
-			}
-			catch (Exception e)
-			{
-				page = 0;
-			}
-			PhantomMenu.showMenu(player, page);
+			PhantomMenu.showMenu(player, parseMenuPage(command));
 			return true;
 		}
-
+		
 		return false;
 	}
-
+	
+	private static boolean restoreFromDatabase(Player player)
+	{
+		int added = PhantomConfig.restoreFromDatabase();
+		player.sendMessage("Restored " + added + " phantoms from the database. List size: " + PhantomConfig.PHANTOM_IDS.size() + ". Use Start 10 / Start 60 to spawn them.");
+		PhantomMenu.showMenu(player, 0);
+		return true;
+	}
+	
+	private static int parseMenuPage(String command)
+	{
+		try
+		{
+			String[] parts = command.split(" ");
+			if (parts.length > 1)
+			{
+				return Integer.parseInt(parts[1]);
+			}
+		}
+		catch (NumberFormatException e)
+		{
+			return 0;
+		}
+		return 0;
+	}
+	
 	@Override
 	public String[] getAdminCommandList()
 	{

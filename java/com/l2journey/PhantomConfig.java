@@ -2,23 +2,39 @@ package com.l2journey;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
+import com.l2journey.commons.database.DatabaseFactory;
 import com.l2journey.commons.util.Rnd;
 import com.l2journey.gameserver.model.phantom.PhantomHuntingSpots;
 import com.l2journey.gameserver.model.phantom.PhantomManager;
 
 public class PhantomConfig
 {
+	private static final Logger LOGGER = Logger.getLogger(PhantomConfig.class.getName());
+	
+	public static final String PHANTOM_ACCOUNT_NAME = "phantom_ai";
 	private static final String PHANTOM_XML_PATH = "config/npcs/phantomplayers.xml";
+	private static final String RESTORE_PHANTOM_IDS = "SELECT charId FROM characters WHERE account_name=? AND deletetime=0 ORDER BY charId";
+	
 	public static final List<Integer> PHANTOM_IDS = new ArrayList<>();
 	public static final List<FarmZone> ROUTES = new ArrayList<>();
 	
@@ -108,10 +124,14 @@ public class PhantomConfig
 	
 	public static void loadXML()
 	{
+		loadXML(new File(PHANTOM_XML_PATH));
+	}
+	
+	static void loadXML(File file)
+	{
 		PHANTOM_IDS.clear();
 		try
 		{
-			File file = new File(PHANTOM_XML_PATH);
 			if (!file.exists())
 			{
 				return;
@@ -123,9 +143,9 @@ public class PhantomConfig
 				PHANTOM_IDS.add(Integer.parseInt(list.item(i).getAttributes().getNamedItem("charId").getNodeValue()));
 			}
 		}
-		catch (Exception e)
+		catch (IOException | ParserConfigurationException | SAXException | NumberFormatException e)
 		{
-			System.out.println(">>> [PHANTOM] ERROR XML: " + e.getMessage());
+			LOGGER.log(Level.WARNING, "[PHANTOM] Failed to load XML: " + e.getMessage(), e);
 		}
 	}
 	
@@ -139,12 +159,66 @@ public class PhantomConfig
 		return true;
 	}
 	
+	/**
+	 * Adds missing phantom character ids to {@link #PHANTOM_IDS}.
+	 * @param charIds character ids to merge
+	 * @return how many ids were newly added
+	 */
+	static synchronized int mergePhantomIds(Collection<Integer> charIds)
+	{
+		int added = 0;
+		for (int charId : charIds)
+		{
+			if (addPhantomId(charId))
+			{
+				added++;
+			}
+		}
+		return added;
+	}
+	
+	/**
+	 * Loads phantom character ids from the database account and merges them into the XML list.
+	 * @return how many ids were newly added, or 0 if the query failed
+	 */
+	public static int restoreFromDatabase()
+	{
+		final List<Integer> charIds = new ArrayList<>();
+		try (Connection con = DatabaseFactory.getConnection();
+			PreparedStatement ps = con.prepareStatement(RESTORE_PHANTOM_IDS))
+		{
+			ps.setString(1, PHANTOM_ACCOUNT_NAME);
+			try (ResultSet rs = ps.executeQuery())
+			{
+				while (rs.next())
+				{
+					charIds.add(rs.getInt("charId"));
+				}
+			}
+		}
+		catch (SQLException | RuntimeException e)
+		{
+			LOGGER.log(Level.WARNING, "[PHANTOM] Failed to restore phantom ids from the database.", e);
+			return 0;
+		}
+		
+		final int added = mergePhantomIds(charIds);
+		if (added > 0)
+		{
+			saveXML();
+		}
+		return added;
+	}
+	
 	public static synchronized void saveXML()
+	{
+		saveXML(new File(PHANTOM_XML_PATH));
+	}
+	
+	static synchronized void saveXML(File file)
 	{
 		try
 		{
-			File file = new File(PHANTOM_XML_PATH);
-			
 			if ((file.getParentFile() != null) && !file.getParentFile().exists())
 			{
 				file.getParentFile().mkdirs();
@@ -161,8 +235,9 @@ public class PhantomConfig
 				writer.write("</list>\n");
 			}
 		}
-		catch (Exception e)
+		catch (IOException e)
 		{
+			LOGGER.log(Level.WARNING, "[PHANTOM] Failed to save XML: " + e.getMessage(), e);
 			PhantomManager.logToFile("XML", "Error: " + e.getMessage());
 		}
 	}

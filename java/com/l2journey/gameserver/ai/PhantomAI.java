@@ -191,7 +191,7 @@ public class PhantomAI
 		
 		if (PhantomState.STUCK_COUNTERS.getOrDefault(botId, 0) >= 2)
 		{
-			trace(bot, "atascado relocalizando");
+			trace(bot, "stuck relocating");
 			relocateStuckBot(bot);
 			return;
 		}
@@ -208,7 +208,7 @@ public class PhantomAI
 		
 		if (PhantomHuntingSpots.relocateForLevelIfNeeded(bot))
 		{
-			trace(bot, "teleport por nivel");
+			trace(bot, "teleport by level");
 			return;
 		}
 		
@@ -563,7 +563,7 @@ public class PhantomAI
 			PhantomState.MP_RECOVERY_STATE.put(bot.getObjectId(), true);
 			bot.getAI().setIntention(Intention.REST);
 			bot.sitDown();
-			trace(bot, "MP Critico (sin potas). El mago se sienta a descansar.");
+			trace(bot, "Critical MP (no potions). Mage sits to rest.");
 		}
 		
 		if (!recovering)
@@ -578,7 +578,7 @@ public class PhantomAI
 			{
 				bot.standUp();
 			}
-			trace(bot, "MP Recuperado al 85%. El mago se levanta.");
+			trace(bot, "MP recovered to 85%. Mage stands up.");
 			return false;
 		}
 		
@@ -1090,7 +1090,7 @@ public class PhantomAI
 			if (handler != null)
 			{
 				handler.useItem(bot, potion, false);
-				PhantomManager.logToFile(bot.getName(), "Usando Pocion de Mana");
+				PhantomManager.logToFile(bot.getName(), "Using Mana Potion");
 			}
 		}
 	}

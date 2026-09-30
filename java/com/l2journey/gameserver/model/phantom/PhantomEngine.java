@@ -62,7 +62,7 @@ public class PhantomEngine
 	{
 		if (isRunning && (gm != null))
 		{
-			PhantomManager.logToFile("SYSTEM", "Sistema ya estaba corriendo. Agregando lote de " + count + ".");
+			PhantomManager.logToFile("SYSTEM", "System was already running. Adding a batch of " + count + ".");
 		}
 		else if (!isRunning)
 		{
@@ -71,7 +71,7 @@ public class PhantomEngine
 		}
 		
 		int loadedCount = 0;
-		PhantomManager.logToFile("SYSTEM", "Iniciando lote de hasta " + count + " phantoms.");
+		PhantomManager.logToFile("SYSTEM", "Starting a batch of up to " + count + " phantoms.");
 		
 		for (int charId : PhantomConfig.PHANTOM_IDS)
 		{
@@ -98,11 +98,11 @@ public class PhantomEngine
 				startPhantomAI(phantom);
 				loadedCount++;
 				
-				PhantomManager.logToFile(phantom.getName(), "Phantom iniciado correctamente.");
+				PhantomManager.logToFile(phantom.getName(), "Phantom started successfully.");
 			}
 			catch (Exception e)
 			{
-				PhantomManager.logException("SPAWN", "Error al cargar phantom ID " + charId, e);
+				PhantomManager.logException("SPAWN", "Error loading phantom ID " + charId, e);
 			}
 		}
 		
@@ -133,7 +133,7 @@ public class PhantomEngine
 			}
 			catch (Exception e)
 			{
-				PhantomManager.logException("AUTO_CREATE", "Error creando phantom", e);
+				PhantomManager.logException("AUTO_CREATE", "Error creating phantom", e);
 			}
 		}
 		
@@ -427,7 +427,7 @@ public class PhantomEngine
 			// --- NOVO: SISTEMA DE FADIGA E ROTACAO ---
 			if (FATIGUE_TIMES.containsKey(bot.getObjectId()) && (System.currentTimeMillis() > FATIGUE_TIMES.get(bot.getObjectId())))
 			{
-				PhantomManager.logToFile(bot.getName(), "Fatiga alcanzada. Se desconecta para limpiar RAM.");
+				PhantomManager.logToFile(bot.getName(), "Fatigue reached. Disconnecting to free RAM.");
 				disconnectPhantom(bot);
 				
 				// AGORA ALEATORIZADO POR SEGUNDOS (240 a 420 segs = 4 a 7 min)
@@ -489,7 +489,7 @@ public class PhantomEngine
 			}
 			catch (Exception e)
 			{
-				PhantomManager.logException(bot.getName(), "Error IA", e);
+				PhantomManager.logException(bot.getName(), "Error AI", e);
 			}
 			finally
 			{

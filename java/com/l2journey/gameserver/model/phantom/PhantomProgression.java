@@ -55,7 +55,7 @@ public class PhantomProgression
 				bot.getVariables().set("expoff", "true");
 				bot.getVariables().set("expoff_checked", true);
 				
-				PhantomManager.logToFile(bot.getName(), "Llegó al límite (Nivel " + levelCap + "). Exp bloqueada permanentemente.");
+				PhantomManager.logToFile(bot.getName(), "Reached the level cap (Level " + levelCap + "). Exp permanently blocked.");
 			}
 		}
 	}
@@ -102,7 +102,7 @@ public class PhantomProgression
 		
 		bot.getVariables().set(VAR_LEVEL_CAP, cap);
 		
-		PhantomManager.logToFile(bot.getName(), "Límite asignado: Nivel " + cap + " (Bot #" + phantomCounter + " del ciclo)");
+		PhantomManager.logToFile(bot.getName(), "Level cap assigned: Level " + cap + " (Bot #" + phantomCounter + " of the cycle)");
 	}
 	
 	private static void checkLowLevelItems(Player bot)
@@ -199,6 +199,6 @@ public class PhantomProgression
 		bot.setBaseClass(newClass.getId());
 		bot.broadcastUserInfo();
 		
-		PhantomManager.logToFile(bot.getName(), "Cambio de clase: " + currentClass + " -> " + newClass);
+		PhantomManager.logToFile(bot.getName(), "Class change: " + currentClass + " -> " + newClass);
 	}
 }
