@@ -8,12 +8,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- Dedicated `config/npcs/phantom.ini` with `PhantomEnable` (full system off) and `PhantomAutoStart` (boot spawn)
+- Unit tests for phantom start/create early-return when `PhantomEnable` is false
 - Empty-list boot restore of `phantom_ai` characters into `phantomplayers.xml`, plus `admin_phantom_restore_db`
 - Phantom cursed-sword hunts: wielders attack players (real players first), a configurable squad (`PhantomCursedHunterLimit`) chases the holder, and one hunter loots the drop on death
 - Unit tests for phantom cursed hunts, return relocation, and related progression guards (`ant test`)
 
 ### Changed
 
+- `PhantomCursedHunterLimit` moved from `npc.ini` into `phantom.ini`
 - Phantom players pick up their own ground loot before selecting the next farm target
 - Geodata pathfinding defaults to live routes (`PathFinding = 2`), and the server corrects player coordinates when the client drifts (`CoordSynchronize = 2`)
 - Phantom farm travel and stuck relocation use Blessed SoE return animation before teleporting

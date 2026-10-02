@@ -132,6 +132,7 @@ public class Config
 	public static final String NPC_BUFFER_FILE = "./config/npcs/npcbuffer.ini";
 	public static final String NPC_BUFFER_PREMIUM_FILE = "./config/npcs/npcbufferpremium.ini";
 	private static final String NPC_STAT_MULTIPLIERS_CONFIG_FILE = "./config/npcs/npcstatmultipliers.ini";
+	private static final String PHANTOM_CONFIG_FILE = "./config/npcs/phantom.ini";
 	private static final String RANDOM_SPAWNS_CONFIG_FILE = "./config/npcs/randomspawns.ini";
 	private static final String SCHEME_BUFFER_CONFIG_FILE = "./config/npcs/schemebuffer.ini";
 	private static final String TRANSMOG_CONFIG_FILE = "./config/npcs/transmog.ini";
@@ -718,6 +719,8 @@ public class Config
 	public static int RAID_CHAOS_TIME;
 	public static int GRAND_CHAOS_TIME;
 	public static int MINION_CHAOS_TIME;
+	public static boolean PHANTOM_ENABLE;
+	public static boolean PHANTOM_AUTO_START;
 	public static int PHANTOM_CURSED_HUNTER_LIMIT;
 	public static int INVENTORY_MAXIMUM_PET;
 	public static double PET_HP_REGEN_MULTIPLIER;
@@ -1641,6 +1644,7 @@ public class Config
 			loadMerchantZeroSellPriceConfig();
 			loadNoblessMasterConfig();
 			loadNpcConfig();
+			loadPhantomConfig();
 			loadNpcbufferSettings();
 			loadPremimumBufferSettings();
 			loadBoostNpcStatConfig();
@@ -2538,10 +2542,20 @@ public class Config
 		RAID_CHAOS_TIME = npcConfig.getInt("RaidChaosTime", 10);
 		GRAND_CHAOS_TIME = npcConfig.getInt("GrandChaosTime", 10);
 		MINION_CHAOS_TIME = npcConfig.getInt("MinionChaosTime", 10);
-		PHANTOM_CURSED_HUNTER_LIMIT = npcConfig.getInt("PhantomCursedHunterLimit", 8);
 		INVENTORY_MAXIMUM_PET = npcConfig.getInt("MaximumSlotsForPet", 12);
 		PET_HP_REGEN_MULTIPLIER = npcConfig.getDouble("PetHpRegenMultiplier", 100) / 100;
 		PET_MP_REGEN_MULTIPLIER = npcConfig.getDouble("PetMpRegenMultiplier", 100) / 100;
+	}
+	
+	/**
+	 * Carrega o arquivo phantom.ini (se existir).
+	 */
+	private static void loadPhantomConfig()
+	{
+		final ConfigReader phantomConfig = new ConfigReader(PHANTOM_CONFIG_FILE);
+		PHANTOM_ENABLE = phantomConfig.getBoolean("PhantomEnable", true);
+		PHANTOM_AUTO_START = phantomConfig.getBoolean("PhantomAutoStart", true);
+		PHANTOM_CURSED_HUNTER_LIMIT = phantomConfig.getInt("PhantomCursedHunterLimit", 8);
 	}
 	
 	/**

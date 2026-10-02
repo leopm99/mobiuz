@@ -1,5 +1,6 @@
 package handlers.admincommandhandlers;
 
+import com.l2journey.Config;
 import com.l2journey.PhantomConfig;
 import com.l2journey.gameserver.ai.PhantomAI;
 import com.l2journey.gameserver.handler.IAdminCommandHandler;
@@ -71,6 +72,11 @@ public class AdminPhantom implements IAdminCommandHandler
 		}
 		else if (command.equals("admin_phantom_reload_xml"))
 		{
+			if (!Config.PHANTOM_ENABLE)
+			{
+				player.sendMessage("Phantom system is disabled.");
+				return true;
+			}
 			PhantomConfig.loadXML();
 			player.sendMessage("Phantom XML reloaded.");
 			PhantomMenu.showMenu(player, 0);
@@ -78,6 +84,11 @@ public class AdminPhantom implements IAdminCommandHandler
 		}
 		else if (command.equals("admin_phantom_pload"))
 		{
+			if (!Config.PHANTOM_ENABLE)
+			{
+				player.sendMessage("Phantom system is disabled.");
+				return true;
+			}
 			PhantomConfig.init();
 			PhantomConfig.loadXML();
 			PhantomHuntingSpots.load();
@@ -144,6 +155,11 @@ public class AdminPhantom implements IAdminCommandHandler
 	
 	private static boolean restoreFromDatabase(Player player)
 	{
+		if (!Config.PHANTOM_ENABLE)
+		{
+			player.sendMessage("Phantom system is disabled.");
+			return true;
+		}
 		int added = PhantomConfig.restoreFromDatabase();
 		player.sendMessage("Restored " + added + " phantoms from the database. List size: " + PhantomConfig.PHANTOM_IDS.size() + ". Use Start 10 / Start 60 to spawn them.");
 		PhantomMenu.showMenu(player, 0);

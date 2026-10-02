@@ -9,6 +9,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.l2journey.Config;
 import com.l2journey.PhantomConfig;
 import com.l2journey.gameserver.handler.IVoicedCommandHandler;
 import com.l2journey.gameserver.handler.VoicedCommandHandler;
@@ -39,10 +40,17 @@ public class PhantomManager implements IVoicedCommandHandler
 	public PhantomManager()
 	{
 		startLogSession("SERVER_START");
-		PhantomConfig.init();
 		VoicedCommandHandler.getInstance().registerHandler(this);
 		
 		LOGGER.info("[Phantom System L2Journey]: By Mafias");
+		
+		if (!Config.PHANTOM_ENABLE)
+		{
+			LOGGER.info("[Phantom System L2Journey]: Disabled by config (PhantomEnable = False).");
+			return;
+		}
+		
+		PhantomConfig.init();
 		
 		if (PhantomConfig.PHANTOM_IDS.isEmpty())
 		{
@@ -52,6 +60,12 @@ public class PhantomManager implements IVoicedCommandHandler
 		else
 		{
 			LOGGER.info("[Phantom System L2Journey]: Phantom list already has " + PhantomConfig.PHANTOM_IDS.size() + " ids; skipping database restore.");
+		}
+		
+		if (!Config.PHANTOM_AUTO_START)
+		{
+			LOGGER.info("[Phantom System L2Journey]: Auto-start disabled by config (PhantomAutoStart = False).");
+			return;
 		}
 		
 		// ARRANQUE AUTOMATICO DINAMICO:
@@ -152,6 +166,11 @@ public class PhantomManager implements IVoicedCommandHandler
 		}
 		else if (command.equalsIgnoreCase("pload"))
 		{
+			if (!Config.PHANTOM_ENABLE)
+			{
+				player.sendMessage("Phantom system is disabled.");
+				return true;
+			}
 			PhantomConfig.loadXML();
 			player.sendMessage("Phantom XML reloaded.");
 			return true;

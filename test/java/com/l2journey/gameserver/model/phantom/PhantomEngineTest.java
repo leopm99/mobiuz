@@ -40,17 +40,19 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 
+import com.l2journey.Config;
 import com.l2journey.commons.threads.ThreadPool;
 import com.l2journey.gameserver.model.Location;
 import com.l2journey.gameserver.model.actor.Player;
 import com.l2journey.gameserver.network.serverpackets.ServerPacket;
 
 /**
- * Unit tests for {@link PhantomEngine#movePhantomToWithReturn}.
+ * Unit tests for {@link PhantomEngine} return relocation and enable gates.
  */
 class PhantomEngineTest
 {
 	private boolean _debugWasOn;
+	private boolean _phantomEnableWas;
 	
 	@BeforeEach
 	void setUp()
@@ -60,6 +62,8 @@ class PhantomEngineTest
 		{
 			PhantomManager.toggleDebug();
 		}
+		_phantomEnableWas = Config.PHANTOM_ENABLE;
+		Config.PHANTOM_ENABLE = true;
 		PhantomEngine.isRunning = false;
 		PhantomEngine.activePhantoms.clear();
 		PhantomEngine.clearPendingReturns();
@@ -73,10 +77,37 @@ class PhantomEngineTest
 		PhantomEngine.activePhantoms.clear();
 		PhantomEngine.isRunning = false;
 		PhantomState.clear();
+		Config.PHANTOM_ENABLE = _phantomEnableWas;
 		if (_debugWasOn != PhantomManager.isDebugMode())
 		{
 			PhantomManager.toggleDebug();
 		}
+	}
+	
+	@Test
+	void startSystemDoesNothingWhenDisabled()
+	{
+		Config.PHANTOM_ENABLE = false;
+		PhantomEngine.startSystem(null);
+		assertFalse(PhantomEngine.isRunning);
+	}
+	
+	@Test
+	void startBatchDoesNothingWhenDisabled()
+	{
+		Config.PHANTOM_ENABLE = false;
+		PhantomEngine.startBatch(1, null);
+		assertFalse(PhantomEngine.isRunning);
+		assertTrue(PhantomEngine.activePhantoms.isEmpty());
+	}
+	
+	@Test
+	void createAndStartDoesNothingWhenDisabled()
+	{
+		Config.PHANTOM_ENABLE = false;
+		PhantomEngine.createAndStart(1, null);
+		assertFalse(PhantomEngine.isRunning);
+		assertTrue(PhantomEngine.activePhantoms.isEmpty());
 	}
 	
 	@Test
