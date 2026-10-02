@@ -1,16 +1,16 @@
 /*
  * Copyright (c) 2025 L2Journey Project
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -18,13 +18,13 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- * 
+ *
  * ---
- * 
- * Portions of this software are derived from the L2JMobius Project, 
- * shared under the MIT License. The original license terms are preserved where 
+ *
+ * Portions of this software are derived from the L2JMobius Project,
+ * shared under the MIT License. The original license terms are preserved where
  * applicable..
- * 
+ *
  */
 package ai.areas.BeastFarm;
 
@@ -79,7 +79,7 @@ public class BeastFarm extends AbstractNpcAI
 		33,
 		75
 	};
-	
+
 	// all mobs that can eat...
 	private static final int[] FEEDABLE_BEASTS =
 	{
@@ -116,18 +116,18 @@ public class BeastFarm extends AbstractNpcAI
 		18899,
 		18900
 	};
-	
+
 	private static final Map<Integer, Integer> FEED_INFO = new ConcurrentHashMap<>();
 	private static final Map<Integer, GrowthCapableMob> GROWTH_CAPABLE_MONSTERS = new HashMap<>();
 	private static List<TamedBeastSkillHolder> TAMED_BEAST_DATA = new ArrayList<>();
-	
+
 	private BeastFarm()
 	{
 		addSkillSeeId(FEEDABLE_BEASTS);
 		addKillId(FEEDABLE_BEASTS);
-		
+
 		GrowthCapableMob temp;
-		
+
 		// Kookabura
 		temp = new GrowthCapableMob(100, 0, 18869);
 		temp.addNpcIdForSkillId(SKILL_GOLDEN_SPICE, 18874);
@@ -137,23 +137,23 @@ public class BeastFarm extends AbstractNpcAI
 		temp.addNpcIdForSkillId(SKILL_SGRADE_GOLDEN_SPICE, 18878);
 		temp.addNpcIdForSkillId(SKILL_SGRADE_CRYSTAL_SPICE, 18879);
 		GROWTH_CAPABLE_MONSTERS.put(18873, temp);
-		
+
 		temp = new GrowthCapableMob(40, 1, 18869);
 		temp.addNpcIdForSkillId(SKILL_GOLDEN_SPICE, 18876);
 		GROWTH_CAPABLE_MONSTERS.put(18874, temp);
-		
+
 		temp = new GrowthCapableMob(40, 1, 18869);
 		temp.addNpcIdForSkillId(SKILL_CRYSTAL_SPICE, 18877);
 		GROWTH_CAPABLE_MONSTERS.put(18875, temp);
-		
+
 		temp = new GrowthCapableMob(25, 2, 18869);
 		temp.addNpcIdForSkillId(SKILL_GOLDEN_SPICE, 18878);
 		GROWTH_CAPABLE_MONSTERS.put(18876, temp);
-		
+
 		temp = new GrowthCapableMob(25, 2, 18869);
 		temp.addNpcIdForSkillId(SKILL_CRYSTAL_SPICE, 18879);
 		GROWTH_CAPABLE_MONSTERS.put(18877, temp);
-		
+
 		// Cougar
 		temp = new GrowthCapableMob(100, 0, 18870);
 		temp.addNpcIdForSkillId(SKILL_GOLDEN_SPICE, 18881);
@@ -163,23 +163,23 @@ public class BeastFarm extends AbstractNpcAI
 		temp.addNpcIdForSkillId(SKILL_SGRADE_GOLDEN_SPICE, 18885);
 		temp.addNpcIdForSkillId(SKILL_SGRADE_CRYSTAL_SPICE, 18886);
 		GROWTH_CAPABLE_MONSTERS.put(18880, temp);
-		
+
 		temp = new GrowthCapableMob(40, 1, 18870);
 		temp.addNpcIdForSkillId(SKILL_GOLDEN_SPICE, 18883);
 		GROWTH_CAPABLE_MONSTERS.put(18881, temp);
-		
+
 		temp = new GrowthCapableMob(40, 1, 18870);
 		temp.addNpcIdForSkillId(SKILL_CRYSTAL_SPICE, 18884);
 		GROWTH_CAPABLE_MONSTERS.put(18882, temp);
-		
+
 		temp = new GrowthCapableMob(25, 2, 18870);
 		temp.addNpcIdForSkillId(SKILL_GOLDEN_SPICE, 18885);
 		GROWTH_CAPABLE_MONSTERS.put(18883, temp);
-		
+
 		temp = new GrowthCapableMob(25, 2, 18870);
 		temp.addNpcIdForSkillId(SKILL_CRYSTAL_SPICE, 18886);
 		GROWTH_CAPABLE_MONSTERS.put(18884, temp);
-		
+
 		// Buffalo
 		temp = new GrowthCapableMob(100, 0, 18871);
 		temp.addNpcIdForSkillId(SKILL_GOLDEN_SPICE, 18888);
@@ -189,23 +189,23 @@ public class BeastFarm extends AbstractNpcAI
 		temp.addNpcIdForSkillId(SKILL_SGRADE_GOLDEN_SPICE, 18892);
 		temp.addNpcIdForSkillId(SKILL_SGRADE_CRYSTAL_SPICE, 18893);
 		GROWTH_CAPABLE_MONSTERS.put(18887, temp);
-		
+
 		temp = new GrowthCapableMob(40, 1, 18871);
 		temp.addNpcIdForSkillId(SKILL_GOLDEN_SPICE, 18890);
 		GROWTH_CAPABLE_MONSTERS.put(18888, temp);
-		
+
 		temp = new GrowthCapableMob(40, 1, 18871);
 		temp.addNpcIdForSkillId(SKILL_CRYSTAL_SPICE, 18891);
 		GROWTH_CAPABLE_MONSTERS.put(18889, temp);
-		
+
 		temp = new GrowthCapableMob(25, 2, 18871);
 		temp.addNpcIdForSkillId(SKILL_GOLDEN_SPICE, 18892);
 		GROWTH_CAPABLE_MONSTERS.put(18890, temp);
-		
+
 		temp = new GrowthCapableMob(25, 2, 18871);
 		temp.addNpcIdForSkillId(SKILL_CRYSTAL_SPICE, 18893);
 		GROWTH_CAPABLE_MONSTERS.put(18891, temp);
-		
+
 		// Grendel
 		temp = new GrowthCapableMob(100, 0, 18872);
 		temp.addNpcIdForSkillId(SKILL_GOLDEN_SPICE, 18895);
@@ -215,23 +215,23 @@ public class BeastFarm extends AbstractNpcAI
 		temp.addNpcIdForSkillId(SKILL_SGRADE_GOLDEN_SPICE, 18899);
 		temp.addNpcIdForSkillId(SKILL_SGRADE_CRYSTAL_SPICE, 18900);
 		GROWTH_CAPABLE_MONSTERS.put(18894, temp);
-		
+
 		temp = new GrowthCapableMob(40, 1, 18872);
 		temp.addNpcIdForSkillId(SKILL_GOLDEN_SPICE, 18897);
 		GROWTH_CAPABLE_MONSTERS.put(18895, temp);
-		
+
 		temp = new GrowthCapableMob(40, 1, 18872);
 		temp.addNpcIdForSkillId(SKILL_CRYSTAL_SPICE, 18898);
 		GROWTH_CAPABLE_MONSTERS.put(18896, temp);
-		
+
 		temp = new GrowthCapableMob(25, 2, 18872);
 		temp.addNpcIdForSkillId(SKILL_GOLDEN_SPICE, 18899);
 		GROWTH_CAPABLE_MONSTERS.put(18897, temp);
-		
+
 		temp = new GrowthCapableMob(25, 2, 18872);
 		temp.addNpcIdForSkillId(SKILL_CRYSTAL_SPICE, 18900);
 		GROWTH_CAPABLE_MONSTERS.put(18898, temp);
-		
+
 		// Tamed beasts data
 		TAMED_BEAST_DATA.add(new TamedBeastSkillHolder(BEAST_NAME_TOKEN + " of Focus", new SkillHolder(6432, 1), new SkillHolder(6668, 1)));
 		TAMED_BEAST_DATA.add(new TamedBeastSkillHolder(BEAST_NAME_TOKEN + " of Guiding", new SkillHolder(6433, 1), new SkillHolder(6670, 1)));
@@ -240,7 +240,7 @@ public class BeastFarm extends AbstractNpcAI
 		TAMED_BEAST_DATA.add(new TamedBeastSkillHolder(BEAST_NAME_TOKEN + " of Protect", new SkillHolder(6669, 1), new SkillHolder(6672, 1)));
 		TAMED_BEAST_DATA.add(new TamedBeastSkillHolder(BEAST_NAME_TOKEN + " of Vigor", new SkillHolder(6431, 1), new SkillHolder(6666, 1)));
 	}
-	
+
 	private static String speciesName(int npcId)
 	{
 		switch (npcId)
@@ -267,12 +267,12 @@ public class BeastFarm extends AbstractNpcAI
 			}
 		}
 	}
-	
+
 	private static boolean isSpiceSkill(int skillId)
 	{
 		return (skillId == SKILL_GOLDEN_SPICE) || (skillId == SKILL_CRYSTAL_SPICE) || (skillId == SKILL_BLESSED_GOLDEN_SPICE) || (skillId == SKILL_BLESSED_CRYSTAL_SPICE) || (skillId == SKILL_SGRADE_GOLDEN_SPICE) || (skillId == SKILL_SGRADE_CRYSTAL_SPICE);
 	}
-	
+
 	private static int foodForSkill(int skillId)
 	{
 		if ((skillId == SKILL_GOLDEN_SPICE) || (skillId == SKILL_BLESSED_GOLDEN_SPICE))
@@ -285,7 +285,7 @@ public class BeastFarm extends AbstractNpcAI
 		}
 		return 0;
 	}
-	
+
 	public void spawnNext(Npc npc, Player player, int nextNpcId, int food)
 	{
 		// remove the feedinfo of the mob that got despawned, if any
@@ -295,7 +295,7 @@ public class BeastFarm extends AbstractNpcAI
 		}
 		// despawn the old mob
 		npc.deleteMe();
-		
+
 		// if this is finally a trained mob, then despawn any other trained mobs that the
 		// player might have and initialize the Tamed Beast.
 		if (ArrayUtil.contains(TAMED_BEASTS, nextNpcId))
@@ -311,13 +311,13 @@ public class BeastFarm extends AbstractNpcAI
 			nextNpc.setName(name);
 			nextNpc.broadcastPacket(new AbstractNpcInfo.NpcInfo(nextNpc, player));
 			nextNpc.setRunning();
-			
+
 			final SkillData st = SkillData.getInstance();
 			for (SkillHolder sh : beast.getSkills())
 			{
 				nextNpc.addBeastSkill(st.getSkill(sh.getSkillId(), sh.getSkillLevel()));
 			}
-			
+
 			Q00020_BringUpWithLove.checkJewelOfInnocence(player);
 			Q00655_AGrandPlanForTamingWildBeasts.checkCrystalofPurity(player);
 		}
@@ -326,7 +326,7 @@ public class BeastFarm extends AbstractNpcAI
 			// if not trained, the newly spawned mob will automatically be agro against its feeder
 			// (what happened to "never bite the hand that feeds you" anyway?!)
 			final Attackable nextNpc = addSpawn(nextNpcId, npc).asAttackable();
-			
+
 			// register the player in the feedinfo for the mob that just spawned
 			FEED_INFO.put(nextNpc.getObjectId(), player.getObjectId());
 			nextNpc.setRunning();
@@ -335,7 +335,7 @@ public class BeastFarm extends AbstractNpcAI
 			player.setTarget(nextNpc);
 		}
 	}
-	
+
 	private void growOrAggro(Npc npc, Player caster, int objectId, int npcId, int skillId, int growthLevel, int food)
 	{
 		// do nothing if this mob doesn't eat the specified food (food gets consumed but has no effect).
@@ -359,7 +359,7 @@ public class BeastFarm extends AbstractNpcAI
 		}
 		spawnNext(npc, caster, newNpcId, food);
 	}
-	
+
 	@Override
 	public void onSkillSee(Npc npc, Player caster, Skill skill, List<WorldObject> targets, boolean isSummon)
 	{
@@ -369,7 +369,7 @@ public class BeastFarm extends AbstractNpcAI
 		{
 			return;
 		}
-		
+
 		// gather some values on local variables
 		final int npcId = npc.getId();
 		final int skillId = skill.getId();
@@ -378,7 +378,7 @@ public class BeastFarm extends AbstractNpcAI
 		{
 			return;
 		}
-		
+
 		// first gather some values on local variables
 		final int objectId = npc.getObjectId();
 		int growthLevel = 3; // if a mob is in FEEDABLE_BEASTS but not in _GrowthCapableMobs, then it's at max growth (3)
@@ -386,21 +386,21 @@ public class BeastFarm extends AbstractNpcAI
 		{
 			growthLevel = GROWTH_CAPABLE_MONSTERS.get(npcId).getGrowthLevel();
 		}
-		
+
 		// prevent exploit which allows 2 players to simultaneously raise the same 0-growth beast
 		// If the mob is at 0th level (when it still listens to all feeders) lock it to the first feeder!
 		if ((growthLevel == 0) && FEED_INFO.containsKey(objectId))
 		{
 			return;
 		}
-		
+
 		FEED_INFO.put(objectId, caster.getObjectId());
-		
+
 		// display the social action of the beast eating the food.
 		npc.broadcastSocialAction(2);
-		
+
 		final int food = foodForSkill(skillId);
-		
+
 		// if this pet can't grow, it's all done.
 		if (GROWTH_CAPABLE_MONSTERS.containsKey(npcId))
 		{
@@ -412,7 +412,7 @@ public class BeastFarm extends AbstractNpcAI
 			npc.dropItem(caster, food, 1);
 		}
 	}
-	
+
 	@Override
 	public void onKill(Npc npc, Player killer, boolean isSummon)
 	{
@@ -422,7 +422,7 @@ public class BeastFarm extends AbstractNpcAI
 			FEED_INFO.remove(npc.getObjectId());
 		}
 	}
-	
+
 	// all mobs that grow by eating
 	private static class GrowthCapableMob
 	{
@@ -430,24 +430,24 @@ public class BeastFarm extends AbstractNpcAI
 		private final int growthLevel;
 		private final int tameNpcId;
 		private final Map<Integer, Integer> skillSuccessNpcIdList = new HashMap<>();
-		
+
 		public GrowthCapableMob(int chance, int growthLevel, int tameNpcId)
 		{
 			this.chance = chance;
 			this.growthLevel = growthLevel;
 			this.tameNpcId = tameNpcId;
 		}
-		
+
 		public void addNpcIdForSkillId(int skillId, int npcId)
 		{
 			skillSuccessNpcIdList.put(skillId, npcId);
 		}
-		
+
 		public int getGrowthLevel()
 		{
 			return growthLevel;
 		}
-		
+
 		public int getLeveledNpcId(int skillId)
 		{
 			if (!skillSuccessNpcIdList.containsKey(skillId))
@@ -487,30 +487,29 @@ public class BeastFarm extends AbstractNpcAI
 			}
 		}
 	}
-	
+
 	private static class TamedBeastSkillHolder
 	{
 		private final String name;
 		private final SkillHolder[] sh;
-		
+
 		public TamedBeastSkillHolder(String beastName, SkillHolder... holders)
 		{
 			name = beastName;
 			sh = holders;
 		}
-		
+
 		public String getName()
 		{
 			return name;
 		}
-		
+
 		public SkillHolder[] getSkills()
 		{
 			return sh;
 		}
 	}
-	
-	@SuppressWarnings("unused")
+
 	public static void main(String[] args) // NOSONAR java:S1172 - script loader requires String[] signature
 	{
 		new BeastFarm();

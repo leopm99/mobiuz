@@ -231,7 +231,7 @@ public class BuffInfo
 	 * Stops all the effects for this buff info.<br>
 	 * Removes effects stats.<br>
 	 * <b>It will not remove the buff info from the effect list</b>.<br>
-	 * Instead call {@link EffectList#stopSkillEffects(SkillFinishType, Skill)}
+	 * Instead call {@link com.l2journey.gameserver.model.EffectList#stopSkillEffects(SkillFinishType, Skill)}
 	 * @param type determines the system message that will be sent.
 	 * @param broadcast if {@code true} broadcast abnormal visual effects
 	 */
