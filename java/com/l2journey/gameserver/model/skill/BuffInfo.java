@@ -1,16 +1,16 @@
 /*
  * Copyright (c) 2025 L2Journey Project
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -18,13 +18,13 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- * 
+ *
  * ---
- * 
- * Portions of this software are derived from the L2JMobius Project, 
- * shared under the MIT License. The original license terms are preserved where 
+ *
+ * Portions of this software are derived from the L2JMobius Project,
+ * shared under the MIT License. The original license terms are preserved where
  * applicable..
- * 
+ *
  */
 package com.l2journey.gameserver.model.skill;
 
@@ -36,7 +36,6 @@ import java.util.concurrent.ScheduledFuture;
 
 import com.l2journey.Config;
 import com.l2journey.commons.threads.ThreadPool;
-import com.l2journey.gameserver.model.EffectList;
 import com.l2journey.gameserver.model.actor.Creature;
 import com.l2journey.gameserver.model.actor.Summon;
 import com.l2journey.gameserver.model.effects.AbstractEffect;
@@ -75,7 +74,7 @@ public class BuffInfo
 	private volatile SkillFinishType _finishType = SkillFinishType.NORMAL;
 	/** If {@code true} then this effect is in use (or has been stop because an Herb took place). */
 	private boolean _isInUse = true;
-	
+
 	/**
 	 * Buff Info constructor.
 	 * @param effector
@@ -90,7 +89,7 @@ public class BuffInfo
 		_abnormalTime = Formulas.calcEffectAbnormalTime(effector, effected, skill);
 		_periodStartTicks = GameTimeTaskManager.getInstance().getGameTicks();
 	}
-	
+
 	/**
 	 * Gets the effects on this buff info.
 	 * @return the effects
@@ -99,7 +98,7 @@ public class BuffInfo
 	{
 		return _effects;
 	}
-	
+
 	/**
 	 * Adds an effect to this buff info.
 	 * @param effect the effect to add
@@ -108,7 +107,7 @@ public class BuffInfo
 	{
 		_effects.add(effect);
 	}
-	
+
 	/**
 	 * Adds an effect task to this buff info.
 	 * @param effect the effect that owns the task
@@ -118,7 +117,7 @@ public class BuffInfo
 	{
 		_tasks.put(effect, effectTaskInfo);
 	}
-	
+
 	/**
 	 * Gets the task for the given effect.
 	 * @param effect the effect
@@ -128,7 +127,7 @@ public class BuffInfo
 	{
 		return _tasks.get(effect);
 	}
-	
+
 	/**
 	 * Gets the skill that created this buff info.
 	 * @return the skill
@@ -137,7 +136,7 @@ public class BuffInfo
 	{
 		return _skill;
 	}
-	
+
 	/**
 	 * Gets the calculated abnormal time.
 	 * @return the abnormal time
@@ -146,7 +145,7 @@ public class BuffInfo
 	{
 		return _abnormalTime;
 	}
-	
+
 	/**
 	 * Sets the abnormal time.
 	 * @param abnormalTime the abnormal time to set
@@ -155,7 +154,7 @@ public class BuffInfo
 	{
 		_abnormalTime = abnormalTime;
 	}
-	
+
 	/**
 	 * Gets the period start ticks.
 	 * @return the period start
@@ -164,7 +163,7 @@ public class BuffInfo
 	{
 		return _periodStartTicks;
 	}
-	
+
 	/**
 	 * Get the remaining time in seconds for this buff info.
 	 * @return the elapsed time
@@ -173,7 +172,7 @@ public class BuffInfo
 	{
 		return _abnormalTime - ((GameTimeTaskManager.getInstance().getGameTicks() - _periodStartTicks) / GameTimeTaskManager.TICKS_PER_SECOND);
 	}
-	
+
 	/**
 	 * Verify if this buff info has been cancelled.
 	 * @return {@code true} if this buff info has been cancelled, {@code false} otherwise
@@ -182,7 +181,7 @@ public class BuffInfo
 	{
 		return _finishType == SkillFinishType.REMOVED;
 	}
-	
+
 	/**
 	 * Set the buff info to removed.
 	 * @param type the SkillFinishType to set
@@ -191,7 +190,7 @@ public class BuffInfo
 	{
 		_finishType = type;
 	}
-	
+
 	/**
 	 * Verify if this buff info is in use.
 	 * @return {@code true} if this buff info is in use, {@code false} otherwise
@@ -200,7 +199,7 @@ public class BuffInfo
 	{
 		return _isInUse;
 	}
-	
+
 	/**
 	 * Set the buff info to in use.
 	 * @param value the value to set
@@ -209,7 +208,7 @@ public class BuffInfo
 	{
 		_isInUse = value;
 	}
-	
+
 	/**
 	 * Gets the character that launched the buff.
 	 * @return the effector
@@ -218,7 +217,7 @@ public class BuffInfo
 	{
 		return _effector;
 	}
-	
+
 	/**
 	 * Gets the target of the skill.
 	 * @return the effected
@@ -227,7 +226,7 @@ public class BuffInfo
 	{
 		return _effected;
 	}
-	
+
 	/**
 	 * Stops all the effects for this buff info.<br>
 	 * Removes effects stats.<br>
@@ -239,24 +238,24 @@ public class BuffInfo
 	public void stopAllEffects(SkillFinishType type, boolean broadcast)
 	{
 		setFinishType(type);
-		
+
 		// Remove this buff info from BuffFinishTask.
 		_effected.removeBuffInfoTime(this);
 		finishEffects(broadcast);
-		
+
 		if ((_skill.getAbnormalType() == AbnormalType.DECREASE_WEIGHT_PENALTY) && _effected.isPlayer())
 		{
 			_effected.asPlayer().getInventory().refreshWeight();
 		}
 	}
-	
+
 	public void initializeEffects()
 	{
 		if ((_effected == null) || (_skill == null))
 		{
 			return;
 		}
-		
+
 		// When effects are initialized, the successfully landed.
 		if (_effected.isPlayer() && (_effected.asPlayer().hasEnteredWorld() || Config.SHOW_EFFECT_MESSAGES_ON_LOGIN) && !_skill.isPassive())
 		{
@@ -264,13 +263,13 @@ public class BuffInfo
 			sm.addSkillName(_skill);
 			_effected.sendPacket(sm);
 		}
-		
+
 		// Creates a task that will stop all the effects.
 		if (_abnormalTime > 0)
 		{
 			_effected.addBuffInfoTime(this);
 		}
-		
+
 		boolean update = false;
 		for (AbstractEffect effect : _effects)
 		{
@@ -278,16 +277,16 @@ public class BuffInfo
 			{
 				continue;
 			}
-			
+
 			// Call on start.
 			effect.onStart(_effector, _effected, _skill);
-			
+
 			// Do not add continuous effect if target just died from the initial effect, otherwise they'll be ticked forever.
 			if (_effected.isDead() && !_skill.isPassive())
 			{
 				continue;
 			}
-			
+
 			// If it's a continuous effect, if has ticks schedule a task with period, otherwise schedule a simple task to end it.
 			if (effect.getTicks() > 0)
 			{
@@ -295,30 +294,30 @@ public class BuffInfo
 				final EffectTickTask effectTask = new EffectTickTask(this, effect);
 				addTask(effect, new EffectTaskInfo(effectTask, ThreadPool.scheduleAtFixedRate(effectTask, effect.getTicks() * Config.EFFECT_TICK_RATIO, effect.getTicks() * Config.EFFECT_TICK_RATIO)));
 			}
-			
+
 			// Add stats.
 			_effected.addStatFuncs(effect.getStatFuncs(_effector, _effected, _skill));
-			
+
 			update = true;
 		}
-		
+
 		if (update)
 		{
 			if (_effected.isSummon())
 			{
 				((Summon) _effected).updateAndBroadcastStatus(1);
 			}
-			
+
 			// Add abnormal visual effects.
 			addAbnormalVisualEffects();
 		}
-		
+
 		if ((_skill.getAbnormalType() == AbnormalType.DECREASE_WEIGHT_PENALTY) && _effected.isPlayer())
 		{
 			_effected.asPlayer().getInventory().refreshWeight();
 		}
 	}
-	
+
 	/**
 	 * Called on each tick.<br>
 	 * Verify if the effect should end and the effect task should be cancelled.
@@ -333,7 +332,7 @@ public class BuffInfo
 			// Callback for on action time event.
 			continueForever = effect.onActionTime(_effector, _effected, _skill);
 		}
-		
+
 		if (!continueForever && _skill.isToggle())
 		{
 			final EffectTaskInfo task = getEffectTask(effect);
@@ -348,7 +347,7 @@ public class BuffInfo
 			}
 		}
 	}
-	
+
 	public void finishEffects(boolean broadcast)
 	{
 		// Cancels the ticking task.
@@ -393,7 +392,7 @@ public class BuffInfo
 			{
 				smId = SystemMessageId.S1_HAS_WORN_OFF;
 			}
-			
+
 			if (smId != null)
 			{
 				final SystemMessage sm = new SystemMessage(smId);
@@ -406,18 +405,18 @@ public class BuffInfo
 		{
 			_effected.getEffectList().shortBuffStatusUpdate(null);
 		}
-		
+
 		if ((_skill.getAbnormalType() == AbnormalType.DECREASE_WEIGHT_PENALTY) && _effected.isPlayer())
 		{
 			_effected.asPlayer().getInventory().refreshWeight();
 		}
 	}
-	
+
 	public boolean isAbnormalType(AbnormalType type)
 	{
 		return _skill.getAbnormalType() == type;
 	}
-	
+
 	/**
 	 * Applies all the abnormal visual effects to the effected.<br>
 	 * Prevents multiple updates.
@@ -428,21 +427,21 @@ public class BuffInfo
 		{
 			_effected.startAbnormalVisualEffect(false, _skill.getAbnormalVisualEffects());
 		}
-		
+
 		if (_effected.isPlayer() && _skill.hasAbnormalVisualEffectsEvent())
 		{
 			_effected.startAbnormalVisualEffect(false, _skill.getAbnormalVisualEffectsEvent());
 		}
-		
+
 		if (_skill.hasAbnormalVisualEffectsSpecial())
 		{
 			_effected.startAbnormalVisualEffect(false, _skill.getAbnormalVisualEffectsSpecial());
 		}
-		
+
 		// Update abnormal visual effects.
 		_effected.updateAbnormalEffect();
 	}
-	
+
 	/**
 	 * Removes all the abnormal visual effects from the effected.<br>
 	 * Prevents multiple updates.
@@ -454,28 +453,28 @@ public class BuffInfo
 		{
 			return;
 		}
-		
+
 		if (_skill.hasAbnormalVisualEffects())
 		{
 			_effected.stopAbnormalVisualEffect(false, _skill.getAbnormalVisualEffects());
 		}
-		
+
 		if (_effected.isPlayer() && _skill.hasAbnormalVisualEffectsEvent())
 		{
 			_effected.stopAbnormalVisualEffect(false, _skill.getAbnormalVisualEffectsEvent());
 		}
-		
+
 		if (_skill.hasAbnormalVisualEffectsSpecial())
 		{
 			_effected.stopAbnormalVisualEffect(false, _skill.getAbnormalVisualEffectsSpecial());
 		}
-		
+
 		if (broadcast)
 		{
 			_effected.updateAbnormalEffect();
 		}
 	}
-	
+
 	/**
 	 * Adds the buff stats.
 	 */
@@ -483,7 +482,7 @@ public class BuffInfo
 	{
 		_effects.forEach(effect -> _effected.addStatFuncs(effect.getStatFuncs(_effector, _effected, _skill)));
 	}
-	
+
 	/**
 	 * Removes the buff stats.
 	 */
@@ -492,7 +491,7 @@ public class BuffInfo
 		_effects.forEach(_effected::removeStatsOwner);
 		_effected.removeStatsOwner(_skill);
 	}
-	
+
 	@Override
 	public String toString()
 	{
