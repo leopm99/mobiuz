@@ -20,9 +20,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Phantom players pick up their own ground loot before selecting the next farm target
 - Geodata pathfinding defaults to live routes (`PathFinding = 2`), and the server corrects player coordinates when the client drifts (`CoordSynchronize = 2`)
 - Phantom farm travel and stuck relocation use Blessed SoE return animation before teleporting
+- Portuguese village-master HTML restyled to the project title layout (`noscrollbar` for short dialogs)
+- README documents PT-BR HTML coverage and how to switch language in game
 
 ### Fixed
 
+- Closed broken `<title>` tags on Tetrarch Thifiell village-master pages (`30358.htm`, `30358-1.htm`)
+- Added missing `noscrollbar` on High Priestess Levian (`30037.htm`) and Tetrarch Thifiell (`30358.htm`)
 - Cursed-sword phantom wielders no longer take the periodic town break or stand idle in peace zones; they are sent back to hunting spots outside town with a Return cooldown
 - Phantom gear progression no longer strips D-grade Mithril Stockings from mages (levels 20–39), which had recreated the kit every AI tick until OOM
 - Gear progression skips while a cursed weapon is equipped so the sword is not destroyed

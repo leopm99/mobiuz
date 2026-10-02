@@ -72,6 +72,33 @@ Test sources live under `test/java/`. Dependencies (JUnit, Mockito) are in `test
 - Docker Compose support
 - PT-BR HTML translations and project HTML styling (in progress)
 
+## Portuguese (PT-BR)
+
+Player-dialog HTML coverage (excludes `dist/game/data/html/admin/`):
+
+`█░░░░░░░░░ 9% (1,967 / 21,235 HTML files)`
+
+Recount with PowerShell from the repository root:
+
+```powershell
+$roots = @('dist/game/data/html','dist/game/data/scripts')
+$en = Get-ChildItem $roots -Recurse -Include *.htm,*.html | Where-Object { $_.FullName -notmatch '\\html\\admin\\' }
+$hit = @($en | Where-Object { Test-Path ($_.FullName -replace '\\data\\','\data\lang\br\data\') })
+'{0}/{1}' -f $hit.Count, @($en).Count
+```
+
+This bar is HTML file coverage only. It does not include NPC name localisation or system messages.
+
+### Changing language in game
+
+Multilingual support is enabled (`MultiLangEnable = True` in `dist/game/config/player/userpanel.ini`). Allowed languages are `en` and `br`. New characters start in English.
+
+1. Open the user panel with `.user`, `.panel`, or `.cp`.
+2. Under **Multilingual Support**, the current language is shown. Click **Change** to open the language list.
+3. Or type `.lang` and choose **BR**. `.lang br` selects Portuguese directly.
+
+The choice is stored on the character. If a Portuguese HTML file is missing, the server falls back to the English datapack path (`data/html/...` or `data/scripts/...`).
+
 ### Custom NPCs
 
 | ID | NPC |
