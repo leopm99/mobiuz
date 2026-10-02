@@ -90,6 +90,8 @@ import com.l2journey.gameserver.util.FloodProtectorConfig;
  * Cada configuracao possui um valor padrao (que deve refletir o comportamento retail).
  * @author KingHanker, Zoinha
  */
+// Assigned from ini files in load(), including a second time from AdminReload, so these fields stay public static and non-final.
+@SuppressWarnings({ "java:S3008", "java:S1444", "java:S1104" })
 public class Config
 {
 	private static final Logger LOGGER = Logger.getLogger(Config.class.getName());

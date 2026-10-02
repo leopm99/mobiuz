@@ -45,6 +45,8 @@ import com.l2journey.gameserver.model.Location;
 /**
  * @author KingHanker, Zoinha
  */
+// Assigned from ini files in load(), so these fields stay public static and non-final.
+@SuppressWarnings({ "java:S3008", "java:S1444", "java:S1104" })
 public class EventsConfig
 {
 	private static final Logger LOGGER = Logger.getLogger(EventsConfig.class.getName());
