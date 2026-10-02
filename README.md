@@ -34,6 +34,13 @@ ant jar
 
 Jars are written under `build/dist/libs/`. Configure login and game servers under `dist/login/config/` and `dist/game/config/`, then run the database installer and start the servers from `dist/`.
 
+Run the unit tests with:
+
+```bash
+ant test
+```
+
+Test sources live under `test/java/`. Dependencies (JUnit, Mockito) are in `test/lib/` and are used automatically by the Ant `test` target and the GitLab CI `unit-test` job.
 ## Downloads
 
 | Resource | Link |

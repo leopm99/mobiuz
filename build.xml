@@ -52,6 +52,10 @@
 		<path refid="classpath" />
 		<pathelement location="${build.bin}" />
 		<pathelement location="${build.test.bin}" />
+		<fileset dir="${test.libs}">
+			<include name="*.jar" />
+			<exclude name="junit-platform-console-standalone-*.jar" />
+		</fileset>
 	</path>
 
 	<pathconvert property="manifest.libs" pathsep=" ">
@@ -168,6 +172,7 @@
 		<javac srcdir="${test.src}" classpathref="test.classpath" destdir="${build.test.bin}" compiler="modern" debug="true" debuglevel="lines,vars,source" includeantruntime="false" source="25" target="25" encoding="UTF-8" />
 		<pathconvert property="junit.classpath" pathsep="${path.separator}" refid="junit.runtime.classpath" />
 		<java jar="${junit.standalone}" fork="true" failonerror="true">
+			<jvmarg value="-XX:+EnableDynamicAgentLoading" />
 			<arg value="execute" />
 			<arg value="--class-path" />
 			<arg value="${junit.classpath}" />

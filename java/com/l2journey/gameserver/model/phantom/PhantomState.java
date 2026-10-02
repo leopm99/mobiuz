@@ -19,6 +19,7 @@ public class PhantomState
 	public static final Map<Integer, Integer> HUNT_LEVEL_BAND = new ConcurrentHashMap<>();
 	public static final Map<Integer, Integer> GOAL_LEVEL = new ConcurrentHashMap<>();
 	public static final Map<Integer, Long> NEXT_HUNT_TELEPORT = new ConcurrentHashMap<>();
+	public static final Map<Integer, Long> RETURN_UNTIL = new ConcurrentHashMap<>();
 	public static final Map<Integer, Long> LAST_AI_TRACE = new ConcurrentHashMap<>();
 	public static final Map<Integer, Long> CITY_REST_UNTIL = new ConcurrentHashMap<>();
 	public static final Map<Integer, Long> LAST_SELF_BUFF = new ConcurrentHashMap<>();
@@ -39,6 +40,7 @@ public class PhantomState
 		HUNT_LEVEL_BAND.put(objectId, -1);
 		GOAL_LEVEL.put(objectId, 0);
 		NEXT_HUNT_TELEPORT.put(objectId, 0L);
+		RETURN_UNTIL.put(objectId, 0L);
 		LAST_AI_TRACE.put(objectId, 0L);
 		CITY_REST_UNTIL.put(objectId, 0L);
 		LAST_SELF_BUFF.put(objectId, 0L);
@@ -69,6 +71,7 @@ public class PhantomState
 		HUNT_LEVEL_BAND.remove(objectId);
 		GOAL_LEVEL.remove(objectId);
 		NEXT_HUNT_TELEPORT.remove(objectId);
+		RETURN_UNTIL.remove(objectId);
 		LAST_AI_TRACE.remove(objectId);
 		CITY_REST_UNTIL.remove(objectId);
 		LAST_SELF_BUFF.remove(objectId);
@@ -93,6 +96,7 @@ public class PhantomState
 		HUNT_LEVEL_BAND.clear();
 		GOAL_LEVEL.clear();
 		NEXT_HUNT_TELEPORT.clear();
+		RETURN_UNTIL.clear();
 		LAST_AI_TRACE.clear();
 		CITY_REST_UNTIL.clear();
 		LAST_SELF_BUFF.clear();
