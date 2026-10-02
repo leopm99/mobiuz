@@ -14,8 +14,11 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import com.l2journey.commons.util.Rnd;
+import com.l2journey.gameserver.managers.ZoneManager;
 import com.l2journey.gameserver.model.Location;
 import com.l2journey.gameserver.model.actor.Player;
+import com.l2journey.gameserver.model.zone.type.PeaceZone;
+import com.l2journey.gameserver.model.zone.type.TownZone;
 
 public class PhantomHuntingSpots
 {
@@ -128,6 +131,29 @@ public class PhantomHuntingSpots
 		PhantomEngine.movePhantomToWithReturn(bot, safe, reason);
 		PhantomManager.logToFile(bot.getName(), reason + ": " + safe.getX() + ", " + safe.getY() + ", " + safe.getZ());
 		return true;
+	}
+	
+	/**
+	 * @param playerLevel phantom level
+	 * @param maxAttempts number of {@link #getRandomSpot(int)} tries
+	 * @return first spot outside peace and town zones, or {@code null}
+	 */
+	public static Location getRandomSpotOutsidePeaceOrTown(int playerLevel, int maxAttempts)
+	{
+		for (int attempt = 0; attempt < maxAttempts; attempt++)
+		{
+			Location spot = getRandomSpot(playerLevel);
+			if ((spot != null) && !isInsidePeaceOrTown(spot.getX(), spot.getY(), spot.getZ()))
+			{
+				return spot;
+			}
+		}
+		return null;
+	}
+	
+	static boolean isInsidePeaceOrTown(int x, int y, int z)
+	{
+		return (ZoneManager.getInstance().getZone(x, y, z, PeaceZone.class) != null) || (ZoneManager.getInstance().getZone(x, y, z, TownZone.class) != null);
 	}
 	
 	public static Location getRandomSpot(int playerLevel)

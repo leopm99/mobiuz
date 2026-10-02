@@ -39,9 +39,13 @@ public class PhantomCursedHunt
 	private static final int LOOT_PICKUP_RANGE = 70;
 	private static final int SQUAD_CACHE_MS = 2000;
 	private static final int ACTIVE_CACHE_MS = 1000;
+	private static final int WIELDER_EJECT_COOLDOWN_MS = 10000;
+	private static final int WIELDER_EJECT_SPOT_ATTEMPTS = 8;
 	
 	/** Per phantom: next allowed cursed-hunt teleport time. */
 	private static final Map<Integer, Long> TELEPORT_READY_AT = new ConcurrentHashMap<>();
+	/** Per phantom wielder: next allowed town eject Return. */
+	private static final Map<Integer, Long> WIELDER_EJECT_READY_AT = new ConcurrentHashMap<>();
 	/** Per phantom: last cursed-hunt teleport time. */
 	private static final Map<Integer, Long> LAST_TELEPORT_AT = new ConcurrentHashMap<>();
 	/** Per cursed weapon item id: squad may attack a phantom wielder after this time. */
@@ -76,6 +80,7 @@ public class PhantomCursedHunt
 	{
 		TELEPORT_READY_AT.remove(objectId);
 		LAST_TELEPORT_AT.remove(objectId);
+		WIELDER_EJECT_READY_AT.remove(objectId);
 		DESIGNATED_LOOTER.entrySet().removeIf(e -> e.getValue() == objectId);
 		SQUAD_CACHE.clear();
 	}
@@ -84,6 +89,7 @@ public class PhantomCursedHunt
 	{
 		TELEPORT_READY_AT.clear();
 		LAST_TELEPORT_AT.clear();
+		WIELDER_EJECT_READY_AT.clear();
 		PHANTOM_WIELDER_PAUSE_UNTIL.clear();
 		DESIGNATED_LOOTER.clear();
 		REFERENCE_LEVEL.clear();
@@ -133,6 +139,11 @@ public class PhantomCursedHunt
 	 */
 	public static boolean handleWielder(Player bot)
 	{
+		if (tryEjectWielderFromTown(bot))
+		{
+			return true;
+		}
+		
 		PhantomAI.clearFarmTargetLock(bot);
 		
 		Player target = findWielderTarget(bot);
@@ -258,6 +269,33 @@ public class PhantomCursedHunt
 	static boolean preferRealTarget(boolean realPlayerAvailable)
 	{
 		return realPlayerAvailable;
+	}
+	
+	private static boolean tryEjectWielderFromTown(Player bot)
+	{
+		if ((bot == null) || (!bot.isInsideZone(ZoneId.PEACE) && !bot.isInsideZone(ZoneId.TOWN)))
+		{
+			return false;
+		}
+		
+		final int botId = bot.getObjectId();
+		final long now = System.currentTimeMillis();
+		if (now < WIELDER_EJECT_READY_AT.getOrDefault(botId, 0L))
+		{
+			return true;
+		}
+		
+		final Location spot = PhantomHuntingSpots.getRandomSpotOutsidePeaceOrTown(bot.getLevel(), WIELDER_EJECT_SPOT_ATTEMPTS);
+		if (spot == null)
+		{
+			return true;
+		}
+		
+		if (PhantomHuntingSpots.travelToLevelSpot(bot, spot, "Cursed wielder leave town"))
+		{
+			WIELDER_EJECT_READY_AT.put(botId, now + WIELDER_EJECT_COOLDOWN_MS);
+		}
+		return true;
 	}
 	
 	private static boolean handleDroppedSword(Player bot, CursedWeapon cw)

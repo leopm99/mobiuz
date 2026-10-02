@@ -106,8 +106,10 @@ public class PhantomAI
 			return;
 		}
 
-		PhantomWalk.update(bot);
-		if (PhantomWalk.isResting(bot) || handlePartyLeash(bot))
+		final boolean cursedWielder = bot.isCursedWeaponEquipped();
+		final boolean cursedHunter = !cursedWielder && PhantomCursedHunt.hasActiveWeapon() && PhantomCursedHunt.isHunter(bot);
+		PhantomWalk.update(bot, shouldSkipTownVisit(cursedWielder, cursedHunter));
+		if (shouldPauseThinkForTownRest(PhantomWalk.isResting(bot), cursedWielder, cursedHunter) || handlePartyLeash(bot))
 		{
 			return;
 		}
@@ -132,8 +134,28 @@ public class PhantomAI
 			return;
 		}
 
-		boolean cursedHunter = !bot.isCursedWeaponEquipped() && PhantomCursedHunt.hasActiveWeapon() && PhantomCursedHunt.isHunter(bot);
 		continueNormalThink(bot, botId, cursedHunter);
+	}
+	
+	/**
+	 * @param cursedWielder {@code true} when the bot holds a cursed weapon
+	 * @param cursedHunter {@code true} when the bot is on an active cursed-weapon hunt squad
+	 * @return {@code true} when the periodic town visit must not run
+	 */
+	static boolean shouldSkipTownVisit(boolean cursedWielder, boolean cursedHunter)
+	{
+		return cursedWielder || cursedHunter;
+	}
+	
+	/**
+	 * @param resting {@code true} when {@link PhantomWalk} has the bot in a town rest
+	 * @param cursedWielder {@code true} when the bot holds a cursed weapon
+	 * @param cursedHunter {@code true} when the bot is on an active cursed-weapon hunt squad
+	 * @return {@code true} when the think tick should stop for town rest
+	 */
+	static boolean shouldPauseThinkForTownRest(boolean resting, boolean cursedWielder, boolean cursedHunter)
+	{
+		return resting && !shouldSkipTownVisit(cursedWielder, cursedHunter);
 	}
 
 	private static void continueNormalThink(Player bot, int botId, boolean cursedHunter)
