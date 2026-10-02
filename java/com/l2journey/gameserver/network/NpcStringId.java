@@ -48,6 +48,8 @@ import com.l2journey.Config;
 import com.l2journey.gameserver.model.clientstrings.Builder;
 import com.l2journey.gameserver.network.serverpackets.ExShowScreenMessage;
 
+// Reflection catalog: buildFastLookupTable() assigns these public static fields and parses S1/C1 from the name, so they stay non-final.
+@SuppressWarnings({ "java:S3008", "java:S1444" })
 public class NpcStringId
 {
 	private static final Logger LOGGER = Logger.getLogger(NpcStringId.class.getName());
