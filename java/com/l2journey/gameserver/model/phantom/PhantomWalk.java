@@ -29,7 +29,7 @@ public class PhantomWalk
 	private static final long TOWN_DURATION = 5 * 60 * 1000; // 5 minutos na cidade
 	private static final long TIME_QUIETO_TOWN = 2 * 60 * 1000; // 2 minutos parado entre caminhadas
 	
-	public static void update(Player bot)
+	public static void update(Player bot, boolean skipTownVisit)
 	{
 		if ((bot == null) || bot.isDead())
 		{
@@ -37,17 +37,23 @@ public class PhantomWalk
 		}
 		
 		int objectId = bot.getObjectId();
+		long currentTime = System.currentTimeMillis();
+		
+		if (skipTownVisit)
+		{
+			cancelTownRest(objectId, currentTime);
+			return;
+		}
 		
 		long lastVisit = _lastTownVisit.getOrDefault(objectId, 0L);
 		if (lastVisit == 0L)
 		{
-			lastVisit = System.currentTimeMillis();
+			lastVisit = currentTime;
 			_lastTownVisit.put(objectId, lastVisit);
 		}
 		
 		boolean resting = _isResting.getOrDefault(objectId, false);
 		long startTime = _restingStartTime.getOrDefault(objectId, 0L);
-		long currentTime = System.currentTimeMillis();
 		
 		if (resting)
 		{
@@ -155,6 +161,18 @@ public class PhantomWalk
 				forceTeleport(bot, town);
 			}
 		}
+	}
+	
+	private static void cancelTownRest(int objectId, long currentTime)
+	{
+		_isResting.put(objectId, false);
+		_restingStartTime.remove(objectId);
+		_walkCount.remove(objectId);
+		_targetWalks.remove(objectId);
+		_isWaitingInTown.remove(objectId);
+		_waitingStartTime.remove(objectId);
+		_lastWalkActionTime.remove(objectId);
+		_lastTownVisit.put(objectId, currentTime);
 	}
 	
 	private static void forceTeleport(Player bot, Location loc)

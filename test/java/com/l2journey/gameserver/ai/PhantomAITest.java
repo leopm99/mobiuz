@@ -212,6 +212,24 @@ class PhantomAITest
 		assertFalse(PhantomAI.skipPartyLeash(true, false, true, 40, 20000));
 	}
 	
+	@Test
+	void shouldSkipTownVisitForWielderOrHunter()
+	{
+		assertTrue(PhantomAI.shouldSkipTownVisit(true, false));
+		assertTrue(PhantomAI.shouldSkipTownVisit(false, true));
+		assertTrue(PhantomAI.shouldSkipTownVisit(true, true));
+		assertFalse(PhantomAI.shouldSkipTownVisit(false, false));
+	}
+	
+	@Test
+	void shouldPauseThinkForTownRestUnlessCursedActivity()
+	{
+		assertTrue(PhantomAI.shouldPauseThinkForTownRest(true, false, false));
+		assertFalse(PhantomAI.shouldPauseThinkForTownRest(true, true, false));
+		assertFalse(PhantomAI.shouldPauseThinkForTownRest(true, false, true));
+		assertFalse(PhantomAI.shouldPauseThinkForTownRest(false, false, false));
+	}
+	
 	private static Player mockMoveBot(int objectId)
 	{
 		Player bot = mock(Player.class);

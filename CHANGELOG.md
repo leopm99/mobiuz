@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+- Cursed-sword phantom wielders no longer take the periodic town break or stand idle in peace zones; they are sent back to hunting spots outside town with a Return cooldown
 - Phantom gear progression no longer strips D-grade Mithril Stockings from mages (levels 20–39), which had recreated the kit every AI tick until OOM
 - Gear progression skips while a cursed weapon is equipped so the sword is not destroyed
 ## [2026-09-30]
