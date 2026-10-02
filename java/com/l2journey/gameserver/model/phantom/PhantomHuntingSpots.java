@@ -125,7 +125,7 @@ public class PhantomHuntingSpots
 			safe = spot;
 		}
 		
-		PhantomEngine.movePhantomTo(bot, safe, reason);
+		PhantomEngine.movePhantomToWithReturn(bot, safe, reason);
 		PhantomManager.logToFile(bot.getName(), reason + ": " + safe.getX() + ", " + safe.getY() + ", " + safe.getZ());
 		return true;
 	}

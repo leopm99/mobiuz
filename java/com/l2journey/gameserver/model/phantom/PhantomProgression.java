@@ -105,9 +105,11 @@ public class PhantomProgression
 		PhantomManager.logToFile(bot.getName(), "Level cap assigned: Level " + cap + " (Bot #" + phantomCounter + " of the cycle)");
 	}
 	
-	private static void checkLowLevelItems(Player bot)
+	static void checkLowLevelItems(Player bot)
 	{
-		if (bot.isMageClass() && (bot.getLevel() < 40))
+		// Only strip Karmian leftovers from NG mages. D-grade robe kits (20-39) intentionally
+		// include Mithril Stockings (470); destroying them here re-adds them every AI tick and OOMs.
+		if (bot.isMageClass() && (bot.getLevel() < 20))
 		{
 			List<Item> itemsToDestroy = new ArrayList<>();
 			

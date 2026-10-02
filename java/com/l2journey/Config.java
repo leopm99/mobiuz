@@ -718,6 +718,7 @@ public class Config
 	public static int RAID_CHAOS_TIME;
 	public static int GRAND_CHAOS_TIME;
 	public static int MINION_CHAOS_TIME;
+	public static int PHANTOM_CURSED_HUNTER_LIMIT;
 	public static int INVENTORY_MAXIMUM_PET;
 	public static double PET_HP_REGEN_MULTIPLIER;
 	public static double PET_MP_REGEN_MULTIPLIER;
@@ -2537,6 +2538,7 @@ public class Config
 		RAID_CHAOS_TIME = npcConfig.getInt("RaidChaosTime", 10);
 		GRAND_CHAOS_TIME = npcConfig.getInt("GrandChaosTime", 10);
 		MINION_CHAOS_TIME = npcConfig.getInt("MinionChaosTime", 10);
+		PHANTOM_CURSED_HUNTER_LIMIT = npcConfig.getInt("PhantomCursedHunterLimit", 8);
 		INVENTORY_MAXIMUM_PET = npcConfig.getInt("MaximumSlotsForPet", 12);
 		PET_HP_REGEN_MULTIPLIER = npcConfig.getDouble("PetHpRegenMultiplier", 100) / 100;
 		PET_MP_REGEN_MULTIPLIER = npcConfig.getDouble("PetMpRegenMultiplier", 100) / 100;

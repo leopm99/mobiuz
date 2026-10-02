@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.ScheduledFuture;
 
 import com.l2journey.PhantomConfig;
 import com.l2journey.commons.threads.ThreadPool;
@@ -15,11 +16,16 @@ import com.l2journey.gameserver.model.World;
 import com.l2journey.gameserver.model.actor.Player;
 import com.l2journey.gameserver.model.item.enums.ItemProcessType;
 import com.l2journey.gameserver.model.item.instance.Item;
+import com.l2journey.gameserver.network.serverpackets.MagicSkillUse;
 
 public class PhantomEngine
 {
 	public static final List<Player> activePhantoms = new CopyOnWriteArrayList<>();
 	private static final Map<Integer, Long> FATIGUE_TIMES = new ConcurrentHashMap<>();
+	private static final Map<Integer, ScheduledFuture<?>> PENDING_RETURN = new ConcurrentHashMap<>();
+	
+	private static final int RETURN_SKILL_ID = 2036; // Blessed Scroll of Escape (display)
+	private static final int RETURN_HIT_TIME_MS = 400;
 	
 	public static boolean isRunning = false;
 	
@@ -161,6 +167,7 @@ public class PhantomEngine
 			// 1. Purgamos ele dos mapas internos
 			activePhantoms.remove(p);
 			FATIGUE_TIMES.remove(p.getObjectId());
+			cancelReturnRelocate(p.getObjectId());
 			PhantomWalk.removeBot(p);
 			PhantomAI.unregisterBot(p.getObjectId());
 			PhantomState.unregister(p.getObjectId());
@@ -250,6 +257,7 @@ public class PhantomEngine
 		
 		activePhantoms.clear();
 		FATIGUE_TIMES.clear(); // Esvaziamos os temporizadores ao desligar
+		clearPendingReturns();
 		PhantomWalk.clearAll();
 		PhantomAI.clearRuntimeState();
 		PhantomState.clear();
@@ -302,6 +310,80 @@ public class PhantomEngine
 		{
 			PhantomManager.logException(phantom.getName(), "Error movePhantomTo", e);
 		}
+	}
+	
+	/**
+	 * Plays Blessed SoE Return animation (skill 2036, 400ms), then relocates.
+	 * Ignores the request if a Return relocate is already pending for this phantom.
+	 * @param phantom the phantom to relocate
+	 * @param loc destination
+	 * @param reason log reason
+	 * @return {@code true} if the cast was started
+	 */
+	public static boolean movePhantomToWithReturn(Player phantom, Location loc, String reason)
+	{
+		if ((phantom == null) || (loc == null))
+		{
+			return false;
+		}
+		
+		final int objectId = phantom.getObjectId();
+		final long now = System.currentTimeMillis();
+		if (now < PhantomState.RETURN_UNTIL.getOrDefault(objectId, 0L))
+		{
+			return false;
+		}
+		
+		phantom.abortAttack();
+		phantom.abortCast();
+		phantom.stopMove(null);
+		phantom.setTarget(null);
+		
+		final Location dest = new Location(loc.getX(), loc.getY(), loc.getZ(), loc.getHeading());
+		phantom.broadcastPacket(new MagicSkillUse(phantom, phantom, RETURN_SKILL_ID, 1, RETURN_HIT_TIME_MS, 0));
+		
+		final long until = now + RETURN_HIT_TIME_MS;
+		PhantomState.RETURN_UNTIL.put(objectId, until);
+		if (PhantomState.NEXT_HUNT_TELEPORT.getOrDefault(objectId, 0L) < until)
+		{
+			PhantomState.NEXT_HUNT_TELEPORT.put(objectId, until);
+		}
+		
+		final ScheduledFuture<?> future = ThreadPool.schedule(() ->
+		{
+			PENDING_RETURN.remove(objectId);
+			PhantomState.RETURN_UNTIL.remove(objectId);
+			if (!isRunning || !activePhantoms.contains(phantom) || !phantom.isOnline())
+			{
+				return;
+			}
+			movePhantomTo(phantom, dest, reason);
+		}, RETURN_HIT_TIME_MS);
+		PENDING_RETURN.put(objectId, future);
+		return true;
+	}
+	
+	public static void cancelReturnRelocate(int objectId)
+	{
+		final ScheduledFuture<?> future = PENDING_RETURN.remove(objectId);
+		if (future != null)
+		{
+			future.cancel(false);
+		}
+		PhantomState.RETURN_UNTIL.remove(objectId);
+	}
+	
+	public static void clearPendingReturns()
+	{
+		for (ScheduledFuture<?> future : PENDING_RETURN.values())
+		{
+			if (future != null)
+			{
+				future.cancel(false);
+			}
+		}
+		PENDING_RETURN.clear();
+		PhantomState.RETURN_UNTIL.clear();
 	}
 	
 	private static void preparePhantom(Player phantom, boolean creationSpawn)

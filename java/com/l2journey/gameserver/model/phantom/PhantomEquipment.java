@@ -2,6 +2,7 @@ package com.l2journey.gameserver.model.phantom;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
@@ -16,7 +17,9 @@ public class PhantomEquipment
 {
 	private static final Logger LOGGER = Logger.getLogger(PhantomEquipment.class.getName());
 	private static final int INVENTORY_CLEAN_LIMIT = 25;
+	private static final long PROGRESSION_INTERVAL_MS = 10000L;
 	private static final Set<Integer> REPORTED_MISSING_ITEMS = ConcurrentHashMap.newKeySet();
+	private static final Map<Integer, Long> LAST_PROGRESSION_CHECK = new ConcurrentHashMap<>();
 	
 	// --- NO-GRADE (Nivel 1 ao 19) ---
 	private static final int[] MAGE_KIT_NG =
@@ -394,7 +397,7 @@ public class PhantomEquipment
 	
 	public static void checkProgression(Player bot)
 	{
-		if (bot == null)
+		if (!beginProgressionCheck(bot))
 		{
 			return;
 		}
@@ -406,6 +409,39 @@ public class PhantomEquipment
 		ensureShots(bot);
 		ensureArrows(bot);
 		limpiarMochila(bot);
+	}
+	
+	/**
+	 * Guard for gear progression: skips null bots, cursed-weapon holders, and checks within the throttle window.
+	 * @param bot the phantom
+	 * @return {@code true} when progression work should run
+	 */
+	static boolean beginProgressionCheck(Player bot)
+	{
+		if ((bot == null) || bot.isCursedWeaponEquipped())
+		{
+			return false;
+		}
+		
+		long now = System.currentTimeMillis();
+		int objectId = bot.getObjectId();
+		long last = LAST_PROGRESSION_CHECK.getOrDefault(objectId, 0L);
+		if ((now - last) < PROGRESSION_INTERVAL_MS)
+		{
+			return false;
+		}
+		LAST_PROGRESSION_CHECK.put(objectId, now);
+		return true;
+	}
+	
+	public static void unregisterBot(int objectId)
+	{
+		LAST_PROGRESSION_CHECK.remove(objectId);
+	}
+	
+	public static void clearRuntimeState()
+	{
+		LAST_PROGRESSION_CHECK.clear();
 	}
 	
 	private static int[] getActiveKit(Player bot)
