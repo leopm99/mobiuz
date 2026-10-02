@@ -7,6 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ScheduledFuture;
 
+import com.l2journey.Config;
 import com.l2journey.PhantomConfig;
 import com.l2journey.commons.threads.ThreadPool;
 import com.l2journey.commons.util.Rnd;
@@ -28,6 +29,19 @@ public class PhantomEngine
 	private static final int RETURN_HIT_TIME_MS = 400;
 	
 	public static boolean isRunning = false;
+	
+	private static boolean refuseIfDisabled(Player gm)
+	{
+		if (Config.PHANTOM_ENABLE)
+		{
+			return false;
+		}
+		if (gm != null)
+		{
+			gm.sendMessage("Phantom system is disabled.");
+		}
+		return true;
+	}
 	
 	// Filtro de limpeza para eliminar equipamento indesejado (Karmian) ao nascer
 	public static void forceWipe(Player bot)
@@ -53,6 +67,11 @@ public class PhantomEngine
 	
 	public static void startSystem(Player gm)
 	{
+		if (refuseIfDisabled(gm))
+		{
+			return;
+		}
+		
 		PhantomManager.startLogSession("PHANTOM_START");
 		isRunning = true;
 		
@@ -66,6 +85,11 @@ public class PhantomEngine
 	// ADICIONADO "synchronized" PARA EVITAR CLONAGENS SE FOR CHAMADO MULTIPLAS VEZES NO MESMO MILISSEGUNDO
 	public static synchronized void startBatch(int count, Player gm)
 	{
+		if (refuseIfDisabled(gm))
+		{
+			return;
+		}
+		
 		if (isRunning && (gm != null))
 		{
 			PhantomManager.logToFile("SYSTEM", "System was already running. Adding a batch of " + count + ".");
@@ -121,6 +145,11 @@ public class PhantomEngine
 	
 	public static synchronized void createAndStart(int count, Player gm)
 	{
+		if (refuseIfDisabled(gm))
+		{
+			return;
+		}
+		
 		if (!isRunning)
 		{
 			isRunning = true;
