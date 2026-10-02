@@ -40,9 +40,9 @@ public class PlayerAuthRequest extends BaseWritablePacket
 	{
 		writeByte(0x05);
 		writeString(account);
-		writeInt(key.playOkID1);
-		writeInt(key.playOkID2);
-		writeInt(key.loginOkID1);
-		writeInt(key.loginOkID2);
+		writeInt(key.getPlayOkID1());
+		writeInt(key.getPlayOkID2());
+		writeInt(key.getLoginOkID1());
+		writeInt(key.getLoginOkID2());
 	}
 }

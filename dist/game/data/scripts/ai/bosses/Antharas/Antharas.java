@@ -125,17 +125,17 @@ public class Antharas extends AbstractNpcAI
 	// Misc
 	private static final int MAX_PEOPLE = 200; // Max allowed players
 	private GrandBoss _antharas = null;
-	private static long _lastAttack = 0;
-	private static int _minionCount = 0;
+	private static long lastAttack = 0;
+	private static int minionCount = 0;
 	private static int minionMultipler = 0;
 	private static int moveChance = 0;
 	private static int sandStorm = 0;
-	private static Player attacker_1 = null;
-	private static Player attacker_2 = null;
-	private static Player attacker_3 = null;
-	private static int attacker_1_hate = 0;
-	private static int attacker_2_hate = 0;
-	private static int attacker_3_hate = 0;
+	private static Player attacker1 = null;
+	private static Player attacker2 = null;
+	private static Player attacker3 = null;
+	private static int attacker1Hate = 0;
+	private static int attacker2Hate = 0;
+	private static int attacker3Hate = 0;
 	
 	private Antharas()
 	{
@@ -181,7 +181,7 @@ public class Antharas extends AbstractNpcAI
 				_antharas = (GrandBoss) addSpawn(ANTHARAS, loc_x, loc_y, loc_z, heading, false, 0);
 				_antharas.setCurrentHpMp(curr_hp, curr_mp);
 				addBoss(_antharas);
-				_lastAttack = System.currentTimeMillis();
+				lastAttack = System.currentTimeMillis();
 				startQuestTimer("CHECK_ATTACK", 60000, _antharas, null);
 				startQuestTimer("SPAWN_MINION", 300000, _antharas, null);
 				break;
@@ -284,7 +284,7 @@ public class Antharas extends AbstractNpcAI
 				_antharas.setRandomWalking(false);
 				_antharas.teleToLocation(181323, 114850, -7623, 32542);
 				setStatus(IN_FIGHT);
-				_lastAttack = System.currentTimeMillis();
+				lastAttack = System.currentTimeMillis();
 				zone.broadcastPacket(new PlaySound("BS02_A"));
 				startQuestTimer("CAMERA_1", 23, _antharas, null);
 				break;
@@ -379,7 +379,7 @@ public class Antharas extends AbstractNpcAI
 			}
 			case "CHECK_ATTACK":
 			{
-				if ((npc != null) && ((_lastAttack + 900000) < System.currentTimeMillis()))
+				if ((npc != null) && ((lastAttack + 900000) < System.currentTimeMillis()))
 				{
 					setStatus(ALIVE);
 					for (Creature creature : zone.getCharactersInside())
@@ -408,17 +408,17 @@ public class Antharas extends AbstractNpcAI
 				}
 				else if (npc != null)
 				{
-					if (attacker_1_hate > 10)
+					if (attacker1Hate > 10)
 					{
-						attacker_1_hate -= getRandom(10);
+						attacker1Hate -= getRandom(10);
 					}
-					if (attacker_2_hate > 10)
+					if (attacker2Hate > 10)
 					{
-						attacker_2_hate -= getRandom(10);
+						attacker2Hate -= getRandom(10);
 					}
-					if (attacker_3_hate > 10)
+					if (attacker3Hate > 10)
 					{
-						attacker_3_hate -= getRandom(10);
+						attacker3Hate -= getRandom(10);
 					}
 					manageSkills(npc);
 					startQuestTimer("CHECK_ATTACK", 60000, npc, null);
@@ -427,25 +427,25 @@ public class Antharas extends AbstractNpcAI
 			}
 			case "SPAWN_MINION":
 			{
-				if ((minionMultipler > 1) && (_minionCount < (100 - (minionMultipler * 2))))
+				if ((minionMultipler > 1) && (minionCount < (100 - (minionMultipler * 2))))
 				{
 					for (int i = 0; i < minionMultipler; i++)
 					{
 						addSpawn(BEHEMOTH, npc, true);
 						addSpawn(TERASQUE, npc, true);
 					}
-					_minionCount += minionMultipler * 2;
+					minionCount += minionMultipler * 2;
 				}
-				else if (_minionCount < 98)
+				else if (minionCount < 98)
 				{
 					addSpawn(BEHEMOTH, npc, true);
 					addSpawn(TERASQUE, npc, true);
-					_minionCount += 2;
+					minionCount += 2;
 				}
-				else if (_minionCount < 99)
+				else if (minionCount < 99)
 				{
 					addSpawn(getRandomBoolean() ? BEHEMOTH : TERASQUE, npc, true);
-					_minionCount++;
+					minionCount++;
 				}
 				
 				if ((getRandom(100) > 10) && (minionMultipler < 4))
@@ -556,7 +556,7 @@ public class Antharas extends AbstractNpcAI
 			{
 				if (getStatus() == IN_FIGHT)
 				{
-					_minionCount = 0;
+					minionCount = 0;
 					for (Creature creature : zone.getCharactersInside())
 					{
 						if ((creature != null) && creature.isNpc() && ((creature.getId() == BEHEMOTH) || (creature.getId() == TERASQUE)))
@@ -630,7 +630,7 @@ public class Antharas extends AbstractNpcAI
 	@Override
 	public void onAttack(Npc npc, Player attacker, int damage, boolean isSummon, Skill skill)
 	{
-		_lastAttack = System.currentTimeMillis();
+		lastAttack = System.currentTimeMillis();
 		if (npc.getId() == BOMBER)
 		{
 			if (npc.calculateDistance3D(attacker) < 230)
@@ -706,7 +706,7 @@ public class Antharas extends AbstractNpcAI
 			}
 			else
 			{
-				_minionCount--;
+				minionCount--;
 			}
 		}
 	}
@@ -786,44 +786,44 @@ public class Antharas extends AbstractNpcAI
 	
 	private void refreshAiParams(Player attacker, int damage)
 	{
-		if ((attacker_1 != null) && (attacker == attacker_1))
+		if ((attacker1 != null) && (attacker == attacker1))
 		{
-			if (attacker_1_hate < (damage + 1000))
+			if (attacker1Hate < (damage + 1000))
 			{
-				attacker_1_hate = damage + getRandom(3000);
+				attacker1Hate = damage + getRandom(3000);
 			}
 		}
-		else if ((attacker_2 != null) && (attacker == attacker_2))
+		else if ((attacker2 != null) && (attacker == attacker2))
 		{
-			if (attacker_2_hate < (damage + 1000))
+			if (attacker2Hate < (damage + 1000))
 			{
-				attacker_2_hate = damage + getRandom(3000);
+				attacker2Hate = damage + getRandom(3000);
 			}
 		}
-		else if ((attacker_3 != null) && (attacker == attacker_3))
+		else if ((attacker3 != null) && (attacker == attacker3))
 		{
-			if (attacker_3_hate < (damage + 1000))
+			if (attacker3Hate < (damage + 1000))
 			{
-				attacker_3_hate = damage + getRandom(3000);
+				attacker3Hate = damage + getRandom(3000);
 			}
 		}
 		else
 		{
-			final int i1 = MathUtil.min(attacker_1_hate, attacker_2_hate, attacker_3_hate);
-			if (attacker_1_hate == i1)
+			final int i1 = MathUtil.min(attacker1Hate, attacker2Hate, attacker3Hate);
+			if (attacker1Hate == i1)
 			{
-				attacker_1_hate = damage + getRandom(3000);
-				attacker_1 = attacker;
+				attacker1Hate = damage + getRandom(3000);
+				attacker1 = attacker;
 			}
-			else if (attacker_2_hate == i1)
+			else if (attacker2Hate == i1)
 			{
-				attacker_2_hate = damage + getRandom(3000);
-				attacker_2 = attacker;
+				attacker2Hate = damage + getRandom(3000);
+				attacker2 = attacker;
 			}
-			else if (attacker_3_hate == i1)
+			else if (attacker3Hate == i1)
 			{
-				attacker_3_hate = damage + getRandom(3000);
-				attacker_3 = attacker;
+				attacker3Hate = damage + getRandom(3000);
+				attacker3 = attacker;
 			}
 		}
 	}
@@ -838,39 +838,39 @@ public class Antharas extends AbstractNpcAI
 		int i1 = 0;
 		int i2 = 0;
 		Player c2 = null;
-		if ((attacker_1 == null) || (npc.calculateDistance3D(attacker_1) > 9000) || attacker_1.isDead())
+		if ((attacker1 == null) || (npc.calculateDistance3D(attacker1) > 9000) || attacker1.isDead())
 		{
-			attacker_1_hate = 0;
+			attacker1Hate = 0;
 		}
 		
-		if ((attacker_2 == null) || (npc.calculateDistance3D(attacker_2) > 9000) || attacker_2.isDead())
+		if ((attacker2 == null) || (npc.calculateDistance3D(attacker2) > 9000) || attacker2.isDead())
 		{
-			attacker_2_hate = 0;
+			attacker2Hate = 0;
 		}
 		
-		if ((attacker_3 == null) || (npc.calculateDistance3D(attacker_3) > 9000) || attacker_3.isDead())
+		if ((attacker3 == null) || (npc.calculateDistance3D(attacker3) > 9000) || attacker3.isDead())
 		{
-			attacker_3_hate = 0;
+			attacker3Hate = 0;
 		}
 		
-		if (attacker_1_hate > attacker_2_hate)
+		if (attacker1Hate > attacker2Hate)
 		{
 			i1 = 2;
-			i2 = attacker_1_hate;
-			c2 = attacker_1;
+			i2 = attacker1Hate;
+			c2 = attacker1;
 		}
-		else if (attacker_2_hate > 0)
+		else if (attacker2Hate > 0)
 		{
 			i1 = 3;
-			i2 = attacker_2_hate;
-			c2 = attacker_2;
+			i2 = attacker2Hate;
+			c2 = attacker2;
 		}
 		
-		if (attacker_3_hate > i2)
+		if (attacker3Hate > i2)
 		{
 			i1 = 4;
-			i2 = attacker_3_hate;
-			c2 = attacker_3;
+			i2 = attacker3Hate;
+			c2 = attacker3;
 		}
 		if (i2 > 0)
 		{
@@ -880,17 +880,17 @@ public class Antharas extends AbstractNpcAI
 				{
 					case 2:
 					{
-						attacker_1_hate = 500;
+						attacker1Hate = 500;
 						break;
 					}
 					case 3:
 					{
-						attacker_2_hate = 500;
+						attacker2Hate = 500;
 						break;
 					}
 					case 4:
 					{
-						attacker_3_hate = 500;
+						attacker3Hate = 500;
 						break;
 					}
 				}

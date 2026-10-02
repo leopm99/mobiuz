@@ -312,7 +312,7 @@ public class LoginServerThread extends Thread
 									sendPacket(pig);
 									wcToRemove.gameClient.setConnectionState(ConnectionState.AUTHENTICATED);
 									wcToRemove.gameClient.setSessionId(wcToRemove.sessionKey);
-									final CharSelectionInfo cl = new CharSelectionInfo(wcToRemove.account, wcToRemove.gameClient.getSessionId().playOkID1);
+									final CharSelectionInfo cl = new CharSelectionInfo(wcToRemove.account, wcToRemove.gameClient.getSessionId().getPlayOkID1());
 									wcToRemove.gameClient.sendPacket(cl);
 									wcToRemove.gameClient.setCharSelection(cl.getCharInfo());
 								}
@@ -756,10 +756,10 @@ public class LoginServerThread extends Thread
 	
 	public static class SessionKey
 	{
-		public int playOkID1;
-		public int playOkID2;
-		public int loginOkID1;
-		public int loginOkID2;
+		private final int playOkID1;
+		private final int playOkID2;
+		private final int loginOkID1;
+		private final int loginOkID2;
 		
 		public SessionKey(int loginOK1, int loginOK2, int playOK1, int playOK2)
 		{
@@ -767,6 +767,26 @@ public class LoginServerThread extends Thread
 			playOkID2 = playOK2;
 			loginOkID1 = loginOK1;
 			loginOkID2 = loginOK2;
+		}
+		
+		public int getPlayOkID1()
+		{
+			return playOkID1;
+		}
+		
+		public int getPlayOkID2()
+		{
+			return playOkID2;
+		}
+		
+		public int getLoginOkID1()
+		{
+			return loginOkID1;
+		}
+		
+		public int getLoginOkID2()
+		{
+			return loginOkID2;
 		}
 		
 		@Override
@@ -778,9 +798,9 @@ public class LoginServerThread extends Thread
 	
 	private static class WaitingClient
 	{
-		public String account;
-		public GameClient gameClient;
-		public SessionKey sessionKey;
+		private final String account;
+		private final GameClient gameClient;
+		private final SessionKey sessionKey;
 		
 		public WaitingClient(String acc, GameClient client, SessionKey key)
 		{

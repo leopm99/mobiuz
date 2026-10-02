@@ -119,7 +119,7 @@ public class BeastFarm extends AbstractNpcAI
 
 	private static final Map<Integer, Integer> FEED_INFO = new ConcurrentHashMap<>();
 	private static final Map<Integer, GrowthCapableMob> GROWTH_CAPABLE_MONSTERS = new HashMap<>();
-	private static List<TamedBeastSkillHolder> TAMED_BEAST_DATA = new ArrayList<>();
+	private static final List<TamedBeastSkillHolder> TAMED_BEAST_DATA = new ArrayList<>();
 
 	private BeastFarm()
 	{

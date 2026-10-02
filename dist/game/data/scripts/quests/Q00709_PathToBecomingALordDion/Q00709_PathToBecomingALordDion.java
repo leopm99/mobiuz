@@ -70,11 +70,7 @@ public class Q00709_PathToBecomingALordDion extends Quest
 		addKillId(OL_MAHUMS);
 		addKillId(MANDRAGORAS);
 		addTalkId(CROSBY, SOPHYA, ROUKE);
-		_questItemIds = new int[]
-		{
-			BLOODY_AXE_BLACK_EPAULETTE,
-			MANDRAGORA_ROOT
-		};
+		registerQuestItems(BLOODY_AXE_BLACK_EPAULETTE, MANDRAGORA_ROOT);
 	}
 	
 	@Override

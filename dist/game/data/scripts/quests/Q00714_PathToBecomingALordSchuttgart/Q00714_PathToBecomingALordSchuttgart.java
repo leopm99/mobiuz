@@ -67,10 +67,7 @@ public class Q00714_PathToBecomingALordSchuttgart extends Quest
 		addStartNpc(AUGUST);
 		addTalkId(AUGUST, NEWYEAR, YASHENI);
 		addKillId(MOBS);
-		_questItemIds = new int[]
-		{
-			GOLEM_SHARD_PIECE
-		};
+		registerQuestItems(GOLEM_SHARD_PIECE);
 	}
 	
 	@Override

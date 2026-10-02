@@ -591,14 +591,14 @@ public class Player extends Playable
 	private Vehicle _vehicle = null;
 	private Location _inVehiclePosition;
 	
-	public ScheduledFuture<?> _taskForFish;
+	private ScheduledFuture<?> _taskForFish;
 	private MountType _mountType = MountType.NONE;
 	private int _mountNpcId;
 	private int _mountLevel;
 	/** Store object used to summon the strider you are mounting **/
 	private int _mountObjectID = 0;
 	
-	public int _telemode = 0;
+	private int _telemode = 0;
 	
 	private boolean _inCrystallize;
 	private boolean _isCrafting;

@@ -66,8 +66,8 @@ public class Q00022_TragedyInVonHellmannForest extends Quest
 	private static final int MIN_LEVEL = 63;
 	private static final Location PRIEST_LOC = new Location(38354, -49777, -1128);
 	private static final Location SOUL_WELL_LOC = new Location(34706, -54590, -2054);
-	private static int _tifarenOwner = 0;
-	private static Npc _soulWellNpc = null;
+	private static int tifarenOwner = 0;
+	private static Npc soulWellNpc = null;
 	
 	public Q00022_TragedyInVonHellmannForest()
 	{
@@ -172,9 +172,9 @@ public class Q00022_TragedyInVonHellmannForest extends Quest
 				final int cond = qs.getCond();
 				if (((5 <= cond) && (cond <= 7)) && hasQuestItems(player, CROSS_OF_EINHASAD))
 				{
-					if (_tifarenOwner == 0)
+					if (tifarenOwner == 0)
 					{
-						_tifarenOwner = player.getObjectId();
+						tifarenOwner = player.getObjectId();
 						final Npc ghost2 = addSpawn(GHOST_OF_PRIEST, PRIEST_LOC, true, 0);
 						ghost2.setScriptValue(player.getObjectId());
 						startQuestTimer("DESPAWN_GHOST2", 1000 * 120, ghost2, player);
@@ -218,7 +218,7 @@ public class Q00022_TragedyInVonHellmannForest extends Quest
 			}
 			case "DESPAWN_GHOST2":
 			{
-				_tifarenOwner = 0;
+				tifarenOwner = 0;
 				if (npc.getScriptValue() != 0)
 				{
 					npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.NPC_GENERAL, npc.getId(), NpcStringId.I_M_CONFUSED_MAYBE_IT_S_TIME_TO_GO_BACK));
@@ -266,12 +266,12 @@ public class Q00022_TragedyInVonHellmannForest extends Quest
 			}
 			case "31527-02.html":
 			{
-				if (qs.isCond(10) && (_soulWellNpc == null))
+				if (qs.isCond(10) && (soulWellNpc == null))
 				{
-					_soulWellNpc = addSpawn(SOUL_OF_WELL, SOUL_WELL_LOC, true, 0);
-					startQuestTimer("activateSoulOfWell", 90000, _soulWellNpc, player);
-					startQuestTimer("despawnSoulOfWell", 120000, _soulWellNpc, player);
-					_soulWellNpc.getAI().setIntention(Intention.ATTACK, player);
+					soulWellNpc = addSpawn(SOUL_OF_WELL, SOUL_WELL_LOC, true, 0);
+					startQuestTimer("activateSoulOfWell", 90000, soulWellNpc, player);
+					startQuestTimer("despawnSoulOfWell", 120000, soulWellNpc, player);
+					soulWellNpc.getAI().setIntention(Intention.ATTACK, player);
 					playSound(player, QuestSound.SKILLSOUND_ANTARAS_FEAR);
 					htmltext = event;
 				}
@@ -292,7 +292,7 @@ public class Q00022_TragedyInVonHellmannForest extends Quest
 				// if the player fails to proceed the quest in 2 minutes, the soul is unspawned
 				if (!npc.isDead())
 				{
-					_soulWellNpc = null;
+					soulWellNpc = null;
 				}
 				npc.deleteMe();
 				break;
@@ -356,7 +356,7 @@ public class Q00022_TragedyInVonHellmannForest extends Quest
 		{
 			if (npc.getId() == SOUL_OF_WELL)
 			{
-				_soulWellNpc = null;
+				soulWellNpc = null;
 			}
 			else
 			{
@@ -408,7 +408,7 @@ public class Q00022_TragedyInVonHellmannForest extends Quest
 							{
 								htmltext = "31334-09.html";
 							}
-							else if (_tifarenOwner == 0)
+							else if (tifarenOwner == 0)
 							{
 								htmltext = "31334-10.html";
 							}
@@ -424,11 +424,11 @@ public class Q00022_TragedyInVonHellmannForest extends Quest
 					{
 						if (hasQuestItems(talker, CROSS_OF_EINHASAD))
 						{
-							if (_tifarenOwner == 0)
+							if (tifarenOwner == 0)
 							{
 								htmltext = "31334-17.html";
 							}
-							else if (_tifarenOwner == talker.getObjectId())
+							else if (tifarenOwner == talker.getObjectId())
 							{
 								htmltext = "31334-15.html";
 							}

@@ -211,7 +211,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 	private final int _questId;
 	private final Path _scriptFile;
 	private boolean _isCustom = false;
-	public int[] _questItemIds = null;
+	private int[] _questItemIds = null;
 	
 	/**
 	 * The Quest object constructor.<br>

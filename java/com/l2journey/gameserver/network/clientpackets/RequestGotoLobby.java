@@ -46,6 +46,6 @@ public class RequestGotoLobby extends ClientPacket
 	protected void runImpl()
 	{
 		final GameClient client = getClient();
-		client.sendPacket(new CharSelectionInfo(client.getAccountName(), client.getSessionId().playOkID1));
+		client.sendPacket(new CharSelectionInfo(client.getAccountName(), client.getSessionId().getPlayOkID1()));
 	}
 }

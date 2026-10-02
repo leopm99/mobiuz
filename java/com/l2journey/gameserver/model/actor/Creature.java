@@ -3649,25 +3649,25 @@ public abstract class Creature extends WorldObject
 	{
 		// Quando recuperamos x/y/z usamos GameTimeControl.getGameTicks()
 		// Se estamos nos movendo, mas move timestamp==gameticks, nao precisamos recalcular a posicao.
-		public int moveStartTime;
-		public int moveTimestamp; // Ultima atualizacao de movimento.
-		public int xDestination;
-		public int yDestination;
-		public int zDestination;
-		public double xAccurate; // Caso contrario haveria erros de arredondamento.
-		public double yAccurate;
-		public double zAccurate;
-		public int heading;
+		int moveStartTime;
+		int moveTimestamp; // Ultima atualizacao de movimento.
+		int xDestination;
+		int yDestination;
+		int zDestination;
+		double xAccurate; // Caso contrario haveria erros de arredondamento.
+		double yAccurate;
+		double zAccurate;
+		int heading;
 		
-		public boolean disregardingGeodata;
-		public int onGeodataPathIndex;
-		public List<AbstractNodeLoc> geoPath;
-		public int geoPathAccurateTx;
-		public int geoPathAccurateTy;
-		public int geoPathGtx;
-		public int geoPathGty;
+		boolean disregardingGeodata;
+		int onGeodataPathIndex;
+		List<AbstractNodeLoc> geoPath;
+		int geoPathAccurateTx;
+		int geoPathAccurateTy;
+		int geoPathGtx;
+		int geoPathGty;
 		
-		public int lastBroadcastTime;
+		int lastBroadcastTime;
 	}
 	
 	/**

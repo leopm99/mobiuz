@@ -57,10 +57,7 @@ public class Q00712_PathToBecomingALordOren extends Quest
 		addStartNpc(BRASSEUR, MARTY);
 		addKillId(OEL_MAHUMS);
 		addTalkId(BRASSEUR, CROOP, MARTY, VALLERIA);
-		_questItemIds = new int[]
-		{
-			NEBULITE_ORB
-		};
+		registerQuestItems(NEBULITE_ORB);
 	}
 	
 	@Override

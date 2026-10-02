@@ -92,7 +92,7 @@ public class CharacterDelete extends ClientPacket
 			PacketLogger.warning(getClass().getSimpleName() + ": " + e.getMessage());
 		}
 		
-		final CharSelectionInfo cl = new CharSelectionInfo(client.getAccountName(), client.getSessionId().playOkID1, 0);
+		final CharSelectionInfo cl = new CharSelectionInfo(client.getAccountName(), client.getSessionId().getPlayOkID1(), 0);
 		client.sendPacket(cl);
 		client.setCharSelection(cl.getCharInfo());
 	}

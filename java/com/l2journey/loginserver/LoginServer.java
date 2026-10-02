@@ -59,9 +59,9 @@ public class LoginServer
 	
 	public static final int PROTOCOL_REV = 0x0106;
 	
-	private static LoginServer _instance;
+	private static LoginServer instance;
 	private GameServerListener _gameServerListener;
-	private static int _loginStatus = ServerStatus.STATUS_NORMAL;
+	private static int loginStatus = ServerStatus.STATUS_NORMAL;
 	
 	private LoginServer() throws Exception
 	{
@@ -192,21 +192,21 @@ public class LoginServer
 	
 	public int getStatus()
 	{
-		return _loginStatus;
+		return loginStatus;
 	}
 	
 	public void setStatus(int status)
 	{
-		_loginStatus = status;
+		loginStatus = status;
 	}
 	
 	public static LoginServer getInstance()
 	{
-		return _instance;
+		return instance;
 	}
 	
 	public static void main(String[] args) throws Exception
 	{
-		_instance = new LoginServer();
+		instance = new LoginServer();
 	}
 }

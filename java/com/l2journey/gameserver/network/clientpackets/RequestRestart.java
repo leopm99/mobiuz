@@ -174,8 +174,8 @@ public class RequestRestart extends ClientPacket
 		client.sendPacket(RestartResponse.valueOf(true));
 		
 		// Send character list.
-		final CharSelectionInfo cl = new CharSelectionInfo(client.getAccountName(), client.getSessionId().playOkID1);
-		client.sendPacket(new CharSelectionInfo(client.getAccountName(), client.getSessionId().playOkID1));
+		final CharSelectionInfo cl = new CharSelectionInfo(client.getAccountName(), client.getSessionId().getPlayOkID1());
+		client.sendPacket(new CharSelectionInfo(client.getAccountName(), client.getSessionId().getPlayOkID1()));
 		client.setCharSelection(cl.getCharInfo());
 	}
 }

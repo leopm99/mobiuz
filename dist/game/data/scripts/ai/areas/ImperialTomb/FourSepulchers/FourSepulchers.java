@@ -140,7 +140,7 @@ public class FourSepulchers extends AbstractNpcAI implements IXmlReader
 		MANAGER_ZONES.put(JUDGE_MANAGER, JUDGE_ZONE);
 	}
 	// Spawns
-	private static List<int[]> ROOM_SPAWN_DATA = new ArrayList<>();
+	private static final List<int[]> ROOM_SPAWN_DATA = new ArrayList<>();
 	private static final Map<Integer, List<Npc>> STORED_MONSTER_SPAWNS = new HashMap<>();
 	static
 	{

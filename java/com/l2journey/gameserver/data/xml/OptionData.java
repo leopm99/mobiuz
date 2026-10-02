@@ -55,8 +55,8 @@ public class OptionData implements IXmlReader
 {
 	private static final Logger LOGGER = Logger.getLogger(OptionData.class.getName());
 	
-	private static Options[] _options;
-	private static Map<Integer, Options> _optionMap = new ConcurrentHashMap<>();
+	private static Options[] options;
+	private static final Map<Integer, Options> OPTION_MAP = new ConcurrentHashMap<>();
 	
 	protected OptionData()
 	{
@@ -68,14 +68,14 @@ public class OptionData implements IXmlReader
 	{
 		parseDatapackDirectory("data/stats/augmentation/options", false);
 		
-		_options = new Options[Collections.max(_optionMap.keySet()) + 1];
-		for (Entry<Integer, Options> option : _optionMap.entrySet())
+		options = new Options[Collections.max(OPTION_MAP.keySet()) + 1];
+		for (Entry<Integer, Options> option : OPTION_MAP.entrySet())
 		{
-			_options[option.getKey()] = option.getValue();
+			options[option.getKey()] = option.getValue();
 		}
 		
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _optionMap.size() + " options.");
-		_optionMap.clear();
+		LOGGER.info(getClass().getSimpleName() + ": Loaded " + OPTION_MAP.size() + " options.");
+		OPTION_MAP.clear();
 	}
 	
 	@Override
@@ -193,7 +193,7 @@ public class OptionData implements IXmlReader
 								}
 							}
 						}
-						_optionMap.put(option.getId(), option);
+						OPTION_MAP.put(option.getId(), option);
 					}
 				}
 			}
@@ -215,9 +215,9 @@ public class OptionData implements IXmlReader
 	
 	public Options getOptions(int id)
 	{
-		if (_options.length > id)
+		if (options.length > id)
 		{
-			return _options[id];
+			return options[id];
 		}
 		return null;
 	}
