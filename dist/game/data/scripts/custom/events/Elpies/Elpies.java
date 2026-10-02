@@ -1,16 +1,16 @@
 /*
  * Copyright (c) 2025 L2Journey Project
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -18,13 +18,13 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- * 
+ *
  * ---
- * 
- * Portions of this software are derived from the L2JMobius Project, 
- * shared under the MIT License. The original license terms are preserved where 
+ *
+ * Portions of this software are derived from the L2JMobius Project,
+ * shared under the MIT License. The original license terms are preserved where
  * applicable..
- * 
+ *
  */
 package custom.events.Elpies;
 
@@ -69,7 +69,7 @@ public class Elpies extends Event
 		{ 20004,  1,  1, 1 },	// Energy Ginseng
 		{ 20004,  0,  1, 1 }	// Energy Ginseng
 	};
-	
+
 	private static final int[][] DROPLIST_CRYSTALS =
 	{
 		{ 1458, 80, 50, 100 },	// Crystal D-Grade
@@ -83,15 +83,15 @@ public class Elpies extends Event
 	private static boolean EVENT_ACTIVE = false;
 	private ScheduledFuture<?> _eventTask = null;
 	private final Set<Npc> _elpies = ConcurrentHashMap.newKeySet(EventsConfig.ELPY_AMOUNT);
-	
+
 	private Elpies()
 	{
 		addSpawnId(EventsConfig.ELPY_ID);
 		addKillId(EventsConfig.ELPY_ID);
-		
+
 		loadConfig();
 	}
-	
+
 	private void loadConfig()
 	{
 		new IXmlReader()
@@ -99,9 +99,9 @@ public class Elpies extends Event
 			@Override
 			public void load()
 			{
-				parseDatapackFile("Config/events/elpiesschedule.xml");
+				parseDatapackFile("config/events/elpiesschedule.xml");
 			}
-			
+
 			@Override
 			public void parseDocument(Document document, File file)
 			{
@@ -133,7 +133,7 @@ public class Elpies extends Event
 			}
 		}.load();
 	}
-	
+
 	@Override
 	public void onTimerEvent(String event, StatSet params, Npc npc, Player player)
 	{
@@ -146,13 +146,13 @@ public class Elpies extends Event
 			LOGGER.info("Event " + params.getString("Name") + " scheduled at " + TimeUtil.getDateTimeString(System.currentTimeMillis() + delay));
 		}
 	}
-	
+
 	@Override
 	public boolean eventBypass(Player player, String bypass)
 	{
 		return false;
 	}
-	
+
 	@Override
 	public boolean eventStart(Player eventMaker)
 	{
@@ -160,7 +160,7 @@ public class Elpies extends Event
 		{
 			return false;
 		}
-		
+
 		// Check Custom Table - we use custom NPCs
 		if (!Config.CUSTOM_NPC_DATA)
 		{
@@ -168,16 +168,16 @@ public class Elpies extends Event
 			eventMaker.sendMessage("Event " + getName() + " can't be started because custom NPC table is disabled!");
 			return false;
 		}
-		
+
 		EVENT_ACTIVE = true;
-		
+
 		final EventLocation randomLoc = getRandomEntry(EventLocation.values());
 		final long despawnDelay = EventsConfig.ELPY_DURATION_MINUTES * 60000;
 		for (int i = 0; i < EventsConfig.ELPY_AMOUNT; i++)
 		{
 			_elpies.add(addSpawn(EventsConfig.ELPY_ID, randomLoc.getRandomX(), randomLoc.getRandomY(), randomLoc.getZ(), 0, true, despawnDelay));
 		}
-		
+
 		Broadcast.toAllOnlinePlayers("*Squeak Squeak*");
 		Broadcast.toAllOnlinePlayers("Elpy invasion in " + randomLoc.getName());
 		Broadcast.toAllOnlinePlayers("Help us exterminate them!");
@@ -189,7 +189,7 @@ public class Elpies extends Event
 		}, despawnDelay);
 		return true;
 	}
-	
+
 	@Override
 	public boolean eventStop()
 	{
@@ -197,32 +197,32 @@ public class Elpies extends Event
 		{
 			return false;
 		}
-		
+
 		EVENT_ACTIVE = false;
 		if (_eventTask != null)
 		{
 			_eventTask.cancel(true);
 			_eventTask = null;
 		}
-		
+
 		for (Npc npc : _elpies)
 		{
 			npc.deleteMe();
 		}
 		_elpies.clear();
-		
+
 		Broadcast.toAllOnlinePlayers("*Squeak Squeak*");
 		Broadcast.toAllOnlinePlayers("Elpy Event finished!");
 		return true;
 	}
-	
+
 	@Override
 	public void onKill(Npc npc, Player killer, boolean isSummon)
 	{
 		if (EVENT_ACTIVE)
 		{
 			_elpies.remove(npc);
-			
+
 			dropItem(npc, killer, DROPLIST_CONSUMABLES);
 			dropItem(npc, killer, DROPLIST_CRYSTALS);
 			if (_elpies.isEmpty())
@@ -232,14 +232,14 @@ public class Elpies extends Event
 			}
 		}
 	}
-	
+
 	@Override
 	public void onSpawn(Npc npc)
 	{
 		((EventMonster) npc).eventSetDropOnGround(true);
 		((EventMonster) npc).eventSetBlockOffensiveSkills(true);
 	}
-	
+
 	private enum EventLocation
 	{
 		ADEN("Aden", 146558, 148341, 26622, 28560, -2200),
@@ -247,14 +247,14 @@ public class Elpies extends Event
 		GLUDIN("Gludin", -84040, -81420, 150257, 151175, -3125),
 		HV("Hunters Village", 116094, 117141, 75776, 77072, -2700),
 		OREN("Oren", 82048, 82940, 53240, 54126, -1490);
-		
+
 		private final String _name;
 		private final int _minX;
 		private final int _maxX;
 		private final int _minY;
 		private final int _maxY;
 		private final int _z;
-		
+
 		EventLocation(String name, int minX, int maxX, int minY, int maxY, int z)
 		{
 			_name = name;
@@ -264,28 +264,28 @@ public class Elpies extends Event
 			_maxY = maxY;
 			_z = z;
 		}
-		
+
 		public String getName()
 		{
 			return _name;
 		}
-		
+
 		public int getRandomX()
 		{
 			return getRandom(_minX, _maxX);
 		}
-		
+
 		public int getRandomY()
 		{
 			return getRandom(_minY, _maxY);
 		}
-		
+
 		public int getZ()
 		{
 			return _z;
 		}
 	}
-	
+
 	private void dropItem(Npc mob, Player player, int[][] droplist)
 	{
 		final int chance = getRandom(100);
@@ -298,7 +298,7 @@ public class Elpies extends Event
 			}
 		}
 	}
-	
+
 	public static void main(String[] args)
 	{
 		new Elpies();
