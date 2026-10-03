@@ -105,18 +105,7 @@ public class Q00023_LidiasHeart extends Quest
 				}
 				break;
 			}
-			case "31328-05.html":
-			case "31328-06.html":
-			case "31328-10.html":
-			case "31328-11.html":
-			case "31328-16.html":
-			case "31328-17.html":
-			case "31328-18.html":
-			case "31524-03.html":
-			case "31526-04.html":
-			case "31526-05.html":
-			case "31526-07a.html":
-			case "31526-09.html":
+			case "31328-05.html", "31328-06.html", "31328-10.html", "31328-11.html", "31328-16.html", "31328-17.html", "31328-18.html", "31524-03.html", "31526-04.html", "31526-05.html", "31526-07a.html", "31526-09.html":
 			{
 				htmltext = event;
 				break;

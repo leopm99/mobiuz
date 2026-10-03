@@ -176,10 +176,7 @@ public class Q00648_AnIceMerchantsDream extends Quest
 				}
 				break;
 			}
-			case "32020-06.html":
-			case "32020-07.html":
-			case "32020-08.html":
-			case "32020-09.html":
+			case "32020-06.html", "32020-07.html", "32020-08.html", "32020-09.html":
 			{
 				if (qs.getCond() >= 1)
 				{

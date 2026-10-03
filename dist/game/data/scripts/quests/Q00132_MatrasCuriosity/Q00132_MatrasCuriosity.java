@@ -153,8 +153,7 @@ public class Q00132_MatrasCuriosity extends Quest
 		{
 			switch (qs.getCond())
 			{
-				case 1:
-				case 2:
+				case 1, 2:
 				{
 					if (hasQuestItems(player, BLUEPRINT_RANKU) && hasQuestItems(player, BLUEPRINT_PRINCE))
 					{

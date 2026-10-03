@@ -103,8 +103,7 @@ public class Q10294_SevenSignsToTheMonasteryOfSilence extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "32784-03.htm":
-			case "32784-04.htm":
+			case "32784-03.htm", "32784-04.htm":
 			{
 				htmltext = event;
 				break;
@@ -132,40 +131,7 @@ public class Q10294_SevenSignsToTheMonasteryOfSilence extends Quest
 				}
 				break;
 			}
-			case "32792-04.html":
-			case "32792-05.html":
-			case "32792-06.html":
-			case "32803-02.html":
-			case "32803-03.html":
-			case "32822-02.html":
-			case "32804-02.html":
-			case "32804-04.html":
-			case "32804-06.html":
-			case "32804-07.html":
-			case "32804-08.html":
-			case "32804-09.html":
-			case "32804-10.html":
-			case "32805-02.html":
-			case "32805-04.html":
-			case "32805-06.html":
-			case "32805-07.html":
-			case "32805-08.html":
-			case "32805-09.html":
-			case "32805-10.html":
-			case "32806-02.html":
-			case "32806-04.html":
-			case "32806-06.html":
-			case "32806-07.html":
-			case "32806-08.html":
-			case "32806-09.html":
-			case "32806-10.html":
-			case "32807-02.html":
-			case "32807-04.html":
-			case "32807-06.html":
-			case "32807-07.html":
-			case "32807-08.html":
-			case "32807-09.html":
-			case "32807-10.html":
+			case "32792-04.html", "32792-05.html", "32792-06.html", "32803-02.html", "32803-03.html", "32822-02.html", "32804-02.html", "32804-04.html", "32804-06.html", "32804-07.html", "32804-08.html", "32804-09.html", "32804-10.html", "32805-02.html", "32805-04.html", "32805-06.html", "32805-07.html", "32805-08.html", "32805-09.html", "32805-10.html", "32806-02.html", "32806-04.html", "32806-06.html", "32806-07.html", "32806-08.html", "32806-09.html", "32806-10.html", "32807-02.html", "32807-04.html", "32807-06.html", "32807-07.html", "32807-08.html", "32807-09.html", "32807-10.html":
 			{
 				if (qs.isCond(2))
 				{
@@ -383,18 +349,7 @@ public class Q10294_SevenSignsToTheMonasteryOfSilence extends Quest
 				}
 				break;
 			}
-			case READING_DESK2:
-			case READING_DESK3:
-			case READING_DESK4:
-			case READING_DESK6:
-			case READING_DESK7:
-			case READING_DESK8:
-			case READING_DESK10:
-			case READING_DESK11:
-			case READING_DESK12:
-			case READING_DESK14:
-			case READING_DESK15:
-			case READING_DESK16:
+			case READING_DESK2, READING_DESK3, READING_DESK4, READING_DESK6, READING_DESK7, READING_DESK8, READING_DESK10, READING_DESK11, READING_DESK12, READING_DESK14, READING_DESK15, READING_DESK16:
 			{
 				if (qs.isCond(2))
 				{
@@ -422,12 +377,7 @@ public class Q10294_SevenSignsToTheMonasteryOfSilence extends Quest
 				htmltext = (qs.getInt("good4") == 1) ? "32821-03.html" : "32833-01.html";
 				break;
 			}
-			case SOLINAS_EVIL_THOUGHTS:
-			case JUDE_VAN_ETINA:
-			case RELIC_WATCHER1:
-			case RELIC_WATCHER2:
-			case RELIC_WATCHER3:
-			case RELIC_WATCHER4:
+			case SOLINAS_EVIL_THOUGHTS, JUDE_VAN_ETINA, RELIC_WATCHER1, RELIC_WATCHER2, RELIC_WATCHER3, RELIC_WATCHER4:
 			{
 				if (qs.isCond(2))
 				{

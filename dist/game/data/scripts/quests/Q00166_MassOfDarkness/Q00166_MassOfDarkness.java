@@ -136,9 +136,7 @@ public class Q00166_MassOfDarkness extends Quest
 				}
 				break;
 			}
-			case IRIA:
-			case DORANKUS:
-			case TRUDY:
+			case IRIA, DORANKUS, TRUDY:
 			{
 				if (qs.isStarted())
 				{

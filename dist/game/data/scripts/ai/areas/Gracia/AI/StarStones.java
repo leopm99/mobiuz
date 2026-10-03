@@ -68,25 +68,19 @@ public class StarStones extends AbstractNpcAI
 			
 			switch (npc.getId())
 			{
-				case 18684:
-				case 18685:
-				case 18686:
+				case 18684, 18685, 18686:
 				{
 					// give Red item
 					itemId = 14009;
 					break;
 				}
-				case 18687:
-				case 18688:
-				case 18689:
+				case 18687, 18688, 18689:
 				{
 					// give Blue item
 					itemId = 14010;
 					break;
 				}
-				case 18690:
-				case 18691:
-				case 18692:
+				case 18690, 18691, 18692:
 				{
 					// give Green item
 					itemId = 14011;

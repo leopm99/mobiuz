@@ -96,23 +96,7 @@ public class Q00111_ElrokianHuntersProof extends Quest
 		
 		switch (event)
 		{
-			case "32113-02.htm":
-			case "32113-05.htm":
-			case "32113-04.html":
-			case "32113-10.html":
-			case "32113-11.html":
-			case "32113-12.html":
-			case "32113-13.html":
-			case "32113-14.html":
-			case "32113-18.html":
-			case "32113-19.html":
-			case "32113-20.html":
-			case "32113-21.html":
-			case "32113-22.html":
-			case "32113-23.html":
-			case "32113-24.html":
-			case "32115-08.html":
-			case "32116-03.html":
+			case "32113-02.htm", "32113-05.htm", "32113-04.html", "32113-10.html", "32113-11.html", "32113-12.html", "32113-13.html", "32113-14.html", "32113-18.html", "32113-19.html", "32113-20.html", "32113-21.html", "32113-22.html", "32113-23.html", "32113-24.html", "32115-08.html", "32116-03.html":
 			{
 				htmltext = event;
 				break;
@@ -305,8 +289,7 @@ public class Q00111_ElrokianHuntersProof extends Quest
 								htmltext = "32113-27.html";
 								break;
 							}
-							case 7:
-							case 8:
+							case 7, 8:
 							{
 								htmltext = "32113-28.html";
 								break;
@@ -316,9 +299,7 @@ public class Q00111_ElrokianHuntersProof extends Quest
 								htmltext = "32113-29.html";
 								break;
 							}
-							case 10:
-							case 11:
-							case 12:
+							case 10, 11, 12:
 							{
 								htmltext = "32113-30.html";
 								break;
@@ -358,12 +339,7 @@ public class Q00111_ElrokianHuntersProof extends Quest
 								htmltext = "32115-02.html";
 								break;
 							}
-							case 3:
-							case 4:
-							case 5:
-							case 6:
-							case 7:
-							case 8:
+							case 3, 4, 5, 6, 7, 8:
 							{
 								htmltext = "32115-04.html";
 								break;
@@ -408,11 +384,7 @@ public class Q00111_ElrokianHuntersProof extends Quest
 					{
 						switch (qs.getMemoState())
 						{
-							case 1:
-							case 2:
-							case 3:
-							case 4:
-							case 5:
+							case 1, 2, 3, 4, 5:
 							{
 								htmltext = "32116-01.html";
 								break;
@@ -438,9 +410,7 @@ public class Q00111_ElrokianHuntersProof extends Quest
 								htmltext = "32116-06.html";
 								break;
 							}
-							case 9:
-							case 10:
-							case 11:
+							case 9, 10, 11:
 							{
 								htmltext = "32116-08.html";
 								break;

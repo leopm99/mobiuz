@@ -71,8 +71,7 @@ public class Q00317_CatchTheWind extends Quest
 				}
 				break;
 			}
-			case "30361-08.html":
-			case "30361-09.html":
+			case "30361-08.html", "30361-09.html":
 			{
 				final long shardCount = getQuestItemsCount(player, WIND_SHARD);
 				if (shardCount > 0)

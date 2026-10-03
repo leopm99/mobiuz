@@ -72,8 +72,7 @@ public class Q00699_GuardianOfTheSkies extends Quest
 		{
 			switch (event)
 			{
-				case "32557-03.htm":
-				case "32557-08.html":
+				case "32557-03.htm", "32557-08.html":
 				{
 					htmltext = event;
 					break;

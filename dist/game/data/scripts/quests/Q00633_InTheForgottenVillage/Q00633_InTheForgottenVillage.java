@@ -102,9 +102,7 @@ public class Q00633_InTheForgottenVillage extends Quest
 				}
 				break;
 			}
-			case "31388-04.html":
-			case "31388-05.html":
-			case "31388-06.html":
+			case "31388-04.html", "31388-05.html", "31388-06.html":
 			{
 				if (qs.isStarted())
 				{

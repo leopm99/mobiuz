@@ -77,83 +77,12 @@ public class ElfHumanFighterChange1 extends AbstractNpcAI
 		String htmltext = null;
 		switch (event)
 		{
-			case "30066-01.htm": // pabris003h
-			case "30066-02.htm": // pabris006ha
-			case "30066-03.htm": // pabris007ha
-			case "30066-04.htm": // pabris007hat
-			case "30066-05.htm": // pabris006hb
-			case "30066-06.htm": // pabris007hb
-			case "30066-07.htm": // pabris007hbt
-			case "30066-08.htm": // pabris006hc
-			case "30066-09.htm": // pabris007hc
-			case "30066-10.htm": // pabris007hct
-			case "30066-11.htm": // pabris003e
-			case "30066-12.htm": // pabris006ea
-			case "30066-13.htm": // pabris007ea
-			case "30066-14.htm": // pabris007eat
-			case "30066-15.htm": // pabris006eb
-			case "30066-16.htm": // pabris007eb
-			case "30066-17.htm": // pabris007ebt
-			case "30288-01.htm": // master_rains003h
-			case "30288-02.htm": // master_rains006ha
-			case "30288-03.htm": // master_rains007ha
-			case "30288-04.htm": // master_rains007hat
-			case "30288-05.htm": // master_rains006hb
-			case "30288-06.htm": // master_rains007hb
-			case "30288-07.htm": // master_rains007hbt
-			case "30288-08.htm": // master_rains006hc
-			case "30288-09.htm": // master_rains007hc
-			case "30288-10.htm": // master_rains007hct
-			case "30288-11.htm": // master_rains003e
-			case "30288-12.htm": // master_rains006ea
-			case "30288-13.htm": // master_rains007ea
-			case "30288-14.htm": // master_rains007eat
-			case "30288-15.htm": // master_rains006eb
-			case "30288-16.htm": // master_rains007eb
-			case "30288-17.htm": // master_rains007ebt
-			case "30373-01.htm": // grandmaster_ramos003h
-			case "30373-02.htm": // grandmaster_ramos006ha
-			case "30373-03.htm": // grandmaster_ramos007ha
-			case "30373-04.htm": // grandmaster_ramos007hat
-			case "30373-05.htm": // grandmaster_ramos006hb
-			case "30373-06.htm": // grandmaster_ramos007hb
-			case "30373-07.htm": // grandmaster_ramos007hbt
-			case "30373-08.htm": // grandmaster_ramos006hc
-			case "30373-09.htm": // grandmaster_ramos007hc
-			case "30373-10.htm": // grandmaster_ramos007hct
-			case "30373-11.htm": // grandmaster_ramos003e
-			case "30373-12.htm": // grandmaster_ramos006ea
-			case "30373-13.htm": // grandmaster_ramos007ea
-			case "30373-14.htm": // grandmaster_ramos007eat
-			case "30373-15.htm": // grandmaster_ramos006eb
-			case "30373-16.htm": // grandmaster_ramos007eb
-			case "30373-17.htm": // grandmaster_ramos007ebt
-			case "32094-01.htm": // grandmaster_shull003h
-			case "32094-02.htm": // grandmaster_shull006ha
-			case "32094-03.htm": // grandmaster_shull007ha
-			case "32094-04.htm": // grandmaster_shull007hat
-			case "32094-05.htm": // grandmaster_shull006hb
-			case "32094-06.htm": // grandmaster_shull007hb
-			case "32094-07.htm": // grandmaster_shull007hbt
-			case "32094-08.htm": // grandmaster_shull006hc
-			case "32094-09.htm": // grandmaster_shull007hc
-			case "32094-10.htm": // grandmaster_shull007hct
-			case "32094-11.htm": // grandmaster_shull003e
-			case "32094-12.htm": // grandmaster_shull006ea
-			case "32094-13.htm": // grandmaster_shull007ea
-			case "32094-14.htm": // grandmaster_shull007eat
-			case "32094-15.htm": // grandmaster_shull006eb
-			case "32094-16.htm": // grandmaster_shull007eb
-			case "32094-17.htm": // grandmaster_shull007ebt
+			case "30066-01.htm", "30066-02.htm", "30066-03.htm", "30066-04.htm", "30066-05.htm", "30066-06.htm", "30066-07.htm", "30066-08.htm", "30066-09.htm", "30066-10.htm", "30066-11.htm", "30066-12.htm", "30066-13.htm", "30066-14.htm", "30066-15.htm", "30066-16.htm", "30066-17.htm", "30288-01.htm", "30288-02.htm", "30288-03.htm", "30288-04.htm", "30288-05.htm", "30288-06.htm", "30288-07.htm", "30288-08.htm", "30288-09.htm", "30288-10.htm", "30288-11.htm", "30288-12.htm", "30288-13.htm", "30288-14.htm", "30288-15.htm", "30288-16.htm", "30288-17.htm", "30373-01.htm", "30373-02.htm", "30373-03.htm", "30373-04.htm", "30373-05.htm", "30373-06.htm", "30373-07.htm", "30373-08.htm", "30373-09.htm", "30373-10.htm", "30373-11.htm", "30373-12.htm", "30373-13.htm", "30373-14.htm", "30373-15.htm", "30373-16.htm", "30373-17.htm", "32094-01.htm", "32094-02.htm", "32094-03.htm", "32094-04.htm", "32094-05.htm", "32094-06.htm", "32094-07.htm", "32094-08.htm", "32094-09.htm", "32094-10.htm", "32094-11.htm", "32094-12.htm", "32094-13.htm", "32094-14.htm", "32094-15.htm", "32094-16.htm", "32094-17.htm": // pabris003h; pabris006ha; pabris007ha; pabris007hat; pabris006hb; pabris007hb; pabris007hbt; pabris006hc; pabris007hc; pabris007hct; pabris003e; pabris006ea; pabris007ea; pabris007eat; pabris006eb; pabris007eb; pabris007ebt; master_rains003h; master_rains006ha; master_rains007ha; master_rains007hat; master_rains006hb; master_rains007hb; master_rains007hbt; master_rains006hc; master_rains007hc; master_rains007hct; master_rains003e; master_rains006ea; master_rains007ea; master_rains007eat; master_rains006eb; master_rains007eb; master_rains007ebt; grandmaster_ramos003h; grandmaster_ramos006ha; grandmaster_ramos007ha; grandmaster_ramos007hat; grandmaster_ramos006hb; grandmaster_ramos007hb; grandmaster_ramos007hbt; grandmaster_ramos006hc; grandmaster_ramos007hc; grandmaster_ramos007hct; grandmaster_ramos003e; grandmaster_ramos006ea; grandmaster_ramos007ea; grandmaster_ramos007eat; grandmaster_ramos006eb; grandmaster_ramos007eb; grandmaster_ramos007ebt; grandmaster_shull003h; grandmaster_shull006ha; grandmaster_shull007ha; grandmaster_shull007hat; grandmaster_shull006hb; grandmaster_shull007hb; grandmaster_shull007hbt; grandmaster_shull006hc; grandmaster_shull007hc; grandmaster_shull007hct; grandmaster_shull003e; grandmaster_shull006ea; grandmaster_shull007ea; grandmaster_shull007eat; grandmaster_shull006eb; grandmaster_shull007eb; grandmaster_shull007ebt
 			{
 				htmltext = event;
 				break;
 			}
-			case "1":
-			case "4":
-			case "7":
-			case "19":
-			case "22":
+			case "1", "4", "7", "19", "22":
 			{
 				htmltext = ClassChangeRequested(player, npc, Integer.parseInt(event));
 				break;

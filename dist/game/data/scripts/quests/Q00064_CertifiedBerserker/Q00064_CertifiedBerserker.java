@@ -137,9 +137,7 @@ public class Q00064_CertifiedBerserker extends Quest
 				}
 				break;
 			}
-			case "32215-07.html":
-			case "32215-08.html":
-			case "32215-09.html":
+			case "32215-07.html", "32215-08.html", "32215-09.html":
 			{
 				if (qs.isMemoState(5))
 				{
@@ -235,11 +233,7 @@ public class Q00064_CertifiedBerserker extends Quest
 					}
 					break;
 				}
-				case BREKA_ORC:
-				case BREKA_ORC_ARCHER:
-				case BREKA_ORC_SHAMAN:
-				case BREKA_ORC_OVERLORD:
-				case BREKA_ORC_WARRIOR:
+				case BREKA_ORC, BREKA_ORC_ARCHER, BREKA_ORC_SHAMAN, BREKA_ORC_OVERLORD, BREKA_ORC_WARRIOR:
 				{
 					if (qs.isMemoState(2) && (getQuestItemsCount(killer, BREKA_ORC_HEAD) < 20))
 					{

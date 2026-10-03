@@ -169,8 +169,7 @@ public class Q00464_Oath extends Quest
 				htmltext = npc.getId() + "-02.html";
 				break;
 			}
-			case "32596-02.html":
-			case "32596-03.html":
+			case "32596-02.html", "32596-03.html":
 			{
 				break;
 			}

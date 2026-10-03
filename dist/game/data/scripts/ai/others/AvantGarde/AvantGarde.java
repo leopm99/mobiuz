@@ -110,15 +110,7 @@ public class AvantGarde extends AbstractNpcAI
 		String htmltext = null;
 		switch (event)
 		{
-			case "32323-02.html":
-			case "32323-02a.html":
-			case "32323-02b.html":
-			case "32323-02c.html":
-			case "32323-05.html":
-			case "32323-05a.html":
-			case "32323-05no.html":
-			case "32323-06.html":
-			case "32323-06no.html":
+			case "32323-02.html", "32323-02a.html", "32323-02b.html", "32323-02c.html", "32323-05.html", "32323-05a.html", "32323-05no.html", "32323-06.html", "32323-06no.html":
 			{
 				htmltext = event;
 				break;

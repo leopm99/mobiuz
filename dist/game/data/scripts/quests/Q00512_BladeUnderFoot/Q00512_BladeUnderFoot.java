@@ -140,11 +140,7 @@ public class Q00512_BladeUnderFoot extends Quest
 				}
 				break;
 			}
-			case "36403-04.html":
-			case "36403-05.html":
-			case "36403-06.html":
-			case "36403-07.html":
-			case "36403-10.html":
+			case "36403-04.html", "36403-05.html", "36403-06.html", "36403-07.html", "36403-10.html":
 			{
 				htmltext = event;
 				break;

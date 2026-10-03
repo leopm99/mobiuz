@@ -483,8 +483,7 @@ public class Q00454_CompletelyLost extends Quest
 					{
 						switch (qs.getMemoState())
 						{
-							case 1:
-							case 2:
+							case 1, 2:
 							{
 								htmltext = "32736-01.html";
 								break;

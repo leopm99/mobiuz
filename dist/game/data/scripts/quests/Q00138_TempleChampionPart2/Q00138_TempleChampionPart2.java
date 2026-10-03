@@ -170,11 +170,7 @@ public class Q00138_TempleChampionPart2 extends Quest
 						htmltext = "30070-02.htm";
 						break;
 					}
-					case 2:
-					case 3:
-					case 4:
-					case 5:
-					case 6:
+					case 2, 3, 4, 5, 6:
 					{
 						htmltext = "30070-03.html";
 						break;
@@ -206,8 +202,7 @@ public class Q00138_TempleChampionPart2 extends Quest
 						htmltext = "30118-01.html";
 						break;
 					}
-					case 3:
-					case 4:
+					case 3, 4:
 					{
 						htmltext = "30118-07.html";
 						break;

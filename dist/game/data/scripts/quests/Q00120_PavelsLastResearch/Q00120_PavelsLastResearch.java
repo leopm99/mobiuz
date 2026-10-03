@@ -77,10 +77,7 @@ public class Q00120_PavelsLastResearch extends Quest
 		String html = null;
 		switch (event)
 		{
-			case "32046-03.html":
-			case "32046-04.htm":
-			case "32046-05.html":
-			case "32046-06.html":
+			case "32046-03.html", "32046-04.htm", "32046-05.html", "32046-06.html":
 			{
 				if (qs.isCreated())
 				{
@@ -142,13 +139,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "32046-18.html":
-			case "32046-19.html":
-			case "32046-20.html":
-			case "32046-21.html":
-			case "32046-22.html":
-			case "32046-23.html":
-			case "32046-24.html":
+			case "32046-18.html", "32046-19.html", "32046-20.html", "32046-21.html", "32046-22.html", "32046-23.html", "32046-24.html":
 			{
 				if (qs.isMemoState(7))
 				{
@@ -166,9 +157,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "32046-26.html":
-			case "32046-27.html":
-			case "32046-28.html":
+			case "32046-26.html", "32046-27.html", "32046-28.html":
 			{
 				if (qs.isMemoState(8))
 				{
@@ -176,11 +165,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "32046-30.html":
-			case "32046-31.html":
-			case "32046-32.html":
-			case "32046-33.html":
-			case "32046-34.html":
+			case "32046-30.html", "32046-31.html", "32046-32.html", "32046-33.html", "32046-34.html":
 			{
 				if (qs.isMemoState(11))
 				{
@@ -198,9 +183,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "32046-38.html":
-			case "32046-39.html":
-			case "32046-40.html":
+			case "32046-38.html", "32046-39.html", "32046-40.html":
 			{
 				if (qs.isMemoState(19))
 				{
@@ -229,10 +212,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "32047-02.html":
-			case "32047-03.html":
-			case "32047-04.html":
-			case "32047-05.html":
+			case "32047-02.html", "32047-03.html", "32047-04.html", "32047-05.html":
 			{
 				if (qs.isMemoState(2))
 				{
@@ -269,8 +249,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "32047-13.html":
-			case "32047-14.html":
+			case "32047-13.html", "32047-14.html":
 			{
 				if (qs.isMemoState(6))
 				{
@@ -306,10 +285,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "32047-23.html":
-			case "32047-24.html":
-			case "32047-25.html":
-			case "32047-26.html":
+			case "32047-23.html", "32047-24.html", "32047-25.html", "32047-26.html":
 			{
 				if (qs.isMemoState(23) && hasQuestItems(player, HEART_OF_ATLANTA))
 				{
@@ -328,8 +304,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "32047-28.html":
-			case "32047-29.html":
+			case "32047-28.html", "32047-29.html":
 			{
 				if (qs.isMemoState(24))
 				{
@@ -346,8 +321,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "32047-31.html":
-			case "32047-32.html":
+			case "32047-31.html", "32047-32.html":
 			{
 				if (qs.isMemoState(25))
 				{
@@ -394,10 +368,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "32041-09.html":
-			case "32041-10.html":
-			case "32041-11.html":
-			case "32041-12.html":
+			case "32041-09.html", "32041-10.html", "32041-11.html", "32041-12.html":
 			{
 				if (qs.isMemoState(5))
 				{
@@ -442,8 +413,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "pavel":
-			case "e=mc2":
+			case "pavel", "e=mc2":
 			{
 				if (qs.isMemoState(15) && hasQuestItems(player, RESEARCH_REPORT, KEY_OF_ENIGMA))
 				{
@@ -470,8 +440,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "32041-24.html":
-			case "32041-26.html":
+			case "32041-24.html", "32041-26.html":
 			{
 				if (qs.isMemoState(16) && hasQuestItems(player, RESEARCH_REPORT))
 				{
@@ -479,11 +448,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "32041-29.html":
-			case "32041-30.html":
-			case "32041-31.html":
-			case "32041-32.html":
-			case "32041-33.html":
+			case "32041-29.html", "32041-30.html", "32041-31.html", "32041-32.html", "32041-33.html":
 			{
 				if (qs.isMemoState(26) && hasQuestItems(player, WENDYS_NECKLACE))
 				{
@@ -513,15 +478,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "wm1_1_b":
-			case "wm1_1_c":
-			case "wm1_1_d":
-			case "wm1_1_l":
-			case "wm1_1_m":
-			case "wm1_1_n":
-			case "wm1_1_s":
-			case "wm1_1_t":
-			case "wm1_1_u":
+			case "wm1_1_b", "wm1_1_c", "wm1_1_d", "wm1_1_l", "wm1_1_m", "wm1_1_n", "wm1_1_s", "wm1_1_t", "wm1_1_u":
 			{
 				if (qs.isMemoState(8))
 				{
@@ -538,15 +495,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "wm1_2_a":
-			case "wm1_2_b":
-			case "wm1_2_c":
-			case "wm1_2_d":
-			case "wm1_2_l":
-			case "wm1_2_m":
-			case "wm1_2_n":
-			case "wm1_2_s":
-			case "wm1_2_u":
+			case "wm1_2_a", "wm1_2_b", "wm1_2_c", "wm1_2_d", "wm1_2_l", "wm1_2_m", "wm1_2_n", "wm1_2_s", "wm1_2_u":
 			{
 				if (qs.isMemoState(8))
 				{
@@ -563,15 +512,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "wm1_3_a":
-			case "wm1_3_b":
-			case "wm1_3_c":
-			case "wm1_3_d":
-			case "wm1_3_m":
-			case "wm1_3_n":
-			case "wm1_3_s":
-			case "wm1_3_t":
-			case "wm1_3_u":
+			case "wm1_3_a", "wm1_3_b", "wm1_3_c", "wm1_3_d", "wm1_3_m", "wm1_3_n", "wm1_3_s", "wm1_3_t", "wm1_3_u":
 			{
 				if (qs.isMemoState(8))
 				{
@@ -597,9 +538,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "32042-15.html":
-			case "32042-06.html":
-			case "32042-07.html":
+			case "32042-15.html", "32042-06.html", "32042-07.html":
 			{
 				if (qs.isMemoState(9))
 				{
@@ -675,15 +614,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "wm2_1_a":
-			case "wm2_1_b":
-			case "wm2_1_c":
-			case "wm2_1_d":
-			case "wm2_1_l":
-			case "wm2_1_m":
-			case "wm2_1_n":
-			case "wm2_1_v":
-			case "wm2_1_x":
+			case "wm2_1_a", "wm2_1_b", "wm2_1_c", "wm2_1_d", "wm2_1_l", "wm2_1_m", "wm2_1_n", "wm2_1_v", "wm2_1_x":
 			{
 				if (qs.isMemoState(16))
 				{
@@ -700,15 +631,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "wm2_2_a":
-			case "wm2_2_b":
-			case "wm2_2_c":
-			case "wm2_2_l":
-			case "wm2_2_m":
-			case "wm2_2_n":
-			case "wm2_2_v":
-			case "wm2_2_w":
-			case "wm2_2_x":
+			case "wm2_2_a", "wm2_2_b", "wm2_2_c", "wm2_2_l", "wm2_2_m", "wm2_2_n", "wm2_2_v", "wm2_2_w", "wm2_2_x":
 			{
 				if (qs.isMemoState(16))
 				{
@@ -725,15 +648,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "wm2_3_a":
-			case "wm2_3_b":
-			case "wm2_3_c":
-			case "wm2_3_d":
-			case "wm2_3_m":
-			case "wm2_3_n":
-			case "wm2_3_v":
-			case "wm2_3_w":
-			case "wm2_3_x":
+			case "wm2_3_a", "wm2_3_b", "wm2_3_c", "wm2_3_d", "wm2_3_m", "wm2_3_n", "wm2_3_v", "wm2_3_w", "wm2_3_x":
 			{
 				if (qs.isMemoState(8))
 				{
@@ -759,13 +674,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "32043-31.html":
-			case "32043-30.html":
-			case "32043-29.html":
-			case "32043-28.html":
-			case "32043-06.html":
-			case "32043-07.html":
-			case "32043-08.html":
+			case "32043-31.html", "32043-30.html", "32043-29.html", "32043-28.html", "32043-06.html", "32043-07.html", "32043-08.html":
 			{
 				if (qs.isMemoState(17))
 				{
@@ -782,8 +691,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "32043-10.html":
-			case "wm2_return":
+			case "32043-10.html", "wm2_return":
 			{
 				if (qs.isMemoState(18))
 				{
@@ -837,8 +745,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "32043-19.html":
-			case "32043-20.html":
+			case "32043-19.html", "32043-20.html":
 			{
 				if (qs.isMemoState(18))
 				{
@@ -869,8 +776,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "32043-24.html":
-			case "32043-25.html":
+			case "32043-24.html", "32043-25.html":
 			{
 				if (qs.isMemoState(18))
 				{
@@ -907,15 +813,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "wm3_1_a":
-			case "wm3_1_b":
-			case "wm3_1_c":
-			case "wm3_1_d":
-			case "wm3_1_l":
-			case "wm3_1_m":
-			case "wm3_1_v":
-			case "wm3_1_w":
-			case "wm3_1_x":
+			case "wm3_1_a", "wm3_1_b", "wm3_1_c", "wm3_1_d", "wm3_1_l", "wm3_1_m", "wm3_1_v", "wm3_1_w", "wm3_1_x":
 			{
 				if (qs.isMemoState(20))
 				{
@@ -932,15 +830,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "wm3_2_1":
-			case "wm3_2_2":
-			case "wm3_2_3":
-			case "wm3_2_5":
-			case "wm3_2_6":
-			case "wm3_2_7":
-			case "wm3_2_8":
-			case "wm3_2_9":
-			case "wm3_2_10":
+			case "wm3_2_1", "wm3_2_2", "wm3_2_3", "wm3_2_5", "wm3_2_6", "wm3_2_7", "wm3_2_8", "wm3_2_9", "wm3_2_10":
 			{
 				if (qs.isMemoState(20))
 				{
@@ -957,15 +847,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "wm3_3_1":
-			case "wm3_3_2":
-			case "wm3_3_3":
-			case "wm3_3_4":
-			case "wm3_3_6":
-			case "wm3_3_7":
-			case "wm3_3_8":
-			case "wm3_3_9":
-			case "wm3_3_10":
+			case "wm3_3_1", "wm3_3_2", "wm3_3_3", "wm3_3_4", "wm3_3_6", "wm3_3_7", "wm3_3_8", "wm3_3_9", "wm3_3_10":
 			{
 				if (qs.isMemoState(20))
 				{
@@ -1053,9 +935,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "32044-17.html":
-			case "32044-18.html":
-			case "32044-19.html":
+			case "32044-17.html", "32044-18.html", "32044-19.html":
 			{
 				if (qs.isMemoState(21))
 				{

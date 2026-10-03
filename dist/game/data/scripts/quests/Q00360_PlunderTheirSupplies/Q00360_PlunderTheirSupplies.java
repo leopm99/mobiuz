@@ -71,8 +71,7 @@ public class Q00360_PlunderTheirSupplies extends Quest
 		
 		switch (event)
 		{
-			case "30873-03.htm":
-			case "30873-09.html":
+			case "30873-03.htm", "30873-09.html":
 			{
 				htmltext = event;
 				break;

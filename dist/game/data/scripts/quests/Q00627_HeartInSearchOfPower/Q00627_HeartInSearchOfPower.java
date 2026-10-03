@@ -104,11 +104,7 @@ public class Q00627_HeartInSearchOfPower extends Quest
 				qs.setCond(3);
 				break;
 			}
-			case "Adena":
-			case "Asofes":
-			case "Thons":
-			case "Enrias":
-			case "Mold_Hardener":
+			case "Adena", "Asofes", "Thons", "Enrias", "Mold_Hardener":
 			{
 				if (!hasQuestItems(player, GEM_OF_SAINTS))
 				{

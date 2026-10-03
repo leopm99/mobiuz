@@ -73,20 +73,12 @@ public class KamaelChange1 extends AbstractNpcAI
 		String htmltext = null;
 		switch (event)
 		{
-			case "32191-02.htm": // master_all_kamael003m
-			case "32191-03.htm": // master_all_kamael006ma
-			case "32191-04.htm": // master_all_kamael007ma
-			case "32191-05.htm": // master_all_kamael007mait
-			case "32191-06.htm": // master_all_kamael003f
-			case "32191-07.htm": // master_all_kamael006fa
-			case "32191-08.htm": // master_all_kamael007fa
-			case "32191-09.htm": // master_all_kamael007fa
+			case "32191-02.htm", "32191-03.htm", "32191-04.htm", "32191-05.htm", "32191-06.htm", "32191-07.htm", "32191-08.htm", "32191-09.htm": // master_all_kamael003m; master_all_kamael006ma; master_all_kamael007ma; master_all_kamael007mait; master_all_kamael003f; master_all_kamael006fa; master_all_kamael007fa; master_all_kamael007fa
 			{
 				htmltext = event;
 				break;
 			}
-			case "125":
-			case "126":
+			case "125", "126":
 			{
 				htmltext = ClassChangeRequested(player, Integer.parseInt(event));
 				break;

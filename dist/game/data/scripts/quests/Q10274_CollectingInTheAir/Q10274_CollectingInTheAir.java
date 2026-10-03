@@ -100,23 +100,17 @@ public class Q10274_CollectingInTheAir extends Quest
 		{
 			switch (npc.getId())
 			{
-				case 18684:
-				case 18685:
-				case 18686:
+				case 18684, 18685, 18686:
 				{
 					giveItems(caster, RED, 1);
 					break;
 				}
-				case 18687:
-				case 18688:
-				case 18689:
+				case 18687, 18688, 18689:
 				{
 					giveItems(caster, BLUE, 1);
 					break;
 				}
-				case 18690:
-				case 18691:
-				case 18692:
+				case 18690, 18691, 18692:
 				{
 					giveItems(caster, GREEN, 1);
 					break;

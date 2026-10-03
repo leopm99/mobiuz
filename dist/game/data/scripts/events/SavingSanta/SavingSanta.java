@@ -743,9 +743,7 @@ public class SavingSanta extends LongTimeEvent
 	{
 		switch (npc.getId())
 		{
-			case THOMAS_D_TURKEY_ID:
-			case HOLIDAY_SANTA_ID:
-			case HOLIDAY_SLED_ID:
+			case THOMAS_D_TURKEY_ID, HOLIDAY_SANTA_ID, HOLIDAY_SLED_ID:
 			{
 				player.sendPacket(ActionFailed.STATIC_PACKET);
 				return null;

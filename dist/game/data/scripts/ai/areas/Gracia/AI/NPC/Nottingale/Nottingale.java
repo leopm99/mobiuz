@@ -75,9 +75,7 @@ public class Nottingale extends AbstractNpcAI
 		String htmltext = null;
 		switch (event)
 		{
-			case "32627-02.html":
-			case "32627-03.html":
-			case "32627-04.html":
+			case "32627-02.html", "32627-03.html", "32627-04.html":
 			{
 				if (player.getClan() != null)
 				{
@@ -114,12 +112,7 @@ public class Nottingale extends AbstractNpcAI
 				}
 				break;
 			}
-			case "32627-05.html":
-			case "32627-06.html":
-			case "32627-07.html":
-			case "32627-08.html":
-			case "32627-09.html":
-			case "32627-10.html":
+			case "32627-05.html", "32627-06.html", "32627-07.html", "32627-08.html", "32627-09.html", "32627-10.html":
 			{
 				player.sendPacket(RADARS.get(Integer.parseInt(event.substring(6, 8))));
 				htmltext = event;

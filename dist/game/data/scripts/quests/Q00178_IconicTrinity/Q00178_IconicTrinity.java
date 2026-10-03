@@ -69,10 +69,7 @@ public class Q00178_IconicTrinity extends Quest
 				}
 				break;
 			}
-			case "32255-11.html":
-			case "32256-11.html":
-			case "32256-12.html":
-			case "32256-13.html":
+			case "32255-11.html", "32256-11.html", "32256-12.html", "32256-13.html":
 			{
 				htmltext = getHtm(player, event);
 				htmltext = htmltext.replace("%name1%", player.getName());
@@ -337,31 +334,7 @@ public class Q00178_IconicTrinity extends Quest
 				}
 				break;
 			}
-			case "32138-13.html":
-			case "32138-16.html":
-			case "32255-04.html":
-			case "32255-05.html":
-			case "32255-06.html":
-			case "32255-07.html":
-			case "32255-08.html":
-			case "32255-09.html":
-			case "32255-10.html":
-			case "32255-12.html":
-			case "32256-04.html":
-			case "32256-05.html":
-			case "32256-06.html":
-			case "32256-07.html":
-			case "32256-08.html":
-			case "32256-09.html":
-			case "32256-10.html":
-			case "32257-04.html":
-			case "32257-05.html":
-			case "32257-06.html":
-			case "32257-07.html":
-			case "32257-08.html":
-			case "32257-09.html":
-			case "32257-10.html":
-			case "32257-11.html":
+			case "32138-13.html", "32138-16.html", "32255-04.html", "32255-05.html", "32255-06.html", "32255-07.html", "32255-08.html", "32255-09.html", "32255-10.html", "32255-12.html", "32256-04.html", "32256-05.html", "32256-06.html", "32256-07.html", "32256-08.html", "32256-09.html", "32256-10.html", "32257-04.html", "32257-05.html", "32257-06.html", "32257-07.html", "32257-08.html", "32257-09.html", "32257-10.html", "32257-11.html":
 			{
 				htmltext = event;
 				break;
@@ -401,8 +374,7 @@ public class Q00178_IconicTrinity extends Quest
 				{
 					switch (qs.getMemoState())
 					{
-						case 1:
-						case 2:
+						case 1, 2:
 						{
 							htmltext = "32138-06.html";
 							break;
@@ -412,8 +384,7 @@ public class Q00178_IconicTrinity extends Quest
 							htmltext = "32138-07.html";
 							break;
 						}
-						case 4:
-						case 5:
+						case 4, 5:
 						{
 							htmltext = "32138-08.html";
 							break;
@@ -423,8 +394,7 @@ public class Q00178_IconicTrinity extends Quest
 							htmltext = "32138-09.html";
 							break;
 						}
-						case 7:
-						case 8:
+						case 7, 8:
 						{
 							htmltext = "32138-10.html";
 							break;
@@ -469,8 +439,7 @@ public class Q00178_IconicTrinity extends Quest
 							htmltext = "32255-09.html";
 							break;
 						}
-						case 4:
-						case 5:
+						case 4, 5:
 						{
 							htmltext = "32255-14.html";
 							break;
@@ -498,8 +467,7 @@ public class Q00178_IconicTrinity extends Quest
 							htmltext = "32256-09.html";
 							break;
 						}
-						case 7:
-						case 8:
+						case 7, 8:
 						{
 							htmltext = "32256-15.html";
 							break;

@@ -61,15 +61,13 @@ public class AutoPotion implements IVoicedCommandHandler
 		
 		switch (command)
 		{
-			case "apon":
-			case "potionon":
+			case "apon", "potionon":
 			{
 				AutoPotionTaskManager.getInstance().add(activeChar);
 				activeChar.sendMessage("Auto potions is enabled.");
 				break;
 			}
-			case "apoff":
-			case "potionoff":
+			case "apoff", "potionoff":
 			{
 				AutoPotionTaskManager.getInstance().remove(activeChar);
 				activeChar.sendMessage("Auto potions is disabled.");

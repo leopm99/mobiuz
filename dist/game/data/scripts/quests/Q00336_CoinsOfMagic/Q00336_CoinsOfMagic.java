@@ -166,9 +166,7 @@ public class Q00336_CoinsOfMagic extends Quest
 		final String htmltext = getNoQuestMsg(player);
 		switch (npc.getId())
 		{
-			case PANO:
-			case COLLOB:
-			case HEAD_BLACKSMITH_FERRIS:
+			case PANO, COLLOB, HEAD_BLACKSMITH_FERRIS:
 			{
 				if (hasQuestItems(player, Q_CC_MEMBERSHIP_1))
 				{
@@ -181,9 +179,7 @@ public class Q00336_CoinsOfMagic extends Quest
 				}
 				break;
 			}
-			case RAPIN:
-			case STAN:
-			case BLACKSMITH_DUNING:
+			case RAPIN, STAN, BLACKSMITH_DUNING:
 			{
 				if (hasQuestItems(player, Q_CC_MEMBERSHIP_1) || hasQuestItems(player, Q_CC_MEMBERSHIP_2))
 				{
@@ -196,9 +192,7 @@ public class Q00336_CoinsOfMagic extends Quest
 				}
 				break;
 			}
-			case HAGGER:
-			case MAGISTER_PAGE:
-			case RESEARCHER_LORAIN:
+			case HAGGER, MAGISTER_PAGE, RESEARCHER_LORAIN:
 			{
 				if (hasQuestItems(player, Q_CC_MEMBERSHIP_1) || hasQuestItems(player, Q_CC_MEMBERSHIP_2) || hasQuestItems(player, Q_CC_MEMBERSHIP_3))
 				{
@@ -296,15 +290,7 @@ public class Q00336_CoinsOfMagic extends Quest
 		
 		switch (npcId)
 		{
-			case PANO:
-			case COLLOB:
-			case RAPIN:
-			case HAGGER:
-			case STAN:
-			case RESEARCHER_LORAIN:
-			case BLACKSMITH_DUNING:
-			case MAGISTER_PAGE:
-			case HEAD_BLACKSMITH_FERRIS:
+			case PANO, COLLOB, RAPIN, HAGGER, STAN, RESEARCHER_LORAIN, BLACKSMITH_DUNING, MAGISTER_PAGE, HEAD_BLACKSMITH_FERRIS:
 			{
 				switch (eventID)
 				{
@@ -1089,8 +1075,7 @@ public class Q00336_CoinsOfMagic extends Quest
 	{
 		switch (npc.getId())
 		{
-			case HARIT_LIZARDMAN_SHAMAN:
-			case HARIT_LIZARDM_MATRIARCH:
+			case HARIT_LIZARDMAN_SHAMAN, HARIT_LIZARDM_MATRIARCH:
 			{
 				final QuestState qs = getRandomPlayerFromPartyCoin(killer, npc, 2);
 				if ((qs != null) && (getRandom(1000) < 63))
@@ -1108,8 +1093,7 @@ public class Q00336_CoinsOfMagic extends Quest
 		{
 			switch (npc.getId())
 			{
-				case SHACKLE:
-				case SHACKLE_HOLD:
+				case SHACKLE, SHACKLE_HOLD:
 				{
 					if (getRandom(1000) < 70)
 					{
@@ -1117,8 +1101,7 @@ public class Q00336_CoinsOfMagic extends Quest
 					}
 					break;
 				}
-				case HEADLESS_KNIGHT:
-				case TIMAK_ORC:
+				case HEADLESS_KNIGHT, TIMAK_ORC:
 				{
 					if (getRandom(1000) < 80)
 					{
@@ -1134,14 +1117,7 @@ public class Q00336_CoinsOfMagic extends Quest
 					}
 					break;
 				}
-				case ROYAL_CAVE_SERVANT:
-				case MALRUK_SUCCUBUS_TUREN:
-				case ROYAL_CAVE_SERVANT_HOLD:
-				case KUKABURO_B:
-				case ANTELOPE:
-				case ANTELOPE_A:
-				case ANTELOPE_B:
-				case H_MALRUK_SUCCUBUS_TUREN:
+				case ROYAL_CAVE_SERVANT, MALRUK_SUCCUBUS_TUREN, ROYAL_CAVE_SERVANT_HOLD, KUKABURO_B, ANTELOPE, ANTELOPE_A, ANTELOPE_B, H_MALRUK_SUCCUBUS_TUREN:
 				{
 					if (getRandom(1000) < 100)
 					{
@@ -1149,11 +1125,7 @@ public class Q00336_CoinsOfMagic extends Quest
 					}
 					break;
 				}
-				case BUFFALO:
-				case BUFFALO_A:
-				case BUFFALO_B:
-				case KUKABURO:
-				case KUKABURO_A:
+				case BUFFALO, BUFFALO_A, BUFFALO_B, KUKABURO, KUKABURO_A:
 				{
 					if (getRandom(1000) < 110)
 					{
@@ -1185,9 +1157,7 @@ public class Q00336_CoinsOfMagic extends Quest
 					}
 					break;
 				}
-				case BLOODY_GHOST:
-				case TARLK_BUGBEAR_BOSS:
-				case OEL_MAHUM:
+				case BLOODY_GHOST, TARLK_BUGBEAR_BOSS, OEL_MAHUM:
 				{
 					if (getRandom(1000) < 80)
 					{
@@ -1227,9 +1197,7 @@ public class Q00336_CoinsOfMagic extends Quest
 					}
 					break;
 				}
-				case DARK_GUARD:
-				case BRILLIANT_CLAW:
-				case BRILLIANT_CLAW_1:
+				case DARK_GUARD, BRILLIANT_CLAW, BRILLIANT_CLAW_1:
 				{
 					if (getRandom(1000) < 150)
 					{
@@ -1245,8 +1213,7 @@ public class Q00336_CoinsOfMagic extends Quest
 					}
 					break;
 				}
-				case BRILLIANT_ANGUISH:
-				case BRILLIANT_ANGUISH_1:
+				case BRILLIANT_ANGUISH, BRILLIANT_ANGUISH_1:
 				{
 					if (getRandom(1000) < 210)
 					{
@@ -1278,9 +1245,7 @@ public class Q00336_CoinsOfMagic extends Quest
 					}
 					break;
 				}
-				case FLOAT_OF_GRAVE:
-				case BANDERSNATCH_A:
-				case BANDERSNATCH_B:
+				case FLOAT_OF_GRAVE, BANDERSNATCH_A, BANDERSNATCH_B:
 				{
 					if (getRandom(1000) < 90)
 					{
@@ -1312,8 +1277,7 @@ public class Q00336_CoinsOfMagic extends Quest
 					}
 					break;
 				}
-				case TIMAK_ORC_ARCHER:
-				case TIMAK_ORC_SOLDIER:
+				case TIMAK_ORC_ARCHER, TIMAK_ORC_SOLDIER:
 				{
 					if (getRandom(1000) < 140)
 					{
@@ -1321,10 +1285,7 @@ public class Q00336_CoinsOfMagic extends Quest
 					}
 					break;
 				}
-				case DOOM_ARCHER:
-				case BRILLIANT_WISDOM:
-				case BRILLIANT_VENGEANCE:
-				case BRILLIANT_VENGEANCE_1:
+				case DOOM_ARCHER, BRILLIANT_WISDOM, BRILLIANT_VENGEANCE, BRILLIANT_VENGEANCE_1:
 				{
 					if (getRandom(1000) < 160)
 					{

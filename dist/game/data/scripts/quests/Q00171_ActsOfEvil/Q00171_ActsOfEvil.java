@@ -132,11 +132,7 @@ public class Q00171_ActsOfEvil extends Quest
 				htmltext = event;
 				break;
 			}
-			case "30207-01a.html":
-			case "30437-02.html":
-			case "30437-03.html":
-			case "30617-03.html":
-			case "30617-04.html":
+			case "30207-01a.html", "30437-02.html", "30437-03.html", "30617-03.html", "30617-04.html":
 			{
 				htmltext = event;
 				break;
@@ -163,8 +159,7 @@ public class Q00171_ActsOfEvil extends Quest
 		{
 			switch (npc.getId())
 			{
-				case TUMRAN_BUGBEAR:
-				case TUMRAN_BUGBEAR_WARRIOR:
+				case TUMRAN_BUGBEAR, TUMRAN_BUGBEAR_WARRIOR:
 				{
 					if (qs.isMemoState(5))
 					{
@@ -378,8 +373,7 @@ public class Q00171_ActsOfEvil extends Quest
 							htmltext = "30381-04.html";
 							break;
 						}
-						case 2:
-						case 3:
+						case 2, 3:
 						{
 							htmltext = "30381-05.html";
 							break;

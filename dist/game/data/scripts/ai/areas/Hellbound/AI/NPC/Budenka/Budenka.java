@@ -58,10 +58,7 @@ public class Budenka extends AbstractNpcAI
 		String htmltext = null;
 		switch (event)
 		{
-			case "Budenka-02.html":
-			case "Budenka-03.html":
-			case "Budenka-04.html":
-			case "Budenka-05.html":
+			case "Budenka-02.html", "Budenka-03.html", "Budenka-04.html", "Budenka-05.html":
 			{
 				htmltext = event;
 				break;

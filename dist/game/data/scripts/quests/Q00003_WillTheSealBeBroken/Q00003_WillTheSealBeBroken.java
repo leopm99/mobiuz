@@ -104,15 +104,12 @@ public class Q00003_WillTheSealBeBroken extends Quest
 				giveItem(member, qs, OMEN_BEAST_EYE, getRegisteredItemIds());
 				break;
 			}
-			case STINK_ZOMBIE:
-			case TAINTED_ZOMBIE:
+			case STINK_ZOMBIE, TAINTED_ZOMBIE:
 			{
 				giveItem(member, qs, TAINT_STONE, getRegisteredItemIds());
 				break;
 			}
-			case LESSER_SUCCUBUS:
-			case LESSER_SUCCUBUS_TILFO:
-			case LESSER_SUCCUBUS_TUREN:
+			case LESSER_SUCCUBUS, LESSER_SUCCUBUS_TILFO, LESSER_SUCCUBUS_TUREN:
 			{
 				giveItem(member, qs, SUCCUBUS_BLOOD, getRegisteredItemIds());
 				break;

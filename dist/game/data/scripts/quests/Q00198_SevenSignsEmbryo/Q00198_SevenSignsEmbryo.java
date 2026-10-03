@@ -90,9 +90,7 @@ public class Q00198_SevenSignsEmbryo extends Quest
 				htmltext = event;
 				break;
 			}
-			case "32597-02.html":
-			case "32597-03.html":
-			case "32597-04.html":
+			case "32597-02.html", "32597-03.html", "32597-04.html":
 			{
 				if (qs.isCond(1))
 				{
@@ -133,9 +131,7 @@ public class Q00198_SevenSignsEmbryo extends Quest
 				startQuestTimer("heal", 30000 - getRandom(20000), npc, player);
 				break;
 			}
-			case "32597-08.html":
-			case "32597-09.html":
-			case "32597-10.html":
+			case "32597-08.html", "32597-09.html", "32597-10.html":
 			{
 				if (qs.isCond(2) && hasQuestItems(player, SCULPTURE_OF_DOUBT))
 				{

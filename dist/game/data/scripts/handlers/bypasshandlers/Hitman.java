@@ -67,8 +67,7 @@ public class Hitman implements IBypassHandler
 		
 		switch (action)
 		{
-			case "hitman":
-			case "hitman_list":
+			case "hitman", "hitman_list":
 				showTargetList(player, st.hasMoreTokens() ? Integer.parseInt(st.nextToken()) : 1);
 				break;
 			case "hitman_mycontracts":

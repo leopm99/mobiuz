@@ -82,8 +82,7 @@ public class Q00650_ABrokenDream extends Quest
 				}
 				break;
 			}
-			case "32054-07.html":
-			case "32054-08.html":
+			case "32054-07.html", "32054-08.html":
 			{
 				if (qs.isStarted())
 				{

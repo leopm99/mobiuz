@@ -78,8 +78,7 @@ public class Q00645_GhostsOfBatur extends Quest
 					htmltext = event;
 					break;
 				}
-				case "32017-06.html":
-				case "32017-08.html":
+				case "32017-06.html", "32017-08.html":
 				{
 					htmltext = event;
 					break;

@@ -150,12 +150,7 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 				}
 				break;
 			}
-			case "30498-02.html":
-			case "30678-01a.html":
-			case "30753-01a.html":
-			case "30753-03.htm":
-			case "30753-04.htm":
-			case "30753-06a.html":
+			case "30498-02.html", "30678-01a.html", "30753-01a.html", "30753-03.htm", "30753-04.htm", "30753-06a.html":
 			{
 				htmltext = event;
 				break;
@@ -270,14 +265,7 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 				{
 					switch (qs.getMemoState())
 					{
-						case 21011:
-						case 21010:
-						case 21001:
-						case 21000:
-						case 20011:
-						case 20010:
-						case 20001:
-						case 20000:
+						case 21011, 21010, 21001, 21000, 20011, 20010, 20001, 20000:
 						{
 							if (!hasQuestItems(killer, REMAINS_OF_SACRAFICE))
 							{
@@ -291,10 +279,7 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 					}
 					break;
 				}
-				case CAVE_MAIDEN:
-				case CAVE_KEEPER:
-				case CAVE_KEEPER_HOLD:
-				case CAVE_MAIDEN_HOLD:
+				case CAVE_MAIDEN, CAVE_KEEPER, CAVE_KEEPER_HOLD, CAVE_MAIDEN_HOLD:
 				{
 					if (qs.isMemoState(70000) && !hasQuestItems(killer, FRAGMENT_OF_ABYSS_JEWEL_3RD) && (getRandom(5) == 0))
 					{
@@ -306,14 +291,7 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 				{
 					switch (qs.getMemoState())
 					{
-						case 21110:
-						case 21100:
-						case 21010:
-						case 21000:
-						case 20110:
-						case 20100:
-						case 20010:
-						case 20000:
+						case 21110, 21100, 21010, 21000, 20110, 20100, 20010, 20000:
 						{
 							if (!hasQuestItems(killer, TOTEM_OF_LAND_DRAGON))
 							{
@@ -330,14 +308,7 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 				{
 					switch (qs.getMemoState())
 					{
-						case 21110:
-						case 21100:
-						case 21010:
-						case 21000:
-						case 20110:
-						case 20100:
-						case 20010:
-						case 20000:
+						case 21110, 21100, 21010, 21000, 20110, 20100, 20010, 20000:
 						{
 							if (!hasQuestItems(killer, TOTEM_OF_LAND_DRAGON) && (getRandom(5) == 0))
 							{
@@ -354,14 +325,7 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 				{
 					switch (qs.getMemoState())
 					{
-						case 21101:
-						case 21100:
-						case 21001:
-						case 21000:
-						case 20101:
-						case 20100:
-						case 20001:
-						case 20000:
+						case 21101, 21100, 21001, 21000, 20101, 20100, 20001, 20000:
 						{
 							if (!hasQuestItems(killer, HAMRUT_LEG))
 							{
@@ -377,14 +341,7 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 				{
 					switch (qs.getMemoState())
 					{
-						case 21101:
-						case 21100:
-						case 21001:
-						case 21000:
-						case 20101:
-						case 20100:
-						case 20001:
-						case 20000:
+						case 21101, 21100, 21001, 21000, 20101, 20100, 20001, 20000:
 						{
 							if (!hasQuestItems(killer, KRANROT_SKIN))
 							{
@@ -400,14 +357,7 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 				{
 					switch (qs.getMemoState())
 					{
-						case 20111:
-						case 20110:
-						case 20101:
-						case 20100:
-						case 20011:
-						case 20010:
-						case 20001:
-						case 20000:
+						case 20111, 20110, 20101, 20100, 20011, 20010, 20001, 20000:
 						{
 							if (!hasQuestItems(killer, MARSH_STALKER_HORN))
 							{
@@ -423,14 +373,7 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 				{
 					switch (qs.getMemoState())
 					{
-						case 20111:
-						case 20110:
-						case 20101:
-						case 20100:
-						case 20011:
-						case 20010:
-						case 20001:
-						case 20000:
+						case 20111, 20110, 20101, 20100, 20011, 20010, 20001, 20000:
 						{
 							if (!hasQuestItems(killer, MARSH_DRAKE_TALONS))
 							{
@@ -464,14 +407,7 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 				{
 					switch (qs.getMemoState())
 					{
-						case 21011:
-						case 21010:
-						case 21001:
-						case 21000:
-						case 20011:
-						case 20010:
-						case 20001:
-						case 20000:
+						case 21011, 21010, 21001, 21000, 20011, 20010, 20001, 20000:
 						{
 							if (!hasQuestItems(killer, REMAINS_OF_SACRAFICE))
 							{
@@ -487,14 +423,7 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 				{
 					switch (qs.getMemoState())
 					{
-						case 21110:
-						case 21100:
-						case 21010:
-						case 21000:
-						case 20110:
-						case 20100:
-						case 20010:
-						case 20000:
+						case 21110, 21100, 21010, 21000, 20110, 20100, 20010, 20000:
 						{
 							if (!hasQuestItems(killer, TOTEM_OF_LAND_DRAGON))
 							{
@@ -639,14 +568,7 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 				{
 					switch (qs.getMemoState())
 					{
-						case 21101:
-						case 21000:
-						case 21100:
-						case 21001:
-						case 20101:
-						case 20100:
-						case 20001:
-						case 20000:
+						case 21101, 21000, 21100, 21001, 20101, 20100, 20001, 20000:
 						{
 							if (hasQuestItems(player, KRANROT_SKIN, HAMRUT_LEG))
 							{
@@ -669,13 +591,7 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 							}
 							break;
 						}
-						case 21110:
-						case 21011:
-						case 21010:
-						case 20111:
-						case 20110:
-						case 20011:
-						case 20010:
+						case 21110, 21011, 21010, 20111, 20110, 20011, 20010:
 						{
 							htmltext = "30705-03.html";
 							break;
@@ -691,14 +607,7 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 				{
 					switch (qs.getMemoState())
 					{
-						case 20111:
-						case 20110:
-						case 20101:
-						case 20100:
-						case 20010:
-						case 20011:
-						case 20001:
-						case 20000:
+						case 20111, 20110, 20101, 20100, 20010, 20011, 20001, 20000:
 						{
 							if (hasQuestItems(player, MARSH_STALKER_HORN, MARSH_DRAKE_TALONS))
 							{
@@ -721,13 +630,7 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 							}
 							break;
 						}
-						case 21110:
-						case 21101:
-						case 21100:
-						case 21011:
-						case 21010:
-						case 21001:
-						case 21000:
+						case 21110, 21101, 21100, 21011, 21010, 21001, 21000:
 						{
 							htmltext = "30720-03.html";
 							break;
@@ -789,14 +692,7 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 				{
 					switch (qs.getMemoState())
 					{
-						case 21110:
-						case 21100:
-						case 21010:
-						case 21000:
-						case 20110:
-						case 20100:
-						case 20010:
-						case 20000:
+						case 21110, 21100, 21010, 21000, 20110, 20100, 20010, 20000:
 						{
 							if (!hasQuestItems(player, TOTEM_OF_LAND_DRAGON))
 							{
@@ -818,13 +714,7 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 							}
 							break;
 						}
-						case 21101:
-						case 21011:
-						case 21001:
-						case 20111:
-						case 20101:
-						case 20011:
-						case 20001:
+						case 21101, 21011, 21001, 20111, 20101, 20011, 20001:
 						{
 							htmltext = "30851-03.html";
 							break;
@@ -840,14 +730,7 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 				{
 					switch (qs.getMemoState())
 					{
-						case 21011:
-						case 21010:
-						case 21001:
-						case 21000:
-						case 20011:
-						case 20010:
-						case 20001:
-						case 20000:
+						case 21011, 21010, 21001, 21000, 20011, 20010, 20001, 20000:
 						{
 							if (!hasQuestItems(player, REMAINS_OF_SACRAFICE))
 							{
@@ -869,13 +752,7 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 							}
 							break;
 						}
-						case 21110:
-						case 21101:
-						case 21100:
-						case 20111:
-						case 20110:
-						case 20101:
-						case 20100:
+						case 21110, 21101, 21100, 20111, 20110, 20101, 20100:
 						{
 							htmltext = "30857-03.html";
 							break;

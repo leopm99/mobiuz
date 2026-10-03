@@ -80,8 +80,7 @@ public class Q00351_BlackSwan extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "30916-02.htm":
-			case "30969-03.html":
+			case "30916-02.htm", "30969-03.html":
 			{
 				htmltext = event;
 				break;

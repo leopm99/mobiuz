@@ -76,9 +76,7 @@ public class Q00380_BringOutTheFlavorOfIngredients extends Quest
 		{
 			switch (event)
 			{
-				case "30069-03.htm":
-				case "30069-04.htm":
-				case "30069-06.html":
+				case "30069-03.htm", "30069-04.htm", "30069-06.html":
 				{
 					htmltext = event;
 					break;
@@ -123,10 +121,7 @@ public class Q00380_BringOutTheFlavorOfIngredients extends Quest
 			{
 				switch (qs.getCond())
 				{
-					case 1:
-					case 2:
-					case 3:
-					case 4:
+					case 1, 2, 3, 4:
 					{
 						if ((getQuestItemsCount(talker, ANTIDOTE) >= 2) && (getQuestItemsCount(talker, RITRON_FRUIT) >= 4) && (getQuestItemsCount(talker, MOON_FLOWER) >= 20) && (getQuestItemsCount(talker, LEECH_FLUIDS) >= 10))
 						{

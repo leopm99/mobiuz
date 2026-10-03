@@ -66,9 +66,7 @@ public class Q00450_GraveRobberRescue extends Quest
 		String htmltext = event;
 		switch (event)
 		{
-			case "32650-04.htm":
-			case "32650-05.htm":
-			case "32650-06.html":
+			case "32650-04.htm", "32650-05.htm", "32650-06.html":
 			{
 				break;
 			}

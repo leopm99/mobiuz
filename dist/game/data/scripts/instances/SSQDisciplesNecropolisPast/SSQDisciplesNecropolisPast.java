@@ -318,8 +318,7 @@ public class SSQDisciplesNecropolisPast extends AbstractInstance
 	{
 		switch (npc.getId())
 		{
-			case LILIM_BUTCHER:
-			case LILIM_GUARD_KNIGHT:
+			case LILIM_BUTCHER, LILIM_GUARD_KNIGHT:
 			{
 				if (npc.isScriptValue(0))
 				{
@@ -328,8 +327,7 @@ public class SSQDisciplesNecropolisPast extends AbstractInstance
 				}
 				break;
 			}
-			case LILIM_MAGUS:
-			case LILIM_GREAT_MAGUS:
+			case LILIM_MAGUS, LILIM_GREAT_MAGUS:
 			{
 				if (npc.isScriptValue(0))
 				{
@@ -338,8 +336,7 @@ public class SSQDisciplesNecropolisPast extends AbstractInstance
 				}
 				break;
 			}
-			case LILIM_KNIGHT_ERRANT:
-			case LILIM_KNIGHT:
+			case LILIM_KNIGHT_ERRANT, LILIM_KNIGHT:
 			{
 				if (npc.isScriptValue(0))
 				{
@@ -398,15 +395,12 @@ public class SSQDisciplesNecropolisPast extends AbstractInstance
 		
 		switch (npc.getId())
 		{
-			case LILIM_MAGUS:
-			case LILIM_GREAT_MAGUS:
+			case LILIM_MAGUS, LILIM_GREAT_MAGUS:
 			{
 				npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.NPC_GENERAL, npc.getId(), NpcStringId.LORD_SHILEN_SOME_DAY_YOU_WILL_ACCOMPLISH_THIS_MISSION));
 				break;
 			}
-			case LILIM_KNIGHT_ERRANT:
-			case LILIM_KNIGHT:
-			case LILIM_GUARD_KNIGHT:
+			case LILIM_KNIGHT_ERRANT, LILIM_KNIGHT, LILIM_GUARD_KNIGHT:
 			{
 				npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.NPC_GENERAL, npc.getId(), NpcStringId.WHY_ARE_YOU_GETTING_IN_OUR_WAY));
 				break;

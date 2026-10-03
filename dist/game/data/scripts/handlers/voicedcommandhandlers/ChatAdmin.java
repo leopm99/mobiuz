@@ -61,8 +61,7 @@ public class ChatAdmin implements IVoicedCommandHandler
 		
 		switch (command)
 		{
-			case "banchat":
-			case "chatban":
+			case "banchat", "chatban":
 			{
 				if (params == null)
 				{
@@ -132,8 +131,7 @@ public class ChatAdmin implements IVoicedCommandHandler
 				}
 				break;
 			}
-			case "unbanchat":
-			case "chatunban":
+			case "unbanchat", "chatunban":
 			{
 				if (params == null)
 				{

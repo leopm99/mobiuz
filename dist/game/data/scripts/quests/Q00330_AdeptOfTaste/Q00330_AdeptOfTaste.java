@@ -157,15 +157,7 @@ public class Q00330_AdeptOfTaste extends Quest
 				}
 				break;
 			}
-			case "30062-04.html":
-			case "30067-04.html":
-			case "30073-04.html":
-			case "30469-04.html":
-			case "30469-04t1.html":
-			case "30469-04t2.html":
-			case "30469-04t3.html":
-			case "30469-04t4.html":
-			case "30469-04t5.html":
+			case "30062-04.html", "30067-04.html", "30073-04.html", "30469-04.html", "30469-04t1.html", "30469-04t2.html", "30469-04t3.html", "30469-04t4.html", "30469-04t5.html":
 			{
 				htmltext = event;
 				break;
@@ -198,8 +190,7 @@ public class Q00330_AdeptOfTaste extends Quest
 					}
 					break;
 				}
-				case MANDRAGORA_SPROUT1:
-				case MANDRAGORA_SPROUT2:
+				case MANDRAGORA_SPROUT1, MANDRAGORA_SPROUT2:
 				{
 					if (((getQuestItemsCount(killer, RED_MANDRAGORA_SAP) + getQuestItemsCount(killer, WHITE_MANDRAGORA_SAP) + getQuestItemsCount(killer, HONEY) + getQuestItemsCount(killer, GOLDEN_HONEY) + getQuestItemsCount(killer, DIONIAN_POTATO) + getQuestItemsCount(killer, GREEN_MOSS_BUNDLE) + getQuestItemsCount(killer, BROWN_MOSS_BUNDLE) + getQuestItemsCount(killer, MONSTER_EYE_MEAT)) < 5) && hasQuestItems(killer, INGREDIENT_LIST, SONIAS_BOTANY_BOOK) && !hasAtLeastOneQuestItem(killer, RED_MANDRAGORA_SAP, WHITE_MANDRAGORA_SAP))
 					{

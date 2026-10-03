@@ -72,8 +72,7 @@ public class Kief extends AbstractNpcAI
 			{
 				switch (HellboundEngine.getInstance().getLevel())
 				{
-					case 2:
-					case 3:
+					case 2, 3:
 					{
 						if (hasQuestItems(player, DARION_BADGE))
 						{
@@ -172,8 +171,7 @@ public class Kief extends AbstractNpcAI
 			{
 				return "32354-01.htm";
 			}
-			case 2:
-			case 3:
+			case 2, 3:
 			{
 				return "32354-01a.htm";
 			}

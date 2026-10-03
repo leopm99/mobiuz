@@ -1150,14 +1150,7 @@ public class Q00234_FatesWhisper extends Quest
 		{
 			switch (npc.getId())
 			{
-				case PLATINUM_TRIBE_GRUNT:
-				case PLATINUM_TRIBE_ARCHER:
-				case PLATINUM_TRIBE_WARRIOR:
-				case PLATINUM_TRIBE_SHAMAN:
-				case PLATINUM_TRIBE_LORD:
-				case GUARDIAN_ANGEL:
-				case SEAL_ANGEL:
-				case SEAL_ANGEL_R:
+				case PLATINUM_TRIBE_GRUNT, PLATINUM_TRIBE_ARCHER, PLATINUM_TRIBE_WARRIOR, PLATINUM_TRIBE_SHAMAN, PLATINUM_TRIBE_LORD, GUARDIAN_ANGEL, SEAL_ANGEL, SEAL_ANGEL_R:
 				{
 					final Player member = qs.getPlayer();
 					if (member != null)

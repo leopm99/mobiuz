@@ -97,12 +97,7 @@ public class Q00644_GraveRobberAnnihilation extends Quest
 				}
 				break;
 			}
-			case "varnish":
-			case "animalskin":
-			case "animalbone":
-			case "charcoal":
-			case "coal":
-			case "ironore":
+			case "varnish", "animalskin", "animalbone", "charcoal", "coal", "ironore":
 			{
 				if (qs.isCond(2))
 				{

@@ -123,9 +123,7 @@ public class Q00371_ShrieksOfGhosts extends Quest
 				}
 				break;
 			}
-			case "30867-08.html":
-			case "30929-01.html":
-			case "30929-02.html":
+			case "30867-08.html", "30929-01.html", "30929-02.html":
 			{
 				htmltext = event;
 				break;

@@ -208,11 +208,7 @@ public class Q00419_GetAPet extends Quest
 				}
 				break;
 			}
-			case "30731-03.htm":
-			case "30072-02.html":
-			case "30091-02.html":
-			case "30256-02.html":
-			case "30256-03.html":
+			case "30731-03.htm", "30072-02.html", "30091-02.html", "30256-02.html", "30256-03.html":
 			{
 				htmltext = event;
 				break;

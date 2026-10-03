@@ -86,11 +86,7 @@ public class FortressSiegeManager extends AbstractNpcAI
 		String htmltext = null;
 		switch (event)
 		{
-			case "FortressSiegeManager-11.html":
-			case "FortressSiegeManager-13.html":
-			case "FortressSiegeManager-14.html":
-			case "FortressSiegeManager-15.html":
-			case "FortressSiegeManager-16.html":
+			case "FortressSiegeManager-11.html", "FortressSiegeManager-13.html", "FortressSiegeManager-14.html", "FortressSiegeManager-15.html", "FortressSiegeManager-16.html":
 			{
 				return htmltext = event;
 			}

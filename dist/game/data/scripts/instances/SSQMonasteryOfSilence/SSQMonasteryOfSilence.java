@@ -467,10 +467,7 @@ public class SSQMonasteryOfSilence extends AbstractInstance
 		{
 			switch (npc.getId())
 			{
-				case GUARDIAN_OF_THE_TOMB_1:
-				case GUARDIAN_OF_THE_TOMB_2:
-				case GUARDIAN_OF_THE_TOMB_3:
-				case GUARDIAN_OF_THE_TOMB_4:
+				case GUARDIAN_OF_THE_TOMB_1, GUARDIAN_OF_THE_TOMB_2, GUARDIAN_OF_THE_TOMB_3, GUARDIAN_OF_THE_TOMB_4:
 				{
 					final int deadTombGuardianCount = world.getParameters().getInt("deadTombGuardianCount", 0) + 1;
 					world.setParameter("deadTombGuardianCount", deadTombGuardianCount);
@@ -485,10 +482,7 @@ public class SSQMonasteryOfSilence extends AbstractInstance
 					}
 					break;
 				}
-				case SOLINAS_GUARDIAN_1:
-				case SOLINAS_GUARDIAN_2:
-				case SOLINAS_GUARDIAN_3:
-				case SOLINAS_GUARDIAN_4:
+				case SOLINAS_GUARDIAN_1, SOLINAS_GUARDIAN_2, SOLINAS_GUARDIAN_3, SOLINAS_GUARDIAN_4:
 				{
 					final int deadSolinaGuardianCount = world.getParameters().getInt("deadSolinaGuardianCount", 0) + 1;
 					world.setParameter("deadSolinaGuardianCount", deadSolinaGuardianCount);

@@ -99,8 +99,7 @@ public class Q00344_1000YearsTheEndOfLamentation extends Quest
 		
 		switch (event)
 		{
-			case "30754-03.htm":
-			case "30754-16.html":
+			case "30754-03.htm", "30754-16.html":
 			{
 				htmltext = event;
 				break;

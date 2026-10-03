@@ -121,10 +121,7 @@ public class Q00621_EggDelivery extends Quest
 				}
 				break;
 			}
-			case "31544-02.html":
-			case "31545-02.html":
-			case "31546-02.html":
-			case "31547-02.html":
+			case "31544-02.html", "31545-02.html", "31546-02.html", "31547-02.html":
 			{
 				if (TALKERS.contains(npc.getId()) && qs.isCond(TALKERS.indexOf(npc.getId()) + 2))
 				{
@@ -248,10 +245,7 @@ public class Q00621_EggDelivery extends Quest
 				}
 				break;
 			}
-			case NAFF:
-			case CROCUS:
-			case KUBER:
-			case BOELIN:
+			case NAFF, CROCUS, KUBER, BOELIN:
 			{
 				if (qs.isStarted())
 				{

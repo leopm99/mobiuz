@@ -77,10 +77,7 @@ public class Q00017_LightAndDarkness extends Quest
 				}
 				break;
 			}
-			case "31508-02.html":
-			case "31509-02.html":
-			case "31510-02.html":
-			case "31511-02.html":
+			case "31508-02.html", "31509-02.html", "31510-02.html", "31511-02.html":
 			{
 				final int cond = qs.getCond();
 				final int npcId = Integer.parseInt(event.replace("-02.html", ""));
@@ -134,10 +131,7 @@ public class Q00017_LightAndDarkness extends Quest
 						}
 						break;
 					}
-					case SAINT_ALTAR_1:
-					case SAINT_ALTAR_2:
-					case SAINT_ALTAR_3:
-					case SAINT_ALTAR_4:
+					case SAINT_ALTAR_1, SAINT_ALTAR_2, SAINT_ALTAR_3, SAINT_ALTAR_4:
 					{
 						if ((npcId - 31507) == qs.getCond())
 						{

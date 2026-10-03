@@ -142,19 +142,7 @@ public class Q00333_HuntOfTheBlackLion extends Quest
 				}
 				break;
 			}
-			case "30735-05.html":
-			case "30735-06.html":
-			case "30735-07.html":
-			case "30735-08.html":
-			case "30735-09.html":
-			case "30130-05.html":
-			case "30531-05.html":
-			case "30735-21.html":
-			case "30735-24a.html":
-			case "30735-25b.html":
-			case "30736-06.html":
-			case "30736-09.html":
-			case "30737-07.html":
+			case "30735-05.html", "30735-06.html", "30735-07.html", "30735-08.html", "30735-09.html", "30130-05.html", "30531-05.html", "30735-21.html", "30735-24a.html", "30735-25b.html", "30736-06.html", "30736-09.html", "30737-07.html":
 			{
 				htmltext = event;
 				break;
@@ -937,8 +925,7 @@ public class Q00333_HuntOfTheBlackLion extends Quest
 					}
 					break;
 				}
-				case DELU_LIZARDMAN:
-				case DELU_LIZARDMAN_SCOUT:
+				case DELU_LIZARDMAN, DELU_LIZARDMAN_SCOUT:
 				{
 					if (hasQuestItems(killer, SOPHYAS_3RD_ORDER))
 					{

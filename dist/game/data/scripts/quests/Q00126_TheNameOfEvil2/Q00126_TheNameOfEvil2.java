@@ -94,8 +94,7 @@ public class Q00126_TheNameOfEvil2 extends Quest
 				}
 				break;
 			}
-			case "32119-4a.html":
-			case "32119-5b.html":
+			case "32119-4a.html", "32119-5b.html":
 			{
 				playSound(player, QuestSound.ETCSOUND_ELROKI_SONG_1ST);
 				break;
@@ -124,8 +123,7 @@ public class Q00126_TheNameOfEvil2 extends Quest
 				}
 				break;
 			}
-			case "32120-4a.html":
-			case "32120-5b.html":
+			case "32120-4a.html", "32120-5b.html":
 			{
 				playSound(player, QuestSound.ETCSOUND_ELROKI_SONG_2ND);
 				break;
@@ -154,8 +152,7 @@ public class Q00126_TheNameOfEvil2 extends Quest
 				}
 				break;
 			}
-			case "32121-4a.html":
-			case "32121-5b.html":
+			case "32121-4a.html", "32121-5b.html":
 			{
 				playSound(player, QuestSound.ETCSOUND_ELROKI_SONG_3RD);
 				break;
@@ -449,23 +446,7 @@ public class Q00126_TheNameOfEvil2 extends Quest
 								htmltext = "32115-1c.html";
 								break;
 							}
-							case 3:
-							case 4:
-							case 5:
-							case 6:
-							case 7:
-							case 8:
-							case 9:
-							case 10:
-							case 11:
-							case 12:
-							case 13:
-							case 14:
-							case 15:
-							case 16:
-							case 17:
-							case 18:
-							case 19:
+							case 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19:
 							{
 								htmltext = "32115-2.html";
 								break;
@@ -538,10 +519,7 @@ public class Q00126_TheNameOfEvil2 extends Quest
 				{
 					switch (qs.getCond())
 					{
-						case 1:
-						case 2:
-						case 3:
-						case 4:
+						case 1, 2, 3, 4:
 						{
 							htmltext = "32120-1.html";
 							break;
@@ -577,13 +555,7 @@ public class Q00126_TheNameOfEvil2 extends Quest
 				{
 					switch (qs.getCond())
 					{
-						case 1:
-						case 2:
-						case 3:
-						case 4:
-						case 5:
-						case 6:
-						case 7:
+						case 1, 2, 3, 4, 5, 6, 7:
 						{
 							htmltext = "32121-1.html";
 							break;
@@ -619,16 +591,7 @@ public class Q00126_TheNameOfEvil2 extends Quest
 				{
 					switch (qs.getCond())
 					{
-						case 1:
-						case 2:
-						case 3:
-						case 4:
-						case 5:
-						case 6:
-						case 7:
-						case 8:
-						case 9:
-						case 10:
+						case 1, 2, 3, 4, 5, 6, 7, 8, 9, 10:
 						{
 							htmltext = "32122-1.html";
 							break;
@@ -704,23 +667,7 @@ public class Q00126_TheNameOfEvil2 extends Quest
 				{
 					switch (qs.getCond())
 					{
-						case 1:
-						case 2:
-						case 3:
-						case 4:
-						case 5:
-						case 6:
-						case 7:
-						case 8:
-						case 9:
-						case 10:
-						case 11:
-						case 12:
-						case 13:
-						case 14:
-						case 15:
-						case 16:
-						case 17:
+						case 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17:
 						{
 							htmltext = "32109-1a.html";
 							break;

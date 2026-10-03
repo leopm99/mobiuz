@@ -105,8 +105,7 @@ public class Q00411_PathOfTheAssassin extends Quest
 				}
 				break;
 			}
-			case "30382-02.html":
-			case "30382-04.html":
+			case "30382-02.html", "30382-04.html":
 			{
 				htmltext = event;
 				break;
@@ -122,10 +121,7 @@ public class Q00411_PathOfTheAssassin extends Quest
 				}
 				break;
 			}
-			case "30419-02.html":
-			case "30419-03.html":
-			case "30419-04.html":
-			case "30419-06.html":
+			case "30419-02.html", "30419-03.html", "30419-04.html", "30419-06.html":
 			{
 				htmltext = event;
 				break;

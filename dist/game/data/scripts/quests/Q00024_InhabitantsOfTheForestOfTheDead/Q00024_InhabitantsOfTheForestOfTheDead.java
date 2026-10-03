@@ -110,13 +110,7 @@ public class Q00024_InhabitantsOfTheForestOfTheDead extends Quest
 				st.setCond(5, true);
 				break;
 			}
-			case "31389-06.html":
-			case "31389-07.html":
-			case "31389-10.html":
-			case "31389-11.html":
-			case "31389-12.html":
-			case "31389-16.html":
-			case "31389-17.html":
+			case "31389-06.html", "31389-07.html", "31389-10.html", "31389-11.html", "31389-12.html", "31389-16.html", "31389-17.html":
 			{
 				break;
 			}
@@ -165,15 +159,7 @@ public class Q00024_InhabitantsOfTheForestOfTheDead extends Quest
 				st.setCond(9, true);
 				break;
 			}
-			case "31532-02.html":
-			case "31532-03.html":
-			case "31532-09.html":
-			case "31532-12.html":
-			case "31532-13.html":
-			case "31532-15.html":
-			case "31532-16.html":
-			case "31532-17.html":
-			case "31532-18.html":
+			case "31532-02.html", "31532-03.html", "31532-09.html", "31532-12.html", "31532-13.html", "31532-15.html", "31532-16.html", "31532-17.html", "31532-18.html":
 			{
 				break;
 			}
@@ -206,19 +192,7 @@ public class Q00024_InhabitantsOfTheForestOfTheDead extends Quest
 				st.exitQuest(false, true);
 				break;
 			}
-			case "31522-02.html":
-			case "31522-05.html":
-			case "31522-06.html":
-			case "31522-07.html":
-			case "31522-10.html":
-			case "31522-11.html":
-			case "31522-12.html":
-			case "31522-13.html":
-			case "31522-14.html":
-			case "31522-15.html":
-			case "31522-16.html":
-			case "31522-19.html":
-			case "31522-20.html":
+			case "31522-02.html", "31522-05.html", "31522-06.html", "31522-07.html", "31522-10.html", "31522-11.html", "31522-12.html", "31522-13.html", "31522-14.html", "31522-15.html", "31522-16.html", "31522-19.html", "31522-20.html":
 			{
 				break;
 			}
@@ -298,8 +272,7 @@ public class Q00024_InhabitantsOfTheForestOfTheDead extends Quest
 								htmltext = "31389-20.html";
 								break;
 							}
-							case 6:
-							case 8:
+							case 6, 8:
 							{
 								htmltext = "31389-22.html";
 								break;
@@ -409,8 +382,7 @@ public class Q00024_InhabitantsOfTheForestOfTheDead extends Quest
 							}
 							break;
 						}
-						case 9:
-						case 10:
+						case 9, 10:
 						{
 							htmltext = "31532-20.html";
 							break;

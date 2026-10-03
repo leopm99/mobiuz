@@ -134,25 +134,7 @@ public class Q00216_TrialOfTheGuildsman extends Quest
 				}
 				break;
 			}
-			case "30103-04.htm":
-			case "30103-05.htm":
-			case "30103-05a.html":
-			case "30103-06a.html":
-			case "30103-06b.html":
-			case "30103-06c.html":
-			case "30103-07a.html":
-			case "30103-07b.html":
-			case "30103-07c.html":
-			case "30210-02.html":
-			case "30210-03.html":
-			case "30210-08.html":
-			case "30210-09.html":
-			case "30210-11a.html":
-			case "30283-03a.html":
-			case "30283-03b.html":
-			case "30283-04.html":
-			case "30298-03.html":
-			case "30298-05a.html":
+			case "30103-04.htm", "30103-05.htm", "30103-05a.html", "30103-06a.html", "30103-06b.html", "30103-06c.html", "30103-07a.html", "30103-07b.html", "30103-07c.html", "30210-02.html", "30210-03.html", "30210-08.html", "30210-09.html", "30210-11a.html", "30283-03a.html", "30283-03b.html", "30283-04.html", "30298-03.html", "30298-05a.html":
 			{
 				htmltext = event;
 				break;
@@ -259,9 +241,7 @@ public class Q00216_TrialOfTheGuildsman extends Quest
 	{
 		switch (npc.getId())
 		{
-			case ANT:
-			case ANT_CAPTAIN:
-			case ANT_OVERSEER:
+			case ANT, ANT_CAPTAIN, ANT_OVERSEER:
 			{
 				final QuestState qs = getRandomPartyMemberState(killer, -1, 2, npc);
 				if (qs != null)
@@ -307,10 +287,7 @@ public class Q00216_TrialOfTheGuildsman extends Quest
 				}
 				break;
 			}
-			case MANDRAGORA_SPROUT1:
-			case MANDRAGORA_SAPLONG:
-			case MANDRAGORA_BLOSSOM:
-			case MANDRAGORA_SPROUT2:
+			case MANDRAGORA_SPROUT1, MANDRAGORA_SAPLONG, MANDRAGORA_BLOSSOM, MANDRAGORA_SPROUT2:
 			{
 				final QuestState qs = getQuestState(killer, false);
 				if ((qs != null) && qs.isStarted() && LocationUtil.checkIfInRange(Config.ALT_PARTY_RANGE, npc, killer, true) && hasQuestItems(killer, VALKONS_RECOMMENDATION) && !hasQuestItems(killer, MANDRAGORA_BERRY))
@@ -337,8 +314,7 @@ public class Q00216_TrialOfTheGuildsman extends Quest
 				}
 				break;
 			}
-			case STRAIN:
-			case GHOUL:
+			case STRAIN, GHOUL:
 			{
 				final QuestState qs = getRandomPartyMemberState(killer, -1, 2, npc);
 				if (qs != null)
@@ -372,11 +348,7 @@ public class Q00216_TrialOfTheGuildsman extends Quest
 				}
 				break;
 			}
-			case BREKA_ORC:
-			case BREKA_ORC_ARCHER:
-			case BREKA_ORC_SHAMAN:
-			case BREKA_ORC_OVERLORD:
-			case BREKA_ORC_WARRIOR:
+			case BREKA_ORC, BREKA_ORC_ARCHER, BREKA_ORC_SHAMAN, BREKA_ORC_OVERLORD, BREKA_ORC_WARRIOR:
 			{
 				final QuestState qs = getRandomPartyMemberState(killer, -1, 2, npc);
 				if (qs != null)
@@ -599,9 +571,7 @@ public class Q00216_TrialOfTheGuildsman extends Quest
 		boolean check = false;
 		switch (npc.getId())
 		{
-			case ANT:
-			case ANT_CAPTAIN:
-			case ANT_OVERSEER:
+			case ANT, ANT_CAPTAIN, ANT_OVERSEER:
 			{
 				check = hasQuestItems(player, ALLTRANS_INSTRUCTIONS, PINTERS_INSTRUCTIONS) && (getQuestItemsCount(player, AMBER_BEAD) < 70);
 				break;
@@ -616,8 +586,7 @@ public class Q00216_TrialOfTheGuildsman extends Quest
 				check = hasQuestItems(player, ALLTRANS_INSTRUCTIONS, NORMANS_LIST) && (getQuestItemsCount(player, BRAIDED_YARN) < 70);
 				break;
 			}
-			case STRAIN:
-			case GHOUL:
+			case STRAIN, GHOUL:
 			{
 				check = hasQuestItems(player, ALLTRANS_INSTRUCTIONS, NORMANS_LIST) && (getQuestItemsCount(player, GRAY_BONE_POWDER) < 70);
 				break;
@@ -627,11 +596,7 @@ public class Q00216_TrialOfTheGuildsman extends Quest
 				check = hasQuestItems(player, ALLTRANS_INSTRUCTIONS, NORMANS_LIST) && (getQuestItemsCount(player, RED_PIGMENT) < 70);
 				break;
 			}
-			case BREKA_ORC:
-			case BREKA_ORC_ARCHER:
-			case BREKA_ORC_SHAMAN:
-			case BREKA_ORC_OVERLORD:
-			case BREKA_ORC_WARRIOR:
+			case BREKA_ORC, BREKA_ORC_ARCHER, BREKA_ORC_SHAMAN, BREKA_ORC_OVERLORD, BREKA_ORC_WARRIOR:
 			{
 				check = hasQuestItems(player, ALLTRANS_INSTRUCTIONS, NORMANS_INSTRUCTIONS, DUNINGS_INSTRUCTIONS) && (getQuestItemsCount(player, DUNINGS_KEY) < 30);
 				break;

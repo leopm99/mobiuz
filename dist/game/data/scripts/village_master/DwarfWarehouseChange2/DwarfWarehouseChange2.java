@@ -74,9 +74,7 @@ public class DwarfWarehouseChange2 extends AbstractNpcAI
 		String htmltext = null;
 		switch (event)
 		{
-			case "30511-03.htm": // master_lv3_ware006fa
-			case "30511-04.htm": // master_lv3_ware007fa
-			case "30511-05.htm": // master_lv3_ware007fat
+			case "30511-03.htm", "30511-04.htm", "30511-05.htm": // master_lv3_ware006fa; master_lv3_ware007fa; master_lv3_ware007fat
 			{
 				htmltext = event;
 				break;

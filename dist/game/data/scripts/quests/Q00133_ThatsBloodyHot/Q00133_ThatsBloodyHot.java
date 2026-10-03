@@ -68,8 +68,7 @@ public class Q00133_ThatsBloodyHot extends Quest
 				}
 				break;
 			}
-			case "32264-06.html":
-			case "32264-07.html":
+			case "32264-06.html", "32264-07.html":
 			{
 				if (st.isCond(1))
 				{
@@ -83,8 +82,7 @@ public class Q00133_ThatsBloodyHot extends Quest
 				htmltext = event;
 				break;
 			}
-			case "32264-10.html":
-			case "32264-11.html":
+			case "32264-10.html", "32264-11.html":
 			{
 				if (st.isCond(2))
 				{

@@ -97,10 +97,7 @@ public class Sailren extends AbstractNpcAI
 	{
 		switch (event)
 		{
-			case "32109-01.html":
-			case "32109-01a.html":
-			case "32109-02a.html":
-			case "32109-03a.html":
+			case "32109-01.html", "32109-01a.html", "32109-02a.html", "32109-03a.html":
 			{
 				return event;
 			}

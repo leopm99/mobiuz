@@ -110,10 +110,7 @@ public class Q00215_TrialOfThePilgrim extends Quest
 				}
 				break;
 			}
-			case "30648-05.html":
-			case "30648-06.html":
-			case "30648-07.html":
-			case "30648-08.html":
+			case "30648-05.html", "30648-06.html", "30648-07.html", "30648-08.html":
 			{
 				htmltext = event;
 				break;

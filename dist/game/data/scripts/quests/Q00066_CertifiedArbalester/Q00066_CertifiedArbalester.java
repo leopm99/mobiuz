@@ -128,8 +128,7 @@ public class Q00066_CertifiedArbalester extends Quest
 				}
 				break;
 			}
-			case "30058-03.html":
-			case "30058-04.html":
+			case "30058-03.html", "30058-04.html":
 			{
 				if (qs.isMemoState(7))
 				{
@@ -176,8 +175,7 @@ public class Q00066_CertifiedArbalester extends Quest
 				}
 				break;
 			}
-			case "30171-06.html":
-			case "30171-07.html":
+			case "30171-06.html", "30171-07.html":
 			{
 				if (qs.isMemoState(24))
 				{
@@ -205,10 +203,7 @@ public class Q00066_CertifiedArbalester extends Quest
 				}
 				break;
 			}
-			case "30458-05.html":
-			case "30458-06.html":
-			case "30458-07.html":
-			case "30458-08.html":
+			case "30458-05.html", "30458-06.html", "30458-07.html", "30458-08.html":
 			{
 				if (qs.isMemoState(6))
 				{
@@ -226,9 +221,7 @@ public class Q00066_CertifiedArbalester extends Quest
 				}
 				break;
 			}
-			case "30464-03.html":
-			case "30464-04.html":
-			case "30464-05.html":
+			case "30464-03.html", "30464-04.html", "30464-05.html":
 			{
 				if (qs.isMemoState(2))
 				{
@@ -262,11 +255,7 @@ public class Q00066_CertifiedArbalester extends Quest
 				htmltext = event;
 				break;
 			}
-			case "30717-03.html":
-			case "30717-05.html":
-			case "30717-06.html":
-			case "30717-07.html":
-			case "30717-08.html":
+			case "30717-03.html", "30717-05.html", "30717-06.html", "30717-07.html", "30717-08.html":
 			{
 				if (qs.isMemoState(28))
 				{
@@ -350,8 +339,7 @@ public class Q00066_CertifiedArbalester extends Quest
 				}
 				break;
 			}
-			case "32220-09.html":
-			case "32220-10.html":
+			case "32220-09.html", "32220-10.html":
 			{
 				if (qs.isMemoState(13))
 				{
@@ -359,9 +347,7 @@ public class Q00066_CertifiedArbalester extends Quest
 				}
 				break;
 			}
-			case "32220-11.html":
-			case "32220-12.html":
-			case "32220-13.html":
+			case "32220-11.html", "32220-12.html", "32220-13.html":
 			{
 				if (qs.isMemoState(13))
 				{
@@ -391,12 +377,7 @@ public class Q00066_CertifiedArbalester extends Quest
 				}
 				break;
 			}
-			case "32220-19.html":
-			case "32220-21.html":
-			case "32220-22.html":
-			case "32220-23.html":
-			case "32220-24.html":
-			case "32220-25.html":
+			case "32220-19.html", "32220-21.html", "32220-22.html", "32220-23.html", "32220-24.html", "32220-25.html":
 			{
 				if (qs.isMemoState(31))
 				{
@@ -427,8 +408,7 @@ public class Q00066_CertifiedArbalester extends Quest
 		{
 			switch (npc.getId())
 			{
-				case GRANITIC_GOLEM:
-				case HANGMAN_TREE:
+				case GRANITIC_GOLEM, HANGMAN_TREE:
 				{
 					if (qs.isMemoState(8) && (getQuestItemsCount(killer, MANUSCRIPT_PAGE) < 30))
 					{
@@ -480,8 +460,7 @@ public class Q00066_CertifiedArbalester extends Quest
 					}
 					break;
 				}
-				case GHOUL:
-				case DEAD_SEEKER:
+				case GHOUL, DEAD_SEEKER:
 				{
 					if (qs.isMemoState(8) && (getQuestItemsCount(killer, MANUSCRIPT_PAGE) < 30))
 					{
@@ -548,8 +527,7 @@ public class Q00066_CertifiedArbalester extends Quest
 					}
 					break;
 				}
-				case TIMAK_ORC:
-				case TIMAK_ORC_ARCHER:
+				case TIMAK_ORC, TIMAK_ORC_ARCHER:
 				{
 					if (qs.isMemoState(32))
 					{
@@ -566,8 +544,7 @@ public class Q00066_CertifiedArbalester extends Quest
 					}
 					break;
 				}
-				case DELU_LIZARDMAN_SHAMAN:
-				case DELU_LIZARDMAN_SUPPLIER:
+				case DELU_LIZARDMAN_SHAMAN, DELU_LIZARDMAN_SUPPLIER:
 				{
 					if (qs.isMemoState(3) && (getQuestItemsCount(killer, ENMITY_CRYSTAL) < 30))
 					{

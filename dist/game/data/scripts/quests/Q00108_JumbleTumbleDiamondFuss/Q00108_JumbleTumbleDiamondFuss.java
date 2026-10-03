@@ -191,11 +191,7 @@ public class Q00108_JumbleTumbleDiamondFuss extends Quest
 								}
 								break;
 							}
-							case 2:
-							case 3:
-							case 4:
-							case 5:
-							case 6:
+							case 2, 3, 4, 5, 6:
 							{
 								if (hasAtLeastOneQuestItem(talker, REEPS_CONTRACT, ELVEN_WINE, BRUNONS_DICE, BRUNONS_CONTRACT))
 								{
@@ -214,10 +210,7 @@ public class Q00108_JumbleTumbleDiamondFuss extends Quest
 								}
 								break;
 							}
-							case 8:
-							case 9:
-							case 10:
-							case 11:
+							case 8, 9, 10, 11:
 							{
 								if (hasAtLeastOneQuestItem(talker, COAL_PIECE, BRUNONS_LETTER, BERRY_TART, BAT_DIAGRAM))
 								{
@@ -454,9 +447,7 @@ public class Q00108_JumbleTumbleDiamondFuss extends Quest
 						}
 						break;
 					}
-					case 10:
-					case 11:
-					case 12:
+					case 10, 11, 12:
 					{
 						if (hasAtLeastOneQuestItem(talker, BERRY_TART, BAT_DIAGRAM, STAR_DIAMOND))
 						{
@@ -490,8 +481,7 @@ public class Q00108_JumbleTumbleDiamondFuss extends Quest
 						}
 						break;
 					}
-					case 11:
-					case 12:
+					case 11, 12:
 					{
 						htmltext = "30521-03.html";
 						break;
@@ -553,8 +543,7 @@ public class Q00108_JumbleTumbleDiamondFuss extends Quest
 		{
 			switch (npc.getId())
 			{
-				case GOBLIN_BRIGAND_LEADER:
-				case GOBLIN_BRIGAND_LIEUTENANT:
+				case GOBLIN_BRIGAND_LEADER, GOBLIN_BRIGAND_LIEUTENANT:
 				{
 					if (qs.isCond(5) && hasQuestItems(killer, BRUNONS_CONTRACT))
 					{

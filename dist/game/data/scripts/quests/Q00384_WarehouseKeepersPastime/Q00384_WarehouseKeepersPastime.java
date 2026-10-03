@@ -210,40 +210,16 @@ public class Q00384_WarehouseKeepersPastime extends Quest
 							}
 							return "30182-11.html";
 						}
-						case 10:
-						case 11:
-						case 12:
-						case 13:
-						case 14:
-						case 15:
-						case 16:
-						case 17:
-						case 18:
+						case 10, 11, 12, 13, 14, 15, 16, 17, 18:
 						{
 							selectBingoNumber(qs, (ask - 10) + 1);
 							return fillBoard(qs, getHtm(player, "30182-13.html"));
 						}
-						case 19:
-						case 20:
-						case 21:
-						case 22:
-						case 23:
-						case 24:
-						case 25:
-						case 26:
-						case 27:
+						case 19, 20, 21, 22, 23, 24, 25, 26, 27:
 						{
 							return takeHtml(player, qs, (ask - 18), CLIFF);
 						}
-						case 55:
-						case 56:
-						case 57:
-						case 58:
-						case 59:
-						case 60:
-						case 61:
-						case 62:
-						case 63:
+						case 55, 56, 57, 58, 59, 60, 61, 62, 63:
 						{
 							return beforeReward(player, qs, (ask - 54), CLIFF);
 						}
@@ -290,40 +266,16 @@ public class Q00384_WarehouseKeepersPastime extends Quest
 							}
 							return "30685-11.html";
 						}
-						case 10:
-						case 11:
-						case 12:
-						case 13:
-						case 14:
-						case 15:
-						case 16:
-						case 17:
-						case 18:
+						case 10, 11, 12, 13, 14, 15, 16, 17, 18:
 						{
 							selectBingoNumber(qs, (ask - 9));
 							return fillBoard(qs, getHtm(player, "30685-13.html"));
 						}
-						case 19:
-						case 20:
-						case 21:
-						case 22:
-						case 23:
-						case 24:
-						case 25:
-						case 26:
-						case 27:
+						case 19, 20, 21, 22, 23, 24, 25, 26, 27:
 						{
 							return takeHtml(player, qs, (ask - 18), WAREHOUSE_CHIEF_BAXT);
 						}
-						case 55:
-						case 56:
-						case 57:
-						case 58:
-						case 59:
-						case 60:
-						case 61:
-						case 62:
-						case 63:
+						case 55, 56, 57, 58, 59, 60, 61, 62, 63:
 						{
 							return beforeReward(player, qs, (ask - 54), WAREHOUSE_CHIEF_BAXT);
 						}

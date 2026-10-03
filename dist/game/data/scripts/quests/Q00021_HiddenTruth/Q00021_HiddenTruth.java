@@ -81,23 +81,7 @@ public class Q00021_HiddenTruth extends Quest
 		{
 			switch (event)
 			{
-				case "31328-02.html":
-				case "31328-03.html":
-				case "31328-04.html":
-				case "31522-01.htm":
-				case "31522-04.html":
-				case "31523-02.html":
-				case "31524-02.html":
-				case "31524-03.html":
-				case "31524-04.html":
-				case "31524-05.html":
-				case "31526-01.html":
-				case "31526-02.html":
-				case "31526-04.html":
-				case "31526-05.html":
-				case "31526-06.html":
-				case "31526-12.html":
-				case "31526-13.html":
+				case "31328-02.html", "31328-03.html", "31328-04.html", "31522-01.htm", "31522-04.html", "31523-02.html", "31524-02.html", "31524-03.html", "31524-04.html", "31524-05.html", "31526-01.html", "31526-02.html", "31526-04.html", "31526-05.html", "31526-06.html", "31526-12.html", "31526-13.html":
 				{
 					htmltext = event;
 					break;

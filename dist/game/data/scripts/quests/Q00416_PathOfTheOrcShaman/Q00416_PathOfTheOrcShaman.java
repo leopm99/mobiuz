@@ -509,8 +509,7 @@ public class Q00416_PathOfTheOrcShaman extends Quest
 				{
 					switch (qs.getMemoState())
 					{
-						case 102:
-						case 103:
+						case 102, 103:
 						{
 							htmltext = "32090-01.html";
 							break;

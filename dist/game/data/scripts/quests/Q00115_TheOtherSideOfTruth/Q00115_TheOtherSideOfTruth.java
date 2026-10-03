@@ -118,10 +118,7 @@ public class Q00115_TheOtherSideOfTruth extends Quest
 				}
 				break;
 			}
-			case "32020-08.html":
-			case "32020-09.html":
-			case "32020-13.html":
-			case "32020-14.html":
+			case "32020-08.html", "32020-09.html", "32020-13.html", "32020-14.html":
 			{
 				htmltext = event;
 				break;
@@ -450,8 +447,7 @@ public class Q00115_TheOtherSideOfTruth extends Quest
 								}
 								break;
 							}
-							case 7:
-							case 8:
+							case 7, 8:
 							{
 								htmltext = "32020-21.html";
 								break;
@@ -503,8 +499,7 @@ public class Q00115_TheOtherSideOfTruth extends Quest
 								htmltext = "32018-02.html";
 								break;
 							}
-							case 3:
-							case 4:
+							case 3, 4:
 							{
 								htmltext = "32018-03.html";
 								break;

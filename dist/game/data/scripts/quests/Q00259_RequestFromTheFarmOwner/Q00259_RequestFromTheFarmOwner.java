@@ -92,18 +92,12 @@ public class Q00259_RequestFromTheFarmOwner extends Quest
 		
 		switch (event)
 		{
-			case "30405-03.html":
-			case "30405-05b.html":
-			case "30405-05d.html":
-			case "30497-07.html":
+			case "30405-03.html", "30405-05b.html", "30405-05d.html", "30497-07.html":
 			{
 				htmltext = event;
 				break;
 			}
-			case "30405-04.html":
-			case "30405-05.html":
-			case "30405-05a.html":
-			case "30405-05c.html":
+			case "30405-04.html", "30405-05.html", "30405-05a.html", "30405-05c.html":
 			{
 				if (getQuestItemsCount(player, SPIDER_SKIN) >= SKIN_COUNT)
 				{

@@ -144,13 +144,7 @@ public class Q00420_LittleWing extends Quest
 		
 		switch (event)
 		{
-			case "30610-02.html":
-			case "30610-03.html":
-			case "30610-04.html":
-			case "30711-02.html":
-			case "30747-05.html":
-			case "30747-06.html":
-			case "30751-02.html":
+			case "30610-02.html", "30610-03.html", "30610-04.html", "30711-02.html", "30747-05.html", "30747-06.html", "30751-02.html":
 			{
 				htmltext = event;
 				break;
@@ -267,8 +261,7 @@ public class Q00420_LittleWing extends Quest
 				}
 				break;
 			}
-			case "30747-02.html":
-			case "30747-04.html":
+			case "30747-02.html", "30747-04.html":
 			{
 				if (qs.isCond(4) && ((getQuestItemsCount(player, FAIRY_STONE) + getQuestItemsCount(player, DELUXE_FAIRY_STONE)) > 0))
 				{
@@ -282,8 +275,7 @@ public class Q00420_LittleWing extends Quest
 				}
 				break;
 			}
-			case "30747-07.html":
-			case "30747-08.html":
+			case "30747-07.html", "30747-08.html":
 			{
 				if (qs.isCond(5) && (getQuestItemsCount(player, MONKSHOOD_JUICE) == 0))
 				{

@@ -196,8 +196,7 @@ public class MithrilMine extends AbstractInstance
 	{
 		switch (npc.getId())
 		{
-			case TARUN:
-			case KRUN:
+			case TARUN, KRUN:
 			{
 				final QuestState qs = talker.getQuestState(Q10284_AcquisitionOfDivineSword.class.getSimpleName());
 				if ((qs != null) && qs.isMemoState(2))

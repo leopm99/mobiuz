@@ -154,8 +154,7 @@ public class Q00287_FiguringItOut extends Quest
 				qs.exitQuest(true, true);
 				break;
 			}
-			case "32742-02.htm":
-			case "32742-10.html":
+			case "32742-02.htm", "32742-10.html":
 			{
 				break;
 			}

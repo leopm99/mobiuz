@@ -94,9 +94,7 @@ public class Q00193_SevenSignsDyingMessage extends Quest
 				htmltext = event;
 				break;
 			}
-			case "32569-02.html":
-			case "32569-03.html":
-			case "32569-04.html":
+			case "32569-02.html", "32569-03.html", "32569-04.html":
 			{
 				if (qs.isCond(1) && hasQuestItems(player, JACOBS_NECKLACE))
 				{
@@ -125,8 +123,7 @@ public class Q00193_SevenSignsDyingMessage extends Quest
 				}
 				break;
 			}
-			case "32569-10.html":
-			case "32569-11.html":
+			case "32569-10.html", "32569-11.html":
 			{
 				if (qs.isCond(5) && hasQuestItems(player, SCULPTURE_OF_DOUBT))
 				{

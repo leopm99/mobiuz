@@ -73,14 +73,11 @@ public class Jude extends AbstractNpcAI
 	{
 		switch (HellboundEngine.getInstance().getLevel())
 		{
-			case 0:
-			case 1:
-			case 2:
+			case 0, 1, 2:
 			{
 				return "32356-01.htm";
 			}
-			case 3:
-			case 4:
+			case 3, 4:
 			{
 				return "32356-01c.htm";
 			}

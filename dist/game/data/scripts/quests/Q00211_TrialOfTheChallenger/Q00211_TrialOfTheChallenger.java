@@ -97,10 +97,7 @@ public class Q00211_TrialOfTheChallenger extends Quest
 				htmltext = event;
 				break;
 			}
-			case "30645-07.html":
-			case "30645-08.html":
-			case "30646-02.html":
-			case "30646-03.html":
+			case "30645-07.html", "30645-08.html", "30646-02.html", "30646-03.html":
 			{
 				if (qs.isStarted())
 				{
@@ -180,8 +177,7 @@ public class Q00211_TrialOfTheChallenger extends Quest
 				}
 				break;
 			}
-			case "30646-04.html":
-			case "30646-05.html":
+			case "30646-04.html", "30646-05.html":
 			{
 				if (qs.isCond(7) && hasQuestItems(player, WATCHERS_EYE2))
 				{
@@ -247,9 +243,7 @@ public class Q00211_TrialOfTheChallenger extends Quest
 							}
 							break;
 						}
-						case 8:
-						case 9:
-						case 10:
+						case 8, 9, 10:
 						{
 							htmltext = "30644-10.html";
 							break;
@@ -299,8 +293,7 @@ public class Q00211_TrialOfTheChallenger extends Quest
 						htmltext = "30645-06.html";
 						break;
 					}
-					case 8:
-					case 9:
+					case 8, 9:
 					{
 						htmltext = "30645-09.html";
 						break;

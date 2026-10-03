@@ -296,8 +296,7 @@ public class Q00038_DragonFangs extends Quest
 	{
 		switch (npc.getId())
 		{
-			case LIZARDMAN_SUB_LEADER:
-			case LIZARDMAN_SENTINEL:
+			case LIZARDMAN_SUB_LEADER, LIZARDMAN_SENTINEL:
 			{
 				final QuestState qs = getRandomPartyMemberState(killer, 1, 3, npc);
 				if ((qs != null) && giveItemRandomly(qs.getPlayer(), npc, FEATHER.getId(), 1, FEATHER.getCount(), 1, true))
@@ -306,8 +305,7 @@ public class Q00038_DragonFangs extends Quest
 				}
 				break;
 			}
-			case LIZARDMAN_LEADER:
-			case LIZARDMAN_SHAMAN:
+			case LIZARDMAN_LEADER, LIZARDMAN_SHAMAN:
 			{
 				final QuestState qs = getRandomPartyMemberState(killer, 6, 3, npc);
 				if ((qs != null) && giveItemRandomly(qs.getPlayer(), npc, TOTEM_TOOTH_2ND.getId(), 1, TOTEM_TOOTH_2ND.getCount(), 0.5, true))

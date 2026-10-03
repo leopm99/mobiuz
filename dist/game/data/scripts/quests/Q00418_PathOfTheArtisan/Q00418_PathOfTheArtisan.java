@@ -137,25 +137,7 @@ public class Q00418_PathOfTheArtisan extends Quest
 				htmltext = event;
 				break;
 			}
-			case "30298-02.html":
-			case "30317-02.html":
-			case "30317-03.html":
-			case "30317-05.html":
-			case "30317-06.html":
-			case "30317-11.html":
-			case "30531-02.html":
-			case "30531-03.html":
-			case "30531-04.html":
-			case "31956-02.html":
-			case "31956-03.html":
-			case "32052-02.html":
-			case "32052-03.html":
-			case "32052-04.html":
-			case "32052-05.html":
-			case "32052-06.html":
-			case "32052-10.html":
-			case "32052-11.html":
-			case "32052-12.html":
+			case "30298-02.html", "30317-02.html", "30317-03.html", "30317-05.html", "30317-06.html", "30317-11.html", "30531-02.html", "30531-03.html", "30531-04.html", "31956-02.html", "31956-03.html", "32052-02.html", "32052-03.html", "32052-04.html", "32052-05.html", "32052-06.html", "32052-10.html", "32052-11.html", "32052-12.html":
 			{
 				htmltext = event;
 				break;
@@ -298,8 +280,7 @@ public class Q00418_PathOfTheArtisan extends Quest
 				}
 				break;
 			}
-			case "31963-02.html":
-			case "31963-06.html":
+			case "31963-02.html", "31963-06.html":
 			{
 				if (qs.isMemoState(100))
 				{

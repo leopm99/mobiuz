@@ -177,8 +177,7 @@ public class Q00065_CertifiedSoulBreaker extends Quest
 				}
 				break;
 			}
-			case "32138-02.html":
-			case "32138-03.html":
+			case "32138-02.html", "32138-03.html":
 			{
 				if (qs.isMemoState(1))
 				{
@@ -206,8 +205,7 @@ public class Q00065_CertifiedSoulBreaker extends Quest
 				}
 				break;
 			}
-			case "32138-10.html":
-			case "32138-11.html":
+			case "32138-10.html", "32138-11.html":
 			{
 				if (qs.isMemoState(23))
 				{

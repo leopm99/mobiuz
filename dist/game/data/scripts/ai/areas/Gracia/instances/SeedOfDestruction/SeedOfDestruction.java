@@ -1054,8 +1054,7 @@ public class SeedOfDestruction extends AbstractNpcAI
 				spawn(world, SQUARE_SPAWNS_MAIN, true, false);
 				break;
 			}
-			case 2:
-			case 3:
+			case 2, 3:
 			{
 				// handled elsewhere
 				return;

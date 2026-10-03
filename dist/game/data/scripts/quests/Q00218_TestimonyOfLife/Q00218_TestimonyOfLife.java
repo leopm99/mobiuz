@@ -139,21 +139,7 @@ public class Q00218_TestimonyOfLife extends Quest
 				}
 				break;
 			}
-			case "30154-02.html":
-			case "30154-03.html":
-			case "30154-04.html":
-			case "30154-05.html":
-			case "30154-06.html":
-			case "30300-02.html":
-			case "30300-03.html":
-			case "30300-04.html":
-			case "30300-05.html":
-			case "30300-09.html":
-			case "30300-07a.html":
-			case "30371-02.html":
-			case "30371-10.html":
-			case "30419-02.html":
-			case "30419-03.html":
+			case "30154-02.html", "30154-03.html", "30154-04.html", "30154-05.html", "30154-06.html", "30300-02.html", "30300-03.html", "30300-04.html", "30300-05.html", "30300-09.html", "30300-07a.html", "30371-02.html", "30371-10.html", "30419-02.html", "30419-03.html":
 			{
 				htmltext = event;
 				break;
@@ -263,11 +249,7 @@ public class Q00218_TestimonyOfLife extends Quest
 		{
 			switch (npc.getId())
 			{
-				case ANT_RECRUIT:
-				case ANT_PATROL:
-				case ANT_GUARD:
-				case ANT_SOLDIER:
-				case ANT_WARRIOR_CAPTAIN:
+				case ANT_RECRUIT, ANT_PATROL, ANT_GUARD, ANT_SOLDIER, ANT_WARRIOR_CAPTAIN:
 				{
 					if (hasQuestItems(killer, MOONFLOWER_CHARM, PUSHKINS_LIST) && (getQuestItemsCount(killer, ANT_SOLDIER_ACID) < 20))
 					{
@@ -367,8 +349,7 @@ public class Q00218_TestimonyOfLife extends Quest
 					}
 					break;
 				}
-				case LETO_LIZARDMAN_SHAMAN:
-				case LETO_LIZARDMAN_OVERLORD:
+				case LETO_LIZARDMAN_SHAMAN, LETO_LIZARDMAN_OVERLORD:
 				{
 					if (hasQuestItems(killer, ISAELS_INSTRUCTIONS))
 					{

@@ -87,9 +87,7 @@ public class Q00131_BirdInACage extends Quest
 				}
 				break;
 			}
-			case "32264-09.html":
-			case "32264-10.html":
-			case "32264-11.html":
+			case "32264-09.html", "32264-10.html", "32264-11.html":
 			{
 				if (qs.isCond(2))
 				{
@@ -107,8 +105,7 @@ public class Q00131_BirdInACage extends Quest
 				}
 				break;
 			}
-			case "32264-14.html":
-			case "32264-15.html":
+			case "32264-14.html", "32264-15.html":
 			{
 				if (qs.isCond(3))
 				{

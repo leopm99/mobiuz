@@ -235,9 +235,7 @@ public class Q00456_DontKnowDontCare extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "32864-04.htm":
-			case "32864-05.htm":
-			case "32864-06.htm":
+			case "32864-04.htm", "32864-05.htm", "32864-06.htm":
 			{
 				if ((qs != null) && qs.isCreated())
 				{

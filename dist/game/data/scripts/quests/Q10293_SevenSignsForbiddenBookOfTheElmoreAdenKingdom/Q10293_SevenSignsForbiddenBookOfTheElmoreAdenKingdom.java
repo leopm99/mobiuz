@@ -66,11 +66,7 @@ public class Q10293_SevenSignsForbiddenBookOfTheElmoreAdenKingdom extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "32784-03.htm":
-			case "32784-05.html":
-			case "32861-13.html":
-			case "32863-02.html":
-			case "32863-03.html":
+			case "32784-03.htm", "32784-05.html", "32861-13.html", "32863-02.html", "32863-03.html":
 			{
 				htmltext = event;
 				break;
@@ -81,8 +77,7 @@ public class Q10293_SevenSignsForbiddenBookOfTheElmoreAdenKingdom extends Quest
 				htmltext = event;
 				break;
 			}
-			case "32784-07.html":
-			case "32784-08.html":
+			case "32784-07.html", "32784-08.html":
 			{
 				if (qs.isCond(8))
 				{
@@ -121,8 +116,7 @@ public class Q10293_SevenSignsForbiddenBookOfTheElmoreAdenKingdom extends Quest
 				}
 				break;
 			}
-			case "32596-03.html":
-			case "32596-04.html":
+			case "32596-03.html", "32596-04.html":
 			{
 				if ((qs.getCond() >= 1) && (qs.getCond() < 8))
 				{
@@ -130,8 +124,7 @@ public class Q10293_SevenSignsForbiddenBookOfTheElmoreAdenKingdom extends Quest
 				}
 				break;
 			}
-			case "32861-02.html":
-			case "32861-03.html":
+			case "32861-02.html", "32861-03.html":
 			{
 				if (qs.isCond(1))
 				{
@@ -184,10 +177,7 @@ public class Q10293_SevenSignsForbiddenBookOfTheElmoreAdenKingdom extends Quest
 				}
 				break;
 			}
-			case "32810-02.html":
-			case "32811-02.html":
-			case "32812-02.html":
-			case "32813-02.html":
+			case "32810-02.html", "32811-02.html", "32812-02.html", "32813-02.html":
 			{
 				if (qs.isCond(6))
 				{
@@ -339,8 +329,7 @@ public class Q10293_SevenSignsForbiddenBookOfTheElmoreAdenKingdom extends Quest
 						htmltext = "32861-10.html";
 						break;
 					}
-					case 6:
-					case 7:
+					case 6, 7:
 					{
 						htmltext = "32861-12.html";
 						break;

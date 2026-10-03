@@ -131,8 +131,7 @@ public class SilentValley extends AbstractNpcAI
 				}
 				break;
 			}
-			case GUARD1:
-			case GUARD2:
+			case GUARD1, GUARD2:
 			{
 				npc.setTarget(player);
 				npc.doCast(BLAZE.getSkill());

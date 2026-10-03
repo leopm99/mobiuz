@@ -115,13 +115,7 @@ public class Q00254_LegendaryTales extends Quest
 		
 		switch (event)
 		{
-			case "30754-02.html":
-			case "30754-03.html":
-			case "30754-04.htm":
-			case "30754-08.html":
-			case "30754-15.html":
-			case "30754-20.html":
-			case "30754-21.html":
+			case "30754-02.html", "30754-03.html", "30754-04.htm", "30754-08.html", "30754-15.html", "30754-20.html", "30754-21.html":
 			{
 				htmltext = event;
 				break;
@@ -167,17 +161,7 @@ public class Q00254_LegendaryTales extends Quest
 				htmltext = checkMask(qs, Bosses.MUSCLE_BOMBER) ? "30754-28.html" : "30754-18.html";
 				break;
 			}
-			case "13467": // Vesper Thrower
-			case "13466": // Vesper Singer
-			case "13465": // Vesper Caster
-			case "13464": // Vesper Retributer
-			case "13463": // Vesper Avenger
-			case "13457": // Vesper Cutter
-			case "13458": // Vesper Slasher
-			case "13459": // Vesper Buster
-			case "13460": // Vesper Sharper
-			case "13461": // Vesper Fighter
-			case "13462": // Vesper Stormer
+			case "13467", "13466", "13465", "13464", "13463", "13457", "13458", "13459", "13460", "13461", "13462": // Vesper Thrower; Vesper Singer; Vesper Caster; Vesper Retributer; Vesper Avenger; Vesper Cutter; Vesper Slasher; Vesper Buster; Vesper Sharper; Vesper Fighter; Vesper Stormer
 			{
 				if (qs.isCond(2) && (getQuestItemsCount(player, LARGE_DRAGON_SKULL) >= 7))
 				{

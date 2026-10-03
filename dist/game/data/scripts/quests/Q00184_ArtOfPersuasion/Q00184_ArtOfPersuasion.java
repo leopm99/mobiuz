@@ -81,8 +81,7 @@ public class Q00184_ArtOfPersuasion extends Quest
 				htmltext = player.getLevel() >= MIN_LEVEL ? event : "30621-03a.htm";
 				break;
 			}
-			case "30621-04.htm":
-			case "30621-05.htm":
+			case "30621-04.htm", "30621-05.htm":
 			{
 				htmltext = event;
 				break;

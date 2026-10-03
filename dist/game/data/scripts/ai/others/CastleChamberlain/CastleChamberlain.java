@@ -480,11 +480,7 @@ public class CastleChamberlain extends AbstractNpcAI
 		String htmltext = null;
 		switch (st.nextToken())
 		{
-			case "chamberlain-01.html":
-			case "manor-help-01.html":
-			case "manor-help-02.html":
-			case "manor-help-03.html":
-			case "manor-help-04.html":
+			case "chamberlain-01.html", "manor-help-01.html", "manor-help-02.html", "manor-help-03.html", "manor-help-04.html":
 			{
 				htmltext = event;
 				break;
@@ -766,8 +762,7 @@ public class CastleChamberlain extends AbstractNpcAI
 								html.replace("%ss_event%", "1000507");
 								break;
 							}
-							case SevenSigns.PERIOD_SEAL_VALIDATION:
-							case SevenSigns.PERIOD_COMP_RESULTS:
+							case SevenSigns.PERIOD_SEAL_VALIDATION, SevenSigns.PERIOD_COMP_RESULTS:
 							{
 								html.replace("%ss_event%", "1000508");
 								break;

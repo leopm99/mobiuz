@@ -167,8 +167,7 @@ public class Q10270_BirthOfTheSeed extends Quest
 				}
 				break;
 			}
-			case "32567-02.html":
-			case "32567-03.html":
+			case "32567-02.html", "32567-03.html":
 			{
 				if (qs.isMemoState(10))
 				{

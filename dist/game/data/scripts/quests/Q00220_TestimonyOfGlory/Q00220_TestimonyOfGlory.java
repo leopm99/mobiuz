@@ -153,14 +153,7 @@ public class Q00220_TestimonyOfGlory extends Quest
 				}
 				break;
 			}
-			case "30514-04.htm":
-			case "30514-07.html":
-			case "30571-02.html":
-			case "30615-03.html":
-			case "30616-03.html":
-			case "30642-02.html":
-			case "30642-06.html":
-			case "30642-08.html":
+			case "30514-04.htm", "30514-07.html", "30571-02.html", "30615-03.html", "30616-03.html", "30642-02.html", "30642-06.html", "30642-08.html":
 			{
 				htmltext = event;
 				break;
@@ -375,8 +368,7 @@ public class Q00220_TestimonyOfGlory extends Quest
 		{
 			switch (npc.getId())
 			{
-				case RAGNA_ORC_OVERLORD:
-				case RAGNA_ORC_SEER:
+				case RAGNA_ORC_OVERLORD, RAGNA_ORC_SEER:
 				{
 					switch (npc.getScriptValue())
 					{
@@ -436,8 +428,7 @@ public class Q00220_TestimonyOfGlory extends Quest
 		{
 			switch (npc.getId())
 			{
-				case TYRANT:
-				case TYRANT_KINGPIN:
+				case TYRANT, TYRANT_KINGPIN:
 				{
 					if (hasQuestItems(killer, VOKIANS_ORDER) && (getQuestItemsCount(killer, TYRANT_TALON) < 10))
 					{
@@ -517,12 +508,7 @@ public class Q00220_TestimonyOfGlory extends Quest
 					}
 					break;
 				}
-				case TIMAK_ORC:
-				case TIMAK_ORC_ARCHER:
-				case TIMAK_ORC_SOLDIER:
-				case TIMAK_ORC_WARRIOR:
-				case TIMAK_ORC_SHAMAN:
-				case TIMAK_ORC_OVERLORD:
+				case TIMAK_ORC, TIMAK_ORC_ARCHER, TIMAK_ORC_SOLDIER, TIMAK_ORC_WARRIOR, TIMAK_ORC_SHAMAN, TIMAK_ORC_OVERLORD:
 				{
 					if (hasQuestItems(killer, NECKLACE_OF_AUTHORITY, CHIANTA_3RD_ORDER) && (getQuestItemsCount(killer, TIMAK_ORC_HEAD) < 20))
 					{
@@ -543,8 +529,7 @@ public class Q00220_TestimonyOfGlory extends Quest
 					}
 					break;
 				}
-				case TAMLIN_ORC:
-				case TAMLIN_ORC_ARCHER:
+				case TAMLIN_ORC, TAMLIN_ORC_ARCHER:
 				{
 					if (hasQuestItems(killer, NECKLACE_OF_AUTHORITY, CHIANTA_3RD_ORDER) && (getQuestItemsCount(killer, TAMLIN_ORC_SKULL) < 20))
 					{
@@ -565,8 +550,7 @@ public class Q00220_TestimonyOfGlory extends Quest
 					}
 					break;
 				}
-				case RAGNA_ORC_OVERLORD:
-				case RAGNA_ORC_SEER:
+				case RAGNA_ORC_OVERLORD, RAGNA_ORC_SEER:
 				{
 					if (hasQuestItems(killer, TANAPIS_ORDER) && !hasQuestItems(killer, SCEPTER_OF_TANTOS))
 					{

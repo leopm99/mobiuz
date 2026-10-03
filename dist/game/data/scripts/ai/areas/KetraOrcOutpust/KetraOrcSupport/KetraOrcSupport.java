@@ -189,14 +189,12 @@ public class KetraOrcSupport extends AbstractNpcAI
 			{
 				switch (AllianceLevel)
 				{
-					case 1:
-					case 2:
+					case 1, 2:
 					{
 						htmltext = "31375-01.html";
 						break;
 					}
-					case 3:
-					case 4:
+					case 3, 4:
 					{
 						htmltext = "31375-02.html";
 						break;
@@ -218,9 +216,7 @@ public class KetraOrcSupport extends AbstractNpcAI
 			{
 				switch (AllianceLevel)
 				{
-					case 1:
-					case 2:
-					case 3:
+					case 1, 2, 3:
 					{
 						htmltext = "31376-01.html";
 						break;

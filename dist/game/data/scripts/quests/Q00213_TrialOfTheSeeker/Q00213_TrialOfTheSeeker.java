@@ -127,20 +127,7 @@ public class Q00213_TrialOfTheSeeker extends Quest
 				}
 				break;
 			}
-			case "30106-04.htm":
-			case "30064-02.html":
-			case "30064-07.html":
-			case "30064-16.html":
-			case "30064-17.html":
-			case "30064-19.html":
-			case "30684-02.html":
-			case "30684-03.html":
-			case "30684-04.html":
-			case "30684-06.html":
-			case "30684-07.html":
-			case "30684-08.html":
-			case "30684-09.html":
-			case "30684-10.html":
+			case "30106-04.htm", "30064-02.html", "30064-07.html", "30064-16.html", "30064-17.html", "30064-19.html", "30684-02.html", "30684-03.html", "30684-04.html", "30684-06.html", "30684-07.html", "30684-08.html", "30684-09.html", "30684-10.html":
 			{
 				htmltext = event;
 				break;

@@ -72,13 +72,7 @@ public class Q10284_AcquisitionOfDivineSword extends Quest
 				htmltext = event;
 				break;
 			}
-			case "32020-03.html":
-			case "32760-02a.html":
-			case "32760-02b.html":
-			case "32760-03a.html":
-			case "32760-03b.html":
-			case "32760-04a.html":
-			case "32760-04b.html":
+			case "32020-03.html", "32760-02a.html", "32760-02b.html", "32760-03a.html", "32760-03b.html", "32760-04a.html", "32760-04b.html":
 			{
 				if (qs.isMemoState(1))
 				{
@@ -180,10 +174,7 @@ public class Q10284_AcquisitionOfDivineSword extends Quest
 				}
 				break;
 			}
-			case "32654-02.html":
-			case "32654-03.html":
-			case "32653-02.html":
-			case "32653-03.html":
+			case "32654-02.html", "32654-03.html", "32653-02.html", "32653-03.html":
 			{
 				if (qs.isMemoState(2))
 				{

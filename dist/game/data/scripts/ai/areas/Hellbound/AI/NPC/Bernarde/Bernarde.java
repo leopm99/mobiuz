@@ -95,8 +95,7 @@ public class Bernarde extends AbstractNpcAI
 	{
 		switch (HellboundEngine.getInstance().getLevel())
 		{
-			case 0:
-			case 1:
+			case 0, 1:
 			{
 				return isTransformed(player) ? "32300-01a.htm" : "32300-01.htm";
 			}

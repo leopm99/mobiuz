@@ -593,53 +593,7 @@ public class Q00236_SeedsOfChaos extends Quest
 				}
 				break;
 			}
-			case "31387-02.html":
-			case "31387-04.html":
-			case "31387-06.html":
-			case "31387-07.html":
-			case "31387-08.html":
-			case "31522-02.html":
-			case "31522-03.html":
-			case "31522-04b.html":
-			case "31522-08a.html":
-			case "31522-11a.html":
-			case "32138-02.html":
-			case "32138-07.html":
-			case "32138-08.html":
-			case "32138-09.html":
-			case "32138-10.html":
-			case "32138-11.html":
-			case "32235-02a.html":
-			case "32235-03a.html":
-			case "32235-04a.html":
-			case "32235-05a.html":
-			case "32235-06a.html":
-			case "32235-08a.html":
-			case "32236-03.html":
-			case "32236-04.html":
-			case "32236-05.html":
-			case "32236-06.html":
-			case "32237-02.html":
-			case "32237-03.html":
-			case "32237-04.html":
-			case "32237-05.html":
-			case "32237-06.html":
-			case "32237-07.html":
-			case "32237-08.html":
-			case "32237-16.html":
-			case "32237-18.html":
-			case "32239-03.html":
-			case "32239-07.html":
-			case "32332-02b.html":
-			case "32332-03b.html":
-			case "32332-04b.html":
-			case "32334-10.html":
-			case "32334-11.html":
-			case "32334-12.html":
-			case "32334-13.html":
-			case "32334-14.html":
-			case "32334-15.html":
-			case "32334-16.html":
+			case "31387-02.html", "31387-04.html", "31387-06.html", "31387-07.html", "31387-08.html", "31522-02.html", "31522-03.html", "31522-04b.html", "31522-08a.html", "31522-11a.html", "32138-02.html", "32138-07.html", "32138-08.html", "32138-09.html", "32138-10.html", "32138-11.html", "32235-02a.html", "32235-03a.html", "32235-04a.html", "32235-05a.html", "32235-06a.html", "32235-08a.html", "32236-03.html", "32236-04.html", "32236-05.html", "32236-06.html", "32237-02.html", "32237-03.html", "32237-04.html", "32237-05.html", "32237-06.html", "32237-07.html", "32237-08.html", "32237-16.html", "32237-18.html", "32239-03.html", "32239-07.html", "32332-02b.html", "32332-03b.html", "32332-04b.html", "32334-10.html", "32334-11.html", "32334-12.html", "32334-13.html", "32334-14.html", "32334-15.html", "32334-16.html":
 			{
 				htmltext = event;
 				break;
@@ -665,15 +619,7 @@ public class Q00236_SeedsOfChaos extends Quest
 					}
 					break;
 				}
-				case SHOUT_OF_SPLENDOR:
-				case ALLIANCE_OF_SPLENDOR:
-				case ALLIANCE_OF_SPLENDOR_1:
-				case SIGNET_OF_SPLENDOR:
-				case CROWN_OF_SPLENDOR:
-				case FANG_OF_SPLENDOR:
-				case FANG_OF_SPLENDOR_1:
-				case WAILINGOF_SPLENDOR:
-				case WAILINGOF_SPLENDOR_1:
+				case SHOUT_OF_SPLENDOR, ALLIANCE_OF_SPLENDOR, ALLIANCE_OF_SPLENDOR_1, SIGNET_OF_SPLENDOR, CROWN_OF_SPLENDOR, FANG_OF_SPLENDOR, FANG_OF_SPLENDOR_1, WAILINGOF_SPLENDOR, WAILINGOF_SPLENDOR_1:
 				{
 					if (qs.isMemoState(21) && (getQuestItemsCount(killer, SHINING_MEDALLION) < 62) && (getRandom(100) < 70))
 					{
@@ -690,8 +636,7 @@ public class Q00236_SeedsOfChaos extends Quest
 					}
 					break;
 				}
-				case VAMPIRE_WIZARD:
-				case VAMPIRE_WIZARD_A:
+				case VAMPIRE_WIZARD, VAMPIRE_WIZARD_A:
 				{
 					if (qs.isMemoState(7) && !hasQuestItems(killer, BLOOD_JEWEL) && (getRandom(100) < 8))
 					{

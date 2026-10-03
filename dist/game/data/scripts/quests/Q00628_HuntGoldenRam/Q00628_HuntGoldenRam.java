@@ -112,8 +112,7 @@ public class Q00628_HuntGoldenRam extends Quest
 				}
 				break;
 			}
-			case "31554-12.html":
-			case "31554-13.html":
+			case "31554-12.html", "31554-13.html":
 			{
 				if (qs.isStarted())
 				{

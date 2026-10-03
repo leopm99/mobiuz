@@ -160,8 +160,7 @@ public class ItemSkillsTemplate implements IItemHandler
 	{
 		switch (item.getTemplate().getDefaultAction())
 		{
-			case CAPSULE:
-			case SKILL_REDUCE:
+			case CAPSULE, SKILL_REDUCE:
 			{
 				if (!hasConsumeSkill && item.getTemplate().hasImmediateEffect())
 				{

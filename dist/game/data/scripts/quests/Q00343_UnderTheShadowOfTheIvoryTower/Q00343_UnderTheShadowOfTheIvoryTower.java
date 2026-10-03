@@ -480,19 +480,7 @@ public class Q00343_UnderTheShadowOfTheIvoryTower extends Quest
 				htmltext = event;
 				break;
 			}
-			case "30834-04a.html":
-			case "30834-06a.html":
-			case "30834-09a.html":
-			case "30834-09b.html":
-			case "30834-11a.html":
-			case "30834-09.html":
-			case "30834-10.html":
-			case "30835-04.html":
-			case "30835-05.html":
-			case "30934-03a.html":
-			case "30935-01.html":
-			case "30935-01a.html":
-			case "30935-01b.html":
+			case "30834-04a.html", "30834-06a.html", "30834-09a.html", "30834-09b.html", "30834-11a.html", "30834-09.html", "30834-10.html", "30835-04.html", "30835-05.html", "30934-03a.html", "30935-01.html", "30935-01a.html", "30935-01b.html":
 			{
 				htmltext = event;
 				break;
@@ -509,8 +497,7 @@ public class Q00343_UnderTheShadowOfTheIvoryTower extends Quest
 		{
 			switch (npc.getId())
 			{
-				case MANASHEN_GARGOYLE:
-				case ENCHANTED_MONSTEREYE:
+				case MANASHEN_GARGOYLE, ENCHANTED_MONSTEREYE:
 				{
 					if (getRandom(100) < 63)
 					{

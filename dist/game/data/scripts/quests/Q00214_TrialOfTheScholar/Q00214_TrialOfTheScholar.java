@@ -155,35 +155,7 @@ public class Q00214_TrialOfTheScholar extends Quest
 				}
 				break;
 			}
-			case "30103-02.html":
-			case "30103-03.html":
-			case "30111-02.html":
-			case "30111-03.html":
-			case "30111-04.html":
-			case "30111-08.html":
-			case "30111-14.html":
-			case "30115-02.html":
-			case "30316-03.html":
-			case "30461-09.html":
-			case "30608-07.html":
-			case "30609-02.html":
-			case "30609-03.html":
-			case "30609-04.html":
-			case "30609-08.html":
-			case "30609-13.html":
-			case "30610-02.html":
-			case "30610-03.html":
-			case "30610-04.html":
-			case "30610-05.html":
-			case "30610-06.html":
-			case "30610-07.html":
-			case "30610-08.html":
-			case "30610-09.html":
-			case "30610-13.html":
-			case "30611-02.html":
-			case "30611-03.html":
-			case "30611-06.html":
-			case "30612-03.html":
+			case "30103-02.html", "30103-03.html", "30111-02.html", "30111-03.html", "30111-04.html", "30111-08.html", "30111-14.html", "30115-02.html", "30316-03.html", "30461-09.html", "30608-07.html", "30609-02.html", "30609-03.html", "30609-04.html", "30609-08.html", "30609-13.html", "30610-02.html", "30610-03.html", "30610-04.html", "30610-05.html", "30610-06.html", "30610-07.html", "30610-08.html", "30610-09.html", "30610-13.html", "30611-02.html", "30611-03.html", "30611-06.html", "30612-03.html":
 			{
 				htmltext = event;
 				break;
@@ -462,8 +434,7 @@ public class Q00214_TrialOfTheScholar extends Quest
 					}
 					break;
 				}
-				case SHACKLE1:
-				case SHACKLE2:
+				case SHACKLE1, SHACKLE2:
 				{
 					if (hasQuestItems(killer, MIRIENS_2ND_SIGIL, GRAND_MAGISTER_SIGIL, JUREKS_LIST) && (getQuestItemsCount(killer, SHACKLES_SCALP) < 2))
 					{

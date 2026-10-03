@@ -68,10 +68,7 @@ public class Q00357_WarehouseKeepersAmbition extends Quest
 		{
 			switch (event)
 			{
-				case "30686-01.htm":
-				case "30686-03.htm":
-				case "30686-04.htm":
-				case "30686-10.html":
+				case "30686-01.htm", "30686-03.htm", "30686-04.htm", "30686-10.html":
 				{
 					htmltext = event;
 					break;

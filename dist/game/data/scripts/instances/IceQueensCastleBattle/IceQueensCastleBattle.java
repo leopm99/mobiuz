@@ -878,8 +878,7 @@ public class IceQueensCastleBattle extends AbstractInstance
 					}
 					break;
 				}
-				case FREYA_STAND_EASY:
-				case FREYA_STAND_HARD:
+				case FREYA_STAND_EASY, FREYA_STAND_HARD:
 				{
 					final Npc controller = params.getObject("controller", Npc.class);
 					final Npc freya = params.getObject("freya", Npc.class);
@@ -990,8 +989,7 @@ public class IceQueensCastleBattle extends AbstractInstance
 					}
 					break;
 				}
-				case KNIGHT_EASY:
-				case KNIGHT_HARD:
+				case KNIGHT_EASY, KNIGHT_HARD:
 				{
 					if (npc.isCoreAIDisabled())
 					{
@@ -1003,8 +1001,7 @@ public class IceQueensCastleBattle extends AbstractInstance
 					}
 					break;
 				}
-				case GLAKIAS_EASY:
-				case GLAKIAS_HARD:
+				case GLAKIAS_EASY, GLAKIAS_HARD:
 				{
 					if (npc.getCurrentHp() < (npc.getMaxHp() * 0.02))
 					{
@@ -1142,8 +1139,7 @@ public class IceQueensCastleBattle extends AbstractInstance
 			final Npc controller = params.getObject("controller", Npc.class);
 			switch (npc.getId())
 			{
-				case GLAKIAS_EASY:
-				case GLAKIAS_HARD:
+				case GLAKIAS_EASY, GLAKIAS_HARD:
 				{
 					manageDespawnMinions(world);
 					manageTimer(world, 60, NpcStringId.TIME_REMAINING_UNTIL_NEXT_BATTLE);
@@ -1151,8 +1147,7 @@ public class IceQueensCastleBattle extends AbstractInstance
 					startQuestTimer("STAGE_3_MOVIE", 60000, controller, null);
 					break;
 				}
-				case FREYA_STAND_EASY:
-				case FREYA_STAND_HARD:
+				case FREYA_STAND_EASY, FREYA_STAND_HARD:
 				{
 					world.setParameter("isSupportActive", false);
 					manageMovie(world, Movie.SC_BOSS_FREYA_ENDING_A);
@@ -1167,8 +1162,7 @@ public class IceQueensCastleBattle extends AbstractInstance
 					startQuestTimer("FINISH_WORLD", 300000, controller, null);
 					break;
 				}
-				case KNIGHT_EASY:
-				case KNIGHT_HARD:
+				case KNIGHT_EASY, KNIGHT_HARD:
 				{
 					final Npc spawnedBy = npc.getVariables().getObject("SPAWNED_NPC", Npc.class);
 					final NpcVariables var = controller.getVariables();

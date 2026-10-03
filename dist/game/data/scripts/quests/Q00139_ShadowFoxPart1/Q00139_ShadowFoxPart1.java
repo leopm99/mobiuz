@@ -117,13 +117,7 @@ public class Q00139_ShadowFoxPart1 extends Quest
 				qs.exitQuest(false, true);
 				break;
 			}
-			case "30896-06.html":
-			case "30896-07.html":
-			case "30896-08.html":
-			case "30896-09.html":
-			case "30896-10.html":
-			case "30896-12.html":
-			case "30896-18.html":
+			case "30896-06.html", "30896-07.html", "30896-08.html", "30896-09.html", "30896-10.html", "30896-12.html", "30896-18.html":
 			{
 				break;
 			}

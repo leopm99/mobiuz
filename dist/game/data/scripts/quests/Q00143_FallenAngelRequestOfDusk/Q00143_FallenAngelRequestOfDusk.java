@@ -63,18 +63,7 @@ public class Q00143_FallenAngelRequestOfDusk extends Quest
 		String htmltext = event;
 		switch (event)
 		{
-			case "30894-02.html":
-			case "30297-04.html":
-			case "30612-05.html":
-			case "30612-06.html":
-			case "30612-07.html":
-			case "30612-08.html":
-			case "32369-04.html":
-			case "32369-05.html":
-			case "32369-07.html":
-			case "32369-08.html":
-			case "32369-09.html":
-			case "32369-10.html":
+			case "30894-02.html", "30297-04.html", "30612-05.html", "30612-06.html", "30612-07.html", "30612-08.html", "32369-04.html", "32369-05.html", "32369-07.html", "32369-08.html", "32369-09.html", "32369-10.html":
 			{
 				break;
 			}
@@ -218,8 +207,7 @@ public class Q00143_FallenAngelRequestOfDusk extends Quest
 							htmltext = qs.isSet("talk") ? "30297-04.html" : "30297-02.html";
 							break;
 						}
-						case 3:
-						case 4:
+						case 3, 4:
 						{
 							htmltext = "30297-06.html";
 							break;
@@ -245,8 +233,7 @@ public class Q00143_FallenAngelRequestOfDusk extends Quest
 				{
 					switch (qs.getCond())
 					{
-						case 1:
-						case 2:
+						case 1, 2:
 						{
 							htmltext = "30612-01.html";
 							break;
@@ -271,9 +258,7 @@ public class Q00143_FallenAngelRequestOfDusk extends Quest
 				{
 					switch (qs.getCond())
 					{
-						case 1:
-						case 2:
-						case 3:
+						case 1, 2, 3:
 						{
 							htmltext = "32368-01.html";
 							break;
@@ -298,9 +283,7 @@ public class Q00143_FallenAngelRequestOfDusk extends Quest
 				{
 					switch (qs.getCond())
 					{
-						case 1:
-						case 2:
-						case 3:
+						case 1, 2, 3:
 						{
 							htmltext = "32369-01.html";
 							break;

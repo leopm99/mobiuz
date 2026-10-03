@@ -104,16 +104,7 @@ public class ToIVortex extends AbstractNpcAI
 		
 		switch (event)
 		{
-			case "1":
-			case "2":
-			case "3":
-			case "4":
-			case "5":
-			case "6":
-			case "7":
-			case "8":
-			case "9":
-			case "10":
+			case "1", "2", "3", "4", "5", "6", "7", "8", "9", "10":
 			{
 				final Location loc = TOI_FLOORS.get(event);
 				final int itemId = TOI_FLOOR_ITEMS.get(event);
@@ -128,9 +119,7 @@ public class ToIVortex extends AbstractNpcAI
 				}
 				break;
 			}
-			case "GREEN":
-			case "BLUE":
-			case "RED":
+			case "GREEN", "BLUE", "RED":
 			{
 				if (player.getAdena() >= 10000)
 				{

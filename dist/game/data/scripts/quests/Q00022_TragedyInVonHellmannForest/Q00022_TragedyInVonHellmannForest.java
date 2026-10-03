@@ -91,30 +91,7 @@ public class Q00022_TragedyInVonHellmannForest extends Quest
 		}
 		switch (event)
 		{
-			case "31529-02.html":
-			case "31529-04.html":
-			case "31529-05.html":
-			case "31529-06.html":
-			case "31529-07.html":
-			case "31529-09.html":
-			case "31529-13.html":
-			case "31529-13a.html":
-			case "31528-02.html":
-			case "31528-05.html":
-			case "31528-06.html":
-			case "31528-07.html":
-			case "31328-13.html":
-			case "31328-06.html":
-			case "31328-05.html":
-			case "31328-02.html":
-			case "31328-07.html":
-			case "31328-08.html":
-			case "31328-14.html":
-			case "31328-15.html":
-			case "31328-16.html":
-			case "31328-17.html":
-			case "31328-18.html":
-			case "31334-12.html":
+			case "31529-02.html", "31529-04.html", "31529-05.html", "31529-06.html", "31529-07.html", "31529-09.html", "31529-13.html", "31529-13a.html", "31528-02.html", "31528-05.html", "31528-06.html", "31528-07.html", "31328-13.html", "31328-06.html", "31328-05.html", "31328-02.html", "31328-07.html", "31328-08.html", "31328-14.html", "31328-15.html", "31328-16.html", "31328-17.html", "31328-18.html", "31334-12.html":
 			{
 				htmltext = event;
 				break;
@@ -393,14 +370,12 @@ public class Q00022_TragedyInVonHellmannForest extends Quest
 						}
 						break;
 					}
-					case 1:
-					case 3:
+					case 1, 3:
 					{
 						htmltext = "31334-05.html";
 						break;
 					}
-					case 4:
-					case 5:
+					case 4, 5:
 					{
 						if (hasQuestItems(talker, CROSS_OF_EINHASAD))
 						{
@@ -419,8 +394,7 @@ public class Q00022_TragedyInVonHellmannForest extends Quest
 						}
 						break;
 					}
-					case 6:
-					case 7:
+					case 6, 7:
 					{
 						if (hasQuestItems(talker, CROSS_OF_EINHASAD))
 						{
@@ -556,10 +530,7 @@ public class Q00022_TragedyInVonHellmannForest extends Quest
 						}
 						break;
 					}
-					case 13:
-					case 14:
-					case 15:
-					case 16:
+					case 13, 14, 15, 16:
 					{
 						htmltext = "31527-05.html";
 						break;

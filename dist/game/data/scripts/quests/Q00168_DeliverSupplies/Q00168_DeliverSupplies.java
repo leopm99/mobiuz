@@ -157,8 +157,7 @@ public class Q00168_DeliverSupplies extends Quest
 				}
 				break;
 			}
-			case ROSELYN:
-			case KRISTIN:
+			case ROSELYN, KRISTIN:
 			{
 				if (qs.isCond(3) && hasQuestItems(player, SENTRIES.get(npc.getId())))
 				{

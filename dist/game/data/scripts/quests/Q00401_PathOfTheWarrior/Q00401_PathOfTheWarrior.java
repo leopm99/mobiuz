@@ -193,8 +193,7 @@ public class Q00401_PathOfTheWarrior extends Quest
 		{
 			switch (npc.getId())
 			{
-				case TRACKER_SKELETON:
-				case TRACKER_SKELETON_LIDER:
+				case TRACKER_SKELETON, TRACKER_SKELETON_LIDER:
 				{
 					if (hasQuestItems(killer, WARRIOR_GUILD_MARK) && (getQuestItemsCount(killer, RUSTED_BRONZE_SWORD1) < 10) && (getRandom(10) < 4))
 					{
@@ -210,8 +209,7 @@ public class Q00401_PathOfTheWarrior extends Quest
 					}
 					break;
 				}
-				case VENOMOUS_SPIDERS:
-				case ARACHNID_TRACKER:
+				case VENOMOUS_SPIDERS, ARACHNID_TRACKER:
 				{
 					if ((getQuestItemsCount(killer, VENOMOUS_SPIDERS_LEG) < 20) && npc.isScriptValue(1))
 					{

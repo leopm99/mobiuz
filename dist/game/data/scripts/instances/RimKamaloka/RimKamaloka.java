@@ -362,13 +362,7 @@ public class RimKamaloka extends AbstractNpcAI
 		
 		switch (event)
 		{
-			case "npc_rim_maker001.htm":
-			case "npc_rim_maker001a.htm":
-			case "npc_rim_maker001b.htm":
-			case "npc_rim_maker001ba.htm":
-			case "npc_rim_maker007.htm":
-			case "npc_rim_maker010.htm":
-			case "npc_rim_maker011.htm":
+			case "npc_rim_maker001.htm", "npc_rim_maker001a.htm", "npc_rim_maker001b.htm", "npc_rim_maker001ba.htm", "npc_rim_maker007.htm", "npc_rim_maker010.htm", "npc_rim_maker011.htm":
 			{
 				return event;
 			}
@@ -417,17 +411,7 @@ public class RimKamaloka extends AbstractNpcAI
 				player.sendPacket(htmlPacket);
 				break;
 			}
-			case "0":
-			case "1":
-			case "2":
-			case "3":
-			case "4":
-			case "5":
-			case "6":
-			case "7":
-			case "8":
-			case "9":
-			case "10":
+			case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10":
 			{
 				enterInstance(player, npc, Integer.parseInt(event));
 				break;

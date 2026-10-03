@@ -182,15 +182,7 @@ public class Q00386_StolenDignity extends Quest
 					}
 					return "30843-11.html";
 				}
-				case 10:
-				case 11:
-				case 12:
-				case 13:
-				case 14:
-				case 15:
-				case 16:
-				case 17:
-				case 18:
+				case 10, 11, 12, 13, 14, 15, 16, 17, 18:
 				{
 					selectBingoNumber(qs, (ask - 10) + 1);
 					return fillBoard(qs, getHtm(player, "30843-13.html"));
@@ -858,9 +850,7 @@ public class Q00386_StolenDignity extends Quest
 					}
 					break;
 				}
-				case HAMES_ORC_CHIEFTAIN:
-				case FALLEN_ORC_SHAMAN_TRANS:
-				case SHARP_TALON_TIGER_TRANS:
+				case HAMES_ORC_CHIEFTAIN, FALLEN_ORC_SHAMAN_TRANS, SHARP_TALON_TIGER_TRANS:
 				{
 					if (getRandom(1000) < 487)
 					{

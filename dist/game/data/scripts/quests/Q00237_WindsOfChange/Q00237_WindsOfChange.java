@@ -68,20 +68,7 @@ public class Q00237_WindsOfChange extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "30899-02.htm":// FLAUEN
-			case "30899-03.htm":
-			case "30899-04.htm":
-			case "30899-05.htm":
-			case "30969-03.html":// IASON
-			case "30969-03a.html":
-			case "30969-03b.html":
-			case "30969-04.html":
-			case "30969-08.html":
-			case "30969-08a.html":
-			case "30969-08b.html":
-			case "30969-08c.html":
-			case "30897-02.html":// ROMAN
-			case "30925-02.html":// MORELYN
+			case "30899-02.htm", "30899-03.htm", "30899-04.htm", "30899-05.htm", "30969-03.html", "30969-03a.html", "30969-03b.html", "30969-04.html", "30969-08.html", "30969-08a.html", "30969-08b.html", "30969-08c.html", "30897-02.html", "30925-02.html": // FLAUEN; IASON; ROMAN; MORELYN
 			{
 				htmltext = event;
 				break;
@@ -194,8 +181,7 @@ public class Q00237_WindsOfChange extends Quest
 					{
 						switch (qs.getCond())
 						{
-							case 1:
-							case 4:
+							case 1, 4:
 							{
 								htmltext = "30899-07.html";
 								break;
@@ -210,8 +196,7 @@ public class Q00237_WindsOfChange extends Quest
 								htmltext = "30899-11.html";
 								break;
 							}
-							case 5:
-							case 6:
+							case 5, 6:
 							{
 								htmltext = "30899-08.html";
 								break;
@@ -247,8 +232,7 @@ public class Q00237_WindsOfChange extends Quest
 							htmltext = "30969-07.html";
 							break;
 						}
-						case 5:
-						case 6:
+						case 5, 6:
 						{
 							htmltext = "30969-11.html";
 							break;
@@ -266,8 +250,7 @@ public class Q00237_WindsOfChange extends Quest
 						htmltext = "30897-01.html";
 						break;
 					}
-					case 3:
-					case 4:
+					case 3, 4:
 					{
 						htmltext = "30897-04.html";
 						break;

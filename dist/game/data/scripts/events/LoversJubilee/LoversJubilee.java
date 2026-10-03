@@ -70,9 +70,7 @@ public final class LoversJubilee extends LongTimeEvent
 				htmltext = hasQuestItems(player, SPIRIT_TEST_REPORT) ? "4305-010.html" : "4305-002.html";
 				break;
 			}
-			case "50020_2":
-			case "50020_3":
-			case "50020_4":
+			case "50020_2", "50020_3", "50020_4":
 			{
 				if (getQuestItemsCount(player, Inventory.ADENA_ID) < ONE_ROSE_PRICE)
 				{
@@ -102,9 +100,7 @@ public final class LoversJubilee extends LongTimeEvent
 					htmltext = "4305-023.html";
 				}
 			}
-			case "50020_5":
-			case "50020_6":
-			case "50020_7":
+			case "50020_5", "50020_6", "50020_7":
 			{
 				if (getQuestItemsCount(player, Inventory.ADENA_ID) < TEN_ROSES_PRICE)
 				{
@@ -146,12 +142,7 @@ public final class LoversJubilee extends LongTimeEvent
 				}
 				break;
 			}
-			case "50020_9":
-			case "50020_10":
-			case "50020_11":
-			case "50020_12":
-			case "50020_13":
-			case "50020_14":
+			case "50020_9", "50020_10", "50020_11", "50020_12", "50020_13", "50020_14":
 			{
 				giveItems(player, SPIRIT_TEST_REPORT, 1);
 				switch (event)
@@ -189,12 +180,7 @@ public final class LoversJubilee extends LongTimeEvent
 				}
 				htmltext = "4305-025.html";
 			}
-			case "50020_15":
-			case "50020_16":
-			case "50020_17":
-			case "50020_18":
-			case "50020_19":
-			case "50020_20":
+			case "50020_15", "50020_16", "50020_17", "50020_18", "50020_19", "50020_20":
 			{
 				takeItems(player, IMPROVED_ROSE_SPIRIT_EXCHANGE_TICKET, 1);
 				switch (event)

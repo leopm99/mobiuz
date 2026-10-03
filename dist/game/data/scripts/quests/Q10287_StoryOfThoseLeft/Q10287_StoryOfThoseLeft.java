@@ -122,12 +122,7 @@ public class Q10287_StoryOfThoseLeft extends Quest
 				}
 				break;
 			}
-			case "10549":
-			case "10550":
-			case "10551":
-			case "10552":
-			case "10553":
-			case "14219":
+			case "10549", "10550", "10551", "10552", "10553", "14219":
 			{
 				if (qs.isMemoState(2))
 				{

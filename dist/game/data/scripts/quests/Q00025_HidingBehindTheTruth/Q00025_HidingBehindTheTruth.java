@@ -86,29 +86,7 @@ public class Q00025_HidingBehindTheTruth extends Quest
 		String htmltext = getNoQuestMsg(player);
 		switch (event)
 		{
-			case "31349-06.html":
-			case "31349-07.html":
-			case "31349-08.html":
-			case "31349-09.html":
-			case "31522-08.html":
-			case "31522-09.html":
-			case "31522-07.html":
-			case "31522-11.html":
-			case "31348-04.html":
-			case "31348-05.html":
-			case "31348-06.html":
-			case "31348-11.html":
-			case "31348-07.html":
-			case "31348-12.html":
-			case "31348-14.html":
-			case "31532-04.html":
-			case "31532-05.html":
-			case "31532-06.html":
-			case "31532-14.html":
-			case "31532-15.html":
-			case "31532-16.html":
-			case "31532-19.html":
-			case "31532-20.html":
+			case "31349-06.html", "31349-07.html", "31349-08.html", "31349-09.html", "31522-08.html", "31522-09.html", "31522-07.html", "31522-11.html", "31348-04.html", "31348-05.html", "31348-06.html", "31348-11.html", "31348-07.html", "31348-12.html", "31348-14.html", "31532-04.html", "31532-05.html", "31532-06.html", "31532-14.html", "31532-15.html", "31532-16.html", "31532-19.html", "31532-20.html":
 			{
 				htmltext = event;
 				break;
@@ -614,9 +592,7 @@ public class Q00025_HidingBehindTheTruth extends Quest
 						}
 						break;
 					}
-					case BROKEN_BOOKSHELF2:
-					case BROKEN_BOOKSHELF3:
-					case BROKEN_BOOKSHELF4:
+					case BROKEN_BOOKSHELF2, BROKEN_BOOKSHELF3, BROKEN_BOOKSHELF4:
 					{
 						if ((qs.getMemoState() % 100) == 7)
 						{

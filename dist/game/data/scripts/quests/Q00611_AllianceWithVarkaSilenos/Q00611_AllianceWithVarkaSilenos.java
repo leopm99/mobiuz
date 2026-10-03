@@ -200,9 +200,7 @@ public class Q00611_AllianceWithVarkaSilenos extends Quest
 		String htmltext = event;
 		switch (event)
 		{
-			case "31378-12a.html":
-			case "31378-12b.html":
-			case "31378-25.html":
+			case "31378-12a.html", "31378-12b.html", "31378-25.html":
 			{
 				break;
 			}

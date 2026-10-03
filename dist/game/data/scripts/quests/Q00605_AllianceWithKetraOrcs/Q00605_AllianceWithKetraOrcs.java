@@ -200,9 +200,7 @@ public class Q00605_AllianceWithKetraOrcs extends Quest
 		String htmltext = event;
 		switch (event)
 		{
-			case "31371-12a.html":
-			case "31371-12b.html":
-			case "31371-25.html":
+			case "31371-12a.html", "31371-12b.html", "31371-25.html":
 			{
 				break;
 			}

@@ -127,8 +127,7 @@ public class Q00123_TheLeaderAndTheFollower extends Quest
 								}
 								break;
 							}
-							case 2:
-							case 3:
+							case 2, 3:
 							{
 								if (getQuestItemsCount(player, CRYSTAL_D) >= CRYSTAL_COUNT_2)
 								{
@@ -169,10 +168,7 @@ public class Q00123_TheLeaderAndTheFollower extends Quest
 				}
 				break;
 			}
-			case "31961-05a.html":
-			case "31961-05b.html":
-			case "31961-05c.html":
-			case "31961-05g.html":
+			case "31961-05a.html", "31961-05b.html", "31961-05c.html", "31961-05g.html":
 			{
 				htmltext = event;
 				break;

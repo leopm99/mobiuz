@@ -63,17 +63,7 @@ public class Q00026_TiredOfWaiting extends Quest
 		
 		switch (event)
 		{
-			case "30655-02.htm":
-			case "30655-03.htm":
-			case "30655-05.html":
-			case "30655-06.html":
-			case "31045-02.html":
-			case "31045-03.html":
-			case "31045-05.html":
-			case "31045-06.html":
-			case "31045-07.html":
-			case "31045-08.html":
-			case "31045-09.html":
+			case "30655-02.htm", "30655-03.htm", "30655-05.html", "30655-06.html", "31045-02.html", "31045-03.html", "31045-05.html", "31045-06.html", "31045-07.html", "31045-08.html", "31045-09.html":
 			{
 				htmltext = event;
 				break;
@@ -97,9 +87,7 @@ public class Q00026_TiredOfWaiting extends Quest
 				}
 				break;
 			}
-			case "31045-10.html":
-			case "31045-11.html":
-			case "31045-12.html":
+			case "31045-10.html", "31045-11.html", "31045-12.html":
 			{
 				if (qs.isStarted())
 				{

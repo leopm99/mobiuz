@@ -311,9 +311,7 @@ public class EnergySeeds extends AbstractNpcAI
 			{
 				return SoDManager.getInstance().getSoDState() == 2;
 			}
-			case ANNIHILATION_BISTAKON:
-			case ANNIHILATION_REPTILIKON:
-			case ANNIHILATION_COKRAKON:
+			case ANNIHILATION_BISTAKON, ANNIHILATION_REPTILIKON, ANNIHILATION_COKRAKON:
 			{
 				return true;
 			}

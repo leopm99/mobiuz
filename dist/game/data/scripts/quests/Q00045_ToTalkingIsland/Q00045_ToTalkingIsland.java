@@ -273,9 +273,7 @@ public class Q00045_ToTalkingIsland extends Quest
 				}
 				break;
 			}
-			case GENTLER:
-			case SANDRA:
-			case DUSTIN:
+			case GENTLER, SANDRA, DUSTIN:
 			{
 				if (qs.isStarted())
 				{

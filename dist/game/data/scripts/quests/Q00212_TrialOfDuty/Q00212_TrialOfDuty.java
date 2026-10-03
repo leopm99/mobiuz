@@ -118,9 +118,7 @@ public class Q00212_TrialOfDuty extends Quest
 				}
 				break;
 			}
-			case "30116-02.html":
-			case "30116-03.html":
-			case "30116-04.html":
+			case "30116-02.html", "30116-03.html", "30116-04.html":
 			{
 				if (qs.isMemoState(10) && hasQuestItems(player, TEAR_OF_LOYALTY))
 				{
@@ -154,8 +152,7 @@ public class Q00212_TrialOfDuty extends Quest
 		
 		switch (npc.getId())
 		{
-			case SKELETON_MARAUDER:
-			case SKELETON_RAIDER:
+			case SKELETON_MARAUDER, SKELETON_RAIDER:
 			{
 				if (qs.isMemoState(2))
 				{
@@ -186,8 +183,7 @@ public class Q00212_TrialOfDuty extends Quest
 				}
 				break;
 			}
-			case STRAIN:
-			case GHOUL:
+			case STRAIN, GHOUL:
 			{
 				if (qs.isMemoState(5) && !hasQuestItems(killer, TALIANUSS_REPORT) && giveItemRandomly(killer, npc, REPORT_PIECE.getId(), 1, REPORT_PIECE.getCount(), 1, true))
 				{
@@ -215,12 +211,7 @@ public class Q00212_TrialOfDuty extends Quest
 				}
 				break;
 			}
-			case LETO_LIZARDMAN:
-			case LETO_LIZARDMAN_ARCHER:
-			case LETO_LIZARDMAN_SOLDIER:
-			case LETO_LIZARDMAN_WARRIOR:
-			case LETO_LIZARDMAN_SHAMAN:
-			case LETO_LIZARDMAN_OVERLORD:
+			case LETO_LIZARDMAN, LETO_LIZARDMAN_ARCHER, LETO_LIZARDMAN_SOLDIER, LETO_LIZARDMAN_WARRIOR, LETO_LIZARDMAN_SHAMAN, LETO_LIZARDMAN_OVERLORD:
 			{
 				if (qs.isMemoState(9) && giveItemRandomly(killer, npc, MILITAS_ARTICLE.getId(), 1, MILITAS_ARTICLE.getCount(), 1, true))
 				{

@@ -130,8 +130,7 @@ public class Q00152_ShardsOfGolem extends Quest
 								}
 								break;
 							}
-							case 2:
-							case 3:
+							case 2, 3:
 							{
 								if (hasQuestItems(player, HARRYS_2ND_RECIEPT))
 								{

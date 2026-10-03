@@ -55,8 +55,7 @@ public class Q00156_MillenniumLove extends Quest
 		{
 			switch (event)
 			{
-				case "30368-02.html":
-				case "30368-03.html":
+				case "30368-02.html", "30368-03.html":
 				{
 					htmltext = event;
 					break;

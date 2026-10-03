@@ -47,8 +47,7 @@ public class AdminSuperHaste implements IAdminCommandHandler
 		final String cmd = st.nextToken();
 		switch (cmd)
 		{
-			case "admin_superhaste":
-			case "admin_speed":
+			case "admin_superhaste", "admin_speed":
 			{
 				try
 				{
@@ -73,8 +72,7 @@ public class AdminSuperHaste implements IAdminCommandHandler
 				}
 				break;
 			}
-			case "admin_superhaste_menu":
-			case "admin_speed_menu":
+			case "admin_superhaste_menu", "admin_speed_menu":
 			{
 				AdminHtml.showAdminHtml(player, "gm_menu.htm");
 				break;

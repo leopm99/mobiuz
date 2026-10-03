@@ -117,9 +117,7 @@ public class Q00413_PathOfTheShillienOracle extends Quest
 				htmltext = event;
 				break;
 			}
-			case "30330-06a.html":
-			case "30375-02.html":
-			case "30375-03.html":
+			case "30330-06a.html", "30375-02.html", "30375-03.html":
 			{
 				htmltext = event;
 				break;
@@ -158,10 +156,7 @@ public class Q00413_PathOfTheShillienOracle extends Quest
 		{
 			switch (npc.getId())
 			{
-				case ZOMBIE_SOLDIER:
-				case ZOMBIE_WARRIOR:
-				case SHIELD_SKELETON:
-				case SKELETON_INFANTRYMAN:
+				case ZOMBIE_SOLDIER, ZOMBIE_WARRIOR, SHIELD_SKELETON, SKELETON_INFANTRYMAN:
 				{
 					if (hasQuestItems(killer, PENITENTS_MARK) && (getQuestItemsCount(killer, ASHEN_BONES) < 10))
 					{

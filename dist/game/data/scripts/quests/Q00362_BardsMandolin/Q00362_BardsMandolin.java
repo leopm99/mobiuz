@@ -67,8 +67,7 @@ public class Q00362_BardsMandolin extends Quest
 				htmltext = event;
 				break;
 			}
-			case "30957-07.html":
-			case "30957-08.html":
+			case "30957-07.html", "30957-08.html":
 			{
 				if (qs.isMemoState(5))
 				{
@@ -106,8 +105,7 @@ public class Q00362_BardsMandolin extends Quest
 					{
 						switch (qs.getMemoState())
 						{
-							case 1:
-							case 2:
+							case 1, 2:
 							{
 								htmltext = "30957-04.html";
 								break;

@@ -136,9 +136,7 @@ public class Q00124_MeetingTheElroki extends Quest
 								htmltext = "32113-06.html";
 								break;
 							}
-							case 3:
-							case 4:
-							case 5:
+							case 3, 4, 5:
 							{
 								htmltext = "32113-07.html";
 								break;
@@ -186,8 +184,7 @@ public class Q00124_MeetingTheElroki extends Quest
 				{
 					switch (qs.getCond())
 					{
-						case 1:
-						case 2:
+						case 1, 2:
 						{
 							htmltext = "32115-01.html";
 							break;
@@ -228,9 +225,7 @@ public class Q00124_MeetingTheElroki extends Quest
 				{
 					switch (qs.getCond())
 					{
-						case 1:
-						case 2:
-						case 3:
+						case 1, 2, 3:
 						{
 							htmltext = "32117-01.html";
 							break;
@@ -260,10 +255,7 @@ public class Q00124_MeetingTheElroki extends Quest
 				{
 					switch (qs.getCond())
 					{
-						case 1:
-						case 2:
-						case 3:
-						case 4:
+						case 1, 2, 3, 4:
 						{
 							htmltext = "32118-01.html";
 							break;

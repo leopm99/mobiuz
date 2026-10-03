@@ -84,8 +84,7 @@ public class Q00629_CleanUpTheSwampOfScreams extends Quest
 				}
 				break;
 			}
-			case "31553-04.html":
-			case "31553-06.html":
+			case "31553-04.html", "31553-06.html":
 			{
 				if (qs.isStarted())
 				{

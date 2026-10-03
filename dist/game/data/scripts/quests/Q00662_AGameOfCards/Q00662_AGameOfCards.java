@@ -119,12 +119,7 @@ public class Q00662_AGameOfCards extends Quest
 				}
 				break;
 			}
-			case "30845-06.html":
-			case "30845-08.html":
-			case "30845-09.html":
-			case "30845-09a.html":
-			case "30845-09b.html":
-			case "30845-10.html":
+			case "30845-06.html", "30845-08.html", "30845-09.html", "30845-09a.html", "30845-09b.html", "30845-10.html":
 			{
 				htmltext = event;
 				break;
@@ -244,11 +239,7 @@ public class Q00662_AGameOfCards extends Quest
 				}
 				break;
 			}
-			case "turncard1":
-			case "turncard2":
-			case "turncard3":
-			case "turncard4":
-			case "turncard5":
+			case "turncard1", "turncard2", "turncard3", "turncard4", "turncard5":
 			{
 				final int cond = qs.getInt("v1");
 				int i1 = qs.getInt("ExMemoState");

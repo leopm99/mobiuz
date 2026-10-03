@@ -76,84 +76,12 @@ public class ElfHumanWizardChange1 extends AbstractNpcAI
 		String htmltext = null;
 		switch (event)
 		{
-			case "30037-01.htm": // levian003h
-			case "30037-02.htm": // levian006ha
-			case "30037-03.htm": // levian007ha
-			case "30037-04.htm": // levian007hat
-			case "30037-05.htm": // levian006hb
-			case "30037-06.htm": // levian007hb
-			case "30037-07.htm": // levian007hbt
-			case "30037-08.htm": // levian003e
-			case "30037-09.htm": // levian006ea
-			case "30037-10.htm": // levian007ea
-			case "30037-11.htm": // levian007eat
-			case "30037-12.htm": // levian006eb
-			case "30037-13.htm": // levian007eb
-			case "30037-14.htm": // levian007ebt
-			case "30070-01.htm": // sylvain003h
-			case "30070-02.htm": // sylvain006ha
-			case "30070-03.htm": // sylvain007ha
-			case "30070-04.htm": // sylvain007hat
-			case "30070-05.htm": // sylvain006hb
-			case "30070-06.htm": // sylvain007hb
-			case "30070-07.htm": // sylvain007hbt
-			case "30070-08.htm": // sylvain003e
-			case "30070-09.htm": // sylvain006ea
-			case "30070-10.htm": // sylvain007ea
-			case "30070-11.htm": // sylvain007eat
-			case "30070-12.htm": // sylvain006eb
-			case "30070-13.htm": // sylvain007eb
-			case "30070-14.htm": // sylvain007ebt
-			case "30289-01.htm": // bishop_raimund003h
-			case "30289-02.htm": // bishop_raimund006ha
-			case "30289-03.htm": // bishop_raimund007ha
-			case "30289-04.htm": // bishop_raimund007hat
-			case "30289-05.htm": // bishop_raimund006hb
-			case "30289-06.htm": // bishop_raimund007hb
-			case "30289-07.htm": // bishop_raimund007hbt
-			case "30289-08.htm": // bishop_raimund003e
-			case "30289-09.htm": // bishop_raimund006ea
-			case "30289-10.htm": // bishop_raimund007ea
-			case "30289-11.htm": // bishop_raimund007eat
-			case "30289-12.htm": // bishop_raimund006eb
-			case "30289-13.htm": // bishop_raimund007eb
-			case "30289-14.htm": // bishop_raimund007ebt
-			case "32095-01.htm": // highpriest_mattew003h
-			case "32095-02.htm": // highpriest_mattew006ha
-			case "32095-03.htm": // highpriest_mattew007ha
-			case "32095-04.htm": // highpriest_mattew007hat
-			case "32095-05.htm": // highpriest_mattew006hb
-			case "32095-06.htm": // highpriest_mattew007hb
-			case "32095-07.htm": // highpriest_mattew007hbt
-			case "32095-08.htm": // highpriest_mattew003e
-			case "32095-09.htm": // highpriest_mattew006ea
-			case "32095-10.htm": // highpriest_mattew007ea
-			case "32095-11.htm": // highpriest_mattew007eat
-			case "32095-12.htm": // highpriest_mattew006eb
-			case "32095-13.htm": // highpriest_mattew007eb
-			case "32095-14.htm": // highpriest_mattew007ebt
-			case "32098-01.htm": // grandmagister_celes003h
-			case "32098-02.htm": // grandmagister_celes006ha
-			case "32098-03.htm": // grandmagister_celes007ha
-			case "32098-04.htm": // grandmagister_celes007hat
-			case "32098-05.htm": // grandmagister_celes006hb
-			case "32098-06.htm": // grandmagister_celes007hb
-			case "32098-07.htm": // grandmagister_celes007hbt
-			case "32098-08.htm": // grandmagister_celes003e
-			case "32098-09.htm": // grandmagister_celes006ea
-			case "32098-10.htm": // grandmagister_celes007ea
-			case "32098-11.htm": // grandmagister_celes007eat
-			case "32098-12.htm": // grandmagister_celes006eb
-			case "32098-13.htm": // grandmagister_celes007eb
-			case "32098-14.htm": // grandmagister_celes007ebt
+			case "30037-01.htm", "30037-02.htm", "30037-03.htm", "30037-04.htm", "30037-05.htm", "30037-06.htm", "30037-07.htm", "30037-08.htm", "30037-09.htm", "30037-10.htm", "30037-11.htm", "30037-12.htm", "30037-13.htm", "30037-14.htm", "30070-01.htm", "30070-02.htm", "30070-03.htm", "30070-04.htm", "30070-05.htm", "30070-06.htm", "30070-07.htm", "30070-08.htm", "30070-09.htm", "30070-10.htm", "30070-11.htm", "30070-12.htm", "30070-13.htm", "30070-14.htm", "30289-01.htm", "30289-02.htm", "30289-03.htm", "30289-04.htm", "30289-05.htm", "30289-06.htm", "30289-07.htm", "30289-08.htm", "30289-09.htm", "30289-10.htm", "30289-11.htm", "30289-12.htm", "30289-13.htm", "30289-14.htm", "32095-01.htm", "32095-02.htm", "32095-03.htm", "32095-04.htm", "32095-05.htm", "32095-06.htm", "32095-07.htm", "32095-08.htm", "32095-09.htm", "32095-10.htm", "32095-11.htm", "32095-12.htm", "32095-13.htm", "32095-14.htm", "32098-01.htm", "32098-02.htm", "32098-03.htm", "32098-04.htm", "32098-05.htm", "32098-06.htm", "32098-07.htm", "32098-08.htm", "32098-09.htm", "32098-10.htm", "32098-11.htm", "32098-12.htm", "32098-13.htm", "32098-14.htm": // levian003h; levian006ha; levian007ha; levian007hat; levian006hb; levian007hb; levian007hbt; levian003e; levian006ea; levian007ea; levian007eat; levian006eb; levian007eb; levian007ebt; sylvain003h; sylvain006ha; sylvain007ha; sylvain007hat; sylvain006hb; sylvain007hb; sylvain007hbt; sylvain003e; sylvain006ea; sylvain007ea; sylvain007eat; sylvain006eb; sylvain007eb; sylvain007ebt; bishop_raimund003h; bishop_raimund006ha; bishop_raimund007ha; bishop_raimund007hat; bishop_raimund006hb; bishop_raimund007hb; bishop_raimund007hbt; bishop_raimund003e; bishop_raimund006ea; bishop_raimund007ea; bishop_raimund007eat; bishop_raimund006eb; bishop_raimund007eb; bishop_raimund007ebt; highpriest_mattew003h; highpriest_mattew006ha; highpriest_mattew007ha; highpriest_mattew007hat; highpriest_mattew006hb; highpriest_mattew007hb; highpriest_mattew007hbt; highpriest_mattew003e; highpriest_mattew006ea; highpriest_mattew007ea; highpriest_mattew007eat; highpriest_mattew006eb; highpriest_mattew007eb; highpriest_mattew007ebt; grandmagister_celes003h; grandmagister_celes006ha; grandmagister_celes007ha; grandmagister_celes007hat; grandmagister_celes006hb; grandmagister_celes007hb; grandmagister_celes007hbt; grandmagister_celes003e; grandmagister_celes006ea; grandmagister_celes007ea; grandmagister_celes007eat; grandmagister_celes006eb; grandmagister_celes007eb; grandmagister_celes007ebt
 			{
 				htmltext = event;
 				break;
 			}
-			case "11":
-			case "15":
-			case "26":
-			case "29":
+			case "11", "15", "26", "29":
 			{
 				htmltext = ClassChangeRequested(player, npc, Integer.parseInt(event));
 				break;

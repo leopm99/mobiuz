@@ -121,10 +121,7 @@ public class Q00622_SpecialtyLiquorDelivery extends Quest
 				}
 				break;
 			}
-			case "31543-02.html":
-			case "31544-02.html":
-			case "31545-02.html":
-			case "31546-02.html":
+			case "31543-02.html", "31544-02.html", "31545-02.html", "31546-02.html":
 			{
 				if (TALKERS.contains(npc.getId()) && qs.isCond(TALKERS.indexOf(npc.getId()) + 2))
 				{
@@ -248,10 +245,7 @@ public class Q00622_SpecialtyLiquorDelivery extends Quest
 				}
 				break;
 			}
-			case KUBER:
-			case CROCUS:
-			case NAFF:
-			case PULIN:
+			case KUBER, CROCUS, NAFF, PULIN:
 			{
 				if (qs.isStarted())
 				{

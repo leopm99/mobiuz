@@ -59,8 +59,7 @@ public class Q00110_ToThePrimevalIsle extends Quest
 				qs.startQuest();
 				break;
 			}
-			case "32113-2.html":
-			case "32113-2a.html":
+			case "32113-2.html", "32113-2a.html":
 			{
 				giveAdena(player, 191678, true);
 				addExpAndSp(player, 251602, 25245);

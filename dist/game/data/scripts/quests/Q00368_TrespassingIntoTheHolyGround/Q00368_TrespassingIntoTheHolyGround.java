@@ -94,8 +94,7 @@ public class Q00368_TrespassingIntoTheHolyGround extends Quest
 		final int i;
 		switch (npc.getId())
 		{
-			case 20795:
-			case 20797:
+			case 20795, 20797:
 			{
 				i = 1;
 				break;

@@ -239,9 +239,7 @@ public class Q00663_SeductiveWhispers extends Quest
 				}
 				break;
 			}
-			case "30846-06.html":
-			case "30846-07.html":
-			case "30846-08.html":
+			case "30846-06.html", "30846-07.html", "30846-08.html":
 			{
 				htmltext = event;
 				break;
@@ -709,8 +707,7 @@ public class Q00663_SeductiveWhispers extends Quest
 				}
 				break;
 			}
-			case "30846-31.html":
-			case "30846-32.html":
+			case "30846-31.html", "30846-32.html":
 			{
 				if (qs.isStarted())
 				{

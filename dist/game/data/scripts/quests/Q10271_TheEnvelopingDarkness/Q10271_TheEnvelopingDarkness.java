@@ -188,8 +188,7 @@ public class Q10271_TheEnvelopingDarkness extends Quest
 							giveItems(player, MEDIBAL_DOCUMENT, 1);
 							break;
 						}
-						case 3:
-						case 4:
+						case 3, 4:
 						{
 							htmltext = "32528-03.html";
 							break;

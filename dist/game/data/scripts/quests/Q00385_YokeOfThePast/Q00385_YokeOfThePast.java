@@ -118,10 +118,7 @@ public class Q00385_YokeOfThePast extends Quest
 		{
 			switch (event)
 			{
-				case "ziggurat-03.htm":
-				case "ziggurat-04.htm":
-				case "ziggurat-06.htm":
-				case "ziggurat-07.htm":
+				case "ziggurat-03.htm", "ziggurat-04.htm", "ziggurat-06.htm", "ziggurat-07.htm":
 				{
 					htmltext = event;
 					break;

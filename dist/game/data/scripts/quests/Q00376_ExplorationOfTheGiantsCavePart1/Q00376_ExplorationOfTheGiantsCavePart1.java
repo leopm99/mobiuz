@@ -85,8 +85,7 @@ public class Q00376_ExplorationOfTheGiantsCavePart1 extends Quest
 				htmltext = event;
 				break;
 			}
-			case "31147-04.html":
-			case "31147-cont.html":
+			case "31147-04.html", "31147-cont.html":
 			{
 				htmltext = event;
 				break;

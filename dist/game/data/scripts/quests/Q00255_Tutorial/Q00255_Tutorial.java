@@ -679,8 +679,7 @@ public class Q00255_Tutorial extends Quest
 						showTutorialHTML(talker, "tutorial-dwarven-fighter-001.html");
 						break;
 					}
-					case MALE_SOLDIER:
-					case FEMALE_SOLDIER:
+					case MALE_SOLDIER, FEMALE_SOLDIER:
 					{
 						playTutorialVoice(talker, "tutorial_voice_001k");
 						showTutorialHTML(talker, "tutorial-kamael-001.html");
@@ -861,20 +860,17 @@ public class Q00255_Tutorial extends Quest
 							addRadar(talker, -91036, 248044, -3568);
 							break;
 						}
-						case ELVEN_FIGHTER:
-						case ELVEN_MAGE:
+						case ELVEN_FIGHTER, ELVEN_MAGE:
 						{
 							addRadar(talker, 46112, 41200, -3504);
 							break;
 						}
-						case DARK_FIGHTER:
-						case DARK_MAGE:
+						case DARK_FIGHTER, DARK_MAGE:
 						{
 							addRadar(talker, 28384, 11056, -4233);
 							break;
 						}
-						case ORC_FIGHTER:
-						case ORC_MAGE:
+						case ORC_FIGHTER, ORC_MAGE:
 						{
 							addRadar(talker, -56736, -113680, -672);
 							break;
@@ -884,8 +880,7 @@ public class Q00255_Tutorial extends Quest
 							addRadar(talker, 108567, -173994, -406);
 							break;
 						}
-						case MALE_SOLDIER:
-						case FEMALE_SOLDIER:
+						case MALE_SOLDIER, FEMALE_SOLDIER:
 						{
 							addRadar(talker, -125872, 38016, 1251);
 							break;
@@ -951,8 +946,7 @@ public class Q00255_Tutorial extends Quest
 						addRadar(talker, 115271, -182692, -1445);
 						break;
 					}
-					case MALE_SOLDIER:
-					case FEMALE_SOLDIER:
+					case MALE_SOLDIER, FEMALE_SOLDIER:
 					{
 						addRadar(talker, -118132, 42788, 723);
 						break;
@@ -1034,14 +1028,7 @@ public class Q00255_Tutorial extends Quest
 			{
 				switch (talker.getPlayerClass())
 				{
-					case DWARVEN_FIGHTER:
-					case MAGE:
-					case ELVEN_FIGHTER:
-					case ELVEN_MAGE:
-					case DARK_MAGE:
-					case DARK_FIGHTER:
-					case MALE_SOLDIER:
-					case FEMALE_SOLDIER:
+					case DWARVEN_FIGHTER, MAGE, ELVEN_FIGHTER, ELVEN_MAGE, DARK_MAGE, DARK_FIGHTER, MALE_SOLDIER, FEMALE_SOLDIER:
 					{
 						playTutorialVoice(talker, "tutorial_voice_021");
 						showQuestionMark(talker, 25);
@@ -1066,8 +1053,7 @@ public class Q00255_Tutorial extends Quest
 			{
 				switch (talker.getPlayerClass())
 				{
-					case ORC_FIGHTER:
-					case ORC_MAGE:
+					case ORC_FIGHTER, ORC_MAGE:
 					{
 						playTutorialVoice(talker, "tutorial_voice_021");
 						showQuestionMark(talker, 25);
@@ -1695,22 +1681,19 @@ public class Q00255_Tutorial extends Quest
 						addRadar(talker, -91036, 248044, -3568);
 						break;
 					}
-					case ELVEN_FIGHTER:
-					case ELVEN_MAGE:
+					case ELVEN_FIGHTER, ELVEN_MAGE:
 					{
 						showTutorialHTML(talker, "tutorial-human-fighter-007.html");
 						addRadar(talker, -91036, 248044, -3568);
 						break;
 					}
-					case DARK_FIGHTER:
-					case DARK_MAGE:
+					case DARK_FIGHTER, DARK_MAGE:
 					{
 						showTutorialHTML(talker, "tutorial-human-fighter-007.html");
 						addRadar(talker, 28384, 11056, -4233);
 						break;
 					}
-					case ORC_FIGHTER:
-					case ORC_MAGE:
+					case ORC_FIGHTER, ORC_MAGE:
 					{
 						showTutorialHTML(talker, "tutorial-human-fighter-007.html");
 						addRadar(talker, -56736, -113680, -672);
@@ -1722,8 +1705,7 @@ public class Q00255_Tutorial extends Quest
 						addRadar(talker, 108567, -173994, -406);
 						break;
 					}
-					case MALE_SOLDIER:
-					case FEMALE_SOLDIER:
+					case MALE_SOLDIER, FEMALE_SOLDIER:
 					{
 						showTutorialHTML(talker, "tutorial-human-fighter-007.html");
 						addRadar(talker, -125872, 38016, 1251);
@@ -1748,20 +1730,17 @@ public class Q00255_Tutorial extends Quest
 						showTutorialHTML(talker, "tutorial-human-mage-008.html");
 						break;
 					}
-					case ELVEN_FIGHTER:
-					case ELVEN_MAGE:
+					case ELVEN_FIGHTER, ELVEN_MAGE:
 					{
 						showTutorialHTML(talker, "tutorial-elf-008.html");
 						break;
 					}
-					case DARK_FIGHTER:
-					case DARK_MAGE:
+					case DARK_FIGHTER, DARK_MAGE:
 					{
 						showTutorialHTML(talker, "tutorial-delf-008.html");
 						break;
 					}
-					case ORC_FIGHTER:
-					case ORC_MAGE:
+					case ORC_FIGHTER, ORC_MAGE:
 					{
 						showTutorialHTML(talker, "tutorial-orc-008.html");
 						break;
@@ -1771,8 +1750,7 @@ public class Q00255_Tutorial extends Quest
 						showTutorialHTML(talker, "tutorial-dwarven-fighter-008.html");
 						break;
 					}
-					case MALE_SOLDIER:
-					case FEMALE_SOLDIER:
+					case MALE_SOLDIER, FEMALE_SOLDIER:
 					{
 						showTutorialHTML(talker, "tutorial-kamael-008.html");
 						break;
@@ -1808,20 +1786,17 @@ public class Q00255_Tutorial extends Quest
 						addRadar(talker, -91036, 248044, -3568);
 						break;
 					}
-					case ELVEN_FIGHTER:
-					case ELVEN_MAGE:
+					case ELVEN_FIGHTER, ELVEN_MAGE:
 					{
 						addRadar(talker, 46112, 41200, -3504);
 						break;
 					}
-					case DARK_FIGHTER:
-					case DARK_MAGE:
+					case DARK_FIGHTER, DARK_MAGE:
 					{
 						addRadar(talker, 28384, 11056, -4233);
 						break;
 					}
-					case ORC_FIGHTER:
-					case ORC_MAGE:
+					case ORC_FIGHTER, ORC_MAGE:
 					{
 						addRadar(talker, -56736, -113680, -672);
 						break;
@@ -1831,8 +1806,7 @@ public class Q00255_Tutorial extends Quest
 						addRadar(talker, 108567, -173994, -406);
 						break;
 					}
-					case MALE_SOLDIER:
-					case FEMALE_SOLDIER:
+					case MALE_SOLDIER, FEMALE_SOLDIER:
 					{
 						addRadar(talker, -125872, 38016, 1251);
 						break;
@@ -1859,9 +1833,7 @@ public class Q00255_Tutorial extends Quest
 				{
 					switch (talker.getRace())
 					{
-						case HUMAN:
-						case ELF:
-						case DARK_ELF:
+						case HUMAN, ELF, DARK_ELF:
 						{
 							showTutorialHTML(talker, "tutorial-fighter-017.html");
 							break;
@@ -1899,8 +1871,7 @@ public class Q00255_Tutorial extends Quest
 						showTutorialHTML(talker, "tutorial-mage-020.html");
 						break;
 					}
-					case ELF:
-					case DARK_ELF:
+					case ELF, DARK_ELF:
 					{
 						showTutorialHTML(talker, "tutorial-mage-elf-020.html");
 						break;
@@ -2082,8 +2053,7 @@ public class Q00255_Tutorial extends Quest
 						showTutorialHTML(talker, "tutorial-newbie-002b.html");
 						break;
 					}
-					case ELVEN_FIGHTER:
-					case ELVEN_MAGE:
+					case ELVEN_FIGHTER, ELVEN_MAGE:
 					{
 						showTutorialHTML(talker, "tutorial-newbie-002c.html");
 						break;
@@ -2103,14 +2073,12 @@ public class Q00255_Tutorial extends Quest
 						showTutorialHTML(talker, "tutorial-newbie-002g.html");
 						break;
 					}
-					case ORC_FIGHTER:
-					case ORC_MAGE:
+					case ORC_FIGHTER, ORC_MAGE:
 					{
 						showTutorialHTML(talker, "tutorial-newbie-002f.html");
 						break;
 					}
-					case MALE_SOLDIER:
-					case FEMALE_SOLDIER:
+					case MALE_SOLDIER, FEMALE_SOLDIER:
 					{
 						showTutorialHTML(talker, "tutorial-newbie-002i.html");
 						break;
@@ -2134,9 +2102,7 @@ public class Q00255_Tutorial extends Quest
 			{
 				switch (talker.getPlayerClass())
 				{
-					case FIGHTER:
-					case ORC_MAGE:
-					case ORC_FIGHTER:
+					case FIGHTER, ORC_MAGE, ORC_FIGHTER:
 					{
 						showTutorialHTML(talker, "tutorial-newbie-002h.html");
 						break;

@@ -97,10 +97,7 @@ public class Q00355_FamilyHonor extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "30181-02.htm":
-			case "30181-09.html":
-			case "30929-01.html":
-			case "30929-02.html":
+			case "30181-02.htm", "30181-09.html", "30929-01.html", "30929-02.html":
 			{
 				htmltext = event;
 				break;

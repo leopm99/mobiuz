@@ -144,13 +144,7 @@ public class Q00222_TestOfTheDuelist extends Quest
 				}
 				break;
 			}
-			case "30623-06.htm":
-			case "30623-07.html":
-			case "30623-09.html":
-			case "30623-10.html":
-			case "30623-11.html":
-			case "30623-12.html":
-			case "30623-15.html":
+			case "30623-06.htm", "30623-07.html", "30623-09.html", "30623-10.html", "30623-11.html", "30623-12.html", "30623-15.html":
 			{
 				htmltext = event;
 				break;

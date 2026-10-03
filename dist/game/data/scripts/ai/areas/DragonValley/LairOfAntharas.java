@@ -126,8 +126,7 @@ public class LairOfAntharas extends AbstractNpcAI
 				}
 				break;
 			}
-			case DRAGON_GUARD:
-			case DRAGON_MAGE:
+			case DRAGON_GUARD, DRAGON_MAGE:
 			{
 				cancelQuestTimer("CHECK_HOME", npc, null);
 				break;

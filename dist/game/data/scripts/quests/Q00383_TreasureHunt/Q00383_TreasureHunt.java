@@ -114,9 +114,7 @@ public class Q00383_TreasureHunt extends Quest
 				}
 				break;
 			}
-			case "30890-08.html":
-			case "30890-09.html":
-			case "30890-10.html":
+			case "30890-08.html", "30890-09.html", "30890-10.html":
 			{
 				if (qs.isCond(1))
 				{

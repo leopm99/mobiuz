@@ -76,8 +76,7 @@ public class Q00691_MatrasSuspiciousRequest extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "32245-02.htm":
-			case "32245-11.html":
+			case "32245-02.htm", "32245-11.html":
 			{
 				htmltext = event;
 				break;

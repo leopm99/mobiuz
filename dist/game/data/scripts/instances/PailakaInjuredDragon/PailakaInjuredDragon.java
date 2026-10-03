@@ -623,16 +623,12 @@ public class PailakaInjuredDragon extends AbstractInstance
 				addSpawn(KETRA_ORC_SUPPORTER_2, npc.getX() + 100, npc.getY() + 100, npc.getZ(), 0, false, 0, false, npc.getInstanceId());
 				break;
 			}
-			case GRAZING_ANTELOPE:
-			case GRAZING_BANDERSNATCH:
-			case GRAZING_FLAVA:
-			case GRAZING_ELDER_ANTELOPE:
+			case GRAZING_ANTELOPE, GRAZING_BANDERSNATCH, GRAZING_FLAVA, GRAZING_ELDER_ANTELOPE:
 			{
 				npc.dropItem(killer, getRandomBoolean() ? PAILAKA_INSTANT_SHIELD : QUICK_HEALING_POTION, getRandom(1, 10));
 				break;
 			}
-			case VARKA_SILENOS_FOOTMAN:
-			case VARKA_SILENOS_RECRUIT:
+			case VARKA_SILENOS_FOOTMAN, VARKA_SILENOS_RECRUIT:
 			{
 				if (hasQuestItems(killer, SPEAR_OF_SILENOS) && !hasQuestItems(killer, WEAPON_UPGRADE_STAGE_1) && (getRandom(100) < 25))
 				{
@@ -677,8 +673,7 @@ public class PailakaInjuredDragon extends AbstractInstance
 				checkIfLastInWall(npc);
 				break;
 			}
-			case VARKA_COMMANDER:
-			case VARKA_SILENOS_OFFICER:
+			case VARKA_COMMANDER, VARKA_SILENOS_OFFICER:
 			{
 				if (hasQuestItems(killer, SPEAR_OF_SILENOS) && !hasQuestItems(killer, WEAPON_UPGRADE_STAGE_1) && (getRandom(100) < 25))
 				{
@@ -693,8 +688,7 @@ public class PailakaInjuredDragon extends AbstractInstance
 				checkIfLastInWall(npc);
 				break;
 			}
-			case VARKA_SILENOS_GREAT_MAGUS:
-			case VARKA_SILENOS_GENERAL:
+			case VARKA_SILENOS_GREAT_MAGUS, VARKA_SILENOS_GENERAL:
 			{
 				if (hasQuestItems(killer, ENHANCED_SPEAR_OF_SILENOS) && !hasQuestItems(killer, WEAPON_UPGRADE_STAGE_2) && (getRandom(100) < 25))
 				{
@@ -835,58 +829,44 @@ public class PailakaInjuredDragon extends AbstractInstance
 			
 			switch (npc.getId())
 			{
-				case VARKA_SILENOS_FOOTMAN:
-				case VARKA_SILENOS_RECRUIT:
-				case VARKA_SILENOS_WARRIOR:
+				case VARKA_SILENOS_FOOTMAN, VARKA_SILENOS_RECRUIT, VARKA_SILENOS_WARRIOR:
 				{
 					switch (npcs.getId())
 					{
-						case VARKA_SILENOS_FOOTMAN:
-						case VARKA_SILENOS_RECRUIT:
-						case VARKA_SILENOS_WARRIOR:
+						case VARKA_SILENOS_FOOTMAN, VARKA_SILENOS_RECRUIT, VARKA_SILENOS_WARRIOR:
 						{
 							return;
 						}
 					}
 					break;
 				}
-				case VARKA_ELITE_GUARD:
-				case VARKA_COMMANDER:
-				case VARKA_SILENOS_OFFICER:
+				case VARKA_ELITE_GUARD, VARKA_COMMANDER, VARKA_SILENOS_OFFICER:
 				{
 					switch (npcs.getId())
 					{
-						case VARKA_ELITE_GUARD:
-						case VARKA_COMMANDER:
-						case VARKA_SILENOS_OFFICER:
+						case VARKA_ELITE_GUARD, VARKA_COMMANDER, VARKA_SILENOS_OFFICER:
 						{
 							return;
 						}
 					}
 					break;
 				}
-				case VARKA_SILENOS_GREAT_MAGUS:
-				case VARKA_SILENOS_GENERAL:
-				case VARKA_PROPHET:
+				case VARKA_SILENOS_GREAT_MAGUS, VARKA_SILENOS_GENERAL, VARKA_PROPHET:
 				{
 					switch (npcs.getId())
 					{
-						case VARKA_SILENOS_GREAT_MAGUS:
-						case VARKA_SILENOS_GENERAL:
-						case VARKA_PROPHET:
+						case VARKA_SILENOS_GREAT_MAGUS, VARKA_SILENOS_GENERAL, VARKA_PROPHET:
 						{
 							return;
 						}
 					}
 					break;
 				}
-				case VARKA_HEAD_GUARD:
-				case PROPHET_GUARD:
+				case VARKA_HEAD_GUARD, PROPHET_GUARD:
 				{
 					switch (npcs.getId())
 					{
-						case VARKA_HEAD_GUARD:
-						case PROPHET_GUARD:
+						case VARKA_HEAD_GUARD, PROPHET_GUARD:
 						{
 							return;
 						}
@@ -906,14 +886,11 @@ public class PailakaInjuredDragon extends AbstractInstance
 			
 			switch (npc.getId())
 			{
-				case VARKA_SILENOS_FOOTMAN:
-				case VARKA_SILENOS_RECRUIT:
-				case VARKA_SILENOS_WARRIOR:
+				case VARKA_SILENOS_FOOTMAN, VARKA_SILENOS_RECRUIT, VARKA_SILENOS_WARRIOR:
 				{
 					switch (npcs.getId())
 					{
-						case VARKA_SILENOS_MEDIUM:
-						case VARKA_SILENOS_PRIEST:
+						case VARKA_SILENOS_MEDIUM, VARKA_SILENOS_PRIEST:
 						{
 							npcs.abortCast();
 							npcs.deleteMe();
@@ -922,14 +899,11 @@ public class PailakaInjuredDragon extends AbstractInstance
 					}
 					break;
 				}
-				case VARKA_ELITE_GUARD:
-				case VARKA_COMMANDER:
-				case VARKA_SILENOS_OFFICER:
+				case VARKA_ELITE_GUARD, VARKA_COMMANDER, VARKA_SILENOS_OFFICER:
 				{
 					switch (npcs.getId())
 					{
-						case VARKA_SILENOS_SHAMAN:
-						case VARKA_SILENOS_SEER:
+						case VARKA_SILENOS_SHAMAN, VARKA_SILENOS_SEER:
 						{
 							npcs.abortCast();
 							npcs.deleteMe();
@@ -938,14 +912,11 @@ public class PailakaInjuredDragon extends AbstractInstance
 					}
 					break;
 				}
-				case VARKA_SILENOS_GREAT_MAGUS:
-				case VARKA_SILENOS_GENERAL:
-				case VARKA_PROPHET:
+				case VARKA_SILENOS_GREAT_MAGUS, VARKA_SILENOS_GENERAL, VARKA_PROPHET:
 				{
 					switch (npcs.getId())
 					{
-						case VARKA_SILENOS_MAGUS:
-						case DISCIPLE_OF_PROPHET:
+						case VARKA_SILENOS_MAGUS, DISCIPLE_OF_PROPHET:
 						{
 							npcs.abortCast();
 							npcs.deleteMe();
@@ -954,13 +925,11 @@ public class PailakaInjuredDragon extends AbstractInstance
 					}
 					break;
 				}
-				case VARKA_HEAD_GUARD:
-				case PROPHET_GUARD:
+				case VARKA_HEAD_GUARD, PROPHET_GUARD:
 				{
 					switch (npcs.getId())
 					{
-						case VARKA_HEAD_MAGUS:
-						case VARKA_SILENOS_GREAT_SEER:
+						case VARKA_HEAD_MAGUS, VARKA_SILENOS_GREAT_SEER:
 						{
 							npcs.abortCast();
 							npcs.deleteMe();

@@ -382,18 +382,7 @@ public class Transmog extends AbstractNpcAI
 	{
 		switch (slot)
 		{
-			case "R_HAND":
-			case "L_HAND":
-			case "GLOVES":
-			case "CHEST":
-			case "LEGS":
-			case "FEET":
-			case "BACK":
-			case "LR_HAND":
-			case "FULL_ARMOR":
-			case "HAIRALL":
-			case "HAIR2":
-			case "HAIR":
+			case "R_HAND", "L_HAND", "GLOVES", "CHEST", "LEGS", "FEET", "BACK", "LR_HAND", "FULL_ARMOR", "HAIRALL", "HAIR2", "HAIR":
 			{
 				return true;
 			}

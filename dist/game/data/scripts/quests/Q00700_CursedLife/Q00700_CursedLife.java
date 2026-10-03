@@ -86,8 +86,7 @@ public class Q00700_CursedLife extends Quest
 					htmltext = ((player.getLevel() < MIN_LEVEL) || (qs == null) || (!qs.isCompleted())) ? "32560-03.htm" : event;
 					break;
 				}
-				case "32560-04.htm":
-				case "32560-09.html":
+				case "32560-04.htm", "32560-09.html":
 				{
 					htmltext = event;
 					break;
