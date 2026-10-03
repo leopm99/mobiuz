@@ -8986,14 +8986,7 @@ public class Player extends Playable
 		WorldObject target = null;
 		switch (skill.getTargetType())
 		{
-			case AURA: // AURA, SELF should be cast even if no target has been found
-			case FRONT_AURA:
-			case BEHIND_AURA:
-			case GROUND:
-			case SELF:
-			case AURA_CORPSE_MOB:
-			case COMMAND_CHANNEL:
-			case AURA_FRIENDLY:
+			case AURA, FRONT_AURA, BEHIND_AURA, GROUND, SELF, AURA_CORPSE_MOB, COMMAND_CHANNEL, AURA_FRIENDLY: // AURA, SELF should be cast even if no target has been found
 			{
 				target = this;
 				break;
@@ -9103,25 +9096,12 @@ public class Player extends Playable
 		switch (sklTargetType)
 		{
 			// Target the player if skill type is AURA, PARTY, CLAN or SELF
-			case AURA:
-			case FRONT_AURA:
-			case BEHIND_AURA:
-			case PARTY:
-			case CLAN:
-			case PARTY_CLAN:
-			case GROUND:
-			case SELF:
-			case AREA_SUMMON:
-			case AURA_CORPSE_MOB:
-			case COMMAND_CHANNEL:
-			case AURA_FRIENDLY:
+			case AURA, FRONT_AURA, BEHIND_AURA, PARTY, CLAN, PARTY_CLAN, GROUND, SELF, AREA_SUMMON, AURA_CORPSE_MOB, COMMAND_CHANNEL, AURA_FRIENDLY:
 			{
 				target = this;
 				break;
 			}
-			case PET:
-			case SERVITOR:
-			case SUMMON:
+			case PET, SERVITOR, SUMMON:
 			{
 				target = _summon;
 				break;
@@ -9289,17 +9269,7 @@ public class Player extends Playable
 			{
 				switch (sklTargetType)
 				{
-					case AURA:
-					case FRONT_AURA:
-					case BEHIND_AURA:
-					case AURA_CORPSE_MOB:
-					case CLAN:
-					case PARTY:
-					case SELF:
-					case GROUND:
-					case AREA_SUMMON:
-					case UNLOCKABLE:
-					case AURA_FRIENDLY:
+					case AURA, FRONT_AURA, BEHIND_AURA, AURA_CORPSE_MOB, CLAN, PARTY, SELF, GROUND, AREA_SUMMON, UNLOCKABLE, AURA_FRIENDLY:
 					{
 						break;
 					}
@@ -9349,15 +9319,7 @@ public class Player extends Playable
 		// Check if this is a Pvp skill and target isn't a non-flagged/non-karma player
 		switch (sklTargetType)
 		{
-			case PARTY:
-			case CLAN: // For such skills, checkPvpSkill() is called from Skill.getTargetList()
-			case PARTY_CLAN: // For such skills, checkPvpSkill() is called from Skill.getTargetList()
-			case AURA:
-			case FRONT_AURA:
-			case BEHIND_AURA:
-			case AREA_SUMMON:
-			case GROUND:
-			case SELF:
+			case PARTY, CLAN, PARTY_CLAN, AURA, FRONT_AURA, BEHIND_AURA, AREA_SUMMON, GROUND, SELF: // For such skills, checkPvpSkill() is called from Skill.getTargetList(); For such skills, checkPvpSkill() is called from Skill.getTargetList()
 			{
 				break;
 			}
@@ -12283,17 +12245,11 @@ public class Player extends Playable
 	{
 		switch (_lure.getId())
 		{
-			case 7807: // green for beginners
-			case 7808: // purple for beginners
-			case 7809: // yellow for beginners
-			case 8486: // prize-winning for beginners
+			case 7807, 7808, 7809, 8486: // green for beginners; purple for beginners; yellow for beginners; prize-winning for beginners
 			{
 				return 0;
 			}
-			case 8485: // prize-winning luminous
-			case 8506: // green luminous
-			case 8509: // purple luminous
-			case 8512: // yellow luminous
+			case 8485, 8506, 8509, 8512: // prize-winning luminous; green luminous; purple luminous; yellow luminous
 			{
 				return 2;
 			}
@@ -12385,19 +12341,12 @@ public class Player extends Playable
 			{
 				switch (_lure.getId())
 				{
-					case 7610:
-					case 7611:
-					case 7612:
-					case 7613:
+					case 7610, 7611, 7612, 7613:
 					{
 						type = 3;
 						break;
 					}
-					case 6519: // all theese lures (green) are prefered by fast-moving (nimble) fish (type 1)
-					case 8505:
-					case 6520:
-					case 6521:
-					case 8507:
+					case 6519, 8505, 6520, 6521, 8507: // all theese lures (green) are prefered by fast-moving (nimble) fish (type 1)
 					{
 						if (check <= 54)
 						{
@@ -12417,11 +12366,7 @@ public class Player extends Playable
 						}
 						break;
 					}
-					case 6522: // all theese lures (purple) are prefered by fat fish (type 0)
-					case 8508:
-					case 6523:
-					case 6524:
-					case 8510:
+					case 6522, 8508, 6523, 6524, 8510: // all theese lures (purple) are prefered by fat fish (type 0)
 					{
 						if (check <= 54)
 						{
@@ -12441,11 +12386,7 @@ public class Player extends Playable
 						}
 						break;
 					}
-					case 6525: // all theese lures (yellow) are prefered by ugly fish (type 2)
-					case 8511:
-					case 6526:
-					case 6527:
-					case 8513:
+					case 6525, 8511, 6526, 6527, 8513: // all theese lures (yellow) are prefered by ugly fish (type 2)
 					{
 						if (check <= 55)
 						{

@@ -618,8 +618,7 @@ public class Clan
 				limit = 20;
 				break;
 			}
-			case 100:
-			case 200:
+			case 100, 200:
 			{
 				switch (_level)
 				{
@@ -636,16 +635,11 @@ public class Clan
 				}
 				break;
 			}
-			case 1001:
-			case 1002:
-			case 2001:
-			case 2002:
+			case 1001, 1002, 2001, 2002:
 			{
 				switch (_level)
 				{
-					case 9:
-					case 10:
-					case 11:
+					case 9, 10, 11:
 					{
 						limit = 25;
 						break;

@@ -115,8 +115,7 @@ public class OfflineTraderTable
 								}
 								break;
 							}
-							case SELL:
-							case PACKAGE_SELL:
+							case SELL, PACKAGE_SELL:
 							{
 								if (!Config.OFFLINE_TRADE_ENABLE)
 								{
@@ -267,8 +266,7 @@ public class OfflineTraderTable
 									player.getBuyList().setTitle(rs.getString("title"));
 									break;
 								}
-								case SELL:
-								case PACKAGE_SELL:
+								case SELL, PACKAGE_SELL:
 								{
 									if (player.isSellingBuffs())
 									{
@@ -396,8 +394,7 @@ public class OfflineTraderTable
 								}
 								break;
 							}
-							case SELL:
-							case PACKAGE_SELL:
+							case SELL, PACKAGE_SELL:
 							{
 								if (firstCall)
 								{
@@ -508,9 +505,7 @@ public class OfflineTraderTable
 		boolean canSetShop = false;
 		switch (player.getPrivateStoreType())
 		{
-			case SELL:
-			case PACKAGE_SELL:
-			case BUY:
+			case SELL, PACKAGE_SELL, BUY:
 			{
 				canSetShop = Config.OFFLINE_TRADE_ENABLE;
 				break;

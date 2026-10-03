@@ -61,8 +61,7 @@ public class RequestExCubeGameChangeTeam extends ClientPacket
 		
 		switch (_team)
 		{
-			case 0:
-			case 1:
+			case 0, 1:
 			{
 				// Change Player Team
 				HandysBlockCheckerManager.getInstance().changePlayerToTeam(player, _arena);

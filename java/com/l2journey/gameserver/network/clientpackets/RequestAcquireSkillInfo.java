@@ -93,11 +93,7 @@ public class RequestAcquireSkillInfo extends ClientPacket
 		
 		switch (_skillType)
 		{
-			case TRANSFORM:
-			case FISHING:
-			case SUBCLASS:
-			case COLLECT:
-			case TRANSFER:
+			case TRANSFORM, FISHING, SUBCLASS, COLLECT, TRANSFER:
 			{
 				player.sendPacket(new AcquireSkillInfo(_skillType, s));
 				break;

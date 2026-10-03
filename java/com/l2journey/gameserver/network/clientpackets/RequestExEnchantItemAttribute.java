@@ -109,8 +109,7 @@ public class RequestExEnchantItemAttribute extends ClientPacket
 		
 		switch (item.getItemLocation())
 		{
-			case INVENTORY:
-			case PAPERDOLL:
+			case INVENTORY, PAPERDOLL:
 			{
 				if (item.getOwnerId() != player.getObjectId())
 				{
@@ -184,8 +183,7 @@ public class RequestExEnchantItemAttribute extends ClientPacket
 		boolean success = false;
 		switch (Elementals.getItemElemental(stoneId).getType())
 		{
-			case STONE:
-			case ROUGH_ORE:
+			case STONE, ROUGH_ORE:
 			{
 				success = Rnd.get(100) < Config.ENCHANT_CHANCE_ELEMENT_STONE;
 				break;

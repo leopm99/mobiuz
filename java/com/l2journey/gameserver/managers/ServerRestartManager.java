@@ -113,19 +113,15 @@ public class ServerRestartManager
 	{
 		switch (day)
 		{
-			case 1:
-			case 21:
-			case 31:
+			case 1, 21, 31:
 			{
 				return "st";
 			}
-			case 2:
-			case 22:
+			case 2, 22:
 			{
 				return "nd";
 			}
-			case 3:
-			case 23:
+			case 3, 23:
 			{
 				return "rd";
 			}

@@ -663,13 +663,7 @@ public abstract class Summon extends Playable
 				break;
 			}
 			// PARTY, AURA, SELF should be cast even if no target has been found
-			case PARTY:
-			case AURA:
-			case FRONT_AURA:
-			case BEHIND_AURA:
-			case SELF:
-			case AURA_CORPSE_MOB:
-			case COMMAND_CHANNEL:
+			case PARTY, AURA, FRONT_AURA, BEHIND_AURA, SELF, AURA_CORPSE_MOB, COMMAND_CHANNEL:
 			{
 				target = this;
 				break;

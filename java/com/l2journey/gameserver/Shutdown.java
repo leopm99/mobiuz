@@ -194,22 +194,7 @@ public class Shutdown extends Thread
 		{
 			switch (seconds)
 			{
-				case 540:
-				case 480:
-				case 420:
-				case 360:
-				case 300:
-				case 240:
-				case 180:
-				case 120:
-				case 60:
-				case 30:
-				case 10:
-				case 5:
-				case 4:
-				case 3:
-				case 2:
-				case 1:
+				case 540, 480, 420, 360, 300, 240, 180, 120, 60, 30, 10, 5, 4, 3, 2, 1:
 				{
 					break;
 				}
@@ -299,22 +284,7 @@ public class Shutdown extends Thread
 				
 				switch (_secondsShut)
 				{
-					case 540:
-					case 480:
-					case 420:
-					case 360:
-					case 300:
-					case 240:
-					case 180:
-					case 120:
-					case 60:
-					case 30:
-					case 10:
-					case 5:
-					case 4:
-					case 3:
-					case 2:
-					case 1:
+					case 540, 480, 420, 360, 300, 240, 180, 120, 60, 30, 10, 5, 4, 3, 2, 1:
 					{
 						sendServerQuit(_secondsShut);
 					}

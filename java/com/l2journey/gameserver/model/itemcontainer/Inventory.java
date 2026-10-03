@@ -938,8 +938,7 @@ public abstract class Inventory extends ItemContainer
 			{
 				return PAPERDOLL_UNDER;
 			}
-			case ItemTemplate.SLOT_LR_EAR:
-			case ItemTemplate.SLOT_R_EAR:
+			case ItemTemplate.SLOT_LR_EAR, ItemTemplate.SLOT_R_EAR:
 			{
 				return PAPERDOLL_REAR;
 			}
@@ -951,8 +950,7 @@ public abstract class Inventory extends ItemContainer
 			{
 				return PAPERDOLL_NECK;
 			}
-			case ItemTemplate.SLOT_LR_FINGER:
-			case ItemTemplate.SLOT_R_FINGER:
+			case ItemTemplate.SLOT_LR_FINGER, ItemTemplate.SLOT_R_FINGER:
 			{
 				return PAPERDOLL_RFINGER;
 			}
@@ -964,8 +962,7 @@ public abstract class Inventory extends ItemContainer
 			{
 				return PAPERDOLL_HEAD;
 			}
-			case ItemTemplate.SLOT_R_HAND:
-			case ItemTemplate.SLOT_LR_HAND:
+			case ItemTemplate.SLOT_R_HAND, ItemTemplate.SLOT_LR_HAND:
 			{
 				return PAPERDOLL_RHAND;
 			}
@@ -977,9 +974,7 @@ public abstract class Inventory extends ItemContainer
 			{
 				return PAPERDOLL_GLOVES;
 			}
-			case ItemTemplate.SLOT_CHEST:
-			case ItemTemplate.SLOT_FULL_ARMOR:
-			case ItemTemplate.SLOT_ALLDRESS:
+			case ItemTemplate.SLOT_CHEST, ItemTemplate.SLOT_FULL_ARMOR, ItemTemplate.SLOT_ALLDRESS:
 			{
 				return PAPERDOLL_CHEST;
 			}
@@ -995,8 +990,7 @@ public abstract class Inventory extends ItemContainer
 			{
 				return PAPERDOLL_CLOAK;
 			}
-			case ItemTemplate.SLOT_HAIR:
-			case ItemTemplate.SLOT_HAIRALL:
+			case ItemTemplate.SLOT_HAIR, ItemTemplate.SLOT_HAIRALL:
 			{
 				return PAPERDOLL_HAIR;
 			}
@@ -1355,12 +1349,7 @@ public abstract class Inventory extends ItemContainer
 				slot = ItemTemplate.SLOT_R_BRACELET;
 				break;
 			}
-			case PAPERDOLL_DECO1:
-			case PAPERDOLL_DECO2:
-			case PAPERDOLL_DECO3:
-			case PAPERDOLL_DECO4:
-			case PAPERDOLL_DECO5:
-			case PAPERDOLL_DECO6:
+			case PAPERDOLL_DECO1, PAPERDOLL_DECO2, PAPERDOLL_DECO3, PAPERDOLL_DECO4, PAPERDOLL_DECO5, PAPERDOLL_DECO6:
 			{
 				slot = ItemTemplate.SLOT_DECO;
 				break;
@@ -1485,8 +1474,7 @@ public abstract class Inventory extends ItemContainer
 				pdollSlot = PAPERDOLL_HEAD;
 				break;
 			}
-			case ItemTemplate.SLOT_R_HAND:
-			case ItemTemplate.SLOT_LR_HAND:
+			case ItemTemplate.SLOT_R_HAND, ItemTemplate.SLOT_LR_HAND:
 			{
 				pdollSlot = PAPERDOLL_RHAND;
 				break;
@@ -1501,9 +1489,7 @@ public abstract class Inventory extends ItemContainer
 				pdollSlot = PAPERDOLL_GLOVES;
 				break;
 			}
-			case ItemTemplate.SLOT_CHEST:
-			case ItemTemplate.SLOT_ALLDRESS:
-			case ItemTemplate.SLOT_FULL_ARMOR:
+			case ItemTemplate.SLOT_CHEST, ItemTemplate.SLOT_ALLDRESS, ItemTemplate.SLOT_FULL_ARMOR:
 			{
 				pdollSlot = PAPERDOLL_CHEST;
 				break;
@@ -1615,13 +1601,7 @@ public abstract class Inventory extends ItemContainer
 			// only chest target can pass this
 			switch (targetSlot)
 			{
-				case ItemTemplate.SLOT_LR_HAND:
-				case ItemTemplate.SLOT_L_HAND:
-				case ItemTemplate.SLOT_R_HAND:
-				case ItemTemplate.SLOT_LEGS:
-				case ItemTemplate.SLOT_FEET:
-				case ItemTemplate.SLOT_GLOVES:
-				case ItemTemplate.SLOT_HEAD:
+				case ItemTemplate.SLOT_LR_HAND, ItemTemplate.SLOT_L_HAND, ItemTemplate.SLOT_R_HAND, ItemTemplate.SLOT_LEGS, ItemTemplate.SLOT_FEET, ItemTemplate.SLOT_GLOVES, ItemTemplate.SLOT_HEAD:
 				{
 					return;
 				}
@@ -1652,9 +1632,7 @@ public abstract class Inventory extends ItemContainer
 				setPaperdollItem(PAPERDOLL_RHAND, item);
 				break;
 			}
-			case ItemTemplate.SLOT_L_EAR:
-			case ItemTemplate.SLOT_R_EAR:
-			case ItemTemplate.SLOT_LR_EAR:
+			case ItemTemplate.SLOT_L_EAR, ItemTemplate.SLOT_R_EAR, ItemTemplate.SLOT_LR_EAR:
 			{
 				if (_paperdoll[PAPERDOLL_LEAR] == null)
 				{
@@ -1670,9 +1648,7 @@ public abstract class Inventory extends ItemContainer
 				}
 				break;
 			}
-			case ItemTemplate.SLOT_L_FINGER:
-			case ItemTemplate.SLOT_R_FINGER:
-			case ItemTemplate.SLOT_LR_FINGER:
+			case ItemTemplate.SLOT_L_FINGER, ItemTemplate.SLOT_R_FINGER, ItemTemplate.SLOT_LR_FINGER:
 			{
 				if (_paperdoll[PAPERDOLL_LFINGER] == null)
 				{

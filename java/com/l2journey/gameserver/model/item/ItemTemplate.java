@@ -503,8 +503,7 @@ public abstract class ItemTemplate extends ListenersContainer
 	{
 		switch (_crystalType)
 		{
-			case S80:
-			case S84:
+			case S80, S84:
 			{
 				return CrystalType.S;
 			}
@@ -533,8 +532,7 @@ public abstract class ItemTemplate extends ListenersContainer
 		{
 			switch (_type2)
 			{
-				case TYPE2_SHIELD_ARMOR:
-				case TYPE2_ACCESSORY:
+				case TYPE2_SHIELD_ARMOR, TYPE2_ACCESSORY:
 				{
 					return _crystalCount + (_crystalType.getCrystalEnchantBonusArmor() * ((3 * enchantLevel) - 6));
 				}
@@ -554,8 +552,7 @@ public abstract class ItemTemplate extends ListenersContainer
 		}
 		switch (_type2)
 		{
-			case TYPE2_SHIELD_ARMOR:
-			case TYPE2_ACCESSORY:
+			case TYPE2_SHIELD_ARMOR, TYPE2_ACCESSORY:
 			{
 				return _crystalCount + (_crystalType.getCrystalEnchantBonusArmor() * enchantLevel);
 			}
@@ -799,38 +796,32 @@ public abstract class ItemTemplate extends ListenersContainer
 	{
 		switch (f.getStat())
 		{
-			case FIRE_RES:
-			case FIRE_POWER:
+			case FIRE_RES, FIRE_POWER:
 			{
 				setElementals(new Elementals(Elementals.FIRE, (int) f.getValue()));
 				break;
 			}
-			case WATER_RES:
-			case WATER_POWER:
+			case WATER_RES, WATER_POWER:
 			{
 				setElementals(new Elementals(Elementals.WATER, (int) f.getValue()));
 				break;
 			}
-			case WIND_RES:
-			case WIND_POWER:
+			case WIND_RES, WIND_POWER:
 			{
 				setElementals(new Elementals(Elementals.WIND, (int) f.getValue()));
 				break;
 			}
-			case EARTH_RES:
-			case EARTH_POWER:
+			case EARTH_RES, EARTH_POWER:
 			{
 				setElementals(new Elementals(Elementals.EARTH, (int) f.getValue()));
 				break;
 			}
-			case HOLY_RES:
-			case HOLY_POWER:
+			case HOLY_RES, HOLY_POWER:
 			{
 				setElementals(new Elementals(Elementals.HOLY, (int) f.getValue()));
 				break;
 			}
-			case DARK_RES:
-			case DARK_POWER:
+			case DARK_RES, DARK_POWER:
 			{
 				setElementals(new Elementals(Elementals.DARK, (int) f.getValue()));
 				break;

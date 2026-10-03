@@ -64,10 +64,7 @@ public class ShortcutRegister extends ServerPacket
 				buffer.writeInt(_shortcut.getCharacterType());
 				break;
 			}
-			case ACTION:
-			case MACRO:
-			case RECIPE:
-			case BOOKMARK:
+			case ACTION, MACRO, RECIPE, BOOKMARK:
 			{
 				buffer.writeInt(_shortcut.getId());
 				buffer.writeInt(_shortcut.getCharacterType());

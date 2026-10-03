@@ -432,22 +432,12 @@ public class CaptchaManager
 				
 				switch (_time)
 				{
-					case 300:
-					case 240:
-					case 180:
-					case 120:
-					case 60:
+					case 300, 240, 180, 120, 60:
 					{
 						_player.sendMessage((_time / 60) + " minute(s) to enter the code.");
 						break;
 					}
-					case 30:
-					case 10:
-					case 5:
-					case 4:
-					case 3:
-					case 2:
-					case 1:
+					case 30, 10, 5, 4, 3, 2, 1:
 					{
 						_player.sendMessage(_time + " second(s) to enter the code!");
 						break;

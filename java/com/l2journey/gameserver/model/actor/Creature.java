@@ -1235,9 +1235,7 @@ public abstract class Creature extends WorldObject
 					}
 					// Fallthrough.
 				}
-				case DUAL:
-				case DUALFIST:
-				case DUALDAGGER:
+				case DUAL, DUALFIST, DUALDAGGER:
 				{
 					_attackEndTime = currentTime + TimeUnit.MILLISECONDS.toNanos(timeAtk);
 					hitted = doAttackHitByDual(attack, target, timeToHit);
@@ -1780,25 +1778,12 @@ public abstract class Creature extends WorldObject
 				target = isPlayer() ? asPlayer().getSummon() : null;
 				break;
 			}
-			case AURA:
-			case AURA_CORPSE_MOB:
-			case FRONT_AURA:
-			case BEHIND_AURA:
-			case GROUND:
-			case AURA_FRIENDLY:
+			case AURA, AURA_CORPSE_MOB, FRONT_AURA, BEHIND_AURA, GROUND, AURA_FRIENDLY:
 			{
 				target = this;
 				break;
 			}
-			case SELF:
-			case PET:
-			case SERVITOR:
-			case SUMMON:
-			case OWNER_PET:
-			case PARTY:
-			case CLAN:
-			case PARTY_CLAN:
-			case COMMAND_CHANNEL:
+			case SELF, PET, SERVITOR, SUMMON, OWNER_PET, PARTY, CLAN, PARTY_CLAN, COMMAND_CHANNEL:
 			{
 				doit = true;
 				// Fallthrough.
@@ -5820,11 +5805,7 @@ public abstract class Creature extends WorldObject
 			switch (skill.getTargetType())
 			{
 				// apenas skills do tipo AURA podem ser conjuradas sem alvo
-				case AURA:
-				case FRONT_AURA:
-				case BEHIND_AURA:
-				case AURA_CORPSE_MOB:
-				case AURA_FRIENDLY:
+				case AURA, FRONT_AURA, BEHIND_AURA, AURA_CORPSE_MOB, AURA_FRIENDLY:
 				{
 					break;
 				}
@@ -6316,8 +6297,7 @@ public abstract class Creature extends WorldObject
 							{
 								switch (skill.getId())
 								{
-									case 51: // Lure
-									case 511: // Temptation
+									case 51, 511: // Lure; Temptation
 									{
 										break;
 									}

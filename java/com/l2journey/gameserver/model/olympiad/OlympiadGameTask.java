@@ -315,10 +315,7 @@ public class OlympiadGameTask implements Runnable
 		{
 			switch (_state)
 			{
-				case GAME_STOPPED:
-				case TELEPORT_TO_TOWN:
-				case CLEANUP:
-				case IDLE:
+				case GAME_STOPPED, TELEPORT_TO_TOWN, CLEANUP, IDLE:
 				{
 					LOGGER.log(Level.WARNING, "Unable to return players back in town, exception: " + e.getMessage());
 					_state = OlympiadGameState.IDLE;

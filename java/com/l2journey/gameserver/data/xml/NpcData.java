@@ -173,8 +173,7 @@ public class NpcData implements IXmlReader
 									}
 									break;
 								}
-								case "race":
-								case "sex":
+								case "race", "sex":
 								{
 									set.set(npcNode.getNodeName(), npcNode.getTextContent().toUpperCase());
 									break;

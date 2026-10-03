@@ -924,20 +924,12 @@ public class Npc extends Creature
 		
 		switch (npcId)
 		{
-			case 31127: //
-			case 31128: //
-			case 31129: // Dawn Festival Guides
-			case 31130: //
-			case 31131: //
+			case 31127, 31128, 31129, 31130, 31131: // ; ; Dawn Festival Guides; ; 
 			{
 				filename += "festival/dawn_guide.htm";
 				break;
 			}
-			case 31137: //
-			case 31138: //
-			case 31139: // Dusk Festival Guides
-			case 31140: //
-			case 31141: //
+			case 31137, 31138, 31139, 31140, 31141: // ; ; Dusk Festival Guides; ; 
 			{
 				filename += "festival/dusk_guide.htm";
 				break;
@@ -1025,16 +1017,7 @@ public class Npc extends Creature
 				filename += "mammblack_1.htm";
 				break;
 			}
-			case 31132:
-			case 31133:
-			case 31134:
-			case 31135:
-			case 31136: // Festival Witches
-			case 31142:
-			case 31143:
-			case 31144:
-			case 31145:
-			case 31146:
+			case 31132, 31133, 31134, 31135, 31136, 31142, 31143, 31144, 31145, 31146: // Festival Witches
 			{
 				filename += "festival/festival_witch.htm";
 				break;
@@ -1052,11 +1035,7 @@ public class Npc extends Creature
 				
 				break;
 			}
-			case 31690:
-			case 31769:
-			case 31770:
-			case 31771:
-			case 31772:
+			case 31690, 31769, 31770, 31771, 31772:
 			{
 				if (player.isHero() || player.isNoble())
 				{

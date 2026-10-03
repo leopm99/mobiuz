@@ -201,8 +201,7 @@ public class SignsPriest extends Npc
 					}
 					break;
 				}
-				case 3: // Join Cabal Intro 1
-				case 8: // Festival of Darkness Intro - SevenSigns x [0]1
+				case 3, 8: // Join Cabal Intro 1; Festival of Darkness Intro - SevenSigns x [0]1
 				{
 					showChatWindow(player, val, SevenSigns.getCabalShortName(cabal), false);
 					break;

@@ -499,44 +499,13 @@ public class PhantomEquipment
 		switch (classId)
 		{
 			// Arqueiros (Hawkeye, Silver Ranger, Phantom Ranger, etc.)
-			case 9:
-			case 24:
-			case 37:
-			case 92:
-			case 102:
-			case 109:
+			case 9, 24, 37, 92, 102, 109:
 				// Adagueiros e Anoes FS/BH (Scavenger, Bounty Hunter, Treasure Hunter, etc.)
-			case 7:
-			case 8:
-			case 22:
-			case 23:
-			case 35:
-			case 36:
-			case 93:
-			case 101:
-			case 108:
-			case 54:
-			case 55:
-			case 117:
+			case 7, 8, 22, 23, 35, 36, 93, 101, 108, 54, 55, 117:
 				// Garras (Monk, Tyrant, Grand Khavatari)
-			case 47:
-			case 48:
-			case 114:
+			case 47, 48, 114:
 				// Kamaels (Todas as classes de Kamael costumam usar Light)
-			case 123:
-			case 124:
-			case 125:
-			case 126:
-			case 127:
-			case 128:
-			case 129:
-			case 130:
-			case 131:
-			case 132:
-			case 133:
-			case 134:
-			case 135:
-			case 136:
+			case 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136:
 				return true;
 			default:
 				return false;
@@ -553,12 +522,7 @@ public class PhantomEquipment
 		switch (classId)
 		{
 			// === ARQUEIROS ===
-			case 9:
-			case 24:
-			case 37:
-			case 92:
-			case 102:
-			case 109:
+			case 9, 24, 37, 92, 102, 109:
 				isTwoHanded = true;
 				if (lvl >= 84)
 				{
@@ -587,18 +551,7 @@ public class PhantomEquipment
 				break;
 			
 			// === ADAGUEIROS & FORTUNE SEEKERS ===
-			case 7:
-			case 8:
-			case 22:
-			case 23:
-			case 35:
-			case 36:
-			case 93:
-			case 101:
-			case 108:
-			case 54:
-			case 55:
-			case 117: // Scavenger, Bounty Hunter, Fortune Seeker
+			case 7, 8, 22, 23, 35, 36, 93, 101, 108, 54, 55, 117: // Scavenger, Bounty Hunter, Fortune Seeker
 				if (lvl >= 84)
 				{
 					customWeaponId = 16156; // Mamba Edge Dual Daggers
@@ -626,9 +579,7 @@ public class PhantomEquipment
 				break;
 			
 			// === ESPADA DE DUAS MAOS (Destroyer, Titan) ===
-			case 45:
-			case 46:
-			case 113:
+			case 45, 46, 113:
 				isTwoHanded = true;
 				if (lvl >= 84)
 				{
@@ -657,9 +608,7 @@ public class PhantomEquipment
 				break;
 			
 			// === GARRAS (Monk, Tyrant, Grand Khavatari) ===
-			case 47:
-			case 48:
-			case 114:
+			case 47, 48, 114:
 				isTwoHanded = true;
 				if (lvl >= 84)
 				{
@@ -688,8 +637,7 @@ public class PhantomEquipment
 				break;
 			
 			// === LANCA (Warlord, Dreadnought) ===
-			case 3:
-			case 89:
+			case 3, 89:
 				isTwoHanded = true;
 				if (lvl >= 84)
 				{
@@ -718,10 +666,7 @@ public class PhantomEquipment
 				break;
 			
 			// === ESPADAS DUPLAS (Gladiator, Duelist, Bladedancer, Spectral Dancer) ===
-			case 2:
-			case 88:
-			case 34:
-			case 107:
+			case 2, 88, 34, 107:
 				isTwoHanded = true;
 				if (lvl >= 84)
 				{
@@ -750,19 +695,7 @@ public class PhantomEquipment
 				break;
 			
 			// === TANQUES (Humanos, Elfos, Elfos Negros) ===
-			case 1:
-			case 4:
-			case 5:
-			case 21:
-			case 6:
-			case 19:
-			case 20:
-			case 32:
-			case 33:
-			case 90:
-			case 91:
-			case 99:
-			case 106:
+			case 1, 4, 5, 21, 6, 19, 20, 32, 33, 90, 91, 99, 106:
 				isTwoHanded = false;
 				if (lvl >= 84)
 				{
@@ -797,9 +730,7 @@ public class PhantomEquipment
 				break;
 			
 			// === MACHADO E ESCUDO (Artisan, Warsmith, Maestro) ===
-			case 56:
-			case 57:
-			case 118:
+			case 56, 57, 118:
 				isTwoHanded = false;
 				if (lvl >= 84)
 				{
@@ -834,8 +765,7 @@ public class PhantomEquipment
 				break;
 			
 			// === KAMAEL - ANCIENT SWORD (Berserker, Doombringer) ===
-			case 127:
-			case 131:
+			case 127, 131:
 				isTwoHanded = true;
 				if (lvl >= 84)
 				{
@@ -864,11 +794,7 @@ public class PhantomEquipment
 				break;
 			
 			// === KAMAEL - RAPIER (Soul Breaker, Soul Hound) ===
-			case 128:
-			case 129:
-			case 132:
-			case 133:
-			case 135:
+			case 128, 129, 132, 133, 135:
 				isTwoHanded = false; // O Rapier permite escudo/sigilo
 				if (lvl >= 84)
 				{
@@ -897,8 +823,7 @@ public class PhantomEquipment
 				break;
 			
 			// === KAMAEL - CROSSBOW (Arbalester, Trickster) ===
-			case 130:
-			case 134:
+			case 130, 134:
 				isTwoHanded = true;
 				if (lvl >= 84)
 				{

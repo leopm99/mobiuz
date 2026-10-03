@@ -814,8 +814,7 @@ public class Duel
 		SystemMessage sm = null;
 		switch (result)
 		{
-			case TEAM_1_WIN:
-			case TEAM_2_SURRENDER:
+			case TEAM_1_WIN, TEAM_2_SURRENDER:
 			{
 				restorePlayerConditions(false);
 				sm = _partyDuel ? new SystemMessage(SystemMessageId.C1_S_PARTY_HAS_WON_THE_DUEL) : new SystemMessage(SystemMessageId.C1_HAS_WON_THE_DUEL);
@@ -825,8 +824,7 @@ public class Duel
 				broadcastToTeam2(sm);
 				break;
 			}
-			case TEAM_1_SURRENDER:
-			case TEAM_2_WIN:
+			case TEAM_1_SURRENDER, TEAM_2_WIN:
 			{
 				restorePlayerConditions(false);
 				sm = _partyDuel ? new SystemMessage(SystemMessageId.C1_S_PARTY_HAS_WON_THE_DUEL) : new SystemMessage(SystemMessageId.C1_HAS_WON_THE_DUEL);

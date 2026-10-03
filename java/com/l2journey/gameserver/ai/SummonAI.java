@@ -85,8 +85,7 @@ public class SummonAI extends PlayableAI implements Runnable
 	{
 		switch (intention)
 		{
-			case ACTIVE:
-			case FOLLOW:
+			case ACTIVE, FOLLOW:
 			{
 				startAvoidTask();
 				break;
@@ -271,11 +270,7 @@ public class SummonAI extends PlayableAI implements Runnable
 		_startFollow = !_startFollow;
 		switch (getIntention())
 		{
-			case ACTIVE:
-			case FOLLOW:
-			case IDLE:
-			case MOVE_TO:
-			case PICK_UP:
+			case ACTIVE, FOLLOW, IDLE, MOVE_TO, PICK_UP:
 			{
 				_actor.asSummon().setFollowStatus(_startFollow);
 			}

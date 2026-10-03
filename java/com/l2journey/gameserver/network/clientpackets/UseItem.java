@@ -212,9 +212,7 @@ public class UseItem extends ClientPacket
 			
 			switch (item.getTemplate().getBodyPart())
 			{
-				case ItemTemplate.SLOT_LR_HAND:
-				case ItemTemplate.SLOT_L_HAND:
-				case ItemTemplate.SLOT_R_HAND:
+				case ItemTemplate.SLOT_LR_HAND, ItemTemplate.SLOT_L_HAND, ItemTemplate.SLOT_R_HAND:
 				{
 					// Prevent players to equip weapon while wearing combat flag
 					if (((player.getActiveWeaponItem() != null) && (player.getActiveWeaponItem().getId() == 9819)) || player.isMounted() || player.isDisarmed())
@@ -248,17 +246,11 @@ public class UseItem extends ClientPacket
 								}
 								break;
 							}
-							case HUMAN:
-							case DWARF:
-							case ELF:
-							case DARK_ELF:
-							case ORC:
+							case HUMAN, DWARF, ELF, DARK_ELF, ORC:
 							{
 								switch (wpn.getItemType())
 								{
-									case RAPIER:
-									case CROSSBOW:
-									case ANCIENTSWORD:
+									case RAPIER, CROSSBOW, ANCIENTSWORD:
 									{
 										player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_REQUIRED_CONDITION_TO_EQUIP_THAT_ITEM);
 										return;
@@ -270,13 +262,7 @@ public class UseItem extends ClientPacket
 					}
 					break;
 				}
-				case ItemTemplate.SLOT_CHEST:
-				case ItemTemplate.SLOT_BACK:
-				case ItemTemplate.SLOT_GLOVES:
-				case ItemTemplate.SLOT_FEET:
-				case ItemTemplate.SLOT_HEAD:
-				case ItemTemplate.SLOT_FULL_ARMOR:
-				case ItemTemplate.SLOT_LEGS:
+				case ItemTemplate.SLOT_CHEST, ItemTemplate.SLOT_BACK, ItemTemplate.SLOT_GLOVES, ItemTemplate.SLOT_FEET, ItemTemplate.SLOT_HEAD, ItemTemplate.SLOT_FULL_ARMOR, ItemTemplate.SLOT_LEGS:
 				{
 					if ((player.getRace() == Race.KAMAEL) && ((item.getTemplate().getItemType() == ArmorType.HEAVY) || (item.getTemplate().getItemType() == ArmorType.MAGIC)))
 					{

@@ -1259,8 +1259,7 @@ public class CreatureAI extends AbstractAI
 					isMage = true;
 					break;
 				}
-				case CORPSE:
-				case BALANCED:
+				case CORPSE, BALANCED:
 				{
 					isBalanced = true;
 					break;
@@ -1287,8 +1286,7 @@ public class CreatureAI extends AbstractAI
 			{
 				switch (_actor.getId())
 				{
-					case 20314: // great white shark
-					case 20849: // Light Worm
+					case 20314, 20849: // great white shark; Light Worm
 					{
 						cannotMoveOnLand = true;
 						break;
@@ -1344,11 +1342,7 @@ public class CreatureAI extends AbstractAI
 					// AI than paralyze
 					switch (sk.getId())
 					{
-						case 367:
-						case 4111:
-						case 4383:
-						case 4616:
-						case 4578:
+						case 367, 4111, 4383, 4616, 4578:
 						{
 							sleepSkills.add(sk);
 							break;

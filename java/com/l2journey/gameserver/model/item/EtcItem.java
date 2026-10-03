@@ -57,10 +57,7 @@ public class EtcItem extends ItemTemplate
 		// l2j custom - EtcItemType.SHOT
 		switch (getDefaultAction())
 		{
-			case SOULSHOT:
-			case SUMMON_SOULSHOT:
-			case SUMMON_SPIRITSHOT:
-			case SPIRITSHOT:
+			case SOULSHOT, SUMMON_SOULSHOT, SUMMON_SPIRITSHOT, SPIRITSHOT:
 			{
 				_type = EtcItemType.SHOT;
 				break;

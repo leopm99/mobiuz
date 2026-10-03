@@ -104,14 +104,7 @@ public enum SkillOperateType
 	{
 		switch (this)
 		{
-			case A1:
-			case A2:
-			case A3:
-			case A4:
-			case CA1:
-			case CA5:
-			case DA1:
-			case DA2:
+			case A1, A2, A3, A4, CA1, CA5, DA1, DA2:
 			{
 				return true;
 			}
@@ -130,9 +123,7 @@ public enum SkillOperateType
 	{
 		switch (this)
 		{
-			case A2:
-			case A4:
-			case DA2:
+			case A2, A4, DA2:
 			{
 				return true;
 			}
@@ -178,8 +169,7 @@ public enum SkillOperateType
 	{
 		switch (this)
 		{
-			case CA1:
-			case CA5:
+			case CA1, CA5:
 			{
 				return true;
 			}

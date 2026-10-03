@@ -200,8 +200,7 @@ public class FloodProtectorAction
 		final ConnectionState state = _client.getConnectionState();
 		switch (state)
 		{
-			case ENTERING:
-			case IN_GAME:
+			case ENTERING, IN_GAME:
 			{
 				if (_client.getPlayer() != null)
 				{

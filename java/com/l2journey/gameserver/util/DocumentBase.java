@@ -247,14 +247,7 @@ public abstract class DocumentBase
 					attachEffect(n, template, condition, effectScope);
 					break;
 				}
-				case "add":
-				case "sub":
-				case "mul":
-				case "div":
-				case "set":
-				case "share":
-				case "enchant":
-				case "enchanthp":
+				case "add", "sub", "mul", "div", "set", "share", "enchant", "enchanthp":
 				{
 					attachFunc(n, template, name, condition);
 				}
