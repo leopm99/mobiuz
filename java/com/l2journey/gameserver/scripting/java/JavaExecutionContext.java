@@ -63,18 +63,21 @@ public class JavaExecutionContext
 	
 	private static Path _currentExecutingScript;
 	
-	public JavaExecutionContext()
+	static
 	{
-		// The Java version is hardcoded to "1.8" for both the source and target options in the compiler settings.
-		// This decision is primarily driven by compatibility considerations with the scripting environment.
-		addOptionIfNotNull(OPTIONS, "1.8", "-source");
+		// Match the project JDK target (build.xml source/target 25). Options are set once so
+		// constructing JavaExecutionContext again does not append duplicate compiler flags.
+		OPTIONS.add("--release");
+		OPTIONS.add("25");
 		addOptionIfNotNull(OPTIONS, "data/scripts", "-sourcepath");
 		addOptionIfNotNull(OPTIONS, "source,lines,vars", "-g:");
-		OPTIONS.add("-target");
-		OPTIONS.add("1.8");
 	}
 	
-	private boolean addOptionIfNotNull(List<String> list, String nullChecked, String before)
+	public JavaExecutionContext()
+	{
+	}
+	
+	private static boolean addOptionIfNotNull(List<String> list, String nullChecked, String before)
 	{
 		if (nullChecked == null)
 		{

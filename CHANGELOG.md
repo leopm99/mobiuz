@@ -13,9 +13,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Empty-list boot restore of `phantom_ai` characters into `phantomplayers.xml`, plus `admin_phantom_restore_db`
 - Phantom cursed-sword hunts: wielders attack players (real players first), a configurable squad (`PhantomCursedHunterLimit`) chases the holder, and one hunter loots the drop on death
 - Unit tests for phantom cursed hunts, return relocation, and related progression guards (`ant test`)
+- Unit test that the script compiler accepts an ordinary Java 8 script and a Java 25 constructor
 
 ### Changed
 
+- Datapack scripts compile with `--release 25`; Java 8 `-source` / `-target` is removed
+- Script file manager forwards JDK module APIs so `--release` compilation works
 - `PhantomCursedHunterLimit` moved from `npc.ini` into `phantom.ini`
 - Phantom players pick up their own ground loot before selecting the next farm target
 - Geodata pathfinding defaults to live routes (`PathFinding = 2`), and the server corrects player coordinates when the client drifts (`CoordSynchronize = 2`)
