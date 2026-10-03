@@ -213,7 +213,7 @@ public class SellBuff implements IVoicedCommandHandler, IBypassHandler
 						{
 							price = Integer.parseInt(st.nextToken());
 						}
-						catch (NumberFormatException e)
+						catch (NumberFormatException _)
 						{
 							player.sendMessage("Too big price! Maximum price is " + Config.SELLBUFF_MAX_PRICE);
 							SellBuffsManager.getInstance().sendBuffEditMenu(player);
@@ -294,7 +294,7 @@ public class SellBuff implements IVoicedCommandHandler, IBypassHandler
 						{
 							price = Integer.parseInt(st.nextToken());
 						}
-						catch (NumberFormatException e)
+						catch (NumberFormatException _)
 						{
 							player.sendMessage("Too big price! Maximum price is " + Config.SELLBUFF_MIN_PRICE);
 							SellBuffsManager.getInstance().sendBuffEditMenu(player);

@@ -59,7 +59,7 @@ public class AdminAugment implements IAdminCommandHandler
 		{
 			itemId = Integer.parseInt(splitCommand[1]);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			activeChar.sendSysMessage("No item with id " + splitCommand[1]);
 			return false;
@@ -78,7 +78,7 @@ public class AdminAugment implements IAdminCommandHandler
 		{
 			optionId = Integer.parseInt(splitCommand[2]);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			activeChar.sendSysMessage("No option with id " + splitCommand[2]);
 			return false;

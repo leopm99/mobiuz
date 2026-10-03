@@ -66,7 +66,7 @@ public class AdminHellbound implements IAdminCommandHandler
 				activeChar.sendSysMessage("Hellbound level set to " + level);
 				return true;
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				activeChar.sendSysMessage("Usage: //hellbound_setlevel 0-11");
 				return false;

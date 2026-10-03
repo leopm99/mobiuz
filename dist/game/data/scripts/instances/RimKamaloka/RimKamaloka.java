@@ -752,7 +752,7 @@ public class RimKamaloka extends AbstractNpcAI
 		{
 			templateId = INSTANCE_IDS[index];
 		}
-		catch (ArrayIndexOutOfBoundsException e)
+		catch (ArrayIndexOutOfBoundsException _)
 		{
 			return;
 		}

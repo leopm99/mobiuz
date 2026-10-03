@@ -203,7 +203,7 @@ public class SubClassSkills extends AbstractNpcAI
 							PunishmentManager.handleIllegalPlayerAction(player, "Invalid cert variable:" + qName + "=" + qValue + " - no certified skills found", IllegalActionPunishmentType.NONE);
 						}
 					}
-					catch (NumberFormatException e)
+					catch (NumberFormatException _)
 					{
 						PunishmentManager.handleIllegalPlayerAction(player, "Invalid cert variable:" + qName + "=" + qValue + " - not a number", IllegalActionPunishmentType.NONE);
 					}
@@ -252,7 +252,7 @@ public class SubClassSkills extends AbstractNpcAI
 							PunishmentManager.handleIllegalPlayerAction(player, "Invalid cert variable:" + qName + "=" + qValue + " - no cert item found in inventory", IllegalActionPunishmentType.NONE);
 						}
 					}
-					catch (NumberFormatException e)
+					catch (NumberFormatException _)
 					{
 						PunishmentManager.handleIllegalPlayerAction(player, "Invalid cert variable:" + qName + "=" + qValue + " - not a number", IllegalActionPunishmentType.NONE);
 					}

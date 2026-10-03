@@ -58,11 +58,11 @@ public class DefenceTrait extends AbstractEffect
 				}
 				_defenceTraits.put(traitType, (value + 100) / 100);
 			}
-			catch (NumberFormatException e)
+			catch (NumberFormatException _)
 			{
 				LOGGER.warning(getClass().getSimpleName() + ": value of " + param.getKey() + " must be float value " + param.getValue() + " found.");
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				LOGGER.warning(getClass().getSimpleName() + ": value of TraitType enum required but found: " + param.getValue());
 			}

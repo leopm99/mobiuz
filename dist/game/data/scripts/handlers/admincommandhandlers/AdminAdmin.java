@@ -172,7 +172,7 @@ public class AdminAdmin implements IAdminCommandHandler
 					activeChar.sendSysMessage("Diet mode off");
 				}
 			}
-			catch (Exception ex)
+			catch (Exception _)
 			{
 				if (activeChar.getDietMode())
 				{
@@ -207,7 +207,7 @@ public class AdminAdmin implements IAdminCommandHandler
 					activeChar.sendSysMessage("Trade refusal disabled");
 				}
 			}
-			catch (Exception ex)
+			catch (Exception _)
 			{
 				if (activeChar.getTradeRefusal())
 				{
@@ -275,7 +275,7 @@ public class AdminAdmin implements IAdminCommandHandler
 				}
 				activeChar.sendSysMessage("Config parameter " + pName + " set to " + pValue);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				activeChar.sendSysMessage("Usage: //setconfig <parameter> <value>");
 			}
@@ -309,7 +309,7 @@ public class AdminAdmin implements IAdminCommandHandler
 		{
 			mode = Integer.parseInt(command.substring(11));
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			// Not important.
 		}

@@ -654,7 +654,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 			skillId = Integer.parseInt(parts[0]);
 			skillLevel = Integer.parseInt(parts[1]);
 		}
-		catch (NumberFormatException e)
+		catch (NumberFormatException _)
 		{
 			return buildMainPage(player);
 		}
@@ -1220,7 +1220,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 		{
 			currentPage = Integer.parseInt(page);
 		}
-		catch (NumberFormatException e)
+		catch (NumberFormatException _)
 		{
 			currentPage = 1;
 		}
@@ -1337,7 +1337,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 			skillId = Integer.parseInt(skill);
 			skillLevel = Integer.parseInt(level);
 		}
-		catch (NumberFormatException e)
+		catch (NumberFormatException _)
 		{
 			return buildMainPage(player);
 		}
@@ -1408,7 +1408,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 			skillId = Integer.parseInt(buffParts[1]);
 			skillLevel = Integer.parseInt(buffParts[2]);
 		}
-		catch (NumberFormatException e)
+		catch (NumberFormatException _)
 		{
 			return buildMainPage(player);
 		}

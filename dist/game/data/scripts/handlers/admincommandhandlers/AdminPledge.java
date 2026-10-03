@@ -171,7 +171,7 @@ public class AdminPledge implements IAdminCommandHandler
 						{
 							level = Integer.parseInt(parameter);
 						}
-						catch (NumberFormatException nfe)
+						catch (NumberFormatException _)
 						{
 							activeChar.sendSysMessage("Level incorrect.");
 							activeChar.sendSysMessage("Usage: //pledge <setlevel|rep> <number>");
@@ -206,7 +206,7 @@ public class AdminPledge implements IAdminCommandHandler
 						{
 							points = Integer.parseInt(parameter);
 						}
-						catch (NumberFormatException nfe)
+						catch (NumberFormatException _)
 						{
 							activeChar.sendSysMessage("Points incorrect.");
 							activeChar.sendSysMessage("Usage: //pledge <setlevel|rep> <number>");
@@ -228,7 +228,7 @@ public class AdminPledge implements IAdminCommandHandler
 							showMainPage(activeChar);
 							return false;
 						}
-						catch (Exception e)
+						catch (Exception _)
 						{
 							activeChar.sendSysMessage("Usage: //pledge <rep> <number>");
 						}

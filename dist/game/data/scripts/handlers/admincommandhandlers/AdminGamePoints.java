@@ -54,7 +54,7 @@ public class AdminGamePoints implements IAdminCommandHandler
 					activeChar.sendSysMessage("Usage: //add_game_points count");
 				}
 			}
-			catch (StringIndexOutOfBoundsException e)
+			catch (StringIndexOutOfBoundsException _)
 			{ // Case of missing parameter
 				activeChar.sendSysMessage("Usage: //add_game_points count");
 			}
@@ -85,7 +85,7 @@ public class AdminGamePoints implements IAdminCommandHandler
 					activeChar.sendSysMessage("Usage: //set_game_points count");
 				}
 			}
-			catch (StringIndexOutOfBoundsException e)
+			catch (StringIndexOutOfBoundsException _)
 			{
 				// Case of missing parameter.
 				activeChar.sendSysMessage("Usage: //set_game_points count");
@@ -101,7 +101,7 @@ public class AdminGamePoints implements IAdminCommandHandler
 					activeChar.sendSysMessage("Usage: //subtract_game_points count");
 				}
 			}
-			catch (StringIndexOutOfBoundsException e)
+			catch (StringIndexOutOfBoundsException _)
 			{
 				// Case of missing parameter.
 				activeChar.sendSysMessage("Usage: //subtract_game_points count");

@@ -81,7 +81,7 @@ public class FavoriteBoard implements IParseBoardHandler
 				html = html.replace("%fav_list%", sb.toString());
 				CommunityBoardHandler.separateAndSend(html, player);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				LOG.warning(FavoriteBoard.class.getSimpleName() + ": Couldn't load favorite links for " + player);
 			}
@@ -108,7 +108,7 @@ public class FavoriteBoard implements IParseBoardHandler
 					// Callback
 					parseCommunityBoardCommand("_bbsgetfav", player);
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					LOG.warning(FavoriteBoard.class.getSimpleName() + ": Couldn't add favorite link " + bypass + " for " + player);
 				}
@@ -132,7 +132,7 @@ public class FavoriteBoard implements IParseBoardHandler
 				// Callback
 				parseCommunityBoardCommand("_bbsgetfav", player);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				LOG.warning(FavoriteBoard.class.getSimpleName() + ": Couldn't delete favorite link ID " + favId + " for " + player);
 			}

@@ -70,7 +70,7 @@ public class AdminInstance implements IAdminCommandHandler
 					}
 					return true;
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					activeChar.sendSysMessage("Failed loading: " + parts[1] + " " + parts[2]);
 					return false;
@@ -121,7 +121,7 @@ public class AdminInstance implements IAdminCommandHandler
 				activeChar.sendSysMessage("Moved " + target.getName() + " to instance " + target.getInstanceId() + ".");
 				return true;
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				activeChar.sendSysMessage("Use //setinstance id");
 			}
@@ -134,7 +134,7 @@ public class AdminInstance implements IAdminCommandHandler
 				InstanceManager.getInstance().destroyInstance(val);
 				activeChar.sendSysMessage("Instance destroyed");
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				activeChar.sendSysMessage("Use //destroyinstance id");
 			}

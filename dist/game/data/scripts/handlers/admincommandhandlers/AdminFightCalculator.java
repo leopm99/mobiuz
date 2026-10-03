@@ -65,7 +65,7 @@ public class AdminFightCalculator implements IAdminCommandHandler
 				handleStart(command.substring("admin_fight_calculator".length()), activeChar);
 			}
 		}
-		catch (StringIndexOutOfBoundsException e)
+		catch (StringIndexOutOfBoundsException _)
 		{
 			// Do nothing.
 		}

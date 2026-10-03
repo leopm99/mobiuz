@@ -58,7 +58,7 @@ public class AdminTargetSay implements IAdminCommandHandler
 				final Creature target = obj.asCreature();
 				target.broadcastPacket(new CreatureSay(target, (target.isPlayer() ? ChatType.GENERAL : ChatType.NPC_GENERAL), target.getName(), message));
 			}
-			catch (StringIndexOutOfBoundsException e)
+			catch (StringIndexOutOfBoundsException _)
 			{
 				activeChar.sendSysMessage("Usage: //targetsay <text>");
 				return false;

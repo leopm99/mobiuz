@@ -84,7 +84,7 @@ public class AdminPForge implements IAdminCommandHandler
 			{
 				opCodeLong = Long.decode(opCode);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				return i > 0;
 			}
@@ -294,7 +294,7 @@ public class AdminPForge implements IAdminCommandHandler
 				
 				showValuesPage(activeChar, opCodes, format);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				showValuesUsage(activeChar);
 				return false;
@@ -583,7 +583,7 @@ public class AdminPForge implements IAdminCommandHandler
 				
 				showValuesPage(activeChar, opCodes, format);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				showSendUsage(activeChar, null, null);
 				return false;

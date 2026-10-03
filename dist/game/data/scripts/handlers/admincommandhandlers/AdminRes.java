@@ -95,7 +95,7 @@ public class AdminRes implements IAdminCommandHandler
 					activeChar.sendSysMessage("Resurrected all players within a " + radius + " unit radius.");
 					return;
 				}
-				catch (NumberFormatException e)
+				catch (NumberFormatException _)
 				{
 					activeChar.sendSysMessage("Enter a valid player name or radius.");
 					return;
@@ -143,7 +143,7 @@ public class AdminRes implements IAdminCommandHandler
 				activeChar.sendSysMessage("Resurrected all non-players within a " + radius + " unit radius.");
 			}
 		}
-		catch (NumberFormatException e)
+		catch (NumberFormatException _)
 		{
 			activeChar.sendSysMessage("Enter a valid radius.");
 			return;

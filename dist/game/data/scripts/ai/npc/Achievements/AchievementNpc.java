@@ -440,7 +440,7 @@ public class AchievementNpc extends AbstractNpcAI
 		{
 			return Integer.parseInt(a.getNodeValue());
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			return def;
 		}
@@ -457,7 +457,7 @@ public class AchievementNpc extends AbstractNpcAI
 		{
 			return Long.parseLong(a.getNodeValue());
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			return def;
 		}
@@ -490,7 +490,7 @@ public class AchievementNpc extends AbstractNpcAI
 					int catId = Integer.parseInt(event.substring(4));
 					return showCategoryAchievements(player, catId);
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					player.sendMessage("Invalid category.");
 				}
@@ -502,7 +502,7 @@ public class AchievementNpc extends AbstractNpcAI
 					int baseId = Integer.parseInt(event.substring(4));
 					return showAchievementDetail(player, baseId);
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					player.sendMessage("Invalid achievement.");
 				}
@@ -514,7 +514,7 @@ public class AchievementNpc extends AbstractNpcAI
 					int physicalId = Integer.parseInt(event.substring(6));
 					return claimLevel(player, physicalId);
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					player.sendMessage("Invalid ID.");
 				}
@@ -526,7 +526,7 @@ public class AchievementNpc extends AbstractNpcAI
 					int catId = Integer.parseInt(event.substring(9));
 					return showCategoryAchievements(player, catId);
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					return showCategoriesUI(player);
 				}
@@ -554,7 +554,7 @@ public class AchievementNpc extends AbstractNpcAI
 				int id = Integer.parseInt(event.substring(6));
 				return claimAchievement(player, id);
 			}
-			catch (NumberFormatException e)
+			catch (NumberFormatException _)
 			{
 				player.sendMessage("Invalid achievement id.");
 				return showAchievementList(player);
@@ -1073,7 +1073,7 @@ public class AchievementNpc extends AbstractNpcAI
 						return 1L;
 					}
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 				}
 				return 0L;
@@ -1087,7 +1087,7 @@ public class AchievementNpc extends AbstractNpcAI
 						return 1L;
 					}
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 				}
 				return 0L;
@@ -1101,7 +1101,7 @@ public class AchievementNpc extends AbstractNpcAI
 					int level = PlayerClass.getPlayerClass(baseClassId).level();
 					return level;
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					return 0L;
 				}
@@ -1112,7 +1112,7 @@ public class AchievementNpc extends AbstractNpcAI
 				{
 					return (player.getTotalSubClasses() > 0) ? 1L : 0L;
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					return 0L;
 				}
@@ -1126,7 +1126,7 @@ public class AchievementNpc extends AbstractNpcAI
 						return 1L;
 					}
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 				}
 				return 0L;
@@ -1140,7 +1140,7 @@ public class AchievementNpc extends AbstractNpcAI
 						return 1L;
 					}
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 				}
 				return 0L;
@@ -1163,7 +1163,7 @@ public class AchievementNpc extends AbstractNpcAI
 						}
 					}
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 				}
 				return 0L;
@@ -1187,7 +1187,7 @@ public class AchievementNpc extends AbstractNpcAI
 						}
 					}
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 				}
 				return 0L;
@@ -1207,7 +1207,7 @@ public class AchievementNpc extends AbstractNpcAI
 						return 1L;
 					}
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 				}
 				return 0L;
@@ -1227,7 +1227,7 @@ public class AchievementNpc extends AbstractNpcAI
 						return 1L;
 					}
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 				}
 				return 0L;

@@ -176,7 +176,7 @@ public class AdminPhantom implements IAdminCommandHandler
 				return Integer.parseInt(parts[1]);
 			}
 		}
-		catch (NumberFormatException e)
+		catch (NumberFormatException _)
 		{
 			return 0;
 		}

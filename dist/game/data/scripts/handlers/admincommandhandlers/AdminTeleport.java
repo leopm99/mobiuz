@@ -135,7 +135,7 @@ public class AdminTeleport implements IAdminCommandHandler
 				final int z = Integer.parseInt(st.nextToken());
 				activeChar.getAI().setIntention(Intention.MOVE_TO, new Location(x, y, z, 0));
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				activeChar.sendSysMessage("Usage: //walk <x> <y> <z>");
 			}
@@ -147,12 +147,12 @@ public class AdminTeleport implements IAdminCommandHandler
 				final String val = command.substring(14);
 				teleportTo(activeChar, val);
 			}
-			catch (StringIndexOutOfBoundsException e)
+			catch (StringIndexOutOfBoundsException _)
 			{
 				// Case of empty or missing coordinates
 				AdminHtml.showAdminHtml(activeChar, "teleports.htm");
 			}
-			catch (NumberFormatException nfe)
+			catch (NumberFormatException _)
 			{
 				activeChar.sendSysMessage("Usage: //move_to <x> <y> <z>");
 				AdminHtml.showAdminHtml(activeChar, "teleports.htm");
@@ -165,7 +165,7 @@ public class AdminTeleport implements IAdminCommandHandler
 				final String val = command.substring(25);
 				teleportCharacter(activeChar, val);
 			}
-			catch (StringIndexOutOfBoundsException e)
+			catch (StringIndexOutOfBoundsException _)
 			{
 				// Case of empty coordinates
 				activeChar.sendSysMessage("Wrong or no Coordinates given.");
@@ -180,7 +180,7 @@ public class AdminTeleport implements IAdminCommandHandler
 				final Player player = World.getInstance().getPlayer(targetName);
 				teleportToCharacter(activeChar, player);
 			}
-			catch (StringIndexOutOfBoundsException e)
+			catch (StringIndexOutOfBoundsException _)
 			{
 				// Not important.
 			}
@@ -206,7 +206,7 @@ public class AdminTeleport implements IAdminCommandHandler
 					changeCharacterPosition(activeChar, targetName);
 				}
 			}
-			catch (StringIndexOutOfBoundsException e)
+			catch (StringIndexOutOfBoundsException _)
 			{
 				// Not important.
 			}
@@ -257,7 +257,7 @@ public class AdminTeleport implements IAdminCommandHandler
 				activeChar.teleToLocation(new Location(x, y, z));
 				showTeleportWindow(activeChar);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				activeChar.sendSysMessage("Usage: //go<north|south|east|west|up|down> [offset] (default 150)");
 			}
@@ -364,7 +364,7 @@ public class AdminTeleport implements IAdminCommandHandler
 			activeChar.teleToLocation(x, y, z);
 			activeChar.sendSysMessage("You have been teleported to " + coords);
 		}
-		catch (NoSuchElementException nsee)
+		catch (NoSuchElementException _)
 		{
 			activeChar.sendSysMessage("Wrong or no Coordinates given.");
 		}
@@ -425,7 +425,7 @@ public class AdminTeleport implements IAdminCommandHandler
 				final int z = Integer.parseInt(z1);
 				teleportCharacter(player, new Location(x, y, z), null);
 			}
-			catch (NoSuchElementException nsee)
+			catch (NoSuchElementException _)
 			{
 				// Not important.
 			}
@@ -526,7 +526,7 @@ public class AdminTeleport implements IAdminCommandHandler
 				activeChar.sendSysMessage("Player's [" + name + "] position is now set to (" + x + "," + y + "," + z + ").");
 			}
 		}
-		catch (SQLException se)
+		catch (SQLException _)
 		{
 			activeChar.sendSysMessage("SQLException while changing offline character's position");
 		}
@@ -574,7 +574,7 @@ public class AdminTeleport implements IAdminCommandHandler
 				
 				activeChar.sendSysMessage("Created " + target.getTemplate().getName() + " on " + target.getObjectId() + ".");
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				activeChar.sendSysMessage("Target is not in game.");
 			}
@@ -603,7 +603,7 @@ public class AdminTeleport implements IAdminCommandHandler
 				
 				RaidBossSpawnManager.getInstance().addNewSpawn(spawnDat, 0, curHP, curMP, true);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				activeChar.sendPacket(SystemMessageId.YOUR_TARGET_CANNOT_BE_FOUND);
 			}

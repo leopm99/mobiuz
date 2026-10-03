@@ -185,7 +185,7 @@ public class AdminEffects implements IAdminCommandHandler
 				final int duration = Integer.parseInt(val2);
 				activeChar.broadcastPacket(new Earthquake(activeChar.getX(), activeChar.getY(), activeChar.getZ(), intensity, duration));
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				activeChar.sendSysMessage("Usage: //earthquake <intensity> <duration>");
 			}
@@ -199,7 +199,7 @@ public class AdminEffects implements IAdminCommandHandler
 				final int duration = Integer.parseInt(st.nextToken());
 				adminAtmosphere(type, state, duration, activeChar);
 			}
-			catch (Exception ex)
+			catch (Exception _)
 			{
 				activeChar.sendSysMessage("Usage: //atmosphere <signsky dawn|dusk>|<sky day|night|red> <duration>");
 			}
@@ -214,7 +214,7 @@ public class AdminEffects implements IAdminCommandHandler
 			{
 				AdminHtml.showAdminHtml(activeChar, "songs/songs" + command.substring(18) + ".htm");
 			}
-			catch (StringIndexOutOfBoundsException e)
+			catch (StringIndexOutOfBoundsException _)
 			{
 				activeChar.sendSysMessage("Usage: //play_sounds <pagenumber>");
 			}
@@ -225,7 +225,7 @@ public class AdminEffects implements IAdminCommandHandler
 			{
 				playAdminSound(activeChar, command.substring(17));
 			}
-			catch (StringIndexOutOfBoundsException e)
+			catch (StringIndexOutOfBoundsException _)
 			{
 				activeChar.sendSysMessage("Usage: //play_sound <soundname>");
 			}
@@ -258,7 +258,7 @@ public class AdminEffects implements IAdminCommandHandler
 			{
 				type = st.nextToken();
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				// Managed bellow.
 			}
@@ -281,7 +281,7 @@ public class AdminEffects implements IAdminCommandHandler
 					creature.startParalyze();
 				}
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				// Not important.
 			}
@@ -293,7 +293,7 @@ public class AdminEffects implements IAdminCommandHandler
 			{
 				type = st.nextToken();
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				// Managed bellow.
 			}
@@ -315,7 +315,7 @@ public class AdminEffects implements IAdminCommandHandler
 					creature.setParalyzed(false);
 				}
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				// Not important.
 			}
@@ -332,7 +332,7 @@ public class AdminEffects implements IAdminCommandHandler
 					creature.startAbnormalVisualEffect(true, AbnormalVisualEffect.BIG_HEAD);
 				}
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				// Not important.
 			}
@@ -349,7 +349,7 @@ public class AdminEffects implements IAdminCommandHandler
 					creature.stopAbnormalVisualEffect(true, AbnormalVisualEffect.BIG_HEAD);
 				}
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				// Not important.
 			}
@@ -375,7 +375,7 @@ public class AdminEffects implements IAdminCommandHandler
 				final Team team = Team.valueOf(val.toUpperCase());
 				World.getInstance().forEachVisibleObjectInRange(activeChar, Player.class, radius, player -> player.setTeam(team));
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				activeChar.sendSysMessage("Usage: //setteam_close <none|blue|red> [radius]");
 			}
@@ -396,7 +396,7 @@ public class AdminEffects implements IAdminCommandHandler
 				}
 				target.setTeam(team);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				activeChar.sendSysMessage("Usage: //setteam <none|blue|red>");
 			}
@@ -429,7 +429,7 @@ public class AdminEffects implements IAdminCommandHandler
 								World.getInstance().forEachVisibleObjectInRange(activeChar, WorldObject.class, radius, object -> performSocial(social, object, activeChar));
 								activeChar.sendMessage(radius + " units radius affected by your request.");
 							}
-							catch (NumberFormatException nbe)
+							catch (NumberFormatException _)
 							{
 								activeChar.sendSysMessage("Incorrect parameter");
 							}
@@ -458,7 +458,7 @@ public class AdminEffects implements IAdminCommandHandler
 					activeChar.sendSysMessage("Usage: //social <social_id> [player_name|radius]");
 				}
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				// Not important.
 			}
@@ -474,7 +474,7 @@ public class AdminEffects implements IAdminCommandHandler
 				{
 					ave = AbnormalVisualEffect.valueOf(param1);
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					return false;
 				}
@@ -544,7 +544,7 @@ public class AdminEffects implements IAdminCommandHandler
 					activeChar.sendMessage(obj.getName() + " performs MSU " + skill + "/" + level + " by your request.");
 				}
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				activeChar.sendSysMessage("Usage: //effect skill [level | level hittime]");
 			}
@@ -564,7 +564,7 @@ public class AdminEffects implements IAdminCommandHandler
 				final int diplayeffect = Integer.parseInt(type);
 				npc.setDisplayEffect(diplayeffect);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				activeChar.sendSysMessage("Usage: //set_displayeffect <id>");
 			}
@@ -578,7 +578,7 @@ public class AdminEffects implements IAdminCommandHandler
 				World.getInstance().forEachVisibleObject(activeChar, Player.class, player -> player.sendPacket(new OnEventTrigger(triggerId, enable)));
 				activeChar.sendPacket(new OnEventTrigger(triggerId, enable));
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				activeChar.sendSysMessage("Usage: //event_trigger id [true | false]");
 			}
@@ -638,7 +638,7 @@ public class AdminEffects implements IAdminCommandHandler
 				return false;
 			}
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			// Not important.
 		}

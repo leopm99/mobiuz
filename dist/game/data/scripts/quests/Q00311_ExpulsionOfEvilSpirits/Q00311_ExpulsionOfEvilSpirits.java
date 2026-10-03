@@ -109,7 +109,7 @@ public class Q00311_ExpulsionOfEvilSpirits extends Quest
 		{
 			respawnTime = GlobalVariablesManager.getInstance().getLong("VarangkaRespawn", 0);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			
 		}

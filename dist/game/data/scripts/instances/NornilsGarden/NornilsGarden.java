@@ -517,7 +517,7 @@ public class NornilsGarden extends AbstractInstance
 			{
 				htmltext = enterInstance(npc, player);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				// Not Important.
 			}

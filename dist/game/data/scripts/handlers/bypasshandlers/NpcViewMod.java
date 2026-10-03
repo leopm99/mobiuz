@@ -92,7 +92,7 @@ public class NpcViewMod implements IBypassHandler
 					{
 						target = World.getInstance().findObject(Integer.parseInt(st.nextToken()));
 					}
-					catch (NumberFormatException e)
+					catch (NumberFormatException _)
 					{
 						return false;
 					}
@@ -132,11 +132,11 @@ public class NpcViewMod implements IBypassHandler
 					final int page = st.hasMoreElements() ? Integer.parseInt(st.nextToken()) : 0;
 					sendNpcDropList(player, npc, dropListType, page);
 				}
-				catch (NumberFormatException e)
+				catch (NumberFormatException _)
 				{
 					return false;
 				}
-				catch (IllegalArgumentException e)
+				catch (IllegalArgumentException _)
 				{
 					LOGGER.warning("Bypass[NpcViewMod] unknown drop list scope: " + dropListTypeString);
 					return false;
@@ -152,7 +152,7 @@ public class NpcViewMod implements IBypassHandler
 					{
 						target = World.getInstance().findObject(Integer.parseInt(st.nextToken()));
 					}
-					catch (NumberFormatException e)
+					catch (NumberFormatException _)
 					{
 						return false;
 					}
@@ -180,7 +180,7 @@ public class NpcViewMod implements IBypassHandler
 					{
 						target = World.getInstance().findObject(Integer.parseInt(st.nextToken()));
 					}
-					catch (NumberFormatException e)
+					catch (NumberFormatException _)
 					{
 						return false;
 					}

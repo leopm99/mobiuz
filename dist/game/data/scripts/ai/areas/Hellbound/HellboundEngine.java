@@ -261,7 +261,7 @@ public class HellboundEngine extends AbstractNpcAI
 			setMaxTrust(MAX_TRUST[newLevel]);
 			setMinTrust(MAX_TRUST[newLevel - 1]);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			setMaxTrust(0);
 			setMinTrust(0);

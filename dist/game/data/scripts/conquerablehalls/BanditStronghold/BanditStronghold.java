@@ -259,7 +259,7 @@ public class BanditStronghold extends ClanHallSiegeEngine
 					{
 						id = Integer.parseInt(var[1]);
 					}
-					catch (Exception e)
+					catch (Exception _)
 					{
 						LOGGER.warning(getClass().getSimpleName() + "->select_clan_npc->Wrong mahum warrior id: " + var[1]);
 					}

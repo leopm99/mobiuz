@@ -56,7 +56,7 @@ public class AdminShop implements IAdminCommandHandler
 			{
 				handleBuyRequest(activeChar, command.substring(10));
 			}
-			catch (IndexOutOfBoundsException e)
+			catch (IndexOutOfBoundsException _)
 			{
 				activeChar.sendSysMessage("Please specify buylist.");
 			}
@@ -81,7 +81,7 @@ public class AdminShop implements IAdminCommandHandler
 		{
 			val = Integer.parseInt(command);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			LOGGER.warning("admin buylist failed:" + command);
 		}

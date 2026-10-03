@@ -113,7 +113,7 @@ public class AdminSpawn implements IAdminCommandHandler
 						AdminHtml.showAdminHtml(activeChar, "spawns_debug.htm");
 					}
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					// Not important.
 				}
@@ -135,13 +135,13 @@ public class AdminSpawn implements IAdminCommandHandler
 				{
 					from = Integer.parseInt(st.nextToken());
 				}
-				catch (NoSuchElementException nsee)
+				catch (NoSuchElementException _)
 				{
 					// Handled above.
 				}
 				showMonsters(activeChar, level, from);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				AdminHtml.showAdminHtml(activeChar, "spawns.htm");
 			}
@@ -162,13 +162,13 @@ public class AdminSpawn implements IAdminCommandHandler
 				{
 					from = Integer.parseInt(st.nextToken());
 				}
-				catch (NoSuchElementException nsee)
+				catch (NoSuchElementException _)
 				{
 					// Handled above.
 				}
 				showNpcs(activeChar, letter, from);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				AdminHtml.showAdminHtml(activeChar, "npcs.htm");
 			}
@@ -220,7 +220,7 @@ public class AdminSpawn implements IAdminCommandHandler
 					activeChar.sendSysMessage("Invalid instance number.");
 				}
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				activeChar.sendSysMessage("Usage //instance_spawns <instance_number>");
 			}
@@ -366,7 +366,7 @@ public class AdminSpawn implements IAdminCommandHandler
 				// Call the spawnMonster method with the appropriate parameters.
 				spawnMonster(activeChar, npcId, respawnTime, mobCount, !cmd.equalsIgnoreCase("admin_spawn_once"));
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				// Case of wrong or missing monster data.
 				AdminHtml.showAdminHtml(activeChar, "spawns.htm");
@@ -410,7 +410,7 @@ public class AdminSpawn implements IAdminCommandHandler
 					npcId = NpcData.getInstance().getTemplateByName(searchString).getId();
 				}
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				activeChar.sendSysMessage("Command format is //list_spawns <npcId|npc_name> [tele_index]");
 			}
@@ -628,7 +628,7 @@ public class AdminSpawn implements IAdminCommandHandler
 				activeChar.sendSysMessage("Created " + template.getName() + " on " + target.getObjectId());
 			}
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			activeChar.sendPacket(SystemMessageId.YOUR_TARGET_CANNOT_BE_FOUND);
 		}

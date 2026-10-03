@@ -787,7 +787,7 @@ public class HomeBoard implements IParseBoardHandler
 				}
 			}
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			LOG.warning(FavoriteBoard.class.getSimpleName() + ": Couldn't load favorites count for " + player);
 		}

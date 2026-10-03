@@ -177,7 +177,7 @@ public class AdminCursedWeapons implements IAdminCommandHandler
 				}
 				cw = cwm.getCursedWeapon(id);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				activeChar.sendSysMessage("Usage: //cw_remove|//cw_goto|//cw_add <itemid|name>");
 			}

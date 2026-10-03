@@ -64,7 +64,7 @@ public class AdminChangeAccessLevel implements IAdminCommandHandler
 					onlineChange(activeChar, target.asPlayer(), lvl);
 				}
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				activeChar.sendSysMessage("Usage: //changelvl <target_new_level> | <player_name> <new_level>");
 			}
@@ -97,7 +97,7 @@ public class AdminChangeAccessLevel implements IAdminCommandHandler
 						activeChar.sendSysMessage("Character's access level is now set to " + lvl);
 					}
 				}
-				catch (SQLException se)
+				catch (SQLException _)
 				{
 					activeChar.sendSysMessage("SQLException while changing character's access level");
 				}

@@ -90,7 +90,7 @@ public class ClanBoard implements IWriteBoardHandler
 				{
 					clanList(player, Integer.parseInt(command.split(";")[1]));
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					clanList(player, 1);
 					LOG.warning(ClanBoard.class.getSimpleName() + ": " + player + " send invalid clan list bypass " + command + "!");
@@ -110,7 +110,7 @@ public class ClanBoard implements IWriteBoardHandler
 				{
 					clanHome(player, Integer.parseInt(command.split(";")[1]));
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					clanHome(player);
 					LOG.warning(ClanBoard.class.getSimpleName() + ": " + player + " send invalid clan home bypass " + command + "!");

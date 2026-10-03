@@ -71,7 +71,7 @@ public class AdminHide implements IAdminCommandHandler
 				}
 			}
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			player.sendSysMessage("//hide [on|off]");
 			return false;
