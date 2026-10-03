@@ -111,7 +111,7 @@ public class EffectZone extends ZoneType
 						{
 							_skills.put(Integer.parseInt(skillSplit[0]), Integer.parseInt(skillSplit[1]));
 						}
-						catch (NumberFormatException nfe)
+						catch (NumberFormatException _)
 						{
 							if (!skill.isEmpty())
 							{

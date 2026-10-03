@@ -252,7 +252,7 @@ public class PhantomSkills
 		{
 			return bot.getPlayerClass().getId();
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			return -1;
 		}

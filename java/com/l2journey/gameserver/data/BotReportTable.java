@@ -131,7 +131,7 @@ public class BotReportTable
 				}
 				lastResetTime = calendar.getTimeInMillis();
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				// Ignore.
 			}

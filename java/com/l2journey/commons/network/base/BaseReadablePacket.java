@@ -71,7 +71,7 @@ public class BaseReadablePacket
 				result.append((char) charId);
 			}
 		}
-		catch (Exception ignored)
+		catch (Exception _)
 		{
 		}
 		return result.toString();
@@ -88,7 +88,7 @@ public class BaseReadablePacket
 		{
 			result = new String(readBytes(readShort() * 2), StandardCharsets.UTF_16LE);
 		}
-		catch (Exception ignored)
+		catch (Exception _)
 		{
 		}
 		return result;

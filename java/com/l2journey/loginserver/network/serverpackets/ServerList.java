@@ -139,7 +139,7 @@ public class ServerList extends LoginServerPacket
 			{
 				Thread.sleep(50);
 			}
-			catch (InterruptedException ignored)
+			catch (InterruptedException _)
 			{
 			}
 			_charsOnServers = client.getCharsOnServ();

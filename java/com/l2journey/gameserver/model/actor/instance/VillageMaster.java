@@ -390,7 +390,7 @@ public class VillageMaster extends Folk
 					}
 				}
 			}
-			catch (Exception nfe)
+			catch (Exception _)
 			{
 				LOGGER.warning(VillageMaster.class.getName() + ": Wrong numeric values for command " + command);
 			}
@@ -626,7 +626,7 @@ public class VillageMaster extends Folk
 								return;
 							}
 						}
-						catch (NullPointerException e)
+						catch (NullPointerException _)
 						{
 							return;
 						}
@@ -1346,7 +1346,7 @@ public class VillageMaster extends Folk
 		{
 			pattern = Pattern.compile(Config.CLAN_NAME_TEMPLATE);
 		}
-		catch (PatternSyntaxException e)
+		catch (PatternSyntaxException _)
 		{
 			LOGGER.warning("ERROR: Wrong pattern for clan name!");
 			pattern = Pattern.compile(".*");

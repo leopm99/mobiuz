@@ -270,7 +270,7 @@ public class UCArena
 		{
 			Thread.sleep(30000);
 		}
-		catch (InterruptedException e)
+		catch (InterruptedException _)
 		{
 		}
 		
@@ -279,7 +279,7 @@ public class UCArena
 		{
 			Thread.sleep(20000);
 		}
-		catch (InterruptedException e)
+		catch (InterruptedException _)
 		{
 		}
 		
@@ -289,7 +289,7 @@ public class UCArena
 		{
 			Thread.sleep(5000);
 		}
-		catch (InterruptedException e)
+		catch (InterruptedException _)
 		{
 		}
 		
@@ -299,7 +299,7 @@ public class UCArena
 		{
 			Thread.sleep(1000);
 		}
-		catch (InterruptedException e)
+		catch (InterruptedException _)
 		{
 		}
 		
@@ -309,7 +309,7 @@ public class UCArena
 		{
 			Thread.sleep(1000);
 		}
-		catch (InterruptedException e)
+		catch (InterruptedException _)
 		{
 		}
 		
@@ -319,7 +319,7 @@ public class UCArena
 		{
 			Thread.sleep(1000);
 		}
-		catch (InterruptedException e)
+		catch (InterruptedException _)
 		{
 		}
 		
@@ -329,7 +329,7 @@ public class UCArena
 		{
 			Thread.sleep(1000);
 		}
-		catch (InterruptedException e)
+		catch (InterruptedException _)
 		{
 		}
 		
@@ -339,7 +339,7 @@ public class UCArena
 		{
 			Thread.sleep(1000);
 		}
-		catch (InterruptedException e)
+		catch (InterruptedException _)
 		{
 		}
 		

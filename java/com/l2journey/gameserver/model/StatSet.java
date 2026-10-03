@@ -122,7 +122,7 @@ public class StatSet
 		{
 			return Boolean.parseBoolean((String) val);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			throw new IllegalArgumentException("Boolean value required, but found: " + val);
 		}
@@ -150,7 +150,7 @@ public class StatSet
 		{
 			return Boolean.parseBoolean((String) val);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			return defaultValue;
 		}
@@ -171,7 +171,7 @@ public class StatSet
 		{
 			return Byte.parseByte((String) val);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			throw new IllegalArgumentException("Byte value required, but found: " + val);
 		}
@@ -192,7 +192,7 @@ public class StatSet
 		{
 			return Byte.parseByte((String) val);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			throw new IllegalArgumentException("Byte value required, but found: " + val);
 		}
@@ -235,7 +235,7 @@ public class StatSet
 			{
 				result[c++] = Byte.parseByte(v);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				throw new IllegalArgumentException("Byte value required, but found: " + val);
 			}
@@ -268,7 +268,7 @@ public class StatSet
 		{
 			return Short.parseShort((String) val);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			throw new IllegalArgumentException("Short value required, but found: " + val);
 		}
@@ -289,7 +289,7 @@ public class StatSet
 		{
 			return Short.parseShort((String) val);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			throw new IllegalArgumentException("Short value required, but found: " + val);
 		}
@@ -326,7 +326,7 @@ public class StatSet
 		{
 			return Integer.parseInt((String) val);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			throw new IllegalArgumentException("Integer value required, but found: " + val + "!");
 		}
@@ -347,7 +347,7 @@ public class StatSet
 		{
 			return Integer.parseInt((String) val);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			throw new IllegalArgumentException("Integer value required, but found: " + val);
 		}
@@ -390,7 +390,7 @@ public class StatSet
 			{
 				result[c++] = Integer.parseInt(v);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				throw new IllegalArgumentException("Integer value required, but found: " + val);
 			}
@@ -504,7 +504,7 @@ public class StatSet
 		{
 			return Long.parseLong((String) val);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			throw new IllegalArgumentException("Long value required, but found: " + val);
 		}
@@ -525,7 +525,7 @@ public class StatSet
 		{
 			return Long.parseLong((String) val);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			throw new IllegalArgumentException("Long value required, but found: " + val);
 		}
@@ -560,7 +560,7 @@ public class StatSet
 		{
 			return Float.parseFloat((String) val);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			throw new IllegalArgumentException("Float value required, but found: " + val);
 		}
@@ -581,7 +581,7 @@ public class StatSet
 		{
 			return Float.parseFloat((String) val);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			throw new IllegalArgumentException("Float value required, but found: " + val);
 		}
@@ -616,7 +616,7 @@ public class StatSet
 		{
 			return Double.parseDouble((String) val);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			throw new IllegalArgumentException("Double value required, but found: " + val);
 		}
@@ -637,7 +637,7 @@ public class StatSet
 		{
 			return Double.parseDouble((String) val);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			throw new IllegalArgumentException("Double value required, but found: " + val);
 		}
@@ -713,7 +713,7 @@ public class StatSet
 		{
 			return Enum.valueOf(enumClass, String.valueOf(val));
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			throw new IllegalArgumentException("Enum value of type " + enumClass.getName() + " required, but found: " + val);
 		}
@@ -735,7 +735,7 @@ public class StatSet
 		{
 			return Enum.valueOf(enumClass, String.valueOf(val));
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			throw new IllegalArgumentException("Enum value of type " + enumClass.getName() + " required, but found: " + val);
 		}

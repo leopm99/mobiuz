@@ -1710,7 +1710,7 @@ public class Item extends WorldObject
 			{
 				agathionEnergy = rs.getInt("agathion_energy");
 			}
-			catch (SQLException e)
+			catch (SQLException _)
 			{
 				// Column doesn't exist yet, use default from item template
 				agathionEnergy = -1;

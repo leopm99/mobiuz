@@ -291,7 +291,7 @@ public class CastleManager
 					}
 					return;
 				}
-				catch (NullPointerException e)
+				catch (NullPointerException _)
 				{
 					// continue removing offline
 				}

@@ -119,7 +119,7 @@ public class GameServerTable implements IXmlReader
 				_keyPairs[i] = keyGen.genKeyPair();
 			}
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			LOGGER.severe("Error loading RSA keys for Game Server communication!");
 		}
@@ -148,7 +148,7 @@ public class GameServerTable implements IXmlReader
 				GAME_SERVER_TABLE.put(id, new GameServerInfo(id, hexId));
 			}
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			LOGGER.severe("Error loading registered game servers!");
 		}
@@ -271,7 +271,7 @@ public class GameServerTable implements IXmlReader
 			ps.setString(3, externalHost);
 			ps.executeUpdate();
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			LOGGER.severe("Error while saving gameserver!");
 		}
@@ -549,7 +549,7 @@ public class GameServerTable implements IXmlReader
 			{
 				return getServerAddress(InetAddress.getByName("0.0.0.0"));
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				// Ignore.
 			}

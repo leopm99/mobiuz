@@ -102,7 +102,7 @@ public class DeadlockWatcher extends Thread
 				
 				Thread.sleep(_checkInterval.toMillis());
 			}
-			catch (InterruptedException e)
+			catch (InterruptedException _)
 			{
 				LOGGER.info("DeadlockWatcher: Thread interrupted and will exit.");
 				Thread.currentThread().interrupt();

@@ -266,7 +266,7 @@ public class SecondaryPasswordAuth
 			final byte[] hash = md.digest(raw);
 			return Base64.getEncoder().encodeToString(hash);
 		}
-		catch (NoSuchAlgorithmException e)
+		catch (NoSuchAlgorithmException _)
 		{
 			LOGGER.severe("[SecondaryPasswordAuth]Unsupported Algorythm");
 		}

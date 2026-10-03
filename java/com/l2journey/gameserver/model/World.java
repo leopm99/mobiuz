@@ -805,7 +805,7 @@ public class World
 		{
 			return _worldRegions[(object.getX() >> SHIFT_BY) + OFFSET_X][(object.getY() >> SHIFT_BY) + OFFSET_Y];
 		}
-		catch (ArrayIndexOutOfBoundsException e) // Precaution. Moved at invalid region?
+		catch (ArrayIndexOutOfBoundsException _) // Precaution. Moved at invalid region?
 		{
 			disposeOutOfBoundsObject(object);
 			return null;
@@ -818,7 +818,7 @@ public class World
 		{
 			return _worldRegions[(x >> SHIFT_BY) + OFFSET_X][(y >> SHIFT_BY) + OFFSET_Y];
 		}
-		catch (ArrayIndexOutOfBoundsException e)
+		catch (ArrayIndexOutOfBoundsException _)
 		{
 			LOGGER.warning(getClass().getSimpleName() + ": Incorrect world region X: " + ((x >> SHIFT_BY) + OFFSET_X) + " Y: " + ((y >> SHIFT_BY) + OFFSET_Y));
 			return null;

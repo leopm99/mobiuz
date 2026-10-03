@@ -702,7 +702,7 @@ public class AutoSpawnHandler
 			{
 				return _locList.remove(locIndex);
 			}
-			catch (IndexOutOfBoundsException e)
+			catch (IndexOutOfBoundsException _)
 			{
 				return null;
 			}

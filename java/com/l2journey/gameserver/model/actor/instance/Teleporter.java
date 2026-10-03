@@ -145,10 +145,10 @@ public class Teleporter extends Npc
 			{
 				val = Integer.parseInt(command.substring(5));
 			}
-			catch (IndexOutOfBoundsException ioobe)
+			catch (IndexOutOfBoundsException _)
 			{
 			}
-			catch (NumberFormatException nfe)
+			catch (NumberFormatException _)
 			{
 			}
 			

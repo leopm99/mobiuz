@@ -225,7 +225,7 @@ public class PhantomEngine
 				{
 					p.store(true);
 				}
-				catch (Exception ignored)
+				catch (Exception _)
 				{
 				}
 				p.deleteMe();

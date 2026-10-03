@@ -199,7 +199,7 @@ public class Connection<T extends Client<Connection<T>>>
 				_channel.close();
 			}
 		}
-		catch (IOException e)
+		catch (IOException _)
 		{
 			// Placeholder for handling/logging IOException if needed.
 		}
@@ -220,7 +220,7 @@ public class Connection<T extends Client<Connection<T>>>
 			final InetSocketAddress address = (InetSocketAddress) _channel.getRemoteAddress();
 			return address.getAddress().getHostAddress();
 		}
-		catch (IOException e)
+		catch (IOException _)
 		{
 			return "";
 		}

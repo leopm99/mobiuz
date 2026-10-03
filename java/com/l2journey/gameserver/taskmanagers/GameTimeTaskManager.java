@@ -128,7 +128,7 @@ public class GameTimeTaskManager extends Thread
 			{
 				Thread.sleep(MILLIS_IN_TICK);
 			}
-			catch (InterruptedException e)
+			catch (InterruptedException _)
 			{
 				// Ignore.
 			}

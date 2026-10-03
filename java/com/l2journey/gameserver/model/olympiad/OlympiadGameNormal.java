@@ -289,7 +289,7 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 				playerOneLost = _playerOne.getPlayer().isDead();
 			}
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			playerOneLost = true;
 		}
@@ -302,7 +302,7 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 				playerTwoLost = _playerTwo.getPlayer().isDead();
 			}
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			playerTwoLost = true;
 		}

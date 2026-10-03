@@ -412,7 +412,7 @@ public class Olympiad extends ListenersContainer
 						statement.setString(2, UNCLAIMED_OLYMPIAD_PASSES_VAR);
 						statement.execute();
 					}
-					catch (SQLException e)
+					catch (SQLException _)
 					{
 						LOGGER.warning("Olympiad System: Couldn't remove unclaimed olympiad points from DB!");
 					}
@@ -425,7 +425,7 @@ public class Olympiad extends ListenersContainer
 						statement.setString(3, String.valueOf(points));
 						statement.execute();
 					}
-					catch (SQLException e)
+					catch (SQLException _)
 					{
 						LOGGER.warning("Olympiad System: Couldn't store unclaimed olympiad points to DB!");
 					}
@@ -606,7 +606,7 @@ public class Olympiad extends ListenersContainer
 						// wait 1 minutes for end of pending games
 						Thread.sleep(60000);
 					}
-					catch (Exception e)
+					catch (Exception _)
 					{
 						// Ignore.
 					}
@@ -1167,7 +1167,7 @@ public class Olympiad extends ListenersContainer
 				}
 			}
 		}
-		catch (SQLException e)
+		catch (SQLException _)
 		{
 			LOGGER.warning("Olympiad System: Could not load heros from DB");
 		}
@@ -1189,7 +1189,7 @@ public class Olympiad extends ListenersContainer
 				}
 			}
 		}
-		catch (SQLException e)
+		catch (SQLException _)
 		{
 			LOGGER.warning("Olympiad System: Couldn't load olympiad leaders from DB!");
 		}
@@ -1378,7 +1378,7 @@ public class Olympiad extends ListenersContainer
 		{
 			s.executeUpdate(OLYMPIAD_DELETE_ALL);
 		}
-		catch (SQLException e)
+		catch (SQLException _)
 		{
 			LOGGER.warning("Olympiad System: Couldn't delete nobles from DB!");
 		}

@@ -115,7 +115,7 @@ public class MobGroup
 				}
 			}
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			return "Unspawned";
 		}
@@ -167,7 +167,7 @@ public class MobGroup
 				getMobs().add((ControllableMob) spawn.doGroupSpawn());
 			}
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			// Ignore.
 		}

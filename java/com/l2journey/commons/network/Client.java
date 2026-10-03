@@ -206,7 +206,7 @@ public abstract class Client<T extends Connection<?>>
 				written = _connection.write(buffer.toByteBuffers());
 			}
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			// Placeholder for handling/logging Exception if needed.
 		}

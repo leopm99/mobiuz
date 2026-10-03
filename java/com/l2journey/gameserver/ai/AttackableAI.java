@@ -899,7 +899,7 @@ public class AttackableAI extends CreatureAI
 					});
 				}
 			}
-			catch (NullPointerException e)
+			catch (NullPointerException _)
 			{
 				// LOGGER.warning(getClass().getSimpleName() + ": There has been a problem trying to think the attack!", e);
 			}
@@ -1877,7 +1877,7 @@ public class AttackableAI extends CreatureAI
 							dist2 -= 70;
 						}
 					}
-					catch (NullPointerException e)
+					catch (NullPointerException _)
 					{
 						continue;
 					}
@@ -1907,7 +1907,7 @@ public class AttackableAI extends CreatureAI
 							dist2 -= 70;
 						}
 					}
-					catch (NullPointerException e)
+					catch (NullPointerException _)
 					{
 						continue;
 					}
@@ -1941,7 +1941,7 @@ public class AttackableAI extends CreatureAI
 							dist2 -= 70;
 						}
 					}
-					catch (NullPointerException e)
+					catch (NullPointerException _)
 					{
 						continue;
 					}
@@ -1976,7 +1976,7 @@ public class AttackableAI extends CreatureAI
 						dist2 -= 70;
 					}
 				}
-				catch (NullPointerException e)
+				catch (NullPointerException _)
 				{
 					continue;
 				}
@@ -2015,7 +2015,7 @@ public class AttackableAI extends CreatureAI
 					// if(obj.isMoving())
 					// dist2 = dist2 - 40;
 				}
-				catch (NullPointerException e)
+				catch (NullPointerException _)
 				{
 					continue;
 				}
@@ -2040,7 +2040,7 @@ public class AttackableAI extends CreatureAI
 					// if(obj.isMoving())
 					// dist2 = dist2 - 40;
 				}
-				catch (NullPointerException e)
+				catch (NullPointerException _)
 				{
 					continue;
 				}
@@ -2101,7 +2101,7 @@ public class AttackableAI extends CreatureAI
 						dist2 -= 70;
 					}
 				}
-				catch (NullPointerException e)
+				catch (NullPointerException _)
 				{
 					continue;
 				}
@@ -2179,7 +2179,7 @@ public class AttackableAI extends CreatureAI
 				{
 					actor.setTarget(getAttackTarget());
 				}
-				catch (NullPointerException e)
+				catch (NullPointerException _)
 				{
 					continue;
 				}
@@ -2275,7 +2275,7 @@ public class AttackableAI extends CreatureAI
 				}
 			}
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			// LOGGER.warning(getClass().getSimpleName() + ": " + getActor().getName() + " - onActionThink() failed!");
 		}

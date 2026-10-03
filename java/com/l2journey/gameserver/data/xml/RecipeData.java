@@ -140,7 +140,7 @@ public class RecipeData implements IXmlReader
 								{
 									recipeStatUseList.add(new RecipeStatHolder(statName, value));
 								}
-								catch (Exception e)
+								catch (Exception _)
 								{
 									LOGGER.severe(getClass().getSimpleName() + ": Error in StatUse parameter for recipe item id: " + id + ", skipping");
 									continue RECIPES_FILE;
@@ -154,7 +154,7 @@ public class RecipeData implements IXmlReader
 								{
 									recipeAltStatChangeList.add(new RecipeStatHolder(statName, value));
 								}
-								catch (Exception e)
+								catch (Exception _)
 								{
 									LOGGER.severe(getClass().getSimpleName() + ": Error in AltStatChange parameter for recipe item id: " + id + ", skipping");
 									continue RECIPES_FILE;

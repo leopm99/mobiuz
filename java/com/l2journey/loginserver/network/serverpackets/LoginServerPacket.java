@@ -47,7 +47,7 @@ public abstract class LoginServerPacket extends WritablePacket<LoginClient>
 			writeImpl(client, buffer);
 			return true;
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			// LOGGER.error(e.getMessage(), e);
 		}

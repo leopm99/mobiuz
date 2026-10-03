@@ -217,7 +217,7 @@ public class SchedulingPattern
 		{
 			new SchedulingPattern(schedulingPattern);
 		}
-		catch (RuntimeException e)
+		catch (RuntimeException _)
 		{
 			return false;
 		}
@@ -474,7 +474,7 @@ public class SchedulingPattern
 			{
 				div = Integer.parseInt(dStr);
 			}
-			catch (NumberFormatException e)
+			catch (NumberFormatException _)
 			{
 				throw new Exception("invalid divisor \"" + dStr + "\"");
 			}
@@ -1014,7 +1014,7 @@ public class SchedulingPattern
 				// try as a simple value
 				return super.parse(value) % 7;
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				// try as an alias
 				return parseAlias(value, ALIASES, 0);
@@ -1061,7 +1061,7 @@ public class SchedulingPattern
 			{
 				return super.parse(value);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				return parseAlias(value, ALIASES, 1);
 			}
@@ -1154,7 +1154,7 @@ public class SchedulingPattern
 			{
 				i = Integer.parseInt(value);
 			}
-			catch (NumberFormatException e)
+			catch (NumberFormatException _)
 			{
 				throw new Exception("invalid integer value");
 			}

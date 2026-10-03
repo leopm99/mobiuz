@@ -437,7 +437,7 @@ public class MapRegionManager implements IXmlReader
 			
 			return getMapRegion(player).getChaoticSpawnLoc();
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			if (player.isFlyingMounted())
 			{
@@ -466,7 +466,7 @@ public class MapRegionManager implements IXmlReader
 			
 			return getMapRegion(creature).getSpawnLoc();
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			// Port to the default respawn if no closest town found.
 			return REGIONS.get(DEFAULT_RESPAWN).getSpawnLoc();
@@ -490,7 +490,7 @@ public class MapRegionManager implements IXmlReader
 			}
 			return region;
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			return REGIONS.get(DEFAULT_RESPAWN);
 		}

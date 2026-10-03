@@ -172,7 +172,7 @@ public class FortSiegeManager
 					final int npc_id = Integer.parseInt(st.nextToken());
 					commanderSpawns.add(new FortSiegeSpawn(fort.getResidenceId(), x, y, z, heading, npc_id, i));
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					LOGGER.warning("Error while loading commander(s) for " + fort.getName() + " fort.");
 				}
@@ -197,7 +197,7 @@ public class FortSiegeManager
 					final int flag_id = Integer.parseInt(st.nextToken());
 					flagSpawns.add(new CombatFlag(fort.getResidenceId(), x, y, z, 0, flag_id));
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					LOGGER.warning("Error while loading flag(s) for " + fort.getName() + " fort.");
 				}

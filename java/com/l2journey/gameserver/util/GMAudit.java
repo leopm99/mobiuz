@@ -126,7 +126,7 @@ public class GMAudit
 			file.getCanonicalPath();
 			return true;
 		}
-		catch (IOException e)
+		catch (IOException _)
 		{
 			return false;
 		}

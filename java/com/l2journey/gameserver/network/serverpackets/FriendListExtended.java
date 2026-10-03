@@ -93,7 +93,7 @@ public class FriendListExtended extends ServerPacket
 						}
 					}
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					// Who cares?
 				}

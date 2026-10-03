@@ -218,7 +218,7 @@ public class GameServerThread extends Thread
 		{
 			_socket.close();
 		}
-		catch (IOException e)
+		catch (IOException _)
 		{
 			LOGGER.finer("GameServerThread: Failed disconnecting banned server, server already disconnected.");
 		}
@@ -308,7 +308,7 @@ public class GameServerThread extends Thread
 				{
 					_out.flush();
 				}
-				catch (IOException e)
+				catch (IOException _)
 				{
 					// GameServer might have terminated.
 				}

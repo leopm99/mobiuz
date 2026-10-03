@@ -121,7 +121,7 @@ public class PrecautionaryRestartManager
 			
 			return (value * 1000) / 10d;
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 		}
 		

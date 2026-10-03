@@ -9822,7 +9822,7 @@ public class SystemMessageId
 		{
 			return (SystemMessageId) SystemMessageId.class.getField(name).get(null);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			return null;
 		}

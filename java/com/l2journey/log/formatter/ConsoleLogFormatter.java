@@ -52,7 +52,7 @@ public class ConsoleLogFormatter extends Formatter
 			{
 				StringUtil.append(output, TraceUtil.getStackTrace(record.getThrown()), System.lineSeparator());
 			}
-			catch (Exception ex)
+			catch (Exception _)
 			{
 				// Ignore.
 			}

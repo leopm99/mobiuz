@@ -301,7 +301,7 @@ public class Shutdown extends Thread
 				Thread.sleep(1000);
 			}
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			// this will never happen
 		}
@@ -339,7 +339,7 @@ public class Shutdown extends Thread
 			disconnectAllCharacters();
 			LOGGER.info("All players disconnected and saved(" + tc.getEstimatedTimeAndRestartCounter() + "ms).");
 		}
-		catch (Throwable t)
+		catch (Throwable _)
 		{
 			// ignore
 		}
@@ -351,7 +351,7 @@ public class Shutdown extends Thread
 			GameTimeTaskManager.getInstance().interrupt();
 			LOGGER.info("Game Time Task Manager: Thread interruped(" + tc.getEstimatedTimeAndRestartCounter() + "ms).");
 		}
-		catch (Throwable t)
+		catch (Throwable _)
 		{
 			// ignore
 		}
@@ -362,7 +362,7 @@ public class Shutdown extends Thread
 			ThreadPool.shutdown();
 			LOGGER.info("Thread Pool Manager: Manager has been shut down(" + tc.getEstimatedTimeAndRestartCounter() + "ms).");
 		}
-		catch (Throwable t)
+		catch (Throwable _)
 		{
 			// ignore
 		}
@@ -372,7 +372,7 @@ public class Shutdown extends Thread
 			LoginServerThread.getInstance().interrupt();
 			LOGGER.info("Login Server Thread: Thread interruped(" + tc.getEstimatedTimeAndRestartCounter() + "ms).");
 		}
-		catch (Throwable t)
+		catch (Throwable _)
 		{
 			// ignore
 		}
@@ -387,7 +387,7 @@ public class Shutdown extends Thread
 			DatabaseFactory.close();
 			LOGGER.info("Database Factory: Database connection has been shut down(" + tc.getEstimatedTimeAndRestartCounter() + "ms).");
 		}
-		catch (Throwable t)
+		catch (Throwable _)
 		{
 			// ignore
 		}
@@ -506,7 +506,7 @@ public class Shutdown extends Thread
 		{
 			Thread.sleep(5000);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			// this will never happen
 		}

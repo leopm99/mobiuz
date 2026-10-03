@@ -109,7 +109,7 @@ public class GameServerRegister extends BaseGameServerRegister
 						}
 					}
 				}
-				catch (NumberFormatException nfe)
+				catch (NumberFormatException _)
 				{
 					System.out.printf("Invalid Choice: %s" + System.lineSeparator(), choice);
 				}
@@ -248,7 +248,7 @@ public class GameServerRegister extends BaseGameServerRegister
 			{
 				id = Integer.parseInt(line);
 			}
-			catch (NumberFormatException e)
+			catch (NumberFormatException _)
 			{
 				System.out.printf("Invalid Choice: %s" + System.lineSeparator(), line);
 			}
@@ -292,7 +292,7 @@ public class GameServerRegister extends BaseGameServerRegister
 			{
 				id = Integer.parseInt(line);
 			}
-			catch (NumberFormatException e)
+			catch (NumberFormatException _)
 			{
 				System.out.printf("Invalid Choice: %s" + System.lineSeparator(), line);
 			}

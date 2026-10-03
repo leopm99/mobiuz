@@ -86,7 +86,7 @@ public class Armor extends ItemTemplate
 			id = Integer.parseInt(info[0]);
 			level = Integer.parseInt(info[1]);
 		}
-		catch (Exception nfe)
+		catch (Exception _)
 		{
 			// Incorrect syntax, don't add new skill
 			LOGGER.info("> Could not parse " + skill + " in armor enchant skills! item " + this);

@@ -4758,7 +4758,7 @@ public abstract class Creature extends WorldObject
 						
 						_move.onGeodataPathIndex = -1; // Define nao no caminho geodata.
 					}
-					catch (NullPointerException e)
+					catch (NullPointerException _)
 					{
 					}
 				}

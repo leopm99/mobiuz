@@ -345,7 +345,7 @@ public class RecipeManager
 					{
 						Thread.sleep(_delay);
 					}
-					catch (Exception e)
+					catch (Exception _)
 					{
 						// Ignore.
 					}
@@ -635,7 +635,7 @@ public class RecipeManager
 			{
 				_player.getCounters().onCraftSuccess();
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				// Nao interrompe o fluxo de craft.
 			}

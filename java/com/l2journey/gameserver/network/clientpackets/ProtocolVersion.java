@@ -50,7 +50,7 @@ public class ProtocolVersion extends ClientPacket
 		{
 			_version = readInt();
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			_version = 0;
 		}

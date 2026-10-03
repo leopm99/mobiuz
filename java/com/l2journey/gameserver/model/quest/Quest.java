@@ -4659,7 +4659,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 				count *= Config.RATE_QUEST_REWARD;
 			}
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			count = Long.MAX_VALUE;
 		}

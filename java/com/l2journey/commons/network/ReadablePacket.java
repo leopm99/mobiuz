@@ -188,7 +188,7 @@ public abstract class ReadablePacket<T extends Client<Connection<T>>> implements
 				result.append((char) charId);
 			}
 		}
-		catch (Exception ignored)
+		catch (Exception _)
 		{
 		}
 		return result.toString();
@@ -205,7 +205,7 @@ public abstract class ReadablePacket<T extends Client<Connection<T>>> implements
 		{
 			result = new String(readBytes(readShort() * 2), StandardCharsets.UTF_16LE);
 		}
-		catch (Exception ignored)
+		catch (Exception _)
 		{
 		}
 		return result;

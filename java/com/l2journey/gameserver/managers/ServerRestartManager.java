@@ -103,7 +103,7 @@ public class ServerRestartManager
 				LOGGER.info("Scheduled server restart at " + lastRestart.getTime() + ".");
 			}
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			LOGGER.info("The scheduled server restart config is not set properly, please correct it!");
 		}

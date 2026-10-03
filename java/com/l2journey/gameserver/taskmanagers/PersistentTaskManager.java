@@ -274,7 +274,7 @@ public class PersistentTaskManager
 					}
 					LOGGER.info(getClass().getSimpleName() + ": Task " + task.getId() + " is obsoleted.");
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					// Ignore.
 				}

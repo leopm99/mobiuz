@@ -181,7 +181,7 @@ public class CreatureFollowTaskManager
 				remove(creature);
 			}
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			// Ignore.
 		}

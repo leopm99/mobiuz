@@ -81,7 +81,7 @@ public class SiegableHall extends ClanHall
 				{
 					_scheduleConfig[i] = Integer.parseInt(rawSchConfig[i]);
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					LOGGER.warning("SiegableHall - " + getName() + ": Wrong schedule_config parameters!");
 				}

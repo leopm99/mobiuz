@@ -1686,12 +1686,12 @@ public class ClanHallManager extends Merchant
 						html.replace("%mp%", String.valueOf((int) getCurrentMp()));
 						sendHtmlMessage(player, html);
 					}
-					catch (Exception e)
+					catch (Exception _)
 					{
 						player.sendMessage("Invalid skill level, contact your admin!");
 					}
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					player.sendMessage("Invalid skill level, contact your admin!");
 				}

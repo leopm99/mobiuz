@@ -464,7 +464,7 @@ public class NpcData implements IXmlReader
 										{
 											dropType = Enum.valueOf(DropType.class, dropListsNode.getNodeName().toUpperCase());
 										}
-										catch (Exception e)
+										catch (Exception _)
 										{
 											// Handled bellow.
 										}

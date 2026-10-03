@@ -180,7 +180,7 @@ public final class Dashboard
 				}
 			}
 		}
-		catch (IOException e)
+		catch (IOException _)
 		{
 		}
 	}
@@ -342,12 +342,12 @@ public final class Dashboard
 					{
 						Files.deleteIfExists(file);
 					}
-					catch (IOException e)
+					catch (IOException _)
 					{
 					}
 				});
 			}
-			catch (IOException e)
+			catch (IOException _)
 			{
 			}
 		}
@@ -377,7 +377,7 @@ public final class Dashboard
 				final String response = input.readLine();
 				append(_gameConsole, "[JourneyDash] " + value + ": " + response);
 			}
-			catch (IOException e)
+			catch (IOException _)
 			{
 				append(_gameConsole, "[JourneyDash] GameServer nao esta disponivel.");
 			}
@@ -552,7 +552,7 @@ public final class Dashboard
 				append(output, line);
 			}
 		}
-		catch (IOException e)
+		catch (IOException _)
 		{
 			append(output, "[Dashboard] Console encerrado.");
 		}
@@ -574,7 +574,7 @@ public final class Dashboard
 					return;
 				}
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 			}
 			try
@@ -620,7 +620,7 @@ public final class Dashboard
 		{
 			new ProcessBuilder("taskkill", "/F", "/T", "/PID", Long.toString(pid)).redirectErrorStream(true).start().waitFor(4, TimeUnit.SECONDS);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 		}
 	}
@@ -632,14 +632,14 @@ public final class Dashboard
 		{
 			stop("gameserver", _gameConsole);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 		}
 		try
 		{
 			stop("loginserver", _loginConsole);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 		}
 	}
@@ -686,7 +686,7 @@ public final class Dashboard
 					_playersOnline = Integer.parseInt(response.substring(11).trim());
 				}
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				_playersOnline = 0;
 			}
@@ -730,7 +730,7 @@ public final class Dashboard
 			}
 			probe.waitFor(3, TimeUnit.SECONDS);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			// A consulta ao sistema operacional so fica indisponivel em uma sessao restrita do Windows.
 		}
@@ -780,7 +780,7 @@ public final class Dashboard
 				});
 			}
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			// O jcmd e opcional em tempo de execucao; o monitoramento de memoria continua disponivel sem ele.
 		}
@@ -824,7 +824,7 @@ public final class Dashboard
 				}
 			}
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 		}
 		return Optional.empty();
@@ -867,7 +867,7 @@ public final class Dashboard
 				});
 			}
 		}
-		catch (IOException e)
+		catch (IOException _)
 		{
 		}
 		return 0;
@@ -920,7 +920,7 @@ public final class Dashboard
 			final Matcher match = Pattern.compile(String.format(PORT.pattern(), key)).matcher(Files.readString(file));
 			return match.find() ? match.group(1) : fallback;
 		}
-		catch (IOException e)
+		catch (IOException _)
 		{
 			return fallback;
 		}
@@ -935,7 +935,7 @@ public final class Dashboard
 				java.awt.Desktop.getDesktop().open(path.toFile());
 			}
 		}
-		catch (IOException | UnsupportedOperationException e)
+		catch (IOException | UnsupportedOperationException _)
 		{
 		}
 	}
@@ -947,7 +947,7 @@ public final class Dashboard
 			final Path jar = Paths.get(Dashboard.class.getProtectionDomain().getCodeSource().getLocation().toURI());
 			return jar.getParent().toAbsolutePath().normalize();
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			return Paths.get(System.getProperty("user.dir")).toAbsolutePath().normalize();
 		}
@@ -960,7 +960,7 @@ public final class Dashboard
 			Image image = ImageIO.read(ROOT.resolve("images/splash.png").toFile());
 			return new ImageIcon(image.getScaledInstance(86, 86, Image.SCALE_SMOOTH));
 		}
-		catch (IOException e)
+		catch (IOException _)
 		{
 			return null;
 		}

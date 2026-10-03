@@ -108,7 +108,7 @@ public class AutoUseSettingsHolder
 		{
 			skillId = _autoSkills.get(_skillIndex);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			resetSkillOrder();
 		}

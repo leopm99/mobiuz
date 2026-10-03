@@ -1769,7 +1769,7 @@ public class Config
 			{
 				PROTOCOL_LIST.add(Integer.parseInt(protocol.trim()));
 			}
-			catch (NumberFormatException e)
+			catch (NumberFormatException _)
 			{
 				LOGGER.log(Level.WARNING, "Wrong config protocol version: " + protocol + ". Skipped.");
 			}
@@ -2252,7 +2252,7 @@ public class Config
 					{
 						RATE_DROP_AMOUNT_BY_ID.put(Integer.parseInt(itemSplit[0]), Float.parseFloat(itemSplit[1]));
 					}
-					catch (NumberFormatException nfe)
+					catch (NumberFormatException _)
 					{
 						if (!item.isEmpty())
 						{
@@ -2279,7 +2279,7 @@ public class Config
 					{
 						RATE_DROP_CHANCE_BY_ID.put(Integer.parseInt(itemSplit[0]), Float.parseFloat(itemSplit[1]));
 					}
-					catch (NumberFormatException nfe)
+					catch (NumberFormatException _)
 					{
 						if (!item.isEmpty())
 						{
@@ -2531,7 +2531,7 @@ public class Config
 			{
 				MINIONS_RESPAWN_TIME.put(Integer.parseInt(propSplit[0]), Integer.parseInt(propSplit[1]));
 			}
-			catch (NumberFormatException nfe)
+			catch (NumberFormatException _)
 			{
 				if (!prop.isEmpty())
 				{
@@ -2836,7 +2836,7 @@ public class Config
 					{
 						SKILL_DURATION_LIST.put(Integer.parseInt(skillSplit[0]), Integer.parseInt(skillSplit[1]));
 					}
-					catch (NumberFormatException nfe)
+					catch (NumberFormatException _)
 					{
 						if (!skill.isEmpty())
 						{
@@ -2864,7 +2864,7 @@ public class Config
 					{
 						SKILL_REUSE_LIST.put(Integer.parseInt(skillSplit[0]), Integer.parseInt(skillSplit[1]));
 					}
-					catch (NumberFormatException nfe)
+					catch (NumberFormatException _)
 					{
 						if (!skill.isEmpty())
 						{
@@ -3297,7 +3297,7 @@ public class Config
 					{
 						PREMIUM_RATE_DROP_CHANCE_BY_ID.put(Integer.parseInt(itemSplit[0]), Float.parseFloat(itemSplit[1]));
 					}
-					catch (NumberFormatException nfe)
+					catch (NumberFormatException _)
 					{
 						if (!item.isEmpty())
 						{
@@ -3324,7 +3324,7 @@ public class Config
 					{
 						PREMIUM_RATE_DROP_AMOUNT_BY_ID.put(Integer.parseInt(itemSplit[0]), Float.parseFloat(itemSplit[1]));
 					}
-					catch (NumberFormatException nfe)
+					catch (NumberFormatException _)
 					{
 						if (!item.isEmpty())
 						{
@@ -3624,11 +3624,11 @@ public class Config
 					num = num == 0 ? -1 : num;
 					DUALBOX_CHECK_WHITELIST.put(InetAddress.getByName(entrySplit[0]).hashCode(), num);
 				}
-				catch (UnknownHostException e)
+				catch (UnknownHostException _)
 				{
 					LOGGER.warning(StringUtil.concat("DualboxCheck[Config.load()]: invalid address -> DualboxCheckWhitelist \"", entrySplit[0], "\""));
 				}
-				catch (NumberFormatException e)
+				catch (NumberFormatException _)
 				{
 					LOGGER.warning(StringUtil.concat("DualboxCheck[Config.load()]: invalid number -> DualboxCheckWhitelist \"", entrySplit[1], "\""));
 				}
@@ -3994,7 +3994,7 @@ public class Config
 				{
 					HEX_ID = new BigInteger(hexId.getString("HexID", null), 16).toByteArray();
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					LOGGER.warning("Could not load HexID file (" + HEXID_FILE + "). Hopefully login will give us one.");
 				}
@@ -4285,7 +4285,7 @@ public class Config
 					externalIp = in.readLine();
 				}
 			}
-			catch (IOException e)
+			catch (IOException _)
 			{
 				LOGGER.log(Level.INFO, "Failed to connect to checkip.amazonaws.com please check your internet connection using 127.0.0.1!");
 				externalIp = "127.0.0.1";

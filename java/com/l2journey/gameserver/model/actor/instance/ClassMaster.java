@@ -150,7 +150,7 @@ public class ClassMaster extends Merchant
 			final int val = Integer.parseInt(request.substring(2));
 			checkAndChangeClass(player, val);
 		}
-		catch (NumberFormatException e)
+		catch (NumberFormatException _)
 		{
 			// Ignore.
 		}
