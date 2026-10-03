@@ -66,7 +66,7 @@ public class AdminSuperHaste implements IAdminCommandHandler
 						superHasteSkill.applyEffects(player, player, true, time);
 					}
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					player.sendMessage("Usage: //superhaste <Effect level (0-4)> <Time in seconds>");
 				}

@@ -337,7 +337,7 @@ public abstract class Chamber extends AbstractInstance
 					final int z = Integer.parseInt(coords[2]);
 					ret.setLocation(new Location(x, y, z));
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					// Not important.
 				}

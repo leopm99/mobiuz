@@ -73,7 +73,7 @@ public class AdminLogin implements IAdminCommandHandler
 					activeChar.sendSysMessage("maxPlayer set to " + number);
 					showMainPage(activeChar);
 				}
-				catch (NumberFormatException e)
+				catch (NumberFormatException _)
 				{
 					activeChar.sendSysMessage("Max players must be a number.");
 				}
@@ -100,7 +100,7 @@ public class AdminLogin implements IAdminCommandHandler
 				{
 					newType = Integer.parseInt(modes[0]);
 				}
-				catch (NumberFormatException e)
+				catch (NumberFormatException _)
 				{
 					newType = Config.getServerTypeId(modes);
 				}
@@ -146,7 +146,7 @@ public class AdminLogin implements IAdminCommandHandler
 						showMainPage(activeChar);
 					}
 				}
-				catch (NumberFormatException e)
+				catch (NumberFormatException _)
 				{
 					activeChar.sendSysMessage("Age must be a number");
 				}

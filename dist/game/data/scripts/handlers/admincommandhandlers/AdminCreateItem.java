@@ -90,11 +90,11 @@ public class AdminCreateItem implements IAdminCommandHandler
 					createItem(activeChar, activeChar, idval, 1);
 				}
 			}
-			catch (StringIndexOutOfBoundsException e)
+			catch (StringIndexOutOfBoundsException _)
 			{
 				activeChar.sendSysMessage("Usage: //create_item <itemId> [amount]");
 			}
-			catch (NumberFormatException nfe)
+			catch (NumberFormatException _)
 			{
 				activeChar.sendSysMessage("Specify a valid number.");
 			}
@@ -124,11 +124,11 @@ public class AdminCreateItem implements IAdminCommandHandler
 					createItem(activeChar, activeChar, idval, 1);
 				}
 			}
-			catch (StringIndexOutOfBoundsException e)
+			catch (StringIndexOutOfBoundsException _)
 			{
 				activeChar.sendSysMessage("Usage: //create_coin <name> [amount]");
 			}
-			catch (NumberFormatException nfe)
+			catch (NumberFormatException _)
 			{
 				activeChar.sendSysMessage("Specify a valid number.");
 			}
@@ -162,11 +162,11 @@ public class AdminCreateItem implements IAdminCommandHandler
 					createItem(activeChar, target.asPlayer(), idval, 1);
 				}
 			}
-			catch (StringIndexOutOfBoundsException e)
+			catch (StringIndexOutOfBoundsException _)
 			{
 				activeChar.sendSysMessage("Usage: //give_item_target <itemId> [amount]");
 			}
-			catch (NumberFormatException nfe)
+			catch (NumberFormatException _)
 			{
 				activeChar.sendSysMessage("Specify a valid number.");
 			}

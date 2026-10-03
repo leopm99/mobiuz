@@ -66,7 +66,7 @@ public class AdminLevel implements IAdminCommandHandler
 					targetChar.asPlayable().getStat().addLevel(Byte.parseByte(val));
 				}
 			}
-			catch (NumberFormatException e)
+			catch (NumberFormatException _)
 			{
 				activeChar.sendSysMessage("Wrong Number Format");
 			}
@@ -114,7 +114,7 @@ public class AdminLevel implements IAdminCommandHandler
 					return false;
 				}
 			}
-			catch (NumberFormatException e)
+			catch (NumberFormatException _)
 			{
 				activeChar.sendSysMessage("You must specify level between 1 and " + maxLevel + ".");
 				return false;

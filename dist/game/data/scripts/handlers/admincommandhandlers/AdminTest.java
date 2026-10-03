@@ -52,7 +52,7 @@ public class AdminTest implements IAdminCommandHandler
 				final int id = Integer.parseInt(st.nextToken());
 				adminTestSkill(activeChar, id, command.startsWith("admin_skill_test"));
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				activeChar.sendSysMessage("Command format is //skill_test <ID>");
 			}

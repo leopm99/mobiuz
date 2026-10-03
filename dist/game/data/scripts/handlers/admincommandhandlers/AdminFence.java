@@ -77,7 +77,7 @@ public class AdminFence implements IAdminCommandHandler
 					FenceData.getInstance().spawnFence(activeChar.getX(), activeChar.getY(), activeChar.getZ(), width, length, height, activeChar.getInstanceId(), FenceState.CLOSED);
 					activeChar.sendSysMessage("Fence added succesfully.");
 				}
-				catch (NoSuchElementException | NumberFormatException e)
+				catch (NoSuchElementException | NumberFormatException _)
 				{
 					activeChar.sendSysMessage("Format must be: //addfence <width> <length> <height>");
 				}
@@ -109,7 +109,7 @@ public class AdminFence implements IAdminCommandHandler
 						}
 					}
 				}
-				catch (NoSuchElementException | NumberFormatException e)
+				catch (NoSuchElementException | NumberFormatException _)
 				{
 					activeChar.sendSysMessage("Format mustr be: //setfencestate <fenceObjectId> <fenceState>");
 				}
@@ -131,7 +131,7 @@ public class AdminFence implements IAdminCommandHandler
 						activeChar.sendSysMessage("Target is not a fence.");
 					}
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					activeChar.sendSysMessage("Invalid object ID or target was not found.");
 				}
@@ -159,7 +159,7 @@ public class AdminFence implements IAdminCommandHandler
 						activeChar.teleToLocation(obj);
 					}
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					activeChar.sendSysMessage("Invalid object ID or target was not found.");
 				}

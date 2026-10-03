@@ -75,7 +75,7 @@ public class AdminKill implements IAdminCommandHandler
 							activeChar.sendSysMessage("Killed all characters within a " + radius + " unit radius.");
 							return true;
 						}
-						catch (NumberFormatException e)
+						catch (NumberFormatException _)
 						{
 							activeChar.sendSysMessage("Invalid radius.");
 							return false;
@@ -100,7 +100,7 @@ public class AdminKill implements IAdminCommandHandler
 						activeChar.sendSysMessage("Killed all characters within a " + radius + " unit radius.");
 						return true;
 					}
-					catch (NumberFormatException e)
+					catch (NumberFormatException _)
 					{
 						activeChar.sendSysMessage("Usage: //kill <player_name | radius>");
 						return false;

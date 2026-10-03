@@ -72,7 +72,7 @@ public class QuestLink implements IBypassHandler
 		{
 			quest = command.substring(5).trim();
 		}
-		catch (IndexOutOfBoundsException ioobe)
+		catch (IndexOutOfBoundsException _)
 		{
 			// Handled bellow.
 		}

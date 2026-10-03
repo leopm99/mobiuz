@@ -59,7 +59,7 @@ public class AdminExpSp implements IAdminCommandHandler
 					activeChar.sendSysMessage("Usage: //add_exp_sp exp sp");
 				}
 			}
-			catch (StringIndexOutOfBoundsException e)
+			catch (StringIndexOutOfBoundsException _)
 			{ // Case of missing parameter
 				activeChar.sendSysMessage("Usage: //add_exp_sp exp sp");
 			}
@@ -74,7 +74,7 @@ public class AdminExpSp implements IAdminCommandHandler
 					activeChar.sendSysMessage("Usage: //remove_exp_sp exp sp");
 				}
 			}
-			catch (StringIndexOutOfBoundsException e)
+			catch (StringIndexOutOfBoundsException _)
 			{ // Case of missing parameter
 				activeChar.sendSysMessage("Usage: //remove_exp_sp exp sp");
 			}
@@ -140,7 +140,7 @@ public class AdminExpSp implements IAdminCommandHandler
 			expval = Long.parseLong(exp);
 			spval = Math.min(Long.parseLong(sp), Config.MAX_SP);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			return false;
 		}
@@ -183,7 +183,7 @@ public class AdminExpSp implements IAdminCommandHandler
 			expval = Long.parseLong(exp);
 			spval = Long.parseLong(sp);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			return false;
 		}

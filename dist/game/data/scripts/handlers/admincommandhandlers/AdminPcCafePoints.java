@@ -72,7 +72,7 @@ public class AdminPcCafePoints implements IAdminCommandHandler
 				{
 					value = Integer.parseInt(st.nextToken());
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					showMenuHtml(activeChar);
 					activeChar.sendSysMessage("Invalid Value!");
@@ -143,7 +143,7 @@ public class AdminPcCafePoints implements IAdminCommandHandler
 						{
 							range = Integer.parseInt(st.nextToken());
 						}
-						catch (Exception e)
+						catch (Exception _)
 						{
 						}
 						

@@ -233,7 +233,7 @@ public class AdminBuffs implements IAdminCommandHandler
 				activeChar.sendSysMessage("All effects canceled within radius " + radius);
 				return true;
 			}
-			catch (NumberFormatException e)
+			catch (NumberFormatException _)
 			{
 				activeChar.sendSysMessage("Usage: //areacancel <radius>");
 				return false;
@@ -253,7 +253,7 @@ public class AdminBuffs implements IAdminCommandHandler
 				{
 					player = World.getInstance().getPlayer(playername);
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 				}
 				
@@ -281,7 +281,7 @@ public class AdminBuffs implements IAdminCommandHandler
 				activeChar.sendSysMessage("Skill reuse was removed from " + player.getName() + ".");
 				return true;
 			}
-			catch (NullPointerException e)
+			catch (NullPointerException _)
 			{
 				return false;
 			}
@@ -415,7 +415,7 @@ public class AdminBuffs implements IAdminCommandHandler
 		{
 			target = World.getInstance().findObject(objectId).asCreature();
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			activeChar.sendSysMessage("Target with object id " + objectId + " not found.");
 			return;
@@ -503,7 +503,7 @@ public class AdminBuffs implements IAdminCommandHandler
 		{
 			target = World.getInstance().findObject(objId).asCreature();
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			// Checked bellow.
 		}
@@ -531,7 +531,7 @@ public class AdminBuffs implements IAdminCommandHandler
 		{
 			target = World.getInstance().findObject(objId).asCreature();
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			// Checked bellow.
 		}
@@ -555,7 +555,7 @@ public class AdminBuffs implements IAdminCommandHandler
 		{
 			target = World.getInstance().findObject(objId).asCreature();
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			activeChar.sendSysMessage("Target with object id " + objId + " not found.");
 			return;

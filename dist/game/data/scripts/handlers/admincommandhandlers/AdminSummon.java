@@ -50,7 +50,7 @@ public class AdminSummon implements IAdminCommandHandler
 				count = Long.parseLong(data[2]);
 			}
 		}
-		catch (NumberFormatException nfe)
+		catch (NumberFormatException _)
 		{
 			activeChar.sendSysMessage("Incorrect format for command 'summon'");
 			return false;

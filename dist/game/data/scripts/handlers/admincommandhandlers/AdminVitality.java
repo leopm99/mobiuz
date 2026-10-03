@@ -66,7 +66,7 @@ public class AdminVitality implements IAdminCommandHandler
 				{
 					vitality = Integer.parseInt(st.nextToken());
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					activeChar.sendSysMessage("Incorrect vitality");
 				}
@@ -80,7 +80,7 @@ public class AdminVitality implements IAdminCommandHandler
 				{
 					level = Integer.parseInt(st.nextToken());
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					activeChar.sendSysMessage("Incorrect vitality level (0-4)");
 				}

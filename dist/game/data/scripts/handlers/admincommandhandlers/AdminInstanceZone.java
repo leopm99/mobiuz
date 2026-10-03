@@ -79,7 +79,7 @@ public class AdminInstanceZone implements IAdminCommandHandler
 				{
 					player = World.getInstance().getPlayer(playername);
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					// Handled bellow.
 				}

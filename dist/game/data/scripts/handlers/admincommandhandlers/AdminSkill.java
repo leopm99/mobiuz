@@ -104,7 +104,7 @@ public class AdminSkill implements IAdminCommandHandler
 			{
 				removeSkillsPage(activeChar, Integer.parseInt(st.nextToken()));
 			}
-			catch (NumberFormatException e)
+			catch (NumberFormatException _)
 			{
 				activeChar.sendSysMessage("Usage: //remove_skills <page>");
 			}
@@ -167,7 +167,7 @@ public class AdminSkill implements IAdminCommandHandler
 				final String val = command.substring(15);
 				adminAddSkill(activeChar, val);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				activeChar.sendSysMessage("Usage: //add_skill <skill_id> <level>");
 			}
@@ -180,7 +180,7 @@ public class AdminSkill implements IAdminCommandHandler
 				final int idval = Integer.parseInt(id);
 				adminRemoveSkill(activeChar, idval);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				activeChar.sendSysMessage("Usage: //remove_skill <skill_id>");
 			}
@@ -235,7 +235,7 @@ public class AdminSkill implements IAdminCommandHandler
 				final String[] val = command.split(" ");
 				adminAddClanSkill(activeChar, Integer.parseInt(val[1]), Integer.parseInt(val[2]));
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				activeChar.sendSysMessage("Usage: //add_clan_skill <skill_id> <level>");
 			}

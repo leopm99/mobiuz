@@ -56,7 +56,7 @@ public class ChatLink implements IBypassHandler
 		{
 			val = Integer.parseInt(command.substring(5));
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			// Handled above.
 		}

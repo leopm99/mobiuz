@@ -299,7 +299,7 @@ public class SavingSanta extends LongTimeEvent
 				_sled.getAI().setIntention(Intention.IDLE);
 				_sled.broadcastPacket(new SocialAction(_sled.getObjectId(), 1));
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				// Ignore.
 			}

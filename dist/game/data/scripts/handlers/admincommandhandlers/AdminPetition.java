@@ -47,7 +47,7 @@ public class AdminPetition implements IAdminCommandHandler
 		{
 			petitionId = Integer.parseInt(command.split(" ")[1]);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			// Managed above?
 		}
@@ -112,7 +112,7 @@ public class AdminPetition implements IAdminCommandHandler
 				petitionId = PetitionManager.getInstance().submitPetition(targetPlayer, val, 9);
 				PetitionManager.getInstance().acceptPetition(activeChar, petitionId);
 			}
-			catch (StringIndexOutOfBoundsException e)
+			catch (StringIndexOutOfBoundsException _)
 			{
 				activeChar.sendSysMessage("Usage: //force_peti text");
 				return false;

@@ -94,7 +94,7 @@ public class AdminElement implements IAdminCommandHandler
 				
 				setElement(activeChar, element, value, armorType);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				activeChar.sendSysMessage("Usage: //setlh/setlc/setlg/setlb/setll/setlw/setls <element>[0-5] <value>[0-450]");
 				return false;

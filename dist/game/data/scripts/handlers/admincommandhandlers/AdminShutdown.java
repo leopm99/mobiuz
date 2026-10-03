@@ -61,7 +61,7 @@ public class AdminShutdown implements IAdminCommandHandler
 					sendHtmlForm(activeChar);
 				}
 			}
-			catch (StringIndexOutOfBoundsException e)
+			catch (StringIndexOutOfBoundsException _)
 			{
 				sendHtmlForm(activeChar);
 			}
@@ -81,7 +81,7 @@ public class AdminShutdown implements IAdminCommandHandler
 					sendHtmlForm(activeChar);
 				}
 			}
-			catch (StringIndexOutOfBoundsException e)
+			catch (StringIndexOutOfBoundsException _)
 			{
 				sendHtmlForm(activeChar);
 			}

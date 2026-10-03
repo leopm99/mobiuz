@@ -208,7 +208,7 @@ public class AdminZones extends AbstractNpcAI implements IAdminCommandHandler
 									page = Integer.parseInt(value);
 								}
 							}
-							catch (NumberFormatException e)
+							catch (NumberFormatException _)
 							{
 							}
 						}

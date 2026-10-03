@@ -69,7 +69,7 @@ public class AdminSearch implements IAdminCommandHandler
 					{
 						page = Integer.parseInt(st.nextToken());
 					}
-					catch (NumberFormatException e)
+					catch (NumberFormatException _)
 					{
 						page = 1;
 					}

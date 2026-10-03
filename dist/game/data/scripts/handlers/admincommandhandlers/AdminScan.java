@@ -184,7 +184,7 @@ public class AdminScan implements IAdminCommandHandler
 			{
 				return Integer.parseInt(matcher.group(1).trim());
 			}
-			catch (NumberFormatException e)
+			catch (NumberFormatException _)
 			{
 				// Ignore and return default.
 			}

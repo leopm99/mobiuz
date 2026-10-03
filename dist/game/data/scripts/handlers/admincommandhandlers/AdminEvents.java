@@ -93,7 +93,7 @@ public class AdminEvents implements IAdminCommandHandler
 					}
 				}
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				activeChar.sendSysMessage("Usage: //event_start <eventname>");
 				return false;
@@ -119,7 +119,7 @@ public class AdminEvents implements IAdminCommandHandler
 					}
 				}
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				activeChar.sendSysMessage("Usage: //event_start <eventname>");
 				return false;
@@ -138,7 +138,7 @@ public class AdminEvents implements IAdminCommandHandler
 					}
 				}
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				activeChar.sendSysMessage("Usage: //event_bypass <eventname> <bypass>");
 				return false;

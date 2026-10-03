@@ -69,7 +69,7 @@ public class AdminPremium implements IAdminCommandHandler
 			{
 				addPremiumStatus(activeChar, 1, command.substring(19));
 			}
-			catch (StringIndexOutOfBoundsException e)
+			catch (StringIndexOutOfBoundsException _)
 			{
 				activeChar.sendSysMessage("Please enter a valid account name.");
 			}
@@ -80,7 +80,7 @@ public class AdminPremium implements IAdminCommandHandler
 			{
 				addPremiumStatus(activeChar, 2, command.substring(19));
 			}
-			catch (StringIndexOutOfBoundsException e)
+			catch (StringIndexOutOfBoundsException _)
 			{
 				activeChar.sendSysMessage("Please enter a valid account name.");
 			}
@@ -91,7 +91,7 @@ public class AdminPremium implements IAdminCommandHandler
 			{
 				addPremiumStatus(activeChar, 3, command.substring(19));
 			}
-			catch (StringIndexOutOfBoundsException e)
+			catch (StringIndexOutOfBoundsException _)
 			{
 				activeChar.sendSysMessage("Please enter a valid account name.");
 			}
@@ -102,7 +102,7 @@ public class AdminPremium implements IAdminCommandHandler
 			{
 				viewPremiumInfo(activeChar, command.substring(19));
 			}
-			catch (StringIndexOutOfBoundsException e)
+			catch (StringIndexOutOfBoundsException _)
 			{
 				activeChar.sendSysMessage("Please enter a valid account name.");
 			}
@@ -113,7 +113,7 @@ public class AdminPremium implements IAdminCommandHandler
 			{
 				removePremium(activeChar, command.substring(21));
 			}
-			catch (StringIndexOutOfBoundsException e)
+			catch (StringIndexOutOfBoundsException _)
 			{
 				activeChar.sendSysMessage("Please enter a valid account name.");
 			}
