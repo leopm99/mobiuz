@@ -63,8 +63,7 @@ public class SSQHideoutOfTheDawn extends AbstractInstance
 		String htmltext = null;
 		switch (event)
 		{
-			case "32617-01.html":
-			case "32617-02a.html":
+			case "32617-01.html", "32617-02a.html":
 			{
 				htmltext = event;
 				break;

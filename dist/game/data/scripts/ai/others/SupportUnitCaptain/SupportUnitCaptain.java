@@ -152,8 +152,7 @@ public class SupportUnitCaptain extends AbstractNpcAI
 		int itemId = 0;
 		switch (event)
 		{
-			case "unitcaptain.html":
-			case "unitcaptain-01.html":
+			case "unitcaptain.html", "unitcaptain-01.html":
 			{
 				htmltext = event;
 				break;

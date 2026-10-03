@@ -75,8 +75,7 @@ public class Q10275_ContainingTheAttributePower extends Quest
 		
 		switch (event)
 		{
-			case "30839-02.html":
-			case "31307-02.html":
+			case "30839-02.html", "31307-02.html":
 			{
 				qs.startQuest();
 				break;
@@ -282,8 +281,7 @@ public class Q10275_ContainingTheAttributePower extends Quest
 							htmltext = "32325-01.html";
 							break;
 						}
-						case 3:
-						case 5:
+						case 3, 5:
 						{
 							htmltext = "32325-04.html";
 							break;
@@ -315,8 +313,7 @@ public class Q10275_ContainingTheAttributePower extends Quest
 							htmltext = "32326-01.html";
 							break;
 						}
-						case 8:
-						case 10:
+						case 8, 10:
 						{
 							htmltext = "32326-04.html";
 							break;

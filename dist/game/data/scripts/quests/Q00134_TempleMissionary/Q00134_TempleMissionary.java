@@ -83,9 +83,7 @@ public class Q00134_TempleMissionary extends Quest
 		String htmltext = event;
 		switch (event)
 		{
-			case "30067-05.html":
-			case "30067-09.html":
-			case "31418-07.html":
+			case "30067-05.html", "30067-09.html", "31418-07.html":
 			{
 				break;
 			}
@@ -193,9 +191,7 @@ public class Q00134_TempleMissionary extends Quest
 								htmltext = "30067-04.html";
 								break;
 							}
-							case 2:
-							case 3:
-							case 4:
+							case 2, 3, 4:
 							{
 								htmltext = "30067-07.html";
 								break;

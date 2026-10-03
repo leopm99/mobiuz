@@ -322,18 +322,7 @@ public class Q00144_PailakaInjuredDragon extends Quest
 				break;
 			}
 			// Please select the next spell you wish to receive!
-			case "-1":
-			case "-2":
-			case "-3":
-			case "-4":
-			case "-5":
-			case "-6":
-			case "-7":
-			case "-8":
-			case "-9":
-			case "-10":
-			case "-11":
-			case "-12":
+			case "-1", "-2", "-3", "-4", "-5", "-6", "-7", "-8", "-9", "-10", "-11", "-12":
 			{
 				final int buffCount = countBuffs(player);
 				if (buffCount < MAX_BUFFS)

@@ -82,27 +82,12 @@ public class OrcChange2 extends AbstractNpcAI
 		String htmltext = null;
 		switch (event)
 		{
-			case "30513-03.htm": // master_lv3_orc006ra
-			case "30513-04.htm": // master_lv3_orc007ra
-			case "30513-05.htm": // master_lv3_orc007rat
-			case "30513-07.htm": // master_lv3_orc006ma
-			case "30513-08.htm": // master_lv3_orc007ma
-			case "30513-09.htm": // master_lv3_orc007mat
-			case "30513-10.htm": // master_lv3_orc003s
-			case "30513-11.htm": // master_lv3_orc006sa
-			case "30513-12.htm": // master_lv3_orc007sa
-			case "30513-13.htm": // master_lv3_orc007sat
-			case "30513-14.htm": // master_lv3_orc006sb
-			case "30513-15.htm": // master_lv3_orc007sb
-			case "30513-16.htm": // master_lv3_orc007sbt
+			case "30513-03.htm", "30513-04.htm", "30513-05.htm", "30513-07.htm", "30513-08.htm", "30513-09.htm", "30513-10.htm", "30513-11.htm", "30513-12.htm", "30513-13.htm", "30513-14.htm", "30513-15.htm", "30513-16.htm": // master_lv3_orc006ra; master_lv3_orc007ra; master_lv3_orc007rat; master_lv3_orc006ma; master_lv3_orc007ma; master_lv3_orc007mat; master_lv3_orc003s; master_lv3_orc006sa; master_lv3_orc007sa; master_lv3_orc007sat; master_lv3_orc006sb; master_lv3_orc007sb; master_lv3_orc007sbt
 			{
 				htmltext = event;
 				break;
 			}
-			case "46":
-			case "48":
-			case "51":
-			case "52":
+			case "46", "48", "51", "52":
 			{
 				htmltext = ClassChangeRequested(player, Integer.parseInt(event));
 				break;

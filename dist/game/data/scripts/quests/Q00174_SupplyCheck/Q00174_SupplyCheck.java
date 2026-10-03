@@ -189,8 +189,7 @@ public class Q00174_SupplyCheck extends Quest
 				{
 					switch (qs.getCond())
 					{
-						case 1:
-						case 2:
+						case 1, 2:
 						{
 							htmltext = "32167-01.html";
 							break;

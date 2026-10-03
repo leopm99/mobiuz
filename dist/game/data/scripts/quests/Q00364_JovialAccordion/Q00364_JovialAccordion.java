@@ -157,10 +157,7 @@ public class Q00364_JovialAccordion extends Quest
 					{
 						switch (qs.getMemoState())
 						{
-							case 1:
-							case 2:
-							case 3:
-							case 4:
+							case 1, 2, 3, 4:
 							{
 								htmltext = "30959-04.html";
 								break;
@@ -236,8 +233,7 @@ public class Q00364_JovialAccordion extends Quest
 								htmltext = "30957-01.html";
 								break;
 							}
-							case 2:
-							case 3:
+							case 2, 3:
 							{
 								if (hasAtLeastOneQuestItem(player, BEER_CHEST_KEY, CLOTHES_CHEST_KEY, STOLEN_BLACK_BEER, STOLEN_EVENT_CLOTHES))
 								{

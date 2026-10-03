@@ -95,8 +95,7 @@ public class Q00345_MethodToRaiseTheDead extends Quest
 				}
 				break;
 			}
-			case "30971-02.html":
-			case "30912-05.html":
+			case "30971-02.html", "30912-05.html":
 			{
 				htmltext = event;
 				break;

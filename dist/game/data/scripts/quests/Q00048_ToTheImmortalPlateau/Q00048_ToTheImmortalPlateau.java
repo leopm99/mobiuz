@@ -273,9 +273,7 @@ public class Q00048_ToTheImmortalPlateau extends Quest
 				}
 				break;
 			}
-			case GENTLER:
-			case SANDRA:
-			case DUSTIN:
+			case GENTLER, SANDRA, DUSTIN:
 			{
 				if (qs.isStarted())
 				{

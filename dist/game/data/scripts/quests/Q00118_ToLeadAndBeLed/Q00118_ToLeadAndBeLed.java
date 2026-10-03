@@ -129,8 +129,7 @@ public class Q00118_ToLeadAndBeLed extends Quest
 								}
 								break;
 							}
-							case 2:
-							case 3:
+							case 2, 3:
 							{
 								if (getQuestItemsCount(player, CRYSTAL_D) >= CRYSTAL_COUNT_2)
 								{
@@ -171,10 +170,7 @@ public class Q00118_ToLeadAndBeLed extends Quest
 				}
 				break;
 			}
-			case "30298-05a.html":
-			case "30298-05b.html":
-			case "30298-05c.html":
-			case "30298-05g.html":
+			case "30298-05a.html", "30298-05b.html", "30298-05c.html", "30298-05g.html":
 			{
 				htmltext = event;
 				break;
@@ -227,9 +223,7 @@ public class Q00118_ToLeadAndBeLed extends Quest
 		{
 			switch (npc.getId())
 			{
-				case MAILLE_LIZARDMAN:
-				case MAILLE_LIZARDMAN_SCOUT:
-				case MAILLE_LIZARDMAN_GUARD:
+				case MAILLE_LIZARDMAN, MAILLE_LIZARDMAN_SCOUT, MAILLE_LIZARDMAN_GUARD:
 				{
 					if (qs.isMemoState(1) && giveItemRandomly(killer, npc, BLOOD_OF_MAILLE_LIZARDMAN, 1, 10, 7, true))
 					{

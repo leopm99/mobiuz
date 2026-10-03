@@ -129,9 +129,7 @@ public class Q00417_PathOfTheScavenger extends Quest
 				}
 				break;
 			}
-			case "30524-03.html":
-			case "30557-02.html":
-			case "30519-06.html":
+			case "30524-03.html", "30557-02.html", "30519-06.html":
 			{
 				htmltext = event;
 				break;
@@ -360,9 +358,7 @@ public class Q00417_PathOfTheScavenger extends Quest
 					}
 					break;
 				}
-				case HUNTER_TARANTULA:
-				case PLUNDER_TARANTULA:
-				case HONEY_BEAR:
+				case HUNTER_TARANTULA, PLUNDER_TARANTULA, HONEY_BEAR:
 				{
 					if (npc.isScriptValue(0))
 					{
@@ -416,8 +412,7 @@ public class Q00417_PathOfTheScavenger extends Quest
 					}
 					break;
 				}
-				case HUNTER_TARANTULA:
-				case PLUNDER_TARANTULA:
+				case HUNTER_TARANTULA, PLUNDER_TARANTULA:
 				{
 					if (npc.isScriptValue(2) && firstAttacker && npc.asAttackable().isSpoiled() && hasQuestItems(killer, TARANTULA_PICTURE) && giveItemRandomly(killer, npc, BEAD, 1, 20, 1, true))
 					{

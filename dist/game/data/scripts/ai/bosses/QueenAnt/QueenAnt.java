@@ -435,8 +435,7 @@ public class QueenAnt extends AbstractNpcAI implements IXmlReader
 				_nurses.add(mob);
 				break;
 			}
-			case ROYAL:
-			case GUARD:
+			case ROYAL, GUARD:
 			{
 				mob.setIsRaidMinion(true);
 				break;

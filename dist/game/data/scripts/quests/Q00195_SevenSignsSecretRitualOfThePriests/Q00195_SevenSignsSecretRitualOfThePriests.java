@@ -71,10 +71,7 @@ public class Q00195_SevenSignsSecretRitualOfThePriests extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "31001-03.html":
-			case "31001-04.html":
-			case "31001-05.html":
-			case "32580-03.html":
+			case "31001-03.html", "31001-04.html", "31001-05.html", "32580-03.html":
 			{
 				htmltext = event;
 				break;
@@ -95,9 +92,7 @@ public class Q00195_SevenSignsSecretRitualOfThePriests extends Quest
 				}
 				break;
 			}
-			case "30289-02.html":
-			case "30289-03.html":
-			case "30289-05.html":
+			case "30289-02.html", "30289-03.html", "30289-05.html":
 			{
 				if (qs.isCond(2))
 				{

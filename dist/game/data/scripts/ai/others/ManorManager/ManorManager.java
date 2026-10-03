@@ -87,9 +87,7 @@ public class ManorManager extends AbstractNpcAI
 		String htmltext = null;
 		switch (event)
 		{
-			case "manager-help-01.htm":
-			case "manager-help-02.htm":
-			case "manager-help-03.htm":
+			case "manager-help-01.htm", "manager-help-02.htm", "manager-help-03.htm":
 			{
 				htmltext = event;
 				break;

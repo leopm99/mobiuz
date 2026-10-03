@@ -283,8 +283,7 @@ public class Q10272_LightFragment extends Quest
 			{
 				switch (qs.getCond())
 				{
-					case 1:
-					case 2:
+					case 1, 2:
 					{
 						htmltext = "32566-02.html";
 						break;

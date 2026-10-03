@@ -297,9 +297,7 @@ public class Q00103_SpiritOfCraftsman extends Quest
 				}
 				break;
 			}
-			case DOOM_SOLDIER:
-			case SKELETON_HUNTER:
-			case SKELETON_HUNTER_ARCHER:
+			case DOOM_SOLDIER, SKELETON_HUNTER, SKELETON_HUNTER_ARCHER:
 			{
 				if (hasQuestItems(killer, CECKTINONS_VOUCHER2) && giveItemRandomly(qs.getPlayer(), npc, BONE_FRAGMENT, 1, 10, 1, true))
 				{

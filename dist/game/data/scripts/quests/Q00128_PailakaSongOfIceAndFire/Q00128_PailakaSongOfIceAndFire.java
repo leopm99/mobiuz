@@ -93,13 +93,7 @@ public class Q00128_PailakaSongOfIceAndFire extends Quest
 		
 		switch (event)
 		{
-			case "32500-02.htm":
-			case "32500-03.htm":
-			case "32500-04.htm":
-			case "32500-05.htm":
-			case "32497-02.htm":
-			case "32507-07.htm":
-			case "32497-04.htm":
+			case "32500-02.htm", "32500-03.htm", "32500-04.htm", "32500-05.htm", "32497-02.htm", "32507-07.htm", "32497-04.htm":
 			{
 				htmltext = event;
 				break;
@@ -246,8 +240,7 @@ public class Q00128_PailakaSongOfIceAndFire extends Quest
 						htmltext = "32507-03.htm";
 						break;
 					}
-					case 4:
-					case 5:
+					case 4, 5:
 					{
 						htmltext = "32507-05.htm";
 						break;

@@ -130,8 +130,7 @@ public class Q00325_GrimCollector extends Quest
 				htmltext = event;
 				break;
 			}
-			case "30434-06.html":
-			case "30434-07.html":
+			case "30434-06.html", "30434-07.html":
 			{
 				final long head = getQuestItemsCount(player, ZOMBIE_HEAD);
 				final long heart = getQuestItemsCount(player, ZOMBIE_HEART);

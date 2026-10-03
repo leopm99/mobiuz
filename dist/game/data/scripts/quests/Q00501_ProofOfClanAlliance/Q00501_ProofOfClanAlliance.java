@@ -117,13 +117,7 @@ public class Q00501_ProofOfClanAlliance extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "30756-06.html":
-			case "30756-08.html":
-			case "30757-05.html":
-			case "30758-02.html":
-			case "30758-04.html":
-			case "30759-02.html":
-			case "30759-04.html":
+			case "30756-06.html", "30756-08.html", "30757-05.html", "30758-02.html", "30758-04.html", "30759-02.html", "30759-04.html":
 			{
 				htmltext = event;
 				break;
@@ -275,11 +269,7 @@ public class Q00501_ProofOfClanAlliance extends Quest
 					}
 					break;
 				}
-				case BOX_OF_ATHREA_1:
-				case BOX_OF_ATHREA_2:
-				case BOX_OF_ATHREA_3:
-				case BOX_OF_ATHREA_4:
-				case BOX_OF_ATHREA_5:
+				case BOX_OF_ATHREA_1, BOX_OF_ATHREA_2, BOX_OF_ATHREA_3, BOX_OF_ATHREA_4, BOX_OF_ATHREA_5:
 				{
 					final Creature summoner = npc.getSummoner();
 					if ((summoner != null) && summoner.isNpc() && lqs.isMemoState(4))

@@ -251,8 +251,7 @@ public class ScarletVanHalisha extends AbstractNpcAI
 							skillRange = 200;
 							break;
 						}
-						case 5018:
-						case 5019:
+						case 5018, 5019:
 						{
 							_lastRangedSkillTime = System.currentTimeMillis();
 							skillRange = 550;

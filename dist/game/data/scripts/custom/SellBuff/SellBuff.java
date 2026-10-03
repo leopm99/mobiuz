@@ -114,8 +114,7 @@ public class SellBuff implements IVoicedCommandHandler, IBypassHandler
 	{
 		switch (command)
 		{
-			case "sellbuff":
-			case "sellbuffs":
+			case "sellbuff", "sellbuffs":
 			{
 				SellBuffsManager.getInstance().sendSellMenu(player);
 				break;

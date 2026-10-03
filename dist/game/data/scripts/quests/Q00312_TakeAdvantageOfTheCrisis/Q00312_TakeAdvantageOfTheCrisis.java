@@ -78,12 +78,7 @@ public class Q00312_TakeAdvantageOfTheCrisis extends Quest
 		String htmltext = event;
 		switch (event)
 		{
-			case "30535-02.html":
-			case "30535-03.html":
-			case "30535-04.html":
-			case "30535-05.htm":
-			case "30535-09.html":
-			case "30535-10.html":
+			case "30535-02.html", "30535-03.html", "30535-04.html", "30535-05.htm", "30535-09.html", "30535-10.html":
 			{
 				break;
 			}

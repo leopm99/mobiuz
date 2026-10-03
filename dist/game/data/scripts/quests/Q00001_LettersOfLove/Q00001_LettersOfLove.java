@@ -93,9 +93,7 @@ public class Q00001_LettersOfLove extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "30048-03.html":
-			case "30048-04.html":
-			case "30048-05.html":
+			case "30048-03.html", "30048-04.html", "30048-05.html":
 			{
 				htmltext = event;
 				break;

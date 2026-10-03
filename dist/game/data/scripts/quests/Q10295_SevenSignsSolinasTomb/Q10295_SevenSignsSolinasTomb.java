@@ -78,11 +78,7 @@ public class Q10295_SevenSignsSolinasTomb extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "32792-02.htm":
-			case "32792-04.htm":
-			case "32792-05.htm":
-			case "32792-06.htm":
-			case "32793-06.html":
+			case "32792-02.htm", "32792-04.htm", "32792-05.htm", "32792-06.htm", "32793-06.html":
 			{
 				htmltext = event;
 				break;
@@ -94,8 +90,7 @@ public class Q10295_SevenSignsSolinasTomb extends Quest
 				htmltext = event;
 				break;
 			}
-			case "32793-02.html":
-			case "32793-03.html":
+			case "32793-02.html", "32793-03.html":
 			{
 				if (qs.isMemoState(3))
 				{
@@ -113,8 +108,7 @@ public class Q10295_SevenSignsSolinasTomb extends Quest
 				}
 				break;
 			}
-			case "32793-05.html":
-			case "32794-02.html":
+			case "32793-05.html", "32794-02.html":
 			{
 				if (qs.isMemoState(4))
 				{

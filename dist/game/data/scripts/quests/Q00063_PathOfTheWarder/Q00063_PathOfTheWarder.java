@@ -274,9 +274,7 @@ public class Q00063_PathOfTheWarder extends Quest
 					}
 					break;
 				}
-				case MAILLE_LIZARDMAN:
-				case MAILLE_LIZARDMAN_SCOUT:
-				case MAILLE_LIZARDMAN_GUARD:
+				case MAILLE_LIZARDMAN, MAILLE_LIZARDMAN_SCOUT, MAILLE_LIZARDMAN_GUARD:
 				{
 					if (qs.isMemoState(16) && !hasQuestItems(killer, TAKS_CAPTURED_SOUL))
 					{

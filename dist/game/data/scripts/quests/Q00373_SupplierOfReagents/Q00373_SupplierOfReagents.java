@@ -165,13 +165,7 @@ public class Q00373_SupplierOfReagents extends Quest
 		}
 		switch (event)
 		{
-			case "30166-03.htm":
-			case "30166-06.html":
-			case "30166-04a.html":
-			case "30166-04b.html":
-			case "30166-04c.html":
-			case "30166-04d.html":
-			case "31149-18.html":
+			case "30166-03.htm", "30166-06.html", "30166-04a.html", "30166-04b.html", "30166-04c.html", "30166-04d.html", "31149-18.html":
 			{
 				htmltext = event;
 				break;
@@ -200,26 +194,7 @@ public class Q00373_SupplierOfReagents extends Quest
 				htmltext = event;
 				break;
 			}
-			case "31149-03.html":
-			case "31149-04.html":
-			case "31149-05.html":
-			case "31149-06.html":
-			case "31149-07.html":
-			case "31149-08.html":
-			case "31149-09.html":
-			case "31149-10.html":
-			case "31149-11.html":
-			case "31149-12.html":
-			case "31149-13.html":
-			case "31149-14.html":
-			case "31149-15.html":
-			case "31149-16.html":
-			case "31149-19.html":
-			case "31149-20.html":
-			case "31149-21.html":
-			case "31149-22.html":
-			case "31149-23.html":
-			case "31149-24.html":
+			case "31149-03.html", "31149-04.html", "31149-05.html", "31149-06.html", "31149-07.html", "31149-08.html", "31149-09.html", "31149-10.html", "31149-11.html", "31149-12.html", "31149-13.html", "31149-14.html", "31149-15.html", "31149-16.html", "31149-19.html", "31149-20.html", "31149-21.html", "31149-22.html", "31149-23.html", "31149-24.html":
 			{
 				final int memoState = HTML_TO_MEMO_STATE.get(event);
 				if (hasItem(player, MEMO_STATE_TO_ITEM.get(memoState)))

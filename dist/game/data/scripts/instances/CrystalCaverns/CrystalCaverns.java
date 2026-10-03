@@ -952,14 +952,7 @@ public class CrystalCaverns extends AbstractInstance
 		
 		switch (skill.getId())
 		{
-			case 1011:
-			case 1015:
-			case 1217:
-			case 1218:
-			case 1401:
-			case 2360:
-			case 2369:
-			case 5146:
+			case 1011, 1015, 1217, 1218, 1401, 2360, 2369, 5146:
 			{
 				doReturn = false;
 				break;

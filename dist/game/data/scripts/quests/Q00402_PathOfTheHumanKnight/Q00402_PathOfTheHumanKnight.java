@@ -139,10 +139,7 @@ public class Q00402_PathOfTheHumanKnight extends Quest
 				htmltext = event;
 				break;
 			}
-			case "30289-02.html":
-			case "30417-06.html":
-			case "30417-07.htm":
-			case "30417-15.html":
+			case "30289-02.html", "30417-06.html", "30417-07.htm", "30417-15.html":
 			{
 				htmltext = event;
 				break;
@@ -247,9 +244,7 @@ public class Q00402_PathOfTheHumanKnight extends Quest
 		{
 			switch (npc.getId())
 			{
-				case LANGK_LIZARDMAN_WARRIOR:
-				case LANGK_LIZARDMAN_SCOUT:
-				case LANGK_LIZARDMAN:
+				case LANGK_LIZARDMAN_WARRIOR, LANGK_LIZARDMAN_SCOUT, LANGK_LIZARDMAN:
 				{
 					if (hasQuestItems(killer, EINHASADS_2ND_TEMPLE_BADGE) && (getQuestItemsCount(killer, LIZARDMANS_TOTEM) < 20) && (getRandom(10) < 5))
 					{
@@ -265,9 +260,7 @@ public class Q00402_PathOfTheHumanKnight extends Quest
 					}
 					break;
 				}
-				case VENOMOUS_SPIDER:
-				case ARACHNID_TRACKER:
-				case ARACHNID_PREDATOR:
+				case VENOMOUS_SPIDER, ARACHNID_TRACKER, ARACHNID_PREDATOR:
 				{
 					if (hasQuestItems(killer, GLUDIO_GUARDS_2ND_BADGE) && (getQuestItemsCount(killer, VENOMOUS_SPIDERS_LEG) < 20))
 					{
@@ -283,9 +276,7 @@ public class Q00402_PathOfTheHumanKnight extends Quest
 					}
 					break;
 				}
-				case GIANT_SPIDER:
-				case TALON_SPIDER:
-				case BLADE_SPIDER:
+				case GIANT_SPIDER, TALON_SPIDER, BLADE_SPIDER:
 				{
 					if (hasQuestItems(killer, GLUDIO_GUARDS_3RD_BADGE) && (getQuestItemsCount(killer, GIANT_SPIDERS_HUSK) < 20) && (getRandom(10) < 4))
 					{

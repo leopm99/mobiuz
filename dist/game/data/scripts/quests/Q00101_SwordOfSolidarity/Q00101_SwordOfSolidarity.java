@@ -86,8 +86,7 @@ public class Q00101_SwordOfSolidarity extends Quest
 		{
 			switch (event)
 			{
-				case "30008-03.html":
-				case "30008-09.html":
+				case "30008-03.html", "30008-09.html":
 				{
 					htmltext = event;
 					break;

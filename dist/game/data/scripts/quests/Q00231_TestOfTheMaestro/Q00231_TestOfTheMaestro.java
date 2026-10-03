@@ -119,9 +119,7 @@ public class Q00231_TestOfTheMaestro extends Quest
 				htmltext = event;
 				break;
 			}
-			case "30556-02.html":
-			case "30556-03.html":
-			case "30556-04.html":
+			case "30556-02.html", "30556-03.html", "30556-04.html":
 			{
 				htmltext = event;
 				break;

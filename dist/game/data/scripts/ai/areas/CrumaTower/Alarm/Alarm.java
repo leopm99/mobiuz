@@ -106,9 +106,7 @@ public class Alarm extends AbstractNpcAI
 				npc.deleteMe();
 				break;
 			}
-			case "32367-184_04.html":
-			case "32367-184_06.html":
-			case "32367-184_08.html":
+			case "32367-184_04.html", "32367-184_06.html", "32367-184_08.html":
 			{
 				htmltext = event;
 				break;

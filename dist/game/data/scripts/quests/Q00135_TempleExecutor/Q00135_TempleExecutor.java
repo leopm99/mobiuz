@@ -81,13 +81,7 @@ public class Q00135_TempleExecutor extends Quest
 		String htmltext = event;
 		switch (event)
 		{
-			case "30291-02a.html":
-			case "30291-04.html":
-			case "30291-05.html":
-			case "30291-06.html":
-			case "30068-08.html":
-			case "30068-09.html":
-			case "30068-10.html":
+			case "30291-02a.html", "30291-04.html", "30291-05.html", "30291-06.html", "30068-08.html", "30068-09.html", "30068-10.html":
 			{
 				break;
 			}
@@ -185,8 +179,7 @@ public class Q00135_TempleExecutor extends Quest
 								htmltext = "30068-04.html";
 								break;
 							}
-							case 2: // 2, 3
-							case 3: // 4
+							case 2, 3: // 2, 3; 4
 							{
 								htmltext = "30068-05.html";
 								break;

@@ -182,8 +182,7 @@ public class Q00311_ExpulsionOfEvilSpirits extends Quest
 		
 		switch (event)
 		{
-			case "32655-03.htm":
-			case "32655-15.html":
+			case "32655-03.htm", "32655-15.html":
 			{
 				htmltext = event;
 				break;

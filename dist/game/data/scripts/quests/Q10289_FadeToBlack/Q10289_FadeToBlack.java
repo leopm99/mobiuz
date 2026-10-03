@@ -86,26 +86,7 @@ public class Q10289_FadeToBlack extends Quest
 				}
 				break;
 			}
-			case "11":
-			case "12":
-			case "13":
-			case "14":
-			case "15":
-			case "16":
-			case "17":
-			case "18":
-			case "19":
-			case "20":
-			case "21":
-			case "22":
-			case "23":
-			case "24":
-			case "25":
-			case "26":
-			case "27":
-			case "28":
-			case "29":
-			case "30":
+			case "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30":
 			{
 				if (qs.isCond(3) && hasQuestItems(player, MARK_OF_SPLENDOR))
 				{
@@ -306,8 +287,7 @@ public class Q10289_FadeToBlack extends Quest
 					htmltext = "32757-04.html";
 					break;
 				}
-				case 2:
-				case 3:
+				case 2, 3:
 				{
 					htmltext = "32757-05.html";
 					break;

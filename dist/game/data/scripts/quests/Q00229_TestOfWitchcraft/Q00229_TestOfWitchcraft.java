@@ -154,16 +154,7 @@ public class Q00229_TestOfWitchcraft extends Quest
 				}
 				break;
 			}
-			case "30630-04.htm":
-			case "30630-06.htm":
-			case "30630-07.htm":
-			case "30630-12.htm":
-			case "30630-13.htm":
-			case "30630-20.htm":
-			case "30630-21.htm":
-			case "30098-02.htm":
-			case "30110-02.htm":
-			case "30417-02.htm":
+			case "30630-04.htm", "30630-06.htm", "30630-07.htm", "30630-12.htm", "30630-13.htm", "30630-20.htm", "30630-21.htm", "30098-02.htm", "30110-02.htm", "30417-02.htm":
 			{
 				htmltext = event;
 				break;
@@ -383,12 +374,7 @@ public class Q00229_TestOfWitchcraft extends Quest
 					}
 					break;
 				}
-				case LETO_LIZARDMAN:
-				case LETO_LIZARDMAN_ARCHER:
-				case LETO_LIZARDMAN_SOLDIER:
-				case LETO_LIZARDMAN_WARRIOR:
-				case LETO_LIZARDMAN_SHAMAN:
-				case LETO_LIZARDMAN_OVERLORD:
+				case LETO_LIZARDMAN, LETO_LIZARDMAN_ARCHER, LETO_LIZARDMAN_SOLDIER, LETO_LIZARDMAN_WARRIOR, LETO_LIZARDMAN_SHAMAN, LETO_LIZARDMAN_OVERLORD:
 				{
 					if (hasQuestItems(killer, ALEXANDRIAS_BOOK, IKERS_LIST) && (getQuestItemsCount(killer, LETO_LIZARDMAN_CHARM) < 20))
 					{
@@ -404,8 +390,7 @@ public class Q00229_TestOfWitchcraft extends Quest
 					}
 					break;
 				}
-				case TAMLIN_ORC:
-				case TAMLIN_ORC_ARCHER:
+				case TAMLIN_ORC, TAMLIN_ORC_ARCHER:
 				{
 					if (hasQuestItems(killer, VADINS_CRUCIFIX) && (getRandom(100) < 50) && (getQuestItemsCount(killer, TAMLIN_ORC_AMULET) < 20))
 					{

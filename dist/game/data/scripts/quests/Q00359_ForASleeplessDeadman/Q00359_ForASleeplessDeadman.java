@@ -91,9 +91,7 @@ public class Q00359_ForASleeplessDeadman extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "30857-02.htm":
-			case "30857-03.htm":
-			case "30857-04.htm":
+			case "30857-02.htm", "30857-03.htm", "30857-04.htm":
 			{
 				htmltext = event;
 				break;

@@ -137,12 +137,7 @@ public class Q00232_TestOfTheLord extends Quest
 				}
 				break;
 			}
-			case "30565-05a.html":
-			case "30558-03a.html":
-			case "30643-02.html":
-			case "30643-03.html":
-			case "30649-02.html":
-			case "30649-03.html":
+			case "30565-05a.html", "30558-03a.html", "30643-02.html", "30643-03.html", "30649-02.html", "30649-03.html":
 			{
 				htmltext = event;
 				break;
@@ -266,8 +261,7 @@ public class Q00232_TestOfTheLord extends Quest
 					}
 					break;
 				}
-				case BREKA_ORC_SHAMAN:
-				case BREKA_ORC_OVERLORD:
+				case BREKA_ORC_SHAMAN, BREKA_ORC_OVERLORD:
 				{
 					if (hasQuestItems(killer, ORDEAL_NECKLACE, VARKEES_CHARM, MANAKIAS_ORDERS) && !hasAtLeastOneQuestItem(killer, HUGE_ORC_FANG, MANAKIAS_AMULET) && (getQuestItemsCount(killer, BREKA_ORC_FANG) < 20))
 					{
@@ -299,12 +293,7 @@ public class Q00232_TestOfTheLord extends Quest
 					}
 					break;
 				}
-				case TIMAK_ORC:
-				case TIMAK_ORC_ARCHER:
-				case TIMAK_ORC_SOLDIER:
-				case TIMAK_ORC_WARRIOR:
-				case TIMAK_ORC_SHAMAN:
-				case TIMAK_ORC_OVERLORD:
+				case TIMAK_ORC, TIMAK_ORC_ARCHER, TIMAK_ORC_SOLDIER, TIMAK_ORC_WARRIOR, TIMAK_ORC_SHAMAN, TIMAK_ORC_OVERLORD:
 				{
 					if (hasQuestItems(killer, ORDEAL_NECKLACE, HATOS_CHARM) && !hasQuestItems(killer, SWORD_INTO_SKULL) && (getQuestItemsCount(killer, TIMAK_ORC_SKULL) < 10))
 					{
@@ -320,8 +309,7 @@ public class Q00232_TestOfTheLord extends Quest
 					}
 					break;
 				}
-				case RAGNA_ORC_OVERLORD:
-				case RAGNA_ORC_SEER:
+				case RAGNA_ORC_OVERLORD, RAGNA_ORC_SEER:
 				{
 					if (hasQuestItems(killer, MARTANKUS_CHARM))
 					{

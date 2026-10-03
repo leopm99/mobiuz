@@ -75,10 +75,7 @@ public class Q10286_ReunionWithSirra extends Quest
 				htmltext = event;
 				break;
 			}
-			case "32020-03.html":
-			case "32760-02.html":
-			case "32760-03.html":
-			case "32760-04.html":
+			case "32020-03.html", "32760-02.html", "32760-03.html", "32760-04.html":
 			{
 				if (qs.isMemoState(1))
 				{
@@ -121,8 +118,7 @@ public class Q10286_ReunionWithSirra extends Quest
 				}
 				break;
 			}
-			case "32762-02.html":
-			case "32762-03.html":
+			case "32762-02.html", "32762-03.html":
 			{
 				if (qs.isMemoState(1) && (qs.getInt("ex") == 1))
 				{
@@ -144,8 +140,7 @@ public class Q10286_ReunionWithSirra extends Quest
 				}
 				break;
 			}
-			case "32781-02.html":
-			case "32781-03.html":
+			case "32781-02.html", "32781-03.html":
 			{
 				if (qs.isMemoState(2))
 				{

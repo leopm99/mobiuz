@@ -85,10 +85,7 @@ public class ClanTrader extends AbstractNpcAI
 		String htmltext = null;
 		switch (event)
 		{
-			case "32024.html":
-			case "32024-02.html":
-			case "32025.html":
-			case "32025-02.html":
+			case "32024.html", "32024-02.html", "32025.html", "32025-02.html":
 			{
 				htmltext = event;
 				break;

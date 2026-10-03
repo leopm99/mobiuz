@@ -151,9 +151,7 @@ public class Q00032_AnObviousLie extends Quest
 				}
 				break;
 			}
-			case "cat":
-			case "raccoon":
-			case "rabbit":
+			case "cat", "raccoon", "rabbit":
 			{
 				if (qs.isCond(8) && takeAllItems(player, THREAD, SUEDE))
 				{
@@ -268,9 +266,7 @@ public class Q00032_AnObviousLie extends Quest
 						}
 						break;
 					}
-					case 3:
-					case 4:
-					case 5:
+					case 3, 4, 5:
 					{
 						htmltext = "31706-03.html";
 						break;

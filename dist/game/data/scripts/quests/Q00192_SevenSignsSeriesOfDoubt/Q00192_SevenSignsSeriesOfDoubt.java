@@ -89,10 +89,7 @@ public class Q00192_SevenSignsSeriesOfDoubt extends Quest
 				player.teleToLocation(81654, 54851, -1513);
 				return "";
 			}
-			case "30676-10.html":
-			case "30676-11.html":
-			case "30676-12.html":
-			case "30676-13.html":
+			case "30676-10.html", "30676-11.html", "30676-12.html", "30676-13.html":
 			{
 				if (qs.isCond(6) && hasQuestItems(player, JACOBS_NECKLACE))
 				{
@@ -111,8 +108,7 @@ public class Q00192_SevenSignsSeriesOfDoubt extends Quest
 				}
 				break;
 			}
-			case "30200-02.html":
-			case "30200-03.html":
+			case "30200-02.html", "30200-03.html":
 			{
 				if (qs.isCond(4))
 				{
@@ -237,9 +233,7 @@ public class Q00192_SevenSignsSeriesOfDoubt extends Quest
 								htmltext = "30676-07.html";
 								break;
 							}
-							case 3:
-							case 4:
-							case 5:
+							case 3, 4, 5:
 							{
 								htmltext = "30676-08.html";
 								break;

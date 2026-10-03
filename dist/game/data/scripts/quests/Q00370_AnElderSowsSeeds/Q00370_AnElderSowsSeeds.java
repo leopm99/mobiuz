@@ -81,11 +81,7 @@ public class Q00370_AnElderSowsSeeds extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "30612-02.htm":
-			case "30612-03.htm":
-			case "30612-06.html":
-			case "30612-07.html":
-			case "30612-09.html":
+			case "30612-02.htm", "30612-03.htm", "30612-06.html", "30612-07.html", "30612-09.html":
 			{
 				htmltext = event;
 				break;

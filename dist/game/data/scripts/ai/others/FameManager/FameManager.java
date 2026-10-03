@@ -67,12 +67,7 @@ public class FameManager extends AbstractNpcAI
 		String htmltext = null;
 		switch (event)
 		{
-			case "36479.html":
-			case "36479-02.html":
-			case "36479-07.html":
-			case "36480.html":
-			case "36480-02.html":
-			case "36480-07.html":
+			case "36479.html", "36479-02.html", "36479-07.html", "36480.html", "36480-02.html", "36480-07.html":
 			{
 				htmltext = event;
 				break;

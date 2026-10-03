@@ -117,46 +117,37 @@ public class AdminPForge implements IAdminCommandHandler
 		{
 			switch (format.charAt(chIdx))
 			{
-				case 'b':
-				case 'B':
-				case 'x':
-				case 'X':
+				case 'b', 'B', 'x', 'X':
 				{
 					// array
 					break;
 				}
-				case 'c':
-				case 'C':
+				case 'c', 'C':
 				{
 					// byte
 					break;
 				}
-				case 'h':
-				case 'H':
+				case 'h', 'H':
 				{
 					// word
 					break;
 				}
-				case 'd':
-				case 'D':
+				case 'd', 'D':
 				{
 					// dword
 					break;
 				}
-				case 'q':
-				case 'Q':
+				case 'q', 'Q':
 				{
 					// qword
 					break;
 				}
-				case 'f':
-				case 'F':
+				case 'f', 'F':
 				{
 					// double
 					break;
 				}
-				case 's':
-				case 'S':
+				case 's', 'S':
 				{
 					// string
 					break;
@@ -174,9 +165,7 @@ public class AdminPForge implements IAdminCommandHandler
 	{
 		switch (method)
 		{
-			case "sc":
-			case "sb":
-			case "cs":
+			case "sc", "sb", "cs":
 			{
 				return true;
 			}

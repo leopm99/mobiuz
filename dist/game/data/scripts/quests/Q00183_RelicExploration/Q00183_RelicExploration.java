@@ -84,8 +84,7 @@ public class Q00183_RelicExploration extends Quest
 				}
 				break;
 			}
-			case "30673-02.html":
-			case "30673-03.html":
+			case "30673-02.html", "30673-03.html":
 			{
 				if (qs.isMemoState(1))
 				{

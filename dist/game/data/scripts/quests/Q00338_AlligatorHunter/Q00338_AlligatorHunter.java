@@ -86,9 +86,7 @@ public class Q00338_AlligatorHunter extends Quest
 				qs.exitQuest(true, true);
 				break;
 			}
-			case "30892-07.html":
-			case "30892-08.html":
-			case "30892-09.html":
+			case "30892-07.html", "30892-08.html", "30892-09.html":
 			{
 				break;
 			}

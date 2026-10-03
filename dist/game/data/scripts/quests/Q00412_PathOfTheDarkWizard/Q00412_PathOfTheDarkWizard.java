@@ -148,8 +148,7 @@ public class Q00412_PathOfTheDarkWizard extends Quest
 				}
 				break;
 			}
-			case "30421-08.html":
-			case "30415-02.html":
+			case "30421-08.html", "30415-02.html":
 			{
 				htmltext = event;
 				break;
@@ -194,9 +193,7 @@ public class Q00412_PathOfTheDarkWizard extends Quest
 					}
 					break;
 				}
-				case MISERY_SKELETON:
-				case SKELETON_HUNTER:
-				case SKELETON_HUNTER_ARCHER:
+				case MISERY_SKELETON, SKELETON_HUNTER, SKELETON_HUNTER_ARCHER:
 				{
 					if (hasQuestItems(killer, CANDLE) && (getQuestItemsCount(killer, KNEE_BONE) < 2) && (getRandom(2) == 0))
 					{

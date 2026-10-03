@@ -69,11 +69,7 @@ public class Q00901_HowLavasaurusesAreMade extends Quest
 		String htmltext = event;
 		switch (event)
 		{
-			case "32049-03.htm":
-			case "32049-08.html":
-			case "32049-09.html":
-			case "32049-10.html":
-			case "32049-11.html":
+			case "32049-03.htm", "32049-08.html", "32049-09.html", "32049-10.html", "32049-11.html":
 			{
 				break;
 			}

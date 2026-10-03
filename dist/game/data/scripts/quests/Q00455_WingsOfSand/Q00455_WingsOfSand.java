@@ -104,9 +104,7 @@ public class Q00455_WingsOfSand extends Quest
 		{
 			switch (event)
 			{
-				case "32864-02.htm":
-				case "32864-03.htm":
-				case "32864-04.htm":
+				case "32864-02.htm", "32864-03.htm", "32864-04.htm":
 				{
 					htmltext = event;
 					break;

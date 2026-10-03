@@ -184,9 +184,7 @@ public class SubclassCertification extends AbstractNpcAI
 				htmltext = doCertification(player, "ClassAbility", TRANSFORMATION_SEALBOOKS.get(getClassIndex(player)), 80);
 				break;
 			}
-			case "Main.html":
-			case "Explanation.html":
-			case "NotObtain.html":
+			case "Main.html", "Explanation.html", "NotObtain.html":
 			{
 				htmltext = event;
 				break;

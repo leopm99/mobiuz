@@ -114,14 +114,7 @@ public class Q00643_RiseAndFallOfTheElrokiTribe extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "32106-02.htm":
-			case "32106-04.htm":
-			case "32106-05.html":
-			case "32106-10.html":
-			case "32106-13.html":
-			case "32117-02.html":
-			case "32117-06.html":
-			case "32117-07.html":
+			case "32106-02.htm", "32106-04.htm", "32106-05.html", "32106-10.html", "32106-13.html", "32117-02.html", "32117-06.html", "32117-07.html":
 			{
 				htmltext = event;
 				break;

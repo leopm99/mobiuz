@@ -99,15 +99,12 @@ public class Q00290_ThreatRemoval extends Quest
 							rewardItems(player, ENCHANT_WEAPON_S, 1);
 							break;
 						}
-						case 1:
-						case 2:
-						case 3:
+						case 1, 2, 3:
 						{
 							rewardItems(player, ENCHANT_ARMOR_S, 1);
 							break;
 						}
-						case 4:
-						case 5:
+						case 4, 5:
 						{
 							rewardItems(player, ENCHANT_ARMOR_S, 2);
 							break;
@@ -117,14 +114,12 @@ public class Q00290_ThreatRemoval extends Quest
 							rewardItems(player, ENCHANT_ARMOR_S, 3);
 							break;
 						}
-						case 7:
-						case 8:
+						case 7, 8:
 						{
 							rewardItems(player, FIRE_CRYSTAL, 1);
 							break;
 						}
-						case 9:
-						case 10:
+						case 9, 10:
 						{
 							rewardItems(player, FIRE_CRYSTAL, 2);
 							break;

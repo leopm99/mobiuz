@@ -91,10 +91,7 @@ public class Q00352_HelpRoodRaiseANewPet extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "31067-02.htm":
-			case "31067-03.htm":
-			case "31067-07.html":
-			case "31067-10.html":
+			case "31067-02.htm", "31067-03.htm", "31067-07.html", "31067-10.html":
 			{
 				htmltext = event;
 				break;

@@ -124,9 +124,7 @@ public class Q00223_TestOfTheChampion extends Quest
 				}
 				break;
 			}
-			case "30624-05.htm":
-			case "30196-02.html":
-			case "30625-02.html":
+			case "30624-05.htm", "30196-02.html", "30625-02.html":
 			{
 				htmltext = event;
 				break;
@@ -304,8 +302,7 @@ public class Q00223_TestOfTheChampion extends Quest
 		{
 			switch (npc.getId())
 			{
-				case HARPY:
-				case HARPY_MATRIARCH:
+				case HARPY, HARPY_MATRIARCH:
 				{
 					if (hasQuestItems(killer, WHITE_ROSE_INSIGNIA) && (getQuestItemsCount(killer, HARPYS_EGG) < 30))
 					{
@@ -368,8 +365,7 @@ public class Q00223_TestOfTheChampion extends Quest
 					}
 					break;
 				}
-				case ROAD_SCAVENGER:
-				case ROAD_COLLECTOR:
+				case ROAD_SCAVENGER, ROAD_COLLECTOR:
 				{
 					if (hasQuestItems(killer, MOUENS_1ST_ORDER) && (getQuestItemsCount(killer, ROAD_RATMAN_HEAD) < 10))
 					{
@@ -386,12 +382,7 @@ public class Q00223_TestOfTheChampion extends Quest
 					}
 					break;
 				}
-				case LETO_LIZARDMAN:
-				case LETO_LIZARDMAN_ARCHER:
-				case LETO_LIZARDMAN_SOLDIER:
-				case LETO_LIZARDMAN_WARRIOR:
-				case LETO_LIZARDMAN_SHAMAN:
-				case LETO_LIZARDMAN_OCERLORD:
+				case LETO_LIZARDMAN, LETO_LIZARDMAN_ARCHER, LETO_LIZARDMAN_SOLDIER, LETO_LIZARDMAN_WARRIOR, LETO_LIZARDMAN_SHAMAN, LETO_LIZARDMAN_OCERLORD:
 				{
 					if (hasQuestItems(killer, MOUENS_2ND_ORDER) && (getQuestItemsCount(killer, LETO_LIZARDMAN_FANG) < 10))
 					{

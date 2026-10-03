@@ -115,8 +115,7 @@ public class Q00194_SevenSignsMammonsContract extends Quest
 				}
 				break;
 			}
-			case "32571-03.html":
-			case "32571-04.html":
+			case "32571-03.html", "32571-04.html":
 			{
 				if (qs.isCond(3) && hasQuestItems(player, ATHEBALDTS_INTRODUCTION))
 				{
@@ -257,8 +256,7 @@ public class Q00194_SevenSignsMammonsContract extends Quest
 				}
 				break;
 			}
-			case "32572-03.html":
-			case "32572-04.html":
+			case "32572-03.html", "32572-04.html":
 			{
 				if (qs.isCond(4))
 				{
@@ -294,8 +292,7 @@ public class Q00194_SevenSignsMammonsContract extends Quest
 				}
 				break;
 			}
-			case "32574-03.html":
-			case "32574-04.html":
+			case "32574-03.html", "32574-04.html":
 			{
 				if (qs.isCond(10))
 				{
@@ -387,8 +384,7 @@ public class Q00194_SevenSignsMammonsContract extends Quest
 					{
 						switch (qs.getCond())
 						{
-							case 1:
-							case 2:
+							case 1, 2:
 							{
 								htmltext = "32571-01.html";
 								break;
@@ -471,9 +467,7 @@ public class Q00194_SevenSignsMammonsContract extends Quest
 					{
 						switch (qs.getCond())
 						{
-							case 1:
-							case 2:
-							case 3:
+							case 1, 2, 3:
 							{
 								htmltext = "32572-01.html";
 								break;
@@ -498,12 +492,7 @@ public class Q00194_SevenSignsMammonsContract extends Quest
 					{
 						switch (qs.getCond())
 						{
-							case 1:
-							case 2:
-							case 3:
-							case 4:
-							case 5:
-							case 6:
+							case 1, 2, 3, 4, 5, 6:
 							{
 								htmltext = "32573-01.html";
 								break;
@@ -528,15 +517,7 @@ public class Q00194_SevenSignsMammonsContract extends Quest
 					{
 						switch (qs.getCond())
 						{
-							case 1:
-							case 2:
-							case 3:
-							case 4:
-							case 5:
-							case 6:
-							case 7:
-							case 8:
-							case 9:
+							case 1, 2, 3, 4, 5, 6, 7, 8, 9:
 							{
 								htmltext = "32574-01.html";
 								break;

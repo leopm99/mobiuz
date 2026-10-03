@@ -70,9 +70,7 @@ public class CastleWarehouse extends AbstractNpcAI
 		String htmltext = event;
 		switch (event)
 		{
-			case "warehouse-01.html":
-			case "warehouse-02.html":
-			case "warehouse-03.html":
+			case "warehouse-01.html", "warehouse-02.html", "warehouse-03.html":
 			{
 				break;
 			}

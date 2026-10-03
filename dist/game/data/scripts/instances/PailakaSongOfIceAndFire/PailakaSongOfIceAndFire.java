@@ -150,14 +150,12 @@ public class PailakaSongOfIceAndFire extends AbstractInstance
 					}
 					break;
 				}
-				case 2:
-				case 3:
+				case 2, 3:
 				{
 					npc.dropItem(player, SHIELD_POTION, getRandom(1, 10));
 					break;
 				}
-				case 4:
-				case 5:
+				case 4, 5:
 				{
 					npc.dropItem(player, HEAL_POTION, getRandom(1, 10));
 					break;

@@ -622,35 +622,7 @@ public class Q00335_TheSongOfTheHunter extends Quest
 				htmltext = event;
 				break;
 			}
-			case "30744-04.html":
-			case "30744-04a.html":
-			case "30744-04b.html":
-			case "30744-04c.html":
-			case "30744-04d.html":
-			case "30744-04e.html":
-			case "30744-04f.html":
-			case "30744-07.html":
-			case "30744-07a.html":
-			case "30744-07b.html":
-			case "30744-08.html":
-			case "30744-08a.html":
-			case "30744-10.html":
-			case "30744-10a.html":
-			case "30744-10b.html":
-			case "30744-10c.html":
-			case "30744-10d.html":
-			case "30744-10e.html":
-			case "30744-10f.html":
-			case "30744-14.html":
-			case "30744-14a.html":
-			case "30744-15.html":
-			case "30744-18.html":
-			case "30745-09.html":
-			case "30746-03a.html":
-			case "30746-07.html":
-			case "30745-04.html":
-			case "30745-05a.html":
-			case "30745-05c.html":
+			case "30744-04.html", "30744-04a.html", "30744-04b.html", "30744-04c.html", "30744-04d.html", "30744-04e.html", "30744-04f.html", "30744-07.html", "30744-07a.html", "30744-07b.html", "30744-08.html", "30744-08a.html", "30744-10.html", "30744-10a.html", "30744-10b.html", "30744-10c.html", "30744-10d.html", "30744-10e.html", "30744-10f.html", "30744-14.html", "30744-14a.html", "30744-15.html", "30744-18.html", "30745-09.html", "30746-03a.html", "30746-07.html", "30745-04.html", "30745-05a.html", "30745-05c.html":
 			{
 				htmltext = event;
 				break;
@@ -1359,8 +1331,7 @@ public class Q00335_TheSongOfTheHunter extends Quest
 					}
 					break;
 				}
-				case FLINE:
-				case LIELE:
+				case FLINE, LIELE:
 				{
 					if (hasQuestItems(qs.getPlayer(), SECOND_CIRCLE_REQUEST_7C) && (getQuestItemsCount(qs.getPlayer(), TEMPEST_SHARD) < 40) && (getRandom(20) < 2))
 					{
@@ -1517,11 +1488,7 @@ public class Q00335_TheSongOfTheHunter extends Quest
 					}
 					break;
 				}
-				case LETO_LIZARDMAN_ARCHER:
-				case LETO_LIZARDMAN_SOLDIER:
-				case HARIT_LIZARDMAN_GRUNT:
-				case HARIT_LIZARDMAN_ARCHER:
-				case HARIT_LIZARDMAN_WARRIOR:
+				case LETO_LIZARDMAN_ARCHER, LETO_LIZARDMAN_SOLDIER, HARIT_LIZARDMAN_GRUNT, HARIT_LIZARDMAN_ARCHER, HARIT_LIZARDMAN_WARRIOR:
 				{
 					evolveBloodCrystal(qs.getPlayer());
 					break;

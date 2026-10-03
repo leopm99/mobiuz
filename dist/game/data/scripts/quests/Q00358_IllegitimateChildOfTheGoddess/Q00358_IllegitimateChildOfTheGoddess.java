@@ -90,8 +90,7 @@ public class Q00358_IllegitimateChildOfTheGoddess extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "30862-02.htm":
-			case "30862-03.htm":
+			case "30862-02.htm", "30862-03.htm":
 			{
 				htmltext = event;
 				break;

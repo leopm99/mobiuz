@@ -273,9 +273,7 @@ public class Q00049_TheRoadHome extends Quest
 				}
 				break;
 			}
-			case GENTLER:
-			case SANDRA:
-			case DUSTIN:
+			case GENTLER, SANDRA, DUSTIN:
 			{
 				if (qs.isStarted())
 				{

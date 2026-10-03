@@ -116,15 +116,7 @@ public class Q00327_RecoverTheFarmland extends Quest
 		
 		switch (event)
 		{
-			case "30034-01.html":
-			case "30313-01.html":
-			case "30314-02.html":
-			case "30314-08.html":
-			case "30314-09.html":
-			case "30382-05a.html":
-			case "30382-05b.html":
-			case "30597-03.html":
-			case "30597-07.html":
+			case "30034-01.html", "30313-01.html", "30314-02.html", "30314-08.html", "30314-09.html", "30382-05a.html", "30382-05b.html", "30597-03.html", "30597-07.html":
 			{
 				html = event;
 				break;
@@ -149,10 +141,7 @@ public class Q00327_RecoverTheFarmland extends Quest
 				html = event;
 				break;
 			}
-			case "30034-03.html":
-			case "30034-04.html":
-			case "30034-05.html":
-			case "30034-06.html":
+			case "30034-03.html", "30034-04.html", "30034-05.html", "30034-06.html":
 			{
 				final ItemHolder item = FRAGMENTS_REWARD_DATA.get(event);
 				if (!hasQuestItems(player, item.getId()))

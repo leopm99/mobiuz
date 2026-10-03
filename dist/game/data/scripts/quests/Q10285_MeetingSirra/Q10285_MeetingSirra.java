@@ -110,9 +110,7 @@ public class Q10285_MeetingSirra extends Quest
 				}
 				break;
 			}
-			case "32760-09.html":
-			case "32760-10.html":
-			case "32760-11.html":
+			case "32760-09.html", "32760-10.html", "32760-11.html":
 			{
 				if (qs.isMemoState(1) && (qs.getInt("ex") == 4))
 				{
@@ -162,12 +160,7 @@ public class Q10285_MeetingSirra extends Quest
 				}
 				break;
 			}
-			case "32762-02.html":
-			case "32762-03.html":
-			case "32762-04.html":
-			case "32762-05.html":
-			case "32762-06.html":
-			case "32762-07.html":
+			case "32762-02.html", "32762-03.html", "32762-04.html", "32762-05.html", "32762-06.html", "32762-07.html":
 			{
 				if (qs.isMemoState(1) && (qs.getInt("ex") == 3))
 				{
@@ -186,8 +179,7 @@ public class Q10285_MeetingSirra extends Quest
 				}
 				break;
 			}
-			case "32781-02.html":
-			case "32781-03.html":
+			case "32781-02.html", "32781-03.html":
 			{
 				if (qs.isMemoState(2))
 				{

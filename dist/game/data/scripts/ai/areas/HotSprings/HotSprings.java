@@ -95,20 +95,17 @@ public class HotSprings extends AbstractNpcAI
 		{
 			switch (npc.getId())
 			{
-				case BANDERSNATCHLING:
-				case ATROX:
+				case BANDERSNATCHLING, ATROX:
 				{
 					tryToInfect(npc, creature, RHEUMATISM);
 					break;
 				}
-				case FLAVA:
-				case NEPENTHES:
+				case FLAVA, NEPENTHES:
 				{
 					tryToInfect(npc, creature, CHOLERA);
 					break;
 				}
-				case ATROXSPAWN:
-				case BANDERSNATCH:
+				case ATROXSPAWN, BANDERSNATCH:
 				{
 					tryToInfect(npc, creature, FLU);
 					break;

@@ -78,9 +78,7 @@ public class Q00196_SevenSignsSealOfTheEmperor extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "30969-02.htm":
-			case "30969-03.htm":
-			case "30969-04.htm":
+			case "30969-02.htm", "30969-03.htm", "30969-04.htm":
 			{
 				htmltext = event;
 				break;
@@ -128,9 +126,7 @@ public class Q00196_SevenSignsSealOfTheEmperor extends Quest
 				}
 				break;
 			}
-			case "32584-02.html":
-			case "32584-03.html":
-			case "32584-04.html":
+			case "32584-02.html", "32584-03.html", "32584-04.html":
 			{
 				if (qs.isCond(1))
 				{
@@ -150,10 +146,7 @@ public class Q00196_SevenSignsSealOfTheEmperor extends Quest
 				}
 				break;
 			}
-			case "32586-02.html":
-			case "32586-03.html":
-			case "32586-04.html":
-			case "32586-06.html":
+			case "32586-02.html", "32586-03.html", "32586-04.html", "32586-06.html":
 			{
 				if (qs.isCond(3))
 				{
@@ -174,9 +167,7 @@ public class Q00196_SevenSignsSealOfTheEmperor extends Quest
 				}
 				break;
 			}
-			case "32586-11.html":
-			case "32586-12.html":
-			case "32586-13.html":
+			case "32586-11.html", "32586-12.html", "32586-13.html":
 			{
 				if (qs.isCond(4) && (getQuestItemsCount(player, SEAL_OF_BINDING) >= 4))
 				{
@@ -271,8 +262,7 @@ public class Q00196_SevenSignsSealOfTheEmperor extends Quest
 								htmltext = "30969-10.html";
 								break;
 							}
-							case 3:
-							case 4:
+							case 3, 4:
 							{
 								htmltext = "30969-11.html";
 								break;

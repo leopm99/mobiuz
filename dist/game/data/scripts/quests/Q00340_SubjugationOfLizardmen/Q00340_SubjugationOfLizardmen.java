@@ -83,8 +83,7 @@ public class Q00340_SubjugationOfLizardmen extends Quest
 				}
 				break;
 			}
-			case "30385-04.html":
-			case "30385-08.html":
+			case "30385-04.html", "30385-08.html":
 			{
 				htmltext = event;
 				break;
@@ -160,8 +159,7 @@ public class Q00340_SubjugationOfLizardmen extends Quest
 		{
 			switch (npc.getId())
 			{
-				case FELIM_LIZARDMAN:
-				case FELIM_LIZARDMAN_SCOUT:
+				case FELIM_LIZARDMAN, FELIM_LIZARDMAN_SCOUT:
 				{
 					if (qs.isMemoState(1))
 					{
@@ -194,8 +192,7 @@ public class Q00340_SubjugationOfLizardmen extends Quest
 					}
 					break;
 				}
-				case LANGK_LIZARDMAN_SCOUT:
-				case LANGK_LIZARDMAN:
+				case LANGK_LIZARDMAN_SCOUT, LANGK_LIZARDMAN:
 				{
 					if (qs.isMemoState(3))
 					{

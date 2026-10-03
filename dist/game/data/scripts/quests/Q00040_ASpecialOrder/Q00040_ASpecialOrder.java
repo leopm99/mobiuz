@@ -105,8 +105,7 @@ public class Q00040_ASpecialOrder extends Quest
 				}
 				break;
 			}
-			case "31572-02.html":
-			case "30511-02.html":
+			case "31572-02.html", "30511-02.html":
 			{
 				htmltext = event;
 				break;
@@ -153,8 +152,7 @@ public class Q00040_ASpecialOrder extends Quest
 					{
 						switch (qs.getCond())
 						{
-							case 2:
-							case 3:
+							case 2, 3:
 							{
 								htmltext = "30081-05.html";
 								break;
@@ -167,8 +165,7 @@ public class Q00040_ASpecialOrder extends Quest
 								}
 								break;
 							}
-							case 5:
-							case 6:
+							case 5, 6:
 							{
 								htmltext = "30081-08.html";
 								break;

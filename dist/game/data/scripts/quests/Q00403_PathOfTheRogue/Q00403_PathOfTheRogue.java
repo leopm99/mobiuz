@@ -141,9 +141,7 @@ public class Q00403_PathOfTheRogue extends Quest
 				htmltext = event;
 				break;
 			}
-			case "30425-02.html":
-			case "30425-03.html":
-			case "30425-04.html":
+			case "30425-02.html", "30425-03.html", "30425-04.html":
 			{
 				htmltext = event;
 				break;

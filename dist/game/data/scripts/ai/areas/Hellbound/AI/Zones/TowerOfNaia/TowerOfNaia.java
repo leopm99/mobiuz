@@ -746,14 +746,12 @@ public class TowerOfNaia extends AbstractNpcAI
 		int ret;
 		switch (sporeId)
 		{
-			case SPORE_FIRE:
-			case SPORE_WATER:
+			case SPORE_FIRE, SPORE_WATER:
 			{
 				ret = 0;
 				break;
 			}
-			case SPORE_WIND:
-			case SPORE_EARTH:
+			case SPORE_WIND, SPORE_EARTH:
 			{
 				ret = 1;
 				break;

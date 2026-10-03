@@ -345,20 +345,12 @@ public class TalentShow extends AbstractNpcAI
 					startQuestTimer("7", 215000, npc, null);
 					break;
 				}
-				case 32442:
-				case 32443:
-				case 32444:
-				case 32445:
-				case 32446:
+				case 32442, 32443, 32444, 32445, 32446:
 				{
 					startQuestTimer("11", 100000, npc, null);
 					break;
 				}
-				case 32424:
-				case 32425:
-				case 32426:
-				case 32427:
-				case 32428:
+				case 32424, 32425, 32426, 32427, 32428:
 				{
 					startQuestTimer("social1", 5500, npc, null);
 					startQuestTimer("social1", 12500, npc, null);

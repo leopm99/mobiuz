@@ -91,8 +91,7 @@ public class Q10505_JewelOfValakas extends Quest
 		{
 			switch (event)
 			{
-				case "31540-05.htm":
-				case "31540-06.htm":
+				case "31540-05.htm", "31540-06.htm":
 				{
 					htmltext = event;
 					break;

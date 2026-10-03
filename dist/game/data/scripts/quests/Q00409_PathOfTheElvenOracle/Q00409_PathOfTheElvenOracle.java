@@ -110,8 +110,7 @@ public class Q00409_PathOfTheElvenOracle extends Quest
 				}
 				break;
 			}
-			case "30424-08.html":
-			case "30424-09.html":
+			case "30424-08.html", "30424-09.html":
 			{
 				htmltext = event;
 				break;
@@ -132,8 +131,7 @@ public class Q00409_PathOfTheElvenOracle extends Quest
 				addAttackDesire(addSpawn(LIZARDMAN_SOLDIER, npc, true, 0, false), player);
 				break;
 			}
-			case "30428-02.html":
-			case "30428-03.html":
+			case "30428-02.html", "30428-03.html":
 			{
 				if (qs.isMemoState(2))
 				{
@@ -221,8 +219,7 @@ public class Q00409_PathOfTheElvenOracle extends Quest
 					}
 					break;
 				}
-				case LIZARDMAN_SCOUT:
-				case LIZARDMAN_SOLDIER:
+				case LIZARDMAN_SCOUT, LIZARDMAN_SOLDIER:
 				{
 					if (!hasQuestItems(killer, LIZARD_CAPTAIN_ORDER))
 					{

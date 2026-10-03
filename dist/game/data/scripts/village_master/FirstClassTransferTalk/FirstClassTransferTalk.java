@@ -125,9 +125,7 @@ public class FirstClassTransferTalk extends AbstractNpcAI
 				}
 				break;
 			}
-			case ELF:
-			case DARK_ELF:
-			case ORC:
+			case ELF, DARK_ELF, ORC:
 			{
 				if (player.getPlayerClass().level() == 0)
 				{

@@ -395,12 +395,7 @@ public class AdminEditChar implements IAdminCommandHandler
 					{
 						switch (classidval)
 						{
-							case 123: // Soldier (Male)
-							case 125: // Trooper
-							case 127: // Berserker
-							case 128: // Soul Breaker (Male)
-							case 131: // Doombringer
-							case 132: // Soul Hound (Male)
+							case 123, 125, 127, 128, 131, 132: // Soldier (Male); Trooper; Berserker; Soul Breaker (Male); Doombringer; Soul Hound (Male)
 							{
 								if (appearance.isFemale())
 								{
@@ -409,12 +404,7 @@ public class AdminEditChar implements IAdminCommandHandler
 								}
 								break;
 							}
-							case 124: // Soldier (Female)
-							case 126: // Warder
-							case 129: // Soul Breaker (Female)
-							case 130: // Arbalester
-							case 133: // Soul Hound (Female)
-							case 134: // Trickster
+							case 124, 126, 129, 130, 133, 134: // Soldier (Female); Warder; Soul Breaker (Female); Arbalester; Soul Hound (Female); Trickster
 							{
 								if (!appearance.isFemale())
 								{

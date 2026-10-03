@@ -66,8 +66,7 @@ public class Q00061_LawEnforcement extends Quest
 				htmltext = event;
 				break;
 			}
-			case "32138-01.html":
-			case "32138-02.html":
+			case "32138-01.html", "32138-02.html":
 			{
 				if (qs.isMemoState(1))
 				{
@@ -84,10 +83,7 @@ public class Q00061_LawEnforcement extends Quest
 				}
 				break;
 			}
-			case "32138-04.html":
-			case "32138-05.html":
-			case "32138-06.html":
-			case "32138-07.html":
+			case "32138-04.html", "32138-05.html", "32138-06.html", "32138-07.html":
 			{
 				if (qs.isMemoState(2) || qs.isMemoState(3))
 				{
@@ -123,11 +119,7 @@ public class Q00061_LawEnforcement extends Quest
 				}
 				break;
 			}
-			case "32469-03.html":
-			case "32469-04.html":
-			case "32469-05.html":
-			case "32469-06.html":
-			case "32469-07.html":
+			case "32469-03.html", "32469-04.html", "32469-05.html", "32469-06.html", "32469-07.html":
 			{
 				if (qs.isMemoState(5))
 				{
@@ -135,8 +127,7 @@ public class Q00061_LawEnforcement extends Quest
 				}
 				break;
 			}
-			case "32469-08.html":
-			case "32469-09.html":
+			case "32469-08.html", "32469-09.html":
 			{
 				if (qs.isMemoState(5))
 				{

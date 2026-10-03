@@ -141,8 +141,7 @@ public class Q00217_TestimonyOfTrust extends Quest
 				}
 				break;
 			}
-			case "30154-02.html":
-			case "30657-02.html":
+			case "30154-02.html", "30657-02.html":
 			{
 				htmltext = event;
 				break;
@@ -243,8 +242,7 @@ public class Q00217_TestimonyOfTrust extends Quest
 		{
 			switch (npc.getId())
 			{
-				case DRYAD:
-				case DRYAD_ELDER:
+				case DRYAD, DRYAD_ELDER:
 				{
 					if (qs.isMemoState(2))
 					{
@@ -257,8 +255,7 @@ public class Q00217_TestimonyOfTrust extends Quest
 					}
 					break;
 				}
-				case LIREIN:
-				case LIREIN_ELDER:
+				case LIREIN, LIREIN_ELDER:
 				{
 					if (qs.isMemoState(2))
 					{
@@ -271,8 +268,7 @@ public class Q00217_TestimonyOfTrust extends Quest
 					}
 					break;
 				}
-				case ANT_RECRUIT:
-				case ANT_GUARD:
+				case ANT_RECRUIT, ANT_GUARD:
 				{
 					if (qs.isMemoState(6) && (getQuestItemsCount(killer, GIANT_APHID) < 5) && hasQuestItems(killer, ORDER_OF_CLAYTON) && !hasQuestItems(killer, HONEY_DEW))
 					{
@@ -294,9 +290,7 @@ public class Q00217_TestimonyOfTrust extends Quest
 					}
 					break;
 				}
-				case ANT_PATROL:
-				case ANT_SOLDIER:
-				case ANT_WARRIOR_CAPTAIN:
+				case ANT_PATROL, ANT_SOLDIER, ANT_WARRIOR_CAPTAIN:
 				{
 					if (qs.isMemoState(6) && (getQuestItemsCount(killer, GIANT_APHID) < 10) && hasQuestItems(killer, ORDER_OF_CLAYTON) && !hasQuestItems(killer, HONEY_DEW))
 					{
@@ -318,8 +312,7 @@ public class Q00217_TestimonyOfTrust extends Quest
 					}
 					break;
 				}
-				case MARSH_STAKATO:
-				case MARSH_STAKATO_WORKER:
+				case MARSH_STAKATO, MARSH_STAKATO_WORKER:
 				{
 					if (qs.isMemoState(6) && (getQuestItemsCount(killer, STAKATOS_FLUIDS) < 10) && hasQuestItems(killer, ORDER_OF_CLAYTON) && !hasQuestItems(killer, STAKATO_ICHOR))
 					{
@@ -341,8 +334,7 @@ public class Q00217_TestimonyOfTrust extends Quest
 					}
 					break;
 				}
-				case MARSH_STAKATO_SOLDIER:
-				case MARSH_STAKATO_DRONE:
+				case MARSH_STAKATO_SOLDIER, MARSH_STAKATO_DRONE:
 				{
 					if (qs.isMemoState(6) && (getQuestItemsCount(killer, STAKATOS_FLUIDS) < 5) && hasQuestItems(killer, ORDER_OF_CLAYTON) && !hasQuestItems(killer, STAKATO_ICHOR))
 					{

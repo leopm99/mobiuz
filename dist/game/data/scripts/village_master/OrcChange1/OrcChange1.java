@@ -69,45 +69,12 @@ public class OrcChange1 extends AbstractNpcAI
 		String htmltext = null;
 		switch (event)
 		{
-			case "30500-01.htm": // high_prefect_osborn003f
-			case "30500-02.htm": // high_prefect_osborn006fa
-			case "30500-03.htm": // high_prefect_osborn007fa
-			case "30500-04.htm": // high_prefect_osborn006fb
-			case "30500-05.htm": // high_prefect_osborn007fb
-			case "30500-06.htm": // high_prefect_osborn003m
-			case "30500-07.htm": // high_prefect_osborn006ma
-			case "30500-08.htm": // high_prefect_osborn007ma
-			case "30505-01.htm": // high_prefect_drikus003f
-			case "30505-02.htm": // high_prefect_drikus006fa
-			case "30505-03.htm": // high_prefect_drikus007fa
-			case "30505-04.htm": // high_prefect_drikus006fb
-			case "30505-05.htm": // high_prefect_drikus007fb
-			case "30505-06.htm": // high_prefect_drikus003m
-			case "30505-07.htm": // high_prefect_drikus006ma
-			case "30505-08.htm": // high_prefect_drikus007ma
-			case "30508-01.htm": // high_prefect_cional003f
-			case "30508-02.htm": // high_prefect_cional006fa
-			case "30508-03.htm": // high_prefect_cional007fa
-			case "30508-04.htm": // high_prefect_cional006fb
-			case "30508-05.htm": // high_prefect_cional007fb
-			case "30508-06.htm": // high_prefect_cional003m
-			case "30508-07.htm": // high_prefect_cional006ma
-			case "30508-08.htm": // high_prefect_cional007ma
-			case "32097-01.htm": // high_prefect_finker003f
-			case "32097-02.htm": // high_prefect_finker006fa
-			case "32097-03.htm": // high_prefect_finker007fa
-			case "32097-04.htm": // high_prefect_finker006fb
-			case "32097-05.htm": // high_prefect_finker007fb
-			case "32097-06.htm": // high_prefect_finker003m
-			case "32097-07.htm": // high_prefect_finker006ma
-			case "32097-08.htm": // high_prefect_finker007ma
+			case "30500-01.htm", "30500-02.htm", "30500-03.htm", "30500-04.htm", "30500-05.htm", "30500-06.htm", "30500-07.htm", "30500-08.htm", "30505-01.htm", "30505-02.htm", "30505-03.htm", "30505-04.htm", "30505-05.htm", "30505-06.htm", "30505-07.htm", "30505-08.htm", "30508-01.htm", "30508-02.htm", "30508-03.htm", "30508-04.htm", "30508-05.htm", "30508-06.htm", "30508-07.htm", "30508-08.htm", "32097-01.htm", "32097-02.htm", "32097-03.htm", "32097-04.htm", "32097-05.htm", "32097-06.htm", "32097-07.htm", "32097-08.htm": // high_prefect_osborn003f; high_prefect_osborn006fa; high_prefect_osborn007fa; high_prefect_osborn006fb; high_prefect_osborn007fb; high_prefect_osborn003m; high_prefect_osborn006ma; high_prefect_osborn007ma; high_prefect_drikus003f; high_prefect_drikus006fa; high_prefect_drikus007fa; high_prefect_drikus006fb; high_prefect_drikus007fb; high_prefect_drikus003m; high_prefect_drikus006ma; high_prefect_drikus007ma; high_prefect_cional003f; high_prefect_cional006fa; high_prefect_cional007fa; high_prefect_cional006fb; high_prefect_cional007fb; high_prefect_cional003m; high_prefect_cional006ma; high_prefect_cional007ma; high_prefect_finker003f; high_prefect_finker006fa; high_prefect_finker007fa; high_prefect_finker006fb; high_prefect_finker007fb; high_prefect_finker003m; high_prefect_finker006ma; high_prefect_finker007ma
 			{
 				htmltext = event;
 				break;
 			}
-			case "45":
-			case "47":
-			case "50":
+			case "45", "47", "50":
 			{
 				htmltext = ClassChangeRequested(player, npc, Integer.parseInt(event));
 				break;

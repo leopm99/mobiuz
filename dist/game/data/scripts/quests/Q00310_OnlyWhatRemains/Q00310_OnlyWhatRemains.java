@@ -95,11 +95,7 @@ public class Q00310_OnlyWhatRemains extends Quest
 				qs.exitQuest(true, true);
 				break;
 			}
-			case "32640-02.htm":
-			case "32640-03.htm":
-			case "32640-05.html":
-			case "32640-06.html":
-			case "32640-07.html":
+			case "32640-02.htm", "32640-03.htm", "32640-05.html", "32640-06.html", "32640-07.html":
 			{
 				break;
 			}

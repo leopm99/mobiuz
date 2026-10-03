@@ -341,47 +341,7 @@ public class Q00114_ResurrectionOfAnOldManager extends Quest
 				htmltext = null;
 				break;
 			}
-			case "32041-05.html":
-			case "32041-06.html":
-			case "32041-07.html":
-			case "32041-17.html":
-			case "32041-18.html":
-			case "32041-19.html":
-			case "32041-20.html":
-			case "32041-21.html":
-			case "32041-22.html":
-			case "32041-25.html":
-			case "32041-29.html":
-			case "32041-30.html":
-			case "32041-35.html":
-			case "32041-36.html":
-			case "32046-05.html":
-			case "32046-06.html":
-			case "32047-06a.html":
-			case "32047-12a.html":
-			case "32047-12b.html":
-			case "32047-12c.html":
-			case "32047-13a.html":
-			case "32047-14a.html":
-			case "32047-13b.html":
-			case "32047-13c.html":
-			case "32047-14c.html":
-			case "32047-15c.html":
-			case "32047-17c.html":
-			case "32047-13ab.html":
-			case "32047-15a.html":
-			case "32047-16a.html":
-			case "32047-16c.html":
-			case "32047-18a.html":
-			case "32047-19a.html":
-			case "32047-18ab.html":
-			case "32047-19ab.html":
-			case "32047-18c.html":
-			case "32047-17a.html":
-			case "32047-19c.html":
-			case "32047-21b.html":
-			case "32047-27c.html":
-			case "32047-28c.html":
+			case "32041-05.html", "32041-06.html", "32041-07.html", "32041-17.html", "32041-18.html", "32041-19.html", "32041-20.html", "32041-21.html", "32041-22.html", "32041-25.html", "32041-29.html", "32041-30.html", "32041-35.html", "32041-36.html", "32046-05.html", "32046-06.html", "32047-06a.html", "32047-12a.html", "32047-12b.html", "32047-12c.html", "32047-13a.html", "32047-14a.html", "32047-13b.html", "32047-13c.html", "32047-14c.html", "32047-15c.html", "32047-17c.html", "32047-13ab.html", "32047-15a.html", "32047-16a.html", "32047-16c.html", "32047-18a.html", "32047-19a.html", "32047-18ab.html", "32047-19ab.html", "32047-18c.html", "32047-17a.html", "32047-19c.html", "32047-21b.html", "32047-27c.html", "32047-28c.html":
 			{
 				break;
 			}
@@ -464,9 +424,7 @@ public class Q00114_ResurrectionOfAnOldManager extends Quest
 								htmltext = "32041-10.html";
 								break;
 							}
-							case 3:
-							case 4:
-							case 5:
+							case 3, 4, 5:
 							{
 								switch (talk)
 								{
@@ -488,27 +446,17 @@ public class Q00114_ResurrectionOfAnOldManager extends Quest
 								}
 								break;
 							}
-							case 6:
-							case 7:
-							case 8:
-							case 10:
-							case 11:
-							case 13:
-							case 14:
-							case 15:
+							case 6, 7, 8, 10, 11, 13, 14, 15:
 							{
 								htmltext = "32041-27.html";
 								break;
 							}
-							case 9:
-							case 12:
-							case 16:
+							case 9, 12, 16:
 							{
 								htmltext = "32041-28.html";
 								break;
 							}
-							case 17:
-							case 18:
+							case 17, 18:
 							{
 								htmltext = "32041-32.html";
 								break;
@@ -528,9 +476,7 @@ public class Q00114_ResurrectionOfAnOldManager extends Quest
 								htmltext = "32041-40z.html";
 								break;
 							}
-							case 22:
-							case 25:
-							case 26:
+							case 22, 25, 26:
 							{
 								qs.setCond(27, true);
 								htmltext = "32041-41.html";
@@ -610,9 +556,7 @@ public class Q00114_ResurrectionOfAnOldManager extends Quest
 							htmltext = "32047-17a.html";
 							break;
 						}
-						case 9:
-						case 12:
-						case 16:
+						case 9, 12, 16:
 						{
 							htmltext = "32047-25c.html";
 							break;

@@ -55,16 +55,7 @@ public class Q00020_BringUpWithLove extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "31537-02.htm":
-			case "31537-03.htm":
-			case "31537-04.htm":
-			case "31537-05.htm":
-			case "31537-06.htm":
-			case "31537-07.htm":
-			case "31537-08.htm":
-			case "31537-09.htm":
-			case "31537-10.htm":
-			case "31537-12.htm":
+			case "31537-02.htm", "31537-03.htm", "31537-04.htm", "31537-05.htm", "31537-06.htm", "31537-07.htm", "31537-08.htm", "31537-09.htm", "31537-10.htm", "31537-12.htm":
 			{
 				htmltext = event;
 				break;

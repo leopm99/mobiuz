@@ -193,9 +193,7 @@ public class Q00104_SpiritOfMirrors extends Quest
 				}
 				break;
 			}
-			case ARNOLD:
-			case JOHNSTONE:
-			case KENYOS:
+			case ARNOLD, JOHNSTONE, KENYOS:
 			{
 				if (qs.isCond(1))
 				{

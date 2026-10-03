@@ -99,10 +99,7 @@ public class Q00031_SecretBuriedInTheSwamp extends Quest
 				}
 				break;
 			}
-			case "31661-02.html":
-			case "31662-02.html":
-			case "31663-02.html":
-			case "31664-02.html":
+			case "31661-02.html", "31662-02.html", "31663-02.html", "31664-02.html":
 			{
 				if (MONUMENTS.contains(npc.getId()) && qs.isCond(MONUMENTS.indexOf(npc.getId()) + 3))
 				{
@@ -197,10 +194,7 @@ public class Q00031_SecretBuriedInTheSwamp extends Quest
 				}
 				break;
 			}
-			case FORGOTTEN_MONUMENT_1:
-			case FORGOTTEN_MONUMENT_2:
-			case FORGOTTEN_MONUMENT_3:
-			case FORGOTTEN_MONUMENT_4:
+			case FORGOTTEN_MONUMENT_1, FORGOTTEN_MONUMENT_2, FORGOTTEN_MONUMENT_3, FORGOTTEN_MONUMENT_4:
 			{
 				final int loc = MONUMENTS.indexOf(npc.getId()) + 3;
 				if (qs.isCond(loc))

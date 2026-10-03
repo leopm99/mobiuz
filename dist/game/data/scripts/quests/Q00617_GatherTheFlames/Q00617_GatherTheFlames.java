@@ -95,15 +95,12 @@ public class Q00617_GatherTheFlames extends Quest
 		String htmltext = event;
 		switch (event)
 		{
-			case "31539-03.htm":
-			case "31271-03.htm":
+			case "31539-03.htm", "31271-03.htm":
 			{
 				qs.startQuest();
 				break;
 			}
-			case "32049-02.html":
-			case "31539-04.html":
-			case "31539-06.html":
+			case "32049-02.html", "31539-04.html", "31539-06.html":
 			{
 				break;
 			}
@@ -122,14 +119,7 @@ public class Q00617_GatherTheFlames extends Quest
 				qs.exitQuest(true, true);
 				break;
 			}
-			case "6883":
-			case "6885":
-			case "7580":
-			case "6891":
-			case "6893":
-			case "6895":
-			case "6897":
-			case "6899":
+			case "6883", "6885", "7580", "6891", "6893", "6895", "6897", "6899":
 			{
 				if ((getQuestItemsCount(player, TORCH) < 1200) || !qs.isStarted())
 				{
@@ -140,8 +130,7 @@ public class Q00617_GatherTheFlames extends Quest
 				htmltext = "32049-04.html";
 				break;
 			}
-			case "6887":
-			case "6881":
+			case "6887", "6881":
 			{
 				if ((getQuestItemsCount(player, TORCH) < 1200) || !qs.isStarted())
 				{

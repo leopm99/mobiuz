@@ -53,9 +53,7 @@ public class Panel implements IVoicedCommandHandler
 	{
 		switch (command)
 		{
-			case "panel":
-			case "cp":
-			case "user":
+			case "panel", "cp", "user":
 				break;
 			case "tradeprot":
 				toggleSetting(activeChar, "noTrade", "Block Trade");

@@ -266,10 +266,7 @@ public class Q00102_SeaOfSporesFever extends Quest
 				}
 				break;
 			}
-			case GARTRANDELL:
-			case RAYEN:
-			case VELTRESS:
-			case BERROS:
+			case GARTRANDELL, RAYEN, VELTRESS, BERROS:
 			{
 				if (hasQuestItems(player, ALBERIUS_LIST, SENTINELS.get(npc.getId())))
 				{

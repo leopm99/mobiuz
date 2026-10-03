@@ -83,8 +83,7 @@ public class Q00197_SevenSignsTheSacredBookOfSeal extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "32593-02.htm":
-			case "32593-03.htm":
+			case "32593-02.htm", "32593-03.htm":
 			{
 				htmltext = event;
 				break;
@@ -120,8 +119,7 @@ public class Q00197_SevenSignsTheSacredBookOfSeal extends Quest
 				}
 				break;
 			}
-			case "30857-02.html":
-			case "30857-03.html":
+			case "30857-02.html", "30857-03.html":
 			{
 				if (qs.isCond(1))
 				{
@@ -155,8 +153,7 @@ public class Q00197_SevenSignsTheSacredBookOfSeal extends Quest
 				}
 				break;
 			}
-			case "32595-02.html":
-			case "32595-03.html":
+			case "32595-02.html", "32595-03.html":
 			{
 				if (qs.isCond(3))
 				{
@@ -179,9 +176,7 @@ public class Q00197_SevenSignsTheSacredBookOfSeal extends Quest
 				}
 				break;
 			}
-			case "32595-06.html":
-			case "32595-07.html":
-			case "32595-08.html":
+			case "32595-06.html", "32595-07.html", "32595-08.html":
 			{
 				if (qs.isCond(4) && hasQuestItems(player, SCULPTURE_OF_DOUBT))
 				{
@@ -198,8 +193,7 @@ public class Q00197_SevenSignsTheSacredBookOfSeal extends Quest
 				}
 				break;
 			}
-			case "32596-02.html":
-			case "32596-03.html":
+			case "32596-02.html", "32596-03.html":
 			{
 				if (qs.isCond(5) && hasQuestItems(player, SCULPTURE_OF_DOUBT))
 				{

@@ -70,10 +70,7 @@ public class SymbolMaker extends AbstractNpcAI
 		String htmltext = null;
 		switch (event)
 		{
-			case "symbol_maker.htm":
-			case "symbol_maker-1.htm":
-			case "symbol_maker-2.htm":
-			case "symbol_maker-3.htm":
+			case "symbol_maker.htm", "symbol_maker-1.htm", "symbol_maker-2.htm", "symbol_maker-3.htm":
 			{
 				htmltext = event;
 				break;

@@ -292,17 +292,7 @@ public class Q00503_PursuitOfClanAmbition extends Quest
 				htmltext = event;
 				break;
 			}
-			case "30645-06.html":
-			case "30760-05.html":
-			case "30760-06.html":
-			case "30760-07.html":
-			case "30760-21.html":
-			case "30764-05.html":
-			case "30765-02.html":
-			case "30765-05a.html":
-			case "30766-03.html":
-			case "30868-03.html":
-			case "30868-06a.html":
+			case "30645-06.html", "30760-05.html", "30760-06.html", "30760-07.html", "30760-21.html", "30764-05.html", "30765-02.html", "30765-05a.html", "30766-03.html", "30868-03.html", "30868-06a.html":
 			{
 				htmltext = event;
 				break;
@@ -353,8 +343,7 @@ public class Q00503_PursuitOfClanAmbition extends Quest
 		
 		switch (npc.getId())
 		{
-			case DRAKE:
-			case DRAKE2:
+			case DRAKE, DRAKE2:
 			{
 				if ((leaderQS.getMemoState() >= 2000) || (leaderQS.getMemoState() < 3000))
 				{
@@ -363,8 +352,7 @@ public class Q00503_PursuitOfClanAmbition extends Quest
 				}
 				break;
 			}
-			case THUNDER_WYRM:
-			case THUNDER_WYRM2:
+			case THUNDER_WYRM, THUNDER_WYRM2:
 			{
 				if ((leaderQS.getMemoState() >= 2000) || (leaderQS.getMemoState() < 3000))
 				{

@@ -77,10 +77,7 @@ public class Q00423_TakeYourBestShot extends Quest
 		String htmltext = event;
 		switch (event)
 		{
-			case "32740.html":
-			case "32740-01.html":
-			case "32744-02.html":
-			case "32744-03.htm":
+			case "32740.html", "32740-01.html", "32744-02.html", "32744-03.htm":
 			{
 				break;
 			}

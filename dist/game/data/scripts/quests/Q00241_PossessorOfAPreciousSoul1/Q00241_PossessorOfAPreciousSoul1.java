@@ -244,10 +244,7 @@ public class Q00241_PossessorOfAPreciousSoul1 extends Quest
 				qs.setCond(4, true);
 				break;
 			}
-			case MALRUK_SUCCUBUS_1:
-			case MALRUK_SUCCUBUS_TUREN_1:
-			case MALRUK_SUCCUBUS_2:
-			case MALRUK_SUCCUBUS_TUREN_2:
+			case MALRUK_SUCCUBUS_1, MALRUK_SUCCUBUS_TUREN_1, MALRUK_SUCCUBUS_2, MALRUK_SUCCUBUS_TUREN_2:
 			{
 				partyMember = getRandomPartyMember(player, 6);
 				if (partyMember == null)

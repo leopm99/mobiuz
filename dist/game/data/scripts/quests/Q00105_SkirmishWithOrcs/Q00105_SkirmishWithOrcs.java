@@ -146,10 +146,7 @@ public class Q00105_SkirmishWithOrcs extends Quest
 		{
 			switch (npc.getId())
 			{
-				case 27059:
-				case 27060:
-				case 27061:
-				case 27062:
+				case 27059, 27060, 27061, 27062:
 				{
 					if (qs.isCond(1) && hasQuestItems(killer, MONSTER_DROP.get(npc.getId())))
 					{
@@ -158,10 +155,7 @@ public class Q00105_SkirmishWithOrcs extends Quest
 					}
 					break;
 				}
-				case 27064:
-				case 27065:
-				case 27067:
-				case 27068:
+				case 27064, 27065, 27067, 27068:
 				{
 					if (qs.isCond(3) && hasQuestItems(killer, MONSTER_DROP.get(npc.getId())))
 					{

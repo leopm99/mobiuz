@@ -134,8 +134,7 @@ public class AdminReload implements IAdminCommandHandler
 					AdminData.getInstance().broadcastMessageToGMs(activeChar.getName() + ": Reloaded Walkers.");
 					break;
 				}
-				case "htm":
-				case "html":
+				case "htm", "html":
 				{
 					if (st.hasMoreElements())
 					{
@@ -255,8 +254,7 @@ public class AdminReload implements IAdminCommandHandler
 					AdminData.getInstance().broadcastMessageToGMs(activeChar.getName() + ": Reloaded transform data.");
 					break;
 				}
-				case "itemmall":
-				case "primeshop":
+				case "itemmall", "primeshop":
 				{
 					PrimeShopData.getInstance().load();
 					AdminData.getInstance().broadcastMessageToGMs(activeChar.getName() + ": Reloaded item mall data.");

@@ -138,8 +138,7 @@ public class Q00224_TestOfSagittarius extends Quest
 				}
 				break;
 			}
-			case "30626-02.html":
-			case "30626-06.html":
+			case "30626-02.html", "30626-06.html":
 			{
 				htmltext = event;
 				break;
@@ -191,14 +190,7 @@ public class Q00224_TestOfSagittarius extends Quest
 		{
 			switch (npc.getId())
 			{
-				case ANT:
-				case ANT_CAPTAIN:
-				case ANT_OVERSEER:
-				case ANT_RECRUIT:
-				case ANT_PATROL:
-				case ANT_GUARD:
-				case NOBLE_ANT:
-				case NOBLE_ANT_LEADER:
+				case ANT, ANT_CAPTAIN, ANT_OVERSEER, ANT_RECRUIT, ANT_PATROL, ANT_GUARD, NOBLE_ANT, NOBLE_ANT_LEADER:
 				{
 					if (qs.isMemoState(3) && (getQuestItemsCount(killer, HUNTERS_1ST_RUNE) < 10))
 					{
@@ -216,9 +208,7 @@ public class Q00224_TestOfSagittarius extends Quest
 					}
 					break;
 				}
-				case MARSH_STAKATO_WORKER:
-				case MARSH_STAKATO_SOLDIER:
-				case MARSH_STAKATO_DRONE:
+				case MARSH_STAKATO_WORKER, MARSH_STAKATO_SOLDIER, MARSH_STAKATO_DRONE:
 				{
 					if (qs.isMemoState(10) && !hasQuestItems(killer, STAKATO_CHITIN))
 					{
@@ -254,8 +244,7 @@ public class Q00224_TestOfSagittarius extends Quest
 					}
 					break;
 				}
-				case BREKA_ORC_SHAMAN:
-				case BREKA_ORC_OVERLORD:
+				case BREKA_ORC_SHAMAN, BREKA_ORC_OVERLORD:
 				{
 					if (qs.isMemoState(6) && (getQuestItemsCount(killer, HUNTERS_2ND_RUNE) < 10))
 					{
@@ -310,12 +299,7 @@ public class Q00224_TestOfSagittarius extends Quest
 					}
 					break;
 				}
-				case LETO_LIZARDMAN:
-				case LETO_LIZARDMAN_ARCHER:
-				case LETO_LIZARDMAN_SOLDIER:
-				case LETO_LIZARDMAN_WARRIOR:
-				case LETO_LIZARDMAN_SHAMAN:
-				case LETO_LIZARDMAN_OVERLORD:
+				case LETO_LIZARDMAN, LETO_LIZARDMAN_ARCHER, LETO_LIZARDMAN_SOLDIER, LETO_LIZARDMAN_WARRIOR, LETO_LIZARDMAN_SHAMAN, LETO_LIZARDMAN_OVERLORD:
 				{
 					if (qs.isMemoState(13) && (getQuestItemsCount(killer, BLOOD_OF_LIZARDMAN) < 140))
 					{

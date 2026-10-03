@@ -64,8 +64,7 @@ public class Q00163_LegacyOfThePoet extends Quest
 		{
 			switch (event)
 			{
-				case "30220-03.html":
-				case "30220-04.html":
+				case "30220-03.html", "30220-04.html":
 				{
 					htmltext = event;
 					break;

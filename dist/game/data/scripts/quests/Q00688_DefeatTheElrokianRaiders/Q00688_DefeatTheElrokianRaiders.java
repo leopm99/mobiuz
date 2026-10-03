@@ -60,8 +60,7 @@ public class Q00688_DefeatTheElrokianRaiders extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "32105-02.htm":
-			case "32105-10.html":
+			case "32105-02.htm", "32105-10.html":
 			{
 				htmltext = event;
 				break;

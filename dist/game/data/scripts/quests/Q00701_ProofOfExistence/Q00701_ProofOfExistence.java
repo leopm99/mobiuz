@@ -75,8 +75,7 @@ public class Q00701_ProofOfExistence extends Quest
 		String htmltext = event;
 		switch (event)
 		{
-			case "32559-03.htm":
-			case "32559-08.html":
+			case "32559-03.htm", "32559-08.html":
 			{
 				break;
 			}

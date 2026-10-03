@@ -74,10 +74,7 @@ public class Q00661_MakingTheHarvestGroundsSafe extends Quest
 		
 		switch (event)
 		{
-			case "30210-01.htm":
-			case "30210-02.htm":
-			case "30210-04.html":
-			case "30210-06.html":
+			case "30210-01.htm", "30210-02.htm", "30210-04.html", "30210-06.html":
 			{
 				htmltext = event;
 				break;

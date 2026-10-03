@@ -139,12 +139,7 @@ public class Q00219_TestimonyOfFate extends Quest
 				}
 				break;
 			}
-			case "30476-04.htm":
-			case "30476-13.html":
-			case "30476-14.html":
-			case "30114-02.html":
-			case "30114-03.html":
-			case "30463-02a.html":
+			case "30476-04.htm", "30476-13.html", "30476-14.html", "30114-02.html", "30114-03.html", "30463-02a.html":
 			{
 				htmltext = event;
 				break;
@@ -229,10 +224,7 @@ public class Q00219_TestimonyOfFate extends Quest
 					}
 					break;
 				}
-				case MARSH_STAKATO:
-				case MARSH_STAKATO_WORKER:
-				case MARSH_STAKATO_SOLDIER:
-				case MARSH_STAKATO_DRONE:
+				case MARSH_STAKATO, MARSH_STAKATO_WORKER, MARSH_STAKATO_SOLDIER, MARSH_STAKATO_DRONE:
 				{
 					if (hasQuestItems(killer, IXIAS_LIST) && (getQuestItemsCount(killer, NIGHTSHADE_ROOT) < 10))
 					{
@@ -274,8 +266,7 @@ public class Q00219_TestimonyOfFate extends Quest
 					}
 					break;
 				}
-				case TYRANT:
-				case TYRANT_KINGPIN:
+				case TYRANT, TYRANT_KINGPIN:
 				{
 					if (hasQuestItems(killer, IXIAS_LIST) && (getQuestItemsCount(killer, TYRANTS_BLOOD) < 10))
 					{

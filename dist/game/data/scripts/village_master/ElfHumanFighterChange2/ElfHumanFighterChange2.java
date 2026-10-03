@@ -92,55 +92,12 @@ public class ElfHumanFighterChange2 extends AbstractNpcAI
 		String htmltext = null;
 		switch (event)
 		{
-			case "30109-02.htm": // master_lv3_hef003w
-			case "30109-03.htm": // master_lv3_hef006wa
-			case "30109-04.htm": // master_lv3_hef007wa
-			case "30109-05.htm": // master_lv3_hef007wat
-			case "30109-06.htm": // master_lv3_hef006wb
-			case "30109-07.htm": // master_lv3_hef007wb
-			case "30109-08.htm": // master_lv3_hef007wbt
-			case "30109-09.htm": // master_lv3_hef003k
-			case "30109-10.htm": // master_lv3_hef006ka
-			case "30109-11.htm": // master_lv3_hef007ka
-			case "30109-12.htm": // master_lv3_hef007kat
-			case "30109-13.htm": // master_lv3_hef006kb
-			case "30109-14.htm": // master_lv3_hef007kb
-			case "30109-15.htm": // master_lv3_hef007kbt
-			case "30109-16.htm": // master_lv3_hef003r
-			case "30109-17.htm": // master_lv3_hef006ra
-			case "30109-18.htm": // master_lv3_hef007ra
-			case "30109-19.htm": // master_lv3_hef007rat
-			case "30109-20.htm": // master_lv3_hef006rb
-			case "30109-21.htm": // master_lv3_hef007rb
-			case "30109-22.htm": // master_lv3_hef007rbt
-			case "30109-23.htm": // master_lv3_hef003e
-			case "30109-24.htm": // master_lv3_hef006ea
-			case "30109-25.htm": // master_lv3_hef007ea
-			case "30109-26.htm": // master_lv3_hef007eat
-			case "30109-27.htm": // master_lv3_hef006eb
-			case "30109-28.htm": // master_lv3_hef007eb
-			case "30109-29.htm": // master_lv3_hef007ebt
-			case "30109-30.htm": // master_lv3_hef003s
-			case "30109-31.htm": // master_lv3_hef006sa
-			case "30109-32.htm": // master_lv3_hef007sa
-			case "30109-33.htm": // master_lv3_hef007sat
-			case "30109-34.htm": // master_lv3_hef006sb
-			case "30109-35.htm": // master_lv3_hef007sb
-			case "30109-36.htm": // master_lv3_hef007sbt
+			case "30109-02.htm", "30109-03.htm", "30109-04.htm", "30109-05.htm", "30109-06.htm", "30109-07.htm", "30109-08.htm", "30109-09.htm", "30109-10.htm", "30109-11.htm", "30109-12.htm", "30109-13.htm", "30109-14.htm", "30109-15.htm", "30109-16.htm", "30109-17.htm", "30109-18.htm", "30109-19.htm", "30109-20.htm", "30109-21.htm", "30109-22.htm", "30109-23.htm", "30109-24.htm", "30109-25.htm", "30109-26.htm", "30109-27.htm", "30109-28.htm", "30109-29.htm", "30109-30.htm", "30109-31.htm", "30109-32.htm", "30109-33.htm", "30109-34.htm", "30109-35.htm", "30109-36.htm": // master_lv3_hef003w; master_lv3_hef006wa; master_lv3_hef007wa; master_lv3_hef007wat; master_lv3_hef006wb; master_lv3_hef007wb; master_lv3_hef007wbt; master_lv3_hef003k; master_lv3_hef006ka; master_lv3_hef007ka; master_lv3_hef007kat; master_lv3_hef006kb; master_lv3_hef007kb; master_lv3_hef007kbt; master_lv3_hef003r; master_lv3_hef006ra; master_lv3_hef007ra; master_lv3_hef007rat; master_lv3_hef006rb; master_lv3_hef007rb; master_lv3_hef007rbt; master_lv3_hef003e; master_lv3_hef006ea; master_lv3_hef007ea; master_lv3_hef007eat; master_lv3_hef006eb; master_lv3_hef007eb; master_lv3_hef007ebt; master_lv3_hef003s; master_lv3_hef006sa; master_lv3_hef007sa; master_lv3_hef007sat; master_lv3_hef006sb; master_lv3_hef007sb; master_lv3_hef007sbt
 			{
 				htmltext = event;
 				break;
 			}
-			case "2":
-			case "3":
-			case "5":
-			case "6":
-			case "8":
-			case "9":
-			case "20":
-			case "21":
-			case "23":
-			case "24":
+			case "2", "3", "5", "6", "8", "9", "20", "21", "23", "24":
 			{
 				htmltext = ClassChangeRequested(player, Integer.parseInt(event));
 				break;

@@ -152,8 +152,7 @@ public class Q00278_HomeSecurity extends Quest
 					}
 					break;
 				}
-				case 18906: // Farm Bandit
-				case 18907: // Beast Devourer
+				case 18906, 18907: // Farm Bandit; Beast Devourer
 				{
 					if (giveItemRandomly(qs.getPlayer(), npc, SEL_MAHUM_MANE, 1, SEL_MAHUM_MANE_COUNT, 0.85, true))
 					{

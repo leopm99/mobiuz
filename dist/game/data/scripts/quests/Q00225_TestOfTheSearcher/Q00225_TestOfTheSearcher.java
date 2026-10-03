@@ -131,15 +131,7 @@ public class Q00225_TestOfTheSearcher extends Quest
 				}
 				break;
 			}
-			case "30291-05.html":
-			case "30291-01t.html":
-			case "30291-06.html":
-			case "30730-01a.html":
-			case "30730-01b.html":
-			case "30730-01c.html":
-			case "30730-02.html":
-			case "30730-02a.html":
-			case "30730-02b.html":
+			case "30291-05.html", "30291-01t.html", "30291-06.html", "30730-01a.html", "30730-01b.html", "30730-01c.html", "30730-02.html", "30730-02a.html", "30730-02b.html":
 			{
 				htmltext = event;
 				break;

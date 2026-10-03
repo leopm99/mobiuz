@@ -79,8 +79,7 @@ public class Q10283_RequestOfIceMerchant extends Quest
 				htmltext = event;
 				break;
 			}
-			case "32020-05.html":
-			case "32020-06.html":
+			case "32020-05.html", "32020-06.html":
 			{
 				if (qs.isMemoState(1))
 				{
@@ -116,8 +115,7 @@ public class Q10283_RequestOfIceMerchant extends Quest
 				}
 				break;
 			}
-			case "32760-02.html":
-			case "32760-03.html":
+			case "32760-02.html", "32760-03.html":
 			{
 				if (qs.isMemoState(2))
 				{

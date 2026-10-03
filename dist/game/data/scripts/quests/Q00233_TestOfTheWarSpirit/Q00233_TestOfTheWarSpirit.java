@@ -136,16 +136,7 @@ public class Q00233_TestOfTheWarSpirit extends Quest
 				}
 				break;
 			}
-			case "30510-05a.html":
-			case "30510-05b.html":
-			case "30510-05c.html":
-			case "30510-05d.html":
-			case "30510-05.html":
-			case "30030-02.html":
-			case "30030-03.html":
-			case "30630-02.html":
-			case "30630-03.html":
-			case "30649-02.html":
+			case "30510-05a.html", "30510-05b.html", "30510-05c.html", "30510-05d.html", "30510-05.html", "30030-02.html", "30030-03.html", "30630-02.html", "30630-03.html", "30649-02.html":
 			{
 				htmltext = event;
 				break;
@@ -205,8 +196,7 @@ public class Q00233_TestOfTheWarSpirit extends Quest
 		{
 			switch (npc.getId())
 			{
-				case NOBLE_ANT:
-				case NOBLE_ANT_LEADER:
+				case NOBLE_ANT, NOBLE_ANT_LEADER:
 				{
 					if (hasQuestItems(killer, RACOYS_TOTEM, INSECT_DIAGRAM_BOOK))
 					{
@@ -299,8 +289,7 @@ public class Q00233_TestOfTheWarSpirit extends Quest
 					}
 					break;
 				}
-				case LETO_LIZARDMAN_SHAMAN:
-				case LETO_LIZARDMAN_OVERLORD:
+				case LETO_LIZARDMAN_SHAMAN, LETO_LIZARDMAN_OVERLORD:
 				{
 					if (hasQuestItems(killer, PEKIRONS_TOTEM))
 					{
@@ -332,8 +321,7 @@ public class Q00233_TestOfTheWarSpirit extends Quest
 					}
 					break;
 				}
-				case TAMLIN_ORC:
-				case TAMLIN_ORC_ARCHER:
+				case TAMLIN_ORC, TAMLIN_ORC_ARCHER:
 				{
 					if (hasQuestItems(killer, VENDETTA_TOTEM) && giveItemRandomly(killer, npc, TAMLIN_ORC_HEAD, 1, 13, 1, true))
 					{

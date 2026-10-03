@@ -221,9 +221,7 @@ public class Q00175_TheWayOfTheWarrior extends Quest
 				{
 					switch (qs.getCond())
 					{
-						case 1:
-						case 2:
-						case 3:
+						case 1, 2, 3:
 						{
 							htmltext = "32138-06.html";
 							break;

@@ -141,13 +141,7 @@ public class Q00309_ForAGoodCause extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "32647-02.htm":
-			case "32647-03.htm":
-			case "32647-04.htm":
-			case "32647-08.html":
-			case "32647-10.html":
-			case "32647-12.html":
-			case "32647-13.html":
+			case "32647-02.htm", "32647-03.htm", "32647-04.htm", "32647-08.html", "32647-10.html", "32647-12.html", "32647-13.html":
 			{
 				htmltext = event;
 				break;
@@ -165,44 +159,37 @@ public class Q00309_ForAGoodCause extends Quest
 				htmltext = ((q239 != null) && q239.isCompleted()) ? "32647-11.html" : "32647-09.html";
 				break;
 			}
-			case "100":
-			case "120":
+			case "100", "120":
 			{
 				htmltext = onItemExchangeRequest(player, MOIRAI_PIECES[getRandom(MOIRAI_PIECES.length - 1)], Integer.parseInt(event));
 				break;
 			}
-			case "192":
-			case "230":
+			case "192", "230":
 			{
 				htmltext = onItemExchangeRequest(player, REC_DYNASTY_EARRINGS_70, Integer.parseInt(event));
 				break;
 			}
-			case "256":
-			case "308":
+			case "256", "308":
 			{
 				htmltext = onItemExchangeRequest(player, REC_DYNASTY_NECKLACE_70, Integer.parseInt(event));
 				break;
 			}
-			case "128":
-			case "154":
+			case "128", "154":
 			{
 				htmltext = onItemExchangeRequest(player, REC_DYNASTY_RING_70, Integer.parseInt(event));
 				break;
 			}
-			case "206":
-			case "246":
+			case "206", "246":
 			{
 				htmltext = onItemExchangeRequest(player, REC_DYNASTY_SIGIL_60, Integer.parseInt(event));
 				break;
 			}
-			case "180":
-			case "216":
+			case "180", "216":
 			{
 				htmltext = onItemExchangeRequest(player, MOIRAI_RECIPES[getRandom(MOIRAI_RECIPES.length - 1)], Integer.parseInt(event));
 				break;
 			}
-			case "32647-14.html":
-			case "32647-07.html":
+			case "32647-14.html", "32647-07.html":
 			{
 				qs.exitQuest(true, true);
 				htmltext = event;

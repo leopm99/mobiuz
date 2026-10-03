@@ -88,10 +88,7 @@ public class Q00235_MimirsElixir extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "30721-02.htm":
-			case "30721-03.htm":
-			case "30721-04.htm":
-			case "30721-05.htm":
+			case "30721-02.htm", "30721-03.htm", "30721-04.htm", "30721-05.htm":
 			{
 				htmltext = event;
 				break;
@@ -176,11 +173,7 @@ public class Q00235_MimirsElixir extends Quest
 				}
 				break;
 			}
-			case "31149-02.html":
-			case "31149-05.html":
-			case "31149-07.html":
-			case "31149-09.html":
-			case "31149-10.html":
+			case "31149-02.html", "31149-05.html", "31149-07.html", "31149-09.html", "31149-10.html":
 			{
 				if (qs.isMemoState(7))
 				{
@@ -283,9 +276,7 @@ public class Q00235_MimirsElixir extends Quest
 							htmltext = ((hasQuestItems(player, PURE_SILVER)) ? "30721-11.html" : "30721-10.html");
 							break;
 						}
-						case 2:
-						case 3:
-						case 4:
+						case 2, 3, 4:
 						{
 							htmltext = "30721-13.html";
 							break;
@@ -295,8 +286,7 @@ public class Q00235_MimirsElixir extends Quest
 							htmltext = "30721-14.html";
 							break;
 						}
-						case 6:
-						case 7:
+						case 6, 7:
 						{
 							htmltext = "30721-16.html";
 							break;

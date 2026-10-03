@@ -70,13 +70,7 @@ public class Q00347_GoGetTheCalculator extends Quest
 		
 		switch (event)
 		{
-			case "30526-03.htm":
-			case "30526-04.htm":
-			case "30526-05.htm":
-			case "30526-06.htm":
-			case "30526-07.htm":
-			case "30532-03.html":
-			case "30532-04.html":
+			case "30526-03.htm", "30526-04.htm", "30526-05.htm", "30526-06.htm", "30526-07.htm", "30532-03.html", "30532-04.html":
 			{
 				htmltext = event;
 				break;
@@ -166,14 +160,12 @@ public class Q00347_GoGetTheCalculator extends Quest
 						}
 						switch (qs.getCond())
 						{
-							case 1:
-							case 2:
+							case 1, 2:
 							{
 								htmltext = "30526-13.html";
 								break;
 							}
-							case 3:
-							case 4:
+							case 3, 4:
 							{
 								htmltext = "30526-14.html";
 								break;
@@ -216,8 +208,7 @@ public class Q00347_GoGetTheCalculator extends Quest
 					{
 						switch (qs.getCond())
 						{
-							case 1:
-							case 2:
+							case 1, 2:
 							{
 								htmltext = "30527-01.html";
 								break;

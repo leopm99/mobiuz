@@ -93,11 +93,7 @@ public class Q00603_DaimonTheWhiteEyedPart1 extends Quest
 				}
 				break;
 			}
-			case "31548-02.html":
-			case "31549-02.html":
-			case "31550-02.html":
-			case "31551-02.html":
-			case "31552-02.html":
+			case "31548-02.html", "31549-02.html", "31550-02.html", "31551-02.html", "31552-02.html":
 			{
 				if (qs.getCond() < 6)
 				{
@@ -161,11 +157,7 @@ public class Q00603_DaimonTheWhiteEyedPart1 extends Quest
 				{
 					switch (qs.getCond())
 					{
-						case 1:
-						case 2:
-						case 3:
-						case 4:
-						case 5:
+						case 1, 2, 3, 4, 5:
 						{
 							htmltext = "31683-04.html";
 							break;

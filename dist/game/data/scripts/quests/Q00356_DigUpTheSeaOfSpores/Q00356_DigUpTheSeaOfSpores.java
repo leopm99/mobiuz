@@ -70,11 +70,7 @@ public class Q00356_DigUpTheSeaOfSpores extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "30717-02.htm":
-			case "30717-03.htm":
-			case "30717-04.htm":
-			case "30717-10.html":
-			case "30717-18.html":
+			case "30717-02.htm", "30717-03.htm", "30717-04.htm", "30717-10.html", "30717-18.html":
 			{
 				htmltext = event;
 				break;

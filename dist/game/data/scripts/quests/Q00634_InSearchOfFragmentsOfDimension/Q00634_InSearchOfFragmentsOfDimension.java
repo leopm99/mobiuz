@@ -130,8 +130,7 @@ public class Q00634_InSearchOfFragmentsOfDimension extends Quest
 				htmltext = event;
 				break;
 			}
-			case "31494-05.html":
-			case "31494-06.html":
+			case "31494-05.html", "31494-06.html":
 			{
 				if (qs.isStarted())
 				{

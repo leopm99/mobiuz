@@ -173,11 +173,7 @@ public class Q00227_TestOfTheReformer extends Quest
 				}
 				break;
 			}
-			case "30666-02.html":
-			case "30666-03.html":
-			case "30669-02.html":
-			case "30669-05.html":
-			case "30670-02.html":
+			case "30666-02.html", "30666-03.html", "30669-02.html", "30669-05.html", "30670-02.html":
 			{
 				htmltext = event;
 				break;
@@ -669,10 +665,7 @@ public class Q00227_TestOfTheReformer extends Quest
 	{
 		switch (npc.getId())
 		{
-			case OL_MAHUM_INSPECTOR:
-			case CRIMSON_WEREWOLF:
-			case KRUDEL_LIZARDMAN:
-			case OL_MAHUM_PILGRIM:
+			case OL_MAHUM_INSPECTOR, CRIMSON_WEREWOLF, KRUDEL_LIZARDMAN, OL_MAHUM_PILGRIM:
 			{
 				startQuestTimer("DESPAWN", 5000, npc, null, true);
 				npc.getVariables().set("SPAWNED", 0);

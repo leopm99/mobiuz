@@ -93,11 +93,7 @@ public class Q00136_MoreThanMeetsTheEye extends Quest
 		String htmltext = event;
 		switch (event)
 		{
-			case "30832-05.html":
-			case "30832-06.html":
-			case "30832-12.html":
-			case "30832-13.html":
-			case "30832-18.html":
+			case "30832-05.html", "30832-06.html", "30832-12.html", "30832-13.html", "30832-18.html":
 			{
 				break;
 			}
@@ -206,9 +202,7 @@ public class Q00136_MoreThanMeetsTheEye extends Quest
 								htmltext = "30832-04.html";
 								break;
 							}
-							case 2:
-							case 3:
-							case 4:
+							case 2, 3, 4:
 							{
 								htmltext = "30832-08.html";
 								break;
@@ -235,9 +229,7 @@ public class Q00136_MoreThanMeetsTheEye extends Quest
 								}
 								break;
 							}
-							case 6:
-							case 7:
-							case 8:
+							case 6, 7, 8:
 							{
 								htmltext = "30832-15.html";
 								break;
@@ -323,11 +315,7 @@ public class Q00136_MoreThanMeetsTheEye extends Quest
 				{
 					switch (qs.getCond())
 					{
-						case 1:
-						case 2:
-						case 3:
-						case 4:
-						case 5:
+						case 1, 2, 3, 4, 5:
 						{
 							htmltext = "30464-01.html";
 							break;

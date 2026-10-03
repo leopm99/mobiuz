@@ -79,10 +79,7 @@ public class Q10292_SevenSignsGirlOfDoubt extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "32593-02.htm":
-			case "32593-04.htm":
-			case "32597-02.html":
-			case "32597-04.html":
+			case "32593-02.htm", "32593-04.htm", "32597-02.html", "32597-04.html":
 			{
 				htmltext = event;
 				break;
@@ -152,8 +149,7 @@ public class Q10292_SevenSignsGirlOfDoubt extends Quest
 				}
 				break;
 			}
-			case "32784-11.html":
-			case "32784-12.html":
+			case "32784-11.html", "32784-12.html":
 			{
 				if (qs.isMemoState(6))
 				{

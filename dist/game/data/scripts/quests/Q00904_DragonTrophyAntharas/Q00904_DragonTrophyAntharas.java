@@ -74,8 +74,7 @@ public class Q00904_DragonTrophyAntharas extends Quest
 		{
 			switch (event)
 			{
-				case "30755-05.htm":
-				case "30755-06.htm":
+				case "30755-05.htm", "30755-06.htm":
 				{
 					htmltext = event;
 					break;

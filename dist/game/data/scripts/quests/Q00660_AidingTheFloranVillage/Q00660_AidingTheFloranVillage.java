@@ -100,13 +100,7 @@ public class Q00660_AidingTheFloranVillage extends Quest
 				}
 				break;
 			}
-			case "30608-02.htm":
-			case "30608-03.html":
-			case "30291-07.html":
-			case "30291-09.html":
-			case "30291-10.html":
-			case "30291-14.html":
-			case "30291-18.html":
+			case "30608-02.htm", "30608-03.html", "30291-07.html", "30291-09.html", "30291-10.html", "30291-14.html", "30291-18.html":
 			{
 				htmltext = event;
 				break;

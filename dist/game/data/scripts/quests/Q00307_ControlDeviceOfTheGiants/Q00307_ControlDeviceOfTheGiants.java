@@ -112,9 +112,7 @@ public class Q00307_ControlDeviceOfTheGiants extends Quest
 				htmltext = "32711-09.html";
 				break;
 			}
-			case "32711-03.htm":
-			case "32711-05.html":
-			case "32711-06.html":
+			case "32711-03.htm", "32711-05.html", "32711-06.html":
 			{
 				break;
 			}

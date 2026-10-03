@@ -273,9 +273,7 @@ public class Q00046_OnceMoreInTheArmsOfTheMotherTree extends Quest
 				}
 				break;
 			}
-			case GENTLER:
-			case SANDRA:
-			case DUSTIN:
+			case GENTLER, SANDRA, DUSTIN:
 			{
 				if (qs.isStarted())
 				{

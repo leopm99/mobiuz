@@ -106,9 +106,7 @@ public class Buron extends AbstractNpcAI
 			{
 				return "32345-01.htm";
 			}
-			case 2:
-			case 3:
-			case 4:
+			case 2, 3, 4:
 			{
 				return "32345-02.htm";
 			}

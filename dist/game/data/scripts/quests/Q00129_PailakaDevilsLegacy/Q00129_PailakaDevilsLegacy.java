@@ -83,9 +83,7 @@ public class Q00129_PailakaDevilsLegacy extends Quest
 		
 		switch (event)
 		{
-			case "32498-02.htm":
-			case "32498-03.htm":
-			case "32498-04.htm":
+			case "32498-02.htm", "32498-03.htm", "32498-04.htm":
 			{
 				htmltext = event;
 				break;
@@ -99,8 +97,7 @@ public class Q00129_PailakaDevilsLegacy extends Quest
 				}
 				break;
 			}
-			case "32501-02.htm":
-			case "32501-04.htm":
+			case "32501-02.htm", "32501-04.htm":
 			{
 				htmltext = event;
 				break;

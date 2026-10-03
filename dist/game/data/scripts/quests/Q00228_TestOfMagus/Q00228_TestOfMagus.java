@@ -131,8 +131,7 @@ public class Q00228_TestOfMagus extends Quest
 				}
 				break;
 			}
-			case "30629-09.html":
-			case "30409-02.html":
+			case "30629-09.html", "30409-02.html":
 			{
 				htmltext = event;
 				break;
@@ -210,11 +209,7 @@ public class Q00228_TestOfMagus extends Quest
 					}
 					break;
 				}
-				case MARSH_STAKATO:
-				case MARSH_STAKATO_WORKER:
-				case TOAD_LORD:
-				case MARSH_STAKATO_SOLDIER:
-				case MARSH_STAKATO_DRONE:
+				case MARSH_STAKATO, MARSH_STAKATO_WORKER, TOAD_LORD, MARSH_STAKATO_SOLDIER, MARSH_STAKATO_DRONE:
 				{
 					if (hasQuestItems(killer, SCORE_OF_ELEMENTS, UNDINE_CHARM) && (getQuestItemsCount(killer, DAZZLING_DROP) < 20))
 					{

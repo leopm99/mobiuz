@@ -148,8 +148,7 @@ public class CastleCourtMagician extends AbstractNpcAI
 		int itemId = 0;
 		switch (event)
 		{
-			case "courtmagician.html":
-			case "courtmagician-03.html":
+			case "courtmagician.html", "courtmagician-03.html":
 			{
 				htmltext = event;
 				break;

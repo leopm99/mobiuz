@@ -84,13 +84,7 @@ public class Q00142_FallenAngelRequestOfDawn extends Quest
 		String htmltext = event;
 		switch (event)
 		{
-			case "30894-02.html":
-			case "30289-03.html":
-			case "30289-04.html":
-			case "30612-03.html":
-			case "30612-04.html":
-			case "30612-06.html":
-			case "30612-07.html":
+			case "30894-02.html", "30289-03.html", "30289-04.html", "30612-03.html", "30612-04.html", "30612-06.html", "30612-07.html":
 			{
 				break;
 			}
@@ -248,9 +242,7 @@ public class Q00142_FallenAngelRequestOfDawn extends Quest
 							}
 							break;
 						}
-						case 3:
-						case 4:
-						case 5:
+						case 3, 4, 5:
 						{
 							htmltext = "30289-06.html";
 							break;
@@ -276,8 +268,7 @@ public class Q00142_FallenAngelRequestOfDawn extends Quest
 				{
 					switch (qs.getCond())
 					{
-						case 1:
-						case 2:
+						case 1, 2:
 						{
 							htmltext = "30612-01.html";
 							break;
@@ -299,9 +290,7 @@ public class Q00142_FallenAngelRequestOfDawn extends Quest
 							}
 							break;
 						}
-						case 4:
-						case 5:
-						case 6:
+						case 4, 5, 6:
 						{
 							htmltext = "30612-09.html";
 							break;

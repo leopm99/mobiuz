@@ -133,8 +133,7 @@ public class Q00422_RepentYourSins extends Quest
 				}
 				break;
 			}
-			case "30981-14.html":
-			case "30981-17.html":
+			case "30981-14.html", "30981-17.html":
 			{
 				if ((qs.getMemoState() >= 9) && (qs.getMemoState() <= 12))
 				{

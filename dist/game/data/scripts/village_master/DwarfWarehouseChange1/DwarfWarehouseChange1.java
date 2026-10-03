@@ -68,22 +68,7 @@ public class DwarfWarehouseChange1 extends AbstractNpcAI
 		String htmltext = null;
 		switch (event)
 		{
-			case "30498-01.htm": // warehouse_chief_moke003f
-			case "30498-02.htm": // warehouse_chief_moke006fa
-			case "30498-03.htm": // warehouse_chief_moke007fa
-			case "30498-04.htm": // warehouse_chief_moke006fb
-			case "30503-01.htm": // warehouse_chief_rikadio003f
-			case "30503-02.htm": // warehouse_chief_rikadio006fa
-			case "30503-03.htm": // warehouse_chief_rikadio007fa
-			case "30503-04.htm": // warehouse_chief_rikadio006fb
-			case "30594-01.htm": // warehouse_chief_ranspo003f
-			case "30594-02.htm": // warehouse_chief_ranspo006fa
-			case "30594-03.htm": // warehouse_chief_ranspo007fa
-			case "30594-04.htm": // warehouse_chief_ranspo006fb
-			case "32092-01.htm": // warehouse_chief_older003f
-			case "32092-02.htm": // warehouse_chief_older006fa
-			case "32092-03.htm": // warehouse_chief_older007fa
-			case "32092-04.htm": // warehouse_chief_older006fb
+			case "30498-01.htm", "30498-02.htm", "30498-03.htm", "30498-04.htm", "30503-01.htm", "30503-02.htm", "30503-03.htm", "30503-04.htm", "30594-01.htm", "30594-02.htm", "30594-03.htm", "30594-04.htm", "32092-01.htm", "32092-02.htm", "32092-03.htm", "32092-04.htm": // warehouse_chief_moke003f; warehouse_chief_moke006fa; warehouse_chief_moke007fa; warehouse_chief_moke006fb; warehouse_chief_rikadio003f; warehouse_chief_rikadio006fa; warehouse_chief_rikadio007fa; warehouse_chief_rikadio006fb; warehouse_chief_ranspo003f; warehouse_chief_ranspo006fa; warehouse_chief_ranspo007fa; warehouse_chief_ranspo006fb; warehouse_chief_older003f; warehouse_chief_older006fa; warehouse_chief_older007fa; warehouse_chief_older006fb
 			{
 				htmltext = event;
 				break;

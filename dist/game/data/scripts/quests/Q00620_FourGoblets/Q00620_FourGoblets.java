@@ -293,28 +293,7 @@ public class Q00620_FourGoblets extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "31453-02.htm":
-			case "31453-03.htm":
-			case "31453-04.htm":
-			case "31453-05.htm":
-			case "31453-06.htm":
-			case "31453-07.htm":
-			case "31453-08.htm":
-			case "31453-09.htm":
-			case "31453-10.htm":
-			case "31453-11.htm":
-			case "31453-16.html":
-			case "31453-17.html":
-			case "31453-18.html":
-			case "31453-19.html":
-			case "31453-20.html":
-			case "31453-21.html":
-			case "31453-22.html":
-			case "31453-23.html":
-			case "31453-24.html":
-			case "31453-25.html":
-			case "31453-27.html":
-			case "31452-04.html":
+			case "31453-02.htm", "31453-03.htm", "31453-04.htm", "31453-05.htm", "31453-06.htm", "31453-07.htm", "31453-08.htm", "31453-09.htm", "31453-10.htm", "31453-11.htm", "31453-16.html", "31453-17.html", "31453-18.html", "31453-19.html", "31453-20.html", "31453-21.html", "31453-22.html", "31453-23.html", "31453-24.html", "31453-25.html", "31453-27.html", "31452-04.html":
 			{
 				htmltext = event;
 				break;
@@ -363,16 +342,7 @@ public class Q00620_FourGoblets extends Quest
 				}
 				break;
 			}
-			case "6881":
-			case "6883":
-			case "6885":
-			case "6887":
-			case "6891":
-			case "6893":
-			case "6895":
-			case "6897":
-			case "6899":
-			case "7580":
+			case "6881", "6883", "6885", "6887", "6891", "6893", "6895", "6897", "6899", "7580":
 			{
 				final int memoStateEx = qs.getMemoStateEx(1);
 				if (((memoStateEx == 2) || (memoStateEx == 3)) && (getQuestItemsCount(player, BROKEN_RELIC_PART) >= 1000))
@@ -473,10 +443,7 @@ public class Q00620_FourGoblets extends Quest
 	{
 		switch (npc.getId())
 		{
-			case HALISHA_ALECTIA:
-			case HALISHA_TISHAS:
-			case HALISHA_MEKARA:
-			case HALISHA_MORIGUL:
+			case HALISHA_ALECTIA, HALISHA_TISHAS, HALISHA_MEKARA, HALISHA_MORIGUL:
 			{
 				executeForEachPlayer(player, npc, isSummon, true, false);
 				break;

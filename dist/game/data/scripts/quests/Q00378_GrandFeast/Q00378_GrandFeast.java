@@ -123,8 +123,7 @@ public class Q00378_GrandFeast extends Quest
 				}
 				break;
 			}
-			case "30594-09.html":
-			case "30594-18.html":
+			case "30594-09.html", "30594-18.html":
 			{
 				htmltext = event;
 				break;

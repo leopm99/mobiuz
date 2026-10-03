@@ -223,15 +223,7 @@ public class Q00230_TestOfTheSummoner extends Quest
 				}
 				break;
 			}
-			case "30634-04.htm":
-			case "30634-05.htm":
-			case "30634-06.htm":
-			case "30634-07.htm":
-			case "30634-11.html":
-			case "30634-11a.html":
-			case "30634-11b.html":
-			case "30634-11c.html":
-			case "30634-11d.html":
+			case "30634-04.htm", "30634-05.htm", "30634-06.htm", "30634-07.htm", "30634-11.html", "30634-11a.html", "30634-11b.html", "30634-11c.html", "30634-11d.html":
 			{
 				htmltext = event;
 				break;
@@ -720,8 +712,7 @@ public class Q00230_TestOfTheSummoner extends Quest
 		{
 			switch (npc.getId())
 			{
-				case NOBLE_ANT:
-				case NOBLE_ANT_LEADER:
+				case NOBLE_ANT, NOBLE_ANT_LEADER:
 				{
 					if (!hasQuestItems(killer, GALATEAS_LETTER) && hasQuestItems(killer, LARAS_5TH_LIST))
 					{
@@ -737,8 +728,7 @@ public class Q00230_TestOfTheSummoner extends Quest
 					}
 					break;
 				}
-				case TYRANT:
-				case TYRANT_KINGPIN:
+				case TYRANT, TYRANT_KINGPIN:
 				{
 					if (!hasQuestItems(killer, GALATEAS_LETTER) && hasQuestItems(killer, LARAS_4TH_LIST))
 					{
@@ -746,9 +736,7 @@ public class Q00230_TestOfTheSummoner extends Quest
 					}
 					break;
 				}
-				case BREKA_ORC:
-				case BREKA_ORC_ARCHER:
-				case BREKA_ORC_WARRIOR:
+				case BREKA_ORC, BREKA_ORC_ARCHER, BREKA_ORC_WARRIOR:
 				{
 					if (!hasQuestItems(killer, GALATEAS_LETTER) && hasQuestItems(killer, LARAS_3RD_LIST))
 					{
@@ -756,8 +744,7 @@ public class Q00230_TestOfTheSummoner extends Quest
 					}
 					break;
 				}
-				case BREKA_ORC_SHAMAN:
-				case BREKA_ORC_OVERLORD:
+				case BREKA_ORC_SHAMAN, BREKA_ORC_OVERLORD:
 				{
 					if (!hasQuestItems(killer, GALATEAS_LETTER) && hasQuestItems(killer, LARAS_3RD_LIST))
 					{
@@ -797,10 +784,7 @@ public class Q00230_TestOfTheSummoner extends Quest
 					}
 					break;
 				}
-				case LETO_LIZARDMAN:
-				case LETO_LIZARDMAN_ARCHER:
-				case LETO_LIZARDMAN_SOLDIER:
-				case LETO_LIZARDMAN_WARRIOR:
+				case LETO_LIZARDMAN, LETO_LIZARDMAN_ARCHER, LETO_LIZARDMAN_SOLDIER, LETO_LIZARDMAN_WARRIOR:
 				{
 					if (!hasQuestItems(killer, GALATEAS_LETTER) && hasQuestItems(killer, LARAS_1ST_LIST))
 					{
@@ -808,8 +792,7 @@ public class Q00230_TestOfTheSummoner extends Quest
 					}
 					break;
 				}
-				case LETO_LIZARDMAN_SHAMAN:
-				case LETO_LIZARDMAN_OVERLORD:
+				case LETO_LIZARDMAN_SHAMAN, LETO_LIZARDMAN_OVERLORD:
 				{
 					if (!hasQuestItems(killer, GALATEAS_LETTER) && hasQuestItems(killer, LARAS_1ST_LIST))
 					{
@@ -825,12 +808,7 @@ public class Q00230_TestOfTheSummoner extends Quest
 					}
 					break;
 				}
-				case SILHOUETTE_TILFO:
-				case UNICORN_PHANTASM:
-				case MIMI_THE_CAT:
-				case SHADOW_TUREN:
-				case UNICORN_RACER:
-				case PAKO_THE_CAT:
+				case SILHOUETTE_TILFO, UNICORN_PHANTASM, MIMI_THE_CAT, SHADOW_TUREN, UNICORN_RACER, PAKO_THE_CAT:
 				{
 					final MonsterData data = MONSTERS.get(npc.getId());
 					if (hasQuestItems(killer, data.getCrystalOfInprogress()))

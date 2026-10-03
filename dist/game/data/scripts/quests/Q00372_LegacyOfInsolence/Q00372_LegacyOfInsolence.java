@@ -429,12 +429,7 @@ public class Q00372_LegacyOfInsolence extends Quest
 				htmltext = event;
 				break;
 			}
-			case "30844-03.htm":
-			case "30844-05.html":
-			case "30844-05a.html":
-			case "30844-08.html":
-			case "30844-10.html":
-			case "30844-11.html":
+			case "30844-03.htm", "30844-05.html", "30844-05a.html", "30844-08.html", "30844-10.html", "30844-11.html":
 			{
 				htmltext = event;
 				break;

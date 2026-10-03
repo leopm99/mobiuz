@@ -74,9 +74,7 @@ public class DwarfBlacksmithChange2 extends AbstractNpcAI
 		String htmltext = null;
 		switch (event)
 		{
-			case "30512-03.htm": // master_lv3_black006fa
-			case "30512-04.htm": // master_lv3_black007fa
-			case "30512-05.htm": // master_lv3_black007fat
+			case "30512-03.htm", "30512-04.htm", "30512-05.htm": // master_lv3_black006fa; master_lv3_black007fa; master_lv3_black007fat
 			{
 				htmltext = event;
 				break;

@@ -55,9 +55,7 @@ public class Q00119_LastImperialPrince extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "31453-02.htm":
-			case "31453-03.htm":
-			case "31453-10.html":
+			case "31453-02.htm", "31453-03.htm", "31453-10.html":
 			{
 				htmltext = event;
 				break;

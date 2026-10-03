@@ -475,10 +475,7 @@ public class FourSepulchers extends AbstractNpcAI implements IXmlReader
 				addSpawn(ROOM_3_CHEST_REWARDER, npc);
 				break;
 			}
-			case ROOM_4_CHARM_1:
-			case ROOM_4_CHARM_2:
-			case ROOM_4_CHARM_3:
-			case ROOM_4_CHARM_4:
+			case ROOM_4_CHARM_1, ROOM_4_CHARM_2, ROOM_4_CHARM_3, ROOM_4_CHARM_4:
 			{
 				for (ZoneType zone : ZoneManager.getInstance().getZones(killer))
 				{
@@ -491,10 +488,7 @@ public class FourSepulchers extends AbstractNpcAI implements IXmlReader
 				npc.broadcastSay(ChatType.NPC_GENERAL, CHARM_MSG.get(npc.getId()));
 				break;
 			}
-			case CONQUEROR_BOSS:
-			case EMPEROR_BOSS:
-			case GREAT_SAGES_BOSS:
-			case JUDGE_BOSS:
+			case CONQUEROR_BOSS, EMPEROR_BOSS, GREAT_SAGES_BOSS, JUDGE_BOSS:
 			{
 				final int sepulcherId = getSepulcherId(killer);
 				final int currentWave = STORED_PROGRESS.get(sepulcherId);

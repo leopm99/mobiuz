@@ -79,13 +79,7 @@ public class Q00140_ShadowFoxPart2 extends Quest
 		String htmltext = event;
 		switch (event)
 		{
-			case "30895-05.html":
-			case "30895-06.html":
-			case "30912-03.html":
-			case "30912-04.html":
-			case "30912-05.html":
-			case "30912-08.html":
-			case "30895-10.html":
+			case "30895-05.html", "30895-06.html", "30912-03.html", "30912-04.html", "30912-05.html", "30912-08.html", "30895-10.html":
 			{
 				break;
 			}
@@ -190,8 +184,7 @@ public class Q00140_ShadowFoxPart2 extends Quest
 								htmltext = "30895-04.html";
 								break;
 							}
-							case 2:
-							case 3:
+							case 2, 3:
 							{
 								htmltext = "30895-08.html";
 								break;

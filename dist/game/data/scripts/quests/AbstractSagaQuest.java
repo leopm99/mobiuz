@@ -111,11 +111,7 @@ public abstract class AbstractSagaQuest extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "0-011.htm":
-			case "0-012.htm":
-			case "0-013.htm":
-			case "0-014.htm":
-			case "0-015.htm":
+			case "0-011.htm", "0-012.htm", "0-013.htm", "0-014.htm", "0-015.htm":
 			{
 				htmltext = event;
 				break;
@@ -878,8 +874,7 @@ public abstract class AbstractSagaQuest extends Quest
 					}
 					break;
 				}
-				case 11:
-				case 12:
+				case 11, 12:
 				{
 					if (npcId == _npc[3])
 					{

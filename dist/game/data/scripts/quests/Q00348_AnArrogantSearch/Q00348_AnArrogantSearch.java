@@ -122,9 +122,7 @@ public class Q00348_AnArrogantSearch extends Quest
 	{
 		switch (npc.getId())
 		{
-			case ARK_GUARDIAN_ELBEROTH:
-			case ARK_GUARDIAN_SHADOWFANG:
-			case ANGEL_KILLER:
+			case ARK_GUARDIAN_ELBEROTH, ARK_GUARDIAN_SHADOWFANG, ANGEL_KILLER:
 			{
 				if ("DESPAWN".equals(event))
 				{
@@ -143,15 +141,7 @@ public class Q00348_AnArrogantSearch extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "30864-02.htm":
-			case "30864-03.htm":
-			case "30864-10.html":
-			case "30864-11.html":
-			case "30864-12.html":
-			case "30864-25.html":
-			case "31001-02.html":
-			case "30144-02.html":
-			case "30645-02.html":
+			case "30864-02.htm", "30864-03.htm", "30864-10.html", "30864-11.html", "30864-12.html", "30864-25.html", "31001-02.html", "30144-02.html", "30645-02.html":
 			{
 				htmltext = event;
 				break;
@@ -488,8 +478,7 @@ public class Q00348_AnArrogantSearch extends Quest
 					}
 					break;
 				}
-				case YINTZU:
-				case PALIOTE:
+				case YINTZU, PALIOTE:
 				{
 					if (npc.isInsideRadius3D(player, Config.ALT_PARTY_RANGE) && qs.isMemoState(1) && !hasQuestItems(qs.getPlayer(), SHELL_OF_MONSTERS))
 					{
@@ -558,9 +547,7 @@ public class Q00348_AnArrogantSearch extends Quest
 					}
 					break;
 				}
-				case GUARDIAN_ANGEL:
-				case SEAL_ANGEL_1:
-				case SEAL_ANGEL_2:
+				case GUARDIAN_ANGEL, SEAL_ANGEL_1, SEAL_ANGEL_2:
 				{
 					if ((qs.getMemoStateEx(0) == 17) && hasQuestItems(qs.getPlayer(), WHITE_FABRIC_1))
 					{
@@ -624,8 +611,7 @@ public class Q00348_AnArrogantSearch extends Quest
 				{
 					switch (qs.getMemoState())
 					{
-						case 1:
-						case 2:
+						case 1, 2:
 						{
 							final int memoState = qs.getMemoState();
 							if ((memoState == 1) && !hasQuestItems(player, TITANS_POWERSTONE) && !hasQuestItems(player, SHELL_OF_MONSTERS))
@@ -728,8 +714,7 @@ public class Q00348_AnArrogantSearch extends Quest
 							}
 							break;
 						}
-						case 6:
-						case 7:
+						case 6, 7:
 						{
 							htmltext = "30864-20.html";
 							break;

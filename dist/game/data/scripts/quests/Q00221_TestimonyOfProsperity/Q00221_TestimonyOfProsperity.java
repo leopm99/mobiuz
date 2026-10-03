@@ -172,22 +172,7 @@ public class Q00221_TestimonyOfProsperity extends Quest
 				htmltext = event;
 				break;
 			}
-			case "30104-04a.html":
-			case "30104-04b.html":
-			case "30104-04c.html":
-			case "30104-04d.html":
-			case "30104-05.html":
-			case "30104-08a.html":
-			case "30104-08b.html":
-			case "30104-08c.html":
-			case "30005-02.html":
-			case "30005-03.html":
-			case "30368-02.html":
-			case "30466-02.html":
-			case "30531-02.html":
-			case "30620-02.html":
-			case "30621-02.html":
-			case "30621-03.html":
+			case "30104-04a.html", "30104-04b.html", "30104-04c.html", "30104-04d.html", "30104-05.html", "30104-08a.html", "30104-08b.html", "30104-08c.html", "30005-02.html", "30005-03.html", "30368-02.html", "30466-02.html", "30531-02.html", "30620-02.html", "30621-02.html", "30621-03.html":
 			{
 				htmltext = event;
 				break;
@@ -320,10 +305,7 @@ public class Q00221_TestimonyOfProsperity extends Quest
 		{
 			switch (npc.getId())
 			{
-				case MANDRAGORA_SPROUT1:
-				case MANDRAGORA_SAPLING:
-				case MANDRAGORA_BLOSSOM:
-				case MANDRAGORA_SPROUT2:
+				case MANDRAGORA_SPROUT1, MANDRAGORA_SAPLING, MANDRAGORA_BLOSSOM, MANDRAGORA_SPROUT2:
 				{
 					if (hasQuestItems(killer, RING_OF_TESTIMONY_1ST, BRIGHTS_LIST) && !hasQuestItems(killer, EMILYS_RECIPE) && (getQuestItemsCount(killer, MANDRAGORA_PETAL) < 20))
 					{
@@ -339,10 +321,7 @@ public class Q00221_TestimonyOfProsperity extends Quest
 					}
 					break;
 				}
-				case MARSH_STAKATO:
-				case MARSH_STAKATO_WORKER:
-				case MARSH_STAKATO_SOLDIER:
-				case MARSH_STAKATO_DRONE:
+				case MARSH_STAKATO, MARSH_STAKATO_WORKER, MARSH_STAKATO_SOLDIER, MARSH_STAKATO_DRONE:
 				{
 					if (hasQuestItems(killer, RING_OF_TESTIMONY_2ND, NIKOLAS_LIST) && !hasAtLeastOneQuestItem(killer, CLAY_DOUGH, PATTERN_OF_KEYHOLE) && (getQuestItemsCount(killer, STAKATO_SHELL) < 20))
 					{

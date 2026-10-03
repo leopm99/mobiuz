@@ -68,22 +68,7 @@ public class DwarfBlacksmithChange1 extends AbstractNpcAI
 		String htmltext = null;
 		switch (event)
 		{
-			case "30499-01.htm": // head_blacksmith_tapoy003f
-			case "30499-02.htm": // head_blacksmith_tapoy006fa
-			case "30499-03.htm": // head_blacksmith_tapoy007fa
-			case "30499-04.htm": // head_blacksmith_tapoy006fb
-			case "30504-01.htm": // head_blacksmith_mendio003f
-			case "30504-02.htm": // head_blacksmith_mendio006fa
-			case "30504-03.htm": // head_blacksmith_mendio007fa
-			case "30504-04.htm": // head_blacksmith_mendio006fb
-			case "30595-01.htm": // head_blacksmith_opix003f
-			case "30595-02.htm": // head_blacksmith_opix006fa
-			case "30595-03.htm": // head_blacksmith_opix007fa
-			case "30595-04.htm": // head_blacksmith_opix006fb
-			case "32093-01.htm": // head_blacksmith_boillin003f
-			case "32093-02.htm": // head_blacksmith_boillin006fa
-			case "32093-03.htm": // head_blacksmith_boillin007fa
-			case "32093-04.htm": // head_blacksmith_boillin006fb
+			case "30499-01.htm", "30499-02.htm", "30499-03.htm", "30499-04.htm", "30504-01.htm", "30504-02.htm", "30504-03.htm", "30504-04.htm", "30595-01.htm", "30595-02.htm", "30595-03.htm", "30595-04.htm", "32093-01.htm", "32093-02.htm", "32093-03.htm", "32093-04.htm": // head_blacksmith_tapoy003f; head_blacksmith_tapoy006fa; head_blacksmith_tapoy007fa; head_blacksmith_tapoy006fb; head_blacksmith_mendio003f; head_blacksmith_mendio006fa; head_blacksmith_mendio007fa; head_blacksmith_mendio006fb; head_blacksmith_opix003f; head_blacksmith_opix006fa; head_blacksmith_opix007fa; head_blacksmith_opix006fb; head_blacksmith_boillin003f; head_blacksmith_boillin006fa; head_blacksmith_boillin007fa; head_blacksmith_boillin006fb
 			{
 				htmltext = event;
 				break;

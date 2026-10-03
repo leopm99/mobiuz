@@ -81,32 +81,12 @@ public class ElfHumanWizardChange2 extends AbstractNpcAI
 		String htmltext = null;
 		switch (event)
 		{
-			case "30115-02.htm": // master_lv3_hew003h
-			case "30115-03.htm": // master_lv3_hew006ha
-			case "30115-04.htm": // master_lv3_hew007ha
-			case "30115-05.htm": // master_lv3_hew007hat
-			case "30115-06.htm": // master_lv3_hew006hb
-			case "30115-07.htm": // master_lv3_hew007hb
-			case "30115-08.htm": // master_lv3_hew007hbt
-			case "30115-09.htm": // master_lv3_hew006hc
-			case "30115-10.htm": // master_lv3_hew007hc
-			case "30115-11.htm": // master_lv3_hew007hct
-			case "30115-12.htm": // master_lv3_hew003e
-			case "30115-13.htm": // master_lv3_hew006ea
-			case "30115-14.htm": // master_lv3_hew007ea
-			case "30115-15.htm": // master_lv3_hew007eat
-			case "30115-16.htm": // master_lv3_hew006eb
-			case "30115-17.htm": // master_lv3_hew007eb
-			case "30115-18.htm": // master_lv3_hew007ebt
+			case "30115-02.htm", "30115-03.htm", "30115-04.htm", "30115-05.htm", "30115-06.htm", "30115-07.htm", "30115-08.htm", "30115-09.htm", "30115-10.htm", "30115-11.htm", "30115-12.htm", "30115-13.htm", "30115-14.htm", "30115-15.htm", "30115-16.htm", "30115-17.htm", "30115-18.htm": // master_lv3_hew003h; master_lv3_hew006ha; master_lv3_hew007ha; master_lv3_hew007hat; master_lv3_hew006hb; master_lv3_hew007hb; master_lv3_hew007hbt; master_lv3_hew006hc; master_lv3_hew007hc; master_lv3_hew007hct; master_lv3_hew003e; master_lv3_hew006ea; master_lv3_hew007ea; master_lv3_hew007eat; master_lv3_hew006eb; master_lv3_hew007eb; master_lv3_hew007ebt
 			{
 				htmltext = event;
 				break;
 			}
-			case "12":
-			case "13":
-			case "14":
-			case "27":
-			case "28":
+			case "12", "13", "14", "27", "28":
 			{
 				htmltext = ClassChangeRequested(player, Integer.parseInt(event));
 				break;

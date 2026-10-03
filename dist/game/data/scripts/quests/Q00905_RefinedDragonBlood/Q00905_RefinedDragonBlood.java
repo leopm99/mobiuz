@@ -116,9 +116,7 @@ public class Q00905_RefinedDragonBlood extends Quest
 		{
 			switch (event)
 			{
-				case "32864-04.htm":
-				case "32864-09.html":
-				case "32864-10.html":
+				case "32864-04.htm", "32864-09.html", "32864-10.html":
 				{
 					htmltext = event;
 					break;

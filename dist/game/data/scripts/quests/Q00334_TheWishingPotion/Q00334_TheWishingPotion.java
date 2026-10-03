@@ -380,10 +380,7 @@ public class Q00334_TheWishingPotion extends Quest
 	{
 		switch (npc.getId())
 		{
-			case FAIRY_RUPINA:
-			case GRIMA:
-			case SUCCUBUS_OF_SEDUCTION:
-			case GREAT_DEMON_KING:
+			case FAIRY_RUPINA, GRIMA, SUCCUBUS_OF_SEDUCTION, GREAT_DEMON_KING:
 			{
 				npc.deleteMe();
 				break;
@@ -588,9 +585,7 @@ public class Q00334_TheWishingPotion extends Quest
 								i0 = getRandom(2);
 								break;
 							}
-							case 2:
-							case 3:
-							case 4:
+							case 2, 3, 4:
 							{
 								i0 = getRandom(3);
 								break;
@@ -726,8 +721,7 @@ public class Q00334_TheWishingPotion extends Quest
 					}
 					break;
 				}
-				case ANT_SOLDIER:
-				case ANT_WARRIOR_CAPTAIN:
+				case ANT_SOLDIER, ANT_WARRIOR_CAPTAIN:
 				{
 					if (hasQuestItems(killer, Q_POTION_RECIPE_1, Q_POTION_RECIPE_2) && !hasQuestItems(killer, Q_ANT_SOLDIER_APHID) && (getRandom(10) == 0))
 					{
@@ -763,8 +757,7 @@ public class Q00334_TheWishingPotion extends Quest
 					}
 					break;
 				}
-				case TYRANT:
-				case TYRANT_KINGPIN:
+				case TYRANT, TYRANT_KINGPIN:
 				{
 					if (hasQuestItems(killer, Q_POTION_RECIPE_1, Q_POTION_RECIPE_2) && !hasQuestItems(killer, Q_TYRANTS_CHITIN) && (getRandom(10) == 0))
 					{
@@ -818,8 +811,7 @@ public class Q00334_TheWishingPotion extends Quest
 					}
 					break;
 				}
-				case TURAK_BUGBEAR:
-				case TURAK_BUGBEAR_WARRIOR:
+				case TURAK_BUGBEAR, TURAK_BUGBEAR_WARRIOR:
 				{
 					if (hasQuestItems(killer, Q_POTION_RECIPE_1, Q_POTION_RECIPE_2) && !hasQuestItems(killer, Q_BUGBEAR_BLOOD) && (getRandom(10) == 0))
 					{

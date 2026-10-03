@@ -91,8 +91,7 @@ public class Q10504_JewelOfAntharas extends Quest
 		{
 			switch (event)
 			{
-				case "30755-05.htm":
-				case "30755-06.htm":
+				case "30755-05.htm", "30755-06.htm":
 				{
 					htmltext = event;
 					break;

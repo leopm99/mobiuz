@@ -189,9 +189,7 @@ public class Q00062_PathOfTheTrooper extends Quest
 				{
 					switch (qs.getCond())
 					{
-						case 1:
-						case 2:
-						case 3:
+						case 1, 2, 3:
 						{
 							htmltext = "32197-07.html";
 							break;

@@ -305,8 +305,7 @@ public class PailakaDevilsLegacy extends AbstractInstance
 					{
 						switch (getRandom(7))
 						{
-							case 0:
-							case 1:
+							case 0, 1:
 							{
 								npc.dropItem(attacker, ANTIDOTE_POTION, getRandom(1, 10));
 								break;

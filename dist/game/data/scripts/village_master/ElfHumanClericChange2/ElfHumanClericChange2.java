@@ -77,23 +77,12 @@ public class ElfHumanClericChange2 extends AbstractNpcAI
 		String htmltext = null;
 		switch (event)
 		{
-			case "30120-02.htm": // master_lv3_hec003h
-			case "30120-03.htm": // master_lv3_hec006ha
-			case "30120-04.htm": // master_lv3_hec007ha
-			case "30120-05.htm": // master_lv3_hec007hat
-			case "30120-06.htm": // master_lv3_hec006hb
-			case "30120-07.htm": // master_lv3_hec007hb
-			case "30120-08.htm": // master_lv3_hec007hbt
-			case "30120-10.htm": // master_lv3_hec006ea
-			case "30120-11.htm": // master_lv3_hec007ea
-			case "30120-12.htm": // master_lv3_hec007eat
+			case "30120-02.htm", "30120-03.htm", "30120-04.htm", "30120-05.htm", "30120-06.htm", "30120-07.htm", "30120-08.htm", "30120-10.htm", "30120-11.htm", "30120-12.htm": // master_lv3_hec003h; master_lv3_hec006ha; master_lv3_hec007ha; master_lv3_hec007hat; master_lv3_hec006hb; master_lv3_hec007hb; master_lv3_hec007hbt; master_lv3_hec006ea; master_lv3_hec007ea; master_lv3_hec007eat
 			{
 				htmltext = event;
 				break;
 			}
-			case "16":
-			case "17":
-			case "30":
+			case "16", "17", "30":
 			{
 				htmltext = ClassChangeRequested(player, Integer.parseInt(event));
 				break;

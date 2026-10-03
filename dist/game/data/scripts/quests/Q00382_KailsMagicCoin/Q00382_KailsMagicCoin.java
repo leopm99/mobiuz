@@ -87,8 +87,7 @@ public class Q00382_KailsMagicCoin extends Quest
 				}
 				break;
 			}
-			case "30687-05.htm":
-			case "30687-06.htm":
+			case "30687-05.htm", "30687-06.htm":
 			{
 				if (qs.isStarted())
 				{

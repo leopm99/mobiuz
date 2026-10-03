@@ -837,8 +837,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 			Item my_hat = null;
 			switch (hat.getSlot())
 			{
-				case 1: // HAIR
-				case 3: // FULL HAIR
+				case 1, 3: // HAIR; FULL HAIR
 					my_hat = inv.getPaperdollItem(Inventory.PAPERDOLL_HAIR);
 					break;
 				case 2: // HAIR2
@@ -1096,8 +1095,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 		Item hat = null;
 		switch (hat_data.getSlot())
 		{
-			case 1: // HAIR
-			case 3: // FULL HAIR
+			case 1, 3: // HAIR; FULL HAIR
 				hat = inv.getPaperdollItem(Inventory.PAPERDOLL_HAIR);
 				break;
 			case 2: // HAIR2

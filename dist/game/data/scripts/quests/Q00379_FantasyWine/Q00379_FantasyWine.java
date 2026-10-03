@@ -65,9 +65,7 @@ public class Q00379_FantasyWine extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "30074-02.htm":
-			case "30074-03.htm":
-			case "30074-05.html":
+			case "30074-02.htm", "30074-03.htm", "30074-05.html":
 			{
 				htmltext = event;
 				break;

@@ -58,9 +58,7 @@ public class Q00998_FallenAngelSelect extends Quest
 		
 		switch (event)
 		{
-			case "30894-01.html":
-			case "30894-02.html":
-			case "30894-03.html":
+			case "30894-01.html", "30894-02.html", "30894-03.html":
 			{
 				return event;
 			}

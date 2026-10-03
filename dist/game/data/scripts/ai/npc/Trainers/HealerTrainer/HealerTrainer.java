@@ -79,8 +79,7 @@ public class HealerTrainer extends AbstractNpcAI
 		String htmltext = null;
 		switch (event)
 		{
-			case "30864.html":
-			case "30864-1.html":
+			case "30864.html", "30864-1.html":
 			{
 				htmltext = event;
 				break;

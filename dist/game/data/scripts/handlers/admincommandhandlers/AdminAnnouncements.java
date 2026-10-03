@@ -56,9 +56,7 @@ public class AdminAnnouncements implements IAdminCommandHandler
 		final String cmd = st.hasMoreTokens() ? st.nextToken() : "";
 		switch (cmd)
 		{
-			case "admin_announce":
-			case "admin_announce_crit":
-			case "admin_announce_screen":
+			case "admin_announce", "admin_announce_crit", "admin_announce_screen":
 			{
 				if (!st.hasMoreTokens())
 				{
@@ -224,13 +222,11 @@ public class AdminAnnouncements implements IAdminCommandHandler
 						final AnnouncementType type = AnnouncementType.findByName(annType);
 						switch (announce.getType())
 						{
-							case AUTO_CRITICAL:
-							case AUTO_NORMAL:
+							case AUTO_CRITICAL, AUTO_NORMAL:
 							{
 								switch (type)
 								{
-									case AUTO_CRITICAL:
-									case AUTO_NORMAL:
+									case AUTO_CRITICAL, AUTO_NORMAL:
 									{
 										break;
 									}
@@ -242,13 +238,11 @@ public class AdminAnnouncements implements IAdminCommandHandler
 								}
 								break;
 							}
-							case NORMAL:
-							case CRITICAL:
+							case NORMAL, CRITICAL:
 							{
 								switch (type)
 								{
-									case NORMAL:
-									case CRITICAL:
+									case NORMAL, CRITICAL:
 									{
 										break;
 									}

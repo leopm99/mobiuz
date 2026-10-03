@@ -73,9 +73,7 @@ public class Q00354_ConquestOfAlligatorIsland extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "30895-04.html":
-			case "30895-05.html":
-			case "30895-09.html":
+			case "30895-04.html", "30895-05.html", "30895-09.html":
 			{
 				htmltext = event;
 				break;
