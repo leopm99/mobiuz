@@ -215,7 +215,7 @@ public class QuestState
 			{
 				_cond = Integer.parseInt(value);
 			}
-			catch (Exception ignored)
+			catch (Exception _)
 			{
 			}
 		}
@@ -274,7 +274,7 @@ public class QuestState
 				{
 					previousVal = Integer.parseInt(old);
 				}
-				catch (Exception ignored)
+				catch (Exception _)
 				{
 				}
 				int newCond = 0;
@@ -282,7 +282,7 @@ public class QuestState
 				{
 					newCond = Integer.parseInt(newValue);
 				}
-				catch (Exception ignored)
+				catch (Exception _)
 				{
 				}
 				

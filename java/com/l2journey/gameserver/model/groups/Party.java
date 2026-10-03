@@ -192,7 +192,7 @@ public class Party extends AbstractPlayerGroup
 					return member;
 				}
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				// continue, take another member if this just logged off
 			}
@@ -1018,7 +1018,7 @@ public class Party extends AbstractPlayerGroup
 		{
 			leader = _members.get(0);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			return null;
 		}

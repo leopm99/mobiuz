@@ -82,7 +82,7 @@ public class Fish implements Cloneable
 		{
 			return (Fish) super.clone();
 		}
-		catch (CloneNotSupportedException e)
+		catch (CloneNotSupportedException _)
 		{
 			return null;
 		}

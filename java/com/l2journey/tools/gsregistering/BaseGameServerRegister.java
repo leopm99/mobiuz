@@ -94,7 +94,7 @@ public abstract class BaseGameServerRegister
 						final int id = Integer.parseInt(gsId);
 						task = new UnregisterTask(id);
 					}
-					catch (NumberFormatException e)
+					catch (NumberFormatException _)
 					{
 						System.out.printf("wrong argument for GameServer removal, specify a numeric ID or \"all\" without quotes to remove all." + System.lineSeparator(), gsId);
 						System.exit(1);
@@ -124,7 +124,7 @@ public abstract class BaseGameServerRegister
 				}
 			}
 		}
-		catch (HeadlessException e)
+		catch (HeadlessException _)
 		{
 			startCMD();
 		}

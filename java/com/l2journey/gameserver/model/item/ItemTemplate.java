@@ -283,7 +283,7 @@ public abstract class ItemTemplate extends ListenersContainer
 					_skillHolder[used] = new SkillHolder(id, level);
 					++used;
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					LOGGER.warning("Failed to parse item_skill(" + element + ") for item " + this + "! Format: SkillId0-SkillLevel0[;SkillIdN-SkillLevelN]");
 				}
@@ -311,7 +311,7 @@ public abstract class ItemTemplate extends ListenersContainer
 					id = Integer.parseInt(info[0]);
 					level = Integer.parseInt(info[1]);
 				}
-				catch (Exception nfe)
+				catch (Exception _)
 				{
 					// Incorrect syntax, don't add new skill
 					LOGGER.info("Could not parse " + skills + " in weapon unequip skills! item " + this);

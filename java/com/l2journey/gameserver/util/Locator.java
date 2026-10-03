@@ -127,7 +127,7 @@ public class Locator
 			// Java 20
 			url = URI.create(uri).toURL();
 		}
-		catch (MalformedURLException emYouEarlEx)
+		catch (MalformedURLException _)
 		{
 			// Ignore malformed exception
 		}
@@ -205,14 +205,14 @@ public class Locator
 			Class.forName("com.sun.tools.javac.Main");
 			toolsJarAvailable = true;
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			try
 			{
 				Class.forName("sun.tools.javac.Main");
 				toolsJarAvailable = true;
 			}
-			catch (Exception e2)
+			catch (Exception _)
 			{
 				// ignore
 			}

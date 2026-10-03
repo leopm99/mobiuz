@@ -276,7 +276,7 @@ public class StringUtil
 		{
 			return Integer.parseInt(text);
 		}
-		catch (NumberFormatException e)
+		catch (NumberFormatException _)
 		{
 			return defaultValue;
 		}
@@ -297,7 +297,7 @@ public class StringUtil
 				final String value = tokenizer.nextToken().trim();
 				return Integer.parseInt(value);
 			}
-			catch (NumberFormatException e)
+			catch (NumberFormatException _)
 			{
 				// Parsing failed, fall back to default.
 			}
@@ -368,7 +368,7 @@ public class StringUtil
 			Integer.parseInt(text);
 			return true;
 		}
-		catch (NumberFormatException e)
+		catch (NumberFormatException _)
 		{
 			return false;
 		}
@@ -391,7 +391,7 @@ public class StringUtil
 			Float.parseFloat(text);
 			return true;
 		}
-		catch (NumberFormatException e)
+		catch (NumberFormatException _)
 		{
 			return false;
 		}
@@ -414,7 +414,7 @@ public class StringUtil
 			Double.parseDouble(text);
 			return true;
 		}
-		catch (NumberFormatException e)
+		catch (NumberFormatException _)
 		{
 			return false;
 		}
@@ -439,7 +439,7 @@ public class StringUtil
 			Enum.valueOf(enumType, name);
 			return true;
 		}
-		catch (IllegalArgumentException e)
+		catch (IllegalArgumentException _)
 		{
 			return false;
 		}

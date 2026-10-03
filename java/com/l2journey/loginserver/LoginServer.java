@@ -152,7 +152,7 @@ public class LoginServer
 						{
 							duration = Long.parseLong(parts[1]);
 						}
-						catch (NumberFormatException nfe)
+						catch (NumberFormatException _)
 						{
 							LOGGER.warning("Skipped: Incorrect ban duration (" + parts[1] + ") on (" + bannedFile.getName() + "). Line: " + lnr.getLineNumber());
 							return;
@@ -163,7 +163,7 @@ public class LoginServer
 					{
 						LoginController.getInstance().addBanForAddress(address, duration);
 					}
-					catch (Exception e)
+					catch (Exception _)
 					{
 						LOGGER.warning("Skipped: Invalid address (" + address + ") on (" + bannedFile.getName() + "). Line: " + lnr.getLineNumber());
 					}

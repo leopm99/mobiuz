@@ -211,7 +211,7 @@ public class SchemeBuffer extends Npc
 				SchemeBufferTable.getInstance().setScheme(player.getObjectId(), schemeName.trim(), new ArrayList<>());
 				showGiveBuffsWindow(player);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				player.sendMessage("Scheme's name must contain up to 14 chars.");
 			}
@@ -227,7 +227,7 @@ public class SchemeBuffer extends Npc
 					schemes.remove(schemeName);
 				}
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				player.sendMessage("This scheme name is invalid.");
 			}

@@ -17874,7 +17874,7 @@ public class NpcStringId
 		{
 			return (NpcStringId) NpcStringId.class.getField(name).get(null);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			return null;
 		}

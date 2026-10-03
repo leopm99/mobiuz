@@ -277,7 +277,7 @@ public class LongTimeEvent extends Quest
 										
 										_dropList.add(new EventDropHolder(itemId, minCount, maxCount, finalChance, minLevel, maxLevel, monsterIds));
 									}
-									catch (NumberFormatException nfe)
+									catch (NumberFormatException _)
 									{
 										LOGGER.warning("Wrong number format in config.xml droplist block for " + getName() + " event");
 									}
@@ -312,7 +312,7 @@ public class LongTimeEvent extends Quest
 										
 										_spawnList.add(new NpcSpawn(npcId, new Location(xPos, yPos, zPos, heading), respawnTime * 1000));
 									}
-									catch (NumberFormatException nfe)
+									catch (NumberFormatException _)
 									{
 										LOGGER.warning("Wrong number format in config.xml spawnlist block for " + getName() + " event");
 									}
@@ -364,7 +364,7 @@ public class LongTimeEvent extends Quest
 									}
 									_destroyItemsOnEnd.add(itemId);
 								}
-								catch (NumberFormatException nfe)
+								catch (NumberFormatException _)
 								{
 									LOGGER.warning("Wrong number format in config.xml destroyItemsOnEnd block for " + getName() + " event");
 								}

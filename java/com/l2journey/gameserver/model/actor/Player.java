@@ -7269,7 +7269,7 @@ public class Player extends Playable
 					{
 						player.setBaseClass(rset.getInt("base_class"));
 					}
-					catch (Exception e)
+					catch (Exception _)
 					{
 						// TODO: Should this be logged?
 						player.setBaseClass(activeClassId);
@@ -12568,7 +12568,7 @@ public class Player extends Playable
 			{
 				getCounters().onFishCaught();
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 			}
 		}

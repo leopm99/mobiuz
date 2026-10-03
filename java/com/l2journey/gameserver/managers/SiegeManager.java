@@ -164,7 +164,7 @@ public class SiegeManager
 					
 					controlTowers.add(new TowerSpawn(npcId, new Location(x, y, z)));
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					LOGGER.warning(getClass().getSimpleName() + ": Error while loading control tower(s) for " + castle.getName() + " castle.");
 				}
@@ -195,7 +195,7 @@ public class SiegeManager
 					
 					flameTowers.add(new TowerSpawn(npcId, new Location(x, y, z), zoneList));
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					LOGGER.warning(getClass().getSimpleName() + ": Error while loading flame tower(s) for " + castle.getName() + " castle.");
 				}

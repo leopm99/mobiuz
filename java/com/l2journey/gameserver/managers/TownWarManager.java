@@ -120,7 +120,7 @@ public class TownWarManager
 			_task = new TownWarStartTask(nextStartTime.getTimeInMillis());
 			ThreadPool.execute(_task);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			LOGGER.warning("TownWar Engine: Error figuring out a start time. Check TownWarEventInterval in config file.");
 		}

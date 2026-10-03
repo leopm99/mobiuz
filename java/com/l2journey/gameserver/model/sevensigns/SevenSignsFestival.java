@@ -1457,7 +1457,7 @@ public class SevenSignsFestival
 		{
 			currData = _festivalData.get(_signsCycle).get(offsetId);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			currData = new StatSet();
 			currData.set("score", 0);
@@ -1760,7 +1760,7 @@ public class SevenSignsFestival
 				{
 					wait(FESTIVAL_SIGNUP_TIME);
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					// Ignore.
 				}
@@ -1795,7 +1795,7 @@ public class SevenSignsFestival
 								}
 							}
 						}
-						catch (Exception e)
+						catch (Exception _)
 						{
 							// Ignore.
 						}
@@ -1835,7 +1835,7 @@ public class SevenSignsFestival
 				{
 					wait(Config.ALT_FESTIVAL_FIRST_SPAWN);
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					// Ignore.
 				}
@@ -1858,7 +1858,7 @@ public class SevenSignsFestival
 				{
 					wait(Config.ALT_FESTIVAL_FIRST_SWARM - Config.ALT_FESTIVAL_FIRST_SPAWN);
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					// Ignore.
 				}
@@ -1874,7 +1874,7 @@ public class SevenSignsFestival
 				{
 					wait(Config.ALT_FESTIVAL_SECOND_SPAWN - Config.ALT_FESTIVAL_FIRST_SWARM);
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					// Ignore.
 				}
@@ -1903,7 +1903,7 @@ public class SevenSignsFestival
 				{
 					wait(Config.ALT_FESTIVAL_SECOND_SWARM - Config.ALT_FESTIVAL_SECOND_SPAWN);
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					// Ignore.
 				}
@@ -1920,7 +1920,7 @@ public class SevenSignsFestival
 				{
 					wait(Config.ALT_FESTIVAL_CHEST_SPAWN - Config.ALT_FESTIVAL_SECOND_SWARM);
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					// Ignore.
 				}
@@ -1940,7 +1940,7 @@ public class SevenSignsFestival
 				{
 					wait(Config.ALT_FESTIVAL_LENGTH - elapsedTime);
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					// Ignore.
 				}
@@ -2083,7 +2083,7 @@ public class SevenSignsFestival
 						}
 					}
 				}
-				catch (NullPointerException e)
+				catch (NullPointerException _)
 				{
 					// deleteMe handling should teleport party out in case of disconnect
 				}
@@ -2293,7 +2293,7 @@ public class SevenSignsFestival
 						relocatePlayer(participant, false);
 						participant.sendMessage("The festival has ended. Your party leader must now register your score before the next festival takes place.");
 					}
-					catch (Exception e)
+					catch (Exception _)
 					{
 						// Ignore.
 					}
@@ -2347,7 +2347,7 @@ public class SevenSignsFestival
 				participant.teleToLocation(new Location(origPosition._x, origPosition._y, origPosition._z), true);
 				participant.sendMessage("You have been removed from the festival arena.");
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				// If an exception occurs, just move the player to the nearest town.
 				try
@@ -2355,7 +2355,7 @@ public class SevenSignsFestival
 					participant.teleToLocation(TeleportWhereType.TOWN);
 					participant.sendMessage("You have been removed from the festival arena.");
 				}
-				catch (Exception e2)
+				catch (Exception _)
 				{
 					// Ignore.
 				}

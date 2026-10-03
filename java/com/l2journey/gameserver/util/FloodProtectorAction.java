@@ -192,7 +192,7 @@ public class FloodProtectorAction
 				address = _client.getIp();
 			}
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			// Ignore.
 		}

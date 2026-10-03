@@ -135,12 +135,12 @@ public class Auctioneer extends Npc
 						html.replace("%objectId%", String.valueOf((getObjectId())));
 						player.sendPacket(html);
 					}
-					catch (Exception e)
+					catch (Exception _)
 					{
 						player.sendMessage("Invalid bid!");
 					}
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					player.sendMessage("Invalid auction duration!");
 				}
@@ -154,7 +154,7 @@ public class Auctioneer extends Npc
 					a.confirmAuction();
 					_pendingAuctions.remove(clan.getHideoutId());
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					player.sendMessage("Invalid auction");
 				}
@@ -201,7 +201,7 @@ public class Auctioneer extends Npc
 					
 					player.sendPacket(html);
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					player.sendMessage("Invalid auction!");
 				}
@@ -227,12 +227,12 @@ public class Auctioneer extends Npc
 						
 						ClanHallAuctionManager.getInstance().getAuction(auctionId).setBid(player, bid);
 					}
-					catch (Exception e)
+					catch (Exception _)
 					{
 						player.sendMessage("Invalid bid!");
 					}
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					player.sendMessage("Invalid auction!");
 				}
@@ -275,7 +275,7 @@ public class Auctioneer extends Npc
 					html.replace("npc_%objectId%_bid", "npc_" + getObjectId() + "_bid " + val);
 					player.sendPacket(html);
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					player.sendMessage("Invalid auction!");
 				}
@@ -619,7 +619,7 @@ public class Auctioneer extends Npc
 					
 					player.sendPacket(html);
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					player.sendMessage("Invalid auction!");
 				}

@@ -185,7 +185,7 @@ public class PhantomManager implements IVoicedCommandHandler
 				{
 					count = Math.max(1, Math.min(100, Integer.parseInt(params.trim())));
 				}
-				catch (NumberFormatException e)
+				catch (NumberFormatException _)
 				{
 					player.sendMessage("Usage: .pcreate 10");
 					return true;

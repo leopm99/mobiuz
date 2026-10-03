@@ -118,7 +118,7 @@ public abstract class ClanHallSiegeEngine extends Quest implements Siegable
 				}
 			}
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			LOGGER.warning(getName() + ": Could not load siege attackers!");
 		}
@@ -147,7 +147,7 @@ public abstract class ClanHallSiegeEngine extends Quest implements Siegable
 			}
 			LOGGER.config(getName() + ": Successfully saved attackers to database.");
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			LOGGER.warning(getName() + ": Couldn't save attacker list!");
 		}
@@ -177,7 +177,7 @@ public abstract class ClanHallSiegeEngine extends Quest implements Siegable
 				_guards.add(spawn);
 			}
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			LOGGER.warning(getName() + ": Could not load siege guards!");
 		}

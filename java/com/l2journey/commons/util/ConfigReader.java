@@ -122,7 +122,7 @@ public class ConfigReader
 			{
 				return Boolean.parseBoolean(value);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				LOGGER.warning("Invalid boolean for config '" + config + "' in file '" + _file.getName() + "', using default: " + defaultValue + ".");
 			}
@@ -149,7 +149,7 @@ public class ConfigReader
 			{
 				return Byte.parseByte(value);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				LOGGER.warning("Invalid byte for config '" + config + "' in file '" + _file.getName() + "', using default: " + defaultValue + ".");
 			}
@@ -176,7 +176,7 @@ public class ConfigReader
 			{
 				return Short.parseShort(value);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				LOGGER.warning("Invalid short for config '" + config + "' in file '" + _file.getName() + "', using default: " + defaultValue + ".");
 			}
@@ -203,7 +203,7 @@ public class ConfigReader
 			{
 				return Integer.parseInt(value);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				LOGGER.warning("Invalid int for config '" + config + "' in file '" + _file.getName() + "', using default: " + defaultValue + ".");
 			}
@@ -230,7 +230,7 @@ public class ConfigReader
 			{
 				return Long.parseLong(value);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				LOGGER.warning("Invalid long for config '" + config + "' in file '" + _file.getName() + "', using default: " + defaultValue + ".");
 			}
@@ -257,7 +257,7 @@ public class ConfigReader
 			{
 				return Float.parseFloat(value);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				LOGGER.warning("Invalid float for config '" + config + "' in file '" + _file.getName() + "', using default: " + defaultValue + ".");
 			}
@@ -284,7 +284,7 @@ public class ConfigReader
 			{
 				return Double.parseDouble(value);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				LOGGER.warning("Invalid double for config '" + config + "' in file '" + _file.getName() + "', using default: " + defaultValue + ".");
 			}
@@ -331,7 +331,7 @@ public class ConfigReader
 			{
 				return Enum.valueOf(clazz, value);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				LOGGER.warning("Invalid enum for config '" + config + "' in file '" + _file.getName() + "', using default: " + defaultValue + ".");
 			}
@@ -358,7 +358,7 @@ public class ConfigReader
 			{
 				return TimeUtil.parseDuration(value);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				LOGGER.warning("Invalid duration for config '" + config + "' in file '" + _file.getName() + "', using default: " + defaultValue + ".");
 			}
@@ -386,7 +386,7 @@ public class ConfigReader
 			{
 				return Arrays.stream(value.split(delimiter)).map(String::trim).mapToInt(Integer::parseInt).toArray();
 			}
-			catch (NumberFormatException e)
+			catch (NumberFormatException _)
 			{
 				LOGGER.warning("Invalid int array for config '" + config + "' in file '" + _file.getName() + "', using default values.");
 			}
@@ -400,7 +400,7 @@ public class ConfigReader
 		{
 			return Arrays.stream(defaultValue.split(delimiter)).map(String::trim).mapToInt(Integer::parseInt).toArray();
 		}
-		catch (NumberFormatException e)
+		catch (NumberFormatException _)
 		{
 			LOGGER.warning("Invalid default values for config '" + config + "' in file '" + _file.getName() + "', using empty array.");
 		}

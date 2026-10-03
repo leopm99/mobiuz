@@ -93,7 +93,7 @@ public class LoginClient extends Client<Connection<LoginClient>>
 		{
 			return _encryption.encrypt(data, offset, size);
 		}
-		catch (IOException e)
+		catch (IOException _)
 		{
 			return false;
 		}
@@ -107,7 +107,7 @@ public class LoginClient extends Client<Connection<LoginClient>>
 		{
 			decrypted = _encryption.decrypt(data, offset, size);
 		}
-		catch (IOException e)
+		catch (IOException _)
 		{
 			close();
 			return false;
@@ -141,7 +141,7 @@ public class LoginClient extends Client<Connection<LoginClient>>
 			{
 				Thread.sleep(1000);
 			}
-			catch (InterruptedException e)
+			catch (InterruptedException _)
 			{
 			}
 		}

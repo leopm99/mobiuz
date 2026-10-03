@@ -208,7 +208,7 @@ public class UndergroundColiseumManager implements IXmlReader
 				_bestTeams.put(arenaId, new UCBestTeam(arenaId, leader, wins));
 			}
 		}
-		catch (SQLException e)
+		catch (SQLException _)
 		{
 			LOGGER.warning(getClass().getSimpleName() + ": Could not load underground_coliseum table");
 		}
@@ -246,7 +246,7 @@ public class UndergroundColiseumManager implements IXmlReader
 				stmt.execute();
 				stmt.close();
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				LOGGER.warning(getClass().getSimpleName() + ": could not clean status for underground_coliseum areanaId: " + team.getArenaId() + " in database!");
 			}

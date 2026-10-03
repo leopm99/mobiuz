@@ -154,7 +154,7 @@ public class Subnet
 		{
 			return InetAddress.getByAddress(_address).getHostAddress() + "/" + prefixLength;
 		}
-		catch (UnknownHostException e)
+		catch (UnknownHostException _)
 		{
 			return "Invalid address";
 		}

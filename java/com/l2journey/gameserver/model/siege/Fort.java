@@ -218,7 +218,7 @@ public class Fort extends AbstractResidence
 						removeFunction(_type);
 					}
 				}
-				catch (Throwable t)
+				catch (Throwable _)
 				{
 					// Ignore.
 				}

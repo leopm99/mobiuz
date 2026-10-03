@@ -214,7 +214,7 @@ public class WalkingManager implements IXmlReader
 							// LOGGER.warning(getClass().getSimpleName() + ": NPC with id " + npcId + " for route '" + routeName + "' does not exist.");
 							// }
 						}
-						catch (Exception e)
+						catch (Exception _)
 						{
 							LOGGER.warning(getClass().getSimpleName() + ": Error in target definition for route '" + routeName + "'");
 						}

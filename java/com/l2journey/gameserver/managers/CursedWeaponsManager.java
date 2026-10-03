@@ -414,7 +414,7 @@ public class CursedWeaponsManager
 		{
 			_cursedWeapons.get(itemId).giveSkill();
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			/***/
 		}

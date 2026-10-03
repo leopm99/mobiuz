@@ -70,7 +70,7 @@ public class AccountingFormatter extends Formatter
 							address = client.getIp();
 						}
 					}
-					catch (Exception e)
+					catch (Exception _)
 					{
 						// Ignore.
 					}

@@ -419,7 +419,7 @@ public class PetManager extends Merchant
 			ps.setInt(1, removedItem.getObjectId());
 			ps.execute();
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			// Ignore.
 		}

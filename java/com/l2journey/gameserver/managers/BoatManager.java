@@ -134,7 +134,7 @@ public class BoatManager
 		{
 			_docksBusy[h] = value;
 		}
-		catch (ArrayIndexOutOfBoundsException e)
+		catch (ArrayIndexOutOfBoundsException _)
 		{
 			// Ignore.
 		}
@@ -151,7 +151,7 @@ public class BoatManager
 		{
 			return _docksBusy[h];
 		}
-		catch (ArrayIndexOutOfBoundsException e)
+		catch (ArrayIndexOutOfBoundsException _)
 		{
 			return false;
 		}

@@ -611,7 +611,7 @@ public interface IXmlReader
 		{
 			return Enum.valueOf(enumClass, node.getNodeValue());
 		}
-		catch (IllegalArgumentException e)
+		catch (IllegalArgumentException _)
 		{
 			LOGGER.warning("Invalid value for node: " + node.getNodeName() + ", specified value: " + node.getNodeValue() + " should be an enum of type \"" + enumClass.getSimpleName() + "\". Using default value: " + defaultValue);
 			return defaultValue;

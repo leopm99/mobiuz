@@ -695,7 +695,7 @@ public class GameClient extends Client<com.l2journey.commons.network.Connection<
 				}
 			}
 		}
-		catch (NullPointerException e)
+		catch (NullPointerException _)
 		{
 			return "[Character read failed due to disconnect]";
 		}

@@ -107,7 +107,7 @@ public class RaidBossSpawnManager
 			LOGGER.info(getClass().getSimpleName() + ": Loaded " + _bosses.size() + " Instances");
 			LOGGER.info(getClass().getSimpleName() + ": Scheduled " + _schedules.size() + " Instances");
 		}
-		catch (SQLException e)
+		catch (SQLException _)
 		{
 			LOGGER.warning(getClass().getSimpleName() + ": Could not load raidboss_spawnlist table");
 		}

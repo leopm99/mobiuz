@@ -41,7 +41,7 @@ public class FuncDiv extends AbstractFunction
 			{
 				return initVal / getValue();
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				LOG.warning(FuncDiv.class.getSimpleName() + ": Division by zero: " + getValue() + "!");
 			}

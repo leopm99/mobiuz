@@ -346,7 +346,7 @@ public class Attackable extends Npc
 				playerKiller.getCounters().onRaidKill();
 			}
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			/* silencioso */ }
 			

@@ -65,7 +65,7 @@ public class TimeUtil
 			durationValue = Integer.parseInt(durationString.substring(0, index));
 			durationUnit = durationString.substring(index).toLowerCase();
 		}
-		catch (NumberFormatException e)
+		catch (NumberFormatException _)
 		{
 			throw new IllegalArgumentException("Invalid duration format: " + durationString);
 		}

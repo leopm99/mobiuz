@@ -385,7 +385,7 @@ public enum AbnormalType
 		{
 			return Enum.valueOf(AbnormalType.class, type);
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			return NONE;
 		}

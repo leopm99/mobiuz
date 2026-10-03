@@ -94,7 +94,7 @@ public class PetNameTable
 		{
 			pattern = Pattern.compile(Config.PET_NAME_TEMPLATE);
 		}
-		catch (PatternSyntaxException e)
+		catch (PatternSyntaxException _)
 		{
 			LOGGER.warning(getClass().getSimpleName() + ": Pet name pattern in config is invalid!");
 			return false;

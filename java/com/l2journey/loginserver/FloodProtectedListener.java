@@ -109,7 +109,7 @@ public abstract class FloodProtectedListener extends Thread
 				// Add client connection for further processing (implementation in subclasses).
 				addClient(connection);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				// Handle exceptions and potential thread interruption.
 				if (isInterrupted())

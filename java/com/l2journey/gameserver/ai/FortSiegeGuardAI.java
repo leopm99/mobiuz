@@ -465,7 +465,7 @@ public class FortSiegeGuardAI extends CreatureAI implements Runnable
 				range += 50;
 			}
 		}
-		catch (NullPointerException e)
+		catch (NullPointerException _)
 		{
 			_actor.setTarget(null);
 			setIntention(Intention.IDLE, null, null);

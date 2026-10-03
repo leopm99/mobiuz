@@ -215,7 +215,7 @@ public class LoginServerThread extends Thread
 								final RSAPublicKeySpec kspec1 = new RSAPublicKeySpec(modulus, RSAKeyGenParameterSpec.F4);
 								publicKey = (RSAPublicKey) kfac.generatePublic(kspec1);
 							}
-							catch (GeneralSecurityException e)
+							catch (GeneralSecurityException _)
 							{
 								LOGGER.warning(getClass().getSimpleName() + ": Trouble while init the public key send by login");
 								break;
@@ -351,7 +351,7 @@ public class LoginServerThread extends Thread
 			{
 				LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": ", e);
 			}
-			catch (SocketException e)
+			catch (SocketException _)
 			{
 				LOGGER.warning(getClass().getSimpleName() + ": LoginServer not available, trying to reconnect...");
 			}
@@ -369,7 +369,7 @@ public class LoginServerThread extends Thread
 						return;
 					}
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					// Ignore.
 				}
@@ -379,7 +379,7 @@ public class LoginServerThread extends Thread
 			{
 				Thread.sleep(5000); // 5 seconds tempo.
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				// Ignore.
 			}
@@ -609,7 +609,7 @@ public class LoginServerThread extends Thread
 				{
 					_out.flush();
 				}
-				catch (IOException e)
+				catch (IOException _)
 				{
 					// LoginServer might have terminated.
 				}

@@ -291,7 +291,7 @@ public class Skill
 				_affectLimit[0] = Integer.parseInt(valuesSplit[0]);
 				_affectLimit[1] = Integer.parseInt(valuesSplit[1]);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				throw new IllegalArgumentException("SkillId: " + _id + " invalid affectLimit value: " + affectLimit + ", \"percent-percent\" required");
 			}
@@ -1711,7 +1711,7 @@ public class Skill
 				}
 				chance = Double.parseDouble(prodData[length]);
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				LOGGER.warning("Extractable skills data: Error in Skill Id: " + skillId + " Level: " + skillLevel + " -> incomplete/invalid production data or wrong seperator!");
 			}

@@ -128,7 +128,7 @@ public class NpcPersonalAIData
 					}
 				}
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				// Do nothing
 			}

@@ -260,7 +260,7 @@ public class EventsConfig
 			{
 				HITMAN_CURRENCY.add(Integer.parseInt(id.trim()));
 			}
-			catch (NumberFormatException e)
+			catch (NumberFormatException _)
 			{
 				LOGGER.warning("Invalid hitman currency ID: " + id);
 			}
@@ -485,7 +485,7 @@ public class EventsConfig
 			{
 				tmp[0] = Integer.parseInt(valueSplit[0]);
 			}
-			catch (NumberFormatException e)
+			catch (NumberFormatException _)
 			{
 				LOGGER.warning("parseItemsList[Config.load()]: invalid itemId -> \"" + valueSplit[0] + "\", value must be an integer. Skipping to the next entry in the list.");
 				continue;
@@ -494,7 +494,7 @@ public class EventsConfig
 			{
 				tmp[1] = Integer.parseInt(valueSplit[1]);
 			}
-			catch (NumberFormatException e)
+			catch (NumberFormatException _)
 			{
 				LOGGER.warning("parseItemsList[Config.load()]: invalid item number -> \"" + valueSplit[1] + "\", value must be an integer. Skipping to the next entry in the list.");
 				continue;

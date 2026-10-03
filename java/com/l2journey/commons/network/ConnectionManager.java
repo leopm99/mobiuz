@@ -96,11 +96,11 @@ public class ConnectionManager<T extends Client<Connection<T>>>
 			_group.awaitTermination(_config.shutdownWaitTime, TimeUnit.MILLISECONDS);
 			_group.shutdownNow();
 		}
-		catch (InterruptedException e)
+		catch (InterruptedException _)
 		{
 			Thread.currentThread().interrupt(); // Restore interrupted status.
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			// Placeholder for exception handling/logging if needed.
 		}
@@ -147,18 +147,18 @@ public class ConnectionManager<T extends Client<Connection<T>>>
 					client.onConnected();
 					client.read();
 				}
-				catch (ClosedChannelException e)
+				catch (ClosedChannelException _)
 				{
 					// Placeholder for handling/logging ClosedChannelException if needed.
 				}
-				catch (Exception e)
+				catch (Exception _)
 				{
 					// Close the channel on exception during setup.
 					try
 					{
 						channel.close();
 					}
-					catch (IOException ioe)
+					catch (IOException _)
 					{
 						// Placeholder for handling/logging IOException if needed.
 					}

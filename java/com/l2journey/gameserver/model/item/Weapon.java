@@ -139,7 +139,7 @@ public class Weapon extends ItemTemplate
 					id = Integer.parseInt(info[0]);
 					level = Integer.parseInt(info[1]);
 				}
-				catch (Exception nfe)
+				catch (Exception _)
 				{
 					// Incorrect syntax, do not add new skill
 					LOGGER.info("> Could not parse " + skill + " in weapon enchant skills! item " + this);
@@ -165,7 +165,7 @@ public class Weapon extends ItemTemplate
 					id = Integer.parseInt(info[0]);
 					level = Integer.parseInt(info[1]);
 				}
-				catch (Exception nfe)
+				catch (Exception _)
 				{
 					// Incorrect syntax, don't add new skill
 					LOGGER.info("> Could not parse " + skill + " in weapon onmagic skills! item " + this);
@@ -192,7 +192,7 @@ public class Weapon extends ItemTemplate
 					id = Integer.parseInt(info[0]);
 					level = Integer.parseInt(info[1]);
 				}
-				catch (Exception nfe)
+				catch (Exception _)
 				{
 					// Incorrect syntax, don't add new skill
 					LOGGER.info("> Could not parse " + skill + " in weapon oncrit skills! item " + this);

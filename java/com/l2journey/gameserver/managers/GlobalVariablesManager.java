@@ -66,7 +66,7 @@ public class GlobalVariablesManager extends AbstractVariables
 				set(rset.getString("var"), rset.getString("value"));
 			}
 		}
-		catch (SQLException e)
+		catch (SQLException _)
 		{
 			LOGGER.warning(getClass().getSimpleName() + ": Couldn't restore global variables.");
 			return false;

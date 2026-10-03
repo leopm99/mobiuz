@@ -60,7 +60,7 @@ public class DatabaseBackup
 					{
 						return Files.getLastModifiedTime(n).to(TimeUnit.SECONDS) < cut;
 					}
-					catch (Exception ex)
+					catch (Exception _)
 					{
 						return false;
 					}
@@ -70,13 +70,13 @@ public class DatabaseBackup
 					{
 						Files.delete(n);
 					}
-					catch (Exception ex)
+					catch (Exception _)
 					{
 						// Ignore.
 					}
 				});
 			}
-			catch (Exception e)
+			catch (Exception _)
 			{
 				// Ignore.
 			}
@@ -106,7 +106,7 @@ public class DatabaseBackup
 			final Process process = Runtime.getRuntime().exec(command);
 			process.waitFor();
 		}
-		catch (Exception e)
+		catch (Exception _)
 		{
 			// Ignore.
 		}

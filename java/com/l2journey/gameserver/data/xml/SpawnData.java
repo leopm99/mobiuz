@@ -413,7 +413,7 @@ public class SpawnData implements IXmlReader
 									y = parseInteger(attrs, "y");
 									z = parseInteger(attrs, "z");
 								}
-								catch (NullPointerException npe)
+								catch (NullPointerException _)
 								{
 									// x, y, z can be unspecified, if this spawn is territory based, do nothing.
 								}
@@ -587,7 +587,7 @@ public class SpawnData implements IXmlReader
 				outputDirectory.mkdir();
 				result = true;
 			}
-			catch (SecurityException se)
+			catch (SecurityException _)
 			{
 				// Ignore.
 			}
