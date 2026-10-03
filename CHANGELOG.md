@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Phantom farm travel and stuck relocation use Blessed SoE return animation before teleporting
 - Portuguese village-master HTML restyled to the project title layout (`noscrollbar` for short dialogs)
 - README documents PT-BR HTML coverage and how to switch language in game
+- Elpies runs every day at 20:00; the schedule is loaded from `config/events/elpiesschedule.xml`
 
 ### Fixed
 
@@ -30,6 +31,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Cursed-sword phantom wielders no longer take the periodic town break or stand idle in peace zones; they are sent back to hunting spots outside town with a Return cooldown
 - Phantom gear progression no longer strips D-grade Mithril Stockings from mages (levels 20–39), which had recreated the kit every AI tick until OOM
 - Gear progression skips while a cursed weapon is equipped so the sword is not destroyed
+- Event and agathion skills that had `targetType` `NONE` and no effects now apply their described buffs: Gift of Thanks (23156), Donateloph's / Raphaeloph's / Leonardoph's / Michelangeloph's Blessing (23157–23160), Rudolphina's Blessing - Maintain Vitality (23161), Turkey's Big Mistake (23163), Inadequate Affection (23165), and Ball Trapping Buff of Cheers (23183, 23185, 23187, 23189, 23191, 23193, 23195, 23197, 23199)
+
 ## [2026-09-30]
 
 ### Added
