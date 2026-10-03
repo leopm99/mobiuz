@@ -719,7 +719,7 @@
 		<!-- Vitality Stage is maintained for 10 minutes. Reuse delay is 2 hours. -->
 		<set name="icon" val="icon.skill1086" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="ONE" />
 		<set name="abnormalLevel" val="1" />
 		<set name="abnormalTime" val="600" />
 		<set name="abnormalType" val="VP_UP" />
@@ -728,60 +728,115 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="-1" />
 		<set name="reuseDelay" val="7200000" />
+		<effects>
+			<effect name="Buff">
+				<sub stat="vitalityConsumeRate" val="1" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23157" levels="1" name="Donateloph's Blessing">
 		<!-- For 1 hour, increases Max HP, MP, and CP by 40%. Increases physical P. Def. and magic M. Def. by 20%. Increases Speed by 20%. Increases P. Atk. by 10%. Increases physical Atk. Spd. by 20%. Bestows the ability to recover as HP 10% of the standard short-range physical damage inflicted on the enemy. -->
 		<set name="icon" val="BranchSys.icon.br_xmas_present_luck_i00" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="ONE" />
 		<set name="abnormalLevel" val="1" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="BR_EVENT_BUF1" />
 		<set name="blockedInOlympiad" val="true" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="-1" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="maxHp" val="1.4" />
+				<mul stat="maxMp" val="1.4" />
+				<mul stat="maxCp" val="1.4" />
+				<mul stat="pDef" val="1.2" />
+				<mul stat="mDef" val="1.2" />
+				<mul stat="runSpd" val="1.2" />
+				<mul stat="pAtk" val="1.1" />
+				<mul stat="pAtkSpd" val="1.2" />
+				<add stat="absorbDam" val="10" /> <!-- absorb 10% HP from damage inflicted on enemies -->
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23158" levels="1" name="Raphaeloph's Blessing">
 		<!-- For 1 hour, increases Max HP, MP, and CP by 40%. Increasesw physical P. Def. and magic M. Def. by 20%. Increases Speed by 20%. Increases P. Atk. by 10%. Increases the rate of Critical attack by 30%. Increases the power of Critical attack by 10%. -->
 		<set name="icon" val="BranchSys.icon.br_xmas_present_joy_i00" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="ONE" />
 		<set name="abnormalLevel" val="1" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="BR_EVENT_BUF1" />
 		<set name="blockedInOlympiad" val="true" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="-1" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="maxHp" val="1.4" />
+				<mul stat="maxMp" val="1.4" />
+				<mul stat="maxCp" val="1.4" />
+				<mul stat="pDef" val="1.2" />
+				<mul stat="mDef" val="1.2" />
+				<mul stat="runSpd" val="1.2" />
+				<mul stat="pAtk" val="1.1" />
+				<mul stat="critRate" val="1.3" />
+				<mul stat="critDmg" val="1.1" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23159" levels="1" name="Leonardoph's Blessing">
 		<!-- For 1 hour, increases Max HP, MP, and CP by 40%. Increases physical P. Def. and magic M. Def. by 20%. Increases Speed by 20%. Increases magic M. Atk. by 10%. Increases magic Casting Spd. by 20%. -->
 		<set name="icon" val="BranchSys.icon.br_xmas_reward_buff_i00" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="ONE" />
 		<set name="abnormalLevel" val="1" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="BR_EVENT_BUF1" />
 		<set name="blockedInOlympiad" val="true" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="-1" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="maxHp" val="1.4" />
+				<mul stat="maxMp" val="1.4" />
+				<mul stat="maxCp" val="1.4" />
+				<mul stat="pDef" val="1.2" />
+				<mul stat="mDef" val="1.2" />
+				<mul stat="runSpd" val="1.2" />
+				<mul stat="mAtk" val="1.1" />
+				<mul stat="mAtkSpd" val="1.2" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23160" levels="1" name="Michelangeloph's Blessing">
 		<!-- For 1 hour, increases Max HP, MP, and CP by 40%. Increases physical P. Def. and magic M. Def. by 20%. Increases Speed by 20%. Increases the power of Prominent Damage through magic damage by 20%. Raises by 2 the occurrence rate of Prominent Damage through magic damage. -->
 		<set name="icon" val="BranchSys.icon.br_xmas_weapon_i00" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="ONE" />
 		<set name="abnormalLevel" val="1" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="BR_EVENT_BUF1" />
 		<set name="blockedInOlympiad" val="true" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="-1" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="maxHp" val="1.4" />
+				<mul stat="maxMp" val="1.4" />
+				<mul stat="maxCp" val="1.4" />
+				<mul stat="pDef" val="1.2" />
+				<mul stat="mDef" val="1.2" />
+				<mul stat="runSpd" val="1.2" />
+				<mul stat="mCritPower" val="1.2" />
+				<add stat="mCritRate" val="2" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23161" levels="1" name="Rudolphina's Blessing - Maintain Vitality">
 		<!-- State in which the Vitality Stage is maintained. -->
 		<set name="icon" val="BranchSys.icon.br_xmas_miracle_i00" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="ONE" />
 		<set name="abnormalLevel" val="1" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="VP_UP" />
@@ -789,6 +844,11 @@
 		<set name="blockedInOlympiad" val="true" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="-1" />
+		<effects>
+			<effect name="Buff">
+				<sub stat="vitalityConsumeRate" val="1" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23162" levels="1" name="Rudolphina's Blessing - Replenish Vitality">
 		<set name="operateType" val="A1" />
@@ -807,13 +867,25 @@
 		<!-- Increases Max HP, MP, and CP by 50% for 1 hour. Increases P. Atk., magic M. Atk., physical P. Def., and magic M. Def. by 20%. Increases Speed by 30%. -->
 		<set name="icon" val="BranchSys.icon.br_turkey_buff_i00" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="ONE" />
 		<set name="abnormalLevel" val="1" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="BR_EVENT_BUF1" />
 		<set name="blockedInOlympiad" val="true" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="-1" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="maxHp" val="1.5" />
+				<mul stat="maxMp" val="1.5" />
+				<mul stat="maxCp" val="1.5" />
+				<mul stat="pAtk" val="1.2" />
+				<mul stat="mAtk" val="1.2" />
+				<mul stat="pDef" val="1.2" />
+				<mul stat="mDef" val="1.2" />
+				<mul stat="runSpd" val="1.3" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23164" levels="1" name="Opera Agathion Special Skill - Sword of Life">
 		<!-- Can use the ability of Blessed Resurrection through the power of life. Reuse delay is 12 hours. -->
@@ -833,7 +905,7 @@
 		<!-- For 10 seconds, Speed decreases by 2%, and your head gets bigger. -->
 		<set name="icon" val="icon.skill4443" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="ONE" />
 		<set name="abnormalLevel" val="1" />
 		<set name="abnormalTime" val="10" />
 		<set name="abnormalType" val="BIG_HEAD" />
@@ -844,6 +916,9 @@
 		<set name="trait" val="ETC" />
 		<effects>
 			<effect name="BigHead" />
+			<effect name="Buff">
+				<mul stat="runSpd" val="0.98" />
+			</effect>
 		</effects>
 	</skill>
 	<skill id="23166" levels="1" name="Energized Rose Spirit">
@@ -1162,7 +1237,7 @@
 		<!-- Using the power of cheering, for 1 hour, increases Max MP, MP recovery bonus, HP recovery bonus, critical attack rate, P. Def., Atk. Spd., M. Atk., M. Def., Casting Spd. by 20%, the occurrence rage of Prominent Damage through magic damage by 2, P. Atk. by 10%, and Resistance to de-buffs by 10%. Decreases MP consumption needed for skill use by 5% and Speed by 20%. Reuse Delay 1 hour. Consumes 250 energy. -->
 		<set name="icon" val="icon.skill_agathion_special" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="26" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="MULTI_BUFF" />
@@ -1170,6 +1245,26 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="-1" />
 		<set name="reuseDelay" val="3600000" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="maxMp" val="1.2" />
+				<mul stat="regMp" val="1.2" />
+				<mul stat="regHp" val="1.2" />
+				<mul stat="critRate" val="1.2" />
+				<mul stat="pDef" val="1.2" />
+				<mul stat="pAtkSpd" val="1.2" />
+				<mul stat="mAtk" val="1.2" />
+				<mul stat="mDef" val="1.2" />
+				<mul stat="mAtkSpd" val="1.2" />
+				<add stat="mCritRate" val="2" />
+				<mul stat="pAtk" val="1.1" />
+				<sub stat="debuffVuln" val="10" />
+				<mul stat="magicalMpConsumeRate" val="0.95" />
+				<mul stat="physicalMpConsumeRate" val="0.95" />
+				<mul stat="danceMpConsumeRate" val="0.95" />
+				<mul stat="runSpd" val="0.8" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23184" levels="1" name="Ball Trapping Gnosian Agathion Special Skill - Soccer Ball of Cheers">
 		<!-- Provides a soccer ball containing the mysterious energy of cheering power. When you use the soccer ball, you can receive a gift at random. Reuse delay is 10 seconds. Consumes 500 energy. -->
@@ -1198,7 +1293,7 @@
 		<!-- Using the power of cheering, for 1 hour, increases Max MP, MP recovery bonus, HP recovery bonus, critical attack rate, P. Def., Atk. Spd., M. Atk., M. Def., Casting Spd. by 20%, the occurrence rage of Prominent Damage through magic damage by 2, P. Atk. by 10%, and Resistance to de-buffs by 10%. Decreases MP consumption needed for skill use by 5% and Speed by 20%. Reuse Delay 1 hour. Consumes 250 energy. -->
 		<set name="icon" val="icon.skill_agathion_special" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="26" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="MULTI_BUFF" />
@@ -1206,6 +1301,26 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="-1" />
 		<set name="reuseDelay" val="3600000" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="maxMp" val="1.2" />
+				<mul stat="regMp" val="1.2" />
+				<mul stat="regHp" val="1.2" />
+				<mul stat="critRate" val="1.2" />
+				<mul stat="pDef" val="1.2" />
+				<mul stat="pAtkSpd" val="1.2" />
+				<mul stat="mAtk" val="1.2" />
+				<mul stat="mDef" val="1.2" />
+				<mul stat="mAtkSpd" val="1.2" />
+				<add stat="mCritRate" val="2" />
+				<mul stat="pAtk" val="1.1" />
+				<sub stat="debuffVuln" val="10" />
+				<mul stat="magicalMpConsumeRate" val="0.95" />
+				<mul stat="physicalMpConsumeRate" val="0.95" />
+				<mul stat="danceMpConsumeRate" val="0.95" />
+				<mul stat="runSpd" val="0.8" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23186" levels="1" name="Ball Trapping Orodriel Agathion Special Skill - Soccer Ball of Cheers">
 		<!-- Provides a soccer ball containing the mysterious energy of cheering power. When you use the soccer ball, you can receive a gift at random. Reuse delay is 10 seconds. Consumes 500 energy. -->
@@ -1234,7 +1349,7 @@
 		<!-- Using the power of cheering, for 1 hour, increases Max MP, MP recovery bonus, HP recovery bonus, critical attack rate, P. Def., Atk. Spd., M. Atk., M. Def., Casting Spd. by 20%, the occurrence rage of Prominent Damage through magic damage by 2, P. Atk. by 10%, and Resistance to de-buffs by 10%. Decreases MP consumption needed for skill use by 5% and Speed by 20%. Reuse Delay 1 hour. Consumes 250 energy. -->
 		<set name="icon" val="icon.skill_agathion_special" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="26" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="MULTI_BUFF" />
@@ -1242,6 +1357,26 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="-1" />
 		<set name="reuseDelay" val="3600000" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="maxMp" val="1.2" />
+				<mul stat="regMp" val="1.2" />
+				<mul stat="regHp" val="1.2" />
+				<mul stat="critRate" val="1.2" />
+				<mul stat="pDef" val="1.2" />
+				<mul stat="pAtkSpd" val="1.2" />
+				<mul stat="mAtk" val="1.2" />
+				<mul stat="mDef" val="1.2" />
+				<mul stat="mAtkSpd" val="1.2" />
+				<add stat="mCritRate" val="2" />
+				<mul stat="pAtk" val="1.1" />
+				<sub stat="debuffVuln" val="10" />
+				<mul stat="magicalMpConsumeRate" val="0.95" />
+				<mul stat="physicalMpConsumeRate" val="0.95" />
+				<mul stat="danceMpConsumeRate" val="0.95" />
+				<mul stat="runSpd" val="0.8" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23188" levels="1" name="Ball Trapping Penalty Kick Agathion Special Skill - Soccer Ball of Cheers">
 		<!-- Provides a soccer ball containing the mysterious energy of cheering power. When you use the soccer ball, you can receive a gift at random. Reuse delay is 10 seconds. Consumes 500 energy. -->
@@ -1270,7 +1405,7 @@
 		<!-- Using the power of cheering, for 1 hour, increases Max MP, MP recovery bonus, HP recovery bonus, critical attack rate, P. Def., Atk. Spd., M. Atk., M. Def., Casting Spd. by 20%, the occurrence rage of Prominent Damage through magic damage by 2, P. Atk. by 10%, and Resistance to de-buffs by 10%. Decreases MP consumption needed for skill use by 5% and Speed by 20%. Reuse Delay 1 hour. Consumes 250 energy. -->
 		<set name="icon" val="icon.skill_agathion_special" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="26" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="MULTI_BUFF" />
@@ -1278,6 +1413,26 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="-1" />
 		<set name="reuseDelay" val="3600000" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="maxMp" val="1.2" />
+				<mul stat="regMp" val="1.2" />
+				<mul stat="regHp" val="1.2" />
+				<mul stat="critRate" val="1.2" />
+				<mul stat="pDef" val="1.2" />
+				<mul stat="pAtkSpd" val="1.2" />
+				<mul stat="mAtk" val="1.2" />
+				<mul stat="mDef" val="1.2" />
+				<mul stat="mAtkSpd" val="1.2" />
+				<add stat="mCritRate" val="2" />
+				<mul stat="pAtk" val="1.1" />
+				<sub stat="debuffVuln" val="10" />
+				<mul stat="magicalMpConsumeRate" val="0.95" />
+				<mul stat="physicalMpConsumeRate" val="0.95" />
+				<mul stat="danceMpConsumeRate" val="0.95" />
+				<mul stat="runSpd" val="0.8" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23190" levels="1" name="Ball Trapping Gnosian Agathion Special Skill - Soccer Ball of Cheers">
 		<!-- Provides a soccer ball containing the mysterious energy of cheering power. When you use the soccer ball, you can receive a gift at random. Reuse delay is 10 seconds. Consumes 500 energy. -->
@@ -1306,7 +1461,7 @@
 		<!-- Using the power of cheering, for 1 hour, increases Max MP, MP recovery bonus, HP recovery bonus, critical attack rate, P. Def., Atk. Spd., M. Atk., M. Def., Casting Spd. by 20%, the occurrence rage of Prominent Damage through magic damage by 2, P. Atk. by 10%, and Resistance to de-buffs by 10%. Decreases MP consumption needed for skill use by 5% and Speed by 20%. Reuse Delay 1 hour. Consumes 250 energy. -->
 		<set name="icon" val="icon.skill_agathion_special" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="26" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="MULTI_BUFF" />
@@ -1314,6 +1469,26 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="-1" />
 		<set name="reuseDelay" val="3600000" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="maxMp" val="1.2" />
+				<mul stat="regMp" val="1.2" />
+				<mul stat="regHp" val="1.2" />
+				<mul stat="critRate" val="1.2" />
+				<mul stat="pDef" val="1.2" />
+				<mul stat="pAtkSpd" val="1.2" />
+				<mul stat="mAtk" val="1.2" />
+				<mul stat="mDef" val="1.2" />
+				<mul stat="mAtkSpd" val="1.2" />
+				<add stat="mCritRate" val="2" />
+				<mul stat="pAtk" val="1.1" />
+				<sub stat="debuffVuln" val="10" />
+				<mul stat="magicalMpConsumeRate" val="0.95" />
+				<mul stat="physicalMpConsumeRate" val="0.95" />
+				<mul stat="danceMpConsumeRate" val="0.95" />
+				<mul stat="runSpd" val="0.8" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23192" levels="1" name="Ball Trapping Orodriel Agathion Special Skill - Soccer Ball of Cheers">
 		<!-- Provides a soccer ball containing the mysterious energy of cheering power. When you use the soccer ball, you can receive a gift at random. Reuse delay is 10 seconds. Consumes 500 energy. -->
@@ -1342,7 +1517,7 @@
 		<!-- Using the power of cheering, for 1 hour, increases Max MP, MP recovery bonus, HP recovery bonus, critical attack rate, P. Def., Atk. Spd., M. Atk., M. Def., Casting Spd. by 20%, the occurrence rage of Prominent Damage through magic damage by 2, P. Atk. by 10%, and Resistance to de-buffs by 10%. Decreases MP consumption needed for skill use by 5% and Speed by 20%. Reuse Delay 1 hour. Consumes 250 energy. -->
 		<set name="icon" val="icon.skill_agathion_special" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="26" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="MULTI_BUFF" />
@@ -1350,6 +1525,26 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="-1" />
 		<set name="reuseDelay" val="3600000" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="maxMp" val="1.2" />
+				<mul stat="regMp" val="1.2" />
+				<mul stat="regHp" val="1.2" />
+				<mul stat="critRate" val="1.2" />
+				<mul stat="pDef" val="1.2" />
+				<mul stat="pAtkSpd" val="1.2" />
+				<mul stat="mAtk" val="1.2" />
+				<mul stat="mDef" val="1.2" />
+				<mul stat="mAtkSpd" val="1.2" />
+				<add stat="mCritRate" val="2" />
+				<mul stat="pAtk" val="1.1" />
+				<sub stat="debuffVuln" val="10" />
+				<mul stat="magicalMpConsumeRate" val="0.95" />
+				<mul stat="physicalMpConsumeRate" val="0.95" />
+				<mul stat="danceMpConsumeRate" val="0.95" />
+				<mul stat="runSpd" val="0.8" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23194" levels="1" name="Ball Trapping Penalty Kick Agathion Special Skill - Soccer Ball of Cheers">
 		<!-- Provides a soccer ball containing the mysterious energy of cheering power. When you use the soccer ball, you can receive a gift at random. Reuse delay is 10 seconds. Consumes 500 energy. -->
@@ -1378,7 +1573,7 @@
 		<!-- Using the power of cheering, for 1 hour, increases Max MP, MP recovery bonus, HP recovery bonus, critical attack rate, P. Def., Atk. Spd., M. Atk., M. Def., Casting Spd. by 20%, the occurrence rage of Prominent Damage through magic damage by 2, P. Atk. by 10%, and Resistance to de-buffs by 10%. Decreases MP consumption needed for skill use by 5% and Speed by 20%. Reuse Delay 1 hour. Consumes 250 energy. -->
 		<set name="icon" val="icon.skill_agathion_special" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="26" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="MULTI_BUFF" />
@@ -1386,6 +1581,26 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="-1" />
 		<set name="reuseDelay" val="3600000" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="maxMp" val="1.2" />
+				<mul stat="regMp" val="1.2" />
+				<mul stat="regHp" val="1.2" />
+				<mul stat="critRate" val="1.2" />
+				<mul stat="pDef" val="1.2" />
+				<mul stat="pAtkSpd" val="1.2" />
+				<mul stat="mAtk" val="1.2" />
+				<mul stat="mDef" val="1.2" />
+				<mul stat="mAtkSpd" val="1.2" />
+				<add stat="mCritRate" val="2" />
+				<mul stat="pAtk" val="1.1" />
+				<sub stat="debuffVuln" val="10" />
+				<mul stat="magicalMpConsumeRate" val="0.95" />
+				<mul stat="physicalMpConsumeRate" val="0.95" />
+				<mul stat="danceMpConsumeRate" val="0.95" />
+				<mul stat="runSpd" val="0.8" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23196" levels="1" name="Ball Trapping Gnosian Agathion Special Skill - Soccer Ball of Cheers">
 		<!-- Provides a soccer ball containing the mysterious energy of cheering power. When you use the soccer ball, you can receive a gift at random. Reuse delay is 10 seconds. Consumes 500 energy. -->
@@ -1414,7 +1629,7 @@
 		<!-- Using the power of cheering, for 1 hour, increases Max MP, MP recovery bonus, HP recovery bonus, critical attack rate, P. Def., Atk. Spd., M. Atk., M. Def., Casting Spd. by 20%, the occurrence rage of Prominent Damage through magic damage by 2, P. Atk. by 10%, and Resistance to de-buffs by 10%. Decreases MP consumption needed for skill use by 5% and Speed by 20%. Reuse Delay 1 hour. Consumes 250 energy. -->
 		<set name="icon" val="icon.skill_agathion_special" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="26" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="MULTI_BUFF" />
@@ -1422,6 +1637,26 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="-1" />
 		<set name="reuseDelay" val="3600000" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="maxMp" val="1.2" />
+				<mul stat="regMp" val="1.2" />
+				<mul stat="regHp" val="1.2" />
+				<mul stat="critRate" val="1.2" />
+				<mul stat="pDef" val="1.2" />
+				<mul stat="pAtkSpd" val="1.2" />
+				<mul stat="mAtk" val="1.2" />
+				<mul stat="mDef" val="1.2" />
+				<mul stat="mAtkSpd" val="1.2" />
+				<add stat="mCritRate" val="2" />
+				<mul stat="pAtk" val="1.1" />
+				<sub stat="debuffVuln" val="10" />
+				<mul stat="magicalMpConsumeRate" val="0.95" />
+				<mul stat="physicalMpConsumeRate" val="0.95" />
+				<mul stat="danceMpConsumeRate" val="0.95" />
+				<mul stat="runSpd" val="0.8" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="23198" levels="1" name="Ball Trapping Orodriel Agathion Special Skill - Soccer Ball of Cheers">
 		<!-- Provides a soccer ball containing the mysterious energy of cheering power. When you use the soccer ball, you can receive a gift at random. Reuse delay is 10 seconds. Consumes 500 energy. -->
@@ -1450,7 +1685,7 @@
 		<!-- Using the power of cheering, for 1 hour, increases Max MP, MP recovery bonus, HP recovery bonus, critical attack rate, P. Def., Atk. Spd., M. Atk., M. Def., Casting Spd. by 20%, the occurrence rage of Prominent Damage through magic damage by 2, P. Atk. by 10%, and Resistance to de-buffs by 10%. Decreases MP consumption needed for skill use by 5% and Speed by 20%. Reuse Delay 1 hour. Consumes 250 energy. -->
 		<set name="icon" val="icon.skill_agathion_special" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="26" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="MULTI_BUFF" />
@@ -1458,5 +1693,25 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="-1" />
 		<set name="reuseDelay" val="3600000" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="maxMp" val="1.2" />
+				<mul stat="regMp" val="1.2" />
+				<mul stat="regHp" val="1.2" />
+				<mul stat="critRate" val="1.2" />
+				<mul stat="pDef" val="1.2" />
+				<mul stat="pAtkSpd" val="1.2" />
+				<mul stat="mAtk" val="1.2" />
+				<mul stat="mDef" val="1.2" />
+				<mul stat="mAtkSpd" val="1.2" />
+				<add stat="mCritRate" val="2" />
+				<mul stat="pAtk" val="1.1" />
+				<sub stat="debuffVuln" val="10" />
+				<mul stat="magicalMpConsumeRate" val="0.95" />
+				<mul stat="physicalMpConsumeRate" val="0.95" />
+				<mul stat="danceMpConsumeRate" val="0.95" />
+				<mul stat="runSpd" val="0.8" />
+			</effect>
+		</effects>
 	</skill>
 </list>
