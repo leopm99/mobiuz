@@ -178,8 +178,7 @@ public class SpawnData implements IXmlReader
 									int val;
 									switch (c.getNodeName())
 									{
-										case "disableRandomAnimation":
-										case "disableRandomWalk":
+										case "disableRandomAnimation", "disableRandomWalk":
 										{
 											val = Boolean.parseBoolean(c.getTextContent()) ? 1 : 0;
 											break;

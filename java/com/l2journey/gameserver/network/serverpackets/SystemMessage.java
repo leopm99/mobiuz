@@ -389,8 +389,7 @@ public class SystemMessage extends ServerPacket
 			buffer.writeInt(param.getType());
 			switch (param.getType())
 			{
-				case TYPE_TEXT:
-				case TYPE_PLAYER_NAME:
+				case TYPE_TEXT, TYPE_PLAYER_NAME:
 				{
 					buffer.writeString(param.getStringValue());
 					break;
@@ -400,14 +399,7 @@ public class SystemMessage extends ServerPacket
 					buffer.writeLong(param.getLongValue());
 					break;
 				}
-				case TYPE_ITEM_NAME:
-				case TYPE_CASTLE_NAME:
-				case TYPE_INT_NUMBER:
-				case TYPE_NPC_NAME:
-				case TYPE_ELEMENT_NAME:
-				case TYPE_SYSTEM_STRING:
-				case TYPE_INSTANCE_NAME:
-				case TYPE_DOOR_NAME:
+				case TYPE_ITEM_NAME, TYPE_CASTLE_NAME, TYPE_INT_NUMBER, TYPE_NPC_NAME, TYPE_ELEMENT_NAME, TYPE_SYSTEM_STRING, TYPE_INSTANCE_NAME, TYPE_DOOR_NAME:
 				{
 					buffer.writeInt(param.getIntValue());
 					break;

@@ -134,8 +134,7 @@ public class RequestRefineCancel extends ClientPacket
 				price = 480000;
 				break;
 			}
-			case S80:
-			case S84:
+			case S80, S84:
 			{
 				price = 920000;
 				break;

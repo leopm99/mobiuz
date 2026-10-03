@@ -824,9 +824,7 @@ public class TerritoryWarManager implements Siegable
 				}
 				switch (spawnType)
 				{
-					case 0: // town npcs
-					case 1: // fortress npcs
-					case 2: // castle npcs
+					case 0, 1, 2: // town npcs; fortress npcs; castle npcs
 					{
 						_territoryList.get(castleId).getSpawnList().add(new TerritoryNPCSpawn(castleId, loc, npcId, spawnType, null));
 						break;

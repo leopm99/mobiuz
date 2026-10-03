@@ -299,8 +299,7 @@ public abstract class AbstractRefinePacket extends ClientPacket
 		// Source item can be equipped or in inventory
 		switch (item.getItemLocation())
 		{
-			case INVENTORY:
-			case PAPERDOLL:
+			case INVENTORY, PAPERDOLL:
 			{
 				break;
 			}
@@ -314,8 +313,7 @@ public abstract class AbstractRefinePacket extends ClientPacket
 		{
 			switch (((Weapon) item.getTemplate()).getItemType())
 			{
-				case NONE:
-				case FISHINGROD:
+				case NONE, FISHINGROD:
 				{
 					return false;
 				}
@@ -330,9 +328,7 @@ public abstract class AbstractRefinePacket extends ClientPacket
 			// only accessories can be augmented
 			switch (item.getTemplate().getBodyPart())
 			{
-				case ItemTemplate.SLOT_LR_FINGER:
-				case ItemTemplate.SLOT_LR_EAR:
-				case ItemTemplate.SLOT_NECK:
+				case ItemTemplate.SLOT_LR_FINGER, ItemTemplate.SLOT_LR_EAR, ItemTemplate.SLOT_NECK:
 				{
 					break;
 				}
@@ -408,18 +404,15 @@ public abstract class AbstractRefinePacket extends ClientPacket
 	{
 		switch (itemGrade)
 		{
-			case C:
-			case B:
+			case C, B:
 			{
 				return GEMSTONE_D;
 			}
-			case A:
-			case S:
+			case A, S:
 			{
 				return GEMSTONE_C;
 			}
-			case S80:
-			case S84:
+			case S80, S84:
 			{
 				return GEMSTONE_B;
 			}
@@ -494,8 +487,7 @@ public abstract class AbstractRefinePacket extends ClientPacket
 					{
 						return 25;
 					}
-					case S80:
-					case S84:
+					case S80, S84:
 					{
 						return 36;
 					}

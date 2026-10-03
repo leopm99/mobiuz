@@ -685,8 +685,7 @@ public class GameClient extends Client<com.l2journey.commons.network.Connection<
 				{
 					return "[Account: " + _accountName + " - IP: " + (ip == null ? "disconnected" : ip) + "]";
 				}
-				case ENTERING:
-				case IN_GAME:
+				case ENTERING, IN_GAME:
 				{
 					return "[Character: " + (_player == null ? "disconnected" : _player.getName() + "[" + _player.getObjectId() + "]") + " - Account: " + _accountName + " - IP: " + (ip == null ? "disconnected" : ip) + "]";
 				}

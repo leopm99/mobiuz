@@ -2180,8 +2180,7 @@ public class SevenSignsFestival
 			
 			switch (spawnType)
 			{
-				case 0:
-				case 1:
+				case 0, 1:
 				{
 					npcSpawns = (_cabal == SevenSigns.CABAL_DAWN) ? FESTIVAL_DAWN_PRIMARY_SPAWNS[_levelRange] : FESTIVAL_DUSK_PRIMARY_SPAWNS[_levelRange];
 					break;

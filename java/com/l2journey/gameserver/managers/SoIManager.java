@@ -160,8 +160,7 @@ public class SoIManager
 		// EnergySeeds.SoiAbyssGaze1Stop();
 		switch (getCurrentStage())
 		{
-			case 1:
-			case 4:
+			case 1, 4:
 			{
 				// EnergySeeds.SoiMouthSpawn();
 				// EnergySeeds.SoiAbyssGaze2Spawn();

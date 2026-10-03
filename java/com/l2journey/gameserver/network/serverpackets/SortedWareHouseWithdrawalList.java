@@ -164,8 +164,7 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 		{
 			switch (sortorder)
 			{
-				case A2Z:
-				case Z2A:
+				case A2Z, Z2A:
 				{
 					_objects.sort(new WarehouseItemNameComparator(sortorder));
 					break;

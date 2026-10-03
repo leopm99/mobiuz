@@ -94,8 +94,7 @@ public class Teleporter extends Npc
 			
 			switch (npcId)
 			{
-				case 32534: // Seed of Infinity
-				case 32539:
+				case 32534, 32539: // Seed of Infinity
 				{
 					if (player.isFlyingMounted())
 					{

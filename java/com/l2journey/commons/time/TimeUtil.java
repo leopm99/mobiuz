@@ -72,38 +72,31 @@ public class TimeUtil
 		
 		switch (durationUnit)
 		{
-			case "sec":
-			case "secs":
+			case "sec", "secs":
 			{
 				return Duration.ofSeconds(durationValue);
 			}
-			case "min":
-			case "mins":
+			case "min", "mins":
 			{
 				return Duration.ofMinutes(durationValue);
 			}
-			case "hour":
-			case "hours":
+			case "hour", "hours":
 			{
 				return Duration.ofHours(durationValue);
 			}
-			case "day":
-			case "days":
+			case "day", "days":
 			{
 				return Duration.ofDays(durationValue);
 			}
-			case "week":
-			case "weeks":
+			case "week", "weeks":
 			{
 				return Duration.ofDays(durationValue * 7L);
 			}
-			case "month":
-			case "months":
+			case "month", "months":
 			{
 				return Duration.ofDays(durationValue * 30L);
 			}
-			case "year":
-			case "years":
+			case "year", "years":
 			{
 				return Duration.ofDays(durationValue * 365L);
 			}

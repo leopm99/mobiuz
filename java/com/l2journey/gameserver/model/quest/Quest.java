@@ -4632,9 +4632,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 							count *= Config.RATE_QUEST_REWARD_POTION;
 							break;
 						}
-						case SCRL_ENCHANT_WP:
-						case SCRL_ENCHANT_AM:
-						case SCROLL:
+						case SCRL_ENCHANT_WP, SCRL_ENCHANT_AM, SCROLL:
 						{
 							count *= Config.RATE_QUEST_REWARD_SCROLL;
 							break;

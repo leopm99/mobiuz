@@ -96,17 +96,14 @@ public class FuncEnchant extends AbstractFunction
 					value += (4 * enchant) + (8 * overenchant);
 					break;
 				}
-				case A:
-				case B:
-				case C:
+				case A, B, C:
 				{
 					// M. Atk. increases by 3 for all weapons.
 					// Starting at +4, M. Atk. bonus double.
 					value += (3 * enchant) + (6 * overenchant);
 					break;
 				}
-				case D:
-				case NONE:
+				case D, NONE:
 				{
 					// M. Atk. increases by 2 for all weapons. Starting at +4, M. Atk. bonus double.
 					// Starting at +4, M. Atk. bonus double.
@@ -184,8 +181,7 @@ public class FuncEnchant extends AbstractFunction
 					}
 					break;
 				}
-				case B:
-				case C:
+				case B, C:
 				{
 					if (item.getWeaponItem().getBodyPart() == ItemTemplate.SLOT_LR_HAND)
 					{
@@ -216,8 +212,7 @@ public class FuncEnchant extends AbstractFunction
 					}
 					break;
 				}
-				case D:
-				case NONE:
+				case D, NONE:
 				{
 					switch (type)
 					{

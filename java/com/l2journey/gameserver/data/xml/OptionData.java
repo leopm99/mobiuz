@@ -101,14 +101,7 @@ public class OptionData implements IXmlReader
 									{
 										switch (fd.getNodeName())
 										{
-											case "add":
-											case "sub":
-											case "mul":
-											case "div":
-											case "set":
-											case "share":
-											case "enchant":
-											case "enchanthp":
+											case "add", "sub", "mul", "div", "set", "share", "enchant", "enchanthp":
 											{
 												parseFuncs(fd.getAttributes(), fd.getNodeName(), option);
 											}

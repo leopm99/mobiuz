@@ -205,8 +205,7 @@ public class SevenSigns
 		final Calendar lastPeriodChange = Calendar.getInstance();
 		switch (_activePeriod)
 		{
-			case PERIOD_SEAL_VALIDATION:
-			case PERIOD_COMPETITION:
+			case PERIOD_SEAL_VALIDATION, PERIOD_COMPETITION:
 			{
 				lastPeriodChange.set(Calendar.DAY_OF_WEEK, PERIOD_START_DAY);
 				lastPeriodChange.set(Calendar.HOUR_OF_DAY, PERIOD_START_HOUR);
@@ -219,8 +218,7 @@ public class SevenSigns
 				}
 				break;
 			}
-			case PERIOD_COMP_RECRUITING:
-			case PERIOD_COMP_RESULTS:
+			case PERIOD_COMP_RECRUITING, PERIOD_COMP_RESULTS:
 			{
 				// because of the short duration of this period, just check it from last save
 				lastPeriodChange.setTimeInMillis(_lastSave.getTimeInMillis() + PERIOD_MINOR_LENGTH);
@@ -506,8 +504,7 @@ public class SevenSigns
 		// A period starts at 18:00 pm (local time), like on official servers.
 		switch (_activePeriod)
 		{
-			case PERIOD_SEAL_VALIDATION:
-			case PERIOD_COMPETITION:
+			case PERIOD_SEAL_VALIDATION, PERIOD_COMPETITION:
 			{
 				int daysToChange = getDaysToPeriodChange();
 				if (daysToChange == 7)
@@ -530,8 +527,7 @@ public class SevenSigns
 				_nextPeriodChange.set(Calendar.MINUTE, PERIOD_START_MINS);
 				break;
 			}
-			case PERIOD_COMP_RECRUITING:
-			case PERIOD_COMP_RESULTS:
+			case PERIOD_COMP_RECRUITING, PERIOD_COMP_RESULTS:
 			{
 				_nextPeriodChange.add(Calendar.MILLISECOND, PERIOD_MINOR_LENGTH);
 				break;

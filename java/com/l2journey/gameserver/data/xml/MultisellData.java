@@ -429,9 +429,7 @@ public class MultisellData implements IXmlReader
 	{
 		switch (ing.getItemId())
 		{
-			case PC_CAFE_POINTS:
-			case CLAN_REPUTATION:
-			case FAME:
+			case PC_CAFE_POINTS, CLAN_REPUTATION, FAME:
 			{
 				return true;
 			}

@@ -89,16 +89,7 @@ public class EnchantItemHPBonusData implements IXmlReader
 				{
 					switch (item.getBodyPart())
 					{
-						case ItemTemplate.SLOT_CHEST:
-						case ItemTemplate.SLOT_FEET:
-						case ItemTemplate.SLOT_GLOVES:
-						case ItemTemplate.SLOT_HEAD:
-						case ItemTemplate.SLOT_LEGS:
-						case ItemTemplate.SLOT_BACK:
-						case ItemTemplate.SLOT_FULL_ARMOR:
-						case ItemTemplate.SLOT_UNDERWEAR:
-						case ItemTemplate.SLOT_L_HAND:
-						case ItemTemplate.SLOT_BELT:
+						case ItemTemplate.SLOT_CHEST, ItemTemplate.SLOT_FEET, ItemTemplate.SLOT_GLOVES, ItemTemplate.SLOT_HEAD, ItemTemplate.SLOT_LEGS, ItemTemplate.SLOT_BACK, ItemTemplate.SLOT_FULL_ARMOR, ItemTemplate.SLOT_UNDERWEAR, ItemTemplate.SLOT_L_HAND, ItemTemplate.SLOT_BELT:
 						{
 							item.attach(new FuncTemplate(null, null, StatFunction.ENCHANTHP.getName(), -1, Stat.MAX_HP, 0));
 							break;

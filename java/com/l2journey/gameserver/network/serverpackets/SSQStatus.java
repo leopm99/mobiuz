@@ -83,14 +83,12 @@ public class SSQStatus extends ServerPacket
 				}
 				switch (currentPeriod)
 				{
-					case SevenSigns.PERIOD_COMP_RECRUITING:
-					case SevenSigns.PERIOD_COMP_RESULTS:
+					case SevenSigns.PERIOD_COMP_RECRUITING, SevenSigns.PERIOD_COMP_RESULTS:
 					{
 						buffer.writeInt(SystemMessageId.UNTIL_TODAY_AT_6_00_P_M.getId());
 						break;
 					}
-					case SevenSigns.PERIOD_COMPETITION:
-					case SevenSigns.PERIOD_SEAL_VALIDATION:
+					case SevenSigns.PERIOD_COMPETITION, SevenSigns.PERIOD_SEAL_VALIDATION:
 					{
 						buffer.writeInt(SystemMessageId.UNTIL_NEXT_MONDAY_AT_6_00_P_M.getId());
 						break;

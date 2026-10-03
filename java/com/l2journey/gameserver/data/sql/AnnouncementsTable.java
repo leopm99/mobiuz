@@ -74,14 +74,12 @@ public class AnnouncementsTable
 				final Announcement announce;
 				switch (type)
 				{
-					case NORMAL:
-					case CRITICAL:
+					case NORMAL, CRITICAL:
 					{
 						announce = new Announcement(rset);
 						break;
 					}
-					case AUTO_NORMAL:
-					case AUTO_CRITICAL:
+					case AUTO_NORMAL, AUTO_CRITICAL:
 					{
 						announce = new AutoAnnouncement(rset);
 						break;

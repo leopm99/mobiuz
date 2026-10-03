@@ -207,8 +207,7 @@ public class NpcTemplate extends CreatureTemplate
 					_clanHelpRange *= Config.MONSTER_CLAN_HELP_RANGE_MULTIPLIER;
 					break;
 				}
-				case "RaidBoss":
-				case "GrandBoss":
+				case "RaidBoss", "GrandBoss":
 				{
 					_baseHpMax *= Config.RAIDBOSS_HP_MULTIPLIER;
 					_baseMpMax *= Config.RAIDBOSS_MP_MULTIPLIER;

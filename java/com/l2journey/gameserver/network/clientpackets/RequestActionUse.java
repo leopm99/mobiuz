@@ -456,9 +456,7 @@ public class RequestActionUse extends ClientPacket
 				}
 				break;
 			}
-			case 71:
-			case 72:
-			case 73:
+			case 71, 72, 73:
 			{
 				useCoupleSocial(player, _actionId - 55);
 				break;

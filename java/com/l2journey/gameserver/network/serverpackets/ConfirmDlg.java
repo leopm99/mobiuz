@@ -88,8 +88,7 @@ public class ConfirmDlg extends ServerPacket
 			buffer.writeInt(param.getType());
 			switch (param.getType())
 			{
-				case SystemMessage.TYPE_TEXT:
-				case SystemMessage.TYPE_PLAYER_NAME:
+				case SystemMessage.TYPE_TEXT, SystemMessage.TYPE_PLAYER_NAME:
 				{
 					buffer.writeString(param.getStringValue());
 					break;
@@ -99,14 +98,7 @@ public class ConfirmDlg extends ServerPacket
 					buffer.writeLong(param.getLongValue());
 					break;
 				}
-				case SystemMessage.TYPE_ITEM_NAME:
-				case SystemMessage.TYPE_CASTLE_NAME:
-				case SystemMessage.TYPE_INT_NUMBER:
-				case SystemMessage.TYPE_NPC_NAME:
-				case SystemMessage.TYPE_ELEMENT_NAME:
-				case SystemMessage.TYPE_SYSTEM_STRING:
-				case SystemMessage.TYPE_INSTANCE_NAME:
-				case SystemMessage.TYPE_DOOR_NAME:
+				case SystemMessage.TYPE_ITEM_NAME, SystemMessage.TYPE_CASTLE_NAME, SystemMessage.TYPE_INT_NUMBER, SystemMessage.TYPE_NPC_NAME, SystemMessage.TYPE_ELEMENT_NAME, SystemMessage.TYPE_SYSTEM_STRING, SystemMessage.TYPE_INSTANCE_NAME, SystemMessage.TYPE_DOOR_NAME:
 				{
 					buffer.writeInt(param.getIntValue());
 					break;

@@ -68,8 +68,7 @@ public class RequestBlock extends ClientPacket
 		
 		switch (_type)
 		{
-			case BLOCK:
-			case UNBLOCK:
+			case BLOCK, UNBLOCK:
 			{
 				// can't use block/unblock for locating invisible characters
 				if (targetId <= 0)

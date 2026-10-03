@@ -381,12 +381,7 @@ public class Skill
 	{
 		switch (_targetType)
 		{
-			case AREA:
-			case AURA:
-			case BEHIND_AREA:
-			case BEHIND_AURA:
-			case FRONT_AREA:
-			case FRONT_AURA:
+			case AREA, AURA, BEHIND_AREA, BEHIND_AURA, FRONT_AREA, FRONT_AURA:
 			{
 				return true;
 			}

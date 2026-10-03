@@ -489,9 +489,7 @@ public class AugmentationData
 	{
 		switch (bodyPart)
 		{
-			case ItemTemplate.SLOT_LR_FINGER:
-			case ItemTemplate.SLOT_LR_EAR:
-			case ItemTemplate.SLOT_NECK:
+			case ItemTemplate.SLOT_LR_FINGER, ItemTemplate.SLOT_LR_EAR, ItemTemplate.SLOT_NECK:
 			{
 				return generateRandomAccessoryAugmentation(lifeStoneLevel, bodyPart, lifeStoneId);
 			}

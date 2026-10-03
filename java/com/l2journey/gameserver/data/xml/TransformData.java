@@ -91,12 +91,7 @@ public class TransformData implements IXmlReader
 											{
 												switch (s.getNodeName())
 												{
-													case "base":
-													case "stats":
-													case "defense":
-													case "magicDefense":
-													case "collision":
-													case "moving":
+													case "base", "stats", "defense", "magicDefense", "collision", "moving":
 													{
 														attrs = s.getAttributes();
 														for (int i = 0; i < attrs.getLength(); i++)

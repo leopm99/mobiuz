@@ -124,22 +124,7 @@ public class CreatureStat
 		{
 			switch (stat)
 			{
-				case MAX_HP:
-				case MAX_MP:
-				case MAX_CP:
-				case MAGIC_DEFENCE:
-				case POWER_DEFENCE:
-				case POWER_ATTACK:
-				case MAGIC_ATTACK:
-				case POWER_ATTACK_SPEED:
-				case MAGIC_ATTACK_SPEED:
-				case SHIELD_DEFENCE:
-				case STAT_CON:
-				case STAT_DEX:
-				case STAT_INT:
-				case STAT_MEN:
-				case STAT_STR:
-				case STAT_WIT:
+				case MAX_HP, MAX_MP, MAX_CP, MAGIC_DEFENCE, POWER_DEFENCE, POWER_ATTACK, MAGIC_ATTACK, POWER_ATTACK_SPEED, MAGIC_ATTACK_SPEED, SHIELD_DEFENCE, STAT_CON, STAT_DEX, STAT_INT, STAT_MEN, STAT_STR, STAT_WIT:
 				{
 					value = 1.0;
 					break;

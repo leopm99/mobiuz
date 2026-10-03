@@ -204,19 +204,7 @@ public class Cubic
 				{
 					switch (_cubicId)
 					{
-						case AQUA_CUBIC:
-						case BINDING_CUBIC:
-						case SPARK_CUBIC:
-						case STORM_CUBIC:
-						case POLTERGEIST_CUBIC:
-						case VAMPIRIC_CUBIC:
-						case VIPER_CUBIC:
-						case ATTRACT_CUBIC:
-						case SMART_CUBIC_ARCANALORD:
-						case SMART_CUBIC_ELEMENTALMASTER:
-						case SMART_CUBIC_SPECTRALMASTER:
-						case SMART_CUBIC_EVATEMPLAR:
-						case SMART_CUBIC_SHILLIENTEMPLAR:
+						case AQUA_CUBIC, BINDING_CUBIC, SPARK_CUBIC, STORM_CUBIC, POLTERGEIST_CUBIC, VAMPIRIC_CUBIC, VIPER_CUBIC, ATTRACT_CUBIC, SMART_CUBIC_ARCANALORD, SMART_CUBIC_ELEMENTALMASTER, SMART_CUBIC_SPECTRALMASTER, SMART_CUBIC_EVATEMPLAR, SMART_CUBIC_SHILLIENTEMPLAR:
 						{
 							_actionTask = ThreadPool.scheduleAtFixedRate(new CubicAction(this, _cubicSkillChance), 0, _cubicDelay);
 							break;

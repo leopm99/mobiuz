@@ -82,10 +82,7 @@ public class ShortcutInit extends ServerPacket
 					buffer.writeInt(sc.getCharacterType()); // C6 - 1 for player, 2 for pet
 					break;
 				}
-				case ACTION:
-				case MACRO:
-				case RECIPE:
-				case BOOKMARK:
+				case ACTION, MACRO, RECIPE, BOOKMARK:
 				{
 					buffer.writeInt(sc.getId());
 					buffer.writeInt(sc.getCharacterType()); // C6 - 1 for player, 2 for pet

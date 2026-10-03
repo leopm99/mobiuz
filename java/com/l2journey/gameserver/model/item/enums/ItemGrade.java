@@ -66,9 +66,7 @@ public enum ItemGrade
 			{
 				return A;
 			}
-			case S:
-			case S80:
-			case S84:
+			case S, S80, S84:
 			{
 				return S;
 			}

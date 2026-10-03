@@ -205,32 +205,7 @@ public class MonsterRaceManager
 					Broadcast.toAllPlayersInZoneType(DerbyTrackZone.class, _packet, msg);
 					break;
 				}
-				case 30: // 30 sec
-				case 60: // 1 min
-				case 90: // 1 min 30 sec
-				case 120: // 2 min
-				case 150: // 2 min 30
-				case 180: // 3 min
-				case 210: // 3 min 30
-				case 240: // 4 min
-				case 270: // 4 min 30 sec
-				case 330: // 5 min 30 sec
-				case 360: // 6 min
-				case 390: // 6 min 30 sec
-				case 420: // 7 min
-				case 450: // 7 min 30
-				case 480: // 8 min
-				case 510: // 8 min 30
-				case 540: // 9 min
-				case 570: // 9 min 30 sec
-				case 630: // 10 min 30 sec
-				case 660: // 11 min
-				case 690: // 11 min 30 sec
-				case 720: // 12 min
-				case 750: // 12 min 30
-				case 780: // 13 min
-				case 810: // 13 min 30
-				case 870: // 14 min 30 sec
+				case 30, 60, 90, 120, 150, 180, 210, 240, 270, 330, 360, 390, 420, 450, 480, 510, 540, 570, 630, 660, 690, 720, 750, 780, 810, 870: // 30 sec; 1 min; 1 min 30 sec; 2 min; 2 min 30; 3 min; 3 min 30; 4 min; 4 min 30 sec; 5 min 30 sec; 6 min; 6 min 30 sec; 7 min; 7 min 30; 8 min; 8 min 30; 9 min; 9 min 30 sec; 10 min 30 sec; 11 min; 11 min 30 sec; 12 min; 12 min 30; 13 min; 13 min 30; 14 min 30 sec
 				{
 					final SystemMessage msg = new SystemMessage(SystemMessageId.TICKETS_ARE_NOW_AVAILABLE_FOR_MONSTER_RACE_S1);
 					msg.addInt(_raceNumber);
@@ -277,8 +252,7 @@ public class MonsterRaceManager
 					Broadcast.toAllPlayersInZoneType(DerbyTrackZone.class, msg, msg2);
 					break;
 				}
-				case 960: // 16 min
-				case 1020: // 17 min
+				case 960, 1020: // 16 min; 17 min
 				{
 					final int minutes = (_finalCountdown == 960) ? 2 : 1;
 					final SystemMessage msg = new SystemMessage(SystemMessageId.MONSTER_RACE_S2_WILL_BEGIN_IN_S1_MINUTE_S);
@@ -301,11 +275,7 @@ public class MonsterRaceManager
 					Broadcast.toAllPlayersInZoneType(DerbyTrackZone.class, msg);
 					break;
 				}
-				case 1075: // 17 min 55 sec
-				case 1076: // 17 min 56 sec
-				case 1077: // 17 min 57 sec
-				case 1078: // 17 min 58 sec
-				case 1079: // 17 min 59 sec
+				case 1075, 1076, 1077, 1078, 1079: // 17 min 55 sec; 17 min 56 sec; 17 min 57 sec; 17 min 58 sec; 17 min 59 sec
 				{
 					final int seconds = 1080 - _finalCountdown;
 					final SystemMessage msg = new SystemMessage(SystemMessageId.THE_RACE_WILL_BEGIN_IN_S1_SECOND_S);

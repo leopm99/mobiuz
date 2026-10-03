@@ -49,8 +49,7 @@ public class FestivalGuide extends Npc
 		
 		switch (getId())
 		{
-			case 31127:
-			case 31132:
+			case 31127, 31132:
 			{
 				_festivalType = SevenSignsFestival.FESTIVAL_LEVEL_MAX_31;
 				_festivalOracle = SevenSigns.CABAL_DAWN;
@@ -59,8 +58,7 @@ public class FestivalGuide extends Npc
 				_redStonesNeeded = 270;
 				break;
 			}
-			case 31128:
-			case 31133:
+			case 31128, 31133:
 			{
 				_festivalType = SevenSignsFestival.FESTIVAL_LEVEL_MAX_42;
 				_festivalOracle = SevenSigns.CABAL_DAWN;
@@ -69,8 +67,7 @@ public class FestivalGuide extends Npc
 				_redStonesNeeded = 450;
 				break;
 			}
-			case 31129:
-			case 31134:
+			case 31129, 31134:
 			{
 				_festivalType = SevenSignsFestival.FESTIVAL_LEVEL_MAX_53;
 				_festivalOracle = SevenSigns.CABAL_DAWN;
@@ -79,8 +76,7 @@ public class FestivalGuide extends Npc
 				_redStonesNeeded = 900;
 				break;
 			}
-			case 31130:
-			case 31135:
+			case 31130, 31135:
 			{
 				_festivalType = SevenSignsFestival.FESTIVAL_LEVEL_MAX_64;
 				_festivalOracle = SevenSigns.CABAL_DAWN;
@@ -89,8 +85,7 @@ public class FestivalGuide extends Npc
 				_redStonesNeeded = 1350;
 				break;
 			}
-			case 31131:
-			case 31136:
+			case 31131, 31136:
 			{
 				_festivalType = SevenSignsFestival.FESTIVAL_LEVEL_MAX_NONE;
 				_festivalOracle = SevenSigns.CABAL_DAWN;
@@ -99,8 +94,7 @@ public class FestivalGuide extends Npc
 				_redStonesNeeded = 1800;
 				break;
 			}
-			case 31137:
-			case 31142:
+			case 31137, 31142:
 			{
 				_festivalType = SevenSignsFestival.FESTIVAL_LEVEL_MAX_31;
 				_festivalOracle = SevenSigns.CABAL_DUSK;
@@ -109,8 +103,7 @@ public class FestivalGuide extends Npc
 				_redStonesNeeded = 270;
 				break;
 			}
-			case 31138:
-			case 31143:
+			case 31138, 31143:
 			{
 				_festivalType = SevenSignsFestival.FESTIVAL_LEVEL_MAX_42;
 				_festivalOracle = SevenSigns.CABAL_DUSK;
@@ -119,8 +112,7 @@ public class FestivalGuide extends Npc
 				_redStonesNeeded = 450;
 				break;
 			}
-			case 31139:
-			case 31144:
+			case 31139, 31144:
 			{
 				_festivalType = SevenSignsFestival.FESTIVAL_LEVEL_MAX_53;
 				_festivalOracle = SevenSigns.CABAL_DUSK;
@@ -129,8 +121,7 @@ public class FestivalGuide extends Npc
 				_redStonesNeeded = 900;
 				break;
 			}
-			case 31140:
-			case 31145:
+			case 31140, 31145:
 			{
 				_festivalType = SevenSignsFestival.FESTIVAL_LEVEL_MAX_64;
 				_festivalOracle = SevenSigns.CABAL_DUSK;
@@ -139,8 +130,7 @@ public class FestivalGuide extends Npc
 				_redStonesNeeded = 1350;
 				break;
 			}
-			case 31141:
-			case 31146:
+			case 31141, 31146:
 			{
 				_festivalType = SevenSignsFestival.FESTIVAL_LEVEL_MAX_NONE;
 				_festivalOracle = SevenSigns.CABAL_DUSK;
