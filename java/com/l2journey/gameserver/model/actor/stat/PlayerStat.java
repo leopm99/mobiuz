@@ -885,10 +885,10 @@ public class PlayerStat extends PlayableStat
 	public double getExpBonusMultiplier()
 	{
 		double bonus = 1.0;
-		double vitality = 1.0;
-		double nevits = 1.0;
+		double vitality;
+		double nevits;
 		double hunting = 1.0;
-		double bonusExp = 1.0;
+		double bonusExp;
 		
 		// Bonus from Vitality System
 		vitality = getVitalityMultiplier();
@@ -931,10 +931,10 @@ public class PlayerStat extends PlayableStat
 	public double getSpBonusMultiplier()
 	{
 		double bonus = 1.0;
-		double vitality = 1.0;
-		double nevits = 1.0;
+		double vitality;
+		double nevits;
 		double hunting = 1.0;
-		double bonusSp = 1.0;
+		double bonusSp;
 		
 		// Bonus from Vitality System
 		vitality = getVitalityMultiplier();
