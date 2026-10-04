@@ -38,7 +38,10 @@ import java.util.Locale;
 public class FormatUtil
 {
 	private static final NumberFormat ADENA_FORMATTER = NumberFormat.getIntegerInstance(Locale.ENGLISH);
-	
+	private FormatUtil()
+	{
+	}
+
 	/**
 	 * Formats the specified amount using comma-separated digit grouping.<br>
 	 * For example, an input of {@code 123456789} will be formatted as {@code 123,456,789}.

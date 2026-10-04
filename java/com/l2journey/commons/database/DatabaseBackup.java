@@ -45,6 +45,10 @@ import com.l2journey.commons.enums.ServerMode;
  */
 public class DatabaseBackup
 {
+	private DatabaseBackup()
+	{
+	}
+
 	public static void performBackup()
 	{
 		// Delete old files.

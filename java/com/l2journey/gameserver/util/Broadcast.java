@@ -50,7 +50,10 @@ import com.l2journey.gameserver.network.serverpackets.ServerPacket;
 public class Broadcast
 {
 	private static final Logger LOGGER = Logger.getLogger(Broadcast.class.getName());
-	
+	private Broadcast()
+	{
+	}
+
 	/**
 	 * Send a packet to all Player in the _KnownPlayers of the Creature that have the Character targeted.<br>
 	 * <br>

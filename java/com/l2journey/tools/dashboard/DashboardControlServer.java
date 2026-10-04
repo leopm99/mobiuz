@@ -27,7 +27,10 @@ public final class DashboardControlServer
 {
 	private static final Logger LOGGER = Logger.getLogger(DashboardControlServer.class.getName());
 	public static final int PORT = 15432;
-	
+	private DashboardControlServer()
+	{
+	}
+
 	public static void start()
 	{
 		final Thread thread = new Thread(DashboardControlServer::serve, "JourneyDash-Control");

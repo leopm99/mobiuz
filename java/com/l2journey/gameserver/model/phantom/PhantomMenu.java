@@ -9,7 +9,10 @@ public class PhantomMenu
 {
 	private static final int PAGE_SIZE = 10;
 	private static final String BUTTON_SKIN = " back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\">";
-	
+	private PhantomMenu()
+	{
+	}
+
 	public static void showMenu(Player player)
 	{
 		showMenu(player, 0);

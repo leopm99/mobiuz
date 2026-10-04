@@ -104,7 +104,10 @@ public class Formulas
 	public static final byte SHIELD_DEFENSE_PERFECT_BLOCK = 2; // perfect block
 	
 	private static final byte MELEE_ATTACK_RANGE = 40;
-	
+	private Formulas()
+	{
+	}
+
 	/**
 	 * Return the period between 2 regeneration task (3s for Creature, 5 min for Door).
 	 * @param creature

@@ -284,7 +284,10 @@ public class PrimeCapacityAllocator
 	};
 	private static final int SMALLEST_PRIME = PRECOMPUTED_PRIMES[0];
 	private static final int LARGEST_PRIME = PRECOMPUTED_PRIMES[PRECOMPUTED_PRIMES.length - 1];
-	
+	private PrimeCapacityAllocator()
+	{
+	}
+
 	/**
 	 * Retrieves the next prime number greater than or equal to the specified input.
 	 * @param number the input number for which the next prime is required

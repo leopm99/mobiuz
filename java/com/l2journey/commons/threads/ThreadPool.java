@@ -55,7 +55,10 @@ public class ThreadPool
 	private static final long MIN_DELAY = 0L;
 	
 	private static ScheduledThreadPoolExecutor HIGH_PRIORITY_SCHEDULED_POOL;
-	
+	private ThreadPool()
+	{
+	}
+
 	public static void init()
 	{
 		LOGGER.info("ThreadPool: Initialized");

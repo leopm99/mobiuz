@@ -34,6 +34,10 @@ package com.l2journey.gameserver.util;
  */
 public class ArrayUtil
 {
+	private ArrayUtil()
+	{
+	}
+
 	/**
 	 * Checks if an int array contains a specific value.
 	 * @param array the array to search

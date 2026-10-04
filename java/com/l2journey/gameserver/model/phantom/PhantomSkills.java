@@ -134,7 +134,10 @@ public class PhantomSkills
 		// registerFighterProfile(54, 100); // scavenger
 		
 	}
-	
+	private PhantomSkills()
+	{
+	}
+
 	private static void registerMageProfile(int classId, int mainNukeId, int debuffId)
 	{
 		MAGE_ATTACK_PROFILES.put(classId, new MageAttackProfile(mainNukeId, debuffId));

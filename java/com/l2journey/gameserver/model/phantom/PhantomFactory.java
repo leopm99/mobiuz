@@ -200,7 +200,10 @@ public class PhantomFactory
 		"Demon",
 		"Angel"
 	};
-	
+	private PhantomFactory()
+	{
+	}
+
 	public static List<Player> createPhantoms(int count)
 	{
 		List<Player> created = new ArrayList<>();

@@ -394,6 +394,9 @@ public class PhantomEquipment
 	// =========================================================
 	// 2. LOGICA PRINCIPAL DE PROGRESSAO
 	// =========================================================
+	private PhantomEquipment()
+	{
+	}
 
 	public static void checkProgression(Player bot)
 	{

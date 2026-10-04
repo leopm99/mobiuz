@@ -54,7 +54,10 @@ public class GMAudit
 		'/', '\n', '\r', '\t', '\0', '\f', '`', '?', '*', '\\', '<', '>', '|', '\"', ':'
 		//@formatter:on
 	};
-	
+	private GMAudit()
+	{
+	}
+
 	/**
 	 * Logs a Game Master's action to a dedicated file. If the Game Master's name contains invalid characters, they are replaced with underscores.<br>
 	 * If the name is still invalid, it is replaced with "INVALID_GM_NAME_<current date>".

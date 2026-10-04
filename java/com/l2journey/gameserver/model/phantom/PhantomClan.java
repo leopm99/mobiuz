@@ -102,7 +102,10 @@ public class PhantomClan
 		"Guerrilla",
 		"Nomada"
 	};
-	
+	private PhantomClan()
+	{
+	}
+
 	public static void gestionarClanParaBot(Player bot)
 	{
 		if ((bot == null) || (bot.getClan() != null) || bot.isAttackingNow() || bot.isCastingNow())

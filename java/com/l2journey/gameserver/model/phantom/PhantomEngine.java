@@ -29,7 +29,10 @@ public class PhantomEngine
 	private static final int RETURN_HIT_TIME_MS = 400;
 	
 	public static boolean isRunning = false;
-	
+	private PhantomEngine()
+	{
+	}
+
 	private static boolean refuseIfDisabled(Player gm)
 	{
 		if (Config.PHANTOM_ENABLE)

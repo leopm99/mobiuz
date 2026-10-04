@@ -68,7 +68,10 @@ public final class Util
 {
 	private static final Logger LOGGER = LoggerFactory.getLogger(Util.class);
 	private static final NumberFormat ADENA_FORMATTER = NumberFormat.getIntegerInstance(Locale.ENGLISH);
-	
+	private Util()
+	{
+	}
+
 	public static void handleIllegalPlayerAction(Player actor, String message, IllegalActionPunishmentType punishment)
 	{
 		ThreadPool.schedule(new IllegalPlayerActionTask(actor, message, punishment), 5000);

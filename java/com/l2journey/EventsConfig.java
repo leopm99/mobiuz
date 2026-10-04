@@ -208,7 +208,10 @@ public class EventsConfig
 	public static boolean WEDDING_SAMESEX;
 	public static boolean WEDDING_FORMALWEAR;
 	public static int WEDDING_DIVORCE_COSTS;
-	
+	private EventsConfig()
+	{
+	}
+
 	/**
 	 * Esta classe inicia a maioria das configuracoes custom adicionadas no servidor. Obs: Algumas Configs ainda podem estar no arquivo Config.java.
 	 */

@@ -40,6 +40,10 @@ import com.l2journey.gameserver.network.serverpackets.ExServerPrimitive;
  */
 public final class GeoUtils
 {
+	private GeoUtils()
+	{
+	}
+
 	public static void debug2DLine(Player player, int x, int y, int tx, int ty, int z)
 	{
 		int gx = GeoData.getInstance().getGeoX(x);

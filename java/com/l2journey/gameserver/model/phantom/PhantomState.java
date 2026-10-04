@@ -29,7 +29,10 @@ public class PhantomState
 	public static final Set<Integer> AGGRESSIVE_PHANTOMS = ConcurrentHashMap.newKeySet();
 	public static final Set<Integer> PK_PHANTOMS = ConcurrentHashMap.newKeySet();
 	public static final Set<Integer> REVIVING_PHANTOMS = ConcurrentHashMap.newKeySet();
-	
+	private PhantomState()
+	{
+	}
+
 	public static void register(int objectId, boolean aggressive, boolean pkMode)
 	{
 		MP_RECOVERY_STATE.put(objectId, false);

@@ -19,7 +19,10 @@ public class PhantomProgression
 	private static final PlayerClass[] PLAYER_CLASS_VALUES = PlayerClass.values();
 	
 	private static int phantomCounter = 0;
-	
+	private PhantomProgression()
+	{
+	}
+
 	public static void checkProgression(Player bot)
 	{
 		if (bot == null)
