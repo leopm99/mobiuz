@@ -42,7 +42,7 @@ import com.l2journey.gameserver.model.stats.Stat;
  */
 public class ServitorShare extends AbstractEffect
 {
-	private final Map<Stat, Double> _stats = new HashMap<>(9);
+	private final Map<Stat, Double> _stats = HashMap.newHashMap(9);
 	
 	public ServitorShare(Condition attachCond, Condition applyCond, StatSet set, StatSet params)
 	{

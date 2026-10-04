@@ -78,9 +78,9 @@ public class Q00373_SupplierOfReagents extends Quest
 	private static final int WESLEYS_MIXING_STONE = 5904;
 	// Misc
 	private static final int MIN_LEVEL = 57;
-	private static final HashMap<String, Integer> HTML_TO_MEMO_STATE = new HashMap<>(20);
-	private static final HashMap<Integer, ItemHolder> MEMO_STATE_TO_ITEM = new HashMap<>(20);
-	private static final HashMap<Integer, Entry> MEMO_STATE_TO_REWARD = new HashMap<>(15);
+	private static final HashMap<String, Integer> HTML_TO_MEMO_STATE = HashMap.newHashMap(20);
+	private static final HashMap<Integer, ItemHolder> MEMO_STATE_TO_ITEM = HashMap.newHashMap(20);
+	private static final HashMap<Integer, Entry> MEMO_STATE_TO_REWARD = HashMap.newHashMap(15);
 	static
 	{
 		// List of ingredients to mix

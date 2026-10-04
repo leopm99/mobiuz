@@ -88,7 +88,7 @@ public class Q00726_LightWithinTheDarkness extends Quest
 	private static final int KANADIS_FOLLOWER2 = 25663;
 	private static final int KANADIS_FOLLOWER3 = 25664;
 	
-	private final Map<Integer, FortDungeon> _fortDungeons = new HashMap<>(21);
+	private final Map<Integer, FortDungeon> _fortDungeons = HashMap.newHashMap(21);
 	
 	public Q00726_LightWithinTheDarkness()
 	{
