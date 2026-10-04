@@ -756,12 +756,7 @@ public class VillageMaster extends Folk
 		}
 		
 		qs = player.getQuestState("Q00235_MimirsElixir");
-		if ((qs == null) || !qs.isCompleted())
-		{
-			return false;
-		}
-		
-		return true;
+		return !((qs == null) || !qs.isCompleted());
 	}
 	
 	/**

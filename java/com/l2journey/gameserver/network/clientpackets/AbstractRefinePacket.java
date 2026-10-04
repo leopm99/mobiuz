@@ -232,12 +232,7 @@ public abstract class AbstractRefinePacket extends ClientPacket
 		
 		// Check for item id
 		// Count must be greater or equal of required number
-		if ((getGemStoneId(grade) != gemStones.getId()) || (getGemStoneCount(grade, ls.getGrade()) > gemStones.getCount()))
-		{
-			return false;
-		}
-		
-		return true;
+		return !((getGemStoneId(grade) != gemStones.getId()) || (getGemStoneCount(grade, ls.getGrade()) > gemStones.getCount()));
 	}
 	
 	/**
@@ -265,12 +260,7 @@ public abstract class AbstractRefinePacket extends ClientPacket
 		}
 		// and accessory can't be augmented with weapon ls
 		// check for level of the lifestone
-		if (((item.getTemplate() instanceof Armor) && (ls.getGrade() != GRADE_ACC)) || (player.getLevel() < ls.getPlayerLevel()))
-		{
-			return false;
-		}
-		
-		return true;
+		return !(((item.getTemplate() instanceof Armor) && (ls.getGrade() != GRADE_ACC)) || (player.getLevel() < ls.getPlayerLevel()));
 	}
 	
 	/**
@@ -344,12 +334,7 @@ public abstract class AbstractRefinePacket extends ClientPacket
 		}
 		
 		// blacklist check
-		if (Arrays.binarySearch(Config.AUGMENTATION_BLACKLIST, item.getId()) >= 0)
-		{
-			return false;
-		}
-		
-		return true;
+		return !(Arrays.binarySearch(Config.AUGMENTATION_BLACKLIST, item.getId()) >= 0);
 	}
 	
 	/**
@@ -389,11 +374,7 @@ public abstract class AbstractRefinePacket extends ClientPacket
 			player.sendPacket(SystemMessageId.YOU_CANNOT_AUGMENT_ITEMS_WHILE_SITTING_DOWN);
 			return false;
 		}
-		if (player.isCursedWeaponEquipped() || player.isEnchanting() || player.isProcessingTransaction())
-		{
-			return false;
-		}
-		return true;
+		return !(player.isCursedWeaponEquipped() || player.isEnchanting() || player.isProcessingTransaction());
 	}
 	
 	/**

@@ -835,12 +835,7 @@ public class Item extends WorldObject
 			return false;
 		}
 		
-		if (!isPrivateWareHouse && (!isTradeable() || isShadowItem()))
-		{
-			return false;
-		}
-		
-		return true;
+		return !(!isPrivateWareHouse && (!isTradeable() || isShadowItem()));
 	}
 	
 	public boolean isPotion()

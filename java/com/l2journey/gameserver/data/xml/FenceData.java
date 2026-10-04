@@ -168,12 +168,7 @@ public class FenceData implements IXmlReader
 		
 		final double xCross = result[0];
 		final double yCross = result[1];
-		if (((xCross <= xMax) && (xCross >= xMin)) || ((yCross <= yMax) && (yCross >= yMin)))
-		{
-			return true;
-		}
-		
-		return false;
+		return ((xCross <= xMax) && (xCross >= xMin)) || ((yCross <= yMax) && (yCross >= yMin));
 	}
 	
 	private double[] intersection(double x1, double y1, double x2, double y2, double x3, double y3, double x4, double y4)

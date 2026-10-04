@@ -110,13 +110,7 @@ public class SpawnData implements IXmlReader
 			return false;
 		}
 		
-		if (npcTemplate.isType("SiegeGuard") || npcTemplate.isType("RaidBoss") || (!Config.ALLOW_CLASS_MASTERS && npcTemplate.isType("ClassMaster")))
-		{
-			// Do not spawn.
-			return false;
-		}
-		
-		return true;
+		return !(npcTemplate.isType("SiegeGuard") || npcTemplate.isType("RaidBoss") || (!Config.ALLOW_CLASS_MASTERS && npcTemplate.isType("ClassMaster")));
 	}
 	
 	@Override

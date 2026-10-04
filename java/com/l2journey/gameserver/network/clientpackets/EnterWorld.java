@@ -244,14 +244,7 @@ public class EnterWorld extends ClientPacket
 				player.refreshOverloaded();
 			}
 			
-			if (Config.GM_STARTUP_AUTO_LIST && AdminData.getInstance().hasAccess("admin_gmliston", player.getAccessLevel()))
-			{
-				AdminData.getInstance().addGm(player, false);
-			}
-			else
-			{
-				AdminData.getInstance().addGm(player, true);
-			}
+			AdminData.getInstance().addGm(player, !(Config.GM_STARTUP_AUTO_LIST && AdminData.getInstance().hasAccess("admin_gmliston", player.getAccessLevel())));
 			
 			if (Config.GM_GIVE_SPECIAL_SKILLS)
 			{

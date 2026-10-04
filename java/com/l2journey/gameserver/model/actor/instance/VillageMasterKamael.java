@@ -70,12 +70,7 @@ public class VillageMasterKamael extends VillageMaster
 		}
 		
 		qs = player.getQuestState("Q00236_SeedsOfChaos");
-		if ((qs == null) || !qs.isCompleted())
-		{
-			return false;
-		}
-		
-		return true;
+		return !((qs == null) || !qs.isCompleted());
 	}
 	
 	@Override

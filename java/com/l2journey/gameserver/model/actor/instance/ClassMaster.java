@@ -456,12 +456,7 @@ public class ClassMaster extends Merchant
 			return false;
 		}
 		
-		if ((oldCID == newCID.getParent()) || (Config.ALLOW_ENTIRE_TREE && newCID.childOf(oldCID)))
-		{
-			return true;
-		}
-		
-		return false;
+		return (oldCID == newCID.getParent()) || (Config.ALLOW_ENTIRE_TREE && newCID.childOf(oldCID));
 	}
 	
 	private static String getRequiredItems(int level)

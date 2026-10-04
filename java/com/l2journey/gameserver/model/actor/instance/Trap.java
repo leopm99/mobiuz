@@ -154,11 +154,7 @@ public class Trap extends Npc
 			return false;
 		}
 		
-		if (_isInArena || (_owner.isInParty() && creature.isInParty() && (_owner.getParty().getLeaderObjectId() == creature.getParty().getLeaderObjectId())))
-		{
-			return true;
-		}
-		return false;
+		return _isInArena || (_owner.isInParty() && creature.isInParty() && (_owner.getParty().getLeaderObjectId() == creature.getParty().getLeaderObjectId()));
 	}
 	
 	public boolean checkTarget(Creature target)

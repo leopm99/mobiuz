@@ -54,12 +54,7 @@ public class TerritoryWard extends Attackable
 		}
 		
 		final Player actingPlayer = attacker.asPlayer();
-		if ((actingPlayer == null) || (actingPlayer.getSiegeSide() == 0) || TerritoryWarManager.getInstance().isAllyField(actingPlayer, getCastle().getResidenceId()))
-		{
-			return false;
-		}
-		
-		return true;
+		return !((actingPlayer == null) || (actingPlayer.getSiegeSide() == 0) || TerritoryWarManager.getInstance().isAllyField(actingPlayer, getCastle().getResidenceId()));
 	}
 	
 	@Override

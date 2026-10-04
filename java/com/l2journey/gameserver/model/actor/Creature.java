@@ -4082,12 +4082,7 @@ public abstract class Creature extends WorldObject
 	 */
 	public boolean isOnGeodataPath(MoveData move)
 	{
-		if ((move.onGeodataPathIndex == -1) || (move.onGeodataPathIndex == (move.geoPath.size() - 1)))
-		{
-			return false;
-		}
-		
-		return true;
+		return !((move.onGeodataPathIndex == -1) || (move.onGeodataPathIndex == (move.geoPath.size() - 1)));
 	}
 	
 	/**
