@@ -383,24 +383,30 @@ public class RainbowSpringsChateau extends ClanHallSiegeEngine
 							
 							if (nonClanMemberInParty)
 							{
+								htmltext = "35603-05.htm";
 							}
 							else if (party.getMemberCount() < 5)
 							{
+								htmltext = "35603-06.htm";
 							}
-							if ((clan.getCastleId() > 0) || (clan.getFortId() > 0) || (clan.getHideoutId() > 0))
+							else if ((clan.getCastleId() > 0) || (clan.getFortId() > 0) || (clan.getHideoutId() > 0))
 							{
+								htmltext = "35603-08.htm";
 							}
 							else if (clan.getLevel() < Config.CHS_CLAN_MINLEVEL)
 							{
+								htmltext = "35603-09.htm";
 							}
 							else if (!_acceptedClans.contains(clan))
 							{
+								htmltext = "35603-10.htm";
 							}
 							else
 							{
 								portToArena(player, _acceptedClans.indexOf(clan));
+								return null;
 							}
-							return null;
+							return htmltext;
 						}
 						break;
 					}
@@ -415,6 +421,7 @@ public class RainbowSpringsChateau extends ClanHallSiegeEngine
 			boolean has = true;
 			if (_generated == -1)
 			{
+				has = false;
 			}
 			else
 			{
