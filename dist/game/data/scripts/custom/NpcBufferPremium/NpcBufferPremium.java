@@ -274,14 +274,11 @@ public class NpcBufferPremium extends Quest
 				td = 0;
 			}
 			message += TRS[td] + "<button value=\"" + buttonC + "\" action=\"bypass -h Quest " + QUEST_LOADING_INFO + " removeBuffs 0 0 0\" width=120 height=25 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\">" + TRS[td + 1];
-			td += 2;
 		}
 		
 		if (!message.isEmpty())
 		{
 			html += "<BR1><table width=100% border=0 cellspacing=0 cellpadding=1 bgcolor=444444><tr><td><font color=00FFFF>Preset:</font></td><td align=right><font color=LEVEL>" + formatAdena(Config.PREMIUM_BUFF_SET_PRICE) + "</font> adena</td></tr></table><BR1><table cellspacing=0 cellpadding=0>" + message + "</table>";
-			message = "";
-			td = 0;
 		}
 		
 		if (Config.PREMIUM_ENABLE_SCHEME_SYSTEM)

@@ -99,7 +99,6 @@ public class AdminInventory implements IAdminCommandHandler
 		int itemsEnd = items.size();
 		if ((itemsEnd - itemsStart) > maxItemsPerPage)
 		{
-			itemsEnd = itemsStart + maxItemsPerPage;
 		}
 		
 		final NpcHtmlMessage adminReply = new NpcHtmlMessage(0);

@@ -416,13 +416,11 @@ public class Q00662_AGameOfCards extends Quest
 							if (((i8 % 4) < 2) && ((i8 % 2) < 1) && (i4 == i5))
 							{
 								i6 += 10;
-								i8 += 1;
 							}
 						}
 						else if (((i6 % 10) == 0) && ((i8 % 4) < 2) && ((i8 % 2) < 1) && (i4 == i5))
 						{
 							i6 += 1;
-							i8 += 1;
 						}
 					}
 					

@@ -573,7 +573,6 @@ public class AdminMobGroup implements IAdminCommandHandler
 			
 			if (targetPlayer == null)
 			{
-				targetPlayer = activeChar;
 			}
 		}
 		catch (Exception _)
