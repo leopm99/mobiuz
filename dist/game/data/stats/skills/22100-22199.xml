@@ -607,7 +607,7 @@
 		<!-- Food of Doubt's effect. Vitality is recovered for 20 minutes when acquiring Exp. -->
 		<set name="icon" val="BranchSys.br_rudolf_food_unknown_i00" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="1" />
 		<set name="abnormalTime" val="1200" />
 		<set name="abnormalType" val="VP_UP" />
@@ -615,6 +615,11 @@
 		<set name="blockedInOlympiad" val="true" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="-1" />
+		<effects>
+			<effect name="Buff">
+				<sub stat="vitalityConsumeRate" val="10" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22131" levels="1" name="Red Firework Flames">
 		<!-- For 10 minutes, increases water attribute defense by 30 and STR by 1. -->
@@ -1254,25 +1259,43 @@
 			</effect>
 		</effects>
 	</skill>
-	<skill id="22165" levels="1" name="Energy Replenishing">
-		<!-- Replenishes a Soul Avatar's energy by 5000. -->
+	<skill id="22165" levels="1" name="Energy Replenish">
+		<!-- Replenishes 5,000 agathion energy. Requires Small Placid item. Only works with specific agathion bracelets. -->
 		<set name="icon" val="icon.skill0788" />
 		<set name="operateType" val="A1" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
+		<set name="magicLevel" val="1" />
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="20954" /> <!-- Small Placid -->
-		<set name="magicLevel" val="1" />
+		<conditions msgId="6043">
+			<!-- msgId 6043 = "You cannot replenish energy because you do not meet the requirements." -->
+			<player agathionItems="20818,20820,20822,20824,20826,20828,20830,20832,20834,20836,20838,20840" />
+		</conditions>
+		<effects>
+			<effect name="EnergyReplenish">
+				<param energy="5000" />
+			</effect>
+		</effects>
 	</skill>
-	<skill id="22166" levels="1" name="Energy Replenishing">
-		<!-- Replenishes a Soul Avatar's energy by 10000. -->
+	<skill id="22166" levels="1" name="Energy Replenish">
+		<!-- Replenishes 10,000 agathion energy. Requires Medium Placid item. Only works with specific agathion bracelets. -->
 		<set name="icon" val="icon.skill0788" />
 		<set name="operateType" val="A1" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
+		<set name="magicLevel" val="1" />
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="20955" /> <!-- Medium Placid -->
-		<set name="magicLevel" val="1" />
+		<conditions msgId="6043">
+			<!-- msgId 6043 = "You cannot replenish energy because you do not meet the requirements." -->
+			<player agathionItems="20818,20820,20822,20824,20826,20828,20830,20832,20834,20836,20838,20840" />
+		</conditions>
+		<effects>
+			<effect name="EnergyReplenish">
+				<param energy="10000" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22167" levels="1" name="April Fool's Day Vesper Weapon Gift">
 		<!-- Acquires one of the 14 types of Vesper weapons. -->
@@ -1301,11 +1324,20 @@
 		<!-- Replenishes an Agathion's energy by 1000. -->
 		<set name="icon" val="icon.skill0001" />
 		<set name="operateType" val="A1" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="20992" /> <!-- Thirst of Victory Quenching Drink -->
 		<set name="magicLevel" val="1" />
+		<conditions msgId="6043">
+			<!-- msgId 6043 = "You cannot replenish energy because you do not meet the requirements." -->
+			<player agathionItems="20818,20820,20822,20824,20826,20828,20830,20832,20834,20836,20838,20840" />
+		</conditions>
+		<effects>
+			<effect name="EnergyReplenish">
+				<param energy="1000" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22169" levels="1" name="Soccer Ball of Cheering Release">
 		<table name="#extractableItems">
@@ -1333,7 +1365,7 @@
 		<!-- Maximizes P. Def. for 10 seconds. -->
 		<set name="icon" val="icon.skill0001" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="ONE" />
 		<set name="abnormalLevel" val="2" />
 		<set name="abnormalTime" val="10" />
 		<set name="abnormalType" val="PD_UP_SPECIAL" />
@@ -1344,15 +1376,20 @@
 		<set name="itemConsumeId" val="21030" /> <!-- Hardin's Divine Protection -->
 		<set name="magicLevel" val="1" />
 		<set name="reuseDelay" val="900000" />
+		<effects>
+			<effect name="Buff">
+				<add stat="pDef" val="1000" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22171" levels="1" name="Hardin's Blessing">
 		<!-- Maximizes M. Def. for 10 seconds. -->
 		<set name="icon" val="icon.skill0001" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="ONE" />
 		<set name="abnormalLevel" val="2" />
 		<set name="abnormalTime" val="10" />
-		<set name="abnormalType" val="PD_UP_SPECIAL" />
+		<set name="abnormalType" val="MD_UP" />
 		<set name="abnormalVisualEffect" val="ULTIMATE_DEFENCE" />
 		<set name="blockedInOlympiad" val="true" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
@@ -1360,12 +1397,17 @@
 		<set name="itemConsumeId" val="21031" /> <!-- Hardin's Blessing -->
 		<set name="magicLevel" val="1" />
 		<set name="reuseDelay" val="900000" />
+		<effects>
+			<effect name="Buff">
+				<add stat="mDef" val="1000" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22172" levels="1" name="Silpeed's Wing">
 		<!-- Increases your Speed by 300 for 15 seconds. -->
 		<set name="icon" val="icon.skill0001" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="ONE" />
 		<set name="abnormalLevel" val="3" />
 		<set name="abnormalTime" val="15" />
 		<set name="abnormalType" val="SPEED_UP_SPECIAL" />
@@ -1375,12 +1417,17 @@
 		<set name="itemConsumeId" val="21032" /> <!-- Silpeed's Wing -->
 		<set name="magicLevel" val="1" />
 		<set name="reuseDelay" val="900000" />
+		<effects>
+			<effect name="Buff">
+				<add stat="runSpd" val="300" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22173" levels="1" name="Silpeed's Blessing">
 		<!-- Increases the user's Speed and those of friendly nearby targets by 300 for 15 seconds. -->
 		<set name="icon" val="icon.skill0001" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="ONE" />
 		<set name="abnormalLevel" val="3" />
 		<set name="abnormalTime" val="15" />
 		<set name="abnormalType" val="SPEED_UP_SPECIAL" />
@@ -1390,12 +1437,17 @@
 		<set name="itemConsumeId" val="21033" /> <!-- Silpeed's Blessing -->
 		<set name="magicLevel" val="1" />
 		<set name="reuseDelay" val="900000" />
+		<effects>
+			<effect name="Buff">
+				<add stat="runSpd" val="300" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22174" levels="1" name="Evain's Recovery Scroll">
 		<!-- Recovers the HP of the user and friendly nearby targets by 500. -->
 		<set name="icon" val="icon.skill0001" />
 		<set name="operateType" val="A1" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="ONE" />
 		<set name="blockedInOlympiad" val="true" />
 		<set name="effectPoint" val="800" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
@@ -1403,6 +1455,11 @@
 		<set name="itemConsumeId" val="21034" /> <!-- Evain's Recovery Scroll -->
 		<set name="magicLevel" val="1" />
 		<set name="reuseDelay" val="1800000" />
+		<effects>
+			<effect name="Heal">
+				<param power="500" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22175" levels="1" name="Good/Bad of Life">
 		<!-- When HP falls below 30%, it is restored by 500. -->
@@ -1799,45 +1856,6 @@
 		<effects>
 			<effect name="Transformation">
 				<param id="3" />
-			</effect>
-		</effects>
-	</skill>
-	<!-- Agathion Energy Replenish Skills -->
-	<skill id="22165" levels="1" name="Energy Replenish">
-		<!-- Replenishes 5,000 agathion energy. Requires Small Placid item. Only works with specific agathion bracelets. -->
-		<set name="icon" val="icon.skill0788" />
-		<set name="operateType" val="A1" />
-		<set name="targetType" val="SELF" />
-		<set name="isMagic" val="2" /> <!-- Static Skill -->
-		<set name="magicLevel" val="1" />
-		<set name="itemConsumeCount" val="1" />
-		<set name="itemConsumeId" val="20954" /> <!-- Small Placid -->
-		<conditions msgId="6043">
-			<!-- msgId 6043 = "You cannot replenish energy because you do not meet the requirements." -->
-			<player agathionItems="20818,20820,20822,20824,20826,20828,20830,20832,20834,20836,20838,20840" />
-		</conditions>
-		<effects>
-			<effect name="EnergyReplenish">
-				<param energy="5000" />
-			</effect>
-		</effects>
-	</skill>
-	<skill id="22166" levels="1" name="Energy Replenish">
-		<!-- Replenishes 10,000 agathion energy. Requires Medium Placid item. Only works with specific agathion bracelets. -->
-		<set name="icon" val="icon.skill0788" />
-		<set name="operateType" val="A1" />
-		<set name="targetType" val="SELF" />
-		<set name="isMagic" val="2" /> <!-- Static Skill -->
-		<set name="magicLevel" val="1" />
-		<set name="itemConsumeCount" val="1" />
-		<set name="itemConsumeId" val="20955" /> <!-- Medium Placid -->
-		<conditions msgId="6043">
-			<!-- msgId 6043 = "You cannot replenish energy because you do not meet the requirements." -->
-			<player agathionItems="20818,20820,20822,20824,20826,20828,20830,20832,20834,20836,20838,20840" />
-		</conditions>
-		<effects>
-			<effect name="EnergyReplenish">
-				<param energy="10000" />
 			</effect>
 		</effects>
 	</skill>
