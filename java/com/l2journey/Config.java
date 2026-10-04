@@ -1850,7 +1850,7 @@ public class Config
 		COMMUNITY_PREMIUM_COIN_ID = communityBoardConfig.getInt("CommunityPremiumBuyCoinId", 57);
 		COMMUNITY_PREMIUM_PRICE_PER_DAY = communityBoardConfig.getInt("CommunityPremiumPricePerDay", 1000000);
 		final String[] availableTeleports = communityBoardConfig.getString("CommunityTeleportList", "").split(";");
-		COMMUNITY_AVAILABLE_TELEPORTS = new HashMap<>(availableTeleports.length);
+		COMMUNITY_AVAILABLE_TELEPORTS = HashMap.newHashMap(availableTeleports.length);
 		for (String s : availableTeleports)
 		{
 			final String[] splitInfo = s.split(",");
@@ -1899,7 +1899,7 @@ public class Config
 		LOG_ITEMS_SMALL_LOG = generalConfig.getBoolean("LogItemsSmallLog", false);
 		LOG_ITEMS_IDS_ONLY = generalConfig.getBoolean("LogItemsIdsOnly", false);
 		final String[] splitItemIds = generalConfig.getString("LogItemsIdsList", "0").split(",");
-		LOG_ITEMS_IDS_LIST = new HashSet<>(splitItemIds.length);
+		LOG_ITEMS_IDS_LIST = HashSet.newHashSet(splitItemIds.length);
 		for (String id : splitItemIds)
 		{
 			LOG_ITEMS_IDS_LIST.add(Integer.parseInt(id));
@@ -1914,7 +1914,7 @@ public class Config
 		AUTODESTROY_ITEM_AFTER = generalConfig.getInt("AutoDestroyDroppedItemAfter", 600);
 		HERB_AUTO_DESTROY_TIME = generalConfig.getInt("AutoDestroyHerbTime", 60) * 1000;
 		final String[] split = generalConfig.getString("ListOfProtectedItems", "0").split(",");
-		LIST_PROTECTED_ITEMS = new HashSet<>(split.length);
+		LIST_PROTECTED_ITEMS = HashSet.newHashSet(split.length);
 		for (String id : split)
 		{
 			LIST_PROTECTED_ITEMS.add(Integer.parseInt(id));
@@ -2110,7 +2110,7 @@ public class Config
 		DEBUG_SERVER_PACKETS = developmentConfig.getBoolean("DebugServerPackets", false);
 		DEBUG_UNKNOWN_PACKETS = developmentConfig.getBoolean("DebugUnknownPackets", true);
 		final String[] packets = developmentConfig.getString("ExcludedPacketList", "").trim().split(",");
-		EXCLUDED_DEBUG_PACKETS = new HashSet<>(packets.length);
+		EXCLUDED_DEBUG_PACKETS = HashSet.newHashSet(packets.length);
 		for (String packet : packets)
 		{
 			EXCLUDED_DEBUG_PACKETS.add(packet.trim());
@@ -2236,7 +2236,7 @@ public class Config
 		RATE_HERB_DROP_CHANCE_MULTIPLIER = ratesConfig.getFloat("HerbDropChanceMultiplier", 1);
 		RATE_RAID_DROP_CHANCE_MULTIPLIER = ratesConfig.getFloat("RaidDropChanceMultiplier", 1);
 		final String[] dropAmountMultiplier = ratesConfig.getString("DropAmountMultiplierByItemId", "").split(";");
-		RATE_DROP_AMOUNT_BY_ID = new HashMap<>(dropAmountMultiplier.length);
+		RATE_DROP_AMOUNT_BY_ID = HashMap.newHashMap(dropAmountMultiplier.length);
 		if (!dropAmountMultiplier[0].isEmpty())
 		{
 			for (String item : dropAmountMultiplier)
@@ -2263,7 +2263,7 @@ public class Config
 			}
 		}
 		final String[] dropChanceMultiplier = ratesConfig.getString("DropChanceMultiplierByItemId", "").split(";");
-		RATE_DROP_CHANCE_BY_ID = new HashMap<>(dropChanceMultiplier.length);
+		RATE_DROP_CHANCE_BY_ID = HashMap.newHashMap(dropChanceMultiplier.length);
 		if (!dropChanceMultiplier[0].isEmpty())
 		{
 			for (String item : dropChanceMultiplier)
@@ -2519,7 +2519,7 @@ public class Config
 		RAID_MAX_RESPAWN_MULTIPLIER = npcConfig.getFloat("RaidMaxRespawnMultiplier", 1.0f);
 		RAID_MINION_RESPAWN_TIMER = npcConfig.getInt("RaidMinionRespawnTime", 300000);
 		final String[] propertySplit = npcConfig.getString("CustomMinionsRespawnTime", "").split(";");
-		MINIONS_RESPAWN_TIME = new HashMap<>(propertySplit.length);
+		MINIONS_RESPAWN_TIME = HashMap.newHashMap(propertySplit.length);
 		for (String prop : propertySplit)
 		{
 			final String[] propSplit = prop.split(",");
@@ -2701,7 +2701,7 @@ public class Config
 		if (ENABLE_RANDOM_MONSTER_SPAWNS)
 		{
 			final String[] mobsIds = randomSpawnsConfig.getString("MobsSpawnNotRandom", "18812,18813,18814,22138").split(",");
-			MOBS_LIST_NOT_RANDOM = new HashSet<>(mobsIds.length);
+			MOBS_LIST_NOT_RANDOM = HashSet.newHashSet(mobsIds.length);
 			for (String id : mobsIds)
 			{
 				MOBS_LIST_NOT_RANDOM.add(Integer.parseInt(id));
@@ -2822,7 +2822,7 @@ public class Config
 		if (ENABLE_MODIFY_SKILL_DURATION)
 		{
 			final String[] propertySplit = characterConfig.getString("SkillDurationList", "").split(";");
-			SKILL_DURATION_LIST = new HashMap<>(propertySplit.length);
+			SKILL_DURATION_LIST = HashMap.newHashMap(propertySplit.length);
 			for (String skill : propertySplit)
 			{
 				final String[] skillSplit = skill.split(",");
@@ -2850,7 +2850,7 @@ public class Config
 		if (ENABLE_MODIFY_SKILL_REUSE)
 		{
 			final String[] propertySplit = characterConfig.getString("SkillReuseList", "").split(";");
-			SKILL_REUSE_LIST = new HashMap<>(propertySplit.length);
+			SKILL_REUSE_LIST = HashMap.newHashMap(propertySplit.length);
 			for (String skill : propertySplit)
 			{
 				final String[] skillSplit = skill.split(",");
@@ -3058,7 +3058,7 @@ public class Config
 		LOOT_RAIDS_PRIVILEGE_INTERVAL = characterConfig.getInt("RaidLootRightsInterval", 900) * 1000;
 		LOOT_RAIDS_PRIVILEGE_CC_SIZE = characterConfig.getInt("RaidLootRightsCCSize", 45);
 		final String[] autoLootItemIds = characterConfig.getString("AutoLootItemIds", "0").split(",");
-		AUTO_LOOT_ITEM_IDS = new HashSet<>(autoLootItemIds.length);
+		AUTO_LOOT_ITEM_IDS = HashSet.newHashSet(autoLootItemIds.length);
 		for (String item : autoLootItemIds)
 		{
 			Integer itm = 0;
@@ -3281,7 +3281,7 @@ public class Config
 		PREMIUM_RATE_QUEST_XP = premiumSystemConfig.getFloat("PremiumRateQuestXp", 1);
 		PREMIUM_RATE_QUEST_SP = premiumSystemConfig.getFloat("PremiumRateQuestSp", 1);
 		final String[] premiumDropChanceMultiplier = premiumSystemConfig.getString("PremiumRateDropChanceByItemId", "").split(";");
-		PREMIUM_RATE_DROP_CHANCE_BY_ID = new HashMap<>(premiumDropChanceMultiplier.length);
+		PREMIUM_RATE_DROP_CHANCE_BY_ID = HashMap.newHashMap(premiumDropChanceMultiplier.length);
 		if (!premiumDropChanceMultiplier[0].isEmpty())
 		{
 			for (String item : premiumDropChanceMultiplier)
@@ -3308,7 +3308,7 @@ public class Config
 			}
 		}
 		final String[] premiumDropAmountMultiplier = premiumSystemConfig.getString("PremiumRateDropAmountByItemId", "").split(";");
-		PREMIUM_RATE_DROP_AMOUNT_BY_ID = new HashMap<>(premiumDropAmountMultiplier.length);
+		PREMIUM_RATE_DROP_AMOUNT_BY_ID = HashMap.newHashMap(premiumDropAmountMultiplier.length);
 		if (!premiumDropAmountMultiplier[0].isEmpty())
 		{
 			for (String item : premiumDropAmountMultiplier)
@@ -3608,7 +3608,7 @@ public class Config
 		DUALBOX_CHECK_MAX_OFFLINEPLAY_PREMIUM_PER_IP = dualboxCheckConfig.getInt("DualboxCheckMaxOfflinePlayPremiumPerIP", 0);
 		DUALBOX_COUNT_OFFLINE_TRADERS = dualboxCheckConfig.getBoolean("DualboxCountOfflineTraders", false);
 		final String[] dualboxCheckWhiteList = dualboxCheckConfig.getString("DualboxCheckWhitelist", "127.0.0.1,0").split(";");
-		DUALBOX_CHECK_WHITELIST = new HashMap<>(dualboxCheckWhiteList.length);
+		DUALBOX_CHECK_WHITELIST = HashMap.newHashMap(dualboxCheckWhiteList.length);
 		for (String entry : dualboxCheckWhiteList)
 		{
 			final String[] entrySplit = entry.split(",");
@@ -4110,9 +4110,9 @@ public class Config
 	
 	public static class ClassMasterSettings
 	{
-		private final Map<Integer, List<ItemHolder>> _claimItems = new HashMap<>(3);
-		private final Map<Integer, List<ItemHolder>> _rewardItems = new HashMap<>(3);
-		private final Map<Integer, Boolean> _allowedClassChange = new HashMap<>(3);
+		private final Map<Integer, List<ItemHolder>> _claimItems = HashMap.newHashMap(3);
+		private final Map<Integer, List<ItemHolder>> _rewardItems = HashMap.newHashMap(3);
+		private final Map<Integer, Boolean> _allowedClassChange = HashMap.newHashMap(3);
 		
 		public ClassMasterSettings(String configLine)
 		{

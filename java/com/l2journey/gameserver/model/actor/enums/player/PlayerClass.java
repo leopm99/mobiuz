@@ -182,10 +182,10 @@ public enum PlayerClass
 	private final PlayerClass _parentClass;
 	
 	/** List of available Class for next transfer **/
-	private final Set<PlayerClass> _nextClasses = new HashSet<>(1);
+	private final Set<PlayerClass> _nextClasses = HashSet.newHashSet(1);
 	
 	/** Map to store all PlayerClass instances by their ID */
-	private static Map<Integer, PlayerClass> _classMap = new HashMap<>(PlayerClass.values().length);
+	private static Map<Integer, PlayerClass> _classMap = HashMap.newHashMap(PlayerClass.values().length);
 	static
 	{
 		for (PlayerClass playerClass : PlayerClass.values())

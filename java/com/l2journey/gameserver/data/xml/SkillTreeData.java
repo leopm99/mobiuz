@@ -1206,7 +1206,7 @@ public class SkillTreeData implements IXmlReader
 		// Class-specific skills.
 		Map<Integer, SkillLearn> skillLearnMap;
 		final Set<PlayerClass> classIdSet = _classSkillTrees.keySet();
-		_skillsByClassIdHashCodes = new HashMap<>(classIdSet.size());
+		_skillsByClassIdHashCodes = HashMap.newHashMap(classIdSet.size());
 		for (PlayerClass classId : classIdSet)
 		{
 			index = 0;
@@ -1223,7 +1223,7 @@ public class SkillTreeData implements IXmlReader
 		
 		// Race-specific skills from Fishing and Transformation skill trees.
 		final List<Integer> skillHashList = new LinkedList<>();
-		_skillsByRaceHashCodes = new HashMap<>(Race.values().length);
+		_skillsByRaceHashCodes = HashMap.newHashMap(Race.values().length);
 		for (Race race : Race.values())
 		{
 			for (SkillLearn skillLearn : _fishingSkillTree.values())

@@ -354,7 +354,7 @@ public class EventsConfig
 		if (!olyRestrictedItems.isEmpty())
 		{
 			final String[] olyRestrictedItemsSplit = olyRestrictedItems.split(",");
-			LIST_OLY_RESTRICTED_ITEMS = new HashSet<>(olyRestrictedItemsSplit.length);
+			LIST_OLY_RESTRICTED_ITEMS = HashSet.newHashSet(olyRestrictedItemsSplit.length);
 			for (String id : olyRestrictedItemsSplit)
 			{
 				LIST_OLY_RESTRICTED_ITEMS.add(Integer.parseInt(id));

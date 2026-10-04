@@ -49,7 +49,7 @@ public class TransformTemplate
 	private Map<Integer, Double> _baseSpeed;
 	
 	private ExBasicActionList _list;
-	private final Map<Integer, TransformLevelData> _data = new LinkedHashMap<>(100);
+	private final Map<Integer, TransformLevelData> _data = LinkedHashMap.newLinkedHashMap(100);
 	
 	public TransformTemplate(StatSet set)
 	{

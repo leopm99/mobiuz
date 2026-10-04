@@ -69,7 +69,7 @@ public class KrateisCubeManager implements IXmlReader
 {
 	private static final Logger LOGGER = Logger.getLogger(KrateisCubeManager.class.getName());
 	
-	private final Map<Integer, KrateiArena> _arenas = new HashMap<>(3);
+	private final Map<Integer, KrateiArena> _arenas = HashMap.newHashMap(3);
 	private Npc _manager = null;
 	private long _nextMatchTime;
 	private boolean _registerActive = false;

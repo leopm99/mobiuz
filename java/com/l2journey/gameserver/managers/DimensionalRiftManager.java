@@ -66,7 +66,7 @@ import com.l2journey.gameserver.network.serverpackets.NpcHtmlMessage;
 public class DimensionalRiftManager
 {
 	private static final Logger LOGGER = Logger.getLogger(DimensionalRiftManager.class.getName());
-	private final Map<Byte, Map<Byte, DimensionalRiftRoom>> _rooms = new HashMap<>(7);
+	private final Map<Byte, Map<Byte, DimensionalRiftRoom>> _rooms = HashMap.newHashMap(7);
 	private static final int DIMENSIONAL_FRAGMENT_ITEM_ID = 7079;
 	
 	public static DimensionalRiftManager getInstance()
@@ -110,7 +110,7 @@ public class DimensionalRiftManager
 				final boolean isBossRoom = rs.getByte("boss") > 0;
 				if (!_rooms.containsKey(type))
 				{
-					_rooms.put(type, new HashMap<>(9));
+					_rooms.put(type, HashMap.newHashMap(9));
 				}
 				
 				_rooms.get(type).put(room_id, new DimensionalRiftRoom(type, room_id, xMin, xMax, yMin, yMax, z1, z2, xT, yT, zT, isBossRoom));

@@ -97,8 +97,8 @@ public class Fort extends AbstractResidence
 	private final Collection<Spawn> _npcCommanders = ConcurrentHashMap.newKeySet();
 	private final Collection<Spawn> _specialEnvoys = ConcurrentHashMap.newKeySet();
 	
-	private final Map<Integer, Integer> _envoyCastles = new HashMap<>(2);
-	private final Set<Integer> _availableCastles = new HashSet<>(1);
+	private final Map<Integer, Integer> _envoyCastles = HashMap.newHashMap(2);
+	private final Set<Integer> _availableCastles = HashSet.newHashSet(1);
 	
 	/** Fortress Functions */
 	public static final int FUNC_TELEPORT = 1;

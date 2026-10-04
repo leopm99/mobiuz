@@ -540,7 +540,7 @@ public class PhantomCursedHunt
 		}
 		
 		List<Player> squad = buildSquad(cw);
-		Set<Integer> ids = new HashSet<>(squad.size());
+		Set<Integer> ids = HashSet.newHashSet(squad.size());
 		for (Player member : squad)
 		{
 			ids.add(member.getObjectId());
@@ -581,7 +581,7 @@ public class PhantomCursedHunt
 		}
 		
 		List<Player> squad = buildSquad(cw);
-		Set<Integer> ids = new HashSet<>(squad.size());
+		Set<Integer> ids = HashSet.newHashSet(squad.size());
 		for (Player member : squad)
 		{
 			ids.add(member.getObjectId());

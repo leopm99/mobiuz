@@ -449,7 +449,7 @@ public class StatSet
 		if (val != null)
 		{
 			final String[] splitVal = val.split(",");
-			result = new HashMap<>(splitVal.length + 1);
+			result = HashMap.newHashMap(splitVal.length + 1);
 			for (String split : splitVal)
 			{
 				final String[] entry = split.split("-");
@@ -458,7 +458,7 @@ public class StatSet
 		}
 		else
 		{
-			result = new HashMap<>(1);
+			result = HashMap.newHashMap(1);
 		}
 		return result;
 	}
