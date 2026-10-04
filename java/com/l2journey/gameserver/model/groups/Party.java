@@ -899,7 +899,6 @@ public class Party extends AbstractPlayerGroup
 				}
 				if (i >= BONUS_EXP_SP.length)
 				{
-					i = BONUS_EXP_SP.length - 1;
 				}
 				for (Player member : members)
 				{

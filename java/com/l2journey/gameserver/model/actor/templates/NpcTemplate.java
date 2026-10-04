@@ -869,7 +869,6 @@ public class NpcTemplate extends CreatureTemplate
 			if (randomDrops != null)
 			{
 				randomDrops.clear();
-				randomDrops = null;
 			}
 			
 			// champion extra drop
@@ -973,7 +972,6 @@ public class NpcTemplate extends CreatureTemplate
 		if (randomDrops != null)
 		{
 			randomDrops.clear();
-			randomDrops = null;
 		}
 		
 		// champion extra drop

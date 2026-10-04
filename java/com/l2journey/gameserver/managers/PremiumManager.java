@@ -139,7 +139,6 @@ public class PremiumManager
 		if (task != null)
 		{
 			task.cancel(false);
-			task = null;
 		}
 	}
 	

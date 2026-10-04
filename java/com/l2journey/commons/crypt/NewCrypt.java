@@ -138,7 +138,6 @@ public class NewCrypt
 		ecx = raw[i] & 0xff;
 		ecx |= (raw[i + 1] << 8) & 0xff00;
 		ecx |= (raw[i + 2] << 0x10) & 0xff0000;
-		ecx |= (raw[i + 3] << 0x18) & 0xff000000;
 		
 		raw[i] = (byte) (chksum & 0xff);
 		raw[i + 1] = (byte) ((chksum >> 0x08) & 0xff);

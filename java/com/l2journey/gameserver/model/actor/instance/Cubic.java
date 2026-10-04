@@ -539,7 +539,6 @@ public class Cubic
 				// Shield Deflect Magic: If target is reflecting the skill then no damage is done.
 				if (target.getStat().calcStat(Stat.VENGEANCE_SKILL_MAGIC_DAMAGE, 0, target, skill) > Rnd.get(100))
 				{
-					damage = 0;
 				}
 				else
 				{
