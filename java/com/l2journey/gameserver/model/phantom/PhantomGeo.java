@@ -8,7 +8,10 @@ import com.l2journey.gameserver.model.actor.Creature;
 public class PhantomGeo
 {
 	private static final int DEFAULT_GEO_INDEX = 0;
-	
+	private PhantomGeo()
+	{
+	}
+
 	public static boolean canMove(Creature cha, int x, int y, int z)
 	{
 		return GeoData.getInstance().canMove(cha.getX(), cha.getY(), cha.getZ(), x, y, z, DEFAULT_GEO_INDEX);

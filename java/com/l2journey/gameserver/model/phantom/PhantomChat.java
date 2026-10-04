@@ -58,7 +58,10 @@ public class PhantomChat
 		"esta zona esta tranquila",
 		"necesito mejorar el arma pronto"
 	};
-	
+	private PhantomChat()
+	{
+	}
+
 	public static void botReply(Player bot, Player sender, String text, boolean isPrivate)
 	{
 		if (isPrivate && (sender != null))

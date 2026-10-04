@@ -38,7 +38,10 @@ public class Rnd
 	private static final int MINIMUM_POSITIVE_INT = 1;
 	private static final long MINIMUM_POSITIVE_LONG = 1L;
 	private static final double MINIMUM_POSITIVE_DOUBLE = Double.longBitsToDouble(0x1L);
-	
+	private Rnd()
+	{
+	}
+
 	/**
 	 * @return a random boolean value.
 	 */

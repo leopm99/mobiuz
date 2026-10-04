@@ -46,7 +46,10 @@ import com.l2journey.gameserver.network.serverpackets.ShowBoard;
 public class HtmlUtil
 {
 	private static final Logger LOGGER = Logger.getLogger(HtmlUtil.class.getName());
-	
+	private HtmlUtil()
+	{
+	}
+
 	/**
 	 * Generates an HTML representation of the CP (Combat Points) gauge. The gauge visually represents the current CP value relative to its maximum, displayed as either a percentage or a fraction.
 	 * @param width the width of the gauge, which determines its horizontal size

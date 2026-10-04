@@ -146,7 +146,10 @@ public class RecoBonus
 			50
 		}
 	};
-	
+	private RecoBonus()
+	{
+	}
+
 	public static int getRecoBonus(Player player)
 	{
 		if ((player != null) && player.isOnline() && (player.getRecomHave() != 0) && (player.getNevitHourglassTime() > 0))

@@ -28,7 +28,10 @@ public class PhantomWalk
 	private static final long FARM_DURATION = 45 * 60 * 1000; // 45 minutos farmando
 	private static final long TOWN_DURATION = 5 * 60 * 1000; // 5 minutos na cidade
 	private static final long TIME_QUIETO_TOWN = 2 * 60 * 1000; // 2 minutos parado entre caminhadas
-	
+	private PhantomWalk()
+	{
+	}
+
 	public static void update(Player bot, boolean skipTownVisit)
 	{
 		if ((bot == null) || bot.isDead())

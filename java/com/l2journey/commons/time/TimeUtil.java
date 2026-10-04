@@ -39,6 +39,10 @@ import java.util.Date;
  */
 public class TimeUtil
 {
+	private TimeUtil()
+	{
+	}
+
 	/**
 	 * Parses a string duration (e.g., "5days", "2hours") into a {@link Duration} object.
 	 * @param durationString the string representing the duration with a numeric value and time unit (e.g., "5days", "10hours", "2weeks").

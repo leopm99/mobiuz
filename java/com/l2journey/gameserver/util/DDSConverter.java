@@ -40,7 +40,10 @@ import javax.imageio.ImageIO;
 public class DDSConverter
 {
 	private static final Logger LOGGER = Logger.getLogger(DDSConverter.class.getName());
-	
+	private DDSConverter()
+	{
+	}
+
 	protected static class Color
 	{
 		@Override

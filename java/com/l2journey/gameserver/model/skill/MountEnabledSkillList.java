@@ -35,7 +35,10 @@ public class MountEnabledSkillList
 {
 	private static final int STRIDER_SIEGE_ASSAULT = 325;
 	private static final int WYVERN_BREATH = 4289;
-	
+	private MountEnabledSkillList()
+	{
+	}
+
 	public static boolean contains(int skillId)
 	{
 		return (skillId == STRIDER_SIEGE_ASSAULT) || (skillId == WYVERN_BREATH);

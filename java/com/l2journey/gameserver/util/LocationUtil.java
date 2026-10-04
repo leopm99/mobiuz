@@ -40,6 +40,10 @@ import com.l2journey.gameserver.model.interfaces.ILocational;
  */
 public class LocationUtil
 {
+	private LocationUtil()
+	{
+	}
+
 	/**
 	 * Calculates the angle between two locations, with the first location as the origin.
 	 * @param origin the origin location

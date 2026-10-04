@@ -107,6 +107,10 @@ public class PhantomGenerator
 	// --------------------------------------------------------------------------
 	// LOGICA PRINCIPAL DE CRIACAO
 	// --------------------------------------------------------------------------
+	private PhantomGenerator()
+	{
+	}
+
 	public static void createInGame(int cantidad, Player gm)
 	{
 		Random rnd = new Random();

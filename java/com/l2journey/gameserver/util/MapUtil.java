@@ -70,4 +70,8 @@ public class MapUtil
 	{
 		return map.entrySet().stream().sorted(Entry.comparingByValue()).collect(Collectors.toMap(Entry::getKey, Entry::getValue, (e1, _) -> e1, LinkedHashMap::new));
 	}
+	private MapUtil()
+	{
+	}
+
 }

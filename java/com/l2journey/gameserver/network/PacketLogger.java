@@ -28,7 +28,10 @@ import java.util.logging.Logger;
 public class PacketLogger
 {
 	private static final Logger LOGGER = Logger.getLogger(PacketLogger.class.getName());
-	
+	private PacketLogger()
+	{
+	}
+
 	public static synchronized void warning(String message)
 	{
 		LOGGER.warning(message);

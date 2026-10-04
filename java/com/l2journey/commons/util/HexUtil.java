@@ -34,6 +34,10 @@ package com.l2journey.commons.util;
  */
 public class HexUtil
 {
+	private HexUtil()
+	{
+	}
+
 	/**
 	 * Generates a byte array of the specified size filled with random non-zero values.
 	 * @param size the size of the byte array to generate

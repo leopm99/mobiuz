@@ -36,6 +36,10 @@ import com.l2journey.gameserver.model.actor.Player;
  */
 public class Statistics
 {
+	private Statistics()
+	{
+	}
+
 	public static int getRealOnline()
 	{
 		int counter = 0;

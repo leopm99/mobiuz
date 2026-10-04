@@ -35,6 +35,10 @@ package com.l2journey.gameserver.util;
  */
 public class MathUtil
 {
+	private MathUtil()
+	{
+	}
+
 	/**
 	 * Adds two byte values.
 	 * @param a the first byte value

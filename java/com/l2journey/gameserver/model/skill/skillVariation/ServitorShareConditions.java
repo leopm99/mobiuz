@@ -37,6 +37,10 @@ import com.l2journey.gameserver.model.effects.EffectFlag;
  */
 public final class ServitorShareConditions
 {
+	private ServitorShareConditions()
+	{
+	}
+
 	/**
 	 * Gets max recoverable MP considering Servitor Share effect
 	 * @param creature the target creature

@@ -30,7 +30,10 @@ public class PhantomHuntingSpots
 	private static final Map<Integer, List<Location>> SPOTS_BY_LEVEL = new HashMap<>();
 	
 	private static boolean _loaded = false;
-	
+	private PhantomHuntingSpots()
+	{
+	}
+
 	public static synchronized void load()
 	{
 		if (_loaded)

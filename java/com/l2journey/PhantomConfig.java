@@ -37,7 +37,10 @@ public class PhantomConfig
 	
 	public static final List<Integer> PHANTOM_IDS = new ArrayList<>();
 	public static final List<FarmZone> ROUTES = new ArrayList<>();
-	
+	private PhantomConfig()
+	{
+	}
+
 	public static class FarmZone
 	{
 		public int minLvl, maxLvl, spotX, spotY, spotZ, townX, townY, townZ;

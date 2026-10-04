@@ -33,7 +33,10 @@ public class State
 	public static final byte CREATED = 0;
 	public static final byte STARTED = 1;
 	public static final byte COMPLETED = 2;
-	
+	private State()
+	{
+	}
+
 	/**
 	 * Get the quest state's string representation from its byte value.
 	 * @param state the byte value of the state

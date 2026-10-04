@@ -1609,7 +1609,10 @@ public class Config
 	public static byte[] HEX_ID;
 	public static boolean ENABLE_GUI;
 	public static boolean DARK_THEME;
-	
+	private Config()
+	{
+	}
+
 	/**
 	 * Esta classe inicializa todas as variaveis globais para configuracao.<br>
 	 * Se a chave nao aparecer no arquivo de propriedades, um valor padrao e definido por esta classe.

@@ -39,6 +39,10 @@ import java.util.StringTokenizer;
  */
 public class StringUtil
 {
+	private StringUtil()
+	{
+	}
+
 	/**
 	 * Appends a string to a given StringBuilder.<br>
 	 * This method avoids the unnecessary use of `public static void append(StringBuilder sb, String... args)`,<br>

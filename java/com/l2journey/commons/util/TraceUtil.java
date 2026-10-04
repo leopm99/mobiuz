@@ -38,6 +38,10 @@ import java.util.StringJoiner;
  */
 public class TraceUtil
 {
+	private TraceUtil()
+	{
+	}
+
 	/**
 	 * Returns the stack trace of a throwable as a String.
 	 * @param throwable the throwable whose stack trace is needed

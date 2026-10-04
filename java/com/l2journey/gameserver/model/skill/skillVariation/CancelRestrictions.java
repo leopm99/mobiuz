@@ -37,7 +37,10 @@ public class CancelRestrictions
 {
 	private static final int TOUCH_OF_LIFE = 341;
 	private static final int TOUCH_OF_EVA = 787;
-	
+	private CancelRestrictions()
+	{
+	}
+
 	/**
 	 * Filtro para as skills que dao imunidade ao cancel ou protecao 100%.<br>
 	 * [341] Touch of Life.<br>
