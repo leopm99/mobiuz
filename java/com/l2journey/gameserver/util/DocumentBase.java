@@ -750,7 +750,7 @@ public abstract class DocumentBase
 				case "class_id_restriction":
 				{
 					final StringTokenizer st = new StringTokenizer(a.getNodeValue(), ",");
-					final Set<Integer> array = new HashSet<>(st.countTokens());
+					final Set<Integer> array = HashSet.newHashSet(st.countTokens());
 					while (st.hasMoreTokens())
 					{
 						final String item = st.nextToken().trim();
@@ -768,7 +768,7 @@ public abstract class DocumentBase
 				case "instanceid":
 				{
 					final StringTokenizer st = new StringTokenizer(a.getNodeValue(), ",");
-					final Set<Integer> set = new HashSet<>(st.countTokens());
+					final Set<Integer> set = HashSet.newHashSet(st.countTokens());
 					while (st.hasMoreTokens())
 					{
 						final String item = st.nextToken().trim();
@@ -843,7 +843,7 @@ public abstract class DocumentBase
 					if (st.countTokens() == 3)
 					{
 						final String[] ids = st.nextToken().split(";");
-						final Set<Integer> npcIds = new HashSet<>(ids.length);
+						final Set<Integer> npcIds = HashSet.newHashSet(ids.length);
 						for (int index = 0; index < ids.length; index++)
 						{
 							npcIds.add(Integer.parseInt(getValue(ids[index], template)));
@@ -922,7 +922,7 @@ public abstract class DocumentBase
 				case "insidezoneid":
 				{
 					final StringTokenizer st = new StringTokenizer(a.getNodeValue(), ",");
-					final Set<Integer> set = new HashSet<>(st.countTokens());
+					final Set<Integer> set = HashSet.newHashSet(st.countTokens());
 					while (st.hasMoreTokens())
 					{
 						final String item = st.nextToken().trim();
@@ -948,7 +948,7 @@ public abstract class DocumentBase
 				case "categorytype":
 				{
 					final String[] values = a.getNodeValue().split(",");
-					final Set<CategoryType> array = new HashSet<>(values.length);
+					final Set<CategoryType> array = HashSet.newHashSet(values.length);
 					for (String value : values)
 					{
 						array.add(CategoryType.valueOf(getValue(value, null)));
@@ -1018,7 +1018,7 @@ public abstract class DocumentBase
 				case "class_id_restriction":
 				{
 					final StringTokenizer st = new StringTokenizer(a.getNodeValue(), ",");
-					final Set<Integer> set = new HashSet<>(st.countTokens());
+					final Set<Integer> set = HashSet.newHashSet(st.countTokens());
 					while (st.hasMoreTokens())
 					{
 						final String item = st.nextToken().trim();
@@ -1102,7 +1102,7 @@ public abstract class DocumentBase
 				case "npcid":
 				{
 					final StringTokenizer st = new StringTokenizer(a.getNodeValue(), ",");
-					final Set<Integer> set = new HashSet<>(st.countTokens());
+					final Set<Integer> set = HashSet.newHashSet(st.countTokens());
 					while (st.hasMoreTokens())
 					{
 						final String item = st.nextToken().trim();

@@ -92,7 +92,7 @@ public class Castle extends AbstractResidence
 	private SiegeZone _zone = null;
 	private ResidenceTeleportZone _teleZone;
 	private Clan _formerOwner = null;
-	private final Set<Artefact> _artefacts = new HashSet<>(1);
+	private final Set<Artefact> _artefacts = HashSet.newHashSet(1);
 	private final Map<Integer, CastleFunction> _function = new ConcurrentHashMap<>();
 	private int _ticketBuyCount = 0;
 	private boolean _isFirstMidVictory = false;

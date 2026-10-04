@@ -52,12 +52,12 @@ public class SkillLearn
 	private final int _getLevel;
 	private final boolean _autoGet;
 	private final int _levelUpSp;
-	private final Set<ItemHolder> _requiredItems = new HashSet<>(1);
+	private final Set<ItemHolder> _requiredItems = HashSet.newHashSet(1);
 	private final Set<Race> _races = EnumSet.noneOf(Race.class);
-	private final Set<SkillHolder> _preReqSkills = new HashSet<>(1);
+	private final Set<SkillHolder> _preReqSkills = HashSet.newHashSet(1);
 	private SocialClass _socialClass;
 	private final boolean _residenceSkill;
-	private final Set<Integer> _residenceIds = new HashSet<>(1);
+	private final Set<Integer> _residenceIds = HashSet.newHashSet(1);
 	private final List<SubClassData> _subClassLvlNumber = new ArrayList<>(1);
 	private final boolean _learnedByNpc;
 	private final boolean _learnedByFS;

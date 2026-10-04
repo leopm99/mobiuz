@@ -66,12 +66,12 @@ public class UndergroundColiseumManager implements IXmlReader
 {
 	private static final Logger LOGGER = Logger.getLogger(UndergroundColiseumManager.class.getName());
 	
-	private final Map<Integer, UCArena> _arenas = new HashMap<>(5);
+	private final Map<Integer, UCArena> _arenas = HashMap.newHashMap(5);
 	private boolean _isStarted = false;
 	private long _periodStartTime;
 	private long _periodEndTime;
 	private ScheduledFuture<?> _regTask = null;
-	private final Map<Integer, UCBestTeam> _bestTeams = new HashMap<>(5);
+	private final Map<Integer, UCBestTeam> _bestTeams = HashMap.newHashMap(5);
 	
 	protected UndergroundColiseumManager()
 	{

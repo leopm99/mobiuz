@@ -61,7 +61,7 @@ public class PlayerTemplate extends CreatureTemplate
 		_baseHpReg = new double[ExperienceData.getInstance().getMaxLevel()];
 		_baseMpReg = new double[ExperienceData.getInstance().getMaxLevel()];
 		_baseCpReg = new double[ExperienceData.getInstance().getMaxLevel()];
-		_baseSlotDef = new HashMap<>(12);
+		_baseSlotDef = HashMap.newHashMap(12);
 		_baseSlotDef.put(Inventory.PAPERDOLL_CHEST, set.getInt("basePDefchest", 0));
 		_baseSlotDef.put(Inventory.PAPERDOLL_LEGS, set.getInt("basePDeflegs", 0));
 		_baseSlotDef.put(Inventory.PAPERDOLL_HEAD, set.getInt("basePDefhead", 0));

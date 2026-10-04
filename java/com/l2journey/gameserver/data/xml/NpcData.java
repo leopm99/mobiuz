@@ -432,7 +432,7 @@ public class NpcData implements IXmlReader
 														{
 															if (clans == null)
 															{
-																clans = new HashSet<>(1);
+																clans = HashSet.newHashSet(1);
 															}
 															clans.add(getOrCreateClanId(clanListNode.getTextContent()));
 															break;
@@ -441,7 +441,7 @@ public class NpcData implements IXmlReader
 														{
 															if (ignoreClanNpcIds == null)
 															{
-																ignoreClanNpcIds = new HashSet<>(1);
+																ignoreClanNpcIds = HashSet.newHashSet(1);
 															}
 															ignoreClanNpcIds.add(Integer.parseInt(clanListNode.getTextContent()));
 															break;

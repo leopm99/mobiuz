@@ -204,7 +204,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 	
 	private final Map<ListenerRegisterType, Set<Integer>> _registeredIds = new ConcurrentHashMap<>();
 	private final Queue<AbstractEventListener> _listeners = new PriorityBlockingQueue<>();
-	private final Map<Predicate<Player>, String> _startCondition = new LinkedHashMap<>(1);
+	private final Map<Predicate<Player>, String> _startCondition = LinkedHashMap.newLinkedHashMap(1);
 	private final Map<String, List<QuestTimer>> _questTimers = new HashMap<>();
 	private TimerExecutor<String> _timerExecutor;
 	
