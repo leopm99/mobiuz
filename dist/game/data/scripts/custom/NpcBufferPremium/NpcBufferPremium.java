@@ -1155,9 +1155,8 @@ public class NpcBufferPremium extends Quest
 			target.setCurrentHp(maxHp);
 			target.setCurrentMp(maxMp);
 			
-			if (target instanceof Servitor)
+			if (target instanceof Servitor summon)
 			{
-				final Servitor summon = (Servitor) target;
 				summon.setLifeTimeRemaining(summon.getLifeTimeRemaining() + summon.getLifeTime());
 				player.sendPacket(new SetSummonRemainTime(summon.getLifeTime(), summon.getLifeTimeRemaining()));
 			}

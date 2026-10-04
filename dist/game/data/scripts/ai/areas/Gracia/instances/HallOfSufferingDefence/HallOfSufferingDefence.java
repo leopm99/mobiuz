@@ -382,9 +382,8 @@ public class HallOfSufferingDefence extends AbstractNpcAI
 	public String onEvent(String event, Npc npc, Player player)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof HSDWorld)
+		if (tmpworld instanceof HSDWorld world)
 		{
-			final HSDWorld world = (HSDWorld) tmpworld;
 			if (event.equalsIgnoreCase("spawnBossGuards"))
 			{
 				if (!world.klanikus.isInCombat() && !world.klodekus.isInCombat())
@@ -445,9 +444,8 @@ public class HallOfSufferingDefence extends AbstractNpcAI
 	public void onAttack(Npc npc, Player attacker, int damage, boolean isSummon, Skill skill)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof HSDWorld)
+		if (tmpworld instanceof HSDWorld world)
 		{
-			final HSDWorld world = (HSDWorld) tmpworld;
 			if (!world.isBossesAttacked)
 			{
 				world.isBossesAttacked = true;
@@ -480,7 +478,7 @@ public class HallOfSufferingDefence extends AbstractNpcAI
 					world.klanikus.doDie(attacker);
 					world.klodekus.doDie(attacker);
 				}
-				else if (((HSDWorld) tmpworld).klodekus.isDead())
+				else if (world.klodekus.isDead())
 				{
 					world.klodekus.setDead(false);
 					world.klodekus.doDie(attacker);
@@ -499,9 +497,8 @@ public class HallOfSufferingDefence extends AbstractNpcAI
 	public void onKill(Npc npc, Player player, boolean isSummon)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof HSDWorld)
+		if (tmpworld instanceof HSDWorld world)
 		{
-			final HSDWorld world = (HSDWorld) tmpworld;
 			
 			if (npc.getId() == TUMOR_ALIVE)
 			{

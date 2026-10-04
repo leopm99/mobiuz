@@ -415,9 +415,8 @@ public class HallOfErosionAttack extends AbstractNpcAI
 	public String onEvent(String event, Npc npc, Player player)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getPlayerWorld(player);
-		if (tmpworld instanceof HEAWorld)
+		if (tmpworld instanceof HEAWorld world)
 		{
-			final HEAWorld world = (HEAWorld) tmpworld;
 			if (event.startsWith("warp"))
 			{
 				Npc victim = null;
@@ -460,9 +459,8 @@ public class HallOfErosionAttack extends AbstractNpcAI
 	public void onAggroRangeEnter(Npc npc, Player player, boolean isSummon)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof HEAWorld)
+		if (tmpworld instanceof HEAWorld world)
 		{
-			final HEAWorld world = (HEAWorld) tmpworld;
 			if (npc.getId() == 18668)
 			{
 				for (int i = 0; i < getRandom(1, 4); i++)
@@ -478,9 +476,8 @@ public class HallOfErosionAttack extends AbstractNpcAI
 	public void onAttack(Npc npc, Player attacker, int damage, boolean isSummon, Skill skill)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof HEAWorld)
+		if (tmpworld instanceof HEAWorld world)
 		{
-			final HEAWorld world = (HEAWorld) tmpworld;
 			if (!world.isBossAttacked)
 			{
 				world.isBossAttacked = true;
@@ -512,9 +509,8 @@ public class HallOfErosionAttack extends AbstractNpcAI
 		}
 		
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof HEAWorld)
+		if (tmpworld instanceof HEAWorld world)
 		{
-			final HEAWorld world = (HEAWorld) tmpworld;
 			if (npc.getId() == TUMOR_ALIVE)
 			{
 				world.addTumorCount(1);
@@ -540,9 +536,8 @@ public class HallOfErosionAttack extends AbstractNpcAI
 	public void onKill(Npc npc, Player player, boolean isSummon)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof HEAWorld)
+		if (tmpworld instanceof HEAWorld world)
 		{
-			final HEAWorld world = (HEAWorld) tmpworld;
 			final Location loc = npc.getLocation();
 			if (npc.getId() == TUMOR_ALIVE)
 			{

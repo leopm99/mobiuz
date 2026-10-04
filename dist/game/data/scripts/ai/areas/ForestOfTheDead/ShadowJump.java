@@ -114,9 +114,9 @@ public class ShadowJump extends AbstractNpcAI
 			npc.broadcastInfo();
 			npc.setTarget(player);
 			
-			if (npc instanceof Attackable)
+			if (npc instanceof Attackable attackable)
 			{
-				((Attackable) npc).addDamageHate(player, 0, 9999);
+				attackable.addDamageHate(player, 0, 9999);
 			}
 			
 			ThreadPool.schedule(() ->

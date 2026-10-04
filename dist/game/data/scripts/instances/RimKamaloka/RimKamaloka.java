@@ -388,9 +388,9 @@ public class RimKamaloka extends AbstractNpcAI
 				try
 				{
 					final InstanceWorld world = InstanceManager.getInstance().getWorld(npc.getInstanceId());
-					if ((world instanceof RimKamaWorld) && world.isAllowed(player))
+					if ((world instanceof RimKamaWorld rimKamaWorld) && world.isAllowed(player))
 					{
-						rewardPlayer((RimKamaWorld) world, npc);
+						rewardPlayer(rimKamaWorld, npc);
 					}
 				}
 				catch (Exception e)
@@ -523,9 +523,8 @@ public class RimKamaloka extends AbstractNpcAI
 		}
 		
 		final InstanceWorld tmpWorld = InstanceManager.getInstance().getWorld(npc.getInstanceId());
-		if (tmpWorld instanceof RimKamaWorld)
+		if (tmpWorld instanceof RimKamaWorld world)
 		{
-			final RimKamaWorld world = (RimKamaWorld) tmpWorld;
 			synchronized (world.lastAttack)
 			{
 				world.lastAttack.put(npc.getObjectId(), System.currentTimeMillis());
@@ -584,9 +583,8 @@ public class RimKamaloka extends AbstractNpcAI
 		}
 		
 		final InstanceWorld tmpWorld = InstanceManager.getInstance().getWorld(npc.getInstanceId());
-		if (tmpWorld instanceof RimKamaWorld)
+		if (tmpWorld instanceof RimKamaWorld world)
 		{
-			final RimKamaWorld world = (RimKamaWorld) tmpWorld;
 			synchronized (world.lastAttack)
 			{
 				world.lastAttack.remove(npc.getObjectId());

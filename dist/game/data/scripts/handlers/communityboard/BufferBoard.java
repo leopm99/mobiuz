@@ -738,9 +738,8 @@ public class BufferBoard implements IParseBoardHandler
 			target.setCurrentHp(maxHp);
 			target.setCurrentMp(maxMp);
 			
-			if (target instanceof Servitor)
+			if (target instanceof Servitor servitor)
 			{
-				final Servitor servitor = (Servitor) target;
 				servitor.setLifeTimeRemaining(servitor.getLifeTimeRemaining() + servitor.getLifeTime());
 				player.sendPacket(new SetSummonRemainTime(servitor.getLifeTime(), servitor.getLifeTimeRemaining()));
 			}

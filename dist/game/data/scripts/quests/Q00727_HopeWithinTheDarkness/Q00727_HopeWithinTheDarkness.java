@@ -302,9 +302,8 @@ public class Q00727_HopeWithinTheDarkness extends Quest
 	public String onFirstTalk(Npc npc, Player player)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(player);
-		if (tmpworld instanceof CAUWorld)
+		if (tmpworld instanceof CAUWorld world)
 		{
-			final CAUWorld world = (CAUWorld) tmpworld;
 			if (world.underAttack)
 			{
 				return "Victim-02.html";
@@ -440,9 +439,8 @@ public class Q00727_HopeWithinTheDarkness extends Quest
 		}
 		
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof CAUWorld)
+		if (tmpworld instanceof CAUWorld world)
 		{
-			final CAUWorld world = (CAUWorld) tmpworld;
 			if (ArrayUtil.contains(BOSSES, npc.getId()))
 			{
 				npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.NPC_GENERAL, npc.getId(), STRINGID_BOSS_DEATH));

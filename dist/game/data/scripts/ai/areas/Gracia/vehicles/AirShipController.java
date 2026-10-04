@@ -299,9 +299,9 @@ public abstract class AirShipController extends AbstractNpcAI
 	@Override
 	public void onEnterZone(Creature creature, ZoneType zone)
 	{
-		if ((creature instanceof ControllableAirShip) && (_dockedShip == null))
+		if ((creature instanceof ControllableAirShip controllableAirShip) && (_dockedShip == null))
 		{
-			_dockedShip = (ControllableAirShip) creature;
+			_dockedShip = controllableAirShip;
 			_dockedShip.setInDock(_dockZone);
 			_dockedShip.setOustLoc(_oustLoc);
 			

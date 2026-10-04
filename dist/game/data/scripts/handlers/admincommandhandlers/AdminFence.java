@@ -96,9 +96,8 @@ public class AdminFence implements IAdminCommandHandler
 					else
 					{
 						final WorldObject obj = World.getInstance().findObject(objId);
-						if (obj instanceof Fence)
+						if (obj instanceof Fence fence)
 						{
-							final Fence fence = (Fence) obj;
 							final FenceState state = FenceState.values()[fenceTypeOrdinal];
 							fence.setState(state);
 							activeChar.sendSysMessage("Fence " + fence.getName() + "[" + fence.getId() + "]'s state has been changed to " + state.toString());

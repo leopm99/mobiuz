@@ -103,9 +103,9 @@ public class Q00511_AwlUnderFoot extends Quest
 					spawnId = RAIDS3[getRandom(RAIDS3.length)];
 				}
 				final Npc raid = addSpawn(spawnId, 53319, 245814, -6576, 0, false, 0, false, _world.getInstanceId());
-				if (raid instanceof RaidBoss)
+				if (raid instanceof RaidBoss raidBoss)
 				{
-					((RaidBoss) raid).setUseRaidCurse(false);
+					raidBoss.setUseRaidCurse(false);
 				}
 			}
 			catch (Exception e)
@@ -373,9 +373,8 @@ public class Q00511_AwlUnderFoot extends Quest
 	public void onKill(Npc npc, Player player, boolean isSummon)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof FAUWorld)
+		if (tmpworld instanceof FAUWorld world)
 		{
-			final FAUWorld world = (FAUWorld) tmpworld;
 			if (ArrayUtil.contains(RAIDS3, npc.getId()))
 			{
 				final Party party = player.getParty();

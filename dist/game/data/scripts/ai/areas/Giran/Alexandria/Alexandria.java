@@ -114,9 +114,9 @@ public class Alexandria extends AbstractNpcAI
 					{
 						giveItems(player, agathion);
 						htmltext = "30098-03.html";
-						if (agathion instanceof AdditionalItemChanceHolder)
+						if (agathion instanceof AdditionalItemChanceHolder additionalItemChanceHolder)
 						{
-							giveItems(player, ((AdditionalItemChanceHolder) agathion).getAdditionalId(), 1);
+							giveItems(player, additionalItemChanceHolder.getAdditionalId(), 1);
 							htmltext = "30098-03a.html";
 						}
 					}

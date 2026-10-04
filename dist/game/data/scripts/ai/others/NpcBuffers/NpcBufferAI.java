@@ -163,9 +163,9 @@ public class NpcBufferAI implements Runnable
 			return false;
 		}
 		
-		if (target instanceof TamedBeast)
+		if (target instanceof TamedBeast tamedBeast)
 		{
-			return isEnemy(player, ((TamedBeast) target).getOwner());
+			return isEnemy(player, tamedBeast.getOwner());
 		}
 		
 		if (target.isMonster())
