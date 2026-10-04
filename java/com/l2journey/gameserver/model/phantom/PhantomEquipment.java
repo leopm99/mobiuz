@@ -20,7 +20,7 @@ public class PhantomEquipment
 	private static final long PROGRESSION_INTERVAL_MS = 10000L;
 	private static final Set<Integer> REPORTED_MISSING_ITEMS = ConcurrentHashMap.newKeySet();
 	private static final Map<Integer, Long> LAST_PROGRESSION_CHECK = new ConcurrentHashMap<>();
-	
+
 	// --- NO-GRADE (Nivel 1 ao 19) ---
 	private static final int[] MAGE_KIT_NG =
 	{
@@ -69,7 +69,7 @@ public class PhantomEquipment
 		39,
 		8187
 	};
-	
+
 	// --- GRAU D (Nivel 20 ao 39) ---
 	private static final int[] ROBE_KIT_D =
 	{
@@ -117,7 +117,7 @@ public class PhantomEquipment
 		913,
 		8187
 	};
-	
+
 	// --- GRAU C (Nivel 40 ao 51) ---
 	private static final int[] ROBE_KIT_C =
 	{
@@ -168,7 +168,7 @@ public class PhantomEquipment
 		888,
 		8187
 	};
-	
+
 	// --- GRAU B (Nivel 52 ao 60) ---
 	private static final int[] ROBE_KIT_B =
 	{
@@ -221,7 +221,7 @@ public class PhantomEquipment
 		496,
 		8187
 	};
-	
+
 	// --- GRAU A (Nivel 61 ao 75) ---
 	private static final int[] ROBE_KIT_A =
 	{
@@ -275,7 +275,7 @@ public class PhantomEquipment
 		8187,
 		14925
 	};
-	
+
 	// --- GRAU S (Nivel 76+) ---
 	private static final int[] ROBE_KIT_S =
 	{
@@ -333,7 +333,7 @@ public class PhantomEquipment
 		8187,
 		14929
 	};
-	
+
 	// --- GRAU S84 (Nivel 84+) ---
 	private static final int[] ROBE_KIT_S84 =
 	{
@@ -390,27 +390,27 @@ public class PhantomEquipment
 		8187,
 		14929
 	};
-	
+
 	// =========================================================
 	// 2. LOGICA PRINCIPAL DE PROGRESSAO
 	// =========================================================
-	
+
 	public static void checkProgression(Player bot)
 	{
 		if (!beginProgressionCheck(bot))
 		{
 			return;
 		}
-		
+
 		PhantomProgression.checkProgression(bot);
-		
+
 		updateGearByLevel(bot);
 		enforceEquipment(bot);
 		ensureShots(bot);
 		ensureArrows(bot);
 		limpiarMochila(bot);
 	}
-	
+
 	/**
 	 * Guard for gear progression: skips null bots, cursed-weapon holders, and checks within the throttle window.
 	 * @param bot the phantom
@@ -422,7 +422,7 @@ public class PhantomEquipment
 		{
 			return false;
 		}
-		
+
 		long now = System.currentTimeMillis();
 		int objectId = bot.getObjectId();
 		long last = LAST_PROGRESSION_CHECK.getOrDefault(objectId, 0L);
@@ -433,29 +433,29 @@ public class PhantomEquipment
 		LAST_PROGRESSION_CHECK.put(objectId, now);
 		return true;
 	}
-	
+
 	public static void unregisterBot(int objectId)
 	{
 		LAST_PROGRESSION_CHECK.remove(objectId);
 	}
-	
+
 	public static void clearRuntimeState()
 	{
 		LAST_PROGRESSION_CHECK.clear();
 	}
-	
+
 	private static int[] getActiveKit(Player bot)
 	{
 		boolean isMage = bot.isMageClass();
 		int lvl = bot.getLevel();
 		int[] baseKit;
-		
+
 		// Verificacao especial para armadura leve
 		boolean isLight = !isMage && isLightArmorClass(bot.getBaseClass());
-		
+
 		// Identificamos se o bot e raca Kamael (Classes 123 a 136)
 		boolean isKamael = (bot.getBaseClass() >= 123) && (bot.getBaseClass() <= 136);
-		
+
 		if (lvl >= 84)
 		{
 			baseKit = isMage ? ROBE_KIT_S84 : (isLight ? LIGHT_KIT_S84 : HEAVY_KIT_S84);
@@ -484,41 +484,35 @@ public class PhantomEquipment
 		{
 			baseKit = isMage ? MAGE_KIT_NG : (isKamael ? KAMAEL_KIT_NG : FIGHTER_KIT_NG); // CORRECAO AQUI
 		}
-		
+
 		if (!isMage && (lvl >= 20))
 		{
 			return customizeFighterKit(bot, baseKit, lvl);
 		}
-		
+
 		return baseKit;
 	}
-	
+
 	// Identificador para atribuir set Light a classes especificas
 	private static boolean isLightArmorClass(int classId)
 	{
 		switch (classId)
 		{
-			// Arqueiros (Hawkeye, Silver Ranger, Phantom Ranger, etc.)
-			case 9, 24, 37, 92, 102, 109:
-				// Adagueiros e Anoes FS/BH (Scavenger, Bounty Hunter, Treasure Hunter, etc.)
-			case 7, 8, 22, 23, 35, 36, 93, 101, 108, 54, 55, 117:
-				// Garras (Monk, Tyrant, Grand Khavatari)
-			case 47, 48, 114:
-				// Kamaels (Todas as classes de Kamael costumam usar Light)
-			case 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136:
+			// Arqueiros (Hawkeye, Silver Ranger, Phantom Ranger, etc.)  Adagueiros e Anoes FS/BH (Scavenger, Bounty Hunter, Treasure Hunter, etc.)  Garras (Monk, Tyrant, Grand Khavatari) Kamaels (Todas as classes de Kamael costumam usar Light)
+			case 9, 24, 37, 92, 102, 109, 7, 8, 22, 23, 35, 36, 93, 101, 108, 54, 55, 117, 47, 48, 114, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136:
 				return true;
 			default:
 				return false;
 		}
 	}
-	
+
 	private static int[] customizeFighterKit(Player bot, int[] originalKit, int lvl)
 	{
 		int classId = bot.getBaseClass();
 		int customWeaponId = originalKit[0];
 		int customShieldId = 0;
 		boolean isTwoHanded = false;
-		
+
 		switch (classId)
 		{
 			// === ARQUEIROS ===
@@ -549,7 +543,7 @@ public class PhantomEquipment
 					customWeaponId = 280; // Gust
 				}
 				break;
-			
+
 			// === ADAGUEIROS & FORTUNE SEEKERS ===
 			case 7, 8, 22, 23, 35, 36, 93, 101, 108, 54, 55, 117: // Scavenger, Bounty Hunter, Fortune Seeker
 				if (lvl >= 84)
@@ -577,7 +571,7 @@ public class PhantomEquipment
 					customWeaponId = 225; // Mithril Dagger
 				}
 				break;
-			
+
 			// === ESPADA DE DUAS MAOS (Destroyer, Titan) ===
 			case 45, 46, 113:
 				isTwoHanded = true;
@@ -606,7 +600,7 @@ public class PhantomEquipment
 					customWeaponId = 7881; // Zweihander
 				}
 				break;
-			
+
 			// === GARRAS (Monk, Tyrant, Grand Khavatari) ===
 			case 47, 48, 114:
 				isTwoHanded = true;
@@ -635,7 +629,7 @@ public class PhantomEquipment
 					customWeaponId = 7828; // Bagh-Nakh
 				}
 				break;
-			
+
 			// === LANCA (Warlord, Dreadnought) ===
 			case 3, 89:
 				isTwoHanded = true;
@@ -664,7 +658,7 @@ public class PhantomEquipment
 					customWeaponId = 297; // Glaive
 				}
 				break;
-			
+
 			// === ESPADAS DUPLAS (Gladiator, Duelist, Bladedancer, Spectral Dancer) ===
 			case 2, 88, 34, 107:
 				isTwoHanded = true;
@@ -693,7 +687,7 @@ public class PhantomEquipment
 					customWeaponId = 2516; // Saber * Saber
 				}
 				break;
-			
+
 			// === TANQUES (Humanos, Elfos, Elfos Negros) ===
 			case 1, 4, 5, 21, 6, 19, 20, 32, 33, 90, 91, 99, 106:
 				isTwoHanded = false;
@@ -728,7 +722,7 @@ public class PhantomEquipment
 					customShieldId = 2493;
 				} // Elven Long Sword + Kite Shield
 				break;
-			
+
 			// === MACHADO E ESCUDO (Artisan, Warsmith, Maestro) ===
 			case 56, 57, 118:
 				isTwoHanded = false;
@@ -763,7 +757,7 @@ public class PhantomEquipment
 					customShieldId = 2493;
 				} // Tomahawk + Kite Shield
 				break;
-			
+
 			// === KAMAEL - ANCIENT SWORD (Berserker, Doombringer) ===
 			case 127, 131:
 				isTwoHanded = true;
@@ -792,7 +786,7 @@ public class PhantomEquipment
 					customWeaponId = 7881; // Ironcleaver
 				}
 				break;
-			
+
 			// === KAMAEL - RAPIER (Soul Breaker, Soul Hound) ===
 			case 128, 129, 132, 133, 135:
 				isTwoHanded = false; // O Rapier permite escudo/sigilo
@@ -821,7 +815,7 @@ public class PhantomEquipment
 					customWeaponId = 9209; // Rapier
 				}
 				break;
-			
+
 			// === KAMAEL - CROSSBOW (Arbalester, Trickster) ===
 			case 130, 134:
 				isTwoHanded = true;
@@ -851,43 +845,43 @@ public class PhantomEquipment
 				}
 				break;
 		}
-		
+
 		// Montamos um novo Kit filtrando escudos se o bot usa armas de duas maos
 		List<Integer> newKit = new ArrayList<>();
 		newKit.add(customWeaponId); // Adicionamos a arma
-		
+
 		// Escudo so entra no kit se a arma nao for de duas maos
 		if (!isTwoHanded && (customShieldId != 0))
 		{
 			newKit.add(customShieldId);
 		}
-		
+
 		for (int i = 1; i < originalKit.length; i++)
 		{
 			int itemId = originalKit[i];
-			
+
 			if (isShield(itemId))
 			{
 				continue;
 			}
-			
+
 			newKit.add(itemId);
 		}
-		
+
 		int[] finalKit = new int[newKit.size()];
 		for (int i = 0; i < newKit.size(); i++)
 		{
 			finalKit[i] = newKit.get(i);
 		}
-		
+
 		return finalKit;
 	}
-	
+
 	public static void updateGearByLevel(Player bot)
 	{
 		int[] kitCorrecto = getActiveKit(bot);
 		boolean isKamael = ((bot.getBaseClass() >= 123) && (bot.getBaseClass() <= 136));
-		
+
 		// 1. Limpamos lixo
 		for (Item item : bot.getInventory().getItems())
 		{
@@ -896,11 +890,11 @@ public class PhantomEquipment
 			{
 				continue;
 			}
-			
+
 			boolean isShieldNg = (item.getId() == 19);
 			// Destroi se: Nao esta no kit, OU e Kamael e e o escudo ID 19 (Regra forcada)
 			boolean shouldDestroy = !isItemInKit(item.getId(), kitCorrecto) || (isKamael && isShieldNg);
-			
+
 			if (item.isEquipable() && shouldDestroy)
 			{
 				if (item.isEquipped())
@@ -910,14 +904,14 @@ public class PhantomEquipment
 				bot.destroyItem(ItemProcessType.DESTROY, item, bot, false);
 			}
 		}
-		
+
 		// 2. Montamos a lista do que falta
 		List<Integer> faltantes = new ArrayList<>();
 		for (int id : kitCorrecto)
 		{
 			faltantes.add(id);
 		}
-		
+
 		for (Item item : bot.getInventory().getItems())
 		{
 			if (item != null)
@@ -925,7 +919,7 @@ public class PhantomEquipment
 				faltantes.remove(Integer.valueOf(item.getId()));
 			}
 		}
-		
+
 		for (int itemId : faltantes)
 		{
 			if (ItemData.getInstance().getTemplate(itemId) == null)
@@ -936,11 +930,11 @@ public class PhantomEquipment
 				}
 				continue;
 			}
-			
+
 			bot.addItem(ItemProcessType.REWARD, itemId, 1, bot, false);
 		}
 	}
-	
+
 	private static boolean isItemInKit(int itemId, int[] kit)
 	{
 		for (int id : kit)
@@ -952,11 +946,11 @@ public class PhantomEquipment
 		}
 		return false;
 	}
-	
+
 	private static void enforceEquipment(Player bot)
 	{
 		int[] kitCorrecto = getActiveKit(bot);
-		
+
 		// ==========================================
 		// PASSO 1: Equipar Set, Joias e Armas PRIMEIRO
 		// ==========================================
@@ -965,12 +959,12 @@ public class PhantomEquipment
 			if ((item != null) && item.isEquipable() && isItemInKit(item.getId(), kitCorrecto))
 			{
 				int targetEnchant = 0;
-				
+
 				boolean isWeapon = item.isWeapon();
 				long slot = item.getTemplate().getBodyPart();
 				// Identificamos se e uma joia conforme o slot
 				boolean isJoya = (slot == 8) || (slot == 2) || (slot == 4) || (slot == 6) || (slot == 16) || (slot == 32) || (slot == 48);
-				
+
 				// Avaliamos o grau do item para atribuir o enchant correspondente
 				switch (item.getTemplate().getCrystalType())
 				{
@@ -988,7 +982,7 @@ public class PhantomEquipment
 							targetEnchant = 16; // Armor / Set
 						}
 						break;
-					
+
 					case D: // Grau D
 						if (isWeapon)
 						{
@@ -1003,7 +997,7 @@ public class PhantomEquipment
 							targetEnchant = 16; // Armor / Set
 						}
 						break;
-					
+
 					case C: // Grau C
 						if (isWeapon)
 						{
@@ -1018,7 +1012,7 @@ public class PhantomEquipment
 							targetEnchant = 16;
 						}
 						break;
-					
+
 					case B: // Grau B
 						if (isWeapon)
 						{
@@ -1033,7 +1027,7 @@ public class PhantomEquipment
 							targetEnchant = 16;
 						}
 						break;
-					
+
 					case A: // Grau A
 						if (isWeapon)
 						{
@@ -1048,7 +1042,7 @@ public class PhantomEquipment
 							targetEnchant = 16;
 						}
 						break;
-					
+
 					case S: // Grau S
 						if (isWeapon)
 						{
@@ -1063,7 +1057,7 @@ public class PhantomEquipment
 							targetEnchant = 16;
 						}
 						break;
-					
+
 					case S84: // Grau S84
 						if (isWeapon)
 						{
@@ -1078,18 +1072,18 @@ public class PhantomEquipment
 							targetEnchant = 16;
 						}
 						break;
-					
+
 					default:
 						targetEnchant = 0;
 						break;
 				}
-				
+
 				// Aplicamos o encantamento somente se o item precisar
 				if (item.getEnchantLevel() < targetEnchant)
 				{
 					item.setEnchantLevel(targetEnchant);
 				}
-				
+
 				// Equipamos o item (Arma/Roupa)
 				if (!item.isEquipped())
 				{
@@ -1097,17 +1091,17 @@ public class PhantomEquipment
 				}
 			}
 		}
-		
+
 		// ==========================================
 		// PASSO 2: Equipar Municao CORRETA EXATA
 		// ==========================================
 		int lvl = bot.getLevel();
 		int targetAmmoId = -1;
 		int classId = bot.getBaseClass();
-		
+
 		// Identificamos se e um arqueiro Kamael (Warder, Arbalester, Trickster)
 		boolean isKamaelArcher = ((classId == 126) || (classId == 130) || (classId == 134));
-		
+
 		if (isKamaelArcher)
 		{
 			if (lvl >= 84)
@@ -1139,7 +1133,7 @@ public class PhantomEquipment
 				targetAmmoId = 9632; // NG
 			}
 		}
-		
+
 		// Se e Kamael, buscamos EXATAMENTE sua municao correspondente e a equipamos
 		if (targetAmmoId != -1)
 		{
@@ -1155,11 +1149,11 @@ public class PhantomEquipment
 				}
 			}
 		}
-		
+
 		bot.getInventory().refreshWeight();
 		bot.broadcastUserInfo();
 	}
-	
+
 	public static void cleanInventory(Player bot)
 	{
 		if (bot.getInventory().getSize() > INVENTORY_CLEAN_LIMIT)
@@ -1174,17 +1168,17 @@ public class PhantomEquipment
 			}
 		}
 	}
-	
+
 	// =========================================================
 	// 3. GESTAO AUTOMATICA DE CONSUMIVEIS
 	// =========================================================
-	
+
 	private static void ensureShots(Player bot)
 	{
 		boolean isMage = bot.isMageClass();
 		int lvl = bot.getLevel();
 		int shotId;
-		
+
 		// IDs atualizados: Os magos agora recebem BLESSED Spiritshots (3947 a 3952)
 		if (lvl >= 76)
 		{
@@ -1210,20 +1204,20 @@ public class PhantomEquipment
 		{
 			shotId = isMage ? 3947 : 1835; // No-Grade (BSS: 3947 | SS: 1835)
 		}
-		
+
 		if (bot.getInventory().getInventoryItemCount(shotId, -1) < 500)
 		{
 			bot.addItem(ItemProcessType.REWARD, shotId, 2000, bot, false);
 		}
-		
+
 		if (!bot.getAutoSoulShot().contains(shotId))
 		{
 			bot.addAutoSoulShot(shotId);
 		}
-		
+
 		bot.sendPacket(new ExAutoSoulShot(shotId, 1));
 	}
-	
+
 	// --- SISTEMA INDEPENDENTE PARA AS FLECHAS E VIROTES ---
 	private static void ensureArrows(Player bot)
 	{
@@ -1232,15 +1226,15 @@ public class PhantomEquipment
 		boolean isArcher = ((classId == 9) || (classId == 24) || (classId == 37) || (classId == 92) || (classId == 102) || (classId == 109));
 		// Arqueiros Kamael (Usam Besta e Virotes)
 		boolean isKamaelArcher = ((classId == 130) || (classId == 134));
-		
+
 		if (!isArcher && !isKamaelArcher)
 		{
 			return;
 		}
-		
+
 		int lvl = bot.getLevel();
 		int ammoId;
-		
+
 		if (isKamaelArcher)
 		{
 			// Virotes (Bolts) para Bestas
@@ -1305,14 +1299,14 @@ public class PhantomEquipment
 				ammoId = 17; // Flechas NG
 			}
 		}
-		
+
 		// Se tiver menos de 500, damos 2000
 		if (bot.getInventory().getInventoryItemCount(ammoId, -1) < 500)
 		{
 			bot.addItem(ItemProcessType.REWARD, ammoId, 2000, bot, false);
 		}
 	}
-	
+
 	static boolean isShot(int itemId)
 	{
 		if (itemId == 728)
@@ -1323,31 +1317,31 @@ public class PhantomEquipment
 		{
 			return true; // Healing Potion
 		}
-		
+
 		return (// Soulshots (Fighters)
 		(itemId == 1835) || (itemId == 1463) || (itemId == 1464) || (itemId == 1465) || (itemId == 1466) || (itemId == 1467) || (// Spiritshots Normais (Caso tenha sobrado algum antigo no inventario)
 		itemId == 2509) || (itemId == 2510) || (itemId == 2511) || (itemId == 2512) || (itemId == 2513) || (itemId == 2514) || (// Blessed Spiritshots (Magos - Novos IDs para que nao sejam apagados)
 		itemId == 3947) || (itemId == 3948) || (itemId == 3949) || (itemId == 3950) || (itemId == 3951) || (itemId == 3952));
 	}
-	
+
 	// IDENTIFICADOR DE FLECHAS Y VOLT ---
 	static boolean isArrow(int itemId)
 	{
 		return ((itemId == 1341) || (itemId == 1342) || (itemId == 1343) || (itemId == 1344) || (itemId == 1345) || (itemId == 17) || (itemId == 9632) || (itemId == 9633) || (itemId == 9634) || (itemId == 9635) || (itemId == 9636) || (itemId == 9637));
 	}
-	
+
 	// IDENTIFICADOR DE ESCUDOS ---
 	private static boolean isShield(int id)
 	{
 		// Adicionado o ID 19 (Escudo No-Grade)
 		return (id == 19) || (id == 2493) || (id == 107) || (id == 110) || (id == 9441) || (id == 2498) || (id == 2497) || (id == 15587);
 	}
-	
+
 	private static void limpiarMochila(Player bot)
 	{
 		int lvl = bot.getLevel();
 		int ssValido, bssValido, arrowValido, boltValido;
-		
+
 		// 1. Definimos qual e o UNICO que deveria ter conforme seu grau atual
 		if (lvl >= 76)
 		{
@@ -1391,7 +1385,7 @@ public class PhantomEquipment
 			arrowValido = 17;
 			boltValido = 9632;
 		} // NG
-		
+
 		// 2. Revisamos item por item no inventario para apagar o lixo antigo
 		for (Item item : bot.getInventory().getItems())
 		{
@@ -1400,47 +1394,47 @@ public class PhantomEquipment
 				continue;
 			}
 			int id = item.getId();
-			
+
 			// Identificamos a qual categoria pertence o item
 			boolean esCualquierSS = ((id >= 1463) && (id <= 1467)) || (id == 1835);
 			boolean esCualquierBSS = ((id >= 3947) && (id <= 3952));
 			boolean esCualquierArrow = ((id >= 1341) && (id <= 1345)) || (id == 17);
 			boolean esCualquierBolt = ((id >= 9632) && (id <= 9637));
-			
+
 			// Se e um Shot ou Municao MAS NAO e o valido do seu grau, destruimos
 			if ((esCualquierSS && (id != ssValido)) || (esCualquierBSS && (id != bssValido)) || (esCualquierArrow && (id != arrowValido)) || (esCualquierBolt && (id != boltValido)))
 			{
 				bot.getInventory().destroyItemByItemId(ItemProcessType.NONE, id, item.getCount(), bot, null);
 			}
 		}
-		
+
 		// 3. --- CONTROLE DE EXCESSO DE PESO POR CONSUMIVEIS ---
 		int maxPots = 500;
-		
+
 		long hpPots = bot.getInventory().getInventoryItemCount(1539, -1); // Pocao HP
 		if (hpPots > maxPots)
 		{
 			bot.getInventory().destroyItemByItemId(ItemProcessType.NONE, 1539, hpPots - maxPots, bot, null);
 		}
-		
+
 		long mpPots = bot.getInventory().getInventoryItemCount(728, -1); // Pocao MP
 		if (mpPots > maxPots)
 		{
 			bot.getInventory().destroyItemByItemId(ItemProcessType.NONE, 728, mpPots - maxPots, bot, null);
 		}
-		
+
 		long spiritOre = bot.getInventory().getInventoryItemCount(3031, -1); // Spirit Ore
 		if (spiritOre > 1000)
 		{
 			bot.getInventory().destroyItemByItemId(ItemProcessType.NONE, 3031, spiritOre - 1000, bot, null);
 		}
-		
+
 		long soulOre = bot.getInventory().getInventoryItemCount(3030, -1); // Soul Ore
 		if (soulOre > 1000)
 		{
 			bot.getInventory().destroyItemByItemId(ItemProcessType.NONE, 3030, soulOre - 1000, bot, null);
 		}
-		
+
 		// 4. Atualizamos o peso
 		bot.getInventory().refreshWeight();
 		bot.broadcastUserInfo();
