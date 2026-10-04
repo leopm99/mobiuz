@@ -74,6 +74,7 @@ public final class LoversJubilee extends LongTimeEvent
 			{
 				if (getQuestItemsCount(player, Inventory.ADENA_ID) < ONE_ROSE_PRICE)
 				{
+					htmltext = "4305-024.html";
 				}
 				else
 				{
@@ -96,12 +97,15 @@ public final class LoversJubilee extends LongTimeEvent
 							break;
 						}
 					}
+					htmltext = "4305-023.html";
 				}
+				break;
 			}
 			case "50020_5", "50020_6", "50020_7":
 			{
 				if (getQuestItemsCount(player, Inventory.ADENA_ID) < TEN_ROSES_PRICE)
 				{
+					htmltext = "4305-024.html";
 				}
 				else
 				{
@@ -124,7 +128,9 @@ public final class LoversJubilee extends LongTimeEvent
 							break;
 						}
 					}
+					htmltext = "4305-023.html";
 				}
+				break;
 			}
 			case "50020_8":
 			{
@@ -174,6 +180,8 @@ public final class LoversJubilee extends LongTimeEvent
 						break;
 					}
 				}
+				htmltext = "4305-025.html";
+				break;
 			}
 			case "50020_15", "50020_16", "50020_17", "50020_18", "50020_19", "50020_20":
 			{
@@ -212,6 +220,7 @@ public final class LoversJubilee extends LongTimeEvent
 					}
 				}
 				htmltext = "4305-026.html";
+				break;
 			}
 		}
 		return htmltext;
