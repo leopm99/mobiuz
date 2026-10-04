@@ -322,12 +322,7 @@ public class SummonPc extends AbstractNpcAI
 	private boolean isValidSummonTarget(Player target)
 	{
 		// Evita pulls desde ciudad o zonas peace.
-		if ((target == null) || target.isDead() || !target.isOnline() || target.isInsideZone(ZoneId.PEACE))
-		{
-			return false;
-		}
-		
-		return true;
+		return !((target == null) || target.isDead() || !target.isOnline() || target.isInsideZone(ZoneId.PEACE));
 	}
 	
 	private void castSummonAndPull(Npc npc, Player target)
