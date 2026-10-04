@@ -26,9 +26,23 @@
 		</effects>
 	</skill>
 	<skill id="22302" levels="1" name="Sweet Chocolate - 4 hour">
-		<!-- For 4 hours, recovers energy when Exp. is acquired through hunting. -->
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<!-- For 4 hours, Vitality is replenished when Exp. is acquired through hunting. -->
+		<set name="icon" val="BranchSys.icon.br_valentine_darkchoco_i00" />
+		<set name="operateType" val="A2" />
+		<set name="targetType" val="SELF" />
+		<set name="abnormalLevel" val="3" />
+		<set name="abnormalTime" val="14400" />
+		<set name="abnormalType" val="VP_UP" />
+		<set name="abnormalVisualEffect" val="VP_UP" />
+		<set name="blockedInOlympiad" val="true" />
+		<set name="isMagic" val="2" /> <!-- Static Skill -->
+		<set name="magicLevel" val="-1" />
+		<set name="reuseDelay" val="3600000" />
+		<effects>
+			<effect name="Buff">
+				<sub stat="vitalityConsumeRate" val="10" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22303" levels="1" name="Party Cake">
 		<!-- Party Cake's Vitality effect. Maintains Vitality for 20 minutes. -->
@@ -965,12 +979,61 @@
 		<set name="targetType" val="NONE" />
 	</skill>
 	<skill id="22372" levels="1" name="Meteor">
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<!-- Crashes down meteors to inflict continuous fire damage near the enemy with 117 Power. For 10 seconds, inflicts continuous fire damage. -->
+		<set name="icon" val="icon.skill1467" />
+		<set name="operateType" val="A2" />
+		<set name="targetType" val="AREA" />
+		<set name="abnormalLevel" val="1" />
+		<set name="abnormalTime" val="10" />
+		<set name="abnormalType" val="METEOR" />
+		<set name="abnormalVisualEffect" val="DOT_BLEEDING" />
+		<set name="activateRate" val="40" />
+		<set name="affectLimit" val="10-10" />
+		<set name="affectRange" val="150" />
+		<set name="basicProperty" val="CON" />
+		<set name="castRange" val="600" />
+		<set name="effectPoint" val="-679" />
+		<set name="effectRange" val="1100" />
+		<set name="element" val="0" /> <!-- Fire -->
+		<set name="elementPower" val="20" />
+		<set name="hitTime" val="3000" />
+		<set name="isDebuff" val="true" />
+		<set name="isMagic" val="1" /> <!-- Magic Skill -->
+		<set name="lvlBonusRate" val="1" />
+		<set name="magicLevel" val="81" />
+		<set name="mpInitialConsume" val="72" />
+		<set name="power" val="117" />
+		<set name="reuseDelay" val="300000" />
+		<set name="trait" val="BLEED" />
+		<effects>
+			<effect name="MagicalDamage" />
+			<effect name="DamOverTime" ticks="3">
+				<param power="111" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22373" levels="1" name="Starfall">
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="operateType" val="A1" />
+		<set name="targetType" val="SELF" />
+		<set name="hitTime" val="1500" />
+		<set name="isMagic" val="2" /> <!-- Static Skill -->
+		<set name="itemConsumeCount" val="1" />
+		<set name="itemConsumeId" val="14192" /> <!-- Forgotten Scroll - Star Fall -->
+		<set name="magicLevel" val="1" />
+		<conditions msgId="113" addName="1">
+			<and>
+				<not>
+					<player active_skill_id="1468" />
+				</not>
+				<player class_id_restriction="103, 110" />
+				<player level="81" />
+			</and>
+		</conditions>
+		<effects>
+			<effect name="SetSkill">
+				<param skillId="1468" skillLevel="1" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22374" levels="1" name="Sweet Chocolate">
 		<!-- For 30 minutes, Vitality is replenished when Exp. is acquired through hunting. -->

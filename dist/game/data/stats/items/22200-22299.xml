@@ -960,12 +960,16 @@
 	<item id="22288" type="EtcItem" name="Juju Agathion Pack - Event">
 		<!-- Double click to receive a Juju Agathion. Cannot be exchanged, dropped, or destroyed. Can be stored in a private warehouse. -->
 		<set name="icon" val="icon.etc_pi_gift_box_i03" />
+		<set name="default_action" val="PEEL" />
+		<set name="immediate_effect" val="true" />
 		<set name="material" val="PAPER" />
 		<set name="weight" val="100" />
 		<set name="is_tradable" val="false" />
 		<set name="is_dropable" val="false" />
 		<set name="is_destroyable" val="false" />
 		<set name="is_stackable" val="true" />
+		<set name="handler" val="ExtractableItems" />
+		<set name="capsuled_items" val="14776,1,1,100" />
 	</item>
 	<item id="22289" type="EtcItem" name="Juju Agathion's Gift - Event">
 		<!-- Juju Agathion's gift. Double click to receive one random item. -->
