@@ -875,12 +875,9 @@ public class StatSet
 				return originalList.stream().map(Object::toString).map(Float::valueOf).map(clazz::cast).collect(Collectors.toList());
 			}
 		}
-		else if (clazz == Double.class)
+		else if ((clazz == Double.class) && (originalList.stream().map(Object::toString).allMatch(StringUtil::isDouble)))
 		{
-			if (originalList.stream().map(Object::toString).allMatch(StringUtil::isDouble))
-			{
-				return originalList.stream().map(Object::toString).map(Double::valueOf).map(clazz::cast).collect(Collectors.toList());
-			}
+			return originalList.stream().map(Object::toString).map(Double::valueOf).map(clazz::cast).collect(Collectors.toList());
 		}
 		return null;
 	}

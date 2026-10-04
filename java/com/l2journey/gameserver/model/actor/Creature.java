@@ -1009,12 +1009,9 @@ public abstract class Creature extends WorldObject
 				return false;
 			}
 		}
-		else if (isNpc())
+		else if ((isNpc()) && (_disableBowAttackEndTime > GameTimeTaskManager.getInstance().getGameTicks()))
 		{
-			if (_disableBowAttackEndTime > GameTimeTaskManager.getInstance().getGameTicks())
-			{
-				return false;
-			}
+			return false;
 		}
 		
 		return true;
@@ -5280,20 +5277,17 @@ public abstract class Creature extends WorldObject
 			final Weapon weapon = getActiveWeaponItem();
 			final boolean isBow = ((weapon != null) && ((weapon.getItemType() == WeaponType.BOW) || (weapon.getItemType() == WeaponType.CROSSBOW)));
 			int reflectedDamage = 0;
-			if (!isBow && !target.isInvul()) // Nao reflete se a arma for do tipo arco ou alvo for invulneravel
+			// correcao rapida para sem drop de raid se boss ataca personagem de alto nivel com reflexao de dano
+			if ((!isBow && !target.isInvul()) && (!target.isRaid() || (asPlayer() == null) || (asPlayer().getLevel() <= (target.getLevel() + 8)))) // Nao reflete se a arma for do tipo arco ou alvo for invulneravel
 			{
-				// correcao rapida para sem drop de raid se boss ataca personagem de alto nivel com reflexao de dano
-				if (!target.isRaid() || (asPlayer() == null) || (asPlayer().getLevel() <= (target.getLevel() + 8)))
+				// Reduz HP do alvo e calcula dano refletido para reduzir HP do atacante se necessario
+				final double reflectPercent = target.getStat().calcStat(Stat.REFLECT_DAMAGE_PERCENT, 0, null, null);
+				if (reflectPercent > 0)
 				{
-					// Reduz HP do alvo e calcula dano refletido para reduzir HP do atacante se necessario
-					final double reflectPercent = target.getStat().calcStat(Stat.REFLECT_DAMAGE_PERCENT, 0, null, null);
-					if (reflectPercent > 0)
+					reflectedDamage = (int) ((reflectPercent / 100.) * damage);
+					if (reflectedDamage > target.getMaxHp())
 					{
-						reflectedDamage = (int) ((reflectPercent / 100.) * damage);
-						if (reflectedDamage > target.getMaxHp())
-						{
-							reflectedDamage = target.getMaxHp();
-						}
+						reflectedDamage = target.getMaxHp();
 					}
 				}
 			}

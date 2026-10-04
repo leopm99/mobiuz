@@ -641,13 +641,10 @@ public class RecipeManager
 			}
 			
 			// Verifica se a receita atual possui producao rara.
-			if ((rareProdId != -1) && ((rareProdId == itemId) || Config.CRAFT_MASTERWORK))
+			if (((rareProdId != -1) && ((rareProdId == itemId) || Config.CRAFT_MASTERWORK)) && (Rnd.get(100) < (_recipeList.getRarity() * Config.CRAFT_MASTERWORK_CHANCE_RATE)))
 			{
-				if (Rnd.get(100) < (_recipeList.getRarity() * Config.CRAFT_MASTERWORK_CHANCE_RATE))
-				{
-					itemId = rareProdId;
-					itemCount = _recipeList.getRareCount();
-				}
+				itemId = rareProdId;
+				itemCount = _recipeList.getRareCount();
 			}
 			
 			_target.getInventory().addItem(ItemProcessType.CRAFT, itemId, itemCount, _target, _player);

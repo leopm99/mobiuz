@@ -602,12 +602,9 @@ public class Door extends Creature
 	@Override
 	public void reduceCurrentHp(double damage, Creature attacker, boolean awake, boolean isDOT, Skill skill)
 	{
-		if (isWall() && (getInstanceId() == 0))
+		if ((isWall() && (getInstanceId() == 0)) && (!attacker.isServitor() || (attacker.getTemplate().getRace() != Race.SIEGE_WEAPON)))
 		{
-			if (!attacker.isServitor() || (attacker.getTemplate().getRace() != Race.SIEGE_WEAPON))
-			{
-				return;
-			}
+			return;
 		}
 		
 		super.reduceCurrentHp(damage, attacker, awake, isDOT, skill);

@@ -88,12 +88,9 @@ public class CastleDoorman extends Doorman
 					return true;
 				}
 			}
-			else if (getCastle() != null)
+			else if ((getCastle() != null) && (player.getClanId() == getCastle().getOwnerId()))
 			{
-				if (player.getClanId() == getCastle().getOwnerId())
-				{
-					return true;
-				}
+				return true;
 			}
 		}
 		return false;

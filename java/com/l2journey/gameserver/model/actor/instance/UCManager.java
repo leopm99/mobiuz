@@ -110,14 +110,11 @@ public class UCManager extends Folk
 					return;
 				}
 				
-				if ((arena.getTeams()[0].getParty() != null) || (arena.getTeams()[1].getParty() != null))
+				if (((arena.getTeams()[0].getParty() != null) || (arena.getTeams()[1].getParty() != null)) && ((arena.getTeams()[0].getParty() == party) || (arena.getTeams()[1].getParty() == party)))
 				{
-					if ((arena.getTeams()[0].getParty() == party) || (arena.getTeams()[1].getParty() == party))
-					{
-						html.setFile(player, "data/html/undergroundColiseum/alreadyRegistered.htm");
-						player.sendPacket(html);
-						return;
-					}
+					html.setFile(player, "data/html/undergroundColiseum/alreadyRegistered.htm");
+					player.sendPacket(html);
+					return;
 				}
 				
 				int realCount = 0;

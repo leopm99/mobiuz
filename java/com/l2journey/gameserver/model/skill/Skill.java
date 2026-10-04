@@ -1149,14 +1149,11 @@ public class Skill
 				
 				final Party party = player.getParty();
 				final Party targetParty = targetPlayer.getParty();
-				if ((party != null) && (targetParty != null))
+				// Same party
+				// Same command channel
+				if (((party != null) && (targetParty != null)) && ((party.getLeaderObjectId() == targetParty.getLeaderObjectId()) || (party.isInCommandChannel() && (party.getCommandChannel() == targetParty.getCommandChannel()))))
 				{
-					// Same party
-					// Same command channel
-					if ((party.getLeaderObjectId() == targetParty.getLeaderObjectId()) || (party.isInCommandChannel() && (party.getCommandChannel() == targetParty.getCommandChannel())))
-					{
-						return false;
-					}
+					return false;
 				}
 				
 				if (player.isOnEvent() && !player.isOnSoloEvent() && targetPlayer.isOnEvent() && (player.getTeam() == target.getTeam()))

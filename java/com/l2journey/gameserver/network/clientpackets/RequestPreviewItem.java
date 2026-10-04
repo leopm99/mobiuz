@@ -209,12 +209,9 @@ public class RequestPreviewItem extends ClientPacket
 					}
 				}
 			}
-			else if (template instanceof Armor)
+			else if ((template instanceof Armor) && ((player.getRace().ordinal() == 5) && ((template.getItemType() == ArmorType.HEAVY) || (template.getItemType() == ArmorType.MAGIC))))
 			{
-				if ((player.getRace().ordinal() == 5) && ((template.getItemType() == ArmorType.HEAVY) || (template.getItemType() == ArmorType.MAGIC)))
-				{
-					continue;
-				}
+				continue;
 			}
 			
 			if (itemList.containsKey(slot))

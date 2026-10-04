@@ -182,13 +182,10 @@ public class AttackableAI extends CreatureAI
 		}
 		
 		// Verifica se o alvo nao e invulneravel
-		if (target.isInvul())
+		// Porem EffectInvincible requer verificar GMs especialmente
+		if ((target.isInvul()) && ((target.isPlayer() && target.isGM()) || (target.isSummon() && target.asSummon().getOwner().isGM())))
 		{
-			// Porem EffectInvincible requer verificar GMs especialmente
-			if ((target.isPlayer() && target.isGM()) || (target.isSummon() && target.asSummon().getOwner().isGM()))
-			{
-				return false;
-			}
+			return false;
 		}
 		
 		// Verifica se o alvo nao e um Folk ou uma Door
@@ -617,12 +614,9 @@ public class AttackableAI extends CreatureAI
 						continue;
 					}
 					
-					if (sk.getAbnormalType() == AbnormalType.LIFE_FORCE_OTHERS)
+					if ((sk.getAbnormalType() == AbnormalType.LIFE_FORCE_OTHERS) && (npc.getCurrentHp() >= npc.getMaxHp()))
 					{
-						if (npc.getCurrentHp() >= npc.getMaxHp())
-						{
-							continue;
-						}
+						continue;
 					}
 					
 					npc.setTarget(npc);
@@ -648,12 +642,9 @@ public class AttackableAI extends CreatureAI
 					continue;
 				}
 				
-				if (sk.getAbnormalType() == AbnormalType.LIFE_FORCE_OTHERS)
+				if ((sk.getAbnormalType() == AbnormalType.LIFE_FORCE_OTHERS) && (npc.getCurrentHp() >= npc.getMaxHp()))
 				{
-					if (npc.getCurrentHp() >= npc.getMaxHp())
-					{
-						continue;
-					}
+					continue;
 				}
 				
 				npc.setTarget(npc);

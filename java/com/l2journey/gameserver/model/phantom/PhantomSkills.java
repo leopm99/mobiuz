@@ -187,23 +187,17 @@ public class PhantomSkills
 		
 		if ((debuff != null) && (target != null) && !bot.isSkillDisabled(debuff) && (bot.getCurrentMp() >= debuff.getMpConsume()))
 		{
-			if (!target.isAffectedBySkill(debuff.getId()))
+			if ((!target.isAffectedBySkill(debuff.getId())) && ((debuff.getCastRange() > 0) && (LocationUtil.calculateDistance(bot, target, true, false) <= debuff.getCastRange())))
 			{
-				if ((debuff.getCastRange() > 0) && (LocationUtil.calculateDistance(bot, target, true, false) <= debuff.getCastRange()))
-				{
-					return debuff;
-				}
+				return debuff;
 			}
 		}
 		
 		if ((mainNuke != null) && !bot.isSkillDisabled(mainNuke) && (bot.getCurrentMp() >= mainNuke.getMpConsume()))
 		{
-			if ((target != null) && (mainNuke.getCastRange() > 0))
+			if (((target != null) && (mainNuke.getCastRange() > 0)) && (LocationUtil.calculateDistance(bot, target, true, false) > mainNuke.getCastRange()))
 			{
-				if (LocationUtil.calculateDistance(bot, target, true, false) > mainNuke.getCastRange())
-				{
-					return null;
-				}
+				return null;
 			}
 			return mainNuke;
 		}
@@ -295,20 +289,17 @@ public class PhantomSkills
 			for (int summonId : SUMMON_SKILL_IDS)
 			{
 				Skill summonSkill = bot.getKnownSkill(summonId);
-				if ((summonSkill != null) && !bot.isSkillDisabled(summonSkill))
+				if (((summonSkill != null) && !bot.isSkillDisabled(summonSkill)) && (bot.getCurrentMp() >= summonSkill.getMpConsume()))
 				{
-					if (bot.getCurrentMp() >= summonSkill.getMpConsume())
+					String key = bot.getObjectId() + "_summon";
+					long lastCast = CAST_TIMERS.getOrDefault(key, 0L);
+
+					if ((System.currentTimeMillis() - lastCast) > 10000)
 					{
-						String key = bot.getObjectId() + "_summon";
-						long lastCast = CAST_TIMERS.getOrDefault(key, 0L);
-						
-						if ((System.currentTimeMillis() - lastCast) > 10000)
-						{
-							CAST_TIMERS.put(key, System.currentTimeMillis());
-							bot.stopMove(null);
-							bot.getAI().setIntention(Intention.CAST, summonSkill, bot);
-							return true;
-						}
+						CAST_TIMERS.put(key, System.currentTimeMillis());
+						bot.stopMove(null);
+						bot.getAI().setIntention(Intention.CAST, summonSkill, bot);
+						return true;
 					}
 				}
 			}
@@ -339,20 +330,17 @@ public class PhantomSkills
 			for (int cubicId : CUBIC_SKILL_IDS)
 			{
 				Skill cubicSkill = bot.getKnownSkill(cubicId);
-				if ((cubicSkill != null) && !bot.isSkillDisabled(cubicSkill))
+				if (((cubicSkill != null) && !bot.isSkillDisabled(cubicSkill)) && (bot.getCurrentMp() >= cubicSkill.getMpConsume()))
 				{
-					if (bot.getCurrentMp() >= cubicSkill.getMpConsume())
+					String key = bot.getObjectId() + "_cubic_" + cubicId;
+					long lastCast = CAST_TIMERS.getOrDefault(key, 0L);
+
+					if ((System.currentTimeMillis() - lastCast) > 900000)
 					{
-						String key = bot.getObjectId() + "_cubic_" + cubicId;
-						long lastCast = CAST_TIMERS.getOrDefault(key, 0L);
-						
-						if ((System.currentTimeMillis() - lastCast) > 900000)
-						{
-							CAST_TIMERS.put(key, System.currentTimeMillis());
-							bot.stopMove(null);
-							bot.getAI().setIntention(Intention.CAST, cubicSkill, bot);
-							return true;
-						}
+						CAST_TIMERS.put(key, System.currentTimeMillis());
+						bot.stopMove(null);
+						bot.getAI().setIntention(Intention.CAST, cubicSkill, bot);
+						return true;
 					}
 				}
 			}
@@ -589,14 +577,11 @@ public class PhantomSkills
 			int rapidShotId = 99;
 			Skill rapidShot = bot.getKnownSkill(rapidShotId);
 			
-			if ((rapidShot != null) && !bot.isAffectedBySkill(rapidShotId) && !bot.isSkillDisabled(rapidShot))
+			if (((rapidShot != null) && !bot.isAffectedBySkill(rapidShotId) && !bot.isSkillDisabled(rapidShot)) && (bot.getCurrentMp() >= rapidShot.getMpConsume()))
 			{
-				if (bot.getCurrentMp() >= rapidShot.getMpConsume())
-				{
-					bot.stopMove(null);
-					bot.getAI().setIntention(Intention.CAST, rapidShot, bot);
-					return true;
-				}
+				bot.stopMove(null);
+				bot.getAI().setIntention(Intention.CAST, rapidShot, bot);
+				return true;
 			}
 		}
 		return false;
