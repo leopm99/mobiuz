@@ -279,7 +279,7 @@ public class ClassMaster extends Merchant
 						}
 					}
 					
-					if (menu.length() > 0)
+					if (!menu.isEmpty())
 					{
 						html.setFile(player, "data/html/classmaster/template.htm");
 						html.replace("%name%", ClassListData.getInstance().getClass(currentClassId).getClientCode());

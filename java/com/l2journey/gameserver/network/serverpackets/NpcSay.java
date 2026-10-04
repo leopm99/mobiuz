@@ -122,7 +122,7 @@ public class NpcSay extends ServerPacket
 			}
 			for (String item : params)
 			{
-				if ((item != null) && (item.length() > 0))
+				if ((item != null) && !item.isEmpty())
 				{
 					_parameters.add(item);
 				}

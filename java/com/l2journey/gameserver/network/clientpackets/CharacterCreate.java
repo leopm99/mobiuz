@@ -101,7 +101,7 @@ public class CharacterCreate extends ClientPacket
 		final GameClient client = getClient();
 		
 		// Last Verified: May 30, 2009 - Gracia Final - Players are able to create characters with names consisting of as little as 1,2,3 letter/number combinations.
-		if ((_name.length() < 1) || (_name.length() > 16))
+		if ((_name.isEmpty()) || (_name.length() > 16))
 		{
 			client.sendPacket(new CharCreateFail(CharCreateFail.REASON_16_ENG_CHARS));
 			return;

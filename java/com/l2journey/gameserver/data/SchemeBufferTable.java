@@ -156,7 +156,7 @@ public class SchemeBufferTable
 						}
 						
 						// Delete the last "," : must be called only if there is something to delete !
-						if (sb.length() > 0)
+						if (!sb.isEmpty())
 						{
 							sb.setLength(sb.length() - 1);
 						}

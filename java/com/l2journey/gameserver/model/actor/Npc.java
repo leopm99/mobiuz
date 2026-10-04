@@ -676,7 +676,7 @@ public class Npc extends Creature
 	{
 		if (canInteract(player))
 		{
-			if (_isBusy && (_busyMessage.length() > 0))
+			if (_isBusy && !_busyMessage.isEmpty())
 			{
 				player.sendPacket(ActionFailed.STATIC_PACKET);
 				
