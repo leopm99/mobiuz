@@ -1732,12 +1732,9 @@ public class NpcBufferPremium extends Quest
 					final int skillLevel = Integer.parseInt(eventParam2);
 					final Skill skill = SkillData.getInstance().getSkill(skillId, skillLevel);
 					
-					if (skill.hasEffectType(EffectType.SUMMON))
+					if ((skill.hasEffectType(EffectType.SUMMON)) && (getQuestItemsCount(player, skill.getItemConsumeId()) < skill.getItemConsumeCount()))
 					{
-						if (getQuestItemsCount(player, skill.getItemConsumeId()) < skill.getItemConsumeCount())
-						{
-							return showText(st, "Sorry", "You don't have the enough items:<br>You need: <font color=LEVEL>" + skill.getItemConsumeCount() + " " + getItemNameHtml(st, skill.getItemConsumeId()) + "!", false, "0", "0");
-						}
+						return showText(st, "Sorry", "You don't have the enough items:<br>You need: <font color=LEVEL>" + skill.getItemConsumeCount() + " " + getItemNameHtml(st, skill.getItemConsumeId()) + "!", false, "0", "0");
 					}
 					
 					final boolean petBuff = isPetBuff(st);
@@ -1950,16 +1947,13 @@ public class NpcBufferPremium extends Quest
 	@Override
 	public boolean showResult(Player player, String res)
 	{
-		if (Config.PREMIUM_SMART_WINDOW)
+		if ((Config.PREMIUM_SMART_WINDOW) && ((player != null) && (res != null) && res.startsWith("<html>")))
 		{
-			if ((player != null) && (res != null) && res.startsWith("<html>"))
-			{
-				final NpcHtmlMessage npcReply = new NpcHtmlMessage();
-				npcReply.setHtml(res);
-				player.sendPacket(npcReply);
-				player.sendPacket(ActionFailed.STATIC_PACKET);
-				return false;
-			}
+			final NpcHtmlMessage npcReply = new NpcHtmlMessage();
+			npcReply.setHtml(res);
+			player.sendPacket(npcReply);
+			player.sendPacket(ActionFailed.STATIC_PACKET);
+			return false;
 		}
 		return super.showResult(player, res);
 	}

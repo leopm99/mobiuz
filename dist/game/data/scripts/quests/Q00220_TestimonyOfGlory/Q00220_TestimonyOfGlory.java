@@ -1024,12 +1024,9 @@ public class Q00220_TestimonyOfGlory extends Quest
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == PREFECT_VOKIAN))
 		{
-			if (npc.getId() == PREFECT_VOKIAN)
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-			}
+			htmltext = getAlreadyCompletedMsg(player);
 		}
 		return htmltext;
 	}

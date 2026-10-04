@@ -437,28 +437,25 @@ public class HallOfErosionDefence extends AbstractNpcAI
 	public String onEvent(String event, Npc npc, Player player)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getPlayerWorld(player);
-		if (tmpworld instanceof HEDWorld world)
+		if ((tmpworld instanceof HEDWorld world) && (event.startsWith("warp")))
 		{
-			if (event.startsWith("warp"))
+			Npc victim = null;
+			victim = world.deadTumor;
+			if (victim != null)
 			{
-				Npc victim = null;
-				victim = world.deadTumor;
-				if (victim != null)
+				world.deadTumors.add(victim);
+			}
+
+			player.destroyItemByItemId(ItemProcessType.FEE, 13797, 1, player, true);
+			final Location loc = world.deadTumors.get(getRandom(world.deadTumors.size())).getLocation();
+			if (loc != null)
+			{
+				broadCastPacket(world, new ExShowScreenMessage(NpcStringId.S1_S_PARTY_HAS_MOVED_TO_A_DIFFERENT_LOCATION_THROUGH_THE_CRACK_IN_THE_TUMOR, 2, 8000));
+				for (Player partyMember : player.getParty().getMembers())
 				{
-					world.deadTumors.add(victim);
-				}
-				
-				player.destroyItemByItemId(ItemProcessType.FEE, 13797, 1, player, true);
-				final Location loc = world.deadTumors.get(getRandom(world.deadTumors.size())).getLocation();
-				if (loc != null)
-				{
-					broadCastPacket(world, new ExShowScreenMessage(NpcStringId.S1_S_PARTY_HAS_MOVED_TO_A_DIFFERENT_LOCATION_THROUGH_THE_CRACK_IN_THE_TUMOR, 2, 8000));
-					for (Player partyMember : player.getParty().getMembers())
+					if (partyMember.isInsideRadius3D(player, 500))
 					{
-						if (partyMember.isInsideRadius3D(player, 500))
-						{
-							partyMember.teleToLocation(loc, true);
-						}
+						partyMember.teleToLocation(loc, true);
 					}
 				}
 			}
@@ -481,16 +478,13 @@ public class HallOfErosionDefence extends AbstractNpcAI
 	public void onAggroRangeEnter(Npc npc, Player player, boolean isSummon)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof HEDWorld world)
+		if ((tmpworld instanceof HEDWorld world) && (npc.getId() == 18668))
 		{
-			if (npc.getId() == 18668)
+			for (int i = 0; i < getRandom(1, 4); i++)
 			{
-				for (int i = 0; i < getRandom(1, 4); i++)
-				{
-					addSpawn(mobs[getRandom(mobs.length)], npc.getLocation(), world.getInstanceId());
-				}
-				npc.deleteMe();
+				addSpawn(mobs[getRandom(mobs.length)], npc.getLocation(), world.getInstanceId());
 			}
+			npc.deleteMe();
 		}
 	}
 	
@@ -509,13 +503,10 @@ public class HallOfErosionDefence extends AbstractNpcAI
 		}
 		
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof HEDWorld world)
+		if ((tmpworld instanceof HEDWorld world) && (npc.getId() == TUMOR_DEAD))
 		{
-			if (npc.getId() == TUMOR_DEAD)
-			{
-				final int tag = world.getParameters().getInt("tag", -1);
-				world.setParameter("tag", tag + 1);
-			}
+			final int tag = world.getParameters().getInt("tag", -1);
+			world.setParameter("tag", tag + 1);
 		}
 	}
 	

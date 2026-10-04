@@ -581,12 +581,9 @@ public class Q00225_TestOfTheSearcher extends Quest
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == MASTER_LUTHER))
 		{
-			if (npc.getId() == MASTER_LUTHER)
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-			}
+			htmltext = getAlreadyCompletedMsg(player);
 		}
 		return htmltext;
 	}

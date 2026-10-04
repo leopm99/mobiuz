@@ -1037,12 +1037,9 @@ public class Q00214_TrialOfTheScholar extends Quest
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == MAGISTER_MIRIEN))
 		{
-			if (npc.getId() == MAGISTER_MIRIEN)
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-			}
+			htmltext = getAlreadyCompletedMsg(player);
 		}
 		return htmltext;
 	}

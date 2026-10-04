@@ -85,20 +85,14 @@ public class PartyClan implements ITargetTypeHandler
 			}
 			
 			// olympiad mode - adding only own side
-			if (player.isInOlympiadMode())
+			if ((player.isInOlympiadMode()) && (!obj.isInOlympiadMode() || (player.getOlympiadGameId() != obj.getOlympiadGameId()) || (player.getOlympiadSide() != obj.getOlympiadSide())))
 			{
-				if (!obj.isInOlympiadMode() || (player.getOlympiadGameId() != obj.getOlympiadGameId()) || (player.getOlympiadSide() != obj.getOlympiadSide()))
-				{
-					continue;
-				}
+				continue;
 			}
 			
-			if (player.isInDuel())
+			if ((player.isInDuel()) && ((player.getDuelId() != obj.getDuelId()) || (hasParty && obj.isInParty() && (player.getParty().getLeaderObjectId() != obj.getParty().getLeaderObjectId()))))
 			{
-				if ((player.getDuelId() != obj.getDuelId()) || (hasParty && obj.isInParty() && (player.getParty().getLeaderObjectId() != obj.getParty().getLeaderObjectId())))
-				{
-					continue;
-				}
+				continue;
 			}
 			
 			// Don't add this target if this is a Pc->Pc pvp

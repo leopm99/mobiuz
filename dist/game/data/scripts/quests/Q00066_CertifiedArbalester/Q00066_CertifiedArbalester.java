@@ -1000,18 +1000,15 @@ public class Q00066_CertifiedArbalester extends Quest
 				}
 			}
 		}
-		if (qs.isCompleted())
+		if ((qs.isCompleted()) && (npc.getId() == MASTER_RINDY))
 		{
-			if (npc.getId() == MASTER_RINDY)
+			if (player.getPlayerClass() == PlayerClass.ARBALESTER)
 			{
-				if (player.getPlayerClass() == PlayerClass.ARBALESTER)
-				{
-					htmltext = "32201-05.html";
-				}
-				else
-				{
-					htmltext = "32201-06.html";
-				}
+				htmltext = "32201-05.html";
+			}
+			else
+			{
+				htmltext = "32201-06.html";
 			}
 		}
 		return htmltext;

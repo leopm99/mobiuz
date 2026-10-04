@@ -606,12 +606,9 @@ public class Q00223_TestOfTheChampion extends Quest
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == VETERAN_ASCALON))
 		{
-			if (npc.getId() == VETERAN_ASCALON)
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-			}
+			htmltext = getAlreadyCompletedMsg(player);
 		}
 		return htmltext;
 	}

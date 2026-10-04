@@ -703,12 +703,9 @@ public class Q00218_TestimonyOfLife extends Quest
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == MASTER_CARDIEN))
 		{
-			if (npc.getId() == MASTER_CARDIEN)
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-			}
+			htmltext = getAlreadyCompletedMsg(player);
 		}
 		return htmltext;
 	}

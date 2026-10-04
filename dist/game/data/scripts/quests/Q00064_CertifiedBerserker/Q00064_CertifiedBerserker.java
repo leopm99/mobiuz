@@ -449,12 +449,9 @@ public class Q00064_CertifiedBerserker extends Quest
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == MASTER_ORKURUS))
 		{
-			if (npc.getId() == MASTER_ORKURUS)
-			{
-				htmltext = "32207-05.html";
-			}
+			htmltext = "32207-05.html";
 		}
 		return htmltext;
 	}

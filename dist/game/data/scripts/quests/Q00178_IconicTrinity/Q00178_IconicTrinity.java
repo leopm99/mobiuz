@@ -505,12 +505,9 @@ public class Q00178_IconicTrinity extends Quest
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == HIERARCH_KEKROPUS))
 		{
-			if (npc.getId() == HIERARCH_KEKROPUS)
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-			}
+			htmltext = getAlreadyCompletedMsg(player);
 		}
 		return htmltext;
 	}

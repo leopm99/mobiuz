@@ -415,28 +415,25 @@ public class HallOfErosionAttack extends AbstractNpcAI
 	public String onEvent(String event, Npc npc, Player player)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getPlayerWorld(player);
-		if (tmpworld instanceof HEAWorld world)
+		if ((tmpworld instanceof HEAWorld world) && (event.startsWith("warp")))
 		{
-			if (event.startsWith("warp"))
+			Npc victim = null;
+			victim = world.deadTumor;
+			if (victim != null)
 			{
-				Npc victim = null;
-				victim = world.deadTumor;
-				if (victim != null)
+				world.deadTumors.add(victim);
+			}
+
+			player.destroyItemByItemId(ItemProcessType.FEE, 13797, 1, player, true);
+			final Location loc = world.deadTumors.get(getRandom(world.deadTumors.size())).getLocation();
+			if (loc != null)
+			{
+				broadCastPacket(world, new ExShowScreenMessage(NpcStringId.S1_S_PARTY_HAS_MOVED_TO_A_DIFFERENT_LOCATION_THROUGH_THE_CRACK_IN_THE_TUMOR, 2, 8000));
+				for (Player partyMember : player.getParty().getMembers())
 				{
-					world.deadTumors.add(victim);
-				}
-				
-				player.destroyItemByItemId(ItemProcessType.FEE, 13797, 1, player, true);
-				final Location loc = world.deadTumors.get(getRandom(world.deadTumors.size())).getLocation();
-				if (loc != null)
-				{
-					broadCastPacket(world, new ExShowScreenMessage(NpcStringId.S1_S_PARTY_HAS_MOVED_TO_A_DIFFERENT_LOCATION_THROUGH_THE_CRACK_IN_THE_TUMOR, 2, 8000));
-					for (Player partyMember : player.getParty().getMembers())
+					if (partyMember.isInsideRadius3D(player, 500))
 					{
-						if (partyMember.isInsideRadius3D(player, 500))
-						{
-							partyMember.teleToLocation(loc, true);
-						}
+						partyMember.teleToLocation(loc, true);
 					}
 				}
 			}
@@ -459,16 +456,13 @@ public class HallOfErosionAttack extends AbstractNpcAI
 	public void onAggroRangeEnter(Npc npc, Player player, boolean isSummon)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof HEAWorld world)
+		if ((tmpworld instanceof HEAWorld world) && (npc.getId() == 18668))
 		{
-			if (npc.getId() == 18668)
+			for (int i = 0; i < getRandom(1, 4); i++)
 			{
-				for (int i = 0; i < getRandom(1, 4); i++)
-				{
-					addSpawn(mobs[getRandom(mobs.length)], npc.getLocation(), world.getInstanceId());
-				}
-				npc.doDie(npc);
+				addSpawn(mobs[getRandom(mobs.length)], npc.getLocation(), world.getInstanceId());
 			}
+			npc.doDie(npc);
 		}
 	}
 	
@@ -476,24 +470,21 @@ public class HallOfErosionAttack extends AbstractNpcAI
 	public void onAttack(Npc npc, Player attacker, int damage, boolean isSummon, Skill skill)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof HEAWorld world)
+		if ((tmpworld instanceof HEAWorld world) && (!world.isBossAttacked))
 		{
-			if (!world.isBossAttacked)
+			world.isBossAttacked = true;
+			final Calendar reenter = Calendar.getInstance();
+			reenter.add(Calendar.HOUR, INSTANCEPENALTY);
+
+			final SystemMessage sm = new SystemMessage(SystemMessageId.INSTANT_ZONE_S1_S_ENTRY_HAS_BEEN_RESTRICTED_YOU_CAN_CHECK_THE_NEXT_POSSIBLE_ENTRY_TIME_BY_USING_THE_COMMAND_INSTANCEZONE);
+			sm.addInstanceName(INSTANCEID);
+
+			for (Player player : tmpworld.getAllowed())
 			{
-				world.isBossAttacked = true;
-				final Calendar reenter = Calendar.getInstance();
-				reenter.add(Calendar.HOUR, INSTANCEPENALTY);
-				
-				final SystemMessage sm = new SystemMessage(SystemMessageId.INSTANT_ZONE_S1_S_ENTRY_HAS_BEEN_RESTRICTED_YOU_CAN_CHECK_THE_NEXT_POSSIBLE_ENTRY_TIME_BY_USING_THE_COMMAND_INSTANCEZONE);
-				sm.addInstanceName(INSTANCEID);
-				
-				for (Player player : tmpworld.getAllowed())
+				if ((player != null) && player.isOnline())
 				{
-					if ((player != null) && player.isOnline())
-					{
-						InstanceManager.getInstance().setInstanceTime(player.getObjectId(), INSTANCEID, reenter.getTimeInMillis());
-						player.sendPacket(sm);
-					}
+					InstanceManager.getInstance().setInstanceTime(player.getObjectId(), INSTANCEID, reenter.getTimeInMillis());
+					player.sendPacket(sm);
 				}
 			}
 		}

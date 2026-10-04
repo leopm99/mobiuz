@@ -313,15 +313,12 @@ public class NornilsGarden extends AbstractInstance
 	private void spawn1(Npc npc)
 	{
 		final InstanceWorld inst = InstanceManager.getInstance().getWorld(npc);
-		if (inst instanceof NornilsWorld world)
+		if ((inst instanceof NornilsWorld world) && (npc.equals(world.first_npc) && !world.spawned_1))
 		{
-			if (npc.equals(world.first_npc) && !world.spawned_1)
+			world.spawned_1 = true;
+			for (int[] mob : GROUP_1)
 			{
-				world.spawned_1 = true;
-				for (int[] mob : GROUP_1)
-				{
-					addSpawn(mob[0], mob[1], mob[2], mob[3], mob[4], false, 0, false, world.getInstanceId());
-				}
+				addSpawn(mob[0], mob[1], mob[2], mob[3], mob[4], false, 0, false, world.getInstanceId());
 			}
 		}
 	}
@@ -329,15 +326,12 @@ public class NornilsGarden extends AbstractInstance
 	private void spawn2(Npc npc)
 	{
 		final InstanceWorld inst = InstanceManager.getInstance().getWorld(npc);
-		if (inst instanceof NornilsWorld world)
+		if ((inst instanceof NornilsWorld world) && (!world.spawned_2))
 		{
-			if (!world.spawned_2)
+			world.spawned_2 = true;
+			for (int[] mob : GROUP_2)
 			{
-				world.spawned_2 = true;
-				for (int[] mob : GROUP_2)
-				{
-					addSpawn(mob[0], mob[1], mob[2], mob[3], mob[4], false, 0, false, world.getInstanceId());
-				}
+				addSpawn(mob[0], mob[1], mob[2], mob[3], mob[4], false, 0, false, world.getInstanceId());
 			}
 		}
 	}
@@ -345,15 +339,12 @@ public class NornilsGarden extends AbstractInstance
 	private void spawn3(Creature creature)
 	{
 		final InstanceWorld inst = InstanceManager.getInstance().getWorld(creature);
-		if (inst instanceof NornilsWorld world)
+		if ((inst instanceof NornilsWorld world) && (!world.spawned_3))
 		{
-			if (!world.spawned_3)
+			world.spawned_3 = true;
+			for (int[] mob : GROUP_3)
 			{
-				world.spawned_3 = true;
-				for (int[] mob : GROUP_3)
-				{
-					addSpawn(mob[0], mob[1], mob[2], mob[3], mob[4], false, 0, false, world.getInstanceId());
-				}
+				addSpawn(mob[0], mob[1], mob[2], mob[3], mob[4], false, 0, false, world.getInstanceId());
 			}
 		}
 	}
@@ -361,15 +352,12 @@ public class NornilsGarden extends AbstractInstance
 	private void spawn4(Creature creature)
 	{
 		final InstanceWorld inst = InstanceManager.getInstance().getWorld(creature);
-		if (inst instanceof NornilsWorld world)
+		if ((inst instanceof NornilsWorld world) && (!world.spawned_4))
 		{
-			if (!world.spawned_4)
+			world.spawned_4 = true;
+			for (int[] mob : GROUP_4)
 			{
-				world.spawned_4 = true;
-				for (int[] mob : GROUP_4)
-				{
-					addSpawn(mob[0], mob[1], mob[2], mob[3], mob[4], false, 0, false, world.getInstanceId());
-				}
+				addSpawn(mob[0], mob[1], mob[2], mob[3], mob[4], false, 0, false, world.getInstanceId());
 			}
 		}
 	}

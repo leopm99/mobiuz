@@ -1225,12 +1225,9 @@ public class Q00230_TestOfTheSummoner extends Quest
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == HIGH_SUMMONER_GALATEA))
 		{
-			if (npc.getId() == HIGH_SUMMONER_GALATEA)
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-			}
+			htmltext = getAlreadyCompletedMsg(player);
 		}
 		return htmltext;
 	}

@@ -184,13 +184,10 @@ public class Q00171_ActsOfEvil extends Quest
 								playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 							}
 						}
-						else if (hasQuestItems(killer, RANGERS_REPORT1, RANGERS_REPORT2, RANGERS_REPORT3) && !hasQuestItems(killer, RANGERS_REPORT4))
+						else if ((hasQuestItems(killer, RANGERS_REPORT1, RANGERS_REPORT2, RANGERS_REPORT3) && !hasQuestItems(killer, RANGERS_REPORT4)) && (getRandom(100) <= 19))
 						{
-							if (getRandom(100) <= 19)
-							{
-								giveItems(killer, RANGERS_REPORT4, 1);
-								playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-							}
+							giveItems(killer, RANGERS_REPORT4, 1);
+							playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 						}
 					}
 					break;
@@ -570,12 +567,9 @@ public class Q00171_ActsOfEvil extends Quest
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == GUARD_ALVAH))
 		{
-			if (npc.getId() == GUARD_ALVAH)
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-			}
+			htmltext = getAlreadyCompletedMsg(player);
 		}
 		return htmltext;
 	}

@@ -169,20 +169,17 @@ public class Q00625_TheFinestIngredientsPart2 extends Quest
 						htmltext = "31542-04.html";
 					}
 				}
-				else if (qs.isCond(2))
+				else if ((qs.isCond(2)) && (hasItem(player, FOOD_FOR_BUMBALUMP)))
 				{
-					if (hasItem(player, FOOD_FOR_BUMBALUMP))
+					if (!isBumbalumpSpawned())
 					{
-						if (!isBumbalumpSpawned())
-						{
-							takeItem(player, FOOD_FOR_BUMBALUMP);
-							addSpawn(ICICLE_EMPEROR_BUMBALUMP, ICICLE_EMPEROR_BUMBALUMP_LOC);
-							htmltext = event;
-						}
-						else
-						{
-							htmltext = "31542-03.html";
-						}
+						takeItem(player, FOOD_FOR_BUMBALUMP);
+						addSpawn(ICICLE_EMPEROR_BUMBALUMP, ICICLE_EMPEROR_BUMBALUMP_LOC);
+						htmltext = event;
+					}
+					else
+					{
+						htmltext = "31542-03.html";
 					}
 				}
 				break;

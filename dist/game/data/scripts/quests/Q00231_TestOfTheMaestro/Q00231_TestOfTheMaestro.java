@@ -469,12 +469,9 @@ public class Q00231_TestOfTheMaestro extends Quest
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == IRON_GATES_LOCKIRIN))
 		{
-			if (npc.getId() == IRON_GATES_LOCKIRIN)
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-			}
+			htmltext = getAlreadyCompletedMsg(player);
 		}
 		return htmltext;
 	}

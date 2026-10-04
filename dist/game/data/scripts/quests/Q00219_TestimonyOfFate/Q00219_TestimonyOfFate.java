@@ -688,12 +688,9 @@ public class Q00219_TestimonyOfFate extends Quest
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == MAGISTER_KAIRA))
 		{
-			if (npc.getId() == MAGISTER_KAIRA)
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-			}
+			htmltext = getAlreadyCompletedMsg(player);
 		}
 		return htmltext;
 	}

@@ -285,12 +285,9 @@ public class Q00062_PathOfTheTrooper extends Quest
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == MASTER_GWAIN))
 		{
-			if (npc.getId() == MASTER_GWAIN)
-			{
-				htmltext = "32197-05.html";
-			}
+			htmltext = "32197-05.html";
 		}
 		return htmltext;
 	}

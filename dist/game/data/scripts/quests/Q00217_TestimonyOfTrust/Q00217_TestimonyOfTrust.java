@@ -762,12 +762,9 @@ public class Q00217_TestimonyOfTrust extends Quest
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == HIGH_PRIEST_HOLLINT))
 		{
-			if (npc.getId() == HIGH_PRIEST_HOLLINT)
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-			}
+			htmltext = getAlreadyCompletedMsg(player);
 		}
 		return htmltext;
 	}

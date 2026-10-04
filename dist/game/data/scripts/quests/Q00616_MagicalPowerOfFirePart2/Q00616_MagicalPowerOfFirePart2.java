@@ -69,26 +69,23 @@ public class Q00616_MagicalPowerOfFirePart2 extends Quest
 	public void actionForEachPlayer(Player player, Npc npc, boolean isSummon)
 	{
 		final QuestState qs = getQuestState(player, false);
-		if ((qs != null) && LocationUtil.checkIfInRange(Config.ALT_PARTY_RANGE, npc, player, false))
+		if (((qs != null) && LocationUtil.checkIfInRange(Config.ALT_PARTY_RANGE, npc, player, false)) && (npc.getId() == NASTRON))
 		{
-			if (npc.getId() == NASTRON)
+			switch (qs.getCond())
 			{
-				switch (qs.getCond())
+				case 1: // take the item and give the heart
 				{
-					case 1: // take the item and give the heart
+					takeItems(player, RED_TOTEM, 1);
+					// break; fallthrough
+				}
+				case 2:
+				{
+					if (!hasQuestItems(player, NASTRON_HEART))
 					{
-						takeItems(player, RED_TOTEM, 1);
-						// break; fallthrough
+						giveItems(player, NASTRON_HEART, 1);
 					}
-					case 2:
-					{
-						if (!hasQuestItems(player, NASTRON_HEART))
-						{
-							giveItems(player, NASTRON_HEART, 1);
-						}
-						qs.setCond(3, true);
-						break;
-					}
+					qs.setCond(3, true);
+					break;
 				}
 			}
 		}

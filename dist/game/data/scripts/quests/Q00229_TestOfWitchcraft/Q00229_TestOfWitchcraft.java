@@ -793,12 +793,9 @@ public class Q00229_TestOfWitchcraft extends Quest
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == SHADOW_ORIM))
 		{
-			if (npc.getId() == SHADOW_ORIM)
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-			}
+			htmltext = getAlreadyCompletedMsg(player);
 		}
 		return htmltext;
 	}

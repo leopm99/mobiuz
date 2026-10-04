@@ -930,12 +930,9 @@ public class Q00221_TestimonyOfProsperity extends Quest
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == WAREHOUSE_KEEPER_PARMAN))
 		{
-			if (npc.getId() == WAREHOUSE_KEEPER_PARMAN)
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-			}
+			htmltext = getAlreadyCompletedMsg(player);
 		}
 		return htmltext;
 	}

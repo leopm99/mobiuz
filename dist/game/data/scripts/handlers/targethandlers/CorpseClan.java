@@ -79,12 +79,9 @@ public class CorpseClan implements ITargetTypeHandler
 						continue;
 					}
 					
-					if (player.isInDuel())
+					if ((player.isInDuel()) && ((player.getDuelId() != obj.getDuelId()) || (player.isInParty() && obj.isInParty() && (player.getParty().getLeaderObjectId() != obj.getParty().getLeaderObjectId()))))
 					{
-						if ((player.getDuelId() != obj.getDuelId()) || (player.isInParty() && obj.isInParty() && (player.getParty().getLeaderObjectId() != obj.getParty().getLeaderObjectId())))
-						{
-							continue;
-						}
+						continue;
 					}
 					
 					// Don't add this target if this is a Pc->Pc pvp casting and pvp condition not met

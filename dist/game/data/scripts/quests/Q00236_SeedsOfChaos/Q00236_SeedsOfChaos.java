@@ -1063,12 +1063,9 @@ public class Q00236_SeedsOfChaos extends Quest
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == HIERARCH_KEKROPUS))
 		{
-			if (npc.getId() == HIERARCH_KEKROPUS)
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-			}
+			htmltext = getAlreadyCompletedMsg(player);
 		}
 		return htmltext;
 	}

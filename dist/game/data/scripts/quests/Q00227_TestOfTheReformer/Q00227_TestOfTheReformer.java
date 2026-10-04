@@ -499,17 +499,14 @@ public class Q00227_TestOfTheReformer extends Quest
 							htmltext = "30666-06a.html";
 						}
 					}
-					else if (memoState == 18)
+					else if ((memoState == 18) && (hasQuestItems(player, KATARIS_LETTER, KAKANS_LETTER, NYAKURIS_LETTER, RAMUSS_LETTER)))
 					{
-						if (hasQuestItems(player, KATARIS_LETTER, KAKANS_LETTER, NYAKURIS_LETTER, RAMUSS_LETTER))
-						{
-							giveAdena(player, 226528, true);
-							giveItems(player, MARK_OF_REFORMER, 1);
-							addExpAndSp(player, 1252844, 85972);
-							qs.exitQuest(false, true);
-							player.sendPacket(new SocialAction(player.getObjectId(), 3));
-							htmltext = "30666-07.html";
-						}
+						giveAdena(player, 226528, true);
+						giveItems(player, MARK_OF_REFORMER, 1);
+						addExpAndSp(player, 1252844, 85972);
+						qs.exitQuest(false, true);
+						player.sendPacket(new SocialAction(player.getObjectId(), 3));
+						htmltext = "30666-07.html";
 					}
 					break;
 				}
@@ -530,21 +527,18 @@ public class Q00227_TestOfTheReformer extends Quest
 					{
 						htmltext = "30667-02.html";
 					}
-					else if (memoState == 17)
+					else if ((memoState == 17) && (hasQuestItems(player, UNDEAD_LIST)))
 					{
-						if (hasQuestItems(player, UNDEAD_LIST))
-						{
-							takeItems(player, UNDEAD_LIST, 1);
-							giveItems(player, RAMUSS_LETTER, 1);
-							takeItems(player, BONE_FRAGMENT4, 1);
-							takeItems(player, BONE_FRAGMENT5, 1);
-							takeItems(player, BONE_FRAGMENT6, 1);
-							takeItems(player, BONE_FRAGMENT7, 1);
-							takeItems(player, BONE_FRAGMENT8, 1);
-							qs.setMemoState(18);
-							qs.setCond(20, true);
-							htmltext = "30667-03.html";
-						}
+						takeItems(player, UNDEAD_LIST, 1);
+						giveItems(player, RAMUSS_LETTER, 1);
+						takeItems(player, BONE_FRAGMENT4, 1);
+						takeItems(player, BONE_FRAGMENT5, 1);
+						takeItems(player, BONE_FRAGMENT6, 1);
+						takeItems(player, BONE_FRAGMENT7, 1);
+						takeItems(player, BONE_FRAGMENT8, 1);
+						qs.setMemoState(18);
+						qs.setCond(20, true);
+						htmltext = "30667-03.html";
 					}
 					break;
 				}
@@ -603,16 +597,13 @@ public class Q00227_TestOfTheReformer extends Quest
 							htmltext = "30669-01.html";
 						}
 					}
-					else if (memoState == 12)
+					else if ((memoState == 12) && (hasQuestItems(player, GREETINGS) && !hasQuestItems(player, KAKANS_LETTER)))
 					{
-						if (hasQuestItems(player, GREETINGS) && !hasQuestItems(player, KAKANS_LETTER))
-						{
-							takeItems(player, GREETINGS, 1);
-							giveItems(player, KAKANS_LETTER, 1);
-							qs.setMemoState(13);
-							qs.setCond(14, true);
-							htmltext = "30669-04.html";
-						}
+						takeItems(player, GREETINGS, 1);
+						giveItems(player, KAKANS_LETTER, 1);
+						qs.setMemoState(13);
+						qs.setCond(14, true);
+						htmltext = "30669-04.html";
 					}
 					break;
 				}
@@ -625,16 +616,13 @@ public class Q00227_TestOfTheReformer extends Quest
 							htmltext = "30670-01.html";
 						}
 					}
-					else if (memoState == 14)
+					else if ((memoState == 14) && (hasQuestItems(player, LETTER_GREETINGS1) && !hasQuestItems(player, NYAKURIS_LETTER)))
 					{
-						if (hasQuestItems(player, LETTER_GREETINGS1) && !hasQuestItems(player, NYAKURIS_LETTER))
-						{
-							giveItems(player, NYAKURIS_LETTER, 1);
-							takeItems(player, LETTER_GREETINGS1, 1);
-							qs.setMemoState(15);
-							qs.setCond(17, true);
-							htmltext = "30670-04.html";
-						}
+						giveItems(player, NYAKURIS_LETTER, 1);
+						takeItems(player, LETTER_GREETINGS1, 1);
+						qs.setMemoState(15);
+						qs.setCond(17, true);
+						htmltext = "30670-04.html";
 					}
 					break;
 				}
@@ -650,12 +638,9 @@ public class Q00227_TestOfTheReformer extends Quest
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == PRIESTESS_PUPINA))
 		{
-			if (npc.getId() == PRIESTESS_PUPINA)
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-			}
+			htmltext = getAlreadyCompletedMsg(player);
 		}
 		return htmltext;
 	}

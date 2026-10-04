@@ -585,12 +585,9 @@ public class Q00213_TrialOfTheSeeker extends Quest
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == MASTER_DUFNER))
 		{
-			if (npc.getId() == MASTER_DUFNER)
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-			}
+			htmltext = getAlreadyCompletedMsg(player);
 		}
 		return htmltext;
 	}

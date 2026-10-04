@@ -707,12 +707,9 @@ public class Q00065_CertifiedSoulBreaker extends Quest
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == GRAND_MASTER_VITUS))
 		{
-			if (npc.getId() == GRAND_MASTER_VITUS)
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-			}
+			htmltext = getAlreadyCompletedMsg(player);
 		}
 		return htmltext;
 	}

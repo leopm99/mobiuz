@@ -176,12 +176,9 @@ public class NpcBufferAI implements Runnable
 		if (target.isPlayable())
 		{
 			final Player targetPlayer = target.asPlayer();
-			if (!isFriendly(player, targetPlayer))
+			if ((!isFriendly(player, targetPlayer)) && ((targetPlayer.getPvpFlag() != 0) || (targetPlayer.getKarma() != 0) || player.isAtWarWith(targetPlayer) || targetPlayer.isInsideZone(ZoneId.PVP)))
 			{
-				if ((targetPlayer.getPvpFlag() != 0) || (targetPlayer.getKarma() != 0) || player.isAtWarWith(targetPlayer) || targetPlayer.isInsideZone(ZoneId.PVP))
-				{
-					return true;
-				}
+				return true;
 			}
 		}
 		return false;

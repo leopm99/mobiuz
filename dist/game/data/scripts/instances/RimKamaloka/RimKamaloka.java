@@ -531,44 +531,38 @@ public class RimKamaloka extends AbstractNpcAI
 			}
 			
 			final int maxHp = npc.getMaxHp();
-			if (npc.getCurrentHp() == maxHp)
+			if ((npc.getCurrentHp() == maxHp) && (((damage * 100) / maxHp) > 40))
 			{
-				if (((damage * 100) / maxHp) > 40)
+				final int npcId = npc.getId();
+				final int chance = Rnd.get(100);
+				int nextId = 0;
+
+				if (npcId == world.KANABION)
 				{
-					final int npcId = npc.getId();
-					final int chance = Rnd.get(100);
-					int nextId = 0;
-					
-					if (npcId == world.KANABION)
+					if (chance < 5)
 					{
-						if (chance < 5)
-						{
-							nextId = world.DOPPLER;
-						}
+						nextId = world.DOPPLER;
 					}
-					else if (npcId == world.DOPPLER)
+				}
+				else if (npcId == world.DOPPLER)
+				{
+					if (chance < 5)
 					{
-						if (chance < 5)
-						{
-							nextId = world.DOPPLER;
-						}
-						else if (chance < 10)
-						{
-							nextId = world.VOIDER;
-						}
+						nextId = world.DOPPLER;
 					}
-					else if (npcId == world.VOIDER)
+					else if (chance < 10)
 					{
-						if (chance < 5)
-						{
-							nextId = world.VOIDER;
-						}
+						nextId = world.VOIDER;
 					}
-					
-					if (nextId > 0)
-					{
-						spawnNextMob(world, npc, nextId, attacker);
-					}
+				}
+				else if ((npcId == world.VOIDER) && (chance < 5))
+				{
+					nextId = world.VOIDER;
+				}
+
+				if (nextId > 0)
+				{
+					spawnNextMob(world, npc, nextId, attacker);
 				}
 			}
 		}

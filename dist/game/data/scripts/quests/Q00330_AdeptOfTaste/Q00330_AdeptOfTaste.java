@@ -210,19 +210,16 @@ public class Q00330_AdeptOfTaste extends Quest
 								}
 							}
 						}
-						else if (i0 < 77)
+						else if ((i0 < 77) && (getQuestItemsCount(killer, WHITE_MANDRAGORA_ROOT) < 40))
 						{
-							if (getQuestItemsCount(killer, WHITE_MANDRAGORA_ROOT) < 40)
+							giveItems(killer, WHITE_MANDRAGORA_ROOT, 1);
+							if (getQuestItemsCount(killer, WHITE_MANDRAGORA_ROOT) == 40)
 							{
-								giveItems(killer, WHITE_MANDRAGORA_ROOT, 1);
-								if (getQuestItemsCount(killer, WHITE_MANDRAGORA_ROOT) == 40)
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-								}
-								else
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-								}
+								playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
+							}
+							else
+							{
+								playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 							}
 						}
 					}
@@ -248,19 +245,16 @@ public class Q00330_AdeptOfTaste extends Quest
 								}
 							}
 						}
-						else if (i0 < 85)
+						else if ((i0 < 85) && (getQuestItemsCount(killer, WHITE_MANDRAGORA_ROOT) < 40))
 						{
-							if (getQuestItemsCount(killer, WHITE_MANDRAGORA_ROOT) < 40)
+							giveItems(killer, WHITE_MANDRAGORA_ROOT, 1);
+							if (getQuestItemsCount(killer, WHITE_MANDRAGORA_ROOT) == 40)
 							{
-								giveItems(killer, WHITE_MANDRAGORA_ROOT, 1);
-								if (getQuestItemsCount(killer, WHITE_MANDRAGORA_ROOT) == 40)
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-								}
-								else
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-								}
+								playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
+							}
+							else
+							{
+								playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 							}
 						}
 					}
@@ -286,19 +280,16 @@ public class Q00330_AdeptOfTaste extends Quest
 								}
 							}
 						}
-						else if (i0 < 96)
+						else if ((i0 < 96) && (getQuestItemsCount(killer, WHITE_MANDRAGORA_ROOT) < 40))
 						{
-							if (getQuestItemsCount(killer, WHITE_MANDRAGORA_ROOT) < 40)
+							giveItems(killer, WHITE_MANDRAGORA_ROOT, 1);
+							if (getQuestItemsCount(killer, WHITE_MANDRAGORA_ROOT) == 40)
 							{
-								giveItems(killer, WHITE_MANDRAGORA_ROOT, 1);
-								if (getQuestItemsCount(killer, WHITE_MANDRAGORA_ROOT) == 40)
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-								}
-								else
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-								}
+								playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
+							}
+							else
+							{
+								playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 							}
 						}
 					}
@@ -324,19 +315,16 @@ public class Q00330_AdeptOfTaste extends Quest
 								}
 							}
 						}
-						else if (i0 < 95)
+						else if ((i0 < 95) && (getQuestItemsCount(killer, ROYAL_JELLY) < 10))
 						{
-							if (getQuestItemsCount(killer, ROYAL_JELLY) < 10)
+							giveItems(killer, ROYAL_JELLY, 1);
+							if (getQuestItemsCount(killer, ROYAL_JELLY) == 10)
 							{
-								giveItems(killer, ROYAL_JELLY, 1);
-								if (getQuestItemsCount(killer, ROYAL_JELLY) == 10)
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-								}
-								else
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-								}
+								playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
+							}
+							else
+							{
+								playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 							}
 						}
 					}
@@ -362,19 +350,16 @@ public class Q00330_AdeptOfTaste extends Quest
 								}
 							}
 						}
-						else if (i0 < 96)
+						else if ((i0 < 96) && (getQuestItemsCount(killer, BROWN_MARSH_MOSS) < 20))
 						{
-							if (getQuestItemsCount(killer, BROWN_MARSH_MOSS) < 20)
+							giveItems(killer, BROWN_MARSH_MOSS, 1);
+							if (getQuestItemsCount(killer, BROWN_MARSH_MOSS) == 20)
 							{
-								giveItems(killer, BROWN_MARSH_MOSS, 1);
-								if (getQuestItemsCount(killer, BROWN_MARSH_MOSS) == 20)
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-								}
-								else
-								{
-									playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-								}
+								playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
+							}
+							else
+							{
+								playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 							}
 						}
 					}

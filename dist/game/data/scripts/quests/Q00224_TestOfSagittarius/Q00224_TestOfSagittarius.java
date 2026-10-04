@@ -558,12 +558,9 @@ public class Q00224_TestOfSagittarius extends Quest
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == GUILD_PRESIDENT_BERNARD))
 		{
-			if (npc.getId() == GUILD_PRESIDENT_BERNARD)
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-			}
+			htmltext = getAlreadyCompletedMsg(player);
 		}
 		return htmltext;
 	}
