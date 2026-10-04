@@ -166,7 +166,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 		
 		String[] param = args.split(" ");
 		
-		final int page = param[0].length() > 0 ? Integer.parseInt(param[0]) : 1;
+		final int page = !param[0].isEmpty() ? Integer.parseInt(param[0]) : 1;
 		final int perpage = ITEMS_PER_PAGE;
 		int counter = 0;
 		
@@ -265,7 +265,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 		String list = "";
 		String[] param = args.split(" ");
 		
-		final int page = param[0].length() > 0 ? Integer.parseInt(param[0]) : 1;
+		final int page = !param[0].isEmpty() ? Integer.parseInt(param[0]) : 1;
 		final int perpage = ITEMS_PER_PAGE;
 		int counter = 0;
 		
@@ -355,7 +355,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 		String list = "";
 		String[] param = args.split(" ");
 		
-		final int page = param[0].length() > 0 ? Integer.parseInt(param[0]) : 1;
+		final int page = !param[0].isEmpty() ? Integer.parseInt(param[0]) : 1;
 		final int perpage = ITEMS_PER_PAGE;
 		int counter = 0;
 		
@@ -445,7 +445,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 		String list = "";
 		String[] param = args.split(" ");
 		
-		final int page = param[0].length() > 0 ? Integer.parseInt(param[0]) : 1;
+		final int page = !param[0].isEmpty() ? Integer.parseInt(param[0]) : 1;
 		final int perpage = ITEMS_PER_PAGE;
 		int counter = 0;
 		
@@ -548,7 +548,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 		String list = "";
 		String[] param = args.split(" ");
 		
-		final int page = param[0].length() > 0 ? Integer.parseInt(param[0]) : 1;
+		final int page = !param[0].isEmpty() ? Integer.parseInt(param[0]) : 1;
 		final int perpage = ITEMS_PER_PAGE;
 		int counter = 0;
 		

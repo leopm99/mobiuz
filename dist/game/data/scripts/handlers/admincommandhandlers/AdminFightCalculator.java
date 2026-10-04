@@ -339,7 +339,7 @@ public class AdminFightCalculator implements IAdminCommandHandler
 		adminReply.setHtml(replyMSG.toString());
 		activeChar.sendPacket(adminReply);
 		
-		if (trimmedParams.length() != 0)
+		if (!trimmedParams.isEmpty())
 		{
 			npc1.asMonster().deleteMe();
 			npc2.asMonster().deleteMe();

@@ -1629,7 +1629,7 @@ public class BufferBoard implements IParseBoardHandler
 		{
 			query.append(",\"special\"");
 		}
-		if (query.length() > 0)
+		if (!query.isEmpty())
 		{
 			query.deleteCharAt(0);
 		}

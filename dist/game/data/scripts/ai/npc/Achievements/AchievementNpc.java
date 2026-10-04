@@ -744,7 +744,7 @@ public class AchievementNpc extends AbstractNpcAI
 			row.append("</tr></table>");
 			activeRows.append(row);
 		}
-		if (activeRows.length() == 0)
+		if (activeRows.isEmpty())
 		{
 			activeRows.append("<center><font color=55FF55>All achievements in this category completed.</font></center>");
 		}
