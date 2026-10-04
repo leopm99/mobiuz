@@ -376,21 +376,21 @@ public class ZoneManager implements IXmlReader
 								final String val = attrs.getNamedItem("val").getNodeValue();
 								temp.setParameter(name, val);
 							}
-							else if ("spawn".equalsIgnoreCase(cd.getNodeName()) && (temp instanceof ZoneRespawn))
+							else if ("spawn".equalsIgnoreCase(cd.getNodeName()) && (temp instanceof ZoneRespawn zoneRespawn))
 							{
 								attrs = cd.getAttributes();
 								final int spawnX = Integer.parseInt(attrs.getNamedItem("X").getNodeValue());
 								final int spawnY = Integer.parseInt(attrs.getNamedItem("Y").getNodeValue());
 								final int spawnZ = Integer.parseInt(attrs.getNamedItem("Z").getNodeValue());
 								final Node val = attrs.getNamedItem("type");
-								((ZoneRespawn) temp).parseLoc(spawnX, spawnY, spawnZ, val == null ? null : val.getNodeValue());
+								zoneRespawn.parseLoc(spawnX, spawnY, spawnZ, val == null ? null : val.getNodeValue());
 							}
-							else if ("race".equalsIgnoreCase(cd.getNodeName()) && (temp instanceof RespawnZone))
+							else if ("race".equalsIgnoreCase(cd.getNodeName()) && (temp instanceof RespawnZone respawnZone))
 							{
 								attrs = cd.getAttributes();
 								final String race = attrs.getNamedItem("name").getNodeValue();
 								final String point = attrs.getNamedItem("point").getNodeValue();
-								((RespawnZone) temp).addRaceRespawnPoint(race, point);
+								respawnZone.addRaceRespawnPoint(race, point);
 							}
 						}
 						if (checkId(zoneId))
@@ -753,9 +753,9 @@ public class ZoneManager implements IXmlReader
 		
 		for (ZoneType temp : getInstance().getZones(creature.getX(), creature.getY(), creature.getZ()))
 		{
-			if ((temp instanceof ArenaZone) && temp.isCharacterInZone(creature))
+			if ((temp instanceof ArenaZone arenaZone) && temp.isCharacterInZone(creature))
 			{
-				return (ArenaZone) temp;
+				return arenaZone;
 			}
 		}
 		
@@ -776,9 +776,9 @@ public class ZoneManager implements IXmlReader
 		
 		for (ZoneType temp : getInstance().getZones(creature.getX(), creature.getY(), creature.getZ()))
 		{
-			if ((temp instanceof OlympiadStadiumZone) && temp.isCharacterInZone(creature))
+			if ((temp instanceof OlympiadStadiumZone olympiadStadiumZone) && temp.isCharacterInZone(creature))
 			{
-				return (OlympiadStadiumZone) temp;
+				return olympiadStadiumZone;
 			}
 		}
 		return null;

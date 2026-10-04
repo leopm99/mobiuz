@@ -60,27 +60,24 @@ public class EnchantFormatter extends Formatter
 				
 				output.append(", ");
 				
-				if (p instanceof Player)
+				if (p instanceof Player player)
 				{
-					final Player player = (Player) p;
 					StringUtil.append(output, "Character:", player.getName(), " [", String.valueOf(player.getObjectId()), "] Account:", player.getAccountName());
 					if ((player.getClient() != null) && !player.getClient().isDetached())
 					{
 						StringUtil.append(output, " IP:", player.getClient().getIp());
 					}
 				}
-				else if (p instanceof Item)
+				else if (p instanceof Item item)
 				{
-					final Item item = (Item) p;
 					if (item.getEnchantLevel() > 0)
 					{
 						StringUtil.append(output, "+", String.valueOf(item.getEnchantLevel()), " ");
 					}
 					StringUtil.append(output, item.getTemplate().getName(), "(", String.valueOf(item.getCount()), ")", " [", String.valueOf(item.getObjectId()), "]");
 				}
-				else if (p instanceof Skill)
+				else if (p instanceof Skill skill)
 				{
-					final Skill skill = (Skill) p;
 					if (skill.getLevel() > 100)
 					{
 						StringUtil.append(output, "+", String.valueOf(skill.getLevel() % 100), " ");

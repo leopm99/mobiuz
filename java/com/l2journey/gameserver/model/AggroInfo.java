@@ -93,9 +93,9 @@ public class AggroInfo
 			return true;
 		}
 		
-		if (obj instanceof AggroInfo)
+		if (obj instanceof AggroInfo aggroInfo)
 		{
-			return (((AggroInfo) obj).getAttacker() == _attacker);
+			return (aggroInfo.getAttacker() == _attacker);
 		}
 		
 		return false;

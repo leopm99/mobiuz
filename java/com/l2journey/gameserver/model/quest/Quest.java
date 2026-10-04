@@ -2561,17 +2561,15 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 				// Scan for possible Id filters
 				for (Annotation annotation : method.getAnnotations())
 				{
-					if (annotation instanceof Id)
+					if (annotation instanceof Id npc)
 					{
-						final Id npc = (Id) annotation;
 						for (int id : npc.value())
 						{
 							ids.add(id);
 						}
 					}
-					else if (annotation instanceof Ids)
+					else if (annotation instanceof Ids npcs)
 					{
-						final Ids npcs = (Ids) annotation;
 						for (Id npc : npcs.value())
 						{
 							for (int id : npc.value())
@@ -2580,9 +2578,8 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 							}
 						}
 					}
-					else if (annotation instanceof Range)
+					else if (annotation instanceof Range range)
 					{
-						final Range range = (Range) annotation;
 						if (range.from() > range.to())
 						{
 							LOGGER.warning(getClass().getSimpleName() + ": Wrong " + annotation.getClass().getSimpleName() + " from is higher then to!");
@@ -2594,9 +2591,8 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 							ids.add(id);
 						}
 					}
-					else if (annotation instanceof Ranges)
+					else if (annotation instanceof Ranges ranges)
 					{
-						final Ranges ranges = (Ranges) annotation;
 						for (Range range : ranges.value())
 						{
 							if (range.from() > range.to())
@@ -2611,9 +2607,8 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 							}
 						}
 					}
-					else if (annotation instanceof NpcLevelRange)
+					else if (annotation instanceof NpcLevelRange range)
 					{
-						final NpcLevelRange range = (NpcLevelRange) annotation;
 						if (range.from() > range.to())
 						{
 							LOGGER.warning(getClass().getSimpleName() + ": Wrong " + annotation.getClass().getSimpleName() + " from is higher then to!");
@@ -2631,9 +2626,8 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 							templates.forEach(template -> ids.add(template.getId()));
 						}
 					}
-					else if (annotation instanceof NpcLevelRanges)
+					else if (annotation instanceof NpcLevelRanges ranges)
 					{
-						final NpcLevelRanges ranges = (NpcLevelRanges) annotation;
 						for (NpcLevelRange range : ranges.value())
 						{
 							if (range.from() > range.to())
@@ -2654,9 +2648,8 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 							}
 						}
 					}
-					else if (annotation instanceof Priority)
+					else if (annotation instanceof Priority p)
 					{
-						final Priority p = (Priority) annotation;
 						priority = p.value();
 					}
 				}

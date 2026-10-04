@@ -145,13 +145,13 @@ public class ItemData
 				highestId = item.getId();
 			}
 			
-			if (item instanceof EtcItem)
+			if (item instanceof EtcItem etcItem)
 			{
-				_etcItems.put(item.getId(), (EtcItem) item);
+				_etcItems.put(item.getId(), etcItem);
 			}
-			else if (item instanceof Armor)
+			else if (item instanceof Armor armor)
 			{
-				_armors.put(item.getId(), (Armor) item);
+				_armors.put(item.getId(), armor);
 			}
 			else
 			{

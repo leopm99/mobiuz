@@ -128,9 +128,9 @@ public class Subnet
 			return true;
 		}
 		
-		if (obj instanceof Subnet)
+		if (obj instanceof Subnet subnet)
 		{
-			return isInSubnet(((Subnet) obj)._address);
+			return isInSubnet(subnet._address);
 		}
 		
 		if (obj instanceof InetAddress)

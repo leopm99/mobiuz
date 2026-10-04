@@ -163,9 +163,9 @@ public class StatSet
 		{
 			throw new IllegalArgumentException("Byte value required, but not specified");
 		}
-		if (val instanceof Number)
+		if (val instanceof Number number)
 		{
-			return ((Number) val).byteValue();
+			return number.byteValue();
 		}
 		try
 		{
@@ -184,9 +184,9 @@ public class StatSet
 		{
 			return defaultValue;
 		}
-		if (val instanceof Number)
+		if (val instanceof Number number)
 		{
-			return ((Number) val).byteValue();
+			return number.byteValue();
 		}
 		try
 		{
@@ -219,11 +219,11 @@ public class StatSet
 		{
 			throw new IllegalArgumentException("Byte value required, but not specified");
 		}
-		if (val instanceof Number)
+		if (val instanceof Number number)
 		{
 			return new byte[]
 			{
-				((Number) val).byteValue()
+				number.byteValue()
 			};
 		}
 		int c = 0;
@@ -260,9 +260,9 @@ public class StatSet
 		{
 			throw new IllegalArgumentException("Short value required, but not specified");
 		}
-		if (val instanceof Number)
+		if (val instanceof Number number)
 		{
-			return ((Number) val).shortValue();
+			return number.shortValue();
 		}
 		try
 		{
@@ -281,9 +281,9 @@ public class StatSet
 		{
 			return defaultValue;
 		}
-		if (val instanceof Number)
+		if (val instanceof Number number)
 		{
-			return ((Number) val).shortValue();
+			return number.shortValue();
 		}
 		try
 		{
@@ -317,9 +317,9 @@ public class StatSet
 			throw new IllegalArgumentException("Integer value required, but not specified: " + key + "!");
 		}
 		
-		if (val instanceof Number)
+		if (val instanceof Number number)
 		{
-			return ((Number) val).intValue();
+			return number.intValue();
 		}
 		
 		try
@@ -339,9 +339,9 @@ public class StatSet
 		{
 			return defaultValue;
 		}
-		if (val instanceof Number)
+		if (val instanceof Number number)
 		{
-			return ((Number) val).intValue();
+			return number.intValue();
 		}
 		try
 		{
@@ -374,11 +374,11 @@ public class StatSet
 		{
 			throw new IllegalArgumentException("Integer value required, but not specified");
 		}
-		if (val instanceof Number)
+		if (val instanceof Number number)
 		{
 			return new int[]
 			{
-				((Number) val).intValue()
+				number.intValue()
 			};
 		}
 		int c = 0;
@@ -496,9 +496,9 @@ public class StatSet
 		{
 			throw new IllegalArgumentException("Long value required, but not specified");
 		}
-		if (val instanceof Number)
+		if (val instanceof Number number)
 		{
-			return ((Number) val).longValue();
+			return number.longValue();
 		}
 		try
 		{
@@ -517,9 +517,9 @@ public class StatSet
 		{
 			return defaultValue;
 		}
-		if (val instanceof Number)
+		if (val instanceof Number number)
 		{
-			return ((Number) val).longValue();
+			return number.longValue();
 		}
 		try
 		{
@@ -552,9 +552,9 @@ public class StatSet
 		{
 			throw new IllegalArgumentException("Float value required, but not specified");
 		}
-		if (val instanceof Number)
+		if (val instanceof Number number)
 		{
-			return ((Number) val).floatValue();
+			return number.floatValue();
 		}
 		try
 		{
@@ -573,9 +573,9 @@ public class StatSet
 		{
 			return defaultValue;
 		}
-		if (val instanceof Number)
+		if (val instanceof Number number)
 		{
-			return ((Number) val).floatValue();
+			return number.floatValue();
 		}
 		try
 		{
@@ -608,9 +608,9 @@ public class StatSet
 		{
 			throw new IllegalArgumentException("Double value required, but not specified");
 		}
-		if (val instanceof Number)
+		if (val instanceof Number number)
 		{
-			return ((Number) val).doubleValue();
+			return number.doubleValue();
 		}
 		try
 		{
@@ -629,9 +629,9 @@ public class StatSet
 		{
 			return defaultValue;
 		}
-		if (val instanceof Number)
+		if (val instanceof Number number)
 		{
-			return ((Number) val).doubleValue();
+			return number.doubleValue();
 		}
 		try
 		{

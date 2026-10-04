@@ -102,9 +102,9 @@ public class TownManager
 	{
 		for (ZoneType temp : ZoneManager.getInstance().getZones(x, y, z))
 		{
-			if (temp instanceof TownZone)
+			if (temp instanceof TownZone townZone)
 			{
-				return (TownZone) temp;
+				return townZone;
 			}
 		}
 		return null;

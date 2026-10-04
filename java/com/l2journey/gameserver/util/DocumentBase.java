@@ -278,13 +278,13 @@ public abstract class DocumentBase
 		
 		final Condition applyCond = parseCondition(n.getFirstChild(), template);
 		final FuncTemplate ft = new FuncTemplate(attachCond, applyCond, functionName, order, stat, value);
-		if (template instanceof ItemTemplate)
+		if (template instanceof ItemTemplate itemTemplate)
 		{
-			((ItemTemplate) template).attach(ft);
+			itemTemplate.attach(ft);
 		}
-		else if (template instanceof AbstractEffect)
+		else if (template instanceof AbstractEffect abstractEffect)
 		{
-			((AbstractEffect) template).attach(ft);
+			abstractEffect.attach(ft);
 		}
 		else
 		{
@@ -309,17 +309,17 @@ public abstract class DocumentBase
 		
 		final StatSet parameters = parseParameters(n.getFirstChild(), template);
 		final Condition applyCond = parseCondition(n.getFirstChild(), template);
-		if (template instanceof ItemTemplate)
+		if (template instanceof ItemTemplate itemTemplate)
 		{
-			set.set("id", ((ItemTemplate) template).getId());
+			set.set("id", itemTemplate.getId());
 		}
-		else if (template instanceof NpcTemplate)
+		else if (template instanceof NpcTemplate npcTemplate)
 		{
-			set.set("id", ((NpcTemplate) template).getId());
+			set.set("id", npcTemplate.getId());
 		}
-		else if (template instanceof DoorTemplate)
+		else if (template instanceof DoorTemplate doorTemplate)
 		{
-			set.set("id", ((DoorTemplate) template).getId());
+			set.set("id", doorTemplate.getId());
 		}
 		
 		final AbstractEffect effect = AbstractEffect.createEffect(attachCond, applyCond, set, parameters);
@@ -328,9 +328,8 @@ public abstract class DocumentBase
 		{
 			LOGGER.severe("Item " + template + " with effects!!!");
 		}
-		else if (template instanceof Skill)
+		else if (template instanceof Skill skill)
 		{
-			final Skill skill = (Skill) template;
 			if (effectScope != null)
 			{
 				skill.addEffect(effectScope, effect);
@@ -1325,9 +1324,9 @@ public abstract class DocumentBase
 			{
 				return getTableValue(value);
 			}
-			else if (template instanceof Integer)
+			else if (template instanceof Integer integer)
 			{
-				return getTableValue(value, ((Integer) template).intValue());
+				return getTableValue(value, integer.intValue());
 			}
 			else
 			{
@@ -1343,9 +1342,9 @@ public abstract class DocumentBase
 		{
 			return c;
 		}
-		if (cond instanceof ConditionLogicAnd)
+		if (cond instanceof ConditionLogicAnd conditionLogicAnd)
 		{
-			((ConditionLogicAnd) cond).add(c);
+			conditionLogicAnd.add(c);
 			return cond;
 		}
 		final ConditionLogicAnd and = new ConditionLogicAnd();
