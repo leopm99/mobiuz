@@ -1227,15 +1227,12 @@ public class Player extends Playable
 				}
 			}
 		}
-		if ((getClan() != null) && (target.getClan() != null))
+		if (((getClan() != null) && (target.getClan() != null)) && ((target.getPledgeType() != Clan.SUBUNIT_ACADEMY) && (getPledgeType() != Clan.SUBUNIT_ACADEMY) && target.getClan().isAtWarWith(getClan().getId())))
 		{
-			if ((target.getPledgeType() != Clan.SUBUNIT_ACADEMY) && (getPledgeType() != Clan.SUBUNIT_ACADEMY) && target.getClan().isAtWarWith(getClan().getId()))
+			result |= RelationChanged.RELATION_1SIDED_WAR;
+			if (getClan().isAtWarWith(target.getClan().getId()))
 			{
-				result |= RelationChanged.RELATION_1SIDED_WAR;
-				if (getClan().isAtWarWith(target.getClan().getId()))
-				{
-					result |= RelationChanged.RELATION_MUTUAL_WAR;
-				}
+				result |= RelationChanged.RELATION_MUTUAL_WAR;
 			}
 		}
 		if (_handysBlockCheckerEventArena != -1)
@@ -3075,13 +3072,10 @@ public class Player extends Playable
 	 */
 	public void setSitting(boolean value)
 	{
-		if (value)
+		// Notify to scripts
+		if ((value) && (EventDispatcher.getInstance().hasListener(EventType.ON_PLAYER_SIT, this)))
 		{
-			// Notify to scripts
-			if (EventDispatcher.getInstance().hasListener(EventType.ON_PLAYER_SIT, this))
-			{
-				EventDispatcher.getInstance().notifyEventAsync(new OnPlayerSit(this), this);
-			}
+			EventDispatcher.getInstance().notifyEventAsync(new OnPlayerSit(this), this);
 		}
 		
 		_waitTypeSitting = value;
@@ -5464,26 +5458,20 @@ public class Player extends Playable
 				if ((pk == null) || !pk.isCursedWeaponEquipped())
 				{
 					onDieDropItem(killer); // Check if any item should be dropped
-					if (!insidePvpZone && !insideSiegeZone)
+					if ((!insidePvpZone && !insideSiegeZone) && ((pk != null) && (pk.getClan() != null) && (getClan() != null) && !isAcademyMember() && !(pk.isAcademyMember())))
 					{
-						if ((pk != null) && (pk.getClan() != null) && (getClan() != null) && !isAcademyMember() && !(pk.isAcademyMember()))
+						if (((_clan.isAtWarWith(pk.getClanId()) && pk.getClan().isAtWarWith(_clan.getId())) || (isInSiege() && pk.isInSiege())) && (AntiFeedManager.getInstance().check(killer, this)))
 						{
-							if ((_clan.isAtWarWith(pk.getClanId()) && pk.getClan().isAtWarWith(_clan.getId())) || (isInSiege() && pk.isInSiege()))
+							// when your reputation score is 0 or below, the other clan cannot acquire any reputation points
+							if (_clan.getReputationScore() > 0)
 							{
-								if (AntiFeedManager.getInstance().check(killer, this))
-								{
-									// when your reputation score is 0 or below, the other clan cannot acquire any reputation points
-									if (_clan.getReputationScore() > 0)
-									{
-										pk.getClan().addReputationScore(Config.REPUTATION_SCORE_PER_KILL);
-									}
-									
-									// when the opposing sides reputation score is 0 or below, your clans reputation score does not decrease
-									if (pk.getClan().getReputationScore() > 0)
-									{
-										_clan.takeReputationScore(Config.REPUTATION_SCORE_PER_KILL);
-									}
-								}
+								pk.getClan().addReputationScore(Config.REPUTATION_SCORE_PER_KILL);
+							}
+
+							// when the opposing sides reputation score is 0 or below, your clans reputation score does not decrease
+							if (pk.getClan().getReputationScore() > 0)
+							{
+								_clan.takeReputationScore(Config.REPUTATION_SCORE_PER_KILL);
 							}
 						}
 					}
@@ -5790,18 +5778,15 @@ public class Player extends Playable
 		}
 		
 		// Hitman Event - if target is a hitman target and config says no karma, skip karma gain
-		if (EventsConfig.HITMAN_ENABLED && !EventsConfig.HITMAN_TAKE_KARMA && target.isPlayer())
+		if ((EventsConfig.HITMAN_ENABLED && !EventsConfig.HITMAN_TAKE_KARMA && target.isPlayer()) && (HitmanManager.getInstance().isTarget(target.getObjectId())))
 		{
-			if (HitmanManager.getInstance().isTarget(target.getObjectId()))
+			// Skip karma, but still increase PK count
+			if (target.isPlayer())
 			{
-				// Skip karma, but still increase PK count
-				if (target.isPlayer())
-				{
-					setPkKills(_pkKills + 1);
-				}
-				updateUserInfo();
-				return;
+				setPkKills(_pkKills + 1);
 			}
+			updateUserInfo();
+			return;
 		}
 		
 		// Calculate new karma. (calculate karma before incrase pk count!)
@@ -9917,13 +9902,10 @@ public class Player extends Playable
 			return false;
 		}
 		
-		if (hasEnteredWorld())
+		if ((hasEnteredWorld()) && ((isInvisible() && hide) || (!isInvisible() && !hide)))
 		{
-			if ((isInvisible() && hide) || (!isInvisible() && !hide))
-			{
-				// Already visible.
-				return false;
-			}
+			// Already visible.
+			return false;
 		}
 		
 		setSilenceMode(hide);
@@ -14410,12 +14392,9 @@ public class Player extends Playable
 					return true;
 				}
 			}
-			else if ((getClan() == null) || (target.getClan() == null))
+			else if (((getClan() == null) || (target.getClan() == null)) && ((target.getPvpFlag() == 0) && (target.getKarma() == 0)))
 			{
-				if ((target.getPvpFlag() == 0) && (target.getKarma() == 0))
-				{
-					return false;
-				}
+				return false;
 			}
 		}
 		

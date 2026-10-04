@@ -353,12 +353,9 @@ public class Teleporter extends Npc
 			return COND_BUSY_BECAUSE_OF_SIEGE; // Busy because of siege
 		}
 		// Teleporter is on castle ground and player is in a clan
-		else if (player.getClan() != null)
+		else if ((player.getClan() != null) && (getCastle().getOwnerId() == player.getClanId()))
 		{
-			if (getCastle().getOwnerId() == player.getClanId())
-			{
-				return COND_OWNER; // Owner
-			}
+			return COND_OWNER; // Owner
 		}
 		return COND_ALL_FALSE;
 	}

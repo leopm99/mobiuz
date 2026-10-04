@@ -1139,13 +1139,10 @@ public class PhantomEquipment
 		{
 			for (Item item : bot.getInventory().getItems())
 			{
-				if ((item != null) && (item.getId() == targetAmmoId))
+				if (((item != null) && (item.getId() == targetAmmoId)) && (!item.isEquipped()))
 				{
-					if (!item.isEquipped())
-					{
-						bot.getInventory().equipItem(item);
-						break; // Uma vez que a equipou, cortamos a busca
-					}
+					bot.getInventory().equipItem(item);
+					break; // Uma vez que a equipou, cortamos a busca
 				}
 			}
 		}

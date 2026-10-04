@@ -422,12 +422,9 @@ public class CaptchaManager
 		{
 			if (_player.isOnline())
 			{
-				if (VALIDATION.containsKey(_player.getObjectId()) && VALIDATION.get(_player.getObjectId()).firstWindow)
+				if ((VALIDATION.containsKey(_player.getObjectId()) && VALIDATION.get(_player.getObjectId()).firstWindow) && ((_time % WINDOW_DELAY) == 0))
 				{
-					if ((_time % WINDOW_DELAY) == 0)
-					{
-						preValidationWindow(_player);
-					}
+					preValidationWindow(_player);
 				}
 				
 				switch (_time)

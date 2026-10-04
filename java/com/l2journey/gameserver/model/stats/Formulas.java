@@ -1522,12 +1522,9 @@ public class Formulas
 		final double attack = 2 * actor.getMAtk(target, skill) * calcGeneralTraitBonus(actor, target, skill.getTraitType(), false);
 		double d = (attack - defence) / (attack + defence);
 		
-		if (skill.isDebuff())
+		if ((skill.isDebuff()) && (target.calcStat(Stat.DEBUFF_IMMUNITY, 0, null, skill) > 0))
 		{
-			if (target.calcStat(Stat.DEBUFF_IMMUNITY, 0, null, skill) > 0)
-			{
-				return false;
-			}
+			return false;
 		}
 		
 		d += 0.5 * Rnd.nextGaussian();

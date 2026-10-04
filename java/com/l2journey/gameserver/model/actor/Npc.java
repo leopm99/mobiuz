@@ -899,12 +899,9 @@ public class Npc extends Creature
 					return;
 				}
 			}
-			else if (!Config.ALT_GAME_KARMA_PLAYER_CAN_SHOP && (this instanceof Fisherman))
+			else if ((!Config.ALT_GAME_KARMA_PLAYER_CAN_SHOP && (this instanceof Fisherman)) && (showPkDenyChatWindow(player, "fisherman")))
 			{
-				if (showPkDenyChatWindow(player, "fisherman"))
-				{
-					return;
-				}
+				return;
 			}
 		}
 		
@@ -1104,12 +1101,9 @@ public class Npc extends Creature
 		// Send a Server->Client NpcHtmlMessage containing the text of the Npc to the Player
 		final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 		html.setFile(player, filename);
-		if (this instanceof Merchant)
+		if ((this instanceof Merchant) && (Config.LIST_PET_RENT_NPC.contains(npcId)))
 		{
-			if (Config.LIST_PET_RENT_NPC.contains(npcId))
-			{
-				html.replace("_Quest", "_RentPet\">Rent Pet</a><br><a action=\"bypass npc_%objectId%_Quest");
-			}
+			html.replace("_Quest", "_RentPet\">Rent Pet</a><br><a action=\"bypass npc_%objectId%_Quest");
 		}
 		
 		html.replace("%npcname%", String.valueOf(getName()));

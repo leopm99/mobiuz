@@ -352,13 +352,10 @@ public class BabyPet extends Pet
 						}
 						
 						// Check if skill requires items and if pet has them
-						if ((skill.getItemConsumeId() > 0) && (skill.getItemConsumeCount() > 0))
+						if (((skill.getItemConsumeId() > 0) && (skill.getItemConsumeCount() > 0)) && (_baby.getInventory().getInventoryItemCount(skill.getItemConsumeId(), -1) < skill.getItemConsumeCount()))
 						{
-							if (_baby.getInventory().getInventoryItemCount(skill.getItemConsumeId(), -1) < skill.getItemConsumeCount())
-							{
-								// Item missing, skip this skill
-								continue;
-							}
+							// Item missing, skip this skill
+							continue;
 						}
 						
 						// Check if owner already has the buff

@@ -676,12 +676,9 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 				_damageP1 += damage;
 			}
 		}
-		else if (player == player2)
+		else if ((player == player2) && (!player1.isInvul()))
 		{
-			if (!player1.isInvul())
-			{
-				_damageP2 += damage;
-			}
+			_damageP2 += damage;
 		}
 	}
 	

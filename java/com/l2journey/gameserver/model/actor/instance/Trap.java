@@ -147,14 +147,11 @@ public class Trap extends Npc
 			return true;
 		}
 		
-		if (creature.isPlayer())
+		// observers can't see trap
+		// olympiad competitors can't see trap
+		if ((creature.isPlayer()) && (creature.asPlayer().inObserverMode() || (_owner.isInOlympiadMode() && creature.asPlayer().isInOlympiadMode() && (creature.asPlayer().getOlympiadSide() != _owner.getOlympiadSide()))))
 		{
-			// observers can't see trap
-			// olympiad competitors can't see trap
-			if (creature.asPlayer().inObserverMode() || (_owner.isInOlympiadMode() && creature.asPlayer().isInOlympiadMode() && (creature.asPlayer().getOlympiadSide() != _owner.getOlympiadSide())))
-			{
-				return false;
-			}
+			return false;
 		}
 		
 		if (_isInArena || (_owner.isInParty() && creature.isInParty() && (_owner.getParty().getLeaderObjectId() == creature.getParty().getLeaderObjectId())))
