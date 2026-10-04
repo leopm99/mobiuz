@@ -614,14 +614,7 @@ public class WildBeastReserve extends ClanHallSiegeEngine
 		{
 			for (int clanId : _data.keySet())
 			{
-				if (_hall.getOwnerId() == clanId)
-				{
-					removeParticipant(clanId, false);
-				}
-				else
-				{
-					removeParticipant(clanId, true);
-				}
+				removeParticipant(clanId, _hall.getOwnerId() != clanId);
 			}
 		}
 		clearTables();

@@ -181,13 +181,7 @@ public class AreaFriendly implements ITargetTypeHandler
 				return false;
 			}
 			
-			if (player.isInClanWith(target) || player.isInAllyWith(target) || player.isInCommandChannelWith(target))
-			{
-				return true;
-			}
-			
-			// If not in party, clan, ally, or command channel, they are not friendly
-			return false;
+			return player.isInClanWith(target) || player.isInAllyWith(target) || player.isInCommandChannelWith(target);
 		}
 		
 		return true;

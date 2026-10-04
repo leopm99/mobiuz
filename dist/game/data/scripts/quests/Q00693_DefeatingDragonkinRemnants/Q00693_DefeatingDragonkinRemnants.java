@@ -186,14 +186,10 @@ public class Q00693_DefeatingDragonkinRemnants extends Quest
 	
 	private boolean checkInstances(Player talker)
 	{
-		if ((System.currentTimeMillis() < InstanceManager.getInstance().getInstanceTime(talker.getObjectId(), 123)) //
+		return !((System.currentTimeMillis() < InstanceManager.getInstance().getInstanceTime(talker.getObjectId(), 123)) //
 			|| (System.currentTimeMillis() < InstanceManager.getInstance().getInstanceTime(talker.getObjectId(), 124)) //
 			|| (System.currentTimeMillis() < InstanceManager.getInstance().getInstanceTime(talker.getObjectId(), 125)) //
-			|| (System.currentTimeMillis() < InstanceManager.getInstance().getInstanceTime(talker.getObjectId(), 126)))
-		{
-			return false;
-		}
-		return true;
+			|| (System.currentTimeMillis() < InstanceManager.getInstance().getInstanceTime(talker.getObjectId(), 126)));
 	}
 	
 	private boolean rewardPlayer(QuestState qs, int difficulty, int memberCount)
