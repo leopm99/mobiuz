@@ -27,6 +27,10 @@ import com.l2journey.commons.util.Rnd;
  */
 class ChatRandomizer
 {
+	private ChatRandomizer()
+	{
+	}
+
 	static String randomize(String text)
 	{
 		final StringBuilder textOut = new StringBuilder();
