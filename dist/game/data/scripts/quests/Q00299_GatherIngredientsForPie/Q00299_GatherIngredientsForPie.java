@@ -39,7 +39,7 @@ public class Q00299_GatherIngredientsForPie extends Quest
 	private static final int BRIGHT = 30466;
 	private static final int EMILLY = 30620;
 	// Monsters
-	private static final Map<Integer, Integer> MONSTERS_CHANCES = new HashMap<>(2);
+	private static final Map<Integer, Integer> MONSTERS_CHANCES = HashMap.newHashMap(2);
 	// Items
 	private static final int FRUIT_BASKET = 7136;
 	private static final int AVELLAN_SPICE = 7137;

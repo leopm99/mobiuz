@@ -120,7 +120,7 @@ public class Q00511_AwlUnderFoot extends Quest
 	
 	private static final long RAID_SPAWN_DELAY = 120000;
 	
-	private final Map<Integer, FortDungeon> _fortDungeons = new HashMap<>(21);
+	private final Map<Integer, FortDungeon> _fortDungeons = HashMap.newHashMap(21);
 	// QUEST ITEMS
 	private static final int DL_MARK = 9797;
 	// REWARDS

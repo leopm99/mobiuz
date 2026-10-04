@@ -69,8 +69,8 @@ public class Q00327_RecoverTheFarmland extends Quest
 	
 	// Misc
 	private static final int MIN_LEVEL = 25;
-	private static final Map<String, ItemHolder> FRAGMENTS_REWARD_DATA = new HashMap<>(4);
-	private static final Map<Integer, Integer> FRAGMENTS_DROP_PROB = new HashMap<>(7);
+	private static final Map<String, ItemHolder> FRAGMENTS_REWARD_DATA = HashMap.newHashMap(4);
+	private static final Map<Integer, Integer> FRAGMENTS_DROP_PROB = HashMap.newHashMap(7);
 	private static final ItemHolder[] FULL_REWARD_DATA =
 	{
 		new ItemHolder(ANCIENT_CLAY_URN, 2766),

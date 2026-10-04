@@ -70,7 +70,7 @@ public class Q00426_QuestForFishingShot extends Quest
 		32007, // Galba
 		32348, // Burang
 	};
-	private static final Map<Integer, ChanceReward> MOBS = new HashMap<>(250);
+	private static final Map<Integer, ChanceReward> MOBS = HashMap.newHashMap(250);
 	static
 	{
 		MOBS.put(20005, new ChanceReward(45, 1)); // Imp Elder
@@ -331,7 +331,7 @@ public class Q00426_QuestForFishingShot extends Quest
 		MOBS.put(22646, new ChanceReward(750, 5)); // Ashuras of Destruction
 		MOBS.put(22649, new ChanceReward(935, 4)); // Magma Drake
 	}
-	private static final Map<Integer, ChanceReward> MOBS_SPECIAL = new HashMap<>(5);
+	private static final Map<Integer, ChanceReward> MOBS_SPECIAL = HashMap.newHashMap(5);
 	static
 	{
 		MOBS_SPECIAL.put(20829, new ChanceReward(115, 6)); // Platinum Tribe Overlord
