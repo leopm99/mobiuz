@@ -308,9 +308,8 @@ public class SummonPc extends AbstractNpcAI
 	{
 		final Creature hated = monster.getMostHated();
 		
-		if (hated instanceof Player)
+		if (hated instanceof Player player)
 		{
-			final Player player = (Player) hated;
 			
 			npc.getVariables().set(LAST_TARGET, player);
 			

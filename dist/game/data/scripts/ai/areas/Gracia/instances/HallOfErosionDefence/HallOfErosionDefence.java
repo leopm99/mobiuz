@@ -437,9 +437,8 @@ public class HallOfErosionDefence extends AbstractNpcAI
 	public String onEvent(String event, Npc npc, Player player)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getPlayerWorld(player);
-		if (tmpworld instanceof HEDWorld)
+		if (tmpworld instanceof HEDWorld world)
 		{
-			final HEDWorld world = (HEDWorld) tmpworld;
 			if (event.startsWith("warp"))
 			{
 				Npc victim = null;
@@ -482,9 +481,8 @@ public class HallOfErosionDefence extends AbstractNpcAI
 	public void onAggroRangeEnter(Npc npc, Player player, boolean isSummon)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof HEDWorld)
+		if (tmpworld instanceof HEDWorld world)
 		{
-			final HEDWorld world = (HEDWorld) tmpworld;
 			if (npc.getId() == 18668)
 			{
 				for (int i = 0; i < getRandom(1, 4); i++)
@@ -511,9 +509,8 @@ public class HallOfErosionDefence extends AbstractNpcAI
 		}
 		
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof HEDWorld)
+		if (tmpworld instanceof HEDWorld world)
 		{
-			final HEDWorld world = (HEDWorld) tmpworld;
 			if (npc.getId() == TUMOR_DEAD)
 			{
 				final int tag = world.getParameters().getInt("tag", -1);
@@ -526,9 +523,8 @@ public class HallOfErosionDefence extends AbstractNpcAI
 	public void onKill(Npc npc, Player player, boolean isSummon)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof HEDWorld)
+		if (tmpworld instanceof HEDWorld world)
 		{
-			final HEDWorld world = (HEDWorld) tmpworld;
 			if (npc.getId() == TUMOR_ALIVE)
 			{
 				npc.dropItem(player, 13797, getRandom(2, 5));
@@ -556,9 +552,8 @@ public class HallOfErosionDefence extends AbstractNpcAI
 	public void onKillByMob(Npc npc, Npc killer)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof HEDWorld)
+		if (tmpworld instanceof HEDWorld world)
 		{
-			final HEDWorld world = (HEDWorld) tmpworld;
 			seedKills++;
 			if (seedKills >= 1)
 			{

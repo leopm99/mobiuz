@@ -216,9 +216,8 @@ public class Q00726_LightWithinTheDarkness extends Quest
 		}
 		
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof PAWORLD)
+		if (tmpworld instanceof PAWORLD world)
 		{
-			final PAWORLD world = (PAWORLD) tmpworld;
 			for (Player partymember : party.getMembers())
 			{
 				final QuestState qs = partymember.getQuestState(getName());

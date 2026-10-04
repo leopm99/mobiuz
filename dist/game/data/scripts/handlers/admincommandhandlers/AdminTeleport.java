@@ -579,9 +579,8 @@ public class AdminTeleport implements IAdminCommandHandler
 				activeChar.sendSysMessage("Target is not in game.");
 			}
 		}
-		else if (obj instanceof RaidBoss)
+		else if (obj instanceof RaidBoss target)
 		{
-			final RaidBoss target = (RaidBoss) obj;
 			final Spawn spawn = target.getSpawn();
 			final double curHP = target.getCurrentHp();
 			final double curMP = target.getCurrentMp();

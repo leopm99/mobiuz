@@ -201,9 +201,8 @@ public class AdminAnnouncements implements IAdminCommandHandler
 							String announcementRepeat = "0";
 							final String announcementAuthor = announce.getAuthor();
 							final String announcementContent = announce.getContent();
-							if (announce instanceof AutoAnnouncement)
+							if (announce instanceof AutoAnnouncement autoAnnounce)
 							{
-								final AutoAnnouncement autoAnnounce = (AutoAnnouncement) announce;
 								announcementInital = Long.toString(autoAnnounce.getInitial() / 1000);
 								announcementDelay = Long.toString(autoAnnounce.getDelay() / 1000);
 								announcementRepeat = Integer.toString(autoAnnounce.getRepeat());
@@ -321,9 +320,8 @@ public class AdminAnnouncements implements IAdminCommandHandler
 						announce.setType(type);
 						announce.setContent(content);
 						announce.setAuthor(activeChar.getName());
-						if (announce instanceof AutoAnnouncement)
+						if (announce instanceof AutoAnnouncement autoAnnounce)
 						{
-							final AutoAnnouncement autoAnnounce = (AutoAnnouncement) announce;
 							autoAnnounce.setInitial(initDelay * 1000);
 							autoAnnounce.setDelay(delay * 1000);
 							autoAnnounce.setRepeat(repeat);
@@ -362,9 +360,8 @@ public class AdminAnnouncements implements IAdminCommandHandler
 						{
 							for (IAnnouncement announce : AnnouncementsTable.getInstance().getAllAnnouncements())
 							{
-								if (announce instanceof AutoAnnouncement)
+								if (announce instanceof AutoAnnouncement autoAnnounce)
 								{
-									final AutoAnnouncement autoAnnounce = (AutoAnnouncement) announce;
 									autoAnnounce.restartMe();
 								}
 							}
@@ -423,9 +420,8 @@ public class AdminAnnouncements implements IAdminCommandHandler
 							String announcementRepeat = "0";
 							final String announcementAuthor = announce.getAuthor();
 							final String announcementContent = announce.getContent();
-							if (announce instanceof AutoAnnouncement)
+							if (announce instanceof AutoAnnouncement autoAnnounce)
 							{
-								final AutoAnnouncement autoAnnounce = (AutoAnnouncement) announce;
 								announcementInital = Long.toString(autoAnnounce.getInitial() / 1000);
 								announcementDelay = Long.toString(autoAnnounce.getDelay() / 1000);
 								announcementRepeat = Integer.toString(autoAnnounce.getRepeat());

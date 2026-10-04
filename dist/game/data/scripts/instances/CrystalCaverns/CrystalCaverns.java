@@ -990,9 +990,8 @@ public class CrystalCaverns extends AbstractInstance
 			}
 			
 			final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-			if (tmpworld instanceof CCWorld)
+			if (tmpworld instanceof CCWorld world)
 			{
-				final CCWorld world = (CCWorld) tmpworld;
 				if (((world._dragonClawStart + DRAGONCLAWTIME) <= System.currentTimeMillis()) || (world._dragonClawNeed <= 0))
 				{
 					world._dragonClawStart = System.currentTimeMillis();
@@ -1045,9 +1044,8 @@ public class CrystalCaverns extends AbstractInstance
 	public void onAttack(Npc npc, Player attacker, int damage, boolean isSummon, Skill skill)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof CCWorld)
+		if (tmpworld instanceof CCWorld world)
 		{
-			final CCWorld world = (CCWorld) tmpworld;
 			if (world.getStatus() != 4)
 			{
 				// Lucky cheater, the code only kicks his/her ass out of the dungeon
@@ -1129,9 +1127,8 @@ public class CrystalCaverns extends AbstractInstance
 	public String onEvent(String event, Npc npc, Player player)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof CCWorld)
+		if (tmpworld instanceof CCWorld world)
 		{
-			final CCWorld world = (CCWorld) tmpworld;
 			if (event.equalsIgnoreCase("TeleportOut"))
 			{
 				teleportPlayer(player, new Location(149413, 173078, -5014), 0);
@@ -1515,9 +1512,8 @@ public class CrystalCaverns extends AbstractInstance
 	public void onKill(Npc npc, Player player, boolean isSummon)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof CCWorld)
+		if (tmpworld instanceof CCWorld world)
 		{
-			final CCWorld world = (CCWorld) tmpworld;
 			if ((world.getStatus() == 2) && world.npcList1.containsKey(npc))
 			{
 				world.npcList1.put(npc, true);
@@ -1804,9 +1800,8 @@ public class CrystalCaverns extends AbstractInstance
 		}
 		
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof CCWorld)
+		if (tmpworld instanceof CCWorld world)
 		{
-			final CCWorld world = (CCWorld) tmpworld;
 			if (npcId == CRYSTALLINE_GOLEM)
 			{
 				return null;
@@ -1997,9 +1992,8 @@ public class CrystalCaverns extends AbstractInstance
 	public void onTrapAction(Trap trap, Creature trigger, TrapAction action)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(trap);
-		if (tmpworld instanceof CCWorld)
+		if (tmpworld instanceof CCWorld world)
 		{
-			final CCWorld world = (CCWorld) tmpworld;
 			switch (action)
 			{
 				case TRAP_DISARMED:

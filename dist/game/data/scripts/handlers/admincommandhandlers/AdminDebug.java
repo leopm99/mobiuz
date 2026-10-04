@@ -58,9 +58,9 @@ public class AdminDebug implements IAdminCommandHandler
 				target = activeChar.getTarget();
 			}
 			
-			if (target instanceof Creature)
+			if (target instanceof Creature creature)
 			{
-				setDebug(activeChar, (Creature) target);
+				setDebug(activeChar, creature);
 			}
 			else
 			{

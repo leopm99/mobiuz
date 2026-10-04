@@ -313,9 +313,8 @@ public class NornilsGarden extends AbstractInstance
 	private void spawn1(Npc npc)
 	{
 		final InstanceWorld inst = InstanceManager.getInstance().getWorld(npc);
-		if (inst instanceof NornilsWorld)
+		if (inst instanceof NornilsWorld world)
 		{
-			final NornilsWorld world = ((NornilsWorld) inst);
 			if (npc.equals(world.first_npc) && !world.spawned_1)
 			{
 				world.spawned_1 = true;
@@ -330,9 +329,8 @@ public class NornilsGarden extends AbstractInstance
 	private void spawn2(Npc npc)
 	{
 		final InstanceWorld inst = InstanceManager.getInstance().getWorld(npc);
-		if (inst instanceof NornilsWorld)
+		if (inst instanceof NornilsWorld world)
 		{
-			final NornilsWorld world = ((NornilsWorld) inst);
 			if (!world.spawned_2)
 			{
 				world.spawned_2 = true;
@@ -347,9 +345,8 @@ public class NornilsGarden extends AbstractInstance
 	private void spawn3(Creature creature)
 	{
 		final InstanceWorld inst = InstanceManager.getInstance().getWorld(creature);
-		if (inst instanceof NornilsWorld)
+		if (inst instanceof NornilsWorld world)
 		{
-			final NornilsWorld world = ((NornilsWorld) inst);
 			if (!world.spawned_3)
 			{
 				world.spawned_3 = true;
@@ -364,9 +361,8 @@ public class NornilsGarden extends AbstractInstance
 	private void spawn4(Creature creature)
 	{
 		final InstanceWorld inst = InstanceManager.getInstance().getWorld(creature);
-		if (inst instanceof NornilsWorld)
+		if (inst instanceof NornilsWorld world)
 		{
-			final NornilsWorld world = ((NornilsWorld) inst);
 			if (!world.spawned_4)
 			{
 				world.spawned_4 = true;

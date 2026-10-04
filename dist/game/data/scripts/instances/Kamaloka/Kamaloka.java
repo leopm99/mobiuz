@@ -814,9 +814,8 @@ public class Kamaloka extends AbstractInstance
 	public void onKill(Npc npc, Player player, boolean isSummon)
 	{
 		final InstanceWorld tmpWorld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpWorld instanceof KamaWorld)
+		if (tmpWorld instanceof KamaWorld world)
 		{
-			final KamaWorld world = (KamaWorld) tmpWorld;
 			final int objectId = npc.getObjectId();
 			
 			// first room was spawned ? is shaman killed ?

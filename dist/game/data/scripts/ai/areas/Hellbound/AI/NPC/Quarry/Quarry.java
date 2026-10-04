@@ -145,9 +145,9 @@ public class Quarry extends AbstractNpcAI
 	public void onSpawn(Npc npc)
 	{
 		npc.setAutoAttackable(false);
-		if (npc instanceof QuestGuard)
+		if (npc instanceof QuestGuard questGuard)
 		{
-			((QuestGuard) npc).setPassive(true);
+			questGuard.setPassive(true);
 		}
 	}
 	

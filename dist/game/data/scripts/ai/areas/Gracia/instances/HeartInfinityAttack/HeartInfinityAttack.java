@@ -423,9 +423,8 @@ public class HeartInfinityAttack extends AbstractNpcAI
 	public String onEvent(String event, Npc npc, Player player)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getPlayerWorld(player);
-		if (tmpworld instanceof HIAWorld)
+		if (tmpworld instanceof HIAWorld world)
 		{
-			final HIAWorld world = (HIAWorld) tmpworld;
 			
 			if (event.startsWith("warpechmus"))
 			{
@@ -499,9 +498,8 @@ public class HeartInfinityAttack extends AbstractNpcAI
 	public void onAggroRangeEnter(Npc npc, Player player, boolean isSummon)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof HIAWorld)
+		if (tmpworld instanceof HIAWorld world)
 		{
-			final HIAWorld world = (HIAWorld) tmpworld;
 			
 			if (npc.getId() == 18668)
 			{
@@ -518,9 +516,8 @@ public class HeartInfinityAttack extends AbstractNpcAI
 	public void onAttack(Npc npc, Player attacker, int damage, boolean isSummon, Skill skill)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof HIAWorld)
+		if (tmpworld instanceof HIAWorld world)
 		{
-			final HIAWorld world = (HIAWorld) tmpworld;
 			if (!world.isBossAttacked)
 			{
 				world.isBossAttacked = true;
@@ -571,9 +568,8 @@ public class HeartInfinityAttack extends AbstractNpcAI
 		}
 		
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof HIAWorld)
+		if (tmpworld instanceof HIAWorld world)
 		{
-			final HIAWorld world = (HIAWorld) tmpworld;
 			if (npc.getId() == ALIVETUMOR)
 			{
 				world.addTumorCount(1);
@@ -592,9 +588,8 @@ public class HeartInfinityAttack extends AbstractNpcAI
 	public void onKill(Npc npc, Player player, boolean isSummon)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof HIAWorld)
+		if (tmpworld instanceof HIAWorld world)
 		{
-			final HIAWorld world = (HIAWorld) tmpworld;
 			final Location loc = npc.getLocation();
 			if (npc.getId() == ALIVETUMOR)
 			{

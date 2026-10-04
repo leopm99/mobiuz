@@ -1189,9 +1189,8 @@ public class SeedOfDestruction extends AbstractNpcAI
 	public void onAttack(Npc npc, Player attacker, int damage, boolean isPet, Skill skill)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof SODWorld)
+		if (tmpworld instanceof SODWorld world)
 		{
-			final SODWorld world = (SODWorld) tmpworld;
 			if ((world.getStatus() == 2) && (npc.getId() == OBELISK))
 			{
 				world.setStatus(4);
@@ -1221,9 +1220,8 @@ public class SeedOfDestruction extends AbstractNpcAI
 	public String onEvent(String event, Npc npc, Player player)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc != null ? npc : player);
-		if (tmpworld instanceof SODWorld)
+		if (tmpworld instanceof SODWorld world)
 		{
-			final SODWorld world = (SODWorld) tmpworld;
 			switch (event)
 			{
 				case "ThroneSpawn":
@@ -1298,9 +1296,8 @@ public class SeedOfDestruction extends AbstractNpcAI
 		}
 		
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof SODWorld)
+		if (tmpworld instanceof SODWorld world)
 		{
-			final SODWorld world = (SODWorld) tmpworld;
 			if (world.getStatus() == 1)
 			{
 				if (checkKillProgress(npc, world))

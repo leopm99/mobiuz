@@ -466,9 +466,8 @@ public class HeartInfinityDefence extends AbstractNpcAI
 	public String onEvent(String event, Npc npc, Player player)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getPlayerWorld(player);
-		if (tmpworld instanceof HIDWorld)
+		if (tmpworld instanceof HIDWorld world)
 		{
-			final HIDWorld world = (HIDWorld) tmpworld;
 			
 			if (event.startsWith("warpechmus"))
 			{
@@ -540,9 +539,8 @@ public class HeartInfinityDefence extends AbstractNpcAI
 	public void onAggroRangeEnter(Npc npc, Player player, boolean isSummon)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof HIDWorld)
+		if (tmpworld instanceof HIDWorld world)
 		{
-			final HIDWorld world = (HIDWorld) tmpworld;
 			
 			if (npc.getId() == 18668)
 			{
@@ -576,9 +574,8 @@ public class HeartInfinityDefence extends AbstractNpcAI
 	public void onKill(Npc npc, Player player, boolean isSummon)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof HIDWorld)
+		if (tmpworld instanceof HIDWorld world)
 		{
-			final HIDWorld world = (HIDWorld) tmpworld;
 			final Location loc = npc.getLocation();
 			if (npc.getId() == ALIVETUMOR)
 			{
@@ -741,9 +738,8 @@ public class HeartInfinityDefence extends AbstractNpcAI
 		{
 			final Attackable npc = creature.asAttackable();
 			final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-			if (tmpworld instanceof HIDWorld)
+			if (tmpworld instanceof HIDWorld world)
 			{
-				final HIDWorld world = (HIDWorld) tmpworld;
 				if (npc.getId() == SOULWAGON)
 				{
 					notifyWagonArrived(npc, world);
