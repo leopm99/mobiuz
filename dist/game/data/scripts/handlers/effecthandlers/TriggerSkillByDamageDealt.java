@@ -165,6 +165,6 @@ public class TriggerSkillByDamageDealt extends AbstractEffect
 	@Override
 	public void onStart(Creature effector, Creature effected, Skill skill)
 	{
-		effected.addListener(new ConsumerEventListener(effected, EventType.ON_CREATURE_DAMAGE_DEALT, (OnCreatureDamageDealt event) -> onAttackEvent(event), this));
+		effected.addListener(new ConsumerEventListener(effected, EventType.ON_CREATURE_DAMAGE_DEALT, this::onAttackEvent, this));
 	}
 }

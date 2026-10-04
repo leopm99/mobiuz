@@ -101,6 +101,6 @@ public class TriggerSkillByAvoid extends AbstractEffect
 	@Override
 	public void onStart(Creature effector, Creature effected, Skill skill)
 	{
-		effected.addListener(new ConsumerEventListener(effected, EventType.ON_CREATURE_ATTACK_AVOID, (OnCreatureAttackAvoid event) -> onAvoidEvent(event), this));
+		effected.addListener(new ConsumerEventListener(effected, EventType.ON_CREATURE_ATTACK_AVOID, this::onAvoidEvent, this));
 	}
 }

@@ -165,7 +165,7 @@ public class Minigame extends AbstractNpcAI
 					room.getManager().broadcastSay(ChatType.NPC_GENERAL, NpcStringId.NOW_LIGHT_THE_FURNACE_S_FIRE);
 					room.burnThemAll();
 					startQuestTimer("off", 2000, npc, null);
-					final ConsumerEventListener listener = new ConsumerEventListener(room.getParticipant(), EventType.ON_CREATURE_SKILL_USE, (OnCreatureSkillUse listenerEvent) -> onSkillUse(listenerEvent), room);
+					final ConsumerEventListener listener = new ConsumerEventListener(room.getParticipant(), EventType.ON_CREATURE_SKILL_USE, this::onSkillUse, room);
 					room.setListener(listener);
 					room.setCurrentPot(0);
 				}
