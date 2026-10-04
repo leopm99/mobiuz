@@ -56,7 +56,7 @@ public class JailHandler implements IPunishmentHandler
 	public JailHandler()
 	{
 		// Register global listener
-		Containers.Global().addListener(new ConsumerEventListener(Containers.Global(), EventType.ON_PLAYER_LOGIN, (OnPlayerLogin event) -> onPlayerLogin(event), this));
+		Containers.Global().addListener(new ConsumerEventListener(Containers.Global(), EventType.ON_PLAYER_LOGIN, this::onPlayerLogin, this));
 	}
 	
 	private void onPlayerLogin(OnPlayerLogin event)

@@ -1218,12 +1218,12 @@ public class CtF extends Event
 	
 	private void addLogoutListener(Player player)
 	{
-		player.addListener(new ConsumerEventListener(player, EventType.ON_PLAYER_LOGOUT, (OnPlayerLogout event) -> onPlayerLogout(event), this));
+		player.addListener(new ConsumerEventListener(player, EventType.ON_PLAYER_LOGOUT, this::onPlayerLogout, this));
 	}
 	
 	private void addDeathListener(Player player)
 	{
-		player.addListener(new ConsumerEventListener(player, EventType.ON_CREATURE_DEATH, (OnCreatureDeath event) -> onPlayerDeath(event), this));
+		player.addListener(new ConsumerEventListener(player, EventType.ON_CREATURE_DEATH, this::onPlayerDeath, this));
 	}
 	
 	public static void increasePoints(Player player)

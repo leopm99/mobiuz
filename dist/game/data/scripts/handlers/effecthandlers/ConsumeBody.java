@@ -58,7 +58,7 @@ public class ConsumeBody extends AbstractEffect
 		if (skill.hasEffects(EffectScope.START))
 		{
 			DecayTaskManager.getInstance().cancel(effected);
-			ThreadPool.schedule(() -> effected.onDecay(), Formulas.calcAtkSpd(effector, skill, skill.getHitTime() + skill.getCoolTime()));
+			ThreadPool.schedule(effected::onDecay, Formulas.calcAtkSpd(effector, skill, skill.getHitTime() + skill.getCoolTime()));
 		}
 		else
 		{
