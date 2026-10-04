@@ -35,7 +35,6 @@ import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
-import java.util.Set;
 
 import javax.tools.FileObject;
 import javax.tools.ForwardingJavaFileManager;
@@ -113,7 +112,7 @@ public class ScriptingFileManager extends ForwardingJavaFileManager<StandardJava
 	}
 	
 	@Override
-	public Iterable<? extends JavaFileObject> getJavaFileObjectsFromPaths(Iterable<? extends Path> paths)
+	public Iterable<? extends JavaFileObject> getJavaFileObjectsFromPaths(Collection<? extends Path> paths)
 	{
 		return fileManager.getJavaFileObjectsFromPaths(paths);
 	}
