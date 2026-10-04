@@ -144,9 +144,9 @@ public class ItemManager
 			{
 				referenceName = (((WorldObject) reference).getName() != null ? ((WorldObject) reference).getName() : "no-name");
 			}
-			else if (reference instanceof String)
+			else if (reference instanceof String string)
 			{
-				referenceName = (String) reference;
+				referenceName = string;
 			}
 			
 			final String targetName = (actor.getTarget() != null ? actor.getTarget().getName() : "no-target");
@@ -204,9 +204,9 @@ public class ItemManager
 					{
 						referenceName = (((WorldObject) reference).getName() != null ? ((WorldObject) reference).getName() : "no-name");
 					}
-					else if (reference instanceof String)
+					else if (reference instanceof String string)
 					{
-						referenceName = (String) reference;
+						referenceName = string;
 					}
 					
 					final String targetName = (actor.getTarget() != null ? actor.getTarget().getName() : "no-target");

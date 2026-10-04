@@ -59,9 +59,8 @@ public class AccountingFormatter extends Formatter
 				
 				output.append(", ");
 				
-				if (p instanceof GameClient)
+				if (p instanceof GameClient client)
 				{
-					final GameClient client = (GameClient) p;
 					String address = null;
 					try
 					{
@@ -107,9 +106,8 @@ public class AccountingFormatter extends Formatter
 						}
 					}
 				}
-				else if (p instanceof Player)
+				else if (p instanceof Player player)
 				{
-					final Player player = (Player) p;
 					StringUtil.append(output, player.getName(), "(", String.valueOf(player.getObjectId()), ")");
 				}
 				else

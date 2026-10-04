@@ -254,13 +254,13 @@ public final class Util
 		}
 		
 		int rad = 0;
-		if (obj1 instanceof Creature)
+		if (obj1 instanceof Creature creature)
 		{
-			rad += ((Creature) obj1).getTemplate().getCollisionRadius();
+			rad += creature.getTemplate().getCollisionRadius();
 		}
-		if (obj2 instanceof Creature)
+		if (obj2 instanceof Creature creature)
 		{
-			rad += ((Creature) obj2).getTemplate().getCollisionRadius();
+			rad += creature.getTemplate().getCollisionRadius();
 		}
 		
 		double dx = obj1.getX() - obj2.getX();

@@ -328,13 +328,13 @@ public class Item extends WorldObject
 		{
 			final String targetName = (creator.getTarget() != null ? creator.getTarget().getName() : "no-target");
 			String referenceName = "no-reference";
-			if (reference instanceof WorldObject)
+			if (reference instanceof WorldObject worldObject)
 			{
-				referenceName = ((WorldObject) reference).getName() != null ? ((WorldObject) reference).getName() : "no-name";
+				referenceName = worldObject.getName() != null ? worldObject.getName() : "no-name";
 			}
-			else if (reference instanceof String)
+			else if (reference instanceof String string)
 			{
-				referenceName = (String) reference;
+				referenceName = string;
 			}
 			
 			GMAudit.logAction(creator.toString(), StringUtil.concat(String.valueOf(process), "(id: ", String.valueOf(_itemId), " name: ", getName(), ")"), targetName, StringUtil.concat("Object referencing this action is: ", referenceName));
@@ -503,13 +503,13 @@ public class Item extends WorldObject
 			{
 				final String targetName = (creator.getTarget() != null ? creator.getTarget().getName() : "no-target");
 				String referenceName = "no-reference";
-				if (reference instanceof WorldObject)
+				if (reference instanceof WorldObject worldObject)
 				{
-					referenceName = ((WorldObject) reference).getName() != null ? ((WorldObject) reference).getName() : "no-name";
+					referenceName = worldObject.getName() != null ? worldObject.getName() : "no-name";
 				}
-				else if (reference instanceof String)
+				else if (reference instanceof String string)
 				{
-					referenceName = (String) reference;
+					referenceName = string;
 				}
 				
 				GMAudit.logAction(creator.toString(), StringUtil.concat(String.valueOf(process), "(id: ", String.valueOf(_itemId), " objId: ", String.valueOf(getObjectId()), " name: ", getName(), " count: ", String.valueOf(count), ")"), targetName, StringUtil.concat("Object referencing this action is: ", referenceName));
@@ -651,9 +651,9 @@ public class Item extends WorldObject
 	 */
 	public EtcItem getEtcItem()
 	{
-		if (_itemTemplate instanceof EtcItem)
+		if (_itemTemplate instanceof EtcItem etcItem)
 		{
-			return (EtcItem) _itemTemplate;
+			return etcItem;
 		}
 		return null;
 	}
@@ -663,9 +663,9 @@ public class Item extends WorldObject
 	 */
 	public Weapon getWeaponItem()
 	{
-		if (_itemTemplate instanceof Weapon)
+		if (_itemTemplate instanceof Weapon weapon)
 		{
-			return (Weapon) _itemTemplate;
+			return weapon;
 		}
 		return null;
 	}
@@ -675,9 +675,9 @@ public class Item extends WorldObject
 	 */
 	public Armor getArmorItem()
 	{
-		if (_itemTemplate instanceof Armor)
+		if (_itemTemplate instanceof Armor armor)
 		{
-			return (Armor) _itemTemplate;
+			return armor;
 		}
 		return null;
 	}

@@ -3824,9 +3824,9 @@ public class Player extends Playable
 		sendPacket(playerSU);
 		
 		// Send target update packet
-		if (target instanceof PlayerInventory)
+		if (target instanceof PlayerInventory playerInventory)
 		{
-			final Player targetPlayer = ((PlayerInventory) target).getOwner();
+			final Player targetPlayer = playerInventory.getOwner();
 			final InventoryUpdate targetIU = new InventoryUpdate();
 			if (newItem.getCount() > count)
 			{
@@ -3844,7 +3844,7 @@ public class Player extends Playable
 			playerSU.addAttribute(StatusUpdate.CUR_LOAD, targetPlayer.getCurrentLoad());
 			targetPlayer.sendPacket(playerSU);
 		}
-		else if (target instanceof PetInventory)
+		else if (target instanceof PetInventory petInventory)
 		{
 			final PetInventoryUpdate petIU = new PetInventoryUpdate();
 			if (newItem.getCount() > count)
@@ -3856,7 +3856,7 @@ public class Player extends Playable
 				petIU.addNewItem(newItem);
 			}
 			
-			((PetInventory) target).getOwner().sendPacket(petIU);
+			petInventory.getOwner().sendPacket(petIU);
 		}
 		
 		return newItem;

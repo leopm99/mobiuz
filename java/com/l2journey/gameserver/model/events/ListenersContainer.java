@@ -129,9 +129,8 @@ public class ListenersContainer
 			return true;
 		}
 		
-		if (this instanceof Creature)
+		if (this instanceof Creature creature)
 		{
-			final Creature creature = (Creature) this;
 			if (creature.getTemplate().hasListener(type))
 			{
 				return true;
