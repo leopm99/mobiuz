@@ -2504,7 +2504,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 	 */
 	public void addCondIsSubClassActive(String html)
 	{
-		getStartConditions().put(p -> p.isSubClassActive(), html);
+		getStartConditions().put(Player::isSubClassActive, html);
 	}
 	
 	/**

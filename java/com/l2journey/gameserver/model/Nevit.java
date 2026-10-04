@@ -62,8 +62,8 @@ public class Nevit
 		_player = player;
 		if (Config.NEVIT_ENABLED)
 		{
-			player.addListener(new ConsumerEventListener(player, EventType.ON_PLAYER_LOGIN, (OnPlayerLogin event) -> onPlayerLogin(event), this));
-			player.addListener(new ConsumerEventListener(player, EventType.ON_PLAYER_LOGOUT, (OnPlayerLogout event) -> onPlayerLogout(event), this));
+			player.addListener(new ConsumerEventListener(player, EventType.ON_PLAYER_LOGIN, this::onPlayerLogin, this));
+			player.addListener(new ConsumerEventListener(player, EventType.ON_PLAYER_LOGOUT, this::onPlayerLogout, this));
 		}
 	}
 	

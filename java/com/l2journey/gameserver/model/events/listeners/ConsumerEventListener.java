@@ -32,7 +32,7 @@ public class ConsumerEventListener extends AbstractEventListener
 	private final Consumer<IBaseEvent> _callback;
 	
 	@SuppressWarnings("unchecked")
-	public ConsumerEventListener(ListenersContainer container, EventType type, Consumer<? extends IBaseEvent> callback, Object owner)
+	public <T extends IBaseEvent> ConsumerEventListener(ListenersContainer container, EventType type, Consumer<T> callback, Object owner)
 	{
 		super(container, type, owner);
 		_callback = (Consumer<IBaseEvent>) callback;
