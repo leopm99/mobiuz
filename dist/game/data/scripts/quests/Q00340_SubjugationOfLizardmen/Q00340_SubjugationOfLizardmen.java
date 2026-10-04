@@ -328,12 +328,9 @@ public class Q00340_SubjugationOfLizardmen extends Quest
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == GUARD_WEISZ))
 		{
-			if (npc.getId() == GUARD_WEISZ)
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-			}
+			htmltext = getAlreadyCompletedMsg(player);
 		}
 		return htmltext;
 	}

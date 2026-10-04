@@ -498,17 +498,13 @@ public class HeartInfinityAttack extends AbstractNpcAI
 	public void onAggroRangeEnter(Npc npc, Player player, boolean isSummon)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof HIAWorld world)
+		if ((tmpworld instanceof HIAWorld world) && (npc.getId() == 18668))
 		{
-			
-			if (npc.getId() == 18668)
+			for (int i = 0; i < getRandom(1, 4); i++)
 			{
-				for (int i = 0; i < getRandom(1, 4); i++)
-				{
-					addSpawn(MONSTERS[getRandom(MONSTERS.length)], npc.getLocation(), world.getInstanceId());
-				}
-				npc.doDie(npc);
+				addSpawn(MONSTERS[getRandom(MONSTERS.length)], npc.getLocation(), world.getInstanceId());
 			}
+			npc.doDie(npc);
 		}
 	}
 	

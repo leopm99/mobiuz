@@ -401,13 +401,10 @@ public class Q00023_LidiasHeart extends Quest
 							htmltext = "31524-05.html";
 						}
 					}
-					else if ((memoState == 9) || (memoState == 10))
+					else if (((memoState == 9) || (memoState == 10)) && (hasQuestItems(player, SILVER_KEY)))
 					{
-						if (hasQuestItems(player, SILVER_KEY))
-						{
-							qs.setMemoState(10);
-							htmltext = "31524-06.html";
-						}
+						qs.setMemoState(10);
+						htmltext = "31524-06.html";
 					}
 					break;
 				}

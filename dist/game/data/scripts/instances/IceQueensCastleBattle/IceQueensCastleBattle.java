@@ -960,13 +960,10 @@ public class IceQueensCastleBattle extends AbstractInstance
 							npc.doCast(ATTACK_NEARBY_RANGE.getSkill());
 						}
 					}
-					else if (getRandom(10000) < 1333)
+					else if ((getRandom(10000) < 1333) && (!npc.isAffectedBySkill(REFLECT_MAGIC.getSkillId()) && npc.checkDoCastConditions(REFLECT_MAGIC.getSkill()) && !npc.isCastingNow()))
 					{
-						if (!npc.isAffectedBySkill(REFLECT_MAGIC.getSkillId()) && npc.checkDoCastConditions(REFLECT_MAGIC.getSkill()) && !npc.isCastingNow())
-						{
-							npc.setTarget(npc);
-							npc.doCast(REFLECT_MAGIC.getSkill());
-						}
+						npc.setTarget(npc);
+						npc.doCast(REFLECT_MAGIC.getSkill());
 					}
 					break;
 				}

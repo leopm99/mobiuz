@@ -555,12 +555,9 @@ public class Q00216_TrialOfTheGuildsman extends Quest
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == WAREHOUSE_KEEPER_VALKON))
 		{
-			if (npc.getId() == WAREHOUSE_KEEPER_VALKON)
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-			}
+			htmltext = getAlreadyCompletedMsg(player);
 		}
 		return htmltext;
 	}

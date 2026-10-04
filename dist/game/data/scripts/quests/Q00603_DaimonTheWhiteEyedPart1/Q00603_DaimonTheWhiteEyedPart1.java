@@ -202,12 +202,9 @@ public class Q00603_DaimonTheWhiteEyedPart1 extends Quest
 	public void onKill(Npc npc, Player killer, boolean isSummon)
 	{
 		final QuestState qs = getRandomPartyMemberState(killer, 7, 3, npc);
-		if (qs != null)
+		if ((qs != null) && (giveItemRandomly(qs.getPlayer(), npc, SPIRIT_OF_DARKNESS, 1, 200, MONSTER_CHANCES.get(npc.getId()), true)))
 		{
-			if (giveItemRandomly(qs.getPlayer(), npc, SPIRIT_OF_DARKNESS, 1, 200, MONSTER_CHANCES.get(npc.getId()), true))
-			{
-				qs.setCond(8, true);
-			}
+			qs.setCond(8, true);
 		}
 	}
 }

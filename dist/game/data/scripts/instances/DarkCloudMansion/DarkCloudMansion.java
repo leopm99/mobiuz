@@ -942,33 +942,21 @@ public class DarkCloudMansion extends AbstractInstance
 		final InstanceWorld world = InstanceManager.getInstance().getWorld(npc);
 		if (world != null)
 		{
-			if (world.getStatus() == 0)
+			if ((world.getStatus() == 0) && (checkKillProgress(npc, world.getParameters().getObject("StartRoom", DMCRoom.class))))
 			{
-				if (checkKillProgress(npc, world.getParameters().getObject("StartRoom", DMCRoom.class)))
-				{
-					runHall(world);
-				}
+				runHall(world);
 			}
-			if (world.getStatus() == 1)
+			if ((world.getStatus() == 1) && (checkKillProgress(npc, world.getParameters().getObject("Hall", DMCRoom.class))))
 			{
-				if (checkKillProgress(npc, world.getParameters().getObject("Hall", DMCRoom.class)))
-				{
-					runFirstRoom(world);
-				}
+				runFirstRoom(world);
 			}
-			if (world.getStatus() == 2)
+			if ((world.getStatus() == 2) && (checkKillProgress(npc, world.getParameters().getObject("FirstRoom", DMCRoom.class))))
 			{
-				if (checkKillProgress(npc, world.getParameters().getObject("FirstRoom", DMCRoom.class)))
-				{
-					runHall2(world);
-				}
+				runHall2(world);
 			}
-			if (world.getStatus() == 3)
+			if ((world.getStatus() == 3) && (checkKillProgress(npc, world.getParameters().getObject("Hall", DMCRoom.class))))
 			{
-				if (checkKillProgress(npc, world.getParameters().getObject("Hall", DMCRoom.class)))
-				{
-					runSecondRoom(world);
-				}
+				runSecondRoom(world);
 			}
 			if (world.getStatus() == 4)
 			{
@@ -981,30 +969,21 @@ public class DarkCloudMansion extends AbstractInstance
 					}
 				}
 			}
-			if (world.getStatus() == 5)
+			if ((world.getStatus() == 5) && (checkKillProgress(npc, world.getParameters().getObject("Hall", DMCRoom.class))))
 			{
-				if (checkKillProgress(npc, world.getParameters().getObject("Hall", DMCRoom.class)))
-				{
-					runThirdRoom(world);
-				}
+				runThirdRoom(world);
 			}
-			if (world.getStatus() == 6)
+			if ((world.getStatus() == 6) && (checkKillProgress(npc, world.getParameters().getObject("ThirdRoom", DMCRoom.class))))
 			{
-				if (checkKillProgress(npc, world.getParameters().getObject("ThirdRoom", DMCRoom.class)))
-				{
-					runForthRoom(world);
-				}
+				runForthRoom(world);
 			}
 			if (world.getStatus() == 7)
 			{
 				chkShadowColumn(world, npc);
 			}
-			if (world.getStatus() == 8)
+			if ((world.getStatus() == 8) && (checkKillProgress(npc, world.getParameters().getObject("ThirdRoom2", DMCRoom.class))))
 			{
-				if (checkKillProgress(npc, world.getParameters().getObject("ThirdRoom2", DMCRoom.class)))
-				{
-					runFifthRoom(world);
-				}
+				runFifthRoom(world);
 			}
 			if (world.getStatus() == 9)
 			{

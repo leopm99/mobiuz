@@ -148,13 +148,10 @@ public class Q00328_SenseForBusiness extends Quest
 					playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 				}
 			}
-			else if (MONSTER_BASILISKS.containsKey(npc.getId()))
+			else if ((MONSTER_BASILISKS.containsKey(npc.getId())) && (chance < MONSTER_BASILISKS.get(npc.getId())))
 			{
-				if (chance < MONSTER_BASILISKS.get(npc.getId()))
-				{
-					giveItems(player, BASILISK_GIZZARD, 1);
-					playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-				}
+				giveItems(player, BASILISK_GIZZARD, 1);
+				playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 			}
 		}
 	}

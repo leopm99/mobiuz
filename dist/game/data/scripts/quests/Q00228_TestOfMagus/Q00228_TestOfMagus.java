@@ -619,12 +619,9 @@ public class Q00228_TestOfMagus extends Quest
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == BARD_RUKAL))
 		{
-			if (npc.getId() == BARD_RUKAL)
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-			}
+			htmltext = getAlreadyCompletedMsg(player);
 		}
 		return htmltext;
 	}

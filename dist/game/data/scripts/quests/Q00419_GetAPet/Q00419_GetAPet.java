@@ -260,14 +260,11 @@ public class Q00419_GetAPet extends Quest
 						giveItems(player, ANIMAL_LOVERS_LIST, 1);
 					}
 				}
-				else if (player.getRace() == Race.KAMAEL)
+				else if ((player.getRace() == Race.KAMAEL) && (hasQuestItems(player, ANIMAL_SLAYERS_LIST) && (getQuestItemsCount(player, BLOODY_RED_CLAW) >= 50)))
 				{
-					if (hasQuestItems(player, ANIMAL_SLAYERS_LIST) && (getQuestItemsCount(player, BLOODY_RED_CLAW) >= 50))
-					{
-						takeItems(player, ANIMAL_SLAYERS_LIST, -1);
-						takeItems(player, BLOODY_RED_CLAW, -1);
-						giveItems(player, ANIMAL_LOVERS_LIST, 1);
-					}
+					takeItems(player, ANIMAL_SLAYERS_LIST, -1);
+					takeItems(player, BLOODY_RED_CLAW, -1);
+					giveItems(player, ANIMAL_LOVERS_LIST, 1);
 				}
 				qs.setMemoState(0);
 				htmltext = event;

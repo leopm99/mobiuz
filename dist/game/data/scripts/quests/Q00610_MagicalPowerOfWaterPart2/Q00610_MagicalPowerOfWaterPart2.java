@@ -69,26 +69,23 @@ public class Q00610_MagicalPowerOfWaterPart2 extends Quest
 	public void actionForEachPlayer(Player player, Npc npc, boolean isSummon)
 	{
 		final QuestState qs = getQuestState(player, false);
-		if ((qs != null) && LocationUtil.checkIfInRange(Config.ALT_PARTY_RANGE, npc, player, false))
+		if (((qs != null) && LocationUtil.checkIfInRange(Config.ALT_PARTY_RANGE, npc, player, false)) && (npc.getId() == ASHUTAR))
 		{
-			if (npc.getId() == ASHUTAR)
+			switch (qs.getCond())
 			{
-				switch (qs.getCond())
+				case 1: // take the item and give the heart
 				{
-					case 1: // take the item and give the heart
+					takeItems(player, GREEN_TOTEM, 1);
+					// break; fallthrough
+				}
+				case 2:
+				{
+					if (!hasQuestItems(player, ASHUTAR_HEART))
 					{
-						takeItems(player, GREEN_TOTEM, 1);
-						// break; fallthrough
+						giveItems(player, ASHUTAR_HEART, 1);
 					}
-					case 2:
-					{
-						if (!hasQuestItems(player, ASHUTAR_HEART))
-						{
-							giveItems(player, ASHUTAR_HEART, 1);
-						}
-						qs.setCond(3, true);
-						break;
-					}
+					qs.setCond(3, true);
+					break;
 				}
 			}
 		}

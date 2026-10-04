@@ -302,12 +302,9 @@ public class Q00215_TrialOfThePilgrim extends Quest
 						qs.setCond(12, true);
 						htmltext = "30036-03.html";
 					}
-					else if (memoState == 12)
+					else if ((memoState == 12) && (hasQuestItems(player, STATUE_OF_EINHASAD)))
 					{
-						if (hasQuestItems(player, STATUE_OF_EINHASAD))
-						{
-							htmltext = "30036-04.html";
-						}
+						htmltext = "30036-04.html";
 					}
 					break;
 				}
@@ -402,13 +399,10 @@ public class Q00215_TrialOfThePilgrim extends Quest
 					{
 						htmltext = "30571-02.html";
 					}
-					else if (memoState == 5)
+					else if ((memoState == 5) && (hasQuestItems(player, SPIRIT_OF_FLAME)))
 					{
-						if (hasQuestItems(player, SPIRIT_OF_FLAME))
-						{
-							qs.setCond(6, true);
-							htmltext = "30571-03.html";
-						}
+						qs.setCond(6, true);
+						htmltext = "30571-03.html";
 					}
 					break;
 				}
@@ -450,12 +444,9 @@ public class Q00215_TrialOfThePilgrim extends Quest
 					{
 						htmltext = "30649-02.html";
 					}
-					else if (memoState == 4)
+					else if ((memoState == 4) && (hasQuestItems(player, ESSENSE_OF_FLAME)))
 					{
-						if (hasQuestItems(player, ESSENSE_OF_FLAME))
-						{
-							htmltext = "30649-03.html";
-						}
+						htmltext = "30649-03.html";
 					}
 					break;
 				}
@@ -514,23 +505,17 @@ public class Q00215_TrialOfThePilgrim extends Quest
 							htmltext = "30652-01.html";
 						}
 					}
-					else if (memoState == 15)
+					else if ((memoState == 15) && (hasQuestItems(player, BOOK_OF_DARKNESS)))
 					{
-						if (hasQuestItems(player, BOOK_OF_DARKNESS))
-						{
-							htmltext = "30652-03.html";
-						}
+						htmltext = "30652-03.html";
 					}
 					break;
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == HERMIT_SANTIAGO))
 		{
-			if (npc.getId() == HERMIT_SANTIAGO)
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-			}
+			htmltext = getAlreadyCompletedMsg(player);
 		}
 		return htmltext;
 	}

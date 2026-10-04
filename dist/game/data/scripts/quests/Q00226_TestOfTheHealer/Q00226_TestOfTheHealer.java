@@ -662,12 +662,9 @@ public class Q00226_TestOfTheHealer extends Quest
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == PRIEST_BANDELLOS))
 		{
-			if (npc.getId() == PRIEST_BANDELLOS)
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-			}
+			htmltext = getAlreadyCompletedMsg(player);
 		}
 		return htmltext;
 	}

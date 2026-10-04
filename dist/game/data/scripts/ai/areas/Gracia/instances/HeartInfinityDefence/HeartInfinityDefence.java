@@ -539,17 +539,13 @@ public class HeartInfinityDefence extends AbstractNpcAI
 	public void onAggroRangeEnter(Npc npc, Player player, boolean isSummon)
 	{
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-		if (tmpworld instanceof HIDWorld world)
+		if ((tmpworld instanceof HIDWorld world) && (npc.getId() == 18668))
 		{
-			
-			if (npc.getId() == 18668)
+			for (int i = 0; i < getRandom(1, 4); i++)
 			{
-				for (int i = 0; i < getRandom(1, 4); i++)
-				{
-					addSpawn(mobs[getRandom(mobs.length)], npc.getLocation(), world.getInstanceId());
-				}
-				npc.doDie(npc);
+				addSpawn(mobs[getRandom(mobs.length)], npc.getLocation(), world.getInstanceId());
 			}
+			npc.doDie(npc);
 		}
 	}
 	
@@ -738,13 +734,10 @@ public class HeartInfinityDefence extends AbstractNpcAI
 		{
 			final Attackable npc = creature.asAttackable();
 			final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
-			if (tmpworld instanceof HIDWorld world)
+			if ((tmpworld instanceof HIDWorld world) && (npc.getId() == SOULWAGON))
 			{
-				if (npc.getId() == SOULWAGON)
-				{
-					notifyWagonArrived(npc, world);
-					npc.deleteMe();
-				}
+				notifyWagonArrived(npc, world);
+				npc.deleteMe();
 			}
 		}
 	}

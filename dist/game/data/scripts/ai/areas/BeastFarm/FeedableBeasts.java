@@ -608,19 +608,16 @@ public class FeedableBeasts extends AbstractNpcAI
 				spawnNext(npc, growthLevel, caster, food);
 			}
 		}
-		else if (ArrayUtil.contains(TAMED_BEASTS, npcId) && (npc instanceof TamedBeast beast))
+		else if ((ArrayUtil.contains(TAMED_BEASTS, npcId) && (npc instanceof TamedBeast beast)) && (skillId == beast.getFoodType()))
 		{
-			if (skillId == beast.getFoodType())
+			beast.onReceiveFood();
+			final NpcStringId message = getRandomEntry(TAMED_TEXT);
+			final NpcSay packet = new NpcSay(npc, ChatType.GENERAL, message);
+			if (message.getParamCount() > 0)
 			{
-				beast.onReceiveFood();
-				final NpcStringId message = getRandomEntry(TAMED_TEXT);
-				final NpcSay packet = new NpcSay(npc, ChatType.GENERAL, message);
-				if (message.getParamCount() > 0)
-				{
-					packet.addStringParameter(caster.getName());
-				}
-				beast.broadcastPacket(packet);
+				packet.addStringParameter(caster.getName());
 			}
+			beast.broadcastPacket(packet);
 		}
 	}
 	

@@ -676,12 +676,9 @@ public class Q00232_TestOfTheLord extends Quest
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == FLAME_LORD_KAKAI))
 		{
-			if (npc.getId() == FLAME_LORD_KAKAI)
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-			}
+			htmltext = getAlreadyCompletedMsg(player);
 		}
 		return htmltext;
 	}

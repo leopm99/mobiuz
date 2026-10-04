@@ -1201,17 +1201,14 @@ public class SeedOfDestruction extends AbstractNpcAI
 				world.setStatus(4);
 				spawn(world, SQUARE_SPAWNS_HALF, false, false);
 			}
-			else if ((world.getStatus() <= 8) && (npc.getId() == TIAT))
+			else if (((world.getStatus() <= 8) && (npc.getId() == TIAT)) && ((npc.getCurrentHp() < (npc.getMaxHp() / 2)) && (_numAtk < 1)))
 			{
-				if ((npc.getCurrentHp() < (npc.getMaxHp() / 2)) && (_numAtk < 1))
-				{
-					sendScreenMessage(world, new ExShowScreenMessage(NpcStringId.COME_OUT_WARRIORS_PROTECT_SEED_OF_DESTRUCTION, 5, 5000));
-					world._tiat.doCast(SkillData.getInstance().getSkill(5818, 1));
-					world._tiat.doCast(SkillData.getInstance().getSkill(181, 1));
-					world.deviceSpawnedMobCount = 0;
-					spawn(world, THRONE_PORTALS, false, true);
-					_numAtk++;
-				}
+				sendScreenMessage(world, new ExShowScreenMessage(NpcStringId.COME_OUT_WARRIORS_PROTECT_SEED_OF_DESTRUCTION, 5, 5000));
+				world._tiat.doCast(SkillData.getInstance().getSkill(5818, 1));
+				world._tiat.doCast(SkillData.getInstance().getSkill(181, 1));
+				world.deviceSpawnedMobCount = 0;
+				spawn(world, THRONE_PORTALS, false, true);
+				_numAtk++;
 			}
 		}
 	}

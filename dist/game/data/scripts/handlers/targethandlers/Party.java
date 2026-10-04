@@ -62,12 +62,9 @@ public class Party implements ITargetTypeHandler
 				targetList.add(player);
 			}
 		}
-		else if (creature.isPlayer())
+		else if ((creature.isPlayer()) && (Skill.addSummon(creature, player, radius, false)))
 		{
-			if (Skill.addSummon(creature, player, radius, false))
-			{
-				targetList.add(player.getSummon());
-			}
+			targetList.add(player.getSummon());
 		}
 		
 		if (creature.isInParty())

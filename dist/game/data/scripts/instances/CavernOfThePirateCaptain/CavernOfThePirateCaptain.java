@@ -409,12 +409,9 @@ public class CavernOfThePirateCaptain extends AbstractInstance
 								giveItems(playersInside, VORPAL_EARRING, 1);
 							}
 						}
-						else if (time <= 900000) // 15 minutes
+						else if ((time <= 900000) && (getRandom(100) < 25)) // 15 minutes
 						{
-							if (getRandom(100) < 25)
-							{
-								giveItems(playersInside, VORPAL_RING, 1);
-							}
+							giveItems(playersInside, VORPAL_RING, 1);
 						}
 					}
 				}

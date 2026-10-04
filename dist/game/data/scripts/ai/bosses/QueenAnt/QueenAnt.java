@@ -605,30 +605,27 @@ public class QueenAnt extends AbstractNpcAI implements IXmlReader
 			}
 			_minions.clear();
 		}
-		else if ((_queen != null) && !_queen.isAlikeDead())
+		else if (((_queen != null) && !_queen.isAlikeDead()) && ((npcId == ROYAL) || (npcId == NURSE)))
 		{
-			if ((npcId == ROYAL) || (npcId == NURSE))
+			final Monster mob = npc.asMonster();
+			_minions.remove(mob);
+			if (npcId == NURSE)
 			{
-				final Monster mob = npc.asMonster();
-				_minions.remove(mob);
-				if (npcId == NURSE)
-				{
-					_nurses.remove(mob);
-				}
-				
-				// Same respawn timing as before: base time from XML, Royal keeps its 0-40s random jitter.
-				int baseRespawnSeconds = 60;
-				for (MinionSpawn spawn : MINION_SPAWNS)
-				{
-					if (spawn.getNpcId() == npcId)
-					{
-						baseRespawnSeconds = spawn.getRespawnTime();
-						break;
-					}
-				}
-				final long minionRespawnTime = (npcId == ROYAL) ? (baseRespawnSeconds + getRandom(40)) * 1000L : baseRespawnSeconds * 1000L;
-				startQuestTimer("spawn_minion", minionRespawnTime, npc, null);
+				_nurses.remove(mob);
 			}
+
+			// Same respawn timing as before: base time from XML, Royal keeps its 0-40s random jitter.
+			int baseRespawnSeconds = 60;
+			for (MinionSpawn spawn : MINION_SPAWNS)
+			{
+				if (spawn.getNpcId() == npcId)
+				{
+					baseRespawnSeconds = spawn.getRespawnTime();
+					break;
+				}
+			}
+			final long minionRespawnTime = (npcId == ROYAL) ? (baseRespawnSeconds + getRandom(40)) * 1000L : baseRespawnSeconds * 1000L;
+			startQuestTimer("spawn_minion", minionRespawnTime, npc, null);
 		}
 	}
 	

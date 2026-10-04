@@ -227,13 +227,10 @@ public class Q00233_TestOfTheWarSpirit extends Quest
 								playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 							}
 						}
-						else if (i0 > 0)
+						else if ((i0 > 0) && (!hasQuestItems(killer, KIRUNAS_SKULL)))
 						{
-							if (!hasQuestItems(killer, KIRUNAS_SKULL))
-							{
-								giveItems(killer, KIRUNAS_SKULL, 1);
-								playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-							}
+							giveItems(killer, KIRUNAS_SKULL, 1);
+							playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 						}
 					}
 					break;
@@ -613,12 +610,9 @@ public class Q00233_TestOfTheWarSpirit extends Quest
 				}
 			}
 		}
-		else if (qs.isCompleted())
+		else if ((qs.isCompleted()) && (npc.getId() == SEER_SOMAK))
 		{
-			if (npc.getId() == SEER_SOMAK)
-			{
-				htmltext = getAlreadyCompletedMsg(player);
-			}
+			htmltext = getAlreadyCompletedMsg(player);
 		}
 		return htmltext;
 	}

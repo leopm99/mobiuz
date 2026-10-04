@@ -191,15 +191,9 @@ public class DestroyedTumors extends AbstractNpcAI
 				}
 			}
 		}
-		else if ((world != null) && (world.getTemplateId() == 122))
+		else if (((world != null) && (world.getTemplateId() == 122)) && ((event.equalsIgnoreCase("examine_tumor")) && (npc.getId() == 32535)))
 		{
-			if (event.equalsIgnoreCase("examine_tumor"))
-			{
-				if (npc.getId() == 32535)
-				{
-					htmltext = "32535-4.htm";
-				}
-			}
+			htmltext = "32535-4.htm";
 		}
 		return htmltext;
 	}
