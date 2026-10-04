@@ -1436,7 +1436,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 	public static String getNoQuestMsg(Player player)
 	{
 		final String result = HtmCache.getInstance().getHtm(player, "data/html/noquest.htm");
-		return (result != null) && (result.length() > 0) ? result : DEFAULT_NO_QUEST_MSG;
+		return (result != null) && !result.isEmpty() ? result : DEFAULT_NO_QUEST_MSG;
 	}
 	
 	/**
@@ -1446,7 +1446,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 	public static String getAlreadyCompletedMsg(Player player)
 	{
 		final String result = HtmCache.getInstance().getHtm(player, "data/html/alreadycompleted.htm");
-		return (result != null) && (result.length() > 0) ? result : DEFAULT_ALREADY_COMPLETED_MSG;
+		return (result != null) && !result.isEmpty() ? result : DEFAULT_ALREADY_COMPLETED_MSG;
 	}
 	
 	/**

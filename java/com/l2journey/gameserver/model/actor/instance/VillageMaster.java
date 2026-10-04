@@ -467,7 +467,7 @@ public class VillageMaster extends Folk
 							}
 						}
 						
-						if (content2.length() > 0)
+						if (!content2.isEmpty())
 						{
 							html.setFile(player, "data/html/villagemaster/SubClass_Change.htm");
 							html.replace("%list%", content2.toString());

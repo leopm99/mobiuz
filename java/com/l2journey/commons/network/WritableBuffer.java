@@ -170,7 +170,7 @@ public abstract class WritableBuffer implements Buffer
 	 */
 	public void writeSizedString(CharSequence text)
 	{
-		if ((text != null) && (text.length() > 0))
+		if ((text != null) && !text.isEmpty())
 		{
 			writeShort(text.length());
 			writeStringWithCharset(text);

@@ -138,7 +138,7 @@ public class Locator
 		}
 		
 		final StringBuilder buf = new StringBuilder(url.getHost());
-		if (buf.length() > 0)
+		if (!buf.isEmpty())
 		{
 			buf.insert(0, File.separatorChar).insert(0, File.separatorChar);
 		}

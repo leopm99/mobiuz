@@ -151,7 +151,7 @@ public class MacroList
 			for (MacroCmd cmd : macro.getCommands())
 			{
 				sb.append(cmd.getType().ordinal() + "," + cmd.getD1() + "," + cmd.getD2());
-				if ((cmd.getCmd() != null) && (cmd.getCmd().length() > 0))
+				if ((cmd.getCmd() != null) && !cmd.getCmd().isEmpty())
 				{
 					sb.append("," + cmd.getCmd());
 				}
