@@ -2893,12 +2893,7 @@ public class Clan
 		}
 		// is next level?
 		// is first level?
-		if (((current != null) && ((current.getLevel() + 1) == skill.getLevel())) || ((current == null) && (skill.getLevel() == 1)))
-		{
-			return true;
-		}
-		
-		return false;
+		return ((current != null) && ((current.getLevel() + 1) == skill.getLevel())) || ((current == null) && (skill.getLevel() == 1));
 	}
 	
 	public Collection<SubPledgeSkill> getAllSubSkills()

@@ -632,11 +632,7 @@ public class SevenSigns
 			}
 		}
 		
-		if (((nextQuestStart < tillDate) && (tillDate < nextValidStart)) || ((nextValidStart < nextQuestStart) && ((tillDate < nextValidStart) || (nextQuestStart < tillDate))))
-		{
-			return false;
-		}
-		return true;
+		return !(((nextQuestStart < tillDate) && (tillDate < nextValidStart)) || ((nextValidStart < nextQuestStart) && ((tillDate < nextValidStart) || (nextQuestStart < tillDate))));
 	}
 	
 	public int getCurrentScore(int cabal)
@@ -1602,11 +1598,7 @@ public class SevenSigns
 		{
 			return true;
 		}
-		if ((itemId > 7970) && (itemId < 7973))
-		{
-			return true;
-		}
-		return false;
+		return (itemId > 7970) && (itemId < 7973);
 	}
 	
 	public boolean checkIsRookiePostingTicket(int itemId)
@@ -1616,11 +1608,7 @@ public class SevenSigns
 		{
 			return true;
 		}
-		if (((itemId > 7950) && (itemId < 7971)) || ((itemId > 8007) && (itemId < 8028)))
-		{
-			return true;
-		}
-		return false;
+		return ((itemId > 7950) && (itemId < 7971)) || ((itemId > 8007) && (itemId < 8028));
 	}
 	
 	public void giveCPMult(int strifeOwner)

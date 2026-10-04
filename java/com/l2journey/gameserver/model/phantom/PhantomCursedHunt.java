@@ -811,11 +811,7 @@ public class PhantomCursedHunt
 		{
 			return false;
 		}
-		if (blockedByTargetNewbieBlessing || blockedByBotNewbieBlessing)
-		{
-			return false;
-		}
-		return true;
+		return !(blockedByTargetNewbieBlessing || blockedByBotNewbieBlessing);
 	}
 	
 	private static void cleanupWeapon(int itemId)

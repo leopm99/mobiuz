@@ -85,12 +85,7 @@ public class ZoneCylinder extends ZoneForm
 		{
 			return true;
 		}
-		if (((_y > ay1) && (_y < ay2)) && ((Math.abs(_x - ax2) < _rad) || (Math.abs(_x - ax1) < _rad)))
-		{
-			return true;
-		}
-		
-		return false;
+		return ((_y > ay1) && (_y < ay2)) && ((Math.abs(_x - ax2) < _rad) || (Math.abs(_x - ax1) < _rad));
 	}
 	
 	@Override

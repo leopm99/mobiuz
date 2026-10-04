@@ -329,11 +329,7 @@ public class Door extends Creature
 		{
 			return true;
 		}
-		if ((_clanHall != null) && _clanHall.isSiegableHall() && ((SiegableHall) _clanHall).getSiegeZone().isActive() && isShowHp())
-		{
-			return true;
-		}
-		return false;
+		return (_clanHall != null) && _clanHall.isSiegableHall() && ((SiegableHall) _clanHall).getSiegeZone().isActive() && isShowHp();
 	}
 	
 	@Override

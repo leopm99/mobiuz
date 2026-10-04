@@ -181,12 +181,7 @@ public class TownZone extends ZoneType
 	
 	private boolean hasAnyShop(Player player)
 	{
-		if (((player.getPrivateStoreType() == PrivateStoreType.SELL) || (player.getPrivateStoreType() == PrivateStoreType.BUY)) || (Config.OFFLINE_CRAFT_ENABLE && (player.isCrafting() || (player.getPrivateStoreType() == PrivateStoreType.MANUFACTURE))))
-		{
-			return true;
-		}
-		
-		return false;
+		return ((player.getPrivateStoreType() == PrivateStoreType.SELL) || (player.getPrivateStoreType() == PrivateStoreType.BUY)) || (Config.OFFLINE_CRAFT_ENABLE && (player.isCrafting() || (player.getPrivateStoreType() == PrivateStoreType.MANUFACTURE)));
 	}
 	
 	private void disconnectPlayerWithShop(Player player)

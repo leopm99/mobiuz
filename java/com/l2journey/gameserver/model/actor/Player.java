@@ -5146,12 +5146,7 @@ public class Player extends Playable
 			return true;
 		}
 		
-		if ((armor != null) && (getInventory().getPaperdollItem(Inventory.PAPERDOLL_CHEST).getTemplate().getBodyPart() == ItemTemplate.SLOT_FULL_ARMOR) && (armor.getItemType() == ArmorType.HEAVY))
-		{
-			return true;
-		}
-		
-		return false;
+		return (armor != null) && (getInventory().getPaperdollItem(Inventory.PAPERDOLL_CHEST).getTemplate().getBodyPart() == ItemTemplate.SLOT_FULL_ARMOR) && (armor.getItemType() == ArmorType.HEAVY);
 	}
 	
 	public boolean isWearingLightArmor()
@@ -5163,12 +5158,7 @@ public class Player extends Playable
 			return true;
 		}
 		
-		if ((armor != null) && (_inventory.getPaperdollItem(Inventory.PAPERDOLL_CHEST).getTemplate().getBodyPart() == ItemTemplate.SLOT_FULL_ARMOR) && (armor.getItemType() == ArmorType.LIGHT))
-		{
-			return true;
-		}
-		
-		return false;
+		return (armor != null) && (_inventory.getPaperdollItem(Inventory.PAPERDOLL_CHEST).getTemplate().getBodyPart() == ItemTemplate.SLOT_FULL_ARMOR) && (armor.getItemType() == ArmorType.LIGHT);
 	}
 	
 	public boolean isWearingMagicArmor()
@@ -5180,12 +5170,7 @@ public class Player extends Playable
 			return true;
 		}
 		
-		if ((armor != null) && (_inventory.getPaperdollItem(Inventory.PAPERDOLL_CHEST).getTemplate().getBodyPart() == ItemTemplate.SLOT_FULL_ARMOR) && (armor.getItemType() == ArmorType.MAGIC))
-		{
-			return true;
-		}
-		
-		return false;
+		return (armor != null) && (_inventory.getPaperdollItem(Inventory.PAPERDOLL_CHEST).getTemplate().getBodyPart() == ItemTemplate.SLOT_FULL_ARMOR) && (armor.getItemType() == ArmorType.MAGIC);
 	}
 	
 	public boolean isMarried()
@@ -8886,12 +8871,7 @@ public class Player extends Playable
 		}
 		
 		// Check if the Player has Karma
-		if ((getKarma() > 0) || (_pvpFlag > 0))
-		{
-			return true;
-		}
-		
-		return false;
+		return (getKarma() > 0) || (_pvpFlag > 0);
 	}
 	
 	/**
@@ -11605,13 +11585,7 @@ public class Player extends Playable
 			return false;
 		}
 		
-		if (CursedWeaponsManager.getInstance().isCursed(item.getId()))
-		{
-			// can not trade a cursed weapon
-			return false;
-		}
-		
-		return true;
+		return !(CursedWeaponsManager.getInstance().isCursed(item.getId()));
 	}
 	
 	/**
@@ -13778,12 +13752,7 @@ public class Player extends Playable
 			return false;
 		}
 		
-		if (isCastingNow() || isCastingSimultaneouslyNow() || isInBoat() || isInAirShip())
-		{
-			return false;
-		}
-		
-		return true;
+		return !(isCastingNow() || isCastingSimultaneouslyNow() || isInBoat() || isInAirShip());
 	}
 	
 	/**

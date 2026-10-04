@@ -191,11 +191,7 @@ public class ArmorSet
 		{
 			return false;
 		}
-		if (!_feet.isEmpty() && !_feet.contains(feet))
-		{
-			return false;
-		}
-		return true;
+		return !(!_feet.isEmpty() && !_feet.contains(feet));
 	}
 	
 	public boolean containItem(int slot, int itemId)
@@ -299,12 +295,7 @@ public class ArmorSet
 		{
 			return false;
 		}
-		if (!_feet.isEmpty() && ((feetItem == null) || (feetItem.getEnchantLevel() < 6)))
-		{
-			return false;
-		}
-		
-		return true;
+		return !(!_feet.isEmpty() && ((feetItem == null) || (feetItem.getEnchantLevel() < 6)));
 	}
 	
 	public int getCON()

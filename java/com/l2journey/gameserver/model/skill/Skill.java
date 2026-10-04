@@ -1194,11 +1194,7 @@ public class Skill
 			}
 		}
 		
-		if (!GeoData.getInstance().canSeeTarget(caster, target))
-		{
-			return false;
-		}
-		return true;
+		return !(!GeoData.getInstance().canSeeTarget(caster, target));
 	}
 	
 	public static boolean addSummon(Creature caster, Player owner, int radius, boolean isDead)
@@ -1212,11 +1208,7 @@ public class Skill
 	
 	public static boolean addCharacter(Creature caster, Creature target, int radius, boolean isDead)
 	{
-		if ((isDead != target.isDead()) || ((radius > 0) && !LocationUtil.checkIfInRange(radius, caster, target, true)))
-		{
-			return false;
-		}
-		return true;
+		return !((isDead != target.isDead()) || ((radius > 0) && !LocationUtil.checkIfInRange(radius, caster, target, true)));
 	}
 	
 	public List<AbstractFunction> getStatFuncs(AbstractEffect effect, Creature creature)

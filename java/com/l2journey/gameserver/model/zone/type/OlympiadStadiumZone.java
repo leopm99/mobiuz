@@ -192,12 +192,7 @@ public class OlympiadStadiumZone extends ZoneRespawn
 	{
 		if (super.isAffected(creature))
 		{
-			if (creature.getInstanceId() != getInstanceId())
-			{
-				return false;
-			}
-			
-			return true;
+			return !(creature.getInstanceId() != getInstanceId());
 		}
 		
 		return false;

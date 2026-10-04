@@ -1827,12 +1827,7 @@ public class AttackableAI extends CreatureAI
 		}
 		
 		// Se e uma skill estatica e skill magica e o personagem esta silenciado ou e uma skill fisica silenciada e o personagem esta fisicamente silenciado.
-		if (!skill.isStatic() && ((skill.isMagic() && caster.isMuted()) || caster.isPhysicalMuted()))
-		{
-			return false;
-		}
-		
-		return true;
+		return !(!skill.isStatic() && ((skill.isMagic() && caster.isMuted()) || caster.isPhysicalMuted()));
 	}
 	
 	private Creature effectTargetReconsider(Skill sk, boolean positive)

@@ -131,11 +131,7 @@ public class ExBasicActionList extends ServerPacket
 				return false;
 			}
 			// Filter out baby pet actions (5000-5015)
-			if ((id >= 5000) && (id < 5016))
-			{
-				return false;
-			}
-			return true;
+			return !((id >= 5000) && (id < 5016));
 		}).toArray();
 	}
 	

@@ -1230,10 +1230,6 @@ public final class Util
 		{
 			angleDiff -= 360;
 		}
-		if (Math.abs(angleDiff) <= maxAngleDiff)
-		{
-			return true;
-		}
-		return false;
+		return Math.abs(angleDiff) <= maxAngleDiff;
 	}
 }

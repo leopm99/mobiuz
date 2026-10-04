@@ -265,12 +265,7 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 			return false;
 		}
 		
-		if ((_playerTwo.getPlayer() == null) || _playerTwo.isDisconnected())
-		{
-			return false;
-		}
-		
-		return true;
+		return !((_playerTwo.getPlayer() == null) || _playerTwo.isDisconnected());
 	}
 	
 	@Override
