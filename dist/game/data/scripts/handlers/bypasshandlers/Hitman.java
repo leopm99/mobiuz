@@ -258,7 +258,7 @@ public class Hitman implements IBypassHandler
 		{
 			currencyOptions.append(entry.getKey()).append(";");
 		}
-		if (currencyOptions.length() > 0)
+		if (!currencyOptions.isEmpty())
 		{
 			currencyOptions.setLength(currencyOptions.length() - 1); // Remove last semicolon
 		}

@@ -541,7 +541,7 @@ public class HomeBoard implements IParseBoardHandler
 		else if (command.startsWith("_bbstop;"))
 		{
 			final String path = command.replace("_bbstop;", "");
-			if ((path.length() > 0) && path.endsWith(".html"))
+			if (!path.isEmpty() && path.endsWith(".html"))
 			{
 				returnHtml = HtmCache.getInstance().getHtm(player, "data/html/CommunityBoard/" + path);
 			}

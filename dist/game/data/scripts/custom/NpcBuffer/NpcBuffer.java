@@ -724,7 +724,7 @@ public class NpcBuffer extends Quest
 		{
 			query.append(",\"special\"");
 		}
-		if (query.length() > 0)
+		if (!query.isEmpty())
 		{
 			query.deleteCharAt(0);
 		}
@@ -1276,7 +1276,7 @@ public class NpcBuffer extends Quest
 			case "create":
 			{
 				final String param = eventParam1.replaceAll("[ !\"#$%&'()*+,/:;<=>?@\\[\\\\\\]\\^`{|}~]", "");
-				if ((param.length() == 0) || "no_name".equals(param))
+				if ((param.isEmpty()) || "no_name".equals(param))
 				{
 					player.sendPacket(SystemMessageId.INCORRECT_NAME_PLEASE_TRY_AGAIN);
 					return showText(st, "Info", "Please, enter the scheme name!", true, "Return", "main");

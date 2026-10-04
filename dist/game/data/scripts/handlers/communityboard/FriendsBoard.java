@@ -235,12 +235,12 @@ public class FriendsBoard implements IWriteBoardHandler
 			currentList.append("</tr></table>");
 		}
 		
-		if (onlineRows.length() == 0)
+		if (onlineRows.isEmpty())
 		{
 			onlineRows.append("<font color=\"999999\">No online friends.</font>");
 		}
 		
-		if (offlineRows.length() == 0)
+		if (offlineRows.isEmpty())
 		{
 			offlineRows.append("<font color=\"999999\">No offline friends.</font>");
 		}
@@ -478,11 +478,11 @@ public class FriendsBoard implements IWriteBoardHandler
 				}
 			}
 			
-			if (col1.length() == 0)
+			if (col1.isEmpty())
 			{
 				col1.append("<font color=\"999999\">No blocked players.</font>");
 			}
-			if (col2.length() == 0)
+			if (col2.isEmpty())
 			{
 				col2.append("");
 			}

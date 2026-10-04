@@ -61,7 +61,7 @@ public class SkillList implements IBypassHandler
 			try
 			{
 				final String id = command.substring(9).trim();
-				if (id.length() != 0)
+				if (!id.isEmpty())
 				{
 					Folk.showSkillList(player, target.asNpc(), PlayerClass.getPlayerClass(Integer.parseInt(id)));
 				}

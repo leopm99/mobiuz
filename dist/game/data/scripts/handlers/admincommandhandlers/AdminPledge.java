@@ -107,7 +107,7 @@ public class AdminPledge implements IAdminCommandHandler
 				{
 					case "create":
 					{
-						if ((parameter == null) || (parameter.length() == 0))
+						if ((parameter == null) || (parameter.isEmpty()))
 						{
 							activeChar.sendSysMessage("Please, enter clan name.");
 							showMainPage(activeChar);
