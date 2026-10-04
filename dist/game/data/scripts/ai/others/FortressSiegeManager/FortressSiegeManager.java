@@ -88,7 +88,7 @@ public class FortressSiegeManager extends AbstractNpcAI
 		{
 			case "FortressSiegeManager-11.html", "FortressSiegeManager-13.html", "FortressSiegeManager-14.html", "FortressSiegeManager-15.html", "FortressSiegeManager-16.html":
 			{
-				return htmltext = event;
+				return event;
 			}
 			case "register":
 			{

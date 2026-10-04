@@ -770,7 +770,6 @@ public class Q00335_TheSongOfTheHunter extends Quest
 					i3 = i5 % 32;
 					i5 /= 32;
 					i4 = i5 % 32;
-					i5 /= 32;
 					i0 += 33520;
 					i1 += 33520;
 					i2 += 33520;
@@ -875,7 +874,6 @@ public class Q00335_TheSongOfTheHunter extends Quest
 					i3 = i5 % 32;
 					i5 /= 32;
 					i4 = i5 % 32;
-					i5 /= 32;
 					i0 = 33520 + (i0 + 20);
 					i1 = 33520 + (i1 + 20);
 					i2 = 33520 + (i2 + 20);

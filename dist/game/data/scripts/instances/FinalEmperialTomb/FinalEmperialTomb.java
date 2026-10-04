@@ -643,7 +643,6 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 					songEffectTask.cancel(false);
 				}
 				
-				songEffectTask = null;
 				final Npc activeScarlet = world.getParameters().getObject("activeScarlet", Npc.class);
 				if (activeScarlet != null)
 				{
@@ -672,7 +671,6 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 						songEffectTask.cancel(false);
 					}
 					
-					songEffectTask = null;
 					ThreadPool.schedule(new IntroTask(world, 23), 2000);
 					ThreadPool.schedule(new IntroTask(world, 24), 2100);
 				}
@@ -694,8 +692,6 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 					songEffectTask.cancel(false);
 				}
 				
-				songTask = null;
-				songEffectTask = null;
 				ThreadPool.schedule(new IntroTask(world, 33), 500);
 				break;
 			}
@@ -871,7 +867,6 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 						songEffectTask.cancel(false);
 					}
 					
-					songEffectTask = null;
 					final Skill skill = _world.getParameters().getObject("OnSong", FrintezzaSong.class).effectSkill.getSkill();
 					if (skill == null)
 					{
@@ -1062,7 +1057,6 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 				{
 					Npc frintezzaDummy = _world.getParameters().getObject("frintezzaDummy", Npc.class);
 					frintezzaDummy.deleteMe();
-					frintezzaDummy = null;
 					ThreadPool.schedule(new IntroTask(_world, 9), 1000);
 					break;
 				}
@@ -1096,8 +1090,6 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 					broadcastPacket(_world, new SocialAction(frintezza.getObjectId(), 3));
 					portraitDummy1.deleteMe();
 					portraitDummy3.deleteMe();
-					portraitDummy1 = null;
-					portraitDummy3 = null;
 					ThreadPool.schedule(new IntroTask(_world, 12), 4500);
 					break;
 				}
@@ -1184,8 +1176,6 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 					Npc overheadDummy = _world.getParameters().getObject("overheadDummy", Npc.class);
 					overheadDummy.deleteMe();
 					scarletDummy.deleteMe();
-					overheadDummy = null;
-					scarletDummy = null;
 					ThreadPool.schedule(new IntroTask(_world, 22), 2000);
 					break;
 				}

@@ -106,7 +106,6 @@ public class SkillList implements IBypassHandler
 							}
 							classCheck = classCheck.getParent();
 						}
-						classCheck = null;
 					}
 					else
 					{
