@@ -1449,7 +1449,7 @@
 		<!-- Increases Resistance to water by 20% for 1 hour. -->
 		<set name="icon" val="br_cashtex.item.br_cash_scroll_of_wind_walk_i00" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="26" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="ARMOR_WATER" />
@@ -1459,12 +1459,17 @@
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="20523" /> <!-- Resist Aqua Scroll -->
 		<set name="magicLevel" val="-1" />
+		<effects>
+			<effect name="Buff">
+				<add stat="waterRes" val="20" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22080" levels="1" name="Resist Wind">
 		<!-- Increases Resistance to wind by 20% for 1 hour. -->
 		<set name="icon" val="br_cashtex.item.br_cash_scroll_of_wind_walk_i00" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="26" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="ARMOR_WIND" />
@@ -1474,12 +1479,17 @@
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="20524" /> <!-- Resist Wind Scroll -->
 		<set name="magicLevel" val="-1" />
+		<effects>
+			<effect name="Buff">
+				<add stat="windRes" val="20" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22081" levels="1" name="Resist Fire">
 		<!-- Increases Resistance to fire by 20% for 1 hour. -->
 		<set name="icon" val="br_cashtex.item.br_cash_scroll_of_wind_walk_i00" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="26" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="ARMOR_FIRE" />
@@ -1489,12 +1499,17 @@
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="20525" /> <!-- Resist Fire Scroll -->
 		<set name="magicLevel" val="-1" />
+		<effects>
+			<effect name="Buff">
+				<add stat="fireRes" val="20" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22082" levels="1" name="Resist Holy">
 		<!-- Increases Resistance to Holy by 23% for 1 hour. -->
 		<set name="icon" val="br_cashtex.item.br_cash_scroll_of_wind_walk_i00" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="26" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="ARMOR_HOLY" />
@@ -1504,12 +1519,17 @@
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="20526" /> <!-- Resist Holy Scroll -->
 		<set name="magicLevel" val="-1" />
+		<effects>
+			<effect name="Buff">
+				<add stat="holyRes" val="23" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22083" levels="1" name="Resist Dark">
 		<!-- Increases Resistance to Dark by 23% for 1 hour. -->
 		<set name="icon" val="br_cashtex.item.br_cash_scroll_of_wind_walk_i00" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="26" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="ARMOR_UNHOLY" />
@@ -1519,6 +1539,11 @@
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="20527" /> <!-- Resist Unholy Scroll -->
 		<set name="magicLevel" val="-1" />
+		<effects>
+			<effect name="Buff">
+				<add stat="darkRes" val="23" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="22084" levels="1" name="Mental Shield">
 		<!-- Increases Resistance to hold/sleep/abnormal mental attacks by 40 for 1 hour. -->

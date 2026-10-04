@@ -1427,7 +1427,7 @@
 		<!-- Increases the user's Speed and those of friendly nearby targets by 300 for 15 seconds. -->
 		<set name="icon" val="icon.skill0001" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="ONE" />
+		<set name="targetType" val="PARTY" />
 		<set name="abnormalLevel" val="3" />
 		<set name="abnormalTime" val="15" />
 		<set name="abnormalType" val="SPEED_UP_SPECIAL" />
@@ -1447,7 +1447,7 @@
 		<!-- Recovers the HP of the user and friendly nearby targets by 500. -->
 		<set name="icon" val="icon.skill0001" />
 		<set name="operateType" val="A1" />
-		<set name="targetType" val="ONE" />
+		<set name="targetType" val="PARTY" />
 		<set name="blockedInOlympiad" val="true" />
 		<set name="effectPoint" val="800" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
