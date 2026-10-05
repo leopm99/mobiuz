@@ -619,7 +619,7 @@ public class SpawnData implements IXmlReader
 						final NpcTemplate template = NpcData.getInstance().getTemplate(spawn.getId());
 						final String title = template.getTitle();
 						final String name = title.isEmpty() ? template.getName() : template.getName() + " - " + title;
-						writer.write("		<npc id=\"" + spawnId + (spawn.getAmount() > 1 ? "\" count=\"" + spawnCount : "") + "\" x=\"" + spawnX + "\" y=\"" + spawnY + "\" z=\"" + spawnZ + (spawn.getHeading() > 0 ? "\" heading=\"" + spawnHeading : "") + "\" respawnDelay=\"" + spawnDelay + "\" /> <!-- " + name + " -->" + System.lineSeparator());
+						writer.write("\t\t<npc id=\"" + spawnId + (spawn.getAmount() > 1 ? "\" count=\"" + spawnCount : "") + "\" x=\"" + spawnX + "\" y=\"" + spawnY + "\" z=\"" + spawnZ + (spawn.getHeading() > 0 ? "\" heading=\"" + spawnHeading : "") + "\" respawnDelay=\"" + spawnDelay + "\" /> <!-- " + name + " -->" + System.lineSeparator());
 						writer.write(currentLine + System.lineSeparator());
 						continue;
 					}
@@ -645,9 +645,9 @@ public class SpawnData implements IXmlReader
 				final BufferedWriter writer = new BufferedWriter(new FileWriter(spawnFile));
 				writer.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + System.lineSeparator());
 				writer.write("<list enabled=\"true\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"../../xsd/spawns.xsd\">" + System.lineSeparator());
-				writer.write("	<spawn name=\"" + x + "_" + y + "\">" + System.lineSeparator());
-				writer.write("		<npc id=\"" + spawnId + (spawn.getAmount() > 1 ? "\" count=\"" + spawnCount : "") + "\" x=\"" + spawnX + "\" y=\"" + spawnY + "\" z=\"" + spawnZ + (spawn.getHeading() > 0 ? "\" heading=\"" + spawnHeading : "") + "\" respawnDelay=\"" + spawnDelay + "\" /> <!-- " + name + " -->" + System.lineSeparator());
-				writer.write("	</spawn>" + System.lineSeparator());
+				writer.write("\t<spawn name=\"" + x + "_" + y + "\">" + System.lineSeparator());
+				writer.write("\t\t<npc id=\"" + spawnId + (spawn.getAmount() > 1 ? "\" count=\"" + spawnCount : "") + "\" x=\"" + spawnX + "\" y=\"" + spawnY + "\" z=\"" + spawnZ + (spawn.getHeading() > 0 ? "\" heading=\"" + spawnHeading : "") + "\" respawnDelay=\"" + spawnDelay + "\" /> <!-- " + name + " -->" + System.lineSeparator());
+				writer.write("\t</spawn>" + System.lineSeparator());
 				writer.write("</list>" + System.lineSeparator());
 				writer.close();
 				LOGGER.info(getClass().getSimpleName() + ": Created file: " + OTHER_XML_FOLDER + "/" + x + "_" + y + ".xml");
