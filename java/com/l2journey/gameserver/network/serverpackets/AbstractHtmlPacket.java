@@ -115,7 +115,7 @@ public abstract class AbstractHtmlPacket extends ServerPacket
 	
 	public void replace(String pattern, String value)
 	{
-		_html = _html.replaceAll(pattern, value.replaceAll("\\$", "\\\\\\$"));
+		_html = _html.replaceAll(pattern, value.replace("$", "\\$"));
 	}
 	
 	public void replace(String pattern, CharSequence value)

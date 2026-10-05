@@ -729,7 +729,7 @@ public final class Util
 	 */
 	public static void fillMultiEditContent(Player activeChar, String text)
 	{
-		activeChar.sendPacket(new ShowBoard(Arrays.asList("0", "0", "0", "0", "0", "0", activeChar.getName(), Integer.toString(activeChar.getObjectId()), activeChar.getAccountName(), "9", " ", " ", text.replaceAll("<br>", Config.EOL), "0", "0", "0", "0")));
+		activeChar.sendPacket(new ShowBoard(Arrays.asList("0", "0", "0", "0", "0", "0", activeChar.getName(), Integer.toString(activeChar.getObjectId()), activeChar.getAccountName(), "9", " ", " ", text.replace("<br>", Config.EOL), "0", "0", "0", "0")));
 	}
 	
 	public static String formatTime(int time)
