@@ -1726,7 +1726,7 @@ public class Config
 		ACCEPT_ALTERNATE_ID = serverConfig.getBoolean("AcceptAlternateID", true);
 		try
 		{
-			DATAPACK_ROOT = new File(serverConfig.getString("DatapackRoot", ".").replaceAll("\\\\", "/")).getCanonicalFile();
+			DATAPACK_ROOT = new File(serverConfig.getString("DatapackRoot", ".").replace("\\", "/")).getCanonicalFile();
 		}
 		catch (IOException e)
 		{
@@ -1735,7 +1735,7 @@ public class Config
 		}
 		try
 		{
-			SCRIPT_ROOT = new File(serverConfig.getString("ScriptRoot", "./data/scripts").replaceAll("\\\\", "/")).getCanonicalFile();
+			SCRIPT_ROOT = new File(serverConfig.getString("ScriptRoot", "./data/scripts").replace("\\", "/")).getCanonicalFile();
 		}
 		catch (Exception e)
 		{
@@ -2128,7 +2128,7 @@ public class Config
 		final ConfigReader GeoDataConfig = new ConfigReader(GEODATA_CONFIG_FILE);
 		try
 		{
-			PATHNODE_DIR = new File(GeoDataConfig.getString("PathnodeDirectory", "data/pathnode").replaceAll("\\\\", "/")).getCanonicalFile();
+			PATHNODE_DIR = new File(GeoDataConfig.getString("PathnodeDirectory", "data/pathnode").replace("\\", "/")).getCanonicalFile();
 		}
 		catch (IOException e)
 		{
@@ -3938,7 +3938,7 @@ public class Config
 		PORT_LOGIN = loginConfig.getInt("LoginserverPort", 2106);
 		try
 		{
-			DATAPACK_ROOT = new File(loginConfig.getString("DatapackRoot", ".").replaceAll("\\\\", "/")).getCanonicalFile();
+			DATAPACK_ROOT = new File(loginConfig.getString("DatapackRoot", ".").replace("\\", "/")).getCanonicalFile();
 		}
 		catch (IOException e)
 		{
