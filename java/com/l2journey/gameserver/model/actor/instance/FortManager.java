@@ -148,15 +148,15 @@ public class FortManager extends Merchant
 					html.replace("%objectId%", String.valueOf(getObjectId()));
 					if (Config.FS_MAX_OWN_TIME > 0)
 					{
-						final int hour = (int) Math.floor(getFort().getTimeTillRebelArmy() / 3600);
-						final int minutes = (int) (Math.floor(getFort().getTimeTillRebelArmy() - (hour * 3600)) / 60);
+						final int hour = getFort().getTimeTillRebelArmy() / 3600;
+						final int minutes = (getFort().getTimeTillRebelArmy() - (hour * 3600)) / 60;
 						html.replace("%hr%", String.valueOf(hour));
 						html.replace("%min%", String.valueOf(minutes));
 					}
 					else
 					{
-						final int hour = (int) Math.floor(getFort().getOwnedTime() / 3600);
-						final int minutes = (int) (Math.floor(getFort().getOwnedTime() - (hour * 3600)) / 60);
+						final int hour = getFort().getOwnedTime() / 3600;
+						final int minutes = (getFort().getOwnedTime() - (hour * 3600)) / 60;
 						html.replace("%hr%", String.valueOf(hour));
 						html.replace("%min%", String.valueOf(minutes));
 					}
@@ -171,20 +171,20 @@ public class FortManager extends Merchant
 					int minutes;
 					if (Config.FS_MAX_OWN_TIME > 0)
 					{
-						hour = (int) Math.floor(getFort().getTimeTillRebelArmy() / 3600);
-						minutes = (int) (Math.floor(getFort().getTimeTillRebelArmy() - (hour * 3600)) / 60);
+						hour = getFort().getTimeTillRebelArmy() / 3600;
+						minutes = (getFort().getTimeTillRebelArmy() - (hour * 3600)) / 60;
 						html.replace("%hr%", String.valueOf(hour));
 						html.replace("%min%", String.valueOf(minutes));
 					}
 					else
 					{
-						hour = (int) Math.floor(getFort().getOwnedTime() / 3600);
-						minutes = (int) (Math.floor(getFort().getOwnedTime() - (hour * 3600)) / 60);
+						hour = getFort().getOwnedTime() / 3600;
+						minutes = (getFort().getOwnedTime() - (hour * 3600)) / 60;
 						html.replace("%hr%", String.valueOf(hour));
 						html.replace("%min%", String.valueOf(minutes));
 					}
-					hour = (int) Math.floor(getFort().getTimeTillNextFortUpdate() / 3600);
-					minutes = (int) (Math.floor(getFort().getTimeTillNextFortUpdate() - (hour * 3600)) / 60);
+					hour = (int) (getFort().getTimeTillNextFortUpdate() / 3600);
+					minutes = (int) ((getFort().getTimeTillNextFortUpdate() - (hour * 3600)) / 60);
 					html.replace("%castle%", getFort().getContractedCastle().getName());
 					html.replace("%hr2%", String.valueOf(hour));
 					html.replace("%min2%", String.valueOf(minutes));
