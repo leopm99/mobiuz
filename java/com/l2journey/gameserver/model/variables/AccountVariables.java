@@ -52,7 +52,7 @@ public class AccountVariables extends AbstractVariables
 	
 	// Public variable names
 	public static final String HWID = "HWID";
-	public static final String HWIDSLIT_VAR = "	";
+	public static final String HWIDSLIT_VAR = "\t";
 	
 	private final String _accountName;
 	

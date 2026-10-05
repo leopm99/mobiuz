@@ -287,7 +287,7 @@ public class SystemMessageId
 	@ClientString(id = 79, message = "This name already exists.")
 	public static SystemMessageId THIS_NAME_ALREADY_EXISTS;
 	
-	@ClientString(id = 80, message = "Your title cannot exceed 16 characters in length.  Please try again.")
+	@ClientString(id = 80, message = "Your title cannot exceed 16 characters in length.\u00A0 Please try again.")
 	public static SystemMessageId YOUR_TITLE_CANNOT_EXCEED_16_CHARACTERS_IN_LENGTH_PLEASE_TRY_AGAIN;
 	
 	@ClientString(id = 81, message = "Please select your race.")
@@ -3284,7 +3284,7 @@ public class SystemMessageId
 	@ClientString(id = 1078, message = "When a user's keyboard input exceeds a certain cumulative score a chat ban will be applied. This is done to discourage spamming. Please avoid posting the same message multiple times during a short period.")
 	public static SystemMessageId WHEN_A_USER_S_KEYBOARD_INPUT_EXCEEDS_A_CERTAIN_CUMULATIVE_SCORE_A_CHAT_BAN_WILL_BE_APPLIED_THIS_IS_DONE_TO_DISCOURAGE_SPAMMING_PLEASE_AVOID_POSTING_THE_SAME_MESSAGE_MULTIPLE_TIMES_DURING_A_SHORT_PERIOD;
 	
-	@ClientString(id = 1079, message = " The target is currently banned from chatting.")
+	@ClientString(id = 1079, message = "\u00A0The target is currently banned from chatting.")
 	public static SystemMessageId THE_TARGET_IS_CURRENTLY_BANNED_FROM_CHATTING;
 	
 	@ClientString(id = 1080, message = "Being permanent, are you sure you wish to use the facelift potion - Type A?")
@@ -6179,16 +6179,16 @@ public class SystemMessageId
 	@ClientString(id = 2043, message = "You have exceeded your inventory volume limit and may not take this quest item. Please make room in your inventory and try again.")
 	public static SystemMessageId YOU_HAVE_EXCEEDED_YOUR_INVENTORY_VOLUME_LIMIT_AND_MAY_NOT_TAKE_THIS_QUEST_ITEM_PLEASE_MAKE_ROOM_IN_YOUR_INVENTORY_AND_TRY_AGAIN;
 	
-	@ClientString(id = 2044, message = "Some Lineage II features have been limited for free trials. Trial accounts aren’t allowed to set up private manufacturing stores. To unlock all of the features of Lineage II, purchase the full version today.")
+	@ClientString(id = 2044, message = "Some Lineage II features have been limited for free trials.\u00A0Trial accounts aren’t allowed to set up private manufacturing stores. To unlock all of the features of Lineage II, purchase the full version today.")
 	public static SystemMessageId SOME_LINEAGE_II_FEATURES_HAVE_BEEN_LIMITED_FOR_FREE_TRIALS_TRIAL_ACCOUNTS_AREN_T_ALLOWED_TO_SET_UP_PRIVATE_MANUFACTURING_STORES_TO_UNLOCK_ALL_OF_THE_FEATURES_OF_LINEAGE_II_PURCHASE_THE_FULL_VERSION_TODAY;
 	
-	@ClientString(id = 2045, message = "Some Lineage II features have been limited for free trials. Trial accounts aren’t allowed to use private manufacturing stores. To unlock all of the features of Lineage II, purchase the full version today.")
+	@ClientString(id = 2045, message = "Some Lineage II features have been limited for free trials.\u00A0Trial accounts aren’t allowed to use private manufacturing stores.\u00A0To unlock all of the features of Lineage II, purchase the full version today.")
 	public static SystemMessageId SOME_LINEAGE_II_FEATURES_HAVE_BEEN_LIMITED_FOR_FREE_TRIALS_TRIAL_ACCOUNTS_AREN_T_ALLOWED_TO_USE_PRIVATE_MANUFACTURING_STORES_TO_UNLOCK_ALL_OF_THE_FEATURES_OF_LINEAGE_II_PURCHASE_THE_FULL_VERSION_TODAY;
 	
-	@ClientString(id = 2046, message = "Some Lineage II features have been limited for free trials. Trial accounts aren’t allowed buy items from private stores. To unlock all of the features of Lineage II, purchase the full version today.")
+	@ClientString(id = 2046, message = "Some Lineage II features have been limited for free trials.\u00A0Trial accounts aren’t allowed buy items from private stores.\u00A0To unlock all of the features of Lineage II, purchase the full version today.")
 	public static SystemMessageId SOME_LINEAGE_II_FEATURES_HAVE_BEEN_LIMITED_FOR_FREE_TRIALS_TRIAL_ACCOUNTS_AREN_T_ALLOWED_BUY_ITEMS_FROM_PRIVATE_STORES_TO_UNLOCK_ALL_OF_THE_FEATURES_OF_LINEAGE_II_PURCHASE_THE_FULL_VERSION_TODAY;
 	
-	@ClientString(id = 2047, message = "Some Lineage II features have been limited for free trials. Trial accounts aren’t allowed to access clan warehouses. To unlock all of the features of Lineage II, purchase the full version today.")
+	@ClientString(id = 2047, message = "Some Lineage II features have been limited for free trials. Trial accounts aren’t allowed to access clan warehouses.\u00A0To unlock all of the features of Lineage II, purchase the full version today.")
 	public static SystemMessageId SOME_LINEAGE_II_FEATURES_HAVE_BEEN_LIMITED_FOR_FREE_TRIALS_TRIAL_ACCOUNTS_AREN_T_ALLOWED_TO_ACCESS_CLAN_WAREHOUSES_TO_UNLOCK_ALL_OF_THE_FEATURES_OF_LINEAGE_II_PURCHASE_THE_FULL_VERSION_TODAY;
 	
 	@ClientString(id = 2048, message = "The shortcut in use conflicts with $s1. Do you wish to reset the conflicting shortcuts and use the saved shortcut?")
@@ -9119,7 +9119,7 @@ public class SystemMessageId
 	@ClientString(id = 3176, message = "Your hearts will freeze to stillness... Even your memories shall disappear.")
 	public static SystemMessageId YOUR_HEARTS_WILL_FREEZE_TO_STILLNESS_EVEN_YOUR_MEMORIES_SHALL_DISAPPEAR;
 	
-	@ClientString(id = 3177, message = "So you wish to challenge my powers!  Hahaha…")
+	@ClientString(id = 3177, message = "So you wish to challenge my powers!\u00A0 Hahaha…")
 	public static SystemMessageId SO_YOU_WISH_TO_CHALLENGE_MY_POWERS_HAHAHA;
 	
 	@ClientString(id = 3178, message = "Behold my frozen minions.")
@@ -9128,7 +9128,7 @@ public class SystemMessageId
 	@ClientString(id = 3179, message = "Obey my command and attack these invaders.")
 	public static SystemMessageId OBEY_MY_COMMAND_AND_ATTACK_THESE_INVADERS;
 	
-	@ClientString(id = 3180, message = "No!  How could this be... You are but mere mortals?!")
+	@ClientString(id = 3180, message = "No!\u00A0 How could this be... You are but mere mortals?!")
 	public static SystemMessageId NO_HOW_COULD_THIS_BE_YOU_ARE_BUT_MERE_MORTALS;
 	
 	@ClientString(id = 3181, message = "Muhaha... Very well. I will bring you your icy death!")
@@ -9158,7 +9158,7 @@ public class SystemMessageId
 	@ClientString(id = 3189, message = "I shall take your last breath. But not this day, return to me.")
 	public static SystemMessageId I_SHALL_TAKE_YOUR_LAST_BREATH_BUT_NOT_THIS_DAY_RETURN_TO_ME;
 	
-	@ClientString(id = 3190, message = "How dare you ignore my warning... Foolish creatures. Hahaha...")
+	@ClientString(id = 3190, message = "How dare you ignore my warning... Foolish creatures.\u00A0Hahaha...")
 	public static SystemMessageId HOW_DARE_YOU_IGNORE_MY_WARNING_FOOLISH_CREATURES_HAHAHA;
 	
 	@ClientString(id = 3191, message = "Say goodbye to sunlight and welcome eternal ice.")
@@ -9167,10 +9167,10 @@ public class SystemMessageId
 	@ClientString(id = 3192, message = "Muhahaha... If you wish to be chilled to the bone, I'll gladly oblige.")
 	public static SystemMessageId MUHAHAHA_IF_YOU_WISH_TO_BE_CHILLED_TO_THE_BONE_I_LL_GLADLY_OBLIGE;
 	
-	@ClientString(id = 3193, message = "How dare you enter my castle! Hahaha... Foolish ones... Leave this place before the frost chills your blood.")
+	@ClientString(id = 3193, message = "How dare you enter my castle!\u00A0Hahaha... Foolish ones... Leave this place before the frost chills your blood.")
 	public static SystemMessageId HOW_DARE_YOU_ENTER_MY_CASTLE_HAHAHA_FOOLISH_ONES_LEAVE_THIS_PLACE_BEFORE_THE_FROST_CHILLS_YOUR_BLOOD;
 	
-	@ClientString(id = 3194, message = "Hmph! You will not dodge my blizzard again!")
+	@ClientString(id = 3194, message = "Hmph!\u00A0You will not dodge my blizzard again!")
 	public static SystemMessageId HMPH_YOU_WILL_NOT_DODGE_MY_BLIZZARD_AGAIN;
 	
 	@ClientString(id = 3195, message = "All those who challenge my power shall feel the curse of ice.")
@@ -9203,7 +9203,7 @@ public class SystemMessageId
 	@ClientString(id = 3204, message = "This body is under my complete control now. You shall kneel before me.")
 	public static SystemMessageId THIS_BODY_IS_UNDER_MY_COMPLETE_CONTROL_NOW_YOU_SHALL_KNEEL_BEFORE_ME;
 	
-	@ClientString(id = 3205, message = "You say you will defeat me? With all of my powers finally released? Ridiculous!")
+	@ClientString(id = 3205, message = "You say you will defeat me?\u00A0With all of my powers finally released? Ridiculous!")
 	public static SystemMessageId YOU_SAY_YOU_WILL_DEFEAT_ME_WITH_ALL_OF_MY_POWERS_FINALLY_RELEASED_RIDICULOUS;
 	
 	@ClientString(id = 3206, message = "You are out of Recommendations. Try again later.")
