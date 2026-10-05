@@ -69,7 +69,7 @@ public class EnchantSkillLearn
 	
 	public static int getEnchantRoute(int level)
 	{
-		return (int) Math.floor(level / 100);
+		return level / 100;
 	}
 	
 	public static int getEnchantIndex(int level)
