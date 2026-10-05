@@ -187,7 +187,7 @@ public class Wedding extends AbstractNpcAI
 	public String onFirstTalk(Npc npc, Player player)
 	{
 		final String htmltext = getHtm(player, "Start.html");
-		return htmltext.replaceAll("%fee%", String.valueOf(EventsConfig.WEDDING_PRICE));
+		return htmltext.replace("%fee%", String.valueOf(EventsConfig.WEDDING_PRICE));
 	}
 	
 	private String sendHtml(Player player, String fileName, String regex, String replacement)
