@@ -1,16 +1,16 @@
 /*
  * Copyright (c) 2025 L2Journey Project
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -18,13 +18,13 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- * 
+ *
  * ---
- * 
- * Portions of this software are derived from the L2JMobius Project, 
- * shared under the MIT License. The original license terms are preserved where 
+ *
+ * Portions of this software are derived from the L2JMobius Project,
+ * shared under the MIT License. The original license terms are preserved where
  * applicable..
- * 
+ *
  */
 package com.l2journey.gameserver.network.clientpackets;
 
@@ -52,14 +52,14 @@ public class RequestDestroyItem extends ClientPacket
 {
 	private int _objectId;
 	private long _count;
-	
+
 	@Override
 	protected void readImpl()
 	{
 		_objectId = readInt();
 		_count = readLong();
 	}
-	
+
 	@Override
 	protected void runImpl()
 	{
@@ -68,7 +68,7 @@ public class RequestDestroyItem extends ClientPacket
 		{
 			return;
 		}
-		
+
 		if (_count < 1)
 		{
 			player.sendPacket(SystemMessageId.YOU_CANNOT_DESTROY_IT_BECAUSE_THE_NUMBER_IS_INCORRECT);
@@ -78,22 +78,22 @@ public class RequestDestroyItem extends ClientPacket
 			}
 			return;
 		}
-		
+
 		if (!getClient().getFloodProtectors().canPerformTransaction())
 		{
 			player.sendMessage("You are destroying items too fast.");
 			return;
 		}
-		
+
 		long count = _count;
 		if (player.isProcessingTransaction() || player.isInStoreMode())
 		{
 			player.sendPacket(SystemMessageId.WHILE_OPERATING_A_PRIVATE_STORE_OR_WORKSHOP_YOU_CANNOT_DISCARD_DESTROY_OR_TRADE_AN_ITEM);
 			return;
 		}
-		
+
 		final Item itemToRemove = player.getInventory().getItemByObjectId(_objectId);
-		
+
 		// if we can't find the requested item, it is actually a cheat
 		// Cannot discard item that the skill is consuming
 		if ((itemToRemove == null) || (player.isCastingNow() && (player.getCurrentSkill() != null) && (player.getCurrentSkill().getSkill().getItemConsumeId() == itemToRemove.getId())))
@@ -101,14 +101,14 @@ public class RequestDestroyItem extends ClientPacket
 			player.sendPacket(SystemMessageId.THIS_ITEM_CANNOT_BE_DISCARDED);
 			return;
 		}
-		
+
 		// Cannot discard item that the skill is consuming
 		if (player.isCastingSimultaneouslyNow() && (player.getLastSimultaneousSkillCast() != null) && (player.getLastSimultaneousSkillCast().getItemConsumeId() == itemToRemove.getId()))
 		{
 			player.sendPacket(SystemMessageId.THIS_ITEM_CANNOT_BE_DISCARDED);
 			return;
 		}
-		
+
 		final int itemId = itemToRemove.getId();
 		if (!Config.DESTROY_ALL_ITEMS && ((!player.isGM() && !itemToRemove.isDestroyable()) || CursedWeaponsManager.getInstance().isCursed(itemId)))
 		{
@@ -122,24 +122,24 @@ public class RequestDestroyItem extends ClientPacket
 			}
 			return;
 		}
-		
+
 		if (!itemToRemove.isStackable() && (count > 1))
 		{
 			PunishmentManager.handleIllegalPlayerAction(player, "[RequestDestroyItem] Character " + player.getName() + " of account " + player.getAccountName() + " tried to destroy a non-stackable item with oid " + _objectId + " but has count > 1!", Config.DEFAULT_PUNISH);
 			return;
 		}
-		
+
 		if (!player.getInventory().canManipulateWithItemId(itemToRemove.getId()))
 		{
 			player.sendMessage("You cannot use this item.");
 			return;
 		}
-		
+
 		if (_count > itemToRemove.getCount())
 		{
 			count = itemToRemove.getCount();
 		}
-		
+
 		if (itemToRemove.getTemplate().isPetItem())
 		{
 			// Check if the player has a summoned pet or mount active with the same object ID.
@@ -149,7 +149,7 @@ public class RequestDestroyItem extends ClientPacket
 				player.sendPacket(SystemMessageId.AS_YOUR_PET_IS_CURRENTLY_OUT_ITS_SUMMONING_ITEM_CANNOT_BE_DESTROYED);
 				return;
 			}
-			
+
 			try (Connection con = DatabaseFactory.getConnection();
 				PreparedStatement statement = con.prepareStatement("DELETE FROM pets WHERE item_obj_id=?"))
 			{
@@ -165,7 +165,7 @@ public class RequestDestroyItem extends ClientPacket
 		{
 			itemToRemove.endOfLife();
 		}
-		
+
 		if (itemToRemove.isEquipped())
 		{
 			if (itemToRemove.getEnchantLevel() > 0)
@@ -181,21 +181,25 @@ public class RequestDestroyItem extends ClientPacket
 				sm.addItemName(itemToRemove);
 				player.sendPacket(sm);
 			}
-			
+
 			final InventoryUpdate iu = new InventoryUpdate();
 			for (Item itm : player.getInventory().unEquipItemInSlotAndRecord(itemToRemove.getLocationSlot()))
 			{
 				iu.addModifiedItem(itm);
 			}
 			player.sendPacket(iu); // Sent inventory update for unequip instantly.
+
+			// Refresh appearance immediately so slots rendered only through UserInfo/CharInfo (e.g. hair/hair2 accessories) stop showing the destroyed item.
+			player.refreshExpertisePenalty();
+			player.broadcastUserInfo();
 		}
-		
+
 		final Item removedItem = player.getInventory().destroyItem(ItemProcessType.DESTROY, itemToRemove, count, player, null);
 		if (removedItem == null)
 		{
 			return;
 		}
-		
+
 		final InventoryUpdate iu = new InventoryUpdate();
 		if (removedItem.getCount() == 0)
 		{
@@ -206,11 +210,11 @@ public class RequestDestroyItem extends ClientPacket
 			iu.addModifiedItem(removedItem);
 		}
 		player.sendPacket(iu); // Sent inventory update for destruction instantly.
-		
+
 		final StatusUpdate su = new StatusUpdate(player);
 		su.addAttribute(StatusUpdate.CUR_LOAD, player.getCurrentLoad());
 		player.sendPacket(su);
-		
+
 		final SystemMessage sm;
 		if (count > 1)
 		{
