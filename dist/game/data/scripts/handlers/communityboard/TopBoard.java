@@ -32,6 +32,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -68,7 +69,7 @@ public class TopBoard implements IParseBoardHandler
 	private static final List<TopEntry> pvpCache = new ArrayList<>();
 	private static final List<TopEntry> pkCache = new ArrayList<>();
 	
-	private static volatile LocalDateTime lastUpdate = LocalDateTime.now();
+	private static volatile LocalDateTime lastUpdate = LocalDateTime.now(ZoneId.systemDefault());
 	private static volatile LocalDateTime nextUpdate = lastUpdate.plusMinutes(REFRESH_INTERVAL_MINUTES);
 	
 	static
@@ -81,7 +82,7 @@ public class TopBoard implements IParseBoardHandler
 	{
 		refreshRanking(LOAD_PVP, pvpCache, "pvpkills");
 		refreshRanking(LOAD_PK, pkCache, "pkkills");
-		lastUpdate = LocalDateTime.now();
+		lastUpdate = LocalDateTime.now(ZoneId.systemDefault());
 		nextUpdate = lastUpdate.plusMinutes(REFRESH_INTERVAL_MINUTES);
 	}
 	

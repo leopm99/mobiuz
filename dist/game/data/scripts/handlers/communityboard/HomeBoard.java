@@ -143,7 +143,7 @@ public class HomeBoard implements IParseBoardHandler
 	};
 	
 	private static final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
-	private static LocalDateTime lastUpdateTime = LocalDateTime.now();
+	private static LocalDateTime lastUpdateTime = LocalDateTime.now(java.time.ZoneId.systemDefault());
 	private static LocalDateTime nextUpdateTime = lastUpdateTime.plusHours(1);
 	private static final DateTimeFormatter TIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm");
 	
@@ -170,7 +170,7 @@ public class HomeBoard implements IParseBoardHandler
 			}
 		}
 		
-		lastUpdateTime = LocalDateTime.now();
+		lastUpdateTime = LocalDateTime.now(java.time.ZoneId.systemDefault());
 		nextUpdateTime = lastUpdateTime.plusHours(1);
 	}
 	

@@ -574,7 +574,7 @@ public final class Dashboard
 					return;
 				}
 			}
-			catch (InterruptedException e)
+			catch (InterruptedException _)
 			{
 				Thread.currentThread().interrupt();
 			}

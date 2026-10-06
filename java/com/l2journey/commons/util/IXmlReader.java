@@ -173,7 +173,7 @@ public interface IXmlReader
 				{
 					task.get();
 				}
-				catch (InterruptedException e)
+				catch (InterruptedException _)
 				{
 					Thread.currentThread().interrupt();
 					break;

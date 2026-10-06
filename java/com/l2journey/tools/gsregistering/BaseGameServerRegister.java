@@ -414,11 +414,11 @@ public abstract class BaseGameServerRegister
 			}
 			catch (SQLException e)
 			{
-				showError(_bundle.getString("sqlErrorRegister"), e);
+				super.showError(_bundle.getString("sqlErrorRegister"), e);
 			}
 			catch (IOException e)
 			{
-				showError(_bundle.getString("ioErrorRegister"), e);
+				super.showError(_bundle.getString("ioErrorRegister"), e);
 			}
 		}
 	}
@@ -449,7 +449,7 @@ public abstract class BaseGameServerRegister
 			}
 			catch (SQLException e)
 			{
-				showError(_bundle.getString("sqlErrorRegister"), e);
+				super.showError(_bundle.getString("sqlErrorRegister"), e);
 			}
 		}
 	}
@@ -468,7 +468,7 @@ public abstract class BaseGameServerRegister
 			}
 			catch (SQLException e)
 			{
-				showError(_bundle.getString("sqlErrorUnregisterAll"), e);
+				super.showError(_bundle.getString("sqlErrorUnregisterAll"), e);
 			}
 		}
 	}

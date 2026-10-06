@@ -33,6 +33,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -54,7 +55,7 @@ public class DatabaseBackup
 		// Delete old files.
 		if (Config.BACKUP_DAYS > 0)
 		{
-			final long cut = LocalDateTime.now().minusDays(Config.BACKUP_DAYS).toEpochSecond(ZoneOffset.UTC);
+			final long cut = LocalDateTime.now(ZoneId.systemDefault()).minusDays(Config.BACKUP_DAYS).toEpochSecond(ZoneOffset.UTC);
 			final Path path = Paths.get(Config.BACKUP_PATH);
 			try
 			{

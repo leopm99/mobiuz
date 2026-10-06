@@ -26,6 +26,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -76,8 +77,8 @@ public class TipsBoard implements IXmlReader
 	 */
 	private void scheduleMidnightRotation()
 	{
-		final LocalDateTime now = LocalDateTime.now();
-		final LocalDateTime nextMidnight = LocalDateTime.of(LocalDate.now().plusDays(1), LocalTime.MIDNIGHT);
+		final LocalDateTime now = LocalDateTime.now(ZoneId.systemDefault());
+		final LocalDateTime nextMidnight = LocalDateTime.of(LocalDate.now(ZoneId.systemDefault()).plusDays(1), LocalTime.MIDNIGHT);
 		final long initialDelay = Math.max(1000L, Duration.between(now, nextMidnight).toMillis());
 		ThreadPool.scheduleAtFixedRate(this::rotateTip, initialDelay, TimeUnit.DAYS.toMillis(1));
 	}
