@@ -42,7 +42,7 @@ public class SoIManager
 {
 	protected static final Logger LOGGER = Logger.getLogger(SoIManager.class.getName());
 	
-	private static final long SOI_OPEN_TIME = 24 * 60 * 60 * 1000;
+	private static final long SOI_OPEN_TIME = (24 * 60L) * 60 * 1000;
 	
 	private static final Location[] openSeedTeleportLocs =
 	{

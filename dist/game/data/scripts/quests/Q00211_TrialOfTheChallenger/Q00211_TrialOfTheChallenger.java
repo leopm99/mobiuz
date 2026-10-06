@@ -158,7 +158,7 @@ public class Q00211_TrialOfTheChallenger extends Quest
 					}
 					else
 					{
-						giveAdena(player, getRandom(1000) + 1, true);
+						giveAdena(player, getRandom(1000) + 1L, true);
 						htmltext = event;
 					}
 				}

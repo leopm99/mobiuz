@@ -443,7 +443,7 @@ public class SellBuff implements IVoicedCommandHandler, IBypassHandler
 						{
 							Quest.takeItems(player, Config.SELLBUFF_PAYMENT_ID, holder.getPrice());
 							Quest.giveItems(seller, Config.SELLBUFF_PAYMENT_ID, holder.getPrice());
-							seller.reduceCurrentMp(skillToBuy.getMpConsume() * Config.SELLBUFF_MP_MULTIPLER);
+							seller.reduceCurrentMp((double) (skillToBuy.getMpConsume()) * Config.SELLBUFF_MP_MULTIPLER);
 							
 							// Consume item(s) required by the buff.
 							if ((itemConsumeId > 0) && (itemConsumeCount > 0))
@@ -554,7 +554,7 @@ public class SellBuff implements IVoicedCommandHandler, IBypassHandler
 							{
 								Quest.takeItems(player, Config.SELLBUFF_PAYMENT_ID, holder.getPrice());
 								Quest.giveItems(seller, Config.SELLBUFF_PAYMENT_ID, holder.getPrice());
-								seller.reduceCurrentMp(skillToBuy.getMpConsume() * Config.SELLBUFF_MP_MULTIPLER);
+								seller.reduceCurrentMp((double) (skillToBuy.getMpConsume()) * Config.SELLBUFF_MP_MULTIPLER);
 								
 								// Consume item(s) required by the buff.
 								if ((itemConsumeId > 0) && (itemConsumeCount > 0))

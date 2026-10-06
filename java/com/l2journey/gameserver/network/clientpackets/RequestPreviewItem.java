@@ -239,7 +239,7 @@ public class RequestPreviewItem extends ClientPacket
 		{
 			player.sendPacket(new ShopPreviewInfo(itemList));
 			// Schedule task
-			ThreadPool.schedule(new RemoveWearItemsTask(player), Config.WEAR_DELAY * 1000);
+			ThreadPool.schedule(new RemoveWearItemsTask(player), Config.WEAR_DELAY * 1000L);
 		}
 	}
 }

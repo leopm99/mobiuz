@@ -61,9 +61,9 @@ public class EnemyCharge extends AbstractEffect
 		final int curZ = effector.getZ();
 		
 		// Calculate distance (dx,dy) between current position and destination
-		final double dx = effected.getX() - curX;
-		final double dy = effected.getY() - curY;
-		final double dz = effected.getZ() - curZ;
+		final double dx = (double) (effected.getX()) - curX;
+		final double dy = (double) (effected.getY()) - curY;
+		final double dz = (double) (effected.getZ()) - curZ;
 		final double distance = Math.sqrt((dx * dx) + (dy * dy));
 		if (distance > 2000)
 		{

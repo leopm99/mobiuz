@@ -114,15 +114,15 @@ public class Territory
 	
 	public boolean isIntersect(int x, int y, Point p1, Point p2)
 	{
-		final double dy1 = p1._y - y;
-		final double dy2 = p2._y - y;
+		final double dy1 = (double) (p1._y) - y;
+		final double dy2 = (double) (p2._y) - y;
 		if (Math.abs(Math.signum(dy1) - Math.signum(dy2)) <= 1e-6)
 		{
 			return false;
 		}
 		
-		final double dx1 = p1._x - x;
-		final double dx2 = p2._x - x;
+		final double dx1 = (double) (p1._x) - x;
+		final double dx2 = (double) (p2._x) - x;
 		if ((dx1 >= 0) && (dx2 >= 0))
 		{
 			return true;
@@ -177,7 +177,7 @@ public class Territory
 				int zmin = _zMin;
 				for (Point p1 : _points)
 				{
-					final double distance = Math.hypot(p1._x - x, p1._y - y);
+					final double distance = Math.hypot((double) (p1._x) - x, (double) (p1._y) - y);
 					if ((curdistance == 0) || (distance < curdistance))
 					{
 						curdistance = distance;

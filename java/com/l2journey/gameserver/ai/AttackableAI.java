@@ -395,7 +395,7 @@ public class AttackableAI extends CreatureAI
 	{
 		if ((_fearTime > 0) && (_fearTask == null))
 		{
-			_fearTask = ThreadPool.scheduleAtFixedRate(new FearTask(this, effector, start), 0, FEAR_TICKS * 1000); // seconds
+			_fearTask = ThreadPool.scheduleAtFixedRate(new FearTask(this, effector, start), 0, FEAR_TICKS * 1000L); // seconds
 			_actor.startAbnormalVisualEffect(true, AbnormalVisualEffect.TURN_FLEE);
 		}
 		else
@@ -591,7 +591,7 @@ public class AttackableAI extends CreatureAI
 			{
 				int x1 = Rnd.get(minRadius * 2, offset * 2); // x
 				int y1 = Rnd.get(x1, offset * 2); // distance
-				y1 = (int) Math.sqrt((y1 * y1) - (x1 * x1)); // y
+				y1 = (int) Math.sqrt((double) ((y1 * y1)) - (x1 * x1)); // y
 				x1 = x1 > (offset + minRadius) ? (leader.getX() + x1) - offset : (leader.getX() - x1) + minRadius;
 				y1 = y1 > (offset + minRadius) ? (leader.getY() + y1) - offset : (leader.getY() - y1) + minRadius;
 				// Move o ator para Localizacao (x,y,z) no lado do servidor E do cliente enviando pacote Servidor->Cliente MoveToLocation (broadcast)
@@ -660,7 +660,7 @@ public class AttackableAI extends CreatureAI
 			{
 				final int deltaX = Rnd.get(driftRange * 2); // x
 				int deltaY = Rnd.get(deltaX, driftRange * 2); // distance
-				deltaY = (int) Math.sqrt((deltaY * deltaY) - (deltaX * deltaX)); // y
+				deltaY = (int) Math.sqrt((double) ((deltaY * deltaY)) - (deltaX * deltaX)); // y
 				x1 = (deltaX + x1) - driftRange;
 				y1 = (deltaY + y1) - driftRange;
 				z1 = npc.getZ();
@@ -1314,7 +1314,7 @@ public class AttackableAI extends CreatureAI
 		
 		final double dist = caster.calculateDistance2D(attackTarget);
 		double dist2 = dist - attackTarget.getTemplate().getCollisionRadius();
-		final double srange = sk.getCastRange() + caster.getTemplate().getCollisionRadius();
+		final double srange = (double) (sk.getCastRange()) + caster.getTemplate().getCollisionRadius();
 		if (attackTarget.isMoving())
 		{
 			dist2 -= 30;
@@ -1541,7 +1541,7 @@ public class AttackableAI extends CreatureAI
 		{
 			if (sk.getTargetType() == TargetType.ONE)
 			{
-				final double range = caster.getPhysicalAttackRange() + caster.getTemplate().getCollisionRadius() + attackTarget.getTemplate().getCollisionRadius();
+				final double range = (double) (caster.getPhysicalAttackRange()) + caster.getTemplate().getCollisionRadius() + attackTarget.getTemplate().getCollisionRadius();
 				if (!attackTarget.isDead() && (dist2 <= srange) && ((dist2 > range) || attackTarget.isMoving()) && !attackTarget.isAffectedBySkill(sk.getId()))
 				{
 					clientStopMoving(null);

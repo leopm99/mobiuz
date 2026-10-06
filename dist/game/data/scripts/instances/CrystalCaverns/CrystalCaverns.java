@@ -675,9 +675,9 @@ public class CrystalCaverns extends AbstractInstance
 		final int curZ = effected.getZ();
 		
 		// Calculate distance between effector and effected current position
-		final double dx = effector.getX() - curX;
-		final double dy = effector.getY() - curY;
-		final double dz = effector.getZ() - curZ;
+		final double dx = (double) (effector.getX()) - curX;
+		final double dy = (double) (effector.getY()) - curY;
+		final double dz = (double) (effector.getZ()) - curZ;
 		final double distance = Math.sqrt((dx * dx) + (dy * dy));
 		int offset = Math.min((int) distance + 300, 1400);
 		double cos;

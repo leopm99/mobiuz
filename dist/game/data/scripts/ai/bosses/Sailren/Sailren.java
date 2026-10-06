@@ -283,7 +283,7 @@ public class Sailren extends AbstractNpcAI
 				{
 					STATUS = Status.DEAD;
 					addSpawn(CUBIC, 27644, -6638, -2008, 0, false, 300000);
-					final long respawnTime = RESPAWN * 3600000;
+					final long respawnTime = RESPAWN * 3600000L;
 					GlobalVariablesManager.getInstance().set("SailrenRespawn", System.currentTimeMillis() + respawnTime);
 					cancelQuestTimer("CHECK_ATTACK", null, null);
 					cancelQuestTimer("TIME_OUT", null, null);

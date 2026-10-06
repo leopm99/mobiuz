@@ -246,7 +246,7 @@ public class Q00134_TempleMissionary extends Quest
 							else if (getQuestItemsCount(player, GIANTS_EXPERIMENTAL_TOOL_FRAGMENT) >= FRAGMENT_COUNT)
 							{
 								final int count = (int) (getQuestItemsCount(player, GIANTS_EXPERIMENTAL_TOOL_FRAGMENT) / 10);
-								takeItems(player, GIANTS_EXPERIMENTAL_TOOL_FRAGMENT, count * 10);
+								takeItems(player, GIANTS_EXPERIMENTAL_TOOL_FRAGMENT, count * 10L);
 								giveItems(player, GIANTS_EXPERIMENTAL_TOOL, count);
 								htmltext = "31418-05.html";
 							}

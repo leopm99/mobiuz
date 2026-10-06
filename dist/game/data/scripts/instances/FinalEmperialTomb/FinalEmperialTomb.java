@@ -846,7 +846,7 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 									_world.setParameter("OnSong", element);
 									broadcastPacket(_world, new ExShowScreenMessage(2, -1, 2, 0, 0, 0, 0, true, 4000, false, null, element.songName, null));
 									broadcastPacket(_world, new MagicSkillUse(frintezza, frintezza, element.skill.getSkillId(), element.skill.getSkillLevel(), element.skill.getSkill().getHitTime(), 0));
-									_world.setParameter("songEffectTask", ThreadPool.schedule(new SongTask(_world, 1), element.skill.getSkill().getHitTime() - 10000));
+									_world.setParameter("songEffectTask", ThreadPool.schedule(new SongTask(_world, 1), element.skill.getSkill().getHitTime() - 10000L));
 									_world.setParameter("songTask", ThreadPool.schedule(new SongTask(_world, 0), element.skill.getSkill().getHitTime()));
 									break;
 								}

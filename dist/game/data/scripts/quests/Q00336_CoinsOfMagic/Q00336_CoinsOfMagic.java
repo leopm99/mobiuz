@@ -1332,7 +1332,7 @@ public class Q00336_CoinsOfMagic extends Quest
 				if ((getQuestItemsCount(player, item1a) >= (base * item1Mul)) && ((item1b == 0) || (getQuestItemsCount(player, item1b) >= base)))
 				{
 					qs.set(FLAG, 1);
-					takeItems(player, item1a, base * item1Mul);
+					takeItems(player, item1a, (long) (base) * item1Mul);
 					if (item1b > 0)
 					{
 						takeItems(player, item1b, base);
@@ -1419,8 +1419,8 @@ public class Q00336_CoinsOfMagic extends Quest
 			{
 				if (getQuestItemsCount(player, item1) >= (10 * mul * item1Mul))
 				{
-					takeItems(player, item1, 10 * mul * item1Mul);
-					giveItems(player, reward1, 1 * mul);
+					takeItems(player, item1, (10L * mul) * item1Mul);
+					giveItems(player, reward1, 1L * mul);
 					playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 					return npcId + "-07.html";
 				}
@@ -1430,8 +1430,8 @@ public class Q00336_CoinsOfMagic extends Quest
 			{
 				if (getQuestItemsCount(player, item2) >= (5 * mul))
 				{
-					takeItems(player, item2, 5 * mul);
-					giveItems(player, reward2, 1 * mul);
+					takeItems(player, item2, 5L * mul);
+					giveItems(player, reward2, 1L * mul);
 					playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 					return npcId + "-07.html";
 				}
@@ -1441,8 +1441,8 @@ public class Q00336_CoinsOfMagic extends Quest
 			{
 				if (getQuestItemsCount(player, item3) >= (5 * mul))
 				{
-					takeItems(player, item3, 5 * mul);
-					giveItems(player, reward3, 1 * mul);
+					takeItems(player, item3, 5L * mul);
+					giveItems(player, reward3, 1L * mul);
 					playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 					return npcId + "-07.html";
 				}
@@ -1452,8 +1452,8 @@ public class Q00336_CoinsOfMagic extends Quest
 			{
 				if (getQuestItemsCount(player, item4) >= (5 * mul))
 				{
-					takeItems(player, item4, 5 * mul);
-					giveItems(player, reward4, 1 * mul);
+					takeItems(player, item4, 5L * mul);
+					giveItems(player, reward4, 1L * mul);
 					playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 					return npcId + "-07.html";
 				}
@@ -1490,9 +1490,9 @@ public class Q00336_CoinsOfMagic extends Quest
 			{
 				if ((getQuestItemsCount(player, item1a) >= (10 * mul)) && (getQuestItemsCount(player, item1b) >= (10 * mul)))
 				{
-					takeItems(player, item1a, 10 * mul);
-					takeItems(player, item1b, 10 * mul);
-					giveItems(player, reward1, 1 * mul);
+					takeItems(player, item1a, 10L * mul);
+					takeItems(player, item1b, 10L * mul);
+					giveItems(player, reward1, 1L * mul);
 					playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 					return npcId + "-07.html";
 				}
@@ -1502,9 +1502,9 @@ public class Q00336_CoinsOfMagic extends Quest
 			{
 				if ((getQuestItemsCount(player, item2a) >= (5 * mul)) && (getQuestItemsCount(player, item2b) >= (5 * mul)))
 				{
-					takeItems(player, item2a, 5 * mul);
-					takeItems(player, item2b, 5 * mul);
-					giveItems(player, reward2, 1 * mul);
+					takeItems(player, item2a, 5L * mul);
+					takeItems(player, item2b, 5L * mul);
+					giveItems(player, reward2, 1L * mul);
 					playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 					return npcId + "-07.html";
 				}
@@ -1514,9 +1514,9 @@ public class Q00336_CoinsOfMagic extends Quest
 			{
 				if ((getQuestItemsCount(player, item3a) >= (5 * mul)) && (getQuestItemsCount(player, item3b) >= (5 * mul)))
 				{
-					takeItems(player, item3a, 5 * mul);
-					takeItems(player, item3b, 5 * mul);
-					giveItems(player, reward3, 1 * mul);
+					takeItems(player, item3a, 5L * mul);
+					takeItems(player, item3b, 5L * mul);
+					giveItems(player, reward3, 1L * mul);
 					playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 					return npcId + "-07.html";
 				}
@@ -1526,9 +1526,9 @@ public class Q00336_CoinsOfMagic extends Quest
 			{
 				if ((getQuestItemsCount(player, item4a) >= (5 * mul)) && (getQuestItemsCount(player, item4b) >= (5 * mul)))
 				{
-					takeItems(player, item4a, 5 * mul);
-					takeItems(player, item4b, 5 * mul);
-					giveItems(player, reward4, 1 * mul);
+					takeItems(player, item4a, 5L * mul);
+					takeItems(player, item4b, 5L * mul);
+					giveItems(player, reward4, 1L * mul);
 					playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 					return npcId + "-07.html";
 				}

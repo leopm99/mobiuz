@@ -66,7 +66,7 @@ public class ZoneNPoly extends ZoneForm
 		for (int i = 0; i < _p.npoints; i++)
 		{
 			final int nextIndex = (i + 1) % _p.npoints;
-			final double crossProduct = (_p.xpoints[i] * _p.ypoints[nextIndex]) - (_p.xpoints[nextIndex] * _p.ypoints[i]);
+			final double crossProduct = (double) ((_p.xpoints[i] * _p.ypoints[nextIndex])) - (_p.xpoints[nextIndex] * _p.ypoints[i]);
 			area += crossProduct;
 			cx += (_p.xpoints[i] + _p.xpoints[nextIndex]) * crossProduct;
 			cy += (_p.ypoints[i] + _p.ypoints[nextIndex]) * crossProduct;
@@ -110,11 +110,11 @@ public class ZoneNPoly extends ZoneForm
 		final int[] xPoints = _p.xpoints;
 		final int[] yPoints = _p.ypoints;
 		double test;
-		double shortestDist = Math.pow(xPoints[0] - x, 2) + Math.pow(yPoints[0] - y, 2);
+		double shortestDist = Math.pow((double) (xPoints[0]) - x, 2) + Math.pow((double) (yPoints[0]) - y, 2);
 		
 		for (int i = 1; i < _p.npoints; i++)
 		{
-			test = Math.pow(xPoints[i] - x, 2) + Math.pow(yPoints[i] - y, 2);
+			test = Math.pow((double) (xPoints[i]) - x, 2) + Math.pow((double) (yPoints[i]) - y, 2);
 			if (test < shortestDist)
 			{
 				shortestDist = test;
@@ -145,7 +145,7 @@ public class ZoneNPoly extends ZoneForm
 			final int nextIndex = (i + 1) == _p.xpoints.length ? 0 : i + 1;
 			final int vx = _p.xpoints[nextIndex] - _p.xpoints[i];
 			final int vy = _p.ypoints[nextIndex] - _p.ypoints[i];
-			final float length = (float) Math.sqrt((vx * vx) + (vy * vy)) / STEP;
+			final float length = (float) Math.sqrt((double) ((vx * vx)) + (vy * vy)) / STEP;
 			for (int o = 1; o <= length; o++)
 			{
 				dropDebugItem(Inventory.ADENA_ID, 1, (int) (_p.xpoints[i] + ((o / length) * vx)), (int) (_p.ypoints[i] + ((o / length) * vy)), z);

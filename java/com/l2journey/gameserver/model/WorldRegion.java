@@ -238,7 +238,7 @@ public class WorldRegion
 				{
 					_surroundingRegions[i].setActive(true);
 				}
-			}, 1000 * Config.GRID_NEIGHBOR_TURNON_TIME);
+			}, 1000L * Config.GRID_NEIGHBOR_TURNON_TIME);
 		}
 	}
 	
@@ -268,7 +268,7 @@ public class WorldRegion
 						worldRegion.setActive(false);
 					}
 				}
-			}, 1000 * Config.GRID_NEIGHBOR_TURNOFF_TIME);
+			}, 1000L * Config.GRID_NEIGHBOR_TURNOFF_TIME);
 		}
 	}
 	

@@ -494,20 +494,20 @@ public class CtF extends Event
 					}
 				}
 				// Spawn managers.
-				addSpawn(MANAGER, BLUE_BUFFER_SPAWN_LOC, false, (WAIT_TIME + FIGHT_TIME) * 60000, false, PVP_WORLD.getInstanceId());
-				addSpawn(MANAGER, RED_BUFFER_SPAWN_LOC, false, (WAIT_TIME + FIGHT_TIME) * 60000, false, PVP_WORLD.getInstanceId());
+				addSpawn(MANAGER, BLUE_BUFFER_SPAWN_LOC, false, (WAIT_TIME + FIGHT_TIME) * 60000L, false, PVP_WORLD.getInstanceId());
+				addSpawn(MANAGER, RED_BUFFER_SPAWN_LOC, false, (WAIT_TIME + FIGHT_TIME) * 60000L, false, PVP_WORLD.getInstanceId());
 				// Initialize scores.
 				BLUE_SCORE = 0;
 				RED_SCORE = 0;
 				// Initialize scoreboard.
 				PVP_WORLD.broadcastPacket(new ExPVPMatchCCRecord(ExPVPMatchCCRecord.INITIALIZE, MapUtil.sortByValue(PLAYER_SCORES, true)));
 				// Schedule start.
-				startQuestTimer("5", (WAIT_TIME * 60000) - 5000, null, null);
-				startQuestTimer("4", (WAIT_TIME * 60000) - 4000, null, null);
-				startQuestTimer("3", (WAIT_TIME * 60000) - 3000, null, null);
-				startQuestTimer("2", (WAIT_TIME * 60000) - 2000, null, null);
-				startQuestTimer("1", (WAIT_TIME * 60000) - 1000, null, null);
-				startQuestTimer("StartFight", WAIT_TIME * 60000, null, null);
+				startQuestTimer("5", (WAIT_TIME * 60000) - 5000L, null, null);
+				startQuestTimer("4", (WAIT_TIME * 60000) - 4000L, null, null);
+				startQuestTimer("3", (WAIT_TIME * 60000) - 3000L, null, null);
+				startQuestTimer("2", (WAIT_TIME * 60000) - 2000L, null, null);
+				startQuestTimer("1", (WAIT_TIME * 60000) - 1000L, null, null);
+				startQuestTimer("StartFight", WAIT_TIME * 60000L, null, null);
 				break;
 			}
 			case "StartFight":
@@ -519,8 +519,8 @@ public class CtF extends Event
 				PVP_WORLD.openDoor(RED_DOOR_ID);
 				
 				// Spawn the flags
-				FLAG_BLUE_SPAWN = addSpawn(BLUE_TEAM_HEADQUARTERS, BLUE_TEAM_HEADQUARTERS_LOC, false, (WAIT_TIME + FIGHT_TIME) * 60000, false, PVP_WORLD.getInstanceId());
-				FLAG_RED_SPAWN = addSpawn(RED_TEAM_HEADQUARTERS, RED_TEAM_HEADQUARTERS_LOC, false, (WAIT_TIME + FIGHT_TIME) * 60000, false, PVP_WORLD.getInstanceId());
+				FLAG_BLUE_SPAWN = addSpawn(BLUE_TEAM_HEADQUARTERS, BLUE_TEAM_HEADQUARTERS_LOC, false, (WAIT_TIME + FIGHT_TIME) * 60000L, false, PVP_WORLD.getInstanceId());
+				FLAG_RED_SPAWN = addSpawn(RED_TEAM_HEADQUARTERS, RED_TEAM_HEADQUARTERS_LOC, false, (WAIT_TIME + FIGHT_TIME) * 60000L, false, PVP_WORLD.getInstanceId());
 				
 				// add event FIGHT_TIME
 				for (Player participant : PLAYER_LIST)
@@ -530,17 +530,17 @@ public class CtF extends Event
 				// Send message.
 				broadcastScreenMessageWithEffect("Capture The Flag Event Started - Go to flags!", 5);
 				// Schedule finish.
-				startQuestTimer("10", (FIGHT_TIME * 60000) - 10000, null, null);
-				startQuestTimer("9", (FIGHT_TIME * 60000) - 9000, null, null);
-				startQuestTimer("8", (FIGHT_TIME * 60000) - 8000, null, null);
-				startQuestTimer("7", (FIGHT_TIME * 60000) - 7000, null, null);
-				startQuestTimer("6", (FIGHT_TIME * 60000) - 6000, null, null);
-				startQuestTimer("5", (FIGHT_TIME * 60000) - 5000, null, null);
-				startQuestTimer("4", (FIGHT_TIME * 60000) - 4000, null, null);
-				startQuestTimer("3", (FIGHT_TIME * 60000) - 3000, null, null);
-				startQuestTimer("2", (FIGHT_TIME * 60000) - 2000, null, null);
-				startQuestTimer("1", (FIGHT_TIME * 60000) - 1000, null, null);
-				startQuestTimer("EndFight", FIGHT_TIME * 60000, null, null);
+				startQuestTimer("10", (FIGHT_TIME * 60000) - 10000L, null, null);
+				startQuestTimer("9", (FIGHT_TIME * 60000) - 9000L, null, null);
+				startQuestTimer("8", (FIGHT_TIME * 60000) - 8000L, null, null);
+				startQuestTimer("7", (FIGHT_TIME * 60000) - 7000L, null, null);
+				startQuestTimer("6", (FIGHT_TIME * 60000) - 6000L, null, null);
+				startQuestTimer("5", (FIGHT_TIME * 60000) - 5000L, null, null);
+				startQuestTimer("4", (FIGHT_TIME * 60000) - 4000L, null, null);
+				startQuestTimer("3", (FIGHT_TIME * 60000) - 3000L, null, null);
+				startQuestTimer("2", (FIGHT_TIME * 60000) - 2000L, null, null);
+				startQuestTimer("1", (FIGHT_TIME * 60000) - 1000L, null, null);
+				startQuestTimer("EndFight", FIGHT_TIME * 60000L, null, null);
 				break;
 			}
 			case "EndFight":
@@ -1376,8 +1376,8 @@ public class CtF extends Event
 		BLUE_TEAM.clear();
 		RED_TEAM.clear();
 		// Spawn event manager.
-		MANAGER_NPC_INSTANCE = addSpawn(MANAGER, MANAGER_SPAWN_LOC, false, REGISTRATION_TIME * 60000);
-		startQuestTimer("TeleportToArena", REGISTRATION_TIME * 60000, null, null);
+		MANAGER_NPC_INSTANCE = addSpawn(MANAGER, MANAGER_SPAWN_LOC, false, REGISTRATION_TIME * 60000L);
+		startQuestTimer("TeleportToArena", REGISTRATION_TIME * 60000L, null, null);
 		// Send message to players.
 		Broadcast.toAllOnlinePlayers("CtF Event: Registration opened for " + REGISTRATION_TIME + " minutes.");
 		Broadcast.toAllOnlinePlayers("CtF Event: You can register at Giran CtF Event Manager.");
@@ -1462,12 +1462,12 @@ public class CtF extends Event
 	{
 		if (BLUE_TEAM.contains(player))
 		{
-			FLAG_RED_SPAWN = addSpawn(RED_TEAM_HEADQUARTERS, RED_TEAM_HEADQUARTERS_LOC, false, (WAIT_TIME + FIGHT_TIME) * 60000, false, PVP_WORLD.getInstanceId());
+			FLAG_RED_SPAWN = addSpawn(RED_TEAM_HEADQUARTERS, RED_TEAM_HEADQUARTERS_LOC, false, (WAIT_TIME + FIGHT_TIME) * 60000L, false, PVP_WORLD.getInstanceId());
 		}
 		
 		if (RED_TEAM.contains(player))
 		{
-			FLAG_BLUE_SPAWN = addSpawn(BLUE_TEAM_HEADQUARTERS, BLUE_TEAM_HEADQUARTERS_LOC, false, (WAIT_TIME + FIGHT_TIME) * 60000, false, PVP_WORLD.getInstanceId());
+			FLAG_BLUE_SPAWN = addSpawn(BLUE_TEAM_HEADQUARTERS, BLUE_TEAM_HEADQUARTERS_LOC, false, (WAIT_TIME + FIGHT_TIME) * 60000L, false, PVP_WORLD.getInstanceId());
 		}
 	}
 	

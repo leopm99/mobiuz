@@ -64,7 +64,7 @@ public class PrivateStoreManageListBuy extends AbstractItemPacket
 		for (Item item : _itemList)
 		{
 			writeItem(item, buffer);
-			buffer.writeLong(item.getTemplate().getReferencePrice() * 2);
+			buffer.writeLong(item.getTemplate().getReferencePrice() * 2L);
 		}
 		
 		buffer.writeInt(_buyList.size()); // count for all items already added for buy
@@ -72,7 +72,7 @@ public class PrivateStoreManageListBuy extends AbstractItemPacket
 		{
 			writeItem(item, buffer);
 			buffer.writeLong(item.getPrice());
-			buffer.writeLong(item.getItem().getReferencePrice() * 2);
+			buffer.writeLong(item.getItem().getReferencePrice() * 2L);
 			buffer.writeLong(item.getCount());
 		}
 	}

@@ -67,7 +67,7 @@ public class PrivateStoreManageListSell extends AbstractItemPacket
 		for (TradeItem item : _itemList)
 		{
 			writeItem(item, buffer);
-			buffer.writeLong(item.getItem().getReferencePrice() * 2);
+			buffer.writeLong(item.getItem().getReferencePrice() * 2L);
 		}
 		
 		buffer.writeInt(_sellList.size()); // count for any items already added for sell
@@ -75,7 +75,7 @@ public class PrivateStoreManageListSell extends AbstractItemPacket
 		{
 			writeItem(item, buffer);
 			buffer.writeLong(item.getPrice());
-			buffer.writeLong(item.getItem().getReferencePrice() * 2);
+			buffer.writeLong(item.getItem().getReferencePrice() * 2L);
 		}
 	}
 }

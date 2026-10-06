@@ -81,21 +81,21 @@ public class ZoneCuboid extends ZoneForm
 		final int _x2 = _r.x + _r.width;
 		final int _y1 = _r.y;
 		final int _y2 = _r.y + _r.height;
-		double test = Math.pow(_x1 - x, 2) + Math.pow(_y2 - y, 2);
-		double shortestDist = Math.pow(_x1 - x, 2) + Math.pow(_y1 - y, 2);
+		double test = Math.pow((double) (_x1) - x, 2) + Math.pow((double) (_y2) - y, 2);
+		double shortestDist = Math.pow((double) (_x1) - x, 2) + Math.pow((double) (_y1) - y, 2);
 		
 		if (test < shortestDist)
 		{
 			shortestDist = test;
 		}
 		
-		test = Math.pow(_x2 - x, 2) + Math.pow(_y1 - y, 2);
+		test = Math.pow((double) (_x2) - x, 2) + Math.pow((double) (_y1) - y, 2);
 		if (test < shortestDist)
 		{
 			shortestDist = test;
 		}
 		
-		test = Math.pow(_x2 - x, 2) + Math.pow(_y2 - y, 2);
+		test = Math.pow((double) (_x2) - x, 2) + Math.pow((double) (_y2) - y, 2);
 		if (test < shortestDist)
 		{
 			shortestDist = test;

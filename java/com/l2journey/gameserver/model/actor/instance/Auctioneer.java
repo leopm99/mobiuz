@@ -115,7 +115,7 @@ public class Auctioneer extends Npc
 							bid = Math.min(Long.parseLong(st.nextToken()), MAX_ADENA);
 						}
 						
-						final ClanHallAuction a = new ClanHallAuction(clan.getHideoutId(), clan, days * 86400000, bid, ClanHallTable.getInstance().getClanHallByOwner(clan).getName());
+						final ClanHallAuction a = new ClanHallAuction(clan.getHideoutId(), clan, days * 86400000L, bid, ClanHallTable.getInstance().getClanHallByOwner(clan).getName());
 						if (_pendingAuctions.get(a.getId()) != null)
 						{
 							_pendingAuctions.remove(a.getId());

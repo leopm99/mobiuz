@@ -65,7 +65,7 @@ public class LocationUtil
 	 */
 	public static double calculateAngleFrom(int originX, int originY, int targetX, int targetY)
 	{
-		double angle = Math.toDegrees(Math.atan2(targetY - originY, targetX - originX));
+		double angle = Math.toDegrees(Math.atan2((double) (targetY) - originY, (double) (targetX) - originX));
 		if (angle < 0)
 		{
 			angle += 360;
@@ -94,7 +94,7 @@ public class LocationUtil
 	 */
 	public static int calculateHeadingFrom(int originX, int originY, int targetX, int targetY)
 	{
-		double angle = Math.toDegrees(Math.atan2(targetY - originY, targetX - originX));
+		double angle = Math.toDegrees(Math.atan2((double) (targetY) - originY, (double) (targetX) - originX));
 		if (angle < 0)
 		{
 			angle += 360;

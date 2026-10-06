@@ -114,7 +114,7 @@ public class CastleManorManager implements IXmlReader
 			// Schedule autosave
 			if (!Config.ALT_MANOR_SAVE_ALL_ACTIONS)
 			{
-				ThreadPool.scheduleAtFixedRate(this::storeMe, Config.ALT_MANOR_SAVE_PERIOD_RATE * 60 * 60 * 1000, Config.ALT_MANOR_SAVE_PERIOD_RATE * 60 * 60 * 1000);
+				ThreadPool.scheduleAtFixedRate(this::storeMe, (Config.ALT_MANOR_SAVE_PERIOD_RATE * 60L * 60L) * 1000, (long) (Config.ALT_MANOR_SAVE_PERIOD_RATE) * 60 * 60 * 1000);
 			}
 		}
 		else

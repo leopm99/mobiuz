@@ -1579,7 +1579,7 @@ public class Attackable extends Npc
 			count += diff;
 		}
 		
-		_harvestItem.set(new ItemHolder(_seed.getCropId(), count * Config.RATE_DROP_MANOR));
+		_harvestItem.set(new ItemHolder(_seed.getCropId(), (long) (count) * Config.RATE_DROP_MANOR));
 	}
 	
 	/**

@@ -211,7 +211,7 @@ public class TownWarManager
 			
 			if (nextMsg > 0)
 			{
-				nextRun = ThreadPool.schedule(this, nextMsg * 1000);
+				nextRun = ThreadPool.schedule(this, nextMsg * 1000L);
 			}
 			else
 			{

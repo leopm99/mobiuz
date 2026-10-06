@@ -131,11 +131,11 @@ public class AdminKill implements IAdminCommandHandler
 			{
 				target.stopAllEffects(); // e.g. invincibility effect
 			}
-			target.reduceCurrentHp(target.getMaxHp() + target.getMaxCp() + 1, activeChar, null);
+			target.reduceCurrentHp((double) (target.getMaxHp()) + target.getMaxCp() + 1, activeChar, null);
 		}
 		else if (Config.CHAMPION_ENABLE && target.isChampion())
 		{
-			target.reduceCurrentHp((target.getMaxHp() * Config.CHAMPION_HP) + 1, activeChar, null);
+			target.reduceCurrentHp((target.getMaxHp() * Config.CHAMPION_HP) + 1.0, activeChar, null);
 		}
 		else
 		{
@@ -146,7 +146,7 @@ public class AdminKill implements IAdminCommandHandler
 				target.setInvul(false);
 			}
 			
-			target.reduceCurrentHp(target.getMaxHp() + 1, activeChar, null);
+			target.reduceCurrentHp(target.getMaxHp() + 1.0, activeChar, null);
 			if (targetIsInvul)
 			{
 				target.setInvul(true);

@@ -204,7 +204,7 @@ public class Race extends Event
 		Broadcast.toAllOnlinePlayers("Visit Event Manager in Dion village and signup, you have " + REGISTER_TIME + " min before Race Start...");
 		
 		// Schedule Event end
-		_eventTask = ThreadPool.schedule(this::StartRace, REGISTER_TIME * 60 * 1000);
+		_eventTask = ThreadPool.schedule(this::StartRace, (REGISTER_TIME * 60L) * 1000);
 		return true;
 	}
 	
@@ -245,7 +245,7 @@ public class Race extends Event
 			}
 		}
 		// Schedule timeup for Race
-		_eventTask = ThreadPool.schedule(this::timeUp, RACE_TIME * 60 * 1000);
+		_eventTask = ThreadPool.schedule(this::timeUp, (RACE_TIME * 60L) * 1000);
 	}
 	
 	@Override

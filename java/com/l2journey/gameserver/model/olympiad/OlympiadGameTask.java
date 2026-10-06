@@ -309,7 +309,7 @@ public class OlympiadGameTask implements Runnable
 					return;
 				}
 			}
-			ThreadPool.schedule(this, delay * 1000);
+			ThreadPool.schedule(this, delay * 1000L);
 		}
 		catch (Exception e)
 		{

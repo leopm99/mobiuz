@@ -718,8 +718,8 @@ public class Beleth extends AbstractNpcAI
 			setBelethKiller(killer);
 			GrandBossManager.getInstance().setStatus(REAL_BELETH, DEAD);
 			
-			final long baseIntervalMillis = Config.BELETH_SPAWN_INTERVAL * 3600000;
-			final long randomRangeMillis = Config.BELETH_SPAWN_RANDOM * 3600000;
+			final long baseIntervalMillis = Config.BELETH_SPAWN_INTERVAL * 3600000L;
+			final long randomRangeMillis = Config.BELETH_SPAWN_RANDOM * 3600000L;
 			final long respawnTime = baseIntervalMillis + getRandom(-randomRangeMillis, randomRangeMillis);
 			final StatSet info = GrandBossManager.getInstance().getStatSet(REAL_BELETH);
 			info.set("respawn_time", System.currentTimeMillis() + respawnTime);

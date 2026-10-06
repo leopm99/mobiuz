@@ -140,12 +140,12 @@ public class Q00631_DeliciousTopChoiceMeat extends Quest
 						}
 						case 4:
 						{
-							rewardItems(player, getRandomEntry(PIECE), getRandom(5) + 2);
+							rewardItems(player, getRandomEntry(PIECE), getRandom(5) + 2L);
 							break;
 						}
 						case 5:
 						{
-							rewardItems(player, getRandomEntry(PIECE), getRandom(7) + 2);
+							rewardItems(player, getRandomEntry(PIECE), getRandom(7) + 2L);
 							break;
 						}
 						case 6:

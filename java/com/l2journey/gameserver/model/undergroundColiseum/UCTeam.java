@@ -208,7 +208,7 @@ public class UCTeam
 					}
 				}
 			}
-		}, EventsConfig.UC_RESS_TIME * 1000);
+		}, EventsConfig.UC_RESS_TIME * 1000L);
 	}
 	
 	public void increaseKillCount()
@@ -337,7 +337,7 @@ public class UCTeam
 							long amount = reward.isAllowMidifier() ? (long) (reward.getAmount() * modifier) : reward.getAmount();
 							if ((member.getPcCafePoints() + amount) > EventsConfig.PC_CAFE_MAX_POINTS)
 							{
-								amount = EventsConfig.PC_CAFE_MAX_POINTS - member.getPcCafePoints();
+								amount = (long) (EventsConfig.PC_CAFE_MAX_POINTS) - member.getPcCafePoints();
 							}
 							final SystemMessage sm = new SystemMessage(SystemMessageId.YOU_HAVE_ACQUIRED_S1_PC_CAFE_POINTS);
 							sm.addInt((int) amount);

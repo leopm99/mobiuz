@@ -291,9 +291,9 @@ public class MercTicketManager
 	{
 		for (Item item : DROPPED_TICKETS)
 		{
-			final double dx = x - item.getX();
-			final double dy = y - item.getY();
-			final double dz = z - item.getZ();
+			final double dx = (double) (x) - item.getX();
+			final double dy = (double) (y) - item.getY();
+			final double dz = (double) (z) - item.getZ();
 			if (((dx * dx) + (dy * dy) + (dz * dz)) < (25 * 25))
 			{
 				return true;

@@ -178,7 +178,7 @@ public class SiegeZone extends ZoneType
 			player.setInSiege(true); // in siege
 			if (getSettings().getSiege().giveFame() && (getSettings().getSiege().getFameFrequency() > 0))
 			{
-				player.startFameTask(getSettings().getSiege().getFameFrequency() * 1000, getSettings().getSiege().getFameAmount());
+				player.startFameTask(getSettings().getSiege().getFameFrequency() * 1000L, getSettings().getSiege().getFameAmount());
 			}
 		}
 		

@@ -141,7 +141,7 @@ public class SendWareHouseDepositList extends ClientPacket
 		}
 		
 		// Freight price from config or normal price per item slot (30)
-		final long fee = _items.size() * 30;
+		final long fee = _items.size() * 30L;
 		long currentAdena = player.getAdena();
 		int slots = 0;
 		for (ItemHolder itemHolder : _items)

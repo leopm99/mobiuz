@@ -689,8 +689,8 @@ public class Antharas extends AbstractNpcAI
 				zone.broadcastPacket(new PlaySound("BS01_D"));
 				addSpawn(CUBE, 177615, 114941, -7709, 0, false, 900000);
 				
-				final long baseIntervalMillis = Config.ANTHARAS_SPAWN_INTERVAL * 3600000;
-				final long randomRangeMillis = Config.ANTHARAS_SPAWN_RANDOM * 3600000;
+				final long baseIntervalMillis = Config.ANTHARAS_SPAWN_INTERVAL * 3600000L;
+				final long randomRangeMillis = Config.ANTHARAS_SPAWN_RANDOM * 3600000L;
 				final long respawnTime = baseIntervalMillis + getRandom(-randomRangeMillis, randomRangeMillis);
 				setRespawn(respawnTime);
 				startQuestTimer("CLEAR_STATUS", respawnTime, null, null);

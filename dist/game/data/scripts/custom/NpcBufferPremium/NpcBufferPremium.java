@@ -112,7 +112,7 @@ public class NpcBufferPremium extends Quest
 	/**
 	 * Cache TTL in milliseconds (10 minutes)
 	 */
-	private static final long CACHE_TTL = 10 * 60 * 1000;
+	private static final long CACHE_TTL = (10 * 60L) * 1000;
 	
 	private static void print(Exception e)
 	{

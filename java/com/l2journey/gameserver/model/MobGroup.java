@@ -245,7 +245,7 @@ public class MobGroup
 			
 			if (!mobInst.isDead())
 			{
-				mobInst.reduceCurrentHp(mobInst.getMaxHp() + 1, player, null);
+				mobInst.reduceCurrentHp(mobInst.getMaxHp() + 1.0, player, null);
 			}
 			
 			SpawnTable.getInstance().removeSpawn(mobInst.getSpawn());

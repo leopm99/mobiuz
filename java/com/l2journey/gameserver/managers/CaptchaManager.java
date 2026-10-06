@@ -218,7 +218,7 @@ public class CaptchaManager
 		}
 		VALIDATION.put(player.getObjectId(), data);
 		
-		final Future<?> newTask = ThreadPool.schedule(new ReportCheckTask(player), Config.VALIDATION_TIME * 1000);
+		final Future<?> newTask = ThreadPool.schedule(new ReportCheckTask(player), Config.VALIDATION_TIME * 1000L);
 		ThreadPool.schedule(new countdown(player, Config.VALIDATION_TIME), 0);
 		BEGIN_VALIDATION.put(player.getObjectId(), newTask);
 	}

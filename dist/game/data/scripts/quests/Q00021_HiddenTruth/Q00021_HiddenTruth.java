@@ -122,7 +122,7 @@ public class Q00021_HiddenTruth extends Quest
 						final Npc ghost = addSpawn(GHOST_OF_VON_HELLMAN, GHOST_LOC, false, 0);
 						ghost.broadcastPacket(new NpcSay(ghost.getObjectId(), ChatType.GENERAL, ghost.getId(), NpcStringId.WHO_AWOKE_ME));
 						GHOST_SPAWNED = true;
-						startQuestTimer("DESPAWN_GHOST", 1000 * 300, ghost, player);
+						startQuestTimer("DESPAWN_GHOST", 1000 * 300L, ghost, player);
 						qs.setCond(2);
 						playSound(player, QuestSound.SKILLSOUND_HORROR_2);
 						htmltext = event;

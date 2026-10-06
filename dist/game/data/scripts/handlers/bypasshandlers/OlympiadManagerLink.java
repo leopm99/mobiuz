@@ -241,7 +241,7 @@ public class OlympiadManagerLink implements IBypassHandler
 						if (passes > 0)
 						{
 							player.getVariables().remove(Olympiad.UNCLAIMED_OLYMPIAD_PASSES_VAR);
-							player.addItem(ItemProcessType.REWARD, GATE_PASS, passes * EventsConfig.OLYMPIAD_GP_PER_POINT, player, true);
+							player.addItem(ItemProcessType.REWARD, GATE_PASS, (long) (passes) * EventsConfig.OLYMPIAD_GP_PER_POINT, player, true);
 						}
 						break;
 					}

@@ -368,12 +368,12 @@ public class Deathmatch extends Event
 				// Initialize scoreboard.
 				PVP_WORLD.broadcastPacket(new ExPVPMatchCCRecord(ExPVPMatchCCRecord.INITIALIZE, MapUtil.sortByValue(PLAYER_SCORES, true)));
 				// Schedule start.
-				startQuestTimer("5", (WAIT_TIME * 1000) - 5000, null, null);
-				startQuestTimer("4", (WAIT_TIME * 1000) - 4000, null, null);
-				startQuestTimer("3", (WAIT_TIME * 1000) - 3000, null, null);
-				startQuestTimer("2", (WAIT_TIME * 1000) - 2000, null, null);
-				startQuestTimer("1", (WAIT_TIME * 1000) - 1000, null, null);
-				startQuestTimer("StartFight", WAIT_TIME * 1000, null, null);
+				startQuestTimer("5", (WAIT_TIME * 1000) - 5000L, null, null);
+				startQuestTimer("4", (WAIT_TIME * 1000) - 4000L, null, null);
+				startQuestTimer("3", (WAIT_TIME * 1000) - 3000L, null, null);
+				startQuestTimer("2", (WAIT_TIME * 1000) - 2000L, null, null);
+				startQuestTimer("1", (WAIT_TIME * 1000) - 1000L, null, null);
+				startQuestTimer("StartFight", WAIT_TIME * 1000L, null, null);
 				break;
 			}
 			case "StartFight":
@@ -397,17 +397,17 @@ public class Deathmatch extends Event
 					}
 				}
 				// Schedule finish.
-				startQuestTimer("10", (FIGHT_TIME * 60000) - 10000, null, null);
-				startQuestTimer("9", (FIGHT_TIME * 60000) - 9000, null, null);
-				startQuestTimer("8", (FIGHT_TIME * 60000) - 8000, null, null);
-				startQuestTimer("7", (FIGHT_TIME * 60000) - 7000, null, null);
-				startQuestTimer("6", (FIGHT_TIME * 60000) - 6000, null, null);
-				startQuestTimer("5", (FIGHT_TIME * 60000) - 5000, null, null);
-				startQuestTimer("4", (FIGHT_TIME * 60000) - 4000, null, null);
-				startQuestTimer("3", (FIGHT_TIME * 60000) - 3000, null, null);
-				startQuestTimer("2", (FIGHT_TIME * 60000) - 2000, null, null);
-				startQuestTimer("1", (FIGHT_TIME * 60000) - 1000, null, null);
-				startQuestTimer("EndFight", FIGHT_TIME * 60000, null, null);
+				startQuestTimer("10", (FIGHT_TIME * 60000) - 10000L, null, null);
+				startQuestTimer("9", (FIGHT_TIME * 60000) - 9000L, null, null);
+				startQuestTimer("8", (FIGHT_TIME * 60000) - 8000L, null, null);
+				startQuestTimer("7", (FIGHT_TIME * 60000) - 7000L, null, null);
+				startQuestTimer("6", (FIGHT_TIME * 60000) - 6000L, null, null);
+				startQuestTimer("5", (FIGHT_TIME * 60000) - 5000L, null, null);
+				startQuestTimer("4", (FIGHT_TIME * 60000) - 4000L, null, null);
+				startQuestTimer("3", (FIGHT_TIME * 60000) - 3000L, null, null);
+				startQuestTimer("2", (FIGHT_TIME * 60000) - 2000L, null, null);
+				startQuestTimer("1", (FIGHT_TIME * 60000) - 1000L, null, null);
+				startQuestTimer("EndFight", FIGHT_TIME * 60000L, null, null);
 				break;
 			}
 			case "EndFight":
@@ -792,10 +792,10 @@ public class Deathmatch extends Event
 		PLAYER_LIST.clear();
 		PLAYER_SCORES.clear();
 		// Spawn event manager.
-		MANAGER_NPC_INSTANCE = addSpawn(MANAGER, MANAGER_SPAWN_LOC, false, REGISTRATION_TIME * 60000);
+		MANAGER_NPC_INSTANCE = addSpawn(MANAGER, MANAGER_SPAWN_LOC, false, REGISTRATION_TIME * 60000L);
 		MANAGER_NPC_INSTANCE.setTitle("Deathmatch Event");
 		MANAGER_NPC_INSTANCE.broadcastStatusUpdate();
-		startQuestTimer("TeleportToArena", REGISTRATION_TIME * 60000, null, null);
+		startQuestTimer("TeleportToArena", REGISTRATION_TIME * 60000L, null, null);
 		// Send message to players.
 		Broadcast.toAllOnlinePlayers("Deathmatch Event: Registration opened for " + REGISTRATION_TIME + " minutes.");
 		Broadcast.toAllOnlinePlayers("Deathmatch Event: You can register at Giran Event Manager.");

@@ -154,8 +154,8 @@ public class MoveToLocation extends ClientPacket
 		}
 		
 		// Can't move if character is trying to move a huge distance.
-		final double dx = _targetX - player.getX();
-		final double dy = _targetY - player.getY();
+		final double dx = (double) (_targetX) - player.getX();
+		final double dy = (double) (_targetY) - player.getY();
 		if (((dx * dx) + (dy * dy)) > 98010000) // 9900*9900
 		{
 			player.sendPacket(ActionFailed.STATIC_PACKET);

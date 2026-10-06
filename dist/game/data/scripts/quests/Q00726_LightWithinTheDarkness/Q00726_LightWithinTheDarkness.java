@@ -394,7 +394,7 @@ public class Q00726_LightWithinTheDarkness extends Quest
 			{
 				addSpawn(KANADIS_FOLLOWER1, 50536, -12232, -9384, 32768, false, 0, false, world.getInstanceId());
 			}
-			ThreadPool.schedule(() -> SecondWave(world), 8 * 60 * 1000);
+			ThreadPool.schedule(() -> SecondWave(world), (8 * 60L) * 1000);
 		}, 10000);
 	}
 	
@@ -406,7 +406,7 @@ public class Q00726_LightWithinTheDarkness extends Quest
 		{
 			addSpawn(KANADIS_FOLLOWER2, 50536, -12232, -9384, 32768, false, 0, false, world.getInstanceId());
 		}
-		ThreadPool.schedule(() -> ThirdWave(world), 8 * 60 * 1000);
+		ThreadPool.schedule(() -> ThirdWave(world), (8 * 60L) * 1000);
 	}
 	
 	protected void ThirdWave(PAWORLD world)

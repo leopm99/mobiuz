@@ -286,7 +286,7 @@ public class NornilsGarden extends AbstractInstance
 		instance.setExitLoc(new Location(player));
 		instance.setAllowSummon(false);
 		instance.setDuration(DURATION_TIME * 60000);
-		instance.setEmptyDestroyTime(EMPTY_DESTROY_TIME * 60000);
+		instance.setEmptyDestroyTime(EMPTY_DESTROY_TIME * 60000L);
 		final int instanceId = newWorld.getInstanceId();
 		LOGGER.info("Nornils Garden: started, Instance: " + instanceId + " created by player: " + player.getName());
 		newWorld.first_npc = addSpawn(18362, -109702, 74696, -12528, 49568, false, 0, false, newWorld.getInstanceId());

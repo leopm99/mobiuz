@@ -562,8 +562,8 @@ public class Baium extends AbstractNpcAI
 			addSpawn(TELE_CUBE, TELEPORT_CUBIC_LOC, false, 900000);
 			zone.broadcastPacket(new PlaySound("BS01_D"));
 			
-			final long baseIntervalMillis = Config.BAIUM_SPAWN_INTERVAL * 3600000;
-			final long randomRangeMillis = Config.BAIUM_SPAWN_RANDOM * 3600000;
+			final long baseIntervalMillis = Config.BAIUM_SPAWN_INTERVAL * 3600000L;
+			final long randomRangeMillis = Config.BAIUM_SPAWN_RANDOM * 3600000L;
 			final long respawnTime = baseIntervalMillis + getRandom(-randomRangeMillis, randomRangeMillis);
 			
 			// Next respawn time.

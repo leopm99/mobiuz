@@ -257,8 +257,8 @@ public class HeartInfinityDefence extends AbstractNpcAI
 		addKillId(ALIVETUMOR);
 		addKillId(18711);
 		
-		tumorRespawnTime = 180 * 1000;
-		wagonRespawnTime = 60 * 1000;
+		tumorRespawnTime = 180 * 1000L;
+		wagonRespawnTime = 60 * 1000L;
 		
 		addEnterZoneId(200032);
 	}
@@ -369,8 +369,8 @@ public class HeartInfinityDefence extends AbstractNpcAI
 				}
 			}
 			((HIDWorld) world).startTime = System.currentTimeMillis();
-			((HIDWorld) world).finishTask = ThreadPool.schedule(new FinishTask((HIDWorld) world), 30 * 60000);
-			((HIDWorld) world).timerTask = ThreadPool.scheduleAtFixedRate(new TimerTask((HIDWorld) world), 298 * 1000, 5 * 60 * 1000);
+			((HIDWorld) world).finishTask = ThreadPool.schedule(new FinishTask((HIDWorld) world), 30 * 60000L);
+			((HIDWorld) world).timerTask = ThreadPool.scheduleAtFixedRate(new TimerTask((HIDWorld) world), 298 * 1000L, (5 * 60L) * 1000);
 			conquestBegins((HIDWorld) world);
 		}
 	}
@@ -684,7 +684,7 @@ public class HeartInfinityDefence extends AbstractNpcAI
 					else
 					{
 						inst.setDuration(5 * 60000);
-						inst.setEmptyDestroyTime(5 * 60000);
+						inst.setEmptyDestroyTime(5 * 60000L);
 					}
 				}
 			}
@@ -722,7 +722,7 @@ public class HeartInfinityDefence extends AbstractNpcAI
 			else
 			{
 				inst.setDuration(5 * 60000);
-				inst.setEmptyDestroyTime(5 * 60000);
+				inst.setEmptyDestroyTime(5 * 60000L);
 			}
 		}
 	}

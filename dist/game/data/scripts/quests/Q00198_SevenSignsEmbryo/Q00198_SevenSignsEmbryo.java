@@ -105,7 +105,7 @@ public class Q00198_SevenSignsEmbryo extends Quest
 				{
 					isBusy = true;
 					npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.NPC_GENERAL, npc.getId(), NpcStringId.S1_THAT_STRANGER_MUST_BE_DEFEATED_HERE_IS_THE_ULTIMATE_HELP).addStringParameter(player.getName()));
-					startQuestTimer("heal", 30000 - getRandom(20000), npc, player);
+					startQuestTimer("heal", 30000L - getRandom(20000), npc, player);
 					final Monster monster = addSpawn(SHILENS_EVIL_THOUGHTS, -23734, -9184, -5384, 0, false, 0, false, npc.getInstanceId()).asMonster();
 					monster.broadcastPacket(new NpcSay(monster.getObjectId(), ChatType.NPC_GENERAL, monster.getId(), NpcStringId.YOU_ARE_NOT_THE_OWNER_OF_THAT_ITEM));
 					monster.setRunning();
@@ -128,7 +128,7 @@ public class Q00198_SevenSignsEmbryo extends Quest
 					npc.setTarget(player);
 					npc.doCast(NPC_HEAL.getSkill());
 				}
-				startQuestTimer("heal", 30000 - getRandom(20000), npc, player);
+				startQuestTimer("heal", 30000L - getRandom(20000), npc, player);
 				break;
 			}
 			case "32597-08.html", "32597-09.html", "32597-10.html":
