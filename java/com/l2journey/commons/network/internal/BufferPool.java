@@ -65,7 +65,7 @@ public class BufferPool
 	public void initialize(float factor)
 	{
 		final int maxSize = _maxSize.get();
-		final int amount = (int) Math.min(maxSize, maxSize * factor);
+		final int amount = Math.min(maxSize, Math.round(maxSize * factor));
 		for (int i = 0; i < amount; i++)
 		{
 			_buffers.offer(ByteBuffer.allocateDirect(_bufferSize).order(ByteOrder.LITTLE_ENDIAN));

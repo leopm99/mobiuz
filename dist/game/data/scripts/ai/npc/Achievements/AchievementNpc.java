@@ -697,9 +697,9 @@ public class AchievementNpc extends AbstractNpcAI
 			}
 			else
 			{
-				double span = next.need - prevNeed;
-				double doneSeg = currentValue - prevNeed;
-				segmentPercent = (doneSeg / span) * 100d;
+				final long span = next.need - prevNeed;
+				final long doneSeg = currentValue - prevNeed;
+				segmentPercent = (span <= 0) ? 0d : ((doneSeg * 100) / span);
 			}
 			
 			if (!Double.isFinite(segmentPercent) || (segmentPercent < 0d))
@@ -807,9 +807,9 @@ public class AchievementNpc extends AbstractNpcAI
 			}
 			else
 			{
-				double span = le.need - prevNeed;
-				double done = currentValue - prevNeed;
-				segmentPercent = (done / span) * 100d;
+				final long span = le.need - prevNeed;
+				final long done = currentValue - prevNeed;
+				segmentPercent = (span <= 0) ? 0d : ((done * 100) / span);
 			}
 			
 			if (!Double.isFinite(segmentPercent) || (segmentPercent < 0d))

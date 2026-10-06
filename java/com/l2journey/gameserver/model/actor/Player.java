@@ -7842,6 +7842,8 @@ public class Player extends Playable
 			{
 				if (storeEffects)
 				{
+					statement.setInt(7, 0); // Store type 0, active buffs/debuffs.
+					statement.setInt(8, _classIndex);
 					for (BuffInfo info : getEffectList().getEffects())
 					{
 						if (info == null)
@@ -7873,14 +7875,14 @@ public class Player extends Playable
 						final TimeStamp t = getSkillReuseTimeStamp(skill.getReuseHashCode());
 						statement.setLong(5, (t != null) && (currentTime < t.getStamp()) ? t.getReuse() : 0);
 						statement.setLong(6, (t != null) && (currentTime < t.getStamp()) ? t.getStamp() : 0);
-						statement.setInt(7, 0); // Store type 0, active buffs/debuffs.
-						statement.setInt(8, _classIndex);
 						statement.setInt(9, ++buffIndex);
 						statement.addBatch();
 					}
 				}
 				
 				// Skills under reuse.
+				statement.setInt(7, 1); // Restore type 1, skill reuse.
+				statement.setInt(8, _classIndex);
 				for (Entry<Integer, TimeStamp> ts : getSkillReuseTimeStamps().entrySet())
 				{
 					final int hash = ts.getKey();
@@ -7900,8 +7902,6 @@ public class Player extends Playable
 						statement.setInt(4, -1);
 						statement.setLong(5, t.getReuse());
 						statement.setLong(6, t.getStamp());
-						statement.setInt(7, 1); // Restore type 1, skill reuse.
-						statement.setInt(8, _classIndex);
 						statement.setInt(9, ++buffIndex);
 						statement.addBatch();
 					}
@@ -8184,12 +8184,12 @@ public class Player extends Playable
 		try (Connection con = DatabaseFactory.getConnection();
 			PreparedStatement ps = con.prepareStatement(ADD_NEW_SKILLS))
 		{
+			ps.setInt(1, getObjectId());
+			ps.setInt(4, classIndex);
 			for (Skill addSkill : newSkills)
 			{
-				ps.setInt(1, getObjectId());
 				ps.setInt(2, addSkill.getId());
 				ps.setInt(3, addSkill.getLevel());
-				ps.setInt(4, classIndex);
 				ps.addBatch();
 			}
 			ps.executeBatch();
@@ -10585,14 +10585,14 @@ public class Player extends Playable
 			PreparedStatement deleteSubclass = con.prepareStatement(DELETE_CHAR_SUBCLASS))
 		{
 			// Remove class permitted hennas.
+			deleteHennas.setInt(1, getObjectId());
+			deleteHennas.setInt(3, classIndex);
 			for (int slot = 1; slot < 4; slot++)
 			{
 				final Henna henna = getHenna(slot);
 				if ((henna != null) && !henna.isAllowedClass(getPlayerClass()))
 				{
-					deleteHennas.setInt(1, getObjectId());
 					deleteHennas.setInt(2, slot);
-					deleteHennas.setInt(3, classIndex);
 					deleteHennas.execute();
 				}
 			}
@@ -11416,6 +11416,17 @@ public class Player extends Playable
 		{
 			getStat().addExpAndSp(0, addToSp, useVitality);
 		}
+	}
+	
+	@Override
+	public synchronized void addExpAndSp(long addToExp, long addToSp)
+	{
+		addExpAndSp((double) addToExp, (double) addToSp);
+	}
+	
+	public synchronized void addExpAndSp(long addToExp, long addToSp, boolean useVitality)
+	{
+		addExpAndSp((double) addToExp, (double) addToSp, useVitality);
 	}
 	
 	public void removeExpAndSp(long removeExp, long removeSp)

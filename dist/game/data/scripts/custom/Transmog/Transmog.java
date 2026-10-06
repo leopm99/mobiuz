@@ -300,11 +300,11 @@ public class Transmog extends AbstractNpcAI
 		try (Connection con = DatabaseFactory.getConnection();
 			PreparedStatement statement = con.prepareStatement(SAVE_SQL))
 		{
+			statement.setString(1, owner);
 			for (Set<Integer> itemIds : PLAYER_TRANSMOGS.getOrDefault(playerObjectId, Collections.emptyMap()).values())
 			{
 				for (int itemId : itemIds)
 				{
-					statement.setString(1, owner);
 					statement.setInt(2, itemId);
 					statement.addBatch();
 				}

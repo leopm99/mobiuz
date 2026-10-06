@@ -1072,9 +1072,9 @@ public class Item extends WorldObject
 				return;
 			}
 			
+			psUpdate.setInt(1, objectId);
 			for (final Elementals element : _elementals)
 			{
-				psUpdate.setInt(1, objectId);
 				psUpdate.setByte(2, element.getElement());
 				psUpdate.setInt(3, element.getValue());
 				psUpdate.setInt(4, element.getValue()); // Valor para o UPDATE

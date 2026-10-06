@@ -452,14 +452,14 @@ public class CastleManorManager implements IXmlReader
 				// Insert new data
 				if (!list.isEmpty())
 				{
+					ips.setInt(1, castleId);
+					ips.setBoolean(6, true);
 					for (SeedProduction sp : list)
 					{
-						ips.setInt(1, castleId);
 						ips.setInt(2, sp.getId());
 						ips.setLong(3, sp.getAmount());
 						ips.setLong(4, sp.getStartAmount());
 						ips.setLong(5, sp.getPrice());
-						ips.setBoolean(6, true);
 						ips.addBatch();
 					}
 					ips.executeBatch();
@@ -488,15 +488,15 @@ public class CastleManorManager implements IXmlReader
 				// Insert new data
 				if (!list.isEmpty())
 				{
+					ips.setInt(1, castleId);
+					ips.setBoolean(7, true);
 					for (CropProcure cp : list)
 					{
-						ips.setInt(1, castleId);
 						ips.setInt(2, cp.getId());
 						ips.setLong(3, cp.getAmount());
 						ips.setLong(4, cp.getStartAmount());
 						ips.setLong(5, cp.getPrice());
 						ips.setInt(6, cp.getReward());
-						ips.setBoolean(7, true);
 						ips.addBatch();
 					}
 					ips.executeBatch();
@@ -514,10 +514,10 @@ public class CastleManorManager implements IXmlReader
 		try (Connection con = DatabaseFactory.getConnection();
 			PreparedStatement ps = con.prepareStatement("UPDATE castle_manor_production SET amount = ? WHERE castle_id = ? AND seed_id = ? AND next_period = 0"))
 		{
+			ps.setInt(2, castleId);
 			for (SeedProduction sp : items)
 			{
 				ps.setLong(1, sp.getAmount());
-				ps.setInt(2, castleId);
 				ps.setInt(3, sp.getId());
 				ps.addBatch();
 			}
@@ -534,10 +534,10 @@ public class CastleManorManager implements IXmlReader
 		try (Connection con = DatabaseFactory.getConnection();
 			PreparedStatement ps = con.prepareStatement("UPDATE castle_manor_procure SET amount = ? WHERE castle_id = ? AND crop_id = ? AND next_period = 0"))
 		{
+			ps.setInt(2, castleId);
 			for (CropProcure sp : items)
 			{
 				ps.setLong(1, sp.getAmount());
-				ps.setInt(2, castleId);
 				ps.setInt(3, sp.getId());
 				ps.addBatch();
 			}
@@ -614,6 +614,7 @@ public class CastleManorManager implements IXmlReader
 			// Current production
 			for (Entry<Integer, List<SeedProduction>> entry : _production.entrySet())
 			{
+				is.setBoolean(6, false);
 				for (SeedProduction sp : entry.getValue())
 				{
 					is.setInt(1, entry.getKey());
@@ -621,7 +622,6 @@ public class CastleManorManager implements IXmlReader
 					is.setLong(3, sp.getAmount());
 					is.setLong(4, sp.getStartAmount());
 					is.setLong(5, sp.getPrice());
-					is.setBoolean(6, false);
 					is.addBatch();
 				}
 			}
@@ -629,6 +629,7 @@ public class CastleManorManager implements IXmlReader
 			// Next production
 			for (Entry<Integer, List<SeedProduction>> entry : _productionNext.entrySet())
 			{
+				is.setBoolean(6, true);
 				for (SeedProduction sp : entry.getValue())
 				{
 					is.setInt(1, entry.getKey());
@@ -636,7 +637,6 @@ public class CastleManorManager implements IXmlReader
 					is.setLong(3, sp.getAmount());
 					is.setLong(4, sp.getStartAmount());
 					is.setLong(5, sp.getPrice());
-					is.setBoolean(6, true);
 					is.addBatch();
 				}
 			}
@@ -650,6 +650,7 @@ public class CastleManorManager implements IXmlReader
 			// Current procure
 			for (Entry<Integer, List<CropProcure>> entry : _procure.entrySet())
 			{
+				ip.setBoolean(7, false);
 				for (CropProcure cp : entry.getValue())
 				{
 					ip.setInt(1, entry.getKey());
@@ -658,7 +659,6 @@ public class CastleManorManager implements IXmlReader
 					ip.setLong(4, cp.getStartAmount());
 					ip.setLong(5, cp.getPrice());
 					ip.setInt(6, cp.getReward());
-					ip.setBoolean(7, false);
 					ip.addBatch();
 				}
 			}
@@ -666,6 +666,7 @@ public class CastleManorManager implements IXmlReader
 			// Next procure
 			for (Entry<Integer, List<CropProcure>> entry : _procureNext.entrySet())
 			{
+				ip.setBoolean(7, true);
 				for (CropProcure cp : entry.getValue())
 				{
 					ip.setInt(1, entry.getKey());
@@ -674,7 +675,6 @@ public class CastleManorManager implements IXmlReader
 					ip.setLong(4, cp.getStartAmount());
 					ip.setLong(5, cp.getPrice());
 					ip.setInt(6, cp.getReward());
-					ip.setBoolean(7, true);
 					ip.addBatch();
 				}
 			}

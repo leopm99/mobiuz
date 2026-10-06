@@ -120,6 +120,20 @@ public class PhantomGenerator
 		try (Connection con = DatabaseFactory.getConnection();
 			PreparedStatement ps = con.prepareStatement(query))
 		{
+			ps.setString(2, "PhantomAuto");
+			ps.setInt(4, 1);
+			ps.setInt(5, 1000);
+			ps.setInt(6, 1000);
+			ps.setInt(7, 500);
+			ps.setInt(8, 500);
+			ps.setInt(9, 1000);
+			ps.setInt(10, 1000);
+			ps.setInt(15, SPAWN_X);
+			ps.setInt(16, SPAWN_Y);
+			ps.setInt(17, SPAWN_Z);
+			ps.setString(21, "");
+			ps.setInt(22, 0);
+			ps.setInt(23, 0);
 			for (int i = 0; i < cantidad; i++)
 			{
 				int charId = IdManager.getInstance().getNextId();
@@ -131,28 +145,14 @@ public class PhantomGenerator
 				int sex = rnd.nextInt(2);
 				
 				ps.setInt(1, charId);
-				ps.setString(2, "PhantomAuto");
 				ps.setString(3, charName);
-				ps.setInt(4, 1);
-				ps.setInt(5, 1000);
-				ps.setInt(6, 1000);
-				ps.setInt(7, 500);
-				ps.setInt(8, 500);
-				ps.setInt(9, 1000);
-				ps.setInt(10, 1000);
 				ps.setInt(11, rnd.nextInt(3));
 				ps.setInt(12, rnd.nextInt(4));
 				ps.setInt(13, rnd.nextInt(3));
 				ps.setInt(14, sex);
-				ps.setInt(15, SPAWN_X);
-				ps.setInt(16, SPAWN_Y);
-				ps.setInt(17, SPAWN_Z);
 				ps.setInt(18, race);
 				ps.setInt(19, classId);
 				ps.setInt(20, classId);
-				ps.setString(21, "");
-				ps.setInt(22, 0);
-				ps.setInt(23, 0);
 				
 				ps.addBatch();
 				PhantomConfig.PHANTOM_IDS.add(charId);

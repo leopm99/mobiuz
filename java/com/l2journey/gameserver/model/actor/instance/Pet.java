@@ -1069,6 +1069,7 @@ public class Pet extends Summon
 			// Store all effect data along with calculated remaining
 			if (storeEffects)
 			{
+				ps2.setInt(1, _controlObjectId);
 				for (BuffInfo info : getEffectList().getEffects())
 				{
 					if (info == null)
@@ -1091,7 +1092,6 @@ public class Pet extends Summon
 					
 					storedSkills.add(skill.getReuseHashCode());
 					
-					ps2.setInt(1, _controlObjectId);
 					ps2.setInt(2, skill.getId());
 					ps2.setInt(3, skill.getLevel());
 					ps2.setInt(4, info.getTime());
@@ -1225,11 +1225,11 @@ public class Pet extends Summon
 	{
 		if (getId() == 12564)
 		{
-			getStat().addExpAndSp(Math.round(addToExp * Config.SINEATER_XP_RATE), addToSp);
+			getStat().addExpAndSp(Math.rint(addToExp * Config.SINEATER_XP_RATE), addToSp);
 		}
 		else
 		{
-			getStat().addExpAndSp(Math.round(addToExp * Config.PET_XP_RATE), addToSp);
+			getStat().addExpAndSp(Math.rint(addToExp * Config.PET_XP_RATE), addToSp);
 		}
 	}
 	

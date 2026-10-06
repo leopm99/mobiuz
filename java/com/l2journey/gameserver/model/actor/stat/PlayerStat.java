@@ -820,13 +820,15 @@ public class PlayerStat extends PlayableStat
 			}
 		}
 		
+		final float maxVitality = MAX_VITALITY_POINTS;
+		final float minVitality = MIN_VITALITY_POINTS;
 		if (points > 0)
 		{
-			points = Math.min(_vitalityPoints + points, MAX_VITALITY_POINTS);
+			points = Math.min(_vitalityPoints + points, maxVitality);
 		}
 		else
 		{
-			points = Math.max(_vitalityPoints + points, MIN_VITALITY_POINTS);
+			points = Math.max(_vitalityPoints + points, minVitality);
 		}
 		
 		if (Math.abs(points - _vitalityPoints) <= 1e-6)
