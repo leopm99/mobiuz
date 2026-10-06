@@ -112,7 +112,7 @@ public class ChainHeal extends AbstractEffect
 		// First target (index 0) gets full power
 		// Each subsequent target gets 10% less
 		// Round to ensure integer percentages (30%, 27%, 24%, 21%, etc.)
-		final double adjustedPower = Math.round(Math.max(_power * (1.0 - (targetIndex * DECREASE_RATE)), _power * 0.1)); // Minimum 10% of original power
+		final double adjustedPower = Math.rint(Math.max(_power * (1.0 - (targetIndex * DECREASE_RATE)), _power * 0.1)); // Minimum 10% of original power
 		final boolean full = (adjustedPower == 100.0);
 		
 		final double maxHp = ServitorShareConditions.getMaxServitorRecoverableHp(effected);

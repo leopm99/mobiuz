@@ -189,13 +189,10 @@ public class SevenSigns
 		final SevenSignsPeriodChange sspc = new SevenSignsPeriodChange();
 		ThreadPool.schedule(sspc, milliToChange);
 		
-		// Thanks to http://rainbow.arch.scriptmania.com/scripts/timezone_countdown.html for help with this.
-		final double numSecs = (milliToChange / 1000) % 60;
-		double countDown = ((milliToChange / 1000.0) - numSecs) / 60;
-		final int numMins = (int) Math.floor(countDown % 60);
-		countDown = (countDown - numMins) / 60;
-		final int numHours = (int) Math.floor(countDown % 24);
-		final int numDays = (int) Math.floor((countDown - numHours) / 24);
+		final long periodSec = milliToChange / 1000;
+		final int numMins = (int) ((periodSec / 60) % 60);
+		final int numHours = (int) ((periodSec / 3600) % 24);
+		final int numDays = (int) (periodSec / 86400);
 		
 		LOGGER.info("SevenSigns: Next period begins in " + numDays + " days, " + numHours + " hours and " + numMins + " mins.");
 	}

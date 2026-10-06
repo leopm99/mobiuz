@@ -5149,6 +5149,11 @@ public abstract class Creature extends WorldObject
 		// Metodo vazio (sobrescrito por jogadores e pets)
 	}
 	
+	public synchronized void addExpAndSp(long addToExp, long addToSp)
+	{
+		addExpAndSp((double) addToExp, (double) addToSp);
+	}
+	
 	/**
 	 * <b><u>Sobrescrito em</u>:</b>
 	 * <li>Player</li>

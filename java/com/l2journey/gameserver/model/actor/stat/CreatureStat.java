@@ -526,7 +526,7 @@ public class CreatureStat
 		{
 			bonusAtk = Config.CHAMPION_SPD_ATK;
 		}
-		return Math.round(calcStat(Stat.POWER_ATTACK_SPEED, _creature.getTemplate().getBasePAtkSpd() * bonusAtk, null, null));
+		return Math.rint(calcStat(Stat.POWER_ATTACK_SPEED, _creature.getTemplate().getBasePAtkSpd() * bonusAtk, null, null));
 	}
 	
 	/**

@@ -82,7 +82,7 @@ public class PrecautionaryRestartManager
 				Shutdown.getInstance().startShutdown(null, 600, true);
 			}
 			
-			if (Config.PRECAUTIONARY_RESTART_MEMORY && (getProcessRamLoad() > Config.PRECAUTIONARY_RESTART_PERCENTAGE))
+			if (Config.PRECAUTIONARY_RESTART_MEMORY && (getProcessRamLoad() > (long) Config.PRECAUTIONARY_RESTART_PERCENTAGE))
 			{
 				if (serverBizzy())
 				{
@@ -128,7 +128,7 @@ public class PrecautionaryRestartManager
 		return 0;
 	}
 	
-	private static double getProcessRamLoad()
+	private static long getProcessRamLoad()
 	{
 		final Runtime runTime = Runtime.getRuntime();
 		final long totalMemory = runTime.maxMemory();

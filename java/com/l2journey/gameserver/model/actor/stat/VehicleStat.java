@@ -43,6 +43,11 @@ public class VehicleStat extends CreatureStat
 		_moveSpeed = speed;
 	}
 	
+	public void setMoveSpeed(int speed)
+	{
+		_moveSpeed = speed;
+	}
+	
 	public double getRotationSpeed()
 	{
 		return _rotationSpeed;

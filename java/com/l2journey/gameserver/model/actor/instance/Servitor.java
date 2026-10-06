@@ -254,6 +254,9 @@ public class Servitor extends Summon implements Runnable
 			{
 				try (PreparedStatement ps2 = con.prepareStatement(ADD_SKILL_SAVE))
 				{
+					ps2.setInt(1, getOwner().getObjectId());
+					ps2.setInt(2, getOwner().getClassIndex());
+					ps2.setInt(3, _referenceSkill);
 					for (BuffInfo info : getEffectList().getEffects())
 					{
 						if (info == null)
@@ -276,9 +279,6 @@ public class Servitor extends Summon implements Runnable
 						
 						storedSkills.add(skill.getReuseHashCode());
 						
-						ps2.setInt(1, getOwner().getObjectId());
-						ps2.setInt(2, getOwner().getClassIndex());
-						ps2.setInt(3, _referenceSkill);
 						ps2.setInt(4, skill.getId());
 						ps2.setInt(5, skill.getLevel());
 						ps2.setInt(6, info.getTime());
