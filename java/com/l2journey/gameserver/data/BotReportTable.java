@@ -195,9 +195,10 @@ public class BotReportTable
 					ps.setInt(1, entrySet.getKey());
 					ps.setInt(2, reporterId);
 					ps.setLong(3, entrySet.getValue()._reporters.get(reporterId));
-					ps.execute();
+					ps.addBatch();
 				}
 			}
+			ps.executeBatch();
 		}
 		catch (Exception e)
 		{

@@ -387,46 +387,53 @@ public class Olympiad extends ListenersContainer
 			}
 		}
 		
-		// Store remaining hero reward points to player variables.
-		for (int noblesId : NOBLES.keySet())
+		// Store remaining hero reward points to player variables / DB for offline nobles.
+		try (Connection con = DatabaseFactory.getConnection();
+			PreparedStatement remove = con.prepareStatement(REMOVE_UNCLAIMED_POINTS);
+			PreparedStatement insert = con.prepareStatement(INSERT_UNCLAIMED_POINTS))
 		{
-			final int points = getNoblessePasses(noblesId);
-			if (points > 0)
+			for (int noblesId : NOBLES.keySet())
 			{
-				final Player player = World.getInstance().getPlayer(noblesId);
-				if (player != null)
+				final int points = getNoblessePasses(noblesId);
+				if (points > 0)
 				{
-					player.getVariables().set(UNCLAIMED_OLYMPIAD_PASSES_VAR, points);
-				}
-				else
-				{
-					// Remove previous record.
-					try (Connection con = DatabaseFactory.getConnection();
-						PreparedStatement statement = con.prepareStatement(REMOVE_UNCLAIMED_POINTS))
+					final Player player = World.getInstance().getPlayer(noblesId);
+					if (player != null)
 					{
-						statement.setInt(1, noblesId);
-						statement.setString(2, UNCLAIMED_OLYMPIAD_PASSES_VAR);
-						statement.execute();
+						player.getVariables().set(UNCLAIMED_OLYMPIAD_PASSES_VAR, points);
 					}
-					catch (SQLException _)
+					else
 					{
-						LOGGER.warning("Olympiad System: Couldn't remove unclaimed olympiad points from DB!");
-					}
-					// Add new value.
-					try (Connection con = DatabaseFactory.getConnection();
-						PreparedStatement statement = con.prepareStatement(INSERT_UNCLAIMED_POINTS))
-					{
-						statement.setInt(1, noblesId);
-						statement.setString(2, UNCLAIMED_OLYMPIAD_PASSES_VAR);
-						statement.setString(3, String.valueOf(points));
-						statement.execute();
-					}
-					catch (SQLException _)
-					{
-						LOGGER.warning("Olympiad System: Couldn't store unclaimed olympiad points to DB!");
+						try
+						{
+							remove.setInt(1, noblesId);
+							remove.setString(2, UNCLAIMED_OLYMPIAD_PASSES_VAR);
+							remove.execute();
+							remove.clearParameters();
+						}
+						catch (SQLException _)
+						{
+							LOGGER.warning("Olympiad System: Couldn't remove unclaimed olympiad points from DB!");
+						}
+						try
+						{
+							insert.setInt(1, noblesId);
+							insert.setString(2, UNCLAIMED_OLYMPIAD_PASSES_VAR);
+							insert.setString(3, String.valueOf(points));
+							insert.execute();
+							insert.clearParameters();
+						}
+						catch (SQLException _)
+						{
+							LOGGER.warning("Olympiad System: Couldn't store unclaimed olympiad points to DB!");
+						}
 					}
 				}
 			}
+		}
+		catch (SQLException _)
+		{
+			LOGGER.warning("Olympiad System: Couldn't open connection for unclaimed olympiad points!");
 		}
 	}
 	

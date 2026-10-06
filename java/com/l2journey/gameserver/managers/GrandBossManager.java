@@ -254,65 +254,60 @@ public class GrandBossManager
 	public boolean storeMe()
 	{
 		try (Connection con = DatabaseFactory.getConnection();
-			Statement s = con.createStatement())
+			Statement s = con.createStatement();
+			PreparedStatement insert = con.prepareStatement(INSERT_GRAND_BOSS_LIST);
+			PreparedStatement updateStatus = con.prepareStatement(UPDATE_GRAND_BOSS_DATA2);
+			PreparedStatement updateFull = con.prepareStatement(UPDATE_GRAND_BOSS_DATA))
 		{
 			s.executeUpdate(DELETE_GRAND_BOSS_LIST);
 			
-			try (PreparedStatement insert = con.prepareStatement(INSERT_GRAND_BOSS_LIST))
+			for (Entry<Integer, BossZone> e : _zones.entrySet())
 			{
-				for (Entry<Integer, BossZone> e : _zones.entrySet())
+				final List<Integer> list = e.getValue().getAllowedPlayers();
+				if ((list == null) || list.isEmpty())
 				{
-					final List<Integer> list = e.getValue().getAllowedPlayers();
-					if ((list == null) || list.isEmpty())
-					{
-						continue;
-					}
-					for (Integer player : list)
-					{
-						insert.setInt(1, player);
-						insert.setInt(2, e.getKey());
-						insert.executeUpdate();
-						insert.clearParameters();
-					}
+					continue;
+				}
+				for (Integer player : list)
+				{
+					insert.setInt(1, player);
+					insert.setInt(2, e.getKey());
+					insert.addBatch();
+					insert.clearParameters();
 				}
 			}
+			insert.executeBatch();
 			for (Entry<Integer, StatSet> e : _storedInfo.entrySet())
 			{
 				final GrandBoss boss = BOSSES.get(e.getKey());
 				final StatSet info = e.getValue();
 				if ((boss == null) || (info == null))
 				{
-					try (PreparedStatement update = con.prepareStatement(UPDATE_GRAND_BOSS_DATA2))
-					{
-						update.setInt(1, _bossStatus.get(e.getKey()));
-						update.setInt(2, e.getKey());
-						update.executeUpdate();
-						update.clearParameters();
-					}
+					updateStatus.setInt(1, _bossStatus.get(e.getKey()));
+					updateStatus.setInt(2, e.getKey());
+					updateStatus.executeUpdate();
+					updateStatus.clearParameters();
 				}
 				else
 				{
-					try (PreparedStatement update = con.prepareStatement(UPDATE_GRAND_BOSS_DATA))
+					updateFull.setInt(1, boss.getX());
+					updateFull.setInt(2, boss.getY());
+					updateFull.setInt(3, boss.getZ());
+					updateFull.setInt(4, boss.getHeading());
+					updateFull.setLong(5, info.getLong("respawn_time"));
+					double hp = boss.getCurrentHp();
+					double mp = boss.getCurrentMp();
+					if (boss.isDead())
 					{
-						update.setInt(1, boss.getX());
-						update.setInt(2, boss.getY());
-						update.setInt(3, boss.getZ());
-						update.setInt(4, boss.getHeading());
-						update.setLong(5, info.getLong("respawn_time"));
-						double hp = boss.getCurrentHp();
-						double mp = boss.getCurrentMp();
-						if (boss.isDead())
-						{
-							hp = boss.getMaxHp();
-							mp = boss.getMaxMp();
-						}
-						update.setDouble(6, hp);
-						update.setDouble(7, mp);
-						update.setInt(8, _bossStatus.get(e.getKey()));
-						update.setInt(9, e.getKey());
-						update.executeUpdate();
-						update.clearParameters();
+						hp = boss.getMaxHp();
+						mp = boss.getMaxMp();
 					}
+					updateFull.setDouble(6, hp);
+					updateFull.setDouble(7, mp);
+					updateFull.setInt(8, _bossStatus.get(e.getKey()));
+					updateFull.setInt(9, e.getKey());
+					updateFull.executeUpdate();
+					updateFull.clearParameters();
 				}
 			}
 		}

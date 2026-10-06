@@ -209,7 +209,9 @@ public class CursedWeaponsManager
 		
 		// Retrieve the Player from the characters table of the database
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT owner_id FROM items WHERE item_id=?"))
+			PreparedStatement ps = con.prepareStatement("SELECT owner_id FROM items WHERE item_id=?");
+			PreparedStatement delete = con.prepareStatement("DELETE FROM items WHERE owner_id=? AND item_id=?");
+			PreparedStatement update = con.prepareStatement("UPDATE characters SET karma=?, pkkills=? WHERE charId=?"))
 		{
 			for (CursedWeapon cw : _cursedWeapons.values())
 			{
@@ -230,27 +232,23 @@ public class CursedWeaponsManager
 						LOGGER.info("PROBLEM : Player " + playerId + " owns the cursed weapon " + itemId + " but he shouldn't.");
 						
 						// Delete the item
-						try (PreparedStatement delete = con.prepareStatement("DELETE FROM items WHERE owner_id=? AND item_id=?"))
+						delete.setInt(1, playerId);
+						delete.setInt(2, itemId);
+						if (delete.executeUpdate() != 1)
 						{
-							delete.setInt(1, playerId);
-							delete.setInt(2, itemId);
-							if (delete.executeUpdate() != 1)
-							{
-								LOGGER.warning("Error while deleting cursed weapon " + itemId + " from userId " + playerId);
-							}
+							LOGGER.warning("Error while deleting cursed weapon " + itemId + " from userId " + playerId);
 						}
+						delete.clearParameters();
 						
 						// Restore the player's old karma and pk count
-						try (PreparedStatement update = con.prepareStatement("UPDATE characters SET karma=?, pkkills=? WHERE charId=?"))
+						update.setInt(1, cw.getPlayerKarma());
+						update.setInt(2, cw.getPlayerPkKills());
+						update.setInt(3, playerId);
+						if (update.executeUpdate() != 1)
 						{
-							update.setInt(1, cw.getPlayerKarma());
-							update.setInt(2, cw.getPlayerPkKills());
-							update.setInt(3, playerId);
-							if (update.executeUpdate() != 1)
-							{
-								LOGGER.warning("Error while updating karma & pkkills for userId " + cw.getPlayerId());
-							}
+							LOGGER.warning("Error while updating karma & pkkills for userId " + cw.getPlayerId());
 						}
+						update.clearParameters();
 						// clean up the cursed weapons table.
 						removeFromDb(itemId);
 					}

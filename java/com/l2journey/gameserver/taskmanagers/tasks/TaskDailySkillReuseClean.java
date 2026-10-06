@@ -54,15 +54,14 @@ public class TaskDailySkillReuseClean extends PersistentTask
 	@Override
 	public void onTimeElapsed(ExecutedTask task)
 	{
-		try (Connection con = DatabaseFactory.getConnection())
+		try (Connection con = DatabaseFactory.getConnection();
+			PreparedStatement ps = con.prepareStatement("DELETE FROM character_skills_save WHERE skill_id=?;"))
 		{
 			for (int skill_id : _daily_skills)
 			{
-				try (PreparedStatement ps = con.prepareStatement("DELETE FROM character_skills_save WHERE skill_id=?;"))
-				{
-					ps.setInt(1, skill_id);
-					ps.execute();
-				}
+				ps.setInt(1, skill_id);
+				ps.execute();
+				ps.clearParameters();
 			}
 		}
 		catch (Exception e)
