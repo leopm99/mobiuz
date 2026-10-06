@@ -506,31 +506,31 @@ public class Q00454_CompletelyLost extends Quest
 										{
 											giveItems(player, 15792, 1); // Recipe - Sealed Vesper Helmet (60%)
 										}
-										else if ((chance <= 11) && (chance < 22))
+										else if (chance <= 11)
 										{
 											giveItems(player, 15798, 1); // Recipe - Sealed Vesper Gaiter (60%)
 										}
-										else if ((chance <= 22) && (chance < 33))
+										else if (chance <= 22)
 										{
 											giveItems(player, 15795, 1); // Recipe - Sealed Vesper Breastplate (60%)
 										}
-										else if ((chance <= 33) && (chance < 44))
+										else if (chance <= 33)
 										{
 											giveItems(player, 15801, 1); // Recipe - Sealed Vesper Gauntlet (60%)
 										}
-										else if ((chance <= 44) && (chance < 55))
+										else if (chance <= 44)
 										{
 											giveItems(player, 15808, 1); // Recipe - Sealed Vesper Shield (60%)
 										}
-										else if ((chance <= 55) && (chance < 66))
+										else if (chance <= 55)
 										{
 											giveItems(player, 15804, 1); // Recipe - Sealed Vesper Boots (60%)
 										}
-										else if ((chance <= 66) && (chance < 77))
+										else if (chance <= 66)
 										{
 											giveItems(player, 15809, 1); // Recipe - Sealed Vesper Ring (70%)
 										}
-										else if ((chance <= 77) && (chance < 88))
+										else if (chance <= 77)
 										{
 											giveItems(player, 15810, 1); // Recipe - Sealed Vesper Earring (70%)
 										}
@@ -545,31 +545,31 @@ public class Q00454_CompletelyLost extends Quest
 										{
 											giveItems(player, 15660, 3); // Sealed Vesper Helmet Piece
 										}
-										else if ((chance <= 11) && (chance < 22))
+										else if (chance <= 11)
 										{
 											giveItems(player, 15666, 3); // Sealed Vesper Gaiter Piece
 										}
-										else if ((chance <= 22) && (chance < 33))
+										else if (chance <= 22)
 										{
 											giveItems(player, 15663, 3); // Sealed Vesper Breastplate Piece
 										}
-										else if ((chance <= 33) && (chance < 44))
+										else if (chance <= 33)
 										{
 											giveItems(player, 15667, 3); // Sealed Vesper Gauntlet Piece
 										}
-										else if ((chance <= 44) && (chance < 55))
+										else if (chance <= 44)
 										{
 											giveItems(player, 15669, 3); // Sealed Vesper Verteidiger Piece
 										}
-										else if ((chance <= 55) && (chance < 66))
+										else if (chance <= 55)
 										{
 											giveItems(player, 15668, 3); // Sealed Vesper Boots Piece
 										}
-										else if ((chance <= 66) && (chance < 77))
+										else if (chance <= 66)
 										{
 											giveItems(player, 15769, 3); // Sealed Vesper Ring Gem
 										}
-										else if ((chance <= 77) && (chance < 88))
+										else if (chance <= 77)
 										{
 											giveItems(player, 15770, 3); // Sealed Vesper Earring Gem
 										}
@@ -587,27 +587,27 @@ public class Q00454_CompletelyLost extends Quest
 										{
 											giveItems(player, 15805, 1); // Recipe - Sealed Vesper Leather Boots (60%)
 										}
-										else if ((chance <= 12) && (chance < 24))
+										else if (chance <= 12)
 										{
 											giveItems(player, 15796, 1); // Recipe - Sealed Vesper Leather Breastplate (60%)
 										}
-										else if ((chance <= 24) && (chance < 36))
+										else if (chance <= 24)
 										{
 											giveItems(player, 15793, 1); // Recipe - Sealed Vesper Leather Helmet (60%)
 										}
-										else if ((chance <= 36) && (chance < 48))
+										else if (chance <= 36)
 										{
 											giveItems(player, 15799, 1); // Recipe - Sealed Vesper Leather Legging (60%)
 										}
-										else if ((chance <= 48) && (chance < 60))
+										else if (chance <= 48)
 										{
 											giveItems(player, 15802, 1); // Recipe - Sealed Vesper Leather Gloves (60%)
 										}
-										else if ((chance <= 60) && (chance < 72))
+										else if (chance <= 60)
 										{
 											giveItems(player, 15809, 1); // Recipe - Sealed Vesper Ring (70%)
 										}
-										else if ((chance <= 72) && (chance < 84))
+										else if (chance <= 72)
 										{
 											giveItems(player, 15810, 1); // Recipe - Sealed Vesper Earring (70%)
 										}
@@ -622,27 +622,27 @@ public class Q00454_CompletelyLost extends Quest
 										{
 											giveItems(player, 15672, 3); // Sealed Vesper Leather Boots Piece
 										}
-										else if ((chance <= 12) && (chance < 24))
+										else if (chance <= 12)
 										{
 											giveItems(player, 15664, 3); // Sealed Vesper Leather Breastplate Piece
 										}
-										else if ((chance <= 24) && (chance < 36))
+										else if (chance <= 24)
 										{
 											giveItems(player, 15661, 3); // Sealed Vesper Leather Helmet Piece
 										}
-										else if ((chance <= 36) && (chance < 48))
+										else if (chance <= 36)
 										{
 											giveItems(player, 15670, 3); // Sealed Vesper Leather Legging Piece
 										}
-										else if ((chance <= 48) && (chance < 60))
+										else if (chance <= 48)
 										{
 											giveItems(player, 15671, 3); // Sealed Vesper Leather Gloves Piece
 										}
-										else if ((chance <= 60) && (chance < 72))
+										else if (chance <= 60)
 										{
 											giveItems(player, 15769, 3); // Sealed Vesper Ring Gem
 										}
-										else if ((chance <= 72) && (chance < 84))
+										else if (chance <= 72)
 										{
 											giveItems(player, 15770, 3); // Sealed Vesper Earring Gem
 										}
@@ -658,31 +658,31 @@ public class Q00454_CompletelyLost extends Quest
 									{
 										giveItems(player, 15800, 1);
 									}
-									else if ((chance <= 11) && (chance < 22)) // Recipe - Sealed Vesper Stockings (60%)
+									else if (chance <= 11) // Recipe - Sealed Vesper Stockings (60%)
 									{
 										giveItems(player, 15803, 1); // Recipe - Sealed Vesper Gloves (60%)
 									}
-									else if ((chance <= 22) && (chance < 33))
+									else if (chance <= 22)
 									{
 										giveItems(player, 15806, 1); // Recipe - Sealed Vesper Shoes (60%)
 									}
-									else if ((chance <= 33) && (chance < 44))
+									else if (chance <= 33)
 									{
 										giveItems(player, 15807, 1); // Recipe - Sealed Vesper Sigil (60%)
 									}
-									else if ((chance <= 44) && (chance < 55))
+									else if (chance <= 44)
 									{
 										giveItems(player, 15797, 1); // Recipe - Sealed Vesper Tunic (60%)
 									}
-									else if ((chance <= 55) && (chance < 66))
+									else if (chance <= 55)
 									{
 										giveItems(player, 15794, 1); // Recipe - Sealed Vesper Circlet (60%)
 									}
-									else if ((chance <= 66) && (chance < 77))
+									else if (chance <= 66)
 									{
 										giveItems(player, 15809, 1); // Recipe - Sealed Vesper Ring (70%)
 									}
-									else if ((chance <= 77) && (chance < 88))
+									else if (chance <= 77)
 									{
 										giveItems(player, 15810, 1); // Recipe - Sealed Vesper Earring (70%)
 									}
@@ -697,31 +697,31 @@ public class Q00454_CompletelyLost extends Quest
 									{
 										giveItems(player, 15673, 3); // Sealed Vesper Stockings Piece
 									}
-									else if ((chance <= 11) && (chance < 22))
+									else if (chance <= 11)
 									{
 										giveItems(player, 15674, 3); // Sealed Vesper Gloves Piece
 									}
-									else if ((chance <= 22) && (chance < 33))
+									else if (chance <= 22)
 									{
 										giveItems(player, 15675, 3); // Sealed Vesper Shoes Piece
 									}
-									else if ((chance <= 33) && (chance < 44))
+									else if (chance <= 33)
 									{
 										giveItems(player, 15691, 3); // Sealed Vesper Sigil Piece
 									}
-									else if ((chance <= 44) && (chance < 55))
+									else if (chance <= 44)
 									{
 										giveItems(player, 15665, 3); // Sealed Vesper Tunic Piece
 									}
-									else if ((chance <= 55) && (chance < 66))
+									else if (chance <= 55)
 									{
 										giveItems(player, 15662, 3); // Sealed Vesper Circlet Piece
 									}
-									else if ((chance <= 66) && (chance < 77))
+									else if (chance <= 66)
 									{
 										giveItems(player, 15769, 3); // Sealed Vesper Ring Gem
 									}
-									else if ((chance <= 77) && (chance < 88))
+									else if (chance <= 77)
 									{
 										giveItems(player, 15770, 3); // Sealed Vesper Earring Gem
 									}

@@ -111,7 +111,6 @@ public class Q00279_TargetOfOpportunity extends Quest
 				playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 			}
 		}
-		return;
 	}
 	
 	@Override

@@ -265,7 +265,7 @@ public class WyvernManager extends AbstractNpcAI
 			case "Help":
 			{
 				final ManagerType type = MANAGERS.get(npc.getId());
-				htmltext = type == ManagerType.CASTLE ? replacePart(player, "wyvernmanager-03.html") : replacePart(player, "wyvernmanager-03b.html");
+				htmltext = replacePart(player, (type == ManagerType.CASTLE) ? "wyvernmanager-03.html" : "wyvernmanager-03b.html");
 				break;
 			}
 			case "RideWyvern":

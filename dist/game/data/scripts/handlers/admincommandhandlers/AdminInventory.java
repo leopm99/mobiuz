@@ -114,7 +114,7 @@ public class AdminInventory implements IAdminCommandHandler
 				sbPages.append("</tr><tr>");
 			}
 			
-			sbPages.append("<td><button value=\"" + String.valueOf(pagenr) + "\" action=\"bypass -h admin_show_inventory " + String.valueOf(x) + "\" width=20 height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td>");
+			sbPages.append("<td><button value=\"" + pagenr + "\" action=\"bypass -h admin_show_inventory " + x + "\" width=20 height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td>");
 		}
 		
 		adminReply.replace("%PAGES%", sbPages.toString());
@@ -127,7 +127,7 @@ public class AdminInventory implements IAdminCommandHandler
 			if ((cont >= itemsStart) && (cont <= (itemsStart + maxItemsPerPage)))
 			{
 				sbItems.append("<tr>");
-				sbItems.append("<td><button action=\"bypass -h admin_delete_item " + String.valueOf(item.getObjectId()) + "\" width=20 height=20 back=\"L2UI_ct1.RadarMap_DF_MinusBtn_Down\" fore=\"L2UI_ct1.RadarMap_DF_MinusBtn\">" + "</td>");
+				sbItems.append("<td><button action=\"bypass -h admin_delete_item " + item.getObjectId() + "\" width=20 height=20 back=\"L2UI_ct1.RadarMap_DF_MinusBtn_Down\" fore=\"L2UI_ct1.RadarMap_DF_MinusBtn\">" + "</td>");
 				sbItems.append("<td><img src=\"" + item.getTemplate().getIcon() + "\" width=32 height=32></td>");
 				sbItems.append("<td width=50>" + item.getName() + "</td>");
 				sbItems.append("</tr>");

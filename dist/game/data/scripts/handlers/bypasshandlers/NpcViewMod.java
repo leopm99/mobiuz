@@ -398,7 +398,7 @@ public class NpcViewMod implements IBypassHandler
 			return;
 		}
 		
-		Collections.sort(dropList, (d1, d2) -> Integer.valueOf(d1.getItemId()).compareTo(Integer.valueOf(d2.getItemId())));
+		Collections.sort(dropList, (d1, d2) -> Integer.compare(d1.getItemId(), d2.getItemId()));
 		
 		int pages = dropList.size() / DROP_LIST_ITEMS_PER_PAGE;
 		if ((DROP_LIST_ITEMS_PER_PAGE * pages) < dropList.size())

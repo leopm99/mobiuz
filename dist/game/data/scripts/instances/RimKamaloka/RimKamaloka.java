@@ -694,8 +694,9 @@ public class RimKamaloka extends AbstractNpcAI
 		final Map<Integer, Long> instanceTimes = InstanceManager.getInstance().getAllInstanceTimes(player.getObjectId());
 		if (instanceTimes != null)
 		{
-			for (int id : instanceTimes.keySet())
+			for (Map.Entry<Integer, Long> entry : instanceTimes.entrySet())
 			{
+				int id = entry.getKey();
 				// Find instance with same name (Kamaloka or labyrinth).
 				if (!instanceName.equals(InstanceManager.getInstance().getInstanceIdName(id)))
 				{
@@ -703,7 +704,7 @@ public class RimKamaloka extends AbstractNpcAI
 				}
 				
 				// If found instance still can't be reentered - exit.
-				if (System.currentTimeMillis() < instanceTimes.get(id))
+				if (System.currentTimeMillis() < entry.getValue())
 				{
 					final SystemMessage sm = new SystemMessage(SystemMessageId.C1_MAY_NOT_RE_ENTER_YET);
 					sm.addPcName(player);

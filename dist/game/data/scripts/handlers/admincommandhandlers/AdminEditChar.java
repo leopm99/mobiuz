@@ -1223,7 +1223,7 @@ public class AdminEditChar implements IAdminCommandHandler
 		}
 		else
 		{
-			if (!ipAdress.matches("^(?:(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2(?:[0-4][0-9]|5[0-5]))\\.){3}(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2(?:[0-4][0-9]|5[0-5]))$"))
+			if (!ipAdress.matches("^(?:(?:\\d|[1-9]\\d|1\\d\\d|2(?:[0-4]\\d|5[0-5]))\\.){3}(?:\\d|[1-9]\\d|1\\d\\d|2(?:[0-4]\\d|5[0-5]))$"))
 			{
 				throw new IllegalArgumentException("Malformed IPv4 number");
 			}

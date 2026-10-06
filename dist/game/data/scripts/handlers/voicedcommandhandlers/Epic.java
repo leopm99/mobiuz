@@ -115,7 +115,7 @@ public class Epic implements IVoicedCommandHandler
 		return true;
 	}
 	
-	public final static String getBossIcon(String bossName)
+	public static final String getBossIcon(String bossName)
 	{
 		Map<String, String> icons = Map.of("Queen Ant", "<img src=\"icon.accessory_ring_of_queen_ant_i00\" width=\"32\" height=\"32\">", "Core", "<img src=\"icon.accessory_ring_of_core_i00\" width=\"32\" height=\"32\">", "Orfen", "<img src=\"icon.accessory_earring_of_orfen_i00\" width=\"32\" height=\"32\">", "Baium", "<img src=\"icon.accessory_ring_of_baium_i00\" width=\"32\" height=\"32\">", "Valakas", "<img src=\"icon.accessory_necklace_of_valakas_i00\" width=\"32\" height=\"32\">", "Antharas", "<img src=\"icon.accessory_earring_of_antaras_i00\" width=\"32\" height=\"32\">", "Beleth", "<img src=\"icon.accessary_dynasty_ring_i00\" width=\"32\" height=\"32\">");
 		

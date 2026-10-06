@@ -1145,7 +1145,7 @@ public class TullyWorkshop extends AbstractNpcAI
 		
 		if (((npcId == TEMENIR) || (npcId == DRAXIUS)) && spawnedFollowers.contains(npc))
 		{
-			final Monster victim = npcId == TEMENIR ? spawnedFollowers.get(1) : spawnedFollowers.get(2);
+			final Monster victim = spawnedFollowers.get((npcId == TEMENIR) ? 1 : 2);
 			final Monster actor = spawnedFollowers.get(0);
 			if ((actor != null) && (victim != null) && !actor.isDead() && !victim.isDead() && (getRandom(1000) > 333))
 			{

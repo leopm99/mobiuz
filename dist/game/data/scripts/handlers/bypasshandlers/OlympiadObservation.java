@@ -70,7 +70,7 @@ public class OlympiadObservation implements IBypassHandler
 			}
 			else
 			{
-				if ((olymanager == null) || !(olymanager instanceof OlympiadManager) || (!player.inObserverMode() && !player.isInsideRadius2D(olymanager, 300)))
+				if (!(olymanager instanceof OlympiadManager) || (!player.inObserverMode() && !player.isInsideRadius2D(olymanager, 300)))
 				{
 					return false;
 				}

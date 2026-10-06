@@ -240,7 +240,7 @@ public class AutoPlay implements IVoicedCommandHandler
 						{
 							if ((paramArray.length > 1) && StringUtil.isNumeric(paramArray[1]))
 							{
-								player.getAutoPlaySettings().setAutoPotionPercent(Math.max(0, Math.min(100, Integer.parseInt(paramArray[1]))));
+								player.getAutoPlaySettings().setAutoPotionPercent(Math.clamp(Integer.parseInt(paramArray[1]), 0, 100));
 							}
 							break COMMAND;
 						}
@@ -249,7 +249,7 @@ public class AutoPlay implements IVoicedCommandHandler
 						{
 							if ((paramArray.length > 1) && StringUtil.isNumeric(paramArray[1]))
 							{
-								player.getAutoPlaySettings().setAutoManaPotionPercent(Math.max(0, Math.min(100, Integer.parseInt(paramArray[1]))));
+								player.getAutoPlaySettings().setAutoManaPotionPercent(Math.clamp(Integer.parseInt(paramArray[1]), 0, 100));
 							}
 							break COMMAND;
 						}

@@ -1123,7 +1123,7 @@ public class SeedOfDestruction extends AbstractNpcAI
 			{
 				world.npcList.put(npc, false);
 			}
-			npc.setImmobilized(TIAT == mob[0] ? true : isImmobilized);
+			npc.setImmobilized(TIAT == mob[0] || isImmobilized);
 			npc.setRandomWalking(false);
 			if (npc.isAttackable())
 			{
