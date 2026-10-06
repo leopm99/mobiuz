@@ -213,7 +213,7 @@ public class MinionList
 			{
 				int newX = Rnd.get(minRadius * 2, offset * 2); // x
 				int newY = Rnd.get(newX, offset * 2); // distance
-				newY = (int) Math.sqrt((newY * newY) - (newX * newX)); // y
+				newY = (int) Math.sqrt((double) ((newY * newY)) - (newX * newX)); // y
 				if (newX > (offset + minRadius))
 				{
 					newX = (_master.getX() + newX) - offset;
@@ -318,7 +318,7 @@ public class MinionList
 		final int minRadius = (int) master.getCollisionRadius() + 30;
 		int newX = Rnd.get(minRadius * 2, offset * 2); // x
 		int newY = Rnd.get(newX, offset * 2); // distance
-		newY = (int) Math.sqrt((newY * newY) - (newX * newX)); // y
+		newY = (int) Math.sqrt((double) ((newY * newY)) - (newX * newX)); // y
 		if (newX > (offset + minRadius))
 		{
 			newX = (master.getX() + newX) - offset;

@@ -249,7 +249,7 @@ public class HeartInfinityAttack extends AbstractNpcAI
 		addKillId(EKIMUS);
 		addKillId(18711);
 		
-		tumorRespawnTime = 180 * 1000;
+		tumorRespawnTime = 180 * 1000L;
 	}
 	
 	private void teleportPlayer(Player player, int[] coords, int instanceId)
@@ -416,7 +416,7 @@ public class HeartInfinityAttack extends AbstractNpcAI
 		world.hounds.add(addSpawn(HOUND, -179224, 209624, -15504, 16384, false, 0, false, world.getInstanceId()));
 		world.hounds.add(addSpawn(HOUND, -179880, 209464, -15504, 16384, false, 0, false, world.getInstanceId()));
 		world.startTime = System.currentTimeMillis();
-		world.timerTask = ThreadPool.scheduleAtFixedRate(new TimerTask(world), 298 * 1000, 5 * 60 * 1000);
+		world.timerTask = ThreadPool.scheduleAtFixedRate(new TimerTask(world), 298 * 1000L, (5 * 60L) * 1000);
 	}
 	
 	@Override
@@ -684,7 +684,7 @@ public class HeartInfinityAttack extends AbstractNpcAI
 						else
 						{
 							inst.setDuration(5 * 60000);
-							inst.setEmptyDestroyTime(5 * 60000);
+							inst.setEmptyDestroyTime(5 * 60000L);
 						}
 					}
 				}
@@ -850,7 +850,7 @@ public class HeartInfinityAttack extends AbstractNpcAI
 			else
 			{
 				inst.setDuration(5 * 60000);
-				inst.setEmptyDestroyTime(5 * 60000);
+				inst.setEmptyDestroyTime(5 * 60000L);
 			}
 		}
 	}

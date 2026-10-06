@@ -75,7 +75,7 @@ public class RequestBrBuyProduct extends ClientPacket
 			return;
 		}
 		
-		final long totalPoints = product.getPrice() * _count;
+		final long totalPoints = (long) (product.getPrice()) * _count;
 		if (totalPoints < 0)
 		{
 			player.sendPacket(new ExBrBuyProduct(ExBrBuyProduct.RESULT_WRONG_PRODUCT));
@@ -116,7 +116,7 @@ public class RequestBrBuyProduct extends ClientPacket
 		}
 		
 		// Buy Item
-		player.addItem(ItemProcessType.BUY, product.getItemId(), product.getItemCount() * _count, player, true);
+		player.addItem(ItemProcessType.BUY, product.getItemId(), (long) (product.getItemCount()) * _count, player, true);
 		
 		final StatusUpdate su = new StatusUpdate(player.getObjectId());
 		su.addAttribute(StatusUpdate.CUR_LOAD, player.getCurrentLoad());

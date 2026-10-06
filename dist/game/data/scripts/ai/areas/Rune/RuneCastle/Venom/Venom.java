@@ -257,9 +257,9 @@ public class Venom extends AbstractNpcAI
 				{
 					for (Player target : _targets)
 					{
-						final long x = player.getX() - target.getX();
-						final long y = player.getY() - target.getY();
-						final long z = player.getZ() - target.getZ();
+						final long x = (long) (player.getX()) - target.getX();
+						final long y = (long) (player.getY()) - target.getY();
+						final long z = (long) (player.getZ()) - target.getZ();
 						final long range = 250;
 						if (((x * x) + (y * y) + (z * z)) <= (range * range))
 						{

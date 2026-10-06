@@ -120,7 +120,7 @@ public class GrandBossManager
 		{
 			LOGGER.log(Level.WARNING, e, () -> "Error while initializing GrandBossManager: " + e.getMessage());
 		}
-		ThreadPool.scheduleAtFixedRate(new GrandBossManagerStoreTask(), 5 * 60 * 1000, 5 * 60 * 1000);
+		ThreadPool.scheduleAtFixedRate(new GrandBossManagerStoreTask(), 5 * 60L * 1000L, (long) (5) * 60 * 1000);
 	}
 	
 	/**

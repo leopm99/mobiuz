@@ -605,7 +605,7 @@ public class Kamaloka extends AbstractInstance
 		instance.setAllowSummon(false);
 		// set duration and empty destroy time
 		instance.setDuration(DURATION[index] * 60000);
-		instance.setEmptyDestroyTime(EMPTY_DESTROY_TIME * 60000);
+		instance.setEmptyDestroyTime(EMPTY_DESTROY_TIME * 60000L);
 		
 		// set index for easy access to the arrays
 		((KamaWorld) world).index = index;

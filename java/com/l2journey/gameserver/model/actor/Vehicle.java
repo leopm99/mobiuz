@@ -178,7 +178,7 @@ public abstract class Vehicle extends Creature
 						m.zDestination = point.getZ();
 						m.heading = 0;
 						
-						final double distance = Math.hypot(point.getX() - getX(), point.getY() - getY());
+						final double distance = Math.hypot((double) (point.getX()) - getX(), (double) (point.getY()) - getY());
 						if (distance > 1)
 						{
 							setHeading(LocationUtil.calculateHeadingFrom(getX(), getY(), point.getX(), point.getY()));

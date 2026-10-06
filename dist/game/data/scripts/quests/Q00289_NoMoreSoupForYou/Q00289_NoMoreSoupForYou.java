@@ -225,7 +225,7 @@ public class Q00289_NoMoreSoupForYou extends Quest
 		
 		if (ArrayUtil.contains(MOBS, npcId))
 		{
-			giveItems(player, SOUP, 1 * RATE);
+			giveItems(player, SOUP, 1L * RATE);
 			playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 		}
 	}

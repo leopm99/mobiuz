@@ -790,7 +790,7 @@ public class RainbowSpringsChateau extends ClanHallSiegeEngine
 						}
 					}
 					_playersOnArena = new ArrayList<>();
-				}, 120 * 1000);
+				}, 120 * 1000L);
 			}
 		}
 	}

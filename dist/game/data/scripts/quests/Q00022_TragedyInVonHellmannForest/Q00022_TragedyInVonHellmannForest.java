@@ -154,7 +154,7 @@ public class Q00022_TragedyInVonHellmannForest extends Quest
 						tifarenOwner = player.getObjectId();
 						final Npc ghost2 = addSpawn(GHOST_OF_PRIEST, PRIEST_LOC, true, 0);
 						ghost2.setScriptValue(player.getObjectId());
-						startQuestTimer("DESPAWN_GHOST2", 1000 * 120, ghost2, player);
+						startQuestTimer("DESPAWN_GHOST2", 1000 * 120L, ghost2, player);
 						ghost2.broadcastPacket(new NpcSay(ghost2.getObjectId(), ChatType.NPC_GENERAL, ghost2.getId(), NpcStringId.DID_YOU_CALL_ME_S1).addStringParameter(player.getName()));
 						if (((cond == 5) || (cond == 6)) && hasQuestItems(player, LOST_SKULL_OF_ELF))
 						{
@@ -187,7 +187,7 @@ public class Q00022_TragedyInVonHellmannForest extends Quest
 				{
 					qt.cancel();
 					npc.setScriptValue(0);
-					startQuestTimer("DESPAWN_GHOST2", 1000 * 3, npc, player);
+					startQuestTimer("DESPAWN_GHOST2", 1000 * 3L, npc, player);
 					qs.setCond(8);
 					htmltext = event;
 				}

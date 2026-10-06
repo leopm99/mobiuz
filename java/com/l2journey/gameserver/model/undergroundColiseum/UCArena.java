@@ -52,7 +52,7 @@ import com.l2journey.gameserver.network.serverpackets.ServerPacket;
 
 public class UCArena
 {
-	private static final long MINUTES_IN_MILISECONDS = 10 * 60000;
+	private static final long MINUTES_IN_MILISECONDS = 10 * 60000L;
 	
 	private final int _id;
 	private final int _minLevel;

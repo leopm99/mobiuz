@@ -275,7 +275,7 @@ public class FortSiege implements Siegable
 		_fort.spawnNpcCommanders(); // Spawn NPC commanders
 		getSiegeGuardManager().unspawnSiegeGuard(); // Remove all spawned siege guard from this fort
 		_fort.resetDoors(); // Respawn door to fort
-		ThreadPool.schedule(new ScheduleSuspiciousMerchantSpawn(), FortSiegeManager.getInstance().getSuspiciousMerchantRespawnDelay() * 60 * 1000); // Prepare 3hr task for suspicious merchant respawn
+		ThreadPool.schedule(new ScheduleSuspiciousMerchantSpawn(), (FortSiegeManager.getInstance().getSuspiciousMerchantRespawnDelay() * 60L) * 1000); // Prepare 3hr task for suspicious merchant respawn
 		setSiegeDateTime(true); // store suspicious merchant spawn in DB
 		if (_siegeEnd != null)
 		{
@@ -338,7 +338,7 @@ public class FortSiege implements Siegable
 		_fort.getZone().updateZoneStatusForCharactersInside();
 		
 		// Schedule a task to prepare auto siege end
-		_siegeEnd = ThreadPool.schedule(new ScheduleEndSiegeTask(), FortSiegeManager.getInstance().getSiegeLength() * 60 * 1000); // Prepare auto end task
+		_siegeEnd = ThreadPool.schedule(new ScheduleEndSiegeTask(), (FortSiegeManager.getInstance().getSiegeLength() * 60L) * 1000); // Prepare auto end task
 		
 		final SystemMessage sm = new SystemMessage(SystemMessageId.THE_FORTRESS_BATTLE_S1_HAS_BEGUN);
 		sm.addCastleId(_fort.getResidenceId());
@@ -412,7 +412,7 @@ public class FortSiege implements Siegable
 					if (checkIfInZone(member))
 					{
 						member.setInSiege(true);
-						member.startFameTask(Config.FORTRESS_ZONE_FAME_TASK_FREQUENCY * 1000, Config.FORTRESS_ZONE_FAME_AQUIRE_POINTS);
+						member.startFameTask(Config.FORTRESS_ZONE_FAME_TASK_FREQUENCY * 1000L, Config.FORTRESS_ZONE_FAME_AQUIRE_POINTS);
 					}
 				}
 				member.broadcastUserInfo();
@@ -444,7 +444,7 @@ public class FortSiege implements Siegable
 				if (checkIfInZone(member))
 				{
 					member.setInSiege(true);
-					member.startFameTask(Config.FORTRESS_ZONE_FAME_TASK_FREQUENCY * 1000, Config.FORTRESS_ZONE_FAME_AQUIRE_POINTS);
+					member.startFameTask(Config.FORTRESS_ZONE_FAME_TASK_FREQUENCY * 1000L, Config.FORTRESS_ZONE_FAME_AQUIRE_POINTS);
 				}
 			}
 			member.broadcastUserInfo();
@@ -667,7 +667,7 @@ public class FortSiege implements Siegable
 				_fort.getSiege().announceToPlayer(new SystemMessage(SystemMessageId.THE_BARRACKS_HAVE_BEEN_SEIZED));
 				if (_siegeRestore == null)
 				{
-					_siegeRestore = ThreadPool.schedule(new ScheduleSiegeRestore(), FortSiegeManager.getInstance().getCountDownLength() * 60 * 1000);
+					_siegeRestore = ThreadPool.schedule(new ScheduleSiegeRestore(), (FortSiegeManager.getInstance().getCountDownLength() * 60L) * 1000);
 				}
 			}
 		}

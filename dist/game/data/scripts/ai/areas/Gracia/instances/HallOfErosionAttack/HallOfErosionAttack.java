@@ -230,7 +230,7 @@ public class HallOfErosionAttack extends AbstractNpcAI
 		addKillId(COHEMENES);
 		addKillId(18711);
 		
-		tumorRespawnTime = 180 * 1000;
+		tumorRespawnTime = 180 * 1000L;
 	}
 	
 	private void teleportPlayer(Player player, int[] coords, int instanceId)

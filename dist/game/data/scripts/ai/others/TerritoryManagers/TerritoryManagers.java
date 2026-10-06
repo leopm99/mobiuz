@@ -248,7 +248,7 @@ public class TerritoryManagers extends AbstractNpcAI
 				{
 					html.setFile(player, "data/scripts/ai/others/TerritoryManagers/reward-2.html");
 					player.addItem(ItemProcessType.REWARD, badgeId, reward[1], npc, true);
-					player.addAdena(ItemProcessType.REWARD, reward[1] * 5000, npc, true);
+					player.addAdena(ItemProcessType.REWARD, reward[1] * 5000L, npc, true);
 					TerritoryWarManager.getInstance().resetReward(player);
 				}
 				

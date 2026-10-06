@@ -215,7 +215,7 @@ public class Nevit
 			_player.sendPacket(new ExNevitAdventEffect(time));
 			_player.sendPacket(SystemMessageId.THE_ANGEL_NEVIT_HAS_BLESSED_YOU_FROM_ABOVE_YOU_ARE_IMBUED_WITH_FULL_VITALITY_AS_WELL_AS_A_VITALITY_REPLENISHING_EFFECT_AND_SHOULD_YOU_DIE_YOU_WILL_NOT_LOSE_EXP);
 			_player.startAbnormalVisualEffect(true, AbnormalVisualEffect.NAVIT_ADVENT);
-			_nevitEffectTask = ThreadPool.schedule(new NevitEffectEnd(), time * 1000);
+			_nevitEffectTask = ThreadPool.schedule(new NevitEffectEnd(), time * 1000L);
 		}
 	}
 	

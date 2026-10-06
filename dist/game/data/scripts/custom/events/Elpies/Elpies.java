@@ -172,7 +172,7 @@ public class Elpies extends Event
 		EVENT_ACTIVE = true;
 
 		final EventLocation randomLoc = getRandomEntry(EventLocation.values());
-		final long despawnDelay = EventsConfig.ELPY_DURATION_MINUTES * 60000;
+		final long despawnDelay = EventsConfig.ELPY_DURATION_MINUTES * 60000L;
 		for (int i = 0; i < EventsConfig.ELPY_AMOUNT; i++)
 		{
 			_elpies.add(addSpawn(EventsConfig.ELPY_ID, randomLoc.getRandomX(), randomLoc.getRandomY(), randomLoc.getZ(), 0, true, despawnDelay));

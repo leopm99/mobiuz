@@ -215,11 +215,11 @@ public class Loto implements IBypassHandler
 				
 				if (player.getLoto(i) < 17)
 				{
-					enchant += Math.pow(2, player.getLoto(i) - 1);
+					enchant += Math.pow(2, player.getLoto(i) - 1.0);
 				}
 				else
 				{
-					type2 += Math.pow(2, player.getLoto(i) - 17);
+					type2 += Math.pow(2, player.getLoto(i) - 17.0);
 				}
 			}
 			if (player.getAdena() < price)

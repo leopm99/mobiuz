@@ -481,7 +481,7 @@ public class WalkingManager implements IXmlReader
 		final ScheduledFuture<?> task = _arriveTasks.get(npc);
 		if ((task == null) || task.isCancelled() || task.isDone())
 		{
-			_arriveTasks.put(npc, ThreadPool.schedule(new ArrivedTask(npc, walk), 100 + (node.getDelay() * 1000)));
+			_arriveTasks.put(npc, ThreadPool.schedule(new ArrivedTask(npc, walk), 100L + (node.getDelay() * 1000)));
 		}
 	}
 	

@@ -25,9 +25,9 @@ public class PhantomWalk
 	private static final Map<Integer, Long> _lastWalkActionTime = new ConcurrentHashMap<>();
 	
 	// Tempos configuraveis
-	private static final long FARM_DURATION = 45 * 60 * 1000; // 45 minutos farmando
-	private static final long TOWN_DURATION = 5 * 60 * 1000; // 5 minutos na cidade
-	private static final long TIME_QUIETO_TOWN = 2 * 60 * 1000; // 2 minutos parado entre caminhadas
+	private static final long FARM_DURATION = (45 * 60L) * 1000; // 45 minutos farmando
+	private static final long TOWN_DURATION = (5 * 60L) * 1000; // 5 minutos na cidade
+	private static final long TIME_QUIETO_TOWN = (2 * 60L) * 1000; // 2 minutos parado entre caminhadas
 	private PhantomWalk()
 	{
 	}

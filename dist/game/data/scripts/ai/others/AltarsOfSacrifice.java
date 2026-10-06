@@ -108,7 +108,7 @@ public class AltarsOfSacrifice extends AbstractNpcAI
 	private static final int BOSS_MIN_SPAWN_RADIUS = 250;
 	private static final int BOSS_MAX_SPAWN_RADIUS = 500;
 	// every 240 minutes/4 hours, altars change
-	private static final long ALTAR_STATE_CHANGE_DELAY = 240 * 60 * 1000;
+	private static final long ALTAR_STATE_CHANGE_DELAY = (240 * 60L) * 1000;
 	
 	// disabling formatter here to make this easily readable
 	// @formatter:off

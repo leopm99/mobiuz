@@ -324,7 +324,7 @@ public class CreatureAI extends AbstractAI
 		final int bowAttackEndTime = _actor.getBowAttackEndTime();
 		if (bowAttackEndTime > gameTime)
 		{
-			ThreadPool.schedule(new CastTask(_actor, skill, target), (bowAttackEndTime - gameTime) * GameTimeTaskManager.MILLIS_IN_TICK);
+			ThreadPool.schedule(new CastTask(_actor, skill, target), (long) ((bowAttackEndTime - gameTime)) * GameTimeTaskManager.MILLIS_IN_TICK);
 		}
 		else
 		{
@@ -984,8 +984,8 @@ public class CreatureAI extends AbstractAI
 			int x = _actor.getX();
 			int y = _actor.getY();
 			
-			final double dx = worldPosition.getX() - x;
-			final double dy = worldPosition.getY() - y;
+			final double dx = (double) (worldPosition.getX()) - x;
+			final double dy = (double) (worldPosition.getY()) - y;
 			double dist = Math.hypot(dx, dy);
 			
 			final double sin = dy / dist;

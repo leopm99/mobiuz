@@ -62,7 +62,7 @@ public class ZoneCylinder extends ZoneForm
 	@Override
 	public boolean isInsideZone(int x, int y, int z)
 	{
-		return ((Math.pow(_x - x, 2) + Math.pow(_y - y, 2)) <= _radS) && (z >= _z1) && (z <= _z2);
+		return ((Math.pow((double) (_x) - x, 2) + Math.pow((double) (_y) - y, 2)) <= _radS) && (z >= _z1) && (z <= _z2);
 	}
 	
 	@Override
@@ -75,7 +75,7 @@ public class ZoneCylinder extends ZoneForm
 		}
 		
 		// Any point of the rectangle intersecting the Circle?
-		if (((Math.pow(ax1 - _x, 2) + Math.pow(ay1 - _y, 2)) < _radS) || ((Math.pow(ax1 - _x, 2) + Math.pow(ay2 - _y, 2)) < _radS) || ((Math.pow(ax2 - _x, 2) + Math.pow(ay1 - _y, 2)) < _radS) || ((Math.pow(ax2 - _x, 2) + Math.pow(ay2 - _y, 2)) < _radS))
+		if (((Math.pow((double) (ax1) - _x, 2) + Math.pow((double) (ay1) - _y, 2)) < _radS) || ((Math.pow((double) (ax1) - _x, 2) + Math.pow((double) (ay2) - _y, 2)) < _radS) || ((Math.pow((double) (ax2) - _x, 2) + Math.pow((double) (ay1) - _y, 2)) < _radS) || ((Math.pow((double) (ax2) - _x, 2) + Math.pow((double) (ay2) - _y, 2)) < _radS))
 		{
 			return true;
 		}
@@ -91,7 +91,7 @@ public class ZoneCylinder extends ZoneForm
 	@Override
 	public double getDistanceToZone(int x, int y)
 	{
-		return Math.hypot(_x - x, _y - y) - _rad;
+		return Math.hypot((double) (_x) - x, (double) (_y) - y) - _rad;
 	}
 	
 	// getLowZ() / getHighZ() - These two functions were added to cope with the demand of the new fishing algorithms, wich are now able to correctly place the hook in the water, thanks to getHighZ(). getLowZ() was added, considering potential future modifications.
@@ -127,7 +127,7 @@ public class ZoneCylinder extends ZoneForm
 		final int y2 = _y - _rad;
 		final int x3 = _x + _rad;
 		final int y3 = _y + _rad;
-		while ((Math.pow(_x - x, 2) + Math.pow(_y - y, 2)) > _radS)
+		while ((Math.pow((double) (_x) - x, 2) + Math.pow((double) (_y) - y, 2)) > _radS)
 		{
 			x = Rnd.get(x2, x3);
 			y = Rnd.get(y2, y3);

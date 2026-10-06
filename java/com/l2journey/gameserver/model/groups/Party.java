@@ -137,7 +137,7 @@ public class Party extends AbstractPlayerGroup
 	public void setPendingInvitation(boolean value)
 	{
 		_pendingInvitation = value;
-		_pendingInviteTimeout = GameTimeTaskManager.getInstance().getGameTicks() + (Player.REQUEST_TIMEOUT * GameTimeTaskManager.TICKS_PER_SECOND);
+		_pendingInviteTimeout = (long) (GameTimeTaskManager.getInstance().getGameTicks()) + (Player.REQUEST_TIMEOUT * GameTimeTaskManager.TICKS_PER_SECOND);
 	}
 	
 	/**
@@ -770,7 +770,7 @@ public class Party extends AbstractPlayerGroup
 			{
 				// The servitor penalty
 				final float penalty = member.hasServitor() ? member.getSummon().asServitor().getExpMultiplier() : 1;
-				final double sqLevel = member.getLevel() * member.getLevel();
+				final double sqLevel = (double) (member.getLevel()) * member.getLevel();
 				final double preCalculation = (sqLevel / sqLevelSum) * penalty;
 				
 				// Add the XP/SP points to the requested party member

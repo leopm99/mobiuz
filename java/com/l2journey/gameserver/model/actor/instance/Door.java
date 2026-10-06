@@ -135,7 +135,7 @@ public class Door extends Creature
 		{
 			delay += Rnd.get(getTemplate().getRandomTime());
 		}
-		ThreadPool.schedule(new TimerOpen(), delay * 1000);
+		ThreadPool.schedule(new TimerOpen(), delay * 1000L);
 	}
 	
 	@Override
@@ -719,7 +719,7 @@ public class Door extends Creature
 			oldTask.cancel(false);
 		}
 		
-		_autoCloseTask = ThreadPool.schedule(new AutoClose(), getTemplate().getCloseTime() * 1000);
+		_autoCloseTask = ThreadPool.schedule(new AutoClose(), getTemplate().getCloseTime() * 1000L);
 	}
 	
 	class AutoClose implements Runnable
@@ -753,7 +753,7 @@ public class Door extends Creature
 			{
 				delay += Rnd.get(getTemplate().getRandomTime());
 			}
-			ThreadPool.schedule(this, delay * 1000);
+			ThreadPool.schedule(this, delay * 1000L);
 		}
 	}
 	

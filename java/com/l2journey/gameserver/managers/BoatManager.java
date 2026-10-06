@@ -183,8 +183,8 @@ public class BoatManager
 	{
 		for (Player player : World.getInstance().getPlayers())
 		{
-			if ((Math.hypot(player.getX() - point1.getX(), player.getY() - point1.getY()) < Config.BOAT_BROADCAST_RADIUS) || //
-				(Math.hypot(player.getX() - point2.getX(), player.getY() - point2.getY()) < Config.BOAT_BROADCAST_RADIUS))
+			if ((Math.hypot((double) (player.getX()) - point1.getX(), (double) (player.getY()) - point1.getY()) < Config.BOAT_BROADCAST_RADIUS) || //
+				(Math.hypot((double) (player.getX()) - point2.getX(), (double) (player.getY()) - point2.getY()) < Config.BOAT_BROADCAST_RADIUS))
 			{
 				for (ServerPacket p : packets)
 				{

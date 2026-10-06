@@ -648,7 +648,7 @@ public class FourSepulchers extends AbstractNpcAI implements IXmlReader
 		showHtmlFile(player, npcId + "-OK.html", npc, null);
 		
 		// Kick all players when/if time is over.
-		ThreadPool.schedule(() -> ZoneManager.getInstance().getZoneById(MANAGER_ZONES.get(npcId)).oustAllPlayers(), EVENT_TIME * 60 * 1000);
+		ThreadPool.schedule(() -> ZoneManager.getInstance().getZoneById(MANAGER_ZONES.get(npcId)).oustAllPlayers(), (EVENT_TIME * 60L) * 1000);
 		
 		// Init progress.
 		STORED_PROGRESS.put(sepulcherId, 1); // Start from 1.

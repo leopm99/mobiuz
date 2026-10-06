@@ -528,11 +528,11 @@ public class FortSiegeGuardAI extends CreatureAI implements Runnable
 			}
 			else
 			{
-				final double dx = _actor.getX() - attackTarget.getX();
-				final double dy = _actor.getY() - attackTarget.getY();
-				final double dz = _actor.getZ() - attackTarget.getZ();
-				final double homeX = attackTarget.getX() - sGuard.getSpawn().getX();
-				final double homeY = attackTarget.getY() - sGuard.getSpawn().getY();
+				final double dx = (double) (_actor.getX()) - attackTarget.getX();
+				final double dy = (double) (_actor.getY()) - attackTarget.getY();
+				final double dz = (double) (_actor.getZ()) - attackTarget.getZ();
+				final double homeX = (double) (attackTarget.getX()) - sGuard.getSpawn().getX();
+				final double homeY = (double) (attackTarget.getY()) - sGuard.getSpawn().getY();
 				
 				// Check if the SiegeGuard isn't too far from it's home location
 				if ((((dx * dx) + (dy * dy)) > 10000) && (((homeX * homeX) + (homeY * homeY)) > 3240000) // 1800 * 1800
@@ -566,7 +566,7 @@ public class FortSiegeGuardAI extends CreatureAI implements Runnable
 			{
 				// Temporary hack for preventing guards jumping off towers,
 				// before replacing this with effective geodata checks and AI modification
-				final double dz = _actor.getZ() - attackTarget.getZ();
+				final double dz = (double) (_actor.getZ()) - attackTarget.getZ();
 				if ((dz * dz) < (170 * 170)) // normally 130 if guard z coordinates correct
 				{
 					if (_selfAnalysis.isMage)
@@ -769,8 +769,8 @@ public class FortSiegeGuardAI extends CreatureAI implements Runnable
 				}
 				
 				final Defender sGuard = _actor instanceof FortCommander ? (FortCommander) _actor : (Defender) _actor;
-				final double homeX = target.getX() - sGuard.getSpawn().getX();
-				final double homeY = target.getY() - sGuard.getSpawn().getY();
+				final double homeX = (double) (target.getX()) - sGuard.getSpawn().getX();
+				final double homeY = (double) (target.getY()) - sGuard.getSpawn().getY();
 				
 				// Check if the SiegeGuard is not too far from its home location
 				if (((homeX * homeX) + (homeY * homeY)) < 3240000)

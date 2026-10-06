@@ -597,7 +597,7 @@ public class Siege implements Siegable
 					if (checkIfInZone(member))
 					{
 						member.setInSiege(true);
-						member.startFameTask(Config.CASTLE_ZONE_FAME_TASK_FREQUENCY * 1000, Config.CASTLE_ZONE_FAME_AQUIRE_POINTS);
+						member.startFameTask(Config.CASTLE_ZONE_FAME_TASK_FREQUENCY * 1000L, Config.CASTLE_ZONE_FAME_AQUIRE_POINTS);
 					}
 				}
 				member.updateUserInfo();
@@ -645,7 +645,7 @@ public class Siege implements Siegable
 					if (checkIfInZone(member))
 					{
 						member.setInSiege(true);
-						member.startFameTask(Config.CASTLE_ZONE_FAME_TASK_FREQUENCY * 1000, Config.CASTLE_ZONE_FAME_AQUIRE_POINTS);
+						member.startFameTask(Config.CASTLE_ZONE_FAME_TASK_FREQUENCY * 1000L, Config.CASTLE_ZONE_FAME_AQUIRE_POINTS);
 					}
 				}
 				member.updateUserInfo();

@@ -64,7 +64,7 @@ public class PrivateStoreListSell extends AbstractItemPacket
 			{
 				writeItem(item, buffer);
 				buffer.writeLong(item.getPrice());
-				buffer.writeLong(item.getItem().getReferencePrice() * 2);
+				buffer.writeLong(item.getItem().getReferencePrice() * 2L);
 			}
 		}
 	}

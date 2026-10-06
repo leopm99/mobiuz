@@ -160,7 +160,7 @@ public class Q00193_SevenSignsDyingMessage extends Quest
 					final NpcSay ns = new NpcSay(npc.getObjectId(), ChatType.NPC_GENERAL, npc.getId(), NpcStringId.S1_THAT_STRANGER_MUST_BE_DEFEATED_HERE_IS_THE_ULTIMATE_HELP);
 					ns.addStringParameter(player.getName());
 					npc.broadcastPacket(ns);
-					startQuestTimer("heal", 30000 - getRandom(20000), npc, player);
+					startQuestTimer("heal", 30000L - getRandom(20000), npc, player);
 					final Monster monster = addSpawn(SHILENS_EVIL_THOUGHTS, 82425, 47232, -3216, 0, false, 0, false).asMonster();
 					monster.broadcastPacket(new NpcSay(monster.getObjectId(), ChatType.NPC_GENERAL, monster.getId(), NpcStringId.YOU_ARE_NOT_THE_OWNER_OF_THAT_ITEM));
 					monster.setRunning();
@@ -183,7 +183,7 @@ public class Q00193_SevenSignsDyingMessage extends Quest
 					npc.setTarget(player);
 					npc.doCast(NPC_HEAL.getSkill());
 				}
-				startQuestTimer("heal", 30000 - getRandom(20000), npc, player);
+				startQuestTimer("heal", 30000L - getRandom(20000), npc, player);
 				break;
 			}
 			case "reward":

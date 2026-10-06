@@ -174,7 +174,7 @@ public class Rabbits extends Event
 		// Spawn Chests
 		for (int i = 0; i <= TOTAL_CHEST_COUNT; i++)
 		{
-			recordSpawn(_npcs, CHEST, getRandom(-60653, -58772), getRandom(-55830, -58146), -2030, 0, false, EVENT_TIME * 60000);
+			recordSpawn(_npcs, CHEST, getRandom(-60653, -58772), getRandom(-55830, -58146), -2030, 0, false, EVENT_TIME * 60000L);
 		}
 		
 		// Announce event start
@@ -183,7 +183,7 @@ public class Rabbits extends Event
 		Broadcast.toAllOnlinePlayers("Rabbits Event: You have " + EVENT_TIME + " minutes!");
 		Broadcast.toAllOnlinePlayers("Rabbits Event: After that time all chests will disappear...");
 		// Schedule event end
-		startQuestTimer("END_RABBITS_EVENT", EVENT_TIME * 60000, null, eventMaker);
+		startQuestTimer("END_RABBITS_EVENT", EVENT_TIME * 60000L, null, eventMaker);
 		return true;
 	}
 	

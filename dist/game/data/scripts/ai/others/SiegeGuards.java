@@ -136,7 +136,7 @@ public class SiegeGuards extends AbstractNpcAI
 		{
 			final int residenceId = castle.getResidenceId();
 			RESIDENCE_GUARD_MAP[residenceId] = new CopyOnWriteArrayList<>();
-			ThreadPool.scheduleAtFixedRate(new AggroCheckTask(residenceId), residenceId * 100, 3000);
+			ThreadPool.scheduleAtFixedRate(new AggroCheckTask(residenceId), residenceId * 100L, 3000);
 		}
 		
 		// Start tasks for fortresses.
@@ -144,7 +144,7 @@ public class SiegeGuards extends AbstractNpcAI
 		{
 			final int residenceId = fort.getResidenceId();
 			RESIDENCE_GUARD_MAP[residenceId] = new CopyOnWriteArrayList<>();
-			ThreadPool.scheduleAtFixedRate(new AggroCheckTask(residenceId), 900 + ((residenceId - 100) * 100), 3000);
+			ThreadPool.scheduleAtFixedRate(new AggroCheckTask(residenceId), 900L + ((residenceId - 100) * 100), 3000);
 		}
 	}
 	

@@ -106,8 +106,8 @@ public class PhantomGeo
 	public static Location getSafeRetreatLocation(Creature bot, Creature danger, int distance)
 	{
 		// Vetor de direcao de fuga
-		double dx = bot.getX() - danger.getX();
-		double dy = bot.getY() - danger.getY();
+		double dx = (double) (bot.getX()) - danger.getX();
+		double dy = (double) (bot.getY()) - danger.getY();
 		
 		double length = Math.sqrt((dx * dx) + (dy * dy));
 		if (length == 0)

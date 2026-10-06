@@ -275,8 +275,8 @@ public class Core extends AbstractNpcAI implements IXmlReader
 			_firstAttacked = false;
 			GrandBossManager.getInstance().setStatus(CORE, DEAD);
 			
-			final long baseIntervalMillis = Config.CORE_SPAWN_INTERVAL * 3600000;
-			final long randomRangeMillis = Config.CORE_SPAWN_RANDOM * 3600000;
+			final long baseIntervalMillis = Config.CORE_SPAWN_INTERVAL * 3600000L;
+			final long randomRangeMillis = Config.CORE_SPAWN_RANDOM * 3600000L;
 			final long respawnTime = baseIntervalMillis + getRandom(-randomRangeMillis, randomRangeMillis);
 			
 			// Next respawn time.

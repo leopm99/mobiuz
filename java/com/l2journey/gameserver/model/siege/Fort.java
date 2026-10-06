@@ -556,7 +556,7 @@ public class Fort extends AbstractResidence
 		final Door door = getDoor(doorId);
 		if (door != null)
 		{
-			door.setCurrentHp(door.getMaxHp() + hp);
+			door.setCurrentHp((double) (door.getMaxHp()) + hp);
 			saveDoorUpgrade(doorId, hp, pDef, mDef);
 		}
 	}
@@ -601,7 +601,7 @@ public class Fort extends AbstractResidence
 				initial = (Config.FS_UPDATE_FRQ * 60000) - initial;
 				if ((Config.FS_MAX_OWN_TIME <= 0) || (getOwnedTime() < (Config.FS_MAX_OWN_TIME * 3600)))
 				{
-					_fortUpdater[0] = ThreadPool.scheduleAtFixedRate(new FortUpdater(this, clan, runCount, FortUpdaterType.PERIODIC_UPDATE), initial, Config.FS_UPDATE_FRQ * 60000); // Schedule owner tasks to start running
+					_fortUpdater[0] = ThreadPool.scheduleAtFixedRate(new FortUpdater(this, clan, runCount, FortUpdaterType.PERIODIC_UPDATE), initial, Config.FS_UPDATE_FRQ * 60000L); // Schedule owner tasks to start running
 					if (Config.FS_MAX_OWN_TIME > 0)
 					{
 						_fortUpdater[1] = ThreadPool.scheduleAtFixedRate(new FortUpdater(this, clan, runCount, FortUpdaterType.MAX_OWN_TIME), 3600000, 3600000); // Schedule owner tasks to remove owener
@@ -830,7 +830,7 @@ public class Fort extends AbstractResidence
 				{
 					_fortUpdater[1].cancel(false);
 				}
-				_fortUpdater[0] = ThreadPool.scheduleAtFixedRate(new FortUpdater(this, clan, 0, FortUpdaterType.PERIODIC_UPDATE), Config.FS_UPDATE_FRQ * 60000, Config.FS_UPDATE_FRQ * 60000); // Schedule owner tasks to start running
+				_fortUpdater[0] = ThreadPool.scheduleAtFixedRate(new FortUpdater(this, clan, 0, FortUpdaterType.PERIODIC_UPDATE), Config.FS_UPDATE_FRQ * 60000L, Config.FS_UPDATE_FRQ * 60000L); // Schedule owner tasks to start running
 				if (Config.FS_MAX_OWN_TIME > 0)
 				{
 					_fortUpdater[1] = ThreadPool.scheduleAtFixedRate(new FortUpdater(this, clan, 0, FortUpdaterType.MAX_OWN_TIME), 3600000, 3600000); // Schedule owner tasks to remove owener

@@ -287,7 +287,7 @@ public class Q00625_TheFinestIngredientsPart2 extends Quest
 	@Override
 	public void onSpawn(Npc npc)
 	{
-		startQuestTimer("NPC_TALK", 1000 * 1200, npc, null);
+		startQuestTimer("NPC_TALK", 1000 * 1200L, npc, null);
 		npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.NPC_GENERAL, npc.getTemplate().getDisplayId(), NpcStringId.I_SMELL_SOMETHING_DELICIOUS));
 	}
 	

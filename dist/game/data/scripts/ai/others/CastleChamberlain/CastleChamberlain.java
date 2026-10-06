@@ -1348,7 +1348,7 @@ public class CastleChamberlain extends AbstractNpcAI
 							final int ticketCount = castle.getTicketBuyCount();
 							if (ticketCount < (Config.SSQ_DAWN_TICKET_QUANTITY / Config.SSQ_DAWN_TICKET_BUNDLE))
 							{
-								final long totalCost = Config.SSQ_DAWN_TICKET_PRICE * Config.SSQ_DAWN_TICKET_BUNDLE;
+								final long totalCost = (long) (Config.SSQ_DAWN_TICKET_PRICE) * Config.SSQ_DAWN_TICKET_BUNDLE;
 								if (player.getAdena() >= totalCost)
 								{
 									takeItems(player, Inventory.ADENA_ID, totalCost);

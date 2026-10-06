@@ -2008,7 +2008,7 @@ public class Config
 		ALT_FISH_CHAMPIONSHIP_REWARD_5 = generalConfig.getInt("AltFishChampionshipReward5", 100000);
 		ALT_ITEM_AUCTION_ENABLED = generalConfig.getBoolean("AltItemAuctionEnabled", true);
 		ALT_ITEM_AUCTION_EXPIRED_AFTER = generalConfig.getInt("AltItemAuctionExpiredAfter", 14);
-		ALT_ITEM_AUCTION_TIME_EXTENDS_ON_BID = generalConfig.getInt("AltItemAuctionTimeExtendsOnBid", 0) * 1000;
+		ALT_ITEM_AUCTION_TIME_EXTENDS_ON_BID = generalConfig.getInt("AltItemAuctionTimeExtendsOnBid", 0) * 1000L;
 		RIFT_MIN_PARTY_SIZE = generalConfig.getInt("RiftMinPartySize", 5);
 		RIFT_MAX_JUMPS = generalConfig.getInt("MaxRiftJumps", 4);
 		RIFT_SPAWN_DELAY = generalConfig.getInt("RiftSpawnDelay", 10000);
@@ -2057,7 +2057,7 @@ public class Config
 		SAFE_ENCHANT_COST_MULTIPLIER = generalConfig.getInt("SafeEnchantCostMultipiler", 5);
 		BOTREPORT_ENABLE = generalConfig.getBoolean("EnableBotReportButton", false);
 		BOTREPORT_RESETPOINT_HOUR = generalConfig.getString("BotReportPointsResetHour", "00:00").split(":");
-		BOTREPORT_REPORT_DELAY = generalConfig.getInt("BotReportDelay", 30) * 60000;
+		BOTREPORT_REPORT_DELAY = generalConfig.getInt("BotReportDelay", 30) * 60000L;
 		BOTREPORT_ALLOW_REPORTS_FROM_SAME_CLAN_MEMBERS = generalConfig.getBoolean("AllowReportsFromSameClanMembers", false);
 		ENABLE_PRIME_SHOP = generalConfig.getBoolean("EnablePrimeShop", false);
 		PRIME_SHOP_ITEM_ID = generalConfig.getInt("PrimeShopItemId", -1);
@@ -3699,7 +3699,7 @@ public class Config
 		config.LOG_FLOODING = configs.getBoolean("FloodProtector" + configString + "LogFlooding", false);
 		config.PUNISHMENT_LIMIT = configs.getInt("FloodProtector" + configString + "PunishmentLimit", 0);
 		config.PUNISHMENT_TYPE = configs.getString("FloodProtector" + configString + "PunishmentType", "none");
-		config.PUNISHMENT_TIME = configs.getInt("FloodProtector" + configString + "PunishmentTime", 0) * 60000;
+		config.PUNISHMENT_TIME = configs.getInt("FloodProtector" + configString + "PunishmentTime", 0) * 60000L;
 	}
 	
 	/**

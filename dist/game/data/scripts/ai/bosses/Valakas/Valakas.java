@@ -465,8 +465,8 @@ public class Valakas extends AbstractNpcAI
 		
 		GrandBossManager.getInstance().setStatus(VALAKAS, DEAD);
 		
-		final long baseIntervalMillis = Config.VALAKAS_SPAWN_INTERVAL * 3600000;
-		final long randomRangeMillis = Config.VALAKAS_SPAWN_RANDOM * 3600000;
+		final long baseIntervalMillis = Config.VALAKAS_SPAWN_INTERVAL * 3600000L;
+		final long randomRangeMillis = Config.VALAKAS_SPAWN_RANDOM * 3600000L;
 		final long respawnTime = baseIntervalMillis + getRandom(-randomRangeMillis, randomRangeMillis);
 		
 		// Next respawn time.

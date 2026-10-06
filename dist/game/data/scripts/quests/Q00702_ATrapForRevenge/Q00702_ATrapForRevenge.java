@@ -164,96 +164,96 @@ public class Q00702_ATrapForRevenge extends Quest
 			final int i1 = getRandom(1000);
 			if ((i0 >= 500) && (i1 >= 600))
 			{
-				giveAdena(player, getRandom(49917) + 125000, false);
+				giveAdena(player, getRandom(49917) + 125000L, false);
 				if (i1 < 720)
 				{
-					giveItems(player, 9628, getRandom(3) + 1);
-					giveItems(player, 9629, getRandom(3) + 1);
+					giveItems(player, 9628, getRandom(3) + 1L);
+					giveItems(player, 9629, getRandom(3) + 1L);
 				}
 				else if (i1 < 840)
 				{
-					giveItems(player, 9629, getRandom(3) + 1);
-					giveItems(player, 9630, getRandom(3) + 1);
+					giveItems(player, 9629, getRandom(3) + 1L);
+					giveItems(player, 9630, getRandom(3) + 1L);
 				}
 				else if (i1 < 960)
 				{
-					giveItems(player, 9628, getRandom(3) + 1);
-					giveItems(player, 9630, getRandom(3) + 1);
+					giveItems(player, 9628, getRandom(3) + 1L);
+					giveItems(player, 9630, getRandom(3) + 1L);
 				}
 				else if (i1 < 1000)
 				{
-					giveItems(player, 9628, getRandom(3) + 1);
-					giveItems(player, 9629, getRandom(3) + 1);
-					giveItems(player, 9630, getRandom(3) + 1);
+					giveItems(player, 9628, getRandom(3) + 1L);
+					giveItems(player, 9629, getRandom(3) + 1L);
+					giveItems(player, 9630, getRandom(3) + 1L);
 				}
 				htmltext = "32555-15.html";
 			}
 			else if ((i0 >= 500) && (i1 < 600))
 			{
-				giveAdena(player, getRandom(49917) + 125000, false);
+				giveAdena(player, getRandom(49917) + 125000L, false);
 				if (i1 < 210)
 				{
 					// Do nothing.
 				}
 				else if (i1 < 340)
 				{
-					giveItems(player, 9628, getRandom(3) + 1);
+					giveItems(player, 9628, getRandom(3) + 1L);
 				}
 				else if (i1 < 470)
 				{
-					giveItems(player, 9629, getRandom(3) + 1);
+					giveItems(player, 9629, getRandom(3) + 1L);
 				}
 				else if (i1 < 600)
 				{
-					giveItems(player, 9630, getRandom(3) + 1);
+					giveItems(player, 9630, getRandom(3) + 1L);
 				}
 				
 				htmltext = "32555-16.html";
 			}
 			else if ((i0 < 500) && (i1 >= 600))
 			{
-				giveAdena(player, getRandom(49917) + 25000, false);
+				giveAdena(player, getRandom(49917) + 25000L, false);
 				if (i1 < 720)
 				{
-					giveItems(player, 9628, getRandom(3) + 1);
-					giveItems(player, 9629, getRandom(3) + 1);
+					giveItems(player, 9628, getRandom(3) + 1L);
+					giveItems(player, 9629, getRandom(3) + 1L);
 				}
 				else if (i1 < 840)
 				{
-					giveItems(player, 9629, getRandom(3) + 1);
-					giveItems(player, 9630, getRandom(3) + 1);
+					giveItems(player, 9629, getRandom(3) + 1L);
+					giveItems(player, 9630, getRandom(3) + 1L);
 				}
 				else if (i1 < 960)
 				{
-					giveItems(player, 9628, getRandom(3) + 1);
-					giveItems(player, 9630, getRandom(3) + 1);
+					giveItems(player, 9628, getRandom(3) + 1L);
+					giveItems(player, 9630, getRandom(3) + 1L);
 				}
 				else if (i1 < 1000)
 				{
-					giveItems(player, 9628, getRandom(3) + 1);
-					giveItems(player, 9629, getRandom(3) + 1);
-					giveItems(player, 9630, getRandom(3) + 1);
+					giveItems(player, 9628, getRandom(3) + 1L);
+					giveItems(player, 9629, getRandom(3) + 1L);
+					giveItems(player, 9630, getRandom(3) + 1L);
 				}
 				htmltext = "32555-17.html";
 			}
 			else if ((i0 < 500) && (i1 < 600))
 			{
-				giveAdena(player, getRandom(49917) + 25000, false);
+				giveAdena(player, getRandom(49917) + 25000L, false);
 				if (i1 < 210)
 				{
 					// Do nothing.
 				}
 				else if (i1 < 340)
 				{
-					giveItems(player, 9628, getRandom(3) + 1);
+					giveItems(player, 9628, getRandom(3) + 1L);
 				}
 				else if (i1 < 470)
 				{
-					giveItems(player, 9629, getRandom(3) + 1);
+					giveItems(player, 9629, getRandom(3) + 1L);
 				}
 				else if (i1 < 600)
 				{
-					giveItems(player, 9630, getRandom(3) + 1);
+					giveItems(player, 9630, getRandom(3) + 1L);
 				}
 				
 				htmltext = "32555-18.html";

@@ -266,11 +266,11 @@ public class LotteryManager
 			{
 				if (luckynums[i] < 17)
 				{
-					enchant += Math.pow(2, luckynums[i] - 1);
+					enchant += Math.pow(2, luckynums[i] - 1.0);
 				}
 				else
 				{
-					type2 += Math.pow(2, luckynums[i] - 17);
+					type2 += Math.pow(2, luckynums[i] - 17.0);
 				}
 			}
 			

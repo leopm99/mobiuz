@@ -137,11 +137,11 @@ public class Q00343_UnderTheShadowOfTheIvoryTower extends Quest
 					}
 					else if (chance <= 329)
 					{
-						giveItems(player, SPIRITSHOT_C_GRADE, getRandom(200) + 401);
+						giveItems(player, SPIRITSHOT_C_GRADE, getRandom(200) + 401L);
 					}
 					else if (chance <= 559)
 					{
-						giveItems(player, SPIRITSHOT_D_GRADE, getRandom(200) + 401);
+						giveItems(player, SPIRITSHOT_D_GRADE, getRandom(200) + 401L);
 					}
 					else if (chance <= 561)
 					{

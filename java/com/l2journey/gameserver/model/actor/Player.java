@@ -2175,7 +2175,7 @@ public class Player extends Playable
 		final int maxLoad = getMaxLoad();
 		if (maxLoad > 0)
 		{
-			final long currentLoadWithoutWeightBuffs = getCurrentLoad() + getBonusWeightPenalty();
+			final long currentLoadWithoutWeightBuffs = (long) (getCurrentLoad()) + getBonusWeightPenalty();
 			final long weightproc = (currentLoadWithoutWeightBuffs * 1000) / maxLoad;
 			
 			int originalWeightPenalty;
@@ -6154,7 +6154,7 @@ public class Player extends Playable
 	 */
 	public void onTransactionRequest(Player partner)
 	{
-		_requestExpireTime = GameTimeTaskManager.getInstance().getGameTicks() + (REQUEST_TIMEOUT * GameTimeTaskManager.TICKS_PER_SECOND);
+		_requestExpireTime = (long) (GameTimeTaskManager.getInstance().getGameTicks()) + (REQUEST_TIMEOUT * GameTimeTaskManager.TICKS_PER_SECOND);
 		partner.setActiveRequester(this);
 	}
 	
@@ -10898,7 +10898,7 @@ public class Player extends Playable
 	{
 		if (_taskRentPet == null)
 		{
-			_taskRentPet = ThreadPool.scheduleAtFixedRate(new RentPetTask(this), seconds * 1000, seconds * 1000);
+			_taskRentPet = ThreadPool.scheduleAtFixedRate(new RentPetTask(this), seconds * 1000L, seconds * 1000L);
 		}
 	}
 	
@@ -11358,7 +11358,7 @@ public class Player extends Playable
 			{
 				synchronized (this)
 				{
-					_teleportWatchdog = ThreadPool.schedule(new TeleportWatchdogTask(this), Config.TELEPORT_WATCHDOG_TIMEOUT * 1000);
+					_teleportWatchdog = ThreadPool.schedule(new TeleportWatchdogTask(this), Config.TELEPORT_WATCHDOG_TIMEOUT * 1000L);
 				}
 			}
 		}
@@ -13274,7 +13274,7 @@ public class Player extends Playable
 	
 	public void enteredNoLanding(int delay)
 	{
-		_dismountTask = ThreadPool.schedule(new DismountTask(this), delay * 1000);
+		_dismountTask = ThreadPool.schedule(new DismountTask(this), delay * 1000L);
 	}
 	
 	public void exitedNoLanding()

@@ -101,7 +101,7 @@ public final class Util
 	 */
 	public static final double calculateAngleFrom(int fromX, int fromY, int toX, int toY)
 	{
-		double angleTarget = Math.toDegrees(Math.atan2(toY - fromY, toX - fromX));
+		double angleTarget = Math.toDegrees(Math.atan2((double) (toY) - fromY, (double) (toX) - fromX));
 		if (angleTarget < 0)
 		{
 			angleTarget = 360 + angleTarget;
@@ -135,7 +135,7 @@ public final class Util
 	
 	public static final int calculateHeadingFrom(int fromX, int fromY, int toX, int toY)
 	{
-		double angleTarget = Math.toDegrees(Math.atan2(toY - fromY, toX - fromX));
+		double angleTarget = Math.toDegrees(Math.atan2((double) (toY) - fromY, (double) (toX) - fromX));
 		if (angleTarget < 0)
 		{
 			angleTarget = 360 + angleTarget;
@@ -167,7 +167,7 @@ public final class Util
 	 */
 	public static double calculateDistance(int x1, int y1, int z1, int x2, int y2, int z2, boolean includeZAxis, boolean squared)
 	{
-		final double distance = Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2) + (includeZAxis ? Math.pow(z1 - z2, 2) : 0);
+		final double distance = Math.pow((double) (x1) - x2, 2) + Math.pow((double) (y1) - y2, 2) + (includeZAxis ? Math.pow((double) (z1) - z2, 2) : 0);
 		return (squared) ? distance : Math.sqrt(distance);
 	}
 	
@@ -265,13 +265,13 @@ public final class Util
 			rad += creature.getTemplate().getCollisionRadius();
 		}
 		
-		double dx = obj1.getX() - obj2.getX();
-		double dy = obj1.getY() - obj2.getY();
+		double dx = (double) (obj1.getX()) - obj2.getX();
+		double dy = (double) (obj1.getY()) - obj2.getY();
 		double d = (dx * dx) + (dy * dy);
 		
 		if (includeZAxis)
 		{
-			double dz = obj1.getZ() - obj2.getZ();
+			double dz = (double) (obj1.getZ()) - obj2.getZ();
 			d += (dz * dz);
 		}
 		return d <= ((range * range) + (2 * range * rad) + (rad * rad));
@@ -854,7 +854,7 @@ public final class Util
 		
 		if (includeZAxis)
 		{
-			double dz = z1 - z2;
+			double dz = (double) (z1) - z2;
 			return Math.sqrt((dx * dx) + (dy * dy) + (dz * dz));
 		}
 		return Math.sqrt((dx * dx) + (dy * dy));

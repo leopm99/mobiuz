@@ -572,8 +572,8 @@ public class QueenAnt extends AbstractNpcAI implements IXmlReader
 			_hp20Announced = false;
 			_larvaFirstAttacked = false;
 			
-			final long baseIntervalMillis = Config.QUEEN_ANT_SPAWN_INTERVAL * 3600000;
-			final long randomRangeMillis = Config.QUEEN_ANT_SPAWN_RANDOM * 3600000;
+			final long baseIntervalMillis = Config.QUEEN_ANT_SPAWN_INTERVAL * 3600000L;
+			final long randomRangeMillis = Config.QUEEN_ANT_SPAWN_RANDOM * 3600000L;
 			final long respawnTime = baseIntervalMillis + getRandom(-randomRangeMillis, randomRangeMillis);
 			
 			// Next respawn time.

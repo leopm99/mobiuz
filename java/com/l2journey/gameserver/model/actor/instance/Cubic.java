@@ -191,7 +191,7 @@ public class Cubic
 				break;
 			}
 		}
-		_disappearTask = ThreadPool.schedule(new CubicDisappear(this), cubicDuration * 1000); // disappear
+		_disappearTask = ThreadPool.schedule(new CubicDisappear(this), cubicDuration * 1000L); // disappear
 	}
 	
 	public void doAction()

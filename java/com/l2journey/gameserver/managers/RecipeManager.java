@@ -334,7 +334,7 @@ public class RecipeManager
 					// FIXME: corrigir este pacote para exibir a animacao de crafting.
 					_player.broadcastPacket(new MagicSkillUse(_player, _skillId, _skillLevel, _delay, 0));
 					_player.sendPacket(new SetupGauge(_player.getObjectId(), 0, _delay));
-					ThreadPool.schedule(this, 100 + _delay);
+					ThreadPool.schedule(this, 100L + _delay);
 				}
 				else
 				{
@@ -517,7 +517,7 @@ public class RecipeManager
 						if (Config.ALT_GAME_CREATION && isWait)
 						{
 							_player.sendPacket(new SetupGauge(_player.getObjectId(), 0, _delay));
-							ThreadPool.schedule(this, 100 + _delay);
+							ThreadPool.schedule(this, 100L + _delay);
 						}
 						else
 						{
@@ -539,7 +539,7 @@ public class RecipeManager
 						if (Config.ALT_GAME_CREATION && isWait)
 						{
 							_player.sendPacket(new SetupGauge(_player.getObjectId(), 0, _delay));
-							ThreadPool.schedule(this, 100 + _delay);
+							ThreadPool.schedule(this, 100L + _delay);
 						}
 						else
 						{

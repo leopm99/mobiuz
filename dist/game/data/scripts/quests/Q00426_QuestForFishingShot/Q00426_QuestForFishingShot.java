@@ -405,7 +405,7 @@ public class Q00426_QuestForFishingShot extends Quest
 			{
 				if (getRandom(1000) <= MOBS_SPECIAL.get(npc.getId()).chance)
 				{
-					rewardItems(qs.getPlayer(), SWEET_FLUID, MOBS_SPECIAL.get(npc.getId()).reward + 1);
+					rewardItems(qs.getPlayer(), SWEET_FLUID, MOBS_SPECIAL.get(npc.getId()).reward + 1L);
 				}
 				else
 				{

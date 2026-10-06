@@ -446,20 +446,20 @@ public class TvT extends Event
 					}
 				}
 				// Spawn managers.
-				addSpawn(MANAGER, BLUE_BUFFER_SPAWN_LOC, false, (WAIT_TIME + FIGHT_TIME) * 60000, false, PVP_WORLD.getInstanceId());
-				addSpawn(MANAGER, RED_BUFFER_SPAWN_LOC, false, (WAIT_TIME + FIGHT_TIME) * 60000, false, PVP_WORLD.getInstanceId());
+				addSpawn(MANAGER, BLUE_BUFFER_SPAWN_LOC, false, (WAIT_TIME + FIGHT_TIME) * 60000L, false, PVP_WORLD.getInstanceId());
+				addSpawn(MANAGER, RED_BUFFER_SPAWN_LOC, false, (WAIT_TIME + FIGHT_TIME) * 60000L, false, PVP_WORLD.getInstanceId());
 				// Initialize scores.
 				BLUE_SCORE = 0;
 				RED_SCORE = 0;
 				// Initialize scoreboard.
 				PVP_WORLD.broadcastPacket(new ExPVPMatchCCRecord(ExPVPMatchCCRecord.INITIALIZE, MapUtil.sortByValue(PLAYER_SCORES, true)));
 				// Schedule start.
-				startQuestTimer("5", (WAIT_TIME * 60000) - 5000, null, null);
-				startQuestTimer("4", (WAIT_TIME * 60000) - 4000, null, null);
-				startQuestTimer("3", (WAIT_TIME * 60000) - 3000, null, null);
-				startQuestTimer("2", (WAIT_TIME * 60000) - 2000, null, null);
-				startQuestTimer("1", (WAIT_TIME * 60000) - 1000, null, null);
-				startQuestTimer("StartFight", WAIT_TIME * 60000, null, null);
+				startQuestTimer("5", (WAIT_TIME * 60000) - 5000L, null, null);
+				startQuestTimer("4", (WAIT_TIME * 60000) - 4000L, null, null);
+				startQuestTimer("3", (WAIT_TIME * 60000) - 3000L, null, null);
+				startQuestTimer("2", (WAIT_TIME * 60000) - 2000L, null, null);
+				startQuestTimer("1", (WAIT_TIME * 60000) - 1000L, null, null);
+				startQuestTimer("StartFight", WAIT_TIME * 60000L, null, null);
 				break;
 			}
 			case "StartFight":
@@ -480,17 +480,17 @@ public class TvT extends Event
 				// Send message.
 				broadcastScreenMessageWithEffect("The fight has began!", 5);
 				// Schedule finish.
-				startQuestTimer("10", (FIGHT_TIME * 60000) - 10000, null, null);
-				startQuestTimer("9", (FIGHT_TIME * 60000) - 9000, null, null);
-				startQuestTimer("8", (FIGHT_TIME * 60000) - 8000, null, null);
-				startQuestTimer("7", (FIGHT_TIME * 60000) - 7000, null, null);
-				startQuestTimer("6", (FIGHT_TIME * 60000) - 6000, null, null);
-				startQuestTimer("5", (FIGHT_TIME * 60000) - 5000, null, null);
-				startQuestTimer("4", (FIGHT_TIME * 60000) - 4000, null, null);
-				startQuestTimer("3", (FIGHT_TIME * 60000) - 3000, null, null);
-				startQuestTimer("2", (FIGHT_TIME * 60000) - 2000, null, null);
-				startQuestTimer("1", (FIGHT_TIME * 60000) - 1000, null, null);
-				startQuestTimer("EndFight", FIGHT_TIME * 60000, null, null);
+				startQuestTimer("10", (FIGHT_TIME * 60000) - 10000L, null, null);
+				startQuestTimer("9", (FIGHT_TIME * 60000) - 9000L, null, null);
+				startQuestTimer("8", (FIGHT_TIME * 60000) - 8000L, null, null);
+				startQuestTimer("7", (FIGHT_TIME * 60000) - 7000L, null, null);
+				startQuestTimer("6", (FIGHT_TIME * 60000) - 6000L, null, null);
+				startQuestTimer("5", (FIGHT_TIME * 60000) - 5000L, null, null);
+				startQuestTimer("4", (FIGHT_TIME * 60000) - 4000L, null, null);
+				startQuestTimer("3", (FIGHT_TIME * 60000) - 3000L, null, null);
+				startQuestTimer("2", (FIGHT_TIME * 60000) - 2000L, null, null);
+				startQuestTimer("1", (FIGHT_TIME * 60000) - 1000L, null, null);
+				startQuestTimer("EndFight", FIGHT_TIME * 60000L, null, null);
 				break;
 			}
 			case "EndFight":
@@ -1021,8 +1021,8 @@ public class TvT extends Event
 		BLUE_TEAM.clear();
 		RED_TEAM.clear();
 		// Spawn event manager.
-		MANAGER_NPC_INSTANCE = addSpawn(MANAGER, MANAGER_SPAWN_LOC, false, REGISTRATION_TIME * 60000);
-		startQuestTimer("TeleportToArena", REGISTRATION_TIME * 60000, null, null);
+		MANAGER_NPC_INSTANCE = addSpawn(MANAGER, MANAGER_SPAWN_LOC, false, REGISTRATION_TIME * 60000L);
+		startQuestTimer("TeleportToArena", REGISTRATION_TIME * 60000L, null, null);
 		// Send message to players.
 		Broadcast.toAllOnlinePlayers("TvT Event: Registration opened for " + REGISTRATION_TIME + " minutes.");
 		Broadcast.toAllOnlinePlayers("TvT Event: You can register at Giran TvT Event Manager.");

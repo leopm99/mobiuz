@@ -1201,7 +1201,7 @@ public abstract class Creature extends WorldObject
 						return;
 					}
 					
-					_attackEndTime = currentTime + TimeUnit.MILLISECONDS.toNanos(timeToHit + (reuse / 2));
+					_attackEndTime = currentTime + TimeUnit.MILLISECONDS.toNanos((long) (timeToHit) + (reuse / 2));
 					hitted = doAttackHitByBow(attack, target, timeAtk, reuse);
 					break;
 				}
@@ -1212,7 +1212,7 @@ public abstract class Creature extends WorldObject
 						return;
 					}
 					
-					_attackEndTime = currentTime + TimeUnit.MILLISECONDS.toNanos(timeToHit + (reuse / 2));
+					_attackEndTime = currentTime + TimeUnit.MILLISECONDS.toNanos((long) (timeToHit) + (reuse / 2));
 					hitted = doAttackHitByCrossBow(attack, target, timeAtk, reuse);
 					break;
 				}
@@ -1297,7 +1297,7 @@ public abstract class Creature extends WorldObject
 			}
 			
 			// Notifica AI com READY_TO_ACT
-			ThreadPool.schedule(new NotifyAITask(this, Action.READY_TO_ACT), timeAtk + reuse);
+			ThreadPool.schedule(new NotifyAITask(this, Action.READY_TO_ACT), (long) (timeAtk) + reuse);
 		}
 		finally
 		{
@@ -4274,7 +4274,7 @@ public abstract class Creature extends WorldObject
 		final int zPrev = getZ(); // a coordenada z pode ser modificada por sincronizacoes de coordenadas
 		double dx = move.xDestination - move.xAccurate;
 		double dy = move.yDestination - move.yAccurate;
-		double dz = move.zDestination - zPrev; // Coordenada Z seguira os valores do cliente
+		double dz = (double) (move.zDestination) - zPrev; // Coordenada Z seguira os valores do cliente
 		
 		if (isPlayer() && !_isFlying)
 		{
@@ -4741,7 +4741,7 @@ public abstract class Creature extends WorldObject
 						// Player seguindo uma rota de contorno para atacar: o destino ajustado pelo
 						// perto do destino pedido (alvo nao se moveu muito), mantemos a rota.
 						final boolean playerAttackPath = isPlayer() && hasAI() && (getAI().getIntention() == Intention.ATTACK);
-						if ((playerAttackPath && (Math.hypot(originalX - _move.geoPathAccurateTx, originalY - _move.geoPathAccurateTy) < 200)) //
+						if ((playerAttackPath && (Math.hypot((double) (originalX) - _move.geoPathAccurateTx, (double) (originalY) - _move.geoPathAccurateTy) < 200)) //
 							|| ((gtx == _move.geoPathGtx) && (gty == _move.geoPathGty)))
 						{
 							sendPacket(ActionFailed.STATIC_PACKET);
@@ -4779,9 +4779,9 @@ public abstract class Creature extends WorldObject
 						}
 					}
 					
-					dx = x - curX;
-					dy = y - curY;
-					dz = z - curZ;
+					dx = (double) (x) - curX;
+					dy = (double) (y) - curY;
+					dz = (double) (z) - curZ;
 					
 					distance = verticalMovementOnly ? Math.pow(dz, 2) : Math.hypot(dx, dy);
 				}
@@ -4824,7 +4824,7 @@ public abstract class Creature extends WorldObject
 						{
 							for (int sY = yMin; sY < yMax; sY += 500)
 							{
-								tempDistance = Math.hypot(sX - originalX, sY - originalY);
+								tempDistance = Math.hypot((double) (sX) - originalX, (double) (sY) - originalY);
 								if (tempDistance < shortDistance)
 								{
 									tempPath = PathFinding.getInstance().findPath(curX, curY, curZ, sX, sY, originalZ, getInstanceId(), false);
@@ -4858,9 +4858,9 @@ public abstract class Creature extends WorldObject
 						x = move.geoPath.get(move.onGeodataPathIndex).getX();
 						y = move.geoPath.get(move.onGeodataPathIndex).getY();
 						z = move.geoPath.get(move.onGeodataPathIndex).getZ();
-						dx = x - curX;
-						dy = y - curY;
-						dz = z - curZ;
+						dx = (double) (x) - curX;
+						dy = (double) (y) - curY;
+						dz = (double) (z) - curZ;
 						distance = verticalMovementOnly ? Math.pow(dz, 2) : Math.hypot(dx, dy);
 						sin = dy / distance;
 						cos = dx / distance;
@@ -4889,9 +4889,9 @@ public abstract class Creature extends WorldObject
 					x = destiny.getX();
 					y = destiny.getY();
 					z = destiny.getZ();
-					dx = x - curX;
-					dy = y - curY;
-					dz = z - curZ;
+					dx = (double) (x) - curX;
+					dy = (double) (y) - curY;
+					dz = (double) (z) - curZ;
 					distance = verticalMovementOnly ? Math.pow(dz, 2) : Math.hypot(dx, dy);
 				}
 			}
@@ -5013,7 +5013,7 @@ public abstract class Creature extends WorldObject
 		}
 		
 		// Calcula e define a direcao da Creature.
-		final double distance = Math.hypot(newMove.xDestination - curX, newMove.yDestination - curY);
+		final double distance = Math.hypot((double) (newMove.xDestination) - curX, (double) (newMove.yDestination) - curY);
 		if (distance != 0)
 		{
 			setHeading(LocationUtil.calculateHeadingFrom(curX, curY, newMove.xDestination, newMove.yDestination));

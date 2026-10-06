@@ -797,9 +797,9 @@ public class RimKamaloka extends AbstractNpcAI
 			
 			// Spawn NPCs.
 			spawnKama(world);
-			world.finishTask = ThreadPool.schedule(new FinishTask(world), DURATION * 60000);
+			world.finishTask = ThreadPool.schedule(new FinishTask(world), DURATION * 60000L);
 			world.despawnTask = ThreadPool.scheduleAtFixedRate(new DespawnTask(world), 1000, 1000);
-			ThreadPool.schedule(new LockTask(world), LOCK_TIME * 60000);
+			ThreadPool.schedule(new LockTask(world), LOCK_TIME * 60000L);
 			
 			world.addAllowed(player);
 			
@@ -1014,7 +1014,7 @@ public class RimKamaloka extends AbstractNpcAI
 					else
 					{
 						inst.setDuration(EXIT_TIME * 60000);
-						inst.setEmptyDestroyTime(EMPTY_DESTROY_TIME * 60000);
+						inst.setEmptyDestroyTime(EMPTY_DESTROY_TIME * 60000L);
 					}
 				}
 				

@@ -63,9 +63,9 @@ public class ThrowUp extends AbstractEffect
 		final int curZ = effected.getZ();
 		
 		// Calculate distance between effector and effected current position.
-		final double dx = effector.getX() - curX;
-		final double dy = effector.getY() - curY;
-		final double dz = effector.getZ() - curZ;
+		final double dx = (double) (effector.getX()) - curX;
+		final double dy = (double) (effector.getY()) - curY;
+		final double dz = (double) (effector.getZ()) - curZ;
 		final double distance = Math.sqrt((dx * dx) + (dy * dy));
 		if (distance > 2000)
 		{

@@ -326,49 +326,49 @@ public class Q00334_TheWishingPotion extends Quest
 		{
 			case GRIMA:
 			{
-				startQuestTimer("2336002", 1000 * 200, npc, null);
+				startQuestTimer("2336002", 1000 * 200L, npc, null);
 				npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.SHOUT, npc.getId(), NpcStringId.OH_OH_OH));
 				break;
 			}
 			case SUCCUBUS_OF_SEDUCTION:
 			{
-				startQuestTimer("2336003", 1000 * 200, npc, null);
+				startQuestTimer("2336003", 1000 * 200L, npc, null);
 				npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.SHOUT, npc.getId(), NpcStringId.DO_YOU_WANT_US_TO_LOVE_YOU_OH));
 				break;
 			}
 			case GREAT_DEMON_KING:
 			{
-				startQuestTimer("2336007", 1000 * 600, npc, null);
+				startQuestTimer("2336007", 1000 * 600L, npc, null);
 				npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.SHOUT, npc.getId(), NpcStringId.WHO_KILLED_MY_UNDERLING_DEVIL));
 				break;
 			}
 			case DLORD_ALEXANDROSANCHES:
 			{
-				startQuestTimer("2336004", 1000 * 200, npc, null);
+				startQuestTimer("2336004", 1000 * 200L, npc, null);
 				npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.SHOUT, npc.getId(), NpcStringId.WHO_IS_CALLING_THE_LORD_OF_DARKNESS));
 				break;
 			}
 			case ABYSSKING_BONAPARTERIUS:
 			{
-				startQuestTimer("2336005", 1000 * 200, npc, null);
+				startQuestTimer("2336005", 1000 * 200L, npc, null);
 				npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.SHOUT, npc.getId(), NpcStringId.I_AM_A_GREAT_EMPIRE_BONAPARTERIUS));
 				break;
 			}
 			case EVILOVERLORD_RAMSEBALIUS:
 			{
-				startQuestTimer("2336006", 1000 * 200, npc, null);
+				startQuestTimer("2336006", 1000 * 200L, npc, null);
 				npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.SHOUT, npc.getId(), NpcStringId.LET_YOUR_HEAD_DOWN_BEFORE_THE_LORD));
 				break;
 			}
 			case FAIRY_RUPINA:
 			{
-				startQuestTimer("2336001", 120 * 1000, npc, null);
+				startQuestTimer("2336001", 120 * 1000L, npc, null);
 				npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.SHOUT, npc.getId(), NpcStringId.I_WILL_MAKE_YOUR_LOVE_COME_TRUE_LOVE_LOVE_LOVE));
 				break;
 			}
 			case WISDOM_CHEST:
 			{
-				startQuestTimer("2336007", 120 * 1000, npc, null);
+				startQuestTimer("2336007", 120 * 1000L, npc, null);
 				npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.SHOUT, npc.getId(), NpcStringId.I_HAVE_WISDOM_IN_ME_I_AM_THE_BOX_OF_WISDOM));
 				break;
 			}
@@ -507,7 +507,7 @@ public class Q00334_TheWishingPotion extends Quest
 								takeItems(player, Q_WISH_POTION, 1);
 								qs.set(I_QUEST0, 1);
 								qs.set(FLAG, 1);
-								startQuestTimer("2336008", 3 * 1000, npc, player);
+								startQuestTimer("2336008", 3 * 1000L, npc, player);
 								return "30738-16.html";
 							}
 							return "30738-20.html";
@@ -523,7 +523,7 @@ public class Q00334_TheWishingPotion extends Quest
 								takeItems(player, Q_WISH_POTION, 1);
 								qs.set(I_QUEST0, 2);
 								qs.set(FLAG, 2);
-								startQuestTimer("2336008", 3 * 1000, npc, player);
+								startQuestTimer("2336008", 3 * 1000L, npc, player);
 								return "30738-17.html";
 							}
 							return "30738-20.html";
@@ -539,7 +539,7 @@ public class Q00334_TheWishingPotion extends Quest
 								takeItems(player, Q_WISH_POTION, 1);
 								qs.set(I_QUEST0, 3);
 								qs.set(FLAG, 3);
-								startQuestTimer("2336008", 3 * 1000, npc, player);
+								startQuestTimer("2336008", 3 * 1000L, npc, player);
 								return "30738-18.html";
 							}
 							return "30738-20.html";
@@ -555,7 +555,7 @@ public class Q00334_TheWishingPotion extends Quest
 								takeItems(player, Q_WISH_POTION, 1);
 								qs.set(I_QUEST0, 4);
 								qs.set(FLAG, 4);
-								startQuestTimer("2336008", 3 * 1000, npc, player);
+								startQuestTimer("2336008", 3 * 1000L, npc, player);
 								return "30738-19.html";
 							}
 							return "30738-20.html";
@@ -565,13 +565,13 @@ public class Q00334_TheWishingPotion extends Quest
 					case 2336008:
 					{
 						npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.SHOUT, npc.getId(), NpcStringId.OK_EVERYBODY_PRAY_FERVENTLY));
-						startQuestTimer("2336009", 4 * 1000, npc, player);
+						startQuestTimer("2336009", 4 * 1000L, npc, player);
 						break;
 					}
 					case 2336009:
 					{
 						npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.SHOUT, npc.getId(), NpcStringId.BOTH_HANDS_TO_HEAVEN_EVERYBODY_YELL_TOGETHER));
-						startQuestTimer("2336010", 4 * 1000, npc, player);
+						startQuestTimer("2336010", 4 * 1000L, npc, player);
 						break;
 					}
 					case 2336010:

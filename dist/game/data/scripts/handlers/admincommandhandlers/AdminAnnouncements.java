@@ -322,8 +322,8 @@ public class AdminAnnouncements implements IAdminCommandHandler
 						announce.setAuthor(activeChar.getName());
 						if (announce instanceof AutoAnnouncement autoAnnounce)
 						{
-							autoAnnounce.setInitial(initDelay * 1000);
-							autoAnnounce.setDelay(delay * 1000);
+							autoAnnounce.setInitial(initDelay * 1000L);
+							autoAnnounce.setDelay(delay * 1000L);
 							autoAnnounce.setRepeat(repeat);
 						}
 						announce.updateMe();

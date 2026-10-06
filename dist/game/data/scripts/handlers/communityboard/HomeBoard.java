@@ -747,7 +747,7 @@ public class HomeBoard implements IParseBoardHandler
 			}
 			else
 			{
-				player.destroyItemByItemId(ItemProcessType.FEE, Config.COMMUNITY_PREMIUM_COIN_ID, Config.COMMUNITY_PREMIUM_PRICE_PER_DAY * premiumDays, player, true);
+				player.destroyItemByItemId(ItemProcessType.FEE, Config.COMMUNITY_PREMIUM_COIN_ID, (long) (Config.COMMUNITY_PREMIUM_PRICE_PER_DAY) * premiumDays, player, true);
 				PremiumManager.getInstance().addPremiumTime(player.getAccountName(), premiumDays, TimeUnit.DAYS);
 				player.sendMessage("Your account will now have premium status until " + new SimpleDateFormat("dd.MM.yyyy HH:mm").format(PremiumManager.getInstance().getPremiumExpiration(player.getAccountName())) + ".");
 				if (EventsConfig.PC_CAFE_RETAIL_LIKE)

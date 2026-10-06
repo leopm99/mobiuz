@@ -203,7 +203,7 @@ public class LoginController
 		
 		if (failedLoginAttemps >= Config.LOGIN_TRY_BEFORE_BAN)
 		{
-			addBanForAddress(addr, Config.LOGIN_BLOCK_AFTER_BAN * 1000);
+			addBanForAddress(addr, Config.LOGIN_BLOCK_AFTER_BAN * 1000L);
 			// We need to clear the failed login attempts here, so after the IP ban is over the client has another 5 attempts.
 			clearFailedLoginAttemps(addr);
 			LOGGER.warning("Added banned address " + addr + "! Too many login attempts.");

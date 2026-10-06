@@ -232,7 +232,7 @@ public class HallOfErosionDefence extends AbstractNpcAI
 		addKillId(SEED);
 		addKillId(18711);
 		
-		tumorRespawnTime = 180 * 1000;
+		tumorRespawnTime = 180 * 1000L;
 	}
 	
 	private void teleportPlayer(Player player, int[] coords, int instanceId)
@@ -354,7 +354,7 @@ public class HallOfErosionDefence extends AbstractNpcAI
 				world.addAllowed(player);
 			}
 			
-			((HEDWorld) world).finishTask = ThreadPool.schedule(new FinishTask((HEDWorld) world), 20 * 60000);
+			((HEDWorld) world).finishTask = ThreadPool.schedule(new FinishTask((HEDWorld) world), 20 * 60000L);
 			runTumors((HEDWorld) world);
 		}
 	}
@@ -414,7 +414,7 @@ public class HallOfErosionDefence extends AbstractNpcAI
 				}
 				broadCastPacket(world, new ExShowScreenMessage(NpcStringId.THE_TUMOR_INSIDE_S1_HAS_COMPLETELY_REVIVED_NRECOVERED_NEARBY_UNDEAD_ARE_SWARMING_TOWARD_SEED_OF_LIFE, 2, 8000));
 			}
-		}, 180 * 1000);
+		}, 180 * 1000L);
 		broadCastPacket(world, new ExShowScreenMessage(NpcStringId.YOU_CAN_HEAR_THE_UNDEAD_OF_EKIMUS_RUSHING_TOWARD_YOU_S1_S2_IT_HAS_NOW_BEGUN, 2, 8000));
 	}
 	
@@ -628,7 +628,7 @@ public class HallOfErosionDefence extends AbstractNpcAI
 					else
 					{
 						inst.setDuration(5 * 60000);
-						inst.setEmptyDestroyTime(5 * 60000);
+						inst.setEmptyDestroyTime(5 * 60000L);
 					}
 				}
 			}
@@ -655,7 +655,7 @@ public class HallOfErosionDefence extends AbstractNpcAI
 			else
 			{
 				inst.setDuration(5 * 60000);
-				inst.setEmptyDestroyTime(5 * 60000);
+				inst.setEmptyDestroyTime(5 * 60000L);
 			}
 		}
 	}

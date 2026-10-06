@@ -880,7 +880,7 @@ public abstract class WorldObject extends ListenersContainer implements IPositio
 	 */
 	public double calculateDistance2D(int x, int y, int z)
 	{
-		return Math.sqrt(Math.pow(x - getX(), 2) + Math.pow(y - getY(), 2));
+		return Math.sqrt(Math.pow((double) (x) - getX(), 2) + Math.pow((double) (y) - getY(), 2));
 	}
 	
 	/**
@@ -907,7 +907,7 @@ public abstract class WorldObject extends ListenersContainer implements IPositio
 	 */
 	public double calculateDistance3D(int x, int y, int z)
 	{
-		return Math.sqrt(Math.pow(x - getX(), 2) + Math.pow(y - getY(), 2) + Math.pow(z - getZ(), 2));
+		return Math.sqrt(Math.pow((double) (x) - getX(), 2) + Math.pow((double) (y) - getY(), 2) + Math.pow((double) (z) - getZ(), 2));
 	}
 	
 	/**

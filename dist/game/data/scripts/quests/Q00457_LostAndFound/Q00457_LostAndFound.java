@@ -101,7 +101,7 @@ public class Q00457_LostAndFound extends Quest
 			case "TALK_TIME2":
 			{
 				broadcastNpcSay(npc, player, NpcStringId.WHAT_WERE_YOU_DOING_HERE, false);
-				startQuestTimer("TALK_TIME3", 10 * 1000, npc, player);
+				startQuestTimer("TALK_TIME3", 10 * 1000L, npc, player);
 				break;
 			}
 			case "TALK_TIME3":

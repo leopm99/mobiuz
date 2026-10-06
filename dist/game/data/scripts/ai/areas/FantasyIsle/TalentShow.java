@@ -314,7 +314,7 @@ public class TalentShow extends AbstractNpcAI
 		long diff;
 		hourDiff *= 3600000;
 		minDiff *= 60000;
-		diff = hourDiff + minDiff;
+		diff = (long) (hourDiff) + minDiff;
 		LOGGER.info("Fantasy Isle: MC show script starting at " + (new SimpleDateFormat("dd/MM/yyyy HH:mm:ss")).format(System.currentTimeMillis() + diff) + " and is scheduled each next 4 hours.");
 		startQuestTimer("Start", diff, null, null); // first start
 	}

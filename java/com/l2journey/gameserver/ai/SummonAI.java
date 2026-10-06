@@ -256,7 +256,7 @@ public class SummonAI extends PlayableAI implements Runnable
 		
 		final int ownerX = _actor.asSummon().getOwner().getX();
 		final int ownerY = _actor.asSummon().getOwner().getY();
-		final double angle = Math.toRadians(Rnd.get(-90, 90)) + Math.atan2(ownerY - _actor.getY(), ownerX - _actor.getX());
+		final double angle = Math.toRadians(Rnd.get(-90, 90)) + Math.atan2((double) (ownerY) - _actor.getY(), (double) (ownerX) - _actor.getX());
 		final int targetX = ownerX + (int) (AVOID_RADIUS * Math.cos(angle));
 		final int targetY = ownerY + (int) (AVOID_RADIUS * Math.sin(angle));
 		if (GeoData.getInstance().canMove(_actor.getX(), _actor.getY(), _actor.getZ(), targetX, targetY, _actor.getZ(), _actor.getInstanceId()))

@@ -1701,7 +1701,7 @@ public class Formulas
 			return true;
 		}
 		
-		final double lvlModifier = Math.pow(1.3, target.getLevel() - (Config.CALCULATE_MAGIC_SUCCESS_BY_SKILL_MAGIC_LEVEL && (skill.getMagicLevel() > 0) ? skill.getMagicLevel() : attacker.getLevel()));
+		final double lvlModifier = Math.pow(1.3, (double) (target.getLevel()) - (Config.CALCULATE_MAGIC_SUCCESS_BY_SKILL_MAGIC_LEVEL && (skill.getMagicLevel() > 0) ? skill.getMagicLevel() : attacker.getLevel()));
 		float targetModifier = 1;
 		if (target.isAttackable() && !target.isRaid() && !target.isRaidMinion() && (target.getLevel() >= Config.MIN_NPC_LEVEL_MAGIC_PENALTY))
 		{
@@ -2206,7 +2206,7 @@ public class Formulas
 		int chance;
 		if (info.getSkill().getMagicLevel() > 0)
 		{
-			double levelDifference = cancelMagicLvl - info.getSkill().getMagicLevel();
+			double levelDifference = (double) (cancelMagicLvl) - info.getSkill().getMagicLevel();
 			double levelBonus = 1 + (levelDifference / 100.);
 			chance = (int) (rate * levelBonus);
 		}

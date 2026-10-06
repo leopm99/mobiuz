@@ -317,7 +317,7 @@ public class KrateiArena
 		final long time = 1200000;
 		_eventTask = ThreadPool.schedule(this::endEvent, time);
 		_timeTask = ThreadPool.schedule(this::timeLeftInfo, time - 11000);
-		_watcherTask = ThreadPool.schedule(this::changeWatchers, getParams().getInt("watcherRotationTime") * 1000);
+		_watcherTask = ThreadPool.schedule(this::changeWatchers, getParams().getInt("watcherRotationTime") * 1000L);
 		_isActiveNow = true;
 	}
 	
@@ -420,7 +420,7 @@ public class KrateiArena
 		{
 			_watcherRotation = true;
 		}
-		_watcherTask = ThreadPool.schedule(this::changeWatchers, getParams().getInt("watcherRotationTime") * 1000);
+		_watcherTask = ThreadPool.schedule(this::changeWatchers, getParams().getInt("watcherRotationTime") * 1000L);
 	}
 	
 	private Map<Player, Integer> getParticipants()
@@ -675,7 +675,7 @@ public class KrateiArena
 									{
 										if ((pl.getPlayer().getPcCafePoints() + amount) > EventsConfig.PC_CAFE_MAX_POINTS)
 										{
-											amount = EventsConfig.PC_CAFE_MAX_POINTS - pl.getPlayer().getPcCafePoints();
+											amount = (long) (EventsConfig.PC_CAFE_MAX_POINTS) - pl.getPlayer().getPcCafePoints();
 										}
 										final SystemMessage sm = new SystemMessage(SystemMessageId.YOU_HAVE_ACQUIRED_S1_PC_CAFE_POINTS);
 										sm.addInt((int) amount);
