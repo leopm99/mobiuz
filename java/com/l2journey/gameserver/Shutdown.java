@@ -329,7 +329,7 @@ public class Shutdown extends Thread
 				LOGGER.info("Offline Traders Table: Offline shops stored(" + tc.getEstimatedTimeAndRestartCounter() + "ms).");
 			}
 		}
-		catch (Throwable t)
+		catch (Exception t)
 		{
 			LOGGER.log(Level.WARNING, "Error saving offline shops.", t);
 		}

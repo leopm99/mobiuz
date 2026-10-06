@@ -426,7 +426,7 @@ public class Player extends Playable
 	// Character Character SQL String Definitions:
 	private static final String INSERT_CHARACTER = "INSERT INTO characters (account_name,charId,char_name,level,maxHp,curHp,maxCp,curCp,maxMp,curMp,face,hairStyle,hairColor,sex,exp,sp,karma,fame,pvpkills,pkkills,clanid,race,classid,deletetime,cancraft,title,title_color,accesslevel,online,isin7sdungeon,clan_privs,wantspeace,base_class,newbie,nobless,power_grade,createDate,lastAccess) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	private static final String UPDATE_CHARACTER = "UPDATE characters SET level=?,maxHp=?,curHp=?,maxCp=?,curCp=?,maxMp=?,curMp=?,face=?,hairStyle=?,hairColor=?,sex=?,heading=?,x=?,y=?,z=?,exp=?,expBeforeDeath=?,sp=?,karma=?,fame=?,pvpkills=?,pkkills=?,clanid=?,race=?,classid=?,deletetime=?,title=?,title_color=?,accesslevel=?,online=?,isin7sdungeon=?,clan_privs=?,wantspeace=?,base_class=?,onlinetime=?,newbie=?,nobless=?,power_grade=?,subpledge=?,lvl_joined_academy=?,apprentice=?,sponsor=?,clan_join_expiry_time=?,clan_create_expiry_time=?,char_name=?,death_penalty_level=?,bookmarkslot=?,vitality_points=?,language=?,faction=?,pccafe_points=? WHERE charId=?";
-	private static final String RESTORE_CHARACTER = "SELECT * FROM characters WHERE charId=?";
+	private static final String RESTORE_CHARACTER = "SELECT `account_name`, `charId`, `char_name`, `level`, `curHp`, `curCp`, `curMp`, `face`, `hairStyle`, `hairColor`, `sex`, `heading`, `x`, `y`, `z`, `exp`, `expBeforeDeath`, `sp`, `karma`, `fame`, `pvpkills`, `pkkills`, `clanid`, `classid`, `base_class`, `deletetime`, `title`, `title_color`, `accesslevel`, `onlinetime`, `newbie`, `lastAccess`, `wantspeace`, `isin7sdungeon`, `power_grade`, `nobless`, `subpledge`, `lvl_joined_academy`, `apprentice`, `sponsor`, `clan_join_expiry_time`, `clan_create_expiry_time`, `death_penalty_level`, `bookmarkslot`, `vitality_points`, `createDate`, `language`, `faction`, `pccafe_points` FROM characters WHERE charId=?";
 	
 	// Character Teleport Bookmark:
 	private static final String INSERT_TP_BOOKMARK = "INSERT INTO character_tpbookmark (charId,Id,x,y,z,icon,tag,name) values (?,?,?,?,?,?,?,?)";
@@ -451,7 +451,7 @@ public class Player extends Playable
 	// Character Recipe List Save
 	private static final String DELETE_CHAR_RECIPE_SHOP = "DELETE FROM character_recipeshoplist WHERE charId=?";
 	private static final String INSERT_CHAR_RECIPE_SHOP = "REPLACE INTO character_recipeshoplist (`charId`, `recipeId`, `price`, `index`) VALUES (?, ?, ?, ?)";
-	private static final String RESTORE_CHAR_RECIPE_SHOP = "SELECT * FROM character_recipeshoplist WHERE charId=? ORDER BY `index`";
+	private static final String RESTORE_CHAR_RECIPE_SHOP = "SELECT `recipeId`, `price` FROM character_recipeshoplist WHERE charId=? ORDER BY `index`";
 	
 	public static final String NEWBIE_KEY = "NEWBIE";
 	

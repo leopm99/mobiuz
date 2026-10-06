@@ -160,7 +160,7 @@ public class UIKeysSettings
 		_storedCategories = new HashMap<>();
 		
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM character_ui_categories WHERE `charId` = ? ORDER BY `catId`, `order`"))
+			PreparedStatement ps = con.prepareStatement("SELECT `catId`, `cmdId` FROM character_ui_categories WHERE `charId` = ? ORDER BY `catId`, `order`"))
 		{
 			ps.setInt(1, _playerObjId);
 			try (ResultSet rs = ps.executeQuery())
@@ -192,7 +192,7 @@ public class UIKeysSettings
 		_storedKeys = new HashMap<>();
 		
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM character_ui_actions WHERE `charId` = ? ORDER BY `cat`, `order`"))
+			PreparedStatement ps = con.prepareStatement("SELECT `cat`, `cmd`, `key`, `tgKey1`, `tgKey2`, `show` FROM character_ui_actions WHERE `charId` = ? ORDER BY `cat`, `order`"))
 		{
 			ps.setInt(1, _playerObjId);
 			try (ResultSet rs = ps.executeQuery())

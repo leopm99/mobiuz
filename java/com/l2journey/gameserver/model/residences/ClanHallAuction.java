@@ -163,7 +163,7 @@ public class ClanHallAuction
 	private void load()
 	{
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps = con.prepareStatement("Select * from auction where id = ?"))
+			PreparedStatement ps = con.prepareStatement("SELECT currentBid, endDate, itemId, itemName, itemObjectId, itemType, sellerId, sellerClanName, sellerName, startingBid FROM auction WHERE id = ?"))
 		{
 			ps.setInt(1, _id);
 			try (ResultSet rs = ps.executeQuery())

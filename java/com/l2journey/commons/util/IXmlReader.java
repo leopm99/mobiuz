@@ -173,6 +173,11 @@ public interface IXmlReader
 				{
 					task.get();
 				}
+				catch (InterruptedException e)
+				{
+					Thread.currentThread().interrupt();
+					break;
+				}
 				catch (Exception e)
 				{
 					LOGGER.warning("Failed to parse file: " + e.getMessage());

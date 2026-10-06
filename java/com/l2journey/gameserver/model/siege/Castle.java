@@ -655,7 +655,7 @@ public class Castle extends AbstractResidence
 	protected void load()
 	{
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps1 = con.prepareStatement("SELECT * FROM castle WHERE id = ?");
+			PreparedStatement ps1 = con.prepareStatement("SELECT name, siegeDate, regTimeEnd, regTimeOver, taxPercent, treasury, showNpcCrest, ticketBuyCount FROM castle WHERE id = ?");
 			PreparedStatement ps2 = con.prepareStatement("SELECT clan_id FROM clan_data WHERE hasCastle = ?"))
 		{
 			ps1.setInt(1, getResidenceId());
@@ -696,7 +696,7 @@ public class Castle extends AbstractResidence
 	private void loadFunctions()
 	{
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM castle_functions WHERE castle_id = ?"))
+			PreparedStatement ps = con.prepareStatement("SELECT type, lvl, lease, rate, endTime FROM castle_functions WHERE castle_id = ?"))
 		{
 			ps.setInt(1, getResidenceId());
 			try (ResultSet rs = ps.executeQuery())
@@ -786,7 +786,7 @@ public class Castle extends AbstractResidence
 	private void loadDoorUpgrade()
 	{
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM castle_doorupgrade WHERE castleId=?"))
+			PreparedStatement ps = con.prepareStatement("SELECT doorId, ratio FROM castle_doorupgrade WHERE castleId=?"))
 		{
 			ps.setInt(1, getResidenceId());
 			try (ResultSet rs = ps.executeQuery())

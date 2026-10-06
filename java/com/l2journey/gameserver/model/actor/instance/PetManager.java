@@ -478,7 +478,7 @@ public class PetManager extends Merchant
 				_petSummon.setFollowStatus(true);
 				_petSummon.setShowSummonAnimation(false);
 			}
-			catch (Throwable e)
+			catch (Exception e)
 			{
 				LOGGER.log(Level.WARNING, "", e);
 			}

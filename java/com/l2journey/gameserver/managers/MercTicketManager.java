@@ -158,7 +158,7 @@ public class MercTicketManager
 	{
 		try (Connection con = DatabaseFactory.getConnection();
 			Statement s = con.createStatement();
-			ResultSet rs = s.executeQuery("SELECT * FROM castle_siege_guards Where isHired = 1"))
+			ResultSet rs = s.executeQuery("SELECT npcId, x, y, z FROM castle_siege_guards Where isHired = 1"))
 		{
 			int npcId;
 			int itemId;

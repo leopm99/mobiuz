@@ -446,7 +446,7 @@ public abstract class ClanHall
 	protected void loadFunctions()
 	{
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM clanhall_functions WHERE hall_id = ?"))
+			PreparedStatement ps = con.prepareStatement("SELECT type, lvl, lease, rate, endTime FROM clanhall_functions WHERE hall_id = ?"))
 		{
 			ps.setInt(1, _clanHallId);
 			try (ResultSet rs = ps.executeQuery())

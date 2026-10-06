@@ -66,7 +66,7 @@ public class AnnouncementsTable
 		_announcements.clear();
 		try (Connection con = DatabaseFactory.getConnection();
 			Statement st = con.createStatement();
-			ResultSet rset = st.executeQuery("SELECT * FROM announcements"))
+			ResultSet rset = st.executeQuery("SELECT `id`, `type`, `initial`, `delay`, `repeat`, `author`, `content` FROM announcements"))
 		{
 			while (rset.next())
 			{

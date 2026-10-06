@@ -141,8 +141,9 @@ public class LoginClient extends Client<Connection<LoginClient>>
 			{
 				Thread.sleep(1000);
 			}
-			catch (InterruptedException _)
+			catch (InterruptedException e)
 			{
+				Thread.currentThread().interrupt();
 			}
 		}
 	}

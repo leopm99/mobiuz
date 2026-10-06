@@ -71,7 +71,7 @@ import com.l2journey.gameserver.util.Broadcast;
  */
 public class BanditStronghold extends ClanHallSiegeEngine
 {
-	private static final String SQL_LOAD_ATTACKERS = "SELECT * FROM siegable_hall_flagwar_attackers WHERE hall_id = ?";
+	private static final String SQL_LOAD_ATTACKERS = "SELECT clan_id, flag, npc FROM siegable_hall_flagwar_attackers WHERE hall_id = ?";
 	private static final String SQL_SAVE_ATTACKER = "INSERT INTO siegable_hall_flagwar_attackers_members VALUES (?,?,?)";
 	private static final String SQL_LOAD_MEMEBERS = "SELECT object_id FROM siegable_hall_flagwar_attackers_members WHERE clan_id = ?";
 	private static final String SQL_SAVE_CLAN = "INSERT INTO siegable_hall_flagwar_attackers VALUES(?,?,?,?)";

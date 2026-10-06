@@ -89,7 +89,7 @@ public class DimensionalRiftManager
 	{
 		try (Connection con = DatabaseFactory.getConnection();
 			Statement s = con.createStatement();
-			ResultSet rs = s.executeQuery("SELECT * FROM dimensional_rift"))
+			ResultSet rs = s.executeQuery("SELECT type, room_id, xMin, xMax, yMin, yMax, zMin, zMax, xT, yT, zT, boss FROM dimensional_rift"))
 		{
 			while (rs.next())
 			{

@@ -186,7 +186,7 @@ public class CharSelectionInfo extends ServerPacket
 		CharSelectInfoPackage charInfopackage;
 		final List<CharSelectInfoPackage> characterList = new LinkedList<>();
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement statement = con.prepareStatement("SELECT * FROM characters WHERE account_name=? ORDER BY createDate"))
+			PreparedStatement statement = con.prepareStatement("SELECT `charId`, `char_name`, `deletetime`, `clanid`, `accesslevel`, `level`, `maxHp`, `curHp`, `maxMp`, `curMp`, `karma`, `pkkills`, `pvpkills`, `face`, `hairStyle`, `hairColor`, `sex`, `exp`, `sp`, `vitality_points`, `race`, `base_class`, `classid`, `x`, `y`, `z`, `faction`, `language`, `lastAccess` FROM characters WHERE account_name=? ORDER BY createDate"))
 		{
 			statement.setString(1, loginName);
 			try (ResultSet charList = statement.executeQuery())

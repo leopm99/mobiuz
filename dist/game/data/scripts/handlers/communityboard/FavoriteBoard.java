@@ -35,7 +35,7 @@ import com.l2journey.gameserver.model.actor.Player;
 public class FavoriteBoard implements IParseBoardHandler
 {
 	// SQL Queries
-	private static final String SELECT_FAVORITES = "SELECT * FROM `bbs_favorites` WHERE `playerId`=? ORDER BY `favAddDate` DESC";
+	private static final String SELECT_FAVORITES = "SELECT `favId`, `favTitle`, `favBypass`, `favAddDate` FROM `bbs_favorites` WHERE `playerId`=? ORDER BY `favAddDate` DESC";
 	private static final String DELETE_FAVORITE = "DELETE FROM `bbs_favorites` WHERE `playerId`=? AND `favId`=?";
 	private static final String ADD_FAVORITE = "REPLACE INTO `bbs_favorites`(`playerId`, `favTitle`, `favBypass`) VALUES(?, ?, ?)";
 	

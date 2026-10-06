@@ -208,7 +208,7 @@ public class SiegeGuardManager
 	private void loadSiegeGuard()
 	{
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM castle_siege_guards Where castleId = ? And isHired = ?"))
+			PreparedStatement ps = con.prepareStatement("SELECT npcId, x, y, z, heading, respawnDelay FROM castle_siege_guards Where castleId = ? And isHired = ?"))
 		{
 			ps.setInt(1, _castle.getResidenceId());
 			ps.setInt(2, _castle.getOwnerId() > 0 ? 1 : 0);

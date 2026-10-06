@@ -45,7 +45,7 @@ public class GlobalVariablesManager extends AbstractVariables
 	private static final Logger LOGGER = Logger.getLogger(GlobalVariablesManager.class.getName());
 	
 	// SQL Queries.
-	private static final String SELECT_QUERY = "SELECT * FROM global_variables";
+	private static final String SELECT_QUERY = "SELECT var, value FROM global_variables";
 	private static final String DELETE_QUERY = "DELETE FROM global_variables";
 	private static final String INSERT_QUERY = "REPLACE INTO global_variables (var, value) VALUES (?, ?)";
 	

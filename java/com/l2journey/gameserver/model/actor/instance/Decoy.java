@@ -102,7 +102,7 @@ public class Decoy extends Creature
 				_player.setTarget(_player);
 				_player.doCast(_skill);
 			}
-			catch (Throwable e)
+			catch (Exception e)
 			{
 				LOGGER.log(Level.SEVERE, "Decoy Error: ", e);
 			}

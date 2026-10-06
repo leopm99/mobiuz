@@ -57,9 +57,6 @@ public class BotReportTable
 	// Zoey76: TODO: Split XML parsing from SQL operations, use IGameXmlReader instead of SAXParser.
 	protected static final Logger LOGGER = Logger.getLogger(BotReportTable.class.getName());
 	
-	private static final int COLUMN_BOT_ID = 1;
-	private static final int COLUMN_REPORTER_ID = 2;
-	private static final int COLUMN_REPORT_TIME = 3;
 	
 	public static final int ATTACK_ACTION_BLOCK_ID = -1;
 	public static final int TRADE_ACTION_BLOCK_ID = -2;
@@ -67,7 +64,7 @@ public class BotReportTable
 	public static final int ACTION_BLOCK_ID = -4;
 	public static final int CHAT_BLOCK_ID = -5;
 	
-	private static final String SQL_LOAD_REPORTED_CHAR_DATA = "SELECT * FROM bot_reported_char_data";
+	private static final String SQL_LOAD_REPORTED_CHAR_DATA = "SELECT `botId`, `reporterId`, `reportDate` FROM bot_reported_char_data";
 	private static final String SQL_INSERT_REPORTED_CHAR_DATA = "INSERT INTO bot_reported_char_data VALUES (?,?,?)";
 	private static final String SQL_CLEAR_REPORTED_CHAR_DATA = "DELETE FROM bot_reported_char_data";
 	
@@ -138,9 +135,9 @@ public class BotReportTable
 			
 			while (rset.next())
 			{
-				final int botId = rset.getInt(COLUMN_BOT_ID);
-				final int reporter = rset.getInt(COLUMN_REPORTER_ID);
-				final long date = rset.getLong(COLUMN_REPORT_TIME);
+				final int botId = rset.getInt("botId");
+				final int reporter = rset.getInt("reporterId");
+				final long date = rset.getLong("reportDate");
 				if (_reports.containsKey(botId))
 				{
 					_reports.get(botId).addReporter(reporter, date);
@@ -149,7 +146,7 @@ public class BotReportTable
 				{
 					final ReportedCharData rcd = new ReportedCharData();
 					rcd.addReporter(reporter, date);
-					_reports.put(rset.getInt(COLUMN_BOT_ID), rcd);
+					_reports.put(rset.getInt("botId"), rcd);
 				}
 				
 				if (date > lastResetTime)

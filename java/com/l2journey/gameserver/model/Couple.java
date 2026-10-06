@@ -58,7 +58,7 @@ public class Couple
 		_id = coupleId;
 		
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM mods_wedding WHERE id = ?"))
+			PreparedStatement ps = con.prepareStatement("SELECT player1Id, player2Id, married, affianceDate, weddingDate FROM mods_wedding WHERE id = ?"))
 		{
 			ps.setInt(1, _id);
 			try (ResultSet rs = ps.executeQuery())

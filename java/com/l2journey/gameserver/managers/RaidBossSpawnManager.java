@@ -92,7 +92,7 @@ public class RaidBossSpawnManager
 		
 		try (Connection con = DatabaseFactory.getConnection();
 			Statement s = con.createStatement();
-			ResultSet rs = s.executeQuery("SELECT * FROM raidboss_spawnlist ORDER BY boss_id"))
+			ResultSet rs = s.executeQuery("SELECT boss_id, loc_x, loc_y, loc_z, amount, heading, respawn_delay, respawn_random, respawn_time, currentHP, currentMP FROM raidboss_spawnlist ORDER BY boss_id"))
 		{
 			while (rs.next())
 			{

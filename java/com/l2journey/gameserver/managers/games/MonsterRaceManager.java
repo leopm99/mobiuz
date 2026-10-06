@@ -416,7 +416,7 @@ public class MonsterRaceManager
 	protected void loadHistory()
 	{
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement statement = con.prepareStatement("SELECT * FROM mdt_history");
+			PreparedStatement statement = con.prepareStatement("SELECT race_id, first, second, odd_rate FROM mdt_history");
 			ResultSet rset = statement.executeQuery())
 		{
 			while (rset.next())
@@ -459,7 +459,7 @@ public class MonsterRaceManager
 	protected void loadBets()
 	{
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement statement = con.prepareStatement("SELECT * FROM mdt_bets");
+			PreparedStatement statement = con.prepareStatement("SELECT lane_id, bet FROM mdt_bets");
 			ResultSet rset = statement.executeQuery())
 		{
 			while (rset.next())

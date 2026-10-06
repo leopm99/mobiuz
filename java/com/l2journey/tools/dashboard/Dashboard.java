@@ -574,6 +574,10 @@ public final class Dashboard
 					return;
 				}
 			}
+			catch (InterruptedException e)
+			{
+				Thread.currentThread().interrupt();
+			}
 			catch (Exception _)
 			{
 			}

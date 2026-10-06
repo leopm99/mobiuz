@@ -55,7 +55,7 @@ import com.l2journey.gameserver.network.serverpackets.SystemMessage;
 public class CHSiegeManager
 {
 	private static final Logger LOGGER = Logger.getLogger(CHSiegeManager.class.getName());
-	private static final String SQL_LOAD_HALLS = "SELECT * FROM siegable_clanhall";
+	private static final String SQL_LOAD_HALLS = "SELECT clanHallId, name, ownerId, `desc`, location, nextSiege, siegeLength, schedule_config FROM siegable_clanhall";
 	
 	private final Map<Integer, SiegableHall> _siegableHalls = new HashMap<>();
 	

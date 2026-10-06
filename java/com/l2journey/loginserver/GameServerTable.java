@@ -133,7 +133,7 @@ public class GameServerTable implements IXmlReader
 		GAME_SERVER_TABLE.clear();
 		try (Connection con = DatabaseFactory.getConnection();
 			Statement ps = con.createStatement();
-			ResultSet rs = ps.executeQuery("SELECT * FROM gameservers ORDER BY server_id ASC"))
+			ResultSet rs = ps.executeQuery("SELECT server_id, hexid FROM gameservers ORDER BY server_id ASC"))
 		{
 			while (rs.next())
 			{

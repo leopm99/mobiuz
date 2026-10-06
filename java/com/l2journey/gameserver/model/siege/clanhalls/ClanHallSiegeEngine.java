@@ -73,7 +73,7 @@ public abstract class ClanHallSiegeEngine extends Quest implements Siegable
 {
 	private static final String SQL_LOAD_ATTACKERS = "SELECT attacker_id FROM clanhall_siege_attackers WHERE clanhall_id = ?";
 	private static final String SQL_SAVE_ATTACKERS = "INSERT INTO clanhall_siege_attackers VALUES (?,?)";
-	private static final String SQL_LOAD_GUARDS = "SELECT * FROM clanhall_siege_guards WHERE clanHallId = ?";
+	private static final String SQL_LOAD_GUARDS = "SELECT npcId, x, y, z, heading, respawnDelay FROM clanhall_siege_guards WHERE clanHallId = ?";
 	
 	public static final int FORTRESS_RESSISTANCE = 21;
 	public static final int DEVASTATED_CASTLE = 34;

@@ -106,7 +106,7 @@ public class Forum
 	private void load()
 	{
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM forums WHERE forum_id=?"))
+			PreparedStatement ps = con.prepareStatement("SELECT forum_name, forum_post, forum_type, forum_perm, forum_owner_id FROM forums WHERE forum_id=?"))
 		{
 			ps.setInt(1, _forumId);
 			try (ResultSet rs = ps.executeQuery())
@@ -127,7 +127,7 @@ public class Forum
 		}
 		
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM topic WHERE topic_forum_id=? ORDER BY topic_id DESC"))
+			PreparedStatement ps = con.prepareStatement("SELECT topic_id, topic_forum_id, topic_name, topic_date, topic_ownername, topic_ownerid, topic_type, topic_reply FROM topic WHERE topic_forum_id=? ORDER BY topic_id DESC"))
 		{
 			ps.setInt(1, _forumId);
 			try (ResultSet rs = ps.executeQuery())
