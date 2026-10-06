@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -83,7 +84,7 @@ public class PhantomManager implements IVoicedCommandHandler
 	
 	public static void startLogSession(String reason)
 	{
-		_sessionLogFile = "log/PhantomManager-" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss")) + ".txt";
+		_sessionLogFile = "log/PhantomManager-" + LocalDateTime.now(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss")) + ".txt";
 		logToFile("SYSTEM", "New log session: " + reason);
 	}
 	
@@ -97,7 +98,7 @@ public class PhantomManager implements IVoicedCommandHandler
 		try (FileWriter fw = new FileWriter("log/PhantomManager.txt", true);
 			PrintWriter pw = new PrintWriter(fw))
 		{
-			pw.println("[" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")) + "] " + botName + ": " + action);
+			pw.println("[" + LocalDateTime.now(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("HH:mm:ss")) + "] " + botName + ": " + action);
 		}
 		catch (IOException e)
 		{
@@ -107,7 +108,7 @@ public class PhantomManager implements IVoicedCommandHandler
 		try (FileWriter fw = new FileWriter(_sessionLogFile, true);
 			PrintWriter pw = new PrintWriter(fw))
 		{
-			pw.println("[" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")) + "] " + botName + ": " + action);
+			pw.println("[" + LocalDateTime.now(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("HH:mm:ss")) + "] " + botName + ": " + action);
 		}
 		catch (IOException e)
 		{

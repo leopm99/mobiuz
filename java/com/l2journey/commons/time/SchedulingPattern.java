@@ -858,7 +858,7 @@ public class SchedulingPattern
 		 */
 		public boolean match(int value, int month, boolean isLeapYear)
 		{
-			return (super.match(value) || ((value > 27) && match(32) && isLastDayOfMonth(value, month, isLeapYear)));
+			return (super.match(value) || ((value > 27) && super.match(32) && isLastDayOfMonth(value, month, isLeapYear)));
 		}
 		
 		public static int getLastDayOfMonth(int month, boolean isLeapYear)

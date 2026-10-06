@@ -277,7 +277,7 @@ public class DatabaseIdManager
 			{
 				future.get();
 			}
-			catch (InterruptedException e)
+			catch (InterruptedException _)
 			{
 				Thread.currentThread().interrupt();
 				break;

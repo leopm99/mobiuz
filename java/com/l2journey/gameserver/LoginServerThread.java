@@ -379,7 +379,7 @@ public class LoginServerThread extends Thread
 			{
 				Thread.sleep(5000); // 5 seconds tempo.
 			}
-			catch (InterruptedException e)
+			catch (InterruptedException _)
 			{
 				Thread.currentThread().interrupt();
 			}

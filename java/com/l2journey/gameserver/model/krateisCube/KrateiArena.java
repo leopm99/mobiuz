@@ -782,13 +782,13 @@ public class KrateiArena
 	
 	public class MessageTask implements Runnable
 	{
-		private final Map<Player, KrateiCubePlayer> _players;
+		private final Map<Player, KrateiCubePlayer> _messagePlayers;
 		private int _time;
 		private final int _type;
 		
 		public MessageTask(Map<Player, KrateiCubePlayer> players, int time, int type)
 		{
-			_players = players;
+			_messagePlayers = players;
 			_time = time;
 			_type = type;
 		}
@@ -796,7 +796,7 @@ public class KrateiArena
 		@Override
 		public void run()
 		{
-			if (((_players != null) && !_players.isEmpty()) && (_time > 0))
+			if (((_messagePlayers != null) && !_messagePlayers.isEmpty()) && (_time > 0))
 			{
 				SystemMessage msg = null;
 				switch (_type)
@@ -813,7 +813,7 @@ public class KrateiArena
 					}
 				}
 				
-				for (Player player : _players.keySet())
+				for (Player player : _messagePlayers.keySet())
 				{
 					if ((player != null) && (msg != null))
 					{
@@ -824,7 +824,7 @@ public class KrateiArena
 				_time--;
 				if (_time > 0)
 				{
-					ThreadPool.schedule(new MessageTask(_players, _time, _type), 1000);
+					ThreadPool.schedule(new MessageTask(_messagePlayers, _time, _type), 1000);
 				}
 			}
 		}

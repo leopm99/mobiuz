@@ -620,7 +620,7 @@ public abstract class Chamber extends AbstractInstance
 				Thread.sleep(5000);
 				changeRoom(_world);
 			}
-			catch (InterruptedException e)
+			catch (InterruptedException _)
 			{
 				Thread.currentThread().interrupt();
 			}

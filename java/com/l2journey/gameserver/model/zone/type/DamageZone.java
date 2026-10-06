@@ -149,11 +149,11 @@ public class DamageZone extends ZoneType
 	
 	private class ApplyDamage implements Runnable
 	{
-		private final Castle _castle;
+		private final Castle _applyCastle;
 		
 		protected ApplyDamage()
 		{
-			_castle = getCastle();
+			_applyCastle = getCastle();
 		}
 		
 		@Override
@@ -175,9 +175,9 @@ public class DamageZone extends ZoneType
 			}
 			
 			boolean siege = false;
-			if (_castle != null)
+			if (_applyCastle != null)
 			{
-				siege = _castle.getSiege().isInProgress();
+				siege = _applyCastle.getSiege().isInProgress();
 				
 				// Castle zones active only during siege.
 				if (!siege)
