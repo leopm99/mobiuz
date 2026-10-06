@@ -612,9 +612,9 @@ public class CastleManorManager implements IXmlReader
 			ds.executeUpdate();
 			
 			// Current production
+			is.setBoolean(6, false);
 			for (Entry<Integer, List<SeedProduction>> entry : _production.entrySet())
 			{
-				is.setBoolean(6, false);
 				for (SeedProduction sp : entry.getValue())
 				{
 					is.setInt(1, entry.getKey());
@@ -627,9 +627,9 @@ public class CastleManorManager implements IXmlReader
 			}
 			
 			// Next production
+			is.setBoolean(6, true);
 			for (Entry<Integer, List<SeedProduction>> entry : _productionNext.entrySet())
 			{
-				is.setBoolean(6, true);
 				for (SeedProduction sp : entry.getValue())
 				{
 					is.setInt(1, entry.getKey());
@@ -648,9 +648,9 @@ public class CastleManorManager implements IXmlReader
 			dp.executeUpdate();
 			
 			// Current procure
+			ip.setBoolean(7, false);
 			for (Entry<Integer, List<CropProcure>> entry : _procure.entrySet())
 			{
-				ip.setBoolean(7, false);
 				for (CropProcure cp : entry.getValue())
 				{
 					ip.setInt(1, entry.getKey());
@@ -664,9 +664,9 @@ public class CastleManorManager implements IXmlReader
 			}
 			
 			// Next procure
+			ip.setBoolean(7, true);
 			for (Entry<Integer, List<CropProcure>> entry : _procureNext.entrySet())
 			{
-				ip.setBoolean(7, true);
 				for (CropProcure cp : entry.getValue())
 				{
 					ip.setInt(1, entry.getKey());

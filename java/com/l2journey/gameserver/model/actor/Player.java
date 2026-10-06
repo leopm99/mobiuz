@@ -7881,6 +7881,7 @@ public class Player extends Playable
 				}
 				
 				// Skills under reuse.
+				statement.setInt(4, -1);
 				statement.setInt(7, 1); // Restore type 1, skill reuse.
 				statement.setInt(8, _classIndex);
 				for (Entry<Integer, TimeStamp> ts : getSkillReuseTimeStamps().entrySet())
@@ -7899,7 +7900,6 @@ public class Player extends Playable
 						statement.setInt(1, getObjectId());
 						statement.setInt(2, t.getSkillId());
 						statement.setInt(3, t.getSkillLevel());
-						statement.setInt(4, -1);
 						statement.setLong(5, t.getReuse());
 						statement.setLong(6, t.getStamp());
 						statement.setInt(9, ++buffIndex);

@@ -59,60 +59,57 @@ public class AccountingFormatter extends Formatter
 				
 				output.append(", ");
 				
-				if (p instanceof GameClient client)
+				switch (p)
 				{
-					String address = null;
-					try
+					case GameClient client ->
 					{
-						if (!client.isDetached())
+						String address = null;
+						try
 						{
-							address = client.getIp();
+							if (!client.isDetached())
+							{
+								address = client.getIp();
+							}
+						}
+						catch (Exception _)
+						{
+							// Ignore.
+						}
+						
+						switch (client.getConnectionState())
+						{
+							case ENTERING, IN_GAME:
+							{
+								if (client.getPlayer() != null)
+								{
+									StringUtil.append(output, client.getPlayer().getName(), "(", String.valueOf(client.getPlayer().getObjectId()), ") ");
+								}
+								break;
+							}
+							case AUTHENTICATED:
+							{
+								if (client.getAccountName() != null)
+								{
+									StringUtil.append(output, client.getAccountName(), " ");
+								}
+								break;
+							}
+							case CONNECTED:
+							{
+								if (address != null)
+								{
+									output.append(address);
+								}
+								break;
+							}
+							default:
+							{
+								throw new IllegalStateException("Missing state on switch");
+							}
 						}
 					}
-					catch (Exception _)
-					{
-						// Ignore.
-					}
-					
-					switch (client.getConnectionState())
-					{
-						case ENTERING, IN_GAME:
-						{
-							if (client.getPlayer() != null)
-							{
-								StringUtil.append(output, client.getPlayer().getName(), "(", String.valueOf(client.getPlayer().getObjectId()), ") ");
-							}
-							break;
-						}
-						case AUTHENTICATED:
-						{
-							if (client.getAccountName() != null)
-							{
-								StringUtil.append(output, client.getAccountName(), " ");
-							}
-							break;
-						}
-						case CONNECTED:
-						{
-							if (address != null)
-							{
-								output.append(address);
-							}
-							break;
-						}
-						default:
-						{
-							throw new IllegalStateException("Missing state on switch");
-						}
-					}
-				}
-				else if (p instanceof Player player)
-				{
-					StringUtil.append(output, player.getName(), "(", String.valueOf(player.getObjectId()), ")");
-				}
-				else
-				{
-					output.append(p.toString());
+					case Player player -> StringUtil.append(output, player.getName(), "(", String.valueOf(player.getObjectId()), ")");
+					default -> output.append(p.toString());
 				}
 			}
 		}

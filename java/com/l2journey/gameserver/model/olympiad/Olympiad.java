@@ -392,6 +392,8 @@ public class Olympiad extends ListenersContainer
 			PreparedStatement remove = con.prepareStatement(REMOVE_UNCLAIMED_POINTS);
 			PreparedStatement insert = con.prepareStatement(INSERT_UNCLAIMED_POINTS))
 		{
+			remove.setString(2, UNCLAIMED_OLYMPIAD_PASSES_VAR);
+			insert.setString(2, UNCLAIMED_OLYMPIAD_PASSES_VAR);
 			for (int noblesId : NOBLES.keySet())
 			{
 				final int points = getNoblessePasses(noblesId);
@@ -407,9 +409,7 @@ public class Olympiad extends ListenersContainer
 						try
 						{
 							remove.setInt(1, noblesId);
-							remove.setString(2, UNCLAIMED_OLYMPIAD_PASSES_VAR);
 							remove.execute();
-							remove.clearParameters();
 						}
 						catch (SQLException _)
 						{
@@ -418,10 +418,8 @@ public class Olympiad extends ListenersContainer
 						try
 						{
 							insert.setInt(1, noblesId);
-							insert.setString(2, UNCLAIMED_OLYMPIAD_PASSES_VAR);
 							insert.setString(3, String.valueOf(points));
 							insert.execute();
-							insert.clearParameters();
 						}
 						catch (SQLException _)
 						{

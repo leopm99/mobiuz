@@ -85,7 +85,7 @@ public class Q00648_AnIceMerchantsDream extends Quest
 		MONSTERS.put(22094, new DropInfo(0.553, 0.057)); // Frost Buffalo
 		MONSTERS.put(22095, new DropInfo(0.593, 0.061)); // Ursus Cub
 		MONSTERS.put(22096, new DropInfo(0.593, 0.061)); // Ursus
-		MONSTERS.put(22097, new DropInfo(0.693, 0.071)); // Lost Yeti
+		MONSTERS.put(22097, new DropInfo(0.693, 0.071)); // NOSONAR java:S9133 - drop chance, not ln(2) (Lost Yeti)
 		MONSTERS.put(22098, new DropInfo(0.717, 0.074)); // Frost Yeti
 	}
 	

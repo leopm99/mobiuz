@@ -60,33 +60,33 @@ public class EnchantFormatter extends Formatter
 				
 				output.append(", ");
 				
-				if (p instanceof Player player)
+				switch (p)
 				{
-					StringUtil.append(output, "Character:", player.getName(), " [", String.valueOf(player.getObjectId()), "] Account:", player.getAccountName());
-					if ((player.getClient() != null) && !player.getClient().isDetached())
+					case Player player ->
 					{
-						StringUtil.append(output, " IP:", player.getClient().getIp());
+						StringUtil.append(output, "Character:", player.getName(), " [", String.valueOf(player.getObjectId()), "] Account:", player.getAccountName());
+						if ((player.getClient() != null) && !player.getClient().isDetached())
+						{
+							StringUtil.append(output, " IP:", player.getClient().getIp());
+						}
 					}
-				}
-				else if (p instanceof Item item)
-				{
-					if (item.getEnchantLevel() > 0)
+					case Item item ->
 					{
-						StringUtil.append(output, "+", String.valueOf(item.getEnchantLevel()), " ");
+						if (item.getEnchantLevel() > 0)
+						{
+							StringUtil.append(output, "+", String.valueOf(item.getEnchantLevel()), " ");
+						}
+						StringUtil.append(output, item.getTemplate().getName(), "(", String.valueOf(item.getCount()), ")", " [", String.valueOf(item.getObjectId()), "]");
 					}
-					StringUtil.append(output, item.getTemplate().getName(), "(", String.valueOf(item.getCount()), ")", " [", String.valueOf(item.getObjectId()), "]");
-				}
-				else if (p instanceof Skill skill)
-				{
-					if (skill.getLevel() > 100)
+					case Skill skill ->
 					{
-						StringUtil.append(output, "+", String.valueOf(skill.getLevel() % 100), " ");
+						if (skill.getLevel() > 100)
+						{
+							StringUtil.append(output, "+", String.valueOf(skill.getLevel() % 100), " ");
+						}
+						StringUtil.append(output, skill.getName(), "(", String.valueOf(skill.getId()), " ", String.valueOf(skill.getLevel()), ")");
 					}
-					StringUtil.append(output, skill.getName(), "(", String.valueOf(skill.getId()), " ", String.valueOf(skill.getLevel()), ")");
-				}
-				else
-				{
-					output.append(p.toString());
+					default -> output.append(p.toString());
 				}
 			}
 		}

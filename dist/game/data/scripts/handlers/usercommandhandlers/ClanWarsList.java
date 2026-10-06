@@ -64,25 +64,27 @@ public class ClanWarsList implements IUserCommandHandler
 		
 		try (Connection con = DatabaseFactory.getConnection())
 		{
-			String query;
-			// Attack List
-			if (id == 88)
+			final String query = switch (id)
 			{
-				player.sendPacket(SystemMessageId.CLANS_YOU_VE_DECLARED_WAR_ON);
-				query = ATTACK_LIST;
-			}
-			// Under Attack List
-			else if (id == 89)
-			{
-				player.sendPacket(SystemMessageId.CLANS_THAT_HAVE_DECLARED_WAR_ON_YOU);
-				query = UNDER_ATTACK_LIST;
-			}
-			// War List
-			else
-			{
-				player.sendPacket(SystemMessageId.WAR_LIST);
-				query = WAR_LIST;
-			}
+				// Attack List
+				case 88 ->
+				{
+					player.sendPacket(SystemMessageId.CLANS_YOU_VE_DECLARED_WAR_ON);
+					yield ATTACK_LIST;
+				}
+				// Under Attack List
+				case 89 ->
+				{
+					player.sendPacket(SystemMessageId.CLANS_THAT_HAVE_DECLARED_WAR_ON_YOU);
+					yield UNDER_ATTACK_LIST;
+				}
+				// War List
+				default ->
+				{
+					player.sendPacket(SystemMessageId.WAR_LIST);
+					yield WAR_LIST;
+				}
+			};
 			
 			try (PreparedStatement ps = con.prepareStatement(query))
 			{

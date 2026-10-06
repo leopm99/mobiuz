@@ -145,17 +145,11 @@ public class ItemData
 				highestId = item.getId();
 			}
 			
-			if (item instanceof EtcItem etcItem)
+			switch (item)
 			{
-				_etcItems.put(item.getId(), etcItem);
-			}
-			else if (item instanceof Armor armor)
-			{
-				_armors.put(item.getId(), armor);
-			}
-			else
-			{
-				_weapons.put(item.getId(), (Weapon) item);
+				case EtcItem etcItem -> _etcItems.put(item.getId(), etcItem);
+				case Armor armor -> _armors.put(item.getId(), armor);
+				default -> _weapons.put(item.getId(), (Weapon) item);
 			}
 		}
 		

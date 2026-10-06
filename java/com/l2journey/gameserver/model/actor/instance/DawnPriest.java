@@ -79,24 +79,30 @@ public class DawnPriest extends SignsPriest
 				}
 				else if (isSealValidationPeriod)
 				{
-					if (compWinner == SevenSigns.CABAL_DAWN)
+					switch (compWinner)
 					{
-						if (compWinner != sealGnosisOwner)
+						case SevenSigns.CABAL_DAWN:
 						{
-							filename += "dawn_priest_2c.htm";
+							if (compWinner != sealGnosisOwner)
+							{
+								filename += "dawn_priest_2c.htm";
+							}
+							else
+							{
+								filename += "dawn_priest_2a.htm";
+							}
+							break;
 						}
-						else
+						case SevenSigns.CABAL_NULL:
 						{
-							filename += "dawn_priest_2a.htm";
+							filename += "dawn_priest_2d.htm";
+							break;
 						}
-					}
-					else if (compWinner == SevenSigns.CABAL_NULL)
-					{
-						filename += "dawn_priest_2d.htm";
-					}
-					else
-					{
-						filename += "dawn_priest_2b.htm";
+						default:
+						{
+							filename += "dawn_priest_2b.htm";
+							break;
+						}
 					}
 				}
 				else
@@ -129,17 +135,23 @@ public class DawnPriest extends SignsPriest
 				}
 				else if (isSealValidationPeriod)
 				{
-					if (compWinner == SevenSigns.CABAL_DAWN)
+					switch (compWinner)
 					{
-						filename += "dawn_priest_4.htm";
-					}
-					else if (compWinner == SevenSigns.CABAL_NULL)
-					{
-						filename += "dawn_priest_2d.htm";
-					}
-					else
-					{
-						filename += "dawn_priest_2b.htm";
+						case SevenSigns.CABAL_DAWN:
+						{
+							filename += "dawn_priest_4.htm";
+							break;
+						}
+						case SevenSigns.CABAL_NULL:
+						{
+							filename += "dawn_priest_2d.htm";
+							break;
+						}
+						default:
+						{
+							filename += "dawn_priest_2b.htm";
+							break;
+						}
 					}
 				}
 				else

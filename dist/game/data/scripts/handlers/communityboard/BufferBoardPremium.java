@@ -1772,23 +1772,13 @@ public class BufferBoardPremium implements IParseBoardHandler
 			
 			if ("set".equals(type))
 			{
-				final String listOrder;
-				if (forClass == 0)
+				final String listOrder = switch (forClass)
 				{
-					listOrder = "List=\"" + SET_FIGHTER + ";" + SET_MAGE + ";" + SET_ALL + ";" + SET_NONE + ";\"";
-				}
-				else if (forClass == 1)
-				{
-					listOrder = "List=\"" + SET_MAGE + ";" + SET_FIGHTER + ";" + SET_ALL + ";" + SET_NONE + ";\"";
-				}
-				else if (forClass == 2)
-				{
-					listOrder = "List=\"" + SET_ALL + ";" + SET_FIGHTER + ";" + SET_MAGE + ";" + SET_NONE + ";\"";
-				}
-				else
-				{
-					listOrder = "List=\"" + SET_NONE + ";" + SET_FIGHTER + ";" + SET_MAGE + ";" + SET_ALL + ";\"";
-				}
+					case 0 -> "List=\"" + SET_FIGHTER + ";" + SET_MAGE + ";" + SET_ALL + ";" + SET_NONE + ";\"";
+					case 1 -> "List=\"" + SET_MAGE + ";" + SET_FIGHTER + ";" + SET_ALL + ";" + SET_NONE + ";\"";
+					case 2 -> "List=\"" + SET_ALL + ";" + SET_FIGHTER + ";" + SET_MAGE + ";" + SET_NONE + ";\"";
+					default -> "List=\"" + SET_NONE + ";" + SET_FIGHTER + ";" + SET_MAGE + ";" + SET_ALL + ";\"";
+				};
 				html.append("<tr><td fixwidth=145>").append(name).append("</td><td width=70><combobox var=\"newSet").append(i).append("\" width=70 ").append(listOrder).append("></td><td width=50>");
 				html.append(button("Update", "_cbbbuffer;gmChangeSet;" + skillPos + ";" + page + " $newSet" + i, 50));
 				html.append("</td></tr>");
