@@ -87,7 +87,7 @@ public class GroupSpawn extends Spawn
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "NPC class not found: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "NPC class not found: " + e.getMessage());
 			return null;
 		}
 	}

@@ -199,7 +199,7 @@ public abstract class ClanHall
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.SEVERE, "Exception: ClanHall.updateFunctions(int type, int lvl, int lease, long rate, long time, boolean addNew): " + e.getMessage(), e);
+				LOGGER.log(Level.SEVERE, e, () -> "Exception: ClanHall.updateFunctions(int type, int lvl, int lease, long rate, long time, boolean addNew): " + e.getMessage());
 			}
 		}
 	}
@@ -438,7 +438,7 @@ public abstract class ClanHall
 		}
 		else
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Zone is null for clan hall: " + _clanHallId + " " + _name);
+			LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": Zone is null for clan hall: " + _clanHallId + " " + _name);
 		}
 	}
 	
@@ -459,7 +459,7 @@ public abstract class ClanHall
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Exception: ClanHall.loadFunctions(): " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Exception: ClanHall.loadFunctions(): " + e.getMessage());
 		}
 	}
 	
@@ -479,7 +479,7 @@ public abstract class ClanHall
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Exception: ClanHall.removeFunctions(int functionType): " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Exception: ClanHall.removeFunctions(int functionType): " + e.getMessage());
 		}
 	}
 	

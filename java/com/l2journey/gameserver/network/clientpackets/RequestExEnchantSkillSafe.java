@@ -145,7 +145,10 @@ public class RequestExEnchantSkillSafe extends ClientPacket
 			{
 				if (Config.LOG_SKILL_ENCHANTS)
 				{
-					LOGGER_ENCHANT.log(Level.INFO, "Safe Success, Character:" + player.getName() + " [" + player.getObjectId() + "] Account:" + player.getAccountName() + " IP:" + player.getIPAddress() + ", Skill:" + skill + ", SPB:" + spb + ", Rate:" + rate);
+					final Skill loggedSkill = skill;
+					final Item spbItem = spb;
+					final int enchantRate = rate;
+					LOGGER_ENCHANT.log(Level.INFO, () -> "Safe Success, Character:" + player.getName() + " [" + player.getObjectId() + "] Account:" + player.getAccountName() + " IP:" + player.getIPAddress() + ", Skill:" + loggedSkill + ", SPB:" + spbItem + ", Rate:" + enchantRate);
 				}
 				
 				player.addSkill(skill, true);
@@ -159,7 +162,10 @@ public class RequestExEnchantSkillSafe extends ClientPacket
 			{
 				if (Config.LOG_SKILL_ENCHANTS)
 				{
-					LOGGER_ENCHANT.log(Level.INFO, "Safe Failed, Character:" + player.getName() + " [" + player.getObjectId() + "] Account:" + player.getAccountName() + " IP:" + player.getIPAddress() + ", Skill:" + skill + ", SPB:" + spb + ", Rate:" + rate);
+					final Skill loggedSkill = skill;
+					final Item spbItem = spb;
+					final int enchantRate = rate;
+					LOGGER_ENCHANT.log(Level.INFO, () -> "Safe Failed, Character:" + player.getName() + " [" + player.getObjectId() + "] Account:" + player.getAccountName() + " IP:" + player.getIPAddress() + ", Skill:" + loggedSkill + ", SPB:" + spbItem + ", Rate:" + enchantRate);
 				}
 				
 				final SystemMessage sm = new SystemMessage(SystemMessageId.SKILL_ENCHANT_FAILED_CURRENT_LEVEL_OF_ENCHANT_SKILL_S1_WILL_REMAIN_UNCHANGED);

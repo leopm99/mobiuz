@@ -50,7 +50,7 @@ public abstract class LoginClientPacket extends ReadablePacket<LoginClient>
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "ERROR READING: " + getClass().getSimpleName() + ": " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "ERROR READING: " + getClass().getSimpleName() + ": " + e.getMessage());
 			return false;
 		}
 	}

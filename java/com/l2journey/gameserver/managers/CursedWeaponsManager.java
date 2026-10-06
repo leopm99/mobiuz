@@ -108,7 +108,7 @@ public class CursedWeaponsManager
 			final File file = new File(Config.DATAPACK_ROOT + "/data/CursedWeapons.xml");
 			if (!file.exists())
 			{
-				LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't find data/" + file.getName());
+				LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": Couldn't find data/" + file.getName());
 				return;
 			}
 			
@@ -194,7 +194,7 @@ public class CursedWeaponsManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Could not restore CursedWeapons data: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not restore CursedWeapons data: " + e.getMessage());
 		}
 	}
 	
@@ -258,7 +258,7 @@ public class CursedWeaponsManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Could not check CursedWeapons data: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not check CursedWeapons data: " + e.getMessage());
 		}
 	}
 	
@@ -374,7 +374,7 @@ public class CursedWeaponsManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.SEVERE, "CursedWeaponsManager: Failed to remove data: " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "CursedWeaponsManager: Failed to remove data: " + e.getMessage());
 		}
 	}
 	

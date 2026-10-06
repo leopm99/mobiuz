@@ -166,7 +166,7 @@ public class Product
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Failed to save Product buylist_id:" + _buyListId + " item_id:" + _item.getId(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Failed to save Product buylist_id:" + _buyListId + " item_id:" + _item.getId());
 		}
 	}
 }

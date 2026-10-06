@@ -83,7 +83,7 @@ public class SummonPet extends AbstractEffect
 		final Item item = holder.getItem();
 		if (player.getInventory().getItemByObjectId(item.getObjectId()) != item)
 		{
-			LOGGER.log(Level.WARNING, "Player: " + player + " is trying to summon pet from item that he doesn't owns.");
+			LOGGER.log(Level.WARNING, () -> "Player: " + player + " is trying to summon pet from item that he doesn't owns.");
 			return;
 		}
 		

@@ -233,11 +233,11 @@ public class EffectMasterHandler
 		// And lets try get size
 		try
 		{
-			LOGGER.log(Level.INFO, EffectMasterHandler.class.getSimpleName() + ": Loaded " + EffectHandler.getInstance().size() + " effect handlers.");
+			LOGGER.log(Level.INFO, () -> EffectMasterHandler.class.getSimpleName() + ": Loaded " + EffectHandler.getInstance().size() + " effect handlers.");
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Failed invoking size method for handler: " + EffectMasterHandler.class.getSimpleName(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Failed invoking size method for handler: " + EffectMasterHandler.class.getSimpleName());
 		}
 	}
 }

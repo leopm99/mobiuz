@@ -75,7 +75,7 @@ public class OlympiadGameManager implements Runnable
 			_tasks[i++] = new OlympiadGameTask(zone, instanceId);
 		}
 		
-		LOGGER.log(Level.INFO, "Olympiad System: Loaded " + _tasks.length + " stadiums.");
+		LOGGER.log(Level.INFO, () -> "Olympiad System: Loaded " + _tasks.length + " stadiums.");
 	}
 	
 	protected final boolean isBattleStarted()

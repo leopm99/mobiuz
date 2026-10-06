@@ -861,7 +861,7 @@ public class PlayerInventory extends Inventory
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Could not restore inventory: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not restore inventory: " + e.getMessage());
 		}
 		return paperdoll;
 	}

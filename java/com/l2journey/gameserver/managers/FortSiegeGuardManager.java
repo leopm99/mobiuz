@@ -80,7 +80,7 @@ public class FortSiegeGuardManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Error spawning siege guards for fort " + _fort.getName() + ":" + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Error spawning siege guards for fort " + _fort.getName() + ":" + e.getMessage());
 		}
 	}
 	
@@ -106,7 +106,7 @@ public class FortSiegeGuardManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Error unspawning siege guards for fort " + _fort.getName() + ":" + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Error unspawning siege guards for fort " + _fort.getName() + ":" + e.getMessage());
 		}
 	}
 	
@@ -140,7 +140,7 @@ public class FortSiegeGuardManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Error loading siege guard for fort " + _fort.getName() + ": " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Error loading siege guard for fort " + _fort.getName() + ": " + e.getMessage());
 		}
 	}
 	

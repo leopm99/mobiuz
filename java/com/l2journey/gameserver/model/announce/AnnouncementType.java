@@ -41,7 +41,7 @@ public enum AnnouncementType
 				return type;
 			}
 		}
-		LOGGER.log(Level.WARNING, AnnouncementType.class.getSimpleName() + ": Unexistent id specified: " + id + "!", new IllegalStateException());
+		LOGGER.log(Level.WARNING, new IllegalStateException(), () -> AnnouncementType.class.getSimpleName() + ": Unexistent id specified: " + id + "!");
 		return NORMAL;
 	}
 	
@@ -54,7 +54,7 @@ public enum AnnouncementType
 				return type;
 			}
 		}
-		LOGGER.log(Level.WARNING, AnnouncementType.class.getSimpleName() + ": Unexistent name specified: " + name + "!", new IllegalStateException());
+		LOGGER.log(Level.WARNING, new IllegalStateException(), () -> AnnouncementType.class.getSimpleName() + ": Unexistent name specified: " + name + "!");
 		return NORMAL;
 	}
 }

@@ -118,7 +118,7 @@ public class Shortcuts
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Could not store character shortcut: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not store character shortcut: " + e.getMessage());
 		}
 	}
 	
@@ -173,7 +173,7 @@ public class Shortcuts
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Could not delete character shortcut: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not delete character shortcut: " + e.getMessage());
 		}
 	}
 	
@@ -199,7 +199,7 @@ public class Shortcuts
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Could not restore character shortcuts: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not restore character shortcuts: " + e.getMessage());
 			return false;
 		}
 		

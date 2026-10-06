@@ -322,7 +322,7 @@ public class FriendsBoard implements IWriteBoardHandler
 				}
 				catch (Exception e)
 				{
-					LOGGER.log(Level.WARNING, "FriendsBoard: error loading friend info for " + friendName, e);
+					LOGGER.log(Level.WARNING, e, () -> "FriendsBoard: error loading friend info for " + friendName);
 				}
 			}
 			
@@ -389,7 +389,7 @@ public class FriendsBoard implements IWriteBoardHandler
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "FriendsBoard: error deleting friend " + friendName, e);
+			LOGGER.log(Level.WARNING, e, () -> "FriendsBoard: error deleting friend " + friendName);
 			return;
 		}
 		
@@ -526,7 +526,7 @@ public class FriendsBoard implements IWriteBoardHandler
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "FriendsBoard: error loading block list for " + player.getName(), e);
+			LOGGER.log(Level.WARNING, e, () -> "FriendsBoard: error loading block list for " + player.getName());
 		}
 		return ids;
 	}

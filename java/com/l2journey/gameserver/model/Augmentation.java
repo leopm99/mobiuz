@@ -74,7 +74,7 @@ public class Augmentation
 				}
 				else
 				{
-					LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't find option: " + stat);
+					LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": Couldn't find option: " + stat);
 				}
 			}
 		}

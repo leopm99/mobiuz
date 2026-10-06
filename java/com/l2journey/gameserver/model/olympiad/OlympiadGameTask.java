@@ -150,7 +150,7 @@ public class OlympiadGameTask implements Runnable
 	{
 		if ((game != null) && (_state != OlympiadGameState.IDLE))
 		{
-			LOGGER.log(Level.WARNING, "Attempt to overwrite non-finished game in state " + _state);
+			LOGGER.log(Level.WARNING, () -> "Attempt to overwrite non-finished game in state " + _state);
 			return;
 		}
 		
@@ -317,14 +317,14 @@ public class OlympiadGameTask implements Runnable
 			{
 				case GAME_STOPPED, TELEPORT_TO_TOWN, CLEANUP, IDLE:
 				{
-					LOGGER.log(Level.WARNING, "Unable to return players back in town, exception: " + e.getMessage());
+					LOGGER.log(Level.WARNING, () -> "Unable to return players back in town, exception: " + e.getMessage());
 					_state = OlympiadGameState.IDLE;
 					_game = null;
 					return;
 				}
 			}
 			
-			LOGGER.log(Level.WARNING, "Exception in " + _state + ", trying to port players back: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception in " + _state + ", trying to port players back: " + e.getMessage());
 			_state = OlympiadGameState.GAME_STOPPED;
 			ThreadPool.schedule(this, 1000);
 		}

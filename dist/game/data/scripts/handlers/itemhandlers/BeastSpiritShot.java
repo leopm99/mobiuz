@@ -75,7 +75,7 @@ public class BeastSpiritShot implements IItemHandler
 		final SkillHolder[] skills = item.getTemplate().getSkills();
 		if (skills == null)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": is missing skills!");
+			LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": is missing skills!");
 			return false;
 		}
 		

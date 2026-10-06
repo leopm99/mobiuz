@@ -181,7 +181,7 @@ public enum BaseStat
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, "[BaseStats] Could not parse file: " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "[BaseStats] Could not parse file: " + e.getMessage());
 			}
 			
 			if (document != null)

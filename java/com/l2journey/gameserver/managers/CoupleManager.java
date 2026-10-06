@@ -75,7 +75,7 @@ public class CoupleManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Exception: CoupleManager.load(): " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Exception: CoupleManager.load(): " + e.getMessage());
 		}
 	}
 	

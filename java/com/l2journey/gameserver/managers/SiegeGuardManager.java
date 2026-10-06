@@ -127,7 +127,7 @@ public class SiegeGuardManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error deleting hired siege guard at " + x + ',' + y + ',' + z + ": " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error deleting hired siege guard at " + x + ',' + y + ',' + z + ": " + e.getMessage());
 		}
 	}
 	
@@ -144,7 +144,7 @@ public class SiegeGuardManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error deleting hired siege guard for castle " + _castle.getName() + ": " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error deleting hired siege guard for castle " + _castle.getName() + ": " + e.getMessage());
 		}
 	}
 	
@@ -181,7 +181,7 @@ public class SiegeGuardManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, getClass().getSimpleName() + ": Error spawning siege guards for castle " + _castle.getName(), e);
+			LOGGER.log(Level.SEVERE, e, () -> getClass().getSimpleName() + ": Error spawning siege guards for castle " + _castle.getName());
 		}
 	}
 	
@@ -229,7 +229,7 @@ public class SiegeGuardManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error loading siege guard for castle " + _castle.getName() + ": " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error loading siege guard for castle " + _castle.getName() + ": " + e.getMessage());
 		}
 	}
 	
@@ -259,7 +259,7 @@ public class SiegeGuardManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error adding siege guard for castle " + _castle.getName() + ": " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error adding siege guard for castle " + _castle.getName() + ": " + e.getMessage());
 		}
 	}
 	

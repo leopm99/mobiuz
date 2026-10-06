@@ -166,7 +166,7 @@ public class MerchantPriceConfigTable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, getClass().getSimpleName() + ": Failed loading MerchantPriceConfigTable. Reason: " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> getClass().getSimpleName() + ": Failed loading MerchantPriceConfigTable. Reason: " + e.getMessage());
 		}
 	}
 	

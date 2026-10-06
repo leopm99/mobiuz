@@ -112,7 +112,7 @@ public class PetFeedTask implements Runnable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Mounted Pet [NpcId: " + _player.getMountNpcId() + "] a feed task error has occurred", e);
+			LOGGER.log(Level.SEVERE, e, () -> "Mounted Pet [NpcId: " + _player.getMountNpcId() + "] a feed task error has occurred");
 		}
 	}
 }

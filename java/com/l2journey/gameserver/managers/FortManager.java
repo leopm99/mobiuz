@@ -194,7 +194,7 @@ public class FortManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: loadFortData(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: loadFortData(): " + e.getMessage());
 		}
 	}
 	

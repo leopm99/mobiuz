@@ -133,7 +133,7 @@ public class FishingChampionshipManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, "FishingChampionshipManager: can't restore fishing championship info: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "FishingChampionshipManager: can't restore fishing championship info: " + e.getMessage());
 		}
 	}
 	
@@ -397,7 +397,7 @@ public class FishingChampionshipManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, "FishingChampionshipManager: can't update infos: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "FishingChampionshipManager: can't update infos: " + e.getMessage());
 		}
 	}
 	

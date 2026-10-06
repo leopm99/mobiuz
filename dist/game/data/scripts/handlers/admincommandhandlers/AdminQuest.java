@@ -114,7 +114,7 @@ public class AdminQuest implements IAdminCommandHandler
 			catch (Exception e)
 			{
 				activeChar.sendSysMessage("Failed to load script!");
-				LOGGER.log(Level.WARNING, "Failed to load script " + script + "!", e);
+				LOGGER.log(Level.WARNING, e, () -> "Failed to load script " + script + "!");
 			}
 		}
 		else if (command.startsWith("admin_script_unload"))

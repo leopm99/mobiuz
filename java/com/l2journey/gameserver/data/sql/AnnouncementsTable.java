@@ -94,7 +94,7 @@ public class AnnouncementsTable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Failed loading announcements:", e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Failed loading announcements:");
 		}
 	}
 	

@@ -320,7 +320,7 @@ public class Clan
 		broadcastClanStatus();
 		broadcastToOnlineMembers(new SystemMessage(SystemMessageId.CLAN_LORD_PRIVILEGES_HAVE_BEEN_TRANSFERRED_TO_C1).addString(member.getName()));
 		
-		LOGGER.log(Level.INFO, "Leader of Clan: " + getName() + " changed to: " + member.getName() + " ex leader: " + exMember.getName());
+		LOGGER.log(Level.INFO, () -> "Leader of Clan: " + getName() + " changed to: " + member.getName() + " ex leader: " + exMember.getName());
 	}
 	
 	/**
@@ -900,7 +900,7 @@ public class Clan
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception on updateBloodAllianceCountInDB(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception on updateBloodAllianceCountInDB(): " + e.getMessage());
 		}
 	}
 	
@@ -944,7 +944,7 @@ public class Clan
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception on updateBloodAllianceCountInDB(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception on updateBloodAllianceCountInDB(): " + e.getMessage());
 		}
 	}
 	
@@ -981,7 +981,7 @@ public class Clan
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Error saving clan: " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Error saving clan: " + e.getMessage());
 		}
 	}
 	
@@ -1022,7 +1022,7 @@ public class Clan
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Error saving new clan: " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Error saving new clan: " + e.getMessage());
 		}
 	}
 	
@@ -1054,7 +1054,7 @@ public class Clan
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Error removing clan member: " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Error removing clan member: " + e.getMessage());
 		}
 	}
 	
@@ -1128,7 +1128,7 @@ public class Clan
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Error restoring clan data: " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Error restoring clan data: " + e.getMessage());
 		}
 	}
 	
@@ -1149,7 +1149,7 @@ public class Clan
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Error restoring clan notice: " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Error restoring clan notice: " + e.getMessage());
 		}
 	}
 	
@@ -1192,7 +1192,7 @@ public class Clan
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Error could not store clan notice: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Error could not store clan notice: " + e.getMessage());
 		}
 		
 		_notice = notice;
@@ -1275,7 +1275,7 @@ public class Clan
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Error restoring clan skills: " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Error restoring clan skills: " + e.getMessage());
 		}
 	}
 	
@@ -1334,7 +1334,7 @@ public class Clan
 				final SubPledge subunit = getSubPledge(subType);
 				if (subunit == null)
 				{
-					LOGGER.log(Level.WARNING, "Subpledge " + subType + " does not exist for clan " + this);
+					LOGGER.log(Level.WARNING, () -> "Subpledge " + subType + " does not exist for clan " + this);
 					return oldSkill;
 				}
 				oldSkill = subunit.addNewSkill(newSkill);
@@ -1367,7 +1367,7 @@ public class Clan
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, "Error could not store clan skills: " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "Error could not store clan skills: " + e.getMessage());
 			}
 			
 			final SystemMessage sm = new SystemMessage(SystemMessageId.THE_CLAN_SKILL_S1_HAS_BEEN_ADDED);
@@ -1803,7 +1803,7 @@ public class Clan
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Could not restore clan sub-units: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not restore clan sub-units: " + e.getMessage());
 		}
 	}
 	
@@ -1902,7 +1902,7 @@ public class Clan
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Error saving sub clan data: " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Error saving sub clan data: " + e.getMessage());
 		}
 		
 		broadcastToOnlineMembers(new PledgeShowInfoUpdate(_leader.getClan()));
@@ -1963,7 +1963,7 @@ public class Clan
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Error updating subpledge: " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Error updating subpledge: " + e.getMessage());
 		}
 	}
 	
@@ -1995,7 +1995,7 @@ public class Clan
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Error restoring clan privs by rank: " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Error restoring clan privs by rank: " + e.getMessage());
 		}
 	}
 	
@@ -2030,7 +2030,7 @@ public class Clan
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, "Could not store clan privs for rank: " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "Could not store clan privs for rank: " + e.getMessage());
 			}
 			
 			for (ClanMember cm : getMembers())
@@ -2059,7 +2059,7 @@ public class Clan
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, "Could not create new rank and store clan privs for rank: " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "Could not create new rank and store clan privs for rank: " + e.getMessage());
 			}
 		}
 	}
@@ -2171,7 +2171,7 @@ public class Clan
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, "Could not store auction for clan: " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "Could not store auction for clan: " + e.getMessage());
 			}
 		}
 	}
@@ -2700,7 +2700,7 @@ public class Clan
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "could not increase clan level:" + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "could not increase clan level:" + e.getMessage());
 		}
 		
 		setLevel(level);
@@ -2747,7 +2747,7 @@ public class Clan
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, "Could not update crest for clan " + _name + " [" + _clanId + "] : " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not update crest for clan " + _name + " [" + _clanId + "] : " + e.getMessage());
 		}
 		
 		for (Player member : getOnlineMembers(0))
@@ -2775,16 +2775,18 @@ public class Clan
 			allyId = _allyId;
 		}
 		
+		final String allyCrestSql = sqlStatement;
+		final int allyCrestTargetId = allyId;
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps = con.prepareStatement(sqlStatement))
+			PreparedStatement ps = con.prepareStatement(allyCrestSql))
 		{
 			ps.setInt(1, crestId);
-			ps.setInt(2, allyId);
+			ps.setInt(2, allyCrestTargetId);
 			ps.executeUpdate();
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, "Could not update ally crest for ally/clan id " + allyId + " : " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not update ally crest for ally/clan id " + allyCrestTargetId + " : " + e.getMessage());
 		}
 		
 		if (onlyThisClan)
@@ -2830,7 +2832,7 @@ public class Clan
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, "Could not update large crest for clan " + _name + " [" + _clanId + "] : " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not update large crest for clan " + _name + " [" + _clanId + "] : " + e.getMessage());
 		}
 		
 		for (Player member : getOnlineMembers(0))

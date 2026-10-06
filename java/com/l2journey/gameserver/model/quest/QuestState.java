@@ -291,7 +291,8 @@ public class QuestState
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, _player.getName() + ", " + _questName + " cond [" + newValue + "] is not an integer.  Value stored, but no packet was sent: " + e.getMessage(), e);
+				final String storedValue = newValue;
+				LOGGER.log(Level.WARNING, e, () -> _player.getName() + ", " + _questName + " cond [" + storedValue + "] is not an integer.  Value stored, but no packet was sent: " + e.getMessage());
 			}
 		}
 	}
@@ -446,7 +447,7 @@ public class QuestState
 		}
 		catch (NumberFormatException nfe)
 		{
-			LOGGER.log(Level.INFO, "Quest " + _questName + ", method getInt(" + variable + "), tried to parse a non-integer value (" + varStr + "). Char Id: " + _player.getObjectId(), nfe);
+			LOGGER.log(Level.INFO, nfe, () -> "Quest " + _questName + ", method getInt(" + variable + "), tried to parse a non-integer value (" + varStr + "). Char Id: " + _player.getObjectId());
 		}
 		
 		return varInt;

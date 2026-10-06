@@ -50,7 +50,7 @@ public class FunctionEventListener extends AbstractEventListener
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error while invoking " + event + " on " + getOwner(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error while invoking " + event + " on " + getOwner());
 		}
 		return null;
 	}

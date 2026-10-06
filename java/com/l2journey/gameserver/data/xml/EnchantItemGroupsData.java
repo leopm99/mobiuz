@@ -56,8 +56,8 @@ public class EnchantItemGroupsData implements IXmlReader
 		_itemGroups.clear();
 		_scrollGroups.clear();
 		parseDatapackFile("data/EnchantItemGroups.xml");
-		LOGGER.log(Level.INFO, getClass().getSimpleName() + ": Loaded " + _itemGroups.size() + " item group templates.");
-		LOGGER.log(Level.INFO, getClass().getSimpleName() + ": Loaded " + _scrollGroups.size() + " scroll group templates.");
+		LOGGER.log(Level.INFO, () -> getClass().getSimpleName() + ": Loaded " + _itemGroups.size() + " item group templates.");
+		LOGGER.log(Level.INFO, () -> getClass().getSimpleName() + ": Loaded " + _scrollGroups.size() + " scroll group templates.");
 		
 		if (Config.OVER_ENCHANT_PROTECTION)
 		{

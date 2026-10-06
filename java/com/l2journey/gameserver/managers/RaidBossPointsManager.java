@@ -72,7 +72,7 @@ public class RaidBossPointsManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Could not load raid points ", e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Could not load raid points ");
 		}
 	}
 	
@@ -88,7 +88,7 @@ public class RaidBossPointsManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't update char raid points for player: " + player, e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Couldn't update char raid points for player: " + player);
 		}
 	}
 	
@@ -129,7 +129,7 @@ public class RaidBossPointsManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't clean raid points", e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Couldn't clean raid points");
 		}
 	}
 	

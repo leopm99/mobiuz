@@ -360,7 +360,7 @@ public class Spawn extends Location
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "NPC " + _template.getId() + " class not found", e);
+			LOGGER.log(Level.WARNING, e, () -> "NPC " + _template.getId() + " class not found");
 		}
 		return null;
 	}

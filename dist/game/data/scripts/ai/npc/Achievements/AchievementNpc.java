@@ -198,7 +198,7 @@ public class AchievementNpc extends AbstractNpcAI
 			LOGGER.log(Level.INFO, "Achievements: Loaded");
 			if (!f.exists())
 			{
-				LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": " + ACHIEVEMENTS_FILE + " not found: " + f.getAbsolutePath());
+				LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": " + ACHIEVEMENTS_FILE + " not found: " + f.getAbsolutePath());
 				return;
 			}
 			
@@ -215,7 +215,7 @@ public class AchievementNpc extends AbstractNpcAI
 			
 			final Set<Integer> parsedBases = new HashSet<>();
 			traverseAndParse(root, parsedBases);
-			LOGGER.log(Level.INFO, getClass().getSimpleName() + ": Categories: " + CATEGORIES.size() + ", Achievements: " + BASE_ACHIEVEMENTS.size());
+			LOGGER.log(Level.INFO, () -> getClass().getSimpleName() + ": Categories: " + CATEGORIES.size() + ", Achievements: " + BASE_ACHIEVEMENTS.size());
 		}
 		catch (Exception e)
 		{
@@ -259,7 +259,7 @@ public class AchievementNpc extends AbstractNpcAI
 					int baseId = parseInt(n, "id", -1);
 					if ((baseId >= 0) && parsedBases.contains(baseId))
 					{
-						LOGGER.log(Level.WARNING, "Duplicate achievement: id=" + baseId + " ignored.");
+						LOGGER.log(Level.WARNING, () -> "Duplicate achievement: id=" + baseId + " ignored.");
 					}
 					else
 					{
@@ -332,7 +332,7 @@ public class AchievementNpc extends AbstractNpcAI
 		String desc = parseString(n, "desc", "");
 		if ((baseId < 0) || (catId < 0))
 		{
-			LOGGER.log(Level.WARNING, "Base achievement ignored (invalid id or category): id=" + baseId + ", cat=" + catId);
+			LOGGER.log(Level.WARNING, () -> "Base achievement ignored (invalid id or category): id=" + baseId + ", cat=" + catId);
 			return;
 		}
 		
@@ -362,13 +362,13 @@ public class AchievementNpc extends AbstractNpcAI
 						String licon = parseString(l, "icon", null);
 						if ((levelId < 0) || (need < 0))
 						{
-							LOGGER.log(Level.WARNING, "Invalid level in base achievement=" + baseId + " level=" + levelId);
+							LOGGER.log(Level.WARNING, () -> "Invalid level in base achievement=" + baseId + " level=" + levelId);
 							continue;
 						}
 						int physicalId = (baseId * LEVEL_ID_FACTOR) + levelId;
 						if (LEVELS_BY_PHYSICAL_ID.containsKey(physicalId))
 						{
-							LOGGER.log(Level.SEVERE, "physicalId collision=" + physicalId + " (base achievement " + baseId + ")");
+							LOGGER.log(Level.SEVERE, () -> "physicalId collision=" + physicalId + " (base achievement " + baseId + ")");
 							continue;
 						}
 						LevelEntry le = new LevelEntry(levelId, physicalId, need, lname, licon);
@@ -420,7 +420,7 @@ public class AchievementNpc extends AbstractNpcAI
 		
 		if (base.levels.isEmpty())
 		{
-			LOGGER.log(Level.WARNING, "Base achievement without levels: " + baseId);
+			LOGGER.log(Level.WARNING, () -> "Base achievement without levels: " + baseId);
 			return;
 		}
 		
@@ -1352,7 +1352,7 @@ public class AchievementNpc extends AbstractNpcAI
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Failed to load template: " + path, e);
+			LOGGER.log(Level.WARNING, e, () -> "Failed to load template: " + path);
 			return "<html><body><font color=FF0000>Template error: " + path + "</font></body></html>";
 		}
 	}

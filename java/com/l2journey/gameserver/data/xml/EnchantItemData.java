@@ -76,10 +76,11 @@ public class EnchantItemData implements IXmlReader
 							att = attrs.item(i);
 							set.set(att.getNodeName(), att.getNodeValue());
 						}
+						final StatSet scrollSet = set;
 						
 						try
 						{
-							final EnchantScroll item = new EnchantScroll(set);
+							final EnchantScroll item = new EnchantScroll(scrollSet);
 							for (Node cd = d.getFirstChild(); cd != null; cd = cd.getNextSibling())
 							{
 								if ("item".equalsIgnoreCase(cd.getNodeName()))
@@ -91,11 +92,11 @@ public class EnchantItemData implements IXmlReader
 						}
 						catch (NullPointerException _)
 						{
-							LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Unexistent enchant scroll: " + set.getString("id") + " defined in enchant data!");
+							LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": Unexistent enchant scroll: " + scrollSet.getString("id") + " defined in enchant data!");
 						}
 						catch (IllegalAccessError _)
 						{
-							LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Wrong enchant scroll item type: " + set.getString("id") + " defined in enchant data!");
+							LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": Wrong enchant scroll item type: " + scrollSet.getString("id") + " defined in enchant data!");
 						}
 					}
 					else if ("support".equalsIgnoreCase(d.getNodeName()))
@@ -107,19 +108,20 @@ public class EnchantItemData implements IXmlReader
 							att = attrs.item(i);
 							set.set(att.getNodeName(), att.getNodeValue());
 						}
+						final StatSet supportSet = set;
 						
 						try
 						{
-							final EnchantSupportItem item = new EnchantSupportItem(set);
+							final EnchantSupportItem item = new EnchantSupportItem(supportSet);
 							_supports.put(item.getId(), item);
 						}
 						catch (NullPointerException _)
 						{
-							LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Unexistent enchant support item: " + set.getString("id") + " defined in enchant data!");
+							LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": Unexistent enchant support item: " + supportSet.getString("id") + " defined in enchant data!");
 						}
 						catch (IllegalAccessError _)
 						{
-							LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Wrong enchant support item type: " + set.getString("id") + " defined in enchant data!");
+							LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": Wrong enchant support item type: " + supportSet.getString("id") + " defined in enchant data!");
 						}
 					}
 				}

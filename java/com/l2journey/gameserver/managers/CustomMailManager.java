@@ -120,7 +120,7 @@ public class CustomMailManager
 						}
 						catch (SQLException e)
 						{
-							LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error deleting entry from database: ", e);
+							LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error deleting entry from database: ");
 						}
 						
 						// Send message.
@@ -131,7 +131,7 @@ public class CustomMailManager
 			}
 			catch (SQLException e)
 			{
-				LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error reading from database: ", e);
+				LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error reading from database: ");
 			}
 		}, Config.CUSTOM_MAIL_MANAGER_DELAY, Config.CUSTOM_MAIL_MANAGER_DELAY);
 		

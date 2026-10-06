@@ -95,7 +95,7 @@ public class BotReportTable
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Could not load punishments from /config/security/botreportpunishments.xml", e);
+				LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Could not load punishments from /config/security/botreportpunishments.xml");
 			}
 			
 			loadReportedCharData();
@@ -169,7 +169,7 @@ public class BotReportTable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Could not load reported char data!", e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Could not load reported char data!");
 		}
 	}
 	
@@ -199,7 +199,7 @@ public class BotReportTable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, getClass().getSimpleName() + ": Could not update reported char data in database!", e);
+			LOGGER.log(Level.SEVERE, e, () -> getClass().getSimpleName() + ": Could not update reported char data in database!");
 		}
 	}
 	
@@ -427,7 +427,7 @@ public class BotReportTable
 		catch (Exception e)
 		{
 			ThreadPool.schedule(new ResetPointTask(), 24 * 3600 * 1000);
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Could not properly schedule bot report points reset task. Scheduled in 24 hours.", e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Could not properly schedule bot report points reset task. Scheduled in 24 hours.");
 		}
 	}
 	

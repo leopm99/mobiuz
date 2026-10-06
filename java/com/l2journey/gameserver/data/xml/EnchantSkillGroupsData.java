@@ -134,7 +134,7 @@ public class EnchantSkillGroupsData implements IXmlReader
 			enchantableSkill.addNewEnchantRoute(route, group);
 			return _enchantSkillGroups.get(group).getEnchantGroupDetails().size();
 		}
-		LOGGER.log(Level.SEVERE, getClass().getSimpleName() + ": Error while loading generating enchant skill id: " + skillId + "; route: " + route + "; missing group: " + group);
+		LOGGER.log(Level.SEVERE, () -> getClass().getSimpleName() + ": Error while loading generating enchant skill id: " + skillId + "; route: " + route + "; missing group: " + group);
 		return 0;
 	}
 	

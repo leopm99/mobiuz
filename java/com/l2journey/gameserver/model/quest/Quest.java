@@ -609,7 +609,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception on onTeleport() in notifyTeleport(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception on onTeleport() in notifyTeleport(): " + e.getMessage());
 		}
 	}
 	
@@ -725,7 +725,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception on onEventReceived() in notifyEventReceived(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception on onEventReceived() in notifyEventReceived(): " + e.getMessage());
 		}
 	}
 	
@@ -742,7 +742,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Execution on onOlympiadMatchFinish() in notifyOlympiadMatch(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Execution on onOlympiadMatchFinish() in notifyOlympiadMatch(): " + e.getMessage());
 		}
 	}
 	
@@ -757,7 +757,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception on onMoveFinished() in notifyMoveFinished(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception on onMoveFinished() in notifyMoveFinished(): " + e.getMessage());
 		}
 	}
 	
@@ -772,7 +772,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception on onNodeArrived() in notifyNodeArrived(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception on onNodeArrived() in notifyNodeArrived(): " + e.getMessage());
 		}
 	}
 	
@@ -787,7 +787,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception on onRouteFinished() in notifyRouteFinished(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception on onRouteFinished() in notifyRouteFinished(): " + e.getMessage());
 		}
 	}
 	
@@ -804,7 +804,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception on onCanSeeMe() in notifyOnCanSeeMe(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception on onCanSeeMe() in notifyOnCanSeeMe(): " + e.getMessage());
 		}
 		return false;
 	}
@@ -5221,7 +5221,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		final Door door = getDoor(doorId, instanceId);
 		if (door == null)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": called openDoor(" + doorId + ", " + instanceId + "); but door was not found!", new NullPointerException());
+			LOGGER.log(Level.WARNING, new NullPointerException(), () -> getClass().getSimpleName() + ": called openDoor(" + doorId + ", " + instanceId + "); but door was not found!");
 		}
 		else if (!door.isOpen())
 		{
@@ -5239,7 +5239,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		final Door door = getDoor(doorId, instanceId);
 		if (door == null)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": called closeDoor(" + doorId + ", " + instanceId + "); but door was not found!", new NullPointerException());
+			LOGGER.log(Level.WARNING, new NullPointerException(), () -> getClass().getSimpleName() + ": called closeDoor(" + doorId + ", " + instanceId + "); but door was not found!");
 		}
 		else if (door.isOpen())
 		{

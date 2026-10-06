@@ -155,7 +155,7 @@ public class PhantomConfig
 		}
 		catch (IOException | ParserConfigurationException | SAXException | NumberFormatException e)
 		{
-			LOGGER.log(Level.WARNING, "[PHANTOM] Failed to load XML: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "[PHANTOM] Failed to load XML: " + e.getMessage());
 		}
 	}
 	
@@ -247,7 +247,7 @@ public class PhantomConfig
 		}
 		catch (IOException e)
 		{
-			LOGGER.log(Level.WARNING, "[PHANTOM] Failed to save XML: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "[PHANTOM] Failed to save XML: " + e.getMessage());
 			PhantomManager.logToFile("XML", "Error: " + e.getMessage());
 		}
 	}

@@ -165,7 +165,8 @@ public class DatabaseFactory
 				}
 				catch (SQLException e)
 				{
-					LOGGER.log(Level.SEVERE, "Database: Failed to open connection " + (i + 1) + "!", e);
+					final int attempt = i + 1;
+					LOGGER.log(Level.SEVERE, e, () -> "Database: Failed to open connection " + attempt + "!");
 					break;
 				}
 			}

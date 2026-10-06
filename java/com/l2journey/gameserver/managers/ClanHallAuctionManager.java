@@ -119,7 +119,7 @@ public class ClanHallAuctionManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Exception: AuctionManager.load(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Exception: AuctionManager.load(): " + e.getMessage());
 		}
 	}
 	
@@ -181,7 +181,7 @@ public class ClanHallAuctionManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, getClass().getSimpleName() + ": Exception: Auction.initNPC(): " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> getClass().getSimpleName() + ": Exception: Auction.initNPC(): " + e.getMessage());
 		}
 	}
 	

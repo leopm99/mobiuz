@@ -138,7 +138,7 @@ public class AdminCommandHandler implements IHandler<IAdminCommandHandler, Strin
 				catch (RuntimeException e)
 				{
 					player.sendMessage("Exception during execution of  '" + fullCommand + "': " + e.toString());
-					LOGGER.log(Level.WARNING, "Exception during execution of " + fullCommand, e);
+					LOGGER.log(Level.WARNING, e, () -> "Exception during execution of " + fullCommand);
 				}
 				finally
 				{

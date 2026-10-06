@@ -17825,7 +17825,7 @@ public class NpcStringId
 				}
 				catch (Exception e)
 				{
-					LOGGER.log(Level.WARNING, "NpcStringId: Failed field access for '" + field.getName() + "'", e);
+					LOGGER.log(Level.WARNING, e, () -> "NpcStringId: Failed field access for '" + field.getName() + "'");
 				}
 			}
 		}
@@ -17933,21 +17933,24 @@ public class NpcStringId
 									nsId = getNpcStringId(Integer.parseInt(node.getNodeValue()));
 									if (nsId == null)
 									{
-										LOGGER.log(Level.WARNING, "NpcStringId: Unknown NSID '" + node.getNodeValue() + "', lang '" + lang + "'.");
+										final Node missingIdNode = node;
+										LOGGER.log(Level.WARNING, () -> "NpcStringId: Unknown NSID '" + missingIdNode.getNodeValue() + "', lang '" + lang + "'.");
 										continue;
 									}
 									
 									node = nnmb.getNamedItem("translation");
 									if (node == null)
 									{
-										LOGGER.log(Level.WARNING, "NpcStringId: No text defined for NSID '" + nsId + "', lang '" + lang + "'.");
+										final NpcStringId missingNsId = nsId;
+										LOGGER.log(Level.WARNING, () -> "NpcStringId: No text defined for NSID '" + missingNsId + "', lang '" + lang + "'.");
 										continue;
 									}
 									
 									text = node.getNodeValue();
 									if (text.isEmpty() || (text.length() > 255))
 									{
-										LOGGER.log(Level.WARNING, "NpcStringId: Invalid text defined for NSID '" + nsId + "' (to long or empty), lang '" + lang + "'.");
+										final NpcStringId invalidNsId = nsId;
+										LOGGER.log(Level.WARNING, () -> "NpcStringId: Invalid text defined for NSID '" + invalidNsId + "' (to long or empty), lang '" + lang + "'.");
 										continue;
 									}
 									
@@ -17960,10 +17963,11 @@ public class NpcStringId
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.SEVERE, "NpcStringId: Failed loading '" + file + "'", e);
+				final File failedFile = file;
+				LOGGER.log(Level.SEVERE, e, () -> "NpcStringId: Failed loading '" + failedFile + "'");
 			}
 			
-			LOGGER.log(Level.INFO, "NpcStringId: Loaded localisations for [" + lang + "].");
+			LOGGER.log(Level.INFO, () -> "NpcStringId: Loaded localisations for [" + lang + "].");
 		}
 	}
 	

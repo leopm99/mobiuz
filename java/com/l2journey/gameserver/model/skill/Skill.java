@@ -1070,7 +1070,7 @@ public class Skill
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, "Exception in Skill.getTargetList(): " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "Exception in Skill.getTargetList(): " + e.getMessage());
 			}
 		}
 		

@@ -157,7 +157,7 @@ public class AutoSpawnHandler
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "AutoSpawnHandler: Could not restore spawn data: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "AutoSpawnHandler: Could not restore spawn data: " + e.getMessage());
 		}
 	}
 	
@@ -231,7 +231,7 @@ public class AutoSpawnHandler
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "AutoSpawnHandler: Could not auto spawn for NPC ID " + spawnInst._npcId + " (Object ID = " + spawnInst._objectId + "): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "AutoSpawnHandler: Could not auto spawn for NPC ID " + spawnInst._npcId + " (Object ID = " + spawnInst._objectId + "): " + e.getMessage());
 			return false;
 		}
 		
@@ -496,7 +496,7 @@ public class AutoSpawnHandler
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, "AutoSpawnHandler: An error occurred while initializing spawn instance (Object ID = " + _objectId + "): " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "AutoSpawnHandler: An error occurred while initializing spawn instance (Object ID = " + _objectId + "): " + e.getMessage());
 			}
 		}
 	}
@@ -541,7 +541,7 @@ public class AutoSpawnHandler
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, "AutoSpawnHandler: An error occurred while despawning spawn (Object ID = " + _objectId + "): " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "AutoSpawnHandler: An error occurred while despawning spawn (Object ID = " + _objectId + "): " + e.getMessage());
 			}
 		}
 	}

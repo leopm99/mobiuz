@@ -148,7 +148,7 @@ public class SevenSigns
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "SevenSigns: Failed to load configuration: " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "SevenSigns: Failed to load configuration: " + e.getMessage());
 		}
 		
 		LOGGER.info("SevenSigns: Currently in the " + getCurrentPeriodName() + " period!");
@@ -864,7 +864,7 @@ public class SevenSigns
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.SEVERE, "SevenSigns: Unable to load Seven Signs data from database: " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "SevenSigns: Unable to load Seven Signs data from database: " + e.getMessage());
 		}
 		// Festival data is loaded now after the Seven Signs engine data.
 	}
@@ -894,7 +894,7 @@ public class SevenSigns
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.SEVERE, "SevenSigns: Unable to save data to database: " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "SevenSigns: Unable to save data to database: " + e.getMessage());
 		}
 	}
 	
@@ -921,7 +921,7 @@ public class SevenSigns
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.SEVERE, "SevenSigns: Unable to save data to database: " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "SevenSigns: Unable to save data to database: " + e.getMessage());
 		}
 	}
 	
@@ -957,7 +957,7 @@ public class SevenSigns
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.SEVERE, "SevenSigns: Unable to save data to database: " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "SevenSigns: Unable to save data to database: " + e.getMessage());
 		}
 	}
 	
@@ -1020,7 +1020,7 @@ public class SevenSigns
 			}
 			catch (SQLException e)
 			{
-				LOGGER.log(Level.SEVERE, "SevenSigns: Failed to save data: " + e.getMessage(), e);
+				LOGGER.log(Level.SEVERE, e, () -> "SevenSigns: Failed to save data: " + e.getMessage());
 			}
 		}
 		

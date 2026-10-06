@@ -107,7 +107,7 @@ public class LotteryManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, "Lottery: Could not increase current lottery prize: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Lottery: Could not increase current lottery prize: " + e.getMessage());
 		}
 	}
 	
@@ -169,7 +169,7 @@ public class LotteryManager
 			}
 			catch (SQLException e)
 			{
-				LOGGER.log(Level.WARNING, "Lottery: Could not restore lottery data: " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "Lottery: Could not restore lottery data: " + e.getMessage());
 			}
 			
 			_isSellingTickets = true;
@@ -208,7 +208,7 @@ public class LotteryManager
 			}
 			catch (SQLException e)
 			{
-				LOGGER.log(Level.WARNING, "Lottery: Could not store new lottery data: " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "Lottery: Could not store new lottery data: " + e.getMessage());
 			}
 		}
 	}
@@ -334,7 +334,7 @@ public class LotteryManager
 			}
 			catch (SQLException e)
 			{
-				LOGGER.log(Level.WARNING, "Lottery: Could restore lottery data: " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "Lottery: Could restore lottery data: " + e.getMessage());
 			}
 			
 			final long prize4 = count4 * Config.ALT_LOTTERY_2_AND_1_NUMBER_PRIZE;
@@ -390,7 +390,7 @@ public class LotteryManager
 			}
 			catch (SQLException e)
 			{
-				LOGGER.log(Level.WARNING, "Lottery: Could not store finished lottery data: " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "Lottery: Could not store finished lottery data: " + e.getMessage());
 			}
 			
 			ThreadPool.schedule(new startLottery(), MINUTE);
@@ -516,7 +516,7 @@ public class LotteryManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, "Lottery: Could not check lottery ticket #" + id + ": " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Lottery: Could not check lottery ticket #" + id + ": " + e.getMessage());
 		}
 		return res;
 	}

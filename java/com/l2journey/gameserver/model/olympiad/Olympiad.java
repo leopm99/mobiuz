@@ -968,7 +968,7 @@ public class Olympiad extends ListenersContainer
 				}
 				catch (SQLException e)
 				{
-					LOGGER.log(Level.SEVERE, "Olympiad System: Failed to save noble data for charId " + charId, e);
+					LOGGER.log(Level.SEVERE, e, () -> "Olympiad System: Failed to save noble data for charId " + charId);
 				}
 			}
 		}

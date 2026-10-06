@@ -96,7 +96,7 @@ public abstract class BaseGameServerRegister
 					}
 					catch (NumberFormatException _)
 					{
-						System.out.printf("wrong argument for GameServer removal, specify a numeric ID or \"all\" without quotes to remove all." + System.lineSeparator(), gsId);
+						System.out.printf("wrong argument for GameServer removal, specify a numeric ID or \"all\" without quotes to remove all." + "%n", gsId);
 						System.exit(1);
 					}
 				}
@@ -371,21 +371,21 @@ public abstract class BaseGameServerRegister
 					}
 					else
 					{
-						System.out.printf(_bundle.getString("registrationOk") + System.lineSeparator(), registeredId);
+						System.out.printf(_bundle.getString("registrationOk") + "%n", registeredId);
 					}
 				}
 				else
 				{
-					System.out.printf(_bundle.getString("checkingIdInUse") + System.lineSeparator(), _id);
+					System.out.printf(_bundle.getString("checkingIdInUse") + "%n", _id);
 					if (GameServerTable.getInstance().hasRegisteredGameServerOnId(_id))
 					{
 						System.out.println(_bundle.getString("yes"));
 						if (_force)
 						{
-							System.out.printf(_bundle.getString("forcingRegistration") + System.lineSeparator(), _id);
+							System.out.printf(_bundle.getString("forcingRegistration") + "%n", _id);
 							unregisterGameServer(_id);
 							registerGameServer(_id, _outDir);
-							System.out.printf(_bundle.getString("registrationOk") + System.lineSeparator(), _id);
+							System.out.printf(_bundle.getString("registrationOk") + "%n", _id);
 						}
 						else if (_fallback)
 						{
@@ -397,7 +397,7 @@ public abstract class BaseGameServerRegister
 							}
 							else
 							{
-								System.out.printf(_bundle.getString("registrationOk") + System.lineSeparator(), registeredId);
+								System.out.printf(_bundle.getString("registrationOk") + "%n", registeredId);
 							}
 						}
 						else
@@ -442,7 +442,7 @@ public abstract class BaseGameServerRegister
 		@Override
 		public void run()
 		{
-			System.out.printf(_bundle.getString("removingGsId") + System.lineSeparator(), _id);
+			System.out.printf(_bundle.getString("removingGsId") + "%n", _id);
 			try
 			{
 				unregisterGameServer(_id);

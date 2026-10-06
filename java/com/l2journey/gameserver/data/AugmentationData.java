@@ -108,8 +108,8 @@ public class AugmentationData
 		}
 		else
 		{
-			LOGGER.log(Level.INFO, getClass().getSimpleName() + ": Loaded " + _augmentationChances.size() + " augmentations.");
-			LOGGER.log(Level.INFO, getClass().getSimpleName() + ": Loaded " + _augmentationChancesAcc.size() + " accessory augmentations.");
+			LOGGER.log(Level.INFO, () -> getClass().getSimpleName() + ": Loaded " + _augmentationChances.size() + " augmentations.");
+			LOGGER.log(Level.INFO, () -> getClass().getSimpleName() + ": Loaded " + _augmentationChancesAcc.size() + " accessory augmentations.");
 		}
 	}
 	
@@ -229,7 +229,7 @@ public class AugmentationData
 				final File file = new File(Config.DATAPACK_ROOT + "/data/stats/augmentation/augmentation_skillmap.xml");
 				if (!file.exists())
 				{
-					LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": ERROR The augmentation skillmap file is missing.");
+					LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": ERROR The augmentation skillmap file is missing.");
 					return;
 				}
 				
@@ -301,7 +301,7 @@ public class AugmentationData
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": ERROR parsing augmentation_skillmap.xml.", e);
+				LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": ERROR parsing augmentation_skillmap.xml.");
 				return;
 			}
 		}
@@ -389,7 +389,7 @@ public class AugmentationData
 			}
 			else
 			{
-				LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": ERROR The retailchances.xml data file is missing.");
+				LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": ERROR The retailchances.xml data file is missing.");
 				return;
 			}
 		}
@@ -471,7 +471,7 @@ public class AugmentationData
 			}
 			else
 			{
-				LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": ERROR The retailchances_accessory.xml data file is missing.");
+				LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": ERROR The retailchances_accessory.xml data file is missing.");
 			}
 		}
 	}

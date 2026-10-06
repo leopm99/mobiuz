@@ -109,7 +109,7 @@ public class DocumentItem extends DocumentBase
 						}
 						catch (Exception e)
 						{
-							LOGGER.log(Level.WARNING, "Cannot create item " + _currentItem.id, e);
+							LOGGER.log(Level.WARNING, e, () -> "Cannot create item " + _currentItem.id);
 						}
 					}
 				}

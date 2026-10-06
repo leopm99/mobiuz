@@ -81,13 +81,13 @@ public class ItemAuctionManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.SEVERE, getClass().getSimpleName() + ": Failed loading auctions.", e);
+			LOGGER.log(Level.SEVERE, e, () -> getClass().getSimpleName() + ": Failed loading auctions.");
 		}
 		
 		final File file = new File(Config.DATAPACK_ROOT, "data/ItemAuctions.xml");
 		if (!file.exists())
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Missing ItemAuctions.xml!");
+			LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": Missing ItemAuctions.xml!");
 			return;
 		}
 		
@@ -119,11 +119,11 @@ public class ItemAuctionManager
 					}
 				}
 			}
-			LOGGER.log(Level.INFO, getClass().getSimpleName() + ": Loaded " + _managerInstances.size() + " instance(s).");
+			LOGGER.log(Level.INFO, () -> getClass().getSimpleName() + ": Loaded " + _managerInstances.size() + " instance(s).");
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, getClass().getSimpleName() + ": Failed loading auctions from xml.", e);
+			LOGGER.log(Level.SEVERE, e, () -> getClass().getSimpleName() + ": Failed loading auctions from xml.");
 		}
 	}
 	
@@ -163,7 +163,7 @@ public class ItemAuctionManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.SEVERE, "ItemAuctionManagerInstance: Failed deleting auction: " + auctionId, e);
+			LOGGER.log(Level.SEVERE, e, () -> "ItemAuctionManagerInstance: Failed deleting auction: " + auctionId);
 		}
 	}
 	

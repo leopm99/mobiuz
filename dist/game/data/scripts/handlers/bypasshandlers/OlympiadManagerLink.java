@@ -379,7 +379,7 @@ public class OlympiadManagerLink implements IBypassHandler
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception in " + getClass().getSimpleName(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception in " + getClass().getSimpleName());
 		}
 		
 		return true;

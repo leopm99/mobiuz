@@ -751,7 +751,7 @@ public class TerritoryWarManager implements Siegable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": " + e.getMessage());
 		}
 		return null;
 	}
@@ -768,7 +768,7 @@ public class TerritoryWarManager implements Siegable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: Territory War registration: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: Territory War registration: " + e.getMessage());
 		}
 	}
 	
@@ -789,7 +789,7 @@ public class TerritoryWarManager implements Siegable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: Territory Data update: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: Territory Data update: " + e.getMessage());
 		}
 	}
 	
@@ -845,7 +845,7 @@ public class TerritoryWarManager implements Siegable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": SpawnList error: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": SpawnList error: " + e.getMessage());
 		}
 		
 		try (Connection con = DatabaseFactory.getConnection();
@@ -882,7 +882,7 @@ public class TerritoryWarManager implements Siegable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": territory list error(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": territory list error(): " + e.getMessage());
 		}
 		
 		try (Connection con = DatabaseFactory.getConnection();
@@ -913,7 +913,7 @@ public class TerritoryWarManager implements Siegable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": registration list error: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": registration list error: " + e.getMessage());
 		}
 	}
 	
@@ -1585,20 +1585,21 @@ public class TerritoryWarManager implements Siegable
 					return _territoryWardSpawnPlace;
 				}
 			}
-			_territoryLogger.log(Level.WARNING, getClass().getSimpleName() + ": no free Ward spawn found for territory: " + _territoryId);
+			_territoryLogger.log(Level.WARNING, () -> getClass().getSimpleName() + ": no free Ward spawn found for territory: " + _territoryId);
 			for (int i = 0; i < _territoryWardSpawnPlaces.length; i++)
 			{
+				final int index = i;
 				if (_territoryWardSpawnPlaces[i] == null)
 				{
-					_territoryLogger.log(Level.WARNING, getClass().getSimpleName() + ": territory ward spawn place " + i + " is null!");
+					_territoryLogger.log(Level.WARNING, () -> getClass().getSimpleName() + ": territory ward spawn place " + index + " is null!");
 				}
 				else if (_territoryWardSpawnPlaces[i].getNpc() != null)
 				{
-					_territoryLogger.log(Level.WARNING, getClass().getSimpleName() + ": territory ward spawn place " + i + " has npc name: " + _territoryWardSpawnPlaces[i].getNpc().getName());
+					_territoryLogger.log(Level.WARNING, () -> getClass().getSimpleName() + ": territory ward spawn place " + index + " has npc name: " + _territoryWardSpawnPlaces[index].getNpc().getName());
 				}
 				else
 				{
-					_territoryLogger.log(Level.WARNING, getClass().getSimpleName() + ": territory ward spawn place " + i + " is empty!");
+					_territoryLogger.log(Level.WARNING, () -> getClass().getSimpleName() + ": territory ward spawn place " + index + " is empty!");
 				}
 			}
 			return null;
@@ -1613,7 +1614,7 @@ public class TerritoryWarManager implements Siegable
 		{
 			if ((type < 0) || (type > 3))
 			{
-				_territoryLogger.log(Level.WARNING, getClass().getSimpleName() + ": wrong type(" + type + ") for NPCs spawn change!");
+				_territoryLogger.log(Level.WARNING, () -> getClass().getSimpleName() + ": wrong type(" + type + ") for NPCs spawn change!");
 				return;
 			}
 			for (TerritoryNPCSpawn twSpawn : _spawnList)
@@ -1650,7 +1651,7 @@ public class TerritoryWarManager implements Siegable
 					return;
 				}
 			}
-			_territoryLogger.log(Level.WARNING, getClass().getSimpleName() + ": Can't delete wardId: " + wardId + " for territory: " + _territoryId);
+			_territoryLogger.log(Level.WARNING, () -> getClass().getSimpleName() + ": Can't delete wardId: " + wardId + " for territory: " + _territoryId);
 		}
 		
 		public int getTerritoryId()

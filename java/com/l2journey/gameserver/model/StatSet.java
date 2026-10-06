@@ -815,7 +815,7 @@ public class StatSet
 			final List<T> convertedList = convertList(originalList, clazz);
 			if (convertedList == null)
 			{
-				LOGGER.log(Level.WARNING, "getList(\"" + key + "\", " + clazz.getSimpleName() + ") requested with wrong generic type: " + obj.getClass().getGenericInterfaces()[0] + "!", new ClassNotFoundException());
+				LOGGER.log(Level.WARNING, new ClassNotFoundException(), () -> "getList(\"" + key + "\", " + clazz.getSimpleName() + ") requested with wrong generic type: " + obj.getClass().getGenericInterfaces()[0] + "!");
 				return null;
 			}
 			
@@ -894,7 +894,7 @@ public class StatSet
 		final Map<?, ?> originalList = (Map<?, ?>) obj;
 		if (!originalList.isEmpty() && ((!originalList.keySet().stream().allMatch(keyClass::isInstance)) || (!originalList.values().stream().allMatch(valueClass::isInstance))))
 		{
-			LOGGER.log(Level.WARNING, "getMap(\"" + key + "\", " + keyClass.getSimpleName() + ", " + valueClass.getSimpleName() + ") requested with wrong generic type: " + obj.getClass().getGenericInterfaces()[0] + "!", new ClassNotFoundException());
+			LOGGER.log(Level.WARNING, new ClassNotFoundException(), () -> "getMap(\"" + key + "\", " + keyClass.getSimpleName() + ", " + valueClass.getSimpleName() + ") requested with wrong generic type: " + obj.getClass().getGenericInterfaces()[0] + "!");
 		}
 		return (Map<K, V>) obj;
 	}

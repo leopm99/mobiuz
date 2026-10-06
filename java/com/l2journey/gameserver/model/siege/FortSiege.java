@@ -87,7 +87,7 @@ public class FortSiege implements Siegable
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, "Exception: ScheduleEndSiegeTask() for Fort: " + _fort.getName() + " " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "Exception: ScheduleEndSiegeTask() for Fort: " + _fort.getName() + " " + e.getMessage());
 			}
 		}
 	}
@@ -179,7 +179,7 @@ public class FortSiege implements Siegable
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, "Exception: ScheduleStartSiegeTask() for Fort: " + _fortInst.getName() + " " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "Exception: ScheduleStartSiegeTask() for Fort: " + _fortInst.getName() + " " + e.getMessage());
 			}
 		}
 	}
@@ -200,7 +200,7 @@ public class FortSiege implements Siegable
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, "Exception: ScheduleSuspicoiusMerchantSpawn() for Fort: " + _fort.getName() + " " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "Exception: ScheduleSuspicoiusMerchantSpawn() for Fort: " + _fort.getName() + " " + e.getMessage());
 			}
 		}
 	}
@@ -223,7 +223,7 @@ public class FortSiege implements Siegable
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, "Exception: ScheduleSiegeRestore() for Fort: " + _fort.getName() + " " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "Exception: ScheduleSiegeRestore() for Fort: " + _fort.getName() + " " + e.getMessage());
 			}
 		}
 	}
@@ -526,7 +526,7 @@ public class FortSiege implements Siegable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: clearSiegeClan(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: clearSiegeClan(): " + e.getMessage());
 		}
 	}
 	
@@ -805,7 +805,7 @@ public class FortSiege implements Siegable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception on removeSiegeClan: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception on removeSiegeClan: " + e.getMessage());
 		}
 	}
 	
@@ -994,7 +994,7 @@ public class FortSiege implements Siegable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: loadSiegeClan(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: loadSiegeClan(): " + e.getMessage());
 		}
 	}
 	
@@ -1051,7 +1051,7 @@ public class FortSiege implements Siegable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: saveSiegeDate(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: saveSiegeDate(): " + e.getMessage());
 		}
 	}
 	
@@ -1077,7 +1077,7 @@ public class FortSiege implements Siegable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: saveSiegeClan(Pledge clan): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: saveSiegeClan(Pledge clan): " + e.getMessage());
 		}
 	}
 	
@@ -1103,7 +1103,7 @@ public class FortSiege implements Siegable
 		catch (Exception e)
 		{
 			// problem with initializing spawn, go to next one
-			LOGGER.log(Level.WARNING, "FortSiege.spawnCommander: Spawn could not be initialized: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "FortSiege.spawnCommander: Spawn could not be initialized: " + e.getMessage());
 		}
 	}
 	

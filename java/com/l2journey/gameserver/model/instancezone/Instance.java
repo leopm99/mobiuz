@@ -486,11 +486,11 @@ public class Instance
 		}
 		catch (IOException e)
 		{
-			LOGGER.log(Level.WARNING, "Instance: can not find " + xml.getAbsolutePath() + " ! " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Instance: can not find " + xml.getAbsolutePath() + " ! " + e.getMessage());
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Instance: error while loading " + xml.getAbsolutePath() + " ! " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Instance: error while loading " + xml.getAbsolutePath() + " ! " + e.getMessage());
 		}
 	}
 	
@@ -687,7 +687,7 @@ public class Instance
 							}
 							catch (Exception e)
 							{
-								LOGGER.log(Level.WARNING, "Error parsing instance xml: " + e.getMessage(), e);
+								LOGGER.log(Level.WARNING, e, () -> "Error parsing instance xml: " + e.getMessage());
 							}
 						}
 					}

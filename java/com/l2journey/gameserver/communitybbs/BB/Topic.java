@@ -99,7 +99,7 @@ public class Topic
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Error while saving new Topic to db " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Error while saving new Topic to db " + e.getMessage());
 		}
 	}
 	
@@ -145,7 +145,7 @@ public class Topic
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Error while deleting topic: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Error while deleting topic: " + e.getMessage());
 		}
 	}
 	

@@ -128,7 +128,7 @@ public class EventDispatcher
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't notify event " + event.getClass().getSimpleName(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Couldn't notify event " + event.getClass().getSimpleName());
 		}
 		return null;
 	}
@@ -212,7 +212,7 @@ public class EventDispatcher
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't notify event " + event.getClass().getSimpleName(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Couldn't notify event " + event.getClass().getSimpleName());
 		}
 		return null;
 	}
@@ -256,7 +256,7 @@ public class EventDispatcher
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't notify event " + event.getClass().getSimpleName(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Couldn't notify event " + event.getClass().getSimpleName());
 		}
 		return null;
 	}
@@ -321,7 +321,7 @@ public class EventDispatcher
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Exception during notification of event: " + event.getClass().getSimpleName() + " listener: " + listener.getClass().getSimpleName(), e);
+				LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Exception during notification of event: " + event.getClass().getSimpleName() + " listener: " + listener.getClass().getSimpleName());
 			}
 		}
 		return callback;

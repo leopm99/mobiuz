@@ -113,7 +113,7 @@ public class AutoAnnouncement extends Announcement implements Runnable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't store announcement: ", e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Couldn't store announcement: ");
 			return false;
 		}
 		return true;
@@ -136,7 +136,7 @@ public class AutoAnnouncement extends Announcement implements Runnable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't update announcement: ", e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Couldn't update announcement: ");
 			return false;
 		}
 		return true;
