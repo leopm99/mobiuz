@@ -50,20 +50,17 @@ public class Statistics
 				counter++;
 			}
 		}
-		final int realOnline = counter;
-		return realOnline;
+		return counter;
 	}
 	
 	public static int getOffShops()
 	{
 		final int counter = getRealOnline();
-		final int OffShop = World.getInstance().getAllPlayersCount() - counter;
-		return OffShop;
+		return World.getInstance().getAllPlayersCount() - counter;
 	}
 	
 	public static String getTotalPlayersOn()
 	{
-		final String PlayersOn = String.valueOf(World.getInstance().getPlayers().size());
-		return PlayersOn;
+		return String.valueOf(World.getInstance().getPlayers().size());
 	}
 }

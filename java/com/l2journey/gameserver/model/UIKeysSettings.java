@@ -107,10 +107,11 @@ public class UIKeysSettings
 		
 		// TODO(Zoey76): Refactor this to use batch.
 		query = "REPLACE INTO character_ui_categories (`charId`, `catId`, `order`, `cmdId`) VALUES ";
-		for (int category : _storedCategories.keySet())
+		for (Map.Entry<Integer, List<Integer>> entry : _storedCategories.entrySet())
 		{
+			int category = entry.getKey();
 			int order = 0;
-			for (int key : _storedCategories.get(category))
+			for (int key : entry.getValue())
 			{
 				query += "(" + _playerObjId + ", " + category + ", " + order++ + ", " + key + "),";
 			}

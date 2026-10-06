@@ -145,18 +145,20 @@ public class TerritoryWarManager implements Siegable
 				return clan.getCastleId() + 80;
 			}
 			
-			for (int cId : _registeredClans.keySet())
+			for (Map.Entry<Integer, List<Clan>> entry : _registeredClans.entrySet())
 			{
-				if (_registeredClans.get(cId).contains(clan))
+				int cId = entry.getKey();
+				if (entry.getValue().contains(clan))
 				{
 					return cId + 80;
 				}
 			}
 		}
 		
-		for (int cId : _registeredMercenaries.keySet())
+		for (Map.Entry<Integer, List<Integer>> entry : _registeredMercenaries.entrySet())
 		{
-			if (_registeredMercenaries.get(cId).contains(player.getObjectId()))
+			int cId = entry.getKey();
+			if (entry.getValue().contains(player.getObjectId()))
 			{
 				return cId + 80;
 			}
@@ -196,14 +198,14 @@ public class TerritoryWarManager implements Siegable
 		
 		if (clan.getCastleId() > 0)
 		{
-			return (castleId == -1 ? true : (clan.getCastleId() == castleId));
+			return (castleId == -1 || (clan.getCastleId() == castleId));
 		}
 		
 		if (castleId == -1)
 		{
-			for (int cId : _registeredClans.keySet())
+			for (Map.Entry<Integer, List<Clan>> entry : _registeredClans.entrySet())
 			{
-				if (_registeredClans.get(cId).contains(clan))
+				if (entry.getValue().contains(clan))
 				{
 					return true;
 				}
@@ -222,9 +224,9 @@ public class TerritoryWarManager implements Siegable
 	{
 		if (castleId == -1)
 		{
-			for (int cId : _registeredMercenaries.keySet())
+			for (Map.Entry<Integer, List<Integer>> entry : _registeredMercenaries.entrySet())
 			{
-				if (_registeredMercenaries.get(cId).contains(objId))
+				if (entry.getValue().contains(objId))
 				{
 					return true;
 				}
@@ -1102,17 +1104,19 @@ public class TerritoryWarManager implements Siegable
 		}
 		_clanFlags.clear();
 		
-		for (Integer castleId : _registeredClans.keySet())
+		for (Map.Entry<Integer, List<Clan>> entry : _registeredClans.entrySet())
 		{
-			for (Clan clan : _registeredClans.get(castleId))
+			Integer castleId = entry.getKey();
+			for (Clan clan : entry.getValue())
 			{
 				changeRegistration(castleId, clan.getId(), true);
 			}
 		}
 		
-		for (Integer castleId : _registeredMercenaries.keySet())
+		for (Map.Entry<Integer, List<Integer>> entry : _registeredMercenaries.entrySet())
 		{
-			for (Integer pl_objId : _registeredMercenaries.get(castleId))
+			Integer castleId = entry.getKey();
+			for (Integer pl_objId : entry.getValue())
 			{
 				changeRegistration(castleId, pl_objId, true);
 			}
@@ -1161,9 +1165,10 @@ public class TerritoryWarManager implements Siegable
 			twQuest.setOnEnterWorld(_isTWInProgress);
 		}
 		
-		for (int castleId : _registeredClans.keySet())
+		for (Map.Entry<Integer, List<Clan>> entry : _registeredClans.entrySet())
 		{
-			for (Clan clan : _registeredClans.get(castleId))
+			int castleId = entry.getKey();
+			for (Clan clan : entry.getValue())
 			{
 				for (Player player : clan.getOnlineMembers(0))
 				{
@@ -1191,9 +1196,10 @@ public class TerritoryWarManager implements Siegable
 				}
 			}
 		}
-		for (int castleId : _registeredMercenaries.keySet())
+		for (Map.Entry<Integer, List<Integer>> entry : _registeredMercenaries.entrySet())
 		{
-			for (int objId : _registeredMercenaries.get(castleId))
+			int castleId = entry.getKey();
+			for (int objId : entry.getValue())
 			{
 				final Player player = World.getInstance().getPlayer(objId);
 				if (player == null)

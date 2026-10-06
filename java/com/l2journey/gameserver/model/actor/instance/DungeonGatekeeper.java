@@ -78,7 +78,6 @@ public class DungeonGatekeeper extends Npc
 					}
 					else if ((compWinner == SevenSigns.CABAL_NULL) && (playerCabal != SevenSigns.CABAL_NULL))
 					{
-						canPort = true;
 					}
 					else if (playerCabal == SevenSigns.CABAL_NULL)
 					{
@@ -125,7 +124,6 @@ public class DungeonGatekeeper extends Npc
 					}
 					else if ((compWinner == SevenSigns.CABAL_NULL) && (playerCabal != SevenSigns.CABAL_NULL))
 					{
-						canPort = true;
 					}
 					else if (playerCabal == SevenSigns.CABAL_NULL)
 					{

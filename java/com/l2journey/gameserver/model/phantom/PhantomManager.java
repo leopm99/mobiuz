@@ -183,7 +183,7 @@ public class PhantomManager implements IVoicedCommandHandler
 			{
 				try
 				{
-					count = Math.max(1, Math.min(100, Integer.parseInt(params.trim())));
+					count = Math.clamp(Integer.parseInt(params.trim()), 1, 100);
 				}
 				catch (NumberFormatException _)
 				{

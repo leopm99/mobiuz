@@ -643,7 +643,7 @@ public abstract class ItemContainer
 	public boolean validateCapacityByItemId(int itemId, long count)
 	{
 		final ItemTemplate template = ItemData.getInstance().getTemplate(itemId);
-		return (template == null) || (template.isStackable() ? validateCapacity(1) : validateCapacity(count));
+		return (template == null) || (validateCapacity(template.isStackable() ? 1 : count));
 	}
 	
 	/**

@@ -966,7 +966,6 @@ public class Olympiad extends ListenersContainer
 						statement.setInt(10, charId);
 					}
 					statement.execute();
-					statement.close();
 				}
 				catch (SQLException e)
 				{

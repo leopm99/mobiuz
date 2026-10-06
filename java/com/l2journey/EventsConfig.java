@@ -37,14 +37,6 @@ import java.util.logging.Logger;
 import com.l2journey.commons.util.ConfigReader;
 import com.l2journey.gameserver.model.Location;
 
-/**
- * This class loads all the game server related configurations from files.<br>
- * The files are usually located in config folder in server root folder.<br>
- * Each configuration has a default value (that should reflect retail behavior).
- */
-/**
- * @author KingHanker, Zoinha
- */
 // Assigned from ini files in load(), so these fields stay public static and non-final.
 @SuppressWarnings({ "java:S3008", "java:S1444", "java:S1104" })
 public class EventsConfig
@@ -405,7 +397,7 @@ public class EventsConfig
 			PC_CAFE_POINT_RATE = 1;
 		}
 		PC_CAFE_REWARD_LOW_EXP_KILLS = pcBangPoints.getBoolean("RewardLowExpKills", true);
-		PC_CAFE_LOW_EXP_KILLS_CHANCE = Math.min(Math.max(0, pcBangPoints.getInt("RewardLowExpKillsChance", 50)), 100);
+		PC_CAFE_LOW_EXP_KILLS_CHANCE = Math.clamp(pcBangPoints.getInt("RewardLowExpKillsChance", 50), 0, 100);
 	}
 	
 	/**

@@ -341,7 +341,6 @@ public class RaceManager extends Npc
 			}
 			
 			super.onBypassFeedback(player, "Chat 0");
-			return;
 		}
 		else if (command.equals("ViewHistory"))
 		{

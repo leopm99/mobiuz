@@ -309,7 +309,6 @@ public class EventDispatcher
 				final T rb = listener.executeEvent(event, returnBackClass);
 				if (rb == null)
 				{
-					continue;
 				}
 				else if ((callback == null) || rb.override()) // Let's check if this listener wants to override previous return object or we simply don't have one
 				{

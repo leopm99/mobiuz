@@ -204,7 +204,7 @@ public class MathUtil
 	 */
 	public static int clamp(int value, int min, int max)
 	{
-		return Math.max(min, Math.min(max, value));
+		return Math.clamp(value, min, max);
 	}
 	
 	/**
@@ -216,7 +216,7 @@ public class MathUtil
 	 */
 	public static long clamp(long value, long min, long max)
 	{
-		return Math.max(min, Math.min(max, value));
+		return Math.clamp(value, min, max);
 	}
 	
 	/**
@@ -228,7 +228,7 @@ public class MathUtil
 	 */
 	public static double clamp(double value, double min, double max)
 	{
-		return Math.max(min, Math.min(max, value));
+		return Math.clamp(value, min, max);
 	}
 	
 	/**

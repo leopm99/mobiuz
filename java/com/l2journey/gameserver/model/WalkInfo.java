@@ -70,7 +70,7 @@ public class WalkInfo
 	 */
 	public NpcWalkerNode getCurrentNode()
 	{
-		return getRoute().getNodeList().get(Math.min(Math.max(0, _currentNode), getRoute().getNodeList().size() - 1));
+		return getRoute().getNodeList().get(Math.clamp(_currentNode, 0, getRoute().getNodeList().size() - 1));
 	}
 	
 	/**

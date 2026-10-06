@@ -526,7 +526,6 @@ public class ClanHallAuction
 			ps.setLong(11, _currentBid);
 			ps.setLong(12, _endDate);
 			ps.execute();
-			ps.close();
 		}
 		catch (Exception e)
 		{

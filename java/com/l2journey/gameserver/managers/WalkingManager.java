@@ -238,7 +238,7 @@ public class WalkingManager implements IXmlReader
 			return false;
 		}
 		
-		final WalkInfo walk = monster != null ? _activeRoutes.get(monster.getObjectId()) : _activeRoutes.get(npc.getObjectId());
+		final WalkInfo walk = _activeRoutes.get((monster != null) ? monster.getObjectId() : npc.getObjectId());
 		return !walk.isStoppedByAttack() && !walk.isSuspended();
 	}
 	
@@ -417,7 +417,7 @@ public class WalkingManager implements IXmlReader
 			return;
 		}
 		
-		final WalkInfo walk = monster != null ? _activeRoutes.get(monster.getObjectId()) : _activeRoutes.get(npc.getObjectId());
+		final WalkInfo walk = _activeRoutes.get((monster != null) ? monster.getObjectId() : npc.getObjectId());
 		walk.setSuspended(suspend);
 		walk.setStoppedByAttack(stoppedByAttack);
 		

@@ -193,11 +193,9 @@ public class SkillChannelizer implements Runnable
 				{
 					if (!LocationUtil.checkIfInRange(skill.getEffectRange(), _channelizer, creature, true))
 					{
-						continue;
 					}
 					else if (!GeoData.getInstance().canSeeTarget(_channelizer, creature))
 					{
-						continue;
 					}
 					else
 					{

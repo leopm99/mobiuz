@@ -87,11 +87,9 @@ public class FortManager extends Merchant
 		final int condition = validateCondition(player);
 		if (condition <= COND_ALL_FALSE)
 		{
-			return;
 		}
 		else if (condition == COND_BUSY_BECAUSE_OF_SIEGE)
 		{
-			return;
 		}
 		else if (condition == COND_OWNER)
 		{
