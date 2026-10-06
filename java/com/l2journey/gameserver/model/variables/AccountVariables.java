@@ -79,7 +79,7 @@ public class AccountVariables extends AbstractVariables
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't restore variables for: " + _accountName, e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Couldn't restore variables for: " + _accountName);
 			return false;
 		}
 		finally
@@ -121,7 +121,7 @@ public class AccountVariables extends AbstractVariables
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't update variables for: " + _accountName, e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Couldn't update variables for: " + _accountName);
 			return false;
 		}
 		finally
@@ -147,7 +147,7 @@ public class AccountVariables extends AbstractVariables
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't delete variables for: " + _accountName, e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Couldn't delete variables for: " + _accountName);
 			return false;
 		}
 		return true;

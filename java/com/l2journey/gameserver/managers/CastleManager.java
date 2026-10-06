@@ -306,7 +306,7 @@ public class CastleManager
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, "Failed to remove castle circlets offline for player " + member.getName() + ": " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "Failed to remove castle circlets offline for player " + member.getName() + ": " + e.getMessage());
 			}
 		}
 	}
@@ -325,7 +325,7 @@ public class CastleManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: loadCastleData(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: loadCastleData(): " + e.getMessage());
 		}
 	}
 	

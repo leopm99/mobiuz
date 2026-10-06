@@ -181,7 +181,7 @@ public class Post
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Error while saving new Post to db " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Error while saving new Post to db " + e.getMessage());
 		}
 	}
 	
@@ -216,7 +216,7 @@ public class Post
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Error while deleting post: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Error while deleting post: " + e.getMessage());
 		}
 	}
 	
@@ -245,7 +245,7 @@ public class Post
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Data error on Post " + t.getForumID() + "/" + t.getID() + " : " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Data error on Post " + t.getForumID() + "/" + t.getID() + " : " + e.getMessage());
 		}
 	}
 	
@@ -263,7 +263,7 @@ public class Post
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Error while saving new Post to db " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Error while saving new Post to db " + e.getMessage());
 		}
 	}
 }

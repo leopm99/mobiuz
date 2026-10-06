@@ -1081,7 +1081,7 @@ public class QuestMasterHandler
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.SEVERE, QuestMasterHandler.class.getSimpleName() + ": Failed loading " + quest.getSimpleName() + ":", e);
+				LOGGER.log(Level.SEVERE, e, () -> QuestMasterHandler.class.getSimpleName() + ": Failed loading " + quest.getSimpleName() + ":");
 			}
 		}
 	}

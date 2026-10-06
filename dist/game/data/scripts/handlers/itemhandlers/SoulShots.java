@@ -62,7 +62,7 @@ public class SoulShots implements IItemHandler
 		final int itemId = item.getId();
 		if (skills == null)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": is missing skills!");
+			LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": is missing skills!");
 			return false;
 		}
 		

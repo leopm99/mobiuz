@@ -274,7 +274,7 @@ public class LoginController
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, "Exception while auto creating account for '" + login + "'!", e);
+				LOGGER.log(Level.WARNING, e, () -> "Exception while auto creating account for '" + login + "'!");
 				return null;
 			}
 			
@@ -283,7 +283,7 @@ public class LoginController
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception while retriving account info for '" + login + "'!", e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception while retriving account info for '" + login + "'!");
 			return null;
 		}
 	}
@@ -448,7 +448,7 @@ public class LoginController
 				}
 				catch (Exception e)
 				{
-					LOGGER.log(Level.WARNING, "Could not set lastServer: " + e.getMessage(), e);
+					LOGGER.log(Level.WARNING, e, () -> "Could not set lastServer: " + e.getMessage());
 				}
 			}
 			return loginOk;
@@ -467,7 +467,7 @@ public class LoginController
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Could not set accessLevel: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not set accessLevel: " + e.getMessage());
 		}
 	}
 	
@@ -486,7 +486,7 @@ public class LoginController
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Could not set last tracert: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not set last tracert: " + e.getMessage());
 		}
 	}
 	

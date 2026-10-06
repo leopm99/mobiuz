@@ -286,7 +286,7 @@ public class Pet extends Summon
 			}
 			catch (Exception e)
 			{
-				LOGGER_PET.log(Level.SEVERE, "Pet [ObjectId: " + getObjectId() + "] a feed task error has occurred", e);
+				LOGGER_PET.log(Level.SEVERE, e, () -> "Pet [ObjectId: " + getObjectId() + "] a feed task error has occurred");
 			}
 		}
 		
@@ -848,7 +848,7 @@ public class Pet extends Summon
 		}
 		catch (Exception e)
 		{
-			LOGGER_PET.log(Level.WARNING, "Error while destroying control item: " + e.getMessage(), e);
+			LOGGER_PET.log(Level.WARNING, e, () -> "Error while destroying control item: " + e.getMessage());
 		}
 		
 		// pet control item no longer exists, delete the pet from the db
@@ -860,7 +860,7 @@ public class Pet extends Summon
 		}
 		catch (Exception e)
 		{
-			LOGGER_PET.log(Level.SEVERE, "Failed to delete Pet [ObjectId: " + getObjectId() + "]", e);
+			LOGGER_PET.log(Level.SEVERE, e, () -> "Failed to delete Pet [ObjectId: " + getObjectId() + "]");
 		}
 	}
 	
@@ -875,7 +875,7 @@ public class Pet extends Summon
 		}
 		catch (Exception e)
 		{
-			LOGGER_PET.log(Level.WARNING, "Pet Drop Error: " + e.getMessage(), e);
+			LOGGER_PET.log(Level.WARNING, e, () -> "Pet Drop Error: " + e.getMessage());
 		}
 	}
 	
@@ -971,7 +971,7 @@ public class Pet extends Summon
 		}
 		catch (Exception e)
 		{
-			LOGGER_PET.log(Level.WARNING, "Could not restore pet data for owner: " + owner + " - " + e.getMessage(), e);
+			LOGGER_PET.log(Level.WARNING, e, () -> "Could not restore pet data for owner: " + owner + " - " + e.getMessage());
 		}
 		
 		return null;
@@ -1032,7 +1032,7 @@ public class Pet extends Summon
 		}
 		catch (Exception e)
 		{
-			LOGGER_PET.log(Level.SEVERE, "Failed to store Pet [ObjectId: " + getObjectId() + "] data", e);
+			LOGGER_PET.log(Level.SEVERE, e, () -> "Failed to store Pet [ObjectId: " + getObjectId() + "] data");
 		}
 		
 		final Item itemInst = getControlItem();
@@ -1144,7 +1144,7 @@ public class Pet extends Summon
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Could not restore " + this + " active effect data: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not restore " + this + " active effect data: " + e.getMessage());
 		}
 		finally
 		{
@@ -1419,7 +1419,7 @@ public class Pet extends Summon
 		}
 		else
 		{
-			LOGGER.log(Level.WARNING, "Pet control item null, for pet: " + toString());
+			LOGGER.log(Level.WARNING, () -> "Pet control item null, for pet: " + toString());
 		}
 		
 		super.setName(name);

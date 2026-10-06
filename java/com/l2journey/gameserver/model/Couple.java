@@ -78,7 +78,7 @@ public class Couple
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Exception: Couple.load(): " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Exception: Couple.load(): " + e.getMessage());
 		}
 	}
 	
@@ -108,7 +108,7 @@ public class Couple
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Could not create couple: " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Could not create couple: " + e.getMessage());
 		}
 	}
 	
@@ -126,7 +126,7 @@ public class Couple
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Could not marry: " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Could not marry: " + e.getMessage());
 		}
 	}
 	
@@ -140,7 +140,7 @@ public class Couple
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Exception: Couple.divorce(): " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Exception: Couple.divorce(): " + e.getMessage());
 		}
 	}
 	

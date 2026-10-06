@@ -114,11 +114,11 @@ public class GrandBossManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Could not load grandboss_data table: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Could not load grandboss_data table: " + e.getMessage());
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Error while initializing GrandBossManager: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Error while initializing GrandBossManager: " + e.getMessage());
 		}
 		ThreadPool.scheduleAtFixedRate(new GrandBossManagerStoreTask(), 5 * 60 * 1000, 5 * 60 * 1000);
 	}
@@ -146,11 +146,11 @@ public class GrandBossManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Could not load grandboss_list table: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Could not load grandboss_list table: " + e.getMessage());
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Error while initializing GrandBoss zones: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Error while initializing GrandBoss zones: " + e.getMessage());
 		}
 		
 		for (Entry<Integer, BossZone> e : _zones.entrySet())
@@ -313,7 +313,7 @@ public class GrandBossManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't store grandbosses to database:" + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Couldn't store grandbosses to database:" + e.getMessage());
 			return false;
 		}
 		return true;
@@ -360,7 +360,7 @@ public class GrandBossManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't update grandbosses to database:" + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Couldn't update grandbosses to database:" + e.getMessage());
 		}
 	}
 	

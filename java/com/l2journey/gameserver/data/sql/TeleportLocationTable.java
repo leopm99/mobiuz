@@ -76,7 +76,7 @@ public class TeleportLocationTable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, getClass().getSimpleName() + ": Error loading Teleport Table.", e);
+			LOGGER.log(Level.SEVERE, e, () -> getClass().getSimpleName() + ": Error loading Teleport Table.");
 		}
 		
 		if (!Config.CUSTOM_TELEPORT_TABLE)
@@ -111,7 +111,7 @@ public class TeleportLocationTable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error while creating custom teleport table " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error while creating custom teleport table " + e.getMessage());
 		}
 	}
 	

@@ -72,7 +72,7 @@ public class NpcNameLocalisationData implements IXmlReader
 				}
 				else
 				{
-					LOGGER.log(Level.INFO, getClass().getSimpleName() + ": Loaded localisations for [" + lang + "].");
+					LOGGER.log(Level.INFO, () -> getClass().getSimpleName() + ": Loaded localisations for [" + lang + "].");
 				}
 			}
 		}

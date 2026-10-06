@@ -65,7 +65,7 @@ public class UserVariables
 		}
 		catch (Exception ex)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't update variable '" + variableName + "' for: " + getPlayer(), ex);
+			LOGGER.log(Level.WARNING, ex, () -> getClass().getSimpleName() + ": Couldn't update variable '" + variableName + "' for: " + getPlayer());
 		}
 	}
 	
@@ -87,7 +87,7 @@ public class UserVariables
 		}
 		catch (Exception ex)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't delete variable '" + variableName + "' for: " + getPlayer(), ex);
+			LOGGER.log(Level.WARNING, ex, () -> getClass().getSimpleName() + ": Couldn't delete variable '" + variableName + "' for: " + getPlayer());
 		}
 	}
 	
@@ -138,7 +138,7 @@ public class UserVariables
 		}
 		catch (Exception ex)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't load variables for: " + getPlayer(), ex);
+			LOGGER.log(Level.WARNING, ex, () -> getClass().getSimpleName() + ": Couldn't load variables for: " + getPlayer());
 		}
 	}
 	

@@ -175,7 +175,7 @@ public abstract class DocumentBase
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Error loading file " + _file, e);
+			LOGGER.log(Level.SEVERE, e, () -> "Error loading file " + _file);
 		}
 		return document;
 	}

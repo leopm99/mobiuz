@@ -752,7 +752,7 @@ public class Siege implements Siegable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: clearSiegeClan(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: clearSiegeClan(): " + e.getMessage());
 		}
 	}
 	
@@ -769,7 +769,7 @@ public class Siege implements Siegable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: clearSiegeWaitingClan(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: clearSiegeWaitingClan(): " + e.getMessage());
 		}
 	}
 	
@@ -989,7 +989,7 @@ public class Siege implements Siegable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: removeSiegeClan(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: removeSiegeClan(): " + e.getMessage());
 		}
 	}
 	
@@ -1261,7 +1261,7 @@ public class Siege implements Siegable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: loadSiegeClan(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: loadSiegeClan(): " + e.getMessage());
 		}
 	}
 	
@@ -1346,7 +1346,7 @@ public class Siege implements Siegable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: saveSiegeDate(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: saveSiegeDate(): " + e.getMessage());
 		}
 	}
 	
@@ -1413,7 +1413,7 @@ public class Siege implements Siegable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: saveSiegeClan(Pledge clan, int typeId, boolean isUpdateRegistration): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: saveSiegeClan(Pledge clan, int typeId, boolean isUpdateRegistration): " + e.getMessage());
 		}
 	}
 	

@@ -344,7 +344,7 @@ public class Servitor extends Summon implements Runnable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Could not restore " + this + " active effect data: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not restore " + this + " active effect data: " + e.getMessage());
 		}
 		finally
 		{

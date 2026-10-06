@@ -224,7 +224,7 @@ public class CharSelectionInfo extends ServerPacket
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Could not restore char info: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not restore char info: " + e.getMessage());
 		}
 		return characterList;
 	}
@@ -248,7 +248,7 @@ public class CharSelectionInfo extends ServerPacket
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Could not restore char subclass info: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not restore char subclass info: " + e.getMessage());
 		}
 	}
 	
@@ -341,7 +341,7 @@ public class CharSelectionInfo extends ServerPacket
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, "Could not restore augmentation info: " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "Could not restore augmentation info: " + e.getMessage());
 			}
 		}
 		// Check if the base class is set to zero and also doesn't match with the current active class, otherwise send the base class ID. This prevents chars created before base class was introduced from being displayed incorrectly.

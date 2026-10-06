@@ -102,11 +102,11 @@ public interface IXmlReader
 		}
 		catch (SAXParseException e)
 		{
-			LOGGER.log(Level.WARNING, "Error parsing " + file.getName() + " at line " + e.getLineNumber() + ", column " + e.getColumnNumber() + ".", e);
+			LOGGER.log(Level.WARNING, e, () -> "Error parsing " + file.getName() + " at line " + e.getLineNumber() + ", column " + e.getColumnNumber() + ".");
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Error parsing " + file.getName(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Error parsing " + file.getName());
 		}
 	}
 	

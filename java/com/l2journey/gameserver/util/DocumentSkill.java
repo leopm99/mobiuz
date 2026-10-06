@@ -98,7 +98,7 @@ public class DocumentSkill extends DocumentBase
 		}
 		catch (RuntimeException e)
 		{
-			LOGGER.log(Level.SEVERE, "Error in table: " + name + " of Skill Id " + _currentSkill.id, e);
+			LOGGER.log(Level.SEVERE, e, () -> "Error in table: " + name + " of Skill Id " + _currentSkill.id);
 			return "";
 		}
 	}
@@ -112,7 +112,7 @@ public class DocumentSkill extends DocumentBase
 		}
 		catch (RuntimeException e)
 		{
-			LOGGER.log(Level.SEVERE, "Wrong level count in skill Id " + _currentSkill.id + " name: " + name + " index : " + idx, e);
+			LOGGER.log(Level.SEVERE, e, () -> "Wrong level count in skill Id " + _currentSkill.id + " name: " + name + " index : " + idx);
 			return "";
 		}
 	}
@@ -1567,7 +1567,8 @@ public class DocumentSkill extends DocumentBase
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.SEVERE, "Skill id=" + set.getInt("skill_id") + "level" + set.getInt("level"), e);
+				final StatSet failedSet = set;
+				LOGGER.log(Level.SEVERE, e, () -> "Skill id=" + failedSet.getInt("skill_id") + "level" + failedSet.getInt("level"));
 			}
 		}
 		int count2 = count;
@@ -1581,7 +1582,8 @@ public class DocumentSkill extends DocumentBase
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.SEVERE, "Skill id=" + set.getInt("skill_id") + "level" + set.getInt("level"), e);
+				final StatSet failedSet = set;
+				LOGGER.log(Level.SEVERE, e, () -> "Skill id=" + failedSet.getInt("skill_id") + "level" + failedSet.getInt("level"));
 			}
 		}
 		count2 = count;
@@ -1595,7 +1597,8 @@ public class DocumentSkill extends DocumentBase
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.SEVERE, "Skill id=" + set.getInt("skill_id") + "level" + set.getInt("level"), e);
+				final StatSet failedSet = set;
+				LOGGER.log(Level.SEVERE, e, () -> "Skill id=" + failedSet.getInt("skill_id") + "level" + failedSet.getInt("level"));
 			}
 		}
 		count2 = count;
@@ -1609,7 +1612,8 @@ public class DocumentSkill extends DocumentBase
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.SEVERE, "Skill id=" + set.getInt("skill_id") + "level" + set.getInt("level"), e);
+				final StatSet failedSet = set;
+				LOGGER.log(Level.SEVERE, e, () -> "Skill id=" + failedSet.getInt("skill_id") + "level" + failedSet.getInt("level"));
 			}
 		}
 		count2 = count;
@@ -1623,7 +1627,8 @@ public class DocumentSkill extends DocumentBase
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.SEVERE, "Skill id=" + set.getInt("skill_id") + "level" + set.getInt("level"), e);
+				final StatSet failedSet = set;
+				LOGGER.log(Level.SEVERE, e, () -> "Skill id=" + failedSet.getInt("skill_id") + "level" + failedSet.getInt("level"));
 			}
 		}
 		count2 = count;
@@ -1637,7 +1642,8 @@ public class DocumentSkill extends DocumentBase
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.SEVERE, "Skill id=" + set.getInt("skill_id") + "level" + set.getInt("level"), e);
+				final StatSet failedSet = set;
+				LOGGER.log(Level.SEVERE, e, () -> "Skill id=" + failedSet.getInt("skill_id") + "level" + failedSet.getInt("level"));
 			}
 		}
 		count2 = count;
@@ -1651,7 +1657,8 @@ public class DocumentSkill extends DocumentBase
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.SEVERE, "Skill id=" + set.getInt("skill_id") + "level" + set.getInt("level"), e);
+				final StatSet failedSet = set;
+				LOGGER.log(Level.SEVERE, e, () -> "Skill id=" + failedSet.getInt("skill_id") + "level" + failedSet.getInt("level"));
 			}
 		}
 		count2 = count;
@@ -1665,7 +1672,8 @@ public class DocumentSkill extends DocumentBase
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.SEVERE, "Skill id=" + set.getInt("skill_id") + "level" + set.getInt("level"), e);
+				final StatSet failedSet = set;
+				LOGGER.log(Level.SEVERE, e, () -> "Skill id=" + failedSet.getInt("skill_id") + "level" + failedSet.getInt("level"));
 			}
 		}
 		count2 = count;
@@ -1679,7 +1687,8 @@ public class DocumentSkill extends DocumentBase
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.SEVERE, "Skill id=" + set.getInt("skill_id") + "level" + set.getInt("level"), e);
+				final StatSet failedSet = set;
+				LOGGER.log(Level.SEVERE, e, () -> "Skill id=" + failedSet.getInt("skill_id") + "level" + failedSet.getInt("level"));
 			}
 		}
 	}

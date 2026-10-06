@@ -1502,7 +1502,7 @@ public class Player extends Playable
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, "SQL exception while inserting recipe: " + recipeId + " from character " + getObjectId(), e);
+			LOGGER.log(Level.WARNING, e, () -> "SQL exception while inserting recipe: " + recipeId + " from character " + getObjectId());
 		}
 	}
 	
@@ -1518,7 +1518,7 @@ public class Player extends Playable
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, "SQL exception while deleting recipe: " + recipeId + " from character " + getObjectId(), e);
+			LOGGER.log(Level.WARNING, e, () -> "SQL exception while deleting recipe: " + recipeId + " from character " + getObjectId());
 		}
 	}
 	
@@ -7134,7 +7134,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Could not insert char data: " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Could not insert char data: " + e.getMessage());
 			return false;
 		}
 		
@@ -7489,7 +7489,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Could not restore classes for " + player.getName() + ": " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not restore classes for " + player.getName() + ": " + e.getMessage());
 		}
 		
 		return true;
@@ -7590,7 +7590,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Could not restore recipe book data:" + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Could not restore recipe book data:" + e.getMessage());
 		}
 	}
 	
@@ -7616,7 +7616,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Could not restore premium items: " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Could not restore premium items: " + e.getMessage());
 		}
 	}
 	
@@ -7632,7 +7632,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Could not update premium items: " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Could not update premium items: " + e.getMessage());
 		}
 	}
 	
@@ -7647,7 +7647,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Could not delete premium item: " + e);
+			LOGGER.log(Level.SEVERE, () -> "Could not delete premium item: " + e);
 		}
 	}
 	
@@ -7781,7 +7781,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Could not store char base data: " + this + " - " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not store char base data: " + this + " - " + e.getMessage());
 		}
 	}
 	
@@ -7810,7 +7810,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Could not store sub class data for " + getName() + ": " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not store sub class data for " + getName() + ": " + e.getMessage());
 		}
 	}
 	
@@ -8100,7 +8100,7 @@ public class Player extends Playable
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, "Error could not delete skill: " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "Error could not delete skill: " + e.getMessage());
 			}
 		}
 		
@@ -8164,7 +8164,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Error could not store char skills: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Error could not store char skills: " + e.getMessage());
 		}
 	}
 	
@@ -8196,7 +8196,7 @@ public class Player extends Playable
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, "Error could not store char skills: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Error could not store char skills: " + e.getMessage());
 		}
 	}
 	
@@ -8242,7 +8242,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Could not restore character " + this + " skills: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not restore character " + this + " skills: " + e.getMessage());
 		}
 	}
 	
@@ -8300,7 +8300,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Could not restore " + this + " active effect data: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not restore " + this + " active effect data: " + e.getMessage());
 		}
 	}
 	
@@ -8362,7 +8362,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Could not restore " + this + " Item Reuse data: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not restore " + this + " Item Reuse data: " + e.getMessage());
 		}
 	}
 	
@@ -8405,7 +8405,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Failed restoing character " + this + " hennas.", e);
+			LOGGER.log(Level.SEVERE, e, () -> "Failed restoing character " + this + " hennas.");
 		}
 		
 		// Calculate henna modifiers of this player.
@@ -10525,7 +10525,7 @@ public class Player extends Playable
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, "WARNING: Could not add character sub class for " + getName() + ": " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "WARNING: Could not add character sub class for " + getName() + ": " + e.getMessage());
 				return false;
 			}
 			
@@ -10625,7 +10625,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Could not modify sub class for " + getName() + " to class index " + classIndex + ": " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not modify sub class for " + getName() + " to class index " + classIndex + ": " + e.getMessage());
 			
 			// This must be done in order to maintain data consistency.
 			getSubClasses().remove(classIndex);
@@ -10754,7 +10754,7 @@ public class Player extends Playable
 				}
 				catch (Exception e)
 				{
-					LOGGER.log(Level.WARNING, "Could not switch " + getName() + "'s sub class to class index " + classIndex + ": " + e.getMessage(), e);
+					LOGGER.log(Level.WARNING, e, () -> "Could not switch " + getName() + "'s sub class to class index " + classIndex + ": " + e.getMessage());
 					return;
 				}
 			}
@@ -11724,7 +11724,7 @@ public class Player extends Playable
 		{
 			if (!_isOnline)
 			{
-				LOGGER.log(Level.SEVERE, "deleteMe() called on offline character " + this, new RuntimeException());
+				LOGGER.log(Level.SEVERE, new RuntimeException(), () -> "deleteMe() called on offline character " + this);
 			}
 			setOnlineStatus(false, true);
 		}
@@ -12105,7 +12105,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception on deleteMe() notifyFriends: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception on deleteMe() notifyFriends: " + e.getMessage());
 		}
 		
 		PlayerAutoSaveTaskManager.getInstance().remove(this);
@@ -12120,7 +12120,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Falha ao flushar counters no logout de " + getName(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Falha ao flushar counters no logout de " + getName());
 		}
 		
 		return super.deleteMe();
@@ -13306,7 +13306,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Failed to store Pet [NpcId: " + petId + "] data", e);
+			LOGGER.log(Level.SEVERE, e, () -> "Failed to store Pet [NpcId: " + petId + "] data");
 		}
 	}
 	
@@ -13464,7 +13464,7 @@ public class Player extends Playable
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, "Could not update character teleport bookmark data: " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "Could not update character teleport bookmark data: " + e.getMessage());
 			}
 		}
 		
@@ -13486,7 +13486,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Could not delete character teleport bookmark data: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not delete character teleport bookmark data: " + e.getMessage());
 		}
 		
 		sendPacket(new ExGetBookMarkInfoPacket(this));
@@ -13647,7 +13647,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Could not insert character teleport bookmark data: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not insert character teleport bookmark data: " + e.getMessage());
 		}
 		
 		sendPacket(new ExGetBookMarkInfoPacket(this));
@@ -13854,7 +13854,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Error found in " + getName() + "'s FriendList: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Error found in " + getName() + "'s FriendList: " + e.getMessage());
 		}
 	}
 	
@@ -13955,7 +13955,7 @@ public class Player extends Playable
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.SEVERE, "Could not store recipe shop for playerId " + getObjectId() + ": ", e);
+				LOGGER.log(Level.SEVERE, e, () -> "Could not store recipe shop for playerId " + getObjectId() + ": ");
 			}
 		}
 	}
@@ -13981,7 +13981,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Could not restore recipe shop list data for playerId: " + getObjectId(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Could not restore recipe shop list data for playerId: " + getObjectId());
 		}
 	}
 	
@@ -14238,7 +14238,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception on removeFromBossZone(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception on removeFromBossZone(): " + e.getMessage());
 		}
 	}
 	
@@ -14434,7 +14434,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Could not check Items in Pet Inventory for playerId: " + getObjectId(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Could not check Items in Pet Inventory for playerId: " + getObjectId());
 		}
 	}
 	
@@ -14475,7 +14475,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Could not restore Recommendations for player: " + getObjectId(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Could not restore Recommendations for player: " + getObjectId());
 		}
 		return timeLeft;
 	}
@@ -14508,7 +14508,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Could not update Recommendations for player: " + getObjectId(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Could not update Recommendations for player: " + getObjectId());
 		}
 	}
 	
@@ -14527,7 +14527,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Could not update Recommendations for player: " + getObjectId(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Could not update Recommendations for player: " + getObjectId());
 		}
 	}
 	

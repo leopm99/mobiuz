@@ -119,7 +119,7 @@ public class ClanHallTable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: ClanHallManager.load(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: ClanHallManager.load(): " + e.getMessage());
 		}
 	}
 	

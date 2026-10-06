@@ -114,7 +114,7 @@ public class FortSiegeManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: checkIsRegistered(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: checkIsRegistered(): " + e.getMessage());
 		}
 		return register;
 	}

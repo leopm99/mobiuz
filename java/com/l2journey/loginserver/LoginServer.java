@@ -94,7 +94,7 @@ public class LoginServer
 		}
 		catch (GeneralSecurityException e)
 		{
-			LOGGER.log(Level.SEVERE, "FATAL: Failed initializing LoginController. Reason: " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "FATAL: Failed initializing LoginController. Reason: " + e.getMessage());
 			System.exit(1);
 		}
 		
@@ -116,7 +116,7 @@ public class LoginServer
 		}
 		catch (IOException e)
 		{
-			LOGGER.log(Level.SEVERE, "FATAL: Failed to start the Game Server Listener. Reason: " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "FATAL: Failed to start the Game Server Listener. Reason: " + e.getMessage());
 			System.exit(1);
 		}
 		
@@ -171,7 +171,7 @@ public class LoginServer
 			}
 			catch (IOException e)
 			{
-				LOGGER.log(Level.WARNING, "Error while reading the bans file (" + bannedFile.getName() + "). Details: " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "Error while reading the bans file (" + bannedFile.getName() + "). Details: " + e.getMessage());
 			}
 			LOGGER.info("Loaded " + LoginController.getInstance().getBannedIps().size() + " IP Bans.");
 		}

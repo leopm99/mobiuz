@@ -148,7 +148,9 @@ public class RequestExEnchantSkillUntrain extends ClientPacket
 		player.getStat().addSp((int) (requiredSp * 0.8));
 		if (Config.LOG_SKILL_ENCHANTS)
 		{
-			LOGGER_ENCHANT.log(Level.INFO, "Untrain:" + player.getName() + " [" + player.getObjectId() + "] Account:" + player.getAccountName() + " IP:" + player.getIPAddress() + ", Skill:" + skill + ", SPB:" + spb);
+			final Skill loggedSkill = skill;
+			final Item spbItem = spb;
+			LOGGER_ENCHANT.log(Level.INFO, () -> "Untrain:" + player.getName() + " [" + player.getObjectId() + "] Account:" + player.getAccountName() + " IP:" + player.getIPAddress() + ", Skill:" + loggedSkill + ", SPB:" + spbItem);
 		}
 		
 		player.addSkill(skill, true);

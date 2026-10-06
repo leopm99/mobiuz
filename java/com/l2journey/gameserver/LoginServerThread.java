@@ -349,7 +349,7 @@ public class LoginServerThread extends Thread
 			}
 			catch (UnknownHostException e)
 			{
-				LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": ", e);
+				LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": ");
 			}
 			catch (SocketException _)
 			{
@@ -357,7 +357,7 @@ public class LoginServerThread extends Thread
 			}
 			catch (IOException e)
 			{
-				LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Disconnected from Login, Trying to reconnect: ", e);
+				LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Disconnected from Login, Trying to reconnect: ");
 			}
 			finally
 			{
@@ -562,7 +562,7 @@ public class LoginServerThread extends Thread
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Exception: getCharsOnServer: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Exception: getCharsOnServer: " + e.getMessage());
 		}
 		
 		sendPacket(new ReplyCharacters(account, chars, charToDel));

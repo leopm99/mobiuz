@@ -103,7 +103,7 @@ public class AttackStanceTaskManager implements Runnable
 			catch (Exception e)
 			{
 				// Unless caught here, players remain in attack positions.
-				LOGGER.log(Level.WARNING, "Error in AttackStanceTaskManager: " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "Error in AttackStanceTaskManager: " + e.getMessage());
 			}
 		}
 		

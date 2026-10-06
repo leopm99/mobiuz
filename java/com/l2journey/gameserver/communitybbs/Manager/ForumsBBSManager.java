@@ -63,7 +63,7 @@ public class ForumsBBSManager extends BaseBBSManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Data error on Forum (root): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Data error on Forum (root): " + e.getMessage());
 		}
 	}
 	

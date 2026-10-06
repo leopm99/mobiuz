@@ -186,7 +186,7 @@ public class ClanHallAuction
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: Auction.load(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: Auction.load(): " + e.getMessage());
 		}
 	}
 	
@@ -217,7 +217,7 @@ public class ClanHallAuction
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: Auction.loadBid(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: Auction.loadBid(): " + e.getMessage());
 		}
 	}
 	
@@ -255,7 +255,7 @@ public class ClanHallAuction
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Exception: saveAuctionDate(): " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Exception: saveAuctionDate(): " + e.getMessage());
 		}
 	}
 	
@@ -388,7 +388,7 @@ public class ClanHallAuction
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Exception: Auction.updateInDB(Player bidder, int bid): " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Exception: Auction.updateInDB(Player bidder, int bid): " + e.getMessage());
 		}
 	}
 	
@@ -403,7 +403,7 @@ public class ClanHallAuction
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Exception: Auction.deleteFromDB(): " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Exception: Auction.deleteFromDB(): " + e.getMessage());
 		}
 		
 		for (Bidder b : _bidders.values())
@@ -433,7 +433,7 @@ public class ClanHallAuction
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Exception: Auction.deleteFromDB(): " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Exception: Auction.deleteFromDB(): " + e.getMessage());
 		}
 	}
 	
@@ -490,7 +490,7 @@ public class ClanHallAuction
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Exception: Auction.cancelBid(String bidder): " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Exception: Auction.cancelBid(String bidder): " + e.getMessage());
 		}
 		
 		returnItem(_bidders.get(bidder).getClanName(), _bidders.get(bidder).getBid(), true);
@@ -529,7 +529,7 @@ public class ClanHallAuction
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Exception: Auction.load(): " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Exception: Auction.load(): " + e.getMessage());
 		}
 	}
 	

@@ -253,7 +253,7 @@ public class ClanMember
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Could not update pledge type: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not update pledge type: " + e.getMessage());
 		}
 	}
 	
@@ -298,7 +298,7 @@ public class ClanMember
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Could not update power _grade: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not update power _grade: " + e.getMessage());
 		}
 	}
 	
@@ -768,7 +768,7 @@ public class ClanMember
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, "Could not save apprentice/sponsor: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not save apprentice/sponsor: " + e.getMessage());
 		}
 	}
 }

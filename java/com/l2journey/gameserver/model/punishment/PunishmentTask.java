@@ -203,7 +203,7 @@ public class PunishmentTask implements Runnable
 			}
 			catch (SQLException e)
 			{
-				LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't store punishment task for: " + _affect + " " + _key, e);
+				LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Couldn't store punishment task for: " + _affect + " " + _key);
 			}
 		}
 		
@@ -230,7 +230,7 @@ public class PunishmentTask implements Runnable
 			}
 			catch (SQLException e)
 			{
-				LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't update punishment task for: " + _affect + " " + _key + " id: " + _id, e);
+				LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Couldn't update punishment task for: " + _affect + " " + _key + " id: " + _id);
 			}
 		}
 		

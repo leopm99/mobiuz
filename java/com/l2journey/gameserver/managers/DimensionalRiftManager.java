@@ -118,7 +118,7 @@ public class DimensionalRiftManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Can't load Dimension Rift zones. " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Can't load Dimension Rift zones. " + e.getMessage());
 		}
 		
 		final int typeSize = _rooms.keySet().size();
@@ -144,7 +144,7 @@ public class DimensionalRiftManager
 			final File file = new File(Config.DATAPACK_ROOT, "data/DimensionalRift.xml");
 			if (!file.exists())
 			{
-				LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't find data/" + file.getName());
+				LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": Couldn't find data/" + file.getName());
 				return;
 			}
 			
@@ -224,7 +224,7 @@ public class DimensionalRiftManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Error on loading dimensional rift spawns: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Error on loading dimensional rift spawns: " + e.getMessage());
 		}
 		LOGGER.info(getClass().getSimpleName() + ": Loaded " + countGood + " dimensional rift spawns, " + countBad + " errors.");
 	}

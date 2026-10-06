@@ -64,7 +64,7 @@ public class CharInfoTable
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't retrieve all char id/name/access: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Couldn't retrieve all char id/name/access: " + e.getMessage());
 		}
 		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _names.size() + " char names.");
 	}
@@ -127,7 +127,7 @@ public class CharInfoTable
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Could not check existing char name: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Could not check existing char name: " + e.getMessage());
 		}
 		
 		if (id > 0)
@@ -170,7 +170,7 @@ public class CharInfoTable
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Could not check existing char id: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Could not check existing char id: " + e.getMessage());
 		}
 		
 		return null; // not found
@@ -198,7 +198,7 @@ public class CharInfoTable
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Could not check existing charname: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Could not check existing charname: " + e.getMessage());
 		}
 		return result;
 	}
@@ -219,7 +219,7 @@ public class CharInfoTable
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, "Couldn't retrieve account for id: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Couldn't retrieve account for id: " + e.getMessage());
 		}
 		return 0;
 	}

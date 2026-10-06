@@ -125,7 +125,7 @@ public class Announcement implements IAnnouncement
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't store announcement: ", e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Couldn't store announcement: ");
 			return false;
 		}
 		return true;
@@ -145,7 +145,7 @@ public class Announcement implements IAnnouncement
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't store announcement: ", e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Couldn't store announcement: ");
 			return false;
 		}
 		return true;
@@ -162,7 +162,7 @@ public class Announcement implements IAnnouncement
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't remove announcement: ", e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Couldn't remove announcement: ");
 			return false;
 		}
 		return true;

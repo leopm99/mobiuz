@@ -240,7 +240,7 @@ public class Fort extends AbstractResidence
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.SEVERE, "Exception: Fort.updateFunctions(int type, int lvl, int lease, long rate, long time, boolean addNew): " + e.getMessage(), e);
+				LOGGER.log(Level.SEVERE, e, () -> "Exception: Fort.updateFunctions(int type, int lvl, int lease, long rate, long time, boolean addNew): " + e.getMessage());
 			}
 		}
 	}
@@ -406,7 +406,7 @@ public class Fort extends AbstractResidence
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, "Exception in setOwner: " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "Exception in setOwner: " + e.getMessage());
 			}
 			if (getSiege().isInProgress())
 			{
@@ -510,7 +510,7 @@ public class Fort extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: saveFortVariables(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: saveFortVariables(): " + e.getMessage());
 		}
 	}
 	
@@ -619,7 +619,7 @@ public class Fort extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: loadFortData(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: loadFortData(): " + e.getMessage());
 		}
 	}
 	
@@ -640,7 +640,7 @@ public class Fort extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Exception: Fort.loadFunctions(): " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Exception: Fort.loadFunctions(): " + e.getMessage());
 		}
 	}
 	
@@ -660,7 +660,7 @@ public class Fort extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Exception: Fort.removeFunctions(int functionType): " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Exception: Fort.removeFunctions(int functionType): " + e.getMessage());
 		}
 	}
 	
@@ -753,7 +753,7 @@ public class Fort extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: loadFortDoorUpgrade(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: loadFortDoorUpgrade(): " + e.getMessage());
 		}
 	}
 	
@@ -767,7 +767,7 @@ public class Fort extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: removeDoorUpgrade(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: removeDoorUpgrade(): " + e.getMessage());
 		}
 	}
 	
@@ -784,7 +784,7 @@ public class Fort extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: saveDoorUpgrade(int doorId, int hp, int pDef, int mDef): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: saveDoorUpgrade(int doorId, int hp, int pDef, int mDef): " + e.getMessage());
 		}
 	}
 	
@@ -852,7 +852,7 @@ public class Fort extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: updateOwnerInDB(Pledge clan): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: updateOwnerInDB(Pledge clan): " + e.getMessage());
 		}
 	}
 	
@@ -969,7 +969,7 @@ public class Fort extends AbstractResidence
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, "Exception in endFortressSiege " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "Exception in endFortressSiege " + e.getMessage());
 			}
 		}
 	}
@@ -1008,7 +1008,7 @@ public class Fort extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: setFortState(int state, int castleId): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: setFortState(int state, int castleId): " + e.getMessage());
 		}
 	}
 	
@@ -1155,7 +1155,7 @@ public class Fort extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Fort " + getResidenceId() + " initNpcs: Spawn could not be initialized: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Fort " + getResidenceId() + " initNpcs: Spawn could not be initialized: " + e.getMessage());
 		}
 	}
 	
@@ -1182,7 +1182,7 @@ public class Fort extends AbstractResidence
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Fort " + getResidenceId() + " initSiegeNpcs: Spawn could not be initialized: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Fort " + getResidenceId() + " initSiegeNpcs: Spawn could not be initialized: " + e.getMessage());
 		}
 	}
 	
@@ -1210,7 +1210,7 @@ public class Fort extends AbstractResidence
 		catch (Exception e)
 		{
 			// problem with initializing spawn, go to next one
-			LOGGER.log(Level.WARNING, "Fort " + getResidenceId() + " initNpcCommanders: Spawn could not be initialized: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Fort " + getResidenceId() + " initNpcCommanders: Spawn could not be initialized: " + e.getMessage());
 		}
 	}
 	
@@ -1243,7 +1243,7 @@ public class Fort extends AbstractResidence
 		catch (Exception e)
 		{
 			// problem with initializing spawn, go to next one
-			LOGGER.log(Level.WARNING, "Fort " + getResidenceId() + " initSpecialEnvoys: Spawn could not be initialized: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Fort " + getResidenceId() + " initSpecialEnvoys: Spawn could not be initialized: " + e.getMessage());
 		}
 	}
 	

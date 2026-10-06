@@ -171,7 +171,7 @@ public class BuyListData implements IXmlReader
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Failed to load buyList data from xml File:" + file.getName(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Failed to load buyList data from xml File:" + file.getName());
 		}
 	}
 	

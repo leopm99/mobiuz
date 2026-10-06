@@ -80,7 +80,7 @@ public class MailManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error loading from database:", e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error loading from database:");
 		}
 		LOGGER.info(getClass().getSimpleName() + ": Loaded " + count + " messages.");
 	}
@@ -170,7 +170,7 @@ public class MailManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error saving message:", e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error saving message:");
 		}
 		
 		final Player receiver = World.getInstance().getPlayer(msg.getReceiverId());
@@ -192,7 +192,7 @@ public class MailManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error marking as read message:", e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error marking as read message:");
 		}
 	}
 	
@@ -206,7 +206,7 @@ public class MailManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error marking as deleted by sender message:", e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error marking as deleted by sender message:");
 		}
 	}
 	
@@ -220,7 +220,7 @@ public class MailManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error marking as deleted by receiver message:", e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error marking as deleted by receiver message:");
 		}
 	}
 	
@@ -234,7 +234,7 @@ public class MailManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error removing attachments in message:", e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error removing attachments in message:");
 		}
 	}
 	
@@ -248,7 +248,7 @@ public class MailManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error deleting message:", e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error deleting message:");
 		}
 		
 		_messages.remove(msgId);

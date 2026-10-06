@@ -76,7 +76,7 @@ public class BlowFishKey extends BaseReadablePacket
 		}
 		catch (GeneralSecurityException e)
 		{
-			LOGGER.log(Level.SEVERE, "Error While decrypting blowfish key (RSA): " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> "Error While decrypting blowfish key (RSA): " + e.getMessage());
 		}
 	}
 }

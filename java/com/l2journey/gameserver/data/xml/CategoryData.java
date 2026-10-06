@@ -68,7 +68,7 @@ public class CategoryData implements IXmlReader
 						final CategoryType categoryType = CategoryType.findByName(attrs.getNamedItem("name").getNodeValue());
 						if (categoryType == null)
 						{
-							LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Can't find category by name :" + attrs.getNamedItem("name").getNodeValue());
+							LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": Can't find category by name :" + attrs.getNamedItem("name").getNodeValue());
 							continue;
 						}
 						
@@ -98,7 +98,7 @@ public class CategoryData implements IXmlReader
 		final Set<Integer> category = getCategoryByType(type);
 		if (category == null)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Can't find category type :" + type);
+			LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": Can't find category type :" + type);
 			return false;
 		}
 		return category.contains(id);

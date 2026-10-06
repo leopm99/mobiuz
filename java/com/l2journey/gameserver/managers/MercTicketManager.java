@@ -215,7 +215,7 @@ public class MercTicketManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: loadMercenaryData(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: loadMercenaryData(): " + e.getMessage());
 		}
 	}
 	

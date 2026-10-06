@@ -100,7 +100,7 @@ public class ItemsOnGroundManager implements Runnable
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.SEVERE, getClass().getSimpleName() + ": Error while updating table ItemsOnGround " + e.getMessage(), e);
+				LOGGER.log(Level.SEVERE, e, () -> getClass().getSimpleName() + ": Error while updating table ItemsOnGround " + e.getMessage());
 			}
 		}
 		
@@ -147,7 +147,7 @@ public class ItemsOnGroundManager implements Runnable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, getClass().getSimpleName() + ": Error while loading ItemsOnGround " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> getClass().getSimpleName() + ": Error while loading ItemsOnGround " + e.getMessage());
 		}
 		
 		if (Config.EMPTY_DROPPED_ITEM_TABLE_AFTER_LOAD)
@@ -192,7 +192,7 @@ public class ItemsOnGroundManager implements Runnable
 		}
 		catch (Exception e1)
 		{
-			LOGGER.log(Level.SEVERE, getClass().getSimpleName() + ": Error while cleaning table ItemsOnGround " + e1.getMessage(), e1);
+			LOGGER.log(Level.SEVERE, e1, () -> getClass().getSimpleName() + ": Error while cleaning table ItemsOnGround " + e1.getMessage());
 		}
 	}
 	
@@ -237,13 +237,13 @@ public class ItemsOnGroundManager implements Runnable
 				}
 				catch (Exception e)
 				{
-					LOGGER.log(Level.SEVERE, getClass().getSimpleName() + ": Error while inserting into table ItemsOnGround: " + e.getMessage(), e);
+					LOGGER.log(Level.SEVERE, e, () -> getClass().getSimpleName() + ": Error while inserting into table ItemsOnGround: " + e.getMessage());
 				}
 			}
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.SEVERE, getClass().getSimpleName() + ": SQL error while storing items on ground: " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> getClass().getSimpleName() + ": SQL error while storing items on ground: " + e.getMessage());
 		}
 	}
 	

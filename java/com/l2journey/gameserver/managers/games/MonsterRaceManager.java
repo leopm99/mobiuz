@@ -427,7 +427,7 @@ public class MonsterRaceManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, "MonsterRace: Can't load history: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "MonsterRace: Can't load history: " + e.getMessage());
 		}
 		LOGGER.info("MonsterRace: loaded " + _history.size() + " records, currently on race #" + _raceNumber);
 	}
@@ -449,7 +449,7 @@ public class MonsterRaceManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, "MonsterRace: Can't save history: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "MonsterRace: Can't save history: " + e.getMessage());
 		}
 	}
 	
@@ -469,7 +469,7 @@ public class MonsterRaceManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, "MonsterRace: Can't load bets: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "MonsterRace: Can't load bets: " + e.getMessage());
 		}
 	}
 	
@@ -489,7 +489,7 @@ public class MonsterRaceManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, "MonsterRace: Can't save bet: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "MonsterRace: Can't save bet: " + e.getMessage());
 		}
 	}
 	
@@ -510,7 +510,7 @@ public class MonsterRaceManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, "MonsterRace: Can't clear bets: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "MonsterRace: Can't clear bets: " + e.getMessage());
 		}
 	}
 	

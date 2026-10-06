@@ -607,7 +607,7 @@ public class OlympiadGameTeams extends AbstractOlympiadGame
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, "Exception on validateWinner(): " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "Exception on validateWinner(): " + e.getMessage());
 			}
 			return;
 		}
@@ -804,7 +804,7 @@ public class OlympiadGameTeams extends AbstractOlympiadGame
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, "Exception on validateWinner(): " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "Exception on validateWinner(): " + e.getMessage());
 			}
 			
 			if (winside == 1)
@@ -966,7 +966,7 @@ public class OlympiadGameTeams extends AbstractOlympiadGame
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception on validateWinner(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception on validateWinner(): " + e.getMessage());
 		}
 	}
 	
@@ -1069,7 +1069,7 @@ public class OlympiadGameTeams extends AbstractOlympiadGame
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception on checkDefaulted(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception on checkDefaulted(): " + e.getMessage());
 			return true;
 		}
 	}

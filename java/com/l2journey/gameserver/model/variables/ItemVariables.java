@@ -79,7 +79,7 @@ public class ItemVariables extends AbstractVariables
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, ItemVariables.class.getSimpleName() + ": Couldn't select variables count for: " + objectId, e);
+			LOGGER.log(Level.WARNING, e, () -> ItemVariables.class.getSimpleName() + ": Couldn't select variables count for: " + objectId);
 			return false;
 		}
 		return true;
@@ -102,7 +102,7 @@ public class ItemVariables extends AbstractVariables
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't restore variables for: " + _objectId, e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Couldn't restore variables for: " + _objectId);
 			return false;
 		}
 		finally
@@ -144,7 +144,7 @@ public class ItemVariables extends AbstractVariables
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't update variables for: " + _objectId, e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Couldn't update variables for: " + _objectId);
 			return false;
 		}
 		finally
@@ -170,7 +170,7 @@ public class ItemVariables extends AbstractVariables
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't delete variables for: " + _objectId, e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Couldn't delete variables for: " + _objectId);
 			return false;
 		}
 		return true;

@@ -6380,7 +6380,7 @@ public abstract class Creature extends WorldObject
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": callSkill() failed.", e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": callSkill() failed.");
 		}
 	}
 	

@@ -124,7 +124,7 @@ public class UIKeysSettings
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: saveInDB(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: saveInDB(): " + e.getMessage());
 		}
 		
 		query = "REPLACE INTO character_ui_actions (`charId`, `cat`, `order`, `cmd`, `key`, `tgKey1`, `tgKey2`, `show`) VALUES";
@@ -145,7 +145,7 @@ public class UIKeysSettings
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: saveInDB(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: saveInDB(): " + e.getMessage());
 		}
 		_saved = true;
 	}
@@ -173,7 +173,7 @@ public class UIKeysSettings
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: getCatsFromDB(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: getCatsFromDB(): " + e.getMessage());
 		}
 		
 		if (_storedCategories.isEmpty())
@@ -206,7 +206,7 @@ public class UIKeysSettings
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: getKeysFromDB(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: getKeysFromDB(): " + e.getMessage());
 		}
 		
 		if (_storedKeys.isEmpty())

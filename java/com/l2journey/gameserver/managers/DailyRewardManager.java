@@ -190,7 +190,7 @@ public class DailyRewardManager implements IXmlReader
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error loading player data.", e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error loading player data.");
 		}
 	}
 	
@@ -273,7 +273,7 @@ public class DailyRewardManager implements IXmlReader
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error resetting player days.", e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error resetting player days.");
 		}
 	}
 	
@@ -469,7 +469,7 @@ public class DailyRewardManager implements IXmlReader
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error saving player data.", e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error saving player data.");
 		}
 	}
 	

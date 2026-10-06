@@ -1745,7 +1745,7 @@ public class Npc extends Creature
 		{
 			if (ItemData.getInstance().getTemplate(itemId) == null)
 			{
-				LOGGER.log(Level.SEVERE, "Item doesn't exist so cannot be dropped. Item ID: " + itemId + " Quest: " + getName());
+				LOGGER.log(Level.SEVERE, () -> "Item doesn't exist so cannot be dropped. Item ID: " + itemId + " Quest: " + getName());
 				return null;
 			}
 			

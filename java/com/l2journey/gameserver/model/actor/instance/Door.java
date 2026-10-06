@@ -247,7 +247,7 @@ public class Door extends Creature
 			}
 			else
 			{
-				LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": cannot find child id: " + getChildId());
+				LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": cannot find child id: " + getChildId());
 			}
 		}
 	}

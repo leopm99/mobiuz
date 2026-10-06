@@ -113,7 +113,7 @@ public class RaidBossSpawnManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error while initializing RaidBossSpawnManager: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error while initializing RaidBossSpawnManager: " + e.getMessage());
 		}
 	}
 	
@@ -260,7 +260,7 @@ public class RaidBossSpawnManager
 			catch (Exception e)
 			{
 				// problem with storing spawn
-				LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Could not store raidboss #" + bossId + " in the DB:" + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Could not store raidboss #" + bossId + " in the DB:" + e.getMessage());
 			}
 		}
 	}
@@ -312,7 +312,7 @@ public class RaidBossSpawnManager
 			catch (Exception e)
 			{
 				// problem with deleting spawn
-				LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Could not remove raidboss #" + bossId + " from DB: " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Could not remove raidboss #" + bossId + " from DB: " + e.getMessage());
 			}
 		}
 	}
@@ -362,13 +362,13 @@ public class RaidBossSpawnManager
 				}
 				catch (SQLException e)
 				{
-					LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Could not update raidboss_spawnlist table " + e.getMessage(), e);
+					LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Could not update raidboss_spawnlist table " + e.getMessage());
 				}
 			}
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": SQL error while updating RaidBoss spawn to database: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": SQL error while updating RaidBoss spawn to database: " + e.getMessage());
 		}
 	}
 	

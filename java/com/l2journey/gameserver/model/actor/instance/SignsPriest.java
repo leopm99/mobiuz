@@ -707,7 +707,7 @@ public class SignsPriest extends Npc
 					}
 					catch (Exception e)
 					{
-						LOGGER.log(Level.WARNING, "SevenSigns: Error occurred while teleporting player: " + e.getMessage(), e);
+						LOGGER.log(Level.WARNING, e, () -> "SevenSigns: Error occurred while teleporting player: " + e.getMessage());
 					}
 					break;
 				}

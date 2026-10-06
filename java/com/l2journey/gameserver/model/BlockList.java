@@ -103,7 +103,7 @@ public class BlockList
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Error found in " + objId + " FriendList while loading BlockList: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Error found in " + objId + " FriendList while loading BlockList: " + e.getMessage());
 		}
 		return list;
 	}
@@ -134,7 +134,7 @@ public class BlockList
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Could not add block player: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not add block player: " + e.getMessage());
 		}
 	}
 	

@@ -96,7 +96,7 @@ public class GlobalVariablesManager extends AbstractVariables
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't save global variables to database.", e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Couldn't save global variables to database.");
 			return false;
 		}
 		
@@ -113,7 +113,7 @@ public class GlobalVariablesManager extends AbstractVariables
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't delete global variables to database.", e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Couldn't delete global variables to database.");
 			return false;
 		}
 		return true;

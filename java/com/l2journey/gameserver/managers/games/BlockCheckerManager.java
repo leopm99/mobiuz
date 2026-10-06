@@ -318,7 +318,7 @@ public class BlockCheckerManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, "Could not end Block Checker event at " + _arena, e);
+			LOGGER.log(Level.SEVERE, e, () -> "Could not end Block Checker event at " + _arena);
 		}
 	}
 	

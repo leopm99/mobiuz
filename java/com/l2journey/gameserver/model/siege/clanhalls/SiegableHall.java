@@ -152,7 +152,7 @@ public class SiegableHall extends ClanHall
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: SiegableHall.updateDb(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: SiegableHall.updateDb(): " + e.getMessage());
 		}
 	}
 	

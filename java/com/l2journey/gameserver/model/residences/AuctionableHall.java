@@ -229,7 +229,7 @@ public class AuctionableHall extends ClanHall
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: updateOwnerInDB(Pledge clan): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: updateOwnerInDB(Pledge clan): " + e.getMessage());
 		}
 	}
 }

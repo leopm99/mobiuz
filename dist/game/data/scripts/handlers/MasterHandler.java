@@ -648,7 +648,7 @@ public class MasterHandler
 			}
 		}
 		
-		registerHandlerMethods.entrySet().stream().filter(e -> e.getValue() == null).forEach(e -> LOGGER.log(Level.WARNING, "Failed loading handlers of: " + e.getKey().getClass().getSimpleName() + " seems registerHandler function does not exist."));
+		registerHandlerMethods.entrySet().stream().filter(e -> e.getValue() == null).forEach(e -> LOGGER.log(Level.WARNING, () -> "Failed loading handlers of: " + e.getKey().getClass().getSimpleName() + " seems registerHandler function does not exist."));
 		
 		for (Class<?>[] classes : HANDLERS)
 		{
@@ -672,14 +672,14 @@ public class MasterHandler
 				}
 				catch (Exception e)
 				{
-					LOGGER.log(Level.WARNING, "Failed loading handler: " + c.getSimpleName(), e);
+					LOGGER.log(Level.WARNING, e, () -> "Failed loading handler: " + c.getSimpleName());
 				}
 			}
 		}
 		
 		for (IHandler<?, ?> loadInstance : LOAD_INSTANCES)
 		{
-			LOGGER.log(Level.INFO, loadInstance.getClass().getSimpleName() + ": Loaded " + loadInstance.size() + " handlers.");
+			LOGGER.log(Level.INFO, () -> loadInstance.getClass().getSimpleName() + ": Loaded " + loadInstance.size() + " handlers.");
 		}
 		
 		LOGGER.log(Level.INFO, "Handlers Loaded...");

@@ -73,7 +73,7 @@ public class MultisellData implements IXmlReader
 		}
 		
 		verify();
-		LOGGER.log(Level.INFO, getClass().getSimpleName() + ": Loaded " + _entries.size() + " multisell lists.");
+		LOGGER.log(Level.INFO, () -> getClass().getSimpleName() + ": Loaded " + _entries.size() + " multisell lists.");
 	}
 	
 	@Override
@@ -146,7 +146,7 @@ public class MultisellData implements IXmlReader
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, getClass().getSimpleName() + ": Error in file " + file, e);
+			LOGGER.log(Level.SEVERE, e, () -> getClass().getSimpleName() + ": Error in file " + file);
 		}
 	}
 	

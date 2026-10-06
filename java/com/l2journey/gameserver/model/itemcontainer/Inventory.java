@@ -1912,7 +1912,7 @@ public abstract class Inventory extends ItemContainer
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Could not restore inventory: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Could not restore inventory: " + e.getMessage());
 		}
 	}
 	

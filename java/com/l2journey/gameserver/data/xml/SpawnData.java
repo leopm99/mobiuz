@@ -279,7 +279,8 @@ public class SpawnData implements IXmlReader
 								}
 								catch (Exception e)
 								{
-									LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": SpawnTable: Failed to load territory " + territoryName + " coordinates: " + e.getMessage(), e);
+									final String failedTerritory = territoryName;
+									LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": SpawnTable: Failed to load territory " + failedTerritory + " coordinates: " + e.getMessage());
 								}
 								
 								ZoneManager.getInstance().addSpawnTerritory(territoryName, new NpcSpawnTerritory(territoryName, zoneForm));
@@ -379,7 +380,8 @@ public class SpawnData implements IXmlReader
 								}
 								catch (Exception e)
 								{
-									LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": SpawnTable: Failed to load banned_territory " + territoryName + " coordinates: " + e.getMessage(), e);
+									final String failedTerritory = territoryName;
+									LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": SpawnTable: Failed to load banned_territory " + failedTerritory + " coordinates: " + e.getMessage());
 								}
 								
 								ZoneManager.getInstance().getSpawnTerritory(territoryName).addBannedTerritory(zoneForm);
@@ -555,7 +557,7 @@ public class SpawnData implements IXmlReader
 		catch (Exception e)
 		{
 			// Problem with initializing spawn, go to next one.
-			LOGGER.log(Level.WARNING, "Spawn could not be initialized: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Spawn could not be initialized: " + e.getMessage());
 		}
 		
 		return ret;

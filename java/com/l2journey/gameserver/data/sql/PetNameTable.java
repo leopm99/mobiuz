@@ -72,7 +72,7 @@ public class PetNameTable
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Could not check existing petname:" + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Could not check existing petname:" + e.getMessage());
 		}
 		return result;
 	}

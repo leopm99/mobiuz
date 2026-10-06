@@ -121,7 +121,7 @@ public class HitmanManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error loading hitman targets.", e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error loading hitman targets.");
 		}
 	}
 	
@@ -189,7 +189,7 @@ public class HitmanManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error saving hitman targets.", e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error saving hitman targets.");
 		}
 	}
 	
@@ -453,7 +453,7 @@ public class HitmanManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error removing target " + targetId, e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error removing target " + targetId);
 		}
 	}
 	

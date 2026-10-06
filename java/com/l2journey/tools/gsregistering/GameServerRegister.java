@@ -104,14 +104,14 @@ public class GameServerRegister extends BaseGameServerRegister
 						}
 						default:
 						{
-							System.out.printf("Invalid Choice: %s" + System.lineSeparator(), choice);
+							System.out.printf("Invalid Choice: %s" + "%n", choice);
 							choiceOk = false;
 						}
 					}
 				}
 				catch (NumberFormatException _)
 				{
-					System.out.printf("Invalid Choice: %s" + System.lineSeparator(), choice);
+					System.out.printf("Invalid Choice: %s" + "%n", choice);
 				}
 			}
 			while (!choiceOk);
@@ -225,7 +225,7 @@ public class GameServerRegister extends BaseGameServerRegister
 				}
 				else
 				{
-					System.out.printf("Invalid Choice: %s" + System.lineSeparator(), choice);
+					System.out.printf("Invalid Choice: %s" + "%n", choice);
 				}
 			}
 		}
@@ -250,7 +250,7 @@ public class GameServerRegister extends BaseGameServerRegister
 			}
 			catch (NumberFormatException _)
 			{
-				System.out.printf("Invalid Choice: %s" + System.lineSeparator(), line);
+				System.out.printf("Invalid Choice: %s" + "%n", line);
 			}
 		}
 		while (id == Integer.MIN_VALUE);
@@ -258,15 +258,15 @@ public class GameServerRegister extends BaseGameServerRegister
 		final String name = GameServerTable.getInstance().getServerNameById(id);
 		if (name == null)
 		{
-			System.out.printf("No name for ID: %d" + System.lineSeparator(), id);
+			System.out.printf("No name for ID: %d" + "%n", id);
 		}
 		else if (GameServerTable.getInstance().hasRegisteredGameServerOnId(id))
 		{
-			System.out.printf("Are you sure you want to remove GameServer %d - %s?" + System.lineSeparator(), id, name);
+			System.out.printf("Are you sure you want to remove GameServer %d - %s?" + "%n", id, name);
 			try
 			{
 				BaseGameServerRegister.unregisterGameServer(id);
-				System.out.printf("GameServer ID: %d was successfully removed from LoginServer." + System.lineSeparator(), id);
+				System.out.printf("GameServer ID: %d was successfully removed from LoginServer." + "%n", id);
 			}
 			catch (SQLException e)
 			{
@@ -275,7 +275,7 @@ public class GameServerRegister extends BaseGameServerRegister
 		}
 		else
 		{
-			System.out.printf("No GameServer is registered on ID: %d" + System.lineSeparator(), id);
+			System.out.printf("No GameServer is registered on ID: %d" + "%n", id);
 		}
 	}
 	
@@ -294,14 +294,14 @@ public class GameServerRegister extends BaseGameServerRegister
 			}
 			catch (NumberFormatException _)
 			{
-				System.out.printf("Invalid Choice: %s" + System.lineSeparator(), line);
+				System.out.printf("Invalid Choice: %s" + "%n", line);
 			}
 		}
 		while (id == Integer.MIN_VALUE);
 		
 		if (GameServerTable.getInstance().getServerNameById(id) == null)
 		{
-			System.out.printf("No name for ID: %d" + System.lineSeparator(), id);
+			System.out.printf("No name for ID: %d" + "%n", id);
 		}
 		else if (GameServerTable.getInstance().hasRegisteredGameServerOnId(id))
 		{

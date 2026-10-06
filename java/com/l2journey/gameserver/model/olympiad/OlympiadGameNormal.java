@@ -351,7 +351,7 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 					}
 					catch (Exception e)
 					{
-						LOGGER.log(Level.WARNING, "Exception on validateWinner(): " + e.getMessage(), e);
+						LOGGER.log(Level.WARNING, e, () -> "Exception on validateWinner(): " + e.getMessage());
 					}
 				}
 				
@@ -375,7 +375,7 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 					}
 					catch (Exception e)
 					{
-						LOGGER.log(Level.WARNING, "Exception on validateWinner(): " + e.getMessage(), e);
+						LOGGER.log(Level.WARNING, e, () -> "Exception on validateWinner(): " + e.getMessage());
 					}
 				}
 				
@@ -385,7 +385,7 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, "Exception on validateWinner(): " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "Exception on validateWinner(): " + e.getMessage());
 				return;
 			}
 		}
@@ -506,7 +506,7 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.WARNING, "Exception on validateWinner(): " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> "Exception on validateWinner(): " + e.getMessage());
 				return;
 			}
 		}
@@ -650,7 +650,7 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception on validateWinner(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception on validateWinner(): " + e.getMessage());
 		}
 	}
 	

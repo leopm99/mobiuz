@@ -339,7 +339,8 @@ public class ZoneManager implements IXmlReader
 						}
 						catch (Exception e)
 						{
-							LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": ZoneData: Failed to load zone " + zoneId + " coordinates: " + e.getMessage(), e);
+							final int failedZoneId = zoneId;
+							LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": ZoneData: Failed to load zone " + failedZoneId + " coordinates: " + e.getMessage());
 						}
 						
 						// No further parameters needed, if NpcSpawnTerritory is loading

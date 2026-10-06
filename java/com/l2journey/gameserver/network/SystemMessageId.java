@@ -9778,7 +9778,7 @@ public class SystemMessageId
 				}
 				catch (Exception e)
 				{
-					LOGGER.log(Level.WARNING, "SystemMessageId: Failed field access for '" + field.getName() + "'", e);
+					LOGGER.log(Level.WARNING, e, () -> "SystemMessageId: Failed field access for '" + field.getName() + "'");
 				}
 			}
 		}
@@ -9881,21 +9881,24 @@ public class SystemMessageId
 									smId = getSystemMessageId(Integer.parseInt(node.getNodeValue()));
 									if (smId == null)
 									{
-										LOGGER.log(Level.WARNING, "SystemMessageId: Unknown SMID '" + node.getNodeValue() + "', lang '" + lang + "'.");
+										final Node missingIdNode = node;
+										LOGGER.log(Level.WARNING, () -> "SystemMessageId: Unknown SMID '" + missingIdNode.getNodeValue() + "', lang '" + lang + "'.");
 										continue;
 									}
 									
 									node = nnmb.getNamedItem("translation");
 									if (node == null)
 									{
-										LOGGER.log(Level.WARNING, "SystemMessageId: No text defined for SMID '" + smId + "', lang '" + lang + "'.");
+										final SystemMessageId missingSmId = smId;
+										LOGGER.log(Level.WARNING, () -> "SystemMessageId: No text defined for SMID '" + missingSmId + "', lang '" + lang + "'.");
 										continue;
 									}
 									
 									text = node.getNodeValue();
 									if (text.isEmpty() || (text.length() > 255))
 									{
-										LOGGER.log(Level.WARNING, "SystemMessageId: Invalid text defined for SMID '" + smId + "' (to long or empty), lang '" + lang + "'.");
+										final SystemMessageId invalidSmId = smId;
+										LOGGER.log(Level.WARNING, () -> "SystemMessageId: Invalid text defined for SMID '" + invalidSmId + "' (to long or empty), lang '" + lang + "'.");
 										continue;
 									}
 									
@@ -9908,10 +9911,11 @@ public class SystemMessageId
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.SEVERE, "SystemMessageId: Failed loading '" + file + "'", e);
+				final File failedFile = file;
+				LOGGER.log(Level.SEVERE, e, () -> "SystemMessageId: Failed loading '" + failedFile + "'");
 			}
 			
-			LOGGER.log(Level.INFO, "SystemMessageId: Loaded localisations for [" + lang + "].");
+			LOGGER.log(Level.INFO, () -> "SystemMessageId: Loaded localisations for [" + lang + "].");
 		}
 	}
 	

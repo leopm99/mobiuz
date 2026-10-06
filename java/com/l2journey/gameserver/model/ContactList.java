@@ -93,7 +93,7 @@ public class ContactList
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Error found in " + _player.getName() + "'s ContactsList: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Error found in " + _player.getName() + "'s ContactsList: " + e.getMessage());
 		}
 	}
 	
@@ -151,7 +151,7 @@ public class ContactList
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Error found in " + _player.getName() + "'s ContactsList: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Error found in " + _player.getName() + "'s ContactsList: " + e.getMessage());
 		}
 		return true;
 	}
@@ -185,7 +185,7 @@ public class ContactList
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Error found in " + _player.getName() + "'s ContactsList: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Error found in " + _player.getName() + "'s ContactsList: " + e.getMessage());
 		}
 	}
 	

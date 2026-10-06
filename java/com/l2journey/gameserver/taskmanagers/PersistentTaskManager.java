@@ -123,7 +123,7 @@ public class PersistentTaskManager
 			}
 			catch (SQLException e)
 			{
-				LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Cannot updated the Global Task " + id + ": " + e.getMessage(), e);
+				LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Cannot updated the Global Task " + id + ": " + e.getMessage());
 			}
 			
 			if ((type == TYPE_SHEDULED) || (type == TYPE_TIME))
@@ -232,7 +232,7 @@ public class PersistentTaskManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, getClass().getSimpleName() + ": Error while loading Global Task table: " + e.getMessage(), e);
+			LOGGER.log(Level.SEVERE, e, () -> getClass().getSimpleName() + ": Error while loading Global Task table: " + e.getMessage());
 		}
 	}
 	
@@ -313,7 +313,7 @@ public class PersistentTaskManager
 				}
 				catch (Exception e)
 				{
-					LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Bad parameter on task " + task.getId() + ": " + e.getMessage(), e);
+					LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Bad parameter on task " + task.getId() + ": " + e.getMessage());
 					return false;
 				}
 				
@@ -365,7 +365,7 @@ public class PersistentTaskManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, PersistentTaskManager.class.getSimpleName() + ": Cannot add the unique task: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> PersistentTaskManager.class.getSimpleName() + ": Cannot add the unique task: " + e.getMessage());
 		}
 		return false;
 	}
@@ -391,7 +391,7 @@ public class PersistentTaskManager
 		}
 		catch (SQLException e)
 		{
-			LOGGER.log(Level.WARNING, PersistentTaskManager.class.getSimpleName() + ": Cannot add the task: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> PersistentTaskManager.class.getSimpleName() + ": Cannot add the task: " + e.getMessage());
 		}
 		return false;
 	}

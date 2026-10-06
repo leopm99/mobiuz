@@ -86,7 +86,7 @@ public class GMAudit
 		}
 		catch (IOException e)
 		{
-			LOGGER.log(Level.SEVERE, "Could not save GMAudit log for GM " + gmName + ":", e);
+			LOGGER.log(Level.SEVERE, e, () -> "Could not save GMAudit log for GM " + gmName + ":");
 		}
 	}
 	

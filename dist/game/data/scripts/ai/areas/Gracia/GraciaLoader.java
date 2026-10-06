@@ -126,7 +126,7 @@ public class GraciaLoader
 			}
 			catch (Exception e)
 			{
-				LOGGER.log(Level.SEVERE, GraciaLoader.class.getSimpleName() + ": Failed loading " + script.getSimpleName() + ":", e);
+				LOGGER.log(Level.SEVERE, e, () -> GraciaLoader.class.getSimpleName() + ": Failed loading " + script.getSimpleName() + ":");
 			}
 		}
 	}

@@ -130,7 +130,7 @@ public class DayNightSpawnManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Error while spawning creatures: " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Error while spawning creatures: " + e.getMessage());
 		}
 	}
 	
@@ -176,7 +176,7 @@ public class DayNightSpawnManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Error while notifyChangeMode(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Error while notifyChangeMode(): " + e.getMessage());
 		}
 	}
 	

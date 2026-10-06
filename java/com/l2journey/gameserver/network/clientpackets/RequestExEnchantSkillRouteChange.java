@@ -170,7 +170,9 @@ public class RequestExEnchantSkillRouteChange extends ClientPacket
 			{
 				if (Config.LOG_SKILL_ENCHANTS)
 				{
-					LOGGER_ENCHANT.log(Level.INFO, "Route Change:" + player.getName() + " [" + player.getObjectId() + "] Account:" + player.getAccountName() + " IP:" + player.getIPAddress() + ", Skill:" + skill + ", SPB:" + spb);
+					final Skill loggedSkill = skill;
+					final Item spbItem = spb;
+					LOGGER_ENCHANT.log(Level.INFO, () -> "Route Change:" + player.getName() + " [" + player.getObjectId() + "] Account:" + player.getAccountName() + " IP:" + player.getIPAddress() + ", Skill:" + loggedSkill + ", SPB:" + spbItem);
 				}
 				
 				player.addSkill(skill, true);

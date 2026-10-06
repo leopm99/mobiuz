@@ -123,7 +123,7 @@ public class Forum
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Data error on Forum " + _forumId + " : " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Data error on Forum " + _forumId + " : " + e.getMessage());
 		}
 		
 		try (Connection con = DatabaseFactory.getConnection();
@@ -145,7 +145,7 @@ public class Forum
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Data error on Forum " + _forumId + " : " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Data error on Forum " + _forumId + " : " + e.getMessage());
 		}
 	}
 	
@@ -167,7 +167,7 @@ public class Forum
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Data error on Forum (children): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Data error on Forum (children): " + e.getMessage());
 		}
 	}
 	
@@ -250,7 +250,7 @@ public class Forum
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Error while saving new Forum to db " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Error while saving new Forum to db " + e.getMessage());
 		}
 	}
 	

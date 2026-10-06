@@ -180,7 +180,7 @@ public class OfflineTraderTable
 				}
 				catch (Exception e)
 				{
-					LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error while saving offline trader: " + pc.getObjectId() + " " + e, e);
+					LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error while saving offline trader: " + pc.getObjectId() + " " + e);
 				}
 			}
 			
@@ -188,7 +188,7 @@ public class OfflineTraderTable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error while saving offline traders: " + e, e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error while saving offline traders: " + e);
 		}
 	}
 	
@@ -323,7 +323,8 @@ public class OfflineTraderTable
 				}
 				catch (Exception e)
 				{
-					LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error loading trader: " + player, e);
+					final Player failedPlayer = player;
+					LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error loading trader: " + failedPlayer);
 					if (player != null)
 					{
 						Disconnection.of(player).storeAndDeleteWith(LeaveWorld.STATIC_PACKET);
@@ -345,7 +346,7 @@ public class OfflineTraderTable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error while loading offline traders: ", e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error while loading offline traders: ");
 		}
 	}
 	
@@ -461,13 +462,13 @@ public class OfflineTraderTable
 				}
 				catch (Exception e)
 				{
-					LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error while saving offline trader: " + trader.getObjectId() + " " + e, e);
+					LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error while saving offline trader: " + trader.getObjectId() + " " + e);
 				}
 			}
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error while saving offline traders: " + e, e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error while saving offline traders: " + e);
 		}
 	}
 	
@@ -487,7 +488,7 @@ public class OfflineTraderTable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Error while removing offline trader: " + traderObjId + " " + e, e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error while removing offline trader: " + traderObjId + " " + e);
 		}
 	}
 	

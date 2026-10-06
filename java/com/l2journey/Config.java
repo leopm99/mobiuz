@@ -1774,7 +1774,7 @@ public class Config
 			}
 			catch (NumberFormatException _)
 			{
-				LOGGER.log(Level.WARNING, "Wrong config protocol version: " + protocol + ". Skipped.");
+				LOGGER.log(Level.WARNING, () -> "Wrong config protocol version: " + protocol + ". Skipped.");
 			}
 		}
 		SERVER_LIST_TYPE = getServerTypeId(serverConfig.getString("ServerListType", "Free").split(","));
@@ -3151,7 +3151,7 @@ public class Config
 		ALT_CLAN_LEADER_DATE_CHANGE = clanDefinitions.getInt("AltClanLeaderDateChange", 3);
 		if ((ALT_CLAN_LEADER_DATE_CHANGE < 1) || (ALT_CLAN_LEADER_DATE_CHANGE > 7))
 		{
-			LOGGER.log(Level.WARNING, "Wrong value specified for AltClanLeaderDateChange: " + ALT_CLAN_LEADER_DATE_CHANGE);
+			LOGGER.log(Level.WARNING, () -> "Wrong value specified for AltClanLeaderDateChange: " + ALT_CLAN_LEADER_DATE_CHANGE);
 			ALT_CLAN_LEADER_DATE_CHANGE = 3;
 		}
 		ALT_CLAN_LEADER_HOUR_CHANGE = clanDefinitions.getString("AltClanLeaderHourChange", "00:00:00");

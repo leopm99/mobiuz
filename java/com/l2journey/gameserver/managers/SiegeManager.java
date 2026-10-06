@@ -116,7 +116,7 @@ public class SiegeManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Exception: checkIsRegistered(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Exception: checkIsRegistered(): " + e.getMessage());
 		}
 		return register;
 	}
@@ -309,7 +309,7 @@ public class SiegeManager
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.WARNING, "Exception: loadTrapUpgrade(): " + e.getMessage(), e);
+			LOGGER.log(Level.WARNING, e, () -> "Exception: loadTrapUpgrade(): " + e.getMessage());
 		}
 	}
 	
