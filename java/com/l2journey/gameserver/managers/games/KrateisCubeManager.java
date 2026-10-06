@@ -236,7 +236,7 @@ public class KrateisCubeManager implements IXmlReader
 									{
 										final int itemId = Integer.parseInt(c.getAttributes().getNamedItem("id").getNodeValue());
 										final long amount = Long.parseLong(c.getAttributes().getNamedItem("amount").getNodeValue());
-										final boolean useModifier = c.getAttributes().getNamedItem("useModifers") != null ? Boolean.parseBoolean(c.getAttributes().getNamedItem("useModifers").getNodeValue()) : false;
+										final boolean useModifier = c.getAttributes().getNamedItem("useModifers") != null && Boolean.parseBoolean(c.getAttributes().getNamedItem("useModifers").getNodeValue());
 										arena.setReward(new KrateisReward(itemId, amount, useModifier));
 									}
 								}

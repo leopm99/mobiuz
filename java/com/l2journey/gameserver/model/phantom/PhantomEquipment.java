@@ -1340,7 +1340,10 @@ public class PhantomEquipment
 	private static void limpiarMochila(Player bot)
 	{
 		int lvl = bot.getLevel();
-		int ssValido, bssValido, arrowValido, boltValido;
+		int ssValido;
+		int bssValido;
+		int arrowValido;
+		int boltValido;
 
 		// 1. Definimos qual e o UNICO que deveria ter conforme seu grau atual
 		if (lvl >= 76)

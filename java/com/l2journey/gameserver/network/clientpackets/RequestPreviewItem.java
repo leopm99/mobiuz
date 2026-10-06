@@ -142,8 +142,7 @@ public class RequestPreviewItem extends ClientPacket
 		
 		// Check current target of the player and the INTERACTION_DISTANCE
 		final WorldObject target = player.getTarget();
-		if (!player.isGM() && ((target == null // No target (i.e. GM Shop)
-		) || !((target instanceof Merchant)) // Target not a merchant
+		if (!player.isGM() && (!((target instanceof Merchant)) // Target not a merchant
 			|| !player.isInsideRadius2D(target, Npc.INTERACTION_DISTANCE) // Distance is too far
 		))
 		{

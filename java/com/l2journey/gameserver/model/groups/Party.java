@@ -671,14 +671,14 @@ public class Party extends AbstractPlayerGroup
 		final SystemMessage msg;
 		if (itemCount > 1)
 		{
-			msg = spoil ? new SystemMessage(SystemMessageId.C1_HAS_OBTAINED_S3_S2_BY_USING_SWEEPER) : new SystemMessage(SystemMessageId.C1_HAS_OBTAINED_S3_S2);
+			msg = new SystemMessage(spoil ? SystemMessageId.C1_HAS_OBTAINED_S3_S2_BY_USING_SWEEPER : SystemMessageId.C1_HAS_OBTAINED_S3_S2);
 			msg.addString(looter.getName());
 			msg.addItemName(itemId);
 			msg.addLong(itemCount);
 		}
 		else
 		{
-			msg = spoil ? new SystemMessage(SystemMessageId.C1_HAS_OBTAINED_S2_BY_USING_SWEEPER) : new SystemMessage(SystemMessageId.C1_HAS_OBTAINED_S2);
+			msg = new SystemMessage(spoil ? SystemMessageId.C1_HAS_OBTAINED_S2_BY_USING_SWEEPER : SystemMessageId.C1_HAS_OBTAINED_S2);
 			msg.addString(looter.getName());
 			msg.addItemName(itemId);
 		}

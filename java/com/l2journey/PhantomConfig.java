@@ -43,7 +43,14 @@ public class PhantomConfig
 
 	public static class FarmZone
 	{
-		public int minLvl, maxLvl, spotX, spotY, spotZ, townX, townY, townZ;
+		public int minLvl;
+		public int maxLvl;
+		public int spotX;
+		public int spotY;
+		public int spotZ;
+		public int townX;
+		public int townY;
+		public int townZ;
 		
 		public FarmZone(int min, int max, int sx, int sy, int sz, int tx, int ty, int tz)
 		{

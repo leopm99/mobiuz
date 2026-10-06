@@ -2047,7 +2047,7 @@ public class Player extends Playable
 	 */
 	public void setRecomHave(int value)
 	{
-		_recomHave = Math.min(Math.max(value, 0), 255);
+		_recomHave = Math.clamp(value, 0, 255);
 	}
 	
 	/**
@@ -2056,7 +2056,7 @@ public class Player extends Playable
 	 */
 	public void setRecomLeft(int value)
 	{
-		_recomLeft = Math.min(Math.max(value, 0), 255);
+		_recomLeft = Math.clamp(value, 0, 255);
 	}
 	
 	/**
@@ -2273,7 +2273,7 @@ public class Player extends Playable
 		
 		// calc weapon penalty
 		weaponPenalty = weaponPenalty - expertiseLevel - _expertisePenaltyBonus;
-		weaponPenalty = Math.min(Math.max(weaponPenalty, 0), 4);
+		weaponPenalty = Math.clamp(weaponPenalty, 0, 4);
 		if ((_expertiseWeaponPenalty != weaponPenalty) || (getSkillLevel(CommonSkill.WEAPON_GRADE_PENALTY.getId()) != weaponPenalty))
 		{
 			_expertiseWeaponPenalty = weaponPenalty;
@@ -2291,7 +2291,7 @@ public class Player extends Playable
 		
 		// calc armor penalty
 		armorPenalty = armorPenalty - expertiseLevel - _expertisePenaltyBonus;
-		armorPenalty = Math.min(Math.max(armorPenalty, 0), 4);
+		armorPenalty = Math.clamp(armorPenalty, 0, 4);
 		if ((_expertiseArmorPenalty != armorPenalty) || (getSkillLevel(CommonSkill.ARMOR_GRADE_PENALTY.getId()) != armorPenalty))
 		{
 			_expertiseArmorPenalty = armorPenalty;
@@ -12576,7 +12576,8 @@ public class Player extends Playable
 			ivlim = getRace() == Race.DWARF ? Config.INVENTORY_MAXIMUM_DWARF : Config.INVENTORY_MAXIMUM_NO_DWARF;
 		}
 		
-		return ivlim += (int) getStat().calcStat(Stat.INV_LIM, 0, null, null);
+		ivlim += (int) getStat().calcStat(Stat.INV_LIM, 0, null, null);
+		return ivlim;
 	}
 	
 	public int getWareHouseLimit()

@@ -441,8 +441,7 @@ public class KrateiArena
 				return null;
 			}
 		}
-		final Map<Player, Integer> sortedMap = participants.entrySet().stream().sorted(Entry.comparingByValue(Comparator.reverseOrder())).collect(Collectors.toMap(Entry::getKey, Entry::getValue, (e1, _) -> e1, LinkedHashMap::new));
-		return sortedMap;
+		return participants.entrySet().stream().sorted(Entry.comparingByValue(Comparator.reverseOrder())).collect(Collectors.toMap(Entry::getKey, Entry::getValue, (e1, _) -> e1, LinkedHashMap::new));
 	}
 	
 	private void teleportAllPlayers()
@@ -727,7 +726,7 @@ public class KrateiArena
 		final KrateiCubePlayer krateiPlayer = getPlayers().get(player);
 		if (krateiPlayer != null)
 		{
-			krateiPlayer.addPoints(krateiPlayer.getPoints() + (isPlayer ? getParams().getInt("pointPerPlayer") : getParams().getInt("pointPerMob")));
+			krateiPlayer.addPoints(krateiPlayer.getPoints() + (getParams().getInt(isPlayer ? "pointPerPlayer" : "pointPerMob")));
 			krateiPlayer.getPlayer().sendPacket(new ExPVPMatchCCMyRecord(krateiPlayer.getPoints()));
 			
 			final Map<Player, Integer> participants = getParticipants();

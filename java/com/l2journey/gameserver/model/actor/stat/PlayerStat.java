@@ -763,7 +763,7 @@ public class PlayerStat extends PlayableStat
 	 */
 	public void setVitalityPoints(int value, boolean quiet)
 	{
-		final int points = Math.min(Math.max(value, MIN_VITALITY_POINTS), MAX_VITALITY_POINTS);
+		final int points = Math.clamp(value, MIN_VITALITY_POINTS, MAX_VITALITY_POINTS);
 		if (points == _vitalityPoints)
 		{
 			return;

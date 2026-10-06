@@ -704,7 +704,6 @@ public class Hero
 							insert.setInt(4, hero.getInt(PLAYED, 0));
 							insert.setString(5, String.valueOf(hero.getBoolean(CLAIMED, false)));
 							insert.execute();
-							insert.close();
 						}
 						
 						try (PreparedStatement statement = con.prepareStatement(GET_CLAN_ALLY))

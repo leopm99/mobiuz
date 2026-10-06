@@ -753,7 +753,7 @@ public class Formulas
 		// Defense bonuses in PvP fight
 		if (isPvP)
 		{
-			defence *= (skill == null) ? target.calcStat(Stat.PVP_PHYSICAL_DEF, 1, null, null) : target.calcStat(Stat.PVP_PHYS_SKILL_DEF, 1, null, null);
+			defence *= target.calcStat((skill == null) ? Stat.PVP_PHYSICAL_DEF : Stat.PVP_PHYS_SKILL_DEF, 1, null, null);
 		}
 		
 		switch (shld)
@@ -1155,7 +1155,7 @@ public class Formulas
 			
 			if (target.isPlayer())
 			{
-				final SystemMessage sm = (skill.hasEffectType(EffectType.HP_DRAIN)) ? new SystemMessage(SystemMessageId.YOU_RESISTED_C1_S_DRAIN) : new SystemMessage(SystemMessageId.YOU_RESISTED_C1_S_MAGIC);
+				final SystemMessage sm = new SystemMessage((skill.hasEffectType(EffectType.HP_DRAIN)) ? SystemMessageId.YOU_RESISTED_C1_S_DRAIN : SystemMessageId.YOU_RESISTED_C1_S_MAGIC);
 				sm.addString(attacker.getName());
 				target.sendPacket(sm);
 			}
@@ -1368,7 +1368,7 @@ public class Formulas
 		double rate = target.calcStat(Stat.ATTACK_CANCEL, init, null, null);
 		
 		// Adjust the rate to be between 1 and 99
-		rate = Math.max(Math.min(rate, 99), 1);
+		rate = Math.clamp(rate, 1, 99);
 		
 		return Rnd.get(100) < rate;
 	}
@@ -1447,7 +1447,7 @@ public class Formulas
 		}
 		
 		final ItemTemplate item = target.getSecondaryWeaponItem();
-		if ((item == null) || !(item instanceof Armor) || (((Armor) item).getItemType() == ArmorType.SIGIL))
+		if (!(item instanceof Armor) || (((Armor) item).getItemType() == ArmorType.SIGIL))
 		{
 			return 0;
 		}
@@ -2216,7 +2216,7 @@ public class Formulas
 		}
 		
 		// Garante que a chance esteja entre os valores minimo e maximo da skill
-		int clampedChance = Math.min(Math.max(chance, skill.getMinChance()), skill.getMaxChance());
+		int clampedChance = Math.clamp(chance, skill.getMinChance(), skill.getMaxChance());
 		// Check if random number is less than calculated chance
 		return Rnd.get(100) < clampedChance;
 	}

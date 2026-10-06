@@ -127,7 +127,7 @@ public class DatabaseFactory
 	 */
 	private static int determineMaxPoolSize(int configuredMax)
 	{
-		return Math.min(Math.max(configuredMax, 4), 1000);
+		return Math.clamp(configuredMax, 4, 1000);
 	}
 	
 	/**

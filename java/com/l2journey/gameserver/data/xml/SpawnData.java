@@ -672,7 +672,7 @@ public class SpawnData implements IXmlReader
 		final int y = ((spawn.getY() - World.WORLD_Y_MIN) >> 15) + World.TILE_Y_MIN;
 		final int npcSpawnTemplateId = spawn.getNpcSpawnTemplateId();
 		final Location spawnLocation = spawn.getSpawnLocation();
-		final File spawnFile = npcSpawnTemplateId > 0 ? new File(_spawnTemplates.get(npcSpawnTemplateId)) : new File(OTHER_XML_FOLDER + "/" + x + "_" + y + ".xml");
+		final File spawnFile = new File((npcSpawnTemplateId > 0) ? _spawnTemplates.get(npcSpawnTemplateId) : OTHER_XML_FOLDER + "/" + x + "_" + y + ".xml");
 		final File tempFile = new File(spawnFile.getAbsolutePath().substring(Config.DATAPACK_ROOT.getAbsolutePath().length() + 1).replace('\\', '/') + ".tmp");
 		try
 		{

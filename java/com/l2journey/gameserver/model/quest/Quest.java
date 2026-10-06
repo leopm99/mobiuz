@@ -3982,9 +3982,6 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		return _listeners;
 	}
 	
-	/**
-	 * -------------------------------------------------------------------------------------------------------
-	 */
 	
 	/**
 	 * Show an on screen message to the player.

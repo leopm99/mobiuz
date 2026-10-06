@@ -54,7 +54,7 @@ public class GMViewSkillInfo extends ServerPacket
 		ServerPackets.GM_VIEW_SKILL_INFO.writeId(this, buffer);
 		buffer.writeString(_player.getName());
 		buffer.writeInt(_skills.size());
-		final boolean isDisabled = (_player.getClan() != null) ? (_player.getClan().getReputationScore() < 0) : false;
+		final boolean isDisabled = (_player.getClan() != null) && (_player.getClan().getReputationScore() < 0);
 		for (Skill skill : _skills)
 		{
 			buffer.writeInt(skill.isPassive());
