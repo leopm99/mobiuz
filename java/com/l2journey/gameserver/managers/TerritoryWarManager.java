@@ -812,7 +812,7 @@ public class TerritoryWarManager implements Siegable
 		
 		try (Connection con = DatabaseFactory.getConnection();
 			Statement s = con.createStatement();
-			ResultSet rs = s.executeQuery("SELECT * FROM territory_spawnlist"))
+			ResultSet rs = s.executeQuery("SELECT id, castleId, npcId, x, y, z, heading, spawnType FROM territory_spawnlist"))
 		{
 			while (rs.next())
 			{
@@ -850,7 +850,7 @@ public class TerritoryWarManager implements Siegable
 		
 		try (Connection con = DatabaseFactory.getConnection();
 			Statement s = con.createStatement();
-			ResultSet rs = s.executeQuery("SELECT * FROM territories"))
+			ResultSet rs = s.executeQuery("SELECT castleId, fortId, OwnedWardIds FROM territories"))
 		{
 			while (rs.next())
 			{
@@ -887,7 +887,7 @@ public class TerritoryWarManager implements Siegable
 		
 		try (Connection con = DatabaseFactory.getConnection();
 			Statement s = con.createStatement();
-			ResultSet rs = s.executeQuery("SELECT * FROM territory_registrations"))
+			ResultSet rs = s.executeQuery("SELECT castleId, registeredId FROM territory_registrations"))
 		{
 			while (rs.next())
 			{

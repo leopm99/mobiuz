@@ -86,7 +86,7 @@ public class GrandBossManager
 	{
 		try (Connection con = DatabaseFactory.getConnection();
 			Statement s = con.createStatement();
-			ResultSet rs = s.executeQuery("SELECT * from grandboss_data ORDER BY boss_id"))
+			ResultSet rs = s.executeQuery("SELECT boss_id, loc_x, loc_y, loc_z, heading, respawn_time, currentHP, currentMP, status from grandboss_data ORDER BY boss_id"))
 		{
 			while (rs.next())
 			{
@@ -136,7 +136,7 @@ public class GrandBossManager
 		
 		try (Connection con = DatabaseFactory.getConnection();
 			Statement s = con.createStatement();
-			ResultSet rs = s.executeQuery("SELECT * from grandboss_list ORDER BY player_id"))
+			ResultSet rs = s.executeQuery("SELECT player_id, zone from grandboss_list ORDER BY player_id"))
 		{
 			while (rs.next())
 			{

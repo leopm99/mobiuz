@@ -197,7 +197,7 @@ public class UndergroundColiseumManager implements IXmlReader
 	{
 		_bestTeams.clear();
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement statement = con.prepareStatement("SELECT * FROM underground_coliseum ORDER BY arenaId");
+			PreparedStatement statement = con.prepareStatement("SELECT arenaId, leader, wins FROM underground_coliseum ORDER BY arenaId");
 			ResultSet rset = statement.executeQuery())
 		{
 			while (rset.next())

@@ -67,7 +67,7 @@ public class MailManager
 		int count = 0;
 		try (Connection con = DatabaseFactory.getConnection();
 			Statement ps = con.createStatement();
-			ResultSet rs = ps.executeQuery("SELECT * FROM messages ORDER BY expiration"))
+			ResultSet rs = ps.executeQuery("SELECT `messageId`, `senderId`, `receiverId`, `subject`, `content`, `expiration`, `reqAdena`, `hasAttachments`, `isUnread`, `isDeletedBySender`, `isDeletedByReceiver`, `sendBySystem`, `isReturned` FROM messages ORDER BY expiration"))
 		{
 			while (rs.next())
 			{

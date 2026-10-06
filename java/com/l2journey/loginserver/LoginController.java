@@ -74,7 +74,7 @@ public class LoginController
 	private static final String ACCOUNT_LAST_SERVER_UPDATE = "UPDATE accounts SET lastServer = ? WHERE login = ?";
 	private static final String ACCOUNT_ACCESS_LEVEL_UPDATE = "UPDATE accounts SET accessLevel = ? WHERE login = ?";
 	private static final String ACCOUNT_IPS_UPDATE = "UPDATE accounts SET pcIp = ?, hop1 = ?, hop2 = ?, hop3 = ?, hop4 = ? WHERE login = ?";
-	private static final String ACCOUNT_IPAUTH_SELECT = "SELECT * FROM accounts_ipauth WHERE login = ?";
+	private static final String ACCOUNT_IPAUTH_SELECT = "SELECT ip, type FROM accounts_ipauth WHERE login = ?";
 	
 	/** Time before kicking the client if he didn't logged yet */
 	public static final int LOGIN_TIMEOUT = 5 * 60 * 1000; // 5 minutes.

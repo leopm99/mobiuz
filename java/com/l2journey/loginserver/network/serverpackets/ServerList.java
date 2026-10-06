@@ -139,8 +139,9 @@ public class ServerList extends LoginServerPacket
 			{
 				Thread.sleep(50);
 			}
-			catch (InterruptedException _)
+			catch (InterruptedException e)
 			{
+				Thread.currentThread().interrupt();
 			}
 			_charsOnServers = client.getCharsOnServ();
 			_charsToDelete = client.getCharsWaitingDelOnServ();

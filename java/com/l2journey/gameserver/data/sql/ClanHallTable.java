@@ -77,7 +77,7 @@ public class ClanHallTable
 	{
 		try (Connection con = DatabaseFactory.getConnection();
 			Statement s = con.createStatement();
-			ResultSet rs = s.executeQuery("SELECT * FROM clanhall ORDER BY id"))
+			ResultSet rs = s.executeQuery("SELECT id, name, ownerId, lease, `desc`, location, paidUntil, Grade, paid FROM clanhall ORDER BY id"))
 		{
 			int id;
 			int ownerId;

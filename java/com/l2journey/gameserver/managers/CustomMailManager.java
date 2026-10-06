@@ -59,7 +59,7 @@ public class CustomMailManager
 	private static final Logger LOGGER = Logger.getLogger(CustomMailManager.class.getName());
 	
 	// SQL Statements
-	private static final String READ_SQL = "SELECT * FROM custom_mail";
+	private static final String READ_SQL = "SELECT receiver, items, subject, message, date FROM custom_mail";
 	private static final String DELETE_SQL = "DELETE FROM custom_mail WHERE date=? AND receiver=?";
 	
 	protected CustomMailManager()

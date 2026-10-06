@@ -345,9 +345,9 @@ public class RecipeManager
 					{
 						Thread.sleep(_delay);
 					}
-					catch (Exception _)
+					catch (InterruptedException e)
 					{
-						// Ignore.
+						Thread.currentThread().interrupt();
 					}
 					finally
 					{

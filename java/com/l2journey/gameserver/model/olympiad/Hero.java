@@ -233,7 +233,7 @@ public class Hero
 		final List<StatSet> diary = new ArrayList<>();
 		int diaryentries = 0;
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM  heroes_diary WHERE charId=? ORDER BY time ASC"))
+			PreparedStatement ps = con.prepareStatement("SELECT time, action, param FROM heroes_diary WHERE charId=? ORDER BY time ASC"))
 		{
 			ps.setInt(1, charId);
 			try (ResultSet rset = ps.executeQuery())
@@ -297,7 +297,7 @@ public class Hero
 		int draws = 0;
 		
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM olympiad_fights WHERE (charOneId=? OR charTwoId=?) AND start<? ORDER BY start ASC"))
+			PreparedStatement ps = con.prepareStatement("SELECT charOneId, charOneClass, charTwoId, charTwoClass, winner, start, time, classed FROM olympiad_fights WHERE (charOneId=? OR charTwoId=?) AND start<? ORDER BY start ASC"))
 		{
 			ps.setInt(1, charId);
 			ps.setInt(2, charId);

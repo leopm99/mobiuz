@@ -296,7 +296,7 @@ public class SiegeManager
 	private void loadTrapUpgrade(int castleId)
 	{
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM castle_trapupgrade WHERE castleId=?"))
+			PreparedStatement ps = con.prepareStatement("SELECT towerIndex, level FROM castle_trapupgrade WHERE castleId=?"))
 		{
 			ps.setInt(1, castleId);
 			try (ResultSet rs = ps.executeQuery())

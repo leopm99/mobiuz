@@ -170,8 +170,8 @@ public class CastleManorManager implements IXmlReader
 	private void loadDb()
 	{
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement stProduction = con.prepareStatement("SELECT * FROM castle_manor_production WHERE castle_id=?");
-			PreparedStatement stProcure = con.prepareStatement("SELECT * FROM castle_manor_procure WHERE castle_id=?"))
+			PreparedStatement stProduction = con.prepareStatement("SELECT seed_id, amount, price, start_amount, next_period FROM castle_manor_production WHERE castle_id=?");
+			PreparedStatement stProcure = con.prepareStatement("SELECT crop_id, amount, reward_type, start_amount, price, next_period FROM castle_manor_procure WHERE castle_id=?"))
 		{
 			for (Castle castle : CastleManager.getInstance().getCastles())
 			{

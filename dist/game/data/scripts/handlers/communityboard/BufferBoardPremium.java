@@ -1710,7 +1710,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 			}
 			else
 			{
-				ps = con.prepareStatement("SELECT * FROM npcbufferpremium_buff_list WHERE buffType=?");
+				ps = con.prepareStatement("SELECT buffId, buffLevel, canUse, forClass FROM npcbufferpremium_buff_list WHERE buffType=?");
 				ps.setString(1, type);
 			}
 			final ResultSet rs = ps.executeQuery();

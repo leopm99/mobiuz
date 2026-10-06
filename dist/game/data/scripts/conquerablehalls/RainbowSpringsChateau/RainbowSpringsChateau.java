@@ -1128,7 +1128,7 @@ public class RainbowSpringsChateau extends ClanHallSiegeEngine
 	{
 		try (Connection con = DatabaseFactory.getConnection())
 		{
-			final PreparedStatement statement = con.prepareStatement("SELECT * FROM rainbowsprings_attacker_list");
+			final PreparedStatement statement = con.prepareStatement("SELECT clanId, war_decrees_count FROM rainbowsprings_attacker_list");
 			final ResultSet rset = statement.executeQuery();
 			while (rset.next())
 			{

@@ -46,7 +46,7 @@ public class ItemVariables extends AbstractVariables
 	private static final Logger LOGGER = Logger.getLogger(ItemVariables.class.getName());
 	
 	// SQL Queries.
-	private static final String SELECT_QUERY = "SELECT * FROM item_variables WHERE id = ?";
+	private static final String SELECT_QUERY = "SELECT var, val FROM item_variables WHERE id = ?";
 	private static final String SELECT_COUNT = "SELECT COUNT(*) FROM item_variables WHERE id = ?";
 	private static final String DELETE_QUERY = "DELETE FROM item_variables WHERE id = ?";
 	private static final String INSERT_QUERY = "INSERT INTO item_variables (id, var, val) VALUES (?, ?, ?)";

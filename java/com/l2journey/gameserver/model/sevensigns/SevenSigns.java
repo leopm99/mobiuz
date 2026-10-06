@@ -132,7 +132,7 @@ public class SevenSigns
 	
 	private static final String LOAD_DATA = "SELECT charId, cabal, seal, red_stones, green_stones, blue_stones, ancient_adena_amount, contribution_score FROM seven_signs";
 	
-	private static final String LOAD_STATUS = "SELECT * FROM seven_signs_status WHERE id=0";
+	private static final String LOAD_STATUS = "SELECT current_cycle, active_period, previous_winner, dawn_stone_score, dawn_festival_score, dusk_stone_score, dusk_festival_score, avarice_owner, gnosis_owner, strife_owner, avarice_dawn_score, gnosis_dawn_score, strife_dawn_score, avarice_dusk_score, gnosis_dusk_score, strife_dusk_score, date FROM seven_signs_status WHERE id=0";
 	
 	private static final String INSERT_PLAYER = "INSERT INTO seven_signs (charId, cabal, seal) VALUES (?,?,?)";
 	

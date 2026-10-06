@@ -52,7 +52,7 @@ public class AirShipManager
 {
 	private static final Logger LOGGER = Logger.getLogger(AirShipManager.class.getName());
 	
-	private static final String LOAD_DB = "SELECT * FROM airships";
+	private static final String LOAD_DB = "SELECT owner_id, fuel FROM airships";
 	private static final String ADD_DB = "INSERT INTO airships (owner_id,fuel) VALUES (?,?)";
 	private static final String UPDATE_DB = "UPDATE airships SET fuel=? WHERE owner_id=?";
 	

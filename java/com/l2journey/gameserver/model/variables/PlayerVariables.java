@@ -46,7 +46,7 @@ public class PlayerVariables extends AbstractVariables
 	private static final Logger LOGGER = Logger.getLogger(PlayerVariables.class.getName());
 	
 	// SQL Queries.
-	private static final String SELECT_QUERY = "SELECT * FROM character_variables WHERE charId = ?";
+	private static final String SELECT_QUERY = "SELECT var, val FROM character_variables WHERE charId = ?";
 	private static final String DELETE_QUERY = "DELETE FROM character_variables WHERE charId = ?";
 	private static final String INSERT_QUERY = "INSERT INTO character_variables (charId, var, val) VALUES (?, ?, ?)";
 	

@@ -130,8 +130,8 @@ public class AutoSpawnHandler
 	{
 		try (Connection con = DatabaseFactory.getConnection();
 			Statement s = con.createStatement();
-			ResultSet rs = s.executeQuery("SELECT * FROM random_spawn ORDER BY groupId ASC");
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM random_spawn_loc WHERE groupId=?"))
+			ResultSet rs = s.executeQuery("SELECT groupId, npcId, initialDelay, respawnDelay, despawnDelay, count, broadcastSpawn, randomSpawn FROM random_spawn ORDER BY groupId ASC");
+			PreparedStatement ps = con.prepareStatement("SELECT x, y, z, heading FROM random_spawn_loc WHERE groupId=?"))
 		{
 			// Restore spawn group data, then the location data.
 			while (rs.next())

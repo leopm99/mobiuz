@@ -66,8 +66,8 @@ public class OfflineTraderTable
 	private static final String CLEAR_OFFLINE_TABLE_PLAYER = "DELETE FROM character_offline_trade WHERE `charId`=?";
 	private static final String CLEAR_OFFLINE_TABLE_ITEMS = "DELETE FROM character_offline_trade_items";
 	private static final String CLEAR_OFFLINE_TABLE_ITEMS_PLAYER = "DELETE FROM character_offline_trade_items WHERE `charId`=?";
-	private static final String LOAD_OFFLINE_STATUS = "SELECT * FROM character_offline_trade";
-	private static final String LOAD_OFFLINE_ITEMS = "SELECT * FROM character_offline_trade_items WHERE `charId`=?";
+	private static final String LOAD_OFFLINE_STATUS = "SELECT `charId`, `time`, `type`, `title` FROM character_offline_trade";
+	private static final String LOAD_OFFLINE_ITEMS = "SELECT `charId`, `item`, `count`, `price` FROM character_offline_trade_items WHERE `charId`=?";
 	
 	protected OfflineTraderTable()
 	{
@@ -126,14 +126,13 @@ public class OfflineTraderTable
 								title = pc.getSellList().getTitle();
 								if (pc.isSellingBuffs())
 								{
+									stmItems.setLong(3, 0);
 									for (SellBuffHolder holder : pc.getSellingBuffs())
 									{
 										stmItems.setInt(1, pc.getObjectId());
 										stmItems.setInt(2, holder.getSkillId());
-										stmItems.setLong(3, 0);
 										stmItems.setLong(4, holder.getPrice());
 										stmItems.addBatch();
-										stmItems.clearParameters();
 									}
 									stmItems.executeBatch();
 								}
@@ -160,14 +159,13 @@ public class OfflineTraderTable
 								}
 								
 								title = pc.getStoreName();
+								stmItems.setLong(3, 0);
 								for (ManufactureItem i : pc.getManufactureItems().values())
 								{
 									stmItems.setInt(1, pc.getObjectId());
 									stmItems.setInt(2, i.getRecipeId());
-									stmItems.setLong(3, 0);
 									stmItems.setLong(4, i.getCost());
 									stmItems.addBatch();
-									stmItems.clearParameters();
 								}
 								stmItems.executeBatch();
 								break;
@@ -259,7 +257,7 @@ public class OfflineTraderTable
 							{
 								while (items.next())
 								{
-									if (player.getBuyList().addItemByItemId(items.getInt(2), items.getLong(3), items.getLong(4)) == null)
+									if (player.getBuyList().addItemByItemId(items.getInt("item"), items.getLong("count"), items.getLong("price")) == null)
 									{
 										// throw new NullPointerException();
 									}
@@ -281,7 +279,7 @@ public class OfflineTraderTable
 								{
 									while (items.next())
 									{
-										if (player.getSellList().addItem(items.getInt(2), items.getLong(3), items.getLong(4)) == null)
+										if (player.getSellList().addItem(items.getInt("item"), items.getLong("count"), items.getLong("price")) == null)
 										{
 											// throw new NullPointerException();
 										}
@@ -296,7 +294,7 @@ public class OfflineTraderTable
 							{
 								while (items.next())
 								{
-									player.getManufactureItems().put(items.getInt(2), new ManufactureItem(items.getInt(2), items.getLong(4)));
+									player.getManufactureItems().put(items.getInt("item"), new ManufactureItem(items.getInt("item"), items.getLong("price")));
 								}
 								
 								player.setStoreName(rs.getString("title"));
@@ -405,14 +403,13 @@ public class OfflineTraderTable
 								
 								if (trader.isSellingBuffs())
 								{
+									stm3.setLong(3, 0);
 									for (SellBuffHolder holder : trader.getSellingBuffs())
 									{
 										stm3.setInt(1, trader.getObjectId());
 										stm3.setInt(2, holder.getSkillId());
-										stm3.setLong(3, 0);
 										stm3.setLong(4, holder.getPrice());
 										stm3.addBatch();
-										stm3.clearParameters();
 									}
 									stm3.executeBatch();
 								}
@@ -438,14 +435,13 @@ public class OfflineTraderTable
 									title = trader.getStoreName();
 								}
 								
+								stm3.setLong(3, 0);
 								for (ManufactureItem i : trader.getManufactureItems().values())
 								{
 									stm3.setInt(1, trader.getObjectId());
 									stm3.setInt(2, i.getRecipeId());
-									stm3.setLong(3, 0);
 									stm3.setLong(4, i.getCost());
 									stm3.addBatch();
-									stm3.clearParameters();
 								}
 								stm3.executeBatch();
 								break;

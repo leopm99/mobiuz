@@ -65,7 +65,7 @@ public class BuyListData implements IXmlReader
 		
 		try (Connection con = DatabaseFactory.getConnection();
 			Statement statement = con.createStatement();
-			ResultSet rs = statement.executeQuery("SELECT * FROM `buylists`"))
+			ResultSet rs = statement.executeQuery("SELECT `buylist_id`, `item_id`, `count`, `next_restock_time` FROM `buylists`"))
 		{
 			while (rs.next())
 			{

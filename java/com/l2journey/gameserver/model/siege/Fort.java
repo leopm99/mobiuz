@@ -218,7 +218,7 @@ public class Fort extends AbstractResidence
 						removeFunction(_type);
 					}
 				}
-				catch (Throwable _)
+				catch (Exception _)
 				{
 					// Ignore.
 				}
@@ -566,7 +566,7 @@ public class Fort extends AbstractResidence
 	protected void load()
 	{
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM fort WHERE id = ?"))
+			PreparedStatement ps = con.prepareStatement("SELECT name, siegeDate, lastOwnedTime, owner, fortType, state, castleId, supplyLvL FROM fort WHERE id = ?"))
 		{
 			ps.setInt(1, getResidenceId());
 			int ownerId = 0;
@@ -627,7 +627,7 @@ public class Fort extends AbstractResidence
 	private void loadFunctions()
 	{
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM fort_functions WHERE fort_id = ?"))
+			PreparedStatement ps = con.prepareStatement("SELECT type, lvl, lease, rate, endTime FROM fort_functions WHERE fort_id = ?"))
 		{
 			ps.setInt(1, getResidenceId());
 			try (ResultSet rs = ps.executeQuery())
@@ -740,7 +740,7 @@ public class Fort extends AbstractResidence
 	private void loadDoorUpgrade()
 	{
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM fort_doorupgrade WHERE fortId = ?"))
+			PreparedStatement ps = con.prepareStatement("SELECT id, hp, pDef, mDef FROM fort_doorupgrade WHERE fortId = ?"))
 		{
 			ps.setInt(1, getResidenceId());
 			try (ResultSet rs = ps.executeQuery())
@@ -1134,7 +1134,7 @@ public class Fort extends AbstractResidence
 	private void initNpcs()
 	{
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM fort_spawnlist WHERE fortId = ? AND spawnType = ?"))
+			PreparedStatement ps = con.prepareStatement("SELECT npcId, x, y, z, heading FROM fort_spawnlist WHERE fortId = ? AND spawnType = ?"))
 		{
 			ps.setInt(1, getResidenceId());
 			ps.setInt(2, 0);

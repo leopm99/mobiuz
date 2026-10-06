@@ -302,7 +302,7 @@ public class NpcBuffer extends Quest
 		String html = "";
 		try (Connection con = DatabaseFactory.getConnection())
 		{
-			final PreparedStatement statement = con.prepareStatement("SELECT * FROM npcbuffer_scheme_list WHERE player_id=?");
+			final PreparedStatement statement = con.prepareStatement("SELECT id, scheme_name FROM npcbuffer_scheme_list WHERE player_id=?");
 			statement.setInt(1, st.getPlayer().getObjectId());
 			final ResultSet rss = statement.executeQuery();
 			while (rss.next())
@@ -541,7 +541,7 @@ public class NpcBuffer extends Quest
 		String html = "<html><head><title>" + TITLE_NAME + "</title></head><body><center><img src=\"L2UI_CH3.herotower_deco\" width=256 height=32><br>Available schemes:<br><br>";
 		try (Connection con = DatabaseFactory.getConnection())
 		{
-			final PreparedStatement statement = con.prepareStatement("SELECT * FROM npcbuffer_scheme_list WHERE player_id=?");
+			final PreparedStatement statement = con.prepareStatement("SELECT id, scheme_name FROM npcbuffer_scheme_list WHERE player_id=?");
 			statement.setInt(1, player.getObjectId());
 			final ResultSet rss = statement.executeQuery();
 			while (rss.next())
@@ -564,7 +564,7 @@ public class NpcBuffer extends Quest
 		String html = "<html><head><title>" + TITLE_NAME + "</title></head><body><center><img src=\"L2UI_CH3.herotower_deco\" width=256 height=32><br>Select a scheme that you would like to manage:<br><br>";
 		try (Connection con = DatabaseFactory.getConnection())
 		{
-			final PreparedStatement statement = con.prepareStatement("SELECT * FROM npcbuffer_scheme_list WHERE player_id=?");
+			final PreparedStatement statement = con.prepareStatement("SELECT id, scheme_name FROM npcbuffer_scheme_list WHERE player_id=?");
 			statement.setInt(1, player.getObjectId());
 			final ResultSet rss = statement.executeQuery();
 			while (rss.next())
@@ -793,7 +793,7 @@ public class NpcBuffer extends Quest
 			else if ("remove".equals(addOrRemove))
 			{
 				html += "You have <font color=LEVEL>" + buffCount + "</font> Buffs and <font color=LEVEL>" + danceSongCount + "</font> Dances";
-				final String query = "SELECT * FROM npcbuffer_scheme_contents WHERE scheme_id=? ORDER BY Buff_Class ASC, id";
+				final String query = "SELECT skill_id, skill_level FROM npcbuffer_scheme_contents WHERE scheme_id=? ORDER BY Buff_Class ASC, id";
 				final PreparedStatement statement = con.prepareStatement(query);
 				statement.setString(1, scheme);
 				final ResultSet rss = statement.executeQuery();
@@ -960,7 +960,7 @@ public class NpcBuffer extends Quest
 			}
 			else
 			{
-				statement = con.prepareStatement("SELECT * FROM npcbuffer_buff_list WHERE buffType=?");
+				statement = con.prepareStatement("SELECT buffId, buffLevel, canUse, forClass FROM npcbuffer_buff_list WHERE buffType=?");
 				statement.setString(1, type);
 			}
 			final ResultSet rss = statement.executeQuery();
@@ -1544,7 +1544,7 @@ public class NpcBuffer extends Quest
 					final List<Integer> levels = new ArrayList<>();
 					try (Connection con = DatabaseFactory.getConnection())
 					{
-						final PreparedStatement statement = con.prepareStatement("SELECT * FROM npcbuffer_scheme_contents WHERE scheme_id=? ORDER BY id");
+						final PreparedStatement statement = con.prepareStatement("SELECT skill_id, skill_level FROM npcbuffer_scheme_contents WHERE scheme_id=? ORDER BY id");
 						statement.setString(1, eventParam1);
 						final ResultSet rss = statement.executeQuery();
 						while (rss.next())

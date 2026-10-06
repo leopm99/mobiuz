@@ -223,7 +223,7 @@ public class Post
 	private void load(Topic t)
 	{
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM posts WHERE post_forum_id=? AND post_topic_id=? ORDER BY post_id ASC"))
+			PreparedStatement ps = con.prepareStatement("SELECT post_id, post_owner_name, post_ownerid, post_date, post_topic_id, post_forum_id, post_txt FROM posts WHERE post_forum_id=? AND post_topic_id=? ORDER BY post_id ASC"))
 		{
 			ps.setInt(1, t.getForumID());
 			ps.setInt(2, t.getID());

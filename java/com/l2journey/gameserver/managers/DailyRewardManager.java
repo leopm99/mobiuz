@@ -59,8 +59,8 @@ public class DailyRewardManager implements IXmlReader
 	private static final Logger LOGGER = Logger.getLogger(DailyRewardManager.class.getName());
 	
 	// SQL Queries
-	private static final String SELECT_ALL = "SELECT * FROM daily_reward_history";
-	private static final String SELECT_PLAYER = "SELECT * FROM daily_reward_history WHERE account_name = ?";
+	private static final String SELECT_ALL = "SELECT account_name, last_reward_time, current_day FROM daily_reward_history";
+	private static final String SELECT_PLAYER = "SELECT account_name FROM daily_reward_history WHERE account_name = ?";
 	private static final String INSERT_PLAYER = "INSERT INTO daily_reward_history (account_name, last_reward_time, current_day) VALUES (?, ?, ?)";
 	private static final String UPDATE_PLAYER = "UPDATE daily_reward_history SET last_reward_time = ?, current_day = ? WHERE account_name = ?";
 	private static final String RESET_ALL_DAYS = "UPDATE daily_reward_history SET current_day = 1";

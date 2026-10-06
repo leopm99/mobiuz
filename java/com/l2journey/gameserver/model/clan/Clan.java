@@ -98,7 +98,7 @@ public class Clan
 	
 	// SQL queries
 	private static final String INSERT_CLAN_DATA = "INSERT INTO clan_data (clan_id,clan_name,clan_level,hasCastle,blood_alliance_count,blood_oath_count,ally_id,ally_name,leader_id,crest_id,crest_large_id,ally_crest_id,new_leader_id) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
-	private static final String SELECT_CLAN_DATA = "SELECT * FROM clan_data where clan_id=?";
+	private static final String SELECT_CLAN_DATA = "SELECT clan_name, clan_level, hasCastle, blood_alliance_count, blood_oath_count, ally_id, ally_name, ally_penalty_expiry_time, ally_penalty_type, char_penalty_expiry_time, dissolving_expiry_time, crest_id, crest_large_id, ally_crest_id, reputation_score, auction_bid_at, new_leader_id, leader_id FROM clan_data where clan_id=?";
 	
 	// Ally Penalty Types
 	/** Clan leaved ally */
