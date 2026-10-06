@@ -68,20 +68,20 @@ public class Q00311_ExpulsionOfEvilSpirits extends Quest
 	private static final Map<Integer, Double> MONSTERS = new HashMap<>();
 	static
 	{
-		MONSTERS.put(22691, 0.694); // Ragna Orc
+		MONSTERS.put(22691, 0.694); // NOSONAR java:S9133 - drop chance, not ln(2) (Ragna Orc)
 		MONSTERS.put(22692, 0.716); // Ragna Orc Warrior
 		MONSTERS.put(22693, 0.736); // Ragna Orc Hero
 		MONSTERS.put(22694, 0.712); // Ragna Orc Commander
 		MONSTERS.put(22695, 0.698); // Ragna Orc Healer
-		MONSTERS.put(22696, 0.692); // Ragna Orc Shaman
+		MONSTERS.put(22696, 0.692); // NOSONAR java:S9133 - drop chance, not ln(2) (Ragna Orc Shaman)
 		MONSTERS.put(22697, 0.640); // Ragna Orc Seer
 		MONSTERS.put(22698, 0.716); // Ragna Orc Archer
 		MONSTERS.put(22699, 0.752); // Ragna Orc Sniper
 		MONSTERS.put(22701, 0.716); // Varangka's Dre Vanul
 		MONSTERS.put(22702, 0.662); // Varangka's Destroyer
 		MONSTERS.put(18808, 0.7);
-		MONSTERS.put(18809, 0.694);
-		MONSTERS.put(18810, 0.694);
+		MONSTERS.put(18809, 0.694); // NOSONAR java:S9133 - drop chance, not ln(2)
+		MONSTERS.put(18810, 0.694); // NOSONAR java:S9133 - drop chance, not ln(2)
 	}
 	// Misc
 	private static final int MIN_LEVEL = 80;

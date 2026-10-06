@@ -1040,27 +1040,13 @@ public class NpcBufferPremium extends Quest
 			
 			if ("set".equals(type))
 			{
-				final String listOrder;
-				if (forClass == 0)
+				final String listOrder = switch (forClass)
 				{
-					listOrder = "List=\"" + SET_FIGHTER + ";" + SET_MAGE + ";" + SET_ALL + ";" + SET_NONE + ";\"";
-				}
-				else if (forClass == 1)
-				{
-					listOrder = "List=\"" + SET_MAGE + ";" + SET_FIGHTER + ";" + SET_ALL + ";" + SET_NONE + ";\"";
-				}
-				else if (forClass == 2)
-				{
-					listOrder = "List=\"" + SET_ALL + ";" + SET_FIGHTER + ";" + SET_MAGE + ";" + SET_NONE + ";\"";
-				}
-				else if (forClass == 3)
-				{
-					listOrder = "List=\"" + SET_NONE + ";" + SET_FIGHTER + ";" + SET_MAGE + ";" + SET_ALL + ";\"";
-				}
-				else
-				{
-					listOrder = "List=\"" + SET_NONE + ";" + SET_FIGHTER + ";" + SET_MAGE + ";" + SET_ALL + ";\"";
-				}
+					case 0 -> "List=\"" + SET_FIGHTER + ";" + SET_MAGE + ";" + SET_ALL + ";" + SET_NONE + ";\"";
+					case 1 -> "List=\"" + SET_MAGE + ";" + SET_FIGHTER + ";" + SET_ALL + ";" + SET_NONE + ";\"";
+					case 2 -> "List=\"" + SET_ALL + ";" + SET_FIGHTER + ";" + SET_MAGE + ";" + SET_NONE + ";\"";
+					default -> "List=\"" + SET_NONE + ";" + SET_FIGHTER + ";" + SET_MAGE + ";" + SET_ALL + ";\"";
+				};
 				
 				html += "<tr><td fixwidth=145>" + name + "</td><td width=70><combobox var=\"newSet" + i + "\" width=70 " + listOrder + "></td><td width=50><button value=\"Update\" action=\"bypass -h Quest " + QUEST_LOADING_INFO + " changeBuffSet " + skillPos + " $newSet" + i + " " + page + "\" width=50 height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td></tr>";
 			}

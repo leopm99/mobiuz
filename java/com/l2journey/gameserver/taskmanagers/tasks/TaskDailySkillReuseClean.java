@@ -60,9 +60,9 @@ public class TaskDailySkillReuseClean extends PersistentTask
 			for (int skill_id : _daily_skills)
 			{
 				ps.setInt(1, skill_id);
-				ps.execute();
-				ps.clearParameters();
+				ps.addBatch();
 			}
+			ps.executeBatch();
 		}
 		catch (Exception e)
 		{

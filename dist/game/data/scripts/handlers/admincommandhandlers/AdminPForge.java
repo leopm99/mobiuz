@@ -344,19 +344,12 @@ public class AdminPForge implements IAdminCommandHandler
 				ByteBuffer bb = null;
 				for (int i = 0; i < opCodes.length; ++i)
 				{
-					char type;
-					if (i == 0)
+					final char type = switch (i)
 					{
-						type = 'c';
-					}
-					else if (i == 1)
-					{
-						type = 'h';
-					}
-					else
-					{
-						type = 'd';
-					}
+						case 0 -> 'c';
+						case 1 -> 'h';
+						default -> 'd';
+					};
 					if (method.equals("sc") || method.equals("sb"))
 					{
 						if (afp == null)

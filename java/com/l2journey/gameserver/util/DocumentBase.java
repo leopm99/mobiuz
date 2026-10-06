@@ -278,17 +278,15 @@ public abstract class DocumentBase
 		
 		final Condition applyCond = parseCondition(n.getFirstChild(), template);
 		final FuncTemplate ft = new FuncTemplate(attachCond, applyCond, functionName, order, stat, value);
-		if (template instanceof ItemTemplate itemTemplate)
-		{
-			itemTemplate.attach(ft);
-		}
-		else if (template instanceof AbstractEffect abstractEffect)
-		{
-			abstractEffect.attach(ft);
-		}
-		else
+		if (template == null)
 		{
 			throw new RuntimeException("Attaching stat to a non-effect template!!!");
+		}
+		switch (template)
+		{
+			case ItemTemplate itemTemplate -> itemTemplate.attach(ft);
+			case AbstractEffect abstractEffect -> abstractEffect.attach(ft);
+			default -> throw new RuntimeException("Attaching stat to a non-effect template!!!");
 		}
 	}
 	

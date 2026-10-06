@@ -627,8 +627,10 @@ public class SpawnData implements IXmlReader
 				}
 				writer.close();
 				reader.close();
-				spawnFile.delete();
-				tempFile.renameTo(spawnFile);
+				if (!spawnFile.delete() || !tempFile.renameTo(spawnFile))
+				{
+					LOGGER.warning(getClass().getSimpleName() + ": Could not replace spawn file: " + spawnFile);
+				}
 			}
 			catch (Exception e)
 			{
@@ -763,14 +765,19 @@ public class SpawnData implements IXmlReader
 			
 			writer.close();
 			reader.close();
-			spawnFile.delete();
-			tempFile.renameTo(spawnFile);
+			if (!spawnFile.delete() || !tempFile.renameTo(spawnFile))
+			{
+				LOGGER.warning(getClass().getSimpleName() + ": Could not replace spawn file: " + spawnFile);
+			}
 			
 			// Delete empty file.
 			if (lineCount < 5)
 			{
 				LOGGER.info(getClass().getSimpleName() + ": Deleted empty file: " + spawnFile.getAbsolutePath().substring(Config.DATAPACK_ROOT.getAbsolutePath().length() + 1).replace('\\', '/'));
-				spawnFile.delete();
+				if (!spawnFile.delete() && spawnFile.exists())
+				{
+					LOGGER.warning(getClass().getSimpleName() + ": Could not delete empty spawn file: " + spawnFile);
+				}
 			}
 		}
 		catch (Exception e)

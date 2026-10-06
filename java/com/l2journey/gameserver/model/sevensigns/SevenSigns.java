@@ -717,18 +717,12 @@ public class SevenSigns
 	
 	public int getSealProportion(int seal, int cabal)
 	{
-		if (cabal == CABAL_NULL)
+		return switch (cabal)
 		{
-			return 0;
-		}
-		else if (cabal == CABAL_DUSK)
-		{
-			return _signsDuskSealTotals.get(seal);
-		}
-		else
-		{
-			return _signsDawnSealTotals.get(seal);
-		}
+			case CABAL_NULL -> 0;
+			case CABAL_DUSK -> _signsDuskSealTotals.get(seal);
+			default -> _signsDawnSealTotals.get(seal);
+		};
 	}
 	
 	public int getTotalMembers(int cabal)

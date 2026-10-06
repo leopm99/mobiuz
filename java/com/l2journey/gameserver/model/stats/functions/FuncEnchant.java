@@ -123,23 +123,29 @@ public class FuncEnchant extends AbstractFunction
 				{
 					if (item.getWeaponItem().getBodyPart() == ItemTemplate.SLOT_LR_HAND)
 					{
-						if (type == WeaponType.BOW)
+						switch (type)
 						{
-							// P. Atk. increases by 10 for bows.
-							// Starting at +4, P. Atk. bonus double.
-							value += (10 * enchant) + (20 * overenchant);
-						}
-						else if (type == WeaponType.CROSSBOW)
-						{
-							// P. Atk. increases by 7 for crossbows.
-							// Starting at +4, P. Atk. bonus double.
-							value += (7 * enchant) + (14 * overenchant);
-						}
-						else
-						{
-							// P. Atk. increases by 6 for two-handed swords, two-handed blunts, dualswords, and two-handed combat weapons.
-							// Starting at +4, P. Atk. bonus double.
-							value += (6 * enchant) + (12 * overenchant);
+							case BOW:
+							{
+								// P. Atk. increases by 10 for bows.
+								// Starting at +4, P. Atk. bonus double.
+								value += (10 * enchant) + (20 * overenchant);
+								break;
+							}
+							case CROSSBOW:
+							{
+								// P. Atk. increases by 7 for crossbows.
+								// Starting at +4, P. Atk. bonus double.
+								value += (7 * enchant) + (14 * overenchant);
+								break;
+							}
+							default:
+							{
+								// P. Atk. increases by 6 for two-handed swords, two-handed blunts, dualswords, and two-handed combat weapons.
+								// Starting at +4, P. Atk. bonus double.
+								value += (6 * enchant) + (12 * overenchant);
+								break;
+							}
 						}
 					}
 					else
@@ -154,23 +160,29 @@ public class FuncEnchant extends AbstractFunction
 				{
 					if (item.getWeaponItem().getBodyPart() == ItemTemplate.SLOT_LR_HAND)
 					{
-						if (type == WeaponType.BOW)
+						switch (type)
 						{
-							// P. Atk. increases by 8 for bows.
-							// Starting at +4, P. Atk. bonus double.
-							value += (8 * enchant) + (16 * overenchant);
-						}
-						else if (type == WeaponType.CROSSBOW)
-						{
-							// P. Atk. increases by 6 for crossbows.
-							// Starting at +4, P. Atk. bonus double.
-							value += (6 * enchant) + (12 * overenchant);
-						}
-						else
-						{
-							// P. Atk. increases by 5 for two-handed swords, two-handed blunts, dualswords, and two-handed combat weapons.
-							// Starting at +4, P. Atk. bonus double.
-							value += (5 * enchant) + (10 * overenchant);
+							case BOW:
+							{
+								// P. Atk. increases by 8 for bows.
+								// Starting at +4, P. Atk. bonus double.
+								value += (8 * enchant) + (16 * overenchant);
+								break;
+							}
+							case CROSSBOW:
+							{
+								// P. Atk. increases by 6 for crossbows.
+								// Starting at +4, P. Atk. bonus double.
+								value += (6 * enchant) + (12 * overenchant);
+								break;
+							}
+							default:
+							{
+								// P. Atk. increases by 5 for two-handed swords, two-handed blunts, dualswords, and two-handed combat weapons.
+								// Starting at +4, P. Atk. bonus double.
+								value += (5 * enchant) + (10 * overenchant);
+								break;
+							}
 						}
 					}
 					else
@@ -185,23 +197,29 @@ public class FuncEnchant extends AbstractFunction
 				{
 					if (item.getWeaponItem().getBodyPart() == ItemTemplate.SLOT_LR_HAND)
 					{
-						if (type == WeaponType.BOW)
+						switch (type)
 						{
-							// P. Atk. increases by 6 for bows.
-							// Starting at +4, P. Atk. bonus double.
-							value += (6 * enchant) + (12 * overenchant);
-						}
-						else if (type == WeaponType.CROSSBOW)
-						{
-							// P. Atk. increases by 5 for crossbows.
-							// Starting at +4, P. Atk. bonus double.
-							value += (5 * enchant) + (10 * overenchant);
-						}
-						else
-						{
-							// P. Atk. increases by 4 for two-handed swords, two-handed blunts, dualswords, and two-handed combat weapons.
-							// Starting at +4, P. Atk. bonus double.
-							value += (4 * enchant) + (8 * overenchant);
+							case BOW:
+							{
+								// P. Atk. increases by 6 for bows.
+								// Starting at +4, P. Atk. bonus double.
+								value += (6 * enchant) + (12 * overenchant);
+								break;
+							}
+							case CROSSBOW:
+							{
+								// P. Atk. increases by 5 for crossbows.
+								// Starting at +4, P. Atk. bonus double.
+								value += (5 * enchant) + (10 * overenchant);
+								break;
+							}
+							default:
+							{
+								// P. Atk. increases by 4 for two-handed swords, two-handed blunts, dualswords, and two-handed combat weapons.
+								// Starting at +4, P. Atk. bonus double.
+								value += (4 * enchant) + (8 * overenchant);
+								break;
+							}
 						}
 					}
 					else

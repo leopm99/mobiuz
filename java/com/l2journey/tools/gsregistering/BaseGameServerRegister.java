@@ -244,8 +244,7 @@ public abstract class BaseGameServerRegister
 		
 		final Properties hexSetting = new Properties();
 		final File file = new File(outDir, "hexid.txt");
-		// Create a new empty file only if it doesn't exist
-		file.createNewFile();
+		// Overwrites hexid.txt
 		try (OutputStream out = new FileOutputStream(file))
 		{
 			hexSetting.setProperty("ServerID", String.valueOf(id));
