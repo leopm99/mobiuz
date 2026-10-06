@@ -8510,46 +8510,52 @@ public class Player extends Playable
 	 */
 	public boolean addHenna(Henna henna)
 	{
+		int slot = -1;
 		for (int i = 0; i < 3; i++)
 		{
 			if (_henna[i] == null)
 			{
-				_henna[i] = henna;
-				
-				// Calculate Henna modifiers of this Player
-				recalcHennaStats();
-				
-				try (Connection con = DatabaseFactory.getConnection();
-					PreparedStatement ps = con.prepareStatement(ADD_CHAR_HENNA))
-				{
-					ps.setInt(1, getObjectId());
-					ps.setInt(2, henna.getDyeId());
-					ps.setInt(3, i + 1);
-					ps.setInt(4, _classIndex);
-					ps.execute();
-				}
-				catch (Exception e)
-				{
-					LOGGER.log(Level.SEVERE, "Failed saving character henna.", e);
-				}
-				
-				// Send Server->Client HennaInfo packet to this Player
-				sendPacket(new HennaInfo(this));
-				
-				// Send Server->Client UserInfo packet to this Player
-				updateUserInfo();
-				
-				// Notify to scripts
-				if (EventDispatcher.getInstance().hasListener(EventType.ON_PLAYER_HENNA_REMOVE, this))
-				{
-					EventDispatcher.getInstance().notifyEventAsync(new OnPlayerHennaRemove(this, henna), this);
-				}
-				
-				return true;
+				slot = i;
+				break;
 			}
 		}
+		if (slot < 0)
+		{
+			return false;
+		}
 		
-		return false;
+		_henna[slot] = henna;
+		
+		// Calculate Henna modifiers of this Player
+		recalcHennaStats();
+		
+		try (Connection con = DatabaseFactory.getConnection();
+			PreparedStatement ps = con.prepareStatement(ADD_CHAR_HENNA))
+		{
+			ps.setInt(1, getObjectId());
+			ps.setInt(2, henna.getDyeId());
+			ps.setInt(3, slot + 1);
+			ps.setInt(4, _classIndex);
+			ps.execute();
+		}
+		catch (Exception e)
+		{
+			LOGGER.log(Level.SEVERE, "Failed saving character henna.", e);
+		}
+		
+		// Send Server->Client HennaInfo packet to this Player
+		sendPacket(new HennaInfo(this));
+		
+		// Send Server->Client UserInfo packet to this Player
+		updateUserInfo();
+		
+		// Notify to scripts
+		if (EventDispatcher.getInstance().hasListener(EventType.ON_PLAYER_HENNA_REMOVE, this))
+		{
+			EventDispatcher.getInstance().notifyEventAsync(new OnPlayerHennaRemove(this, henna), this);
+		}
+		
+		return true;
 	}
 	
 	/**

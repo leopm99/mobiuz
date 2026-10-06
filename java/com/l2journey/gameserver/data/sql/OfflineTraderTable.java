@@ -110,9 +110,10 @@ public class OfflineTraderTable
 									stmItems.setInt(2, i.getItem().getId());
 									stmItems.setLong(3, i.getCount());
 									stmItems.setLong(4, i.getPrice());
-									stmItems.executeUpdate();
+									stmItems.addBatch();
 									stmItems.clearParameters();
 								}
+								stmItems.executeBatch();
 								break;
 							}
 							case SELL, PACKAGE_SELL:
@@ -131,9 +132,10 @@ public class OfflineTraderTable
 										stmItems.setInt(2, holder.getSkillId());
 										stmItems.setLong(3, 0);
 										stmItems.setLong(4, holder.getPrice());
-										stmItems.executeUpdate();
+										stmItems.addBatch();
 										stmItems.clearParameters();
 									}
+									stmItems.executeBatch();
 								}
 								else
 								{
@@ -143,9 +145,10 @@ public class OfflineTraderTable
 										stmItems.setInt(2, i.getObjectId());
 										stmItems.setLong(3, i.getCount());
 										stmItems.setLong(4, i.getPrice());
-										stmItems.executeUpdate();
+										stmItems.addBatch();
 										stmItems.clearParameters();
 									}
+									stmItems.executeBatch();
 								}
 								break;
 							}
@@ -163,9 +166,10 @@ public class OfflineTraderTable
 									stmItems.setInt(2, i.getRecipeId());
 									stmItems.setLong(3, 0);
 									stmItems.setLong(4, i.getCost());
-									stmItems.executeUpdate();
+									stmItems.addBatch();
 									stmItems.clearParameters();
 								}
+								stmItems.executeBatch();
 								break;
 							}
 						}
@@ -196,7 +200,8 @@ public class OfflineTraderTable
 		int nTraders = 0;
 		try (Connection con = DatabaseFactory.getConnection();
 			Statement stm = con.createStatement();
-			ResultSet rs = stm.executeQuery(LOAD_OFFLINE_STATUS))
+			ResultSet rs = stm.executeQuery(LOAD_OFFLINE_STATUS);
+			PreparedStatement stmItems = con.prepareStatement(LOAD_OFFLINE_ITEMS))
 		{
 			while (rs.next())
 			{
@@ -245,63 +250,61 @@ public class OfflineTraderTable
 					}
 					
 					player.spawnMe(player.getX(), player.getY(), player.getZ());
-					try (PreparedStatement stmItems = con.prepareStatement(LOAD_OFFLINE_ITEMS))
+					stmItems.setInt(1, player.getObjectId());
+					try (ResultSet items = stmItems.executeQuery())
 					{
-						stmItems.setInt(1, player.getObjectId());
-						try (ResultSet items = stmItems.executeQuery())
+						switch (type)
 						{
-							switch (type)
+							case BUY:
 							{
-								case BUY:
+								while (items.next())
+								{
+									if (player.getBuyList().addItemByItemId(items.getInt(2), items.getLong(3), items.getLong(4)) == null)
+									{
+										// throw new NullPointerException();
+									}
+								}
+								
+								player.getBuyList().setTitle(rs.getString("title"));
+								break;
+							}
+							case SELL, PACKAGE_SELL:
+							{
+								if (player.isSellingBuffs())
 								{
 									while (items.next())
 									{
-										if (player.getBuyList().addItemByItemId(items.getInt(2), items.getLong(3), items.getLong(4)) == null)
+										player.getSellingBuffs().add(new SellBuffHolder(items.getInt("item"), items.getLong("price")));
+									}
+								}
+								else
+								{
+									while (items.next())
+									{
+										if (player.getSellList().addItem(items.getInt(2), items.getLong(3), items.getLong(4)) == null)
 										{
 											// throw new NullPointerException();
 										}
 									}
-									
-									player.getBuyList().setTitle(rs.getString("title"));
-									break;
 								}
-								case SELL, PACKAGE_SELL:
+								
+								player.getSellList().setTitle(rs.getString("title"));
+								player.getSellList().setPackaged(type == PrivateStoreType.PACKAGE_SELL);
+								break;
+							}
+							case MANUFACTURE:
+							{
+								while (items.next())
 								{
-									if (player.isSellingBuffs())
-									{
-										while (items.next())
-										{
-											player.getSellingBuffs().add(new SellBuffHolder(items.getInt("item"), items.getLong("price")));
-										}
-									}
-									else
-									{
-										while (items.next())
-										{
-											if (player.getSellList().addItem(items.getInt(2), items.getLong(3), items.getLong(4)) == null)
-											{
-												// throw new NullPointerException();
-											}
-										}
-									}
-									
-									player.getSellList().setTitle(rs.getString("title"));
-									player.getSellList().setPackaged(type == PrivateStoreType.PACKAGE_SELL);
-									break;
+									player.getManufactureItems().put(items.getInt(2), new ManufactureItem(items.getInt(2), items.getLong(4)));
 								}
-								case MANUFACTURE:
-								{
-									while (items.next())
-									{
-										player.getManufactureItems().put(items.getInt(2), new ManufactureItem(items.getInt(2), items.getLong(4)));
-									}
-									
-									player.setStoreName(rs.getString("title"));
-									break;
-								}
+								
+								player.setStoreName(rs.getString("title"));
+								break;
 							}
 						}
 					}
+					stmItems.clearParameters();
 					
 					player.sitDown();
 					if (Config.OFFLINE_SET_NAME_COLOR)
@@ -387,9 +390,10 @@ public class OfflineTraderTable
 									stm3.setInt(2, i.getItem().getId());
 									stm3.setLong(3, i.getCount());
 									stm3.setLong(4, i.getPrice());
-									stm3.executeUpdate();
+									stm3.addBatch();
 									stm3.clearParameters();
 								}
+								stm3.executeBatch();
 								break;
 							}
 							case SELL, PACKAGE_SELL:
@@ -407,9 +411,10 @@ public class OfflineTraderTable
 										stm3.setInt(2, holder.getSkillId());
 										stm3.setLong(3, 0);
 										stm3.setLong(4, holder.getPrice());
-										stm3.executeUpdate();
+										stm3.addBatch();
 										stm3.clearParameters();
 									}
+									stm3.executeBatch();
 								}
 								else
 								{
@@ -419,9 +424,10 @@ public class OfflineTraderTable
 										stm3.setInt(2, i.getObjectId());
 										stm3.setLong(3, i.getCount());
 										stm3.setLong(4, i.getPrice());
-										stm3.executeUpdate();
+										stm3.addBatch();
 										stm3.clearParameters();
 									}
+									stm3.executeBatch();
 								}
 								break;
 							}
@@ -438,9 +444,10 @@ public class OfflineTraderTable
 									stm3.setInt(2, i.getRecipeId());
 									stm3.setLong(3, 0);
 									stm3.setLong(4, i.getCost());
-									stm3.executeUpdate();
+									stm3.addBatch();
 									stm3.clearParameters();
 								}
+								stm3.executeBatch();
 								break;
 							}
 						}

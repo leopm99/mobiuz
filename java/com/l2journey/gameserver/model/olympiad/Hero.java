@@ -690,13 +690,15 @@ public class Hero
 			{
 				StatSet hero;
 				int heroId;
-				for (Entry<Integer, StatSet> entry : HEROES.entrySet())
+				try (PreparedStatement insert = con.prepareStatement(INSERT_HERO);
+					PreparedStatement getClanAlly = con.prepareStatement(GET_CLAN_ALLY);
+					PreparedStatement update = con.prepareStatement(UPDATE_HERO))
 				{
-					hero = entry.getValue();
-					heroId = entry.getKey();
-					if (!COMPLETE_HEROS.containsKey(heroId))
+					for (Entry<Integer, StatSet> entry : HEROES.entrySet())
 					{
-						try (PreparedStatement insert = con.prepareStatement(INSERT_HERO))
+						hero = entry.getValue();
+						heroId = entry.getKey();
+						if (!COMPLETE_HEROS.containsKey(heroId))
 						{
 							insert.setInt(1, heroId);
 							insert.setInt(2, hero.getInt(Olympiad.CLASS_ID));
@@ -704,12 +706,10 @@ public class Hero
 							insert.setInt(4, hero.getInt(PLAYED, 0));
 							insert.setString(5, String.valueOf(hero.getBoolean(CLAIMED, false)));
 							insert.execute();
-						}
-						
-						try (PreparedStatement statement = con.prepareStatement(GET_CLAN_ALLY))
-						{
-							statement.setInt(1, heroId);
-							try (ResultSet rset = statement.executeQuery())
+							insert.clearParameters();
+							
+							getClanAlly.setInt(1, heroId);
+							try (ResultSet rset = getClanAlly.executeQuery())
 							{
 								if (rset.next())
 								{
@@ -735,21 +735,20 @@ public class Hero
 									hero.set(ALLY_NAME, allyName);
 								}
 							}
+							getClanAlly.clearParameters();
+							
+							HEROES.put(heroId, hero);
+							COMPLETE_HEROS.put(heroId, hero);
 						}
-						
-						HEROES.put(heroId, hero);
-						COMPLETE_HEROS.put(heroId, hero);
-					}
-					else
-					{
-						try (PreparedStatement statement = con.prepareStatement(UPDATE_HERO))
+						else
 						{
-							statement.setInt(1, hero.getInt(Olympiad.CLASS_ID));
-							statement.setInt(2, hero.getInt(COUNT, 0));
-							statement.setInt(3, hero.getInt(PLAYED, 0));
-							statement.setString(4, String.valueOf(hero.getBoolean(CLAIMED, false)));
-							statement.setInt(5, heroId);
-							statement.execute();
+							update.setInt(1, hero.getInt(Olympiad.CLASS_ID));
+							update.setInt(2, hero.getInt(COUNT, 0));
+							update.setInt(3, hero.getInt(PLAYED, 0));
+							update.setString(4, String.valueOf(hero.getBoolean(CLAIMED, false)));
+							update.setInt(5, heroId);
+							update.execute();
+							update.clearParameters();
 						}
 					}
 				}

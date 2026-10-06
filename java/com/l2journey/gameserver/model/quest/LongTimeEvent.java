@@ -485,27 +485,35 @@ public class LongTimeEvent extends Quest
 	{
 		if (!_destroyItemsOnEnd.isEmpty())
 		{
-			for (int itemId : _destroyItemsOnEnd)
+			try (Connection con = DatabaseFactory.getConnection();
+				PreparedStatement statement = con.prepareStatement("DELETE FROM items WHERE item_id=?"))
 			{
-				// Remove item from online players.
-				for (Player player : World.getInstance().getPlayers())
+				for (int itemId : _destroyItemsOnEnd)
 				{
-					if (player != null)
+					// Remove item from online players.
+					for (Player player : World.getInstance().getPlayers())
 					{
-						player.destroyItemByItemId(ItemProcessType.DESTROY, itemId, -1, player, true);
+						if (player != null)
+						{
+							player.destroyItemByItemId(ItemProcessType.DESTROY, itemId, -1, player, true);
+						}
+					}
+					// Update database.
+					try
+					{
+						statement.setInt(1, itemId);
+						statement.execute();
+						statement.clearParameters();
+					}
+					catch (SQLException e)
+					{
+						LOGGER.warning(e.toString());
 					}
 				}
-				// Update database.
-				try (Connection con = DatabaseFactory.getConnection();
-					PreparedStatement statement = con.prepareStatement("DELETE FROM items WHERE item_id=?"))
-				{
-					statement.setInt(1, itemId);
-					statement.execute();
-				}
-				catch (SQLException e)
-				{
-					LOGGER.warning(e.toString());
-				}
+			}
+			catch (SQLException e)
+			{
+				LOGGER.warning(e.toString());
 			}
 		}
 	}

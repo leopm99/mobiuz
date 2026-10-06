@@ -369,31 +369,31 @@ public class FishingChampionshipManager
 	{
 		GlobalVariablesManager.getInstance().set("fishChampionshipEnd", _enddate);
 		
-		try (Connection con = DatabaseFactory.getConnection())
+		try (Connection con = DatabaseFactory.getConnection();
+			PreparedStatement delete = con.prepareStatement(DELETE);
+			PreparedStatement insert = con.prepareStatement(INSERT))
 		{
-			PreparedStatement statement = con.prepareStatement(DELETE);
-			statement.execute();
-			statement.close();
+			delete.execute();
 			
 			for (Fisher fisher : _winPlayers)
 			{
-				statement = con.prepareStatement(INSERT);
-				statement.setString(1, fisher.getName());
-				statement.setDouble(2, fisher.getLength());
-				statement.setInt(3, fisher.getRewardType());
-				statement.execute();
-				statement.close();
+				insert.setString(1, fisher.getName());
+				insert.setDouble(2, fisher.getLength());
+				insert.setInt(3, fisher.getRewardType());
+				insert.addBatch();
+				insert.clearParameters();
 			}
+			insert.executeBatch();
 			
+			insert.setInt(3, 0);
 			for (Fisher fisher : _tmpPlayers)
 			{
-				statement = con.prepareStatement(INSERT);
-				statement.setString(1, fisher.getName());
-				statement.setDouble(2, fisher.getLength());
-				statement.setInt(3, 0);
-				statement.execute();
-				statement.close();
+				insert.setString(1, fisher.getName());
+				insert.setDouble(2, fisher.getLength());
+				insert.addBatch();
 			}
+			insert.executeBatch();
+			insert.clearParameters();
 		}
 		catch (SQLException e)
 		{

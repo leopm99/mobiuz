@@ -140,9 +140,10 @@ public abstract class ClanHallSiegeEngine extends Quest implements Siegable
 					{
 						insert.setInt(1, _hall.getId());
 						insert.setInt(2, clan.getClanId());
-						insert.execute();
+						insert.addBatch();
 						insert.clearParameters();
 					}
+					insert.executeBatch();
 				}
 			}
 			LOGGER.config(getName() + ": Successfully saved attackers to database.");
