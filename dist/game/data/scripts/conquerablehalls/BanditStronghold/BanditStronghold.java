@@ -437,9 +437,10 @@ public class BanditStronghold extends ClanHallSiegeEngine
 		if (_hall.isInSiege())
 		{
 			final int npcId = npc.getId();
-			for (int keys : _data.keySet())
+			for (Map.Entry<Integer, ClanData> entry : _data.entrySet())
 			{
-				if (_data.get(keys).npc == npcId)
+				int keys = entry.getKey();
+				if (entry.getValue().npc == npcId)
 				{
 					removeParticipant(keys, true);
 				}

@@ -1114,7 +1114,7 @@ public class CtF extends Event
 	
 	private static boolean playerIsCarrier(Player player)
 	{
-		return ((player == BLUE_TEAM_CARRIER) || (player == RED_TEAM_CARRIER)) ? true : false;
+		return ((player == BLUE_TEAM_CARRIER) || (player == RED_TEAM_CARRIER));
 	}
 	
 	private static int getEnemyTeamFlagId(Player player)

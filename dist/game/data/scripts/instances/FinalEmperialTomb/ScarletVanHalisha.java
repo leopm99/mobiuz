@@ -265,7 +265,7 @@ public class ScarletVanHalisha extends AbstractNpcAI
 				}
 			}
 		}
-		if (!result.isEmpty() && (result.size() != 0))
+		if (!result.isEmpty() && (!result.isEmpty()))
 		{
 			return getRandomEntry(result);
 		}

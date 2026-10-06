@@ -159,7 +159,7 @@ public class AdminCursedWeapons implements IAdminCommandHandler
 			try
 			{
 				String parameter = st.nextToken();
-				if (parameter.matches("[0-9]*"))
+				if (parameter.matches("\\d*"))
 				{
 					id = Integer.parseInt(parameter);
 				}

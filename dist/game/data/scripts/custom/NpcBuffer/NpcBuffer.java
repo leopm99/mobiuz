@@ -2011,12 +2011,6 @@ public class NpcBuffer extends Quest
 	}
 	
 	/**
-	 * Optimized buff application using direct skill effects pattern from SchemeBuffer. Eliminates ScheduledExecutorService overhead for maximum performance in mass buffing. Maintains visual animation packets but applies effects immediately.
-	 * @param npc The NPC performing the buffing (for effect source)
-	 * @param target The target creature (Player or Summon) receiving buffs
-	 * @param buffs List of buff arrays [skillId, skillLevel]
-	 */
-	/**
 	 * MAXIMA PERFORMANCE: Get skill from cache with automatic population This method provides ~80% faster skill lookups by caching skills
 	 * @param skillId The skill ID
 	 * @param skillLevel The skill level
@@ -2031,8 +2025,7 @@ public class NpcBuffer extends Quest
 		// Get from cache or load and cache
 		return SKILL_CACHE.computeIfAbsent(cacheKey, k ->
 		{
-			final Skill skill = SkillData.getInstance().getSkill(skillId, skillLevel);
-			return skill;
+			return SkillData.getInstance().getSkill(skillId, skillLevel);
 		});
 	}
 	

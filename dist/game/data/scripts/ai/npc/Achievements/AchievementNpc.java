@@ -1098,8 +1098,7 @@ public class AchievementNpc extends AbstractNpcAI
 				try
 				{
 					int baseClassId = player.getBaseClass();
-					int level = PlayerClass.getPlayerClass(baseClassId).level();
-					return level;
+					return PlayerClass.getPlayerClass(baseClassId).level();
 				}
 				catch (Exception _)
 				{
@@ -1246,7 +1245,7 @@ public class AchievementNpc extends AbstractNpcAI
 	@SuppressWarnings("unused")
 	private String renderGaugeBar(double percent, int innerWidth)
 	{
-		int p = (int) Math.max(0, Math.min(100, Math.round(percent)));
+		int p = (int) Math.clamp(Math.round(percent), 0, 100);
 		int filled = (int) Math.round((p / 100.0) * innerWidth);
 		if (filled < 0)
 		{
@@ -1296,7 +1295,7 @@ public class AchievementNpc extends AbstractNpcAI
 	private String renderGaugeBarCompact24(double percent)
 	{
 		final int innerWidth = 28;
-		int p = (int) Math.max(0, Math.min(100, Math.round(percent)));
+		int p = (int) Math.clamp(Math.round(percent), 0, 100);
 		int filled = (int) Math.round((p / 100.0) * innerWidth);
 		if (filled < 0)
 		{

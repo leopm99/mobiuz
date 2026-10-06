@@ -567,7 +567,7 @@ public class AdminSpawn implements IAdminCommandHandler
 		
 		NpcTemplate template;
 		String monsterId = monsterIdValue;
-		if (monsterId.matches("[0-9]*"))
+		if (monsterId.matches("\\d*"))
 		{
 			// First parameter was an ID number
 			template = NpcData.getInstance().getTemplate(Integer.parseInt(monsterId));

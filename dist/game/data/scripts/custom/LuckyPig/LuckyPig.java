@@ -415,7 +415,6 @@ public final class LuckyPig extends AbstractNpcAI
 			}
 		}
 		
-		return;
 	}
 	
 	private void manageDrop(Npc luckyPig, Player player, boolean isGold)

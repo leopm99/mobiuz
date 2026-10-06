@@ -1190,7 +1190,7 @@ public class IceQueensCastleBattle extends AbstractInstance
 					
 					if (spawnedBy != null)
 					{
-						final int time = (params.getBoolean("isHardCore", false) ? getRandom(30, 60) : getRandom(50, 60)) * 1000;
+						final int time = (getRandom((params.getBoolean("isHardCore", false)) ? 30 : 50, 60)) * 1000;
 						startQuestTimer("SPAWN_KNIGHT", time, spawnedBy, null);
 					}
 					break;

@@ -56,7 +56,6 @@ public final class BigHead extends AbstractEffect
 	public void onStart(Creature effector, Creature effected, Skill skill)
 	{
 		effector.startAbnormalVisualEffect(true, AbnormalVisualEffect.BIG_HEAD);
-		return;
 	}
 	
 	@Override

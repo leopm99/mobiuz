@@ -122,7 +122,7 @@ public class Hitman implements IBypassHandler
 		final int maxPerPage = EventsConfig.HITMAN_MAX_PER_PAGE;
 		final int totalTargets = targets.size();
 		final int totalPages = Math.max(1, (int) Math.ceil((double) totalTargets / maxPerPage));
-		final int currentPage = Math.min(Math.max(1, page), totalPages);
+		final int currentPage = Math.clamp(page, 1, totalPages);
 		final int startIndex = (currentPage - 1) * maxPerPage;
 		
 		final StringBuilder sb = new StringBuilder();

@@ -72,8 +72,8 @@ public class AnomicFoundry extends AbstractNpcAI
 	//@formatter:on
 	
 	private int respawnTime = 60000;
-	private final static int respawnMin = 20000;
-	private final static int respawnMax = 300000;
+	private static final int respawnMin = 20000;
+	private static final int respawnMax = 300000;
 	
 	private final int[] _spawned =
 	{
