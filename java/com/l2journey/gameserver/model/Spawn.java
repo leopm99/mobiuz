@@ -277,7 +277,14 @@ public class Spawn extends Location
 	{
 		while (_currentCount < _maximumCount)
 		{
+			final int before = _currentCount;
 			doSpawn();
+			// doSpawn() can fail without claiming a slot (e.g. geo out-of-range).
+			// Stop instead of looping forever on the same broken spawn.
+			if (_currentCount == before)
+			{
+				break;
+			}
 		}
 		_doRespawn = _respawnMinDelay > 0;
 		

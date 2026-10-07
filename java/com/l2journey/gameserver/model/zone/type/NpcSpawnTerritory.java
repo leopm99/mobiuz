@@ -25,6 +25,7 @@ import java.util.List;
 
 import com.l2journey.gameserver.GeoData;
 import com.l2journey.gameserver.model.Location;
+import com.l2journey.gameserver.model.World;
 import com.l2journey.gameserver.model.zone.ZoneForm;
 
 /**
@@ -57,6 +58,39 @@ public class NpcSpawnTerritory
 		return _name;
 	}
 	
+	/**
+	 * GeoDriver rejects world coords outside its map; treat those as unsuitable for geo checks.
+	 */
+	private static boolean isInWorldBounds(int x, int y)
+	{
+		return (x >= World.WORLD_X_MIN) && (x <= World.WORLD_X_MAX) && (y >= World.WORLD_Y_MIN) && (y <= World.WORLD_Y_MAX);
+	}
+	
+	/**
+	 * @return {@code true} when height/LOS geo checks pass; {@code false} when the point is unsuitable or out of geo range
+	 */
+	private boolean passesGeoChecks(int randomX, int randomY, int randomZ, int centerX, int centerY, int centerZ)
+	{
+		if (!isInWorldBounds(randomX, randomY) || !isInWorldBounds(centerX, centerY))
+		{
+			return false;
+		}
+		
+		try
+		{
+			if (GeoData.getInstance().getHeight(randomX, randomY, randomZ) > _territory.getHighZ())
+			{
+				return false;
+			}
+			return GeoData.getInstance().canSeeTarget(randomX, randomY, randomZ, centerX, centerY, centerZ, 0);
+		}
+		catch (IllegalArgumentException _)
+		{
+			// Out-of-range or unloaded geo tiles must not abort spawn loading.
+			return false;
+		}
+	}
+	
 	public Location getRandomPoint()
 	{
 		int count = 0; // Prevent infinite loop.
@@ -87,7 +121,7 @@ public class NpcSpawnTerritory
 					}
 				}
 				
-				if ((GeoData.getInstance().getHeight(randomX, randomY, randomZ) > _territory.getHighZ()) || !GeoData.getInstance().canSeeTarget(randomX, randomY, randomZ, centerX, centerY, centerZ, 0))
+				if (!passesGeoChecks(randomX, randomY, randomZ, centerX, centerY, centerZ))
 				{
 					continue;
 				}
@@ -123,7 +157,7 @@ public class NpcSpawnTerritory
 			randomY = location.getY();
 			randomZ = location.getZ();
 			
-			if ((GeoData.getInstance().getHeight(randomX, randomY, randomZ) > _territory.getHighZ()) || !GeoData.getInstance().canSeeTarget(randomX, randomY, randomZ, centerX, centerY, centerZ, 0))
+			if (!passesGeoChecks(randomX, randomY, randomZ, centerX, centerY, centerZ))
 			{
 				continue;
 			}
