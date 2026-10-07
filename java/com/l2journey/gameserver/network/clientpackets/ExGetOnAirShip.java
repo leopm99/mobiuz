@@ -55,9 +55,5 @@ public class ExGetOnAirShip extends ClientPacket
 	@Override
 	protected void runImpl()
 	{
-		// PacketLogger.info("[T1:ExGetOnAirShip] x: " + _x);
-		// PacketLogger.info("[T1:ExGetOnAirShip] y: " + _y);
-		// PacketLogger.info("[T1:ExGetOnAirShip] z: " + _z);
-		// PacketLogger.info("[T1:ExGetOnAirShip] ship ID: " + _shipId);
 	}
 }

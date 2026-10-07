@@ -553,7 +553,6 @@ public class Olympiad extends ListenersContainer
 	
 	private void updateCompStatus()
 	{
-		// _compStarted = false;
 		
 		final long milliToStart = getMillisToCompBegin();
 		final long compStartSec = milliToStart / 1000;
@@ -632,9 +631,7 @@ public class Olympiad extends ListenersContainer
 	
 	public long getMillisToOlympiadEnd()
 	{
-		// if (_olympiadEnd > System.currentTimeMillis())
 		return _olympiadEnd - System.currentTimeMillis();
-		// return 10;
 	}
 	
 	public void manualSelectHeroes()
@@ -824,9 +821,7 @@ public class Olympiad extends ListenersContainer
 	
 	protected long getMillisToCompEnd()
 	{
-		// if (_compEnd > System.currentTimeMillis())
 		return _compEnd - System.currentTimeMillis();
-		// return 10;
 	}
 	
 	public long getMillisToWeekChange()
@@ -1004,24 +999,6 @@ public class Olympiad extends ListenersContainer
 		{
 			LOGGER.log(Level.SEVERE, "Olympiad System: Failed to save olympiad data to database: ", e);
 		}
-		//@formatter:off
-		/*
-		Properties OlympiadProperties = new Properties();
-		try (FileOutputStream fos = new FileOutputStream(new File("./" + OLYMPIAD_DATA_FILE)))
-		{
-			OlympiadProperties.setProperty("CurrentCycle", String.valueOf(_currentCycle));
-			OlympiadProperties.setProperty("Period", String.valueOf(_period));
-			OlympiadProperties.setProperty("OlympiadEnd", String.valueOf(_olympiadEnd));
-			OlympiadProperties.setProperty("ValdationEnd", String.valueOf(_validationEnd));
-			OlympiadProperties.setProperty("NextWeeklyChange", String.valueOf(_nextWeeklyChange));
-			OlympiadProperties.store(fos, "Olympiad Properties");
-		}
-		catch (Exception e)
-		{
-			LOGGER.warning("Olympiad System: Unable to save olympiad properties to file: ", e);
-		}
-		*/
-		//@formatter:on
 	}
 	
 	protected void updateMonthlyData()

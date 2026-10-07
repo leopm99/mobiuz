@@ -260,7 +260,6 @@ public class AirShipGludioGracia extends AbstractNpcAI implements Runnable
 				}
 				case 1:
 				{
-					// _ship.teleToLocation(-167874, 256731, -509, 41035, false);
 					_ship.setOustLoc(OUST_GRACIA);
 					ThreadPool.schedule(this, 5000);
 					break;
@@ -287,7 +286,6 @@ public class AirShipGludioGracia extends AbstractNpcAI implements Runnable
 				}
 				case 5:
 				{
-					// _ship.teleToLocation(-157261, 255664, 221, 64781, false);
 					_ship.setOustLoc(OUST_GLUDIO);
 					ThreadPool.schedule(this, 5000);
 					break;

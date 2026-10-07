@@ -73,7 +73,6 @@ public class RequestPartyMatchList extends ClientPacket
 			final PartyMatchRoom room = PartyMatchRoomList.getInstance().getRoom(_roomid);
 			if (room != null)
 			{
-				// PacketLogger.info("PartyMatchRoom #" + room.getId() + " changed by " + player.getName());
 				room.setMaxMembers(_membersmax);
 				room.setMinLevel(_minLevel);
 				room.setMaxLevel(_maxLevel);
@@ -97,7 +96,6 @@ public class RequestPartyMatchList extends ClientPacket
 			final int maxid = PartyMatchRoomList.getInstance().getMaxId();
 			final PartyMatchRoom room = new PartyMatchRoom(maxid, _roomtitle, _loot, _minLevel, _maxLevel, _membersmax, player);
 			
-			// PacketLogger.info("PartyMatchRoom #" + maxid + " created by " + player.getName());
 			// Remove from waiting list
 			PartyMatchWaitingList.getInstance().removePlayer(player);
 			
@@ -112,7 +110,6 @@ public class RequestPartyMatchList extends ClientPacket
 					}
 					
 					ptmember.setPartyRoom(maxid);
-					// ptmember.setPartyMatching(1);
 					room.addMember(ptmember);
 				}
 			}
@@ -121,7 +118,6 @@ public class RequestPartyMatchList extends ClientPacket
 			player.sendPacket(SystemMessageId.YOU_HAVE_CREATED_A_PARTY_ROOM);
 			
 			player.setPartyRoom(maxid);
-			// _activeChar.setPartyMatching(1);
 			player.broadcastUserInfo();
 		}
 	}

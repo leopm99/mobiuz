@@ -53,8 +53,6 @@ public class DoorAction implements IActionHandler
 		else if (interact)
 		{
 			final Door door = target.asDoor();
-			// MyTargetSelected my = new MyTargetSelected(getObjectId(), player.getLevel());
-			// player.sendPacket(my);
 			final Clan clan = player.getClan();
 			if (target.isAutoAttackable(player))
 			{

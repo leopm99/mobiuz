@@ -78,9 +78,7 @@ public class Orfen extends AbstractNpcAI
 	};
 	
 	private static final int ORFEN = 29014;
-	// private static final int RAIKEL = 29015;
 	private static final int RAIKEL_LEOS = 29016;
-	// private static final int RIBA = 29017;
 	private static final int RIBA_IREN = 29018;
 	
 	private static boolean _hasTeleported;

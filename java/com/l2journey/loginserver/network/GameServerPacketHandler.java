@@ -143,7 +143,6 @@ public class GameServerPacketHandler
 					}
 					case 0x09:
 					{
-						// msg = new RequestSendMail(data);
 						break;
 					}
 					case 0x0A:

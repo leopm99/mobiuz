@@ -34,7 +34,6 @@ public class Q10503_FrintezzaEmbroideredSoulCloak extends Quest
 	// NPC
 	private static final int OLF_ADAMS = 32612;
 	// Monster
-	// private static final int FRINTEZZA = 29045;
 	private static final int SCARLET_VAN_HALISHA = 29047;
 	// Items
 	private static final int FRINTEZZAS_SOUL_FRAGMENT = 21724;

@@ -44,7 +44,6 @@ public class RequestPetitionFeedback extends ClientPacket
 	private static final String INSERT_FEEDBACK = "INSERT INTO petition_feedback VALUES (?,?,?,?,?)";
 	
 	// cdds
-	// private int _unknown;
 	private int _rate; // 4=VeryGood, 3=Good, 2=Fair, 1=Poor, 0=VeryPoor
 	private String _message;
 	

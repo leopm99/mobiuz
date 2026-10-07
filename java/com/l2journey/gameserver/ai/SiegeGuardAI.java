@@ -50,7 +50,6 @@ public class SiegeGuardAI extends CreatureAI implements Runnable
 	
 	/** For attack AI, analysis of mob and its targets */
 	private final SelfAnalysis _selfAnalysis = new SelfAnalysis();
-	// private TargetAnalysis _mostHatedAnalysis = new TargetAnalysis();
 	
 	/** The delay after which the attacked is stopped */
 	private int _attackTimeout;
@@ -222,8 +221,6 @@ public class SiegeGuardAI extends CreatureAI implements Runnable
 		// Calculate the attack timeout
 		_attackTimeout = MAX_ATTACK_TIMEOUT + GameTimeTaskManager.getInstance().getGameTicks();
 		
-		// Manage the Attack Intention : Stop current Attack (if necessary), Start a new Attack and Launch Think Action
-		// if (_actor.getTarget() != null)
 		super.onIntentionAttack(target);
 	}
 	
@@ -351,7 +348,6 @@ public class SiegeGuardAI extends CreatureAI implements Runnable
 		}
 		
 		// Go through all Creature that belong to its faction
-		// for (Creature creature : _actor.getKnownList().getKnownCharactersInRadius(_actor.asNpc().getFactionRange()+_actor.getTemplate().collisionRadius))
 		for (Creature creature : World.getInstance().getVisibleObjectsInRange(_actor, Creature.class, 1000))
 		{
 			if (!(creature instanceof Npc))
@@ -637,8 +633,6 @@ public class SiegeGuardAI extends CreatureAI implements Runnable
 	@Override
 	public void onActionThink()
 	{
-		// if(getIntention() != Intention.IDLE && (!_actor.isSpawned() || !_actor.hasAI() || !_actor.isKnownPlayers()))
-		// setIntention(Intention.IDLE);
 		
 		// Check if the thinking action is already in progress
 		if (_thinking || _actor.isCastingNow() || _actor.isAllSkillsDisabled())

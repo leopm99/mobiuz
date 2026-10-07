@@ -41,14 +41,6 @@ public class TempBan extends BaseWritablePacket
 		writeString(accountName);
 		writeString(ip);
 		writeLong(System.currentTimeMillis() + (time * 60000));
-		// if (reason != null)
-		// {
-		// writeByte(0x01);
-		// writeString(reason);
-		// }
-		// else
-		// {
 		writeByte(0x00);
-		// }
 	}
 }

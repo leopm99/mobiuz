@@ -47,8 +47,4 @@ public class ActionFailed extends ServerPacket
 	}
 	
 	// @Override
-	// public boolean canBeDropped(GameClient client)
-	// {
-	// return true;
-	// }
 }

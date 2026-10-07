@@ -47,8 +47,6 @@ public class RequestPetUseItem extends ClientPacket
 	{
 		_objectId = readInt();
 		// TODO: implement me properly
-		// readLong();
-		// readInt();
 	}
 	
 	@Override

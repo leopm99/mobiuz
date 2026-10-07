@@ -61,7 +61,6 @@ public class ControlTower extends Tower
 					try
 					{
 						spawn.stopRespawn();
-						// spawn.getLastSpawn().doDie(spawn.getLastSpawn());
 					}
 					catch (Exception e)
 					{

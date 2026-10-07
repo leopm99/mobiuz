@@ -25,7 +25,6 @@ import com.l2journey.gameserver.model.item.enums.ItemLocation;
 
 public class PlayerWarehouse extends Warehouse
 {
-	// private static final Logger LOGGER = Logger.getLogger(PcWarehouse.class.getName());
 	
 	private final Player _owner;
 	

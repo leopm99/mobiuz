@@ -89,7 +89,6 @@ public class RequestPartyMatchConfig extends ClientPacket
 			player.sendPacket(new PartyMatchDetail(room));
 			player.sendPacket(new ExPartyRoomMember(room, 2));
 			player.setPartyRoom(room.getId());
-			// _activeChar.setPartyMatching(1);
 			player.broadcastUserInfo();
 		}
 		else

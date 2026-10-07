@@ -77,19 +77,6 @@ public class FortressOfResistance extends ClanHallSiegeEngine
 			_nurka.setAmount(1);
 			_nurka.setRespawnDelay(10800);
 //			@formatter:off
-//			int chance = getRandom(100) + 1;
-//			if (chance <= 30)
-//			{
-//				coords = NURKA_COORDS[0];
-//			}
-//			else if ((chance > 30) && (chance <= 70))
-//			{
-//				coords = NURKA_COORDS[1];
-//			}
-//			else
-//			{
-//				coords = NURKA_COORDS[2];
-//			}
 //			@formatter:on
 			_nurka.setLocation(NURKA_COORDS[0]);
 		}

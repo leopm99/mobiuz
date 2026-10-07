@@ -97,7 +97,6 @@ public class SystemMessage extends ServerPacket
 	
 	// TODO: UnAfraid: Check/Implement id's: 14,15.
 	// 15 exists in goddess of destruction but also may works in h5 needs to be verified!
-	// private static final byte TYPE_CLASS_ID = 15;
 	// id 14 unknown
 	public static final byte TYPE_SYSTEM_STRING = 13;
 	public static final byte TYPE_PLAYER_NAME = 12;

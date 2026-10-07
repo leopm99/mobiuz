@@ -1411,7 +1411,6 @@ public class TerritoryWarManager implements Siegable
 				else
 				{
 					endTerritoryWar();
-					// _scheduledStartTWTask = ThreadPoolManager.schedule(new ScheduleStartTWTask(), 1000);
 					ThreadPool.schedule(new closeTerritoryChannelTask(), 600000);
 				}
 			}

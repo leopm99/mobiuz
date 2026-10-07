@@ -65,7 +65,6 @@ public class RequestCrystallizeItem extends ClientPacket
 		final Player player = getPlayer();
 		if (player == null)
 		{
-			// PacketLogger.finer("RequestCrystalizeItem: activeChar was null");
 			return;
 		}
 		
@@ -133,7 +132,6 @@ public class RequestCrystallizeItem extends ClientPacket
 			return;
 		}
 		
-		// Check if the char can crystallize items and return if false;
 		boolean canCrystallize = true;
 		
 		switch (itemToRemove.getTemplate().getCrystalTypePlus())

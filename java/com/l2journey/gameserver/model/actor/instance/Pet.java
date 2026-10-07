@@ -671,7 +671,6 @@ public class Pet extends Summon
 			else
 			{
 				final Item item = _inventory.addItem(ItemProcessType.PICKUP, target, getOwner(), this);
-				// sendPacket(new PetItemList(_inventory.getItems()));
 				sendPacket(new PetInventoryUpdate(item));
 			}
 		}

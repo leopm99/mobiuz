@@ -559,18 +559,6 @@ public class AdminPForge implements IAdminCommandHandler
 				else if (bb != null)
 				{
 					// TODO: Implement me!
-					// @formatter:off
-					/*bb.flip();
-					GameClientPacket p = (GameClientPacket) GameServer.gameServer.getGamePacketHandler().handlePacket(bb, activeChar.getClient());
-					if (p != null)
-					{
-						p.setBuffers(bb, activeChar.getClient(), new NioNetStringBuffer(2000));
-						if (p.read())
-						{
-							ThreadPoolManager.getInstance().executePacket(p);
-						}
-					}*/
-					// @formatter:on
 					throw new UnsupportedOperationException("Not implemented yet!");
 				}
 				

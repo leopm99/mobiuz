@@ -141,7 +141,6 @@ public class SoIManager
 	{
 		LOGGER.info("Seed of Infinity Manager: Closing the seed.");
 		GlobalVariablesManager.getInstance().remove("SoI_opened");
-		// EnergySeeds.SoiSeedStop();
 		DoorData.getInstance().getDoor(14240102).closeMe();
 		for (Player ch : ZoneManager.getInstance().getZoneById(60010).getPlayersInside())
 		{
@@ -154,28 +153,18 @@ public class SoIManager
 	
 	public static void checkStageAndSpawn()
 	{
-		// EnergySeeds.SoiCloseMouthStop();
-		// EnergySeeds.SoiMouthStop();
-		// EnergySeeds.SoiAbyssGaze2Stop();
-		// EnergySeeds.SoiAbyssGaze1Stop();
 		switch (getCurrentStage())
 		{
 			case 1, 4:
 			{
-				// EnergySeeds.SoiMouthSpawn();
-				// EnergySeeds.SoiAbyssGaze2Spawn();
 				break;
 			}
 			case 5:
 			{
-				// EnergySeeds.SoiCloseMouthSpawn();
-				// EnergySeeds.SoiAbyssGaze2Spawn();
 				break;
 			}
 			default:
 			{
-				// EnergySeeds.SoiCloseMouthSpawn();
-				// EnergySeeds.SoiAbyssGaze1Spawn();
 				break;
 			}
 		}
@@ -258,7 +247,6 @@ public class SoIManager
 	
 	private static void spawnOpenedSeed()
 	{
-		// EnergySeeds.SoiSeedSpawn();
 	}
 	
 	public static void teleportInSeed(Player player)

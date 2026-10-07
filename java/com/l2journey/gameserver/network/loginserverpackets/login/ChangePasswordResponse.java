@@ -39,7 +39,6 @@ public class ChangePasswordResponse extends BaseReadablePacket
 		super(decrypt);
 		readByte(); // Packet id, it is already processed.
 		
-		// boolean isSuccessful = readByte() > 0;
 		final String character = readString();
 		final String msgToSend = readString();
 		final Player player = World.getInstance().getPlayer(character);

@@ -90,12 +90,6 @@ public class Guard extends Attackable
 		super.onSpawn();
 		
 		getAI().setIntention(Intention.ACTIVE);
-		// check the region where this mob is, do not activate the AI if region is inactive.
-		// final WorldRegion region = World.getInstance().getRegion(this);
-		// if ((region != null) && (!region.isActive()))
-		// {
-		// getAI().stopAITask();
-		// }
 	}
 	
 	/**

@@ -477,8 +477,6 @@ public class TamedBeast extends FeedableBeast
 					}
 				}
 				// There are too many conflicting reports about whether distance from home should be taken into consideration. Disabled for now.
-				// if (_tamedBeast.isTooFarFromHome())
-				// _tamedBeast.setRemainingTime(-1);
 				if (_tamedBeast.getRemainingTime() <= 0)
 				{
 					_tamedBeast.deleteMe();

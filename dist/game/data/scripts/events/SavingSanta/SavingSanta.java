@@ -328,7 +328,6 @@ public class SavingSanta extends LongTimeEvent
 			if (_isSantaFree)
 			{
 				startQuestTimer("SantaSpawn", 120000, null, null);
-				// for (Player pl : L2World.getInstance().getAllPlayers().values())
 				for (Player pl : World.getInstance().getPlayers())
 				{
 					if ((pl != null) && pl.isOnline() && (pl.getLevel() >= 20) && pl.isInCombat() && !pl.isInsideZone(ZoneId.PEACE) && !pl.isFlyingMounted())

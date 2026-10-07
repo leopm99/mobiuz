@@ -602,10 +602,6 @@ public class CreatureAI extends AbstractAI
 	@Override
 	protected void onActionRooted(Creature attacker)
 	{
-		// Stop the actor auto-attack client side by sending Server->Client packet AutoAttackStop (broadcast)
-		// _actor.broadcastPacket(new AutoAttackStop(_actor.getObjectId()));
-		// if (AttackStanceTaskManager.getInstance().hasAttackStanceTask(_actor))
-		// AttackStanceTaskManager.getInstance().removeAttackStanceTask(_actor);
 		
 		// Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)
 		clientStopMoving(null);
@@ -1120,8 +1116,6 @@ public class CreatureAI extends AbstractAI
 			stopFollow();
 		}
 		
-		// Stop the actor movement server side AND client side by sending Server->Client packet StopMove/StopRotation (broadcast)
-		// clientStopMoving(null);
 		return false;
 	}
 	
@@ -1230,7 +1224,6 @@ public class CreatureAI extends AbstractAI
 		public int lastDebuffTick = 0;
 		public List<Skill> cancelSkills = new ArrayList<>();
 		public List<Skill> healSkills = new ArrayList<>();
-		// public List<L2Skill> trickSkills = new ArrayList<>();
 		public List<Skill> generalDisablers = new ArrayList<>();
 		public List<Skill> sleepSkills = new ArrayList<>();
 		public List<Skill> rootSkills = new ArrayList<>();

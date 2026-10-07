@@ -40,8 +40,6 @@ public class RequestPrivateStoreManageSell extends ClientPacket
 	protected void readImpl()
 	{
 		// TODO: implement me properly
-		// readInt();
-		// readLong();
 	}
 	
 	@Override

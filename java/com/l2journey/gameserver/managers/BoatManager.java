@@ -79,7 +79,6 @@ public class BoatManager
 		npcDat.set("baseEvasRate", 38);
 		npcDat.set("baseCritRate", 38);
 		
-		// npcDat.set("name", "");
 		npcDat.set("collisionRadius", 0);
 		npcDat.set("collisionHeight", 0);
 		npcDat.set("sex", "male");

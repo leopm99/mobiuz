@@ -71,7 +71,6 @@ public class RequestRecipeShopMakeItem extends ClientPacket
 		}
 		if (manufacturer.getPrivateStoreType() != PrivateStoreType.MANUFACTURE)
 		{
-			// player.sendMessage("You cannot create items while trading.");
 			return;
 		}
 		

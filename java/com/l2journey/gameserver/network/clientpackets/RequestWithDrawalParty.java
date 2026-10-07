@@ -81,7 +81,6 @@ public class RequestWithDrawalParty extends ClientPacket
 						room.deleteMember(player);
 					}
 					player.setPartyRoom(0);
-					// player.setPartyMatching(0);
 					player.broadcastUserInfo();
 				}
 			}

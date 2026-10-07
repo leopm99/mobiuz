@@ -51,12 +51,6 @@ public class RequestSentPostList extends ClientPacket
 			return;
 		}
 		
-		// if (!activeChar.isInsideZone(ZoneId.PEACE))
-		// {
-		// player.sendPacket(SystemMessageId.CANT_USE_MAIL_OUTSIDE_PEACE_ZONE);
-		// return;
-		// }
-		
 		player.sendPacket(new ExShowSentPostList(player.getObjectId()));
 	}
 }

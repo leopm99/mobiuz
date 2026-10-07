@@ -83,24 +83,6 @@ public class RequestStopPledgeWar extends ClientPacket
 			return;
 		}
 		
-		// LOGGER.info("RequestStopPledgeWar: By leader or authorized player: " + playerClan.getLeaderName() + " of clan: "
-		// + playerClan.getName() + " to clan: " + _pledgeName);
-		
-		// Player leader = World.getInstance().getPlayer(clan.getLeaderName());
-		// if(leader != null && leader.isOnline() == 0)
-		// {
-		// player.sendMessage("Clan leader isn't online.");
-		// player.sendPacket(ActionFailed.STATIC_PACKET);
-		// return;
-		// }
-		
-		// if (leader.isProcessingRequest())
-		// {
-		// SystemMessage sm = SystemMessage.getSystemMessage(SystemMessage.S1_IS_BUSY_TRY_LATER);
-		// sm.addString(leader.getName());
-		// player.sendPacket(sm);
-		// return;
-		// }
 		for (ClanMember member : playerClan.getMembers())
 		{
 			if ((member == null) || (member.getPlayer() == null))

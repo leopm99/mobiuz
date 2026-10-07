@@ -349,7 +349,6 @@ public class CaptchaManager
 			}
 			
 			// Message to inform the player about the punishment.
-			// player.sendMessage("You've been jailed for not completing bot protection");
 		}
 	}
 	

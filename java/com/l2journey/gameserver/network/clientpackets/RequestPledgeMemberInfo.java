@@ -53,8 +53,6 @@ public class RequestPledgeMemberInfo extends ClientPacket
 	@Override
 	protected void runImpl()
 	{
-		// PacketLogger.info("C5: RequestPledgeMemberInfo d:"+_unk1);
-		// PacketLogger.info("C5: RequestPledgeMemberInfo S:"+_player);
 		final Player player = getPlayer();
 		if (player == null)
 		{

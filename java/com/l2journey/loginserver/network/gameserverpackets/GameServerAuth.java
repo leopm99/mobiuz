@@ -61,7 +61,6 @@ public class GameServerAuth extends BaseReadablePacket
 	GameServerThread _server;
 	private final byte[] _hexId;
 	private final int _desiredId;
-	// private final boolean _acceptAlternativeId;
 	private final int _maxPlayers;
 	private final int _port;
 	private final String[] _hosts;

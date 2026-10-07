@@ -851,7 +851,6 @@ public class ZoneManager implements IXmlReader
 		}
 		catch (ArrayIndexOutOfBoundsException _)
 		{
-			// LOGGER.warning(getClass().getSimpleName() + ": Incorrect zone region X: " + ((x >> SHIFT_BY) + OFFSET_X) + " Y: " + ((y >> SHIFT_BY) + OFFSET_Y) + " for coordinates x: " + x + " y: " + y);
 			return null;
 		}
 	}

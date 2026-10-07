@@ -70,7 +70,6 @@ public class RequestWithdrawPartyRoom extends ClientPacket
 			// If user is in party with Room Owner
 			// is not removed from Room
 			
-			// _activeChar.setPartyMatching(0);
 			player.broadcastUserInfo();
 		}
 		else
@@ -78,7 +77,6 @@ public class RequestWithdrawPartyRoom extends ClientPacket
 			room.deleteMember(player);
 			
 			player.setPartyRoom(0);
-			// _activeChar.setPartyMatching(0);
 			player.sendPacket(new ExClosePartyRoom());
 			player.sendPacket(SystemMessageId.YOU_HAVE_EXITED_THE_PARTY_ROOM);
 		}

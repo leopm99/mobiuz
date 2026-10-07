@@ -358,10 +358,6 @@ public class HallOfSufferingAttack extends AbstractNpcAI
 		// Notify Creature AI
 		boss.getAI().notifyAction(Action.DEATH);
 		
-		// if (boss.getWorldRegion() != null)
-		// {
-		// boss.getWorldRegion().onDeath(boss);
-		// }
 	}
 	
 	@Override

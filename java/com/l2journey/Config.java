@@ -4280,7 +4280,6 @@ public class Config
 			try
 			{
 				// Java 19
-				// final URL autoIp = new URL("http://checkip.amazonaws.com");
 				// Java 20
 				final URL autoIp = URI.create("http://checkip.amazonaws.com").toURL();
 				try (BufferedReader in = new BufferedReader(new InputStreamReader(autoIp.openStream())))

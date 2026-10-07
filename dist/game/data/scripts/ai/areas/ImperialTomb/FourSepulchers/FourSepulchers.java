@@ -338,7 +338,6 @@ public class FourSepulchers extends AbstractNpcAI implements IXmlReader
 			case "REMOVE_PETRIFY":
 			{
 				npc.stopSkillEffects(SkillFinishType.REMOVED, PETRIFY.getSkillId());
-				// npc.setTargetable(true);
 				npc.setInvul(false);
 				return null;
 			}
@@ -458,8 +457,6 @@ public class FourSepulchers extends AbstractNpcAI implements IXmlReader
 			npc.setTarget(npc);
 			npc.doCast(PETRIFY.getSkill());
 			npc.asAttackable().setCanReturnToSpawnPoint(false);
-			// npc.setTargetable(false);
-			// npc.setInvul(true);
 			cancelQuestTimer("REMOVE_PETRIFY", npc, null);
 			startQuestTimer("REMOVE_PETRIFY", 5 * 60 * 1000, npc, null, false); // 5 minutes
 		}

@@ -146,8 +146,6 @@ public class Parade extends AbstractNpcAI
 		ThreadPool.scheduleAtFixedRate(new Start(), diff, cycle);
 		
 		// Test - Starts 3 minutes after server startup and repeats every 20 minutes.
-		// final long diff = timeLeftMilli(8, 0, 0), cycle = 600000;
-		// ThreadPoolManager.scheduleAtFixedRate(new Start(), 180000, cycle);
 		
 		LOGGER.info("Fantasy Isle: Parade starting at " + new SimpleDateFormat("yyyy/MM/dd HH:mm").format(System.currentTimeMillis() + diff) + " and is scheduled each next " + (cycle / 3600000) + " hours.");
 	}

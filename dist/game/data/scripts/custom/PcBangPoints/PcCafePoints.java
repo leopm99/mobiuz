@@ -7,7 +7,6 @@ import ai.AbstractNpcAI;
 
 public class PcCafePoints extends AbstractNpcAI
 {
-	// private static final Logger LOGGER = Logger.getLogger(PcCafePoints.class.getName());
 	
 	private static final int[] NPCs =
 	{
@@ -105,12 +104,7 @@ public class PcCafePoints extends AbstractNpcAI
 	}
 	
 	// @Override
-	// public String onEvent(String event, Npc npc, Player player)
-	// {
-	// String htmltext = event;
 	//
-	// return htmltext;
-	// }
 	
 	@Override
 	public String onTalk(Npc npc, Player player)

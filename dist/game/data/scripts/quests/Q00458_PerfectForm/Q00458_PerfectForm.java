@@ -250,11 +250,7 @@ public class Q00458_PerfectForm extends Quest
 						qs.set("overhitsCritical", String.valueOf(qs.getInt("overhitsCritical") + 1)); // memoStateEx 2
 					}
 					qs.set("overhitsConsecutive", String.valueOf(qs.getInt("overhitsConsecutive") + 1)); // memoStateEx 3
-					/*
-					 * Retail logic (makes for a long/messy string in database): int i0 = overhitsConsecutive % 100; int i1 = overhitsConsecutive - (i0 * 100); if (i0 < i1) { st.set("overhitsConsecutive", String.valueOf((i1 * 100) + i1)); }
-					 */
 				}
-				// st.set("overhitsConsecutive", String.valueOf((st.getInt("overhitsConsecutive") % 100) * 100));
 				else if (qs.getInt("overhitsConsecutive") > 0)
 				{
 					// avoid writing to database if variable is already zero
@@ -264,7 +260,6 @@ public class Q00458_PerfectForm extends Quest
 				if ((qs.getInt("18879") == 10) && (qs.getInt("18886") == 10) && (qs.getInt("18893") == 10) && (qs.getInt("18900") == 10))
 				{
 					qs.setCond(2, true);
-					// st.set("overhitsConsecutive", String.valueOf(st.getInt("overhitsConsecutive") % 100));
 				}
 				else
 				{

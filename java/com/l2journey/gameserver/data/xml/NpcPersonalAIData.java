@@ -107,7 +107,6 @@ public class NpcPersonalAIData
 			
 			try
 			{
-				// for (String key : map.keySet())
 				for (Entry<String, Integer> entry : map.entrySet())
 				{
 					final String key = entry.getKey();

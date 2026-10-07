@@ -664,7 +664,6 @@ public class Castle extends AbstractResidence
 				while (rs.next())
 				{
 					setName(rs.getString("name"));
-					// _OwnerId = rs.getInt("ownerId");
 					_siegeDate = Calendar.getInstance();
 					_siegeDate.setTimeInMillis(rs.getLong("siegeDate"));
 					_siegeTimeRegistrationEndDate = Calendar.getInstance();

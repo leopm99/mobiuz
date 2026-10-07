@@ -81,7 +81,6 @@ public class TullyWorkshop extends AbstractNpcAI
 	private static final int TOMBSTONE = 32344;
 	private static final int INGENIOUS_CONTRAPTION = 32371;
 	private static final int PILLAR = 18506;
-	// private static final int BRIDGE_CONTROLLER = 32468;
 	private static final int TIMETWISTER_GOLEM = 22392;
 	private static final int[] SIN_WARDENS =
 	{
@@ -1547,7 +1546,6 @@ public class TullyWorkshop extends AbstractNpcAI
 			handleDoorsOnDeath();
 		}
 		
-		// addSpawn(BRIDGE_CONTROLLER, 12527, 279714, -11622, 16384, false, 0, false);
 	}
 	
 	private void handleDoorsOnDeath()

@@ -153,7 +153,6 @@ public class Petition
 			// Allows petitioners to see the results of their petition when
 			// they log back into the game.
 			
-			// endPetitionConsultation(PetitionState.Petitioner_Missing);
 			return;
 		}
 		

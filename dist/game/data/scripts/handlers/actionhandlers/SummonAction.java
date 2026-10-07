@@ -29,7 +29,6 @@
 package handlers.actionhandlers;
 
 import com.l2journey.gameserver.ai.Intention;
-//import com.l2journey.gameserver.GeoData.GeoData;
 import com.l2journey.gameserver.handler.IActionHandler;
 import com.l2journey.gameserver.model.WorldObject;
 import com.l2journey.gameserver.model.actor.Player;
@@ -85,10 +84,7 @@ public class SummonAction implements IActionHandler
 				{
 					player.updateNotMoveUntil();
 				}
-				// else if (GeoData.getInstance().canMove(player, target))
-				// {
 				player.getAI().setIntention(Intention.FOLLOW, target);
-				// }
 			}
 		}
 		return true;

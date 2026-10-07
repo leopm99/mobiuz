@@ -747,7 +747,6 @@ public class TradeList
 		}
 		playerIU.addItem(adenaItem);
 		ownerInventory.addAdena(ItemProcessType.SELL, totalPrice, _owner, player);
-		// ownerIU.addItem(ownerInventory.getAdenaInstance());
 		boolean ok = true;
 		
 		// Transfer items

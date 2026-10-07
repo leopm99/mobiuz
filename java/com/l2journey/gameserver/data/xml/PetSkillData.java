@@ -104,7 +104,6 @@ public class PetSkillData implements IXmlReader
 		int level = 0;
 		if (!_skillTrees.containsKey(pet.getId()))
 		{
-			// LOGGER.warning(getClass().getSimpleName() + ": Pet id " + pet.getId() + " does not have any skills assigned.");
 			return level;
 		}
 		
@@ -156,7 +155,6 @@ public class PetSkillData implements IXmlReader
 		final List<Integer> skillIds = new ArrayList<>();
 		if (!_skillTrees.containsKey(pet.getId()))
 		{
-			// LOGGER.warning(getClass().getSimpleName() + ": Pet id " + pet.getId() + " does not have any skills assigned.");
 			return skillIds;
 		}
 		

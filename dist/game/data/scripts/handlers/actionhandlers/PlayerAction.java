@@ -109,10 +109,7 @@ public class PlayerAction implements IActionHandler
 				{
 					// This Action Failed packet avoids player getting stuck when clicking three or more times
 					player.sendPacket(ActionFailed.STATIC_PACKET);
-					// if (GeoData.getInstance().canMove(player, target))
-					// {
 					player.getAI().setIntention(Intention.FOLLOW, target);
-					// }
 				}
 			}
 		}

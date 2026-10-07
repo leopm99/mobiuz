@@ -93,13 +93,6 @@ public class MoveToLocation extends ClientPacket
 			return;
 		}
 		
-		// Check if target location is obstructed.
-		// if (GeoData.getInstance().isCompletelyBlocked(GeoData.getGeoX(_targetX), GeoData.getGeoY(_targetY), _targetZ))
-		// {
-		// player.sendPacket(ActionFailed.STATIC_PACKET);
-		// return;
-		// }
-		
 		// Check for possible door logout and move over exploit. Also checked at ValidatePosition.
 		if (DoorData.getInstance().checkIfDoorsBetween(player.getLastServerPosition(), player.getLocation(), player.getInstanceId()))
 		{

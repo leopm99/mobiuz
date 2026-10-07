@@ -50,12 +50,6 @@ public class CharacterDelete extends ClientPacket
 	{
 		final GameClient client = getClient();
 		
-		// if (!client.getFloodProtectors().canSelectCharacter())
-		// {
-		// sendPacket(new CharDeleteFail(CharDeleteFail.REASON_DELETION_FAILED));
-		// return;
-		// }
-		
 		try
 		{
 			switch (client.markToDeleteChar(_charSlot))

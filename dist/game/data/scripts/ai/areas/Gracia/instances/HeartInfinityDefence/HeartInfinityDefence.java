@@ -561,7 +561,6 @@ public class HeartInfinityDefence extends AbstractNpcAI
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
 		if ((tmpworld instanceof HIDWorld) && (npc.getId() == SOULWAGON))
 		{
-			// npc.asMonster().setPassive(true);
 			npc.asMonster().getAI().setIntention(Intention.IDLE);
 		}
 	}

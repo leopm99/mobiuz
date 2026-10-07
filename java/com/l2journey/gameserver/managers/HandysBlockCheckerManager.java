@@ -195,17 +195,6 @@ public class HandysBlockCheckerManager
 				player.sendPacket(SystemMessageId.APPLICANTS_FOR_THE_OLYMPIAD_UNDERGROUND_COLISEUM_OR_KRATEI_S_CUBE_MATCHES_CANNOT_REGISTER);
 			}
 			
-			// if(UnderGroundColiseum.getInstance().isRegisteredPlayer(player))
-			// {
-			// UngerGroundColiseum.getInstance().removeParticipant(player);
-			// player.sendPacket(SystemMessageId.COLISEUM_OLYMPIAD_KRATEIS_APPLICANTS_CANNOT_PARTICIPATE));
-			// }
-			// if(KrateiCubeManager.getInstance().isRegisteredPlayer(player))
-			// {
-			// KrateiCubeManager.getInstance().removeParticipant(player);
-			// player.sendPacket(SystemMessageId.COLISEUM_OLYMPIAD_KRATEIS_APPLICANTS_CANNOT_PARTICIPATE));
-			// }
-			
 			if (_registrationPenalty.contains(player.getObjectId()))
 			{
 				player.sendPacket(SystemMessageId.YOU_MUST_WAIT_10_SECONDS_BEFORE_ATTEMPTING_TO_REGISTER_AGAIN);

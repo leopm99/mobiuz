@@ -265,7 +265,6 @@ public class Deathmatch extends Event
 								npc.setTarget(player);
 								npc.doCast(skill.getSkill());
 								// No animation.
-								// skill.getSkill().applyEffects(npc, player);
 							}
 						}
 						else
@@ -275,7 +274,6 @@ public class Deathmatch extends Event
 								npc.setTarget(player);
 								npc.doCast(skill.getSkill());
 								// No animation.
-								// skill.getSkill().applyEffects(npc, player);
 							}
 						}
 						
@@ -360,11 +358,7 @@ public class Deathmatch extends Event
 				}
 				
 				// Spawn managers.
-				// addSpawn(MANAGER, BLUE_BUFFER_SPAWN_LOC, false, (WAIT_TIME + FIGHT_TIME) * 60000, false, PVP_WORLD.getId());
-				// addSpawn(MANAGER, RED_BUFFER_SPAWN_LOC, false, (WAIT_TIME + FIGHT_TIME) * 60000, false, PVP_WORLD.getId());
 				// Initialize scores.
-				// BLUE_SCORE = 0;
-				// RED_SCORE = 0;
 				// Initialize scoreboard.
 				PVP_WORLD.broadcastPacket(new ExPVPMatchCCRecord(ExPVPMatchCCRecord.INITIALIZE, MapUtil.sortByValue(PLAYER_SCORES, true)));
 				// Schedule start.
@@ -379,8 +373,6 @@ public class Deathmatch extends Event
 			case "StartFight":
 			{
 				// Open doors.
-				// PVP_WORLD.openDoor(BLUE_DOOR_ID);
-				// PVP_WORLD.openDoor(RED_DOOR_ID);
 				// Send message.
 				broadcastScreenMessageWithEffect("The fight has began!", 5);
 				for (Player participant : PLAYER_LIST)

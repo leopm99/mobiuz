@@ -171,7 +171,6 @@ public class ScriptEngineManager implements IXmlReader
 		}
 		
 		path = path.toAbsolutePath();
-		// System.out.println("Executing script at path: " + path.toString());
 		
 		// Check if the path exists
 		if (!Files.exists(path))

@@ -126,8 +126,6 @@ public class HitConditionBonusData implements IXmlReader
 		if (GameTimeTaskManager.getInstance().isNight())
 		{
 			mod += darkBonus;
-			// else if () No rain support yet.
-			// chance += hitConditionBonus.rainBonus;
 		}
 		
 		// Get side bonus

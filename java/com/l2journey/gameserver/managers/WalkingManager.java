@@ -209,10 +209,6 @@ public class WalkingManager implements IXmlReader
 									_targetedNpcIds.add(npcId);
 								}
 							}
-							// else
-							// {
-							// LOGGER.warning(getClass().getSimpleName() + ": NPC with id " + npcId + " for route '" + routeName + "' does not exist.");
-							// }
 						}
 						catch (Exception _)
 						{

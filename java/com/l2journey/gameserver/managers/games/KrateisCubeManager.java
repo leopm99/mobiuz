@@ -483,7 +483,6 @@ public class KrateisCubeManager implements IXmlReader
 			_state = EventState.REGISTRATION;
 		}
 		
-		// LOGGER.info(getClass().getSimpleName() + ": Next match " + TimeUtil.getDateTimeString(calendar.getTimeInMillis()));
 	}
 	
 	public void closeRegistration()

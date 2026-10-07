@@ -123,14 +123,6 @@ public class QuestLink implements IBypassHandler
 			if ((qs == null) || qs.isCreated())
 			{
 				state = quest.isCustomQuest() ? "" : "01";
-				// if (quest.canStartQuest(player))
-				// {
-				// color = "bbaa88";
-				// }
-				// else
-				// {
-				// color = "a62f31";
-				// }
 			}
 			else if (qs.isStarted())
 			{
@@ -143,7 +135,6 @@ public class QuestLink implements IBypassHandler
 				// color = "787878";
 			}
 			sb.append("<a action=\"bypass npc_" + npc.getObjectId() + "_Quest " + quest.getName() + "\">");
-			// StringUtil.append(sb, "<font color=\"" + color + "\">[");
 			sb.append("[");
 			
 			if (quest.isCustomQuest())

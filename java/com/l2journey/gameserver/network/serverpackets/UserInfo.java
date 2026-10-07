@@ -74,7 +74,6 @@ public class UserInfo extends ServerPacket
 		{
 			_relation |= 0x80;
 		}
-		// _isDisguised = TerritoryWarManager.getInstance().isDisguised(character.getObjectId());
 		if (_player.isInAirShip() && _player.getAirShip().isCaptain(_player))
 		{
 			_airShipHelm = _player.getAirShip().getHelmItemId();

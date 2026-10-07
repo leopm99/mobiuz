@@ -324,11 +324,6 @@ public class Party extends AbstractPlayerGroup
 			}
 		}
 		
-		// send the position of all party members to the new party member
-		// player.sendPacket(new PartyMemberPosition(this));
-		// send the position of the new party member to all party members (except the new one - he knows his own position)
-		// broadcastToPartyMembers(player, new PartyMemberPosition(this));
-		
 		// if member has pet/summon add it to other as well
 		if (player.hasSummon())
 		{

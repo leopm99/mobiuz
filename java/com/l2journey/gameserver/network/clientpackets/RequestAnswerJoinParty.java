@@ -134,7 +134,6 @@ public class RequestAnswerJoinParty extends ClientPacket
 								}
 							}
 							player.setPartyRoom(room.getId());
-							// player.setPartyMatching(1);
 							player.broadcastUserInfo();
 						}
 					}

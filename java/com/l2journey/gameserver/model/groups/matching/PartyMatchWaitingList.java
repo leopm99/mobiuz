@@ -47,7 +47,6 @@ public class PartyMatchWaitingList
 	
 	public void addPlayer(Player player)
 	{
-		// player.setPartyWait(1);
 		if (!_members.contains(player))
 		{
 			_members.add(player);
@@ -56,7 +55,6 @@ public class PartyMatchWaitingList
 	
 	public void removePlayer(Player player)
 	{
-		// player.setPartyWait(0);
 		if (_members.contains(player))
 		{
 			_members.remove(player);

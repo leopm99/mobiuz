@@ -57,8 +57,6 @@ public class AdminZone implements IAdminCommandHandler
 		final StringTokenizer st = new StringTokenizer(command, " ");
 		final String actualCommand = st.nextToken(); // Get actual command
 		
-		// String val = "";
-		// if (st.countTokens() >= 1) {val = st.nextToken();}
 		if (actualCommand.equalsIgnoreCase("admin_zone_check"))
 		{
 			showHtml(activeChar);
