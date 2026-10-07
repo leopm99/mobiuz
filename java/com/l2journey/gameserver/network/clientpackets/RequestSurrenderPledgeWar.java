@@ -80,24 +80,7 @@ public class RequestSurrenderPledgeWar extends ClientPacket
 		player.sendPacket(msg);
 		ClanTable.getInstance().deleteClanWars(playerClan.getId(), clan.getId());
 		// Zoey76: TODO: Implement or cleanup.
-		// Player leader = World.getInstance().getPlayer(clan.getLeaderName());
-		// if ((leader != null) && (leader.isOnline() == 0))
-		// {
-		// player.sendMessage("Clan leader isn't online.");
-		// player.sendPacket(ActionFailed.STATIC_PACKET);
-		// return;
-		// }
 		//
-		// if (leader.isTransactionInProgress())
-		// {
-		// SystemMessage sm = new SystemMessage(SystemMessageId.S1_IS_BUSY_TRY_LATER);
-		// sm.addString(leader.getName());
-		// player.sendPacket(sm);
-		// return;
-		// }
 		//
-		// leader.setTransactionRequester(player);
-		// player.setTransactionRequester(leader);
-		// leader.sendPacket(new SurrenderPledgeWar(_clan.getName(), player.getName()));
 	}
 }

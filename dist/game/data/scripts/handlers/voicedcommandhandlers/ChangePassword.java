@@ -105,7 +105,6 @@ public class ChangePassword implements IVoicedCommandHandler
 		}
 		else
 		{
-			// showHTML(activeChar);
 			String html = HtmCache.getInstance().getHtm(null, "data/html/mods/ChangePassword.htm");
 			if (html == null)
 			{

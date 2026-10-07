@@ -455,9 +455,6 @@ public class DimensionalRift
 		
 		if ((_party.getMemberCount() - _revivedInWaitingRoom.size()) < Config.RIFT_MIN_PARTY_SIZE)
 		{
-			// int pcm = _party.getMemberCount();
-			// int rev = revivedInWaitingRoom.size();
-			// int min = Config.RIFT_MIN_PARTY_SIZE;
 			
 			for (Player p : _party.getMembers())
 			{

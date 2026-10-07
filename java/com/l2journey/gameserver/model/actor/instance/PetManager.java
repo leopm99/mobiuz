@@ -302,7 +302,6 @@ public class PetManager extends Merchant
 		
 		player.sendPacket(new MagicSkillUse(npc, 2046, 1, 1000, 600000));
 		player.sendPacket(SystemMessageId.SUMMONING_YOUR_PET);
-		// World.getInstance().storeObject(petSummon);
 		petSummon.spawnMe(oldX, oldY, oldZ);
 		petSummon.startFeed();
 		item.setEnchantLevel(petSummon.getLevel());
@@ -383,7 +382,6 @@ public class PetManager extends Merchant
 		
 		player.sendPacket(new MagicSkillUse(npc, 2046, 1, 1000, 600000));
 		player.sendPacket(SystemMessageId.SUMMONING_YOUR_PET);
-		// World.getInstance().storeObject(petSummon);
 		petSummon.spawnMe(player.getX(), player.getY(), player.getZ());
 		petSummon.startFeed();
 		addedItem.setEnchantLevel(petSummon.getLevel());

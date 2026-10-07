@@ -1040,10 +1040,6 @@ public class AdminEditChar implements IAdminCommandHandler
 		else
 		{
 			ip = client.getIp();
-			// if (client.getHWID() != null)
-			// {
-			// hwid = client.getHWID();
-			// }
 		}
 		
 		final NpcHtmlMessage adminReply = new NpcHtmlMessage();

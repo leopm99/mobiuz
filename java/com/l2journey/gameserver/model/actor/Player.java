@@ -722,9 +722,7 @@ public class Player extends Playable
 	private ScheduledFuture<?> _taskWarnUserTakeBreak;
 	
 	// Party matching
-	// private int _partymatching = 0;
 	private int _partyroom = 0;
-	// private int _partywait = 0;
 	
 	// Clan related attributes
 	/** The Clan Identifier of the Player */
@@ -801,8 +799,6 @@ public class Player extends Playable
 	private Weapon _fistsWeaponItem;
 	
 	private final Map<Integer, String> _chars = new LinkedHashMap<>();
-	
-	// private byte _updateKnownCounter = 0;
 	
 	private int _expertiseArmorPenalty = 0;
 	private int _expertiseWeaponPenalty = 0;
@@ -4272,7 +4268,6 @@ public class Player extends Playable
 	{
 		// TODO We mustn't send these informations to other players
 		// Send the Server->Client packet StatusUpdate with current HP and MP to all Player that must be informed of HP/MP updates of this Player
-		// super.broadcastStatusUpdate();
 		
 		// Send the Server->Client packet StatusUpdate with current HP, MP and CP to this Player
 		final StatusUpdate su = new StatusUpdate(this);
@@ -5305,13 +5300,10 @@ public class Player extends Playable
 			stopFeed();
 		}
 		
-		// synchronized (this)
-		// {
 		if (_isFakeDeath)
 		{
 			stopFakeDeath(true);
 		}
-		// }
 		
 		final KrateiArena arena = getKrateiArena();
 		if (arena != null)
@@ -7218,7 +7210,6 @@ public class Player extends Playable
 					player.setPcCafePoints(rset.getInt("pccafe_points"));
 					player.setPowerGrade(rset.getInt("power_grade"));
 					player.setPledgeType(rset.getInt("subpledge"));
-					// player.setApprentice(rs.getInt("apprentice"));
 					player.setDeleteTimer(rset.getLong("deletetime"));
 					player.setTitle(rset.getString("title"));
 					player.setAccessLevel(rset.getInt("accesslevel"));
@@ -8157,10 +8148,6 @@ public class Player extends Playable
 					ps.execute();
 				}
 			}
-			// else
-			// {
-			// LOGGER.warning("Could not store new skill, it's null!");
-			// }
 		}
 		catch (Exception e)
 		{
@@ -12085,7 +12072,6 @@ public class Player extends Playable
 		if (_clanId > 0)
 		{
 			_clan.broadcastToOtherOnlineMembers(new PledgeShowMemberListUpdate(this), this);
-			// ClanTable.getInstance().getClan(getClanId()).broadcastToOnlineMembers(new PledgeShowMemberListAdd(this));
 		}
 		
 		for (Player player : _snoopedPlayer)
@@ -12142,7 +12128,6 @@ public class Player extends Playable
 		_fishX = x;
 		_fishY = y;
 		_fishZ = z;
-		// broadcastUserInfo();
 		// Starts fishing
 		final int lvl = getRandomFishLvl();
 		final int grade = getRandomFishGrade();
@@ -12526,7 +12511,6 @@ public class Player extends Playable
 		_fishY = 0;
 		_fishZ = 0;
 		
-		// broadcastUserInfo();
 		if (_fishCombat == null)
 		{
 			sendPacket(SystemMessageId.THE_BAIT_HAS_BEEN_LOST_BECAUSE_THE_FISH_GOT_AWAY);

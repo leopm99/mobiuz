@@ -749,13 +749,6 @@ public class HeartInfinityAttack extends AbstractNpcAI
 	private void handleEkimusStats(HIAWorld world)
 	{
 		// TODO FIXME
-		// double[] a = getStatMultiplier(world);
-		// world.ekimus.removeStatsOwner(this);
-		// world.ekimus.addStatFunc(new FuncGet(Stats.POWER_ATTACK, 0x30, this, world.ekimus.getTemplate().getBasePAtk() * 3));
-		// world.ekimus.addStatFunc(new FuncGet(Stats.MAGIC_ATTACK, 0x30, this, world.ekimus.getTemplate().getBaseMAtk() * 10));
-		// world.ekimus.addStatFunc(new FuncGet(Stats.POWER_DEFENCE, 0x30, this, world.ekimus.getTemplate().getBasePDef() * a[1]));
-		// world.ekimus.addStatFunc(new FuncGet(Stats.MAGIC_DEFENCE, 0x30, this, world.ekimus.getTemplate().getBaseMDef() * a[0]));
-		// world.ekimus.addStatFunc(new FuncGet(Stats.REGENERATE_HP_RATE, 0x30, this, world.ekimus.getTemplate().getBaseHpReg() * a[2]));
 	}
 	
 	@SuppressWarnings("unused")

@@ -273,7 +273,6 @@ public class CrystalCaverns extends AbstractInstance
 		{32274, 152461, 152505, -12169, 31613},
 		// {32274, 152461, 152575, -12169, 31613},
 		{32277, 152461, 152645, -12169, 31613},
-		// {32274, 152461, 152715, -12169, 31613}
 	};
 	private static int[][] HALL_SPAWNS =
 	{
@@ -445,9 +444,6 @@ public class CrystalCaverns extends AbstractInstance
 		{22305, 145620, 152397, -12165, 8191},
 		{22418, 146081, 152847, -12165, 31396},
 		{22418, 146795, 152641, -12165, 33850},
-		// {22308, 145093, 152502, -12165, 31841},
-		// {22308, 146158, 152776, -12165, 30810},
-		// {22308, 146116, 152976, -12133, 32571}
 	};
 	private static int[][] STEAM2_SPAWNS =
 	{
@@ -469,16 +465,6 @@ public class CrystalCaverns extends AbstractInstance
 		{22307, 150725, 152467, -12165, 33635},
 		{22307, 151058, 152316, -12146, 65342},
 		{22307, 151057, 152461, -12165, 2171},
-		// {22308, 150794, 152455, -12165, 31613},
-		// {22308, 150665, 152383, -12165, 32767},
-		// {22308, 151697, 152621, -12167, 31423},
-		// {22309, 151061, 152581, -12165, 6228},
-		// {22309, 150653, 152253, -12132, 31343},
-		// {22309, 150628, 152431, -12165, 33022},
-		// {22309, 151620, 152487, -12165, 30114},
-		// {22309, 151672, 152544, -12165, 31846},
-		// {22309, 150488, 152350, -12165, 29072},
-		// {22310, 151139, 152238, -12132, 1069}
 	};
 	
 	private static int[][] STEAM4_SPAWNS =
@@ -496,7 +482,6 @@ public class CrystalCaverns extends AbstractInstance
 		{22420, 149986, 150051, -12165, 105},
 		{22420, 151970, 149997, -12165, 32170},
 		{22420, 150744, 150006, -12165, 63},
-		// {22417, 149782, 150188, -12151, 64001}
 	};
 	// @formatter:on
 	private static final int DRAGONSCALETIME = 3000;
@@ -1944,8 +1929,6 @@ public class CrystalCaverns extends AbstractInstance
 					{
 						for (Player partyMember : party.getMembers())
 						{
-							// int rnd = getRandom(100);
-							// partyMember.destroyItemByItemId(ItemProcessType.QUEST, (rnd < 33 ? BLUE_CRYSTAL:(rnd < 67 ? RED_CRYSTAL:CLEAR_CRYSTAL)), 1, partyMember, true); Crystals are no longer beign cunsumed while entering to Baylor Lair.
 							world._raiders.add(partyMember);
 						}
 					}

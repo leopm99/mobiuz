@@ -337,7 +337,6 @@ public class AugmentationData
 					{
 						NamedNodeMap nodeAttributes = null;
 						
-						// System.out.println("We're going through the list now.");
 						for (Node n = node.getFirstChild(); n != null; n = n.getNextSibling())
 						{
 							if (n.getNodeName().equals("weapon"))
@@ -345,7 +344,6 @@ public class AugmentationData
 								nodeAttributes = n.getAttributes();
 								weaponType = nodeAttributes.getNamedItem("type").getNodeValue();
 								
-								// System.out.println("Now showing Augmentations for " + aWeaponType + " Weapons.");
 								for (Node c = n.getFirstChild(); c != null; c = c.getNextSibling())
 								{
 									if (c.getNodeName().equals("stone"))
@@ -365,7 +363,6 @@ public class AugmentationData
 														nodeAttributes = j.getAttributes();
 														categoryChance = Integer.parseInt(nodeAttributes.getNamedItem("probability").getNodeValue());
 														
-														// System.out.println("Stone Id: " + aStoneId + ", Variation Id: " + aVariationId + ", Category Chances: " + aCategoryChance);
 														for (Node e = j.getFirstChild(); e != null; e = e.getNextSibling())
 														{
 															if (e.getNodeName().equals("augment"))

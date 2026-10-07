@@ -558,11 +558,6 @@ public class BlockCheckerManager
 		}
 	}
 	
-	/*
-	 * private class CountDown implements Runnable {
-	 * @Override public void run() { _holder.broadCastPacketToTeam(new SystemMessage(SystemMessageId.BLOCK_CHECKER_ENDS_5)); ThreadPoolManager.schedule(new EndEvent(), 5000); } }
-	 */
-	
 	/**
 	 * This class erase all event parameters on player and port them back near Handy. Also, unspawn blocks, runs a garbage collector and set as free the used arena
 	 */

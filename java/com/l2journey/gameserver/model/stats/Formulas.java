@@ -1930,7 +1930,6 @@ public class Formulas
 				attackAttributeMod = 0.06909;
 				defenceAttributeMod = 0.078;
 			}
-			// On retail else if (attack_attribute >= 350), can be considered a typo
 			else if (defenceAttribute >= 350)
 			{
 				attackAttributeMod = 0.0887;

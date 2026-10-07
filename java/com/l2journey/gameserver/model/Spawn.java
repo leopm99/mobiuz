@@ -676,7 +676,6 @@ public class Spawn extends Location
 	{
 		if (_doRespawn)
 		{
-			// oldNpc.refreshId();
 			initializeNpc(oldNpc);
 		}
 	}

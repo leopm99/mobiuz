@@ -38,7 +38,6 @@ import com.l2journey.gameserver.network.serverpackets.SystemMessage;
  */
 public class AdminFortSiege implements IAdminCommandHandler
 {
-	// private static final Logger LOGGER = Logger.getLogger(AdminFortSiege.class.getName());
 	
 	private static final String[] ADMIN_COMMANDS =
 	{

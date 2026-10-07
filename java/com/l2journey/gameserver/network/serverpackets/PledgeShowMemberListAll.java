@@ -110,12 +110,12 @@ public class PledgeShowMemberListAll extends ServerPacket
 			if (player != null)
 			{
 				buffer.writeInt(player.getAppearance().isFemale()); // no visible effect
-				buffer.writeInt(player.getRace().ordinal()); // buffer.writeInt(1);
+				buffer.writeInt(player.getRace().ordinal());
 			}
 			else
 			{
 				buffer.writeInt(1); // no visible effect
-				buffer.writeInt(1); // buffer.writeInt(1);
+				buffer.writeInt(1);
 			}
 			buffer.writeInt(m.isOnline() ? m.getObjectId() : 0); // objectId = online 0 = offline
 			buffer.writeInt(m.getSponsor() != 0);

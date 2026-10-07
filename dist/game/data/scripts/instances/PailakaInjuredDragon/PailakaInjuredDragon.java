@@ -279,11 +279,9 @@ public class PailakaInjuredDragon extends AbstractInstance
 					else if (getRandom(100) < 50)
 					{
 						// TODO: Implement check.
-						// if (npc.inMyTerritory(player)) {
 						final Npc latanSkillUse = addSpawn(LATANA_SKILL_USE, player, false, 0, false, player.getInstanceId());
 						latanSkillUse.getVariables().set("param1", npc);
 						latanSkillUse.getVariables().set("param2", player);
-						// }
 					}
 					else
 					{
@@ -601,7 +599,6 @@ public class PailakaInjuredDragon extends AbstractInstance
 			}
 			case INJURED_DRAGON_CAMERA_1:
 			{
-				// startQuestTimer("INJURED_DRAGON_CAMERA_1_3000", 10, npc, null);
 				break;
 			}
 			case INJURED_DRAGON_CAMERA_2:

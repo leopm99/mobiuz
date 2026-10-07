@@ -61,7 +61,6 @@ import com.l2journey.gameserver.util.MathUtil;
  */
 public class NpcTemplate extends CreatureTemplate
 {
-	// private static final Logger LOGGER = Logger.getLogger(NpcTemplate.class.getName());
 	
 	private int _id;
 	private int _displayId;

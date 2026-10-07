@@ -52,8 +52,6 @@ public class Remnants extends AbstractNpcAI
 	private static final int SKILL_HOLY_WATER = 2358;
 	
 	// TODO: Find retail strings.
-	// private static final String MSG = "The holy water affects Remnants Ghost. You have freed his soul.";
-	// private static final String MSG_DEREK = "The holy water affects Derek. You have freed his soul.";
 	private Remnants()
 	{
 		addSpawnId(NPCS);
@@ -73,16 +71,6 @@ public class Remnants extends AbstractNpcAI
 		if ((skill.getId() == SKILL_HOLY_WATER) && !npc.isDead() && !targets.isEmpty() && (targets.get(0) == npc) && (npc.getCurrentHp() < (npc.getMaxHp() * 0.02)))
 		{
 			npc.doDie(caster);
-			//@formatter:off
-			/*if (npc.getNpcId() == DEREK)
-			{
-				caster.sendMessage(MSG_DEREK);
-			}
-			else
-			{
-				caster.sendMessage(MSG);
-			}*/
-			//@formatter:on
 		}
 	}
 	

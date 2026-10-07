@@ -4868,11 +4868,6 @@ public abstract class Creature extends WorldObject
 					else // Nenhum caminho encontrado.
 					{
 						// Quando nenhum caminho de movimento foi encontrado, usa movimento direto. Testado no retail em 21 de outubro de 2024.
-						// if (isPlayer() && !_isFlying && !isInWater)
-						// {
-						// sendPacket(ActionFailed.STATIC_PACKET);
-						// return;
-						// }
 						
 						move.disregardingGeodata = true;
 						x = originalX;
@@ -5213,8 +5208,6 @@ public abstract class Creature extends WorldObject
 		// Verifica se fake players devem agredir uns aos outros.
 		if ((isNpc() && target.isAlikeDead()) || target.isDead() || (!isInSurroundingRegion(target) && !isDoor()))
 		{
-			// getAI().setIntention(Intention.ACTIVE, null);
-			// As vezes o ataque e processado mas o alvo morre antes do hit
 			// Entao precisamos recarregar shots para o proximo ataque
 			if (rechargeShots)
 			{
@@ -5236,11 +5229,7 @@ public abstract class Creature extends WorldObject
 			
 			notifyAttackAvoid(target, false);
 		}
-		// else
-		// {
 		// Se nao erramos o hit, descarrega os soulshots, se houver
-		// setChargedShot(ShotType.SOULSHOTS, false);
-		// }
 		
 		// Envia mensagem sobre dano/critico ou erro
 		int damage = damageValue;
@@ -6148,8 +6137,6 @@ public abstract class Creature extends WorldObject
 			{
 				player.setQueuedSkill(null, false, false);
 				
-				// NAO USE: Chamada recursiva ao metodo useMagic().
-				// player.useMagic(queuedSkill.getSkill(), queuedSkill.isCtrlPressed(), queuedSkill.isShiftPressed());
 				ThreadPool.execute(new QueuedMagicUseTask(player, queuedSkill.getSkill(), queuedSkill.isCtrlPressed(), queuedSkill.isShiftPressed()));
 			}
 		}

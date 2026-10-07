@@ -68,7 +68,6 @@ public class PartyMatchRoomList
 			_member.sendPacket(SystemMessageId.THE_PARTY_ROOM_HAS_BEEN_DISBANDED);
 			
 			_member.setPartyRoom(0);
-			// _member.setPartyMatching(0);
 			_member.broadcastUserInfo();
 		}
 		_rooms.remove(id);

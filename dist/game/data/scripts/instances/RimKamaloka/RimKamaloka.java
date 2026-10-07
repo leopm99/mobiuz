@@ -424,17 +424,7 @@ public class RimKamaloka extends AbstractNpcAI
 	@Override
 	public void onFactionCall(Npc npc, Npc caller, Player attacker, boolean isPet)
 	{
-		// if ((npc == null) || (caller == null))
-		// {
-		// return;
-		// }
 		
-		// if (npc.getId() == caller.getId())
-		// {
-		// return;
-		// }
-		
-		// super.onFactionCall(npc, caller, attacker, isPet);
 	}
 	
 	@Override

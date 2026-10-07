@@ -54,7 +54,6 @@ public class RequestGMCommand extends ClientPacket
 	{
 		_targetName = readString();
 		_command = readInt();
-		// _unknown = readInt();
 	}
 	
 	@Override

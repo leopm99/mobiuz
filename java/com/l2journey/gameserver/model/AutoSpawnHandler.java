@@ -477,7 +477,6 @@ public class AutoSpawnHandler
 					{
 						while (!World.getInstance().getVisibleObjectsInRange(npcInst, Npc.class, 5).isEmpty())
 						{
-							// LOGGER.log(Level.INFO, "AutoSpawnHandler: Random spawn location " + npcInst.getLocation() + " for " + npcInst + " is occupied. Teleporting...");
 							npcInst.teleToLocation(locationList.get(Rnd.get(locationList.size())));
 						}
 					}

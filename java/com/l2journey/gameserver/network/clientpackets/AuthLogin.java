@@ -72,7 +72,6 @@ public class AuthLogin extends ClientPacket
 			{
 				client.setAccountName(_loginName);
 				final SessionKey key = new SessionKey(_loginKey1, _loginKey2, _playKey1, _playKey2);
-				// client.setSessionId(key);
 				LoginServerThread.getInstance().addWaitingClientAndSendRequest(_loginName, client, key);
 			}
 			else

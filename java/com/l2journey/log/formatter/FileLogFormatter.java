@@ -45,7 +45,6 @@ public class FileLogFormatter extends Formatter
 	public String format(LogRecord record)
 	{
 		// Java 1.8
-		// return StringUtil.concat(_dateFormat.format(new Date(record.getMillis())), TAB, record.getLevel().getName(), TAB, String.valueOf(record.getThreadID()), TAB, record.getLoggerName(), TAB, record.getMessage(), System.lineSeparator());
 		// Java 16
 		return StringUtil.concat(_dateFormat.format(new Date(record.getMillis())), TAB, record.getLevel().getName(), TAB, String.valueOf(record.getLongThreadID()), TAB, record.getLoggerName(), TAB, record.getMessage(), System.lineSeparator());
 	}

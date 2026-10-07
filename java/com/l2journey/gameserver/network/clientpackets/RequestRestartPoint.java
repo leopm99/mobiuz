@@ -248,7 +248,6 @@ public class RequestRestartPoint extends ClientPacket
 						}
 					}
 					
-					// PacketLogger.warning("Player [" + player.getName() + "] called RestartPointPacket - To Siege HQ and he doesn't have Siege HQ!");
 					return;
 				}
 				loc = MapRegionManager.getInstance().getTeleToLocation(player, TeleportWhereType.SIEGEFLAG);

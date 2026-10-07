@@ -43,7 +43,6 @@ import com.l2journey.commons.network.internal.BufferPool;
  */
 public class ResourcePool
 {
-	// private static final Logger LOGGER = Logger.getLogger(ResourcePool.class.getName());
 	
 	private final NavigableMap<Integer, BufferPool> _bufferPools = new TreeMap<>();
 	private boolean _autoExpandCapacity = true;
@@ -118,13 +117,11 @@ public class ResourcePool
 					{
 						if (pool.isEmpty())
 						{
-							// LOGGER.info("ResourcePool: Buffer pool for size " + size + " is empty. Expanding capacity by a factor of " + _initBufferPoolFactor + ".");
 							pool.expandCapacity(_initBufferPoolFactor, pool.getMaxSize());
 						}
 					}
 					else if (pool.isFull())
 					{
-						// LOGGER.info("ResourcePool: Buffer pool for size " + entry.getKey() + " is full. Doubling the capacity from " + pool.getMaxSize() + " to " + (pool.getMaxSize() * 2) + ".");
 						pool.expandCapacity(_initBufferPoolFactor, pool.getMaxSize());
 					}
 				}
@@ -137,7 +134,6 @@ public class ResourcePool
 		{
 			if (pool == null)
 			{
-				// LOGGER.warning("ResourcePool: There is no buffer pool handling buffer size " + size + ". Creating a new pool.");
 				pool = new BufferPool(10, size);
 				if (_initBufferPools)
 				{
@@ -165,7 +161,6 @@ public class ResourcePool
 			return entry.getKey();
 		}
 		
-		// LOGGER.warning("ResourcePool: There is no buffer pool handling buffer size " + size + ". Creating a new pool.");
 		final BufferPool pool = new BufferPool(10, size);
 		if (_initBufferPools)
 		{
@@ -187,7 +182,6 @@ public class ResourcePool
 			final BufferPool pool = _bufferPools.get(buffer.capacity());
 			if ((pool == null) || !pool.recycle(buffer))
 			{
-				// LOGGER.warning("ResourcePool: Buffer was not recycled " + buffer + " in pool " + pool);
 			}
 		}
 	}

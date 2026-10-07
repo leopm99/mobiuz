@@ -219,7 +219,6 @@ public class RequestDropItem extends ClientPacket
 		
 		final Item dropedItem = player.dropItem(ItemProcessType.DROP, _objectId, _count, _x, _y, _z, null, false, false);
 		
-		// player.broadcastUserInfo();
 		if (player.isGM())
 		{
 			final String target = (player.getTarget() != null ? player.getTarget().getName() : "no-target");

@@ -68,7 +68,6 @@ public class EnchantItemGroup
 					return holder.getChance();
 				}
 			}
-			// LOGGER.log(Level.WARNING, getClass().getSimpleName() + ": Couldn't match proper chance for item group: " + _name);
 			return _chances.get(_chances.size() - 1).getChance();
 		}
 		LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": item group: " + _name + " doesn't have any chances!");

@@ -51,7 +51,6 @@ public class ObserverReturn extends ClientPacket
 		if (player.inObserverMode())
 		{
 			player.leaveObserverMode();
-			// player.teleToLocation(activeChar.getObsX(), activeChar.getObsY(), activeChar.getObsZ());
 		}
 	}
 }

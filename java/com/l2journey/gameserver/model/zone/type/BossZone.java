@@ -412,25 +412,4 @@ public class BossZone extends ZoneType
 		getSettings().getPlayersAllowed().remove(Integer.valueOf(player.getObjectId()));
 		getSettings().getPlayerAllowedReEntryTimes().remove(player.getObjectId());
 	}
-	
-	// public void updateKnownList(Npc npc)
-	// {
-	// if ((_characterList == null) || _characterList.isEmpty())
-	// {
-	// return;
-	// }
-	//
-	// final Map<Integer, Player> npcKnownPlayers = npc.getKnownList().getKnownPlayers();
-	// for (Creature creature : getCharactersInside())
-	// {
-	// if ((character != null) && character.isPlayer())
-	// {
-	// final Player player = character.asPlayer();
-	// if (player.isOnline())
-	// {
-	// npcKnownPlayers.put(player.getObjectId(), player);
-	// }
-	// }
-	// }
-	// }
 }

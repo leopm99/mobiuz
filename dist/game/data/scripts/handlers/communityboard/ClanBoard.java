@@ -466,8 +466,6 @@ public class ClanBoard implements IWriteBoardHandler
 	@Override
 	public boolean writeCommunityBoardCommand(Player player, String arg1, String arg2, String arg3, String arg4, String arg5)
 	{
-		// the only Write bypass that comes to this handler is "Write Notice Set _ Content Content Content";
-		// arg1 = Set, arg2 = _
 		final Clan clan = player.getClan();
 		if ((clan != null) && player.isClanLeader())
 		{

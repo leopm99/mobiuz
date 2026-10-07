@@ -537,10 +537,6 @@ public class AttackableAI extends CreatureAI
 		}
 		
 		// Se este e um monstro de festival, entao ele permanece no mesmo local.
-		// if (npc instanceof FestivalMonster)
-		// {
-		// return;
-		// }
 		
 		// Verifica se o mob nao deve retornar ao ponto de spawn
 		if (!npc.canReturnToSpawnPoint()
@@ -892,7 +888,6 @@ public class AttackableAI extends CreatureAI
 			}
 			catch (NullPointerException _)
 			{
-				// LOGGER.warning(getClass().getSimpleName() + ": There has been a problem trying to think the attack!", e);
 			}
 		}
 		
@@ -1056,7 +1051,6 @@ public class AttackableAI extends CreatureAI
 									npc.setTarget(leader);
 									npc.doCast(healSkill);
 									npc.setTarget(target);
-									// LOGGER.debug(this + " used heal skill " + healSkill + " on leader " + leader);
 									return;
 								}
 							}
@@ -1079,7 +1073,6 @@ public class AttackableAI extends CreatureAI
 							npc.setTarget(npc);
 							npc.doCast(sk);
 							npc.setTarget(target);
-							// LOGGER.debug(this + " used heal skill " + sk + " on itself");
 							
 							return;
 						}
@@ -1110,7 +1103,6 @@ public class AttackableAI extends CreatureAI
 									npc.setTarget(obj);
 									npc.doCast(sk);
 									npc.setTarget(target);
-									// LOGGER.debug(this + " used heal skill " + sk + " on " + obj);
 									return;
 								}
 							}
@@ -1155,7 +1147,6 @@ public class AttackableAI extends CreatureAI
 									npc.setTarget(leader);
 									npc.doCast(sk);
 									npc.setTarget(target);
-									// LOGGER.debug(this + " used resurrection skill " + sk + " on leader " + leader);
 									return;
 								}
 							}
@@ -1186,7 +1177,6 @@ public class AttackableAI extends CreatureAI
 									npc.setTarget(obj);
 									npc.doCast(sk);
 									npc.setTarget(target);
-									// LOGGER.debug(this + " used heal skill " + sk + " on clan member " + obj);
 									return;
 								}
 							}
@@ -1200,7 +1190,6 @@ public class AttackableAI extends CreatureAI
 							npc.setTarget(npc);
 							npc.doCast(sk);
 							npc.setTarget(target);
-							// LOGGER.debug(this + " used heal skill " + sk + " on party");
 							return;
 						}
 					}
@@ -1221,7 +1210,6 @@ public class AttackableAI extends CreatureAI
 						clientStopMoving(null);
 						npc.setTarget(target);
 						npc.doCast(shortRangeSkill);
-						// LOGGER.debug(this + " used short range skill " + shortRangeSkill + " on " + npc.getTarget());
 						return;
 					}
 				}
@@ -1236,7 +1224,6 @@ public class AttackableAI extends CreatureAI
 						clientStopMoving(null);
 						npc.setTarget(target);
 						npc.doCast(longRangeSkill);
-						// LOGGER.debug(this + " used long range skill " + longRangeSkill + " on " + npc.getTarget());
 						return;
 					}
 				}
@@ -1998,8 +1985,6 @@ public class AttackableAI extends CreatureAI
 					dist = actor.calculateDistance2D(obj);
 					dist2 = dist - actor.getTemplate().getCollisionRadius();
 					range = sk.getCastRange() + actor.getTemplate().getCollisionRadius() + getAttackTarget().getTemplate().getCollisionRadius();
-					// if(obj.isMoving())
-					// dist2 = dist2 - 40;
 				}
 				catch (NullPointerException _)
 				{
@@ -2023,8 +2008,6 @@ public class AttackableAI extends CreatureAI
 					dist = actor.calculateDistance2D(target);
 					dist2 = dist;
 					range = sk.getCastRange() + actor.getTemplate().getCollisionRadius() + getAttackTarget().getTemplate().getCollisionRadius();
-					// if(obj.isMoving())
-					// dist2 = dist2 - 40;
 				}
 				catch (NullPointerException _)
 				{
@@ -2263,7 +2246,6 @@ public class AttackableAI extends CreatureAI
 		}
 		catch (Exception _)
 		{
-			// LOGGER.warning(getClass().getSimpleName() + ": " + getActor().getName() + " - onActionThink() failed!");
 		}
 		finally
 		{

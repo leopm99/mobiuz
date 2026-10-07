@@ -61,7 +61,6 @@ public class RequestFriendList extends ClientPacket
 		Player friend = null;
 		for (int id : player.getFriendList())
 		{
-			// int friendId = rset.getInt("friendId");
 			final String friendName = CharInfoTable.getInstance().getNameById(id);
 			if (friendName == null)
 			{

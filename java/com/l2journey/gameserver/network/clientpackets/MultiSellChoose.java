@@ -273,13 +273,6 @@ public class MultiSellChoose extends ClientPacket
 							return;
 						}
 						
-						// if (itemToTake.isEquipped())
-						// {
-						// this is a cheat, transaction will be aborted and if any items already taken will not be returned back to inventory!
-						// LOGGER.severe("Character: " + player.getName() + " is trying to cheat in multisell, exchanging equipped item, merchatnt id:" + merchant.getNpcId());
-						// player.setMultiSell(null);
-						// return;
-						// }
 						if (Config.ALT_BLACKSMITH_USE_RECIPES || !e.getMaintainIngredient())
 						{
 							// if it's a stackable item, just reduce the amount from the first (only) instance that is found in the inventory
@@ -343,11 +336,8 @@ public class MultiSellChoose extends ClientPacket
 									// So for m < log(n) then m*(2n-m+1)/2 > (n-1)log(n) and m*(2n-m+1)/2 > nlog(n)
 									//
 									// IDEALLY:
-									// In order to best optimize the performance, choose which algorithm to run, based on whether 2^m > n
-									// if ( (2<<(e.getItemCount()// _amount)) < inventoryContents.length )
-									// // do Algorithm 1, no sorting
-									// else
-									// // do Algorithm 2, sorting
+									// In order to best optimize the performance, choose which algorithm to run based on whether 2^m > n
+									// (algorithm 1 when that product is smaller than inventory size; algorithm 2 / sort otherwise).
 									//
 									// CURRENT IMPLEMENTATION:
 									// In general, it is going to be very rare for a person to do a massive exchange of non-stackable items

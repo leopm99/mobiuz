@@ -238,7 +238,6 @@ public class CharacterCreate extends ClientPacket
 		// HP and MP are at maximum and CP is zero by default.
 		newChar.setCurrentHp(newChar.getMaxHp());
 		newChar.setCurrentMp(newChar.getMaxMp());
-		// newChar.setMaxLoad(template.getBaseLoad());
 		
 		initNewChar(client, newChar);
 		client.sendPacket(CharCreateOk.STATIC_PACKET);

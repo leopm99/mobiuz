@@ -289,7 +289,6 @@ public class TvT extends Event
 								npc.setTarget(player);
 								npc.doCast(skill.getSkill());
 								// No animation.
-								// skill.getSkill().applyEffects(npc, player);
 							}
 						}
 						else
@@ -299,7 +298,6 @@ public class TvT extends Event
 								npc.setTarget(player);
 								npc.doCast(skill.getSkill());
 								// No animation.
-								// skill.getSkill().applyEffects(npc, player);
 							}
 						}
 						

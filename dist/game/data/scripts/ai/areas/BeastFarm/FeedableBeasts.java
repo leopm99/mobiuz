@@ -426,18 +426,7 @@ public class FeedableBeasts extends AbstractNpcAI
 		
 		// despawn the old mob
 		// TODO: same code? FIXED?
-		// @formatter:off
-		/*
-		 * if (_GrowthCapableMobs.get(npcId).getGrowthLevel() == 0)
-			{
-				npc.deleteMe();
-			}
-			else 
-			{
-		 */
 		npc.deleteMe();
-		// }
-		// @formatter:on
 		
 		// if this is finally a trained mob, then despawn any other trained mobs that the
 		// player might have and initialize the Tamed Beast.
@@ -467,20 +456,8 @@ public class FeedableBeasts extends AbstractNpcAI
 				}
 				npc.broadcastPacket(packet);
 			}
-			// @formatter:off
-			/*
-			TODO: The tamed beast consumes one golden/crystal spice
-			every 60 seconds with an initial delay of 60 seconds
-			if (tamed beast exists and is alive)
-			{
-				if (player has 1+ golden/crystal spice)
-				{
-					take one golden/crystal spice;
-					say random NpcString(getRandom(2029, 2038));
-				}
-			}
-			*/
-			// @formatter:on
+			// TODO: The tamed beast consumes one golden/crystal spice every 60 seconds
+			// with an initial delay of 60 seconds while it exists and is alive.
 		}
 		else
 		{
@@ -566,7 +543,7 @@ public class FeedableBeasts extends AbstractNpcAI
 		{
 			food = GOLDEN_SPICE;
 		}
-		else // if (skillId == SKILL_CRYSTAL_SPICE)
+		else
 		{
 			food = CRYSTAL_SPICE;
 		}

@@ -275,11 +275,8 @@ public class Q00604_DaimonTheWhiteEyedPart2 extends Quest
 		final QuestState qs = getQuestState(player, false);
 		if ((qs != null) && (qs.getMemoState() >= 11) && (qs.getMemoState() <= 21) && LocationUtil.checkIfInRange(Config.ALT_PARTY_RANGE, npc, player, false))
 		{
-			// if (hasQuestItems(player, ESSENCE_OF_DAIMON))
-			// {
 			qs.setCond(3, true);
 			qs.setMemoState(22);
-			// }
 			
 			giveItems(player, ESSENCE_OF_DAIMON, 1);
 			playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);

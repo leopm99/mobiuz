@@ -93,7 +93,6 @@ public class PetStat extends SummonStat
 		final boolean levelIncreased = super.addLevel(value);
 		
 		// Sync up exp with current level
-		// if (getExp() > getExpForLevel(getLevel() + 1) || getExp() < getExpForLevel(getLevel())) setExp(Experience.LEVEL[getLevel()]);
 		
 		final Pet pet = getActiveChar();
 		final StatusUpdate su = new StatusUpdate(pet);

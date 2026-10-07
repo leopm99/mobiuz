@@ -43,7 +43,6 @@ import com.l2journey.gameserver.network.ServerPackets;
 public class ExListPartyMatchingWaitingRoom extends ServerPacket
 {
 	private final Player _player;
-	// private final int _page;
 	private final int _minLevel;
 	private final int _maxLevel;
 	private final int _mode;

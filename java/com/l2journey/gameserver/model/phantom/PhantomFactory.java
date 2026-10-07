@@ -368,11 +368,6 @@ public class PhantomFactory
 					break;
 			}
 			
-			// if (Rnd.get(100) < 5)
-			// {
-			// name += Rnd.get(10, 999);
-			// }
-			
 			if (name.length() > 16)
 			{
 				name = name.substring(0, 16);

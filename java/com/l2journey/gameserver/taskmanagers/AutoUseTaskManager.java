@@ -181,8 +181,6 @@ public class AutoUseTaskManager
 				{
 					final int itemId = player.getAutoUseSettings().getAutoManaPotionItem();
 					
-					// player.sendMessage("MP potion id = " + itemId);
-					
 					if (itemId > 0)
 					{
 						final Item item = player.getInventory().getItemByItemId(itemId);

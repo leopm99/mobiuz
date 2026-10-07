@@ -319,8 +319,6 @@ public class PetitionManager
 	
 	public boolean sendActivePetitionMessage(Player player, String messageText)
 	{
-		// if (!isPlayerInConsultation(player))
-		// return false;
 		CreatureSay cs;
 		for (Petition currPetition : _pendingPetitions.values())
 		{
@@ -413,7 +411,7 @@ public class PetitionManager
 		_pendingPetitions.put(newPetitionId, newPetition);
 		
 		// Notify all GMs that a new petition has been submitted.
-		final String msgContent = petitioner.getName() + " has submitted a new petition."; // (ID: " + newPetitionId + ").";
+		final String msgContent = petitioner.getName() + " has submitted a new petition.";
 		AdminData.getInstance().broadcastToGMs(new CreatureSay(petitioner, ChatType.HERO_VOICE, "Petition System", msgContent));
 		return newPetitionId;
 	}

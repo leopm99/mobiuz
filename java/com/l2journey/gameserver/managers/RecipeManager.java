@@ -294,13 +294,6 @@ public class RecipeManager
 				return;
 			}
 			
-			// if (!_player.isOnline() || !_target.isOnline())
-			// {
-			// LOGGER.warning("Player or target is not online, aborting " + _target + _player);
-			// abort();
-			// return;
-			// }
-			
 			if (Config.ALT_GAME_CREATION && !_activeMakers.containsKey(_player.getObjectId()))
 			{
 				if (_target != _player)

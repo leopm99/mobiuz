@@ -228,7 +228,6 @@ public class DrChaos extends AbstractNpcAI
 				else if (npc.calculateDistance2D(npc.getSpawn()) > 10000)
 				{
 					npc.asAttackable().clearAggroList();
-					// npc.getAI().setIntention(Intention.MOVE_TO, new Location(CHAOS_X, CHAOS_Y, CHAOS_Z, 0));
 					npc.teleToLocation(npc.getSpawn(), false);
 				}
 				break;

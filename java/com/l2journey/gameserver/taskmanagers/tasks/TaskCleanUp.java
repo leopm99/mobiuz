@@ -47,7 +47,6 @@ public class TaskCleanUp extends PersistentTask
 	public void onTimeElapsed(ExecutedTask task)
 	{
 		// Removed with Java 18.
-		// System.runFinalization();
 		
 		System.gc();
 	}

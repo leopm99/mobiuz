@@ -173,10 +173,7 @@ public class CreatureStat
 	public int getCriticalHit(Creature target, Skill skill)
 	{
 		double val = calcStat(Stat.CRITICAL_RATE, _creature.getTemplate().getBaseCritRate(), target, skill);
-		// if (!_creature.isGM())
-		// {
 		val = Math.min(val, Config.MAX_PCRIT_RATE);
-		// }
 		
 		return (int) (val + .5);
 	}
@@ -197,10 +194,7 @@ public class CreatureStat
 	public int getEvasionRate(Creature target)
 	{
 		int val = (int) Math.round(calcStat(Stat.EVASION_RATE, 0, target, null));
-		// if (!_creature.isGM())
-		// {
 		val = Math.min(val, Config.MAX_EVASION);
-		// }
 		
 		return val;
 	}
@@ -304,10 +298,7 @@ public class CreatureStat
 		}
 		
 		double val = calcStat(Stat.MAGIC_ATTACK_SPEED, _creature.getTemplate().getBaseMAtkSpd() * bonusSpdAtk);
-		// if (!_creature.isGM())
-		// {
 		val = Math.min(val, Config.MAX_MATK_SPEED);
-		// }
 		
 		return (int) val;
 	}
@@ -320,10 +311,7 @@ public class CreatureStat
 	public int getMCriticalHit(Creature target, Skill skill)
 	{
 		int val = (int) calcStat(Stat.MCRITICAL_RATE, 1, target, skill) * 10;
-		// if (!_creature.isGM())
-		// {
 		val = Math.min(val, Config.MAX_MCRIT_RATE);
-		// }
 		
 		return val;
 	}
@@ -671,9 +659,6 @@ public class CreatureStat
 		return returnVal;
 		// temp fix ends
 		
-		/*
-		 * uncomment me once deadlocks in getAllEffects() fixed return _creature.getElementIdFromEffects();
-		 */
 	}
 	
 	public int getAttackElementValue(byte attackAttribute)

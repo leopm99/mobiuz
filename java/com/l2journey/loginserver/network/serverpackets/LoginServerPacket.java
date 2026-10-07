@@ -37,7 +37,6 @@ import com.l2journey.loginserver.network.LoginClient;
  */
 public abstract class LoginServerPacket extends WritablePacket<LoginClient>
 {
-	// public static final Logger LOGGER = Logger.getLogger(LoginServerPacket.class.getName());
 	
 	@Override
 	protected boolean write(LoginClient client, WritableBuffer buffer)
@@ -49,7 +48,6 @@ public abstract class LoginServerPacket extends WritablePacket<LoginClient>
 		}
 		catch (Exception _)
 		{
-			// LOGGER.error(e.getMessage(), e);
 		}
 		return false;
 	}

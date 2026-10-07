@@ -1914,7 +1914,6 @@ public class Clan
 	{
 		if (_subPledges.get(pledgeType) != null)
 		{
-			// LOGGER.warning("found sub-unit with id: "+pledgeType);
 			switch (pledgeType)
 			{
 				case SUBUNIT_ACADEMY:
@@ -1974,14 +1973,12 @@ public class Clan
 		{
 			// Retrieve all skills of this Player from the database
 			ps.setInt(1, _clanId);
-			// LOGGER.warning("clanPrivs restore for ClanId : "+getClanId());
 			try (ResultSet rset = ps.executeQuery())
 			{
 				// Go though the recordset of this SQL query
 				while (rset.next())
 				{
 					final int rank = rset.getInt("rank");
-					// int party = rset.getInt("party");
 					final int privileges = rset.getInt("privs");
 					// Create a SubPledge object for each record
 					if (rank == -1)

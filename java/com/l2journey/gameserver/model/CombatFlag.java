@@ -38,7 +38,6 @@ import com.l2journey.gameserver.network.serverpackets.SystemMessage;
 
 public class CombatFlag
 {
-	// private static final Logger LOGGER = Logger.getLogger(CombatFlag.class.getName());
 	
 	private Player _player = null;
 	private int _playerId = 0;

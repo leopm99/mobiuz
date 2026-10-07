@@ -91,13 +91,11 @@ public class AdminRepairChar implements IAdminCommandHandler
 				return;
 			}
 			
-			// connection = DatabaseFactory.getConnection();
 			statement = con.prepareStatement("DELETE FROM character_shortcuts WHERE charId=?");
 			statement.setInt(1, objId);
 			statement.execute();
 			statement.close();
 			
-			// connection = DatabaseFactory.getConnection();
 			statement = con.prepareStatement("UPDATE items SET loc=\"INVENTORY\" WHERE owner_id=?");
 			statement.setInt(1, objId);
 			statement.execute();
