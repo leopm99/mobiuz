@@ -104,8 +104,8 @@ public class RaidBossSpawnManager
 				addNewSpawn(spawnDat, rs.getLong("respawn_time"), rs.getDouble("currentHP"), rs.getDouble("currentMP"), false);
 			}
 			
-			LOGGER.info(getClass().getSimpleName() + ": Loaded " + _bosses.size() + " Instances");
-			LOGGER.info(getClass().getSimpleName() + ": Scheduled " + _schedules.size() + " Instances");
+			LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _bosses.size() + " Instances");
+			LOGGER.info(() -> getClass().getSimpleName() + ": Scheduled " + _schedules.size() + " Instances");
 		}
 		catch (SQLException _)
 		{

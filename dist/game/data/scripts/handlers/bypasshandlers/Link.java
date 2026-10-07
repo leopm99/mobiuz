@@ -106,13 +106,13 @@ public class Link implements IBypassHandler
 		final String htmlPath = command.substring(4).trim();
 		if (htmlPath.isEmpty())
 		{
-			LOGGER.warning(player + " sent empty link html!");
+			LOGGER.warning(() -> player + " sent empty link html!");
 			return false;
 		}
 		
 		if (htmlPath.contains(".."))
 		{
-			LOGGER.warning(player + " sent invalid link html: " + htmlPath);
+			LOGGER.warning(() -> player + " sent invalid link html: " + htmlPath);
 			return false;
 		}
 		
@@ -124,7 +124,7 @@ public class Link implements IBypassHandler
 			
 			if (htmlPath.startsWith("teleporter/") && !(player.getTarget() instanceof Teleporter))
 			{
-				LOGGER.warning(player + " tried to use teleporter link without targeting a teleporter: " + htmlPath);
+				LOGGER.warning(() -> player + " tried to use teleporter link without targeting a teleporter: " + htmlPath);
 				content = null;
 			}
 		}
@@ -137,7 +137,7 @@ public class Link implements IBypassHandler
 		}
 		else
 		{
-			LOGGER.warning(player + " tried to access a link in allowed directory but file not found or invalid: " + htmlPath);
+			LOGGER.warning(() -> player + " tried to access a link in allowed directory but file not found or invalid: " + htmlPath);
 			html.setHtml("<html><body>Link inválido ou arquivo não encontrado.</body></html>");
 		}
 		

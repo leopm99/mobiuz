@@ -83,7 +83,7 @@ public class SkillChannelizer implements Runnable
 		// Verify for same status.
 		if (isChanneling())
 		{
-			LOGGER.warning("Character: " + _channelizer + " is attempting to channel skill but he already does!");
+			LOGGER.warning(() -> "Character: " + _channelizer + " is attempting to channel skill but he already does!");
 			return;
 		}
 		
@@ -97,7 +97,7 @@ public class SkillChannelizer implements Runnable
 		// Verify for same status.
 		if (!isChanneling())
 		{
-			LOGGER.warning("Character: " + _channelizer + " is attempting to stop channel skill but he does not!");
+			LOGGER.warning(() -> "Character: " + _channelizer + " is attempting to stop channel skill but he does not!");
 			return;
 		}
 		
@@ -168,7 +168,7 @@ public class SkillChannelizer implements Runnable
 				final Skill baseSkill = SkillData.getInstance().getSkill(skill.getChannelingSkillId(), 1);
 				if (baseSkill == null)
 				{
-					LOGGER.warning(getClass().getSimpleName() + ": skill " + skill + " couldn't find effect id skill: " + skill.getChannelingSkillId() + " !");
+					LOGGER.warning(() -> getClass().getSimpleName() + ": skill " + skill + " couldn't find effect id skill: " + skill.getChannelingSkillId() + " !");
 					_channelizer.abortCast();
 					return;
 				}
@@ -212,7 +212,7 @@ public class SkillChannelizer implements Runnable
 							final Skill channelingSkill = SkillData.getInstance().getSkill(skill.getChannelingSkillId(), skillLevel);
 							if (channelingSkill == null)
 							{
-								LOGGER.warning(getClass().getSimpleName() + ": Non existent channeling skill requested: " + skill);
+								LOGGER.warning(() -> getClass().getSimpleName() + ": Non existent channeling skill requested: " + skill);
 								_channelizer.abortCast();
 								return;
 							}

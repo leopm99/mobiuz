@@ -49,7 +49,7 @@ public class ElementalAttributeData implements IXmlReader
 	{
 		ELEMENTAL_ITEMS.clear();
 		parseDatapackFile("data/ElementalAttributeData.xml");
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + ELEMENTAL_ITEMS.size() + " elemental attribute items.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + ELEMENTAL_ITEMS.size() + " elemental attribute items.");
 	}
 	
 	@Override

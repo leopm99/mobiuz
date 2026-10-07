@@ -77,7 +77,7 @@ public abstract class AbstractEffect
 		final Class<? extends AbstractEffect> handler = EffectHandler.getInstance().getHandler(name);
 		if (handler == null)
 		{
-			LOGGER.warning(AbstractEffect.class.getSimpleName() + ": Requested unexistent effect handler: " + name);
+			LOGGER.warning(() -> AbstractEffect.class.getSimpleName() + ": Requested unexistent effect handler: " + name);
 			return null;
 		}
 		

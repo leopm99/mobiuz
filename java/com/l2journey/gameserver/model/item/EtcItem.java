@@ -94,7 +94,7 @@ public class EtcItem extends ItemTemplate
 				final String[] data = part.split(",");
 				if (data.length != 4)
 				{
-					LOGGER.info("> Could not parse " + part + " in capsuled_items! item " + this);
+					LOGGER.info(() -> "> Could not parse " + part + " in capsuled_items! item " + this);
 					continue;
 				}
 				final int itemId = Integer.parseInt(data[0]);
@@ -103,7 +103,7 @@ public class EtcItem extends ItemTemplate
 				final double chance = Double.parseDouble(data[3]);
 				if (max < min)
 				{
-					LOGGER.info("> Max amount < Min amount in " + part + ", item " + this);
+					LOGGER.info(() -> "> Max amount < Min amount in " + part + ", item " + this);
 					continue;
 				}
 				final ExtractableProduct product = new ExtractableProduct(itemId, min, max, chance);
@@ -114,7 +114,7 @@ public class EtcItem extends ItemTemplate
 			// check for handler
 			if (_handler == null)
 			{
-				LOGGER.warning("Item " + this + " define capsuled_items but missing handler.");
+				LOGGER.warning(() -> "Item " + this + " define capsuled_items but missing handler.");
 				_handler = "ExtractableItems";
 			}
 		}

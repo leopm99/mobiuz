@@ -164,7 +164,7 @@ public abstract class FloodProtectedListener extends Thread
 		}
 		else
 		{
-			LOGGER.warning("Removing a flood protection for a GameServer that was not in the connection map??? :" + ip);
+			LOGGER.warning(() -> "Removing a flood protection for a GameServer that was not in the connection map??? :" + ip);
 		}
 	}
 	

@@ -61,7 +61,7 @@ public class BuyListData implements IXmlReader
 			parseDatapackDirectory("data/buylists/custom", false);
 		}
 		
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _buyLists.size() + " buyLists.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _buyLists.size() + " buyLists.");
 		
 		try (Connection con = DatabaseFactory.getConnection();
 			Statement statement = con.createStatement();
@@ -76,13 +76,13 @@ public class BuyListData implements IXmlReader
 				final BuyListHolder buyList = getBuyList(buyListId);
 				if (buyList == null)
 				{
-					LOGGER.warning("BuyList found in database but not loaded from xml! BuyListId: " + buyListId);
+					LOGGER.warning(() -> "BuyList found in database but not loaded from xml! BuyListId: " + buyListId);
 					continue;
 				}
 				final Product product = buyList.getProductByItemId(itemId);
 				if (product == null)
 				{
-					LOGGER.warning("ItemId found in database but not loaded from xml! BuyListId: " + buyListId + " ItemId: " + itemId);
+					LOGGER.warning(() -> "ItemId found in database but not loaded from xml! BuyListId: " + buyListId + " ItemId: " + itemId);
 					continue;
 				}
 				if (count < product.getMaxCount())

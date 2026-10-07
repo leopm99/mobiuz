@@ -316,11 +316,11 @@ public class Item extends WorldObject
 		{
 			if (_enchantLevel > 0)
 			{
-				LOG_ITEMS.info(StringUtil.concat("SETOWNER:", String.valueOf(process), ", item ", String.valueOf(getObjectId()), ":+", String.valueOf(_enchantLevel), " ", _itemTemplate.getName(), "(", String.valueOf(_count), "), ", String.valueOf(creator), ", ", String.valueOf(reference)));
+				LOG_ITEMS.info(() -> StringUtil.concat("SETOWNER:", String.valueOf(process), ", item ", String.valueOf(getObjectId()), ":+", String.valueOf(_enchantLevel), " ", _itemTemplate.getName(), "(", String.valueOf(_count), "), ", String.valueOf(creator), ", ", String.valueOf(reference)));
 			}
 			else
 			{
-				LOG_ITEMS.info(StringUtil.concat("SETOWNER:", String.valueOf(process), ", item ", String.valueOf(getObjectId()), ":", _itemTemplate.getName(), "(", String.valueOf(_count), "), ", String.valueOf(creator), ", ", String.valueOf(reference)));
+				LOG_ITEMS.info(() -> StringUtil.concat("SETOWNER:", String.valueOf(process), ", item ", String.valueOf(getObjectId()), ":", _itemTemplate.getName(), "(", String.valueOf(_count), "), ", String.valueOf(creator), ", ", String.valueOf(reference)));
 			}
 		}
 		
@@ -491,11 +491,11 @@ public class Item extends WorldObject
 			{
 				if (_enchantLevel > 0)
 				{
-					LOG_ITEMS.info(StringUtil.concat("CHANGE:", String.valueOf(process), ", item ", String.valueOf(getObjectId()), ":+", String.valueOf(_enchantLevel), " ", _itemTemplate.getName(), "(", String.valueOf(_count), "), PrevCount(", String.valueOf(old), "), ", String.valueOf(creator), ", ", String.valueOf(reference)));
+					LOG_ITEMS.info(() -> StringUtil.concat("CHANGE:", String.valueOf(process), ", item ", String.valueOf(getObjectId()), ":+", String.valueOf(_enchantLevel), " ", _itemTemplate.getName(), "(", String.valueOf(_count), "), PrevCount(", String.valueOf(old), "), ", String.valueOf(creator), ", ", String.valueOf(reference)));
 				}
 				else
 				{
-					LOG_ITEMS.info(StringUtil.concat("CHANGE:", String.valueOf(process), ", item ", String.valueOf(getObjectId()), ":", _itemTemplate.getName(), "(", String.valueOf(_count), "), PrevCount(", String.valueOf(old), "), ", String.valueOf(creator), ", ", String.valueOf(reference)));
+					LOG_ITEMS.info(() -> StringUtil.concat("CHANGE:", String.valueOf(process), ", item ", String.valueOf(getObjectId()), ":", _itemTemplate.getName(), "(", String.valueOf(_count), "), PrevCount(", String.valueOf(old), "), ", String.valueOf(creator), ", ", String.valueOf(reference)));
 				}
 			}
 			
@@ -950,7 +950,7 @@ public class Item extends WorldObject
 		// there shall be no previous augmentation..
 		if (_augmentation != null)
 		{
-			LOGGER.info("Warning: Augment set for (" + getObjectId() + ") " + getName() + " owner: " + _ownerId);
+			LOGGER.info(() -> "Warning: Augment set for (" + getObjectId() + ") " + getName() + " owner: " + _ownerId);
 			return false;
 		}
 		
@@ -1719,7 +1719,7 @@ public class Item extends WorldObject
 		final ItemTemplate item = ItemData.getInstance().getTemplate(itemId);
 		if (item == null)
 		{
-			LOGGER.severe("Item item_id=" + itemId + " not known, object_id=" + objectId);
+			LOGGER.severe(() -> "Item item_id=" + itemId + " not known, object_id=" + objectId);
 			return null;
 		}
 		inst = new Item(objectId, item);
@@ -2378,7 +2378,7 @@ public class Item extends WorldObject
 			}
 			else if (id != 0)
 			{
-				LOGGER.info("Item applyEnchantStats could not find option " + id + " " + this + " " + player);
+				LOGGER.info(() -> "Item applyEnchantStats could not find option " + id + " " + this + " " + player);
 			}
 		}
 	}

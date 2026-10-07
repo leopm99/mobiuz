@@ -90,7 +90,7 @@ public class DenOfEvil extends AbstractNpcAI implements IXmlReader
 	{
 		_eyeSpawns.clear();
 		parseDatapackFile("data/scripts/ai/areas/DenOfEvil/DenOfEvil.xml");
-		LOGGER.info("[Den of Evil] Loaded " + _eyeSpawns.size() + " eye spawn locations.");
+		LOGGER.info(() -> "[Den of Evil] Loaded " + _eyeSpawns.size() + " eye spawn locations.");
 		for (Location loc : _eyeSpawns)
 		{
 			addSpawn(getRandomEntry(EYE_IDS), loc, false, 0);
@@ -135,7 +135,7 @@ public class DenOfEvil extends AbstractNpcAI implements IXmlReader
 		final EffectZone zone = ZoneManager.getInstance().getZone(npc, EffectZone.class);
 		if (zone == null)
 		{
-			LOGGER.warning("NPC " + npc + " spawned outside of EffectZone, check your zone coords! X:" + npc.getX() + " Y:" + npc.getY() + " Z:" + npc.getZ());
+			LOGGER.warning(() -> "NPC " + npc + " spawned outside of EffectZone, check your zone coords! X:" + npc.getX() + " Y:" + npc.getY() + " Z:" + npc.getZ());
 			return;
 		}
 		
@@ -159,7 +159,7 @@ public class DenOfEvil extends AbstractNpcAI implements IXmlReader
 		final EffectZone zone = ZoneManager.getInstance().getZone(npc, EffectZone.class);
 		if (zone == null)
 		{
-			LOGGER.warning("NPC " + npc + " killed outside of EffectZone, check your zone coords! X:" + npc.getX() + " Y:" + npc.getY() + " Z:" + npc.getZ());
+			LOGGER.warning(() -> "NPC " + npc + " killed outside of EffectZone, check your zone coords! X:" + npc.getX() + " Y:" + npc.getY() + " Z:" + npc.getZ());
 			return;
 		}
 		

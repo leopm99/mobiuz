@@ -87,7 +87,7 @@ public class SpawnData implements IXmlReader
 		{
 			LOGGER.info(getClass().getSimpleName() + ": Initializing spawns...");
 			parseDatapackDirectory("data/spawns", true);
-			LOGGER.info(getClass().getSimpleName() + ": " + _spawnCount + " spawns have been initialized!");
+			LOGGER.info(() -> getClass().getSimpleName() + ": " + _spawnCount + " spawns have been initialized!");
 		}
 	}
 	
@@ -105,7 +105,7 @@ public class SpawnData implements IXmlReader
 			// This hardcoded check provides a resource-constrained solution to prevent unnecessary logging.
 			if ((npcId < 80000) && (npcId > 89999))
 			{
-				LOGGER.warning(getClass().getSimpleName() + ": Requested spawn for non-existing NPC: " + npcId + ".");
+				LOGGER.warning(() -> getClass().getSimpleName() + ": Requested spawn for non-existing NPC: " + npcId + ".");
 			}
 			return false;
 		}
@@ -416,7 +416,7 @@ public class SpawnData implements IXmlReader
 								
 								if ((x == 0) && (y == 0) && (territoryName == null)) // Both coordinates and zone are unspecified.
 								{
-									LOGGER.warning("XML Spawnlist: Spawn could not be initialized, both coordinates and zone are unspecified for ID " + templateId);
+									LOGGER.warning(() -> "XML Spawnlist: Spawn could not be initialized, both coordinates and zone are unspecified for ID " + templateId);
 									continue;
 								}
 								
@@ -631,7 +631,7 @@ public class SpawnData implements IXmlReader
 				reader.close();
 				if (!spawnFile.delete() || !tempFile.renameTo(spawnFile))
 				{
-					LOGGER.warning(getClass().getSimpleName() + ": Could not replace spawn file: " + spawnFile);
+					LOGGER.warning(() -> getClass().getSimpleName() + ": Could not replace spawn file: " + spawnFile);
 				}
 			}
 			catch (Exception e)
@@ -654,7 +654,7 @@ public class SpawnData implements IXmlReader
 				writer.write("\t</spawn>" + System.lineSeparator());
 				writer.write("</list>" + System.lineSeparator());
 				writer.close();
-				LOGGER.info(getClass().getSimpleName() + ": Created file: " + OTHER_XML_FOLDER + "/" + x + "_" + y + ".xml");
+				LOGGER.info(() -> getClass().getSimpleName() + ": Created file: " + OTHER_XML_FOLDER + "/" + x + "_" + y + ".xml");
 			}
 			catch (Exception e)
 			{
@@ -769,16 +769,16 @@ public class SpawnData implements IXmlReader
 			reader.close();
 			if (!spawnFile.delete() || !tempFile.renameTo(spawnFile))
 			{
-				LOGGER.warning(getClass().getSimpleName() + ": Could not replace spawn file: " + spawnFile);
+				LOGGER.warning(() -> getClass().getSimpleName() + ": Could not replace spawn file: " + spawnFile);
 			}
 			
 			// Delete empty file.
 			if (lineCount < 5)
 			{
-				LOGGER.info(getClass().getSimpleName() + ": Deleted empty file: " + spawnFile.getAbsolutePath().substring(Config.DATAPACK_ROOT.getAbsolutePath().length() + 1).replace('\\', '/'));
+				LOGGER.info(() -> getClass().getSimpleName() + ": Deleted empty file: " + spawnFile.getAbsolutePath().substring(Config.DATAPACK_ROOT.getAbsolutePath().length() + 1).replace('\\', '/'));
 				if (!spawnFile.delete() && spawnFile.exists())
 				{
-					LOGGER.warning(getClass().getSimpleName() + ": Could not delete empty spawn file: " + spawnFile);
+					LOGGER.warning(() -> getClass().getSimpleName() + ": Could not delete empty spawn file: " + spawnFile);
 				}
 			}
 		}

@@ -324,7 +324,7 @@ public abstract class DocumentBase
 		parseTemplate(n, effect);
 		if (template instanceof ItemTemplate)
 		{
-			LOGGER.severe("Item " + template + " with effects!!!");
+			LOGGER.severe(() -> "Item " + template + " with effects!!!");
 		}
 		else if (template instanceof Skill skill)
 		{
@@ -441,7 +441,7 @@ public abstract class DocumentBase
 		}
 		if ((cond.conditions == null) || (cond.conditions.length == 0))
 		{
-			LOGGER.severe("Empty <and> condition in " + _file);
+			LOGGER.severe(() -> "Empty <and> condition in " + _file);
 		}
 		return cond;
 	}
@@ -459,7 +459,7 @@ public abstract class DocumentBase
 		}
 		if ((cond.conditions == null) || (cond.conditions.length == 0))
 		{
-			LOGGER.severe("Empty <or> condition in " + _file);
+			LOGGER.severe(() -> "Empty <or> condition in " + _file);
 		}
 		return cond;
 	}
@@ -474,7 +474,7 @@ public abstract class DocumentBase
 				return new ConditionLogicNot(parseCondition(n, template));
 			}
 		}
-		LOGGER.severe("Empty <not> condition in " + _file);
+		LOGGER.severe(() -> "Empty <not> condition in " + _file);
 		return null;
 	}
 	
@@ -959,7 +959,7 @@ public abstract class DocumentBase
 		
 		if (cond == null)
 		{
-			LOGGER.severe("Unrecognized <player> condition in " + _file);
+			LOGGER.severe(() -> "Unrecognized <player> condition in " + _file);
 		}
 		return cond;
 	}
@@ -1144,7 +1144,7 @@ public abstract class DocumentBase
 		
 		if (cond == null)
 		{
-			LOGGER.severe("Unrecognized <target> condition in " + _file);
+			LOGGER.severe(() -> "Unrecognized <target> condition in " + _file);
 		}
 		return cond;
 	}
@@ -1184,7 +1184,7 @@ public abstract class DocumentBase
 						
 						if (old == mask)
 						{
-							LOGGER.info("[parseUsingCondition=\"kind\"] Unknown item type name: " + item);
+							LOGGER.info(() -> "[parseUsingCondition=\"kind\"] Unknown item type name: " + item);
 						}
 					}
 					cond = joinAnd(cond, new ConditionUsingItemType(mask));
@@ -1205,7 +1205,7 @@ public abstract class DocumentBase
 						
 						if (old == mask)
 						{
-							LOGGER.info("[parseUsingCondition=\"slot\"] Unknown item slot name: " + item);
+							LOGGER.info(() -> "[parseUsingCondition=\"slot\"] Unknown item slot name: " + item);
 						}
 					}
 					cond = joinAnd(cond, new ConditionUsingSlotType(mask));
@@ -1241,7 +1241,7 @@ public abstract class DocumentBase
 		
 		if (cond == null)
 		{
-			LOGGER.severe("Unrecognized <using> condition in " + _file);
+			LOGGER.severe(() -> "Unrecognized <using> condition in " + _file);
 		}
 		return cond;
 	}
@@ -1271,7 +1271,7 @@ public abstract class DocumentBase
 		}
 		if (cond == null)
 		{
-			LOGGER.severe("Unrecognized <game> condition in " + _file);
+			LOGGER.severe(() -> "Unrecognized <game> condition in " + _file);
 		}
 		return cond;
 	}

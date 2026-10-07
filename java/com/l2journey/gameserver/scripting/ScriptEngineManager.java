@@ -77,7 +77,7 @@ public class ScriptEngineManager implements IXmlReader
 	{
 		EXCLUSIONS.clear();
 		parseDatapackFile("config/admin/scripts.xml");
-		LOGGER.info("Loaded " + EXCLUSIONS.size() + " files to exclude.");
+		LOGGER.info(() -> "Loaded " + EXCLUSIONS.size() + " files to exclude.");
 	}
 	
 	@Override
@@ -185,7 +185,7 @@ public class ScriptEngineManager implements IXmlReader
 			final Throwable cause = error.getValue();
 			if (cause != null)
 			{
-				LOGGER.warning(TraceUtil.getStackTrace(cause));
+				LOGGER.warning(() -> TraceUtil.getStackTrace(cause));
 			}
 			throw new Exception("ScriptEngine: " + error.getKey() + " failed execution!", cause);
 		}

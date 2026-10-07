@@ -225,7 +225,7 @@ public class CharacterSelect extends ClientPacket
 				client.getPlayerLock().unlock();
 			}
 			
-			LOGGER_ACCOUNTING.info("Logged in, " + client);
+			LOGGER_ACCOUNTING.info(() -> "Logged in, " + client);
 		}
 	}
 }

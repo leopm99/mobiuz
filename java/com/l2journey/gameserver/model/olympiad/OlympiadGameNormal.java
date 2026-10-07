@@ -346,7 +346,7 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 						
 						if (EventsConfig.OLYMPIAD_LOG_FIGHTS)
 						{
-							LOGGER_OLYMPIAD.info(_playerOne.getName() + " default," + _playerOne + "," + _playerTwo + ",0,0,0,0," + points + "," + getType());
+							LOGGER_OLYMPIAD.info(() -> _playerOne.getName() + " default," + _playerOne + "," + _playerTwo + ",0,0,0,0," + points + "," + getType());
 						}
 					}
 					catch (Exception e)
@@ -370,7 +370,7 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 						
 						if (EventsConfig.OLYMPIAD_LOG_FIGHTS)
 						{
-							LOGGER_OLYMPIAD.info(_playerTwo.getName() + " default," + _playerOne + "," + _playerTwo + ",0,0,0,0," + points + "," + getType());
+							LOGGER_OLYMPIAD.info(() -> _playerTwo.getName() + " default," + _playerOne + "," + _playerTwo + ",0,0,0,0," + points + "," + getType());
 						}
 					}
 					catch (Exception e)

@@ -56,11 +56,11 @@ public class PhantomManager implements IVoicedCommandHandler
 		if (PhantomConfig.PHANTOM_IDS.isEmpty())
 		{
 			int restored = PhantomConfig.restoreFromDatabase();
-			LOGGER.info("[Phantom System L2Journey]: Restored " + restored + " phantoms from the database.");
+			LOGGER.info(() -> "[Phantom System L2Journey]: Restored " + restored + " phantoms from the database.");
 		}
 		else
 		{
-			LOGGER.info("[Phantom System L2Journey]: Phantom list already has " + PhantomConfig.PHANTOM_IDS.size() + " ids; skipping database restore.");
+			LOGGER.info(() -> "[Phantom System L2Journey]: Phantom list already has " + PhantomConfig.PHANTOM_IDS.size() + " ids; skipping database restore.");
 		}
 		
 		if (!Config.PHANTOM_AUTO_START)

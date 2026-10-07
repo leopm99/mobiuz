@@ -621,7 +621,7 @@ public class Q00727_HopeWithinTheDarkness extends Quest
 		ThreadPool.schedule(new spawnNpcs((CAUWorld) world), INITIAL_SPAWN_DELAY);
 		if (DEBUG)
 		{
-			LOGGER.info("Castle HopeWithinTheDarkness started " + template + " Instance: " + instanceId + " created by player: " + player.getName());
+			LOGGER.info(() -> "Castle HopeWithinTheDarkness started " + template + " Instance: " + instanceId + " created by player: " + player.getName());
 		}
 		
 		// Teleport players

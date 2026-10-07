@@ -162,7 +162,7 @@ public class MerchantPriceConfigTable
 		try
 		{
 			loadXML();
-			LOGGER.info(getClass().getSimpleName() + ": Loaded " + _mpcs.size() + " merchant price configs.");
+			LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _mpcs.size() + " merchant price configs.");
 		}
 		catch (Exception e)
 		{

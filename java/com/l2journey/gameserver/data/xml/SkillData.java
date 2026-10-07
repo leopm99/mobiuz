@@ -179,7 +179,7 @@ public class SkillData
 			}
 		}
 		
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + count + " Skill templates from XML files.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + count + " Skill templates from XML files.");
 	}
 	
 	public void reload()
@@ -230,11 +230,11 @@ public class SkillData
 		// Requested level too high.
 		if ((maxLevel > 0) && (level > maxLevel))
 		{
-			LOGGER.warning(StringUtil.concat(getClass().getSimpleName(), ": Call to unexisting skill level id: ", String.valueOf(skillId), " requested level: ", String.valueOf(level), " max level: ", String.valueOf(maxLevel), ".", System.lineSeparator(), TraceUtil.getStackTrace(new Exception())));
+			LOGGER.warning(() -> StringUtil.concat(getClass().getSimpleName(), ": Call to unexisting skill level id: ", String.valueOf(skillId), " requested level: ", String.valueOf(level), " max level: ", String.valueOf(maxLevel), ".", System.lineSeparator(), TraceUtil.getStackTrace(new Exception())));
 			return _skillsByHash.get(getSkillHashCode(skillId, maxLevel));
 		}
 		
-		LOGGER.warning(StringUtil.concat(getClass().getSimpleName(), ": No skill info found for skill id ", String.valueOf(skillId), " and skill level ", String.valueOf(level), ".", System.lineSeparator(), TraceUtil.getStackTrace(new Exception())));
+		LOGGER.warning(() -> StringUtil.concat(getClass().getSimpleName(), ": No skill info found for skill id ", String.valueOf(skillId), " and skill level ", String.valueOf(level), ".", System.lineSeparator(), TraceUtil.getStackTrace(new Exception())));
 		return null;
 	}
 	

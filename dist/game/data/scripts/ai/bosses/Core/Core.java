@@ -175,7 +175,7 @@ public class Core extends AbstractNpcAI implements IXmlReader
 		MINION_SPAWNS.clear();
 		MINION_IDS.clear();
 		parseDatapackFile("data/scripts/ai/bosses/Core/Core.xml");
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + MINION_SPAWNS.size() + " minion spawns.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + MINION_SPAWNS.size() + " minion spawns.");
 	}
 	
 	@Override
@@ -281,7 +281,7 @@ public class Core extends AbstractNpcAI implements IXmlReader
 			
 			// Next respawn time.
 			final long nextRespawnTime = System.currentTimeMillis() + respawnTime;
-			LOGGER.info("Core will respawn at: " + TimeUtil.getDateTimeString(nextRespawnTime));
+			LOGGER.info(() -> "Core will respawn at: " + TimeUtil.getDateTimeString(nextRespawnTime));
 			
 			startQuestTimer("core_unlock", respawnTime, null, null);
 			// Also save the respawn time so that the info is maintained past reboots.

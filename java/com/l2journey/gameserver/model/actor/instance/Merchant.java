@@ -88,14 +88,14 @@ public class Merchant extends Folk
 		final BuyListHolder buyList = BuyListData.getInstance().getBuyList(value);
 		if (buyList == null)
 		{
-			LOGGER.warning("BuyList not found! BuyListId:" + value);
+			LOGGER.warning(() -> "BuyList not found! BuyListId:" + value);
 			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
 		
 		if (!buyList.isNpcAllowed(getId()))
 		{
-			LOGGER.warning("Npc not allowed in BuyList! BuyListId:" + value + " NpcId:" + getId());
+			LOGGER.warning(() -> "Npc not allowed in BuyList! BuyListId:" + value + " NpcId:" + getId());
 			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}

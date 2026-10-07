@@ -150,7 +150,7 @@ public class LoginServerThread extends Thread
 			try
 			{
 				// Connection.
-				LOGGER.info(getClass().getSimpleName() + ": Connecting to login on " + _hostname + ":" + _port);
+				LOGGER.info(() -> getClass().getSimpleName() + ": Connecting to login on " + _hostname + ":" + _port);
 				_socket = new Socket(_hostname, _port);
 				final InputStream in = _socket.getInputStream();
 				_out = new BufferedOutputStream(_socket.getOutputStream());
@@ -241,7 +241,7 @@ public class LoginServerThread extends Thread
 							final int serverID = aresp.getServerId();
 							_serverName = aresp.getServerName();
 							Config.saveHexid(serverID, hexToString(_hexID));
-							LOGGER.info(getClass().getSimpleName() + ": Registered on login as Server " + serverID + ": " + _serverName);
+							LOGGER.info(() -> getClass().getSimpleName() + ": Registered on login as Server " + serverID + ": " + _serverName);
 							
 							final ServerStatus st = new ServerStatus();
 							if (Config.SERVER_LIST_BRACKET)
@@ -528,7 +528,7 @@ public class LoginServerThread extends Thread
 			else
 			{
 				Disconnection.of(client).storeAndDeleteWith(new SystemMessage(SystemMessageId.ANOTHER_PERSON_HAS_LOGGED_IN_WITH_THE_SAME_ACCOUNT));
-				ACCOUNTING_LOGGER.info("Kicked by login, " + client);
+				ACCOUNTING_LOGGER.info(() -> "Kicked by login, " + client);
 			}
 		}
 		sendLogout(account);

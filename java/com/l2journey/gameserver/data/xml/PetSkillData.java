@@ -54,7 +54,7 @@ public class PetSkillData implements IXmlReader
 	{
 		_skillTrees.clear();
 		parseDatapackFile("data/PetSkillData.xml");
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _skillTrees.size() + " skills.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _skillTrees.size() + " skills.");
 	}
 	
 	@Override
@@ -85,7 +85,7 @@ public class PetSkillData implements IXmlReader
 						}
 						else
 						{
-							LOGGER.info(getClass().getSimpleName() + ": Could not find skill with id " + skillId + ", level " + skillLevel + " for NPC " + npcId + ".");
+							LOGGER.info(() -> getClass().getSimpleName() + ": Could not find skill with id " + skillId + ", level " + skillLevel + " for NPC " + npcId + ".");
 						}
 					}
 				}

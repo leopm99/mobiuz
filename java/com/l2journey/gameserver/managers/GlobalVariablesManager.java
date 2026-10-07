@@ -72,7 +72,7 @@ public class GlobalVariablesManager extends AbstractVariables
 			return false;
 		}
 		
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + getSet().size() + " variables.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + getSet().size() + " variables.");
 		return true;
 	}
 	
@@ -100,7 +100,7 @@ public class GlobalVariablesManager extends AbstractVariables
 			return false;
 		}
 		
-		LOGGER.info(getClass().getSimpleName() + ": Stored " + getSet().size() + " variables.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Stored " + getSet().size() + " variables.");
 		return true;
 	}
 	

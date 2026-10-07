@@ -71,7 +71,7 @@ public class CoupleManager
 			{
 				_couples.add(new Couple(rs.getInt("id")));
 			}
-			LOGGER.info(getClass().getSimpleName() + ": Loaded " + _couples.size() + " couples(s)");
+			LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _couples.size() + " couples(s)");
 		}
 		catch (Exception e)
 		{

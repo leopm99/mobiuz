@@ -321,13 +321,13 @@ public class HtmlUtil
 			
 			if (htmlLink.contains(".."))
 			{
-				LOGGER.warning("Html link path is invalid: " + htmlLink);
+				LOGGER.warning(() -> "Html link path is invalid: " + htmlLink);
 				continue;
 			}
 			
 			if (Config.HTML_ACTION_CACHE_DEBUG)
 			{
-				LOGGER.info("Cached html link(" + scope + "): '" + htmlLink + "'");
+				LOGGER.info(() -> "Cached html link(" + scope + "): '" + htmlLink + "'");
 			}
 			// let's keep an action cache with "link " lowercase literal kept
 			player.addHtmlAction(scope, "link " + htmlLink);
@@ -351,7 +351,7 @@ public class HtmlUtil
 		
 		if (Config.HTML_ACTION_CACHE_DEBUG)
 		{
-			LOGGER.info("Set html action npc(" + scope + "): " + npcObjId);
+			LOGGER.info(() -> "Set html action npc(" + scope + "): " + npcObjId);
 		}
 		player.setHtmlActionOriginObjectId(scope, npcObjId);
 		buildHtmlBypassCache(player, scope, html);

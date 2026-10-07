@@ -129,11 +129,11 @@ public class ItemManager
 		{
 			if (item.getEnchantLevel() > 0)
 			{
-				LOGGER_ITEMS.info(StringUtil.concat("CREATE:", String.valueOf(process), ", item ", String.valueOf(item.getObjectId()), ":+", String.valueOf(item.getEnchantLevel()), " ", item.getTemplate().getName(), "(", String.valueOf(item.getCount()), "), ", String.valueOf(actor), ", ", String.valueOf(reference)));
+				LOGGER_ITEMS.info(() -> StringUtil.concat("CREATE:", String.valueOf(process), ", item ", String.valueOf(item.getObjectId()), ":+", String.valueOf(item.getEnchantLevel()), " ", item.getTemplate().getName(), "(", String.valueOf(item.getCount()), "), ", String.valueOf(actor), ", ", String.valueOf(reference)));
 			}
 			else
 			{
-				LOGGER_ITEMS.info(StringUtil.concat("CREATE:", String.valueOf(process), ", item ", String.valueOf(item.getObjectId()), ":", item.getTemplate().getName(), "(", String.valueOf(item.getCount()), "), ", String.valueOf(actor), ", ", String.valueOf(reference)));
+				LOGGER_ITEMS.info(() -> StringUtil.concat("CREATE:", String.valueOf(process), ", item ", String.valueOf(item.getObjectId()), ":", item.getTemplate().getName(), "(", String.valueOf(item.getCount()), "), ", String.valueOf(actor), ", ", String.valueOf(reference)));
 			}
 		}
 		
@@ -189,11 +189,11 @@ public class ItemManager
 				{
 					if (item.getEnchantLevel() > 0)
 					{
-						LOGGER_ITEMS.info(StringUtil.concat("DELETE:", String.valueOf(process), ", item ", String.valueOf(item.getObjectId()), ":+", String.valueOf(item.getEnchantLevel()), " ", item.getTemplate().getName(), "(", String.valueOf(item.getCount()), "), PrevCount(", String.valueOf(old), "), ", String.valueOf(actor), ", ", String.valueOf(reference)));
+						LOGGER_ITEMS.info(() -> StringUtil.concat("DELETE:", String.valueOf(process), ", item ", String.valueOf(item.getObjectId()), ":+", String.valueOf(item.getEnchantLevel()), " ", item.getTemplate().getName(), "(", String.valueOf(item.getCount()), "), PrevCount(", String.valueOf(old), "), ", String.valueOf(actor), ", ", String.valueOf(reference)));
 					}
 					else
 					{
-						LOGGER_ITEMS.info(StringUtil.concat("DELETE:", String.valueOf(process), ", item ", String.valueOf(item.getObjectId()), ":", item.getTemplate().getName(), "(", String.valueOf(item.getCount()), "), PrevCount(", String.valueOf(old), "), ", String.valueOf(actor), ", ", String.valueOf(reference)));
+						LOGGER_ITEMS.info(() -> StringUtil.concat("DELETE:", String.valueOf(process), ", item ", String.valueOf(item.getObjectId()), ":", item.getTemplate().getName(), "(", String.valueOf(item.getCount()), "), PrevCount(", String.valueOf(old), "), ", String.valueOf(actor), ", ", String.valueOf(reference)));
 					}
 				}
 				

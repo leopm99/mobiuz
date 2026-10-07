@@ -129,7 +129,7 @@ public class ConfigReader
 		}
 		else
 		{
-			LOGGER.warning("Config '" + config + "' not found in file '" + _file.getName() + "', using default: " + defaultValue + ".");
+			LOGGER.warning(() -> "Config '" + config + "' not found in file '" + _file.getName() + "', using default: " + defaultValue + ".");
 		}
 		return defaultValue;
 	}
@@ -156,7 +156,7 @@ public class ConfigReader
 		}
 		else
 		{
-			LOGGER.warning("Config '" + config + "' not found in file '" + _file.getName() + "', using default: " + defaultValue + ".");
+			LOGGER.warning(() -> "Config '" + config + "' not found in file '" + _file.getName() + "', using default: " + defaultValue + ".");
 		}
 		return defaultValue;
 	}
@@ -183,7 +183,7 @@ public class ConfigReader
 		}
 		else
 		{
-			LOGGER.warning("Config '" + config + "' not found in file '" + _file.getName() + "', using default: " + defaultValue + ".");
+			LOGGER.warning(() -> "Config '" + config + "' not found in file '" + _file.getName() + "', using default: " + defaultValue + ".");
 		}
 		return defaultValue;
 	}
@@ -210,7 +210,7 @@ public class ConfigReader
 		}
 		else
 		{
-			LOGGER.warning("Config '" + config + "' not found in file '" + _file.getName() + "', using default: " + defaultValue + ".");
+			LOGGER.warning(() -> "Config '" + config + "' not found in file '" + _file.getName() + "', using default: " + defaultValue + ".");
 		}
 		return defaultValue;
 	}
@@ -237,7 +237,7 @@ public class ConfigReader
 		}
 		else
 		{
-			LOGGER.warning("Config '" + config + "' not found in file '" + _file.getName() + "', using default: " + defaultValue + ".");
+			LOGGER.warning(() -> "Config '" + config + "' not found in file '" + _file.getName() + "', using default: " + defaultValue + ".");
 		}
 		return defaultValue;
 	}
@@ -264,7 +264,7 @@ public class ConfigReader
 		}
 		else
 		{
-			LOGGER.warning("Config '" + config + "' not found in file '" + _file.getName() + "', using default: " + defaultValue + ".");
+			LOGGER.warning(() -> "Config '" + config + "' not found in file '" + _file.getName() + "', using default: " + defaultValue + ".");
 		}
 		return defaultValue;
 	}
@@ -291,7 +291,7 @@ public class ConfigReader
 		}
 		else
 		{
-			LOGGER.warning("Config '" + config + "' not found in file '" + _file.getName() + "', using default: " + defaultValue + ".");
+			LOGGER.warning(() -> "Config '" + config + "' not found in file '" + _file.getName() + "', using default: " + defaultValue + ".");
 		}
 		return defaultValue;
 	}
@@ -307,7 +307,7 @@ public class ConfigReader
 		final String value = _properties.getProperty(config);
 		if (value == null)
 		{
-			LOGGER.warning("Config '" + config + "' not found in file '" + _file.getName() + "', using default: " + defaultValue + ".");
+			LOGGER.warning(() -> "Config '" + config + "' not found in file '" + _file.getName() + "', using default: " + defaultValue + ".");
 			return defaultValue;
 		}
 		
@@ -338,7 +338,7 @@ public class ConfigReader
 		}
 		else
 		{
-			LOGGER.warning("Config '" + config + "' not found in file '" + _file.getName() + "', using default: " + defaultValue + ".");
+			LOGGER.warning(() -> "Config '" + config + "' not found in file '" + _file.getName() + "', using default: " + defaultValue + ".");
 		}
 		return defaultValue;
 	}
@@ -365,7 +365,7 @@ public class ConfigReader
 		}
 		else
 		{
-			LOGGER.warning("Config '" + config + "' not found in file '" + _file.getName() + "', using default: " + defaultValue + ".");
+			LOGGER.warning(() -> "Config '" + config + "' not found in file '" + _file.getName() + "', using default: " + defaultValue + ".");
 		}
 		return TimeUtil.parseDuration(defaultValue);
 	}
@@ -393,7 +393,7 @@ public class ConfigReader
 		}
 		else
 		{
-			LOGGER.warning("Config '" + config + "' not found in file '" + _file.getName() + "', using default values.");
+			LOGGER.warning(() -> "Config '" + config + "' not found in file '" + _file.getName() + "', using default values.");
 		}
 		
 		try

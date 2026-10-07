@@ -21,7 +21,6 @@ import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.w3c.dom.Document;
@@ -50,7 +49,7 @@ public class CategoryData implements IXmlReader
 	{
 		_categories.clear();
 		parseDatapackFile("data/CategoryData.xml");
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _categories.size() + " categories.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _categories.size() + " categories.");
 	}
 	
 	@Override
@@ -68,7 +67,7 @@ public class CategoryData implements IXmlReader
 						final CategoryType categoryType = CategoryType.findByName(attrs.getNamedItem("name").getNodeValue());
 						if (categoryType == null)
 						{
-							LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": Can't find category by name :" + attrs.getNamedItem("name").getNodeValue());
+							LOGGER.warning(() -> getClass().getSimpleName() + ": Can't find category by name :" + attrs.getNamedItem("name").getNodeValue());
 							continue;
 						}
 						
@@ -98,7 +97,7 @@ public class CategoryData implements IXmlReader
 		final Set<Integer> category = getCategoryByType(type);
 		if (category == null)
 		{
-			LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": Can't find category type :" + type);
+			LOGGER.warning(() -> getClass().getSimpleName() + ": Can't find category type :" + type);
 			return false;
 		}
 		return category.contains(id);

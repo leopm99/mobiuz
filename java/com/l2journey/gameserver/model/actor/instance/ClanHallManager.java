@@ -1842,7 +1842,7 @@ public class ClanHallManager extends Merchant
 		}
 		else
 		{
-			LOGGER.warning("No teleport destination with id:" + value);
+			LOGGER.warning(() -> "No teleport destination with id:" + value);
 		}
 		
 		player.sendPacket(ActionFailed.STATIC_PACKET);

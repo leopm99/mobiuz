@@ -66,7 +66,7 @@ public class CharInfoTable
 		{
 			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Couldn't retrieve all char id/name/access: " + e.getMessage());
 		}
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _names.size() + " char names.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _names.size() + " char names.");
 	}
 	
 	public void addName(Player player)

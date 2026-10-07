@@ -56,7 +56,7 @@ public class HellboundPointData implements IXmlReader
 	{
 		_pointsInfo.clear();
 		parseDatapackFile("data/scripts/ai/areas/Hellbound/hellboundTrustPoints.xml");
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _pointsInfo.size() + " trust point reward data.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _pointsInfo.size() + " trust point reward data.");
 	}
 	
 	@Override
@@ -94,7 +94,7 @@ public class HellboundPointData implements IXmlReader
 			att = attrs.getNamedItem("points");
 			if (att == null)
 			{
-				LOGGER.severe("[Hellbound Trust Points Info] Missing reward point info for NPC ID " + npcId + ", skipping record");
+				LOGGER.severe(() -> "[Hellbound Trust Points Info] Missing reward point info for NPC ID " + npcId + ", skipping record");
 				return;
 			}
 			
@@ -102,7 +102,7 @@ public class HellboundPointData implements IXmlReader
 			att = attrs.getNamedItem("minHellboundLvl");
 			if (att == null)
 			{
-				LOGGER.severe("[Hellbound Trust Points Info] Missing minHellboundLvl info for NPC ID " + npcId + ", skipping record");
+				LOGGER.severe(() -> "[Hellbound Trust Points Info] Missing minHellboundLvl info for NPC ID " + npcId + ", skipping record");
 				return;
 			}
 			
@@ -110,7 +110,7 @@ public class HellboundPointData implements IXmlReader
 			att = attrs.getNamedItem("maxHellboundLvl");
 			if (att == null)
 			{
-				LOGGER.severe("[Hellbound Trust Points Info] Missing maxHellboundLvl info for NPC ID " + npcId + ", skipping record");
+				LOGGER.severe(() -> "[Hellbound Trust Points Info] Missing maxHellboundLvl info for NPC ID " + npcId + ", skipping record");
 				return;
 			}
 			

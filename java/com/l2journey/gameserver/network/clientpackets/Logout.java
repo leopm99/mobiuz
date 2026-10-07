@@ -105,7 +105,7 @@ public class Logout extends ClientPacket
 		
 		if (OfflineTraderTable.getInstance().enteredOfflineMode(player))
 		{
-			LOGGER_ACCOUNTING.info("Entered offline mode, " + client);
+			LOGGER_ACCOUNTING.info(() -> "Entered offline mode, " + client);
 		}
 		else
 		{

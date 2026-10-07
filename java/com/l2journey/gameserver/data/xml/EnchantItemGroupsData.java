@@ -19,7 +19,6 @@ package com.l2journey.gameserver.data.xml;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
@@ -56,14 +55,14 @@ public class EnchantItemGroupsData implements IXmlReader
 		_itemGroups.clear();
 		_scrollGroups.clear();
 		parseDatapackFile("data/EnchantItemGroups.xml");
-		LOGGER.log(Level.INFO, () -> getClass().getSimpleName() + ": Loaded " + _itemGroups.size() + " item group templates.");
-		LOGGER.log(Level.INFO, () -> getClass().getSimpleName() + ": Loaded " + _scrollGroups.size() + " scroll group templates.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _itemGroups.size() + " item group templates.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _scrollGroups.size() + " scroll group templates.");
 		
 		if (Config.OVER_ENCHANT_PROTECTION)
 		{
-			LOGGER.info(getClass().getSimpleName() + ": Max weapon enchant is set to " + _maxWeaponEnchant + ".");
-			LOGGER.info(getClass().getSimpleName() + ": Max armor enchant is set to " + _maxArmorEnchant + ".");
-			LOGGER.info(getClass().getSimpleName() + ": Max accessory enchant is set to " + _maxAccessoryEnchant + ".");
+			LOGGER.info(() -> getClass().getSimpleName() + ": Max weapon enchant is set to " + _maxWeaponEnchant + ".");
+			LOGGER.info(() -> getClass().getSimpleName() + ": Max armor enchant is set to " + _maxArmorEnchant + ".");
+			LOGGER.info(() -> getClass().getSimpleName() + ": Max accessory enchant is set to " + _maxAccessoryEnchant + ".");
 		}
 	}
 	

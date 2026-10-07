@@ -77,7 +77,7 @@ public class GameServerPacketHandler
 					}
 					default:
 					{
-						LOGGER.warning("Unknown Opcode (" + Integer.toHexString(opcode).toUpperCase() + ") in state " + state.name() + " from GameServer, closing connection.");
+						LOGGER.warning(() -> "Unknown Opcode (" + Integer.toHexString(opcode).toUpperCase() + ") in state " + state.name() + " from GameServer, closing connection.");
 						server.forceClose(LoginServerFail.NOT_AUTHED);
 						break;
 					}
@@ -95,7 +95,7 @@ public class GameServerPacketHandler
 					}
 					default:
 					{
-						LOGGER.warning("Unknown Opcode (" + Integer.toHexString(opcode).toUpperCase() + ") in state " + state.name() + " from GameServer, closing connection.");
+						LOGGER.warning(() -> "Unknown Opcode (" + Integer.toHexString(opcode).toUpperCase() + ") in state " + state.name() + " from GameServer, closing connection.");
 						server.forceClose(LoginServerFail.NOT_AUTHED);
 						break;
 					}
@@ -157,7 +157,7 @@ public class GameServerPacketHandler
 					}
 					default:
 					{
-						LOGGER.warning("Unknown Opcode (" + Integer.toHexString(opcode).toUpperCase() + ") in state " + state.name() + " from GameServer, closing connection.");
+						LOGGER.warning(() -> "Unknown Opcode (" + Integer.toHexString(opcode).toUpperCase() + ") in state " + state.name() + " from GameServer, closing connection.");
 						server.forceClose(LoginServerFail.NOT_AUTHED);
 						break;
 					}

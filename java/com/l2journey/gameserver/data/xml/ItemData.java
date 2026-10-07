@@ -171,10 +171,10 @@ public class ItemData
 			_allTemplates[item.getId()] = item;
 		}
 		
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _etcItems.size() + " etc items.");
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _armors.size() + " armor items.");
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _weapons.size() + " weapon items.");
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + (_etcItems.size() + _armors.size() + _weapons.size()) + " items in total.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _etcItems.size() + " etc items.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _armors.size() + " armor items.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _weapons.size() + " weapon items.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + (_etcItems.size() + _armors.size() + _weapons.size()) + " items in total.");
 	}
 	
 	public void reload()

@@ -60,7 +60,7 @@ public class SecondaryAuthData implements IXmlReader
 	{
 		_forbiddenPasswords.clear();
 		parseFile(new File("config/security/secondaryauth.xml"));
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _forbiddenPasswords.size() + " forbidden passwords.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _forbiddenPasswords.size() + " forbidden passwords.");
 	}
 	
 	@Override

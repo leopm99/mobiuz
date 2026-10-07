@@ -196,7 +196,7 @@ public class Auctioneer extends Npc
 					}
 					else
 					{
-						LOGGER.warning("Auctioneer Auction null for AuctionId : " + auctionId);
+						LOGGER.warning(() -> "Auctioneer Auction null for AuctionId : " + auctionId);
 					}
 					
 					player.sendPacket(html);
@@ -484,7 +484,7 @@ public class Auctioneer extends Npc
 					}
 					else
 					{
-						LOGGER.warning("Clan Hall ID NULL : " + ItemId + " Can be caused by concurent write in ClanHallManager");
+						LOGGER.warning(() -> "Clan Hall ID NULL : " + ItemId + " Can be caused by concurent write in ClanHallManager");
 					}
 					
 					player.sendPacket(html);

@@ -134,26 +134,26 @@ public class CharSummonTable
 		final Item item = player.getInventory().getItemByObjectId(_pets.get(player.getObjectId()));
 		if (item == null)
 		{
-			LOGGER.warning(getClass().getSimpleName() + ": Null pet summoning item for: " + player);
+			LOGGER.warning(() -> getClass().getSimpleName() + ": Null pet summoning item for: " + player);
 			return;
 		}
 		final PetData petData = PetDataTable.getInstance().getPetDataByItemId(item.getId());
 		if (petData == null)
 		{
-			LOGGER.warning(getClass().getSimpleName() + ": Null pet data for: " + player + " and summoning item: " + item);
+			LOGGER.warning(() -> getClass().getSimpleName() + ": Null pet data for: " + player + " and summoning item: " + item);
 			return;
 		}
 		final NpcTemplate npcTemplate = NpcData.getInstance().getTemplate(petData.getNpcId());
 		if (npcTemplate == null)
 		{
-			LOGGER.warning(getClass().getSimpleName() + ": Null pet NPC template for: " + player + " and pet Id:" + petData.getNpcId());
+			LOGGER.warning(() -> getClass().getSimpleName() + ": Null pet NPC template for: " + player + " and pet Id:" + petData.getNpcId());
 			return;
 		}
 		
 		final Pet pet = Pet.spawnPet(npcTemplate, player, item);
 		if (pet == null)
 		{
-			LOGGER.warning(getClass().getSimpleName() + ": Null pet instance for: " + player + " and pet NPC template:" + npcTemplate);
+			LOGGER.warning(() -> getClass().getSimpleName() + ": Null pet instance for: " + player + " and pet NPC template:" + npcTemplate);
 			return;
 		}
 		

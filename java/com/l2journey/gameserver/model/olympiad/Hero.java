@@ -161,8 +161,8 @@ public class Hero
 			LOGGER.warning("Hero System: Could not load Heroes: " + e.getMessage());
 		}
 		
-		LOGGER.info("Hero System: Loaded " + HEROES.size() + " Heroes.");
-		LOGGER.info("Hero System: Loaded " + COMPLETE_HEROS.size() + " all time Heroes.");
+		LOGGER.info(() -> "Hero System: Loaded " + HEROES.size() + " Heroes.");
+		LOGGER.info(() -> "Hero System: Loaded " + COMPLETE_HEROS.size() + " all time Heroes.");
 	}
 	
 	private void processHeros(PreparedStatement ps, int charId, StatSet hero) throws SQLException

@@ -70,7 +70,7 @@ public class EventItem implements IItemHandler
 			}
 			default:
 			{
-				LOGGER.warning("EventItemHandler: Item with id: " + itemId + " is not handled");
+				LOGGER.warning(() -> "EventItemHandler: Item with id: " + itemId + " is not handled");
 			}
 		}
 		return used;

@@ -281,7 +281,7 @@ public abstract class ItemContainer
 				final ItemTemplate template = ItemData.getInstance().getTemplate(itemId);
 				if (template == null)
 				{
-					LOGGER.warning("Invalid ItemId (" + itemId + ") requested by " + (actor != null ? actor : process));
+					LOGGER.warning(() -> "Invalid ItemId (" + itemId + ") requested by " + (actor != null ? actor : process));
 					return null;
 				}
 				

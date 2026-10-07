@@ -104,13 +104,13 @@ public class GrandBossManager
 				final int status = rs.getInt("status");
 				_bossStatus.put(bossId, status);
 				_storedInfo.put(bossId, info);
-				LOGGER.info(getClass().getSimpleName() + ": " + NpcData.getInstance().getTemplate(bossId).getName() + "(" + bossId + ") status is " + status + ".");
+				LOGGER.info(() -> getClass().getSimpleName() + ": " + NpcData.getInstance().getTemplate(bossId).getName() + "(" + bossId + ") status is " + status + ".");
 				if (status > 0)
 				{
-					LOGGER.info(getClass().getSimpleName() + ": Next spawn date of " + NpcData.getInstance().getTemplate(bossId).getName() + " is " + new Date(info.getLong("respawn_time")) + ".");
+					LOGGER.info(() -> getClass().getSimpleName() + ": Next spawn date of " + NpcData.getInstance().getTemplate(bossId).getName() + " is " + new Date(info.getLong("respawn_time")) + ".");
 				}
 			}
-			LOGGER.info(getClass().getSimpleName() + ": Loaded " + _storedInfo.size() + " Instances");
+			LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _storedInfo.size() + " Instances");
 		}
 		catch (SQLException e)
 		{
@@ -142,7 +142,7 @@ public class GrandBossManager
 			{
 				zones.get(rs.getInt("zone")).add(rs.getInt("player_id"));
 			}
-			LOGGER.info(getClass().getSimpleName() + ": Initialized " + _zones.size() + " Grand Boss Zones");
+			LOGGER.info(() -> getClass().getSimpleName() + ": Initialized " + _zones.size() + " Grand Boss Zones");
 		}
 		catch (SQLException e)
 		{
@@ -219,7 +219,7 @@ public class GrandBossManager
 	public void setStatus(int bossId, int status)
 	{
 		_bossStatus.put(bossId, status);
-		LOGGER.info(getClass().getSimpleName() + ": Updated " + NpcData.getInstance().getTemplate(bossId).getName() + "(" + bossId + ") status to " + status);
+		LOGGER.info(() -> getClass().getSimpleName() + ": Updated " + NpcData.getInstance().getTemplate(bossId).getName() + "(" + bossId + ") status to " + status);
 		updateDb(bossId, true);
 	}
 	

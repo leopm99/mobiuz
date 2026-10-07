@@ -71,7 +71,7 @@ public class HtmCache
 		{
 			LOGGER.info("Html cache start...");
 			parseDir(file);
-			LOGGER.info("Cache[HTML]: " + String.format("%.3f", getMemoryUsage()) + " megabytes on " + _loadedFiles + " files loaded.");
+			LOGGER.info(() -> "Cache[HTML]: " + String.format("%.3f", getMemoryUsage()) + " megabytes on " + _loadedFiles + " files loaded.");
 		}
 		else
 		{

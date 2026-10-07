@@ -296,14 +296,14 @@ public class ClanHallAuction
 		final Clan clan = ClanTable.getInstance().getClanByName(clanName);
 		if (clan == null)
 		{
-			LOGGER.warning("Clan " + clanName + " doesn't exist!");
+			LOGGER.warning(() -> "Clan " + clanName + " doesn't exist!");
 			return;
 		}
 		
 		final ItemContainer cwh = clan.getWarehouse();
 		if (cwh == null)
 		{
-			LOGGER.warning("There has been a problem with " + clanName + "'s clan warehouse!");
+			LOGGER.warning(() -> "There has been a problem with " + clanName + "'s clan warehouse!");
 			return;
 		}
 		

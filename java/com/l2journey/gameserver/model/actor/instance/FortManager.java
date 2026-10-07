@@ -259,7 +259,7 @@ public class FortManager extends Merchant
 							}
 							else
 							{
-								LOGGER.warning("Missing htm: " + htmFile + " !");
+								LOGGER.warning(() -> "Missing htm: " + htmFile + " !");
 							}
 						}
 						else
@@ -997,7 +997,7 @@ public class FortManager extends Merchant
 		}
 		else
 		{
-			LOGGER.warning("No teleport destination with id:" + value);
+			LOGGER.warning(() -> "No teleport destination with id:" + value);
 		}
 		player.sendPacket(ActionFailed.STATIC_PACKET);
 	}

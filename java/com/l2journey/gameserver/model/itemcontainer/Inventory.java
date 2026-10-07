@@ -332,7 +332,7 @@ public abstract class Inventory extends ItemContainer
 					}
 					else
 					{
-						LOGGER.warning("Inventory.ItemSkillsListener.Weapon: Incorrect skill: " + skillInfo + ".");
+						LOGGER.warning(() -> "Inventory.ItemSkillsListener.Weapon: Incorrect skill: " + skillInfo + ".");
 					}
 				}
 			}
@@ -462,7 +462,7 @@ public abstract class Inventory extends ItemContainer
 					}
 					else
 					{
-						LOGGER.warning("Inventory.ItemSkillsListener.Weapon: Incorrect skill: " + skillInfo + ".");
+						LOGGER.warning(() -> "Inventory.ItemSkillsListener.Weapon: Incorrect skill: " + skillInfo + ".");
 					}
 				}
 			}
@@ -529,7 +529,7 @@ public abstract class Inventory extends ItemContainer
 					}
 					else
 					{
-						LOGGER.warning("Inventory.ArmorSetListener: Incorrect skill: " + holder + ".");
+						LOGGER.warning(() -> "Inventory.ArmorSetListener: Incorrect skill: " + holder + ".");
 					}
 				}
 			}
@@ -545,7 +545,7 @@ public abstract class Inventory extends ItemContainer
 					}
 					else
 					{
-						LOGGER.warning("Inventory.ArmorSetListener: Incorrect skill: " + holder + ".");
+						LOGGER.warning(() -> "Inventory.ArmorSetListener: Incorrect skill: " + holder + ".");
 					}
 				}
 			}
@@ -561,7 +561,7 @@ public abstract class Inventory extends ItemContainer
 					}
 					else
 					{
-						LOGGER.warning("Inventory.ArmorSetListener: Incorrect skill: " + holder + ".");
+						LOGGER.warning(() -> "Inventory.ArmorSetListener: Incorrect skill: " + holder + ".");
 					}
 				}
 			}
@@ -687,7 +687,7 @@ public abstract class Inventory extends ItemContainer
 						}
 						else
 						{
-							LOGGER.warning("Inventory.ArmorSetListener: Incorrect skill: " + holder + ".");
+							LOGGER.warning(() -> "Inventory.ArmorSetListener: Incorrect skill: " + holder + ".");
 						}
 					}
 				}
@@ -703,7 +703,7 @@ public abstract class Inventory extends ItemContainer
 						}
 						else
 						{
-							LOGGER.warning("Inventory.ArmorSetListener: Incorrect skill: " + holder + ".");
+							LOGGER.warning(() -> "Inventory.ArmorSetListener: Incorrect skill: " + holder + ".");
 						}
 					}
 				}
@@ -719,7 +719,7 @@ public abstract class Inventory extends ItemContainer
 						}
 						else
 						{
-							LOGGER.warning("Inventory.ArmorSetListener: Incorrect skill: " + holder + ".");
+							LOGGER.warning(() -> "Inventory.ArmorSetListener: Incorrect skill: " + holder + ".");
 						}
 					}
 				}
@@ -1536,7 +1536,7 @@ public abstract class Inventory extends ItemContainer
 			}
 			default:
 			{
-				LOGGER.info("Unhandled slot type: " + slot);
+				LOGGER.info(() -> "Unhandled slot type: " + slot);
 				LOGGER.info(TraceUtil.getTraceString(Thread.currentThread().getStackTrace()));
 			}
 		}
@@ -1784,7 +1784,7 @@ public abstract class Inventory extends ItemContainer
 			}
 			default:
 			{
-				LOGGER.warning("Unknown body slot " + targetSlot + " for Item ID:" + item.getId());
+				LOGGER.warning(() -> "Unknown body slot " + targetSlot + " for Item ID:" + item.getId());
 			}
 		}
 	}

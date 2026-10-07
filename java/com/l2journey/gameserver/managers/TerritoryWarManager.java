@@ -463,7 +463,7 @@ public class TerritoryWarManager implements Siegable
 		}
 		else
 		{
-			LOGGER.warning(getClass().getSimpleName() + ": Missing territory for new Ward owner: " + newOwnerId + ";" + territoryId);
+			LOGGER.warning(() -> getClass().getSimpleName() + ": Missing territory for new Ward owner: " + newOwnerId + ";" + territoryId);
 		}
 		return ret;
 	}
@@ -1584,21 +1584,21 @@ public class TerritoryWarManager implements Siegable
 					return _territoryWardSpawnPlace;
 				}
 			}
-			_territoryLogger.log(Level.WARNING, () -> getClass().getSimpleName() + ": no free Ward spawn found for territory: " + _territoryId);
+			_territoryLogger.warning(() -> getClass().getSimpleName() + ": no free Ward spawn found for territory: " + _territoryId);
 			for (int i = 0; i < _territoryWardSpawnPlaces.length; i++)
 			{
 				final int index = i;
 				if (_territoryWardSpawnPlaces[i] == null)
 				{
-					_territoryLogger.log(Level.WARNING, () -> getClass().getSimpleName() + ": territory ward spawn place " + index + " is null!");
+					_territoryLogger.warning(() -> getClass().getSimpleName() + ": territory ward spawn place " + index + " is null!");
 				}
 				else if (_territoryWardSpawnPlaces[i].getNpc() != null)
 				{
-					_territoryLogger.log(Level.WARNING, () -> getClass().getSimpleName() + ": territory ward spawn place " + index + " has npc name: " + _territoryWardSpawnPlaces[index].getNpc().getName());
+					_territoryLogger.warning(() -> getClass().getSimpleName() + ": territory ward spawn place " + index + " has npc name: " + _territoryWardSpawnPlaces[index].getNpc().getName());
 				}
 				else
 				{
-					_territoryLogger.log(Level.WARNING, () -> getClass().getSimpleName() + ": territory ward spawn place " + index + " is empty!");
+					_territoryLogger.warning(() -> getClass().getSimpleName() + ": territory ward spawn place " + index + " is empty!");
 				}
 			}
 			return null;
@@ -1613,7 +1613,7 @@ public class TerritoryWarManager implements Siegable
 		{
 			if ((type < 0) || (type > 3))
 			{
-				_territoryLogger.log(Level.WARNING, () -> getClass().getSimpleName() + ": wrong type(" + type + ") for NPCs spawn change!");
+				_territoryLogger.warning(() -> getClass().getSimpleName() + ": wrong type(" + type + ") for NPCs spawn change!");
 				return;
 			}
 			for (TerritoryNPCSpawn twSpawn : _spawnList)
@@ -1650,7 +1650,7 @@ public class TerritoryWarManager implements Siegable
 					return;
 				}
 			}
-			_territoryLogger.log(Level.WARNING, () -> getClass().getSimpleName() + ": Can't delete wardId: " + wardId + " for territory: " + _territoryId);
+			_territoryLogger.warning(() -> getClass().getSimpleName() + ": Can't delete wardId: " + wardId + " for territory: " + _territoryId);
 		}
 		
 		public int getTerritoryId()

@@ -54,7 +54,7 @@ public class RecipeData implements IXmlReader
 	{
 		_recipes.clear();
 		parseDatapackFile("data/Recipes.xml");
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _recipes.size() + " recipes.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _recipes.size() + " recipes.");
 	}
 	
 	@Override

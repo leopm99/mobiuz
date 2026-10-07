@@ -89,7 +89,7 @@ public class PrimeShopData implements IXmlReader
 			}
 		}
 		
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _products.size() + " products.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _products.size() + " products.");
 	}
 	
 	public Collection<PrimeShopProductHolder> getAllItems()

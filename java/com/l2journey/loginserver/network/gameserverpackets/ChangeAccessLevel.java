@@ -49,6 +49,6 @@ public class ChangeAccessLevel extends BaseReadablePacket
 		final int level = readInt();
 		final String account = readString();
 		LoginController.getInstance().setAccountAccessLevel(account, level);
-		LOGGER.info("Changed " + account + " access level to " + level);
+		LOGGER.info(() -> "Changed " + account + " access level to " + level);
 	}
 }

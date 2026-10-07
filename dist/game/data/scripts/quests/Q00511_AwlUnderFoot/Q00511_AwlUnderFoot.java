@@ -296,7 +296,7 @@ public class Q00511_AwlUnderFoot extends Quest
 		dungeon.setReEnterTime(System.currentTimeMillis() + REENTERTIME);
 		InstanceManager.getInstance().addWorld(world);
 		final int instanceId = world.getInstanceId();
-		LOGGER.info("Fortress AwlUnderFoot started " + dungeon.getInstanceId() + " Instance: " + instanceId + " created by player: " + player.getName());
+		LOGGER.info(() -> "Fortress AwlUnderFoot started " + dungeon.getInstanceId() + " Instance: " + instanceId + " created by player: " + player.getName());
 		ThreadPool.schedule(new spawnRaid((FAUWorld) world), RAID_SPAWN_DELAY);
 		
 		// teleport players

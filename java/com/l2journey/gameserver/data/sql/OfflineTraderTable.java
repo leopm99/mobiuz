@@ -596,7 +596,7 @@ public class OfflineTraderTable
 		}
 		
 		player.storeMe();
-		LOGGER_ACCOUNTING.info("Entering offline mode, " + client);
+		LOGGER_ACCOUNTING.info(() -> "Entering offline mode, " + client);
 		
 		if (!Config.OFFLINE_ABNORMAL_EFFECTS.isEmpty())
 		{

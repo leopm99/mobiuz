@@ -99,7 +99,7 @@ public class WalkingManager implements IXmlReader
 	public void load()
 	{
 		parseDatapackFile("data/Routes.xml");
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _routes.size() + " walking routes.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _routes.size() + " walking routes.");
 	}
 	
 	@Override

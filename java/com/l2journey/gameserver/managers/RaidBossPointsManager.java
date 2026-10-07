@@ -68,7 +68,7 @@ public class RaidBossPointsManager
 				values.put(bossId, points);
 				_list.put(charId, values);
 			}
-			LOGGER.info(getClass().getSimpleName() + ": Loaded " + _list.size() + " Characters Raid Points.");
+			LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _list.size() + " Characters Raid Points.");
 		}
 		catch (SQLException e)
 		{

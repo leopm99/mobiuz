@@ -58,7 +58,7 @@ public class SoDManager
 		_SoDLastStateChangeDate = Calendar.getInstance();
 		loadData();
 		handleSodStages();
-		LOGGER.info("Seed of Destruction Manager: Loaded. Current stage is: " + _SoDState);
+		LOGGER.info(() -> "Seed of Destruction Manager: Loaded. Current stage is: " + _SoDState);
 	}
 	
 	public void saveData(byte seedType)
@@ -85,7 +85,7 @@ public class SoDManager
 			}
 			default:
 			{
-				LOGGER.warning(getClass().getSimpleName() + ": Unknown SeedType in SaveData: " + seedType);
+				LOGGER.warning(() -> getClass().getSimpleName() + ": Unknown SeedType in SaveData: " + seedType);
 				break;
 			}
 		}
@@ -139,7 +139,7 @@ public class SoDManager
 			}
 			default:
 			{
-				LOGGER.warning(getClass().getSimpleName() + ": Unknown Seed of Destruction state(" + _SoDState + ")! ");
+				LOGGER.warning(() -> getClass().getSimpleName() + ": Unknown Seed of Destruction state(" + _SoDState + ")! ");
 			}
 		}
 		
@@ -204,7 +204,7 @@ public class SoDManager
 	
 	public void setSoDState(int value, boolean doSave)
 	{
-		LOGGER.info(getClass().getSimpleName() + ": New Seed of Destruction state -> " + value + ".");
+		LOGGER.info(() -> getClass().getSimpleName() + ": New Seed of Destruction state -> " + value + ".");
 		_SoDLastStateChangeDate.setTimeInMillis(System.currentTimeMillis());
 		_SoDState = value;
 		

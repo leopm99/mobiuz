@@ -74,7 +74,7 @@ public class OptionData implements IXmlReader
 			options[option.getKey()] = option.getValue();
 		}
 		
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + OPTION_MAP.size() + " options.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + OPTION_MAP.size() + " options.");
 		OPTION_MAP.clear();
 	}
 	
@@ -120,7 +120,7 @@ public class OptionData implements IXmlReader
 									}
 									else
 									{
-										LOGGER.info(getClass().getSimpleName() + ": Could not find skill " + skillId + "(" + skillLevel + ") used by option " + id + ".");
+										LOGGER.info(() -> getClass().getSimpleName() + ": Could not find skill " + skillId + "(" + skillLevel + ") used by option " + id + ".");
 									}
 									break;
 								}
@@ -135,7 +135,7 @@ public class OptionData implements IXmlReader
 									}
 									else
 									{
-										LOGGER.info(getClass().getSimpleName() + ": Could not find skill " + skillId + "(" + skillLevel + ") used by option " + id + ".");
+										LOGGER.info(() -> getClass().getSimpleName() + ": Could not find skill " + skillId + "(" + skillLevel + ") used by option " + id + ".");
 									}
 									break;
 								}
@@ -150,7 +150,7 @@ public class OptionData implements IXmlReader
 									}
 									else
 									{
-										LOGGER.info(getClass().getSimpleName() + ": Could not find skill " + skillId + "(" + skillLevel + ") used by option " + id + ".");
+										LOGGER.info(() -> getClass().getSimpleName() + ": Could not find skill " + skillId + "(" + skillLevel + ") used by option " + id + ".");
 									}
 									break;
 								}
@@ -165,7 +165,7 @@ public class OptionData implements IXmlReader
 									}
 									else
 									{
-										LOGGER.info(getClass().getSimpleName() + ": Could not find skill " + skillId + "(" + skillLevel + ") used by option " + id + ".");
+										LOGGER.info(() -> getClass().getSimpleName() + ": Could not find skill " + skillId + "(" + skillLevel + ") used by option " + id + ".");
 									}
 									break;
 								}
@@ -180,7 +180,7 @@ public class OptionData implements IXmlReader
 									}
 									else
 									{
-										LOGGER.info(getClass().getSimpleName() + ": Could not find skill " + skillId + "(" + skillLevel + ") used by option " + id + ".");
+										LOGGER.info(() -> getClass().getSimpleName() + ": Could not find skill " + skillId + "(" + skillLevel + ") used by option " + id + ".");
 									}
 									break;
 								}

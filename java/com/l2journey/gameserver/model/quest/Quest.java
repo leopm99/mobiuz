@@ -56,6 +56,7 @@ import java.util.logging.Logger;
 
 import com.l2journey.Config;
 import com.l2journey.commons.database.DatabaseFactory;
+import com.l2journey.commons.util.LogUtil;
 import com.l2journey.commons.util.Rnd;
 import com.l2journey.commons.util.TraceUtil;
 import com.l2journey.gameserver.ai.Intention;
@@ -250,7 +251,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 	
 	public void onTimerEvent(String event, StatSet params, Npc npc, Player player)
 	{
-		LOGGER.warning("[" + getClass().getSimpleName() + "]: Timer event arrived at non overriden onTimerEvent method event: " + event + " npc: " + npc + " player: " + player);
+		LOGGER.warning(() -> "[" + getClass().getSimpleName() + "]: Timer event arrived at non overriden onTimerEvent method event: " + event + " npc: " + npc + " player: " + player);
 	}
 	
 	public void onTimerCancel(String event, StatSet params, Npc npc, Player player)
@@ -1164,7 +1165,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 	 */
 	public boolean showError(Player player, Throwable t)
 	{
-		LOGGER.log(Level.WARNING, getScriptFile().toAbsolutePath().toString(), t);
+		LogUtil.warning(LOGGER, t, () -> getScriptFile().toAbsolutePath().toString());
 		if (t.getMessage() == null)
 		{
 			LOGGER.warning(getClass().getSimpleName() + ": " + t.getMessage());
@@ -1253,7 +1254,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 					final Quest q = QuestManager.getInstance().getQuest(questId);
 					if (q == null)
 					{
-						LOGGER.finer("Unknown quest " + questId + " for " + player);
+						LOGGER.finer(() -> "Unknown quest " + questId + " for " + player);
 						if (Config.AUTODELETE_INVALID_QUEST_DATA)
 						{
 							invalidQuestData.setInt(1, player.getObjectId());
@@ -1288,7 +1289,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 							final QuestState qs = quest.getQuestState(player, true);
 							if (qs == null)
 							{
-								LOGGER.finer("Lost variable " + var + " in quest " + questId + " for " + player);
+								LOGGER.finer(() -> "Lost variable " + var + " in quest " + questId + " for " + player);
 								
 								if (Config.AUTODELETE_INVALID_QUEST_DATA)
 								{
@@ -2331,7 +2332,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		{
 			if ((id != 0) && (ItemData.getInstance().getTemplate(id) == null))
 			{
-				LOGGER.severe(super.getClass().getSimpleName() + ": Found registerQuestItems for non existing item: " + id + "!");
+				LOGGER.severe(() -> super.getClass().getSimpleName() + ": Found registerQuestItems for non existing item: " + id + "!");
 			}
 		}
 		_questItemIds = items;
@@ -2549,7 +2550,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 				}
 				else if (!eventType.isReturnClass(method.getReturnType()))
 				{
-					LOGGER.warning(getClass().getSimpleName() + ": Non properly defined annotation listener on method: " + method.getName() + " expected return type to be one of: " + Arrays.toString(eventType.getReturnClasses()) + " but found: " + method.getReturnType().getSimpleName());
+					LOGGER.warning(() -> getClass().getSimpleName() + ": Non properly defined annotation listener on method: " + method.getName() + " expected return type to be one of: " + Arrays.toString(eventType.getReturnClasses()) + " but found: " + method.getReturnType().getSimpleName());
 					continue;
 				}
 				
@@ -2616,7 +2617,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 						}
 						else if (type != ListenerRegisterType.NPC)
 						{
-							LOGGER.warning(getClass().getSimpleName() + ": ListenerRegisterType " + type + " for " + annotation.getClass().getSimpleName() + " NPC is expected!");
+							LOGGER.warning(() -> getClass().getSimpleName() + ": ListenerRegisterType " + type + " for " + annotation.getClass().getSimpleName() + " NPC is expected!");
 							continue;
 						}
 						
@@ -2637,7 +2638,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 							}
 							else if (type != ListenerRegisterType.NPC)
 							{
-								LOGGER.warning(getClass().getSimpleName() + ": ListenerRegisterType " + type + " for " + annotation.getClass().getSimpleName() + " NPC is expected!");
+								LOGGER.warning(() -> getClass().getSimpleName() + ": ListenerRegisterType " + type + " for " + annotation.getClass().getSimpleName() + " NPC is expected!");
 								continue;
 							}
 							
@@ -2678,7 +2679,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		{
 			if (NpcData.getInstance().getTemplate(id) == null)
 			{
-				LOGGER.severe(super.getClass().getSimpleName() + ": Found addKillId for non existing NPC: " + id + "!");
+				LOGGER.severe(() -> super.getClass().getSimpleName() + ": Found addKillId for non existing NPC: " + id + "!");
 			}
 		}
 		return registerConsumer(callback, EventType.ON_ATTACKABLE_KILL, ListenerRegisterType.NPC, npcIds);
@@ -2696,7 +2697,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		{
 			if (NpcData.getInstance().getTemplate(id) == null)
 			{
-				LOGGER.severe(super.getClass().getSimpleName() + ": Found addKillId for non existing NPC: " + id + "!");
+				LOGGER.severe(() -> super.getClass().getSimpleName() + ": Found addKillId for non existing NPC: " + id + "!");
 			}
 		}
 		return registerConsumer(callback, EventType.ON_ATTACKABLE_KILL, ListenerRegisterType.NPC, npcIds);
@@ -2751,7 +2752,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		{
 			if (NpcData.getInstance().getTemplate(id) == null)
 			{
-				LOGGER.severe(super.getClass().getSimpleName() + ": Found addFirstTalkId for non existing NPC: " + id + "!");
+				LOGGER.severe(() -> super.getClass().getSimpleName() + ": Found addFirstTalkId for non existing NPC: " + id + "!");
 			}
 		}
 		return registerConsumer(callback, EventType.ON_NPC_FIRST_TALK, ListenerRegisterType.NPC, npcIds);
@@ -2769,7 +2770,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		{
 			if (NpcData.getInstance().getTemplate(id) == null)
 			{
-				LOGGER.severe(super.getClass().getSimpleName() + ": Found addFirstTalkId for non existing NPC: " + id + "!");
+				LOGGER.severe(() -> super.getClass().getSimpleName() + ": Found addFirstTalkId for non existing NPC: " + id + "!");
 			}
 		}
 		return registerConsumer(callback, EventType.ON_NPC_FIRST_TALK, ListenerRegisterType.NPC, npcIds);
@@ -2788,7 +2789,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		{
 			if (NpcData.getInstance().getTemplate(id) == null)
 			{
-				LOGGER.severe(super.getClass().getSimpleName() + ": Found addTalkId for non existing NPC: " + id + "!");
+				LOGGER.severe(() -> super.getClass().getSimpleName() + ": Found addTalkId for non existing NPC: " + id + "!");
 			}
 		}
 		return registerDummy(EventType.ON_NPC_TALK, ListenerRegisterType.NPC, npcIds);
@@ -2805,7 +2806,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		{
 			if (NpcData.getInstance().getTemplate(id) == null)
 			{
-				LOGGER.severe(super.getClass().getSimpleName() + ": Found addTalkId for non existing NPC: " + id + "!");
+				LOGGER.severe(() -> super.getClass().getSimpleName() + ": Found addTalkId for non existing NPC: " + id + "!");
 			}
 		}
 		return registerDummy(EventType.ON_NPC_TALK, ListenerRegisterType.NPC, npcIds);
@@ -2848,7 +2849,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		{
 			if (NpcData.getInstance().getTemplate(id) == null)
 			{
-				LOGGER.severe(super.getClass().getSimpleName() + ": Found addStartNpc for non existing NPC: " + id + "!");
+				LOGGER.severe(() -> super.getClass().getSimpleName() + ": Found addStartNpc for non existing NPC: " + id + "!");
 			}
 		}
 		return registerDummy(EventType.ON_NPC_QUEST_START, ListenerRegisterType.NPC, npcIds);
@@ -2865,7 +2866,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		{
 			if (NpcData.getInstance().getTemplate(id) == null)
 			{
-				LOGGER.severe(super.getClass().getSimpleName() + ": Found addStartNpc for non existing NPC: " + id + "!");
+				LOGGER.severe(() -> super.getClass().getSimpleName() + ": Found addStartNpc for non existing NPC: " + id + "!");
 			}
 		}
 		return registerDummy(EventType.ON_NPC_QUEST_START, ListenerRegisterType.NPC, npcIds);
@@ -2885,7 +2886,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		{
 			if (NpcData.getInstance().getTemplate(id) == null)
 			{
-				LOGGER.severe(super.getClass().getSimpleName() + ": Found addSkillSeeId for non existing NPC: " + id + "!");
+				LOGGER.severe(() -> super.getClass().getSimpleName() + ": Found addSkillSeeId for non existing NPC: " + id + "!");
 			}
 		}
 		return registerConsumer(callback, EventType.ON_NPC_SKILL_SEE, ListenerRegisterType.NPC, npcIds);
@@ -2903,7 +2904,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		{
 			if (NpcData.getInstance().getTemplate(id) == null)
 			{
-				LOGGER.severe(super.getClass().getSimpleName() + ": Found addSkillSeeId for non existing NPC: " + id + "!");
+				LOGGER.severe(() -> super.getClass().getSimpleName() + ": Found addSkillSeeId for non existing NPC: " + id + "!");
 			}
 		}
 		return registerConsumer(callback, EventType.ON_NPC_SKILL_SEE, ListenerRegisterType.NPC, npcIds);
@@ -2923,7 +2924,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		{
 			if (NpcData.getInstance().getTemplate(id) == null)
 			{
-				LOGGER.severe(super.getClass().getSimpleName() + ": Found addSpellFinishedId for non existing NPC: " + id + "!");
+				LOGGER.severe(() -> super.getClass().getSimpleName() + ": Found addSpellFinishedId for non existing NPC: " + id + "!");
 			}
 		}
 		return registerConsumer(callback, EventType.ON_NPC_SKILL_FINISHED, ListenerRegisterType.NPC, npcIds);
@@ -2941,7 +2942,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		{
 			if (NpcData.getInstance().getTemplate(id) == null)
 			{
-				LOGGER.severe(super.getClass().getSimpleName() + ": Found addSpellFinishedId for non existing NPC: " + id + "!");
+				LOGGER.severe(() -> super.getClass().getSimpleName() + ": Found addSpellFinishedId for non existing NPC: " + id + "!");
 			}
 		}
 		return registerConsumer(callback, EventType.ON_NPC_SKILL_FINISHED, ListenerRegisterType.NPC, npcIds);
@@ -2961,7 +2962,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		{
 			if (NpcData.getInstance().getTemplate(id) == null)
 			{
-				LOGGER.severe(super.getClass().getSimpleName() + ": Found addSpawnId for non existing NPC: " + id + "!");
+				LOGGER.severe(() -> super.getClass().getSimpleName() + ": Found addSpawnId for non existing NPC: " + id + "!");
 			}
 		}
 		return registerConsumer(callback, EventType.ON_NPC_SPAWN, ListenerRegisterType.NPC, npcIds);
@@ -2979,7 +2980,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		{
 			if (NpcData.getInstance().getTemplate(id) == null)
 			{
-				LOGGER.severe(super.getClass().getSimpleName() + ": Found addSpawnId for non existing NPC: " + id + "!");
+				LOGGER.severe(() -> super.getClass().getSimpleName() + ": Found addSpawnId for non existing NPC: " + id + "!");
 			}
 		}
 		return registerConsumer(callback, EventType.ON_NPC_SPAWN, ListenerRegisterType.NPC, npcIds);
@@ -3243,7 +3244,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		{
 			if (NpcData.getInstance().getTemplate(id) == null)
 			{
-				LOGGER.severe(super.getClass().getSimpleName() + ": Found addAttackId for non existing NPC: " + id + "!");
+				LOGGER.severe(() -> super.getClass().getSimpleName() + ": Found addAttackId for non existing NPC: " + id + "!");
 			}
 		}
 		return registerConsumer(callback, EventType.ON_ATTACKABLE_ATTACK, ListenerRegisterType.NPC, npcIds);
@@ -3261,7 +3262,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		{
 			if (NpcData.getInstance().getTemplate(id) == null)
 			{
-				LOGGER.severe(super.getClass().getSimpleName() + ": Found addAttackId for non existing NPC: " + id + "!");
+				LOGGER.severe(() -> super.getClass().getSimpleName() + ": Found addAttackId for non existing NPC: " + id + "!");
 			}
 		}
 		return registerConsumer(callback, EventType.ON_ATTACKABLE_ATTACK, ListenerRegisterType.NPC, npcIds);
@@ -3814,7 +3815,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 					}
 					default:
 					{
-						LOGGER.warning(getClass().getSimpleName() + ": Unhandled register type: " + registerType);
+						LOGGER.warning(() -> getClass().getSimpleName() + ": Unhandled register type: " + registerType);
 					}
 				}
 				
@@ -3925,7 +3926,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 					}
 					default:
 					{
-						LOGGER.warning(getClass().getSimpleName() + ": Unhandled register type: " + registerType);
+						LOGGER.warning(() -> getClass().getSimpleName() + ": Unhandled register type: " + registerType);
 					}
 				}
 			}
@@ -4223,7 +4224,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		{
 			if ((xValue == 0) && (yValue == 0))
 			{
-				LOGGER.severe("addSpawn(): invalid spawn coordinates for NPC #" + npcId + "!");
+				LOGGER.severe(() -> "addSpawn(): invalid spawn coordinates for NPC #" + npcId + "!");
 				return null;
 			}
 			

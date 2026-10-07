@@ -344,7 +344,7 @@ public class SkillTreeData implements IXmlReader
 									}
 									default:
 									{
-										LOGGER.warning(getClass().getSimpleName() + ": Unknown Skill Tree type: " + type + "!");
+										LOGGER.warning(() -> getClass().getSimpleName() + ": Unknown Skill Tree type: " + type + "!");
 									}
 								}
 							}
@@ -551,7 +551,7 @@ public class SkillTreeData implements IXmlReader
 		if (skills.isEmpty())
 		{
 			// The Skill Tree for this class is undefined.
-			LOGGER.warning(getClass().getSimpleName() + ": Skilltree for class " + classId + " is not defined!");
+			LOGGER.warning(() -> getClass().getSimpleName() + ": Skilltree for class " + classId + " is not defined!");
 			return result;
 		}
 		
@@ -1355,21 +1355,21 @@ public class SkillTreeData implements IXmlReader
 		
 		final String className = getClass().getSimpleName();
 		LOGGER.info(className + ": Loaded " + classSkillTreeCount + " Class Skills for " + _classSkillTrees.size() + " class skill trees.");
-		LOGGER.info(className + ": Loaded " + _subClassSkillTree.size() + " sub-class skills.");
+		LOGGER.info(() -> className + ": Loaded " + _subClassSkillTree.size() + " sub-class skills.");
 		LOGGER.info(className + ": Loaded " + trasferSkillTreeCount + " transfer skills for " + _transferSkillTrees.size() + " transfer skill trees.");
 		LOGGER.info(className + ": Loaded " + _fishingSkillTree.size() + " fishing skills, " + dwarvenOnlyFishingSkillCount + " Dwarven only fishing skills.");
-		LOGGER.info(className + ": Loaded " + _collectSkillTree.size() + " collect skills.");
+		LOGGER.info(() -> className + ": Loaded " + _collectSkillTree.size() + " collect skills.");
 		LOGGER.info(className + ": Loaded " + _pledgeSkillTree.size() + " clan skills, " + (_pledgeSkillTree.size() - resSkillCount) + " for clan and " + resSkillCount + " residential.");
-		LOGGER.info(className + ": Loaded " + _subPledgeSkillTree.size() + " sub-pledge skills.");
-		LOGGER.info(className + ": Loaded " + _transformSkillTree.size() + " transform skills.");
-		LOGGER.info(className + ": Loaded " + _nobleSkillTree.size() + " noble skills.");
-		LOGGER.info(className + ": Loaded " + _heroSkillTree.size() + " hero skills.");
-		LOGGER.info(className + ": Loaded " + _gameMasterSkillTree.size() + " game master skills.");
-		LOGGER.info(className + ": Loaded " + _gameMasterAuraSkillTree.size() + " game master aura skills.");
+		LOGGER.info(() -> className + ": Loaded " + _subPledgeSkillTree.size() + " sub-pledge skills.");
+		LOGGER.info(() -> className + ": Loaded " + _transformSkillTree.size() + " transform skills.");
+		LOGGER.info(() -> className + ": Loaded " + _nobleSkillTree.size() + " noble skills.");
+		LOGGER.info(() -> className + ": Loaded " + _heroSkillTree.size() + " hero skills.");
+		LOGGER.info(() -> className + ": Loaded " + _gameMasterSkillTree.size() + " game master skills.");
+		LOGGER.info(() -> className + ": Loaded " + _gameMasterAuraSkillTree.size() + " game master aura skills.");
 		final int commonSkills = _commonSkillTree.size();
 		if (commonSkills > 0)
 		{
-			LOGGER.info(className + ": Loaded " + commonSkills + " common skills.");
+			LOGGER.info(() -> className + ": Loaded " + commonSkills + " common skills.");
 		}
 	}
 	

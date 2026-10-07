@@ -97,7 +97,7 @@ public class KrateisCubeManager implements IXmlReader
 	{
 		parseDatapackFile("data/KrateisCube.xml");
 		
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _arenas.size() + " arena templates.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _arenas.size() + " arena templates.");
 		
 		final Spawn spawn = SpawnTable.getInstance().getAnySpawn(32503);
 		if (spawn != null)

@@ -76,10 +76,10 @@ public class AdminData implements IXmlReader
 		_adminCommandAccessRights.clear();
 		
 		parseDatapackFile("config/admin/accesslevels.xml");
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _accessLevels.size() + " access levels.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _accessLevels.size() + " access levels.");
 		
 		parseDatapackFile("config/admin/admincommands.xml");
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _adminCommandAccessRights.size() + " access commands.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _adminCommandAccessRights.size() + " access commands.");
 	}
 	
 	@Override
@@ -172,11 +172,11 @@ public class AdminData implements IXmlReader
 			{
 				accessRight = new AdminCommandAccessRight(adminCommand, true, accessLevel.getLevel());
 				_adminCommandAccessRights.put(accessRight.getAdminCommand(), accessRight);
-				LOGGER.info(getClass().getSimpleName() + ": No rights defined for admin command " + adminCommand + " auto setting accesslevel: " + accessLevel.getLevel() + " !");
+				LOGGER.info(() -> getClass().getSimpleName() + ": No rights defined for admin command " + adminCommand + " auto setting accesslevel: " + accessLevel.getLevel() + " !");
 			}
 			else
 			{
-				LOGGER.info(getClass().getSimpleName() + ": No rights defined for admin command " + adminCommand + " !");
+				LOGGER.info(() -> getClass().getSimpleName() + ": No rights defined for admin command " + adminCommand + " !");
 				return false;
 			}
 		}
@@ -193,7 +193,7 @@ public class AdminData implements IXmlReader
 		final AdminCommandAccessRight accessRight = _adminCommandAccessRights.get(command);
 		if (accessRight == null)
 		{
-			LOGGER.info(getClass().getSimpleName() + ": No rights defined for admin command " + command + ".");
+			LOGGER.info(() -> getClass().getSimpleName() + ": No rights defined for admin command " + command + ".");
 			return false;
 		}
 		

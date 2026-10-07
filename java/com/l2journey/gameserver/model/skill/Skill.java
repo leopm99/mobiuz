@@ -339,7 +339,7 @@ public class Skill
 		{
 			if (capsuled_items.isEmpty())
 			{
-				LOGGER.warning("Empty Extractable Item Skill data in Skill Id: " + _id);
+				LOGGER.warning(() -> "Empty Extractable Item Skill data in Skill Id: " + _id);
 			}
 			
 			_extractableItems = parseExtractableSkill(_id, _level, capsuled_items);
@@ -1657,7 +1657,7 @@ public class Skill
 			prodData = prodList.split(",");
 			if (prodData.length < 3)
 			{
-				LOGGER.warning("Extractable skills data: Error in Skill Id: " + skillId + " Level: " + skillLevel + " -> wrong seperator!");
+				LOGGER.warning(() -> "Extractable skills data: Error in Skill Id: " + skillId + " Level: " + skillLevel + " -> wrong seperator!");
 			}
 			List<ItemHolder> items = null;
 			double chance = 0;
@@ -1671,7 +1671,7 @@ public class Skill
 					final int quantity = Integer.parseInt(prodData[j + 1]);
 					if ((prodId <= 0) || (quantity <= 0))
 					{
-						LOGGER.warning("Extractable skills data: Error in Skill Id: " + skillId + " Level: " + skillLevel + " wrong production Id: " + prodId + " or wrond quantity: " + quantity + "!");
+						LOGGER.warning(() -> "Extractable skills data: Error in Skill Id: " + skillId + " Level: " + skillLevel + " wrong production Id: " + prodId + " or wrond quantity: " + quantity + "!");
 					}
 					items.add(new ItemHolder(prodId, quantity));
 				}
@@ -1686,7 +1686,7 @@ public class Skill
 		
 		if (products.isEmpty())
 		{
-			LOGGER.warning("Extractable skills data: Error in Skill Id: " + skillId + " Level: " + skillLevel + " -> There are no production items!");
+			LOGGER.warning(() -> "Extractable skills data: Error in Skill Id: " + skillId + " Level: " + skillLevel + " -> There are no production items!");
 		}
 		return new ExtractableSkill(SkillData.getSkillHashCode(skillId, skillLevel), products);
 	}

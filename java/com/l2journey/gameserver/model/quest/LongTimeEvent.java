@@ -118,19 +118,19 @@ public class LongTimeEvent extends Quest
 			if (isWithinRange(now))
 			{
 				startEvent();
-				LOGGER.info("Event " + _eventName + " active till " + _endDate);
+				LOGGER.info(() -> "Event " + _eventName + " active till " + _endDate);
 			}
 			else if (_startDate.after(now))
 			{
 				final long delay = _startDate.getTime() - System.currentTimeMillis();
 				ThreadPool.schedule(new ScheduleStart(), delay);
-				LOGGER.info("Event " + _eventName + " will be started at " + _startDate);
+				LOGGER.info(() -> "Event " + _eventName + " will be started at " + _startDate);
 			}
 			else
 			{
 				// Destroy items that must exist only on event period.
 				destroyItemsOnEnd();
-				LOGGER.info("Event " + _eventName + " has passed... Ignored ");
+				LOGGER.info(() -> "Event " + _eventName + " has passed... Ignored ");
 			}
 		}
 		

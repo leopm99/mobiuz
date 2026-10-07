@@ -111,12 +111,12 @@ public class GameServerAuth extends BaseReadablePacket
 		{
 			if (registeredByHexId.getId() != id)
 			{
-				LOGGER.warning("GameServer requested server id " + id + " but hexid is already registered on server id " + registeredByHexId.getId() + ". Reusing the existing registration.");
+				LOGGER.warning(() -> "GameServer requested server id " + id + " but hexid is already registered on server id " + registeredByHexId.getId() + ". Reusing the existing registration.");
 			}
 			return attachRegisteredGameServer(registeredByHexId);
 		}
 		
-		LOGGER.warning("GameServer attempted to register with unknown hexid (requested server id " + id + "). Rejecting.");
+		LOGGER.warning(() -> "GameServer attempted to register with unknown hexid (requested server id " + id + "). Rejecting.");
 		_server.forceClose(LoginServerFail.REASON_WRONG_HEXID);
 		return false;
 	}

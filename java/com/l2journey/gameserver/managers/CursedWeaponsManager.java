@@ -89,7 +89,7 @@ public class CursedWeaponsManager
 		load();
 		restore();
 		controlPlayers();
-		LOGGER.info(getClass().getSimpleName() + ": Loaded : " + _cursedWeapons.size() + " cursed weapon(s).");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded : " + _cursedWeapons.size() + " cursed weapon(s).");
 	}
 	
 	public void reload()
@@ -108,7 +108,7 @@ public class CursedWeaponsManager
 			final File file = new File(Config.DATAPACK_ROOT + "/data/CursedWeapons.xml");
 			if (!file.exists())
 			{
-				LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": Couldn't find data/" + file.getName());
+				LOGGER.warning(() -> getClass().getSimpleName() + ": Couldn't find data/" + file.getName());
 				return;
 			}
 			
@@ -229,14 +229,14 @@ public class CursedWeaponsManager
 					{
 						// A player has the cursed weapon in his inventory ...
 						final int playerId = rset.getInt("owner_id");
-						LOGGER.info("PROBLEM : Player " + playerId + " owns the cursed weapon " + itemId + " but he shouldn't.");
+						LOGGER.info(() -> "PROBLEM : Player " + playerId + " owns the cursed weapon " + itemId + " but he shouldn't.");
 						
 						// Delete the item
 						delete.setInt(1, playerId);
 						delete.setInt(2, itemId);
 						if (delete.executeUpdate() != 1)
 						{
-							LOGGER.warning("Error while deleting cursed weapon " + itemId + " from userId " + playerId);
+							LOGGER.warning(() -> "Error while deleting cursed weapon " + itemId + " from userId " + playerId);
 						}
 						delete.clearParameters();
 						

@@ -393,7 +393,7 @@ public class FourSepulchers extends AbstractNpcAI implements IXmlReader
 					}
 					else
 					{
-						LOGGER.warning("Four Sepulcher Manager with ID " + managerId + " is missing!");
+						LOGGER.warning(() -> "Four Sepulcher Manager with ID " + managerId + " is missing!");
 					}
 				}
 				
@@ -738,7 +738,7 @@ public class FourSepulchers extends AbstractNpcAI implements IXmlReader
 	{
 		ROOM_SPAWN_DATA.clear();
 		parseDatapackFile("data/scripts/ai/areas/ImperialTomb/FourSepulchers/FourSepulchers.xml");
-		LOGGER.info("[Four Sepulchers] Loaded " + ROOM_SPAWN_DATA.size() + " spawn zones data.");
+		LOGGER.info(() -> "[Four Sepulchers] Loaded " + ROOM_SPAWN_DATA.size() + " spawn zones data.");
 	}
 	
 	@Override

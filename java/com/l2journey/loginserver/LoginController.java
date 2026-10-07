@@ -143,7 +143,7 @@ public class LoginController
 				_blowfishKeys[i][j] = (byte) (Rnd.get(0, 255));
 			}
 		}
-		LOGGER.info("Stored " + _blowfishKeys.length + " keys for Blowfish communication.");
+		LOGGER.info(() -> "Stored " + _blowfishKeys.length + " keys for Blowfish communication.");
 	}
 	
 	/**
@@ -206,7 +206,7 @@ public class LoginController
 			addBanForAddress(addr, Config.LOGIN_BLOCK_AFTER_BAN * 1000L);
 			// We need to clear the failed login attempts here, so after the IP ban is over the client has another 5 attempts.
 			clearFailedLoginAttemps(addr);
-			LOGGER.warning("Added banned address " + addr + "! Too many login attempts.");
+			LOGGER.warning(() -> "Added banned address " + addr + "! Too many login attempts.");
 		}
 	}
 	
@@ -224,7 +224,7 @@ public class LoginController
 		{
 			if (!isValidLogin(login))
 			{
-				LOGGER.warning("Tentativa de login com nome inválido: " + login);
+				LOGGER.warning(() -> "Tentativa de login com nome inválido: " + login);
 				return null;
 			}
 			
@@ -278,7 +278,7 @@ public class LoginController
 				return null;
 			}
 			
-			LOGGER.info("Auto created account '" + login + "'.");
+			LOGGER.info(() -> "Auto created account '" + login + "'.");
 			return retriveAccountInfo(clientAddr, login, password, false);
 		}
 		catch (Exception e)
@@ -357,7 +357,7 @@ public class LoginController
 			if ((bi > 0) && (bi < System.currentTimeMillis()))
 			{
 				_bannedIps.remove(address);
-				LOGGER.info("Removed expired ip address ban " + address + ".");
+				LOGGER.info(() -> "Removed expired ip address ban " + address + ".");
 				return false;
 			}
 			
@@ -563,13 +563,13 @@ public class LoginController
 			{
 				if (!ipWhiteList.isEmpty() && !ipWhiteList.contains(address))
 				{
-					LOGGER.warning("Account checkin attemp from address(" + address + ") not present on whitelist for account '" + info.getLogin() + "'.");
+					LOGGER.warning(() -> "Account checkin attemp from address(" + address + ") not present on whitelist for account '" + info.getLogin() + "'.");
 					return false;
 				}
 				
 				if (!ipBlackList.isEmpty() && ipBlackList.contains(address))
 				{
-					LOGGER.warning("Account checkin attemp from address(" + address + ") on blacklist for account '" + info.getLogin() + "'.");
+					LOGGER.warning(() -> "Account checkin attemp from address(" + address + ") on blacklist for account '" + info.getLogin() + "'.");
 					return false;
 				}
 			}

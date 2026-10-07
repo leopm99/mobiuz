@@ -187,7 +187,7 @@ public class Territory
 				return new Location(x, y, Rnd.get(zmin, _zMax));
 			}
 		}
-		LOGGER.warning("Can't make point for territory " + _terr);
+		LOGGER.warning(() -> "Can't make point for territory " + _terr);
 		return null;
 	}
 	

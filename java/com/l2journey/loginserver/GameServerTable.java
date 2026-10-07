@@ -80,10 +80,10 @@ public class GameServerTable implements IXmlReader
 		load();
 		
 		loadRegisteredGameServers();
-		LOGGER.info("Loaded " + GAME_SERVER_TABLE.size() + " registered Game Servers.");
+		LOGGER.info(() -> "Loaded " + GAME_SERVER_TABLE.size() + " registered Game Servers.");
 		
 		initRSAKeys();
-		LOGGER.info("Cached " + _keyPairs.length + " RSA keys for Game Server communication.");
+		LOGGER.info(() -> "Cached " + _keyPairs.length + " RSA keys for Game Server communication.");
 	}
 	
 	@Override
@@ -91,7 +91,7 @@ public class GameServerTable implements IXmlReader
 	{
 		SERVER_NAMES.clear();
 		parseDatapackFile("data/servername.xml");
-		LOGGER.info("Loaded " + SERVER_NAMES.size() + " server names.");
+		LOGGER.info(() -> "Loaded " + SERVER_NAMES.size() + " server names.");
 	}
 	
 	@Override
@@ -142,7 +142,7 @@ public class GameServerTable implements IXmlReader
 				final GameServerInfo existingServer = getRegisteredGameServerByHexId(hexId);
 				if (existingServer != null)
 				{
-					LOGGER.warning("Skipped duplicate gameserver registration for server id " + id + " because hexid is already assigned to server id " + existingServer.getId() + ".");
+					LOGGER.warning(() -> "Skipped duplicate gameserver registration for server id " + id + " because hexid is already assigned to server id " + existingServer.getId() + ".");
 					continue;
 				}
 				GAME_SERVER_TABLE.put(id, new GameServerInfo(id, hexId));

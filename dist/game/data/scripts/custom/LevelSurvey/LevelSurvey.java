@@ -74,7 +74,7 @@ public class LevelSurvey extends Quest implements IXmlReader
 		
 		if (SYSTEM_ENABLED)
 		{
-			LOGGER.info("Level Survey System loaded with " + LEVEL_REWARDS.size() + " level rewards.");
+			LOGGER.info(() -> "Level Survey System loaded with " + LEVEL_REWARDS.size() + " level rewards.");
 		}
 		else
 		{

@@ -1774,7 +1774,7 @@ public class Config
 			}
 			catch (NumberFormatException _)
 			{
-				LOGGER.log(Level.WARNING, () -> "Wrong config protocol version: " + protocol + ". Skipped.");
+				LOGGER.warning(() -> "Wrong config protocol version: " + protocol + ". Skipped.");
 			}
 		}
 		SERVER_LIST_TYPE = getServerTypeId(serverConfig.getString("ServerListType", "Free").split(","));
@@ -2247,7 +2247,7 @@ public class Config
 				final String[] itemSplit = item.split(",");
 				if (itemSplit.length != 2)
 				{
-					LOGGER.warning(StringUtil.concat("Config.load(): invalid config property -> DropAmountMultiplierByItemId \"", item, "\""));
+					LOGGER.warning(() -> StringUtil.concat("Config.load(): invalid config property -> DropAmountMultiplierByItemId \"", item, "\""));
 				}
 				else
 				{
@@ -2274,7 +2274,7 @@ public class Config
 				final String[] itemSplit = item.split(",");
 				if (itemSplit.length != 2)
 				{
-					LOGGER.warning(StringUtil.concat("Config.load(): invalid config property -> DropChanceMultiplierByItemId \"", item, "\""));
+					LOGGER.warning(() -> StringUtil.concat("Config.load(): invalid config property -> DropChanceMultiplierByItemId \"", item, "\""));
 				}
 				else
 				{
@@ -2528,7 +2528,7 @@ public class Config
 			final String[] propSplit = prop.split(",");
 			if (propSplit.length != 2)
 			{
-				LOGGER.warning(StringUtil.concat("[CustomMinionsRespawnTime]: invalid config property -> CustomMinionsRespawnTime \"", prop, "\""));
+				LOGGER.warning(() -> StringUtil.concat("[CustomMinionsRespawnTime]: invalid config property -> CustomMinionsRespawnTime \"", prop, "\""));
 			}
 			try
 			{
@@ -2831,7 +2831,7 @@ public class Config
 				final String[] skillSplit = skill.split(",");
 				if (skillSplit.length != 2)
 				{
-					LOGGER.warning("[SkillDurationList]: invalid config property -> SkillDurationList " + skill);
+					LOGGER.warning(() -> "[SkillDurationList]: invalid config property -> SkillDurationList " + skill);
 				}
 				else
 				{
@@ -2859,7 +2859,7 @@ public class Config
 				final String[] skillSplit = skill.split(",");
 				if (skillSplit.length != 2)
 				{
-					LOGGER.warning(StringUtil.concat("[SkillReuseList]: invalid config property -> SkillReuseList \"", skill, "\""));
+					LOGGER.warning(() -> StringUtil.concat("[SkillReuseList]: invalid config property -> SkillReuseList \"", skill, "\""));
 				}
 				else
 				{
@@ -3151,7 +3151,7 @@ public class Config
 		ALT_CLAN_LEADER_DATE_CHANGE = clanDefinitions.getInt("AltClanLeaderDateChange", 3);
 		if ((ALT_CLAN_LEADER_DATE_CHANGE < 1) || (ALT_CLAN_LEADER_DATE_CHANGE > 7))
 		{
-			LOGGER.log(Level.WARNING, () -> "Wrong value specified for AltClanLeaderDateChange: " + ALT_CLAN_LEADER_DATE_CHANGE);
+			LOGGER.warning(() -> "Wrong value specified for AltClanLeaderDateChange: " + ALT_CLAN_LEADER_DATE_CHANGE);
 			ALT_CLAN_LEADER_DATE_CHANGE = 3;
 		}
 		ALT_CLAN_LEADER_HOUR_CHANGE = clanDefinitions.getString("AltClanLeaderHourChange", "00:00:00");
@@ -3292,7 +3292,7 @@ public class Config
 				final String[] itemSplit = item.split(",");
 				if (itemSplit.length != 2)
 				{
-					LOGGER.warning("Config.load(): invalid config property -> PremiumRateDropChanceByItemId \"" + item + "\"");
+					LOGGER.warning(() -> "Config.load(): invalid config property -> PremiumRateDropChanceByItemId \"" + item + "\"");
 				}
 				else
 				{
@@ -3319,7 +3319,7 @@ public class Config
 				final String[] itemSplit = item.split(",");
 				if (itemSplit.length != 2)
 				{
-					LOGGER.warning("Config.load(): invalid config property -> PremiumRateDropAmountByItemId \"" + item + "\"");
+					LOGGER.warning(() -> "Config.load(): invalid config property -> PremiumRateDropAmountByItemId \"" + item + "\"");
 				}
 				else
 				{
@@ -3512,7 +3512,7 @@ public class Config
 		}
 		if (!MULTILANG_ALLOWED.contains(MULTILANG_DEFAULT))
 		{
-			LOGGER.warning("MultiLang[Config.load()]: default language: " + MULTILANG_DEFAULT + " is not in allowed list !");
+			LOGGER.warning(() -> "MultiLang[Config.load()]: default language: " + MULTILANG_DEFAULT + " is not in allowed list !");
 		}
 		
 		RESTORE_HTML_BY_DEFAULT = UserPanel.getBoolean("RestoreHtmlByDefault", true);
@@ -3590,7 +3590,7 @@ public class Config
 		try
 		{
 			FILTER_LIST = Files.lines(Paths.get(CHAT_FILTER_FILE), StandardCharsets.UTF_8).map(String::trim).filter(line -> (!line.isEmpty() && (line.charAt(0) != '#'))).collect(Collectors.toList());
-			LOGGER.info("Loaded " + FILTER_LIST.size() + " Filter Words.");
+			LOGGER.info(() -> "Loaded " + FILTER_LIST.size() + " Filter Words.");
 		}
 		catch (IOException e)
 		{
@@ -3617,7 +3617,7 @@ public class Config
 			final String[] entrySplit = entry.split(",");
 			if (entrySplit.length != 2)
 			{
-				LOGGER.warning(StringUtil.concat("DualboxCheck[Config.load()]: invalid config property -> DualboxCheckWhitelist \"", entry, "\""));
+				LOGGER.warning(() -> StringUtil.concat("DualboxCheck[Config.load()]: invalid config property -> DualboxCheckWhitelist \"", entry, "\""));
 			}
 			else
 			{
@@ -4327,7 +4327,7 @@ public class Config
 						{
 							_subnets.add(subnet);
 							_hosts.add(hostAddress);
-							LOGGER.info("Network Config: Adding new subnet: " + subnet + " address: " + hostAddress);
+							LOGGER.info(() -> "Network Config: Adding new subnet: " + subnet + " address: " + hostAddress);
 						}
 					}
 				}

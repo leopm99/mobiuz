@@ -929,7 +929,7 @@ public class PhantomEquipment
 			{
 				if (REPORTED_MISSING_ITEMS.add(itemId))
 				{
-					LOGGER.warning("Phantom kit item does not exist and will be skipped. Item ID: " + itemId);
+					LOGGER.warning(() -> "Phantom kit item does not exist and will be skipped. Item ID: " + itemId);
 				}
 				continue;
 			}

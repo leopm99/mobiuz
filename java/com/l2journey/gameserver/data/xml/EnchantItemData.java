@@ -20,7 +20,6 @@ import java.io.File;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
@@ -51,8 +50,8 @@ public class EnchantItemData implements IXmlReader
 		_scrolls.clear();
 		_supports.clear();
 		parseDatapackFile("data/EnchantItemData.xml");
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _scrolls.size() + " enchant scrolls.");
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _supports.size() + " support items.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _scrolls.size() + " enchant scrolls.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _supports.size() + " support items.");
 	}
 	
 	@Override
@@ -92,11 +91,11 @@ public class EnchantItemData implements IXmlReader
 						}
 						catch (NullPointerException _)
 						{
-							LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": Unexistent enchant scroll: " + scrollSet.getString("id") + " defined in enchant data!");
+							LOGGER.warning(() -> getClass().getSimpleName() + ": Unexistent enchant scroll: " + scrollSet.getString("id") + " defined in enchant data!");
 						}
 						catch (IllegalAccessError _)
 						{
-							LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": Wrong enchant scroll item type: " + scrollSet.getString("id") + " defined in enchant data!");
+							LOGGER.warning(() -> getClass().getSimpleName() + ": Wrong enchant scroll item type: " + scrollSet.getString("id") + " defined in enchant data!");
 						}
 					}
 					else if ("support".equalsIgnoreCase(d.getNodeName()))
@@ -117,11 +116,11 @@ public class EnchantItemData implements IXmlReader
 						}
 						catch (NullPointerException _)
 						{
-							LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": Unexistent enchant support item: " + supportSet.getString("id") + " defined in enchant data!");
+							LOGGER.warning(() -> getClass().getSimpleName() + ": Unexistent enchant support item: " + supportSet.getString("id") + " defined in enchant data!");
 						}
 						catch (IllegalAccessError _)
 						{
-							LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": Wrong enchant support item type: " + supportSet.getString("id") + " defined in enchant data!");
+							LOGGER.warning(() -> getClass().getSimpleName() + ": Wrong enchant support item type: " + supportSet.getString("id") + " defined in enchant data!");
 						}
 					}
 				}

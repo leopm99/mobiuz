@@ -94,13 +94,13 @@ public class GameClient extends Client<com.l2journey.commons.network.Connection<
 	@Override
 	public void onConnected()
 	{
-		LOGGER_ACCOUNTING.finer("Client connected: " + _ip);
+		LOGGER_ACCOUNTING.finer(() -> "Client connected: " + _ip);
 	}
 	
 	@Override
 	public void onDisconnection()
 	{
-		LOGGER_ACCOUNTING.finer("Client disconnected: " + this);
+		LOGGER_ACCOUNTING.finer(() -> "Client disconnected: " + this);
 		LoginServerThread.getInstance().sendLogout(_accountName);
 		if ((_player == null) || !_player.isInOfflineMode())
 		{
@@ -225,7 +225,7 @@ public class GameClient extends Client<com.l2journey.commons.network.Connection<
 		// Packet should never be null.
 		if (packet == null)
 		{
-			LOGGER.warning(TraceUtil.getStackTrace(new Exception()));
+			LOGGER.warning(() -> TraceUtil.getStackTrace(new Exception()));
 			return;
 		}
 		
@@ -310,7 +310,7 @@ public class GameClient extends Client<com.l2journey.commons.network.Connection<
 						}
 					}
 					
-					LOGGER_ACCOUNTING.info("Delete, " + objectId + ", " + this);
+					LOGGER_ACCOUNTING.info(() -> "Delete, " + objectId + ", " + this);
 				}
 			}
 			return answer;
@@ -341,7 +341,7 @@ public class GameClient extends Client<com.l2journey.commons.network.Connection<
 			LOGGER.log(Level.SEVERE, "Error restoring character.", e);
 		}
 		
-		LOGGER_ACCOUNTING.info("Restore, " + objectId + ", " + this);
+		LOGGER_ACCOUNTING.info(() -> "Restore, " + objectId + ", " + this);
 	}
 	
 	public static void deleteCharByObjId(int objectId)
@@ -556,7 +556,7 @@ public class GameClient extends Client<com.l2journey.commons.network.Connection<
 		}
 		else
 		{
-			LOGGER.severe("Could not restore in slot: " + characterSlot);
+			LOGGER.severe(() -> "Could not restore in slot: " + characterSlot);
 		}
 		
 		return player;
@@ -590,7 +590,7 @@ public class GameClient extends Client<com.l2journey.commons.network.Connection<
 		final CharSelectInfoPackage info = getCharSelection(characterSlot);
 		if (info == null)
 		{
-			LOGGER.warning(toString() + " tried to delete Character in slot " + characterSlot + " but no characters exits at that slot.");
+			LOGGER.warning(() -> toString() + " tried to delete Character in slot " + characterSlot + " but no characters exits at that slot.");
 			return -1;
 		}
 		return info.getObjectId();

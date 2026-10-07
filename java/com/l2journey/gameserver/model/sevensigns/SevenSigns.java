@@ -162,7 +162,7 @@ public class SevenSigns
 			}
 			else
 			{
-				LOGGER.info("SevenSigns: The " + getCabalName(getCabalHighestScore()) + " were victorious last week.");
+				LOGGER.info(() -> "SevenSigns: The " + getCabalName(getCabalHighestScore()) + " were victorious last week.");
 			}
 		}
 		else if (getCabalHighestScore() == CABAL_NULL)
@@ -171,7 +171,7 @@ public class SevenSigns
 		}
 		else
 		{
-			LOGGER.info("SevenSigns: The " + getCabalName(getCabalHighestScore()) + " are in the lead this week.");
+			LOGGER.info(() -> "SevenSigns: The " + getCabalName(getCabalHighestScore()) + " are in the lead this week.");
 		}
 		
 		long milliToChange = 0;
@@ -194,7 +194,7 @@ public class SevenSigns
 		final int numHours = (int) ((periodSec / 3600) % 24);
 		final int numDays = (int) (periodSec / 86400);
 		
-		LOGGER.info("SevenSigns: Next period begins in " + numDays + " days, " + numHours + " hours and " + numMins + " mins.");
+		LOGGER.info(() -> "SevenSigns: Next period begins in " + numDays + " days, " + numHours + " hours and " + numMins + " mins.");
 	}
 	
 	private boolean isNextPeriodChangeInPast()
@@ -1201,16 +1201,16 @@ public class SevenSigns
 			{
 				if (isSealValidationPeriod())
 				{
-					LOGGER.info("SevenSigns: The " + getCabalName(e.getValue()) + " have won the " + getSealName(e.getKey(), false) + ".");
+					LOGGER.info(() -> "SevenSigns: The " + getCabalName(e.getValue()) + " have won the " + getSealName(e.getKey(), false) + ".");
 				}
 				else
 				{
-					LOGGER.info("SevenSigns: The " + getSealName(e.getKey(), false) + " is currently owned by " + getCabalName(e.getValue()) + ".");
+					LOGGER.info(() -> "SevenSigns: The " + getSealName(e.getKey(), false) + " is currently owned by " + getCabalName(e.getValue()) + ".");
 				}
 			}
 			else
 			{
-				LOGGER.info("SevenSigns: The " + getSealName(e.getKey(), false) + " remains unclaimed.");
+				LOGGER.info(() -> "SevenSigns: The " + getSealName(e.getKey(), false) + " remains unclaimed.");
 			}
 		}
 	}
@@ -1526,7 +1526,7 @@ public class SevenSigns
 					giveCPMult(getSealOwner(SEAL_STRIFE));
 					// Send message that Seal Validation has begun.
 					sendMessageToAll(SystemMessageId.SEVEN_SIGNS_THE_SEAL_VALIDATION_PERIOD_HAS_BEGUN);
-					LOGGER.info("SevenSigns: The " + getCabalName(_previousWinner) + " have won the competition with " + getCurrentScore(_previousWinner) + " points!");
+					LOGGER.info(() -> "SevenSigns: The " + getCabalName(_previousWinner) + " have won the competition with " + getCurrentScore(_previousWinner) + " points!");
 					break;
 				}
 				case PERIOD_SEAL_VALIDATION: // Reset for New Cycle

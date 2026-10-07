@@ -615,7 +615,7 @@ public class SignsPriest extends Npc
 						}
 						else
 						{
-							LOGGER.warning("Problem with HTML text " + path);
+							LOGGER.warning(() -> "Problem with HTML text " + path);
 						}
 					}
 					break;
@@ -835,7 +835,7 @@ public class SignsPriest extends Npc
 					}
 					else
 					{
-						LOGGER.warning("Problem with HTML text " + SevenSigns.SEVEN_SIGNS_HTML_PATH + "signs_17.htm: " + path);
+						LOGGER.warning(() -> "Problem with HTML text " + SevenSigns.SEVEN_SIGNS_HTML_PATH + "signs_17.htm: " + path);
 					}
 					break;
 				}
