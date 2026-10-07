@@ -174,7 +174,7 @@ public class FortSiege implements Siegable
 				}
 				else
 				{
-					LOGGER.warning("Exception: ScheduleStartSiegeTask(): unknown siege time: " + _time);
+					LOGGER.warning(() -> "Exception: ScheduleStartSiegeTask(): unknown siege time: " + _time);
 				}
 			}
 			catch (Exception e)

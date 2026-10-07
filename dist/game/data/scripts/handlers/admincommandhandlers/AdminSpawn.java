@@ -541,17 +541,17 @@ public class AdminSpawn implements IAdminCommandHandler
 			default:
 			case 0:
 			{
-				LOGGER.info("('',1," + i + "," + x + "," + y + "," + z + ",0,0," + h + ",60,0,0),");
+				LOGGER.info(() -> "('',1," + i + "," + x + "," + y + "," + z + ",0,0," + h + ",60,0,0),");
 				break;
 			}
 			case 1:
 			{
-				LOGGER.info("<spawn npcId=\"" + i + "\" x=\"" + x + "\" y=\"" + y + "\" z=\"" + z + "\" heading=\"" + h + "\" respawn=\"0\" />");
+				LOGGER.info(() -> "<spawn npcId=\"" + i + "\" x=\"" + x + "\" y=\"" + y + "\" z=\"" + z + "\" heading=\"" + h + "\" respawn=\"0\" />");
 				break;
 			}
 			case 2:
 			{
-				LOGGER.info("{ " + i + ", " + x + ", " + y + ", " + z + ", " + h + " },");
+				LOGGER.info(() -> "{ " + i + ", " + x + ", " + y + ", " + z + ", " + h + " },");
 				break;
 			}
 		}

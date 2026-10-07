@@ -144,7 +144,7 @@ public class Rabbits extends Event
 			final SchedulingPattern schedulingPattern = new SchedulingPattern(params.getString("SchedulingPattern"));
 			final long delay = schedulingPattern.getDelayToNextFromNow();
 			getTimers().addTimer(event, params, delay + 5000, null, null); // Added 5 seconds to prevent overlapping.
-			LOGGER.info("Event " + params.getString("Name") + " scheduled at " + TimeUtil.getDateTimeString(System.currentTimeMillis() + delay));
+			LOGGER.info(() -> "Event " + params.getString("Name") + " scheduled at " + TimeUtil.getDateTimeString(System.currentTimeMillis() + delay));
 		}
 	}
 	

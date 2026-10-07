@@ -133,7 +133,7 @@ public class DeadlockWatcher extends Thread
 			final String lockName = info.getLockName();
 			if (lockName != null)
 			{
-				LOGGER.warning("Waiting for lock: " + lockName);
+				LOGGER.warning(() -> "Waiting for lock: " + lockName);
 				LOGGER.warning("Lock owner: " + info.getLockOwnerName() + " (ID: " + info.getLockOwnerId() + ")");
 			}
 			
@@ -185,7 +185,7 @@ public class DeadlockWatcher extends Thread
 				final String lockName = info.getLockName();
 				if (lockName != null)
 				{
-					LOGGER.warning("\tWaiting for: " + lockName);
+					LOGGER.warning(() -> "\tWaiting for: " + lockName);
 				}
 				
 				final StackTraceElement[] stack = info.getStackTrace();

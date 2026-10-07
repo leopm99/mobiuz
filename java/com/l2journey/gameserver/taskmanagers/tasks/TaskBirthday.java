@@ -62,7 +62,7 @@ public class TaskBirthday extends PersistentTask
 	@Override
 	public void onTimeElapsed(ExecutedTask task)
 	{
-		LOGGER.info("BirthdayManager: " + giveBirthdayGifts(task.getLastActivation()) + " gifts sent.");
+		LOGGER.info(() -> "BirthdayManager: " + giveBirthdayGifts(task.getLastActivation()) + " gifts sent.");
 	}
 	
 	private int giveBirthdayGifts(long lastActivation)

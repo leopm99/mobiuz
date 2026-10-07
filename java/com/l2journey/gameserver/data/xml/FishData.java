@@ -59,7 +59,7 @@ public class FishData implements IXmlReader
 		_fishNormal.clear();
 		_fishHard.clear();
 		parseDatapackFile("data/stats/fishing/fishes.xml");
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + (_fishEasy.size() + _fishNormal.size() + _fishHard.size()) + " fishes.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + (_fishEasy.size() + _fishNormal.size() + _fishHard.size()) + " fishes.");
 	}
 	
 	@Override
@@ -152,7 +152,7 @@ public class FishData implements IXmlReader
 		
 		if (result.isEmpty())
 		{
-			LOGGER.warning(getClass().getSimpleName() + ": Cannot find any fish for level: " + level + " group: " + group + " and grade: " + grade + "!");
+			LOGGER.warning(() -> getClass().getSimpleName() + ": Cannot find any fish for level: " + level + " group: " + group + " and grade: " + grade + "!");
 		}
 		return result;
 	}

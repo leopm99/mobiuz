@@ -429,7 +429,7 @@ public class MonsterRaceManager
 		{
 			LOGGER.log(Level.WARNING, e, () -> "MonsterRace: Can't load history: " + e.getMessage());
 		}
-		LOGGER.info("MonsterRace: loaded " + _history.size() + " records, currently on race #" + _raceNumber);
+		LOGGER.info(() -> "MonsterRace: loaded " + _history.size() + " records, currently on race #" + _raceNumber);
 	}
 	
 	/**

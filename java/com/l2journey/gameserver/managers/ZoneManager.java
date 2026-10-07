@@ -124,7 +124,7 @@ public class ZoneManager implements IXmlReader
 				_zoneRegions[x][y] = new ZoneRegion(x, y);
 			}
 		}
-		LOGGER.info(getClass().getSimpleName() + " " + _zoneRegions.length + " by " + _zoneRegions[0].length + " Zone Region Grid set up.");
+		LOGGER.info(() -> getClass().getSimpleName() + " " + _zoneRegions.length + " by " + _zoneRegions[0].length + " Zone Region Grid set up.");
 		
 		load();
 	}
@@ -465,7 +465,7 @@ public class ZoneManager implements IXmlReader
 		_classZones.put(WaterZone.class, new ConcurrentHashMap<>());
 		_spawnTerritories.clear();
 		parseDatapackDirectory("data/zones", false);
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _classZones.size() + " zone classes and " + getSize() + " zones.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _classZones.size() + " zone classes and " + getSize() + " zones.");
 		final OptionalInt maxId = _classZones.values().stream().flatMap(map -> map.keySet().stream()).mapToInt(Integer.class::cast).filter(value -> value < 300000).max();
 		LOGGER.info(getClass().getSimpleName() + ": Last static id " + maxId.getAsInt() + ".");
 	}

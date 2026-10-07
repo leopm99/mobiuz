@@ -68,7 +68,7 @@ public class ProtocolVersion extends ClientPacket
 		}
 		else if (!Config.PROTOCOL_LIST.contains(_version))
 		{
-			LOGGER_ACCOUNTING.warning("Wrong protocol version " + _version + ", " + client);
+			LOGGER_ACCOUNTING.warning(() -> "Wrong protocol version " + _version + ", " + client);
 			client.setProtocolOk(false);
 			client.close(new KeyPacket(client.enableCrypt(), 0));
 		}

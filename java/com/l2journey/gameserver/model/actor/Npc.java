@@ -696,7 +696,7 @@ public class Npc extends Creature
 				}
 				else
 				{
-					LOGGER.info(getClass().getSimpleName() + ": Unknown NPC bypass: \"" + command + "\" NpcId: " + getId());
+					LOGGER.info(() -> getClass().getSimpleName() + ": Unknown NPC bypass: \"" + command + "\" NpcId: " + getId());
 				}
 			}
 		}
@@ -1451,7 +1451,7 @@ public class Npc extends Creature
 		final NpcHtmlMessage noTeachMsg = new NpcHtmlMessage(getObjectId());
 		if (html == null)
 		{
-			LOGGER.warning("Npc " + npcId + " missing noTeach html!");
+			LOGGER.warning(() -> "Npc " + npcId + " missing noTeach html!");
 			noTeachMsg.setHtml("<html noscrollbar><body><br>I cannot teach you any skills.<br>You must find your current class teachers.</body></html>");
 		}
 		else
@@ -1745,7 +1745,7 @@ public class Npc extends Creature
 		{
 			if (ItemData.getInstance().getTemplate(itemId) == null)
 			{
-				LOGGER.log(Level.SEVERE, () -> "Item doesn't exist so cannot be dropped. Item ID: " + itemId + " Quest: " + getName());
+				LOGGER.severe(() -> "Item doesn't exist so cannot be dropped. Item ID: " + itemId + " Quest: " + getName());
 				return null;
 			}
 			

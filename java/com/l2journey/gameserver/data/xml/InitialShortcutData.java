@@ -66,9 +66,9 @@ public class InitialShortcutData implements IXmlReader
 		
 		parseDatapackFile("data/stats/initialShortcuts.xml");
 		
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _initialGlobalShortcutList.size() + " initial global shortcut data.");
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _initialShortcutData.size() + " initial shortcut data.");
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _macroPresets.size() + " macro presets.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _initialGlobalShortcutList.size() + " initial global shortcut data.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _initialShortcutData.size() + " initial shortcut data.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _macroPresets.size() + " macro presets.");
 	}
 	
 	@Override

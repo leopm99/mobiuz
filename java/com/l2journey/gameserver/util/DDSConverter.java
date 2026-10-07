@@ -114,7 +114,7 @@ public class DDSConverter
 		if (file == null)
 		{
 			String s = "nullValue.FileIsNull";
-			LOGGER.severe(s + " " + new IllegalArgumentException(s));
+			LOGGER.severe(() -> s + " " + new IllegalArgumentException(s));
 			new IllegalArgumentException(s);
 			return null;
 		}
@@ -122,7 +122,7 @@ public class DDSConverter
 		if (!file.exists() || !file.canRead())
 		{
 			String s1 = "DDSConverter.NoFileOrNoPermission";
-			LOGGER.severe(s1 + " " + new IllegalArgumentException(s1));
+			LOGGER.severe(() -> s1 + " " + new IllegalArgumentException(s1));
 			new IllegalArgumentException(s1);
 			return null;
 		}

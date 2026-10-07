@@ -120,7 +120,7 @@ public class CrestTable
 			LOGGER.log(Level.WARNING, "There was an error while loading crests from database:", e);
 		}
 		
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _crests.size() + " Crests.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _crests.size() + " Crests.");
 		
 		for (Clan clan : ClanTable.getInstance().getClans())
 		{

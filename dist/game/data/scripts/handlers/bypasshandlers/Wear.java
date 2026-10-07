@@ -80,7 +80,7 @@ public class Wear implements IBypassHandler
 		final BuyListHolder buyList = BuyListData.getInstance().getBuyList(value);
 		if (buyList == null)
 		{
-			LOGGER.warning("BuyList not found! BuyListId:" + value);
+			LOGGER.warning(() -> "BuyList not found! BuyListId:" + value);
 			player.sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}

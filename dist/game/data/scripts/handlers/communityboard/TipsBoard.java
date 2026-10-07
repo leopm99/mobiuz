@@ -123,7 +123,7 @@ public class TipsBoard implements IXmlReader
 			_activeTipHtml = renderTip(active);
 		}
 		
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _tips.size() + " community board tips.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _tips.size() + " community board tips.");
 	}
 	
 	@Override

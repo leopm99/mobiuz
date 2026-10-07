@@ -159,7 +159,7 @@ public class JavaExecutionContext
 				
 				if (!found)
 				{
-					LOGGER.severe("Compilation successful, but class corresponding to " + sourcePath.toString() + " not found!");
+					LOGGER.severe(() -> "Compilation successful, but class corresponding to " + sourcePath.toString() + " not found!");
 				}
 			}
 			

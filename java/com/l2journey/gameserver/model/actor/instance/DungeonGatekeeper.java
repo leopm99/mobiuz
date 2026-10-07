@@ -180,7 +180,7 @@ public class DungeonGatekeeper extends Npc
 		}
 		else
 		{
-			LOGGER.warning("No teleport destination with id:" + value);
+			LOGGER.warning(() -> "No teleport destination with id:" + value);
 		}
 		
 		player.sendPacket(ActionFailed.STATIC_PACKET);

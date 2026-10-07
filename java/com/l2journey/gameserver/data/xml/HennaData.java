@@ -59,7 +59,7 @@ public class HennaData implements IXmlReader
 	{
 		_hennaList.clear();
 		parseDatapackFile("data/stats/hennaList.xml");
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _hennaList.size() + " henna data.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _hennaList.size() + " henna data.");
 	}
 	
 	@Override

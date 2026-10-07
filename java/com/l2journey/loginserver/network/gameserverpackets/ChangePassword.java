@@ -113,7 +113,7 @@ public class ChangePassword extends BaseReadablePacket
 						passUpdated = ps.executeUpdate();
 					}
 					
-					LOGGER.info("The password for account " + accountName + " has been changed from " + curpassEnc + " to " + Base64.getEncoder().encodeToString(password));
+					LOGGER.info(() -> "The password for account " + accountName + " has been changed from " + curpassEnc + " to " + Base64.getEncoder().encodeToString(password));
 					if (passUpdated > 0)
 					{
 						gst.changePasswordResponse(characterName, "You have successfully changed your password!");

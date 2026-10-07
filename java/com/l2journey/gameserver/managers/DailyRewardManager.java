@@ -109,7 +109,7 @@ public class DailyRewardManager implements IXmlReader
 	{
 		_rewards.clear();
 		parseDatapackFile("data/DailyRewards.xml");
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _rewards.size() + " daily rewards.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _rewards.size() + " daily rewards.");
 	}
 	
 	@Override
@@ -186,7 +186,7 @@ public class DailyRewardManager implements IXmlReader
 				_rewardedPlayers.put(accountName, lastRewardTime);
 				_playerDays.put(accountName, currentDay);
 			}
-			LOGGER.info(getClass().getSimpleName() + ": Loaded " + _rewardedPlayers.size() + " player reward records.");
+			LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _rewardedPlayers.size() + " player reward records.");
 		}
 		catch (SQLException e)
 		{
@@ -211,7 +211,7 @@ public class DailyRewardManager implements IXmlReader
 		
 		final Calendar cal = Calendar.getInstance();
 		cal.setTimeInMillis(nextReset);
-		LOGGER.info(getClass().getSimpleName() + ": Next daily reset scheduled for " + String.format("%02d:%02d", cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE)));
+		LOGGER.info(() -> getClass().getSimpleName() + ": Next daily reset scheduled for " + String.format("%02d:%02d", cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE)));
 	}
 	
 	/**
@@ -263,7 +263,7 @@ public class DailyRewardManager implements IXmlReader
 			PreparedStatement ps = con.prepareStatement(RESET_ALL_DAYS))
 		{
 			final int updated = ps.executeUpdate();
-			LOGGER.info(getClass().getSimpleName() + ": Reset " + updated + " player records to Day 1.");
+			LOGGER.info(() -> getClass().getSimpleName() + ": Reset " + updated + " player records to Day 1.");
 			
 			// Update in-memory data
 			for (String accountName : _playerDays.keySet())
@@ -391,7 +391,7 @@ public class DailyRewardManager implements IXmlReader
 		
 		if (reward == null)
 		{
-			LOGGER.warning(getClass().getSimpleName() + ": No reward found for day " + currentDay);
+			LOGGER.warning(() -> getClass().getSimpleName() + ": No reward found for day " + currentDay);
 			return false;
 		}
 		

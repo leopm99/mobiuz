@@ -195,7 +195,7 @@ public abstract class ZoneType extends ListenersContainer
 		}
 		else
 		{
-			LOGGER.info(getClass().getSimpleName() + ": Unknown parameter - " + name + " in zone: " + _id);
+			LOGGER.info(() -> getClass().getSimpleName() + ": Unknown parameter - " + name + " in zone: " + _id);
 		}
 	}
 	

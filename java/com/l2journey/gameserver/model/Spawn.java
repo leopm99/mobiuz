@@ -399,7 +399,7 @@ public class Spawn extends Location
 		}
 		else if ((getX() == 0) && (getY() == 0))
 		{
-			LOGGER.warning("NPC " + npc + " doesn't have spawn location!");
+			LOGGER.warning(() -> "NPC " + npc + " doesn't have spawn location!");
 			return null;
 		}
 		else
@@ -596,7 +596,7 @@ public class Spawn extends Location
 		{
 			if (delay < 0)
 			{
-				LOGGER.warning("respawn delay is negative for spawn:" + this);
+				LOGGER.warning(() -> "respawn delay is negative for spawn:" + this);
 			}
 			
 			final int minDelay = delay - randomInterval;

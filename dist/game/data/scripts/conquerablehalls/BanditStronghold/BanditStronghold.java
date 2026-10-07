@@ -668,12 +668,12 @@ public class BanditStronghold extends ClanHallSiegeEngine
 			final NpcTemplate flagTemplate = NpcData.getInstance().getTemplate(data.flag);
 			if (flagTemplate == null)
 			{
-				LOGGER.warning(getClass().getSimpleName() + ": Flag NpcTemplate[" + data.flag + "] does not exist!");
+				LOGGER.warning(() -> getClass().getSimpleName() + ": Flag NpcTemplate[" + data.flag + "] does not exist!");
 				throw new NullPointerException();
 			}
 			else if (mahumTemplate == null)
 			{
-				LOGGER.warning(getClass().getSimpleName() + ": Ally NpcTemplate[" + data.npc + "] does not exist!");
+				LOGGER.warning(() -> getClass().getSimpleName() + ": Ally NpcTemplate[" + data.npc + "] does not exist!");
 				throw new NullPointerException();
 			}
 			
@@ -879,7 +879,7 @@ public class BanditStronghold extends ClanHallSiegeEngine
 				final int clanId = rset.getInt("clan_id");
 				if (ClanTable.getInstance().getClan(clanId) == null)
 				{
-					LOGGER.warning(getClass().getSimpleName() + ": Loaded an unexistent clan as attacker! Clan Id: " + clanId);
+					LOGGER.warning(() -> getClass().getSimpleName() + ": Loaded an unexistent clan as attacker! Clan Id: " + clanId);
 					continue;
 				}
 				
@@ -911,7 +911,7 @@ public class BanditStronghold extends ClanHallSiegeEngine
 			final ArrayList<Integer> listInstance = _data.get(clanId).players;
 			if (listInstance == null)
 			{
-				LOGGER.warning(getClass().getSimpleName() + ": Tried to load unregistered clan: " + clanId + "[clan Id]");
+				LOGGER.warning(() -> getClass().getSimpleName() + ": Tried to load unregistered clan: " + clanId + "[clan Id]");
 				return;
 			}
 			

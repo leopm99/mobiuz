@@ -66,14 +66,14 @@ public class PetitionManager
 	{
 		final int numPetitions = _pendingPetitions.size();
 		_completedPetitions.clear();
-		LOGGER.info(getClass().getSimpleName() + ": Completed petition data cleared. " + numPetitions + " petitions removed.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Completed petition data cleared. " + numPetitions + " petitions removed.");
 	}
 	
 	public void clearPendingPetitions()
 	{
 		final int numPetitions = _pendingPetitions.size();
 		_pendingPetitions.clear();
-		LOGGER.info(getClass().getSimpleName() + ": Pending petition queue cleared. " + numPetitions + " petitions removed.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Pending petition queue cleared. " + numPetitions + " petitions removed.");
 	}
 	
 	public boolean acceptPetition(Player respondingAdmin, int petitionId)

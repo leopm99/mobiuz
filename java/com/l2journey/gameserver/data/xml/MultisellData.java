@@ -73,7 +73,7 @@ public class MultisellData implements IXmlReader
 		}
 		
 		verify();
-		LOGGER.log(Level.INFO, () -> getClass().getSimpleName() + ": Loaded " + _entries.size() + " multisell lists.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _entries.size() + " multisell lists.");
 	}
 	
 	@Override
@@ -250,7 +250,7 @@ public class MultisellData implements IXmlReader
 		final ListContainer template = _entries.get(listId);
 		if (template == null)
 		{
-			LOGGER.warning(getClass().getSimpleName() + ": can't find list id: " + listId + " requested by player: " + player.getName() + ", npcId:" + (npc != null ? npc.getId() : 0));
+			LOGGER.warning(() -> getClass().getSimpleName() + ": can't find list id: " + listId + " requested by player: " + player.getName() + ", npcId:" + (npc != null ? npc.getId() : 0));
 			return;
 		}
 		
@@ -262,7 +262,7 @@ public class MultisellData implements IXmlReader
 			}
 			else
 			{
-				LOGGER.warning(getClass().getSimpleName() + ": " + player + " attempted to open multisell " + listId + " from npc " + npc + " which is not allowed!");
+				LOGGER.warning(() -> getClass().getSimpleName() + ": " + player + " attempted to open multisell " + listId + " from npc " + npc + " which is not allowed!");
 				return;
 			}
 		}

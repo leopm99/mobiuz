@@ -644,7 +644,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 		final ItemTemplate chestTemplate = itemData.getTemplate(dress.getChest());
 		if (chestTemplate == null)
 		{
-			LOGGER.warning("The DressMe Armor Set id '" + armorSetId + "' is mapped to an invalid chest piece id: " + dress.getChest() + ".");
+			LOGGER.warning(() -> "The DressMe Armor Set id '" + armorSetId + "' is mapped to an invalid chest piece id: " + dress.getChest() + ".");
 			player.sendMessage("Error: The selected armor is invalid!");
 			return false;
 		}

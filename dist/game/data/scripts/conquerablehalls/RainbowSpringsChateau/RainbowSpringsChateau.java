@@ -868,7 +868,7 @@ public class RainbowSpringsChateau extends ClanHallSiegeEngine
 	{
 		if ((arena < 0) || (arena > 3))
 		{
-			LOGGER.warning(getClass().getSimpleName() + ": Wrong arena id passed: " + arena);
+			LOGGER.warning(() -> getClass().getSimpleName() + ": Wrong arena id passed: " + arena);
 			return;
 		}
 		

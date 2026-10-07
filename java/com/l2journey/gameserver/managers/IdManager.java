@@ -85,7 +85,7 @@ public class IdManager
 			LOGGER.severe("IdManager: Could not be initialized properly: " + e.getMessage());
 		}
 		
-		LOGGER.info("IdManager: " + _freeIds.size() + " ids available.");
+		LOGGER.info(() -> "IdManager: " + _freeIds.size() + " ids available.");
 	}
 	
 	/**
@@ -103,7 +103,7 @@ public class IdManager
 			final BitSet newBitSet = new BitSet(newSize);
 			newBitSet.or(_freeIds);
 			_freeIds = newBitSet;
-			LOGGER.info("IdManager: Increased BitSet capacity to " + newSize);
+			LOGGER.info(() -> "IdManager: Increased BitSet capacity to " + newSize);
 		}
 	}
 	
@@ -173,7 +173,7 @@ public class IdManager
 			}
 			else
 			{
-				LOGGER.warning("IdManager: Release objectID " + objectId + " failed (< " + Config.FIRST_OBJECT_ID + ")");
+				LOGGER.warning(() -> "IdManager: Release objectID " + objectId + " failed (< " + Config.FIRST_OBJECT_ID + ")");
 			}
 		}
 		finally

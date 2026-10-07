@@ -144,7 +144,7 @@ public class DimensionalRiftManager
 			final File file = new File(Config.DATAPACK_ROOT, "data/DimensionalRift.xml");
 			if (!file.exists())
 			{
-				LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": Couldn't find data/" + file.getName());
+				LOGGER.warning(() -> getClass().getSimpleName() + ": Couldn't find data/" + file.getName());
 				return;
 			}
 			
@@ -454,7 +454,7 @@ public class DimensionalRiftManager
 		showHtmlFile(player, "data/html/seven_signs/rift/Cheater.htm", npc);
 		if (!player.isGM())
 		{
-			LOGGER.warning(player + " was cheating in dimension rift area!");
+			LOGGER.warning(() -> player + " was cheating in dimension rift area!");
 			PunishmentManager.handleIllegalPlayerAction(player, "Warning!! Character " + player.getName() + " tried to cheat in dimensional rift.", Config.DEFAULT_PUNISH);
 		}
 	}

@@ -109,7 +109,7 @@ public class SoIManager
 		setEkimusCount(0);
 		setHoEDefCount(0);
 		checkStageAndSpawn();
-		LOGGER.info("Seed of Infinity Manager: Set to stage " + stage);
+		LOGGER.info(() -> "Seed of Infinity Manager: Set to stage " + stage);
 	}
 	
 	public static boolean isSeedOpen()
@@ -126,7 +126,7 @@ public class SoIManager
 		
 		final long closeTime = System.currentTimeMillis() + time;
 		GlobalVariablesManager.getInstance().set("SoI_opened", closeTime / 1000);
-		LOGGER.info("Seed of Infinity Manager: Opening the seed until " + TimeUtil.getDateTimeString(time));
+		LOGGER.info(() -> "Seed of Infinity Manager: Opening the seed until " + TimeUtil.getDateTimeString(time));
 		spawnOpenedSeed();
 		DoorData.getInstance().getDoor(14240102).openMe();
 		

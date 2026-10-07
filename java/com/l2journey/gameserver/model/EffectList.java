@@ -1413,7 +1413,7 @@ public class EffectList
 			// Passive effects don't need stack type!
 			if (!skill.getAbnormalType().isNone())
 			{
-				LOGGER.warning("Passive " + skill + " with abnormal type: " + skill.getAbnormalType() + "!");
+				LOGGER.warning(() -> "Passive " + skill + " with abnormal type: " + skill.getAbnormalType() + "!");
 			}
 			
 			// Check for passive skill conditions.

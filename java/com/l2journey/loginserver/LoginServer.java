@@ -104,7 +104,7 @@ public class LoginServer
 		
 		if (Config.LOGIN_SERVER_SCHEDULE_RESTART)
 		{
-			LOGGER.info("Scheduled LS restart after " + Config.LOGIN_SERVER_SCHEDULE_RESTART_TIME + " hours.");
+			LOGGER.info(() -> "Scheduled LS restart after " + Config.LOGIN_SERVER_SCHEDULE_RESTART_TIME + " hours.");
 			ThreadPool.schedule(() -> shutdown(true), Config.LOGIN_SERVER_SCHEDULE_RESTART_TIME * 3600000);
 		}
 		
@@ -112,7 +112,7 @@ public class LoginServer
 		{
 			_gameServerListener = new GameServerListener();
 			_gameServerListener.start();
-			LOGGER.info("Listening for GameServers on " + Config.GAME_SERVER_LOGIN_HOST + ":" + Config.GAME_SERVER_LOGIN_PORT);
+			LOGGER.info(() -> "Listening for GameServers on " + Config.GAME_SERVER_LOGIN_HOST + ":" + Config.GAME_SERVER_LOGIN_PORT);
 		}
 		catch (IOException e)
 		{
@@ -121,7 +121,7 @@ public class LoginServer
 		}
 		
 		new ConnectionManager<>(new InetSocketAddress(Config.LOGIN_BIND_ADDRESS, Config.PORT_LOGIN), LoginClient::new, new LoginPacketHandler());
-		LOGGER.info(getClass().getSimpleName() + ": is now listening on: " + Config.LOGIN_BIND_ADDRESS + ":" + Config.PORT_LOGIN);
+		LOGGER.info(() -> getClass().getSimpleName() + ": is now listening on: " + Config.LOGIN_BIND_ADDRESS + ":" + Config.PORT_LOGIN);
 	}
 	
 	public GameServerListener getGameServerListener()
@@ -173,7 +173,7 @@ public class LoginServer
 			{
 				LOGGER.log(Level.WARNING, e, () -> "Error while reading the bans file (" + bannedFile.getName() + "). Details: " + e.getMessage());
 			}
-			LOGGER.info("Loaded " + LoginController.getInstance().getBannedIps().size() + " IP Bans.");
+			LOGGER.info(() -> "Loaded " + LoginController.getInstance().getBannedIps().size() + " IP Bans.");
 		}
 		else
 		{

@@ -212,7 +212,7 @@ public class QueenAnt extends AbstractNpcAI implements IXmlReader
 	{
 		MINION_SPAWNS.clear();
 		parseDatapackFile("data/scripts/ai/bosses/QueenAnt/QueenAnt.xml");
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + MINION_SPAWNS.size() + " minion spawns.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + MINION_SPAWNS.size() + " minion spawns.");
 	}
 	
 	@Override
@@ -578,7 +578,7 @@ public class QueenAnt extends AbstractNpcAI implements IXmlReader
 			
 			// Next respawn time.
 			final long nextRespawnTime = System.currentTimeMillis() + respawnTime;
-			LOGGER.info("Queen Ant will respawn at: " + TimeUtil.getDateTimeString(nextRespawnTime));
+			LOGGER.info(() -> "Queen Ant will respawn at: " + TimeUtil.getDateTimeString(nextRespawnTime));
 			
 			startQuestTimer("queen_unlock", respawnTime, null, null);
 			cancelQuestTimer("action", npc, null);

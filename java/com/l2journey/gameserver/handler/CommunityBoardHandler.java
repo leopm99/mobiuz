@@ -126,7 +126,7 @@ public class CommunityBoardHandler implements IHandler<IParseBoardHandler, Strin
 		final IParseBoardHandler cb = getHandler(command);
 		if (cb == null)
 		{
-			LOG.warning(CommunityBoardHandler.class.getSimpleName() + ": Couldn't find parse handler for command " + command + "!");
+			LOG.warning(() -> CommunityBoardHandler.class.getSimpleName() + ": Couldn't find parse handler for command " + command + "!");
 			return;
 		}
 		

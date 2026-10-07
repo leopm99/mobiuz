@@ -92,7 +92,7 @@ public class UndergroundColiseumManager implements IXmlReader
 		
 		parseDatapackFile("data/UndergroundColiseum.xml");
 		
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _arenas.size() + " coliseum arenas.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _arenas.size() + " coliseum arenas.");
 		
 		if ((_periodStartTime < curerntTime) && (_periodEndTime > curerntTime))
 		{
@@ -102,7 +102,7 @@ public class UndergroundColiseumManager implements IXmlReader
 		{
 			final long nextTime = _periodStartTime - curerntTime;
 			_regTask = ThreadPool.schedule(new UCRegistrationTask(true), nextTime);
-			LOGGER.info(getClass().getSimpleName() + ": Starts at " + TimeUtil.getDateTimeString(_periodStartTime));
+			LOGGER.info(() -> getClass().getSimpleName() + ": Starts at " + TimeUtil.getDateTimeString(_periodStartTime));
 		}
 		
 		restoreBestTeams();
@@ -336,14 +336,14 @@ public class UndergroundColiseumManager implements IXmlReader
 		{
 			final long nextTime = _periodEndTime - System.currentTimeMillis();
 			_regTask = ThreadPool.schedule(new UCRegistrationTask(false), nextTime);
-			LOGGER.info(getClass().getSimpleName() + ": Ends at " + TimeUtil.getDateTimeString(_periodEndTime));
+			LOGGER.info(() -> getClass().getSimpleName() + ": Ends at " + TimeUtil.getDateTimeString(_periodEndTime));
 		}
 		else
 		{
 			generateNewDate();
 			final long nextTime = _periodStartTime - System.currentTimeMillis();
 			_regTask = ThreadPool.schedule(new UCRegistrationTask(true), nextTime);
-			LOGGER.info(getClass().getSimpleName() + ": Starts at " + TimeUtil.getDateTimeString(_periodStartTime));
+			LOGGER.info(() -> getClass().getSimpleName() + ": Starts at " + TimeUtil.getDateTimeString(_periodStartTime));
 		}
 	}
 	

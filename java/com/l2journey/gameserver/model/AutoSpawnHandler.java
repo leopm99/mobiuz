@@ -410,7 +410,7 @@ public class AutoSpawnHandler
 				// If there are no set co-ordinates, cancel the spawn task.
 				if (locationList.isEmpty())
 				{
-					LOGGER.info("AutoSpawnHandler: No location co-ords specified for spawn instance (Object ID = " + _objectId + ").");
+					LOGGER.info(() -> "AutoSpawnHandler: No location co-ords specified for spawn instance (Object ID = " + _objectId + ").");
 					return;
 				}
 				
@@ -522,7 +522,7 @@ public class AutoSpawnHandler
 				final AutoSpawnInstance spawnInst = _registeredSpawns.get(_objectId);
 				if (spawnInst == null)
 				{
-					LOGGER.info("AutoSpawnHandler: No spawn registered for object ID = " + _objectId + ".");
+					LOGGER.info(() -> "AutoSpawnHandler: No spawn registered for object ID = " + _objectId + ".");
 					return;
 				}
 				

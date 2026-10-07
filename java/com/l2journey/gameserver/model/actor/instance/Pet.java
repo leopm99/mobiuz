@@ -532,7 +532,7 @@ public class Pet extends Summon
 		if (!object.isItem())
 		{
 			// do not try to pickup anything that is not an item :)
-			LOGGER_PET.warning(this + " trying to pickup wrong target." + object);
+			LOGGER_PET.warning(() -> this + " trying to pickup wrong target." + object);
 			sendPacket(ActionFailed.STATIC_PACKET);
 			return;
 		}
@@ -828,7 +828,7 @@ public class Pet extends Summon
 			
 			if (removedItem == null)
 			{
-				LOGGER.warning("Couldn't destroy pet control item for " + owner + " pet: " + this + " evolve: " + evolve);
+				LOGGER.warning(() -> "Couldn't destroy pet control item for " + owner + " pet: " + this + " evolve: " + evolve);
 			}
 			else
 			{
@@ -1418,7 +1418,7 @@ public class Pet extends Summon
 		}
 		else
 		{
-			LOGGER.log(Level.WARNING, () -> "Pet control item null, for pet: " + toString());
+			LOGGER.warning(() -> "Pet control item null, for pet: " + toString());
 		}
 		
 		super.setName(name);

@@ -145,7 +145,7 @@ public class Shutdown extends Thread
 		countdown();
 		
 		// Last point where logging is operational.
-		LOGGER.warning("GM shutdown countdown is over. " + MODE_TEXT[_shutdownMode] + " NOW!");
+		LOGGER.warning(() -> "GM shutdown countdown is over. " + MODE_TEXT[_shutdownMode] + " NOW!");
 		
 		switch (_shutdownMode)
 		{
@@ -183,11 +183,11 @@ public class Shutdown extends Thread
 		
 		if (player != null)
 		{
-			LOGGER.warning("GM: " + player.getName() + "(" + player.getObjectId() + ") issued shutdown command. " + MODE_TEXT[_shutdownMode] + " in " + seconds + " seconds!");
+			LOGGER.warning(() -> "GM: " + player.getName() + "(" + player.getObjectId() + ") issued shutdown command. " + MODE_TEXT[_shutdownMode] + " in " + seconds + " seconds!");
 		}
 		else
 		{
-			LOGGER.warning("Server scheduled restart issued shutdown command. " + (restart ? "Restart" : "Shutdown") + " in " + seconds + " seconds!");
+			LOGGER.warning(() -> "Server scheduled restart issued shutdown command. " + (restart ? "Restart" : "Shutdown") + " in " + seconds + " seconds!");
 		}
 		
 		if (_shutdownMode > 0)
@@ -228,11 +228,11 @@ public class Shutdown extends Thread
 	{
 		if (_countdownFinished)
 		{
-			LOGGER.warning("GM: " + (player != null ? player.getName() + "(" + player.getObjectId() + ") " : "") + "shutdown ABORT failed because countdown has finished.");
+			LOGGER.warning(() -> "GM: " + (player != null ? player.getName() + "(" + player.getObjectId() + ") " : "") + "shutdown ABORT failed because countdown has finished.");
 			return;
 		}
 		
-		LOGGER.warning("GM: " + (player != null ? player.getName() + "(" + player.getObjectId() + ") " : "") + "issued shutdown ABORT. " + MODE_TEXT[_shutdownMode] + " has been stopped!");
+		LOGGER.warning(() -> "GM: " + (player != null ? player.getName() + "(" + player.getObjectId() + ") " : "") + "issued shutdown ABORT. " + MODE_TEXT[_shutdownMode] + " has been stopped!");
 		if (_counterInstance != null)
 		{
 			_counterInstance.abort();

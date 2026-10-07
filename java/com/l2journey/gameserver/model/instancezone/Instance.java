@@ -260,7 +260,7 @@ public class Instance
 	{
 		if (_doorTemplates.contains(set))
 		{
-			LOGGER.warning("Door ID " + set.getInt("DoorId") + " already exists in instance " + _id);
+			LOGGER.warning(() -> "Door ID " + set.getInt("DoorId") + " already exists in instance " + _id);
 			return;
 		}
 		_doorTemplates.add(set);

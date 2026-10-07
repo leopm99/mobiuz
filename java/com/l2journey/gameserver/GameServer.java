@@ -392,7 +392,7 @@ public class GameServer
 		SevenSigns.getInstance().spawnSevenSignsNPC();
 		SevenSignsFestival.getInstance();
 		AutoSpawnHandler.getInstance();
-		LOGGER.info("AutoSpawnHandler: Loaded " + AutoSpawnHandler.getInstance().size() + " handlers in total.");
+		LOGGER.info(() -> "AutoSpawnHandler: Loaded " + AutoSpawnHandler.getInstance().size() + " handlers in total.");
 		if (EventsConfig.ALLOW_WEDDING)
 		{
 			CoupleManager.getInstance();
@@ -467,9 +467,9 @@ public class GameServer
 		
 		System.gc();
 		final long totalMem = Runtime.getRuntime().maxMemory() / 1048576;
-		LOGGER.info(getClass().getSimpleName() + ": Started, using " + getUsedMemoryMB() + " of " + totalMem + " MB total memory.");
-		LOGGER.info(getClass().getSimpleName() + ": Maximum number of connected players is " + Config.MAXIMUM_ONLINE_USERS + ".");
-		LOGGER.info(getClass().getSimpleName() + ": Server loaded in " + ((System.currentTimeMillis() - START_TIME) / 1000) + " seconds.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Started, using " + getUsedMemoryMB() + " of " + totalMem + " MB total memory.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Maximum number of connected players is " + Config.MAXIMUM_ONLINE_USERS + ".");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Server loaded in " + ((System.currentTimeMillis() - START_TIME) / 1000) + " seconds.");
 		
 		new ConnectionManager<>(new InetSocketAddress(Config.PORT_GAME), GameClient::new, new GamePacketHandler());
 		

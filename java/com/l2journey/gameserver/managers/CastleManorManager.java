@@ -128,7 +128,7 @@ public class CastleManorManager implements IXmlReader
 	public void load()
 	{
 		parseDatapackFile("data/Seeds.xml");
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _seeds.size() + " seeds.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _seeds.size() + " seeds.");
 	}
 	
 	@Override
@@ -204,7 +204,7 @@ public class CastleManorManager implements IXmlReader
 						}
 						else
 						{
-							LOGGER.warning(getClass().getSimpleName() + ": Unknown seed id: " + seedId + "!");
+							LOGGER.warning(() -> getClass().getSimpleName() + ": Unknown seed id: " + seedId + "!");
 						}
 					}
 				}
@@ -235,7 +235,7 @@ public class CastleManorManager implements IXmlReader
 						}
 						else
 						{
-							LOGGER.warning(getClass().getSimpleName() + ": Unknown crop id: " + cropId + "!");
+							LOGGER.warning(() -> getClass().getSimpleName() + ": Unknown crop id: " + cropId + "!");
 						}
 					}
 				}

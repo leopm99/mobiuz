@@ -61,7 +61,7 @@ public class SiegeScheduleData implements IXmlReader
 	public synchronized void load()
 	{
 		parseDatapackFile("config/siege/siegeschedule.xml");
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _scheduleData.size() + " siege schedulers.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _scheduleData.size() + " siege schedulers.");
 	}
 	
 	@Override

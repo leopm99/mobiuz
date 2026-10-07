@@ -46,7 +46,7 @@ public class SkillLearnData implements IXmlReader
 	{
 		_skillLearn.clear();
 		parseDatapackFile("data/SkillLearn.xml");
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _skillLearn.size() + " skill learn data.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _skillLearn.size() + " skill learn data.");
 	}
 	
 	@Override

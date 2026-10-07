@@ -103,7 +103,7 @@ public class EffectZone extends ZoneType
 					final String[] skillSplit = skill.split("-");
 					if (skillSplit.length != 2)
 					{
-						LOGGER.warning(getClass().getSimpleName() + ": invalid config property -> skillsIdLvl \"" + skill + "\"");
+						LOGGER.warning(() -> getClass().getSimpleName() + ": invalid config property -> skillsIdLvl \"" + skill + "\"");
 					}
 					else
 					{

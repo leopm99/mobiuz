@@ -117,7 +117,7 @@ public class HitmanManager
 					_targets.put(targetId, new HitmanTarget(targetId, clientId, targetName, itemId, bounty));
 				}
 			}
-			LOGGER.info(getClass().getSimpleName() + ": Loaded " + _targets.size() + " active assassination targets.");
+			LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _targets.size() + " active assassination targets.");
 		}
 		catch (SQLException e)
 		{

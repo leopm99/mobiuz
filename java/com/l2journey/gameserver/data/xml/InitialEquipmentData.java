@@ -57,7 +57,7 @@ public class InitialEquipmentData implements IXmlReader
 	{
 		_initialEquipmentList.clear();
 		parseDatapackFile(Config.INITIAL_EQUIPMENT_EVENT ? EVENT : NORMAL);
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _initialEquipmentList.size() + " initial equipment data.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _initialEquipmentList.size() + " initial equipment data.");
 	}
 	
 	@Override

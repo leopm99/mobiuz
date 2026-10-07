@@ -72,7 +72,7 @@ public class TeleportLocationTable
 				
 				_teleports.put(teleport.getTeleId(), teleport);
 			}
-			LOGGER.info(getClass().getSimpleName() + ": Loaded " + _teleports.size() + " teleport location templates.");
+			LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _teleports.size() + " teleport location templates.");
 		}
 		catch (Exception e)
 		{

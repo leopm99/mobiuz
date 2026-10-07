@@ -58,7 +58,7 @@ public class ArmorSetData implements IXmlReader
 			_armorSets[armorSet.getKey()] = armorSet.getValue();
 		}
 		
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _armorSetMap.size() + " armor sets.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _armorSetMap.size() + " armor sets.");
 		_armorSetMap.clear();
 	}
 	

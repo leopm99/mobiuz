@@ -155,7 +155,7 @@ public class Doorman extends Folk
 		}
 		else
 		{
-			LOGGER.warning("No teleport destination with id:" + whereTo);
+			LOGGER.warning(() -> "No teleport destination with id:" + whereTo);
 		}
 		
 		player.sendPacket(ActionFailed.STATIC_PACKET);

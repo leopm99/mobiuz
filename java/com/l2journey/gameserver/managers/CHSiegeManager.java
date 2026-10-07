@@ -88,7 +88,7 @@ public class CHSiegeManager
 				_siegableHalls.put(id, hall);
 				ClanHallTable.addClanHall(hall);
 			}
-			LOGGER.info(getClass().getSimpleName() + ": Loaded " + _siegableHalls.size() + " conquerable clan halls.");
+			LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _siegableHalls.size() + " conquerable clan halls.");
 		}
 		catch (Exception e)
 		{

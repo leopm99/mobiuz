@@ -127,12 +127,12 @@ public class Disconnection
 				{
 					_player.deleteMe();
 					
-					LOGGER_ACCOUNTING.info("Logged out, " + _player);
+					LOGGER_ACCOUNTING.info(() -> "Logged out, " + _player);
 				}
 			}
 			else if (_client != null)
 			{
-				LOGGER_ACCOUNTING.info("Logged out, " + _client);
+				LOGGER_ACCOUNTING.info(() -> "Logged out, " + _client);
 			}
 		}
 		catch (Exception e)

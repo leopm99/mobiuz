@@ -81,7 +81,7 @@ public class GameServerThread extends Thread
 		_connectionIPAddress = _socket.getInetAddress().getHostAddress();
 		if (isBannedGameserverIP(_connectionIPAddress))
 		{
-			LOGGER.info("GameServerRegistration: IP Address " + _connectionIPAddress + " is on Banned IP list.");
+			LOGGER.info(() -> "GameServerRegistration: IP Address " + _connectionIPAddress + " is on Banned IP list.");
 			forceClose(LoginServerFail.REASON_IP_BANNED);
 			// Ensure no further processing for this connection.
 			return;
@@ -90,7 +90,7 @@ public class GameServerThread extends Thread
 		{
 			// GameServerAllowedHosts is an intentional, admin-maintained list (loginserver.ini).
 			// No automatic ban is applied here - just a silent reject of this connection.
-			LOGGER.fine("GameServerRegistration: IP Address " + _connectionIPAddress + " is not in the allowed GameServer host list, closing connection.");
+			LOGGER.fine(() -> "GameServerRegistration: IP Address " + _connectionIPAddress + " is not in the allowed GameServer host list, closing connection.");
 			forceClose(LoginServerFail.REASON_IP_BANNED);
 			return;
 		}
@@ -172,7 +172,7 @@ public class GameServerThread extends Thread
 				{
 					_gsi.setDown();
 				}
-				LOGGER.info("Server [" + getServerId() + "] " + GameServerTable.getInstance().getServerNameById(getServerId()) + " is now set as disconnected.");
+				LOGGER.info(() -> "Server [" + getServerId() + "] " + GameServerTable.getInstance().getServerNameById(getServerId()) + " is now set as disconnected.");
 			}
 			LoginServer.getInstance().getGameServerListener().removeGameServer(this);
 			LoginServer.getInstance().getGameServerListener().removeFloodProtection(_connectionIp);
@@ -340,7 +340,7 @@ public class GameServerThread extends Thread
 	 */
 	public void setGameHosts(String[] hosts)
 	{
-		LOGGER.info("Updated Gameserver [" + getServerId() + "] " + GameServerTable.getInstance().getServerNameById(getServerId()) + " IP's (connected from " + _connectionIPAddress + "):");
+		LOGGER.info(() -> "Updated Gameserver [" + getServerId() + "] " + GameServerTable.getInstance().getServerNameById(getServerId()) + " IP's (connected from " + _connectionIPAddress + "):");
 		_gsi.clearServerAddresses();
 		for (int i = 0; i < hosts.length; i += 2)
 		{

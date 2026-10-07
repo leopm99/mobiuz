@@ -1473,7 +1473,7 @@ public class Player extends Playable
 		}
 		else
 		{
-			LOGGER.warning("Attempted to remove unknown RecipeList: " + recipeId);
+			LOGGER.warning(() -> "Attempted to remove unknown RecipeList: " + recipeId);
 		}
 		
 		for (Shortcut sc : _shortcuts.getAllShortcuts())
@@ -2893,7 +2893,7 @@ public class Player extends Playable
 			}
 			else
 			{
-				LOGGER.warning("Skipping null auto-get skill for " + this);
+				LOGGER.warning(() -> "Skipping null auto-get skill for " + this);
 			}
 		}
 	}
@@ -3504,7 +3504,7 @@ public class Player extends Playable
 			final ItemTemplate item = ItemData.getInstance().getTemplate(itemId);
 			if (item == null)
 			{
-				LOGGER.severe("Item doesn't exist so cannot be added. Item ID: " + itemId);
+				LOGGER.severe(() -> "Item doesn't exist so cannot be added. Item ID: " + itemId);
 				return null;
 			}
 			
@@ -4039,26 +4039,26 @@ public class Player extends Playable
 		// TODO: if we remove objects that are not visible from the World, we'll have to remove this check
 		if (World.getInstance().findObject(objectId) == null)
 		{
-			LOGGER.finest(getObjectId() + ": player tried to " + action + " item not available in World");
+			LOGGER.finest(() -> getObjectId() + ": player tried to " + action + " item not available in World");
 			return null;
 		}
 		
 		final Item item = _inventory.getItemByObjectId(objectId);
 		if ((item == null) || (item.getOwnerId() != getObjectId()))
 		{
-			LOGGER.finest(getObjectId() + ": player tried to " + action + " item he is not owner of");
+			LOGGER.finest(() -> getObjectId() + ": player tried to " + action + " item he is not owner of");
 			return null;
 		}
 		
 		if ((count < 0) || ((count > 1) && !item.isStackable()))
 		{
-			LOGGER.finest(getObjectId() + ": player tried to " + action + " item with invalid count: " + count);
+			LOGGER.finest(() -> getObjectId() + ": player tried to " + action + " item with invalid count: " + count);
 			return null;
 		}
 		
 		if (count > item.getCount())
 		{
-			LOGGER.finest(getObjectId() + ": player tried to " + action + " more items than he owns");
+			LOGGER.finest(() -> getObjectId() + ": player tried to " + action + " more items than he owns");
 			return null;
 		}
 		
@@ -4601,7 +4601,7 @@ public class Player extends Playable
 		if (!object.isItem())
 		{
 			// do not try to pickup anything that is not an item :)
-			LOGGER.warning(this + " trying to pickup wrong target." + getTarget());
+			LOGGER.warning(() -> this + " trying to pickup wrong target." + getTarget());
 			return;
 		}
 		
@@ -6945,7 +6945,7 @@ public class Player extends Playable
 		
 		if (!AdminData.getInstance().hasAccessLevel(level))
 		{
-			LOGGER.warning("Tried to set unregistered access level " + level + " for " + this + ". Setting access level without privileges!");
+			LOGGER.warning(() -> "Tried to set unregistered access level " + level + " for " + this + ". Setting access level without privileges!");
 		}
 		else if (level > 0)
 		{
@@ -7638,7 +7638,7 @@ public class Player extends Playable
 		}
 		catch (Exception e)
 		{
-			LOGGER.log(Level.SEVERE, () -> "Could not delete premium item: " + e);
+			LOGGER.severe(() -> "Could not delete premium item: " + e);
 		}
 	}
 	
@@ -8209,7 +8209,7 @@ public class Player extends Playable
 					final Skill skill = SkillData.getInstance().getSkill(id, level);
 					if (skill == null)
 					{
-						LOGGER.warning("Skipped null skill Id: " + id + " Level: " + level + " while restoring player skills for playerObjId: " + getObjectId());
+						LOGGER.warning(() -> "Skipped null skill Id: " + id + " Level: " + level + " while restoring player skills for playerObjId: " + getObjectId());
 						continue;
 					}
 					
@@ -10659,7 +10659,7 @@ public class Player extends Playable
 		final PlayerTemplate pcTemplate = PlayerTemplateData.getInstance().getTemplate(classId);
 		if (pcTemplate == null)
 		{
-			LOGGER.severe("Missing template for classId: " + classId);
+			LOGGER.severe(() -> "Missing template for classId: " + classId);
 			throw new Error();
 		}
 		
@@ -11579,7 +11579,7 @@ public class Player extends Playable
 		final Item item = _inventory.getItemByObjectId(objectId);
 		if ((item == null) || (item.getOwnerId() != getObjectId()))
 		{
-			LOGGER.finest(getObjectId() + ": player tried to " + itemProcessType + " item he is not owner of.");
+			LOGGER.finest(() -> getObjectId() + ": player tried to " + itemProcessType + " item he is not owner of.");
 			return false;
 		}
 		
@@ -12904,7 +12904,7 @@ public class Player extends Playable
 	{
 		if (killer == null)
 		{
-			LOGGER.warning(this + " called calculateDeathPenaltyBuffLevel with killer null!");
+			LOGGER.warning(() -> this + " called calculateDeathPenaltyBuffLevel with killer null!");
 			return;
 		}
 		
@@ -14259,7 +14259,7 @@ public class Player extends Playable
 		
 		if (nextLevel == -1)
 		{
-			LOGGER.info("Removing skill " + skill + " from " + this);
+			LOGGER.info(() -> "Removing skill " + skill + " from " + this);
 			removeSkill(skill, true); // there is no lower skill
 		}
 		else

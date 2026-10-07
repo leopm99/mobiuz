@@ -47,7 +47,7 @@ public class PetDataTable implements IXmlReader
 	{
 		_pets.clear();
 		parseDatapackDirectory("data/stats/pets", false);
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _pets.size() + " pets.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _pets.size() + " pets.");
 	}
 	
 	@Override
@@ -190,7 +190,7 @@ public class PetDataTable implements IXmlReader
 	{
 		if (!_pets.containsKey(petId))
 		{
-			LOGGER.info(getClass().getSimpleName() + ": Missing pet data for npcid: " + petId);
+			LOGGER.info(() -> getClass().getSimpleName() + ": Missing pet data for npcid: " + petId);
 		}
 		return _pets.get(petId);
 	}

@@ -67,7 +67,7 @@ public class ThreadPool
 		if (Config.HIGH_PRIORITY_SCHEDULED_THREAD_POOL_SIZE > 0)
 		{
 			HIGH_PRIORITY_SCHEDULED_POOL = new ScheduledThreadPoolExecutor(Config.HIGH_PRIORITY_SCHEDULED_THREAD_POOL_SIZE, new ThreadProvider("L2jMobius High Priority ScheduledThread", ThreadPriority.PRIORITY_8), new ThreadPoolExecutor.CallerRunsPolicy());
-			LOGGER.info("...scheduled pool executor with " + Config.HIGH_PRIORITY_SCHEDULED_THREAD_POOL_SIZE + " high priority threads.");
+			LOGGER.info(() -> "...scheduled pool executor with " + Config.HIGH_PRIORITY_SCHEDULED_THREAD_POOL_SIZE + " high priority threads.");
 		}
 		
 		// Configure ScheduledThreadPoolExecutor.
@@ -83,8 +83,8 @@ public class ThreadPool
 		scheduleAtFixedRate(ThreadPool::purge, 60000, 60000);
 		
 		// Log information.
-		LOGGER.info("...scheduled pool executor with " + Config.SCHEDULED_THREAD_POOL_SIZE + " total threads.");
-		LOGGER.info("...instant pool executor with " + Config.INSTANT_THREAD_POOL_SIZE + " total threads.");
+		LOGGER.info(() -> "...scheduled pool executor with " + Config.SCHEDULED_THREAD_POOL_SIZE + " total threads.");
+		LOGGER.info(() -> "...instant pool executor with " + Config.INSTANT_THREAD_POOL_SIZE + " total threads.");
 	}
 	
 	public static void purge()
@@ -176,14 +176,14 @@ public class ThreadPool
 	{
 		if (delay < MIN_DELAY)
 		{
-			LOGGER.warning("ThreadPool found delay " + delay + "!");
-			LOGGER.warning(TraceUtil.getStackTrace(new Exception()));
+			LOGGER.warning(() -> "ThreadPool found delay " + delay + "!");
+			LOGGER.warning(() -> TraceUtil.getStackTrace(new Exception()));
 			return MIN_DELAY;
 		}
 		if (delay > MAX_DELAY)
 		{
-			LOGGER.warning("ThreadPool found delay " + delay + "!");
-			LOGGER.warning(TraceUtil.getStackTrace(new Exception()));
+			LOGGER.warning(() -> "ThreadPool found delay " + delay + "!");
+			LOGGER.warning(() -> TraceUtil.getStackTrace(new Exception()));
 			return MAX_DELAY;
 		}
 		return delay;
@@ -222,7 +222,7 @@ public class ThreadPool
 				return;
 			}
 			
-			LOGGER.warning(runnable.getClass().getSimpleName() + System.lineSeparator() + runnable + " from " + executor + " " + new RejectedExecutionException());
+			LOGGER.warning(() -> runnable.getClass().getSimpleName() + System.lineSeparator() + runnable + " from " + executor + " " + new RejectedExecutionException());
 			
 			if (Thread.currentThread().getPriority() > Thread.NORM_PRIORITY)
 			{

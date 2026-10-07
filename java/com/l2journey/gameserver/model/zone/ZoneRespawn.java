@@ -78,7 +78,7 @@ public abstract class ZoneRespawn extends ZoneType
 				}
 				default:
 				{
-					LOGGER.warning(getClass().getSimpleName() + ": Unknown location type: " + type);
+					LOGGER.warning(() -> getClass().getSimpleName() + ": Unknown location type: " + type);
 				}
 			}
 		}

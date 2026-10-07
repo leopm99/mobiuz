@@ -118,7 +118,7 @@ public class ClanTable
 			}
 		}
 		
-		LOGGER.info(getClass().getSimpleName() + ": Restored " + cids.size() + " clans from the database.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Restored " + cids.size() + " clans from the database.");
 		allianceCheck();
 		restoreClanWars();
 		
@@ -512,7 +512,7 @@ public class ClanTable
 				{
 					final Clan nullClan1 = clan1;
 					final Clan nullClan2 = clan2;
-					LOGGER.log(Level.WARNING, () -> getClass().getSimpleName() + ": restorewars one of clans is null clan1:" + nullClan1 + " clan2:" + nullClan2);
+					LOGGER.warning(() -> getClass().getSimpleName() + ": restorewars one of clans is null clan1:" + nullClan1 + " clan2:" + nullClan2);
 				}
 			}
 		}
@@ -536,7 +536,7 @@ public class ClanTable
 				clan.setAllyName(null);
 				clan.changeAllyCrest(0, true);
 				clan.updateClanInDB();
-				LOGGER.info(getClass().getSimpleName() + ": Removed alliance from clan: " + clan);
+				LOGGER.info(() -> getClass().getSimpleName() + ": Removed alliance from clan: " + clan);
 			}
 		}
 	}

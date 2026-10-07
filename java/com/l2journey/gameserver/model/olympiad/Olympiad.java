@@ -257,7 +257,7 @@ public class Olympiad extends ListenersContainer
 			}
 			default:
 			{
-				LOGGER.warning("Olympiad System: Omg something went wrong in loading!! Period = " + _period);
+				LOGGER.warning(() -> "Olympiad System: Omg something went wrong in loading!! Period = " + _period);
 				return;
 			}
 		}
@@ -317,7 +317,7 @@ public class Olympiad extends ListenersContainer
 		final int numHours = (int) ((periodEndSec / 3600) % 24);
 		final int numDays = (int) (periodEndSec / 86400);
 		
-		LOGGER.info("Olympiad System: " + numDays + " days, " + numHours + " hours and " + numMins + " mins until period ends.");
+		LOGGER.info(() -> "Olympiad System: " + numDays + " days, " + numHours + " hours and " + numMins + " mins until period ends.");
 		
 		if (_period == 0)
 		{
@@ -327,10 +327,10 @@ public class Olympiad extends ListenersContainer
 			final int numHours2 = (int) ((weekChangeSec / 3600) % 24);
 			final int numDays2 = (int) (weekChangeSec / 86400);
 			
-			LOGGER.info("Olympiad System: Next weekly change is in " + numDays2 + " days, " + numHours2 + " hours and " + numMins2 + " mins.");
+			LOGGER.info(() -> "Olympiad System: Next weekly change is in " + numDays2 + " days, " + numHours2 + " hours and " + numMins2 + " mins.");
 		}
 		
-		LOGGER.info("Olympiad System: Loaded " + NOBLES.size() + " Nobles");
+		LOGGER.info(() -> "Olympiad System: Loaded " + NOBLES.size() + " Nobles");
 	}
 	
 	public void loadNoblesRank()
@@ -559,7 +559,7 @@ public class Olympiad extends ListenersContainer
 		final int numMins = (int) ((compStartSec / 60) % 60);
 		final int numHours = (int) ((compStartSec / 3600) % 24);
 		final int numDays = (int) (compStartSec / 86400);
-		LOGGER.info("Olympiad System: Competition Period Starts in " + numDays + " days, " + numHours + " hours and " + numMins + " mins.");
+		LOGGER.info(() -> "Olympiad System: Competition Period Starts in " + numDays + " days, " + numHours + " hours and " + numMins + " mins.");
 		LOGGER.info("Olympiad System: Event starts/started: " + _compStart.getTime());
 		
 		_scheduledCompStart = ThreadPool.schedule(() ->
@@ -1041,7 +1041,7 @@ public class Olympiad extends ListenersContainer
 				final int points = nobleInfo.getInt(POINTS);
 				final int compDone = nobleInfo.getInt(COMP_DONE);
 				
-				LOGGER_OLYMPIAD.info(charName + "," + charId + "," + classId + "," + compDone + "," + points);
+				LOGGER_OLYMPIAD.info(() -> charName + "," + charId + "," + classId + "," + compDone + "," + points);
 			}
 		}
 		

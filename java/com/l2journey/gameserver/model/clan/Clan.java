@@ -320,7 +320,7 @@ public class Clan
 		broadcastClanStatus();
 		broadcastToOnlineMembers(new SystemMessage(SystemMessageId.CLAN_LORD_PRIVILEGES_HAVE_BEEN_TRANSFERRED_TO_C1).addString(member.getName()));
 		
-		LOGGER.log(Level.INFO, () -> "Leader of Clan: " + getName() + " changed to: " + member.getName() + " ex leader: " + exMember.getName());
+		LOGGER.info(() -> "Leader of Clan: " + getName() + " changed to: " + member.getName() + " ex leader: " + exMember.getName());
 	}
 	
 	/**
@@ -434,7 +434,7 @@ public class Clan
 		final ClanMember exMember = _members.remove(objectId);
 		if (exMember == null)
 		{
-			LOGGER.warning("Member Object ID: " + objectId + " not found in clan while trying to remove");
+			LOGGER.warning(() -> "Member Object ID: " + objectId + " not found in clan while trying to remove");
 			return;
 		}
 		
@@ -1267,7 +1267,7 @@ public class Clan
 						}
 						else
 						{
-							LOGGER.info("Missing subpledge " + subType + " for clan " + this + ", skill skipped.");
+							LOGGER.info(() -> "Missing subpledge " + subType + " for clan " + this + ", skill skipped.");
 						}
 					}
 				}
@@ -1334,7 +1334,7 @@ public class Clan
 				final SubPledge subunit = getSubPledge(subType);
 				if (subunit == null)
 				{
-					LOGGER.log(Level.WARNING, () -> "Subpledge " + subType + " does not exist for clan " + this);
+					LOGGER.warning(() -> "Subpledge " + subType + " does not exist for clan " + this);
 					return oldSkill;
 				}
 				oldSkill = subunit.addNewSkill(newSkill);

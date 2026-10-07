@@ -73,7 +73,7 @@ public class ForumsBBSManager extends BaseBBSManager
 	public void initRoot()
 	{
 		_table.forEach(Forum::vload);
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _table.size() + " forums. Last forum id used: " + _lastid);
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _table.size() + " forums. Last forum id used: " + _lastid);
 	}
 	
 	/**

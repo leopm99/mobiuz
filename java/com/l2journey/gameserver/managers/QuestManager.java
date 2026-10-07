@@ -126,8 +126,8 @@ public class QuestManager
 	 */
 	public void report()
 	{
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _quests.size() + " quests.");
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _scripts.size() + " scripts.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _quests.size() + " quests.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _scripts.size() + " scripts.");
 	}
 	
 	/**
@@ -210,7 +210,7 @@ public class QuestManager
 		if (Config.SHOW_QUEST_LOAD_IN_LOGS)
 		{
 			final String questName = quest.getName().contains("_") ? quest.getName().substring(quest.getName().indexOf('_') + 1) : quest.getName();
-			LOGGER.info("Loaded quest " + StringUtil.separateWords(questName) + ".");
+			LOGGER.info(() -> "Loaded quest " + StringUtil.separateWords(questName) + ".");
 		}
 	}
 	
@@ -269,7 +269,7 @@ public class QuestManager
 		
 		if (Config.SHOW_SCRIPT_LOAD_IN_LOGS)
 		{
-			LOGGER.info("Loaded script " + StringUtil.separateWords(script.getClass().getSimpleName()) + ".");
+			LOGGER.info(() -> "Loaded script " + StringUtil.separateWords(script.getClass().getSimpleName()) + ".");
 		}
 	}
 	

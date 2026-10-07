@@ -75,8 +75,8 @@ public class LevelUpCrystalData implements IXmlReader
 		_soulCrystalsData.clear();
 		_npcLevelingInfo.clear();
 		parseDatapackFile("data/LevelUpCrystalData.xml");
-		LOGGER.info("Soul crystal data : Loaded " + _soulCrystalsData.size());
-		LOGGER.info("Npc leveling crystal data : Loaded " + _npcLevelingInfo.size());
+		LOGGER.info(() -> "Soul crystal data : Loaded " + _soulCrystalsData.size());
+		LOGGER.info(() -> "Npc leveling crystal data : Loaded " + _npcLevelingInfo.size());
 	}
 	
 	/**
@@ -158,7 +158,7 @@ public class LevelUpCrystalData implements IXmlReader
 							att = attrs.getNamedItem("level");
 							if (att == null)
 							{
-								LOGGER.info("Missing level in Crystal List item Id " + itemId + " skipping!");
+								LOGGER.info(() -> "Missing level in Crystal List item Id " + itemId + " skipping!");
 								continue;
 							}
 							int level = Integer.parseInt(attrs.getNamedItem("level").getNodeValue());
@@ -166,7 +166,7 @@ public class LevelUpCrystalData implements IXmlReader
 							att = attrs.getNamedItem("leveledItemId");
 							if (att == null)
 							{
-								LOGGER.info("Missing leveledItemId in Crystal List item Id " + itemId + " skipping!");
+								LOGGER.info(() -> "Missing leveledItemId in Crystal List item Id " + itemId + " skipping!");
 								continue;
 							}
 							int leveledItemId = Integer.parseInt(attrs.getNamedItem("leveledItemId").getNodeValue());
@@ -223,7 +223,7 @@ public class LevelUpCrystalData implements IXmlReader
 									Node att2 = attrs.getNamedItem("levelList");
 									if ((att1 == null) && (att2 == null))
 									{
-										LOGGER.info("Missing maxlevel/levelList in NPC List npc Id " + npcId + " skipping!");
+										LOGGER.info(() -> "Missing maxlevel/levelList in NPC List npc Id " + npcId + " skipping!");
 										continue;
 									}
 									chance = (int) (chance * Config.SOUL_CRYSTAL_CHANCE_MULTIPLIER);
@@ -257,7 +257,7 @@ public class LevelUpCrystalData implements IXmlReader
 							
 							if (temp.isEmpty())
 							{
-								LOGGER.info("No leveling info for npc Id " + npcId + " skipping!");
+								LOGGER.info(() -> "No leveling info for npc Id " + npcId + " skipping!");
 								continue;
 							}
 							_npcLevelingInfo.put(npcId, temp);

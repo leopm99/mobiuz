@@ -63,7 +63,7 @@ public class HellboundSpawns implements IXmlReader
 		_spawns.clear();
 		_spawnLevels.clear();
 		parseDatapackFile("data/scripts/ai/areas/Hellbound/hellboundSpawns.xml");
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _spawns.size() + " Hellbound spawns.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _spawns.size() + " Hellbound spawns.");
 	}
 	
 	@Override

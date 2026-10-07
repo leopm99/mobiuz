@@ -161,7 +161,7 @@ public class RequestRestart extends ClientPacket
 		final GameClient client = getClient();
 		if (OfflineTraderTable.getInstance().enteredOfflineMode(player))
 		{
-			LOGGER_ACCOUNTING.info("Entered offline mode, " + client);
+			LOGGER_ACCOUNTING.info(() -> "Entered offline mode, " + client);
 		}
 		else
 		{

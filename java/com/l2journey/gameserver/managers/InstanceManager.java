@@ -81,11 +81,11 @@ public class InstanceManager implements IXmlReader
 	{
 		_instanceIdNames.clear();
 		parseDatapackFile("data/InstanceNames.xml");
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _instanceIdNames.size() + " instance names.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _instanceIdNames.size() + " instance names.");
 		// Load instance templates
 		_instanceTemplates.clear();
 		parseDatapackDirectory("data/instances", true);
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _instanceTemplates.size() + " instance templates.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _instanceTemplates.size() + " instance templates.");
 	}
 	
 	/**

@@ -165,7 +165,7 @@ public class BotReportTable
 				}
 			}
 			
-			LOGGER.info(getClass().getSimpleName() + ": Loaded " + _reports.size() + " bot reports");
+			LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _reports.size() + " bot reports");
 		}
 		catch (Exception e)
 		{
@@ -391,7 +391,7 @@ public class BotReportTable
 		}
 		else
 		{
-			LOGGER.warning(getClass().getSimpleName() + ": Could not add punishment for " + neededReports + " report(s): Skill " + skillId + "-" + skillLevel + " does not exist!");
+			LOGGER.warning(() -> getClass().getSimpleName() + ": Could not add punishment for " + neededReports + " report(s): Skill " + skillId + "-" + skillLevel + " does not exist!");
 		}
 	}
 	

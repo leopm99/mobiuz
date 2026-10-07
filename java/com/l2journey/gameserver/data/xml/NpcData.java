@@ -82,12 +82,12 @@ public class NpcData implements IXmlReader
 		_masterMonsterIDs.clear();
 		
 		parseDatapackDirectory("data/stats/npcs", false);
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _npcs.size() + " NPCs.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _npcs.size() + " NPCs.");
 		if (Config.CUSTOM_NPC_DATA)
 		{
 			final int npcCount = _npcs.size();
 			parseDatapackDirectory("data/stats/npcs/custom", true);
-			LOGGER.info(getClass().getSimpleName() + ": Loaded " + (_npcs.size() - npcCount) + " custom NPCs.");
+			LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + (_npcs.size() - npcCount) + " custom NPCs.");
 		}
 		
 		loadNpcsSkillLearn();
@@ -369,7 +369,7 @@ public class NpcData implements IXmlReader
 											}
 											else
 											{
-												LOGGER.warning("[" + file.getName() + "] skill not found. NPC ID: " + npcId + " Skill ID:" + skillId + " Skill Level: " + skillLevel);
+												LOGGER.warning(() -> "[" + file.getName() + "] skill not found. NPC ID: " + npcId + " Skill ID:" + skillId + " Skill Level: " + skillLevel);
 											}
 										}
 									}
@@ -491,7 +491,7 @@ public class NpcData implements IXmlReader
 															
 															if (ItemData.getInstance().getTemplate(itemId) == null)
 															{
-																LOGGER.warning("DropListItem: Could not find item with id " + itemId + ".");
+																LOGGER.warning(() -> "DropListItem: Could not find item with id " + itemId + ".");
 															}
 															else
 															{
@@ -516,7 +516,7 @@ public class NpcData implements IXmlReader
 													
 													if (ItemData.getInstance().getTemplate(itemId) == null)
 													{
-														LOGGER.warning("DropListItem: Could not find item with id " + itemId + ".");
+														LOGGER.warning(() -> "DropListItem: Could not find item with id " + itemId + ".");
 													}
 													else
 													{

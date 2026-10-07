@@ -23,7 +23,6 @@ package com.l2journey.gameserver.data.xml;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -69,7 +68,7 @@ public class EnchantItemOptionsData implements IXmlReader
 						final ItemTemplate template = ItemData.getInstance().getTemplate(itemId);
 						if (template == null)
 						{
-							LOGGER.warning(getClass().getSimpleName() + ": Could not find item template for id " + itemId);
+							LOGGER.warning(() -> getClass().getSimpleName() + ": Could not find item template for id " + itemId);
 							continue ITEM;
 						}
 						for (Node cd = d.getFirstChild(); cd != null; cd = cd.getNextSibling())
@@ -85,7 +84,7 @@ public class EnchantItemOptionsData implements IXmlReader
 										final int id = parseInteger(att);
 										if (OptionData.getInstance().getOptions(id) == null)
 										{
-											LOGGER.warning(getClass().getSimpleName() + ": Could not find option " + id + " for item " + template);
+											LOGGER.warning(() -> getClass().getSimpleName() + ": Could not find option " + id + " for item " + template);
 											continue ITEM;
 										}
 										
@@ -111,7 +110,7 @@ public class EnchantItemOptionsData implements IXmlReader
 			}
 		}
 		final int optionCount = counter;
-		LOGGER.log(Level.INFO, () -> getClass().getSimpleName() + ": Loaded " + _data.size() + " items and " + optionCount + " options.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _data.size() + " items and " + optionCount + " options.");
 	}
 	
 	/**

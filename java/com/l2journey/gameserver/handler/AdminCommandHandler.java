@@ -100,14 +100,14 @@ public class AdminCommandHandler implements IHandler<IAdminCommandHandler, Strin
 		if (handler == null)
 		{
 			player.sendMessage("The command '" + commandNoPrefix + "' does not exist!");
-			LOGGER.warning("No handler registered for admin command '" + command + "'");
+			LOGGER.warning(() -> "No handler registered for admin command '" + command + "'");
 			return;
 		}
 		
 		if (!AdminData.getInstance().hasAccess(command, player.getAccessLevel()))
 		{
 			player.sendMessage("You don't have the access rights to use this command!");
-			LOGGER.warning(player + " tried to use admin command '" + command + "', without proper access level!");
+			LOGGER.warning(() -> player + " tried to use admin command '" + command + "', without proper access level!");
 			return;
 		}
 		

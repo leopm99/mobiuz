@@ -146,7 +146,7 @@ public class SiegeZone extends ZoneType
 			}
 			else
 			{
-				LOGGER.warning("SiegeZone: Siegable clan hall with id " + value + " does not exist!");
+				LOGGER.warning(() -> "SiegeZone: Siegable clan hall with id " + value + " does not exist!");
 			}
 		}
 		else

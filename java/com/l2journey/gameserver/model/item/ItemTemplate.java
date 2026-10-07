@@ -270,13 +270,13 @@ public abstract class ItemTemplate extends ListenersContainer
 					final int level = Integer.parseInt(skillSplit[1]);
 					if (id == 0)
 					{
-						LOGGER.info("Ignoring item_skill(" + element + ") for item " + this + ". Skill id is 0!");
+						LOGGER.info(() -> "Ignoring item_skill(" + element + ") for item " + this + ". Skill id is 0!");
 						continue;
 					}
 					
 					if (level == 0)
 					{
-						LOGGER.info("Ignoring item_skill(" + element + ") for item " + this + ". Skill level is 0!");
+						LOGGER.info(() -> "Ignoring item_skill(" + element + ") for item " + this + ". Skill level is 0!");
 						continue;
 					}
 					

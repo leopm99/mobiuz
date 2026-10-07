@@ -116,7 +116,7 @@ public class NpcBuffer extends Quest
 	
 	private static void print(Exception e)
 	{
-		LOGGER.warning(">>>" + e + "<<<");
+		LOGGER.warning(() -> ">>>" + e + "<<<");
 		if (DEBUG)
 		{
 			e.printStackTrace();
@@ -2023,7 +2023,7 @@ public class NpcBuffer extends Quest
 		SKILL_CACHE.clear();
 		if (DEBUG)
 		{
-			LOGGER.info("Skill cache cleared - size: " + SKILL_CACHE.size());
+			LOGGER.info(() -> "Skill cache cleared - size: " + SKILL_CACHE.size());
 		}
 	}
 	
@@ -2035,7 +2035,7 @@ public class NpcBuffer extends Quest
 		CATEGORY_CACHE.clear();
 		if (DEBUG)
 		{
-			LOGGER.info("Category cache cleared - size: " + CATEGORY_CACHE.size());
+			LOGGER.info(() -> "Category cache cleared - size: " + CATEGORY_CACHE.size());
 		}
 	}
 	

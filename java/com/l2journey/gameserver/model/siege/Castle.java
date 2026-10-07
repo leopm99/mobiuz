@@ -1048,7 +1048,7 @@ public class Castle extends AbstractResidence
 					}
 					else
 					{
-						LOGGER.warning("Trying to add a null skill for Territory Ward Id: " + wardId + ", skill Id: " + s.getSkillId() + " level: " + s.getSkillLevel() + "!");
+						LOGGER.warning(() -> "Trying to add a null skill for Territory Ward Id: " + wardId + ", skill Id: " + s.getSkillId() + " level: " + s.getSkillLevel() + "!");
 					}
 				}
 			}
@@ -1073,7 +1073,7 @@ public class Castle extends AbstractResidence
 					}
 					else
 					{
-						LOGGER.warning("Trying to remove a null skill for Territory Ward Id: " + wardId + ", skill Id: " + s.getSkillId() + " level: " + s.getSkillLevel() + "!");
+						LOGGER.warning(() -> "Trying to remove a null skill for Territory Ward Id: " + wardId + ", skill Id: " + s.getSkillId() + " level: " + s.getSkillLevel() + "!");
 					}
 				}
 			}

@@ -83,7 +83,7 @@ public class PersistentTaskManager
 	{
 		initializate();
 		startAllTasks();
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _tasks.size() + " Tasks.");
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _tasks.size() + " Tasks.");
 	}
 	
 	public class ExecutedTask implements Runnable

@@ -245,8 +245,8 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 		_spawnList.clear();
 		_spawnZoneList.clear();
 		parseDatapackFile("data/scripts/instances/FinalEmperialTomb/FinalEmperialTomb.xml");
-		LOGGER.info("[Final Emperial Tomb] Loaded " + _spawnZoneList.size() + " spawn zones data.");
-		LOGGER.info("[Final Emperial Tomb] Loaded " + _spawnCount + " spawns data.");
+		LOGGER.info(() -> "[Final Emperial Tomb] Loaded " + _spawnZoneList.size() + " spawn zones data.");
+		LOGGER.info(() -> "[Final Emperial Tomb] Loaded " + _spawnCount + " spawns data.");
 	}
 	
 	@Override
@@ -276,7 +276,7 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 							att = attrs.getNamedItem("flag");
 							if (att == null)
 							{
-								LOGGER.severe("[Final Emperial Tomb] Missing flag in npc List npcId: " + npcId + ", skipping");
+								LOGGER.severe(() -> "[Final Emperial Tomb] Missing flag in npc List npcId: " + npcId + ", skipping");
 								continue;
 							}
 							
@@ -408,7 +408,7 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 							att = attrs.getNamedItem("minZ");
 							if (att == null)
 							{
-								LOGGER.severe("[Final Emperial Tomb] Missing minZ in spawnZones List id: " + id + ", skipping");
+								LOGGER.severe(() -> "[Final Emperial Tomb] Missing minZ in spawnZones List id: " + id + ", skipping");
 								continue;
 							}
 							
@@ -416,7 +416,7 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 							att = attrs.getNamedItem("maxZ");
 							if (att == null)
 							{
-								LOGGER.severe("[Final Emperial Tomb] Missing maxZ in spawnZones List id: " + id + ", skipping");
+								LOGGER.severe(() -> "[Final Emperial Tomb] Missing maxZ in spawnZones List id: " + id + ", skipping");
 								continue;
 							}
 							
@@ -589,7 +589,7 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 					}
 					else
 					{
-						LOGGER.info("[Final Emperial Tomb] Missing zone: " + spw.zone);
+						LOGGER.info(() -> "[Final Emperial Tomb] Missing zone: " + spw.zone);
 					}
 				}
 			}
