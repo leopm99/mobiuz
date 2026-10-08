@@ -1,16 +1,16 @@
 /*
  * Copyright (c) 2025 L2Journey Project
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -18,13 +18,13 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- * 
+ *
  * ---
- * 
- * Portions of this software are derived from the L2JMobius Project, 
- * shared under the MIT License. The original license terms are preserved where 
+ *
+ * Portions of this software are derived from the L2JMobius Project,
+ * shared under the MIT License. The original license terms are preserved where
  * applicable..
- * 
+ *
  */
 package handlers.communityboard;
 
@@ -32,16 +32,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
@@ -57,8 +51,10 @@ import com.l2journey.gameserver.data.xml.ExperienceData;
 import com.l2journey.gameserver.data.xml.MultisellData;
 import com.l2journey.gameserver.handler.CommunityBoardHandler;
 import com.l2journey.gameserver.handler.IParseBoardHandler;
+import com.l2journey.gameserver.managers.GrandBossManager;
 import com.l2journey.gameserver.managers.PcCafePointsManager;
 import com.l2journey.gameserver.managers.PremiumManager;
+import com.l2journey.gameserver.model.StatSet;
 import com.l2journey.gameserver.model.actor.Player;
 import com.l2journey.gameserver.model.clan.ClanAccess;
 import com.l2journey.gameserver.model.item.Henna;
@@ -87,17 +83,17 @@ public class HomeBoard implements IParseBoardHandler
 	{
 		TipsBoard.getInstance();
 	}
-	
+
 	// SQL Queries
 	private static final String COUNT_FAVORITES = "SELECT COUNT(*) AS favorites FROM `bbs_favorites` WHERE `playerId`=?";
 	private final TopBoard topBoard = new TopBoard();
-	
+
 	private static final String[] COMMANDS =
 	{
 		"_bbshome",
 		"_bbstop",
 	};
-	
+
 	private static final String[] CUSTOM_COMMANDS =
 	{
 		Config.COMMUNITY_PREMIUM_SYSTEM_ENABLED ? "_bbspremium" : null,
@@ -112,7 +108,7 @@ public class HomeBoard implements IParseBoardHandler
 		Config.COMMUNITYBOARD_BLACKSMITH ? "_bbsaugment" : null,
 		Config.COMMUNITYBOARD_BLACKSMITH ? "_bbsdraw" : null
 	};
-	
+
 	private static final BiPredicate<String, Player> COMBAT_CHECK = (command, player) ->
 	{
 		boolean commandCheck = false;
@@ -124,74 +120,12 @@ public class HomeBoard implements IParseBoardHandler
 				break;
 			}
 		}
-		
+
 		return commandCheck && (player.isCastingNow() || player.isCastingSimultaneouslyNow() || player.isInCombat() || player.isInDuel() || player.isInOlympiadMode() || player.isInsideZone(ZoneId.SIEGE) || player.isInsideZone(ZoneId.PVP) || (player.getPvpFlag() > 0) || player.isAlikeDead() || player.isOnEvent() || player.isInStoreMode());
 	};
-	
+
 	private static final Predicate<Player> KARMA_CHECK = player -> Config.COMMUNITYBOARD_KARMA_DISABLED && (player.getKarma() > 0);
-	
-	private static final Map<Integer, String> BOSS_STATUS_CACHE = new ConcurrentHashMap<>();
-	private static final int[] BOSSES =
-	{
-		29068,
-		29020,
-		29118,
-		29006,
-		29014,
-		29001,
-		29028
-	};
-	
-	private static final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
-	private static LocalDateTime lastUpdateTime = LocalDateTime.now(java.time.ZoneId.systemDefault());
-	private static LocalDateTime nextUpdateTime = lastUpdateTime.plusHours(1);
-	private static final DateTimeFormatter TIME_FORMAT = DateTimeFormatter.ofPattern("HH:mm");
-	
-	static
-	{
-		// Updates the cache immediately on startup
-		updateBossStatusCache();
-		// Schedules update every 1 hour
-		scheduler.scheduleAtFixedRate(HomeBoard::updateBossStatusCache, 1, 1, TimeUnit.HOURS);
-	}
-	
-	private static void updateBossStatusCache()
-	{
-		for (int bossId : BOSSES)
-		{
-			long delay = com.l2journey.gameserver.managers.GrandBossManager.getInstance().getStatSet(bossId).getLong("respawn_time");
-			if (delay <= System.currentTimeMillis())
-			{
-				BOSS_STATUS_CACHE.put(bossId, "<font color=\"32C332\">Is Alive</font>");
-			}
-			else
-			{
-				BOSS_STATUS_CACHE.put(bossId, "<font color=\"FF3333\">Is Dead</font>");
-			}
-		}
-		
-		lastUpdateTime = LocalDateTime.now(java.time.ZoneId.systemDefault());
-		nextUpdateTime = lastUpdateTime.plusHours(1);
-	}
-	
-	/**
-	 * Returns the last update time for the boss status cache.
-	 * @return String formatted as HH:mm
-	 */
-	public static String getLastUpdateTime()
-	{
-		return lastUpdateTime.format(TIME_FORMAT);
-	}
-	
-	/**
-	 * Returns the next scheduled update time for the boss status cache.
-	 * @return String formatted as HH:mm
-	 */
-	public static String getNextUpdateTime()
-	{
-		return nextUpdateTime.format(TIME_FORMAT);
-	}
-	
+
 	/**
 	 * Builds the top row with feature cards (Buffer, Buffer Premium, DropSearch, Teleport). Cards are filtered by their corresponding configs and resized to fit the 720px row.
 	 * @return the HTML fragment, or empty string if no card is enabled
@@ -244,17 +178,17 @@ public class HomeBoard implements IParseBoardHandler
 				"bypass _bbstop;gatekeeper/main.html"
 			});
 		}
-		
+
 		if (cells.isEmpty())
 		{
 			return "";
 		}
-		
+
 		// Each cell shares the 720px row equally (max 4 cells).
 		final int count = cells.size();
 		final int cellWidth = 720 / count;
 		final int innerWidth = cellWidth - 4; // accounts for cellpadding/spacing.
-		
+
 		final StringBuilder sb = new StringBuilder(2048);
 		sb.append("<table width=720 cellpadding=2 cellspacing=2 border=0><tr>");
 		for (String[] c : cells)
@@ -276,7 +210,7 @@ public class HomeBoard implements IParseBoardHandler
 		sb.append("</tr></table>");
 		return sb.toString();
 	}
-	
+
 	/**
 	 * Builds the full row containing the "Raid Boss Watch" panel and the "Hot Features" panel. Each panel is rendered only if its corresponding config is enabled. When only one of them is enabled, that panel expands laterally to occupy the full 720px width. When both are disabled, an empty string
 	 * is returned (the entire row is omitted from the page).
@@ -290,12 +224,12 @@ public class HomeBoard implements IParseBoardHandler
 		{
 			return "";
 		}
-		
+
 		// When both are enabled, keep the original side-by-side dimensions.
 		// When only one is enabled, that panel takes the full 720px row.
 		final int bossOuter = epicEnabled ? (hotEnabled ? 336 : 720) : 0;
 		final int hotOuter = hotEnabled ? (epicEnabled ? 372 : 720) : 0;
-		
+
 		final StringBuilder sb = new StringBuilder(4096);
 		sb.append("<table width=732 height=210 cellpadding=2 cellspacing=2 border=0><tr>");
 		if (epicEnabled)
@@ -309,7 +243,7 @@ public class HomeBoard implements IParseBoardHandler
 		sb.append("</tr></table><br1>");
 		return sb.toString();
 	}
-	
+
 	/**
 	 * Builds the "Raid Boss Watch" panel as a single &lt;td&gt; cell with the given outer width.
 	 * @param outerWidth target width for the outer cell (e.g. 336 when paired with hot features, 720 when alone)
@@ -322,7 +256,7 @@ public class HomeBoard implements IParseBoardHandler
 		final boolean wide = outerWidth >= 720;
 		final int nameColWidth = wide ? (innerWidth / 2) - 10 : 140;
 		final int statusColWidth = wide ? (innerWidth / 2) - 10 : 180;
-		
+
 		final StringBuilder sb = new StringBuilder(2048);
 		sb.append("<td fixwidth=").append(outerWidth).append(" valign=top background=\"L2UI_CT1.Windows_DF_Drawer_Bg\">");
 		sb.append("<table width=").append(outerWidth).append(" cellpadding=2 cellspacing=0 border=0>");
@@ -337,12 +271,10 @@ public class HomeBoard implements IParseBoardHandler
 		appendBossRow(sb, "161616", "Orfen", "%orfen_status%", nameColWidth, statusColWidth);
 		appendBossRow(sb, "1F1F1F", "Queen Ant", "%queenant_status%", nameColWidth, statusColWidth);
 		sb.append("</table></td></tr>");
-		sb.append("<tr><td height=20 align=center bgcolor=\"111111\">&nbsp;</td></tr>");
-		sb.append("<tr><td height=20 align=center bgcolor=\"111111\"><font color=\"6B6B6B\">Next update:</font> <font color=\"CDB67F\">%boss_next_update_time%</font></td></tr>");
 		sb.append("</table></td>");
 		return sb.toString();
 	}
-	
+
 	private static void appendBossRow(StringBuilder sb, String bg, String name, String statusPlaceholder, int nameWidth, int statusWidth)
 	{
 		sb.append("<tr>");
@@ -350,12 +282,12 @@ public class HomeBoard implements IParseBoardHandler
 		sb.append("<td bgcolor=\"").append(bg).append("\" width=").append(statusWidth).append(" height=20 align=center>").append(statusPlaceholder).append("</td>");
 		sb.append("</tr>");
 	}
-	
+
 	private static String buildHotFeaturesBlock(int outerWidth)
 	{
 		final StringBuilder sb = new StringBuilder(2048);
 		sb.append("<td fixwidth=").append(outerWidth).append(" valign=top background=\"L2UI_CT1.Windows_DF_Drawer_Bg\">");
-		
+
 		// Build the list of enabled cells.
 		// Ordem fixa de exibicao (linha 1: Ranking, BlackSmith, Merchant; linha 2: Premium, Delevel, Recompensa).
 		final List<String[]> cells = new ArrayList<>(6);
@@ -421,15 +353,15 @@ public class HomeBoard implements IParseBoardHandler
 				"bypass -h voice .dailyreward"
 			});
 		}
-		
+
 		// Quando o painel ocupa toda a largura, distribui mais celulas por linha.
 		final int cellsPerRow = outerWidth >= 720 ? 6 : 3;
 		final int cellWidth = (outerWidth - 12) / cellsPerRow;
 		final int buttonWidth = cellWidth - 24;
-		
+
 		sb.append("<table width=").append(outerWidth).append(" cellpadding=2 cellspacing=0 border=0>");
 		sb.append("<tr><td height=15></td></tr>");
-		
+
 		// Layout em linhas com cores alternadas.
 		final String[] bgColors =
 		{
@@ -457,7 +389,7 @@ public class HomeBoard implements IParseBoardHandler
 		sb.append("</td>");
 		return sb.toString();
 	}
-	
+
 	/**
 	 * Returns the list of supported Community Board commands.
 	 * @return Array of command strings
@@ -471,7 +403,7 @@ public class HomeBoard implements IParseBoardHandler
 		commands.addAll(Arrays.asList(topBoard.getCommunityBoardCommands()));
 		return commands.stream().filter(Objects::nonNull).toArray(String[]::new);
 	}
-	
+
 	/**
 	 * Parses and executes a Community Board command for the given player.
 	 * @param command The command string
@@ -492,36 +424,36 @@ public class HomeBoard implements IParseBoardHandler
 			player.sendMessage("You can't use the Community Board right now.");
 			return false;
 		}
-		
+
 		if (KARMA_CHECK.test(player))
 		{
 			player.sendMessage("Players with Karma cannot use the Community Board.");
 			return false;
 		}
-		
+
 		if (Config.COMMUNITYBOARD_PEACE_ONLY && !player.isInsideZone(ZoneId.PEACE))
 		{
 			player.sendMessage("Community Board cannot be used out of peace zone.");
 			return false;
 		}
-		
+
 		String returnHtml = null;
 		if (command.equals("_bbshome") || command.equals("_bbstop"))
 		{
 			CommunityBoardHandler.getInstance().addBypass(player, "Home", command);
 			returnHtml = HtmCache.getInstance().getHtm(player, "data/html/CommunityBoard/home.html");
-			
+
 			// Injeta os blocos dinamicos PRIMEIRO, antes das substituicoes de placeholders
-			// individuais (%antharas_status%, %boss_next_update_time%, etc.), pois esses
-			// placeholders existem dentro do HTML gerado por buildBossHotSection().
+			// individuais (%antharas_status%, etc.), pois esses placeholders existem
+			// dentro do HTML gerado por buildBossHotSection().
 			returnHtml = returnHtml.replace("%boss_hot_section%", buildBossHotSection());
 			returnHtml = returnHtml.replace("%top_features_block%", buildTopFeaturesBlock());
 			returnHtml = returnHtml.replace("%tip_block%", TipsBoard.getInstance().getActiveTipHtml());
-			
+
 			returnHtml = returnHtml.replace("%fav_count%", Integer.toString(getFavoriteCount(player)));
 			returnHtml = returnHtml.replace("%region_count%", Integer.toString(getRegionCount(player)));
 			returnHtml = returnHtml.replace("%clan_count%", Integer.toString(ClanTable.getInstance().getClanCount()));
-			
+
 			// Epic boss status replacement
 			returnHtml = returnHtml.replace("%antharas_status%", HomeBoard.getBossStatus(29068));
 			returnHtml = returnHtml.replace("%baium_status%", HomeBoard.getBossStatus(29020));
@@ -530,9 +462,6 @@ public class HomeBoard implements IParseBoardHandler
 			returnHtml = returnHtml.replace("%orfen_status%", HomeBoard.getBossStatus(29014));
 			returnHtml = returnHtml.replace("%queenant_status%", HomeBoard.getBossStatus(29001));
 			returnHtml = returnHtml.replace("%valakas_status%", HomeBoard.getBossStatus(29028));
-			// Add last and next update times
-			returnHtml = returnHtml.replace("%boss_update_time%", HomeBoard.getLastUpdateTime());
-			returnHtml = returnHtml.replace("%boss_next_update_time%", HomeBoard.getNextUpdateTime());
 		}
 		else if (command.startsWith("_bbstopboard"))
 		{
@@ -582,7 +511,7 @@ public class HomeBoard implements IParseBoardHandler
 					player.sendPacket(SystemMessageId.YOUR_WAREHOUSE_IS_FULL);
 					return false;
 				}
-				
+
 				player.setWarehouseOpenedViaCommunityBoard(true);
 				player.setInventoryBlockingStatus(true);
 				player.sendPacket(new WareHouseDepositList(player, 1));
@@ -594,13 +523,13 @@ public class HomeBoard implements IParseBoardHandler
 				{
 					return false;
 				}
-				
+
 				if (player.getClan() == null)
 				{
 					player.sendPacket(SystemMessageId.YOU_ARE_NOT_A_CLAN_MEMBER_AND_CANNOT_PERFORM_THIS_ACTION);
 					return false;
 				}
-				
+
 				player.sendPacket(ActionFailed.STATIC_PACKET);
 				player.setActiveWarehouse(player.getClan().getWarehouse());
 				if (player.getClan().getLevel() == 0)
@@ -608,7 +537,7 @@ public class HomeBoard implements IParseBoardHandler
 					player.sendPacket(SystemMessageId.ONLY_CLANS_OF_CLAN_LEVEL_1_OR_HIGHER_CAN_USE_A_CLAN_WAREHOUSE);
 					return false;
 				}
-				
+
 				player.setActiveWarehouse(player.getClan().getWarehouse());
 				player.setWarehouseOpenedViaCommunityBoard(true);
 				player.setInventoryBlockingStatus(true);
@@ -623,7 +552,7 @@ public class HomeBoard implements IParseBoardHandler
 					player.sendPacket(SystemMessageId.YOU_HAVE_NOT_DEPOSITED_ANY_ITEMS_IN_YOUR_WAREHOUSE);
 					return false;
 				}
-				
+
 				player.setWarehouseOpenedViaCommunityBoard(true);
 				player.sendPacket(new WareHouseWithdrawalList(player, 1));
 			}
@@ -633,30 +562,30 @@ public class HomeBoard implements IParseBoardHandler
 				{
 					return false;
 				}
-				
+
 				if (player.getClan() == null)
 				{
 					player.sendPacket(SystemMessageId.YOU_DO_NOT_HAVE_THE_RIGHT_TO_USE_THE_CLAN_WAREHOUSE);
 					return false;
 				}
-				
+
 				player.sendPacket(ActionFailed.STATIC_PACKET);
 				if (!player.hasAccess(ClanAccess.ACCESS_WAREHOUSE))
 				{
 					player.sendPacket(SystemMessageId.YOU_DO_NOT_HAVE_THE_RIGHT_TO_USE_THE_CLAN_WAREHOUSE);
 					return false;
 				}
-				
+
 				if (player.getClan().getLevel() == 0)
 				{
 					player.sendPacket(SystemMessageId.ONLY_CLANS_OF_CLAN_LEVEL_1_OR_HIGHER_CAN_USE_A_CLAN_WAREHOUSE);
 					return false;
 				}
-				
+
 				player.setActiveWarehouse(player.getClan().getWarehouse());
 				player.setWarehouseOpenedViaCommunityBoard(true);
 				player.setInventoryBlockingStatus(true);
-				
+
 				player.sendPacket(new WareHouseWithdrawalList(player, 4));
 			}
 		}
@@ -754,19 +683,19 @@ public class HomeBoard implements IParseBoardHandler
 				{
 					PcCafePointsManager.getInstance().run(player);
 				}
-				
+
 				returnHtml = HtmCache.getInstance().getHtm(player, "data/html/CommunityBoard/premium/thankyou.html");
 			}
 		}
-		
+
 		if (returnHtml != null)
 		{
 			CommunityBoardHandler.separateAndSend(returnHtml, player);
 		}
-		
+
 		return false;
 	}
-	
+
 	/**
 	 * Gets the Favorite links for the given player.
 	 * @param player the player
@@ -791,10 +720,10 @@ public class HomeBoard implements IParseBoardHandler
 		{
 			LOG.warning(FavoriteBoard.class.getSimpleName() + ": Couldn't load favorites count for " + player);
 		}
-		
+
 		return count;
 	}
-	
+
 	/**
 	 * Gets the registered regions count for the given player.
 	 * @param player the player
@@ -804,7 +733,7 @@ public class HomeBoard implements IParseBoardHandler
 	{
 		return 0; // TODO: Implement.
 	}
-	
+
 	/**
 	 * Returns the status of the boss for Community Board HTML.
 	 * @param bossId Boss NPC ID
@@ -812,6 +741,15 @@ public class HomeBoard implements IParseBoardHandler
 	 */
 	public static String getBossStatus(int bossId)
 	{
-		return BOSS_STATUS_CACHE.getOrDefault(bossId, "?");
+		final StatSet info = GrandBossManager.getInstance().getStatSet(bossId);
+		if (info == null)
+		{
+			return "?";
+		}
+
+		final long respawnTime = info.getLong("respawn_time");
+		return (respawnTime <= System.currentTimeMillis())
+			? "<font color=\"32C332\">Is Alive</font>"
+			: "<font color=\"FF3333\">Is Dead</font>";
 	}
 }

@@ -29,6 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+- Community Board epic boss status is read from `GrandBossManager` when the board opens, so kills and respawns no longer wait for the hourly cache
 - Olympiad weekly-change countdown log used period-end locals (`countDown` / `numMins`) instead of weekly-change locals (`countDown2` / `numMins2`), so logged days/hours/mins were wrong
 - Closed broken `<title>` tags on Tetrarch Thifiell village-master pages (`30358.htm`, `30358-1.htm`)
 - Added missing `noscrollbar` on High Priestess Levian (`30037.htm`) and Tetrarch Thifiell (`30358.htm`)
