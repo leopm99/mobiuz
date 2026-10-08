@@ -127,10 +127,23 @@ public class HomeBoard implements IParseBoardHandler
 	private static final Predicate<Player> KARMA_CHECK = player -> Config.COMMUNITYBOARD_KARMA_DISABLED && (player.getKarma() > 0);
 
 	/**
+	 * Returns the Portuguese string when {@code lang} is {@code br}, otherwise the English string.
+	 * @param lang player language code
+	 * @param en English text
+	 * @param br Portuguese text
+	 * @return the localized string
+	 */
+	private static String localize(String lang, String en, String br)
+	{
+		return "br".equals(lang) ? br : en;
+	}
+
+	/**
 	 * Builds the top row with feature cards (Buffer, Buffer Premium, DropSearch, Teleport). Cards are filtered by their corresponding configs and resized to fit the 720px row.
+	 * @param lang player language code
 	 * @return the HTML fragment, or empty string if no card is enabled
 	 */
-	private static String buildTopFeaturesBlock()
+	private static String buildTopFeaturesBlock(String lang)
 	{
 		// Cells in fixed display order: { icon, title, subtitle, button_label, button_action }.
 		final List<String[]> cells = new ArrayList<>(4);
@@ -140,8 +153,8 @@ public class HomeBoard implements IParseBoardHandler
 			{
 				"Icon.skill6319",
 				"Buffs",
-				"Get ready for the fight.",
-				"Abrir Buffer",
+				localize(lang, "Get ready for the fight.", "Prepare-se para a luta."),
+				localize(lang, "Open Buffer", "Abrir Buffer"),
 				"bypass _bbsbuffer"
 			});
 		}
@@ -151,7 +164,7 @@ public class HomeBoard implements IParseBoardHandler
 			{
 				"icon.xmas_miracle_i00",
 				"Buffs Premium",
-				"Exclusive advantages",
+				localize(lang, "Exclusive advantages", "Vantagens exclusivas"),
 				"Premium Buffs",
 				"bypass _cbbbuffer"
 			});
@@ -162,8 +175,8 @@ public class HomeBoard implements IParseBoardHandler
 			{
 				"icon.action046",
 				"Drop Search",
-				"Find any item",
-				"Pesquisar",
+				localize(lang, "Find any item", "Encontre qualquer item"),
+				localize(lang, "Search", "Pesquisar"),
 				"bypass _bbstop;dropsearch/main.html"
 			});
 		}
@@ -172,9 +185,9 @@ public class HomeBoard implements IParseBoardHandler
 			cells.add(new String[]
 			{
 				"Icon.Action053",
-				"Teleport",
-				"Travel the world",
-				"Gatekeeper",
+				localize(lang, "Teleport", "Teleporte"),
+				localize(lang, "Travel the world", "Viaje pelo mundo"),
+				localize(lang, "Gatekeeper", "Teleportar"),
 				"bypass _bbstop;gatekeeper/main.html"
 			});
 		}
@@ -214,9 +227,10 @@ public class HomeBoard implements IParseBoardHandler
 	/**
 	 * Builds the full row containing the "Raid Boss Watch" panel and the "Hot Features" panel. Each panel is rendered only if its corresponding config is enabled. When only one of them is enabled, that panel expands laterally to occupy the full 720px width. When both are disabled, an empty string
 	 * is returned (the entire row is omitted from the page).
+	 * @param lang player language code
 	 * @return the HTML fragment for the row, or an empty string if both panels are disabled
 	 */
-	private static String buildBossHotSection()
+	private static String buildBossHotSection(String lang)
 	{
 		final boolean epicEnabled = Config.COMMUNITYBOARD_EPIC_STATUS;
 		final boolean hotEnabled = Config.COMMUNITYBOARD_HOT_FEATURES_ENABLED;
@@ -234,11 +248,11 @@ public class HomeBoard implements IParseBoardHandler
 		sb.append("<table width=732 height=210 cellpadding=2 cellspacing=2 border=0><tr>");
 		if (epicEnabled)
 		{
-			sb.append(buildBossWatchBlock(bossOuter));
+			sb.append(buildBossWatchBlock(bossOuter, lang));
 		}
 		if (hotEnabled)
 		{
-			sb.append(buildHotFeaturesBlock(hotOuter));
+			sb.append(buildHotFeaturesBlock(hotOuter, lang));
 		}
 		sb.append("</tr></table><br1>");
 		return sb.toString();
@@ -247,9 +261,10 @@ public class HomeBoard implements IParseBoardHandler
 	/**
 	 * Builds the "Raid Boss Watch" panel as a single &lt;td&gt; cell with the given outer width.
 	 * @param outerWidth target width for the outer cell (e.g. 336 when paired with hot features, 720 when alone)
+	 * @param lang player language code
 	 * @return the HTML fragment for the cell
 	 */
-	private static String buildBossWatchBlock(int outerWidth)
+	private static String buildBossWatchBlock(int outerWidth, String lang)
 	{
 		final int innerWidth = outerWidth - 6;
 		// When the panel is wide (alone), give the boss-name and status columns more room.
@@ -261,7 +276,7 @@ public class HomeBoard implements IParseBoardHandler
 		sb.append("<td fixwidth=").append(outerWidth).append(" valign=top background=\"L2UI_CT1.Windows_DF_Drawer_Bg\">");
 		sb.append("<table width=").append(outerWidth).append(" cellpadding=2 cellspacing=0 border=0>");
 		sb.append("<tr><td height=10></td></tr>");
-		sb.append("<tr><td height=24 align=center bgcolor=\"2A2418\"><font name=\"hs9\" color=\"F2C75C\">Raid Boss Status</font></td></tr>");
+		sb.append("<tr><td height=24 align=center bgcolor=\"2A2418\"><font name=\"hs9\" color=\"F2C75C\">").append(localize(lang, "Raid Boss Status", "Status dos Raid Bosses")).append("</font></td></tr>");
 		sb.append("<tr><td><table width=").append(innerWidth).append(" cellpadding=2 cellspacing=1 border=0>");
 		appendBossRow(sb, "1F1F1F", "Antharas", "%antharas_status%", nameColWidth, statusColWidth);
 		appendBossRow(sb, "161616", "Valakas", "%valakas_status%", nameColWidth, statusColWidth);
@@ -283,7 +298,7 @@ public class HomeBoard implements IParseBoardHandler
 		sb.append("</tr>");
 	}
 
-	private static String buildHotFeaturesBlock(int outerWidth)
+	private static String buildHotFeaturesBlock(int outerWidth, String lang)
 	{
 		final StringBuilder sb = new StringBuilder(2048);
 		sb.append("<td fixwidth=").append(outerWidth).append(" valign=top background=\"L2UI_CT1.Windows_DF_Drawer_Bg\">");
@@ -298,7 +313,7 @@ public class HomeBoard implements IParseBoardHandler
 			{
 				"BranchSys.br_rank_last_normal",
 				"Ranking",
-				"Top Players",
+				localize(lang, "Top Players", "Top"),
 				"bypass _bbstopboard"
 			});
 		}
@@ -309,7 +324,7 @@ public class HomeBoard implements IParseBoardHandler
 			{
 				"L2UI.Crystalize_active",
 				"BlackSmith",
-				"Access",
+				localize(lang, "Access", "Acessar"),
 				"bypass _bbstop;merchant/blacksmithMain.html"
 			});
 		}
@@ -319,7 +334,7 @@ public class HomeBoard implements IParseBoardHandler
 			{
 				"Icon.skill0629",
 				"Merchant",
-				"Shop",
+				localize(lang, "Shop", "Loja"),
 				"bypass _bbstop;merchant/gmshop.html"
 			});
 		}
@@ -329,7 +344,7 @@ public class HomeBoard implements IParseBoardHandler
 			{
 				"BranchSys2.br_spirit_rune_i00",
 				"Premium",
-				"Access",
+				localize(lang, "Access", "Acessar"),
 				"bypass _bbstop;premium/main.html"
 			});
 		}
@@ -339,7 +354,7 @@ public class HomeBoard implements IParseBoardHandler
 			{
 				"icon.skill1411",
 				"Delevel",
-				"Access",
+				localize(lang, "Access", "Acessar"),
 				"bypass _bbstop;delevel/main.html"
 			});
 		}
@@ -348,8 +363,8 @@ public class HomeBoard implements IParseBoardHandler
 			cells.add(new String[]
 			{
 				"BranchSys.br_bright_gold_box_i00",
-				"Daily Reward",
-				"Colect",
+				localize(lang, "Daily Reward", "Recompensa"),
+				localize(lang, "Collect", "Coletar"),
 				"bypass -h voice .dailyreward"
 			});
 		}
@@ -443,11 +458,15 @@ public class HomeBoard implements IParseBoardHandler
 			CommunityBoardHandler.getInstance().addBypass(player, "Home", command);
 			returnHtml = HtmCache.getInstance().getHtm(player, "data/html/CommunityBoard/home.html");
 
+			final String lang = player.getLang();
+
 			// Injeta os blocos dinamicos PRIMEIRO, antes das substituicoes de placeholders
 			// individuais (%antharas_status%, etc.), pois esses placeholders existem
 			// dentro do HTML gerado por buildBossHotSection().
-			returnHtml = returnHtml.replace("%boss_hot_section%", buildBossHotSection());
-			returnHtml = returnHtml.replace("%top_features_block%", buildTopFeaturesBlock());
+			returnHtml = returnHtml.replace("%banner_subtitle%", localize(lang, "The journey never ends! Explore, conquer, and evolve.", "A jornada nunca termina! Explore, conquiste e evolua."));
+			returnHtml = returnHtml.replace("%banner_tagline%", localize(lang, "Your adventure continues here, every day.", "A sua aventura continua aqui, todos os dias."));
+			returnHtml = returnHtml.replace("%boss_hot_section%", buildBossHotSection(lang));
+			returnHtml = returnHtml.replace("%top_features_block%", buildTopFeaturesBlock(lang));
 			returnHtml = returnHtml.replace("%tip_block%", TipsBoard.getInstance().getActiveTipHtml());
 
 			returnHtml = returnHtml.replace("%fav_count%", Integer.toString(getFavoriteCount(player)));
@@ -455,13 +474,13 @@ public class HomeBoard implements IParseBoardHandler
 			returnHtml = returnHtml.replace("%clan_count%", Integer.toString(ClanTable.getInstance().getClanCount()));
 
 			// Epic boss status replacement
-			returnHtml = returnHtml.replace("%antharas_status%", HomeBoard.getBossStatus(29068));
-			returnHtml = returnHtml.replace("%baium_status%", HomeBoard.getBossStatus(29020));
-			returnHtml = returnHtml.replace("%beleth_status%", HomeBoard.getBossStatus(29118));
-			returnHtml = returnHtml.replace("%core_status%", HomeBoard.getBossStatus(29006));
-			returnHtml = returnHtml.replace("%orfen_status%", HomeBoard.getBossStatus(29014));
-			returnHtml = returnHtml.replace("%queenant_status%", HomeBoard.getBossStatus(29001));
-			returnHtml = returnHtml.replace("%valakas_status%", HomeBoard.getBossStatus(29028));
+			returnHtml = returnHtml.replace("%antharas_status%", HomeBoard.getBossStatus(29068, lang));
+			returnHtml = returnHtml.replace("%baium_status%", HomeBoard.getBossStatus(29020, lang));
+			returnHtml = returnHtml.replace("%beleth_status%", HomeBoard.getBossStatus(29118, lang));
+			returnHtml = returnHtml.replace("%core_status%", HomeBoard.getBossStatus(29006, lang));
+			returnHtml = returnHtml.replace("%orfen_status%", HomeBoard.getBossStatus(29014, lang));
+			returnHtml = returnHtml.replace("%queenant_status%", HomeBoard.getBossStatus(29001, lang));
+			returnHtml = returnHtml.replace("%valakas_status%", HomeBoard.getBossStatus(29028, lang));
 		}
 		else if (command.startsWith("_bbstopboard"))
 		{
@@ -737,9 +756,10 @@ public class HomeBoard implements IParseBoardHandler
 	/**
 	 * Returns the status of the boss for Community Board HTML.
 	 * @param bossId Boss NPC ID
-	 * @return HTML string: 'Is Alive' (green) or 'Is Dead' (red)
+	 * @param lang player language code
+	 * @return HTML string: 'Is Alive'/'Vivo' (green) or 'Is Dead'/'Morto' (red)
 	 */
-	public static String getBossStatus(int bossId)
+	public static String getBossStatus(int bossId, String lang)
 	{
 		final StatSet info = GrandBossManager.getInstance().getStatSet(bossId);
 		if (info == null)
@@ -749,7 +769,7 @@ public class HomeBoard implements IParseBoardHandler
 
 		final long respawnTime = info.getLong("respawn_time");
 		return (respawnTime <= System.currentTimeMillis())
-			? "<font color=\"32C332\">Is Alive</font>"
-			: "<font color=\"FF3333\">Is Dead</font>";
+			? "<font color=\"32C332\">" + localize(lang, "Is Alive", "Vivo") + "</font>"
+			: "<font color=\"FF3333\">" + localize(lang, "Is Dead", "Morto") + "</font>";
 	}
 }
