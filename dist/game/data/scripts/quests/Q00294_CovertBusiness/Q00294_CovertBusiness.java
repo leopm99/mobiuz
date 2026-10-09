@@ -102,7 +102,21 @@ public class Q00294_CovertBusiness extends Quest
 		String html = getNoQuestMsg(talker);
 		if (qs.isCreated())
 		{
-			html = (talker.getRace() == Race.DWARF) ? (talker.getLevel() >= MIN_LEVEL) ? "30534-02.htm" : "30534-01.htm" : "30534-00.htm";
+			if ((talker.getRace() == Race.DWARF))
+			{
+				if ((talker.getLevel() >= MIN_LEVEL))
+				{
+					html = "30534-02.htm";
+				}
+				else
+				{
+					html = "30534-01.htm";
+				}
+			}
+			else
+			{
+				html = "30534-00.htm";
+			}
 		}
 		else if (qs.isStarted())
 		{

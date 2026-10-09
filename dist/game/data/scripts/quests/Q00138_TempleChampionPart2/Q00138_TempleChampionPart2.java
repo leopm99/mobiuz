@@ -187,7 +187,21 @@ public class Q00138_TempleChampionPart2 extends Quest
 							return getAlreadyCompletedMsg(player);
 						}
 						final QuestState qst = player.getQuestState(Q00137_TempleChampionPart1.class.getSimpleName());
-						htmltext = (player.getLevel() >= 36) ? ((qst != null) && qst.isCompleted()) ? "30070-01.htm" : "30070-00a.htm" : "30070-00.htm";
+						if ((player.getLevel() >= 36))
+						{
+							if (((qst != null) && qst.isCompleted()))
+							{
+								htmltext = "30070-01.htm";
+							}
+							else
+							{
+								htmltext = "30070-00a.htm";
+							}
+						}
+						else
+						{
+							htmltext = "30070-00.htm";
+						}
 						break;
 					}
 				}

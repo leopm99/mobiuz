@@ -90,7 +90,21 @@ public class Q00161_FruitOfTheMotherTree extends Quest
 				{
 					case State.CREATED:
 					{
-						htmltext = (player.getRace() == Race.ELF) ? (player.getLevel() >= MIN_LEVEL) ? "30362-03.htm" : "30362-02.htm" : "30362-01.htm";
+						if ((player.getRace() == Race.ELF))
+						{
+							if ((player.getLevel() >= MIN_LEVEL))
+							{
+								htmltext = "30362-03.htm";
+							}
+							else
+							{
+								htmltext = "30362-02.htm";
+							}
+						}
+						else
+						{
+							htmltext = "30362-01.htm";
+						}
 						break;
 					}
 					case State.STARTED:

@@ -84,7 +84,21 @@ public class Q00320_BonesTellTheFuture extends Quest
 		{
 			case State.CREATED:
 			{
-				htmltext = (player.getRace() == Race.DARK_ELF) ? (player.getLevel() >= MIN_LEVEL) ? "30359-03.htm" : "30359-02.htm" : "30359-00.htm";
+				if ((player.getRace() == Race.DARK_ELF))
+				{
+					if ((player.getLevel() >= MIN_LEVEL))
+					{
+						htmltext = "30359-03.htm";
+					}
+					else
+					{
+						htmltext = "30359-02.htm";
+					}
+				}
+				else
+				{
+					htmltext = "30359-00.htm";
+				}
 				break;
 			}
 			case State.STARTED:

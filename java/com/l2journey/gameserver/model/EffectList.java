@@ -542,7 +542,11 @@ public class EffectList
 	 */
 	public int getBuffCount()
 	{
-		return hasBuffs() ? _buffs.size() - _hiddenBuffs.get() - (_shortBuff != null ? 1 : 0) : 0;
+		if (!hasBuffs())
+		{
+			return 0;
+		}
+		return _buffs.size() - _hiddenBuffs.get() - (_shortBuff != null ? 1 : 0);
 	}
 	
 	/**

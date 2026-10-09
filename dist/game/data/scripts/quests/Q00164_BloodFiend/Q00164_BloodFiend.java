@@ -83,7 +83,21 @@ public class Q00164_BloodFiend extends Quest
 		{
 			case State.CREATED:
 			{
-				htmltext = (player.getRace() != Race.DARK_ELF) ? player.getLevel() >= MIN_LEVEL ? "30149-03.htm" : "30149-02.htm" : "30149-00.htm";
+				if ((player.getRace() != Race.DARK_ELF))
+				{
+					if (player.getLevel() >= MIN_LEVEL)
+					{
+						htmltext = "30149-03.htm";
+					}
+					else
+					{
+						htmltext = "30149-02.htm";
+					}
+				}
+				else
+				{
+					htmltext = "30149-00.htm";
+				}
 				break;
 			}
 			case State.STARTED:

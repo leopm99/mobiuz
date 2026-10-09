@@ -116,7 +116,21 @@ public class Q00608_SlayTheEnemyCommanderKetra extends Quest
 		{
 			case State.CREATED:
 			{
-				htmltext = (player.getLevel() >= MIN_LEVEL) ? (hasQuestItems(player, KETRA_ALLIANCE_FOUR)) ? "31370-01.htm" : "31370-02.htm" : "31370-03.htm";
+				if ((player.getLevel() >= MIN_LEVEL))
+				{
+					if ((hasQuestItems(player, KETRA_ALLIANCE_FOUR)))
+					{
+						htmltext = "31370-01.htm";
+					}
+					else
+					{
+						htmltext = "31370-02.htm";
+					}
+				}
+				else
+				{
+					htmltext = "31370-03.htm";
+				}
 				break;
 			}
 			case State.STARTED:

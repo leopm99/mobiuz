@@ -197,7 +197,20 @@ public class UserInfo extends ServerPacket
 		
 		buffer.writeByte(_player.isInPartyMatchRoom());
 		buffer.writeInt(_player.isInvisible() ? _player.getAbnormalVisualEffects() | AbnormalVisualEffect.STEALTH.getMask() : _player.getAbnormalVisualEffects());
-		buffer.writeByte(_player.isInsideZone(ZoneId.WATER) ? 1 : _player.isFlyingMounted() ? 2 : 0);
+		final int playerEnvironment;
+		if (_player.isInsideZone(ZoneId.WATER))
+		{
+			playerEnvironment = 1;
+		}
+		else if (_player.isFlyingMounted())
+		{
+			playerEnvironment = 2;
+		}
+		else
+		{
+			playerEnvironment = 0;
+		}
+		buffer.writeByte(playerEnvironment);
 		buffer.writeInt(_player.getClanPrivileges().getMask());
 		buffer.writeShort(_player.getRecomLeft()); // c2 recommendations remaining
 		buffer.writeShort(_player.getRecomHave()); // c2 recommendations received

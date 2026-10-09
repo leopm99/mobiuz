@@ -461,31 +461,108 @@ public class PhantomEquipment
 
 		if (lvl >= 84)
 		{
-			baseKit = isMage ? ROBE_KIT_S84 : (isLight ? LIGHT_KIT_S84 : HEAVY_KIT_S84);
+			if (isMage)
+			{
+				baseKit = ROBE_KIT_S84;
+			}
+			else if (isLight)
+			{
+				baseKit = LIGHT_KIT_S84;
+			}
+			else
+			{
+				baseKit = HEAVY_KIT_S84;
+			}
 		}
 		else if (lvl >= 76)
 		{
-			baseKit = isMage ? ROBE_KIT_S : (isLight ? LIGHT_KIT_S : HEAVY_KIT_S);
+			if (isMage)
+			{
+				baseKit = ROBE_KIT_S;
+			}
+			else if (isLight)
+			{
+				baseKit = LIGHT_KIT_S;
+			}
+			else
+			{
+				baseKit = HEAVY_KIT_S;
+			}
 		}
 		else if (lvl >= 61)
 		{
-			baseKit = isMage ? ROBE_KIT_A : (isLight ? LIGHT_KIT_A : HEAVY_KIT_A);
+			if (isMage)
+			{
+				baseKit = ROBE_KIT_A;
+			}
+			else if (isLight)
+			{
+				baseKit = LIGHT_KIT_A;
+			}
+			else
+			{
+				baseKit = HEAVY_KIT_A;
+			}
 		}
 		else if (lvl >= 52)
 		{
-			baseKit = isMage ? ROBE_KIT_B : (isLight ? LIGHT_KIT_B : HEAVY_KIT_B);
+			if (isMage)
+			{
+				baseKit = ROBE_KIT_B;
+			}
+			else if (isLight)
+			{
+				baseKit = LIGHT_KIT_B;
+			}
+			else
+			{
+				baseKit = HEAVY_KIT_B;
+			}
 		}
 		else if (lvl >= 40)
 		{
-			baseKit = isMage ? ROBE_KIT_C : (isLight ? LIGHT_KIT_C : HEAVY_KIT_C);
+			if (isMage)
+			{
+				baseKit = ROBE_KIT_C;
+			}
+			else if (isLight)
+			{
+				baseKit = LIGHT_KIT_C;
+			}
+			else
+			{
+				baseKit = HEAVY_KIT_C;
+			}
 		}
 		else if (lvl >= 20)
 		{
-			baseKit = isMage ? ROBE_KIT_D : (isLight ? LIGHT_KIT_D : HEAVY_KIT_D);
+			if (isMage)
+			{
+				baseKit = ROBE_KIT_D;
+			}
+			else if (isLight)
+			{
+				baseKit = LIGHT_KIT_D;
+			}
+			else
+			{
+				baseKit = HEAVY_KIT_D;
+			}
 		}
 		else
 		{
-			baseKit = isMage ? MAGE_KIT_NG : (isKamael ? KAMAEL_KIT_NG : FIGHTER_KIT_NG); // CORRECAO AQUI
+			if (isMage)
+			{
+				baseKit = MAGE_KIT_NG;
+			}
+			else if (isKamael)
+			{
+				baseKit = KAMAEL_KIT_NG;
+			}
+			else
+			{
+				baseKit = FIGHTER_KIT_NG; // CORRECAO AQUI
+			}
 		}
 
 		if (!isMage && (lvl >= 20))

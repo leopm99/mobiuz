@@ -57,8 +57,34 @@ public class Disconnection
 	private Disconnection(GameClient client, Player player)
 	{
 		// Resolve client and player.
-		_client = client != null ? client : player != null ? player.getClient() : null;
-		_player = player != null ? player : client != null ? client.getPlayer() : null;
+		final GameClient resolvedClient;
+		if (client != null)
+		{
+			resolvedClient = client;
+		}
+		else if (player != null)
+		{
+			resolvedClient = player.getClient();
+		}
+		else
+		{
+			resolvedClient = null;
+		}
+		_client = resolvedClient;
+		final Player resolvedPlayer;
+		if (player != null)
+		{
+			resolvedPlayer = player;
+		}
+		else if (client != null)
+		{
+			resolvedPlayer = client.getPlayer();
+		}
+		else
+		{
+			resolvedPlayer = null;
+		}
+		_player = resolvedPlayer;
 		
 		// Stop player tasks.
 		if (_player != null)

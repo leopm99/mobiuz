@@ -104,7 +104,20 @@ public class ExPVPMatchRecord extends ServerPacket
 		ServerPackets.EX_PVP_MATCH_RECORD.writeId(this, buffer);
 		buffer.writeInt(_type);
 		buffer.writeInt(_winnerTeam);
-		buffer.writeInt(_winnerTeam == 0 ? 0 : _winnerTeam == 1 ? 2 : 1);
+		final int loserTeam;
+		if (_winnerTeam == 0)
+		{
+			loserTeam = 0;
+		}
+		else if (_winnerTeam == 1)
+		{
+			loserTeam = 2;
+		}
+		else
+		{
+			loserTeam = 1;
+		}
+		buffer.writeInt(loserTeam);
 		buffer.writeInt(_blueKills);
 		buffer.writeInt(_redKills);
 		buffer.writeInt(_blueList.size());

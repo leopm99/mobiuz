@@ -61,7 +61,20 @@ public class TimeStamp
 		_id1 = skill.getId();
 		_id2 = skill.getLevel();
 		_reuse = reuse;
-		_stamp = systime > 0 ? systime : reuse != 0 ? System.currentTimeMillis() + reuse : 0;
+		final long stamp;
+		if (systime > 0)
+		{
+			stamp = systime;
+		}
+		else if (reuse != 0)
+		{
+			stamp = System.currentTimeMillis() + reuse;
+		}
+		else
+		{
+			stamp = 0;
+		}
+		_stamp = stamp;
 		_group = -1;
 	}
 	
@@ -76,7 +89,20 @@ public class TimeStamp
 		_id1 = item.getId();
 		_id2 = item.getObjectId();
 		_reuse = reuse;
-		_stamp = systime > 0 ? systime : reuse != 0 ? System.currentTimeMillis() + reuse : 0;
+		final long stamp;
+		if (systime > 0)
+		{
+			stamp = systime;
+		}
+		else if (reuse != 0)
+		{
+			stamp = System.currentTimeMillis() + reuse;
+		}
+		else
+		{
+			stamp = 0;
+		}
+		_stamp = stamp;
 		_group = item.getSharedReuseGroup();
 	}
 	

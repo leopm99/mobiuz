@@ -92,7 +92,21 @@ public class Q00170_DangerousSeduction extends Quest
 		{
 			case State.CREATED:
 			{
-				htmltext = (player.getRace() == Race.DARK_ELF) ? (player.getLevel() >= MIN_LEVEL) ? "30305-01.htm" : "30305-02.htm" : "30305-03.htm";
+				if ((player.getRace() == Race.DARK_ELF))
+				{
+					if ((player.getLevel() >= MIN_LEVEL))
+					{
+						htmltext = "30305-01.htm";
+					}
+					else
+					{
+						htmltext = "30305-02.htm";
+					}
+				}
+				else
+				{
+					htmltext = "30305-03.htm";
+				}
 				break;
 			}
 			case State.STARTED:

@@ -248,7 +248,19 @@ public class SiegeGuards extends AbstractNpcAI
 		
 		final Castle castle = npc.getCastle();
 		final Fort fortress = npc.getFort();
-		final int residenceId = fortress != null ? fortress.getResidenceId() : (castle != null ? castle.getResidenceId() : 0);
+		final int residenceId;
+		if (fortress != null)
+		{
+			residenceId = fortress.getResidenceId();
+		}
+		else if (castle != null)
+		{
+			residenceId = castle.getResidenceId();
+		}
+		else
+		{
+			residenceId = 0;
+		}
 		npc.setScriptValue(residenceId);
 		final List<Npc> guardList = RESIDENCE_GUARD_MAP[residenceId];
 		if ((residenceId > 0) && (guardList != null))

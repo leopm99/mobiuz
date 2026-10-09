@@ -93,7 +93,21 @@ public class Q00172_NewHorizons extends Quest
 				{
 					case State.CREATED:
 					{
-						htmltext = (player.getRace() == Race.KAMAEL) ? (player.getLevel() >= MIN_LEVEL) ? "32140-01.htm" : "32140-02.htm" : "32140-03.htm";
+						if ((player.getRace() == Race.KAMAEL))
+						{
+							if ((player.getLevel() >= MIN_LEVEL))
+							{
+								htmltext = "32140-01.htm";
+							}
+							else
+							{
+								htmltext = "32140-02.htm";
+							}
+						}
+						else
+						{
+							htmltext = "32140-03.htm";
+						}
 						break;
 					}
 					case State.STARTED:

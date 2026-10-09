@@ -116,7 +116,21 @@ public class Q00613_ProveYourCourageVarka extends Quest
 		{
 			case State.CREATED:
 			{
-				htmltext = (player.getLevel() >= MIN_LEVEL) ? (hasQuestItems(player, VARKA_ALLIANCE_THREE)) ? "31377-01.htm" : "31377-02.htm" : "31377-03.htm";
+				if ((player.getLevel() >= MIN_LEVEL))
+				{
+					if ((hasQuestItems(player, VARKA_ALLIANCE_THREE)))
+					{
+						htmltext = "31377-01.htm";
+					}
+					else
+					{
+						htmltext = "31377-02.htm";
+					}
+				}
+				else
+				{
+					htmltext = "31377-03.htm";
+				}
 				break;
 			}
 			case State.STARTED:

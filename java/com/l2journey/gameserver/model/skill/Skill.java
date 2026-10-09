@@ -437,7 +437,15 @@ public class Skill
 	
 	public double getPower(boolean isPvP, boolean isPvE)
 	{
-		return isPvE ? _pvePower : isPvP ? _pvpPower : _power;
+		if (isPvE)
+		{
+			return _pvePower;
+		}
+		if (isPvP)
+		{
+			return _pvpPower;
+		}
+		return _power;
 	}
 	
 	/**
@@ -1344,7 +1352,19 @@ public class Skill
 			
 			applyEffectScope(EffectScope.GENERAL, info, instant, addContinuousEffects);
 			
-			final EffectScope pvpOrPveEffectScope = effector.isPlayable() && effected.isAttackable() ? EffectScope.PVE : effector.isPlayable() && effected.isPlayable() ? EffectScope.PVP : null;
+			final EffectScope pvpOrPveEffectScope;
+			if (effector.isPlayable() && effected.isAttackable())
+			{
+				pvpOrPveEffectScope = EffectScope.PVE;
+			}
+			else if (effector.isPlayable() && effected.isPlayable())
+			{
+				pvpOrPveEffectScope = EffectScope.PVP;
+			}
+			else
+			{
+				pvpOrPveEffectScope = null;
+			}
 			applyEffectScope(pvpOrPveEffectScope, info, instant, addContinuousEffects);
 			applyEffectScope(EffectScope.CHANNELING, info, instant, addContinuousEffects);
 			if (addContinuousEffects)
@@ -1481,7 +1501,19 @@ public class Skill
 				final BuffInfo info = new BuffInfo(caster, target, this);
 				applyEffectScope(EffectScope.GENERAL, info, true, false);
 				
-				final EffectScope pvpOrPveEffectScope = caster.isPlayable() && target.isAttackable() ? EffectScope.PVE : caster.isPlayable() && target.isPlayable() ? EffectScope.PVP : null;
+				final EffectScope pvpOrPveEffectScope;
+				if (caster.isPlayable() && target.isAttackable())
+				{
+					pvpOrPveEffectScope = EffectScope.PVE;
+				}
+				else if (caster.isPlayable() && target.isPlayable())
+				{
+					pvpOrPveEffectScope = EffectScope.PVP;
+				}
+				else
+				{
+					pvpOrPveEffectScope = null;
+				}
 				applyEffectScope(pvpOrPveEffectScope, info, true, false);
 				applyEffectScope(EffectScope.CHANNELING, info, true, false);
 			}
@@ -1850,7 +1882,19 @@ public class Skill
 		
 		applyEffectScope(EffectScope.GENERAL, info, true, addContinuousEffects);
 		
-		final EffectScope pvpOrPveEffectScope = effector.isPlayable() && effected.isAttackable() ? EffectScope.PVE : effector.isPlayable() && effected.isPlayable() ? EffectScope.PVP : null;
+		final EffectScope pvpOrPveEffectScope;
+		if (effector.isPlayable() && effected.isAttackable())
+		{
+			pvpOrPveEffectScope = EffectScope.PVE;
+		}
+		else if (effector.isPlayable() && effected.isPlayable())
+		{
+			pvpOrPveEffectScope = EffectScope.PVP;
+		}
+		else
+		{
+			pvpOrPveEffectScope = null;
+		}
 		applyEffectScope(pvpOrPveEffectScope, info, true, addContinuousEffects);
 		
 		applyEffectScope(EffectScope.CHANNELING, info, true, addContinuousEffects);

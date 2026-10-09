@@ -155,7 +155,21 @@ public class Q00293_TheHiddenVeins extends Quest
 				{
 					case State.CREATED:
 					{
-						htmltext = (player.getRace() == Race.DWARF) ? (player.getLevel() >= MIN_LEVEL) ? "30535-03.htm" : "30535-02.htm" : "30535-01.htm";
+						if ((player.getRace() == Race.DWARF))
+						{
+							if ((player.getLevel() >= MIN_LEVEL))
+							{
+								htmltext = "30535-03.htm";
+							}
+							else
+							{
+								htmltext = "30535-02.htm";
+							}
+						}
+						else
+						{
+							htmltext = "30535-01.htm";
+						}
 						break;
 					}
 					case State.STARTED:
@@ -197,7 +211,21 @@ public class Q00293_TheHiddenVeins extends Quest
 								}
 							}
 							
-							htmltext = (ores > 0) ? (maps > 0) ? "30535-10.html" : "30535-06.html" : "30535-09.html";
+							if ((ores > 0))
+							{
+								if ((maps > 0))
+								{
+									htmltext = "30535-10.html";
+								}
+								else
+								{
+									htmltext = "30535-06.html";
+								}
+							}
+							else
+							{
+								htmltext = "30535-09.html";
+							}
 						}
 						else
 						{

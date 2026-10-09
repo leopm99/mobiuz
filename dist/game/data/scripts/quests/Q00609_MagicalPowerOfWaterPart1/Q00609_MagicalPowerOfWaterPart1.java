@@ -168,7 +168,21 @@ public class Q00609_MagicalPowerOfWaterPart1 extends Quest
 				{
 					case State.CREATED:
 					{
-						htmltext = (player.getLevel() >= MIN_LEVEL) ? (hasAtLeastOneQuestItem(player, KETRA_MARKS)) ? "31371-01.htm" : "31371-00a.html" : "31371-00b.html";
+						if ((player.getLevel() >= MIN_LEVEL))
+						{
+							if ((hasAtLeastOneQuestItem(player, KETRA_MARKS)))
+							{
+								htmltext = "31371-01.htm";
+							}
+							else
+							{
+								htmltext = "31371-00a.html";
+							}
+						}
+						else
+						{
+							htmltext = "31371-00b.html";
+						}
 						break;
 					}
 					case State.STARTED:

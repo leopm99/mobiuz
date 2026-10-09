@@ -112,7 +112,21 @@ public class Q00263_OrcSubjugation extends Quest
 		{
 			case State.CREATED:
 			{
-				htmltext = (player.getRace() == Race.DARK_ELF) ? (player.getLevel() >= MIN_LEVEL) ? "30346-03.htm" : "30346-02.htm" : "30346-01.htm";
+				if ((player.getRace() == Race.DARK_ELF))
+				{
+					if ((player.getLevel() >= MIN_LEVEL))
+					{
+						htmltext = "30346-03.htm";
+					}
+					else
+					{
+						htmltext = "30346-02.htm";
+					}
+				}
+				else
+				{
+					htmltext = "30346-01.htm";
+				}
 				break;
 			}
 			case State.STARTED:

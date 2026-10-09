@@ -86,9 +86,35 @@ public class DoorTemplate extends CreatureTemplate
 		_childDoorId = set.getInt("child_id_event", -1);
 		// true if door is opening
 		String masterevent = set.getString("master_close_event", "act_nothing");
-		_masterDoorClose = (byte) (masterevent.equals("act_open") ? 1 : masterevent.equals("act_close") ? -1 : 0);
+		final byte masterDoorClose;
+		if (masterevent.equals("act_open"))
+		{
+			masterDoorClose = 1;
+		}
+		else if (masterevent.equals("act_close"))
+		{
+			masterDoorClose = -1;
+		}
+		else
+		{
+			masterDoorClose = 0;
+		}
+		_masterDoorClose = masterDoorClose;
 		masterevent = set.getString("master_open_event", "act_nothing");
-		_masterDoorOpen = (byte) (masterevent.equals("act_open") ? 1 : masterevent.equals("act_close") ? -1 : 0);
+		final byte masterDoorOpen;
+		if (masterevent.equals("act_open"))
+		{
+			masterDoorOpen = 1;
+		}
+		else if (masterevent.equals("act_close"))
+		{
+			masterDoorOpen = -1;
+		}
+		else
+		{
+			masterDoorOpen = 0;
+		}
+		_masterDoorOpen = masterDoorOpen;
 		_isTargetable = set.getBoolean("targetable", true);
 		_default_status = set.getString("default_status", "close").equals("open");
 		_closeTime = set.getInt("close_time", -1);

@@ -261,7 +261,20 @@ public abstract class AbstractNpcInfo extends ServerPacket
 			buffer.writeInt(_clanCrest); // crest id
 			buffer.writeInt(_allyId); // ally id
 			buffer.writeInt(_allyCrest); // all crest
-			buffer.writeByte(_npc.isInsideZone(ZoneId.WATER) ? 1 : _npc.isFlying() ? 2 : 0); // C2
+			final int npcEnvironment;
+			if (_npc.isInsideZone(ZoneId.WATER))
+			{
+				npcEnvironment = 1;
+			}
+			else if (_npc.isFlying())
+			{
+				npcEnvironment = 2;
+			}
+			else
+			{
+				npcEnvironment = 0;
+			}
+			buffer.writeByte(npcEnvironment); // C2
 			buffer.writeByte(_npc.getTeam().getId());
 			buffer.writeDouble(_collisionRadius);
 			buffer.writeDouble(_collisionHeight);
@@ -430,7 +443,20 @@ public abstract class AbstractNpcInfo extends ServerPacket
 			buffer.writeInt(0); // crest id
 			buffer.writeInt(0); // C2
 			buffer.writeInt(0); // C2
-			buffer.writeByte(_summon.isInsideZone(ZoneId.WATER) ? 1 : _summon.isFlying() ? 2 : 0); // C2
+			final int summonEnvironment;
+			if (_summon.isInsideZone(ZoneId.WATER))
+			{
+				summonEnvironment = 1;
+			}
+			else if (_summon.isFlying())
+			{
+				summonEnvironment = 2;
+			}
+			else
+			{
+				summonEnvironment = 0;
+			}
+			buffer.writeByte(summonEnvironment); // C2
 			buffer.writeByte(_summon.getTeam().getId());
 			buffer.writeDouble(_collisionRadius);
 			buffer.writeDouble(_collisionHeight);

@@ -146,7 +146,21 @@ public class Q00163_LegacyOfThePoet extends Quest
 		{
 			case State.CREATED:
 			{
-				htmltext = (player.getRace() != Race.DARK_ELF) ? (player.getLevel() >= MIN_LEVEL) ? "30220-02.htm" : "30220-01.htm" : "30220-00.htm";
+				if ((player.getRace() != Race.DARK_ELF))
+				{
+					if ((player.getLevel() >= MIN_LEVEL))
+					{
+						htmltext = "30220-02.htm";
+					}
+					else
+					{
+						htmltext = "30220-01.htm";
+					}
+				}
+				else
+				{
+					htmltext = "30220-00.htm";
+				}
 				break;
 			}
 			case State.STARTED:

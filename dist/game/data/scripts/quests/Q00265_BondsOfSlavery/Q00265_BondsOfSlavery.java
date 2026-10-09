@@ -117,7 +117,21 @@ public class Q00265_BondsOfSlavery extends Quest
 		{
 			case State.CREATED:
 			{
-				htmltext = (player.getRace() == Race.DARK_ELF) ? (player.getLevel() >= MIN_LEVEL) ? "30357-03.htm" : "30357-02.html" : "30357-01.html";
+				if ((player.getRace() == Race.DARK_ELF))
+				{
+					if ((player.getLevel() >= MIN_LEVEL))
+					{
+						htmltext = "30357-03.htm";
+					}
+					else
+					{
+						htmltext = "30357-02.html";
+					}
+				}
+				else
+				{
+					htmltext = "30357-01.html";
+				}
 				break;
 			}
 			case State.STARTED:

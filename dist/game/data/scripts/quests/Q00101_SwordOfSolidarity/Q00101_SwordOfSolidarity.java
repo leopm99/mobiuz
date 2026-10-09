@@ -203,7 +203,21 @@ public class Q00101_SwordOfSolidarity extends Quest
 				{
 					case State.CREATED:
 					{
-						htmltext = (player.getRace() == Race.HUMAN) ? (player.getLevel() >= MIN_LEVEL) ? "30008-02.htm" : "30008-08.htm" : "30008-01.htm";
+						if ((player.getRace() == Race.HUMAN))
+						{
+							if ((player.getLevel() >= MIN_LEVEL))
+							{
+								htmltext = "30008-02.htm";
+							}
+							else
+							{
+								htmltext = "30008-08.htm";
+							}
+						}
+						else
+						{
+							htmltext = "30008-01.htm";
+						}
 						break;
 					}
 					case State.STARTED:

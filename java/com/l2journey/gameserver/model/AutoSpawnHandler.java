@@ -312,7 +312,20 @@ public class AutoSpawnHandler
 	public long getTimeToNextSpawn(AutoSpawnInstance spawnInst)
 	{
 		final int objectId = spawnInst.getObjectId();
-		return !isSpawnRegistered(objectId) ? -1 : _runningSpawns.containsKey(objectId) ? _runningSpawns.get(objectId).getDelay(TimeUnit.MILLISECONDS) : 0;
+		final long timeToNext;
+		if (!isSpawnRegistered(objectId))
+		{
+			timeToNext = -1;
+		}
+		else if (_runningSpawns.containsKey(objectId))
+		{
+			timeToNext = _runningSpawns.get(objectId).getDelay(TimeUnit.MILLISECONDS);
+		}
+		else
+		{
+			timeToNext = 0;
+		}
+		return timeToNext;
 	}
 	
 	/**

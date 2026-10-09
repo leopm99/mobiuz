@@ -241,8 +241,24 @@ public class HomeBoard implements IParseBoardHandler
 
 		// When both are enabled, keep the original side-by-side dimensions.
 		// When only one is enabled, that panel takes the full 720px row.
-		final int bossOuter = epicEnabled ? (hotEnabled ? 336 : 720) : 0;
-		final int hotOuter = hotEnabled ? (epicEnabled ? 372 : 720) : 0;
+		final int bossOuter;
+		if (epicEnabled)
+		{
+			bossOuter = hotEnabled ? 336 : 720;
+		}
+		else
+		{
+			bossOuter = 0;
+		}
+		final int hotOuter;
+		if (hotEnabled)
+		{
+			hotOuter = epicEnabled ? 372 : 720;
+		}
+		else
+		{
+			hotOuter = 0;
+		}
 
 		final StringBuilder sb = new StringBuilder(4096);
 		sb.append("<table width=732 height=210 cellpadding=2 cellspacing=2 border=0><tr>");

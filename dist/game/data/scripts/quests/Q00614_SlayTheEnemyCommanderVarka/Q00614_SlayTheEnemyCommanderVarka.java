@@ -116,7 +116,21 @@ public class Q00614_SlayTheEnemyCommanderVarka extends Quest
 		{
 			case State.CREATED:
 			{
-				htmltext = (player.getLevel() >= MIN_LEVEL) ? (hasQuestItems(player, VARKA_ALLIANCE_FOUR)) ? "31377-01.htm" : "31377-02.htm" : "31377-03.htm";
+				if ((player.getLevel() >= MIN_LEVEL))
+				{
+					if ((hasQuestItems(player, VARKA_ALLIANCE_FOUR)))
+					{
+						htmltext = "31377-01.htm";
+					}
+					else
+					{
+						htmltext = "31377-02.htm";
+					}
+				}
+				else
+				{
+					htmltext = "31377-03.htm";
+				}
 				break;
 			}
 			case State.STARTED:

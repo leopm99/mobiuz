@@ -86,7 +86,23 @@ public class Defender extends Attackable
 		// Check if siege is in progress
 		if (((_fort != null) && _fort.getZone().isActive()) || ((_castle != null) && _castle.getZone().isActive()) || ((_hall != null) && _hall.getSiegeZone().isActive()))
 		{
-			final int activeSiegeId = (_fort != null ? _fort.getResidenceId() : (_castle != null ? _castle.getResidenceId() : (_hall != null ? _hall.getId() : 0)));
+			final int activeSiegeId;
+			if (_fort != null)
+			{
+				activeSiegeId = _fort.getResidenceId();
+			}
+			else if (_castle != null)
+			{
+				activeSiegeId = _castle.getResidenceId();
+			}
+			else if (_hall != null)
+			{
+				activeSiegeId = _hall.getId();
+			}
+			else
+			{
+				activeSiegeId = 0;
+			}
 			
 			// Check if player is an enemy of this defender npc
 			if ((player != null) && (((player.getSiegeState() == 2) && !player.isRegisteredOnThisSiegeField(activeSiegeId)) || ((player.getSiegeState() == 1) && !TerritoryWarManager.getInstance().isAllyField(player, activeSiegeId)) || (player.getSiegeState() == 0)))
@@ -189,7 +205,23 @@ public class Defender extends Attackable
 				// Check if siege is in progress
 				if (((_fort != null) && _fort.getZone().isActive()) || ((_castle != null) && _castle.getZone().isActive()) || ((_hall != null) && _hall.getSiegeZone().isActive()))
 				{
-					final int activeSiegeId = (_fort != null ? _fort.getResidenceId() : (_castle != null ? _castle.getResidenceId() : (_hall != null ? _hall.getId() : 0)));
+					final int activeSiegeId;
+					if (_fort != null)
+					{
+						activeSiegeId = _fort.getResidenceId();
+					}
+					else if (_castle != null)
+					{
+						activeSiegeId = _castle.getResidenceId();
+					}
+					else if (_hall != null)
+					{
+						activeSiegeId = _hall.getId();
+					}
+					else
+					{
+						activeSiegeId = 0;
+					}
 					
 					// Do not add hate on defenders.
 					if ((player.getSiegeState() == 2) && player.isRegisteredOnThisSiegeField(activeSiegeId))

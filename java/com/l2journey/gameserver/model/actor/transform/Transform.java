@@ -108,7 +108,11 @@ public class Transform
 	
 	public TransformTemplate getTemplate(Player player)
 	{
-		return player != null ? (player.getAppearance().isFemale() ? _femaleTemplate : _maleTemplate) : null;
+		if (player == null)
+		{
+			return null;
+		}
+		return player.getAppearance().isFemale() ? _femaleTemplate : _maleTemplate;
 	}
 	
 	public void setTemplate(boolean male, TransformTemplate template)

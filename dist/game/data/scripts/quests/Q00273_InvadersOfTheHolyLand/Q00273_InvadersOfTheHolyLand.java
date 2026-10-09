@@ -123,7 +123,21 @@ public class Q00273_InvadersOfTheHolyLand extends Quest
 		{
 			case State.CREATED:
 			{
-				htmltext = (player.getRace() == Race.ORC) ? (player.getLevel() >= MIN_LEVEL) ? "30566-03.htm" : "30566-02.htm" : "30566-01.htm";
+				if ((player.getRace() == Race.ORC))
+				{
+					if ((player.getLevel() >= MIN_LEVEL))
+					{
+						htmltext = "30566-03.htm";
+					}
+					else
+					{
+						htmltext = "30566-02.htm";
+					}
+				}
+				else
+				{
+					htmltext = "30566-01.htm";
+				}
 				break;
 			}
 			case State.STARTED:
@@ -132,7 +146,16 @@ public class Q00273_InvadersOfTheHolyLand extends Quest
 				{
 					final long black = getQuestItemsCount(player, BLACK_SOULSTONE);
 					final long red = getQuestItemsCount(player, RED_SOULSTONE);
-					giveAdena(player, (red * 10) + (black * 3) + ((red > 0) ? (((red + black) >= 10) ? 1800 : 0) : ((black >= 10) ? 1500 : 0)), true);
+					final long bonus;
+					if (red > 0)
+					{
+						bonus = ((red + black) >= 10) ? 1800 : 0;
+					}
+					else
+					{
+						bonus = (black >= 10) ? 1500 : 0;
+					}
+					giveAdena(player, (red * 10) + (black * 3) + bonus, true);
 					takeItems(player, -1, BLACK_SOULSTONE, RED_SOULSTONE);
 					
 					if ((player.getLevel() < 25) && (getOneTimeQuestFlag(player, 57) == 0))

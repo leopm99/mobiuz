@@ -1011,7 +1011,18 @@ public class CrystalCaverns extends AbstractInstance
 				else if (((world.dragonScaleStart + DRAGONSCALETIME) <= System.currentTimeMillis()) || (world.dragonScaleNeed <= 0))
 				{
 					world.dragonScaleStart = System.currentTimeMillis();
-					world.dragonScaleNeed = ((party == null) && caster.isGM()) ? 0 : party != null ? (party.getMemberCount() - 1) : 100;
+					if ((party == null) && caster.isGM())
+					{
+						world.dragonScaleNeed = 0;
+					}
+					else if (party != null)
+					{
+						world.dragonScaleNeed = party.getMemberCount() - 1;
+					}
+					else
+					{
+						world.dragonScaleNeed = 100;
+					}
 				}
 				else
 				{

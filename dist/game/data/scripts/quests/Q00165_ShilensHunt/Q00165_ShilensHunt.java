@@ -99,7 +99,21 @@ public class Q00165_ShilensHunt extends Quest
 		{
 			case State.CREATED:
 			{
-				htmltext = (player.getRace() == Race.DARK_ELF) ? (player.getLevel() >= MIN_LEVEL) ? "30348-02.htm" : "30348-01.htm" : "30348-00.htm";
+				if ((player.getRace() == Race.DARK_ELF))
+				{
+					if ((player.getLevel() >= MIN_LEVEL))
+					{
+						htmltext = "30348-02.htm";
+					}
+					else
+					{
+						htmltext = "30348-01.htm";
+					}
+				}
+				else
+				{
+					htmltext = "30348-00.htm";
+				}
 				break;
 			}
 			case State.STARTED:

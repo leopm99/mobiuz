@@ -74,7 +74,20 @@ public class Summon extends AbstractEffect
 		final Player player = effected.asPlayer();
 		final NpcTemplate template = NpcData.getInstance().getTemplate(_npcId);
 		final Servitor summon = new Servitor(template, player);
-		final int consumeItemInterval = (_consumeItemInterval > 0 ? _consumeItemInterval : (template.getRace() != Race.SIEGE_WEAPON ? 240 : 60)) * 1000;
+		final int consumeInterval;
+		if (_consumeItemInterval > 0)
+		{
+			consumeInterval = _consumeItemInterval;
+		}
+		else if (template.getRace() != Race.SIEGE_WEAPON)
+		{
+			consumeInterval = 240;
+		}
+		else
+		{
+			consumeInterval = 60;
+		}
+		final int consumeItemInterval = consumeInterval * 1000;
 		summon.setName(template.getName());
 		summon.setTitle(effected.getName());
 		summon.setReferenceSkill(skill.getId());

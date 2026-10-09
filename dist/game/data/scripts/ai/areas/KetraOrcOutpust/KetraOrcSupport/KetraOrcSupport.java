@@ -172,7 +172,21 @@ public class KetraOrcSupport extends AbstractNpcAI
 			}
 			case ASEFA:
 			{
-				htmltext = (AllianceLevel > 0) ? (AllianceLevel < 3) ? "31372-01.html" : "31372-04.html" : "31372-03.html";
+				if (AllianceLevel > 0)
+				{
+					if (AllianceLevel < 3)
+					{
+						htmltext = "31372-01.html";
+					}
+					else
+					{
+						htmltext = "31372-04.html";
+					}
+				}
+				else
+				{
+					htmltext = "31372-03.html";
+				}
 				break;
 			}
 			case ATAN:
@@ -182,7 +196,21 @@ public class KetraOrcSupport extends AbstractNpcAI
 			}
 			case JAFF:
 			{
-				htmltext = (AllianceLevel > 0) ? (AllianceLevel == 1) ? "31374-01.html" : "31374-02.html" : "31374-no.html";
+				if (AllianceLevel > 0)
+				{
+					if (AllianceLevel == 1)
+					{
+						htmltext = "31374-01.html";
+					}
+					else
+					{
+						htmltext = "31374-02.html";
+					}
+				}
+				else
+				{
+					htmltext = "31374-no.html";
+				}
 				break;
 			}
 			case JUMARA:

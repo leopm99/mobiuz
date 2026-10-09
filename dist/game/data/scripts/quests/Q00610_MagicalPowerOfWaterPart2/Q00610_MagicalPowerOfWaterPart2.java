@@ -173,12 +173,40 @@ public class Q00610_MagicalPowerOfWaterPart2 extends Quest
 				{
 					case State.CREATED:
 					{
-						htmltext = (player.getLevel() >= MIN_LEVEL) ? (hasQuestItems(player, GREEN_TOTEM)) ? "31372-01.htm" : "31372-00a.html" : "31372-00b.html";
+						if ((player.getLevel() >= MIN_LEVEL))
+						{
+							if ((hasQuestItems(player, GREEN_TOTEM)))
+							{
+								htmltext = "31372-01.htm";
+							}
+							else
+							{
+								htmltext = "31372-00a.html";
+							}
+						}
+						else
+						{
+							htmltext = "31372-00b.html";
+						}
 						break;
 					}
 					case State.STARTED:
 					{
-						htmltext = (qs.isCond(1)) ? "31372-03.html" : (hasQuestItems(player, ASHUTAR_HEART)) ? "31372-04.html" : "31372-05.html";
+						if ((qs.isCond(1)))
+						{
+							htmltext = "31372-03.html";
+						}
+						else
+						{
+							if ((hasQuestItems(player, ASHUTAR_HEART)))
+							{
+								htmltext = "31372-04.html";
+							}
+							else
+							{
+								htmltext = "31372-05.html";
+							}
+						}
 						break;
 					}
 				}
