@@ -157,20 +157,18 @@ public class AdminDoorControl implements IAdminCommandHandler
 				if (command.contains("off"))
 				{
 					final Set<Integer> doorIds = PLAYER_SHOWN_DOORS.get(activeChar);
-					if (doorIds == null)
+					if (doorIds != null)
 					{
-						return true;
+						for (int doorId : doorIds)
+						{
+							final ExServerPrimitive exsp = new ExServerPrimitive("Door" + doorId, activeChar.getX(), activeChar.getY(), -16000);
+							exsp.addLine(Color.BLACK, activeChar.getX(), activeChar.getY(), -16000, activeChar.getX(), activeChar.getY(), -16000);
+							activeChar.sendPacket(exsp);
+						}
+						
+						doorIds.clear();
+						PLAYER_SHOWN_DOORS.remove(activeChar);
 					}
-					
-					for (int doorId : doorIds)
-					{
-						final ExServerPrimitive exsp = new ExServerPrimitive("Door" + doorId, activeChar.getX(), activeChar.getY(), -16000);
-						exsp.addLine(Color.BLACK, activeChar.getX(), activeChar.getY(), -16000, activeChar.getX(), activeChar.getY(), -16000);
-						activeChar.sendPacket(exsp);
-					}
-					
-					doorIds.clear();
-					PLAYER_SHOWN_DOORS.remove(activeChar);
 				}
 				else
 				{

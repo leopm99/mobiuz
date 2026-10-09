@@ -76,6 +76,7 @@ public class AdminZones extends AbstractNpcAI implements IAdminCommandHandler
 	{
 		final StringTokenizer st = new StringTokenizer(command);
 		final String cmd = st.nextToken();
+		boolean buildDefaultHtml = true;
 		switch (cmd)
 		{
 			case "admin_zones":
@@ -83,10 +84,12 @@ public class AdminZones extends AbstractNpcAI implements IAdminCommandHandler
 				if (!st.hasMoreTokens())
 				{
 					buildZonesEditorWindow(activeChar);
-					return false;
+					buildDefaultHtml = false;
 				}
-				final String subCmd = st.nextToken();
-				switch (subCmd)
+				else
+				{
+					final String subCmd = st.nextToken();
+					switch (subCmd)
 				{
 					case "load":
 					{
@@ -213,13 +216,18 @@ public class AdminZones extends AbstractNpcAI implements IAdminCommandHandler
 							}
 						}
 						buildHtmlWindow(activeChar, page);
-						return false;
+						buildDefaultHtml = false;
+						break;
 					}
+				}
 				}
 				break;
 			}
 		}
-		buildHtmlWindow(activeChar, 0);
+		if (buildDefaultHtml)
+		{
+			buildHtmlWindow(activeChar, 0);
+		}
 		return false;
 	}
 	

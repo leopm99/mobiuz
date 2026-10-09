@@ -60,18 +60,16 @@ public class Q00148_PathtoBecominganExaltedMercenary extends Quest
 	{
 		final String htmltext = event;
 		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		if (qs != null)
 		{
-			return htmltext;
-		}
-		
-		if (event.equalsIgnoreCase("exalted-00b.htm"))
-		{
-			giveItems(player, ELITE_CERTIFICATE, 1);
-		}
-		else if (event.equalsIgnoreCase("exalted-03.htm"))
-		{
-			qs.startQuest();
+			if (event.equalsIgnoreCase("exalted-00b.htm"))
+			{
+				giveItems(player, ELITE_CERTIFICATE, 1);
+			}
+			else if (event.equalsIgnoreCase("exalted-03.htm"))
+			{
+				qs.startQuest();
+			}
 		}
 		return htmltext;
 	}

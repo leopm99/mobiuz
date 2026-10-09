@@ -214,9 +214,11 @@ public class PlayableStat extends CreatureStat
 		if (currentSp < amount)
 		{
 			setSp(getSp() - currentSp);
-			return true;
 		}
-		setSp(getSp() - amount);
+		else
+		{
+			setSp(getSp() - amount);
+		}
 		return true;
 	}
 	

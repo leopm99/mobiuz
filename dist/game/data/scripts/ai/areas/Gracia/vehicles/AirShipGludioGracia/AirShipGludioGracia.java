@@ -179,57 +179,46 @@ public class AirShipGludioGracia extends AbstractNpcAI implements Runnable
 		if (player.isTransformed())
 		{
 			player.sendPacket(SystemMessageId.YOU_CANNOT_BOARD_AN_AIRSHIP_WHILE_TRANSFORMED);
-			return null;
 		}
 		else if (player.isParalyzed())
 		{
 			player.sendPacket(SystemMessageId.YOU_CANNOT_BOARD_AN_AIRSHIP_WHILE_PETRIFIED);
-			return null;
 		}
 		else if (player.isDead() || player.isFakeDeath())
 		{
 			player.sendPacket(SystemMessageId.YOU_CANNOT_BOARD_AN_AIRSHIP_WHILE_DEAD);
-			return null;
 		}
 		else if (player.isFishing())
 		{
 			player.sendPacket(SystemMessageId.YOU_CANNOT_BOARD_AN_AIRSHIP_WHILE_FISHING);
-			return null;
 		}
 		else if (player.isInCombat())
 		{
 			player.sendPacket(SystemMessageId.YOU_CANNOT_BOARD_AN_AIRSHIP_WHILE_IN_BATTLE);
-			return null;
 		}
 		else if (player.isInDuel())
 		{
 			player.sendPacket(SystemMessageId.YOU_CANNOT_BOARD_AN_AIRSHIP_WHILE_IN_A_DUEL);
-			return null;
 		}
 		else if (player.isSitting())
 		{
 			player.sendPacket(SystemMessageId.YOU_CANNOT_BOARD_AN_AIRSHIP_WHILE_SITTING);
-			return null;
 		}
 		else if (player.isCastingNow())
 		{
 			player.sendPacket(SystemMessageId.YOU_CANNOT_BOARD_AN_AIRSHIP_WHILE_CASTING);
-			return null;
 		}
 		else if (player.isCursedWeaponEquipped())
 		{
 			player.sendPacket(SystemMessageId.YOU_CANNOT_BOARD_AN_AIRSHIP_WHEN_A_CURSED_WEAPON_IS_EQUIPPED);
-			return null;
 		}
 		else if (player.isCombatFlagEquipped())
 		{
 			player.sendPacket(SystemMessageId.YOU_CANNOT_BOARD_AN_AIRSHIP_WHILE_HOLDING_A_FLAG);
-			return null;
 		}
 		else if (player.hasSummon() || player.isMounted())
 		{
 			player.sendPacket(SystemMessageId.YOU_CANNOT_BOARD_AN_AIRSHIP_WHILE_A_PET_OR_A_SERVITOR_IS_SUMMONED);
-			return null;
 		}
 		else if (_ship.isInDock() && World.getInstance().getVisibleObjects(player, AirShip.class).contains(_ship))
 		{

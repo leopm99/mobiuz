@@ -159,29 +159,27 @@ public class SummonPc extends AbstractNpcAI
 	@Override
 	public String onEvent(String event, Npc npc, Player player)
 	{
-		if ((npc == null) || npc.isDead())
+		if ((npc != null) && !npc.isDead())
 		{
-			return null;
-		}
-		
-		switch (event)
-		{
-			case CHECK_TIMER:
+			switch (event)
 			{
-				handleCheckTarget(npc);
-				break;
-			}
-			
-			case PULL_TIMER:
-			{
-				handlePullTarget(npc);
-				break;
-			}
-			
-			case REATTACK_TIMER:
-			{
-				handleReattack(npc, player);
-				break;
+				case CHECK_TIMER:
+				{
+					handleCheckTarget(npc);
+					break;
+				}
+				
+				case PULL_TIMER:
+				{
+					handlePullTarget(npc);
+					break;
+				}
+				
+				case REATTACK_TIMER:
+				{
+					handleReattack(npc, player);
+					break;
+				}
 			}
 		}
 		

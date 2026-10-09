@@ -62,14 +62,12 @@ public class Q00695_DefendTheHallOfSuffering extends Quest
 	{
 		final String htmltext = event;
 		final QuestState qs = player.getQuestState(getName());
-		if (qs == null)
+		if (qs != null)
 		{
-			return htmltext;
-		}
-		
-		if (event.equals("32603-02.html"))
-		{
-			qs.startQuest();
+			if (event.equals("32603-02.html"))
+			{
+				qs.startQuest();
+			}
 		}
 		return htmltext;
 	}

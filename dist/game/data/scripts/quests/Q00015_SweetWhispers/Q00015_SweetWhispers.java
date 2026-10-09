@@ -50,34 +50,32 @@ public class Q00015_SweetWhispers extends Quest
 	{
 		final String htmltext = event;
 		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		if (qs != null)
 		{
-			return htmltext;
-		}
-		
-		switch (event)
-		{
-			case "31302-01.html":
+			switch (event)
 			{
-				qs.startQuest();
-				break;
-			}
-			case "31518-01.html":
-			{
-				if (qs.isCond(1))
+				case "31302-01.html":
 				{
-					qs.setCond(2);
+					qs.startQuest();
+					break;
 				}
-				break;
-			}
-			case "31517-01.html":
-			{
-				if (qs.isCond(2))
+				case "31518-01.html":
 				{
-					addExpAndSp(player, 350531, 28204);
-					qs.exitQuest(false, true);
+					if (qs.isCond(1))
+					{
+						qs.setCond(2);
+					}
+					break;
 				}
-				break;
+				case "31517-01.html":
+				{
+					if (qs.isCond(2))
+					{
+						addExpAndSp(player, 350531, 28204);
+						qs.exitQuest(false, true);
+					}
+					break;
+				}
 			}
 		}
 		return htmltext;

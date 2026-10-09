@@ -74,19 +74,20 @@ public class AdminPathNode implements IAdminCommandHandler
 			if (Config.PATHFINDING == 0)
 			{
 				activeChar.sendMessage("PathFinding is disabled.");
-				return true;
 			}
-			if (activeChar.getTarget() != null)
+			else if (activeChar.getTarget() != null)
 			{
 				List<AbstractNodeLoc> path = PathFinding.getInstance().findPath(activeChar.getX(), activeChar.getY(), (short) activeChar.getZ(), activeChar.getTarget().getX(), activeChar.getTarget().getY(), (short) activeChar.getTarget().getZ(), activeChar.getInstanceId(), true);
 				if (path == null)
 				{
 					activeChar.sendMessage("No Route!");
-					return true;
 				}
-				for (AbstractNodeLoc a : path)
+				else
 				{
-					activeChar.sendMessage("x:" + a.getX() + " y:" + a.getY() + " z:" + a.getZ());
+					for (AbstractNodeLoc a : path)
+					{
+						activeChar.sendMessage("x:" + a.getX() + " y:" + a.getY() + " z:" + a.getZ());
+					}
 				}
 			}
 			else

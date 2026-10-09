@@ -158,11 +158,13 @@ public class AdminPhantom implements IAdminCommandHandler
 		if (!Config.PHANTOM_ENABLE)
 		{
 			player.sendMessage("Phantom system is disabled.");
-			return true;
 		}
-		int added = PhantomConfig.restoreFromDatabase();
-		player.sendMessage("Restored " + added + " phantoms from the database. List size: " + PhantomConfig.PHANTOM_IDS.size() + ". Use Start 10 / Start 60 to spawn them.");
-		PhantomMenu.showMenu(player, 0);
+		else
+		{
+			int added = PhantomConfig.restoreFromDatabase();
+			player.sendMessage("Restored " + added + " phantoms from the database. List size: " + PhantomConfig.PHANTOM_IDS.size() + ". Use Start 10 / Start 60 to spawn them.");
+			PhantomMenu.showMenu(player, 0);
+		}
 		return true;
 	}
 	

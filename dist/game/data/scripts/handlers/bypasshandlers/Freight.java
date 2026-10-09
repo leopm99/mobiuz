@@ -52,43 +52,41 @@ public class Freight implements IBypassHandler
 	@Override
 	public boolean useBypass(String command, Player player, Creature target)
 	{
-		if (!target.isNpc())
+		if (target.isNpc())
 		{
-			return false;
-		}
-		
-		if (command.equalsIgnoreCase(COMMANDS[0]))
-		{
-			final PlayerFreight freight = player.getFreight();
-			if (freight != null)
+			if (command.equalsIgnoreCase(COMMANDS[0]))
 			{
-				if (freight.getSize() > 0)
+				final PlayerFreight freight = player.getFreight();
+				if (freight != null)
 				{
-					player.setActiveWarehouse(freight);
-					for (Item i : player.getActiveWarehouse().getItems())
+					if (freight.getSize() > 0)
 					{
-						if (i.isTimeLimitedItem() && (i.getRemainingTime() <= 0))
+						player.setActiveWarehouse(freight);
+						for (Item i : player.getActiveWarehouse().getItems())
 						{
-							player.getActiveWarehouse().destroyItem(ItemProcessType.DESTROY, i, player, null);
+							if (i.isTimeLimitedItem() && (i.getRemainingTime() <= 0))
+							{
+								player.getActiveWarehouse().destroyItem(ItemProcessType.DESTROY, i, player, null);
+							}
 						}
+						player.sendPacket(new WareHouseWithdrawalList(player, WareHouseWithdrawalList.FREIGHT));
 					}
-					player.sendPacket(new WareHouseWithdrawalList(player, WareHouseWithdrawalList.FREIGHT));
+					else
+					{
+						player.sendPacket(SystemMessageId.YOU_HAVE_NOT_DEPOSITED_ANY_ITEMS_IN_YOUR_WAREHOUSE);
+					}
+				}
+			}
+			else if (command.equalsIgnoreCase(COMMANDS[1]))
+			{
+				if (player.getAccountChars().size() < 1)
+				{
+					player.sendPacket(SystemMessageId.THAT_CHARACTER_DOES_NOT_EXIST);
 				}
 				else
 				{
-					player.sendPacket(SystemMessageId.YOU_HAVE_NOT_DEPOSITED_ANY_ITEMS_IN_YOUR_WAREHOUSE);
+					player.sendPacket(new PackageToList(player.getAccountChars()));
 				}
-			}
-		}
-		else if (command.equalsIgnoreCase(COMMANDS[1]))
-		{
-			if (player.getAccountChars().size() < 1)
-			{
-				player.sendPacket(SystemMessageId.THAT_CHARACTER_DOES_NOT_EXIST);
-			}
-			else
-			{
-				player.sendPacket(new PackageToList(player.getAccountChars()));
 			}
 		}
 		return false;
