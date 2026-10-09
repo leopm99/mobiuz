@@ -45,23 +45,21 @@ public class Q00249_PoisonedPlainsOfTheLizardmen extends Quest
 	{
 		final String htmltext = event;
 		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		if (qs != null)
 		{
-			return htmltext;
-		}
-		
-		if (npc.getId() == MOUEN)
-		{
-			if (event.equalsIgnoreCase("30196-03.htm"))
+			if (npc.getId() == MOUEN)
 			{
-				qs.startQuest();
+				if (event.equalsIgnoreCase("30196-03.htm"))
+				{
+					qs.startQuest();
+				}
 			}
-		}
-		else if ((npc.getId() == JOHNNY) && event.equalsIgnoreCase("32744-03.htm"))
-		{
-			giveAdena(player, 83056, true);
-			addExpAndSp(player, 477496, 58743);
-			qs.exitQuest(false, true);
+			else if ((npc.getId() == JOHNNY) && event.equalsIgnoreCase("32744-03.htm"))
+			{
+				giveAdena(player, 83056, true);
+				addExpAndSp(player, 477496, 58743);
+				qs.exitQuest(false, true);
+			}
 		}
 		return htmltext;
 	}

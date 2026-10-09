@@ -55,31 +55,28 @@ public class Loto implements IBypassHandler
 	@Override
 	public boolean useBypass(String command, Player player, Creature target)
 	{
-		if (!target.isNpc())
+		if (target.isNpc())
 		{
-			return false;
-		}
-		
-		int val = 0;
-		try
-		{
-			val = Integer.parseInt(command.substring(5));
-		}
-		catch (Exception _)
-		{
-			// Handled above.
-		}
-		
-		if (val == 0)
-		{
-			// new loto ticket
-			for (int i = 0; i < 5; i++)
+			int val = 0;
+			try
 			{
-				player.setLoto(i, 0);
+				val = Integer.parseInt(command.substring(5));
 			}
+			catch (Exception _)
+			{
+				// Handled above.
+			}
+			
+			if (val == 0)
+			{
+				// new loto ticket
+				for (int i = 0; i < 5; i++)
+				{
+					player.setLoto(i, 0);
+				}
+			}
+			showLotoWindow(player, target.asNpc(), val);
 		}
-		showLotoWindow(player, target.asNpc(), val);
-		
 		return false;
 	}
 	

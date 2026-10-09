@@ -73,269 +73,268 @@ public class AdminCHSiege implements IAdminCommandHandler
 	public boolean useAdminCommand(String command, Player activeChar)
 	{
 		final String[] split = command.split(" ");
-		SiegableHall hall = null;
 		if (Config.NO_QUESTS)
 		{
 			activeChar.sendSysMessage("AltDevNoQuests = true; Clan Hall Sieges are disabled!");
-			return false;
 		}
-		if (split.length < 2)
+		else if (split.length < 2)
 		{
 			activeChar.sendSysMessage("You have to specify the hall id at least");
-			return false;
 		}
-		hall = getHall(split[1], activeChar);
-		if (hall == null)
+		else
 		{
-			activeChar.sendSysMessage("Could not find he desired siegable hall (" + split[1] + ")");
-			return false;
-		}
-		if (hall.getSiege() == null)
-		{
-			activeChar.sendSysMessage("The given hall does not have any attached siege!");
-			return false;
-		}
-		
-		if (split[0].equals(COMMANDS[1]))
-		{
-			if (hall.isInSiege())
+			final SiegableHall hall = getHall(split[1], activeChar);
+			if (hall == null)
 			{
-				activeChar.sendSysMessage("The requested clan hall is alredy in siege!");
+				activeChar.sendSysMessage("Could not find he desired siegable hall (" + split[1] + ")");
+			}
+			else if (hall.getSiege() == null)
+			{
+				activeChar.sendSysMessage("The given hall does not have any attached siege!");
 			}
 			else
 			{
-				final Clan owner = ClanTable.getInstance().getClan(hall.getOwnerId());
-				if (owner != null)
+				if (split[0].equals(COMMANDS[1]))
 				{
-					hall.free();
-					owner.setHideoutId(0);
-					hall.addAttacker(owner);
-				}
-				hall.getSiege().startSiege();
-			}
-		}
-		else if (split[0].equals(COMMANDS[2]))
-		{
-			if (!hall.isInSiege())
-			{
-				activeChar.sendSysMessage("The requested clan hall is not in siege!");
-			}
-			else
-			{
-				hall.getSiege().endSiege();
-			}
-		}
-		else if (split[0].equals(COMMANDS[3]))
-		{
-			if (!hall.isRegistering())
-			{
-				activeChar.sendSysMessage("Cannot change siege date while hall is in siege");
-			}
-			else if (split.length < 3)
-			{
-				activeChar.sendSysMessage("The date format is incorrect. Try again.");
-			}
-			else
-			{
-				final String[] rawDate = split[2].split(";");
-				if (rawDate.length < 2)
-				{
-					activeChar.sendSysMessage("You have to specify this format DD-MM-YYYY;HH:MM");
-				}
-				else
-				{
-					final String[] day = rawDate[0].split("-");
-					final String[] hour = rawDate[1].split(":");
-					if ((day.length < 3) || (hour.length < 2))
+					if (hall.isInSiege())
 					{
-						activeChar.sendSysMessage("Incomplete day, hour or both!");
+						activeChar.sendSysMessage("The requested clan hall is alredy in siege!");
 					}
 					else
 					{
-						final int d = parseInt(day[0]);
-						final int month = parseInt(day[1]) - 1;
-						final int year = parseInt(day[2]);
-						final int h = parseInt(hour[0]);
-						final int min = parseInt(hour[1]);
-						if (((month == 2) && (d > 28)) || (d > 31) || (d <= 0) || (month <= 0) || (month > 12) || (year < Calendar.getInstance().get(Calendar.YEAR)))
+						final Clan owner = ClanTable.getInstance().getClan(hall.getOwnerId());
+						if (owner != null)
 						{
-							activeChar.sendSysMessage("Wrong day/month/year gave!");
+							hall.free();
+							owner.setHideoutId(0);
+							hall.addAttacker(owner);
 						}
-						else if ((h <= 0) || (h > 24) || (min < 0) || (min >= 60))
+						hall.getSiege().startSiege();
+					}
+				}
+				else if (split[0].equals(COMMANDS[2]))
+				{
+					if (!hall.isInSiege())
+					{
+						activeChar.sendSysMessage("The requested clan hall is not in siege!");
+					}
+					else
+					{
+						hall.getSiege().endSiege();
+					}
+				}
+				else if (split[0].equals(COMMANDS[3]))
+				{
+					if (!hall.isRegistering())
+					{
+						activeChar.sendSysMessage("Cannot change siege date while hall is in siege");
+					}
+					else if (split.length < 3)
+					{
+						activeChar.sendSysMessage("The date format is incorrect. Try again.");
+					}
+					else
+					{
+						final String[] rawDate = split[2].split(";");
+						if (rawDate.length < 2)
 						{
-							activeChar.sendSysMessage("Wrong hour/minutes gave!");
+							activeChar.sendSysMessage("You have to specify this format DD-MM-YYYY;HH:MM");
 						}
 						else
 						{
-							final Calendar c = Calendar.getInstance();
-							c.set(Calendar.YEAR, year);
-							c.set(Calendar.MONTH, month);
-							c.set(Calendar.DAY_OF_MONTH, d);
-							c.set(Calendar.HOUR_OF_DAY, h);
-							c.set(Calendar.MINUTE, min);
-							c.set(Calendar.SECOND, 0);
-							if (c.getTimeInMillis() > System.currentTimeMillis())
+							final String[] day = rawDate[0].split("-");
+							final String[] hour = rawDate[1].split(":");
+							if ((day.length < 3) || (hour.length < 2))
 							{
-								activeChar.sendMessage(hall.getName() + " siege: " + c.getTime());
-								hall.setNextSiegeDate(c.getTimeInMillis());
-								hall.getSiege().updateSiege();
-								hall.updateDb();
+								activeChar.sendSysMessage("Incomplete day, hour or both!");
 							}
 							else
 							{
-								activeChar.sendSysMessage("The given time is in the past!");
+								final int d = parseInt(day[0]);
+								final int month = parseInt(day[1]) - 1;
+								final int year = parseInt(day[2]);
+								final int h = parseInt(hour[0]);
+								final int min = parseInt(hour[1]);
+								if (((month == 2) && (d > 28)) || (d > 31) || (d <= 0) || (month <= 0) || (month > 12) || (year < Calendar.getInstance().get(Calendar.YEAR)))
+								{
+									activeChar.sendSysMessage("Wrong day/month/year gave!");
+								}
+								else if ((h <= 0) || (h > 24) || (min < 0) || (min >= 60))
+								{
+									activeChar.sendSysMessage("Wrong hour/minutes gave!");
+								}
+								else
+								{
+									final Calendar c = Calendar.getInstance();
+									c.set(Calendar.YEAR, year);
+									c.set(Calendar.MONTH, month);
+									c.set(Calendar.DAY_OF_MONTH, d);
+									c.set(Calendar.HOUR_OF_DAY, h);
+									c.set(Calendar.MINUTE, min);
+									c.set(Calendar.SECOND, 0);
+									if (c.getTimeInMillis() > System.currentTimeMillis())
+									{
+										activeChar.sendMessage(hall.getName() + " siege: " + c.getTime());
+										hall.setNextSiegeDate(c.getTimeInMillis());
+										hall.getSiege().updateSiege();
+										hall.updateDb();
+									}
+									else
+									{
+										activeChar.sendSysMessage("The given time is in the past!");
+									}
+								}
 							}
 						}
 					}
 				}
+				else if (split[0].equals(COMMANDS[4]))
+				{
+					if (hall.isInSiege())
+					{
+						activeChar.sendSysMessage("The clan hall is in siege, cannot add attackers now.");
+					}
+					else
+					{
+						Clan attacker = null;
+						if (split.length < 3)
+						{
+							final WorldObject rawTarget = activeChar.getTarget();
+							Player target = null;
+							if (rawTarget == null)
+							{
+								activeChar.sendSysMessage("You must target a clan member of the attacker!");
+							}
+							else if (!rawTarget.isPlayer())
+							{
+								activeChar.sendSysMessage("You must target a player with clan!");
+							}
+							else if ((target = rawTarget.asPlayer()).getClan() == null)
+							{
+								activeChar.sendSysMessage("Your target does not have any clan!");
+							}
+							else if (hall.getSiege().checkIsAttacker(target.getClan()))
+							{
+								activeChar.sendSysMessage("Your target's clan is alredy participating!");
+							}
+							else
+							{
+								attacker = target.getClan();
+							}
+						}
+						else
+						{
+							final Clan rawClan = ClanTable.getInstance().getClanByName(split[2]);
+							if (rawClan == null)
+							{
+								activeChar.sendSysMessage("The given clan does not exist!");
+							}
+							else if (hall.getSiege().checkIsAttacker(rawClan))
+							{
+								activeChar.sendSysMessage("The given clan is alredy participating!");
+							}
+							else
+							{
+								attacker = rawClan;
+							}
+						}
+						
+						if (attacker != null)
+						{
+							hall.addAttacker(attacker);
+						}
+					}
+				}
+				else if (split[0].equals(COMMANDS[5]))
+				{
+					if (hall.isInSiege())
+					{
+						activeChar.sendSysMessage("The clan hall is in siege, cannot remove attackers now.");
+					}
+					else if (split.length < 3)
+					{
+						final WorldObject rawTarget = activeChar.getTarget();
+						Player target = null;
+						if (rawTarget == null)
+						{
+							activeChar.sendSysMessage("You must target a clan member of the attacker!");
+						}
+						else if (!rawTarget.isPlayer())
+						{
+							activeChar.sendSysMessage("You must target a player with clan!");
+						}
+						else if ((target = rawTarget.asPlayer()).getClan() == null)
+						{
+							activeChar.sendSysMessage("Your target does not have any clan!");
+						}
+						else if (!hall.getSiege().checkIsAttacker(target.getClan()))
+						{
+							activeChar.sendSysMessage("Your target's clan is not participating!");
+						}
+						else
+						{
+							hall.removeAttacker(target.getClan());
+						}
+					}
+					else
+					{
+						final Clan rawClan = ClanTable.getInstance().getClanByName(split[2]);
+						if (rawClan == null)
+						{
+							activeChar.sendSysMessage("The given clan does not exist!");
+						}
+						else if (!hall.getSiege().checkIsAttacker(rawClan))
+						{
+							activeChar.sendSysMessage("The given clan is not participating!");
+						}
+						else
+						{
+							hall.removeAttacker(rawClan);
+						}
+					}
+				}
+				else if (split[0].equals(COMMANDS[6]))
+				{
+					if (hall.isInSiege())
+					{
+						activeChar.sendSysMessage("The requested hall is in siege right now, cannot clear attacker list!");
+					}
+					else
+					{
+						hall.getSiege().getAttackers().clear();
+					}
+				}
+				else if (split[0].equals(COMMANDS[7]))
+				{
+					activeChar.sendPacket(new SiegeInfo(hall, activeChar));
+				}
+				else if (split[0].equals(COMMANDS[8]))
+				{
+					final ClanHallSiegeEngine siegable = hall.getSiege();
+					siegable.cancelSiegeTask();
+					switch (hall.getSiegeStatus())
+					{
+						case REGISTERING:
+						{
+							siegable.prepareOwner();
+							break;
+						}
+						case WAITING_BATTLE:
+						{
+							siegable.startSiege();
+							break;
+						}
+						case RUNNING:
+						{
+							siegable.endSiege();
+							break;
+						}
+					}
+				}
+				
+				sendSiegableHallPage(activeChar, split[1], hall);
 			}
 		}
-		else if (split[0].equals(COMMANDS[4]))
-		{
-			if (hall.isInSiege())
-			{
-				activeChar.sendSysMessage("The clan hall is in siege, cannot add attackers now.");
-				return false;
-			}
-			
-			Clan attacker = null;
-			if (split.length < 3)
-			{
-				final WorldObject rawTarget = activeChar.getTarget();
-				Player target = null;
-				if (rawTarget == null)
-				{
-					activeChar.sendSysMessage("You must target a clan member of the attacker!");
-				}
-				else if (!rawTarget.isPlayer())
-				{
-					activeChar.sendSysMessage("You must target a player with clan!");
-				}
-				else if ((target = rawTarget.asPlayer()).getClan() == null)
-				{
-					activeChar.sendSysMessage("Your target does not have any clan!");
-				}
-				else if (hall.getSiege().checkIsAttacker(target.getClan()))
-				{
-					activeChar.sendSysMessage("Your target's clan is alredy participating!");
-				}
-				else
-				{
-					attacker = target.getClan();
-				}
-			}
-			else
-			{
-				final Clan rawClan = ClanTable.getInstance().getClanByName(split[2]);
-				if (rawClan == null)
-				{
-					activeChar.sendSysMessage("The given clan does not exist!");
-				}
-				else if (hall.getSiege().checkIsAttacker(rawClan))
-				{
-					activeChar.sendSysMessage("The given clan is alredy participating!");
-				}
-				else
-				{
-					attacker = rawClan;
-				}
-			}
-			
-			if (attacker != null)
-			{
-				hall.addAttacker(attacker);
-			}
-		}
-		else if (split[0].equals(COMMANDS[5]))
-		{
-			if (hall.isInSiege())
-			{
-				activeChar.sendSysMessage("The clan hall is in siege, cannot remove attackers now.");
-				return false;
-			}
-			
-			if (split.length < 3)
-			{
-				final WorldObject rawTarget = activeChar.getTarget();
-				Player target = null;
-				if (rawTarget == null)
-				{
-					activeChar.sendSysMessage("You must target a clan member of the attacker!");
-				}
-				else if (!rawTarget.isPlayer())
-				{
-					activeChar.sendSysMessage("You must target a player with clan!");
-				}
-				else if ((target = rawTarget.asPlayer()).getClan() == null)
-				{
-					activeChar.sendSysMessage("Your target does not have any clan!");
-				}
-				else if (!hall.getSiege().checkIsAttacker(target.getClan()))
-				{
-					activeChar.sendSysMessage("Your target's clan is not participating!");
-				}
-				else
-				{
-					hall.removeAttacker(target.getClan());
-				}
-			}
-			else
-			{
-				final Clan rawClan = ClanTable.getInstance().getClanByName(split[2]);
-				if (rawClan == null)
-				{
-					activeChar.sendSysMessage("The given clan does not exist!");
-				}
-				else if (!hall.getSiege().checkIsAttacker(rawClan))
-				{
-					activeChar.sendSysMessage("The given clan is not participating!");
-				}
-				else
-				{
-					hall.removeAttacker(rawClan);
-				}
-			}
-		}
-		else if (split[0].equals(COMMANDS[6]))
-		{
-			if (hall.isInSiege())
-			{
-				activeChar.sendSysMessage("The requested hall is in siege right now, cannot clear attacker list!");
-			}
-			else
-			{
-				hall.getSiege().getAttackers().clear();
-			}
-		}
-		else if (split[0].equals(COMMANDS[7]))
-		{
-			activeChar.sendPacket(new SiegeInfo(hall, activeChar));
-		}
-		else if (split[0].equals(COMMANDS[8]))
-		{
-			final ClanHallSiegeEngine siegable = hall.getSiege();
-			siegable.cancelSiegeTask();
-			switch (hall.getSiegeStatus())
-			{
-				case REGISTERING:
-				{
-					siegable.prepareOwner();
-					break;
-				}
-				case WAITING_BATTLE:
-				{
-					siegable.startSiege();
-					break;
-				}
-				case RUNNING:
-				{
-					siegable.endSiege();
-					break;
-				}
-			}
-		}
-		
-		sendSiegableHallPage(activeChar, split[1], hall);
 		return false;
 	}
 	

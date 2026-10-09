@@ -50,7 +50,6 @@ public class AdminDebug implements IAdminCommandHandler
 				if (target == null)
 				{
 					activeChar.sendPacket(SystemMessageId.THAT_PLAYER_IS_NOT_ONLINE);
-					return true;
 				}
 			}
 			else
@@ -58,13 +57,16 @@ public class AdminDebug implements IAdminCommandHandler
 				target = activeChar.getTarget();
 			}
 			
-			if (target instanceof Creature creature)
+			if (!(commandSplit.length > 1 && target == null))
 			{
-				setDebug(activeChar, creature);
-			}
-			else
-			{
-				setDebug(activeChar, activeChar);
+				if (target instanceof Creature creature)
+				{
+					setDebug(activeChar, creature);
+				}
+				else
+				{
+					setDebug(activeChar, activeChar);
+				}
 			}
 		}
 		return true;

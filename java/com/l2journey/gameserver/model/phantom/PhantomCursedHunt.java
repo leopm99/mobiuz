@@ -139,39 +139,34 @@ public class PhantomCursedHunt
 	 */
 	public static boolean handleWielder(Player bot)
 	{
-		if (tryEjectWielderFromTown(bot))
+		if (!tryEjectWielderFromTown(bot))
 		{
-			return true;
-		}
-		
-		PhantomAI.clearFarmTargetLock(bot);
-		
-		Player target = findWielderTarget(bot);
-		if (target != null)
-		{
-			bot.setTarget(target);
-			PhantomAI.attackTarget(bot, target);
-			return true;
-		}
-		
-		Monster mob = findWielderMobTarget(bot);
-		if (mob != null)
-		{
-			bot.setTarget(mob);
-			PhantomAI.attackTarget(bot, mob);
-			return true;
-		}
-		
-		// Do not spam new wander paths while already moving or mid-swing.
-		if (bot.isAttackingNow() || bot.isCastingNow() || (bot.getAI().getIntention() == Intention.MOVE_TO))
-		{
-			return true;
-		}
-		
-		Location wander = PhantomGeo.getRandomReachableLocation(bot, 400);
-		if (wander != null)
-		{
-			bot.getAI().setIntention(Intention.MOVE_TO, wander);
+			PhantomAI.clearFarmTargetLock(bot);
+			
+			Player target = findWielderTarget(bot);
+			if (target != null)
+			{
+				bot.setTarget(target);
+				PhantomAI.attackTarget(bot, target);
+			}
+			else
+			{
+				Monster mob = findWielderMobTarget(bot);
+				if (mob != null)
+				{
+					bot.setTarget(mob);
+					PhantomAI.attackTarget(bot, mob);
+				}
+				else if (!(bot.isAttackingNow() || bot.isCastingNow() || (bot.getAI().getIntention() == Intention.MOVE_TO)))
+				{
+					// Do not spam new wander paths while already moving or mid-swing.
+					Location wander = PhantomGeo.getRandomReachableLocation(bot, 400);
+					if (wander != null)
+					{
+						bot.getAI().setIntention(Intention.MOVE_TO, wander);
+					}
+				}
+			}
 		}
 		return true;
 	}
@@ -302,22 +297,22 @@ public class PhantomCursedHunt
 	{
 		Item drop = cw.getItem();
 		Location dropLoc = cw.getWorldPosition();
-		if ((drop == null) || !drop.isSpawned() || (dropLoc == null))
+		if ((drop != null) && drop.isSpawned() && (dropLoc != null))
 		{
-			return true;
-		}
-		
-		int looterId = resolveLooter(cw);
-		if (bot.getObjectId() == looterId)
-		{
-			return runToPickup(bot, drop);
-		}
-		
-		// Non-looters hold at run-in distance; do not crowd the drop.
-		double dist = LocationUtil.calculateDistance(bot.getX(), bot.getY(), bot.getZ(), dropLoc.getX(), dropLoc.getY(), dropLoc.getZ(), true, false);
-		if (dist > RETELEPORT_DISTANCE)
-		{
-			maybeTeleportNear(bot, dropLoc, cw.getItemId());
+			int looterId = resolveLooter(cw);
+			if (bot.getObjectId() == looterId)
+			{
+				runToPickup(bot, drop);
+			}
+			else
+			{
+				// Non-looters hold at run-in distance; do not crowd the drop.
+				double dist = LocationUtil.calculateDistance(bot.getX(), bot.getY(), bot.getZ(), dropLoc.getX(), dropLoc.getY(), dropLoc.getZ(), true, false);
+				if (dist > RETELEPORT_DISTANCE)
+				{
+					maybeTeleportNear(bot, dropLoc, cw.getItemId());
+				}
+			}
 		}
 		return true;
 	}
@@ -375,10 +370,11 @@ public class PhantomCursedHunt
 			{
 				bot.getAI().setIntention(Intention.MOVE_TO, drop);
 			}
-			return true;
 		}
-		
-		bot.doPickupItem(drop);
+		else
+		{
+			bot.doPickupItem(drop);
+		}
 		return true;
 	}
 	

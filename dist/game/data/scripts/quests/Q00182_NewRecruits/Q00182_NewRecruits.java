@@ -46,29 +46,27 @@ public class Q00182_NewRecruits extends Quest
 	{
 		final String htmltext = event;
 		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		if (qs != null)
 		{
-			return htmltext;
-		}
-		
-		if (npc.getId() == KEKROPUS)
-		{
-			if (event.equalsIgnoreCase("32138-03.html"))
+			if (npc.getId() == KEKROPUS)
 			{
-				qs.startQuest();
+				if (event.equalsIgnoreCase("32138-03.html"))
+				{
+					qs.startQuest();
+				}
 			}
-		}
-		else if (npc.getId() == MENACING_MACHINE)
-		{
-			if (event.equalsIgnoreCase("32258-04.html"))
+			else if (npc.getId() == MENACING_MACHINE)
 			{
-				giveItems(player, 847, 2);
-				qs.exitQuest(false, true);
-			}
-			else if (event.equalsIgnoreCase("32258-05.html"))
-			{
-				giveItems(player, 890, 2);
-				qs.exitQuest(false, true);
+				if (event.equalsIgnoreCase("32258-04.html"))
+				{
+					giveItems(player, 847, 2);
+					qs.exitQuest(false, true);
+				}
+				else if (event.equalsIgnoreCase("32258-05.html"))
+				{
+					giveItems(player, 890, 2);
+					qs.exitQuest(false, true);
+				}
 			}
 		}
 		return htmltext;

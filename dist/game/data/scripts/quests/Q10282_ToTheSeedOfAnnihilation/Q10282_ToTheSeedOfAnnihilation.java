@@ -52,25 +52,23 @@ public class Q10282_ToTheSeedOfAnnihilation extends Quest
 	{
 		final String htmltext = event;
 		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		if (qs != null)
 		{
-			return htmltext;
-		}
-		
-		switch (event)
-		{
-			case "32733-07.htm":
+			switch (event)
 			{
-				qs.startQuest();
-				giveItems(player, SOA_ORDERS, 1);
-				break;
-			}
-			case "32734-02.htm":
-			{
-				giveAdena(player, 212182, true);
-				addExpAndSp(player, 1148480, 99110);
-				qs.exitQuest(false);
-				break;
+				case "32733-07.htm":
+				{
+					qs.startQuest();
+					giveItems(player, SOA_ORDERS, 1);
+					break;
+				}
+				case "32734-02.htm":
+				{
+					giveAdena(player, 212182, true);
+					addExpAndSp(player, 1148480, 99110);
+					qs.exitQuest(false);
+					break;
+				}
 			}
 		}
 		return htmltext;

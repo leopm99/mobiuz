@@ -61,33 +61,27 @@ public class HandysBlockCheckerEvent extends AbstractNpcAI
 	@Override
 	public String onFirstTalk(Npc npc, Player player)
 	{
-		if ((npc == null) || (player == null))
+		if ((npc != null) && (player != null))
 		{
-			return null;
-		}
-		
-		final int arena = npc.getId() - A_MANAGER_1;
-		if (eventIsFull(arena))
-		{
-			player.sendPacket(SystemMessageId.YOU_CANNOT_REGISTER_BECAUSE_CAPACITY_HAS_BEEN_EXCEEDED);
-			return null;
-		}
-		
-		if (HandysBlockCheckerManager.getInstance().arenaIsBeingUsed(arena))
-		{
-			player.sendPacket(SystemMessageId.THE_MATCH_IS_BEING_PREPARED_PLEASE_TRY_AGAIN_LATER);
-			return null;
-		}
-		
-		if (HandysBlockCheckerManager.getInstance().addPlayerToArena(player, arena))
-		{
-			final ArenaParticipantsHolder holder = HandysBlockCheckerManager.getInstance().getHolder(arena);
-			player.sendPacket(new ExCubeGameTeamList(holder.getRedPlayers(), holder.getBluePlayers(), arena));
-			if ((holder.getBlueTeamSize() >= Config.MIN_BLOCK_CHECKER_TEAM_MEMBERS) && (holder.getRedTeamSize() >= Config.MIN_BLOCK_CHECKER_TEAM_MEMBERS))
+			final int arena = npc.getId() - A_MANAGER_1;
+			if (eventIsFull(arena))
 			{
-				holder.updateEvent();
-				holder.broadCastPacketToTeam(new ExCubeGameRequestReady());
-				holder.broadCastPacketToTeam(new ExCubeGameChangeTimeToStart(10));
+				player.sendPacket(SystemMessageId.YOU_CANNOT_REGISTER_BECAUSE_CAPACITY_HAS_BEEN_EXCEEDED);
+			}
+			else if (HandysBlockCheckerManager.getInstance().arenaIsBeingUsed(arena))
+			{
+				player.sendPacket(SystemMessageId.THE_MATCH_IS_BEING_PREPARED_PLEASE_TRY_AGAIN_LATER);
+			}
+			else if (HandysBlockCheckerManager.getInstance().addPlayerToArena(player, arena))
+			{
+				final ArenaParticipantsHolder holder = HandysBlockCheckerManager.getInstance().getHolder(arena);
+				player.sendPacket(new ExCubeGameTeamList(holder.getRedPlayers(), holder.getBluePlayers(), arena));
+				if ((holder.getBlueTeamSize() >= Config.MIN_BLOCK_CHECKER_TEAM_MEMBERS) && (holder.getRedTeamSize() >= Config.MIN_BLOCK_CHECKER_TEAM_MEMBERS))
+				{
+					holder.updateEvent();
+					holder.broadCastPacketToTeam(new ExCubeGameRequestReady());
+					holder.broadCastPacketToTeam(new ExCubeGameChangeTimeToStart(10));
+				}
 			}
 		}
 		return null;

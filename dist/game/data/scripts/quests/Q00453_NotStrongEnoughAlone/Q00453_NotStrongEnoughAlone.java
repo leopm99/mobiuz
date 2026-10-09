@@ -216,26 +216,24 @@ public class Q00453_NotStrongEnoughAlone extends Quest
 	{
 		final String htmltext = event;
 		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		if (qs != null)
 		{
-			return htmltext;
-		}
-		
-		if (event.equalsIgnoreCase("32734-06.htm"))
-		{
-			qs.startQuest();
-		}
-		else if (event.equalsIgnoreCase("32734-07.html"))
-		{
-			qs.setCond(2, true);
-		}
-		else if (event.equalsIgnoreCase("32734-08.html"))
-		{
-			qs.setCond(3, true);
-		}
-		else if (event.equalsIgnoreCase("32734-09.html"))
-		{
-			qs.setCond(4, true);
+			if (event.equalsIgnoreCase("32734-06.htm"))
+			{
+				qs.startQuest();
+			}
+			else if (event.equalsIgnoreCase("32734-07.html"))
+			{
+				qs.setCond(2, true);
+			}
+			else if (event.equalsIgnoreCase("32734-08.html"))
+			{
+				qs.setCond(3, true);
+			}
+			else if (event.equalsIgnoreCase("32734-09.html"))
+			{
+				qs.setCond(4, true);
+			}
 		}
 		return htmltext;
 	}

@@ -51,32 +51,30 @@ public class Q00179_IntoTheLargeCavern extends Quest
 	{
 		final String htmltext = event;
 		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		if (qs != null)
 		{
-			return htmltext;
-		}
-		
-		if (npc.getId() == KEKROPUS)
-		{
-			if (event.equalsIgnoreCase("32138-03.html"))
+			if (npc.getId() == KEKROPUS)
 			{
-				qs.startQuest();
+				if (event.equalsIgnoreCase("32138-03.html"))
+				{
+					qs.startQuest();
+				}
 			}
-		}
-		else if (npc.getId() == MENACING_MACHINE)
-		{
-			if (event.equalsIgnoreCase("32258-08.html"))
+			else if (npc.getId() == MENACING_MACHINE)
 			{
-				giveItems(player, 391, 1);
-				giveItems(player, 413, 1);
-				qs.exitQuest(false, true);
-			}
-			else if (event.equalsIgnoreCase("32258-09.html"))
-			{
-				giveItems(player, 847, 2);
-				giveItems(player, 890, 2);
-				giveItems(player, 910, 1);
-				qs.exitQuest(false, true);
+				if (event.equalsIgnoreCase("32258-08.html"))
+				{
+					giveItems(player, 391, 1);
+					giveItems(player, 413, 1);
+					qs.exitQuest(false, true);
+				}
+				else if (event.equalsIgnoreCase("32258-09.html"))
+				{
+					giveItems(player, 847, 2);
+					giveItems(player, 890, 2);
+					giveItems(player, 910, 1);
+					qs.exitQuest(false, true);
+				}
 			}
 		}
 		return htmltext;

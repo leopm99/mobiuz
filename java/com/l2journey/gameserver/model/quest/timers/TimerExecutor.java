@@ -247,7 +247,7 @@ public class TimerExecutor<T>
 		}
 		
 		removeAndCancelTimers(timers, timer -> timer.isEqual(event, npc, player));
-		return false;
+		return true;
 	}
 	
 	/**

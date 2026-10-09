@@ -1365,36 +1365,37 @@ public class AchievementNpc extends AbstractNpcAI
 			final NpcHtmlMessage msg = new NpcHtmlMessage(player.getObjectId());
 			msg.setHtml(minimal);
 			player.sendPacket(msg);
-			return null;
 		}
-		
-		final PlayerAchievements playerAchievements = player.getAchievements();
-		
-		final long playerAdena = player.getAdena();
-		
-		final StringBuilder html = new StringBuilder();
-		html.append("<html>");
-		html.append("<title>Achievement System</title>");
-		html.append("<body>");
-		html.append("<br>");
-		
-		html.append("<font color=\"AAAAAA\">Adena Achievements</font><br>");
-		for (Achievement a : ACHIEVEMENTS)
+		else
 		{
-			buildAchievementBlock(html, a, playerAchievements.isClaimed(a.id), playerAchievements.isCompleted(a.id), playerAdena, player, false);
+			final PlayerAchievements playerAchievements = player.getAchievements();
+			
+			final long playerAdena = player.getAdena();
+			
+			final StringBuilder html = new StringBuilder();
+			html.append("<html>");
+			html.append("<title>Achievement System</title>");
+			html.append("<body>");
+			html.append("<br>");
+			
+			html.append("<font color=\"AAAAAA\">Adena Achievements</font><br>");
+			for (Achievement a : ACHIEVEMENTS)
+			{
+				buildAchievementBlock(html, a, playerAchievements.isClaimed(a.id), playerAchievements.isCompleted(a.id), playerAdena, player, false);
+			}
+			
+			html.append("</body></html>");
+			
+			String out = html.toString();
+			
+			if (out.length() > 12000)
+			{
+				out = "<html><body><font color=\"FF0000\">The achievement list is too long to display.</font></body></html>";
+			}
+			final NpcHtmlMessage msg = new NpcHtmlMessage(player.getObjectId());
+			msg.setHtml(out);
+			player.sendPacket(msg);
 		}
-		
-		html.append("</body></html>");
-		
-		String out = html.toString();
-		
-		if (out.length() > 12000)
-		{
-			out = "<html><body><font color=\"FF0000\">The achievement list is too long to display.</font></body></html>";
-		}
-		final NpcHtmlMessage msg = new NpcHtmlMessage(player.getObjectId());
-		msg.setHtml(out);
-		player.sendPacket(msg);
 		return null;
 	}
 	
@@ -1479,30 +1480,36 @@ public class AchievementNpc extends AbstractNpcAI
 		if (achievement == null)
 		{
 			player.sendMessage("Achievement not found!");
-			return showAchievementList(player);
 		}
-		final PlayerAchievements playerAchievements = player.getAchievements();
-		if (playerAchievements.isClaimed(achievementId))
+		else
 		{
-			player.sendMessage("You have already claimed this achievement!");
-			return showAchievementList(player);
+			final PlayerAchievements playerAchievements = player.getAchievements();
+			if (playerAchievements.isClaimed(achievementId))
+			{
+				player.sendMessage("You have already claimed this achievement!");
+			}
+			else
+			{
+				long currentValue = player.getAdena();
+				if (currentValue < achievement.target)
+				{
+					player.sendMessage("Requirements not met.");
+				}
+				else
+				{
+					if (!playerAchievements.isCompleted(achievementId))
+					{
+						playerAchievements.setCompleted(achievementId);
+					}
+					for (RewardItem reward : achievement.rewards)
+					{
+						player.addItem(ItemProcessType.REWARD, reward.itemId, reward.count, player, true);
+					}
+					playerAchievements.setClaimed(achievementId);
+					player.sendMessage("Achievement claimed: " + achievement.name);
+				}
+			}
 		}
-		long currentValue = player.getAdena();
-		if (currentValue < achievement.target)
-		{
-			player.sendMessage("Requirements not met.");
-			return showAchievementList(player);
-		}
-		if (!playerAchievements.isCompleted(achievementId))
-		{
-			playerAchievements.setCompleted(achievementId);
-		}
-		for (RewardItem reward : achievement.rewards)
-		{
-			player.addItem(ItemProcessType.REWARD, reward.itemId, reward.count, player, true);
-		}
-		playerAchievements.setClaimed(achievementId);
-		player.sendMessage("Achievement claimed: " + achievement.name);
 		return showAchievementList(player);
 	}
 	

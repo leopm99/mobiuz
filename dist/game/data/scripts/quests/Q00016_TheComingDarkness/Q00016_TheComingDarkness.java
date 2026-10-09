@@ -59,29 +59,27 @@ public class Q00016_TheComingDarkness extends Quest
 	{
 		final String htmltext = event;
 		final QuestState qs = getQuestState(player, false);
-		if (qs == null)
+		if (qs != null)
 		{
-			return htmltext;
-		}
-		
-		final int cond = qs.getCond();
-		switch (event)
-		{
-			case "31517-02.htm":
+			final int cond = qs.getCond();
+			switch (event)
 			{
-				qs.startQuest();
-				giveItems(player, CRYSTAL_OF_SEAL, 5);
-				break;
-			}
-			case "31512-01.html", "31513-01.html", "31514-01.html", "31515-01.html", "31516-01.html":
-			{
-				final int npcId = Integer.parseInt(event.replace("-01.html", ""));
-				if ((cond == (npcId - 31511)) && hasQuestItems(player, CRYSTAL_OF_SEAL))
+				case "31517-02.htm":
 				{
-					takeItems(player, CRYSTAL_OF_SEAL, 1);
-					qs.setCond(cond + 1, true);
+					qs.startQuest();
+					giveItems(player, CRYSTAL_OF_SEAL, 5);
+					break;
 				}
-				break;
+				case "31512-01.html", "31513-01.html", "31514-01.html", "31515-01.html", "31516-01.html":
+				{
+					final int npcId = Integer.parseInt(event.replace("-01.html", ""));
+					if ((cond == (npcId - 31511)) && hasQuestItems(player, CRYSTAL_OF_SEAL))
+					{
+						takeItems(player, CRYSTAL_OF_SEAL, 1);
+						qs.setCond(cond + 1, true);
+					}
+					break;
+				}
 			}
 		}
 		return htmltext;

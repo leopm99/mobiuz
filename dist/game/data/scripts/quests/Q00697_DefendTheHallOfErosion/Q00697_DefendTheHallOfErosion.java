@@ -44,14 +44,12 @@ public class Q00697_DefendTheHallOfErosion extends Quest
 	{
 		final String htmltext = event;
 		final QuestState qs = player.getQuestState(getName());
-		if (qs == null)
+		if (qs != null)
 		{
-			return htmltext;
-		}
-		
-		if (event.equalsIgnoreCase("32603-03.html"))
-		{
-			qs.startQuest();
+			if (event.equalsIgnoreCase("32603-03.html"))
+			{
+				qs.startQuest();
+			}
 		}
 		return htmltext;
 	}
