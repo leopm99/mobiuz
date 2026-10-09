@@ -239,7 +239,8 @@ public enum BaseStat
 									}
 									else
 									{
-										LOGGER.severe("[BaseStats] Invalid stats name: " + statName + ", skipping");
+										final String loggedStatName = statName;
+										LOGGER.severe(() -> "[BaseStats] Invalid stats name: " + loggedStatName + ", skipping");
 									}
 								}
 							}

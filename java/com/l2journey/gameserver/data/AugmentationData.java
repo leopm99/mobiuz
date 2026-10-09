@@ -103,7 +103,8 @@ public class AugmentationData
 		{
 			for (int i = 0; i < 10; i++)
 			{
-				LOGGER.info(getClass().getSimpleName() + ": Loaded " + _blueSkills.get(i).size() + " blue, " + _purpleSkills.get(i).size() + " purple and " + _redSkills.get(i).size() + " red skills for lifeStoneLevel " + i);
+				final int lifeStoneLevel = i;
+				LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _blueSkills.get(lifeStoneLevel).size() + " blue, " + _purpleSkills.get(lifeStoneLevel).size() + " purple and " + _redSkills.get(lifeStoneLevel).size() + " red skills for lifeStoneLevel " + lifeStoneLevel);
 			}
 		}
 		else
@@ -296,7 +297,8 @@ public class AugmentationData
 				}
 				if (badAugmantData != 0)
 				{
-					LOGGER.info(getClass().getSimpleName() + ": " + badAugmantData + " negative effect skill(s) were skipped.");
+					final String logMessage = getClass().getSimpleName() + ": " + badAugmantData + " negative effect skill(s) were skipped.";
+					LOGGER.info(() -> logMessage);
 				}
 			}
 			catch (Exception e)

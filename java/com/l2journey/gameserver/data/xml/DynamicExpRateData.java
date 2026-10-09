@@ -94,7 +94,8 @@ public class DynamicExpRateData implements IXmlReader
 		_enabled = count > 0;
 		if (_enabled)
 		{
-			LOGGER.info(getClass().getSimpleName() + ": Loaded dynamic rates for " + count + " levels.");
+			final int loggedCount = count;
+			LOGGER.info(() -> getClass().getSimpleName() + ": Loaded dynamic rates for " + loggedCount + " levels.");
 		}
 	}
 	

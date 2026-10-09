@@ -197,13 +197,13 @@ public class Say2 extends ClientPacket
 				sb.append(_target);
 				sb.append("] ");
 				sb.append(_text);
-				LOGGER_CHAT.info(sb.toString());
+				LOGGER_CHAT.info(() -> sb.toString());
 			}
 			else
 			{
 				sb.append("] ");
 				sb.append(_text);
-				LOGGER_CHAT.info(sb.toString());
+				LOGGER_CHAT.info(() -> sb.toString());
 			}
 		}
 		

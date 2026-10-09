@@ -219,7 +219,8 @@ public class SpawnData implements IXmlReader
 									
 									if ((coords == null) || (coords.length == 0))
 									{
-										LOGGER.warning(getClass().getSimpleName() + ": SpawnTable: missing data for spawn territory: " + territoryName + " XML file: " + file.getName());
+										final String spawnLogMessage1 = getClass().getSimpleName() + ": SpawnTable: missing data for spawn territory: " + territoryName + " XML file: " + file.getName();
+										LOGGER.warning(() -> spawnLogMessage1);
 										continue;
 									}
 									
@@ -233,7 +234,8 @@ public class SpawnData implements IXmlReader
 										}
 										else
 										{
-											LOGGER.warning(getClass().getSimpleName() + ": SpawnTable: Missing cuboid vertex data for territory: " + territoryName + " in file: " + file.getName());
+											final String spawnLogMessage2 = getClass().getSimpleName() + ": SpawnTable: Missing cuboid vertex data for territory: " + territoryName + " in file: " + file.getName();
+											LOGGER.warning(() -> spawnLogMessage2);
 											continue;
 										}
 									}
@@ -253,7 +255,8 @@ public class SpawnData implements IXmlReader
 										}
 										else
 										{
-											LOGGER.warning(getClass().getSimpleName() + ": SpawnTable: Bad data for territory: " + territoryName + " in file: " + file.getName());
+											final String spawnLogMessage3 = getClass().getSimpleName() + ": SpawnTable: Bad data for territory: " + territoryName + " in file: " + file.getName();
+											LOGGER.warning(() -> spawnLogMessage3);
 											continue;
 										}
 									}
@@ -267,13 +270,15 @@ public class SpawnData implements IXmlReader
 										}
 										else
 										{
-											LOGGER.warning(getClass().getSimpleName() + ": SpawnTable: Bad data for territory: " + territoryName + " in file: " + file.getName());
+											final String spawnLogMessage4 = getClass().getSimpleName() + ": SpawnTable: Bad data for territory: " + territoryName + " in file: " + file.getName();
+											LOGGER.warning(() -> spawnLogMessage4);
 											continue;
 										}
 									}
 									else
 									{
-										LOGGER.warning(getClass().getSimpleName() + ": SpawnTable: Unknown shape: \"" + zoneShape + "\"  for territory: " + territoryName + " in file: " + file.getName());
+										final String spawnLogMessage5 = getClass().getSimpleName() + ": SpawnTable: Unknown shape: \"" + zoneShape + "\"  for territory: " + territoryName + " in file: " + file.getName();
+										LOGGER.warning(() -> spawnLogMessage5);
 										continue;
 									}
 								}
@@ -290,7 +295,8 @@ public class SpawnData implements IXmlReader
 							{
 								if (!ZoneManager.getInstance().spawnTerritoryExists(territoryName))
 								{
-									LOGGER.warning(getClass().getSimpleName() + ": SpawnTable: banned_territory " + territoryName + " must be set after normal territory.");
+									final String spawnLogMessage6 = getClass().getSimpleName() + ": SpawnTable: banned_territory " + territoryName + " must be set after normal territory.";
+									LOGGER.warning(() -> spawnLogMessage6);
 									continue;
 								}
 								
@@ -320,7 +326,8 @@ public class SpawnData implements IXmlReader
 									
 									if ((coords == null) || (coords.length == 0))
 									{
-										LOGGER.warning(getClass().getSimpleName() + ": SpawnTable: missing data for spawn banned_territory: " + territoryName + " XML file: " + file.getName());
+										final String spawnLogMessage7 = getClass().getSimpleName() + ": SpawnTable: missing data for spawn banned_territory: " + territoryName + " XML file: " + file.getName();
+										LOGGER.warning(() -> spawnLogMessage7);
 										continue;
 									}
 									
@@ -334,7 +341,8 @@ public class SpawnData implements IXmlReader
 										}
 										else
 										{
-											LOGGER.warning(getClass().getSimpleName() + ": SpawnTable: Missing cuboid vertex data for banned_territory: " + territoryName + " in file: " + file.getName());
+											final String spawnLogMessage8 = getClass().getSimpleName() + ": SpawnTable: Missing cuboid vertex data for banned_territory: " + territoryName + " in file: " + file.getName();
+											LOGGER.warning(() -> spawnLogMessage8);
 											continue;
 										}
 									}
@@ -354,7 +362,8 @@ public class SpawnData implements IXmlReader
 										}
 										else
 										{
-											LOGGER.warning(getClass().getSimpleName() + ": SpawnTable: Bad data for banned_territory: " + territoryName + " in file: " + file.getName());
+											final String spawnLogMessage9 = getClass().getSimpleName() + ": SpawnTable: Bad data for banned_territory: " + territoryName + " in file: " + file.getName();
+											LOGGER.warning(() -> spawnLogMessage9);
 											continue;
 										}
 									}
@@ -368,13 +377,15 @@ public class SpawnData implements IXmlReader
 										}
 										else
 										{
-											LOGGER.warning(getClass().getSimpleName() + ": SpawnTable: Bad data for banned_territory: " + territoryName + " in file: " + file.getName());
+											final String spawnLogMessage10 = getClass().getSimpleName() + ": SpawnTable: Bad data for banned_territory: " + territoryName + " in file: " + file.getName();
+											LOGGER.warning(() -> spawnLogMessage10);
 											continue;
 										}
 									}
 									else
 									{
-										LOGGER.warning(getClass().getSimpleName() + ": SpawnTable: Unknown shape: \"" + zoneShape + "\"  for banned_territory: " + territoryName + " in file: " + file.getName());
+										final String spawnLogMessage11 = getClass().getSimpleName() + ": SpawnTable: Unknown shape: \"" + zoneShape + "\"  for banned_territory: " + territoryName + " in file: " + file.getName();
+										LOGGER.warning(() -> spawnLogMessage11);
 										continue;
 									}
 								}

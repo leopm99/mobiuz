@@ -119,7 +119,8 @@ public class GameServerThread extends Thread
 				// Body must hold at least one full Blowfish block, otherwise decrypt() reads out of bounds.
 				if ((dataLength < 8) || ((dataLength % 8) != 0))
 				{
-					LOGGER.warning("Invalid packet length (" + length + ") sent to the server, closing connection.(LS)");
+					final int loggedLength = length;
+					LOGGER.warning(() -> "Invalid packet loggedLength (" + loggedLength + ") sent to the server, closing connection.(LS)");
 					break;
 				}
 				

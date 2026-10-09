@@ -94,7 +94,8 @@ public class FavoriteBoard implements IParseBoardHandler
 				final String[] parts = bypass.split("&", 2);
 				if (parts.length != 2)
 				{
-					LOG.warning(FavoriteBoard.class.getSimpleName() + ": Couldn't add favorite link, " + bypass + " it's not a valid bypass!");
+					final String loggedBypass = bypass;
+					LOG.warning(() -> FavoriteBoard.class.getSimpleName() + ": Couldn't add favorite link, " + loggedBypass + " it's not a valid bypass!");
 					return false;
 				}
 				
@@ -119,7 +120,8 @@ public class FavoriteBoard implements IParseBoardHandler
 			final String favId = command.replace("_bbsdelfav_", "");
 			if (!StringUtil.isNumeric(favId))
 			{
-				LOG.warning(FavoriteBoard.class.getSimpleName() + ": Couldn't delete favorite link, " + favId + " it's not a valid ID!");
+				final String loggedFavId = favId;
+				LOG.warning(() -> FavoriteBoard.class.getSimpleName() + ": Couldn't delete favorite link, " + loggedFavId + " it's not a valid ID!");
 				return false;
 			}
 			

@@ -7254,7 +7254,8 @@ public class Player extends Playable
 						// a possible restart-while-modifysubclass cheat has been attempted.
 						// Switching to use base class
 						player.setPlayerClass(player.getBaseClass());
-						LOGGER.warning(player + " reverted to base class. Possibly has tried a relogin exploit while subclassing.");
+						final Player loggedPlayer = player;
+						LOGGER.warning(() -> loggedPlayer + " reverted to base class. Possibly has tried a relogin exploit while subclassing.");
 					}
 					else
 					{
@@ -14264,7 +14265,8 @@ public class Player extends Playable
 		}
 		else
 		{
-			LOGGER.info("Decreasing skill " + skill + " to " + nextLevel + " for " + this);
+			final String logMessage = "Decreasing skill " + skill + " to " + nextLevel + " for " + this;
+			LOGGER.info(() -> logMessage);
 			addSkill(SkillData.getInstance().getSkill(skill.getId(), nextLevel), true); // replace with lower one
 		}
 	}

@@ -128,7 +128,8 @@ public class DimensionalRiftManager
 			roomSize += room.keySet().size();
 		}
 		
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + typeSize + " room types with " + roomSize + " rooms.");
+		final int loggedRoomSize = roomSize;
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + typeSize + " room types with " + loggedRoomSize + " rooms.");
 	}
 	
 	public void loadSpawns()
@@ -184,11 +185,14 @@ public class DimensionalRiftManager
 											count = Integer.parseInt(attrs.getNamedItem("count").getNodeValue());
 											if (!_rooms.containsKey(type))
 											{
-												LOGGER.warning("Type " + type + " not found!");
+												final byte loggedType = type;
+												LOGGER.warning(() -> "Type " + loggedType + " not found!");
 											}
 											else if (!_rooms.get(type).containsKey(roomId))
 											{
-												LOGGER.warning("Room " + roomId + " in Type " + type + " not found!");
+												final byte loggedRoomId = roomId;
+												final byte loggedType = type;
+												LOGGER.warning(() -> "Room " + loggedRoomId + " in Type " + loggedType + " not found!");
 											}
 											
 											for (int i = 0; i < count; i++)
@@ -226,7 +230,9 @@ public class DimensionalRiftManager
 		{
 			LOGGER.log(Level.WARNING, e, () -> "Error on loading dimensional rift spawns: " + e.getMessage());
 		}
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + countGood + " dimensional rift spawns, " + countBad + " errors.");
+		final int loggedCountBad = countBad;
+		final int loggedCountGood = countGood;
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + loggedCountGood + " dimensional rift spawns, " + loggedCountBad + " errors.");
 	}
 	
 	public void reload()

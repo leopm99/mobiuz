@@ -79,7 +79,7 @@ public class RequestSendFriendMsg extends ClientPacket
 			sb.append(targetPlayer);
 			sb.append("] ");
 			sb.append(_message);
-			LOGGER_CHAT.info(sb.toString());
+			LOGGER_CHAT.info(() -> sb.toString());
 		}
 		
 		targetPlayer.sendPacket(new L2FriendSay(player.getName(), _reciever, _message));

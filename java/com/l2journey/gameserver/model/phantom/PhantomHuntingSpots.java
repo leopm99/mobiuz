@@ -57,7 +57,8 @@ public class PhantomHuntingSpots
 		}
 		
 		// Anuncio limpo que se adapta ao formato do console
-		LOGGER.info("[Phantom Hunting Spots]: Loaded " + total + " coordinates across " + SPOTS_BY_LEVEL.size() + " levels.");
+		final int loggedTotal = total;
+		LOGGER.info(() -> "[Phantom Hunting Spots]: Loaded " + loggedTotal + " coordinates across " + SPOTS_BY_LEVEL.size() + " levels.");
 	}
 	
 	public static boolean relocateForLevelIfNeeded(Player bot)

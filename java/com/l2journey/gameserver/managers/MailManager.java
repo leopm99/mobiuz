@@ -82,7 +82,8 @@ public class MailManager
 		{
 			LOGGER.log(Level.WARNING, e, () -> getClass().getSimpleName() + ": Error loading from database:");
 		}
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + count + " messages.");
+		final int loggedCount = count;
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + loggedCount + " messages.");
 	}
 	
 	public Message getMessage(int msgId)

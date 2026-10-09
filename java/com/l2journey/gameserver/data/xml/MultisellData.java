@@ -208,7 +208,8 @@ public class MultisellData implements IXmlReader
 				if (totalPrice > adenaCount)
 				{
 					ingredient.setItemCount(totalPrice);
-					LOGGER.warning("Buy price " + adenaCount + " is less than sell price " + totalPrice + " at entry " + entryId + " of multisell " + list.getListId() + ".");
+					final long loggedTotalPrice = totalPrice;
+					LOGGER.warning(() -> "Buy price " + adenaCount + " is less than sell price " + loggedTotalPrice + " at entry " + entryId + " of multisell " + list.getListId() + ".");
 				}
 			}
 		}

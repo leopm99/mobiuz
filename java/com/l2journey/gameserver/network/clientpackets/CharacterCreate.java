@@ -242,7 +242,8 @@ public class CharacterCreate extends ClientPacket
 		initNewChar(client, newChar);
 		client.sendPacket(CharCreateOk.STATIC_PACKET);
 		
-		LOGGER_ACCOUNTING.info("Created new character, " + newChar + ", " + client);
+		final String logMessage = "Created new character, " + newChar + ", " + client;
+		LOGGER_ACCOUNTING.info(() -> logMessage);
 	}
 	
 	private boolean isValidName(String text)

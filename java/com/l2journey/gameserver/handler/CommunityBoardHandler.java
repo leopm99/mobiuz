@@ -199,7 +199,8 @@ public class CommunityBoardHandler implements IHandler<IParseBoardHandler, Strin
 		final IParseBoardHandler cb = getHandler(cmd);
 		if (cb == null)
 		{
-			LOG.warning(CommunityBoardHandler.class.getSimpleName() + ": Couldn't find write handler for command " + cmd + "!");
+			final String loggedCmd = cmd;
+			LOG.warning(() -> CommunityBoardHandler.class.getSimpleName() + ": Couldn't find write handler for command " + loggedCmd + "!");
 			return;
 		}
 		

@@ -236,6 +236,6 @@ public class FloodProtectorAction
 		
 		Arrays.stream(lines).forEach(output::append);
 		
-		LOGGER.warning(output.toString());
+		LOGGER.warning(() -> output.toString());
 	}
 }

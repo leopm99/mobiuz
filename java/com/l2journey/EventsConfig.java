@@ -471,7 +471,8 @@ public class EventsConfig
 			valueSplit = value.split(",");
 			if (valueSplit.length != 2)
 			{
-				LOGGER.warning("parseItemsList[Config.load()]: invalid entry -> \"" + valueSplit[0] + "\", should be itemId,itemNumber. Skipping to the next entry in the list.");
+				final String logMessage = "parseItemsList[Config.load()]: invalid entry -> \"" + valueSplit[0] + "\", should be itemId,itemNumber. Skipping to the next entry in the list.";
+				LOGGER.warning(() -> logMessage);
 				continue;
 			}
 			

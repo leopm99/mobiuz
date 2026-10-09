@@ -160,8 +160,7 @@ public class RequestExEnchantSkill extends ClientPacket
 			{
 				if (Config.LOG_SKILL_ENCHANTS)
 				{
-					final StringBuilder sb = new StringBuilder();
-					LOGGER_ENCHANT.info(sb.append("Success, Character:").append(player.getName()).append(" [").append(player.getObjectId()).append("] Account:").append(player.getAccountName()).append(" IP:").append(player.getIPAddress()).append(", Skill:").append(skill).append(", SPB:").append(spb).append(", Rate:").append(rate).toString());
+					LOGGER_ENCHANT.info(() -> "Success, Character:" + player.getName() + " [" + player.getObjectId() + "] Account:" + player.getAccountName() + " IP:" + player.getIPAddress() + ", Skill:" + skill + ", SPB:" + spb + ", Rate:" + rate);
 				}
 				
 				player.addSkill(skill, true);
@@ -179,8 +178,7 @@ public class RequestExEnchantSkill extends ClientPacket
 				
 				if (Config.LOG_SKILL_ENCHANTS)
 				{
-					final StringBuilder sb = new StringBuilder();
-					LOGGER_ENCHANT.info(sb.append("Failed, Character:").append(player.getName()).append(" [").append(player.getObjectId()).append("] Account:").append(player.getAccountName()).append(" IP:").append(player.getIPAddress()).append(", Skill:").append(skill).append(", SPB:").append(spb).append(", Rate:").append(rate).toString());
+					LOGGER_ENCHANT.info(() -> "Failed, Character:" + player.getName() + " [" + player.getObjectId() + "] Account:" + player.getAccountName() + " IP:" + player.getIPAddress() + ", Skill:" + skill + ", SPB:" + spb + ", Rate:" + rate);
 				}
 			}
 			

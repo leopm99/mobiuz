@@ -94,7 +94,7 @@ public class IllegalPlayerActionTask implements Runnable
 		sb.append(_actor);
 		sb.append(", ");
 		sb.append(_punishment);
-		AUDIT_LOGGER.info(sb.toString());
+		AUDIT_LOGGER.info(() -> sb.toString());
 		
 		if (!_actor.isGM())
 		{

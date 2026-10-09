@@ -1063,7 +1063,8 @@ public class Olympiad extends ListenersContainer
 						hero.set(CHAR_ID, rset.getInt(CHAR_ID));
 						hero.set(CHAR_NAME, rset.getString(CHAR_NAME));
 						
-						LOGGER_OLYMPIAD.info("Hero " + hero.getString(CHAR_NAME) + "," + hero.getInt(CHAR_ID) + "," + hero.getInt(CLASS_ID));
+						final String logMessage = "Hero " + hero.getString(CHAR_NAME) + "," + hero.getInt(CHAR_ID) + "," + hero.getInt(CLASS_ID);
+						LOGGER_OLYMPIAD.info(() -> logMessage);
 						if ((element == 132) || (element == 133)) // Male & Female Soulhounds rank as one hero class
 						{
 							hero = NOBLES.get(hero.getInt(CHAR_ID));

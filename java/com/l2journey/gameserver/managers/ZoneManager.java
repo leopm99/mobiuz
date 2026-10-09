@@ -159,7 +159,8 @@ public class ZoneManager implements IXmlReader
 			}
 		}
 		GrandBossManager.getInstance().getZones().clear();
-		LOGGER.info(getClass().getSimpleName() + ": Removed zones in " + count + " regions.");
+		final int loggedCount = count;
+		LOGGER.info(() -> getClass().getSimpleName() + ": Removed zones in " + loggedCount + " regions.");
 		
 		// Load the zones
 		load();
@@ -246,7 +247,8 @@ public class ZoneManager implements IXmlReader
 							}
 							else if (_spawnTerritories.containsKey(zoneName))
 							{
-								LOGGER.warning("ZoneData: Name " + zoneName + " already used for another zone, check file: " + file.getName() + ". Skipping zone");
+								final String logMessage = "ZoneData: Name " + zoneName + " already used for another zone, check file: " + file.getName() + ". Skipping zone";
+								LOGGER.warning(() -> logMessage);
 								continue;
 							}
 						}
@@ -277,7 +279,8 @@ public class ZoneManager implements IXmlReader
 							
 							if ((coords == null) || (coords.length == 0))
 							{
-								LOGGER.warning(getClass().getSimpleName() + ": ZoneData: missing data for zone: " + zoneId + " XML file: " + file.getName());
+								final String zoneLogMessage1 = getClass().getSimpleName() + ": ZoneData: missing data for zone: " + zoneId + " XML file: " + file.getName();
+								LOGGER.warning(() -> zoneLogMessage1);
 								continue;
 							}
 							
@@ -291,7 +294,8 @@ public class ZoneManager implements IXmlReader
 								}
 								else
 								{
-									LOGGER.warning(getClass().getSimpleName() + ": ZoneData: Missing cuboid vertex data for zone: " + zoneId + " in file: " + file.getName());
+									final String zoneLogMessage2 = getClass().getSimpleName() + ": ZoneData: Missing cuboid vertex data for zone: " + zoneId + " in file: " + file.getName();
+									LOGGER.warning(() -> zoneLogMessage2);
 									continue;
 								}
 							}
@@ -311,7 +315,8 @@ public class ZoneManager implements IXmlReader
 								}
 								else
 								{
-									LOGGER.warning(getClass().getSimpleName() + ": ZoneData: Bad data for zone: " + zoneId + " in file: " + file.getName());
+									final String zoneLogMessage3 = getClass().getSimpleName() + ": ZoneData: Bad data for zone: " + zoneId + " in file: " + file.getName();
+									LOGGER.warning(() -> zoneLogMessage3);
 									continue;
 								}
 							}
@@ -327,13 +332,15 @@ public class ZoneManager implements IXmlReader
 								}
 								else
 								{
-									LOGGER.warning(getClass().getSimpleName() + ": ZoneData: Bad data for zone: " + zoneId + " in file: " + file.getName());
+									final String zoneLogMessage4 = getClass().getSimpleName() + ": ZoneData: Bad data for zone: " + zoneId + " in file: " + file.getName();
+									LOGGER.warning(() -> zoneLogMessage4);
 									continue;
 								}
 							}
 							else
 							{
-								LOGGER.warning(getClass().getSimpleName() + ": ZoneData: Unknown shape: \"" + zoneShape + "\"  for zone: " + zoneId + " in file: " + file.getName());
+								final String zoneLogMessage5 = getClass().getSimpleName() + ": ZoneData: Unknown shape: \"" + zoneShape + "\"  for zone: " + zoneId + " in file: " + file.getName();
+								LOGGER.warning(() -> zoneLogMessage5);
 								continue;
 							}
 						}
@@ -396,7 +403,8 @@ public class ZoneManager implements IXmlReader
 						}
 						if (checkId(zoneId))
 						{
-							LOGGER.config(getClass().getSimpleName() + ": Caution: Zone (" + zoneId + ") from file: " + file.getName() + " overrides previous definition.");
+							final String zoneLogMessage6 = getClass().getSimpleName() + ": Caution: Zone (" + zoneId + ") from file: " + file.getName() + " overrides previous definition.";
+							LOGGER.config(() -> zoneLogMessage6);
 						}
 						
 						if ((zoneName != null) && !zoneName.isEmpty())

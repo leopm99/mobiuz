@@ -70,7 +70,8 @@ public class EnchantSkillGroupsData implements IXmlReader
 		{
 			routes += group.getEnchantGroupDetails().size();
 		}
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + _enchantSkillGroups.size() + " groups and " + routes + " routes.");
+		final int loggedRoutes = routes;
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _enchantSkillGroups.size() + " groups and " + loggedRoutes + " loggedRoutes.");
 	}
 	
 	@Override
