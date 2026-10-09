@@ -136,7 +136,21 @@ public class Q00169_OffspringOfNightmares extends Quest
 		{
 			case State.CREATED:
 			{
-				htmltext = (player.getRace() == Race.DARK_ELF) ? (player.getLevel() >= MIN_LEVEL) ? "30145-02.htm" : "30145-01.htm" : "30145-00.htm";
+				if ((player.getRace() == Race.DARK_ELF))
+				{
+					if ((player.getLevel() >= MIN_LEVEL))
+					{
+						htmltext = "30145-02.htm";
+					}
+					else
+					{
+						htmltext = "30145-01.htm";
+					}
+				}
+				else
+				{
+					htmltext = "30145-00.htm";
+				}
 				break;
 			}
 			case State.STARTED:

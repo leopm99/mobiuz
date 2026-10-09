@@ -103,7 +103,21 @@ public class Q00272_WrathOfAncestors extends Quest
 		{
 			case State.CREATED:
 			{
-				htmltext = (player.getRace() == Race.ORC) ? (player.getLevel() >= MIN_LEVEL) ? "30572-03.htm" : "30572-02.htm" : "30572-01.htm";
+				if ((player.getRace() == Race.ORC))
+				{
+					if ((player.getLevel() >= MIN_LEVEL))
+					{
+						htmltext = "30572-03.htm";
+					}
+					else
+					{
+						htmltext = "30572-02.htm";
+					}
+				}
+				else
+				{
+					htmltext = "30572-01.htm";
+				}
 				break;
 			}
 			case State.STARTED:

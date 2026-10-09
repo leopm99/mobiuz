@@ -105,7 +105,21 @@ public class Q00004_LongLiveThePaagrioLord extends Quest
 				{
 					case State.CREATED:
 					{
-						htmltext = (player.getRace() != Race.ORC) ? "30578-00.htm" : (player.getLevel() >= MIN_LEVEL) ? "30578-02.htm" : "30578-01.htm";
+						if ((player.getRace() != Race.ORC))
+						{
+							htmltext = "30578-00.htm";
+						}
+						else
+						{
+							if ((player.getLevel() >= MIN_LEVEL))
+							{
+								htmltext = "30578-02.htm";
+							}
+							else
+							{
+								htmltext = "30578-01.htm";
+							}
+						}
 						break;
 					}
 					case State.STARTED:

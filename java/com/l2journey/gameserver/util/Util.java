@@ -1060,7 +1060,15 @@ public final class Util
 	 */
 	public static int constrain(int input, int min, int max)
 	{
-		return (input < min) ? min : (input > max) ? max : input;
+		if (input < min)
+		{
+			return min;
+		}
+		if (input > max)
+		{
+			return max;
+		}
+		return input;
 	}
 	
 	/**
@@ -1072,7 +1080,15 @@ public final class Util
 	 */
 	public static long constrain(long input, long min, long max)
 	{
-		return (input < min) ? min : (input > max) ? max : input;
+		if (input < min)
+		{
+			return min;
+		}
+		if (input > max)
+		{
+			return max;
+		}
+		return input;
 	}
 	
 	/**
@@ -1084,7 +1100,15 @@ public final class Util
 	 */
 	public static double constrain(double input, double min, double max)
 	{
-		return (input < min) ? min : (input > max) ? max : input;
+		if (input < min)
+		{
+			return min;
+		}
+		if (input > max)
+		{
+			return max;
+		}
+		return input;
 	}
 	
 	/**

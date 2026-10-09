@@ -1068,12 +1068,38 @@ public class CtF extends Event
 	
 	private static String getParticipantTeamName(Player player)
 	{
-		return (BLUE_TEAM.contains(player) ? BLUE_TEAM_NAME : (RED_TEAM.contains(player) ? RED_TEAM_NAME : ""));
+		final String teamName;
+		if (BLUE_TEAM.contains(player))
+		{
+			teamName = BLUE_TEAM_NAME;
+		}
+		else if (RED_TEAM.contains(player))
+		{
+			teamName = RED_TEAM_NAME;
+		}
+		else
+		{
+			teamName = "";
+		}
+		return teamName;
 	}
 	
 	private static String getParticipantEnemyTeamName(Player player)
 	{
-		return (BLUE_TEAM.contains(player) ? RED_TEAM_NAME : (RED_TEAM.contains(player) ? BLUE_TEAM_NAME : ""));
+		final String enemyTeamName;
+		if (BLUE_TEAM.contains(player))
+		{
+			enemyTeamName = RED_TEAM_NAME;
+		}
+		else if (RED_TEAM.contains(player))
+		{
+			enemyTeamName = BLUE_TEAM_NAME;
+		}
+		else
+		{
+			enemyTeamName = "";
+		}
+		return enemyTeamName;
 	}
 	
 	private static Set<Player> getParticipantTeam(Player player)

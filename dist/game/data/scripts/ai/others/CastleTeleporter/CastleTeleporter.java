@@ -103,7 +103,23 @@ public class CastleTeleporter extends AbstractNpcAI
 	public String onFirstTalk(Npc npc, Player player)
 	{
 		final Siege siege = npc.getCastle().getSiege();
-		return npc.isScriptValue(0) ? (siege.isInProgress() && (siege.getControlTowerCount() == 0)) ? "teleporter-02.html" : "teleporter-01.html" : "teleporter-03.html";
+		final String html;
+		if (npc.isScriptValue(0))
+		{
+			if (siege.isInProgress() && (siege.getControlTowerCount() == 0))
+			{
+				html = "teleporter-02.html";
+			}
+			else
+			{
+				html = "teleporter-01.html";
+			}
+		}
+		else
+		{
+			html = "teleporter-03.html";
+		}
+		return html;
 	}
 	
 	public static void main(String[] args)

@@ -363,7 +363,19 @@ public class Door extends Creature
 		// Attackable only during siege by everyone (not owner)
 		final boolean isCastle = ((getCastle() != null) && (getCastle().getResidenceId() > 0) && getCastle().getZone().isActive());
 		final boolean isFort = ((getFort() != null) && (getFort().getResidenceId() > 0) && getFort().getZone().isActive());
-		final int activeSiegeId = (getFort() != null ? getFort().getResidenceId() : (getCastle() != null ? getCastle().getResidenceId() : 0));
+		final int activeSiegeId;
+		if (getFort() != null)
+		{
+			activeSiegeId = getFort().getResidenceId();
+		}
+		else if (getCastle() != null)
+		{
+			activeSiegeId = getCastle().getResidenceId();
+		}
+		else
+		{
+			activeSiegeId = 0;
+		}
 		if (TerritoryWarManager.getInstance().isTWInProgress())
 		{
 			return !TerritoryWarManager.getInstance().isAllyField(actingPlayer, activeSiegeId);

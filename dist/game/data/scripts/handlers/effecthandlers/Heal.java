@@ -101,7 +101,18 @@ public class Heal extends AbstractEffect
 			final Item weaponInst = effector.getActiveWeaponInstance();
 			if (weaponInst != null)
 			{
-				mAtkMul = weaponInst.getTemplate().getCrystalType() == CrystalType.S84 ? 4 : weaponInst.getTemplate().getCrystalType() == CrystalType.S80 ? 2 : 1;
+				if (weaponInst.getTemplate().getCrystalType() == CrystalType.S84)
+				{
+					mAtkMul = 4;
+				}
+				else if (weaponInst.getTemplate().getCrystalType() == CrystalType.S80)
+				{
+					mAtkMul = 2;
+				}
+				else
+				{
+					mAtkMul = 1;
+				}
 			}
 			// shot dynamic bonus
 			mAtkMul = bss ? mAtkMul * 4 : mAtkMul + 1;

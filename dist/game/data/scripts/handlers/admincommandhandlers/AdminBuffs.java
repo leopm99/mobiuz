@@ -374,7 +374,20 @@ public class AdminBuffs implements IAdminCommandHandler
 			sb.append(")</a></font></td><td fixwidth=");
 			sb.append(skill.isPassive() ? "1" : "200");
 			sb.append(" height=32 valign=\"center\" align=\"center\">");
-			sb.append(skill.isPassive() ? "" : skill.isToggle() ? "T" : (skills.get(skill)) + "s");
+			final String durationText;
+			if (skill.isPassive())
+			{
+				durationText = "";
+			}
+			else if (skill.isToggle())
+			{
+				durationText = "T";
+			}
+			else
+			{
+				durationText = (skills.get(skill)) + "s";
+			}
+			sb.append(durationText);
 			sb.append("</td><td><table><tr><td height=5></td></tr><tr><td fixwidth=360><button value=\"X\" action=\"bypass admin_stopbuff ");
 			sb.append(target.getObjectId());
 			sb.append(" ");
@@ -465,7 +478,20 @@ public class AdminBuffs implements IAdminCommandHandler
 				sb.append(")");
 				sb.append(!info.isInUse() ? FONT_RED2 : "");
 				sb.append("</td><td width=180><center>");
-				sb.append(info.getSkill().isToggle() ? "T" : info.getSkill().isPassive() ? "P" : info.getTime() + "s");
+				final String effectDurationText;
+				if (info.getSkill().isToggle())
+				{
+					effectDurationText = "T";
+				}
+				else if (info.getSkill().isPassive())
+				{
+					effectDurationText = "P";
+				}
+				else
+				{
+					effectDurationText = info.getTime() + "s";
+				}
+				sb.append(effectDurationText);
 				sb.append("</center></td><td width=200><button value=\"X\" action=\"bypass admin_stopbuff ");
 				sb.append(objectId);
 				sb.append(" ");

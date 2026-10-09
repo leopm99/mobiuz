@@ -112,7 +112,21 @@ public class Q00274_SkirmishWithTheWerewolves extends Quest
 			{
 				if (hasAtLeastOneQuestItem(player, NECKLACE_OF_VALOR, NECKLACE_OF_COURAGE))
 				{
-					htmltext = (player.getRace() == Race.ORC) ? (player.getLevel() >= MIN_LEVEL) ? "30569-03.htm" : "30569-02.html" : "30569-01.html";
+					if ((player.getRace() == Race.ORC))
+					{
+						if ((player.getLevel() >= MIN_LEVEL))
+						{
+							htmltext = "30569-03.htm";
+						}
+						else
+						{
+							htmltext = "30569-02.html";
+						}
+					}
+					else
+					{
+						htmltext = "30569-01.html";
+					}
 				}
 				else
 				{

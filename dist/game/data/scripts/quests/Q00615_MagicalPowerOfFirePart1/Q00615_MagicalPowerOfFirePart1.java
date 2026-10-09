@@ -168,7 +168,21 @@ public class Q00615_MagicalPowerOfFirePart1 extends Quest
 				{
 					case State.CREATED:
 					{
-						htmltext = (player.getLevel() >= MIN_LEVEL) ? (hasAtLeastOneQuestItem(player, VARKA_MARKS)) ? "31378-01.htm" : "31378-00a.html" : "31378-00b.html";
+						if ((player.getLevel() >= MIN_LEVEL))
+						{
+							if ((hasAtLeastOneQuestItem(player, VARKA_MARKS)))
+							{
+								htmltext = "31378-01.htm";
+							}
+							else
+							{
+								htmltext = "31378-00a.html";
+							}
+						}
+						else
+						{
+							htmltext = "31378-00b.html";
+						}
 						break;
 					}
 					case State.STARTED:

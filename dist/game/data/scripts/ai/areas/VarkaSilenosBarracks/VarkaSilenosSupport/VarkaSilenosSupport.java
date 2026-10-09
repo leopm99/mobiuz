@@ -172,7 +172,21 @@ public class VarkaSilenosSupport extends AbstractNpcAI
 			}
 			case UDAN:
 			{
-				htmltext = (AllianceLevel < 0) ? (AllianceLevel > -3) ? "31379-01.html" : "31379-04.html" : "31379-03.html";
+				if (AllianceLevel < 0)
+				{
+					if (AllianceLevel > -3)
+					{
+						htmltext = "31379-01.html";
+					}
+					else
+					{
+						htmltext = "31379-04.html";
+					}
+				}
+				else
+				{
+					htmltext = "31379-03.html";
+				}
 				break;
 			}
 			case DIYABU:
@@ -182,7 +196,21 @@ public class VarkaSilenosSupport extends AbstractNpcAI
 			}
 			case HAGOS:
 			{
-				htmltext = (AllianceLevel < 0) ? (AllianceLevel == -1) ? "31381-01.html" : "31381-02.html" : "31381-no.html";
+				if (AllianceLevel < 0)
+				{
+					if (AllianceLevel == -1)
+					{
+						htmltext = "31381-01.html";
+					}
+					else
+					{
+						htmltext = "31381-02.html";
+					}
+				}
+				else
+				{
+					htmltext = "31381-no.html";
+				}
 				break;
 			}
 			case SHIKON:

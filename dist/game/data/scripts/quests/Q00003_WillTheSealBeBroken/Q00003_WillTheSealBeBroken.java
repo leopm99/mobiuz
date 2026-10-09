@@ -126,7 +126,21 @@ public class Q00003_WillTheSealBeBroken extends Quest
 		{
 			case State.CREATED:
 			{
-				htmltext = (player.getRace() != Race.DARK_ELF) ? "30141-00.htm" : ((player.getLevel() < MIN_LEVEL) || (player.getLevel() > MAX_LEVEL)) ? "30141-02.htm" : "30141-01.html";
+				if ((player.getRace() != Race.DARK_ELF))
+				{
+					htmltext = "30141-00.htm";
+				}
+				else
+				{
+					if (((player.getLevel() < MIN_LEVEL) || (player.getLevel() > MAX_LEVEL)))
+					{
+						htmltext = "30141-02.htm";
+					}
+					else
+					{
+						htmltext = "30141-01.html";
+					}
+				}
 				break;
 			}
 			case State.STARTED:

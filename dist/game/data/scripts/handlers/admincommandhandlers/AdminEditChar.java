@@ -1086,7 +1086,16 @@ public class AdminEditChar implements IAdminCommandHandler
 		adminReply.replace("%protocol%", String.valueOf(player.getClient() != null ? player.getClient().getProtocolVersion() : "NULL"));
 		adminReply.replace("%hwid%", hwid);
 		adminReply.replace("%ai%", player.getAI().getIntention().name());
-		adminReply.replace("%autoplay%", Config.ENABLE_AUTO_PLAY ? "<br1>AutoPlay: " + (player.isAutoPlaying() ? "Enabled" : "Disabled") : "");
+		final String autoPlayText;
+		if (Config.ENABLE_AUTO_PLAY)
+		{
+			autoPlayText = "<br1>AutoPlay: " + (player.isAutoPlaying() ? "Enabled" : "Disabled");
+		}
+		else
+		{
+			autoPlayText = "";
+		}
+		adminReply.replace("%autoplay%", autoPlayText);
 		adminReply.replace("%inst%", player.getInstanceId() > 0 ? "<tr><td>InstanceId:</td><td><a action=\"bypass -h admin_instance_spawns " + player.getInstanceId() + "\">" + player.getInstanceId() + "</a></td></tr>" : "");
 		adminReply.replace("%noblesse%", player.isNoble() ? "Yes" : "No");
 		activeChar.sendPacket(adminReply);

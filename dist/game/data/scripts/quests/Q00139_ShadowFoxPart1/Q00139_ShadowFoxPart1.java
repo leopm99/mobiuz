@@ -172,7 +172,21 @@ public class Q00139_ShadowFoxPart1 extends Quest
 					}
 					case 2:
 					{
-						htmltext = qs.isSet("talk") ? "30896-18.html" : ((getQuestItemsCount(player, FRAGMENT) >= 10) && (getQuestItemsCount(player, CHEST) >= 1)) ? "30896-15.html" : "30896-14.html";
+						if (qs.isSet("talk"))
+						{
+							htmltext = "30896-18.html";
+						}
+						else
+						{
+							if (((getQuestItemsCount(player, FRAGMENT) >= 10) && (getQuestItemsCount(player, CHEST) >= 1)))
+							{
+								htmltext = "30896-15.html";
+							}
+							else
+							{
+								htmltext = "30896-14.html";
+							}
+						}
 						break;
 					}
 				}

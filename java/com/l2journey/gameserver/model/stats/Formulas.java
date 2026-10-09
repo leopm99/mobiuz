@@ -746,7 +746,19 @@ public class Formulas
 	{
 		final boolean isPvP = attacker.isPlayable() && target.isPlayable();
 		final boolean isPvE = attacker.isPlayable() && target.isAttackable();
-		final double proximityBonus = attacker.isBehind(target) ? 1.2 : attacker.isInFrontOf(target) ? 1 : 1.1; // Behind: +20% - Side: +10%
+		final double proximityBonus;
+		if (attacker.isBehind(target))
+		{
+			proximityBonus = 1.2; // Behind: +20%
+		}
+		else if (attacker.isInFrontOf(target))
+		{
+			proximityBonus = 1;
+		}
+		else
+		{
+			proximityBonus = 1.1; // Side: +10%
+		}
 		double damage = attacker.getPAtk(target);
 		double defence = target.getPDef(attacker);
 		
@@ -1122,7 +1134,20 @@ public class Formulas
 		}
 		
 		// Bonus Spirit shot
-		mAtk *= bss ? 4 : sps ? 2 : 1;
+		final int spiritShotMul;
+		if (bss)
+		{
+			spiritShotMul = 4;
+		}
+		else if (sps)
+		{
+			spiritShotMul = 2;
+		}
+		else
+		{
+			spiritShotMul = 1;
+		}
+		mAtk *= spiritShotMul;
 		// MDAM Formula.
 		double damage = ((91 * Math.sqrt(mAtk)) / mDef) * skill.getPower(attacker, target, isPvP, isPvE);
 		
@@ -1749,7 +1774,20 @@ public class Formulas
 		}
 		
 		// Bonus Spiritshot
-		mAtk *= bss ? 4 : sps ? 2 : 1;
+		final int spiritShotMul;
+		if (bss)
+		{
+			spiritShotMul = 4;
+		}
+		else if (sps)
+		{
+			spiritShotMul = 2;
+		}
+		else
+		{
+			spiritShotMul = 1;
+		}
+		mAtk *= spiritShotMul;
 		
 		double damage = (Math.sqrt(mAtk) * skill.getPower(attacker, target, isPvP, isPvE) * (mp / 97)) / mDef;
 		damage *= calcGeneralTraitBonus(attacker, target, skill.getTraitType(), false);
@@ -2130,7 +2168,19 @@ public class Formulas
 		// Apply DEX Mod.
 		final double blowChance = skill.getBlowChance();
 		// Apply Position Bonus (TODO: values are unconfirmed, possibly custom, remove or update when confirmed).
-		final double sideMod = (creature.isInFrontOf(target)) ? 1 : (creature.isBehind(target)) ? 2 : 1.5;
+		final double sideMod;
+		if (creature.isInFrontOf(target))
+		{
+			sideMod = 1;
+		}
+		else if (creature.isBehind(target))
+		{
+			sideMod = 2;
+		}
+		else
+		{
+			sideMod = 1.5;
+		}
 		// Apply all mods.
 		final double baseRate = blowChance * dexMod * sideMod;
 		// Apply blow rates

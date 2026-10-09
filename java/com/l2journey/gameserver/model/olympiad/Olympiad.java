@@ -1152,7 +1152,15 @@ public class Olympiad extends ListenersContainer
 	public List<String> getClassLeaderBoard(int classId)
 	{
 		final List<String> names = new ArrayList<>();
-		final String query = EventsConfig.OLYMPIAD_SHOW_MONTHLY_WINNERS ? ((classId == 132) ? GET_EACH_CLASS_LEADER_SOULHOUND : GET_EACH_CLASS_LEADER) : ((classId == 132) ? GET_EACH_CLASS_LEADER_CURRENT_SOULHOUND : GET_EACH_CLASS_LEADER_CURRENT);
+		final String query;
+		if (EventsConfig.OLYMPIAD_SHOW_MONTHLY_WINNERS)
+		{
+			query = (classId == 132) ? GET_EACH_CLASS_LEADER_SOULHOUND : GET_EACH_CLASS_LEADER;
+		}
+		else
+		{
+			query = (classId == 132) ? GET_EACH_CLASS_LEADER_CURRENT_SOULHOUND : GET_EACH_CLASS_LEADER_CURRENT;
+		}
 		try (Connection con = DatabaseFactory.getConnection();
 			PreparedStatement ps = con.prepareStatement(query))
 		{

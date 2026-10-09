@@ -56,7 +56,20 @@ public class PartySpelled extends ServerPacket
 	public void writeImpl(GameClient client, WritableBuffer buffer)
 	{
 		ServerPackets.PARTY_SPELLED.writeId(this, buffer);
-		buffer.writeInt(_creature.isServitor() ? 2 : _creature.isPet() ? 1 : 0);
+		final int creatureType;
+		if (_creature.isServitor())
+		{
+			creatureType = 2;
+		}
+		else if (_creature.isPet())
+		{
+			creatureType = 1;
+		}
+		else
+		{
+			creatureType = 0;
+		}
+		buffer.writeInt(creatureType);
 		buffer.writeInt(_creature.getObjectId());
 		buffer.writeInt(_effects.size());
 		for (BuffInfo info : _effects)

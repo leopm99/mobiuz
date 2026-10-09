@@ -173,12 +173,40 @@ public class Q00616_MagicalPowerOfFirePart2 extends Quest
 				{
 					case State.CREATED:
 					{
-						htmltext = (player.getLevel() >= MIN_LEVEL) ? (hasQuestItems(player, RED_TOTEM)) ? "31379-01.htm" : "31379-00a.html" : "31379-00b.html";
+						if ((player.getLevel() >= MIN_LEVEL))
+						{
+							if ((hasQuestItems(player, RED_TOTEM)))
+							{
+								htmltext = "31379-01.htm";
+							}
+							else
+							{
+								htmltext = "31379-00a.html";
+							}
+						}
+						else
+						{
+							htmltext = "31379-00b.html";
+						}
 						break;
 					}
 					case State.STARTED:
 					{
-						htmltext = (qs.isCond(1)) ? "31379-03.html" : (hasQuestItems(player, NASTRON_HEART)) ? "31379-04.html" : "31379-05.html";
+						if ((qs.isCond(1)))
+						{
+							htmltext = "31379-03.html";
+						}
+						else
+						{
+							if ((hasQuestItems(player, NASTRON_HEART)))
+							{
+								htmltext = "31379-04.html";
+							}
+							else
+							{
+								htmltext = "31379-05.html";
+							}
+						}
 						break;
 					}
 				}

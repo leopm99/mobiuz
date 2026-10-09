@@ -206,7 +206,20 @@ public class CharInfo extends ServerPacket
 		
 		buffer.writeByte(_player.isInPartyMatchRoom());
 		buffer.writeInt(_gmSeeInvis ? (_player.getAbnormalVisualEffects() | AbnormalVisualEffect.STEALTH.getMask()) : _player.getAbnormalVisualEffects());
-		buffer.writeByte(_player.isInsideZone(ZoneId.WATER) ? 1 : _player.isFlyingMounted() ? 2 : 0);
+		final int playerEnvironment;
+		if (_player.isInsideZone(ZoneId.WATER))
+		{
+			playerEnvironment = 1;
+		}
+		else if (_player.isFlyingMounted())
+		{
+			playerEnvironment = 2;
+		}
+		else
+		{
+			playerEnvironment = 0;
+		}
+		buffer.writeByte(playerEnvironment);
 		buffer.writeShort(_player.getRecomHave()); // Blue value for name (0 = white, 255 = pure blue)
 		buffer.writeInt(_player.getMountNpcId() + 1000000);
 		buffer.writeInt(_player.getPlayerClass().getId());

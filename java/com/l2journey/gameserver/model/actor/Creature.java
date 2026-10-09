@@ -7221,7 +7221,23 @@ public abstract class Creature extends WorldObject
 	{
 		final Collection<AbstractEventListener> objectListeners = super.getListeners(type);
 		final Collection<AbstractEventListener> templateListeners = _template.getListeners(type);
-		final Collection<AbstractEventListener> globalListeners = isMonster() ? Containers.Monsters().getListeners(type) : isNpc() ? Containers.Npcs().getListeners(type) : isPlayer() ? Containers.Players().getListeners(type) : Collections.emptyList();
+		final Collection<AbstractEventListener> globalListeners;
+		if (isMonster())
+		{
+			globalListeners = Containers.Monsters().getListeners(type);
+		}
+		else if (isNpc())
+		{
+			globalListeners = Containers.Npcs().getListeners(type);
+		}
+		else if (isPlayer())
+		{
+			globalListeners = Containers.Players().getListeners(type);
+		}
+		else
+		{
+			globalListeners = Collections.emptyList();
+		}
 		
 		// Avoid creating a new object.
 		if (objectListeners.isEmpty() && templateListeners.isEmpty() && globalListeners.isEmpty())

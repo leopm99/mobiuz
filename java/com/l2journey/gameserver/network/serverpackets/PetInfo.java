@@ -174,7 +174,20 @@ public class PetInfo extends ServerPacket
 		buffer.writeInt(_summon.getMAtkSpd()); // casting speed
 		buffer.writeInt(_summon.getAbnormalVisualEffects()); // c2 abnormal visual effect... bleed=1; poison=2; poison & bleed=3; flame=4;
 		buffer.writeShort(_summon.isMountable()); // c2 ride button
-		buffer.writeByte(_summon.isInsideZone(ZoneId.WATER) ? 1 : _summon.isFlying() ? 2 : 0); // c2
+		final int summonEnvironment;
+		if (_summon.isInsideZone(ZoneId.WATER))
+		{
+			summonEnvironment = 1;
+		}
+		else if (_summon.isFlying())
+		{
+			summonEnvironment = 2;
+		}
+		else
+		{
+			summonEnvironment = 0;
+		}
+		buffer.writeByte(summonEnvironment); // c2
 		// Following all added in C4.
 		buffer.writeShort(0); // ??
 		buffer.writeByte(_summon.getTeam().getId());

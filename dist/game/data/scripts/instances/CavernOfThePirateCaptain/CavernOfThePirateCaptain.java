@@ -235,7 +235,24 @@ public class CavernOfThePirateCaptain extends AbstractInstance
 			return false;
 		}
 		
-		if ((members.size() < (is83 ? PLAYERS_83_MIN : isNight ? PLAYERS_60_NIGHT_MIN : PLAYERS_60_MIN)) || (members.size() > (is83 ? PLAYERS_83_MAX : isNight ? PLAYERS_60_NIGHT_MAX : PLAYERS_60_MAX)))
+		final int minPlayers;
+		final int maxPlayers;
+		if (is83)
+		{
+			minPlayers = PLAYERS_83_MIN;
+			maxPlayers = PLAYERS_83_MAX;
+		}
+		else if (isNight)
+		{
+			minPlayers = PLAYERS_60_NIGHT_MIN;
+			maxPlayers = PLAYERS_60_NIGHT_MAX;
+		}
+		else
+		{
+			minPlayers = PLAYERS_60_MIN;
+			maxPlayers = PLAYERS_60_MAX;
+		}
+		if ((members.size() < minPlayers) || (members.size() > maxPlayers))
 		{
 			broadcastSystemMessage(player, null, SystemMessageId.YOU_CANNOT_ENTER_DUE_TO_THE_PARTY_HAVING_EXCEEDED_THE_LIMIT, false);
 			return false;
@@ -255,7 +272,7 @@ public class CavernOfThePirateCaptain extends AbstractInstance
 				return false;
 			}
 			
-			final Long reentertime = InstanceManager.getInstance().getInstanceTime(groupMembers.getObjectId(), (is83 ? TEMPLATE_ID_83 : isNight ? TEMPLATE_ID_60_NIGHT : TEMPLATE_ID_60));
+			final Long reentertime = InstanceManager.getInstance().getInstanceTime(groupMembers.getObjectId(), templateId);
 			if (System.currentTimeMillis() < reentertime)
 			{
 				broadcastSystemMessage(player, groupMembers, SystemMessageId.C1_MAY_NOT_RE_ENTER_YET, true);
@@ -509,7 +526,20 @@ public class CavernOfThePirateCaptain extends AbstractInstance
 		{
 			candles.get(ROOM_DATA[world.getParameters().getInt("zakenRoom", 0) - 1][i] - 1).getVariables().set("isBlue", 1);
 		}
-		final Npc zaken = spawnNpc(world.getParameters().getBoolean("is83", false) ? ZAKEN_83 : world.getParameters().getBoolean("isNight", false) ? ZAKEN_60_NIGHT : ZAKEN_60, world.getParameters().getInt("zakenRoom", 0), null, world);
+		final int zakenId;
+		if (world.getParameters().getBoolean("is83", false))
+		{
+			zakenId = ZAKEN_83;
+		}
+		else if (world.getParameters().getBoolean("isNight", false))
+		{
+			zakenId = ZAKEN_60_NIGHT;
+		}
+		else
+		{
+			zakenId = ZAKEN_60;
+		}
+		final Npc zaken = spawnNpc(zakenId, world.getParameters().getInt("zakenRoom", 0), null, world);
 		zaken.setInvisible(true);
 		zaken.setParalyzed(true);
 		world.setParameter("zaken", zaken);

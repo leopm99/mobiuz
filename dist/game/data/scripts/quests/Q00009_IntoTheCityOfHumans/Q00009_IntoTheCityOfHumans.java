@@ -97,7 +97,21 @@ public class Q00009_IntoTheCityOfHumans extends Quest
 				{
 					case State.CREATED:
 					{
-						htmltext = (player.getLevel() >= MIN_LEVEL) ? (player.getRace() == Race.ORC) ? "30583-01.htm" : "30583-02.html" : "30583-03.html";
+						if ((player.getLevel() >= MIN_LEVEL))
+						{
+							if ((player.getRace() == Race.ORC))
+							{
+								htmltext = "30583-01.htm";
+							}
+							else
+							{
+								htmltext = "30583-02.html";
+							}
+						}
+						else
+						{
+							htmltext = "30583-03.html";
+						}
 						break;
 					}
 					case State.STARTED:

@@ -116,7 +116,21 @@ public class Q00002_WhatWomenWant extends Quest
 				{
 					case State.CREATED:
 					{
-						htmltext = ((player.getRace() != Race.ELF) && (player.getRace() != Race.HUMAN)) ? "30223-00.htm" : (player.getLevel() >= MIN_LEVEL) ? "30223-02.htm" : "30223-01.html";
+						if (((player.getRace() != Race.ELF) && (player.getRace() != Race.HUMAN)))
+						{
+							htmltext = "30223-00.htm";
+						}
+						else
+						{
+							if ((player.getLevel() >= MIN_LEVEL))
+							{
+								htmltext = "30223-02.htm";
+							}
+							else
+							{
+								htmltext = "30223-01.html";
+							}
+						}
 						break;
 					}
 					case State.STARTED:

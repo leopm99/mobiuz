@@ -93,7 +93,28 @@ public class Q00271_ProofOfValor extends Quest
 		{
 			case State.CREATED:
 			{
-				htmltext = (player.getRace() == Race.ORC) ? (player.getLevel() >= MIN_LEVEL) ? (hasAtLeastOneQuestItem(player, NECKLACE_OF_VALOR, NECKLACE_OF_COURAGE)) ? "30577-07.htm" : "30577-03.htm" : "30577-02.htm" : "30577-01.htm";
+				if ((player.getRace() == Race.ORC))
+				{
+					if ((player.getLevel() >= MIN_LEVEL))
+					{
+						if ((hasAtLeastOneQuestItem(player, NECKLACE_OF_VALOR, NECKLACE_OF_COURAGE)))
+						{
+							htmltext = "30577-07.htm";
+						}
+						else
+						{
+							htmltext = "30577-03.htm";
+						}
+					}
+					else
+					{
+						htmltext = "30577-02.htm";
+					}
+				}
+				else
+				{
+					htmltext = "30577-01.htm";
+				}
 				break;
 			}
 			case State.STARTED:

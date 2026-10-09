@@ -117,7 +117,19 @@ public class HotSprings extends AbstractNpcAI
 	private void tryToInfect(Npc npc, Creature creature, int diseaseId)
 	{
 		final BuffInfo info = creature.getEffectList().getBuffInfoBySkillId(diseaseId);
-		final int skillLevel = (info == null) ? 1 : (info.getSkill().getLevel() < 10) ? info.getSkill().getLevel() + 1 : 10;
+		final int skillLevel;
+		if (info == null)
+		{
+			skillLevel = 1;
+		}
+		else if (info.getSkill().getLevel() < 10)
+		{
+			skillLevel = info.getSkill().getLevel() + 1;
+		}
+		else
+		{
+			skillLevel = 10;
+		}
 		final Skill skill = SkillData.getInstance().getSkill(diseaseId, skillLevel);
 		if ((skill != null) && !npc.isCastingNow() && npc.checkDoCastConditions(skill))
 		{
