@@ -104,7 +104,9 @@ public class PunishmentManager
 			LOGGER.warning(getClass().getSimpleName() + ": Error while loading punishments: " + e.getMessage());
 		}
 		
-		LOGGER.info(getClass().getSimpleName() + ": Loaded " + initiated + " active and " + expired + " expired punishments.");
+		final int loggedExpired = expired;
+		final int loggedInitiated = initiated;
+		LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + loggedInitiated + " active and " + loggedExpired + " loggedExpired punishments.");
 	}
 	
 	public void startPunishment(PunishmentTask task)

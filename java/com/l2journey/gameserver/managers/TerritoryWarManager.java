@@ -838,7 +838,8 @@ public class TerritoryWarManager implements Siegable
 					}
 					default:
 					{
-						LOGGER.warning(getClass().getSimpleName() + ": Unknown npc type for " + rs.getInt("id"));
+						final String logMessage = getClass().getSimpleName() + ": Unknown npc type for " + rs.getInt("id");
+						LOGGER.warning(() -> logMessage);
 					}
 				}
 			}

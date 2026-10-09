@@ -111,7 +111,8 @@ public class CrestTable
 				}
 				else
 				{
-					LOGGER.warning("Unknown crest type found in database. Type:" + rs.getInt("type"));
+					final String logMessage = "Unknown crest type found in database. Type:" + rs.getInt("type");
+					LOGGER.warning(() -> logMessage);
 				}
 			}
 		}

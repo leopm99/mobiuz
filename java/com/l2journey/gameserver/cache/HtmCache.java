@@ -153,7 +153,8 @@ public class HtmCache
 			filePath = file.toURI().getPath().substring(Config.DATAPACK_ROOT.toURI().getPath().length());
 			if (Config.CHECK_HTML_ENCODING && !filePath.startsWith("data/lang") && !StandardCharsets.US_ASCII.newEncoder().canEncode(content))
 			{
-				LOGGER.warning("HTML encoding check: File " + filePath + " contains non ASCII content.");
+				final String logMessage = "HTML encoding check: File " + filePath + " contains non ASCII content.";
+				LOGGER.warning(() -> logMessage);
 			}
 			
 			final String oldContent = HTML_CACHE.put(filePath, content);

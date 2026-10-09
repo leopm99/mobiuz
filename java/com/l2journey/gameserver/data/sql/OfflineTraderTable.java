@@ -225,7 +225,8 @@ public class OfflineTraderTable
 				final PrivateStoreType type = isSellBuff ? PrivateStoreType.PACKAGE_SELL : PrivateStoreType.findById(typeId);
 				if (type == null)
 				{
-					LOGGER.warning(getClass().getSimpleName() + ": PrivateStoreType with id " + rs.getInt("type") + " could not be found.");
+					final String logMessage = getClass().getSimpleName() + ": PrivateStoreType with id " + rs.getInt("type") + " could not be found.";
+					LOGGER.warning(() -> logMessage);
 					continue;
 				}
 				
@@ -331,7 +332,8 @@ public class OfflineTraderTable
 			}
 			
 			World.OFFLINE_TRADE_COUNT = nTraders;
-			LOGGER.info(getClass().getSimpleName() + ": Loaded " + nTraders + " offline traders.");
+			final int loggedNTraders = nTraders;
+			LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + loggedNTraders + " offline traders.");
 			
 			if (!Config.STORE_OFFLINE_TRADE_IN_REALTIME)
 			{

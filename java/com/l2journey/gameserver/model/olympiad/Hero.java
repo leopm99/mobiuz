@@ -272,7 +272,8 @@ public class Hero
 			}
 			HERO_DIARY.put(charId, diary);
 			
-			LOGGER.info("Hero System: Loaded " + diaryentries + " diary entries for Hero: " + CharInfoTable.getInstance().getNameById(charId));
+			final int loggedDiaryentries = diaryentries;
+			LOGGER.info(() -> "Hero System: Loaded " + loggedDiaryentries + " diary entries for Hero: " + CharInfoTable.getInstance().getNameById(charId));
 		}
 		catch (SQLException e)
 		{
@@ -395,7 +396,8 @@ public class Hero
 			HERO_COUNTS.put(charId, heroCountData);
 			HERO_FIGHTS.put(charId, fights);
 			
-			LOGGER.info("Hero System: Loaded " + numberOfFights + " fights for Hero: " + CharInfoTable.getInstance().getNameById(charId));
+			final int loggedNumberOfFights = numberOfFights;
+			LOGGER.info(() -> "Hero System: Loaded " + loggedNumberOfFights + " fights for Hero: " + CharInfoTable.getInstance().getNameById(charId));
 		}
 		catch (SQLException e)
 		{

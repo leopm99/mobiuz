@@ -106,7 +106,8 @@ public class TeleportLocationTable
 			cTeleCount = _teleports.size() - cTeleCount;
 			if (cTeleCount > 0)
 			{
-				LOGGER.info(getClass().getSimpleName() + ": Loaded " + cTeleCount + " custom teleport location templates.");
+				final int loggedCTeleCount = cTeleCount;
+				LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + loggedCTeleCount + " custom teleport location templates.");
 			}
 		}
 		catch (Exception e)

@@ -122,7 +122,8 @@ public class RegionBoard implements IWriteBoardHandler
 			final String id = command.replace("_bbsloc;", "");
 			if (!StringUtil.isNumeric(id))
 			{
-				LOG.warning(RegionBoard.class.getSimpleName() + ": " + player + " sent an invalid region bypass " + command + "!");
+				final String loggedCommand = command;
+				LOG.warning(() -> RegionBoard.class.getSimpleName() + ": " + player + " sent an invalid region bypass " + loggedCommand + "!");
 				return false;
 			}
 			
@@ -130,7 +131,8 @@ public class RegionBoard implements IWriteBoardHandler
 			final List<Castle> castles = CastleManager.getInstance().getCastles();
 			if ((regionId < 0) || (regionId >= castles.size()))
 			{
-				LOG.warning(RegionBoard.class.getSimpleName() + ": " + player + " requested invalid region ID " + regionId + "!");
+				final int loggedRegionId = regionId;
+				LOG.warning(() -> RegionBoard.class.getSimpleName() + ": " + player + " requested invalid region ID " + loggedRegionId + "!");
 				return false;
 			}
 			

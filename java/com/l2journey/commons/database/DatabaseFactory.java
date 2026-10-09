@@ -161,7 +161,8 @@ public class DatabaseFactory
 					connection = DATABASE_POOL.getConnection();
 					connections.add(connection);
 					successfulConnections++;
-					LOGGER.info("Database: Successfully opened connection " + connection.toString() + ".");
+					final Connection loggedConnection = connection;
+					LOGGER.info(() -> "Database: Successfully opened loggedConnection " + loggedConnection.toString() + ".");
 				}
 				catch (SQLException e)
 				{
@@ -173,11 +174,13 @@ public class DatabaseFactory
 			
 			if (successfulConnections == DATABASE_POOL.getMaximumPoolSize())
 			{
-				LOGGER.info("Database: Initialized with a total of " + successfulConnections + " connections.");
+				final String logMessage = "Database: Initialized with a total of " + successfulConnections + " connections.";
+				LOGGER.info(() -> logMessage);
 			}
 			else
 			{
-				LOGGER.warning("Database: Only " + successfulConnections + " out of " + DATABASE_POOL.getMaximumPoolSize() + " connections were successful.");
+				final String logMessage = "Database: Only " + successfulConnections + " out of " + DATABASE_POOL.getMaximumPoolSize() + " connections were successful.";
+				LOGGER.warning(() -> logMessage);
 				adjustPoolSize(successfulConnections);
 			}
 		}
@@ -228,7 +231,8 @@ public class DatabaseFactory
 		{
 			DATABASE_POOL.setMaximumPoolSize(newConnectionCount);
 			DATABASE_POOL.setMinimumIdle(determineMinimumIdle(newConnectionCount));
-			LOGGER.info("Database: Reinitialized pool size to " + newConnectionCount + ".");
+			final int loggedNewConnectionCount = newConnectionCount;
+			LOGGER.info(() -> "Database: Reinitialized pool size to " + loggedNewConnectionCount + ".");
 		}
 		catch (Exception e)
 		{

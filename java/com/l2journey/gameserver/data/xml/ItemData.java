@@ -154,7 +154,8 @@ public class ItemData
 		}
 		
 		// Log the highest item ID and create a fast lookup array based on this value.
-		LOGGER.info(getClass().getSimpleName() + ": Highest item id used: " + highestId);
+		final int loggedHighestId = highestId;
+		LOGGER.info(() -> getClass().getSimpleName() + ": Highest item id used: " + loggedHighestId);
 		_allTemplates = new ItemTemplate[highestId + 1];
 		
 		// Populate the fast lookup table with items from each category.

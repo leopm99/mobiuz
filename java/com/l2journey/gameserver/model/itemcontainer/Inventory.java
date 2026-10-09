@@ -1537,7 +1537,7 @@ public abstract class Inventory extends ItemContainer
 			default:
 			{
 				LOGGER.info(() -> "Unhandled slot type: " + slot);
-				LOGGER.info(TraceUtil.getTraceString(Thread.currentThread().getStackTrace()));
+				LOGGER.info(() -> TraceUtil.getTraceString(Thread.currentThread().getStackTrace()));
 			}
 		}
 		if (pdollSlot >= 0)

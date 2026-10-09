@@ -143,7 +143,8 @@ public class ItemsOnGroundManager implements Runnable
 					}
 				}
 			}
-			LOGGER.info(getClass().getSimpleName() + ": Loaded " + count + " items.");
+			final int loggedCount = count;
+			LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + loggedCount + " items.");
 		}
 		catch (Exception e)
 		{

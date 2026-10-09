@@ -430,7 +430,8 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 					
 					if (EventsConfig.OLYMPIAD_LOG_FIGHTS)
 					{
-						LOGGER_OLYMPIAD.info(_playerTwo.getName() + " crash," + _playerOne + "," + _playerTwo + ",0,0,0,0," + pointDiff + "," + getType());
+						final int loggedPointDiff = pointDiff;
+			LOGGER_OLYMPIAD.info(() -> _playerTwo.getName() + " crash," + _playerOne + "," + _playerTwo + ",0,0,0,0," + loggedPointDiff + "," + getType());
 					}
 					
 					// Notify match result to event listener scripts.
@@ -458,7 +459,8 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 					
 					if (EventsConfig.OLYMPIAD_LOG_FIGHTS)
 					{
-						LOGGER_OLYMPIAD.info(_playerOne.getName() + " crash," + _playerOne + "," + _playerTwo + ",0,0,0,0," + pointDiff + "," + getType());
+						final int loggedPointDiff = pointDiff;
+			LOGGER_OLYMPIAD.info(() -> _playerOne.getName() + " crash," + _playerOne + "," + _playerTwo + ",0,0,0,0," + loggedPointDiff + "," + getType());
 					}
 					
 					// Notify match result to event listener scripts.
@@ -482,7 +484,8 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 					
 					if (EventsConfig.OLYMPIAD_LOG_FIGHTS)
 					{
-						LOGGER_OLYMPIAD.info("both crash," + _playerOne.getName() + "," + _playerOne + ",0,0,0,0," + _playerTwo + "," + pointDiff + "," + getType());
+						final int loggedPointDiff = pointDiff;
+			LOGGER_OLYMPIAD.info(() -> "both crash," + _playerOne.getName() + "," + _playerOne + ",0,0,0,0," + _playerTwo + "," + loggedPointDiff + "," + getType());
 					}
 				}
 				
@@ -645,7 +648,11 @@ public abstract class OlympiadGameNormal extends AbstractOlympiadGame
 			
 			if (EventsConfig.OLYMPIAD_LOG_FIGHTS)
 			{
-				LOGGER_OLYMPIAD.info(winner + "," + _playerOne.getName() + "," + _playerOne + "," + _playerTwo + "," + playerOneHp + "," + playerTwoHp + "," + _damageP1 + "," + _damageP2 + "," + pointDiff + "," + getType());
+				final String loggedWinner = winner;
+				final double loggedPlayerOneHp = playerOneHp;
+				final double loggedPlayerTwoHp = playerTwoHp;
+				final int loggedPointDiff = pointDiff;
+				LOGGER_OLYMPIAD.info(() -> loggedWinner + "," + _playerOne.getName() + "," + _playerOne + "," + _playerTwo + "," + loggedPlayerOneHp + "," + loggedPlayerTwoHp + "," + _damageP1 + "," + _damageP2 + "," + loggedPointDiff + "," + getType());
 			}
 		}
 		catch (Exception e)

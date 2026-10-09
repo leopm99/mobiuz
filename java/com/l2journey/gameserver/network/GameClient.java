@@ -519,7 +519,8 @@ public class GameClient extends Client<com.l2journey.commons.network.Connection<
 			// exploit prevention, should not happens in normal way
 			if (player.isOnlineInt() == 1)
 			{
-				LOGGER.severe("Attempt of double login: " + player.getName() + "(" + objectId + ") " + _accountName);
+				final Player loggedPlayer = player;
+				LOGGER.severe(() -> "Attempt of double login: " + loggedPlayer.getName() + "(" + objectId + ") " + _accountName);
 			}
 			
 			if (player.getClient() != null)
@@ -536,7 +537,8 @@ public class GameClient extends Client<com.l2journey.commons.network.Connection<
 				// _allPlayers), forcamos a remocao para que o relogin nunca trave.
 				if (World.getInstance().getPlayer(objectId) != null)
 				{
-					LOGGER.warning("Ghost player still in world after deleteMe, forcing removal: " + player.getName() + "(" + objectId + ") " + _accountName);
+					final Player loggedPlayer = player;
+					LOGGER.warning(() -> "Ghost player still in world after deleteMe, forcing removal: " + loggedPlayer.getName() + "(" + objectId + ") " + _accountName);
 					player.setTeleporting(false);
 					player.decayMe();
 				}

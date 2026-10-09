@@ -284,7 +284,8 @@ public class HtmlUtil
 			
 			if (Config.HTML_ACTION_CACHE_DEBUG)
 			{
-				LOGGER.info("Cached html bypass(" + scope + "): '" + bypass + "'");
+				final String loggedBypass = bypass;
+				LOGGER.info(() -> "Cached html bypass(" + scope + "): '" + loggedBypass + "'");
 			}
 			player.addHtmlAction(scope, bypass);
 			bypassStart = htmlLower.indexOf("=\"bypass ", bypassEnd);

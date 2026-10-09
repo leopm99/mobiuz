@@ -168,7 +168,8 @@ public class WalkingManager implements IXmlReader
 								npcString = NpcStringId.getNpcStringId(node.getNodeValue());
 								if (npcString == null)
 								{
-									LOGGER.warning(getClass().getSimpleName() + ": Unknown npcString '" + node.getNodeValue() + "' for route '" + routeName + "'");
+									final Node loggedNode = node;
+									LOGGER.warning(() -> getClass().getSimpleName() + ": Unknown npcString '" + loggedNode.getNodeValue() + "' for route '" + routeName + "'");
 									continue;
 								}
 							}
@@ -180,7 +181,8 @@ public class WalkingManager implements IXmlReader
 									npcString = NpcStringId.getNpcStringId(Integer.parseInt(node.getNodeValue()));
 									if (npcString == null)
 									{
-										LOGGER.warning(getClass().getSimpleName() + ": Unknown npcString '" + node.getNodeValue() + "' for route '" + routeName + "'");
+										final Node loggedNode = node;
+										LOGGER.warning(() -> getClass().getSimpleName() + ": Unknown npcString '" + loggedNode.getNodeValue() + "' for route '" + routeName + "'");
 										continue;
 									}
 								}
@@ -304,7 +306,8 @@ public class WalkingManager implements IXmlReader
 					
 					if (!npc.isInsideRadius3D(node, 3000))
 					{
-						LOGGER.warning(getClass().getSimpleName() + ": " + "Route '" + routeName + "': NPC (id=" + npc.getId() + ", x=" + npc.getX() + ", y=" + npc.getY() + ", z=" + npc.getZ() + ") is too far from starting point (node x=" + node.getX() + ", y=" + node.getY() + ", z=" + node.getZ() + ", range=" + npc.calculateDistance3D(node) + "). Teleporting to proper location.");
+						final NpcWalkerNode loggedNode = node;
+						LOGGER.warning(() -> getClass().getSimpleName() + ": " + "Route '" + routeName + "': NPC (id=" + npc.getId() + ", x=" + npc.getX() + ", y=" + npc.getY() + ", z=" + npc.getZ() + ") is too far from starting point (loggedNode x=" + loggedNode.getX() + ", y=" + loggedNode.getY() + ", z=" + loggedNode.getZ() + ", range=" + npc.calculateDistance3D(loggedNode) + "). Teleporting to proper location.");
 						npc.teleToLocation(node);
 					}
 					

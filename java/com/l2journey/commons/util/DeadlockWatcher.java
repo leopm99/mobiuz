@@ -141,7 +141,8 @@ public class DeadlockWatcher extends Thread
 			final StackTraceElement[] stack = info.getStackTrace();
 			for (int i = 0; i < Math.min(stack.length, MAX_STACK_DEPTH); i++)
 			{
-				LOGGER.warning("\tat " + stack[i]);
+				final StackTraceElement frame = stack[i];
+				LOGGER.warning(() -> "\tat " + frame);
 			}
 			if (stack.length > MAX_STACK_DEPTH)
 			{
@@ -192,7 +193,8 @@ public class DeadlockWatcher extends Thread
 				final int frames = Math.min(5, stack.length);
 				for (int i = 0; i < frames; i++)
 				{
-					LOGGER.warning("\tat " + stack[i]);
+					final StackTraceElement frame = stack[i];
+					LOGGER.warning(() -> "\tat " + frame);
 				}
 			}
 		}

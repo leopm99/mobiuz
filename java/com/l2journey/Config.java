@@ -4335,7 +4335,8 @@ public class Config
 				// Host externo e sub-rede.
 				_hosts.add(externalIp);
 				_subnets.add("0.0.0.0/0");
-				LOGGER.info("Network Config: Adding new subnet: 0.0.0.0/0 address: " + externalIp);
+				final String loggedExternalIp = externalIp;
+				LOGGER.info(() -> "Network Config: Adding new subnet: 0.0.0.0/0 address: " + loggedExternalIp);
 			}
 			catch (SocketException e)
 			{

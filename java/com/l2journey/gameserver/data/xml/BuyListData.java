@@ -141,7 +141,9 @@ public class BuyListData implements IXmlReader
 								final int sellPrice = item.getReferencePrice() / 2;
 								if (Config.CORRECT_PRICES && (price > -1) && (sellPrice > price) && (buyList.getNpcsAllowed() != null))
 								{
-									LOGGER.warning("Buy price " + price + " is less than sell price " + sellPrice + " for ItemID:" + itemId + " of buylist " + buyList.getListId() + ".");
+									final long loggedPrice = price;
+									final int loggedItemId = itemId;
+									LOGGER.warning(() -> "Buy price " + loggedPrice + " is less than sell price " + sellPrice + " for ItemID:" + loggedItemId + " of buylist " + buyList.getListId() + ".");
 									buyList.addProduct(new Product(buyList.getListId(), item, sellPrice, restockDelay, count));
 								}
 								else
@@ -151,7 +153,8 @@ public class BuyListData implements IXmlReader
 							}
 							else
 							{
-								LOGGER.warning("Item not found. BuyList:" + buyList.getListId() + " ItemID:" + itemId + " File:" + file.getName());
+								final int loggedItemId = itemId;
+								LOGGER.warning(() -> "Item not found. BuyList:" + buyList.getListId() + " ItemID:" + loggedItemId + " File:" + file.getName());
 							}
 						}
 						else if ("npcs".equalsIgnoreCase(list_node.getNodeName()))

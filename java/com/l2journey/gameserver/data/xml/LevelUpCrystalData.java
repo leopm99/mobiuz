@@ -246,7 +246,8 @@ public class LevelUpCrystalData implements IXmlReader
 											Integer value = Integer.decode(st.nextToken().trim());
 											if (value == null)
 											{
-												LOGGER.info("Bad Level value!! npc Id " + npcId + ", token " + i + "!");
+												final int loggedToken = i;
+												LOGGER.info(() -> "Bad Level value!! npc Id " + npcId + ", token " + loggedToken + "!");
 												value = 0;
 											}
 											temp.put(value, info);

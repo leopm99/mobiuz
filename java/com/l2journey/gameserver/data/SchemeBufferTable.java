@@ -128,7 +128,8 @@ public class SchemeBufferTable
 			LOGGER.warning("SchemeBufferTable: Failed to load buff schemes: " + e);
 		}
 		
-		LOGGER.info("SchemeBufferTable: Loaded " + count + " players schemes and " + _availableBuffs.size() + " available buffs.");
+		final int loggedCount = count;
+		LOGGER.info(() -> "SchemeBufferTable: Loaded " + loggedCount + " players schemes and " + _availableBuffs.size() + " available buffs.");
 	}
 	
 	public void saveSchemes()

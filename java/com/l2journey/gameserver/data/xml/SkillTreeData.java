@@ -1354,12 +1354,16 @@ public class SkillTreeData implements IXmlReader
 		}
 		
 		final String className = getClass().getSimpleName();
-		LOGGER.info(className + ": Loaded " + classSkillTreeCount + " Class Skills for " + _classSkillTrees.size() + " class skill trees.");
+		final int loggedClassSkillTreeCount = classSkillTreeCount;
+		final int loggedTransferSkillTreeCount = trasferSkillTreeCount;
+		final int loggedDwarvenOnlyFishingSkillCount = dwarvenOnlyFishingSkillCount;
+		final int loggedResSkillCount = resSkillCount;
+		LOGGER.info(() -> className + ": Loaded " + loggedClassSkillTreeCount + " Class Skills for " + _classSkillTrees.size() + " class skill trees.");
 		LOGGER.info(() -> className + ": Loaded " + _subClassSkillTree.size() + " sub-class skills.");
-		LOGGER.info(className + ": Loaded " + trasferSkillTreeCount + " transfer skills for " + _transferSkillTrees.size() + " transfer skill trees.");
-		LOGGER.info(className + ": Loaded " + _fishingSkillTree.size() + " fishing skills, " + dwarvenOnlyFishingSkillCount + " Dwarven only fishing skills.");
+		LOGGER.info(() -> className + ": Loaded " + loggedTransferSkillTreeCount + " transfer skills for " + _transferSkillTrees.size() + " transfer skill trees.");
+		LOGGER.info(() -> className + ": Loaded " + _fishingSkillTree.size() + " fishing skills, " + loggedDwarvenOnlyFishingSkillCount + " Dwarven only fishing skills.");
 		LOGGER.info(() -> className + ": Loaded " + _collectSkillTree.size() + " collect skills.");
-		LOGGER.info(className + ": Loaded " + _pledgeSkillTree.size() + " clan skills, " + (_pledgeSkillTree.size() - resSkillCount) + " for clan and " + resSkillCount + " residential.");
+		LOGGER.info(() -> className + ": Loaded " + _pledgeSkillTree.size() + " clan skills, " + (_pledgeSkillTree.size() - loggedResSkillCount) + " for clan and " + loggedResSkillCount + " residential.");
 		LOGGER.info(() -> className + ": Loaded " + _subPledgeSkillTree.size() + " sub-pledge skills.");
 		LOGGER.info(() -> className + ": Loaded " + _transformSkillTree.size() + " transform skills.");
 		LOGGER.info(() -> className + ": Loaded " + _nobleSkillTree.size() + " noble skills.");
