@@ -168,6 +168,10 @@ public class Shutdown extends Thread
 				LoginServerThread.getInstance().setServerStatus(ServerStatus.STATUS_AUTO);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	
@@ -287,6 +291,10 @@ public class Shutdown extends Thread
 					case 540, 480, 420, 360, 300, 240, 180, 120, 60, 30, 10, 5, 4, 3, 2, 1:
 					{
 						sendServerQuit(_secondsShut);
+					}
+					default:
+					{
+						break;
 					}
 				}
 				
@@ -421,6 +429,10 @@ public class Shutdown extends Thread
 			case GM_RESTART:
 			{
 				LOGGER.info("GM restart received. Restarting NOW!");
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

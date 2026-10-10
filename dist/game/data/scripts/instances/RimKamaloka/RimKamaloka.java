@@ -416,6 +416,10 @@ public class RimKamaloka extends AbstractNpcAI
 				enterInstance(player, npc, Integer.parseInt(event));
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		return null;
@@ -476,6 +480,10 @@ public class RimKamaloka extends AbstractNpcAI
 					case 5:
 					{
 						return "GradeS.htm";
+					}
+					default:
+					{
+						break;
 					}
 				}
 			}

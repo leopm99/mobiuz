@@ -396,6 +396,10 @@ public class Q00066_CertifiedArbalester extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -676,6 +680,10 @@ public class Q00066_CertifiedArbalester extends Quest
 						qs.setMemoState(32);
 						qs.setCond(20, true);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -996,6 +1004,10 @@ public class Q00066_CertifiedArbalester extends Quest
 							htmltext = "32220-28.html";
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

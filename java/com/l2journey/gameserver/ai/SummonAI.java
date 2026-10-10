@@ -193,6 +193,10 @@ public class SummonAI extends PlayableAI implements Runnable
 					thinkInteract();
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		finally
@@ -273,6 +277,10 @@ public class SummonAI extends PlayableAI implements Runnable
 			case ACTIVE, FOLLOW, IDLE, MOVE_TO, PICK_UP:
 			{
 				_actor.asSummon().setFollowStatus(_startFollow);
+			}
+			default:
+			{
+				break;
 			}
 		}
 	}

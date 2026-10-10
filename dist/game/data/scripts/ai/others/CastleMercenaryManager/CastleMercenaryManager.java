@@ -117,6 +117,10 @@ public class CastleMercenaryManager extends AbstractNpcAI
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

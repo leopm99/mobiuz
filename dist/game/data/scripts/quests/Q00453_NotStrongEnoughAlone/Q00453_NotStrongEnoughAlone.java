@@ -306,6 +306,10 @@ public class Q00453_NotStrongEnoughAlone extends Quest
 						htmltext = "32734-14.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -327,6 +331,10 @@ public class Q00453_NotStrongEnoughAlone extends Quest
 						htmltext = "32734-03.html";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

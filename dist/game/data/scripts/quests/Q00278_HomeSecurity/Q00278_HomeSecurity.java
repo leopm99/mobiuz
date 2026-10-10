@@ -131,6 +131,10 @@ public class Q00278_HomeSecurity extends Quest
 				htmltext = "31537-07.html";
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -158,6 +162,10 @@ public class Q00278_HomeSecurity extends Quest
 					{
 						qs.setCond(2, true);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

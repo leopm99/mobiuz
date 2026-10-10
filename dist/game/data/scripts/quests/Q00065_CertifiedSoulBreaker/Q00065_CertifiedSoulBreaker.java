@@ -285,6 +285,10 @@ public class Q00065_CertifiedSoulBreaker extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -329,6 +333,10 @@ public class Q00065_CertifiedSoulBreaker extends Quest
 						}
 						npc.broadcastPacket(new NpcSay(npc, ChatType.NPC_GENERAL, NpcStringId.GRR_WHO_ARE_YOU_AND_WHY_HAVE_YOU_STOPPED_ME));
 					}
+				}
+				default:
+				{
+					break;
 				}
 			}
 		}
@@ -703,6 +711,10 @@ public class Q00065_CertifiedSoulBreaker extends Quest
 					{
 						htmltext = "32243-07.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

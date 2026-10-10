@@ -115,6 +115,10 @@ public class Q00357_WarehouseKeepersAmbition extends Quest
 					htmltext = event;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;

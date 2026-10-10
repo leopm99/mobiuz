@@ -113,6 +113,10 @@ public class Q00714_PathToBecomingALordSchuttgart extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}
@@ -239,6 +243,10 @@ public class Q00714_PathToBecomingALordSchuttgart extends Quest
 					qs.setCond(7);
 					htmltext = "31958-04.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

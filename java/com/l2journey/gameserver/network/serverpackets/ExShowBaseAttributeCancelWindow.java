@@ -104,6 +104,10 @@ public class ExShowBaseAttributeCancelWindow extends ServerPacket
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return _price;
 	}

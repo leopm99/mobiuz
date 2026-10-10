@@ -87,6 +87,10 @@ public class ElfHumanFighterChange1 extends AbstractNpcAI
 				htmltext = ClassChangeRequested(player, npc, Integer.parseInt(event));
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

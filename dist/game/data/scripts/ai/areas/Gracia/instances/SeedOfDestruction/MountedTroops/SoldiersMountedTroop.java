@@ -164,6 +164,10 @@ public final class SoldiersMountedTroop extends AbstractInstance
 				openDoor(DOORS[1], npc.getInstanceId());
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return null;
 	}

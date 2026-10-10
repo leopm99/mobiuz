@@ -136,6 +136,10 @@ public class Q00276_TotemOfTheHestui extends Quest
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}
@@ -207,7 +211,15 @@ public class Q00276_TotemOfTheHestui extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

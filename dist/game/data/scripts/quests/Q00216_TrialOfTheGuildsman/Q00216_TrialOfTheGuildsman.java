@@ -232,6 +232,10 @@ public class Q00216_TrialOfTheGuildsman extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -365,6 +369,10 @@ public class Q00216_TrialOfTheGuildsman extends Quest
 						playSound(qs.getPlayer(), QuestSound.ITEMSOUND_QUEST_ITEMGET);
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -553,6 +561,10 @@ public class Q00216_TrialOfTheGuildsman extends Quest
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		else if ((qs.isCompleted()) && (npc.getId() == WAREHOUSE_KEEPER_VALKON))
@@ -596,6 +608,10 @@ public class Q00216_TrialOfTheGuildsman extends Quest
 			case BREKA_ORC, BREKA_ORC_ARCHER, BREKA_ORC_SHAMAN, BREKA_ORC_OVERLORD, BREKA_ORC_WARRIOR:
 			{
 				check = hasQuestItems(player, ALLTRANS_INSTRUCTIONS, NORMANS_INSTRUCTIONS, DUNINGS_INSTRUCTIONS) && (getQuestItemsCount(player, DUNINGS_KEY) < 30);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

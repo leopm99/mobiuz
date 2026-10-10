@@ -118,6 +118,10 @@ public class Q00283_TheFewTheProudTheBrave extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -148,6 +152,10 @@ public class Q00283_TheFewTheProudTheBrave extends Quest
 			case State.STARTED:
 			{
 				htmltext = hasQuestItems(talker, CRIMSON_SPIDER_CLAW) ? "32133-04.html" : "32133-05.html";
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

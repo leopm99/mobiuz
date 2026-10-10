@@ -187,12 +187,20 @@ public class Q00034_InSearchOfCloth extends Quest
 								htmltext = ((getQuestItemsCount(player, SUEDE) >= SUEDE_COUNT) && (getQuestItemsCount(player, THREAD) >= THREAD_COUNT)) ? "30088-08.html" : "30088-09.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(player);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -212,6 +220,10 @@ public class Q00034_InSearchOfCloth extends Quest
 						case 2:
 						{
 							htmltext = "30294-03.html";
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -244,8 +256,16 @@ public class Q00034_InSearchOfCloth extends Quest
 							htmltext = "30165-06.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

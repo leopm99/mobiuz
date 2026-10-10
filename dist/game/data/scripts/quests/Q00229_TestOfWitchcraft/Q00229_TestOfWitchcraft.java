@@ -285,6 +285,10 @@ public class Q00229_TestOfWitchcraft extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -328,6 +332,10 @@ public class Q00229_TestOfWitchcraft extends Quest
 						npc.setScriptValue(1);
 						npc.broadcastPacket(new NpcSay(npc, ChatType.NPC_GENERAL, NpcStringId.THAT_SWORD_IS_REALLY));
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -459,6 +467,10 @@ public class Q00229_TestOfWitchcraft extends Quest
 						playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 						qs.setCond(10);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -789,6 +801,10 @@ public class Q00229_TestOfWitchcraft extends Quest
 							htmltext = "30633-03.htm";
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

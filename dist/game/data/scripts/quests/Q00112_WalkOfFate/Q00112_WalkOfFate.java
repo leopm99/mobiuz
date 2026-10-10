@@ -69,6 +69,10 @@ public class Q00112_WalkOfFate extends Quest
 				qs.exitQuest(false, true);
 				htmltext = event;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -99,12 +103,20 @@ public class Q00112_WalkOfFate extends Quest
 						htmltext = "32017-01.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
 			case State.COMPLETED:
 			{
 				htmltext = getAlreadyCompletedMsg(player);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

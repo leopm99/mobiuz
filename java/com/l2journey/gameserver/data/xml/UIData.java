@@ -137,6 +137,10 @@ public class UIData implements IXmlReader
 							akey.setShowStatus(val);
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				addKey(_storedKeys, cat, akey);

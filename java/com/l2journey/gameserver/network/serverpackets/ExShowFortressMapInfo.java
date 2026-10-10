@@ -102,6 +102,10 @@ public class ExShowFortressMapInfo extends ServerPacket
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		else

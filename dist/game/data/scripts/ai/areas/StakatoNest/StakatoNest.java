@@ -191,6 +191,10 @@ public class StakatoNest extends AbstractNpcAI
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	
@@ -224,6 +228,10 @@ public class StakatoNest extends AbstractNpcAI
 			case "male_change":
 			{
 				npcId = STAKATO_MALE_2;
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

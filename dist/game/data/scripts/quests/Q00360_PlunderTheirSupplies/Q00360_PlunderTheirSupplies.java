@@ -88,6 +88,10 @@ public class Q00360_PlunderTheirSupplies extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -167,6 +171,10 @@ public class Q00360_PlunderTheirSupplies extends Quest
 						htmltext = "30873-07.html";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

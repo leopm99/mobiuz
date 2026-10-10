@@ -89,6 +89,10 @@ public class Q00906_TheCallOfValakas extends Quest
 					htmltext = event;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -140,6 +144,10 @@ public class Q00906_TheCallOfValakas extends Quest
 						htmltext = "31540-08.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -165,6 +173,10 @@ public class Q00906_TheCallOfValakas extends Quest
 						htmltext = "31540-01.htm";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

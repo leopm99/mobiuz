@@ -101,6 +101,10 @@ public class TransformData implements IXmlReader
 														}
 														break;
 													}
+													default:
+													{
+														break;
+													}
 												}
 											}
 											templateData = new TransformTemplate(set);
@@ -199,6 +203,10 @@ public class TransformData implements IXmlReader
 												}
 											}
 											templateData.addLevelData(new TransformLevelData(levelsSet));
+											break;
+										}
+										default:
+										{
 											break;
 										}
 									}

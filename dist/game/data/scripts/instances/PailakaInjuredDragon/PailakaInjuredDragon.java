@@ -457,7 +457,15 @@ public class PailakaInjuredDragon extends AbstractInstance
 					{
 						startQuestTimer("INJURED_DRAGON_CAMERA_1_2000", 10, camera, player);
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -503,6 +511,10 @@ public class PailakaInjuredDragon extends AbstractInstance
 				{
 					npc.getVariables().set("i_ai0", true);
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -604,6 +616,10 @@ public class PailakaInjuredDragon extends AbstractInstance
 			case INJURED_DRAGON_CAMERA_2:
 			{
 				startQuestTimer("INJURED_DRAGON_CAMERA_2_1000", 1, npc, null);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -745,6 +761,10 @@ public class PailakaInjuredDragon extends AbstractInstance
 				checkIfLastInWall(npc);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	
@@ -834,6 +854,10 @@ public class PailakaInjuredDragon extends AbstractInstance
 						{
 							return;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -844,6 +868,10 @@ public class PailakaInjuredDragon extends AbstractInstance
 						case VARKA_ELITE_GUARD, VARKA_COMMANDER, VARKA_SILENOS_OFFICER:
 						{
 							return;
+						}
+						default:
+						{
+							break;
 						}
 					}
 					break;
@@ -856,6 +884,10 @@ public class PailakaInjuredDragon extends AbstractInstance
 						{
 							return;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -867,7 +899,15 @@ public class PailakaInjuredDragon extends AbstractInstance
 						{
 							return;
 						}
+						default:
+						{
+							break;
+						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -893,6 +933,10 @@ public class PailakaInjuredDragon extends AbstractInstance
 							npcs.deleteMe();
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -904,6 +948,10 @@ public class PailakaInjuredDragon extends AbstractInstance
 						{
 							npcs.abortCast();
 							npcs.deleteMe();
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -919,6 +967,10 @@ public class PailakaInjuredDragon extends AbstractInstance
 							npcs.deleteMe();
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -932,7 +984,15 @@ public class PailakaInjuredDragon extends AbstractInstance
 							npcs.deleteMe();
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

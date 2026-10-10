@@ -111,6 +111,10 @@ public class Q00405_PathOfTheCleric extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -313,6 +317,10 @@ public class Q00405_PathOfTheCleric extends Quest
 					{
 						htmltext = "30408-05.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

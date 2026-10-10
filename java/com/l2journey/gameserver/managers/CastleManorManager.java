@@ -282,6 +282,10 @@ public class CastleManorManager implements IXmlReader
 				_nextModeChange.set(Calendar.MINUTE, Config.ALT_MANOR_REFRESH_MIN);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		// Schedule mode change
 		ThreadPool.schedule(this::changeMode, _nextModeChange.getTimeInMillis() - System.currentTimeMillis());
@@ -430,6 +434,10 @@ public class CastleManorManager implements IXmlReader
 				{
 					storeMe();
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

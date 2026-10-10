@@ -130,6 +130,10 @@ public class Q00348_AnArrogantSearch extends Quest
 					return super.onEvent(event, npc, player);
 				}
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		final QuestState qs = getQuestState(player, false);
@@ -208,6 +212,10 @@ public class Q00348_AnArrogantSearch extends Quest
 						case 3:
 						{
 							giveAdena(player, 13000, true);
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -307,6 +315,10 @@ public class Q00348_AnArrogantSearch extends Quest
 			{
 				qs.exitQuest(true, true);
 				htmltext = event;
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -433,6 +445,10 @@ public class Q00348_AnArrogantSearch extends Quest
 						}
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -563,6 +579,10 @@ public class Q00348_AnArrogantSearch extends Quest
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}
@@ -590,6 +610,10 @@ public class Q00348_AnArrogantSearch extends Quest
 			{
 				npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.NPC_GENERAL, npc.getId(), NpcStringId.I_HAVE_THE_KEY_WHY_DON_T_YOU_COME_AND_TAKE_IT));
 				startQuestTimer("DESPAWN", 600000, npc, null);
+			}
+			default:
+			{
+				break;
 			}
 		}
 	}
@@ -673,6 +697,10 @@ public class Q00348_AnArrogantSearch extends Quest
 									qs.setCond(8, true);
 									break;
 								}
+								default:
+								{
+									break;
+								}
 							}
 							break;
 						}
@@ -699,6 +727,10 @@ public class Q00348_AnArrogantSearch extends Quest
 									case 3:
 									{
 										htmltext = "30864-19.html";
+										break;
+									}
+									default:
+									{
 										break;
 									}
 								}
@@ -771,6 +803,10 @@ public class Q00348_AnArrogantSearch extends Quest
 										{
 											htmltext = "30864-38.html";
 										}
+										break;
+									}
+									default:
+									{
 										break;
 									}
 								}
@@ -861,6 +897,10 @@ public class Q00348_AnArrogantSearch extends Quest
 										case 3:
 										{
 											giveAdena(player, 13000, true);
+											break;
+										}
+										default:
+										{
 											break;
 										}
 									}
@@ -1010,6 +1050,10 @@ public class Q00348_AnArrogantSearch extends Quest
 						case 19:
 						{
 							htmltext = "30864-49.html";
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -1392,6 +1436,10 @@ public class Q00348_AnArrogantSearch extends Quest
 							htmltext = "30832-03.html";
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

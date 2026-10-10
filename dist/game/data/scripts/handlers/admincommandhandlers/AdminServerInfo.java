@@ -155,6 +155,10 @@ public class AdminServerInfo implements IAdminCommandHandler
 				}
 				return realPlayers.size();
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return 0;
 	}

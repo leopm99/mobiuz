@@ -117,6 +117,10 @@ public class PetManager extends Merchant
 					exchange(player, 7584, 6649);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		else if (command.startsWith("evolve"))
@@ -151,6 +155,10 @@ public class PetManager extends Merchant
 				case 5:
 				{
 					ok = doEvolve(player, this, 6649, 10312, 55);
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -192,6 +200,10 @@ public class PetManager extends Merchant
 				case 5:
 				{
 					ok = doRestore(player, this, 10310, 4424, 55);
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

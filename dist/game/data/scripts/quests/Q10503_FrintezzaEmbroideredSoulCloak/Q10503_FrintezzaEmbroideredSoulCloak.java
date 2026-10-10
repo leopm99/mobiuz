@@ -122,12 +122,20 @@ public class Q10503_FrintezzaEmbroideredSoulCloak extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
 			case State.COMPLETED:
 			{
 				htmltext = "32612-03.html";
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

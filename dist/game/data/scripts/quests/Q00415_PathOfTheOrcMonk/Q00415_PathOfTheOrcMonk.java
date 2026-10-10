@@ -233,6 +233,10 @@ public class Q00415_PathOfTheOrcMonk extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -264,6 +268,10 @@ public class Q00415_PathOfTheOrcMonk extends Quest
 					{
 						npc.setScriptValue(2);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -459,6 +467,10 @@ public class Q00415_PathOfTheOrcMonk extends Quest
 						giveItems(killer, HORN_OF_BAAR_DRE_VANUL, 1);
 						qs.setCond(18, true);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -677,6 +689,10 @@ public class Q00415_PathOfTheOrcMonk extends Quest
 					{
 						htmltext = "32056-09.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

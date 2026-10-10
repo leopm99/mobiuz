@@ -132,6 +132,10 @@ public class ToIVortex extends AbstractNpcAI
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return super.onEvent(event, npc, player);
 	}

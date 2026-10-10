@@ -138,6 +138,10 @@ public class Q00614_SlayTheEnemyCommanderVarka extends Quest
 				htmltext = (qs.isCond(2) && hasQuestItems(player, TAYR_HEAD)) ? "31377-05.html" : "31377-06.html";
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

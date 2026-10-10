@@ -107,6 +107,10 @@ public class ClanHallDoorman extends Doorman
 					ok = PetManager.doEvolve(player, this, 10426, 10611, 70);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 			final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 			if (ok)

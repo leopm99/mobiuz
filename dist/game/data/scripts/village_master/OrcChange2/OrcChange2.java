@@ -92,6 +92,10 @@ public class OrcChange2 extends AbstractNpcAI
 				htmltext = ClassChangeRequested(player, Integer.parseInt(event));
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

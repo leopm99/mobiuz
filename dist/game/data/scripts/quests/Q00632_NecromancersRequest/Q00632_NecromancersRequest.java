@@ -134,6 +134,10 @@ public class Q00632_NecromancersRequest extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

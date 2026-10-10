@@ -85,6 +85,10 @@ public class Q00162_CurseOfTheUndergroundFortress extends Quest
 					htmltext = event;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -179,6 +183,10 @@ public class Q00162_CurseOfTheUndergroundFortress extends Quest
 			case State.COMPLETED:
 			{
 				htmltext = getAlreadyCompletedMsg(player);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

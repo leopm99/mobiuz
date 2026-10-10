@@ -130,6 +130,10 @@ public class Q00107_MercilessPunishment extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -248,12 +252,20 @@ public class Q00107_MercilessPunishment extends Quest
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(talker);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -266,6 +278,10 @@ public class Q00107_MercilessPunishment extends Quest
 					qs.setCond(2, true);
 					htmltext = "30580-01.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -305,6 +321,10 @@ public class Q00107_MercilessPunishment extends Quest
 						giveItems(killer, LETTER_TO_ELF, 1);
 						qs.setCond(7, true);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

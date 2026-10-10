@@ -806,6 +806,10 @@ public class HeartInfinityAttack extends AbstractNpcAI
 				a[2] = 0.25;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return a;
 	}

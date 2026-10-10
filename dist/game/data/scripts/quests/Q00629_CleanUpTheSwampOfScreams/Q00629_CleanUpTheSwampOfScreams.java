@@ -115,6 +115,10 @@ public class Q00629_CleanUpTheSwampOfScreams extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

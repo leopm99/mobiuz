@@ -167,6 +167,10 @@ public class ItemSkillsTemplate implements IItemHandler
 					return true;
 				}
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return false;
 	}

@@ -130,6 +130,10 @@ public class Q00006_StepIntoTheFuture extends Quest
 						htmltext = getAlreadyCompletedMsg(player);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -161,6 +165,10 @@ public class Q00006_StepIntoTheFuture extends Quest
 						htmltext = "30311-04.html";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -315,6 +315,10 @@ public class SignsPriest extends Npc
 							player.sendPacket(SystemMessageId.YOU_VE_CHOSEN_TO_FIGHT_FOR_THE_SEAL_OF_STRIFE_DURING_THIS_QUEST_EVENT_PERIOD);
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					
 					showChatWindow(player, 4, SevenSigns.getCabalShortName(cabal), false);
@@ -388,6 +392,10 @@ public class SignsPriest extends Npc
 						case SevenSigns.SEAL_STONE_RED_ID:
 						{
 							redContrib = Math.min(contributionCount, (Config.ALT_MAXIMUM_PLAYER_CONTRIB - score) / SevenSigns.RED_CONTRIB_POINTS);
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -588,6 +596,10 @@ public class SignsPriest extends Npc
 									}
 								}
 								return;
+							}
+							default:
+							{
+								break;
 							}
 						}
 						
@@ -803,6 +815,10 @@ public class SignsPriest extends Npc
 							}
 							return;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					
 					final Item stoneInstance = player.getInventory().getItemByItemId(stoneId);
@@ -883,6 +899,10 @@ public class SignsPriest extends Npc
 								case SevenSigns.SEAL_STONE_RED_ID:
 								{
 									ancientAdenaReward = SevenSigns.calcAncientAdenaReward(0, 0, convertCount);
+									break;
+								}
+								default:
+								{
 									break;
 								}
 							}

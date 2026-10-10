@@ -273,6 +273,10 @@ public abstract class AbstractInstance extends AbstractNpcAI
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 }

@@ -151,6 +151,10 @@ public class Venom extends AbstractNpcAI
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return super.onTalk(npc, talker);
 	}
@@ -185,6 +189,10 @@ public class Venom extends AbstractNpcAI
 				{
 					npc.deleteMe();
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -271,6 +279,10 @@ public class Venom extends AbstractNpcAI
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	
@@ -297,6 +309,10 @@ public class Venom extends AbstractNpcAI
 				{
 					_venom.deleteMe();
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

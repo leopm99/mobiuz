@@ -188,6 +188,10 @@ public class Q00143_FallenAngelRequestOfDusk extends Quest
 						htmltext = getAlreadyCompletedMsg(player);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -221,6 +225,10 @@ public class Q00143_FallenAngelRequestOfDusk extends Quest
 							}
 							qs.exitQuest(false, true);
 							htmltext = "30297-07.html";
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -273,6 +281,10 @@ public class Q00143_FallenAngelRequestOfDusk extends Quest
 							htmltext = "32368-05.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				break;
@@ -304,8 +316,16 @@ public class Q00143_FallenAngelRequestOfDusk extends Quest
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

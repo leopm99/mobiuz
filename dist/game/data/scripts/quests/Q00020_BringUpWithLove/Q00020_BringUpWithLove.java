@@ -77,6 +77,10 @@ public class Q00020_BringUpWithLove extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -112,7 +116,15 @@ public class Q00020_BringUpWithLove extends Quest
 						htmltext = !hasQuestItems(player, INNOCENCE_JEWEL) ? "31537-14.html" : "31537-15.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

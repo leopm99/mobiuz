@@ -129,6 +129,10 @@ public class Q00450_GraveRobberRescue extends Quest
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		else if (qs.isCond(1))

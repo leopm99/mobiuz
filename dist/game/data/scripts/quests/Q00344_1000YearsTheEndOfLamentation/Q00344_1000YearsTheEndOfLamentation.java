@@ -159,6 +159,10 @@ public class Q00344_1000YearsTheEndOfLamentation extends Quest
 									giveItems(player, CRUCIFIX);
 									break;
 								}
+								default:
+								{
+									break;
+								}
 							}
 							htmltext = "30754-09.html";
 						}
@@ -199,7 +203,15 @@ public class Q00344_1000YearsTheEndOfLamentation extends Quest
 						htmltext = "30754-13.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -363,6 +375,10 @@ public class Q00344_1000YearsTheEndOfLamentation extends Quest
 						htmltext = "30857-02.html";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

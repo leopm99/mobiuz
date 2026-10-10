@@ -124,6 +124,10 @@ public class Q00259_RequestFromTheFarmOwner extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -170,12 +174,20 @@ public class Q00259_RequestFromTheFarmOwner extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
 			case MARIUS:
 			{
 				htmltext = (getQuestItemsCount(player, SPIDER_SKIN) >= SKIN_COUNT) ? "30405-02.html" : "30405-01.html";
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

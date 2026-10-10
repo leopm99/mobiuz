@@ -203,6 +203,10 @@ public class Q00193_SevenSignsDyingMessage extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -301,6 +305,10 @@ public class Q00193_SevenSignsDyingMessage extends Quest
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -318,6 +326,10 @@ public class Q00193_SevenSignsDyingMessage extends Quest
 								htmltext = "32570-03.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -329,7 +341,15 @@ public class Q00193_SevenSignsDyingMessage extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -120,6 +120,10 @@ public class Nemo extends AbstractNpcAI
 					spawnedNpc.setScriptValue(spawnedNpc.getScriptValue() - 1);
 				}
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

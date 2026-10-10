@@ -243,6 +243,10 @@ public class Q00463_IMustBeaGenius extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

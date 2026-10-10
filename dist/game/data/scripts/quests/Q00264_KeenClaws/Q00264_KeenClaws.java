@@ -149,7 +149,15 @@ public class Q00264_KeenClaws extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

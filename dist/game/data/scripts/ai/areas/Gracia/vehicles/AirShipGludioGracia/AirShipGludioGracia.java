@@ -292,6 +292,10 @@ public class AirShipGludioGracia extends AbstractNpcAI implements Runnable
 					ThreadPool.schedule(this, 60000);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 			_cycle++;
 			if (_cycle > 7)

@@ -213,6 +213,10 @@ public class Q00227_TestOfTheReformer extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -251,6 +255,10 @@ public class Q00227_TestOfTheReformer extends Quest
 					{
 						npc.setScriptValue(attacker.getObjectId());
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -401,6 +409,10 @@ public class Q00227_TestOfTheReformer extends Quest
 						qs.setMemoState(14);
 						qs.setCond(16, true);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -636,6 +648,10 @@ public class Q00227_TestOfTheReformer extends Quest
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		else if ((qs.isCompleted()) && (npc.getId() == PRIESTESS_PUPINA))
@@ -662,6 +678,10 @@ public class Q00227_TestOfTheReformer extends Quest
 				npc.setRunning();
 				npc.getAI().setIntention(Intention.MOVE_TO, MOVE_TO);
 				npc.getVariables().set("SPAWNED", 0);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

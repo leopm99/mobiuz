@@ -104,6 +104,10 @@ public class Q00379_FantasyWine extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

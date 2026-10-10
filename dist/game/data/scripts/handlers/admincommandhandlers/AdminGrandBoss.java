@@ -204,6 +204,10 @@ public class AdminGrandBoss implements IAdminCommandHandler
 				}
 			}
 				break;
+			default:
+			{
+				break;
+			}
 		}
 		return true;
 	}
@@ -265,6 +269,10 @@ public class AdminGrandBoss implements IAdminCommandHandler
 					bossZone = ZoneManager.getInstance().getZoneById(FRINTEZZA_ZONE, NoRestartZone.class);
 					htmlPatch = "data/html/admin/grandboss/grandboss_frintezza.htm";
 				}
+				default:
+				{
+					break;
+				}
 			}
 			
 			if (Arrays.asList(ANTHARAS, VALAKAS, BAIUM, FRINTEZZA).contains(grandBossId))
@@ -296,6 +304,10 @@ public class AdminGrandBoss implements IAdminCommandHandler
 						text = "Dead";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 			}
 			else
@@ -313,6 +325,10 @@ public class AdminGrandBoss implements IAdminCommandHandler
 					{
 						textColor = "FF0000"; // Red
 						text = "Dead";
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}

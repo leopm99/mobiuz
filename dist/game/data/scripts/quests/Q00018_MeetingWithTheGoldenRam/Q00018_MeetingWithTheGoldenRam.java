@@ -88,6 +88,10 @@ public class Q00018_MeetingWithTheGoldenRam extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -128,6 +132,10 @@ public class Q00018_MeetingWithTheGoldenRam extends Quest
 				{
 					htmltext = "31555-01.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -145,6 +145,10 @@ public class Nevit
 				_player.sendPacket(SystemMessageId.NEVIT_S_ADVENT_BLESSING_SHINES_STRONGLY_FROM_ABOVE_YOU_CAN_ALMOST_SEE_HIS_DIVINE_AURA);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		_player.sendPacket(new ExNevitAdventPointInfoPacket(getAdventPoints()));

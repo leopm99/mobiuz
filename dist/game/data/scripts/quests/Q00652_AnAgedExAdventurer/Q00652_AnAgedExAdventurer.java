@@ -92,6 +92,10 @@ public class Q00652_AnAgedExAdventurer extends Quest
 						htmltext = "32012-02.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -112,6 +116,10 @@ public class Q00652_AnAgedExAdventurer extends Quest
 					}
 					qs.exitQuest(true, true);
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

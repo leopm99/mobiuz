@@ -86,6 +86,10 @@ public class Katenar extends AbstractNpcAI
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

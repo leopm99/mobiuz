@@ -245,6 +245,10 @@ public class Q00226_TestOfTheHealer extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -301,6 +305,10 @@ public class Q00226_TestOfTheHealer extends Quest
 						qs.setCond(3, true);
 						playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -485,6 +493,10 @@ public class Q00226_TestOfTheHealer extends Quest
 							htmltext = "30659-05.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -658,6 +670,10 @@ public class Q00226_TestOfTheHealer extends Quest
 					{
 						htmltext = "30674-04.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

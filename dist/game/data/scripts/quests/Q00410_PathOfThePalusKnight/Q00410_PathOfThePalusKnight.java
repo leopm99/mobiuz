@@ -146,6 +146,10 @@ public class Q00410_PathOfThePalusKnight extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -203,6 +207,10 @@ public class Q00410_PathOfThePalusKnight extends Quest
 							playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -298,6 +306,10 @@ public class Q00410_PathOfThePalusKnight extends Quest
 					{
 						htmltext = "30422-06.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

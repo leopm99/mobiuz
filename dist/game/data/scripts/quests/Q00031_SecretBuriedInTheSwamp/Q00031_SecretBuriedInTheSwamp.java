@@ -119,6 +119,10 @@ public class Q00031_SecretBuriedInTheSwamp extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -166,12 +170,20 @@ public class Q00031_SecretBuriedInTheSwamp extends Quest
 								htmltext = "31555-07.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(player);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -191,6 +203,10 @@ public class Q00031_SecretBuriedInTheSwamp extends Quest
 						htmltext = "31665-03.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -205,6 +221,10 @@ public class Q00031_SecretBuriedInTheSwamp extends Quest
 				{
 					htmltext = npc.getId() + "-03.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

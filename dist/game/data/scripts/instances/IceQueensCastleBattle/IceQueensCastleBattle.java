@@ -762,6 +762,10 @@ public class IceQueensCastleBattle extends AbstractInstance
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 			}
 		}
@@ -1079,6 +1083,10 @@ public class IceQueensCastleBattle extends AbstractInstance
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}
@@ -1120,6 +1128,10 @@ public class IceQueensCastleBattle extends AbstractInstance
 					{
 						npc.doDie(null);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -1198,6 +1210,10 @@ public class IceQueensCastleBattle extends AbstractInstance
 				case GLACIER:
 				{
 					startQuestTimer("SPAWN_GLACIER", getRandom(30, 60) * 1000, controller, null);
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

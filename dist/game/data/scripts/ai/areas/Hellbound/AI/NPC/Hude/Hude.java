@@ -106,6 +106,10 @@ public class Hude extends AbstractNpcAI
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return super.onEvent(event, npc, player);
 	}

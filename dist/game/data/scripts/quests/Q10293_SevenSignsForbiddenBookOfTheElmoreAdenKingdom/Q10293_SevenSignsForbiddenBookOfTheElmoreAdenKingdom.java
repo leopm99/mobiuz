@@ -185,6 +185,10 @@ public class Q10293_SevenSignsForbiddenBookOfTheElmoreAdenKingdom extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -282,6 +286,10 @@ public class Q10293_SevenSignsForbiddenBookOfTheElmoreAdenKingdom extends Quest
 						htmltext = "32785-12.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -339,6 +347,10 @@ public class Q10293_SevenSignsForbiddenBookOfTheElmoreAdenKingdom extends Quest
 						htmltext = "32861-14.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -380,6 +392,10 @@ public class Q10293_SevenSignsForbiddenBookOfTheElmoreAdenKingdom extends Quest
 				{
 					htmltext = "32813-01.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

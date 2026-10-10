@@ -113,6 +113,10 @@ public class Q00509_AClansFame extends Quest
 				qs.exitQuest(true, true);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}

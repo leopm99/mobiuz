@@ -282,6 +282,10 @@ public class Q00383_TreasureHunt extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

@@ -125,6 +125,10 @@ public class Q00148_PathtoBecominganExaltedMercenary extends Quest
 				htmltext = getAlreadyCompletedMsg(player);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

@@ -93,6 +93,10 @@ public class SiegeScheduleData implements IXmlReader
 							_scheduleData.put(set.getInt("castleId"), new SiegeScheduleDate(set));
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 			}

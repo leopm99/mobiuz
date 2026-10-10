@@ -170,6 +170,10 @@ public class OfflineTraderTable
 								stmItems.executeBatch();
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						
 						stm3.setString(4, title);
@@ -297,6 +301,10 @@ public class OfflineTraderTable
 								}
 								
 								player.setStoreName(rs.getString("title"));
+								break;
+							}
+							default:
+							{
 								break;
 							}
 						}
@@ -445,6 +453,10 @@ public class OfflineTraderTable
 									stm3.addBatch();
 								}
 								stm3.executeBatch();
+								break;
+							}
+							default:
+							{
 								break;
 							}
 						}

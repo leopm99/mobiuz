@@ -88,6 +88,10 @@ public class Q00317_CatchTheWind extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

@@ -111,6 +111,10 @@ public class AdminData implements IXmlReader
 							_adminCommandAccessRights.put(command.getAdminCommand(), command);
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				});
 			}

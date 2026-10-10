@@ -153,6 +153,10 @@ public class Q10291_FireDragonDestroyer extends Quest
 				htmltext = "31540-09.html";
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

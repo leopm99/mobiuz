@@ -129,6 +129,10 @@ public class CreatureStat
 					value = 1.0;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return value;

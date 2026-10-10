@@ -253,12 +253,20 @@ public class Q00136_MoreThanMeetsTheEye extends Quest
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(player);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -345,6 +353,10 @@ public class Q00136_MoreThanMeetsTheEye extends Quest
 						}
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

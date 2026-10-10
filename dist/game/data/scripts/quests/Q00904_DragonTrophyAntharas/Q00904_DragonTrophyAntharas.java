@@ -85,6 +85,10 @@ public class Q00904_DragonTrophyAntharas extends Quest
 					htmltext = event;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -136,6 +140,10 @@ public class Q00904_DragonTrophyAntharas extends Quest
 						htmltext = "30755-09.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -161,6 +169,10 @@ public class Q00904_DragonTrophyAntharas extends Quest
 						htmltext = "30755-01.htm";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

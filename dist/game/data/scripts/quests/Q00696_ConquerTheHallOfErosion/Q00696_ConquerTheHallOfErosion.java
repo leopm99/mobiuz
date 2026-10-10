@@ -100,6 +100,10 @@ public class Q00696_ConquerTheHallOfErosion extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

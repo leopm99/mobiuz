@@ -875,6 +875,10 @@ public class SevenSignsFestival
 				maxLevel = 64;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return maxLevel;
 	}
@@ -1602,6 +1606,10 @@ public class SevenSignsFestival
 			case SevenSigns.SEAL_STONE_RED_ID:
 			{
 				eachStoneBonus = SevenSigns.SEAL_STONE_RED_VALUE;
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

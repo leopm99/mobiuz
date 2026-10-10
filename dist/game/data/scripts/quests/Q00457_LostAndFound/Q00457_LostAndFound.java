@@ -229,6 +229,10 @@ public class Q00457_LostAndFound extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

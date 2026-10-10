@@ -138,6 +138,10 @@ public class Q00633_InTheForgottenVillage extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -162,6 +166,10 @@ public class Q00633_InTheForgottenVillage extends Quest
 				case ZOMBIES_LIVER:
 				{
 					giveItemRandomly(qs.getPlayer(), npc, ZOMBIES_LIVER, 1, 0, info.getChance(), true);
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

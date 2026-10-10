@@ -162,6 +162,10 @@ public class Observation implements IBypassHandler
 				doObserve(player, target.asNpc(), loc, cost);
 				return true;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return false;
 	}

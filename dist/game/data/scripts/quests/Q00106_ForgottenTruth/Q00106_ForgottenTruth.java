@@ -107,6 +107,10 @@ public class Q00106_ForgottenTruth extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -214,6 +218,10 @@ public class Q00106_ForgottenTruth extends Quest
 						htmltext = getAlreadyCompletedMsg(talker);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -261,8 +269,16 @@ public class Q00106_ForgottenTruth extends Quest
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

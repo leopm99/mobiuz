@@ -152,6 +152,10 @@ public class Q00464_Oath extends Quest
 						htmltext = "32596-04g.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -211,6 +215,10 @@ public class Q00464_Oath extends Quest
 				{
 					htmltext = "strongbox-03.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -296,6 +304,10 @@ public class Q00464_Oath extends Quest
 					case 9:
 					{
 						htmltext = "32596-05g.html";
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}

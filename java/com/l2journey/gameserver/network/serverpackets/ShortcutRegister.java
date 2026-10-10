@@ -69,6 +69,10 @@ public class ShortcutRegister extends ServerPacket
 				buffer.writeInt(_shortcut.getId());
 				buffer.writeInt(_shortcut.getCharacterType());
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 }

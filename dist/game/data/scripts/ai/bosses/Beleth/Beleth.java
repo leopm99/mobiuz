@@ -547,6 +547,10 @@ public class Beleth extends AbstractNpcAI
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return super.onEvent(event, npc, player);
 	}

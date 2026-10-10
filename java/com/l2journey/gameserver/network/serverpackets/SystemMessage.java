@@ -418,6 +418,10 @@ public class SystemMessage extends ServerPacket
 					buffer.writeInt(array[2]); // z
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}

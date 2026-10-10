@@ -118,6 +118,10 @@ public class ConfirmDlg extends ServerPacket
 					buffer.writeInt(array[2]); // z
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		buffer.writeInt(_time);

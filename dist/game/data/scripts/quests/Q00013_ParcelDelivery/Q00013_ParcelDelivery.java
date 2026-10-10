@@ -79,6 +79,10 @@ public class Q00013_ParcelDelivery extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -118,6 +122,10 @@ public class Q00013_ParcelDelivery extends Quest
 						htmltext = "31539-00.html";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

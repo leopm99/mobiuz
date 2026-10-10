@@ -232,6 +232,10 @@ public class Q00402_PathOfTheHumanKnight extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -338,6 +342,10 @@ public class Q00402_PathOfTheHumanKnight extends Quest
 							playSound(qs.getPlayer(), QuestSound.ITEMSOUND_QUEST_ITEMGET);
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -564,6 +572,10 @@ public class Q00402_PathOfTheHumanKnight extends Quest
 					{
 						htmltext = "30653-01.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

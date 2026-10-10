@@ -220,6 +220,10 @@ public class Q00241_PossessorOfAPreciousSoul1 extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}
@@ -288,6 +292,10 @@ public class Q00241_PossessorOfAPreciousSoul1 extends Quest
 						playSound(partyMember, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -362,12 +370,20 @@ public class Q00241_PossessorOfAPreciousSoul1 extends Quest
 								htmltext = "31739-12.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(player);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -387,6 +403,10 @@ public class Q00241_PossessorOfAPreciousSoul1 extends Quest
 						htmltext = "30753-03.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -402,6 +422,10 @@ public class Q00241_PossessorOfAPreciousSoul1 extends Quest
 					case 3:
 					{
 						htmltext = "30754-03.html";
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -434,6 +458,10 @@ public class Q00241_PossessorOfAPreciousSoul1 extends Quest
 						htmltext = "31042-06.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -449,6 +477,10 @@ public class Q00241_PossessorOfAPreciousSoul1 extends Quest
 					case 10:
 					{
 						htmltext = "30692-03.html";
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -478,6 +510,10 @@ public class Q00241_PossessorOfAPreciousSoul1 extends Quest
 						htmltext = "31742-06.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -493,6 +529,10 @@ public class Q00241_PossessorOfAPreciousSoul1 extends Quest
 					case 13:
 					{
 						htmltext = "31744-03.html";
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -525,6 +565,10 @@ public class Q00241_PossessorOfAPreciousSoul1 extends Quest
 						htmltext = "31336-06.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -545,6 +589,10 @@ public class Q00241_PossessorOfAPreciousSoul1 extends Quest
 						htmltext = "31743-03.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -554,6 +602,10 @@ public class Q00241_PossessorOfAPreciousSoul1 extends Quest
 				{
 					htmltext = "31740-01.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

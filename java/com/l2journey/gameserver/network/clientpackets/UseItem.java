@@ -243,6 +243,10 @@ public class UseItem extends ClientPacket
 										player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_REQUIRED_CONDITION_TO_EQUIP_THAT_ITEM);
 										return;
 									}
+									default:
+									{
+										break;
+									}
 								}
 								break;
 							}
@@ -255,7 +259,15 @@ public class UseItem extends ClientPacket
 										player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_REQUIRED_CONDITION_TO_EQUIP_THAT_ITEM);
 										return;
 									}
+									default:
+									{
+										break;
+									}
 								}
+								break;
+							}
+							default:
+							{
 								break;
 							}
 						}
@@ -278,6 +290,10 @@ public class UseItem extends ClientPacket
 						player.sendPacket(SystemMessageId.YOU_DO_NOT_MEET_THE_REQUIRED_CONDITION_TO_EQUIP_THAT_ITEM);
 						return;
 					}
+				}
+				default:
+				{
+					break;
 				}
 			}
 			

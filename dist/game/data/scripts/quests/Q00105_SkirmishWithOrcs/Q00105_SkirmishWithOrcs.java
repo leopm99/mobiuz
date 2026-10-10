@@ -134,6 +134,10 @@ public class Q00105_SkirmishWithOrcs extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -162,6 +166,10 @@ public class Q00105_SkirmishWithOrcs extends Quest
 						giveItems(killer, KABOO_CHIEFS_2ST_TORQUE, 1);
 						qs.setCond(4, true);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -277,6 +285,10 @@ public class Q00105_SkirmishWithOrcs extends Quest
 			case State.COMPLETED:
 			{
 				htmltext = getAlreadyCompletedMsg(talker);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

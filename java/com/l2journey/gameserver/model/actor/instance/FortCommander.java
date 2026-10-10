@@ -149,6 +149,10 @@ public class FortCommander extends Defender
 							npcString = NpcStringId.SPIRIT_OF_FIRE_UNLEASH_YOUR_POWER_BURN_THE_ENEMY;
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					if (npcString != null)
 					{

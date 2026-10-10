@@ -155,6 +155,10 @@ public class FortressSiegeManager extends AbstractNpcAI
 								htmltext = "FortressSiegeManager-05.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 					}
 				}
@@ -196,6 +200,10 @@ public class FortressSiegeManager extends AbstractNpcAI
 			case "warInfo":
 			{
 				htmltext = npc.getFort().getSiege().getAttackerClans().isEmpty() ? "FortressSiegeManager-20.html" : "FortressSiegeManager-21.html";
+			}
+			default:
+			{
+				break;
 			}
 		}
 		return htmltext;

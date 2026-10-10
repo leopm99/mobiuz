@@ -87,6 +87,10 @@ public class Q00012_SecretMeetingWithVarkaSilenos extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -135,6 +139,10 @@ public class Q00012_SecretMeetingWithVarkaSilenos extends Quest
 				{
 					htmltext = "31378-01.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

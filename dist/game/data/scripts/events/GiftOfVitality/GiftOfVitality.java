@@ -165,6 +165,10 @@ public class GiftOfVitality extends LongTimeEvent
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

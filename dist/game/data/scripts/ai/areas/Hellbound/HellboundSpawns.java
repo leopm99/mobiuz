@@ -130,6 +130,10 @@ public class HellboundSpawns implements IXmlReader
 						maxLevel = parseInteger(attrs, "max", 100);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 			}
 			

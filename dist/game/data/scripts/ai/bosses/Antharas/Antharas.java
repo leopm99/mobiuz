@@ -201,6 +201,10 @@ public class Antharas extends AbstractNpcAI
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	
@@ -616,6 +620,10 @@ public class Antharas extends AbstractNpcAI
 				manageSkills(npc);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return super.onEvent(event, npc, player);
 	}
@@ -891,6 +899,10 @@ public class Antharas extends AbstractNpcAI
 					case 4:
 					{
 						attacker3Hate = 500;
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}

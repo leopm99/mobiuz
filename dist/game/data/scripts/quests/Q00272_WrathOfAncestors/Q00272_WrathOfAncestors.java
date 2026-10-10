@@ -136,7 +136,15 @@ public class Q00272_WrathOfAncestors extends Quest
 						htmltext = "30572-06.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

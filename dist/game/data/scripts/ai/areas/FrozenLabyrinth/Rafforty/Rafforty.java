@@ -79,6 +79,10 @@ public class Rafforty extends AbstractNpcAI
 				giveItems(player, BLESSED_NECKLACE, 1);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

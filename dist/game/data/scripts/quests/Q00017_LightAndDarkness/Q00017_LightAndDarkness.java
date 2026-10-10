@@ -89,6 +89,10 @@ public class Q00017_LightAndDarkness extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -143,7 +147,15 @@ public class Q00017_LightAndDarkness extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

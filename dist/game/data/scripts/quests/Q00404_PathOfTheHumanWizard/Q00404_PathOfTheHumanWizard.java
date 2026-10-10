@@ -126,6 +126,10 @@ public class Q00404_PathOfTheHumanWizard extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -170,6 +174,10 @@ public class Q00404_PathOfTheHumanWizard extends Quest
 							playSound(qs.getPlayer(), QuestSound.ITEMSOUND_QUEST_ITEMGET);
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -381,6 +389,10 @@ public class Q00404_PathOfTheHumanWizard extends Quest
 					{
 						htmltext = "30413-04.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

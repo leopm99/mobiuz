@@ -103,6 +103,10 @@ public class Q00169_OffspringOfNightmares extends Quest
 					htmltext = event;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -172,6 +176,10 @@ public class Q00169_OffspringOfNightmares extends Quest
 			case State.COMPLETED:
 			{
 				htmltext = getAlreadyCompletedMsg(player);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

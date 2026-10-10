@@ -114,6 +114,10 @@ public class Q00642_APowerfulPrimevalCreature extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

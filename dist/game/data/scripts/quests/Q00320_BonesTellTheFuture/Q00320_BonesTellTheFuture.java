@@ -115,6 +115,10 @@ public class Q00320_BonesTellTheFuture extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

@@ -117,6 +117,10 @@ public class Q00173_ToTheIsleOfSouls extends Quest
 						htmltext = getAlreadyCompletedMsg(player);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -126,6 +130,10 @@ public class Q00173_ToTheIsleOfSouls extends Quest
 				{
 					htmltext = (st.isCond(1)) ? "30094-01.html" : "30094-03.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

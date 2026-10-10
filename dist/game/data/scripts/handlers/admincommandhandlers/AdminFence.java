@@ -164,6 +164,10 @@ public class AdminFence implements IAdminCommandHandler
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		return true;

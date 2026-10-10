@@ -342,6 +342,10 @@ public class RainbowSpringsChateau extends ClanHallSiegeEngine
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -410,7 +414,15 @@ public class RainbowSpringsChateau extends ClanHallSiegeEngine
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -466,6 +478,10 @@ public class RainbowSpringsChateau extends ClanHallSiegeEngine
 					case 7:
 					{
 						has = (player.getInventory().getInventoryItemCount(ITEM_S, -1) >= 1) && (player.getInventory().getInventoryItemCount(ITEM_P, -1) >= 1) && (player.getInventory().getInventoryItemCount(ITEM_R, -1) >= 1) && (player.getInventory().getInventoryItemCount(ITEM_I, -1) >= 1) && (player.getInventory().getInventoryItemCount(ITEM_N, -1) >= 1) && (player.getInventory().getInventoryItemCount(ITEM_G, -1) >= 1);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -661,6 +677,10 @@ public class RainbowSpringsChateau extends ClanHallSiegeEngine
 						}
 						
 						castDebuffsOnEnemies(caster, warIndex);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}

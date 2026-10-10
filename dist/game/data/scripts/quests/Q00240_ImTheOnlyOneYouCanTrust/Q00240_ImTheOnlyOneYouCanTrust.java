@@ -134,12 +134,20 @@ public class Q00240_ImTheOnlyOneYouCanTrust extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
 			case State.COMPLETED:
 			{
 				htmltext = "32640-11.html";
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

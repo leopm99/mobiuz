@@ -112,6 +112,10 @@ public class Q00113_StatusOfTheBeaconTower extends Quest
 						htmltext = getAlreadyCompletedMsg(player);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -121,6 +125,10 @@ public class Q00113_StatusOfTheBeaconTower extends Quest
 				{
 					htmltext = "32016-01.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

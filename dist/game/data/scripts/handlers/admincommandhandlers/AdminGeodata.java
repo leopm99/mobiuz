@@ -131,6 +131,10 @@ public class AdminGeodata implements IAdminCommandHandler
 				GeoUtils.debugGrid(activeChar);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return true;
 	}

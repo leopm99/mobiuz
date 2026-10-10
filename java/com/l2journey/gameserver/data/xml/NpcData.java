@@ -169,6 +169,10 @@ public class NpcData implements IXmlReader
 												
 												break;
 											}
+											default:
+											{
+												break;
+											}
 										}
 									}
 									break;
@@ -280,6 +284,10 @@ public class NpcData implements IXmlReader
 																	set.set("baseHoly", parseInteger(attrs, "value"));
 																	break;
 																}
+																default:
+																{
+																	break;
+																}
 															}
 															break;
 														}
@@ -292,6 +300,10 @@ public class NpcData implements IXmlReader
 															set.set("baseHolyRes", parseInteger(attrs, "holy"));
 															set.set("baseDarkRes", parseInteger(attrs, "dark"));
 															set.set("baseElementRes", parseInteger(attrs, "default"));
+															break;
+														}
+														default:
+														{
 															break;
 														}
 													}
@@ -321,6 +333,10 @@ public class NpcData implements IXmlReader
 															set.set("baseFlyRunSpd", parseDouble(attrs, "fly"));
 															break;
 														}
+														default:
+														{
+															break;
+														}
 													}
 												}
 												break;
@@ -328,6 +344,10 @@ public class NpcData implements IXmlReader
 											case "hittime":
 											{
 												set.set("hitTime", npcNode.getTextContent()); // TODO: Implement me default 600 (value in ms)
+												break;
+											}
+											default:
+											{
 												break;
 											}
 										}
@@ -446,8 +466,16 @@ public class NpcData implements IXmlReader
 															ignoreClanNpcIds.add(Integer.parseInt(clanListNode.getTextContent()));
 															break;
 														}
+														default:
+														{
+															break;
+														}
 													}
 												}
+												break;
+											}
+											default:
+											{
 												break;
 											}
 										}
@@ -547,8 +575,16 @@ public class NpcData implements IXmlReader
 												set.set("collisionHeightGrown", parseDouble(attrs, "grown"));
 												break;
 											}
+											default:
+											{
+												break;
+											}
 										}
 									}
+									break;
+								}
+								default:
+								{
 									break;
 								}
 							}

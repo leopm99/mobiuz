@@ -254,6 +254,10 @@ public class Q00336_CoinsOfMagic extends Quest
 					}
 				}
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -368,7 +372,15 @@ public class Q00336_CoinsOfMagic extends Quest
 					{
 						return npcId + "-01.html";
 					}
+					default:
+					{
+						break;
+					}
 				}
+			}
+			default:
+			{
+				break;
 			}
 		}
 		switch (npcId)
@@ -413,6 +425,10 @@ public class Q00336_CoinsOfMagic extends Quest
 					{
 						return shortThirdStep(qs, PANO, 3, Q_BERETHS_SILVER_DRAGON, Q_GOLD_DRAGON, Q_SILVER_DRAGON, Q_SILVER_DRAGON);
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -455,6 +471,10 @@ public class Q00336_CoinsOfMagic extends Quest
 					case 21:
 					{
 						return shortThirdStep(qs, COLLOB, 3, Q_BERETHS_GOLD_DRAGON, Q_GOLD_DRAGON, Q_SILVER_DRAGON, Q_BLOOD_DRAGON);
+					}
+					default:
+					{
+						break;
 					}
 				}
 				break;
@@ -499,6 +519,10 @@ public class Q00336_CoinsOfMagic extends Quest
 					{
 						return shortThirdStep(qs, RAPIN, 3, Q_MANAKS_BLOOD_WEREWOLF, Q_SILVER_UNDINE, Q_SILVER_DRYAD, Q_GOLD_WYRM);
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -541,6 +565,10 @@ public class Q00336_CoinsOfMagic extends Quest
 					case 21:
 					{
 						return shortThirdStep(qs, HAGGER, 3, Q_NIAS_SILVER_FAIRY, Q_BLOOD_WEREWOLF, Q_SILVER_GOLEM, Q_GOLD_DRAKE);
+					}
+					default:
+					{
+						break;
 					}
 				}
 				break;
@@ -585,6 +613,10 @@ public class Q00336_CoinsOfMagic extends Quest
 					{
 						return shortThirdStep(qs, STAN, 3, Q_MANAKS_SILVER_DRYAD, Q_SILVER_DRYAD, Q_BLOOD_BASILISK, Q_GOLD_GIANT);
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -627,6 +659,10 @@ public class Q00336_CoinsOfMagic extends Quest
 					case 21:
 					{
 						return shortThirdStep(qs, RESEARCHER_LORAIN, 3, Q_NIAS_GOLD_WYVERN, Q_BLOOD_DREVANUL, Q_SILVER_GOLEM, Q_GOLD_KNIGHT);
+					}
+					default:
+					{
+						break;
 					}
 				}
 				break;
@@ -671,6 +707,10 @@ public class Q00336_CoinsOfMagic extends Quest
 					{
 						return shortThirdStep(qs, BLACKSMITH_DUNING, 3, Q_MANAKS_GOLD_GIANT, Q_SILVER_UNDINE, Q_BLOOD_SUCCUBUS, Q_GOLD_GIANT);
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -713,6 +753,10 @@ public class Q00336_CoinsOfMagic extends Quest
 					case 21:
 					{
 						return shortThirdStep(qs, MAGISTER_PAGE, 3, Q_NIAS_BLOOD_MEDUSA, Q_BLOOD_WEREWOLF, Q_SILVER_FAIRY, Q_GOLD_KNIGHT);
+					}
+					default:
+					{
+						break;
 					}
 				}
 				break;
@@ -757,6 +801,10 @@ public class Q00336_CoinsOfMagic extends Quest
 					{
 						return shortThirdStep(qs, HEAD_BLACKSMITH_FERRIS, 3, Q_BERETHS_BLOOD_DRAGON, Q_GOLD_DRAGON, Q_SILVER_DRAGON, Q_BLOOD_DRAGON);
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -790,6 +838,10 @@ public class Q00336_CoinsOfMagic extends Quest
 						qs.showQuestionMark(336);
 						playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 						return "30702-06.html";
+					}
+					default:
+					{
+						break;
 					}
 				}
 				break;
@@ -1063,7 +1115,15 @@ public class Q00336_CoinsOfMagic extends Quest
 						qs.exitQuest(true);
 						return "30232-18a.html";
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -1085,6 +1145,10 @@ public class Q00336_CoinsOfMagic extends Quest
 					qs.showQuestionMark(336);
 				}
 				return;
+			}
+			default:
+			{
+				break;
 			}
 		}
 		
@@ -1293,6 +1357,10 @@ public class Q00336_CoinsOfMagic extends Quest
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}
@@ -1391,6 +1459,10 @@ public class Q00336_CoinsOfMagic extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return npcId + "-10.html";
 	}
@@ -1457,6 +1529,10 @@ public class Q00336_CoinsOfMagic extends Quest
 					playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 					return npcId + "-07.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -1534,6 +1610,10 @@ public class Q00336_CoinsOfMagic extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return npcId + "-10.html";
 	}
@@ -1576,6 +1656,10 @@ public class Q00336_CoinsOfMagic extends Quest
 				case 11:
 				{
 					giveItems(player, item4, 1);
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -1694,6 +1778,10 @@ public class Q00336_CoinsOfMagic extends Quest
 				{
 					return npcId + "-49.html";
 				}
+				default:
+				{
+					break;
+				}
 			}
 			qs.set(PARAM_1, 0);
 		}
@@ -1735,6 +1823,10 @@ public class Q00336_CoinsOfMagic extends Quest
 				case 2:
 				{
 					return npcId + "-51.html";
+				}
+				default:
+				{
+					break;
 				}
 			}
 		}

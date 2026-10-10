@@ -92,6 +92,10 @@ public class Q00329_CuriosityOfADwarf extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -140,6 +144,10 @@ public class Q00329_CuriosityOfADwarf extends Quest
 				{
 					htmltext = "30437-04.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

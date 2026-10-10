@@ -250,6 +250,10 @@ public class Q00660_AidingTheFloranVillage extends Quest
 				qs.exitQuest(true, true);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -299,6 +303,10 @@ public class Q00660_AidingTheFloranVillage extends Quest
 					htmltext = player.getLevel() >= MIN_LEVEL ? "30291-01.htm" : "30291-02.htm";
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		else if (qs.isStarted())
@@ -326,7 +334,15 @@ public class Q00660_AidingTheFloranVillage extends Quest
 							htmltext = "30291-05.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

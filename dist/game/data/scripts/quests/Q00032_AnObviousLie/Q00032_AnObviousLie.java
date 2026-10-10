@@ -165,6 +165,10 @@ public class Q00032_AnObviousLie extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -251,6 +255,10 @@ public class Q00032_AnObviousLie extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -281,7 +289,15 @@ public class Q00032_AnObviousLie extends Quest
 						htmltext = "31706-06.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

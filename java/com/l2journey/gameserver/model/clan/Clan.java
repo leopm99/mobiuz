@@ -1944,6 +1944,10 @@ public class Clan
 				{
 					return 0;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return pledgeType;

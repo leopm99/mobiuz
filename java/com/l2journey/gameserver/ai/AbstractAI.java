@@ -387,6 +387,10 @@ public abstract class AbstractAI
 				onActionAfraid((Creature) args[0], (Boolean) args[1]);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		// Do next action.

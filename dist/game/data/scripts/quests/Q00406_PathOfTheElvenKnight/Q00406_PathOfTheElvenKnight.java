@@ -128,6 +128,10 @@ public class Q00406_PathOfTheElvenKnight extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -262,6 +266,10 @@ public class Q00406_PathOfTheElvenKnight extends Quest
 					{
 						htmltext = "30317-06.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

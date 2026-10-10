@@ -123,6 +123,10 @@ public class Q00257_TheGuardIsBusy extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -209,6 +213,10 @@ public class Q00257_TheGuardIsBusy extends Quest
 				{
 					htmltext = "30039-04.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

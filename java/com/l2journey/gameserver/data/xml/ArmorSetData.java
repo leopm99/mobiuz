@@ -160,6 +160,10 @@ public class ArmorSetData implements IXmlReader
 									set.addInt(parseInteger(attrs, "val"));
 									break;
 								}
+								default:
+								{
+									break;
+								}
 							}
 						}
 						_armorSetMap.put(set.getChestId(), set);

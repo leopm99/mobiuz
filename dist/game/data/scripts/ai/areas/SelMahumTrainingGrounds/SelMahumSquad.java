@@ -193,6 +193,10 @@ public class SelMahumSquad extends AbstractNpcAI
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return super.onEvent(event, npc, player);
 	}
@@ -299,6 +303,10 @@ public class SelMahumSquad extends AbstractNpcAI
 					receiver.getVariables().set("FULL_BARREL_REWARDING_PLAYER", reference.getObjectId()); // TODO: Use it in 289 quest
 					startQuestTimer("reset_full_bottle_prize", 180000, receiver, null);
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

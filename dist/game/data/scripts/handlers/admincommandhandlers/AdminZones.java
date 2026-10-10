@@ -219,8 +219,16 @@ public class AdminZones extends AbstractNpcAI implements IAdminCommandHandler
 						buildDefaultHtml = false;
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

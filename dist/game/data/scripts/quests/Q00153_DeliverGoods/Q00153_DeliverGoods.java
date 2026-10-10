@@ -110,6 +110,10 @@ public class Q00153_DeliverGoods extends Quest
 					htmltext = getAlreadyCompletedMsg(player);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		else

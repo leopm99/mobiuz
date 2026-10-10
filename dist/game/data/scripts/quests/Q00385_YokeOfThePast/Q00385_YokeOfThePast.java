@@ -138,6 +138,10 @@ public class Q00385_YokeOfThePast extends Quest
 					htmltext = event;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -167,6 +171,10 @@ public class Q00385_YokeOfThePast extends Quest
 				{
 					htmltext = "ziggurat-08.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

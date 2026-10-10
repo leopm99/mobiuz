@@ -168,10 +168,18 @@ public class Q00631_DeliciousTopChoiceMeat extends Quest
 							rewardItems(player, CRYSTAL_SPICE_COMPRESSED_PACK, 2);
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					qs.exitQuest(true, true);
 					htmltext = event;
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

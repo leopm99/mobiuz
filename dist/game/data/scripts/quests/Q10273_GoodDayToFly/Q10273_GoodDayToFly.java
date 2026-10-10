@@ -100,7 +100,15 @@ public class Q10273_GoodDayToFly extends Quest
 						AURA_BIRD_OWL.getSkill().applyEffects(player, player);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

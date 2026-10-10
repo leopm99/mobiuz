@@ -94,6 +94,10 @@ public class Q00252_ItSmellsDelicious extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -150,6 +154,10 @@ public class Q00252_ItSmellsDelicious extends Quest
 					{
 						htmltext = "30200-07.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

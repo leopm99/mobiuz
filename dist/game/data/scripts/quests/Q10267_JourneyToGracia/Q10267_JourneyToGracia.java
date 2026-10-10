@@ -77,6 +77,10 @@ public class Q10267_JourneyToGracia extends Quest
 				qs.exitQuest(false, true);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}
@@ -107,6 +111,10 @@ public class Q10267_JourneyToGracia extends Quest
 						htmltext = "30857-0a.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -128,6 +136,10 @@ public class Q10267_JourneyToGracia extends Quest
 				{
 					htmltext = "32548-03.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

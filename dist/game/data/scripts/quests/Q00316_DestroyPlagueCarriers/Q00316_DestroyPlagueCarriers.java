@@ -100,6 +100,10 @@ public class Q00316_DestroyPlagueCarriers extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

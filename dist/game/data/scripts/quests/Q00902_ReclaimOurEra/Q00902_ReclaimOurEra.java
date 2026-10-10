@@ -143,6 +143,10 @@ public class Q00902_ReclaimOurEra extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -230,7 +234,15 @@ public class Q00902_ReclaimOurEra extends Quest
 						htmltext = "31340-14.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

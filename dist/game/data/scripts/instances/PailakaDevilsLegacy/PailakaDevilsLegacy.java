@@ -252,6 +252,10 @@ public class PailakaDevilsLegacy extends AbstractInstance
 					npc.deleteMe();
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		
@@ -340,6 +344,10 @@ public class PailakaDevilsLegacy extends AbstractInstance
 						npc.setScriptValue(1);
 						startQuestTimer("DELETE", 3000, npc, attacker);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

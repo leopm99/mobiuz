@@ -155,6 +155,10 @@ public class Q00242_PossessorOfAPreciousSoul2 extends Quest
 				fallen.getSpawn().startRespawn();
 				return null;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}
@@ -222,12 +226,20 @@ public class Q00242_PossessorOfAPreciousSoul2 extends Quest
 								st.exitQuest(false, true);
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(player);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -252,6 +264,10 @@ public class Q00242_PossessorOfAPreciousSoul2 extends Quest
 						htmltext = "31743-07.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -267,6 +283,10 @@ public class Q00242_PossessorOfAPreciousSoul2 extends Quest
 					case 3:
 					{
 						htmltext = "31744-03.html";
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -300,6 +320,10 @@ public class Q00242_PossessorOfAPreciousSoul2 extends Quest
 						htmltext = "31751-05.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -325,6 +349,10 @@ public class Q00242_PossessorOfAPreciousSoul2 extends Quest
 					case 5:
 					{
 						htmltext = "31752-02.html";
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -357,6 +385,10 @@ public class Q00242_PossessorOfAPreciousSoul2 extends Quest
 						htmltext = "30759-06.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -372,6 +404,10 @@ public class Q00242_PossessorOfAPreciousSoul2 extends Quest
 					case 8:
 					{
 						htmltext = "30738-03.html";
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -418,6 +454,10 @@ public class Q00242_PossessorOfAPreciousSoul2 extends Quest
 						startQuestTimer("PURE_UNICORN", 3000, npc, player);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -436,7 +476,15 @@ public class Q00242_PossessorOfAPreciousSoul2 extends Quest
 						htmltext = "31747-02.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

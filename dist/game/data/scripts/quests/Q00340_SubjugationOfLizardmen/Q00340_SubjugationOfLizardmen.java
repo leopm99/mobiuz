@@ -147,6 +147,10 @@ public class Q00340_SubjugationOfLizardmen extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -212,6 +216,10 @@ public class Q00340_SubjugationOfLizardmen extends Quest
 				case SERPENT_DEMON_BIFRONS:
 				{
 					addSpawn(CHEST_OF_BIFRONS, npc, true, 30000);
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -324,6 +332,10 @@ public class Q00340_SubjugationOfLizardmen extends Quest
 					{
 						htmltext = "30989-01.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

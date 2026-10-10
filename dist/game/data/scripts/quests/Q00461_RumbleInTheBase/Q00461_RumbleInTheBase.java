@@ -168,6 +168,10 @@ public class Q00461_RumbleInTheBase extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

@@ -106,6 +106,10 @@ public class Q00369_CollectorOfJewels extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -177,6 +181,10 @@ public class Q00369_CollectorOfJewels extends Quest
 					{
 						htmltext = "30376-11.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

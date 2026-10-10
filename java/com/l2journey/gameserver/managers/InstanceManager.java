@@ -243,6 +243,10 @@ public class InstanceManager implements IXmlReader
 					_instanceTemplates.put(parseInteger(attrs, "id"), file.getPath().substring(file.getPath().lastIndexOf(File.separator + "instances" + File.separator) + 11));
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}

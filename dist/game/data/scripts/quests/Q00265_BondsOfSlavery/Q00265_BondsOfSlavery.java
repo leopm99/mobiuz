@@ -93,6 +93,10 @@ public class Q00265_BondsOfSlavery extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -183,6 +187,10 @@ public class Q00265_BondsOfSlavery extends Quest
 				{
 					htmltext = "30357-05.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

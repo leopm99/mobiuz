@@ -208,6 +208,10 @@ public class AdminPunishment implements IAdminCommandHandler
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				break;
@@ -435,6 +439,10 @@ public class AdminPunishment implements IAdminCommandHandler
 				{
 					return useAdminCommand(String.format("admin_punishment_remove %s %s %s", st.nextToken(), PunishmentAffect.CHARACTER, PunishmentType.JAIL), activeChar);
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

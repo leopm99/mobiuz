@@ -144,7 +144,15 @@ public class Q00261_CollectorsDream extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

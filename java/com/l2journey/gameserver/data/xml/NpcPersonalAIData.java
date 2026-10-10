@@ -124,6 +124,10 @@ public class NpcPersonalAIData
 							spawn.setRandomWalking(enable);
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 			}

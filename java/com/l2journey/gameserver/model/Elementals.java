@@ -131,6 +131,10 @@ public class Elementals
 			{
 				return "Holy";
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return "None";
 	}
@@ -221,6 +225,10 @@ public class Elementals
 				case HOLY:
 				{
 					player.addStatFunc(new FuncAdd(isArmor ? Stat.HOLY_RES : Stat.HOLY_POWER, 0x40, this, _elementalValue, null));
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

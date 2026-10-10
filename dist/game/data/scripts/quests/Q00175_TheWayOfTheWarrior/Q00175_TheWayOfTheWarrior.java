@@ -167,6 +167,10 @@ public class Q00175_TheWayOfTheWarrior extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -256,6 +260,10 @@ public class Q00175_TheWayOfTheWarrior extends Quest
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -308,7 +316,15 @@ public class Q00175_TheWayOfTheWarrior extends Quest
 						htmltext = "32133-07.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

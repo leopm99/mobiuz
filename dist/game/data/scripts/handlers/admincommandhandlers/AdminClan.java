@@ -160,6 +160,10 @@ public class AdminClan implements IAdminCommandHandler
 					break;
 				}
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return true;
 	}

@@ -175,7 +175,15 @@ public class Q00626_ADarkTwilight extends Quest
 						htmltext = "31517-04.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

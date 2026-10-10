@@ -159,6 +159,10 @@ public class Q00005_MinersFavor extends Quest
 						htmltext = getAlreadyCompletedMsg(player);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -183,6 +187,10 @@ public class Q00005_MinersFavor extends Quest
 			case GARITA:
 			{
 				htmltext = giveItem(player, qs, npc.getId(), MINING_BOOTS);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -129,6 +129,10 @@ public class Q00347_GoGetTheCalculator extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -178,6 +182,10 @@ public class Q00347_GoGetTheCalculator extends Quest
 							case 6:
 							{
 								htmltext = "30526-09.html";
+								break;
+							}
+							default:
+							{
 								break;
 							}
 						}
@@ -237,7 +245,15 @@ public class Q00347_GoGetTheCalculator extends Quest
 								htmltext = "30527-05.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -246,6 +262,10 @@ public class Q00347_GoGetTheCalculator extends Quest
 			case State.COMPLETED:
 			{
 				htmltext = getAlreadyCompletedMsg(talker);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

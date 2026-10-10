@@ -101,6 +101,10 @@ public class Q00659_IdRatherBeCollectingFairyBreath extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

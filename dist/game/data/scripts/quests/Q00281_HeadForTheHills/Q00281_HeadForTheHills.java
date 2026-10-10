@@ -230,6 +230,10 @@ public class Q00281_HeadForTheHills extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -260,6 +264,10 @@ public class Q00281_HeadForTheHills extends Quest
 			case State.STARTED:
 			{
 				htmltext = hasQuestItems(player, CLAWS) ? "32173-05.html" : "32173-04.html";
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

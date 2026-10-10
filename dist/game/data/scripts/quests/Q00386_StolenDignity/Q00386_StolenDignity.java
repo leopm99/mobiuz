@@ -259,6 +259,10 @@ public class Q00386_StolenDignity extends Quest
 				{
 					return beforeReward(player, qs, 9);
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return super.onEvent(event, npc, player);
@@ -533,6 +537,10 @@ public class Q00386_StolenDignity extends Quest
 			case 32:
 			{
 				giveItems(player, CRYSTAL_OF_DEAMON_PIECE, count);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -856,6 +864,10 @@ public class Q00386_StolenDignity extends Quest
 					{
 						giveItemRandomly(qs.getPlayer(), npc, Q_STOLEN_INF_ORE, 1, 0, 1, true);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

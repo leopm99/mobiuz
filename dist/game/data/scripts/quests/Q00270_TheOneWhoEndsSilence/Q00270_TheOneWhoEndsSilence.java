@@ -266,6 +266,10 @@ public class Q00270_TheOneWhoEndsSilence extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -325,6 +329,10 @@ public class Q00270_TheOneWhoEndsSilence extends Quest
 				giveItem(getRandomPartyMember(killer, 1), npc, 953, true);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	
@@ -347,6 +355,10 @@ public class Q00270_TheOneWhoEndsSilence extends Quest
 				{
 					htmltext = "32757-05.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -425,6 +437,10 @@ public class Q00270_TheOneWhoEndsSilence extends Quest
 				{
 					scrollId = 9898;
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

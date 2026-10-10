@@ -85,6 +85,10 @@ public class Q00907_DragonTrophyValakas extends Quest
 					htmltext = event;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -136,6 +140,10 @@ public class Q00907_DragonTrophyValakas extends Quest
 						htmltext = "31540-09.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -161,6 +169,10 @@ public class Q00907_DragonTrophyValakas extends Quest
 						htmltext = "31540-01.htm";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

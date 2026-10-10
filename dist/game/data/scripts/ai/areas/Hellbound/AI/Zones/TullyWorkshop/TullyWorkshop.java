@@ -1622,6 +1622,10 @@ public class TullyWorkshop extends AbstractNpcAI
 							door.closeMe();
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 			}

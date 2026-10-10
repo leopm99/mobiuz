@@ -572,6 +572,10 @@ public class Formulas
 			{
 				return 1;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		final boolean isPvP = attacker.isPlayable() && target.isPlayable();
@@ -660,6 +664,10 @@ public class Formulas
 			case SHIELD_DEFENSE_PERFECT_BLOCK: // perfect block
 			{
 				return 1;
+			}
+			default:
+			{
+				break;
 			}
 		}
 		
@@ -781,6 +789,10 @@ public class Formulas
 			case SHIELD_DEFENSE_PERFECT_BLOCK: // perfect block
 			{
 				return 1;
+			}
+			default:
+			{
+				break;
 			}
 		}
 		
@@ -1093,6 +1105,10 @@ public class Formulas
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 			}
 		}
@@ -1113,6 +1129,10 @@ public class Formulas
 			case SHIELD_DEFENSE_PERFECT_BLOCK:
 			{
 				return 1;
+			}
+			default:
+			{
+				break;
 			}
 		}
 		
@@ -1241,6 +1261,10 @@ public class Formulas
 			case SHIELD_DEFENSE_PERFECT_BLOCK: // perfect block
 			{
 				return 1;
+			}
+			default:
+			{
+				break;
 			}
 		}
 		
@@ -1522,6 +1546,10 @@ public class Formulas
 					enemy.sendPacket(SystemMessageId.YOUR_EXCELLENT_SHIELD_DEFENSE_WAS_A_SUCCESS);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		
@@ -1635,6 +1663,10 @@ public class Formulas
 			case WIT:
 			{
 				targetBaseStat = target.getWIT();
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -1770,6 +1802,10 @@ public class Formulas
 			case SHIELD_DEFENSE_PERFECT_BLOCK: // perfect block
 			{
 				return 1;
+			}
+			default:
+			{
+				break;
 			}
 		}
 		
@@ -1916,6 +1952,10 @@ public class Formulas
 				case 4:
 				{
 					initVal = (BaseStat.INT).calcBonus(actor);
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -2242,6 +2282,10 @@ public class Formulas
 						}
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

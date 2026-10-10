@@ -408,6 +408,10 @@ public class FourSepulchers extends AbstractNpcAI implements IXmlReader
 				startQuestTimer("ANNOUNCE", calendar.getTimeInMillis() - System.currentTimeMillis(), null, null);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

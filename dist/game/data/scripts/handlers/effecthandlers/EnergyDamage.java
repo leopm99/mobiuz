@@ -111,6 +111,10 @@ public class EnergyDamage extends AbstractEffect
 					defence = -1;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		

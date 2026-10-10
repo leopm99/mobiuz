@@ -99,6 +99,10 @@ public class ElementalAttributeData implements IXmlReader
 					elementalId = Elementals.DARK;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 			
 			ELEMENTAL_ITEMS.put(id, new ElementalItemHolder(id, elementalId, set.getEnum("type", ElementalItemType.class)));

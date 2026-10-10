@@ -143,6 +143,10 @@ public class Anais extends AbstractNpcAI
 				npc.doDie(null);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return super.onEvent(event, npc, player);
 	}

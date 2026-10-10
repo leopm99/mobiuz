@@ -169,6 +169,10 @@ public class AdminPForge implements IAdminCommandHandler
 			{
 				return true;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return false;
 	}
@@ -530,6 +534,10 @@ public class AdminPForge implements IAdminCommandHandler
 								{
 									value = "0";
 								}
+								break;
+							}
+							default:
+							{
 								break;
 							}
 						}

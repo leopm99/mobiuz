@@ -143,6 +143,10 @@ public class Q00905_RefinedDragonBlood extends Quest
 					htmltext = event;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -188,6 +192,10 @@ public class Q00905_RefinedDragonBlood extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -202,6 +210,10 @@ public class Q00905_RefinedDragonBlood extends Quest
 					qs.setState(State.CREATED);
 					htmltext = (player.getLevel() < MIN_LEVEL) ? "32864-02.html" : "32864-01.htm";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

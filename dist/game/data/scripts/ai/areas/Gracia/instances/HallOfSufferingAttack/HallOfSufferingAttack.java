@@ -299,6 +299,10 @@ public class HallOfSufferingAttack extends AbstractNpcAI
 			{
 				return ROOM_5_MOBS;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return new int[][] {};
 	}

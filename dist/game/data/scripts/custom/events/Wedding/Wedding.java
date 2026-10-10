@@ -179,6 +179,10 @@ public class Wedding extends AbstractNpcAI
 				htmltext = sendHtml(partner, "Declined.html", null, null);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

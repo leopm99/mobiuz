@@ -289,7 +289,15 @@ public final class LuckyPig extends AbstractNpcAI
 						transformLuckyPig(npc);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

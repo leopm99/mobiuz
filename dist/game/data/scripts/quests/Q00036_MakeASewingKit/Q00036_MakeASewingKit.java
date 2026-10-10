@@ -152,12 +152,20 @@ public class Q00036_MakeASewingKit extends Quest
 						htmltext = ((getQuestItemsCount(player, ARTISANS_FRAME) >= COUNT) && (getQuestItemsCount(player, ORIHARUKON) >= COUNT)) ? "30847-07.html" : "30847-08.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
 			case State.COMPLETED:
 			{
 				htmltext = getAlreadyCompletedMsg(player);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

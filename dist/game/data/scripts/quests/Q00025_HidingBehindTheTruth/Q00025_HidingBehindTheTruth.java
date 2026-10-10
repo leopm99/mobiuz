@@ -401,6 +401,10 @@ public class Q00025_HidingBehindTheTruth extends Quest
 				npc.deleteMe();
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -466,6 +470,10 @@ public class Q00025_HidingBehindTheTruth extends Quest
 							case 2:
 							{
 								htmltext = "31349-11.html";
+								break;
+							}
+							default:
+							{
 								break;
 							}
 						}
@@ -589,6 +597,10 @@ public class Q00025_HidingBehindTheTruth extends Quest
 								htmltext = "31348-19.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -674,6 +686,10 @@ public class Q00025_HidingBehindTheTruth extends Quest
 								htmltext = "31532-24.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -689,6 +705,10 @@ public class Q00025_HidingBehindTheTruth extends Quest
 							case 12:
 							{
 								htmltext = "31531-03.html";
+								break;
+							}
+							default:
+							{
 								break;
 							}
 						}
@@ -707,6 +727,10 @@ public class Q00025_HidingBehindTheTruth extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -716,6 +740,10 @@ public class Q00025_HidingBehindTheTruth extends Quest
 				{
 					htmltext = getAlreadyCompletedMsg(talker);
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

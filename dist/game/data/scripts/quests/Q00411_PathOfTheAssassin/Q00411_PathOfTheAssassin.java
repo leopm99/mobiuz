@@ -137,6 +137,10 @@ public class Q00411_PathOfTheAssassin extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -172,6 +176,10 @@ public class Q00411_PathOfTheAssassin extends Quest
 						giveItems(killer, SHILENS_TEARS, 1);
 						qs.setCond(6, true);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -309,6 +317,10 @@ public class Q00411_PathOfTheAssassin extends Quest
 					{
 						htmltext = "30419-11.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

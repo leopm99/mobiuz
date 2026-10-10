@@ -826,6 +826,10 @@ public abstract class ItemTemplate extends ListenersContainer
 				setElementals(new Elementals(Elementals.DARK, (int) f.getValue()));
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		if (_funcTemplates == null)

@@ -129,6 +129,10 @@ public class Q00452_FindingtheLostSoldiers extends Quest
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		else if (qs.isCond(1))

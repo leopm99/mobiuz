@@ -103,6 +103,10 @@ public class Q00137_TempleChampionPart1 extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}

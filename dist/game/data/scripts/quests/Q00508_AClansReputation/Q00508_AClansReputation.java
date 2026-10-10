@@ -130,6 +130,10 @@ public class Q00508_AClansReputation extends Quest
 				qs.exitQuest(true, true);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}

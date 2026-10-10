@@ -87,6 +87,10 @@ public class Q00616_MagicalPowerOfFirePart2 extends Quest
 					qs.setCond(3, true);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}
@@ -128,6 +132,10 @@ public class Q00616_MagicalPowerOfFirePart2 extends Quest
 				case "spawn_totem":
 				{
 					htmltext = (hasQuestItems(player, RED_TOTEM)) ? spawnNastron(npc, qs) : "31558-04.html";
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -209,6 +217,10 @@ public class Q00616_MagicalPowerOfFirePart2 extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -233,8 +245,16 @@ public class Q00616_MagicalPowerOfFirePart2 extends Quest
 							htmltext = "31558-05.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

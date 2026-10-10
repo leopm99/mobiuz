@@ -127,6 +127,10 @@ public class Q00009_IntoTheCityOfHumans extends Quest
 						htmltext = getAlreadyCompletedMsg(player);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -144,6 +148,10 @@ public class Q00009_IntoTheCityOfHumans extends Quest
 				{
 					htmltext = "30576-01.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

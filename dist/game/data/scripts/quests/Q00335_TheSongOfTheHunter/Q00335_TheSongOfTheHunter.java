@@ -594,6 +594,10 @@ public class Q00335_TheSongOfTheHunter extends Quest
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -1210,6 +1214,10 @@ public class Q00335_TheSongOfTheHunter extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -1489,6 +1497,10 @@ public class Q00335_TheSongOfTheHunter extends Quest
 				case LETO_LIZARDMAN_ARCHER, LETO_LIZARDMAN_SOLDIER, HARIT_LIZARDMAN_GRUNT, HARIT_LIZARDMAN_ARCHER, HARIT_LIZARDMAN_WARRIOR:
 				{
 					evolveBloodCrystal(qs.getPlayer());
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

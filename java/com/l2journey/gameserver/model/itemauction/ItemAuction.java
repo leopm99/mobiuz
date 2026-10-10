@@ -434,6 +434,10 @@ public class ItemAuction
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		final int playerObjId = player.getObjectId();

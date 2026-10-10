@@ -371,6 +371,10 @@ public final class NewbieGuide extends AbstractNpcAI
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -439,6 +443,10 @@ public final class NewbieGuide extends AbstractNpcAI
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 				
@@ -485,7 +493,15 @@ public final class NewbieGuide extends AbstractNpcAI
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -544,6 +560,10 @@ public final class NewbieGuide extends AbstractNpcAI
 				{
 					return ansGuideKrenisk;
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -692,6 +712,10 @@ public final class NewbieGuide extends AbstractNpcAI
 							hmltext = "newbie-guide-01f.htm";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					
 					if (!haveNRMemo(qs, GUIDE_MISSION))
@@ -757,6 +781,10 @@ public final class NewbieGuide extends AbstractNpcAI
 						{
 							addRadar(qs.getPlayer(), 115717, -183488, -1483);
 							hmltext = "newbie-guide-05h.htm";
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -829,6 +857,10 @@ public final class NewbieGuide extends AbstractNpcAI
 						{
 							addRadar(qs.getPlayer(), -119378, 49242, 22);
 							hmltext = "newbie-guide-04f.htm";
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -937,6 +969,10 @@ public final class NewbieGuide extends AbstractNpcAI
 							hmltext = "newbie-guide-07f.htm";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					
 					if (!haveNRMemo(qs, GUIDE_MISSION))
@@ -1006,6 +1042,10 @@ public final class NewbieGuide extends AbstractNpcAI
 						{
 							addRadar(qs.getPlayer(), -118080, 42835, 720);
 							hmltext = "newbie-guide-10h.htm";
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -1080,6 +1120,10 @@ public final class NewbieGuide extends AbstractNpcAI
 							hmltext = "newbie-guide-09f.htm";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					
 					if (!haveNRMemo(qs, GUIDE_MISSION))
@@ -1142,6 +1186,10 @@ public final class NewbieGuide extends AbstractNpcAI
 						{
 							addRadar(qs.getPlayer(), -125872, 38208, 1251);
 							hmltext = "newbie-guide-11f.htm";
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -1237,6 +1285,10 @@ public final class NewbieGuide extends AbstractNpcAI
 							hmltext = "newbie-guide-10h.htm";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					
 					if (!haveNRMemo(qs, GUIDE_MISSION))
@@ -1320,6 +1372,10 @@ public final class NewbieGuide extends AbstractNpcAI
 						{
 							addRadar(qs.getPlayer(), -125872, 38208, 1251);
 							hmltext = "newbie-guide-11f.htm";
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -1610,6 +1666,10 @@ public final class NewbieGuide extends AbstractNpcAI
 				addRadar(qs.getPlayer(), -82041, 242718, -3725);
 				return "30598-05.htm";
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return "";
 	}
@@ -1839,6 +1899,10 @@ public final class NewbieGuide extends AbstractNpcAI
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 49262, 53607, -3216);
 				return "30599-05.htm";
+			}
+			default:
+			{
+				break;
 			}
 		}
 		return "";
@@ -2093,6 +2157,10 @@ public final class NewbieGuide extends AbstractNpcAI
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 12311, 17470, -4574);
 				return "30600-05.htm";
+			}
+			default:
+			{
+				break;
 			}
 		}
 		return "";
@@ -2354,6 +2422,10 @@ public final class NewbieGuide extends AbstractNpcAI
 				addRadar(qs.getPlayer(), 116852, -183595, -1566);
 				return "30601-05.htm";
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return "";
 	}
@@ -2557,6 +2629,10 @@ public final class NewbieGuide extends AbstractNpcAI
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -44624, -111873, -238);
 				return "30602-05.htm";
+			}
+			default:
+			{
+				break;
 			}
 		}
 		return "";
@@ -2876,6 +2952,10 @@ public final class NewbieGuide extends AbstractNpcAI
 				addRadar(qs.getPlayer(), -118080, 42835, 720);
 				return "32135-05.htm";
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return "";
 	}
@@ -2899,6 +2979,10 @@ public final class NewbieGuide extends AbstractNpcAI
 				case NEWBIE_GUIDE_GLUDIO:
 				{
 					return "31077.htm";
+				}
+				default:
+				{
+					break;
 				}
 			}
 			

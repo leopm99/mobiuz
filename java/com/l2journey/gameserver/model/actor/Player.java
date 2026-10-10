@@ -1196,6 +1196,10 @@ public class Player extends Playable
 						result |= RelationChanged.RELATION_PARTY1; // 0x1
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 			}
 		}
@@ -9495,6 +9499,10 @@ public class Player extends Playable
 				sendSkillList();
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		_mountType = type;
@@ -12293,6 +12301,10 @@ public class Player extends Playable
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -12381,6 +12393,10 @@ public class Player extends Playable
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -12452,7 +12468,15 @@ public class Player extends Playable
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+			}
+			default:
+			{
+				break;
 			}
 		}
 		
@@ -13714,6 +13738,10 @@ public class Player extends Playable
 			case MANUFACTURE:
 			{
 				player.sendPacket(new RecipeShopMsg(this));
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

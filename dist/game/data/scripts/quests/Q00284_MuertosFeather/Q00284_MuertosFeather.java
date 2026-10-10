@@ -99,6 +99,10 @@ public class Q00284_MuertosFeather extends Quest
 				html = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return html;
 	}

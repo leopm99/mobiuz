@@ -115,6 +115,10 @@ public class Q10274_CollectingInTheAir extends Quest
 					giveItems(caster, GREEN, 1);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 			playSound(caster, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 			npc.doDie(caster);
@@ -160,6 +164,10 @@ public class Q10274_CollectingInTheAir extends Quest
 				{
 					htmltext = "32557-04.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

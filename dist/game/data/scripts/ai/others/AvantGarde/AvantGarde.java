@@ -101,6 +101,10 @@ public class AvantGarde extends AbstractNpcAI
 				showSubClassSkillList(player);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	
@@ -284,6 +288,10 @@ public class AvantGarde extends AbstractNpcAI
 						}
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

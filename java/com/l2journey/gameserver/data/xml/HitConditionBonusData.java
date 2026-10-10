@@ -99,6 +99,10 @@ public class HitConditionBonusData implements IXmlReader
 					rainBonus = parseInteger(attrs, "val");
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}

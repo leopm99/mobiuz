@@ -112,6 +112,10 @@ public class Q00129_PailakaDevilsLegacy extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -246,6 +250,10 @@ public class Q00129_PailakaDevilsLegacy extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -282,6 +290,10 @@ public class Q00129_PailakaDevilsLegacy extends Quest
 					{
 						qs.setCond(4, true);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

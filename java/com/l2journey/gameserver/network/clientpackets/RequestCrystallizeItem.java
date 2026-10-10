@@ -168,6 +168,10 @@ public class RequestCrystallizeItem extends ClientPacket
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		if (!canCrystallize)

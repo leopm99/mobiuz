@@ -130,6 +130,10 @@ public class Q00008_AnAdventureBegins extends Quest
 						htmltext = getAlreadyCompletedMsg(player);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -161,6 +165,10 @@ public class Q00008_AnAdventureBegins extends Quest
 						htmltext = "30144-04.html";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

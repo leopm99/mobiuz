@@ -301,6 +301,10 @@ public class Q00373_SupplierOfReagents extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -390,6 +394,10 @@ public class Q00373_SupplierOfReagents extends Quest
 					{
 						giveItemRandomly(qs.getPlayer(), npc, QUICKSILVER, 2, 0, 1, true);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

@@ -124,6 +124,10 @@ public class Q00552_OlympiadVeteran extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 			}
 		}
@@ -169,6 +173,10 @@ public class Q00552_OlympiadVeteran extends Quest
 						{
 							giveItems(player, TEAM_EVENT_CERTIFICATE, 1);
 						}
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}

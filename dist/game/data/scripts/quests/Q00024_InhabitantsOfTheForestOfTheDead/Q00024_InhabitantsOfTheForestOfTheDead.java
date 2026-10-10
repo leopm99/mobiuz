@@ -284,12 +284,20 @@ public class Q00024_InhabitantsOfTheForestOfTheDead extends Quest
 								htmltext = "31389-21.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(player);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -379,6 +387,10 @@ public class Q00024_InhabitantsOfTheForestOfTheDead extends Quest
 									htmltext = "31532-15.html";
 									break;
 								}
+								default:
+								{
+									break;
+								}
 							}
 							break;
 						}
@@ -387,8 +399,16 @@ public class Q00024_InhabitantsOfTheForestOfTheDead extends Quest
 							htmltext = "31532-20.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

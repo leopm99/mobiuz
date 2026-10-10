@@ -88,6 +88,10 @@ public class TeleportWithCharm extends AbstractNpcAI
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return super.onTalk(npc, player);
 	}

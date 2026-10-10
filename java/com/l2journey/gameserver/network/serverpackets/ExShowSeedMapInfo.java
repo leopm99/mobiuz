@@ -71,6 +71,10 @@ public class ExShowSeedMapInfo extends ServerPacket
 					buffer.writeInt(SoIManager.getCurrentStage() + 2765);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}

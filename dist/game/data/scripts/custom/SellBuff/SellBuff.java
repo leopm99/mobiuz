@@ -119,6 +119,10 @@ public class SellBuff implements IVoicedCommandHandler, IBypassHandler
 				SellBuffsManager.getInstance().sendSellMenu(player);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return true;
 	}
@@ -581,6 +585,10 @@ public class SellBuff implements IVoicedCommandHandler, IBypassHandler
 					}
 					SellBuffsManager.getInstance().sendBuffMenu(player, seller, index);
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

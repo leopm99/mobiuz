@@ -118,6 +118,10 @@ public class Q00293_TheHiddenVeins extends Quest
 					htmltext = "30539-02.html";
 				}
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -233,12 +237,20 @@ public class Q00293_TheHiddenVeins extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
 			case CHICHIRIN:
 			{
 				htmltext = "30539-01.html";
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

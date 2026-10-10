@@ -166,6 +166,10 @@ public class Q00621_EggDelivery extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -211,12 +215,20 @@ public class Q00621_EggDelivery extends Quest
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(talker);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -239,6 +251,10 @@ public class Q00621_EggDelivery extends Quest
 						case 2:
 						{
 							htmltext = "31543-04.html";
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -267,6 +283,10 @@ public class Q00621_EggDelivery extends Quest
 				{
 					htmltext = "31584-01.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -145,12 +145,20 @@ public class Q00174_SupplyCheck extends Quest
 								htmltext = "32173-07.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(player);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -206,8 +214,16 @@ public class Q00174_SupplyCheck extends Quest
 							htmltext = "32167-03.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -124,6 +124,10 @@ public class Q00290_ThreatRemoval extends Quest
 							rewardItems(player, FIRE_CRYSTAL, 2);
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					htmltext = event;
 				}
@@ -160,6 +164,10 @@ public class Q00290_ThreatRemoval extends Quest
 					qs.exitQuest(true, true);
 					htmltext = event;
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -203,6 +211,10 @@ public class Q00290_ThreatRemoval extends Quest
 				{
 					htmltext = (getQuestItemsCount(player, SEL_MAHUM_ID_TAG) < 400) ? "30201-04.html" : "30201-05.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

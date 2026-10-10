@@ -165,6 +165,10 @@ public class Q00412_PathOfTheDarkWizard extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -223,6 +227,10 @@ public class Q00412_PathOfTheDarkWizard extends Quest
 							playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -365,6 +373,10 @@ public class Q00412_PathOfTheDarkWizard extends Quest
 							htmltext = "30419-03.html";
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

@@ -173,6 +173,10 @@ public class Q00371_ShrieksOfGhosts extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

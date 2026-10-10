@@ -112,6 +112,10 @@ public class Q00187_NikolasHeart extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -163,6 +167,10 @@ public class Q00187_NikolasHeart extends Quest
 					{
 						htmltext = "30621-04.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

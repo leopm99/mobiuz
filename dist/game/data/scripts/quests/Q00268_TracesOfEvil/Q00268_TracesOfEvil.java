@@ -126,7 +126,15 @@ public class Q00268_TracesOfEvil extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -137,6 +137,10 @@ public class PlayerTemplate extends CreatureTemplate
 				_baseCpReg[level] = value;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	

@@ -100,6 +100,10 @@ public class SSQLibraryOfSages extends AbstractInstance
 					world.getParameters().getObject("elcadia", Npc.class).teleToLocation(START_LOC.getX(), START_LOC.getY(), START_LOC.getZ(), 0, world.getInstanceId());
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return super.onEvent(event, npc, player);

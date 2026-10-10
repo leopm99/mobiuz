@@ -113,6 +113,10 @@ public class Q00182_NewRecruits extends Quest
 					htmltext = getAlreadyCompletedMsg(player);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		else if ((npcId == MENACING_MACHINE) && qs.isStarted())

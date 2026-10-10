@@ -179,6 +179,10 @@ public class Maguen extends AbstractNpcAI
 				npc.doDie(null);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return super.onEvent(event, npc, player);
 	}
@@ -312,6 +316,10 @@ public class Maguen extends AbstractNpcAI
 							skillToCast = B_PLASMA3;
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -332,6 +340,10 @@ public class Maguen extends AbstractNpcAI
 						case 2:
 						{
 							skillToCast = C_PLASMA3;
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -356,7 +368,15 @@ public class Maguen extends AbstractNpcAI
 							skillToCast = R_PLASMA3;
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

@@ -103,6 +103,10 @@ public class Q10504_JewelOfAntharas extends Quest
 					htmltext = event;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -162,12 +166,20 @@ public class Q10504_JewelOfAntharas extends Quest
 						htmltext = "30755-10.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
 			case State.COMPLETED:
 			{
 				htmltext = "30755-03.html";
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

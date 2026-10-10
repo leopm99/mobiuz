@@ -77,6 +77,10 @@ public class AdminSuperHaste implements IAdminCommandHandler
 				AdminHtml.showAdminHtml(player, "gm_menu.htm");
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		return true;

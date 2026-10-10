@@ -193,6 +193,10 @@ public class PhantomProgression
 					newClass = PlayerClass.WARLOCK;
 				}
 				break;
+			default:
+			{
+				break;
+			}
 		}
 		
 		if (newClass == null)

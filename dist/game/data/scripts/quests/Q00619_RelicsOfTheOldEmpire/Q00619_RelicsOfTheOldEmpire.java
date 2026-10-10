@@ -260,6 +260,10 @@ public class Q00619_RelicsOfTheOldEmpire extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

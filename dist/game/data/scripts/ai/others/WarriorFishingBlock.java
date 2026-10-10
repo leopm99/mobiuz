@@ -114,6 +114,10 @@ public class WarriorFishingBlock extends AbstractNpcAI
 				npc.decayMe();
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return super.onEvent(event, npc, player);
 	}

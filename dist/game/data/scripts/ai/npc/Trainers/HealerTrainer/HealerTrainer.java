@@ -169,6 +169,10 @@ public class HealerTrainer extends AbstractNpcAI
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

@@ -120,6 +120,10 @@ public class SSQSanctumOfTheLordsOfDawn extends AbstractInstance
 						npc.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.WHO_ARE_YOU_A_NEW_FACE_LIKE_YOU_CAN_T_APPROACH_THIS_PLACE);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				
 				final InstanceWorld world = InstanceManager.getInstance().getWorld(npc);
@@ -171,6 +175,10 @@ public class SSQSanctumOfTheLordsOfDawn extends AbstractInstance
 						}
 					}
 				}
+			}
+			default:
+			{
+				break;
 			}
 		}
 		return super.onEvent(event, npc, player);
@@ -265,6 +273,10 @@ public class SSQSanctumOfTheLordsOfDawn extends AbstractInstance
 				InstanceManager.getInstance().getInstance(world.getInstanceId()).setDuration(300000);
 				talker.teleToLocation(-75925, 213399, -7128);
 				return "32580-01.html";
+			}
+			default:
+			{
+				break;
 			}
 		}
 		return "";

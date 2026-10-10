@@ -132,6 +132,10 @@ public class Q00603_DaimonTheWhiteEyedPart1 extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -177,6 +181,10 @@ public class Q00603_DaimonTheWhiteEyedPart1 extends Quest
 							htmltext = "31683-08.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				else if (qs.getInt("TABLET_" + npc.getId()) == 0)
@@ -192,6 +200,10 @@ public class Q00603_DaimonTheWhiteEyedPart1 extends Quest
 			case State.COMPLETED:
 			{
 				htmltext = getAlreadyCompletedMsg(talker);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

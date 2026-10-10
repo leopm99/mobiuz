@@ -171,6 +171,10 @@ public class Q00454_CompletelyLost extends Quest
 				npc.deleteMe();
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		// For NPC-only timers, player is null and no further checks or actions are required.
@@ -278,6 +282,10 @@ public class Q00454_CompletelyLost extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -375,6 +383,10 @@ public class Q00454_CompletelyLost extends Quest
 				cancelQuestTimer("TIME_LIMIT3", receiver, null);
 				cancelQuestTimer("TIME_LIMIT4", receiver, null);
 				cancelQuestTimer("TIME_LIMIT5", receiver, null);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -735,10 +747,22 @@ public class Q00454_CompletelyLost extends Quest
 								htmltext = "32736-03.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

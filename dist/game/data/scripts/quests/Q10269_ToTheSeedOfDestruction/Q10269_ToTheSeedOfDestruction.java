@@ -90,6 +90,10 @@ public class Q10269_ToTheSeedOfDestruction extends Quest
 						htmltext = "32548-0a.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -115,6 +119,10 @@ public class Q10269_ToTheSeedOfDestruction extends Quest
 						break;
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -130,6 +130,10 @@ public class Q00007_ATripBegins extends Quest
 						htmltext = getAlreadyCompletedMsg(player);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -161,6 +165,10 @@ public class Q00007_ATripBegins extends Quest
 						htmltext = "30154-04.html";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

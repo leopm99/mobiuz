@@ -132,6 +132,10 @@ public class Q10287_StoryOfThoseLeft extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -225,7 +229,15 @@ public class Q10287_StoryOfThoseLeft extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -292,6 +292,10 @@ public class FishingChampionshipManager
 								rewardCnt = Config.ALT_FISH_CHAMPIONSHIP_REWARD_5;
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 					}
 				}

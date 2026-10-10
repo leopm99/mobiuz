@@ -63,6 +63,10 @@ public class Q00122_OminousNews extends Quest
 				qs.exitQuest(false, true);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}
@@ -93,6 +97,10 @@ public class Q00122_OminousNews extends Quest
 						htmltext = getAlreadyCompletedMsg(player);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -102,6 +110,10 @@ public class Q00122_OminousNews extends Quest
 				{
 					htmltext = "32017-01.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

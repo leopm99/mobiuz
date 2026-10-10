@@ -136,6 +136,10 @@ public class Q00351_BlackSwan extends Quest
 				qs.exitQuest(true, true);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -206,6 +210,10 @@ public class Q00351_BlackSwan extends Quest
 				{
 					htmltext = (hasQuestItems(player, BILL_OF_IASON_HEINE)) ? "30897-01.html" : "30897-02.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

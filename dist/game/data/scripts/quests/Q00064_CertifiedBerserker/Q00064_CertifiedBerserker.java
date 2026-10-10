@@ -189,6 +189,10 @@ public class Q00064_CertifiedBerserker extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -267,6 +271,10 @@ public class Q00064_CertifiedBerserker extends Quest
 						kamael.broadcastPacket(new NpcSay(kamael, ChatType.NPC_GENERAL, NpcStringId.S1_DID_YOU_COME_TO_HELP_ME).addStringParameter(killer.getAppearance().getVisibleName()));
 						playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -445,6 +453,10 @@ public class Q00064_CertifiedBerserker extends Quest
 					{
 						htmltext = "32253-03.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

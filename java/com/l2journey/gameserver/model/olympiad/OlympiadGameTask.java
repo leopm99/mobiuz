@@ -308,6 +308,10 @@ public class OlympiadGameTask implements Runnable
 					_game = null;
 					return;
 				}
+				default:
+				{
+					break;
+				}
 			}
 			ThreadPool.schedule(this, delay * 1000L);
 		}
@@ -321,6 +325,10 @@ public class OlympiadGameTask implements Runnable
 					_state = OlympiadGameState.IDLE;
 					_game = null;
 					return;
+				}
+				default:
+				{
+					break;
 				}
 			}
 			

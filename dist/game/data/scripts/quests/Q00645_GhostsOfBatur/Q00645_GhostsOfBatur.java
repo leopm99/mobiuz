@@ -89,6 +89,10 @@ public class Q00645_GhostsOfBatur extends Quest
 					htmltext = event;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -140,6 +144,10 @@ public class Q00645_GhostsOfBatur extends Quest
 				{
 					htmltext = hasQuestItems(player, CURSED_BURIAL_ITEMS) ? "32017-04.html" : "32017-05.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

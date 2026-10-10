@@ -172,6 +172,10 @@ public class Baium extends AbstractNpcAI
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	
@@ -487,6 +491,10 @@ public class Baium extends AbstractNpcAI
 				{
 					manageSkills(npc);
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

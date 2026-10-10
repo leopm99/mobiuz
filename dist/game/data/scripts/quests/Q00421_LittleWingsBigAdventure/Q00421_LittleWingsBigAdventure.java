@@ -178,6 +178,10 @@ public class Q00421_LittleWingsBigAdventure extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -228,6 +232,10 @@ public class Q00421_LittleWingsBigAdventure extends Quest
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(talker);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -336,6 +344,10 @@ public class Q00421_LittleWingsBigAdventure extends Quest
 												giveItems(talker, DRAGON_BUGLE_OF_TWILIGHT, 1);
 												break;
 											}
+											default:
+											{
+												break;
+											}
 										}
 										
 										qs.exitQuest(true, true);
@@ -352,7 +364,15 @@ public class Q00421_LittleWingsBigAdventure extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -413,6 +433,10 @@ public class Q00421_LittleWingsBigAdventure extends Quest
 						case 2:
 						{
 							npc.broadcastPacket(new NpcSay(npc, ChatType.NPC_GENERAL, NpcStringId.LEAVE_NOW_BEFORE_YOU_INCUR_THE_WRATH_OF_THE_GUARDIAN_GHOST));
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}

@@ -176,6 +176,10 @@ public class Deathmatch extends Event
 								LOGGER.info("Event " + name + " scheduled at " + TimeUtil.getDateTimeString(System.currentTimeMillis() + delay));
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 					}
 				});
@@ -343,6 +347,10 @@ public class Deathmatch extends Event
 							participant.teleToLocation(SPAWN_3.getRandomPoint(), PVP_WORLD.getInstanceId(), 50);
 							break RANDOM;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					participant.setInvul(true);
 					participant.setImmobilized(true);
@@ -503,6 +511,10 @@ public class Deathmatch extends Event
 							player.teleToLocation(SPAWN_3.getRandomPoint(), PVP_WORLD.getInstanceId(), 50);
 							break RANDOM;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					resetActivityTimers(player);
 				}
@@ -527,6 +539,10 @@ public class Deathmatch extends Event
 				html.setFile(player, "data/scripts/custom/events/Deathmatch/manager-register.html");
 				html.replace("%player_numbers%", String.valueOf(PLAYER_LIST.size()));
 				player.sendPacket(html);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -175,6 +175,10 @@ public class Q00701_ProofOfExistence extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

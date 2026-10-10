@@ -457,6 +457,10 @@ public class ItemAuctionInstance
 								return;
 							}
 						}
+						default:
+						{
+							break;
+						}
 					}
 					
 					if (!_auction.setAuctionState(state, ItemAuctionState.FINISHED))

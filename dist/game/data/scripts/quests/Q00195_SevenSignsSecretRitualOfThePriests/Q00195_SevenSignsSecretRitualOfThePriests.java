@@ -176,6 +176,10 @@ public class Q00195_SevenSignsSecretRitualOfThePriests extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -204,6 +208,10 @@ public class Q00195_SevenSignsSecretRitualOfThePriests extends Quest
 			case SHELF:
 			{
 				htmltext = "32580-01.html";
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -257,6 +265,10 @@ public class Q00195_SevenSignsSecretRitualOfThePriests extends Quest
 								htmltext = "32576-03.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -283,6 +295,10 @@ public class Q00195_SevenSignsSecretRitualOfThePriests extends Quest
 							case 4:
 							{
 								htmltext = "30289-12.html";
+								break;
+							}
+							default:
+							{
 								break;
 							}
 						}
@@ -330,7 +346,15 @@ public class Q00195_SevenSignsSecretRitualOfThePriests extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

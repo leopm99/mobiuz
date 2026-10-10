@@ -418,6 +418,10 @@ public abstract class Chamber extends AbstractInstance
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		
@@ -474,6 +478,10 @@ public abstract class Chamber extends AbstractInstance
 			{
 				receiver.setBusy(true);
 				receiver.doCast(FAIL_SKILL.getSkill());
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

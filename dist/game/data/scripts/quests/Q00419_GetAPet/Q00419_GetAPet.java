@@ -355,6 +355,10 @@ public class Q00419_GetAPet extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -607,6 +611,10 @@ public class Q00419_GetAPet extends Quest
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}
@@ -783,6 +791,10 @@ public class Q00419_GetAPet extends Quest
 						qs.setMemoState(qs.getMemoState() | 2);
 						htmltext = "30256-01.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

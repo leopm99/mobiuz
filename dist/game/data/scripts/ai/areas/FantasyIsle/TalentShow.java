@@ -357,6 +357,10 @@ public class TalentShow extends AbstractNpcAI
 					startQuestTimer("28", 19700, npc, null);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}

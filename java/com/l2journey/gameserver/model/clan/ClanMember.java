@@ -468,6 +468,10 @@ public class ClanMember
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -518,6 +522,10 @@ public class ClanMember
 									}
 								}
 							}
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -572,6 +580,10 @@ public class ClanMember
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -622,6 +634,10 @@ public class ClanMember
 									}
 								}
 							}
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -676,6 +692,10 @@ public class ClanMember
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -726,6 +746,10 @@ public class ClanMember
 									}
 								}
 							}
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}

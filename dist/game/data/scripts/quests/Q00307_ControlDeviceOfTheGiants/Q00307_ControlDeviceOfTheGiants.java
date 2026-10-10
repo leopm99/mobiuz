@@ -170,6 +170,10 @@ public class Q00307_ControlDeviceOfTheGiants extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	
@@ -201,6 +205,10 @@ public class Q00307_ControlDeviceOfTheGiants extends Quest
 					qs.exitQuest(true, true);
 					htmltext = "32711-10.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

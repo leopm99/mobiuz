@@ -72,6 +72,10 @@ public class Q00998_FallenAngelSelect extends Quest
 				startQuest(Q00143_FallenAngelRequestOfDusk.class.getSimpleName(), player);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return null;
 	}

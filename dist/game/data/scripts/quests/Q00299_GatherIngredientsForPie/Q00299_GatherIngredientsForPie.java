@@ -159,6 +159,10 @@ public class Q00299_GatherIngredientsForPie extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return html;
 	}
@@ -194,6 +198,10 @@ public class Q00299_GatherIngredientsForPie extends Quest
 						html = "30063-03.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -209,6 +217,10 @@ public class Q00299_GatherIngredientsForPie extends Quest
 					case 6:
 					{
 						html = "30466-03.html";
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -266,10 +278,22 @@ public class Q00299_GatherIngredientsForPie extends Quest
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

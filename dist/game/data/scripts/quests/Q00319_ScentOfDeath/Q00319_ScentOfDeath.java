@@ -74,6 +74,10 @@ public class Q00319_ScentOfDeath extends Quest
 					htmltext = event;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -127,7 +131,15 @@ public class Q00319_ScentOfDeath extends Quest
 						htmltext = "30138-06.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

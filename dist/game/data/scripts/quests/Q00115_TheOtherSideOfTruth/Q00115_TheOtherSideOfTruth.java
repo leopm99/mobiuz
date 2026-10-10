@@ -266,6 +266,10 @@ public class Q00115_TheOtherSideOfTruth extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -329,6 +333,10 @@ public class Q00115_TheOtherSideOfTruth extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -372,7 +380,15 @@ public class Q00115_TheOtherSideOfTruth extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -480,6 +496,10 @@ public class Q00115_TheOtherSideOfTruth extends Quest
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -521,6 +541,10 @@ public class Q00115_TheOtherSideOfTruth extends Quest
 								htmltext = "32018-06.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -552,6 +576,10 @@ public class Q00115_TheOtherSideOfTruth extends Quest
 								{
 									htmltext = "32022-05.html";
 								}
+								break;
+							}
+							default:
+							{
 								break;
 							}
 						}
@@ -605,6 +633,10 @@ public class Q00115_TheOtherSideOfTruth extends Quest
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -654,6 +686,10 @@ public class Q00115_TheOtherSideOfTruth extends Quest
 								{
 									htmltext = "32021-10.html";
 								}
+								break;
+							}
+							default:
+							{
 								break;
 							}
 						}
@@ -707,6 +743,10 @@ public class Q00115_TheOtherSideOfTruth extends Quest
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -758,10 +798,22 @@ public class Q00115_TheOtherSideOfTruth extends Quest
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

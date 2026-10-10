@@ -1999,6 +1999,10 @@ public class CrystalCaverns extends AbstractInstance
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}

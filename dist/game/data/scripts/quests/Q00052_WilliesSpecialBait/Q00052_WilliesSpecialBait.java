@@ -78,6 +78,10 @@ public class Q00052_WilliesSpecialBait extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -128,6 +132,10 @@ public class Q00052_WilliesSpecialBait extends Quest
 			case State.STARTED:
 			{
 				htmltext = (qs.isCond(1)) ? "31574-05.html" : "31574-04.html";
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

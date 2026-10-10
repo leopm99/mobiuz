@@ -119,6 +119,10 @@ public class Q00432_BirthdayPartySong extends Quest
 				htmltext = qs.isCond(1) ? "31043-03.html" : "31043-04.html";
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

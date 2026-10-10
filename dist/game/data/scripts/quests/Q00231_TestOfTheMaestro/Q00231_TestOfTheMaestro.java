@@ -162,6 +162,10 @@ public class Q00231_TestOfTheMaestro extends Quest
 				addAttackDesire(addSpawn(KING_BUGBEAR, 140395, -194147, -3146, 0, false, 200000, false), player);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -229,6 +233,10 @@ public class Q00231_TestOfTheMaestro extends Quest
 						giveItems(killer, NECKLACE_OF_KAMUTU, 1);
 						playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -465,6 +473,10 @@ public class Q00231_TestOfTheMaestro extends Quest
 							htmltext = "30673-05.html";
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

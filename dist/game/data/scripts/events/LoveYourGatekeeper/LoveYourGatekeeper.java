@@ -102,6 +102,10 @@ public class LoveYourGatekeeper extends LongTimeEvent
 				}
 				return null;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}

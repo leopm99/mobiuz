@@ -180,7 +180,15 @@ public class Q00160_NerupasRequest extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

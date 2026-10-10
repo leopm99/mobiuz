@@ -110,6 +110,10 @@ public class FuncEnchant extends AbstractFunction
 					value += (2 * enchant) + (4 * overenchant);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 			return value;
 		}
@@ -256,6 +260,10 @@ public class FuncEnchant extends AbstractFunction
 							break;
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

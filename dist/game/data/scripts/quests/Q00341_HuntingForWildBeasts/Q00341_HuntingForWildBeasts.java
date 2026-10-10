@@ -79,6 +79,10 @@ public class Q00341_HuntingForWildBeasts extends Quest
 					htmltext = event;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -108,6 +112,10 @@ public class Q00341_HuntingForWildBeasts extends Quest
 				{
 					htmltext = "30078-06.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

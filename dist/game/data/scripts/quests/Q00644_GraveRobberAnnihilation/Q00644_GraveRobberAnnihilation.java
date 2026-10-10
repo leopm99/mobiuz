@@ -108,6 +108,10 @@ public class Q00644_GraveRobberAnnihilation extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -144,6 +148,10 @@ public class Q00644_GraveRobberAnnihilation extends Quest
 				{
 					htmltext = "32017-05.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

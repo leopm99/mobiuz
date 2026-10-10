@@ -108,6 +108,10 @@ public class Q00001_LettersOfLove extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -148,6 +152,10 @@ public class Q00001_LettersOfLove extends Quest
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -172,6 +180,10 @@ public class Q00001_LettersOfLove extends Quest
 								{
 									htmltext = "30006-02.html";
 								}
+								break;
+							}
+							default:
+							{
 								break;
 							}
 						}
@@ -210,6 +222,10 @@ public class Q00001_LettersOfLove extends Quest
 								{
 									htmltext = "30033-02.html";
 								}
+								break;
+							}
+							default:
+							{
 								break;
 							}
 						}
@@ -263,7 +279,15 @@ public class Q00001_LettersOfLove extends Quest
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -272,6 +296,10 @@ public class Q00001_LettersOfLove extends Quest
 			case State.COMPLETED:
 			{
 				htmltext = getAlreadyCompletedMsg(player);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

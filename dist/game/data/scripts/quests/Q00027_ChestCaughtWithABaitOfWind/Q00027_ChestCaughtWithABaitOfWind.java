@@ -89,6 +89,10 @@ public class Q00027_ChestCaughtWithABaitOfWind extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -149,7 +153,15 @@ public class Q00027_ChestCaughtWithABaitOfWind extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+			}
+			default:
+			{
+				break;
 			}
 		}
 		return htmltext;

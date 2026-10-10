@@ -155,6 +155,10 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -249,6 +253,10 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}
@@ -276,6 +284,10 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -301,6 +313,10 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -316,6 +332,10 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 								addAttackDesire(addSpawn(HARIT_LIZARDMAN_ZEALOT, npc, true, 180000), killer);
 								addAttackDesire(addSpawn(HARIT_LIZARDMAN_ZEALOT, npc, true, 180000), killer);
 							}
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -334,6 +354,10 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -348,6 +372,10 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 								giveItems(killer, KRANROT_SKIN, 1);
 								playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 							}
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -366,6 +394,10 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -380,6 +412,10 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 								giveItems(killer, MARSH_DRAKE_TALONS, 1);
 								playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 							}
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -416,6 +452,10 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -432,7 +472,15 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -596,6 +644,10 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 							htmltext = "30705-03.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					if (memoState >= 30000)
 					{
@@ -633,6 +685,10 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 						case 21110, 21101, 21100, 21011, 21010, 21001, 21000:
 						{
 							htmltext = "30720-03.html";
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -719,6 +775,10 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 							htmltext = "30851-03.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					if (memoState >= 30000)
 					{
@@ -757,11 +817,19 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 							htmltext = "30857-03.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					if (memoState >= 30000)
 					{
 						htmltext = "30857-04.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

@@ -108,7 +108,15 @@ public class Q00303_CollectArrowheads extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

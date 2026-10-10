@@ -143,6 +143,10 @@ public class FrightenedRagnaOrc extends AbstractNpcAI
 				npc.deleteMe();
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return null;
 	}

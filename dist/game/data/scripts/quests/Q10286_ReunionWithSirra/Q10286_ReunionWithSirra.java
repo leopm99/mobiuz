@@ -148,6 +148,10 @@ public class Q10286_ReunionWithSirra extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -213,6 +217,10 @@ public class Q10286_ReunionWithSirra extends Quest
 									htmltext = "32760-06.html";
 									break;
 								}
+								default:
+								{
+									break;
+								}
 							}
 						}
 						break;
@@ -243,7 +251,15 @@ public class Q10286_ReunionWithSirra extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

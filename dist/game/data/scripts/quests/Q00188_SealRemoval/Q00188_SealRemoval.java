@@ -122,6 +122,10 @@ public class Q00188_SealRemoval extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -172,6 +176,10 @@ public class Q00188_SealRemoval extends Quest
 					{
 						htmltext = "30970-01.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

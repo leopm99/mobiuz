@@ -95,6 +95,10 @@ public class Q00654_JourneyToASettlement extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

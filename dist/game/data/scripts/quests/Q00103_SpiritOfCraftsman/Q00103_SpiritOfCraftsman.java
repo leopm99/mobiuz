@@ -111,6 +111,10 @@ public class Q00103_SpiritOfCraftsman extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -272,6 +276,10 @@ public class Q00103_SpiritOfCraftsman extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -303,6 +311,10 @@ public class Q00103_SpiritOfCraftsman extends Quest
 				{
 					qs.setCond(4, true);
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

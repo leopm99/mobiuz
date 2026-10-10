@@ -92,6 +92,10 @@ public class Q00698_BlockTheLordsEscape extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

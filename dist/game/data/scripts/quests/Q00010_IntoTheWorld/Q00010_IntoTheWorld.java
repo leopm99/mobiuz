@@ -135,6 +135,10 @@ public class Q00010_IntoTheWorld extends Quest
 						htmltext = getAlreadyCompletedMsg(player);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -164,6 +168,10 @@ public class Q00010_IntoTheWorld extends Quest
 							htmltext = "30520-06.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				break;
@@ -181,6 +189,10 @@ public class Q00010_IntoTheWorld extends Quest
 						htmltext = "30650-04.html";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

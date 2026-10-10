@@ -119,6 +119,10 @@ public class Q00711_PathToBecomingALordInnadril extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -250,6 +254,10 @@ public class Q00711_PathToBecomingALordInnadril extends Quest
 						htmltext = "30969-00a.html";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

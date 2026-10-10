@@ -109,6 +109,10 @@ public class Q00297_GatekeepersFavor extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

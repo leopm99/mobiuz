@@ -144,8 +144,16 @@ public class Q00118_ToLeadAndBeLed extends Quest
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -211,6 +219,10 @@ public class Q00118_ToLeadAndBeLed extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -241,6 +253,10 @@ public class Q00118_ToLeadAndBeLed extends Quest
 							qs.setCond(8);
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -376,6 +392,10 @@ public class Q00118_ToLeadAndBeLed extends Quest
 			case State.COMPLETED:
 			{
 				htmltext = getAlreadyCompletedMsg(player);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

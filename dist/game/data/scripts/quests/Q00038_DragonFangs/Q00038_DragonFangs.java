@@ -193,6 +193,10 @@ public class Q00038_DragonFangs extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -234,6 +238,10 @@ public class Q00038_DragonFangs extends Quest
 						{
 							htmltext = "30034-08.html";
 						}
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -279,12 +287,20 @@ public class Q00038_DragonFangs extends Quest
 							htmltext = "30386-08.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				else if (qs.isCompleted())
 				{
 					htmltext = getAlreadyCompletedMsg(talker);
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -312,6 +328,10 @@ public class Q00038_DragonFangs extends Quest
 				{
 					qs.setCond(7);
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

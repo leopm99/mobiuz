@@ -204,6 +204,10 @@ public class Q00104_SpiritOfMirrors extends Quest
 						htmltext = getAlreadyCompletedMsg(player);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -221,6 +225,10 @@ public class Q00104_SpiritOfMirrors extends Quest
 					}
 				}
 				htmltext = npc.getId() + "-01.html";
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

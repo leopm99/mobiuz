@@ -857,6 +857,10 @@ public class Duel
 				broadcastToTeam2(sm);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		// Send end duel packet

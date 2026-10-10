@@ -169,6 +169,10 @@ public final class GreatWarriorsMountedTroop extends AbstractInstance
 				openDoor(DOORS[1], npc.getInstanceId());
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return null;
 	}

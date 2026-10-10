@@ -103,6 +103,10 @@ public class SilentValley extends AbstractNpcAI
 					addSpawn(CHEST, npc.getX() - 100, npc.getY(), npc.getZ() - 100, 0, false, 0);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return null;
@@ -209,6 +213,10 @@ public class SilentValley extends AbstractNpcAI
 				case "CLEAR_ALL_INSTANT":
 				{
 					receiver.doDie(null);
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

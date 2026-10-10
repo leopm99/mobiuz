@@ -311,6 +311,10 @@ public class Q00662_AGameOfCards extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				
 				if ((i9 % 32) < 31)
@@ -539,6 +543,10 @@ public class Q00662_AGameOfCards extends Quest
 				htmltext = getQuestItemsCount(player, RED_GEM) < REQUIRED_CHIP_COUNT ? "30845-21.html" : "30845-20.html";
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -630,6 +638,10 @@ public class Q00662_AGameOfCards extends Quest
 			case State.COMPLETED:
 			{
 				htmltext = getAlreadyCompletedMsg(player);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -91,6 +91,10 @@ public class Q00062_PathOfTheTrooper extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -142,6 +146,10 @@ public class Q00062_PathOfTheTrooper extends Quest
 						giveItems(killer, TUMRAN_BUGBEAR_HEART, 1);
 						playSound(qs.getPlayer(), QuestSound.ITEMSOUND_QUEST_MIDDLE);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -232,6 +240,10 @@ public class Q00062_PathOfTheTrooper extends Quest
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -280,7 +292,15 @@ public class Q00062_PathOfTheTrooper extends Quest
 							htmltext = "32194-07.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

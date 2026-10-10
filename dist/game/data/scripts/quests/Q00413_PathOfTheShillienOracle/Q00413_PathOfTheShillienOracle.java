@@ -144,6 +144,10 @@ public class Q00413_PathOfTheShillienOracle extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -187,6 +191,10 @@ public class Q00413_PathOfTheShillienOracle extends Quest
 							playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -307,6 +315,10 @@ public class Q00413_PathOfTheShillienOracle extends Quest
 					{
 						htmltext = "30377-07.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

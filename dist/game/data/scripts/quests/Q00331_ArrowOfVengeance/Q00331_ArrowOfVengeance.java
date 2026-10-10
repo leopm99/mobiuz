@@ -89,6 +89,10 @@ public class Q00331_ArrowOfVengeance extends Quest
 					htmltext = event;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -123,6 +127,10 @@ public class Q00331_ArrowOfVengeance extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -148,6 +156,10 @@ public class Q00331_ArrowOfVengeance extends Quest
 				case 20176:
 				{
 					giveItems(player, WYRMS_TOOTH, 1);
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

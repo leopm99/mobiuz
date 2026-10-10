@@ -126,6 +126,10 @@ public class Q00623_TheFinestFood extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -157,12 +161,20 @@ public class Q00623_TheFinestFood extends Quest
 							htmltext = "31521-05.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				else if (qs.isCompleted())
 				{
 					htmltext = getAlreadyCompletedMsg(talker);
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -126,6 +126,10 @@ public class Q00146_TheZeroHour extends Quest
 				htmltext = "31554-01b.htm";
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

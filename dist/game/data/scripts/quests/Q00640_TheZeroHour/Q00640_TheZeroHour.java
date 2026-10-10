@@ -219,6 +219,10 @@ public class Q00640_TheZeroHour extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -264,6 +268,10 @@ public class Q00640_TheZeroHour extends Quest
 						htmlText = "31554-03.htm";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

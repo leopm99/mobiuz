@@ -131,6 +131,10 @@ public class MithrilMine extends AbstractInstance
 				InstanceManager.getInstance().getInstance(world.getInstanceId()).setDuration(3000);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return super.onEvent(event, npc, player);
 	}
@@ -222,6 +226,10 @@ public class MithrilMine extends AbstractInstance
 					startQuestTimer("BUFF", 3500, npc, talker);
 					return "18846-02.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

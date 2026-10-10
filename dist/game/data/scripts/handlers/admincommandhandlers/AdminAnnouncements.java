@@ -253,6 +253,10 @@ public class AdminAnnouncements implements IAdminCommandHandler
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						// ************************************
 						if (!st.hasMoreTokens())
@@ -487,7 +491,15 @@ public class AdminAnnouncements implements IAdminCommandHandler
 						HtmlUtil.sendCBHtml(activeChar, content);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+			}
+			default:
+			{
+				break;
 			}
 		}
 		return false;

@@ -272,6 +272,10 @@ public class AdminAdmin implements IAdminCommandHandler
 						Config.ENCHANT_CHANCE_ELEMENT_ENERGY = Float.parseFloat(pValue);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				activeChar.sendSysMessage("Config parameter " + pName + " set to " + pValue);
 			}

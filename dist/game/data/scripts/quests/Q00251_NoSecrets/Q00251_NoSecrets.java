@@ -142,6 +142,10 @@ public class Q00251_NoSecrets extends Quest
 				htmltext = "30201-06.htm";
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

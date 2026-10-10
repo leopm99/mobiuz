@@ -134,6 +134,10 @@ public class EquipUpdate extends ServerPacket
 				bodypart = 0x10;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		buffer.writeInt(bodypart);
 	}

@@ -156,6 +156,10 @@ public class Q00310_OnlyWhatRemains extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

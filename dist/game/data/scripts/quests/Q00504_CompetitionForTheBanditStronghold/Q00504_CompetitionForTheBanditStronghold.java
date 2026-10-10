@@ -103,6 +103,10 @@ public final class Q00504_CompetitionForTheBanditStronghold extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

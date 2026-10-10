@@ -228,6 +228,10 @@ public class AdminLogin implements IAdminCommandHandler
 						nameType += "Free";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 			}
 		}

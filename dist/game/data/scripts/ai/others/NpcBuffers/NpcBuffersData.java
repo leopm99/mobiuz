@@ -94,6 +94,10 @@ public class NpcBuffersData implements IXmlReader
 									npc.addSkill(new NpcBufferSkillData(set));
 									break;
 								}
+								default:
+								{
+									break;
+								}
 							}
 						}
 						_npcBuffers.put(npcId, npc);

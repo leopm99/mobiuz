@@ -209,6 +209,10 @@ public class Q00617_GatherTheFlames extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

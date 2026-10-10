@@ -144,6 +144,10 @@ public class Q10296_SevenSignsOneWhoSeeksThePowerOfTheSeal extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -281,6 +285,10 @@ public class Q10296_SevenSignsOneWhoSeeksThePowerOfTheSeal extends Quest
 						qs.setCond(3, true);
 						htmltext = "32787-04.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

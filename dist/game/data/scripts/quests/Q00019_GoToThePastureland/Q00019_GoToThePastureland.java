@@ -114,6 +114,10 @@ public class Q00019_GoToThePastureland extends Quest
 					htmltext = getAlreadyCompletedMsg(player);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		else if ((npc.getId() == TUNATUN) && qs.isCond(1))

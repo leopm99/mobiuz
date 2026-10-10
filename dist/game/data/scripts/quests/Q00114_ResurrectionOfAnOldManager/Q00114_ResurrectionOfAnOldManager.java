@@ -112,6 +112,10 @@ public class Q00114_ResurrectionOfAnOldManager extends Quest
 						htmltext = "32041-14.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -443,6 +447,10 @@ public class Q00114_ResurrectionOfAnOldManager extends Quest
 										htmltext = "32041-24.html";
 										break;
 									}
+									default:
+									{
+										break;
+									}
 								}
 								break;
 							}
@@ -487,12 +495,20 @@ public class Q00114_ResurrectionOfAnOldManager extends Quest
 								htmltext = "32041-42.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(player);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -541,6 +557,10 @@ public class Q00114_ResurrectionOfAnOldManager extends Quest
 								case 3:
 								{
 									htmltext = "32047-11c.html";
+									break;
+								}
+								default:
+								{
 									break;
 								}
 							}
@@ -620,6 +640,10 @@ public class Q00114_ResurrectionOfAnOldManager extends Quest
 							htmltext = "32047-32c.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				break;
@@ -638,6 +662,10 @@ public class Q00114_ResurrectionOfAnOldManager extends Quest
 						case 22:
 						{
 							htmltext = "31961-03.html";
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -670,6 +698,10 @@ public class Q00114_ResurrectionOfAnOldManager extends Quest
 							htmltext = "32050-05z.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				break;
@@ -695,8 +727,16 @@ public class Q00114_ResurrectionOfAnOldManager extends Quest
 							htmltext = "32046-04.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

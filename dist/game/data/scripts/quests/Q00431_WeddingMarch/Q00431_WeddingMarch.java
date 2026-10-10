@@ -117,6 +117,10 @@ public class Q00431_WeddingMarch extends Quest
 				htmltext = qs.isCond(1) ? "31042-03.html" : "31042-04.html";
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

@@ -187,6 +187,10 @@ public class Q00211_TrialOfTheChallenger extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -248,6 +252,10 @@ public class Q00211_TrialOfTheChallenger extends Quest
 							htmltext = "30644-10.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				else if (qs.isCompleted())
@@ -298,6 +306,10 @@ public class Q00211_TrialOfTheChallenger extends Quest
 						htmltext = "30645-09.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -345,6 +357,10 @@ public class Q00211_TrialOfTheChallenger extends Quest
 						htmltext = "30646-07.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -369,7 +385,15 @@ public class Q00211_TrialOfTheChallenger extends Quest
 						htmltext = "30535-03.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -433,6 +457,10 @@ public class Q00211_TrialOfTheChallenger extends Quest
 					}
 					qs.setCond(10, true);
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

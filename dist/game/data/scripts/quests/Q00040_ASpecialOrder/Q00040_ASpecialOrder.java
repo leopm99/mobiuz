@@ -128,6 +128,10 @@ public class Q00040_ASpecialOrder extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -178,12 +182,20 @@ public class Q00040_ASpecialOrder extends Quest
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(player);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -218,6 +230,10 @@ public class Q00040_ASpecialOrder extends Quest
 						htmltext = "31572-06.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -250,7 +266,15 @@ public class Q00040_ASpecialOrder extends Quest
 						htmltext = "30511-06.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

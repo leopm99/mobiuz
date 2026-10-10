@@ -192,6 +192,10 @@ public class Q00365_DevilsLegacy extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -241,6 +245,10 @@ public class Q00365_DevilsLegacy extends Quest
 				{
 					htmltext = (qs.isMemoState(1) ? "30092-01.html" : "30092-07.html");
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

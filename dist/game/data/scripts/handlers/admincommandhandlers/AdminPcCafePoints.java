@@ -159,6 +159,10 @@ public class AdminPcCafePoints implements IAdminCommandHandler
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 			}
 			showMenuHtml(activeChar);

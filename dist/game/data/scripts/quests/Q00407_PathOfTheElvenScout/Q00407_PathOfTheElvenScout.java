@@ -127,6 +127,10 @@ public class Q00407_PathOfTheElvenScout extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -324,6 +328,10 @@ public class Q00407_PathOfTheElvenScout extends Quest
 					{
 						htmltext = "30426-04.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

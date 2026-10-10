@@ -127,6 +127,10 @@ public class Q00179_IntoTheLargeCavern extends Quest
 					htmltext = getAlreadyCompletedMsg(player);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		else if ((npc.getId() == MENACING_MACHINE) && (qs.getState() == State.STARTED))

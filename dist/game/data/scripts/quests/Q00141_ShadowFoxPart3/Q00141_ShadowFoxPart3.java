@@ -213,12 +213,20 @@ public class Q00141_ShadowFoxPart3 extends Quest
 						htmltext = "30894-19.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
 			case State.COMPLETED:
 			{
 				htmltext = getAlreadyCompletedMsg(player);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -178,6 +178,10 @@ public class Q00222_TestOfTheDuelist extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -443,6 +447,10 @@ public class Q00222_TestOfTheDuelist extends Quest
 							qs.setMemoStateEx(1, 0);
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

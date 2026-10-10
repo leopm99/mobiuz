@@ -133,6 +133,10 @@ public class Q00132_MatrasCuriosity extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	
@@ -171,6 +175,10 @@ public class Q00132_MatrasCuriosity extends Quest
 				case 3:
 				{
 					htmltext = "32245-06.htm";
+				}
+				default:
+				{
+					break;
 				}
 			}
 		}

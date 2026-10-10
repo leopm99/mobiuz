@@ -120,6 +120,10 @@ public class Q00164_BloodFiend extends Quest
 				htmltext = getAlreadyCompletedMsg(player);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

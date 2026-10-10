@@ -186,6 +186,10 @@ public class Q00215_TrialOfThePilgrim extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -226,6 +230,10 @@ public class Q00215_TrialOfThePilgrim extends Quest
 						qs.setCond(14, true);
 						giveItems(killer, DEBRIS_OF_WILLOW, 1);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -509,6 +517,10 @@ public class Q00215_TrialOfThePilgrim extends Quest
 					{
 						htmltext = "30652-03.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

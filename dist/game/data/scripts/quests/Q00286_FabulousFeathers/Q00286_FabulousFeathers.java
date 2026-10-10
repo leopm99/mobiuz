@@ -89,6 +89,10 @@ public class Q00286_FabulousFeathers extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return html;
 	}

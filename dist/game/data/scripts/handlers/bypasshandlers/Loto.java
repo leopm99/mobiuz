@@ -305,6 +305,10 @@ public class Loto implements IBypassHandler
 								message += "- 4th Prize";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						message += " " + check[1] + "a.";
 					}

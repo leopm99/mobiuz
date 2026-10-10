@@ -176,6 +176,10 @@ public class Q00692_HowtoOpposeEvil extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}

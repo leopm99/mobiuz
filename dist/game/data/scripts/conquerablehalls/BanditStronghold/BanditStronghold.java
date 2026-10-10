@@ -828,6 +828,10 @@ public class BanditStronghold extends ClanHallSiegeEngine
 				result = "35437-19.htm";
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return result;
 	}
@@ -860,6 +864,10 @@ public class BanditStronghold extends ClanHallSiegeEngine
 			case 35432:
 			{
 				result = "35437-19a.htm";
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -129,6 +129,10 @@ public class Q00312_TakeAdvantageOfTheCrisis extends Quest
 				htmltext = (hasQuestItems(player, MINERAL_FRAGMENT)) ? "30535-08.html" : "30535-07.html";
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

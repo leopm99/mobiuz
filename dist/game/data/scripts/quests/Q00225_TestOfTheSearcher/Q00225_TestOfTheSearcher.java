@@ -192,6 +192,10 @@ public class Q00225_TestOfTheSearcher extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -302,6 +306,10 @@ public class Q00225_TestOfTheSearcher extends Quest
 						giveItems(killer, STRINGE_MAP, 1);
 						qs.setCond(6, true);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -577,6 +585,10 @@ public class Q00225_TestOfTheSearcher extends Quest
 					{
 						htmltext = "30730-04.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

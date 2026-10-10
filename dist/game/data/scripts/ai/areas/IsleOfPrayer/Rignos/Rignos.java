@@ -99,6 +99,10 @@ public class Rignos extends AbstractNpcAI
 				npc.setScriptValue(0);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return super.onEvent(event, npc, player);
 	}

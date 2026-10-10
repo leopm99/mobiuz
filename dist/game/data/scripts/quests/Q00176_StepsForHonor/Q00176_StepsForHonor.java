@@ -120,12 +120,20 @@ public class Q00176_StepsForHonor extends Quest
 						htmltext = "36479-13.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
 			case State.COMPLETED:
 			{
 				htmltext = "36479-01.html";
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

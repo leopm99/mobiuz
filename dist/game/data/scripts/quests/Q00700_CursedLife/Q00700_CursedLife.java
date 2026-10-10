@@ -103,6 +103,10 @@ public class Q00700_CursedLife extends Quest
 					htmltext = event;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -136,6 +140,10 @@ public class Q00700_CursedLife extends Quest
 				{
 					htmltext = "32560-06.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

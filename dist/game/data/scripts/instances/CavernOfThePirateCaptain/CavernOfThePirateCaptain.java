@@ -393,6 +393,10 @@ public class CavernOfThePirateCaptain extends AbstractInstance
 						spawnNpc(world.getParameters().getBoolean("is83", false) ? PIRATES_ZOMBIE_CAPTAIN_83 : PIRATES_ZOMBIE_CAPTAIN_60, world.getParameters().getInt("zakenRoom", 0), player, world);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 			}
 		}

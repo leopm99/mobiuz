@@ -115,6 +115,10 @@ public class Q00044_HelpTheSon extends Quest
 				qs.exitQuest(false, true);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		return htmltext;
@@ -183,12 +187,20 @@ public class Q00044_HelpTheSon extends Quest
 								htmltext = "30827-08.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(player);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -210,8 +222,16 @@ public class Q00044_HelpTheSon extends Quest
 							htmltext = "30505-03.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

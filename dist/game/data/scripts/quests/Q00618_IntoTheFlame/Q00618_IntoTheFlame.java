@@ -119,6 +119,10 @@ public class Q00618_IntoTheFlame extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -188,7 +192,15 @@ public class Q00618_IntoTheFlame extends Quest
 						htmltext = "31271-06.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

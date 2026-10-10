@@ -1041,6 +1041,10 @@ public class RequestActionUse extends ClientPacket
 				tryBroadcastSocial(player, 15);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	

@@ -198,6 +198,10 @@ public class SelMahumDrill extends AbstractNpcAI
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return super.onEvent(event, npc, player);
 	}
@@ -258,6 +262,10 @@ public class SelMahumDrill extends AbstractNpcAI
 					{
 						receiver.broadcastSay(ChatType.NPC_GENERAL, CHIEF_FSTRINGS[getRandom(2)]);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

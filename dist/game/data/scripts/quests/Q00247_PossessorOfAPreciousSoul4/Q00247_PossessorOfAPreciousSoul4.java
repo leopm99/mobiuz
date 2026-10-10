@@ -94,6 +94,10 @@ public class Q00247_PossessorOfAPreciousSoul4 extends Quest
 					st.exitQuest(false, true);
 				}
 				break;
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}
@@ -130,6 +134,10 @@ public class Q00247_PossessorOfAPreciousSoul4 extends Quest
 					case State.COMPLETED:
 						htmltext = getAlreadyCompletedMsg(player);
 						break;
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -139,6 +147,10 @@ public class Q00247_PossessorOfAPreciousSoul4 extends Quest
 				{
 					htmltext = "31745-1.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

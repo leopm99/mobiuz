@@ -218,6 +218,10 @@ public class Q00232_TestOfTheLord extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -324,6 +328,10 @@ public class Q00232_TestOfTheLord extends Quest
 							qs.setCond(5, true);
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -672,6 +680,10 @@ public class Q00232_TestOfTheLord extends Quest
 						}
 						htmltext = "30649-08.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

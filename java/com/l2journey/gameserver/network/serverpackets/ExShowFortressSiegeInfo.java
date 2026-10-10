@@ -93,6 +93,10 @@ public class ExShowFortressSiegeInfo extends ServerPacket
 							buffer.writeInt(0);
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -126,7 +130,15 @@ public class ExShowFortressSiegeInfo extends ServerPacket
 							buffer.writeInt(1);
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

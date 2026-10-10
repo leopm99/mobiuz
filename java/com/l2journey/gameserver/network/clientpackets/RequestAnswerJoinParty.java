@@ -140,6 +140,10 @@ public class RequestAnswerJoinParty extends ClientPacket
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		if (requestor.isInParty())

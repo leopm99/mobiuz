@@ -80,6 +80,10 @@ public class SSQHideoutOfTheDawn extends AbstractInstance
 				enterInstance(player, TEMPLATE_ID);
 				htmltext = event;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

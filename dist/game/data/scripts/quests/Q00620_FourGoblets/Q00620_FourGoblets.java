@@ -277,6 +277,10 @@ public class Q00620_FourGoblets extends Quest
 					qs.setMemoStateEx(1, 2);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}
@@ -433,6 +437,10 @@ public class Q00620_FourGoblets extends Quest
 				}
 				
 				htmltext = npc.getId() + "-00.html";
+			}
+			default:
+			{
+				break;
 			}
 		}
 		return htmltext;
@@ -603,6 +611,10 @@ public class Q00620_FourGoblets extends Quest
 				case JUDGES_SEPULCHER_MANAGER:
 				{
 					htmltext = "31924-01.html";
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -947,6 +959,10 @@ public class Q00620_FourGoblets extends Quest
 						giveItems(player, ARCANA_MACE_HEAD);
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

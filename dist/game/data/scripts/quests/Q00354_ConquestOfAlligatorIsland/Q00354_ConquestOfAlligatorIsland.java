@@ -126,6 +126,10 @@ public class Q00354_ConquestOfAlligatorIsland extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

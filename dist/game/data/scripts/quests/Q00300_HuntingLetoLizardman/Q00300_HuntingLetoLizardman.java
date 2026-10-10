@@ -111,6 +111,10 @@ public class Q00300_HuntingLetoLizardman extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -166,7 +170,15 @@ public class Q00300_HuntingLetoLizardman extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

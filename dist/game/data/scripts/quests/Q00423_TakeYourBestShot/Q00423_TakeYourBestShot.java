@@ -166,6 +166,10 @@ public class Q00423_TakeYourBestShot extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -192,7 +196,15 @@ public class Q00423_TakeYourBestShot extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

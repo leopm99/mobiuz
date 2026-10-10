@@ -407,6 +407,10 @@ public class UCTeam
 				deleteTower();
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	

@@ -267,6 +267,10 @@ public class KetraOrcSupport extends AbstractNpcAI
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

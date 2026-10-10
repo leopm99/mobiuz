@@ -230,6 +230,10 @@ public class Q00063_PathOfTheWarder extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -300,6 +304,10 @@ public class Q00063_PathOfTheWarder extends Quest
 						giveItems(killer, TAKS_CAPTURED_SOUL, 1);
 						qs.setCond(12, true);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -515,6 +523,10 @@ public class Q00063_PathOfTheWarder extends Quest
 					{
 						htmltext = "30297-07.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

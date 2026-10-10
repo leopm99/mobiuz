@@ -111,6 +111,10 @@ public class Q00154_SacrificeToTheSea extends Quest
 							htmltext = "30312-06.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				else
@@ -146,6 +150,10 @@ public class Q00154_SacrificeToTheSea extends Quest
 						htmltext = "30051-04.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -171,7 +179,15 @@ public class Q00154_SacrificeToTheSea extends Quest
 						htmltext = "30055-02.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -269,6 +269,10 @@ public class Q00416_PathOfTheOrcShaman extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -315,6 +319,10 @@ public class Q00416_PathOfTheOrcShaman extends Quest
 				{
 					qs.setMemoState(108);
 					qs.setCond(19, true);
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -543,6 +551,10 @@ public class Q00416_PathOfTheOrcShaman extends Quest
 							htmltext = "32090-08.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -610,7 +622,15 @@ public class Q00416_PathOfTheOrcShaman extends Quest
 							htmltext = "32057-04.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

@@ -293,6 +293,10 @@ public class Q00221_TestimonyOfProsperity extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -395,6 +399,10 @@ public class Q00221_TestimonyOfProsperity extends Quest
 							playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -926,6 +934,10 @@ public class Q00221_TestimonyOfProsperity extends Quest
 							htmltext = "30622-05.html";
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

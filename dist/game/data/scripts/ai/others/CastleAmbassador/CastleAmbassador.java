@@ -119,6 +119,10 @@ public class CastleAmbassador extends AbstractNpcAI
 					npc.deleteMe();
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 			
 			if (htmltext != null)

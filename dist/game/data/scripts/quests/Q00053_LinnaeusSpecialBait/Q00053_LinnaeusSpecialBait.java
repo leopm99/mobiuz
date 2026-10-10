@@ -82,6 +82,10 @@ public class Q00053_LinnaeusSpecialBait extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -132,6 +136,10 @@ public class Q00053_LinnaeusSpecialBait extends Quest
 			case State.STARTED:
 			{
 				htmltext = (qs.isCond(1)) ? "31577-4.html" : "31577-2.html";
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -154,7 +154,15 @@ public class Q00274_SkirmishWithTheWerewolves extends Quest
 							htmltext = (totems > 0) ? "30569-07.html" : "30569-06.html";
 						}
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

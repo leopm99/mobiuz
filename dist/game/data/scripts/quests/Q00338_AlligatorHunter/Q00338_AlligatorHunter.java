@@ -131,6 +131,10 @@ public class Q00338_AlligatorHunter extends Quest
 				htmltext = "30892-04.html";
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

@@ -104,6 +104,10 @@ public class Q00292_BrigandsSweep extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return html;
 	}
@@ -214,6 +218,10 @@ public class Q00292_BrigandsSweep extends Quest
 							}
 						}
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -232,6 +240,10 @@ public class Q00292_BrigandsSweep extends Quest
 						html = "30533-01.html";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

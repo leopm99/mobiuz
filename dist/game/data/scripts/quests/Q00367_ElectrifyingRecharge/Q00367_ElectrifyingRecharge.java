@@ -85,6 +85,10 @@ public class Q00367_ElectrifyingRecharge extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

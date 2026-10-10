@@ -109,6 +109,10 @@ public class Q00277_GatekeepersOffering extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

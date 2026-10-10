@@ -78,6 +78,10 @@ public class Q00109_InSearchOfTheNest extends Quest
 				qs.exitQuest(false, true);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}
@@ -117,12 +121,20 @@ public class Q00109_InSearchOfTheNest extends Quest
 								htmltext = "31553-3a.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(player);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -149,6 +161,10 @@ public class Q00109_InSearchOfTheNest extends Quest
 				{
 					htmltext = "31554-1.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -62,6 +62,10 @@ public class EtcItem extends ItemTemplate
 				_type = EtcItemType.SHOT;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		_type1 = ItemTemplate.TYPE1_ITEM_QUESTITEM_ADENA;

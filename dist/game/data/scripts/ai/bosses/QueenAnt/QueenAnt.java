@@ -382,6 +382,10 @@ public class QueenAnt extends AbstractNpcAI implements IXmlReader
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return super.onEvent(event, npc, player);
 	}
@@ -444,6 +448,10 @@ public class QueenAnt extends AbstractNpcAI implements IXmlReader
 			{
 				cancelQuestTimer("DISTANCE_CHECK", npc, null);
 				startQuestTimer("DISTANCE_CHECK", 5000, npc, null, true);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

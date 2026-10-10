@@ -172,6 +172,10 @@ public class PlainsOfLizardman extends AbstractNpcAI
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	

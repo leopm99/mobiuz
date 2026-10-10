@@ -169,6 +169,10 @@ public class ChatAdmin implements IVoicedCommandHandler
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return true;
 	}

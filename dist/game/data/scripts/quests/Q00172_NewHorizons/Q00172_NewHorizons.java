@@ -120,6 +120,10 @@ public class Q00172_NewHorizons extends Quest
 						htmltext = getAlreadyCompletedMsg(player);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -129,6 +133,10 @@ public class Q00172_NewHorizons extends Quest
 				{
 					htmltext = "32163-01.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

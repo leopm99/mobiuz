@@ -202,6 +202,10 @@ public class Q00219_TestimonyOfFate extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -372,6 +376,10 @@ public class Q00219_TestimonyOfFate extends Quest
 						giveItems(killer, BLACK_WILLOW_LEAF, 1);
 						playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -684,6 +692,10 @@ public class Q00219_TestimonyOfFate extends Quest
 							htmltext = "31850-05.html";
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

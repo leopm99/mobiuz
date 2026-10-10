@@ -178,6 +178,10 @@ public class Q00325_GrimCollector extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -223,6 +227,10 @@ public class Q00325_GrimCollector extends Quest
 						htmltext = hasQuestItems(player, ANATOMY_DIAGRAM) ? "30336-05.html" : "30336-04.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -258,6 +266,10 @@ public class Q00325_GrimCollector extends Quest
 						}
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

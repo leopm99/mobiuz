@@ -477,6 +477,10 @@ public class BlockCheckerManager
 					_task = ThreadPool.schedule(new EndEvent(), 180000);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 			// random % 2, if == 0 will spawn a red block
 			// if != 0, will spawn a blue block

@@ -487,6 +487,10 @@ public class EnergySeeds extends AbstractNpcAI
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}

@@ -219,6 +219,10 @@ public class OlympiadManager
 						player.sendPacket(sm);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				return true;
 			}
@@ -355,6 +359,10 @@ public class OlympiadManager
 				
 				party.broadcastPacket(new SystemMessage(SystemMessageId.YOU_ARE_CURRENTLY_REGISTERED_FOR_A_3_VS_3_CLASS_IRRELEVANT_TEAM_MATCH));
 				_teamsBasedRegisters.add(team);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
