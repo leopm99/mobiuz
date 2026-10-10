@@ -110,6 +110,10 @@ public class AdminScan implements IAdminCommandHandler
 				activeChar.sendMessage(npc.getName() + " has been deleted.");
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return true;
 	}

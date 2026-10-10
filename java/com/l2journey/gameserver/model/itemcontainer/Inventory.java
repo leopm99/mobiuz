@@ -1014,6 +1014,10 @@ public abstract class Inventory extends ItemContainer
 			{
 				return PAPERDOLL_BELT;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return -1;
 	}
@@ -1359,6 +1363,10 @@ public abstract class Inventory extends ItemContainer
 				slot = ItemTemplate.SLOT_BELT;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return slot;
 	}
@@ -1604,6 +1612,10 @@ public abstract class Inventory extends ItemContainer
 				case ItemTemplate.SLOT_LR_HAND, ItemTemplate.SLOT_L_HAND, ItemTemplate.SLOT_R_HAND, ItemTemplate.SLOT_LEGS, ItemTemplate.SLOT_FEET, ItemTemplate.SLOT_GLOVES, ItemTemplate.SLOT_HEAD:
 				{
 					return;
+				}
+				default:
+				{
+					break;
 				}
 			}
 		}

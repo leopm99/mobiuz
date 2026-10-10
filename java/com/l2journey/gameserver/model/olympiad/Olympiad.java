@@ -733,6 +733,10 @@ public class Olympiad extends ListenersContainer
 					_nextWeeklyChange = nextChange.getTimeInMillis() + WEEKLY_PERIOD;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 			_olympiadEnd = currentTime.getTimeInMillis();
 		}
@@ -1139,6 +1143,10 @@ public class Olympiad extends ListenersContainer
 					hero.set(CHAR_NAME, winner.getString(CHAR_NAME));
 					
 					HEROS_TO_BE.add(hero);
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

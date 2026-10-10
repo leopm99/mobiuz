@@ -100,6 +100,10 @@ public class Q10288_SecretMission extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -145,6 +149,10 @@ public class Q10288_SecretMission extends Quest
 						htmltext = "31350-07.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -169,6 +177,10 @@ public class Q10288_SecretMission extends Quest
 				{
 					return "32757-01.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

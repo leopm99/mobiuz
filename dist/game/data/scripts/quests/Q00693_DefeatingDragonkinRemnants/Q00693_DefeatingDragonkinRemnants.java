@@ -180,6 +180,10 @@ public class Q00693_DefeatingDragonkinRemnants extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

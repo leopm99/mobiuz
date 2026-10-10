@@ -185,6 +185,10 @@ public class Q00345_MethodToRaiseTheDead extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -341,6 +345,10 @@ public class Q00345_MethodToRaiseTheDead extends Quest
 							qs.exitQuest(true, true);
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -400,6 +408,10 @@ public class Q00345_MethodToRaiseTheDead extends Quest
 							htmltext = "30973-11.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -413,6 +425,10 @@ public class Q00345_MethodToRaiseTheDead extends Quest
 					{
 						htmltext = "30912-06.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

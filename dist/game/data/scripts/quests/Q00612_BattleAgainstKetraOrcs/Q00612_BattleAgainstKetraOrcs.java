@@ -143,6 +143,10 @@ public class Q00612_BattleAgainstKetraOrcs extends Quest
 				htmltext = (hasQuestItems(player, MOLAR)) ? "31377-04.html" : "31377-05.html";
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

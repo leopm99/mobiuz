@@ -139,6 +139,10 @@ public class IceQueensCastle extends AbstractInstance
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return super.onEvent(event, npc, player);
 	}

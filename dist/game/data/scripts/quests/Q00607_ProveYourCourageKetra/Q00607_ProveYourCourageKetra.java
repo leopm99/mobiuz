@@ -138,6 +138,10 @@ public class Q00607_ProveYourCourageKetra extends Quest
 				htmltext = (qs.isCond(2) && hasQuestItems(player, SHADITH_HEAD)) ? "31370-05.html" : "31370-06.html";
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

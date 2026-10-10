@@ -310,6 +310,10 @@ public class Q00503_PursuitOfClanAmbition extends Quest
 				npc.deleteMe();
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -417,6 +421,10 @@ public class Q00503_PursuitOfClanAmbition extends Quest
 					final Npc coffer = addSpawn(IMPERIAL_COFFER, npc.getX(), npc.getY(), npc.getZ(), 0, true, 180000);
 					coffer.broadcastPacket(new NpcSay(coffer, ChatType.NPC_GENERAL, NpcStringId.CURSE_OF_THE_GODS_ON_THE_ONE_THAT_DEFILES_THE_PROPERTY_OF_THE_EMPIRE));
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -782,6 +790,10 @@ public class Q00503_PursuitOfClanAmbition extends Quest
 						}
 						break;
 					}
+				}
+				default:
+				{
+					break;
 				}
 			}
 		}

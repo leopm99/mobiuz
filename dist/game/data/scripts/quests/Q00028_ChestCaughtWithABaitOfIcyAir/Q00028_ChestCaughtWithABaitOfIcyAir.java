@@ -89,6 +89,10 @@ public class Q00028_ChestCaughtWithABaitOfIcyAir extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -142,6 +146,10 @@ public class Q00028_ChestCaughtWithABaitOfIcyAir extends Quest
 								htmltext = "31572-09.htm";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -153,7 +161,15 @@ public class Q00028_ChestCaughtWithABaitOfIcyAir extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

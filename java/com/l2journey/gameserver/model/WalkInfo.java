@@ -135,6 +135,10 @@ public class WalkInfo
 						_currentNode = 0;
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 			}
 			else if (_currentNode == WalkingManager.NO_REPEAT) // First node arrived, when direction is first <-- last

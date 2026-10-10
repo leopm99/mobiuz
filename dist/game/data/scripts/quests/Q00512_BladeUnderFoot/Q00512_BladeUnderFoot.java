@@ -151,6 +151,10 @@ public class Q00512_BladeUnderFoot extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

@@ -90,6 +90,10 @@ public class AdminCamera implements IAdminCommandHandler
 				Quest.specialCamera3(activeChar, target, Integer.parseInt(com[1]), Integer.parseInt(com[2]), Integer.parseInt(com[3]), Integer.parseInt(com[4]), Integer.parseInt(com[5]), Integer.parseInt(com[6]), Integer.parseInt(com[7]), Integer.parseInt(com[8]), Integer.parseInt(com[9]), Integer.parseInt(com[10]), Integer.parseInt(com[11]));
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return true;
 	}

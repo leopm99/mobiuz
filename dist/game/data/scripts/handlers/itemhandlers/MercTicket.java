@@ -116,6 +116,10 @@ public class MercTicket implements IItemHandler
 			{
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		if (MercTicketManager.getInstance().isAtCasleLimit(item.getId()))

@@ -273,6 +273,10 @@ public class CaptchaManager
 				PacketLogger.warning(player + "[BAN] Wrong Captcha maybe boting?");
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		player.sendMessage("Unfortunately, code doesn't match.");
@@ -436,6 +440,10 @@ public class CaptchaManager
 					case 30, 10, 5, 4, 3, 2, 1:
 					{
 						_player.sendMessage(_time + " second(s) to enter the code!");
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}

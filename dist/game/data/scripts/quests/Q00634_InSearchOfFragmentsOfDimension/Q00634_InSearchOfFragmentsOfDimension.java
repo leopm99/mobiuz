@@ -147,6 +147,10 @@ public class Q00634_InSearchOfFragmentsOfDimension extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

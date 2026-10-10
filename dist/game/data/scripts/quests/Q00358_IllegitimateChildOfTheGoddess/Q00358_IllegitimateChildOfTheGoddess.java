@@ -101,6 +101,10 @@ public class Q00358_IllegitimateChildOfTheGoddess extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

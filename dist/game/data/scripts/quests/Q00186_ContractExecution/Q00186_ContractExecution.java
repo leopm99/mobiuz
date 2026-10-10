@@ -140,6 +140,10 @@ public class Q00186_ContractExecution extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -206,6 +210,10 @@ public class Q00186_ContractExecution extends Quest
 					{
 						htmltext = "31437-05.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

@@ -205,6 +205,10 @@ public class SortedWareHouseWithdrawalList extends ServerPacket
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		catch (Exception _)

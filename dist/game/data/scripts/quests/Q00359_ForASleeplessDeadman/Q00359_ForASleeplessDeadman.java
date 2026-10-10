@@ -110,6 +110,10 @@ public class Q00359_ForASleeplessDeadman extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

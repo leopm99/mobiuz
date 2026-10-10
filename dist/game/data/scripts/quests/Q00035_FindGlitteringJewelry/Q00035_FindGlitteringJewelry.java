@@ -166,12 +166,20 @@ public class Q00035_FindGlitteringJewelry extends Quest
 								htmltext = ((getQuestItemsCount(player, ORIHARUKON) >= ORIHARUKON_COUNT) && (getQuestItemsCount(player, SILVER_NUGGET) >= NUGGET_COUNT) && (getQuestItemsCount(player, THONS) >= THONS_COUNT)) ? "30091-09.html" : "30091-10.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(player);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -190,6 +198,10 @@ public class Q00035_FindGlitteringJewelry extends Quest
 						htmltext = "30879-03.html";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

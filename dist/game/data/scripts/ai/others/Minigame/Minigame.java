@@ -201,6 +201,10 @@ public class Minigame extends AbstractNpcAI
 				npc.deleteMe();
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}
@@ -256,6 +260,10 @@ public class Minigame extends AbstractNpcAI
 				npc.disableCoreAI(true);
 				cancelQuestTimer("afterthat", npc, null);
 				startQuestTimer("afterthat", 180000, npc, null);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

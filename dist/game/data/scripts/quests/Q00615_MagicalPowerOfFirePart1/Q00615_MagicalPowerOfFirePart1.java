@@ -136,6 +136,10 @@ public class Q00615_MagicalPowerOfFirePart1 extends Quest
 				npc.deleteMe();
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -193,6 +197,10 @@ public class Q00615_MagicalPowerOfFirePart1 extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -231,6 +239,10 @@ public class Q00615_MagicalPowerOfFirePart1 extends Quest
 							htmltext = "31379-04.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				break;
@@ -241,6 +253,10 @@ public class Q00615_MagicalPowerOfFirePart1 extends Quest
 				{
 					htmltext = "31559-01.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

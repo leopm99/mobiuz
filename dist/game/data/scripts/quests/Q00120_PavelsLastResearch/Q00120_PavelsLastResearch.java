@@ -981,6 +981,10 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		return html;
@@ -1082,6 +1086,10 @@ public class Q00120_PavelsLastResearch extends Quest
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				else if (checkQ114(player))
@@ -1171,6 +1179,10 @@ public class Q00120_PavelsLastResearch extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -1195,6 +1207,10 @@ public class Q00120_PavelsLastResearch extends Quest
 							case 2:
 							{
 								html = "32041-06.html";
+								break;
+							}
+							default:
+							{
 								break;
 							}
 						}
@@ -1249,6 +1265,10 @@ public class Q00120_PavelsLastResearch extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -1275,6 +1295,10 @@ public class Q00120_PavelsLastResearch extends Quest
 					case 11:
 					{
 						html = "32042-14.html";
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -1304,6 +1328,10 @@ public class Q00120_PavelsLastResearch extends Quest
 						html = "32043-23.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -1326,6 +1354,10 @@ public class Q00120_PavelsLastResearch extends Quest
 						html = "32044-22.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -1343,7 +1375,15 @@ public class Q00120_PavelsLastResearch extends Quest
 						html = "32045-03.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -67,6 +67,10 @@ public class AdminHtml implements IAdminCommandHandler
 				showHtml(activeChar, path, true);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return true;
 	}

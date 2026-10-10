@@ -149,6 +149,10 @@ public class MoveToLocationAirShip extends ClientPacket
 				ship.executePath(dst);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 }

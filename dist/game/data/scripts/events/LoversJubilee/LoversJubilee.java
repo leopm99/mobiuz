@@ -96,6 +96,10 @@ public final class LoversJubilee extends LongTimeEvent
 							giveItems(player, ONE_WHILE_ROSE_BUD, 1);
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					htmltext = "4305-023.html";
 				}
@@ -125,6 +129,10 @@ public final class LoversJubilee extends LongTimeEvent
 						case "50020_7":
 						{
 							giveItems(player, ONE_WHILE_ROSE_BUD, 10);
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -179,6 +187,10 @@ public final class LoversJubilee extends LongTimeEvent
 						giveItems(player, MAFUM_ROSE_NECKLACE, 1);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				htmltext = "4305-025.html";
 				break;
@@ -218,8 +230,16 @@ public final class LoversJubilee extends LongTimeEvent
 						giveItems(player, IMPROVED_MAFUM_ROSE_NECKLACE, 1);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				htmltext = "4305-026.html";
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

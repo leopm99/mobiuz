@@ -1868,6 +1868,10 @@ public class NpcBufferPremium extends Quest
 				}
 				return Config.PREMIUM_SMART_WINDOW ? null : rebuildMainHtml(st);
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		return rebuildMainHtml(st);

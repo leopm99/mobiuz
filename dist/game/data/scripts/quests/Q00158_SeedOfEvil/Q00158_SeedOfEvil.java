@@ -118,6 +118,10 @@ public class Q00158_SeedOfEvil extends Quest
 				htmltext = getAlreadyCompletedMsg(player);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

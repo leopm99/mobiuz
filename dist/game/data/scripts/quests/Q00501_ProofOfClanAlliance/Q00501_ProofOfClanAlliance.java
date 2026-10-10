@@ -226,6 +226,10 @@ public class Q00501_ProofOfClanAlliance extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -304,6 +308,10 @@ public class Q00501_ProofOfClanAlliance extends Quest
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}
@@ -365,6 +373,10 @@ public class Q00501_ProofOfClanAlliance extends Quest
 						{
 							htmltext = "30756-10.html";
 						}
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -430,6 +442,10 @@ public class Q00501_ProofOfClanAlliance extends Quest
 							htmltext = "30758-09.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				break;
@@ -479,6 +495,10 @@ public class Q00501_ProofOfClanAlliance extends Quest
 				{
 					htmltext = "30759-12.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

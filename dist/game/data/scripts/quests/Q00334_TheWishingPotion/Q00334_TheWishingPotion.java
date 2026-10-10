@@ -202,6 +202,10 @@ public class Q00334_TheWishingPotion extends Quest
 							{
 								giveItems(player, DEMONS_GLOVES_FABRIC, 1);
 							}
+							default:
+							{
+								break;
+							}
 						}
 						html = "30742-02.html";
 					}
@@ -246,6 +250,10 @@ public class Q00334_TheWishingPotion extends Quest
 								giveItems(player, DEMONS_GLOVES_FABRIC, 1);
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						html = "30743-03.html";
 					}
@@ -261,6 +269,10 @@ public class Q00334_TheWishingPotion extends Quest
 							case 1:
 							{
 								giveItems(player, Q_MUSICNOTE_BATTLE, 1);
+								break;
+							}
+							default:
+							{
 								break;
 							}
 						}
@@ -290,6 +302,10 @@ public class Q00334_TheWishingPotion extends Quest
 								giveItems(player, DEMONS_GLOVES, 1);
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						html = "30743-05.html";
 					}
@@ -306,6 +322,10 @@ public class Q00334_TheWishingPotion extends Quest
 							{
 								giveItems(player, Q_SILVER_CIRCLET, 1);
 							}
+							default:
+							{
+								break;
+							}
 						}
 						html = "30743-06.htm";
 					}
@@ -313,6 +333,10 @@ public class Q00334_TheWishingPotion extends Quest
 					npc.deleteMe();
 					return html;
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -370,6 +394,10 @@ public class Q00334_TheWishingPotion extends Quest
 			{
 				startQuestTimer("2336007", 120 * 1000L, npc, null);
 				npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.SHOUT, npc.getId(), NpcStringId.I_HAVE_WISDOM_IN_ME_I_AM_THE_BOX_OF_WISDOM));
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -590,6 +618,10 @@ public class Q00334_TheWishingPotion extends Quest
 								i0 = getRandom(3);
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						switch (i0)
 						{
@@ -621,6 +653,10 @@ public class Q00334_TheWishingPotion extends Quest
 									{
 										addSpawn(WISDOM_CHEST, npc, true, 0, false);
 										qs.set(EXCHANGE, 0);
+										break;
+									}
+									default:
+									{
 										break;
 									}
 								}
@@ -657,6 +693,10 @@ public class Q00334_TheWishingPotion extends Quest
 										qs.set(EXCHANGE, 0);
 										break;
 									}
+									default:
+									{
+										break;
+									}
 								}
 								break;
 							}
@@ -682,13 +722,29 @@ public class Q00334_TheWishingPotion extends Quest
 										qs.set(EXCHANGE, 0);
 										break;
 									}
+									default:
+									{
+										break;
+									}
 								}
+								break;
+							}
+							default:
+							{
 								break;
 							}
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -927,6 +983,10 @@ public class Q00334_TheWishingPotion extends Quest
 								{
 									giveItems(killer, DEMONS_GLOVES_FABRIC, 1);
 								}
+								default:
+								{
+									break;
+								}
 							}
 						}
 					}
@@ -963,6 +1023,10 @@ public class Q00334_TheWishingPotion extends Quest
 								case 3:
 								{
 									giveItems(killer, DEMONS_GLOVES_FABRIC, 1);
+									break;
+								}
+								default:
+								{
 									break;
 								}
 							}
@@ -1004,10 +1068,18 @@ public class Q00334_TheWishingPotion extends Quest
 									giveItems(killer, DEMONS_GLOVES_FABRIC, 1);
 									break;
 								}
+								default:
+								{
+									break;
+								}
 							}
 						}
 						break;
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

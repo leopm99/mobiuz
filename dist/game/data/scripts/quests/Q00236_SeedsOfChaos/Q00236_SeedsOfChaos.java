@@ -598,6 +598,10 @@ public class Q00236_SeedsOfChaos extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -643,6 +647,10 @@ public class Q00236_SeedsOfChaos extends Quest
 						giveItems(killer, BLOOD_JEWEL, 1);
 						qs.setCond(9, true);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -705,6 +713,10 @@ public class Q00236_SeedsOfChaos extends Quest
 							htmltext = "32138-13.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -728,6 +740,10 @@ public class Q00236_SeedsOfChaos extends Quest
 							{
 								htmltext = "31387-11.html";
 							}
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -803,6 +819,10 @@ public class Q00236_SeedsOfChaos extends Quest
 							htmltext = "31522-16b.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -841,6 +861,10 @@ public class Q00236_SeedsOfChaos extends Quest
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -871,6 +895,10 @@ public class Q00236_SeedsOfChaos extends Quest
 						case 22:
 						{
 							htmltext = "32236-08z.html";
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -905,6 +933,10 @@ public class Q00236_SeedsOfChaos extends Quest
 							htmltext = "32237-15.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -930,6 +962,10 @@ public class Q00236_SeedsOfChaos extends Quest
 						case 30:
 						{
 							htmltext = "32238-09.html";
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -964,6 +1000,10 @@ public class Q00236_SeedsOfChaos extends Quest
 							htmltext = "32239-09.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -995,6 +1035,10 @@ public class Q00236_SeedsOfChaos extends Quest
 							{
 								htmltext = "32332-05z.html";
 							}
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -1031,6 +1075,10 @@ public class Q00236_SeedsOfChaos extends Quest
 							htmltext = "32333-06b.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -1058,7 +1106,15 @@ public class Q00236_SeedsOfChaos extends Quest
 							htmltext = "32334-18.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -1119,6 +1175,10 @@ public class Q00236_SeedsOfChaos extends Quest
 				{
 					npc.broadcastPacket(new NpcSay(npc, ChatType.NPC_GENERAL, NpcStringId.S1_HAS_EVERYTHING_BEEN_FOUND).addStringParameter(c0.getAppearance().getVisibleName()));
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

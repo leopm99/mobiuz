@@ -143,12 +143,20 @@ public class Q00168_DeliverSupplies extends Quest
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(player);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -187,6 +195,10 @@ public class Q00168_DeliverSupplies extends Quest
 				{
 					htmltext = npc.getId() + "-02.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

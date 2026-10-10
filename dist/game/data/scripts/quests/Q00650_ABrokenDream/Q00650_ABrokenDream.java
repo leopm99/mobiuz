@@ -99,6 +99,10 @@ public class Q00650_ABrokenDream extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -126,6 +130,10 @@ public class Q00650_ABrokenDream extends Quest
 			case State.STARTED:
 			{
 				htmltext = hasQuestItems(player, REMNANTS_OF_OLD_DWARVES_DREAMS) ? "32054-05.html" : "32054-06.html";
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -1248,6 +1248,10 @@ public class Q00060_GoodWorksReward extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		return htmltext;
@@ -1431,6 +1435,10 @@ public class Q00060_GoodWorksReward extends Quest
 					{
 						htmltext = "32487-09.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

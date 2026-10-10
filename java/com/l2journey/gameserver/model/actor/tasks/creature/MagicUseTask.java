@@ -83,6 +83,10 @@ public class MagicUseTask implements Runnable
 				_creature.onMagicFinalizer(this);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	

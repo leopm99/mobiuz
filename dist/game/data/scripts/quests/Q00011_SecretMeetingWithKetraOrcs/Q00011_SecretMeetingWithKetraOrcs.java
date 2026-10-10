@@ -87,6 +87,10 @@ public class Q00011_SecretMeetingWithKetraOrcs extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -134,6 +138,10 @@ public class Q00011_SecretMeetingWithKetraOrcs extends Quest
 				{
 					htmltext = "31371-01.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

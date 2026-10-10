@@ -128,6 +128,10 @@ public class PunishmentManager
 					changeCharAccessLevel(charId, -1);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		
@@ -156,6 +160,10 @@ public class PunishmentManager
 				{
 					final String charId = String.valueOf(task.getKey());
 					changeCharAccessLevel(charId, 0);
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

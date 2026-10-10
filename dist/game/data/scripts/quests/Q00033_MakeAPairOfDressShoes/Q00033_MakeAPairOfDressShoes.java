@@ -164,12 +164,20 @@ public class Q00033_MakeAPairOfDressShoes extends Quest
 								htmltext = "30838-12.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(player);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -203,6 +211,10 @@ public class Q00033_MakeAPairOfDressShoes extends Quest
 						htmltext = "30164-04.html";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

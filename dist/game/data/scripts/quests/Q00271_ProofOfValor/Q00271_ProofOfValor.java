@@ -145,7 +145,15 @@ public class Q00271_ProofOfValor extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

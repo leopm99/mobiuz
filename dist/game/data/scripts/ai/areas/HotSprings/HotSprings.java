@@ -110,6 +110,10 @@ public class HotSprings extends AbstractNpcAI
 					tryToInfect(npc, creature, FLU);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}

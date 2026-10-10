@@ -126,6 +126,10 @@ public class Q00451_LuciensAltar extends Quest
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		else if (qs.isCond(1) && hasQuestItems(player, REPLENISHED_BEAD))

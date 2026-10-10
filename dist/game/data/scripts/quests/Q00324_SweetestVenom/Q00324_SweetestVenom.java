@@ -97,6 +97,10 @@ public class Q00324_SweetestVenom extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

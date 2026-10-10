@@ -92,6 +92,10 @@ public class Q00624_TheFinestIngredientsPart1 extends Quest
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -151,7 +155,15 @@ public class Q00624_TheFinestIngredientsPart1 extends Quest
 						htmltext = "31521-04.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

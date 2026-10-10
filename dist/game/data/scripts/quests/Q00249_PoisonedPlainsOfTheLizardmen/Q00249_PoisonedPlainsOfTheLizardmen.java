@@ -91,6 +91,10 @@ public class Q00249_PoisonedPlainsOfTheLizardmen extends Quest
 					htmltext = "30196-05.htm";
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		else if (npc.getId() == JOHNNY)

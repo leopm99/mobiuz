@@ -103,6 +103,10 @@ public class Q00275_DarkWingedSpies extends Quest
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}
@@ -165,7 +169,15 @@ public class Q00275_DarkWingedSpies extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -162,6 +162,10 @@ public class Q00330_AdeptOfTaste extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -511,6 +515,10 @@ public class Q00330_AdeptOfTaste extends Quest
 							}
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -958,6 +966,10 @@ public class Q00330_AdeptOfTaste extends Quest
 							}
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

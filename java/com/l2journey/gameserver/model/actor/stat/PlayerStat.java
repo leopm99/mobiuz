@@ -867,6 +867,10 @@ public class PlayerStat extends PlayableStat
 					vitality = Config.RATE_VITALITY_LEVEL_4;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return vitality;

@@ -83,6 +83,10 @@ public class ConditionPlayerBaseStats extends Condition
 			{
 				return player.getWIT() >= _value;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		return false;

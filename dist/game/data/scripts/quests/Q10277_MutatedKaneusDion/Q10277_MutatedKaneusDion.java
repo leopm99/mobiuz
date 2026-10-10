@@ -77,6 +77,10 @@ public class Q10277_MutatedKaneusDion extends Quest
 				qs.exitQuest(false, true);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}
@@ -140,6 +144,10 @@ public class Q10277_MutatedKaneusDion extends Quest
 						htmltext = "30071-06.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -162,6 +170,10 @@ public class Q10277_MutatedKaneusDion extends Quest
 						break;
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

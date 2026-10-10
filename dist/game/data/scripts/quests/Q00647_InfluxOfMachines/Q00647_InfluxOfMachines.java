@@ -111,6 +111,10 @@ public class Q00647_InfluxOfMachines extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -159,6 +163,10 @@ public class Q00647_InfluxOfMachines extends Quest
 				{
 					htmltext = "32069-05.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

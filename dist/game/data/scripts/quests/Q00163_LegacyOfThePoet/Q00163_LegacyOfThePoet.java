@@ -75,6 +75,10 @@ public class Q00163_LegacyOfThePoet extends Quest
 					htmltext = event;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -181,6 +185,10 @@ public class Q00163_LegacyOfThePoet extends Quest
 			case State.COMPLETED:
 			{
 				htmltext = getAlreadyCompletedMsg(player);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

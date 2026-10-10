@@ -185,6 +185,10 @@ public class Q00690_JudesRequest extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

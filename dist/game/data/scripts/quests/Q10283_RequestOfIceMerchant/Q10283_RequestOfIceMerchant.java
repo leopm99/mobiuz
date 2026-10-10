@@ -135,6 +135,10 @@ public class Q10283_RequestOfIceMerchant extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -190,6 +194,10 @@ public class Q10283_RequestOfIceMerchant extends Quest
 					{
 						htmltext = (talker == player.getObjectId() ? "32760-01.html" : "32760-05.html");
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

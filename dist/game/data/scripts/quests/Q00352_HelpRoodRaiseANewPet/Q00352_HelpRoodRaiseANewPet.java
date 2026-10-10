@@ -109,6 +109,10 @@ public class Q00352_HelpRoodRaiseANewPet extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

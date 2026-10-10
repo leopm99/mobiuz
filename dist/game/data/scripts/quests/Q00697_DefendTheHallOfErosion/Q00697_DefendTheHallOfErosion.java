@@ -93,6 +93,10 @@ public class Q00697_DefendTheHallOfErosion extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

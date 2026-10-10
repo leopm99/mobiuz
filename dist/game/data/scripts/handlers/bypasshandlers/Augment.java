@@ -65,6 +65,10 @@ public class Augment implements IBypassHandler
 					player.sendPacket(ExShowVariationCancelWindow.STATIC_PACKET);
 					return true;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		catch (Exception e)

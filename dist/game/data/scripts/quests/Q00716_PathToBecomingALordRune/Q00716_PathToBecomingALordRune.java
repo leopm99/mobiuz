@@ -116,6 +116,10 @@ public class Q00716_PathToBecomingALordRune extends Quest
 				qs.setCond(8);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}
@@ -234,6 +238,10 @@ public class Q00716_PathToBecomingALordRune extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -280,6 +288,10 @@ public class Q00716_PathToBecomingALordRune extends Quest
 						htmltext = "31328-00a.html";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

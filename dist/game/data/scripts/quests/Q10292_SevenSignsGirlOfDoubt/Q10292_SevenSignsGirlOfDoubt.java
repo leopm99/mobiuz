@@ -185,6 +185,10 @@ public class Q10292_SevenSignsGirlOfDoubt extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -325,6 +329,10 @@ public class Q10292_SevenSignsGirlOfDoubt extends Quest
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -338,6 +346,10 @@ public class Q10292_SevenSignsGirlOfDoubt extends Quest
 					{
 						htmltext = "30832-03.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

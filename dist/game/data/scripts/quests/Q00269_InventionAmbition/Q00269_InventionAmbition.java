@@ -99,6 +99,10 @@ public class Q00269_InventionAmbition extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

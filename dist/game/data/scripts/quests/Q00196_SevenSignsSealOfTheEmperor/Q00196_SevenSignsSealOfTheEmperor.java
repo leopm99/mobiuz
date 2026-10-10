@@ -211,6 +211,10 @@ public class Q00196_SevenSignsSealOfTheEmperor extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -277,6 +281,10 @@ public class Q00196_SevenSignsSealOfTheEmperor extends Quest
 								htmltext = "30969-15.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -333,6 +341,10 @@ public class Q00196_SevenSignsSealOfTheEmperor extends Quest
 								htmltext = "32586-15.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -353,7 +365,15 @@ public class Q00196_SevenSignsSealOfTheEmperor extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

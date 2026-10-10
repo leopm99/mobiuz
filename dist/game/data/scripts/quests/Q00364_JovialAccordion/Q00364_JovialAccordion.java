@@ -130,6 +130,10 @@ public class Q00364_JovialAccordion extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -167,6 +171,10 @@ public class Q00364_JovialAccordion extends Quest
 								rewardItems(player, THEME_OF_THE_FEAST, 1);
 								qs.exitQuest(true, true);
 								htmltext = "30959-05.html";
+								break;
+							}
+							default:
+							{
 								break;
 							}
 						}
@@ -272,10 +280,22 @@ public class Q00364_JovialAccordion extends Quest
 								htmltext = "30957-07.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

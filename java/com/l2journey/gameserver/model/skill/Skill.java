@@ -384,6 +384,10 @@ public class Skill
 			{
 				return true;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return false;
 	}

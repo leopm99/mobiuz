@@ -270,6 +270,10 @@ public class Q00648_AnIceMerchantsDream extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -363,6 +367,10 @@ public class Q00648_AnIceMerchantsDream extends Quest
 				{
 					htmltext = "32023-01.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

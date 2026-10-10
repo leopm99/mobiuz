@@ -85,6 +85,10 @@ public class ScarletVanHalisha extends AbstractNpcAI
 				_target = getRandomTarget(npc, null);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return super.onEvent(event, npc, player);
 	}
@@ -162,6 +166,10 @@ public class ScarletVanHalisha extends AbstractNpcAI
 				{
 					return SkillData.getInstance().getSkill(5014, 3);
 				}
+			}
+			default:
+			{
+				break;
 			}
 		}
 		return SkillData.getInstance().getSkill(5014, 1);
@@ -255,6 +263,10 @@ public class ScarletVanHalisha extends AbstractNpcAI
 						{
 							_lastRangedSkillTime = System.currentTimeMillis();
 							skillRange = 550;
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}

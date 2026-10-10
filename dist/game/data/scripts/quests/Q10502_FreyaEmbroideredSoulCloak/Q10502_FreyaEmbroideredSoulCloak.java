@@ -123,12 +123,20 @@ public class Q10502_FreyaEmbroideredSoulCloak extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
 			case State.COMPLETED:
 			{
 				htmltext = "32612-03.html";
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

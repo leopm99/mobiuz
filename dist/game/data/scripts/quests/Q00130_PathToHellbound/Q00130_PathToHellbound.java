@@ -113,6 +113,10 @@ public class Q00130_PathToHellbound extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -165,6 +169,10 @@ public class Q00130_PathToHellbound extends Quest
 							htmltext = "30612-09.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				else if (npc.getId() == GALATE)
@@ -186,8 +194,16 @@ public class Q00130_PathToHellbound extends Quest
 							htmltext = "32292-05.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

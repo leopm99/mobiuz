@@ -237,6 +237,10 @@ public class Q00218_TestimonyOfLife extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -395,6 +399,10 @@ public class Q00218_TestimonyOfLife extends Quest
 						giveItems(killer, TEARS_OF_UNICORN, 1);
 						qs.setCond(19, true);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -699,6 +707,10 @@ public class Q00218_TestimonyOfLife extends Quest
 							htmltext = "30655-06.html";
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

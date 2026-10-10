@@ -64,6 +64,10 @@ public class Panel implements IVoicedCommandHandler
 			case "enchantanime":
 				toggleSetting(activeChar, "showEnchantAnime", "Enchant Animation");
 				break;
+			default:
+			{
+				break;
+			}
 		}
 		sendHtml(activeChar);
 		return true;

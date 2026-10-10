@@ -96,6 +96,10 @@ public class Q00376_ExplorationOfTheGiantsCavePart1 extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

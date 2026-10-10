@@ -78,6 +78,10 @@ public class Q00362_BardsMandolin extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -126,6 +130,10 @@ public class Q00362_BardsMandolin extends Quest
 							case 5:
 							{
 								htmltext = "30957-06.html";
+								break;
+							}
+							default:
+							{
 								break;
 							}
 						}
@@ -180,7 +188,15 @@ public class Q00362_BardsMandolin extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

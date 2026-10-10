@@ -129,6 +129,10 @@ public class Q00170_DangerousSeduction extends Quest
 				htmltext = getAlreadyCompletedMsg(player);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

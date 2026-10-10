@@ -190,6 +190,10 @@ public class Cubic
 				_skills.add(SkillData.getInstance().getSkill(5115, 4));
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		_disappearTask = ThreadPool.schedule(new CubicDisappear(this), cubicDuration * 1000L); // disappear
 	}
@@ -212,6 +216,10 @@ public class Cubic
 						case LIFE_CUBIC:
 						{
 							_actionTask = ThreadPool.scheduleAtFixedRate(new CubicHeal(this), 0, _cubicDelay);
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}

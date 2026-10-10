@@ -209,12 +209,20 @@ public class Q00135_TempleExecutor extends Quest
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(player);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -273,6 +281,10 @@ public class Q00135_TempleExecutor extends Quest
 							htmltext = "30291-11.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				break;
@@ -316,6 +328,10 @@ public class Q00135_TempleExecutor extends Quest
 						case 5:
 						{
 							htmltext = "30078-05.html";
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -363,8 +379,16 @@ public class Q00135_TempleExecutor extends Quest
 							htmltext = "31773-05.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

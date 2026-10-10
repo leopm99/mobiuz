@@ -205,6 +205,10 @@ public class Q00638_SeekersOfTheHolyGrail extends Quest
 					htmltext = "31328-09.html";
 				}
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

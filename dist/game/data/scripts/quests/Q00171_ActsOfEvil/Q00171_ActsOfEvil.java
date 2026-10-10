@@ -147,6 +147,10 @@ public class Q00171_ActsOfEvil extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -333,6 +337,10 @@ public class Q00171_ActsOfEvil extends Quest
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}
@@ -436,6 +444,10 @@ public class Q00171_ActsOfEvil extends Quest
 							addExpAndSp(player, 159820, 9182);
 							htmltext = "30381-17.html";
 							qs.exitQuest(false, true);
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -563,6 +575,10 @@ public class Q00171_ActsOfEvil extends Quest
 					{
 						htmltext = "30617-08.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

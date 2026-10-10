@@ -240,6 +240,10 @@ public class Party extends AbstractPlayerGroup
 				looter = getCheckedNextLooter(itemId, target);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return looter != null ? looter : player;
 	}

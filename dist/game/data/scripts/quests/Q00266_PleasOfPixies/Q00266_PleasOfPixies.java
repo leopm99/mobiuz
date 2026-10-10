@@ -167,7 +167,15 @@ public class Q00266_PleasOfPixies extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

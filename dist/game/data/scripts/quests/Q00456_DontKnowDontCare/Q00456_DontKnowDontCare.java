@@ -220,7 +220,15 @@ public class Q00456_DontKnowDontCare extends Quest
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -256,6 +264,10 @@ public class Q00456_DontKnowDontCare extends Quest
 			{
 				allowedPlayerMap.remove(npc.getObjectId());
 				npc.deleteMe();
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

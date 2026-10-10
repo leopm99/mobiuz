@@ -97,6 +97,10 @@ public class Q00026_TiredOfWaiting extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -130,6 +134,10 @@ public class Q00026_TiredOfWaiting extends Quest
 				{
 					htmltext = hasQuestItems(player, DELIVERY_BOX) ? "31045-01.html" : "31045-09.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

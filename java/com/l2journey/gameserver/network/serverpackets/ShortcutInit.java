@@ -87,6 +87,10 @@ public class ShortcutInit extends ServerPacket
 					buffer.writeInt(sc.getId());
 					buffer.writeInt(sc.getCharacterType()); // C6 - 1 for player, 2 for pet
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}

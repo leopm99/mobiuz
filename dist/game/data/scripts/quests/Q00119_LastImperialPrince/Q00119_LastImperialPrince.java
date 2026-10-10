@@ -91,6 +91,10 @@ public class Q00119_LastImperialPrince extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -147,6 +151,10 @@ public class Q00119_LastImperialPrince extends Quest
 						htmltext = "32009-05.html";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

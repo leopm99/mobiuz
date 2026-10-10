@@ -102,6 +102,10 @@ public class NornilsGardenQuest extends AbstractInstance
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -131,6 +135,10 @@ public class NornilsGardenQuest extends AbstractInstance
 			case MOTHER_NORNIL:
 			{
 				htmltext = (q236 != null) && (q236.isCompleted()) ? "32239-02.html" : "32239-01.html";
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

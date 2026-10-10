@@ -294,6 +294,10 @@ public class Q00255_Tutorial extends Quest
 				talkHelperKrenisk(npc, talker, qs);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		return "";
@@ -370,6 +374,10 @@ public class Q00255_Tutorial extends Quest
 						playTutorialVoice(talker, "tutorial_voice_010a");
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -386,6 +394,10 @@ public class Q00255_Tutorial extends Quest
 					case 3:
 					{
 						playTutorialVoice(talker, "tutorial_voice_010b");
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -414,6 +426,10 @@ public class Q00255_Tutorial extends Quest
 						playTutorialVoice(talker, "tutorial_voice_010d");
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -440,6 +456,10 @@ public class Q00255_Tutorial extends Quest
 						playTutorialVoice(talker, "tutorial_voice_010c");
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -456,6 +476,10 @@ public class Q00255_Tutorial extends Quest
 					case 3:
 					{
 						playTutorialVoice(talker, "tutorial_voice_010f");
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -484,6 +508,10 @@ public class Q00255_Tutorial extends Quest
 						playTutorialVoice(talker, "tutorial_voice_010e");
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -500,6 +528,10 @@ public class Q00255_Tutorial extends Quest
 					case 3:
 					{
 						playTutorialVoice(talker, "tutorial_voice_010g");
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -606,6 +638,10 @@ public class Q00255_Tutorial extends Quest
 				eventSubelderPerwan(eventId, talker, npc, qs);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		return "";
@@ -685,6 +721,10 @@ public class Q00255_Tutorial extends Quest
 						showTutorialHTML(talker, "tutorial-kamael-001.html");
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				
 				if (!hasQuestItems(talker, TUTORIAL_GUIDE))
@@ -705,6 +745,10 @@ public class Q00255_Tutorial extends Quest
 			{
 				playTutorialVoice(talker, "tutorial_voice_008");
 				qs.setMemoStateEx(1, -5);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -814,6 +858,10 @@ public class Q00255_Tutorial extends Quest
 					closeTutorialHtml(talker);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 			return;
 		}
@@ -885,6 +933,10 @@ public class Q00255_Tutorial extends Quest
 							addRadar(talker, -125872, 38016, 1251);
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					
 					playTutorialVoice(talker, "tutorial_voice_007");
@@ -951,6 +1003,10 @@ public class Q00255_Tutorial extends Quest
 						addRadar(talker, -118132, 42788, 723);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				
 				if (!talker.isMageClass())
@@ -1001,6 +1057,10 @@ public class Q00255_Tutorial extends Quest
 						case ORC_MAGE:
 						{
 							addRadar(talker, -46225, -113312, -21);
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -1059,6 +1119,10 @@ public class Q00255_Tutorial extends Quest
 						showQuestionMark(talker, 25);
 						playSound(talker, QuestSound.ITEMSOUND_QUEST_TUTORIAL);
 						qs.setMemoState(memoState & ~1073741824);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -1198,6 +1262,10 @@ public class Q00255_Tutorial extends Quest
 					qs.setMemoState(memoState & ~8388608);
 					enableTutorialEvent(qs, (memoFlag & ~8388608));
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -1349,6 +1417,10 @@ public class Q00255_Tutorial extends Quest
 					playSound(player, QuestSound.ITEMSOUND_QUEST_TUTORIAL);
 					addRadar(player, 146995, 23755, -1984);
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -1619,6 +1691,10 @@ public class Q00255_Tutorial extends Quest
 						showTutorialHTML(talker, "tutorial-28b.html");
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -1641,12 +1717,20 @@ public class Q00255_Tutorial extends Quest
 						showTutorialHTML(talker, "tutorial-22qc.html");
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
 			case 34:
 			{
 				showTutorialHTML(talker, "tutorial-22qd.html");
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -1711,6 +1795,10 @@ public class Q00255_Tutorial extends Quest
 						addRadar(talker, -125872, 38016, 1251);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				
 				qs.setMemoState(memoFlag | 2);
@@ -1753,6 +1841,10 @@ public class Q00255_Tutorial extends Quest
 					case MALE_SOLDIER, FEMALE_SOLDIER:
 					{
 						showTutorialHTML(talker, "tutorial-kamael-008.html");
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -1811,6 +1903,10 @@ public class Q00255_Tutorial extends Quest
 						addRadar(talker, -125872, 38016, 1251);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				
 				showTutorialHTML(talker, "tutorial-11.html");
@@ -1853,6 +1949,10 @@ public class Q00255_Tutorial extends Quest
 							showTutorialHTML(talker, "tutorial-kamael-017.html");
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				break;
@@ -1879,6 +1979,10 @@ public class Q00255_Tutorial extends Quest
 					case ORC:
 					{
 						showTutorialHTML(talker, "tutorial-mage-orc-020.html");
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -1946,6 +2050,10 @@ public class Q00255_Tutorial extends Quest
 					case FEMALE_SOLDIER:
 					{
 						showTutorialHTML(talker, "tutorial-21j.html");
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -2036,6 +2144,10 @@ public class Q00255_Tutorial extends Quest
 						showTutorialHTML(talker, "tutorial-newbie-003f.html");
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -2083,6 +2195,10 @@ public class Q00255_Tutorial extends Quest
 						showTutorialHTML(talker, "tutorial-newbie-002i.html");
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -2105,6 +2221,10 @@ public class Q00255_Tutorial extends Quest
 					case FIGHTER, ORC_MAGE, ORC_FIGHTER:
 					{
 						showTutorialHTML(talker, "tutorial-newbie-002h.html");
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -2169,6 +2289,10 @@ public class Q00255_Tutorial extends Quest
 						showTutorialHTML(talker, "tw-rune.html");
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -2178,6 +2302,10 @@ public class Q00255_Tutorial extends Quest
 				{
 					showTutorialHTML(talker, "tutorial-ss-79.html");
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -2279,6 +2407,10 @@ public class Q00255_Tutorial extends Quest
 							showQuestionMark(talker, 5);
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					
 					playSound(talker, QuestSound.ITEMSOUND_QUEST_TUTORIAL);
@@ -2288,6 +2420,10 @@ public class Q00255_Tutorial extends Quest
 				{
 					showQuestionMark(talker, 12);
 					playSound(talker, QuestSound.ITEMSOUND_QUEST_TUTORIAL);
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -2359,6 +2495,10 @@ public class Q00255_Tutorial extends Quest
 						showQuestionMark(talker, 34);
 						playSound(talker, QuestSound.ITEMSOUND_QUEST_TUTORIAL);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -2562,6 +2702,10 @@ public class Q00255_Tutorial extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 			}
 			else
@@ -2663,6 +2807,10 @@ public class Q00255_Tutorial extends Quest
 				showHtmlFile(talker, "30008-006.html");
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	
@@ -2719,6 +2867,10 @@ public class Q00255_Tutorial extends Quest
 			{
 				addRadar(talker, -84081, 243277, -3723);
 				showHtmlFile(talker, "30017-006.html");
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -2779,6 +2931,10 @@ public class Q00255_Tutorial extends Quest
 				showHtmlFile(talker, "30129-006.html");
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	
@@ -2827,6 +2983,10 @@ public class Q00255_Tutorial extends Quest
 			{
 				addRadar(talker, 45475, 48359, -3060);
 				showHtmlFile(talker, "30370-006.html");
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -2879,6 +3039,10 @@ public class Q00255_Tutorial extends Quest
 				showHtmlFile(talker, "30528-006.html");
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	
@@ -2919,6 +3083,10 @@ public class Q00255_Tutorial extends Quest
 			{
 				addRadar(talker, -45032, -113598, -192);
 				showHtmlFile(talker, "30573-006.html");
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

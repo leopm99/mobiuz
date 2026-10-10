@@ -155,6 +155,10 @@ public class Q00198_SevenSignsEmbryo extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -250,8 +254,16 @@ public class Q00198_SevenSignsEmbryo extends Quest
 							htmltext = "32597-12.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

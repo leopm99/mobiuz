@@ -106,6 +106,10 @@ public class Q00710_PathToBecomingALordGiran extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}
@@ -236,6 +240,10 @@ public class Q00710_PathToBecomingALordGiran extends Quest
 				{
 					htmltext = "32243-02.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -2258,6 +2258,10 @@ public class AttackableAI extends CreatureAI
 					thinkCast();
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		catch (Exception _)

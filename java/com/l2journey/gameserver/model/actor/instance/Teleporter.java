@@ -103,6 +103,10 @@ public class Teleporter extends Npc
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 			
 			if (st.countTokens() <= 0)

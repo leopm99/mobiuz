@@ -66,6 +66,10 @@ public class Q00110_ToThePrimevalIsle extends Quest
 				qs.exitQuest(false, true);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}
@@ -96,6 +100,10 @@ public class Q00110_ToThePrimevalIsle extends Quest
 						htmltext = getAlreadyCompletedMsg(player);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -105,6 +113,10 @@ public class Q00110_ToThePrimevalIsle extends Quest
 				{
 					htmltext = "32113-1.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

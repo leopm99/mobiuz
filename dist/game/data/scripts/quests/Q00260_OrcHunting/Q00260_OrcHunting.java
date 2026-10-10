@@ -98,6 +98,10 @@ public class Q00260_OrcHunting extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -189,6 +193,10 @@ public class Q00260_OrcHunting extends Quest
 				{
 					htmltext = "30221-05.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

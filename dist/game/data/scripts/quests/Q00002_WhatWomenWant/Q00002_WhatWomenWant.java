@@ -185,12 +185,20 @@ public class Q00002_WhatWomenWant extends Quest
 								htmltext = "30223-11.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(player);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -252,6 +260,10 @@ public class Q00002_WhatWomenWant extends Quest
 						htmltext = "30157-01.html";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

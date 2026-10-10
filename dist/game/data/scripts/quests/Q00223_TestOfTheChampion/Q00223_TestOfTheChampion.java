@@ -196,6 +196,10 @@ public class Q00223_TestOfTheChampion extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -235,6 +239,10 @@ public class Q00223_TestOfTheChampion extends Quest
 							npc.setScriptValue(2);
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -265,6 +273,10 @@ public class Q00223_TestOfTheChampion extends Quest
 							npc.setScriptValue(2);
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -287,7 +299,15 @@ public class Q00223_TestOfTheChampion extends Quest
 							npc.setScriptValue(2);
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -414,6 +434,10 @@ public class Q00223_TestOfTheChampion extends Quest
 							playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -602,6 +626,10 @@ public class Q00223_TestOfTheChampion extends Quest
 					{
 						htmltext = "30625-07.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

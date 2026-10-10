@@ -672,6 +672,10 @@ public class Q00333_HuntOfTheBlackLion extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -983,6 +987,10 @@ public class Q00333_HuntOfTheBlackLion extends Quest
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}
@@ -1166,6 +1174,10 @@ public class Q00333_HuntOfTheBlackLion extends Quest
 					{
 						htmltext = "30737-01.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

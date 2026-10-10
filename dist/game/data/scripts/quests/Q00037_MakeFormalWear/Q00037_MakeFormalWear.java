@@ -169,6 +169,10 @@ public class Q00037_MakeFormalWear extends Quest
 						htmltext = getAlreadyCompletedMsg(player);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -203,6 +207,10 @@ public class Q00037_MakeFormalWear extends Quest
 							htmltext = hasQuestItems(player, DRESS_SHOES_BOX) ? "31520-10.html" : "31520-11.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				break;
@@ -233,6 +241,10 @@ public class Q00037_MakeFormalWear extends Quest
 							htmltext = "31521-06.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				break;
@@ -253,8 +265,16 @@ public class Q00037_MakeFormalWear extends Quest
 							htmltext = "31627-03.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

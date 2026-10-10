@@ -140,6 +140,10 @@ public class Q00061_LawEnforcement extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -204,6 +208,10 @@ public class Q00061_LawEnforcement extends Quest
 							htmltext = "32138-10.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -217,6 +225,10 @@ public class Q00061_LawEnforcement extends Quest
 					{
 						htmltext = "32469-02.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

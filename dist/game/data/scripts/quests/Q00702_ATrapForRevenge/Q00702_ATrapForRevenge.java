@@ -369,6 +369,10 @@ public class Q00702_ATrapForRevenge extends Quest
 				giveItems(player, VARIANT_DRAKE_WING_HORNS, count);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 	}
@@ -393,6 +397,10 @@ public class Q00702_ATrapForRevenge extends Quest
 					htmltext = (qs.isCond(1)) ? "32563-05.html" : "32563-06.html";
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		if (qs.getState() == State.STARTED)
@@ -411,6 +419,10 @@ public class Q00702_ATrapForRevenge extends Quest
 						htmltext = "32557-02.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 			}
 			else if (npc.getId() == TENIUS)
@@ -425,6 +437,10 @@ public class Q00702_ATrapForRevenge extends Quest
 					case 2:
 					{
 						htmltext = "32555-04.html";
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}

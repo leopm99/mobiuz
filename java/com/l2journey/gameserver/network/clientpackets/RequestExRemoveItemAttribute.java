@@ -164,6 +164,10 @@ public class RequestExRemoveItemAttribute extends ClientPacket
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return _price;
 	}

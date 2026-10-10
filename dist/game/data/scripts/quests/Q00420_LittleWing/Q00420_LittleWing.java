@@ -407,6 +407,10 @@ public class Q00420_LittleWing extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -490,6 +494,10 @@ public class Q00420_LittleWing extends Quest
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -516,6 +524,10 @@ public class Q00420_LittleWing extends Quest
 							case 3:
 							{
 								htmltext = "30608-06.html";
+								break;
+							}
+							default:
+							{
 								break;
 							}
 						}
@@ -562,6 +574,10 @@ public class Q00420_LittleWing extends Quest
 								{
 									htmltext = "30711-07.html";
 								}
+								break;
+							}
+							default:
+							{
 								break;
 							}
 						}
@@ -621,6 +637,10 @@ public class Q00420_LittleWing extends Quest
 								htmltext = "30747-12.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -654,6 +674,10 @@ public class Q00420_LittleWing extends Quest
 							case 7:
 							{
 								htmltext = "30748-05.html";
+								break;
+							}
+							default:
+							{
 								break;
 							}
 						}
@@ -691,6 +715,10 @@ public class Q00420_LittleWing extends Quest
 								htmltext = "30749-05.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -721,6 +749,10 @@ public class Q00420_LittleWing extends Quest
 							case 7:
 							{
 								htmltext = "30750-06.html";
+								break;
+							}
+							default:
+							{
 								break;
 							}
 						}
@@ -758,6 +790,10 @@ public class Q00420_LittleWing extends Quest
 								htmltext = "30751-06.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -793,7 +829,15 @@ public class Q00420_LittleWing extends Quest
 								htmltext = "30752-05.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -802,6 +846,10 @@ public class Q00420_LittleWing extends Quest
 			case State.COMPLETED:
 			{
 				htmltext = getAlreadyCompletedMsg(talker);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

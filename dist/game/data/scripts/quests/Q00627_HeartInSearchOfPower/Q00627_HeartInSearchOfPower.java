@@ -141,6 +141,10 @@ public class Q00627_HeartInSearchOfPower extends Quest
 						giveAdena(player, 17200, true);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				htmltext = "31518-10.html";
 				qs.exitQuest(true);
@@ -239,6 +243,10 @@ public class Q00627_HeartInSearchOfPower extends Quest
 								htmltext = "31518-08.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -256,10 +264,22 @@ public class Q00627_HeartInSearchOfPower extends Quest
 								htmltext = "31519-03.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

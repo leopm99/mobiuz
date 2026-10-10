@@ -267,6 +267,10 @@ public class VarkaSilenosSupport extends AbstractNpcAI
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

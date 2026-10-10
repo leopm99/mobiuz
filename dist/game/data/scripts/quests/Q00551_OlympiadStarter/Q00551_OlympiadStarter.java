@@ -90,6 +90,10 @@ public class Q00551_OlympiadStarter extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

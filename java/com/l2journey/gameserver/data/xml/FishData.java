@@ -99,6 +99,10 @@ public class FishData implements IXmlReader
 								_fishHard.put(fish.getFishId(), fish);
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 					}
 				}

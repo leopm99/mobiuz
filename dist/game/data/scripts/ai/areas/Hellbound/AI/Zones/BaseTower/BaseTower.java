@@ -122,6 +122,10 @@ public class BaseTower extends AbstractNpcAI
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 }

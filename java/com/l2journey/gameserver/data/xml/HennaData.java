@@ -132,6 +132,10 @@ public class HennaData implements IXmlReader
 					wearClassIds.add(PlayerClass.getPlayerClass(Integer.parseInt(c.getTextContent())));
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		final Henna henna = new Henna(set);

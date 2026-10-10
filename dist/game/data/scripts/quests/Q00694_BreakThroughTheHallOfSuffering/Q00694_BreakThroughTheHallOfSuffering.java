@@ -268,7 +268,15 @@ public class Q00694_BreakThroughTheHallOfSuffering extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

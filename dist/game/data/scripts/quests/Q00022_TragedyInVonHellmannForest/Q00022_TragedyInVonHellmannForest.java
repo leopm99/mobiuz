@@ -303,6 +303,10 @@ public class Q00022_TragedyInVonHellmannForest extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -422,6 +426,10 @@ public class Q00022_TragedyInVonHellmannForest extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -504,6 +512,10 @@ public class Q00022_TragedyInVonHellmannForest extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -533,6 +545,10 @@ public class Q00022_TragedyInVonHellmannForest extends Quest
 					case 13, 14, 15, 16:
 					{
 						htmltext = "31527-05.html";
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -616,7 +632,15 @@ public class Q00022_TragedyInVonHellmannForest extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -86,6 +86,10 @@ public class Bernarde extends AbstractNpcAI
 			{
 				return "32300-" + HellboundEngine.getInstance().getLevel() + "r.htm";
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}

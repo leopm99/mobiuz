@@ -88,6 +88,10 @@ public class Q00655_AGrandPlanForTamingWildBeasts extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

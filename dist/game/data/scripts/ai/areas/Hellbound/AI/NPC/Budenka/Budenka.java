@@ -63,6 +63,10 @@ public class Budenka extends AbstractNpcAI
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

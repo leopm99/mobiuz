@@ -106,6 +106,10 @@ public class GatekeeperSpirit extends AbstractNpcAI
 				player.teleToLocation(EXIT, true);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -123,6 +127,10 @@ public class GatekeeperSpirit extends AbstractNpcAI
 			case LILITH:
 			{
 				startQuestTimer("LILITH", 10000, npc, killer);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

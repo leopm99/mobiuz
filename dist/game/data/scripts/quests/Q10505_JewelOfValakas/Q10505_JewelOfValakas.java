@@ -103,6 +103,10 @@ public class Q10505_JewelOfValakas extends Quest
 					htmltext = event;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -162,12 +166,20 @@ public class Q10505_JewelOfValakas extends Quest
 						htmltext = "31540-10.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
 			case State.COMPLETED:
 			{
 				htmltext = "31540-03.html";
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

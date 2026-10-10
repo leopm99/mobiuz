@@ -115,6 +115,10 @@ public class ServerStatus extends BaseReadablePacket
 						gsi.setAgeLimit(value);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 			}
 		}

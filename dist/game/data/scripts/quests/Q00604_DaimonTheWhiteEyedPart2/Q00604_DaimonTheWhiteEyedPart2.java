@@ -164,6 +164,10 @@ public class Q00604_DaimonTheWhiteEyedPart2 extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

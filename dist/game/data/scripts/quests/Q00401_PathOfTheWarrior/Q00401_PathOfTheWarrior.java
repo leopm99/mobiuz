@@ -144,6 +144,10 @@ public class Q00401_PathOfTheWarrior extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -179,6 +183,10 @@ public class Q00401_PathOfTheWarrior extends Quest
 					{
 						npc.setScriptValue(2);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -223,6 +231,10 @@ public class Q00401_PathOfTheWarrior extends Quest
 							playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -319,6 +331,10 @@ public class Q00401_PathOfTheWarrior extends Quest
 					{
 						htmltext = "30253-06.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

@@ -86,6 +86,10 @@ public class Q00713_PathToBecomingALordAden extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}
@@ -177,6 +181,10 @@ public class Q00713_PathToBecomingALordAden extends Quest
 				{
 					htmltext = "30857-06.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

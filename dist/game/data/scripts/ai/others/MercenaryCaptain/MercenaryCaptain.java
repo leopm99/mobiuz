@@ -196,6 +196,10 @@ public class MercenaryCaptain extends AbstractNpcAI
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		else if (event.equalsIgnoreCase("say") && !npc.isDecayed())

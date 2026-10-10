@@ -140,6 +140,10 @@ public class Q00133_ThatsBloodyHot extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -204,6 +208,10 @@ public class Q00133_ThatsBloodyHot extends Quest
 						htmltext = "32292-04.html";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

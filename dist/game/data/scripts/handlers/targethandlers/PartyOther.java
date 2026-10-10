@@ -71,6 +71,10 @@ public class PartyOther implements ITargetTypeHandler
 							}
 							return Collections.emptyList();
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				return Collections.singletonList(target);

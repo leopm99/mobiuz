@@ -128,6 +128,10 @@ public class Q00691_MatrasSuspiciousRequest extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -177,6 +181,10 @@ public class Q00691_MatrasSuspiciousRequest extends Quest
 				{
 					htmltext = "32245-06.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

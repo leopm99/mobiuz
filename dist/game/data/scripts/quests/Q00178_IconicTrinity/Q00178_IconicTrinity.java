@@ -339,6 +339,10 @@ public class Q00178_IconicTrinity extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -416,6 +420,10 @@ public class Q00178_IconicTrinity extends Quest
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -442,6 +450,10 @@ public class Q00178_IconicTrinity extends Quest
 						case 4, 5:
 						{
 							htmltext = "32255-14.html";
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -472,6 +484,10 @@ public class Q00178_IconicTrinity extends Quest
 							htmltext = "32256-15.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -500,7 +516,15 @@ public class Q00178_IconicTrinity extends Quest
 							htmltext = "32257-13.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

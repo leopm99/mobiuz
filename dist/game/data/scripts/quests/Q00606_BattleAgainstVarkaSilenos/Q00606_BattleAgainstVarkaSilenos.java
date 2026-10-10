@@ -143,6 +143,10 @@ public class Q00606_BattleAgainstVarkaSilenos extends Quest
 				htmltext = (hasQuestItems(player, MANE)) ? "31370-04.html" : "31370-05.html";
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

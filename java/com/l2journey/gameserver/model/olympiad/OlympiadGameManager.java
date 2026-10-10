@@ -71,6 +71,10 @@ public class OlympiadGameManager implements Runnable
 					instanceId = InstanceManager.getInstance().createDynamicInstance(150).getId();
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 			_tasks[i++] = new OlympiadGameTask(zone, instanceId);
 		}

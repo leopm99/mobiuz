@@ -138,6 +138,10 @@ public class Q00608_SlayTheEnemyCommanderKetra extends Quest
 				htmltext = (qs.isCond(2) && hasQuestItems(player, MOS_HEAD)) ? "31370-05.html" : "31370-06.html";
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

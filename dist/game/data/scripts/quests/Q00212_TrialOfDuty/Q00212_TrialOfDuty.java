@@ -137,6 +137,10 @@ public class Q00212_TrialOfDuty extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return html;
 	}
@@ -241,6 +245,10 @@ public class Q00212_TrialOfDuty extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	
@@ -293,6 +301,10 @@ public class Q00212_TrialOfDuty extends Quest
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				else
@@ -339,6 +351,10 @@ public class Q00212_TrialOfDuty extends Quest
 					case 4:
 					{
 						html = "30653-04.html";
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -392,6 +408,10 @@ public class Q00212_TrialOfDuty extends Quest
 					case 8:
 					{
 						html = "30654-06.html";
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -450,6 +470,10 @@ public class Q00212_TrialOfDuty extends Quest
 						{
 							html = "30655-05.html";
 						}
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -511,6 +535,10 @@ public class Q00212_TrialOfDuty extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -538,7 +566,15 @@ public class Q00212_TrialOfDuty extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

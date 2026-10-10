@@ -147,7 +147,15 @@ public class Q00258_BringWolfPelts extends Quest
 							break;
 						}
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

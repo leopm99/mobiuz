@@ -116,6 +116,10 @@ public class ForgeOfTheGods extends AbstractNpcAI
 				_npcCount = 0;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return null;
 	}

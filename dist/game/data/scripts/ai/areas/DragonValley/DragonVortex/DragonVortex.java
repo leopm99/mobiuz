@@ -134,6 +134,10 @@ public class DragonVortex extends AbstractNpcAI
 								loc = SPOT_4;
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						
 						npc.getVariables().set(I_QUEST0, true);
@@ -154,6 +158,10 @@ public class DragonVortex extends AbstractNpcAI
 			case "CANSPAWN":
 			{
 				npc.getVariables().set(I_QUEST0, false);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

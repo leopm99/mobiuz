@@ -202,6 +202,10 @@ public class Q00726_LightWithinTheDarkness extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

@@ -89,6 +89,10 @@ public class PaganTeleporters extends AbstractNpcAI
 				DoorData.getInstance().getDoor(19160011).closeMe();
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return "";
 	}
@@ -141,6 +145,10 @@ public class PaganTeleporters extends AbstractNpcAI
 				DoorData.getInstance().getDoor(19160011).openMe();
 				startQuestTimer("Close_Door2", 10000, null, null);
 				return "FadedMark.htm";
+			}
+			default:
+			{
+				break;
 			}
 		}
 		return super.onTalk(npc, player);

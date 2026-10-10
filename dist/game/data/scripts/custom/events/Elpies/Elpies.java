@@ -127,6 +127,10 @@ public class Elpies extends Event
 								LOGGER.info("Event " + name + " scheduled at " + TimeUtil.getDateTimeString(System.currentTimeMillis() + delay));
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 					}
 				});

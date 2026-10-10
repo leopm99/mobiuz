@@ -377,6 +377,10 @@ public class DropSearchBoard implements IParseBoardHandler
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		if (html != null)

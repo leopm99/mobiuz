@@ -103,6 +103,10 @@ public class Q00363_SorrowfulSoundOfFlute extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -154,6 +158,10 @@ public class Q00363_SorrowfulSoundOfFlute extends Quest
 								htmltext = "30956-10.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -178,6 +186,10 @@ public class Q00363_SorrowfulSoundOfFlute extends Quest
 								case 2:
 								{
 									htmltext = "30458-03.html";
+									break;
+								}
+								default:
+								{
 									break;
 								}
 							}
@@ -212,6 +224,10 @@ public class Q00363_SorrowfulSoundOfFlute extends Quest
 									htmltext = "30594-03.html";
 									break;
 								}
+								default:
+								{
+									break;
+								}
 							}
 							qs.setCond(2, true);
 						}
@@ -242,6 +258,10 @@ public class Q00363_SorrowfulSoundOfFlute extends Quest
 								case 2:
 								{
 									htmltext = "30057-03.html";
+									break;
+								}
+								default:
+								{
 									break;
 								}
 							}
@@ -276,6 +296,10 @@ public class Q00363_SorrowfulSoundOfFlute extends Quest
 									htmltext = "30058-03.html";
 									break;
 								}
+								default:
+								{
+									break;
+								}
 							}
 							qs.setCond(2, true);
 						}
@@ -306,6 +330,10 @@ public class Q00363_SorrowfulSoundOfFlute extends Quest
 								case 2:
 								{
 									htmltext = "30595-03.html";
+									break;
+								}
+								default:
+								{
 									break;
 								}
 							}
@@ -353,7 +381,15 @@ public class Q00363_SorrowfulSoundOfFlute extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

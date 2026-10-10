@@ -212,6 +212,10 @@ public class Q00144_PailakaInjuredDragon extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -266,6 +270,10 @@ public class Q00144_PailakaInjuredDragon extends Quest
 						{
 							htmltext = "32512-03.html";
 						}
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -353,6 +361,10 @@ public class Q00144_PailakaInjuredDragon extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		return htmltext;
@@ -384,6 +396,10 @@ public class Q00144_PailakaInjuredDragon extends Quest
 						htmltext = "32499-02.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -398,6 +414,10 @@ public class Q00144_PailakaInjuredDragon extends Quest
 				{
 					htmltext = "32512-02.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

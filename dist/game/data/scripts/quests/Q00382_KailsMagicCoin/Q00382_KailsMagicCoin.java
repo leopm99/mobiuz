@@ -95,6 +95,10 @@ public class Q00382_KailsMagicCoin extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

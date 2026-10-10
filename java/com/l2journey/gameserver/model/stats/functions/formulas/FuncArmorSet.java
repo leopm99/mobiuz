@@ -107,6 +107,10 @@ public class FuncArmorSet extends AbstractFunction
 							value += set.getWIT();
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 			}

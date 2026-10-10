@@ -189,6 +189,10 @@ public class SubclassCertification extends AbstractNpcAI
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

@@ -178,6 +178,10 @@ public class Q00224_TestOfSagittarius extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -334,6 +338,10 @@ public class Q00224_TestOfSagittarius extends Quest
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}
@@ -408,6 +416,10 @@ public class Q00224_TestOfSagittarius extends Quest
 						case 8:
 						{
 							htmltext = "30514-05.html";
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -494,6 +506,10 @@ public class Q00224_TestOfSagittarius extends Quest
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -553,7 +569,15 @@ public class Q00224_TestOfSagittarius extends Quest
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

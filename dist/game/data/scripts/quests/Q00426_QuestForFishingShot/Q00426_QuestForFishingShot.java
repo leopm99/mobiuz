@@ -391,6 +391,10 @@ public class Q00426_QuestForFishingShot extends Quest
 				qs.exitQuest(true);
 				return "08.html";
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}
@@ -443,6 +447,10 @@ public class Q00426_QuestForFishingShot extends Quest
 					return "04.html";
 				}
 				return "05.html";
+			}
+			default:
+			{
+				break;
 			}
 		}
 		return htmltext;

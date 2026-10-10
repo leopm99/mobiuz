@@ -231,6 +231,10 @@ public class CharacterCreate extends ClientPacket
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 			newChar = Player.create(template, client.getAccountName(), _name, new PlayerAppearance(_face, _hairColor, _hairStyle, _isFemale));
 		}

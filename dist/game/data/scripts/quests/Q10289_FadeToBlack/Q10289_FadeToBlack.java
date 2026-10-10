@@ -212,6 +212,10 @@ public class Q10289_FadeToBlack extends Quest
 							giveAdena(player, 454240, true);
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					
 					final long marksOfDarkness = getQuestItemsCount(player, MARK_OF_DARKNESS);
@@ -222,6 +226,10 @@ public class Q10289_FadeToBlack extends Quest
 					qs.exitQuest(false, true);
 					htmltext = "32757-09.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -290,6 +298,10 @@ public class Q10289_FadeToBlack extends Quest
 				case 2, 3:
 				{
 					htmltext = "32757-05.html";
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

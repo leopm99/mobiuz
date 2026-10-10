@@ -782,6 +782,10 @@ public class ClanHallManager extends Merchant
 									html.replace("%change_hp%", "[<a action=\"bypass -h npc_%objectId%_manage recovery hp_cancel\">Deactivate</a>]" + hp_grade3);
 									break;
 								}
+								default:
+								{
+									break;
+								}
 							}
 						}
 						else
@@ -809,6 +813,10 @@ public class ClanHallManager extends Merchant
 								case 3:
 								{
 									html.replace("%change_hp%", hp_grade3);
+									break;
+								}
+								default:
+								{
 									break;
 								}
 							}
@@ -841,6 +849,10 @@ public class ClanHallManager extends Merchant
 									html.replace("%change_exp%", "[<a action=\"bypass -h npc_%objectId%_manage recovery exp_cancel\">Deactivate</a>]" + exp_grade3);
 									break;
 								}
+								default:
+								{
+									break;
+								}
 							}
 						}
 						else
@@ -868,6 +880,10 @@ public class ClanHallManager extends Merchant
 								case 3:
 								{
 									html.replace("%change_exp%", exp_grade3);
+									break;
+								}
+								default:
+								{
 									break;
 								}
 							}
@@ -900,6 +916,10 @@ public class ClanHallManager extends Merchant
 									html.replace("%change_mp%", "[<a action=\"bypass -h npc_%objectId%_manage recovery mp_cancel\">Deactivate</a>]" + mp_grade3);
 									break;
 								}
+								default:
+								{
+									break;
+								}
 							}
 						}
 						else
@@ -927,6 +947,10 @@ public class ClanHallManager extends Merchant
 								case 3:
 								{
 									html.replace("%change_mp%", mp_grade3);
+									break;
+								}
+								default:
+								{
 									break;
 								}
 							}
@@ -1333,6 +1357,10 @@ public class ClanHallManager extends Merchant
 									html.replace("%change_support%", "[<a action=\"bypass -h npc_%objectId%_manage other support_cancel\">Deactivate</a>]" + support_grade3);
 									break;
 								}
+								default:
+								{
+									break;
+								}
 							}
 						}
 						else
@@ -1360,6 +1388,10 @@ public class ClanHallManager extends Merchant
 								case 3:
 								{
 									html.replace("%change_support%", support_grade3);
+									break;
+								}
+								default:
+								{
 									break;
 								}
 							}

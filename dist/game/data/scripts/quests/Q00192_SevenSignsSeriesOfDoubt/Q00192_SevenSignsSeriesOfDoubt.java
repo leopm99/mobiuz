@@ -178,6 +178,10 @@ public class Q00192_SevenSignsSeriesOfDoubt extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -246,6 +250,10 @@ public class Q00192_SevenSignsSeriesOfDoubt extends Quest
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -296,7 +304,15 @@ public class Q00192_SevenSignsSeriesOfDoubt extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

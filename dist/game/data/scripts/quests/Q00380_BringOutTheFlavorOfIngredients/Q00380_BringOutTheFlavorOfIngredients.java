@@ -100,6 +100,10 @@ public class Q00380_BringOutTheFlavorOfIngredients extends Quest
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -174,12 +178,20 @@ public class Q00380_BringOutTheFlavorOfIngredients extends Quest
 						htmltext = "30069-12.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
 			case State.COMPLETED:
 			{
 				htmltext = getAlreadyCompletedMsg(talker);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

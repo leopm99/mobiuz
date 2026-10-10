@@ -68,6 +68,10 @@ public class Q00157_RecoverSmuggledGoods extends Quest
 					htmltext = event;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -120,6 +124,10 @@ public class Q00157_RecoverSmuggledGoods extends Quest
 			case State.COMPLETED:
 			{
 				htmltext = getAlreadyCompletedMsg(player);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

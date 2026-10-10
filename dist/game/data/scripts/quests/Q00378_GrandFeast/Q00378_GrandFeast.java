@@ -190,6 +190,10 @@ public class Q00378_GrandFeast extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -293,6 +297,10 @@ public class Q00378_GrandFeast extends Quest
 								adena = 2200;
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						giveItems(player, item, quantity);
 						giveAdena(player, adena, true);
@@ -303,6 +311,10 @@ public class Q00378_GrandFeast extends Quest
 					{
 						htmltext = "30594-19.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

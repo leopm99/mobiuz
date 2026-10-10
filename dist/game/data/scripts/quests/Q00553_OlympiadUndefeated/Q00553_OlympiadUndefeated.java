@@ -125,6 +125,10 @@ public class Q00553_OlympiadUndefeated extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 			}
 		}

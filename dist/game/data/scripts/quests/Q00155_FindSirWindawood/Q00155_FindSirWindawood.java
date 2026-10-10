@@ -84,6 +84,10 @@ public class Q00155_FindSirWindawood extends Quest
 						htmltext = getAlreadyCompletedMsg(player);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -95,6 +99,10 @@ public class Q00155_FindSirWindawood extends Quest
 					qs.exitQuest(false, true);
 					htmltext = "30311-01.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

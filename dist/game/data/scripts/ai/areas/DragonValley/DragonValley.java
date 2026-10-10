@@ -276,6 +276,10 @@ public class DragonValley extends AbstractNpcAI
 							MORALE_BOOST3.getSkill().applyEffects(member, member);
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 			}

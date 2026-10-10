@@ -169,6 +169,10 @@ public class BoatRunePrimeval implements Runnable
 					ThreadPool.schedule(this, 180000);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 			_shoutCount = 0;
 			_cycle++;

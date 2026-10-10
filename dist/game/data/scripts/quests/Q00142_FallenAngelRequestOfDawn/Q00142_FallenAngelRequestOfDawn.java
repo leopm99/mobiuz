@@ -214,6 +214,10 @@ public class Q00142_FallenAngelRequestOfDawn extends Quest
 						htmltext = getAlreadyCompletedMsg(player);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -258,6 +262,10 @@ public class Q00142_FallenAngelRequestOfDawn extends Quest
 							htmltext = "30289-07.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				break;
@@ -295,6 +303,10 @@ public class Q00142_FallenAngelRequestOfDawn extends Quest
 							htmltext = "30612-09.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				break;
@@ -322,6 +334,10 @@ public class Q00142_FallenAngelRequestOfDawn extends Quest
 						}
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

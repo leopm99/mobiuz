@@ -151,6 +151,10 @@ public class Q00237_WindsOfChange extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -201,7 +205,15 @@ public class Q00237_WindsOfChange extends Quest
 								htmltext = "30899-08.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -237,6 +249,10 @@ public class Q00237_WindsOfChange extends Quest
 							htmltext = "30969-11.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				break;
@@ -255,6 +271,10 @@ public class Q00237_WindsOfChange extends Quest
 						htmltext = "30897-04.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -270,6 +290,10 @@ public class Q00237_WindsOfChange extends Quest
 					case 4:
 					{
 						htmltext = "30925-04.html";
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -307,6 +331,10 @@ public class Q00237_WindsOfChange extends Quest
 				{
 					htmltext = "32643-01.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

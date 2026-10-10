@@ -136,6 +136,10 @@ public class Q10275_ContainingTheAttributePower extends Quest
 				giveItems(player, YANGSWORD, 1, Elementals.EARTH, 10);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		if (StringUtil.isNumeric(event))
@@ -192,6 +196,10 @@ public class Q10275_ContainingTheAttributePower extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	
@@ -225,12 +233,20 @@ public class Q10275_ContainingTheAttributePower extends Quest
 								htmltext = "30839-05.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = "30839-0a.html";
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -259,12 +275,20 @@ public class Q10275_ContainingTheAttributePower extends Quest
 								htmltext = "31307-05.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = "31307-0a.html";
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -296,6 +320,10 @@ public class Q10275_ContainingTheAttributePower extends Quest
 						case 6:
 						{
 							htmltext = "32325-10.html";
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -330,8 +358,16 @@ public class Q10275_ContainingTheAttributePower extends Quest
 							htmltext = "32326-10.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

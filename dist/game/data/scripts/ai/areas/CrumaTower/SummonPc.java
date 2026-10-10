@@ -180,6 +180,10 @@ public class SummonPc extends AbstractNpcAI
 					handleReattack(npc, player);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		

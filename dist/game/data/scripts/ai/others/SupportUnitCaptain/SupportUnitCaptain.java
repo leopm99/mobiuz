@@ -275,6 +275,10 @@ public class SupportUnitCaptain extends AbstractNpcAI
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

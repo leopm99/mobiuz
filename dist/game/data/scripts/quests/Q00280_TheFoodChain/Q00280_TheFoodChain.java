@@ -160,6 +160,10 @@ public class Q00280_TheFoodChain extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -205,6 +209,10 @@ public class Q00280_TheFoodChain extends Quest
 				{
 					htmltext = "32175-04.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -3856,6 +3856,10 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 					listeners.add(template.addListener(action.apply(template)));
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		
@@ -3965,6 +3969,10 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 				{
 					final ListenersContainer template = Containers.Players();
 					listeners.add(template.addListener(action.apply(template)));
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

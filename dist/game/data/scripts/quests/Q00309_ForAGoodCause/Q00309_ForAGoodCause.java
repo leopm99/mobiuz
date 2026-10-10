@@ -195,6 +195,10 @@ public class Q00309_ForAGoodCause extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

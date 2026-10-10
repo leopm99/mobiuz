@@ -88,6 +88,10 @@ public class Q00263_OrcSubjugation extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -143,6 +147,10 @@ public class Q00263_OrcSubjugation extends Quest
 				{
 					htmltext = "30346-05.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

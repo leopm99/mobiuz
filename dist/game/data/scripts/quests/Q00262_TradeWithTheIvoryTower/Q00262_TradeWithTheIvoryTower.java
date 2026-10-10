@@ -128,7 +128,15 @@ public class Q00262_TradeWithTheIvoryTower extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -324,6 +324,10 @@ public class MonsterRaceManager
 					Broadcast.toAllPlayersInZoneType(DerbyTrackZone.class, new DeleteObject(getMonsters()[0]), new DeleteObject(getMonsters()[1]), new DeleteObject(getMonsters()[2]), new DeleteObject(getMonsters()[3]), new DeleteObject(getMonsters()[4]), new DeleteObject(getMonsters()[5]), new DeleteObject(getMonsters()[6]), new DeleteObject(getMonsters()[7]));
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 			_finalCountdown += 1;
 		}

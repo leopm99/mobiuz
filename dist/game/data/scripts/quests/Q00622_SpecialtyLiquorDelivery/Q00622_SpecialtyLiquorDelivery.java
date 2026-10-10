@@ -166,6 +166,10 @@ public class Q00622_SpecialtyLiquorDelivery extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -211,12 +215,20 @@ public class Q00622_SpecialtyLiquorDelivery extends Quest
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(talker);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -239,6 +251,10 @@ public class Q00622_SpecialtyLiquorDelivery extends Quest
 						case 2:
 						{
 							htmltext = "31547-04.html";
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -267,6 +283,10 @@ public class Q00622_SpecialtyLiquorDelivery extends Quest
 				{
 					htmltext = "31267-01.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

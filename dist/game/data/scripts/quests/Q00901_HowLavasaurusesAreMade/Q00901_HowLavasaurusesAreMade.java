@@ -139,6 +139,10 @@ public class Q00901_HowLavasaurusesAreMade extends Quest
 					giveQuestItems(qs, FRAGMENT_HORN);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}
@@ -189,6 +193,10 @@ public class Q00901_HowLavasaurusesAreMade extends Quest
 				{
 					htmltext = "32049-16.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

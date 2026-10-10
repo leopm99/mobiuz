@@ -268,6 +268,10 @@ public class Q10295_SevenSignsSolinasTomb extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -348,6 +352,10 @@ public class Q10295_SevenSignsSolinasTomb extends Quest
 						case 6:
 						{
 							htmltext = "32793-11.html";
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -542,8 +550,16 @@ public class Q10295_SevenSignsSolinasTomb extends Quest
 								htmltext = "32787-06.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

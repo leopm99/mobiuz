@@ -434,6 +434,10 @@ public class Q00372_LegacyOfInsolence extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -684,6 +688,10 @@ public class Q00372_LegacyOfInsolence extends Quest
 					{
 						htmltext = "31001-01.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

@@ -159,6 +159,10 @@ public class Q00417_PathOfTheScavenger extends Quest
 							htmltext = "30519-04.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				break;
@@ -181,6 +185,10 @@ public class Q00417_PathOfTheScavenger extends Quest
 					case 1:
 					{
 						htmltext = "30519-11.html";
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -236,6 +244,10 @@ public class Q00417_PathOfTheScavenger extends Quest
 					{
 						giveItems(player, BRONKS_INGOT, 1);
 						htmltext = "30519-04.html";
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -325,6 +337,10 @@ public class Q00417_PathOfTheScavenger extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -355,6 +371,10 @@ public class Q00417_PathOfTheScavenger extends Quest
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -372,6 +392,10 @@ public class Q00417_PathOfTheScavenger extends Quest
 						npc.setScriptValue(2);
 						attacker.setLastSkillCast(null); // Reset last skill cast.
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -418,6 +442,10 @@ public class Q00417_PathOfTheScavenger extends Quest
 					{
 						qs.setCond(8);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -674,6 +702,10 @@ public class Q00417_PathOfTheScavenger extends Quest
 					{
 						htmltext = "31958-01.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

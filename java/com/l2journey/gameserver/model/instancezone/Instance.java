@@ -765,6 +765,10 @@ public class Instance
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}

@@ -297,6 +297,10 @@ public class CastleCourtMagician extends AbstractNpcAI
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

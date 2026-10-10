@@ -453,6 +453,10 @@ public class SSQMonasteryOfSilence extends AbstractInstance
 					world.getParameters().getObject("elcadia", Npc.class).teleToLocation(player.getX(), player.getY(), player.getZ(), 0, world.getInstanceId());
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		
@@ -509,6 +513,10 @@ public class SSQMonasteryOfSilence extends AbstractInstance
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}
@@ -526,6 +534,10 @@ public class SSQMonasteryOfSilence extends AbstractInstance
 			case TOMB_OF_THE_SAINTESS:
 			{
 				startQuestTimer("CLOSE_TOMB_DOORS", 1000, npc, null);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

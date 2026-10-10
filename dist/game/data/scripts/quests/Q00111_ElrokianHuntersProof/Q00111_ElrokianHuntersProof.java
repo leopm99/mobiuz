@@ -194,6 +194,10 @@ public class Q00111_ElrokianHuntersProof extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -304,6 +308,10 @@ public class Q00111_ElrokianHuntersProof extends Quest
 								htmltext = "32113-30.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -377,6 +385,10 @@ public class Q00111_ElrokianHuntersProof extends Quest
 								htmltext = "32115-12.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -420,10 +432,22 @@ public class Q00111_ElrokianHuntersProof extends Quest
 								htmltext = "32116-09.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

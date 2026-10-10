@@ -127,6 +127,10 @@ public class Q00039_RedEyedInvaders extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -167,6 +171,10 @@ public class Q00039_RedEyedInvaders extends Quest
 						htmltext = "30332-08.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -184,6 +192,10 @@ public class Q00039_RedEyedInvaders extends Quest
 				{
 					htmltext = getAlreadyCompletedMsg(talker);
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -251,6 +263,10 @@ public class Q00039_RedEyedInvaders extends Quest
 				{
 					qs.setCond(5);
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

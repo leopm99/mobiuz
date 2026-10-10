@@ -123,6 +123,10 @@ public class PailakaSongOfIceAndFire extends AbstractInstance
 				startQuestTimer("BLOOM_TIMER", 5000, npc, null);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return super.onEvent(event, npc, player);
 	}

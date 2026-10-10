@@ -81,6 +81,10 @@ public class QueenShyeed extends AbstractNpcAI
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return null;
 	}

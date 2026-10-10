@@ -90,6 +90,10 @@ public class Q00328_SenseForBusiness extends Quest
 					htmltext = event;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -122,6 +126,10 @@ public class Q00328_SenseForBusiness extends Quest
 				{
 					htmltext = "30436-04.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

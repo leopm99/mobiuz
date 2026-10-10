@@ -89,6 +89,10 @@ public class Q00699_GuardianOfTheSkies extends Quest
 					htmltext = event;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -160,6 +164,10 @@ public class Q00699_GuardianOfTheSkies extends Quest
 				{
 					htmltext = "32557-05.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

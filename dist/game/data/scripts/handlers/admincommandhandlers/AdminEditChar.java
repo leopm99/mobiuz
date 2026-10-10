@@ -413,6 +413,10 @@ public class AdminEditChar implements IAdminCommandHandler
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 					}
 					

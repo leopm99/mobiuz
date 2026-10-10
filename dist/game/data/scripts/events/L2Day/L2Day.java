@@ -253,6 +253,10 @@ public class L2Day extends LongTimeEvent
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

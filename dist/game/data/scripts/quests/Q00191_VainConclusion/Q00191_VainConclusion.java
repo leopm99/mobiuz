@@ -119,6 +119,10 @@ public class Q00191_VainConclusion extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -165,6 +169,10 @@ public class Q00191_VainConclusion extends Quest
 							htmltext = "30068-04.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -202,7 +210,15 @@ public class Q00191_VainConclusion extends Quest
 							htmltext = "30673-05.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

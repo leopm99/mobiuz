@@ -154,6 +154,10 @@ public class Q00414_PathOfTheOrcRaider extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -232,6 +236,10 @@ public class Q00414_PathOfTheOrcRaider extends Quest
 						giveItems(killer, TIMORA_ORC_HEAD, 1);
 						qs.setCond(7, true);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -344,6 +352,10 @@ public class Q00414_PathOfTheOrcRaider extends Quest
 							htmltext = "31978-05.html";
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

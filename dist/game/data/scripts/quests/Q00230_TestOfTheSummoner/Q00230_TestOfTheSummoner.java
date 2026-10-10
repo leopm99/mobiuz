@@ -186,6 +186,10 @@ public class Q00230_TestOfTheSummoner extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		// For NPC-only timers, player is null and no further checks or actions are required.
@@ -257,6 +261,10 @@ public class Q00230_TestOfTheSummoner extends Quest
 						giveItems(player, LARAS_5TH_LIST, 1);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				qs.setCond(2, true);
 				takeItems(player, GALATEAS_LETTER, 1);
@@ -290,6 +298,10 @@ public class Q00230_TestOfTheSummoner extends Quest
 					case 4:
 					{
 						giveItems(player, LARAS_5TH_LIST, 1);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -428,6 +440,10 @@ public class Q00230_TestOfTheSummoner extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -478,6 +494,10 @@ public class Q00230_TestOfTheSummoner extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -520,6 +540,10 @@ public class Q00230_TestOfTheSummoner extends Quest
 							}
 							npc.deleteMe();
 						}
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -566,6 +590,10 @@ public class Q00230_TestOfTheSummoner extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -608,6 +636,10 @@ public class Q00230_TestOfTheSummoner extends Quest
 							}
 							npc.deleteMe();
 						}
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -654,6 +686,10 @@ public class Q00230_TestOfTheSummoner extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -698,7 +734,15 @@ public class Q00230_TestOfTheSummoner extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -818,6 +862,10 @@ public class Q00230_TestOfTheSummoner extends Quest
 						giveItems(killer, data.getCrystalOfVictory(), 1);
 						playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -1221,6 +1269,10 @@ public class Q00230_TestOfTheSummoner extends Quest
 					{
 						htmltext = "30640-10.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

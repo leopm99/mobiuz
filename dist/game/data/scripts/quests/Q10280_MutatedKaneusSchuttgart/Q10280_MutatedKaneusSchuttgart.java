@@ -77,6 +77,10 @@ public class Q10280_MutatedKaneusSchuttgart extends Quest
 				qs.exitQuest(false, true);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}
@@ -140,6 +144,10 @@ public class Q10280_MutatedKaneusSchuttgart extends Quest
 						htmltext = "31981-06.htm";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -162,6 +170,10 @@ public class Q10280_MutatedKaneusSchuttgart extends Quest
 						break;
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

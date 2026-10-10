@@ -149,6 +149,10 @@ public class Q00709_PathToBecomingALordDion extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -296,6 +300,10 @@ public class Q00709_PathToBecomingALordDion extends Quest
 				{
 					htmltext = "30735-06.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

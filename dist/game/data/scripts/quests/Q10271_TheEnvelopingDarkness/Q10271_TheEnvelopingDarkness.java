@@ -126,12 +126,20 @@ public class Q10271_TheEnvelopingDarkness extends Quest
 								qs.exitQuest(false, true);
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = "32560-03.html";
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -167,6 +175,10 @@ public class Q10271_TheEnvelopingDarkness extends Quest
 							htmltext = "32556-09.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				break;
@@ -193,8 +205,16 @@ public class Q10271_TheEnvelopingDarkness extends Quest
 							htmltext = "32528-03.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

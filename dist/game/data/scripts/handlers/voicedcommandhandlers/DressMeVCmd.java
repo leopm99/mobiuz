@@ -843,6 +843,10 @@ public class DressMeVCmd implements IVoicedCommandHandler
 				case 2: // HAIR2
 					my_hat = inv.getPaperdollItem(Inventory.PAPERDOLL_HAIR2);
 					break;
+				default:
+				{
+					break;
+				}
 			}
 			
 			html = html.replace("{my_hat_icon}", my_hat == null ? "icon.NOIMAGE" : my_hat.getTemplate().getIcon());
@@ -1101,6 +1105,10 @@ public class DressMeVCmd implements IVoicedCommandHandler
 			case 2: // HAIR2
 				hat = inv.getPaperdollItem(Inventory.PAPERDOLL_HAIR2);
 				break;
+			default:
+			{
+				break;
+			}
 		}
 		
 		if (hat == null)

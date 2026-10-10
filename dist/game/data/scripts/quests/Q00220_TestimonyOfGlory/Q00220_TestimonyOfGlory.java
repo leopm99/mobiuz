@@ -356,6 +356,10 @@ public class Q00220_TestimonyOfGlory extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -387,6 +391,10 @@ public class Q00220_TestimonyOfGlory extends Quest
 							npc.setScriptValue(2);
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -413,7 +421,15 @@ public class Q00220_TestimonyOfGlory extends Quest
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -639,6 +655,10 @@ public class Q00220_TestimonyOfGlory extends Quest
 						npc.broadcastPacket(new NpcSay(npc, ChatType.NPC_GENERAL, NpcStringId.I_LL_GET_REVENGE_SOMEDAY));
 						qs.setCond(10, true);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -1020,6 +1040,10 @@ public class Q00220_TestimonyOfGlory extends Quest
 					{
 						htmltext = "30642-13.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

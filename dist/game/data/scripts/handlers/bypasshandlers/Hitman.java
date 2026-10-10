@@ -97,6 +97,10 @@ public class Hitman implements IBypassHandler
 					cancelContract(player, st.nextToken());
 				}
 				break;
+			default:
+			{
+				break;
+			}
 		}
 		
 		return true;

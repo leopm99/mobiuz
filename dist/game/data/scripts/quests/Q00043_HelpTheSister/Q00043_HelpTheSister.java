@@ -114,6 +114,10 @@ public class Q00043_HelpTheSister extends Quest
 				qs.exitQuest(false, true);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -181,12 +185,20 @@ public class Q00043_HelpTheSister extends Quest
 								htmltext = "30829-08.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(player);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -208,8 +220,16 @@ public class Q00043_HelpTheSister extends Quest
 							htmltext = "30097-03.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

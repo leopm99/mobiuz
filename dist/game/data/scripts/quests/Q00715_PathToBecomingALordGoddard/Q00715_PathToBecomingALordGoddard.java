@@ -87,6 +87,10 @@ public class Q00715_PathToBecomingALordGoddard extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}

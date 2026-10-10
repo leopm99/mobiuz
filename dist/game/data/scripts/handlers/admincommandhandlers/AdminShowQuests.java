@@ -304,6 +304,10 @@ public class AdminShowQuests implements IAdminCommandHandler
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 			adminReply.setHtml(replyMSG.toString());
 			actor.sendPacket(adminReply);
@@ -353,6 +357,10 @@ public class AdminShowQuests implements IAdminCommandHandler
 					target.sendPacket(new QuestList(target));
 					target.sendPacket(new ExShowQuestMark(qs.getQuest().getId()));
 					val[0] = qs.getQuest().getName();
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

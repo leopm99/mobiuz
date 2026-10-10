@@ -190,6 +190,10 @@ public class Q00117_TheOceanOfDistantStars extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -261,6 +265,10 @@ public class Q00117_TheOceanOfDistantStars extends Quest
 							htmltext = "32053-10.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -294,6 +302,10 @@ public class Q00117_TheOceanOfDistantStars extends Quest
 						case 9:
 						{
 							htmltext = "32055-07.html";
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -340,7 +352,15 @@ public class Q00117_TheOceanOfDistantStars extends Quest
 							htmltext = "32052-09.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

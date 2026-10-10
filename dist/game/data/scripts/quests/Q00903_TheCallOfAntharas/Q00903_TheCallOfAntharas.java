@@ -79,6 +79,10 @@ public class Q00903_TheCallOfAntharas extends Quest
 					htmltext = event;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -102,6 +106,10 @@ public class Q00903_TheCallOfAntharas extends Quest
 				{
 					giveItems(player, TARASK_DRAGONS_LEATHER_FRAGMENT, 1);
 					playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -159,6 +167,10 @@ public class Q00903_TheCallOfAntharas extends Quest
 						htmltext = "30755-08.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -184,6 +196,10 @@ public class Q00903_TheCallOfAntharas extends Quest
 						htmltext = "30755-01.htm";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

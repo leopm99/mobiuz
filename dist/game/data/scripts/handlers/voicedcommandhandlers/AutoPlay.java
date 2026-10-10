@@ -261,6 +261,10 @@ public class AutoPlay implements IVoicedCommandHandler
 							AutoPlayTaskManager.getInstance().stopAutoPlay(player);
 							AutoUseTaskManager.getInstance().stopAutoUseTask(player);
 							break COMMAND;
+						default:
+						{
+							break;
+						}
 					}
 				}
 				
@@ -687,6 +691,10 @@ public class AutoPlay implements IVoicedCommandHandler
 				}
 				html.setHtml(content.replace("%items%", sb.toString()));
 				player.sendPacket(html);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -170,6 +170,10 @@ public class Q00250_WatchWhatYouEat extends Quest
 					htmltext = "32743-done.htm";
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;

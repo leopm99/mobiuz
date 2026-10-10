@@ -203,6 +203,10 @@ public class Q10272_LightFragment extends Quest
 						htmltext = "32560-04.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -275,6 +279,10 @@ public class Q10272_LightFragment extends Quest
 							qs.exitQuest(false, true);
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				break;
@@ -308,6 +316,10 @@ public class Q10272_LightFragment extends Quest
 						htmltext = "32566-10.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -323,6 +335,10 @@ public class Q10272_LightFragment extends Quest
 					case 4:
 					{
 						htmltext = "32567-05.html";
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -352,7 +368,15 @@ public class Q10272_LightFragment extends Quest
 						htmltext = "32557-06.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

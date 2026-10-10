@@ -200,6 +200,10 @@ public class TvT extends Event
 								LOGGER.info("Event " + name + " scheduled at " + TimeUtil.getDateTimeString(System.currentTimeMillis() + delay));
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 					}
 				});
@@ -668,6 +672,10 @@ public class TvT extends Event
 				html.setFile(player, HTML_PATH + "manager-register.html");
 				html.replace("%player_numbers%", String.valueOf(PLAYER_LIST.size()));
 				player.sendPacket(html);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

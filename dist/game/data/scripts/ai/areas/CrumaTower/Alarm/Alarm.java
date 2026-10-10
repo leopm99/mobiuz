@@ -208,6 +208,10 @@ public class Alarm extends AbstractNpcAI
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -265,6 +269,10 @@ public class Alarm extends AbstractNpcAI
 				qs = player.getQuestState(Q00185_NikolasCooperation.class.getSimpleName());
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return (qs != null) && ((memoState < 0) || qs.isMemoState(memoState));
 	}
@@ -288,6 +296,10 @@ public class Alarm extends AbstractNpcAI
 			case NIKOLAS_COOPERATION_ID:
 			{
 				qs = player.getQuestState(Q00185_NikolasCooperation.class.getSimpleName());
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -319,6 +331,10 @@ public class Alarm extends AbstractNpcAI
 				qs = player.getQuestState(Q00185_NikolasCooperation.class.getSimpleName());
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return (qs != null) ? qs.getMemoStateEx(slot) : -1;
 	}
@@ -343,6 +359,10 @@ public class Alarm extends AbstractNpcAI
 			case NIKOLAS_COOPERATION_ID:
 			{
 				qs = player.getQuestState(Q00185_NikolasCooperation.class.getSimpleName());
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

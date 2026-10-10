@@ -115,6 +115,10 @@ public class Q00296_TarantulasSpiderSilk extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return html;
 	}

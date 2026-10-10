@@ -251,6 +251,10 @@ public abstract class DocumentBase
 				{
 					attachFunc(n, template, name, condition);
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}
@@ -420,6 +424,10 @@ public abstract class DocumentBase
 				case "game":
 				{
 					condition = parseGameCondition(n);
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -954,6 +962,10 @@ public abstract class DocumentBase
 					cond = joinAnd(cond, new ConditionCategoryType(array));
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		
@@ -1139,6 +1151,10 @@ public abstract class DocumentBase
 					cond = joinAnd(cond, new ConditionTargetInvSize(size));
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		
@@ -1234,6 +1250,10 @@ public abstract class DocumentBase
 				{
 					final boolean val = Boolean.parseBoolean(a.getNodeValue());
 					cond = joinAnd(cond, new ConditionChangeWeapon(val));
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

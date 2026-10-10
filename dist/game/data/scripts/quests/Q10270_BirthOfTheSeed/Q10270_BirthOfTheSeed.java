@@ -97,6 +97,10 @@ public class Q10270_BirthOfTheSeed extends Quest
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}
@@ -234,6 +238,10 @@ public class Q10270_BirthOfTheSeed extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -369,7 +377,15 @@ public class Q10270_BirthOfTheSeed extends Quest
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

@@ -144,6 +144,10 @@ public class DelevelManager extends AbstractNpcAI
 				
 				return "36604.htm";
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		return htmltext;

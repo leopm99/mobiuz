@@ -181,6 +181,10 @@ public class Q00228_TestOfMagus extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -361,6 +365,10 @@ public class Q00228_TestOfMagus extends Quest
 							playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -615,6 +623,10 @@ public class Q00228_TestOfMagus extends Quest
 					{
 						htmltext = "30612-05.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

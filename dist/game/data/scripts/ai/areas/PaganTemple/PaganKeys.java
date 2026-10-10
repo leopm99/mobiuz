@@ -109,6 +109,10 @@ public class PaganKeys extends AbstractNpcAI
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	

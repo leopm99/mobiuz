@@ -78,6 +78,10 @@ public class Q00051_OFullesSpecialBait extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -128,6 +132,10 @@ public class Q00051_OFullesSpecialBait extends Quest
 			case State.STARTED:
 			{
 				htmltext = (qs.isCond(1)) ? "31572-05.html" : "31572-04.html";
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

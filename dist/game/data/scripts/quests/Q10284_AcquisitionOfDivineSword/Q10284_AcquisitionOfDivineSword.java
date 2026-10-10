@@ -182,6 +182,10 @@ public class Q10284_AcquisitionOfDivineSword extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -226,6 +230,10 @@ public class Q10284_AcquisitionOfDivineSword extends Quest
 							case 2:
 							{
 								htmltext = "32020-07.html";
+								break;
+							}
+							default:
+							{
 								break;
 							}
 						}
@@ -287,6 +295,10 @@ public class Q10284_AcquisitionOfDivineSword extends Quest
 								htmltext = "32654-04.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -307,10 +319,22 @@ public class Q10284_AcquisitionOfDivineSword extends Quest
 								htmltext = "32653-04.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

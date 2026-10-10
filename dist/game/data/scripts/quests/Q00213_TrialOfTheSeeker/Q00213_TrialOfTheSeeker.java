@@ -228,6 +228,10 @@ public class Q00213_TrialOfTheSeeker extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -367,6 +371,10 @@ public class Q00213_TrialOfTheSeeker extends Quest
 							qs.setCond(16);
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -581,6 +589,10 @@ public class Q00213_TrialOfTheSeeker extends Quest
 					{
 						htmltext = "30715-06.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

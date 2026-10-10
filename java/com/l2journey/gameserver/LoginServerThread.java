@@ -344,6 +344,10 @@ public class LoginServerThread extends Thread
 							new ChangePasswordResponse(incoming);
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 			}

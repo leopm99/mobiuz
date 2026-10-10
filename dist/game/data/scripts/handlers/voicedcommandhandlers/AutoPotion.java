@@ -73,6 +73,10 @@ public class AutoPotion implements IVoicedCommandHandler
 				activeChar.sendMessage("Auto potions is disabled.");
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		return true;

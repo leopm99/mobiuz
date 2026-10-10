@@ -99,6 +99,10 @@ public class Q00167_DwarvenKinship extends Quest
 					htmltext = event;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -133,6 +137,10 @@ public class Q00167_DwarvenKinship extends Quest
 						htmltext = getAlreadyCompletedMsg(player);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -154,6 +162,10 @@ public class Q00167_DwarvenKinship extends Quest
 				{
 					htmltext = "30210-01.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

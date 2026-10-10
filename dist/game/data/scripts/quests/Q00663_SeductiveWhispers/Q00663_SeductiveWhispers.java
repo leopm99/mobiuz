@@ -198,6 +198,10 @@ public class Q00663_SeductiveWhispers extends Quest
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				else if (qs.isMemoState(1005))
@@ -208,6 +212,10 @@ public class Q00663_SeductiveWhispers extends Quest
 				{
 					htmltext = "30846-26.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -713,6 +721,10 @@ public class Q00663_SeductiveWhispers extends Quest
 				{
 					htmltext = event;
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

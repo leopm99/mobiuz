@@ -811,6 +811,10 @@ public class KrateiArena
 						msg = new SystemMessage(SystemMessageId.THE_GAME_WILL_END_IN_S1_SECOND_S_2).addInt(_time);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				
 				for (Player player : _messagePlayers.keySet())

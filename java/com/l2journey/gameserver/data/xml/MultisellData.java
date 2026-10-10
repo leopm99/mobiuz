@@ -340,6 +340,10 @@ public class MultisellData implements IXmlReader
 				}
 				return true;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return false;
 	}
@@ -368,6 +372,10 @@ public class MultisellData implements IXmlReader
 				player.updateUserInfo();
 				return true;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return false;
 	}
@@ -391,6 +399,10 @@ public class MultisellData implements IXmlReader
 			{
 				player.setFame((int) (player.getFame() + amount));
 				player.updateUserInfo();
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

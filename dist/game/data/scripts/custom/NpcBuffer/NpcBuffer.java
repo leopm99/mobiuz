@@ -1867,6 +1867,10 @@ public class NpcBuffer extends Quest
 				}
 				return Config.SMART_WINDOW ? null : rebuildMainHtml(st);
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		return rebuildMainHtml(st);

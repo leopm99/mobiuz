@@ -163,6 +163,10 @@ public class Q00004_LongLiveThePaagrioLord extends Quest
 						htmltext = getAlreadyCompletedMsg(player);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -194,6 +198,10 @@ public class Q00004_LongLiveThePaagrioLord extends Quest
 			case GROOKIN:
 			{
 				htmltext = giveItem(player, qs, npc.getId(), BLOODY_AXE, getRegisteredItemIds());
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

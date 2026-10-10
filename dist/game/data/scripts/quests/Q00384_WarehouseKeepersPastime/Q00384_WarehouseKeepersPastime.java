@@ -132,6 +132,10 @@ public class Q00384_WarehouseKeepersPastime extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -223,6 +227,10 @@ public class Q00384_WarehouseKeepersPastime extends Quest
 						{
 							return beforeReward(player, qs, (ask - 54), CLIFF);
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -279,7 +287,15 @@ public class Q00384_WarehouseKeepersPastime extends Quest
 						{
 							return beforeReward(player, qs, (ask - 54), WAREHOUSE_CHIEF_BAXT);
 						}
+						default:
+						{
+							break;
+						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -827,6 +843,10 @@ public class Q00384_WarehouseKeepersPastime extends Quest
 					{
 						giveItemRandomly(qs.getPlayer(), npc, Q_IRONGATE_MEDAL, 1, 0, 1, true);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

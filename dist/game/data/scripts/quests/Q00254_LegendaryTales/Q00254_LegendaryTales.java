@@ -171,6 +171,10 @@ public class Q00254_LegendaryTales extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -203,6 +207,10 @@ public class Q00254_LegendaryTales extends Quest
 			case State.COMPLETED:
 			{
 				htmltext = "30754-29.html";
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

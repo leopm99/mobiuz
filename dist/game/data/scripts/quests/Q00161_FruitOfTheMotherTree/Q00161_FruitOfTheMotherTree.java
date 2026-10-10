@@ -127,6 +127,10 @@ public class Q00161_FruitOfTheMotherTree extends Quest
 						htmltext = getAlreadyCompletedMsg(player);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -146,6 +150,10 @@ public class Q00161_FruitOfTheMotherTree extends Quest
 						htmltext = "30371-02.html";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

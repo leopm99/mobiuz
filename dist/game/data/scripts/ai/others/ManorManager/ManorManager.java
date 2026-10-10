@@ -92,6 +92,10 @@ public class ManorManager extends AbstractNpcAI
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

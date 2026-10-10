@@ -113,6 +113,10 @@ public class Q00688_DefeatTheElrokianRaiders extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -149,6 +153,10 @@ public class Q00688_DefeatTheElrokianRaiders extends Quest
 			case State.STARTED:
 			{
 				htmltext = hasQuestItems(player, DINOSAUR_FANG_NECKLACE) ? "32105-05.html" : "32105-12.html";
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

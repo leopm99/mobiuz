@@ -269,6 +269,10 @@ public class SkillTreeData implements IXmlReader
 											skillLearn.addSubclassConditions(parseInteger(attrs, "slot"), parseInteger(attrs, "lvl"));
 											break;
 										}
+										default:
+										{
+											break;
+										}
 									}
 								}
 								

@@ -79,6 +79,10 @@ public class Q00050_LanoscosSpecialBait extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -129,6 +133,10 @@ public class Q00050_LanoscosSpecialBait extends Quest
 			case State.STARTED:
 			{
 				htmltext = (qs.isCond(1)) ? "31570-05.html" : "31570-04.html";
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

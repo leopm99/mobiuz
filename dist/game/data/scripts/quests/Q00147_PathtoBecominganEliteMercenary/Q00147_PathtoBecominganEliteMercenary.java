@@ -117,6 +117,10 @@ public class Q00147_PathtoBecominganEliteMercenary extends Quest
 				htmltext = getAlreadyCompletedMsg(player);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

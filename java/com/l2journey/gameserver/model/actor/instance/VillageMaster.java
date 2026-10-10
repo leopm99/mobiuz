@@ -717,6 +717,10 @@ public class VillageMaster extends Folk
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 			html.replace("%objectId%", String.valueOf(getObjectId()));
 			player.sendPacket(html);

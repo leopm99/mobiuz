@@ -147,6 +147,10 @@ public class Q00246_PossessorOfAPreciousSoul3 extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}
@@ -288,6 +292,10 @@ public class Q00246_PossessorOfAPreciousSoul3 extends Quest
 						htmltext = "31740-5.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -342,7 +350,15 @@ public class Q00246_PossessorOfAPreciousSoul3 extends Quest
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -365,7 +381,15 @@ public class Q00246_PossessorOfAPreciousSoul3 extends Quest
 						htmltext = getAlreadyCompletedMsg(player);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

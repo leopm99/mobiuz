@@ -98,6 +98,10 @@ public class FuncHenna extends AbstractFunction
 					value += pc.getHennaStatMEN();
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return value;

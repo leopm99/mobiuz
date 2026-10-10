@@ -125,6 +125,10 @@ public class Q00356_DigUpTheSeaOfSpores extends Quest
 				qs.exitQuest(true, true);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

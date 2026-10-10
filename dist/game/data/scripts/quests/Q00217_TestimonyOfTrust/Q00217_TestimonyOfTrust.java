@@ -230,6 +230,10 @@ public class Q00217_TestimonyOfTrust extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -441,6 +445,10 @@ public class Q00217_TestimonyOfTrust extends Quest
 							playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -758,6 +766,10 @@ public class Q00217_TestimonyOfTrust extends Quest
 					{
 						htmltext = "30657-05.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

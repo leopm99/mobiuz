@@ -267,6 +267,10 @@ public class Q00023_LidiasHeart extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -330,6 +334,10 @@ public class Q00023_LidiasHeart extends Quest
 							htmltext = "31328-22.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -362,6 +370,10 @@ public class Q00023_LidiasHeart extends Quest
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -382,6 +394,10 @@ public class Q00023_LidiasHeart extends Quest
 						case 10:
 						{
 							htmltext = "31523-05.html";
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -446,6 +462,10 @@ public class Q00023_LidiasHeart extends Quest
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -462,6 +482,10 @@ public class Q00023_LidiasHeart extends Quest
 							htmltext = "31530-03.html";
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

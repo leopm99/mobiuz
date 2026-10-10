@@ -259,6 +259,10 @@ public class Sailren extends AbstractNpcAI
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return super.onEvent(event, npc, player);
 	}
@@ -311,6 +315,10 @@ public class Sailren extends AbstractNpcAI
 				case TREX:
 				{
 					startQuestTimer("SPAWN_SAILREN", 180000, null, null);
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

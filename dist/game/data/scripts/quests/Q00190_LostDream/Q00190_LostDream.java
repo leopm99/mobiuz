@@ -95,6 +95,10 @@ public class Q00190_LostDream extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -184,6 +188,10 @@ public class Q00190_LostDream extends Quest
 					{
 						htmltext = "30673-02.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

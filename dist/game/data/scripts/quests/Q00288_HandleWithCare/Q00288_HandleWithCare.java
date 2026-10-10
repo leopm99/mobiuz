@@ -157,6 +157,10 @@ public class Q00288_HandleWithCare extends Quest
 					break;
 				}
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -208,6 +212,10 @@ public class Q00288_HandleWithCare extends Quest
 				{
 					htmltext = "32741-07.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -342,6 +342,10 @@ public class BoatGludinRune implements Runnable
 					ThreadPool.schedule(this, 300000);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 			_shoutCount = 0;
 			_cycle++;

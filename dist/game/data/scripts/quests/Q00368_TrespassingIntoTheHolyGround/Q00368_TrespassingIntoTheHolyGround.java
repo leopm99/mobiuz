@@ -84,6 +84,10 @@ public class Q00368_TrespassingIntoTheHolyGround extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

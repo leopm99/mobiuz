@@ -147,6 +147,10 @@ public class Q00108_JumbleTumbleDiamondFuss extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -271,12 +275,20 @@ public class Q00108_JumbleTumbleDiamondFuss extends Quest
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(talker);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -455,6 +467,10 @@ public class Q00108_JumbleTumbleDiamondFuss extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -484,6 +500,10 @@ public class Q00108_JumbleTumbleDiamondFuss extends Quest
 					case 11, 12:
 					{
 						htmltext = "30521-03.html";
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -529,6 +549,10 @@ public class Q00108_JumbleTumbleDiamondFuss extends Quest
 						break;
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -584,6 +608,10 @@ public class Q00108_JumbleTumbleDiamondFuss extends Quest
 						takeItems(killer, BAT_DIAGRAM, -1);
 						qs.setCond(12);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

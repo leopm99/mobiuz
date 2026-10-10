@@ -184,6 +184,10 @@ public class Q00605_AllianceWithKetraOrcs extends Quest
 				count = CAPTAIN_BADGE_COUNT[qs.getCond() - 1];
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return getQuestItemsCount(qs.getPlayer(), itemId) < count;
 	}
@@ -354,7 +358,15 @@ public class Q00605_AllianceWithKetraOrcs extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

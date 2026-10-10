@@ -199,6 +199,10 @@ public class NpcViewMod implements IBypassHandler
 				sendAggroListView(player, npc);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		return true;

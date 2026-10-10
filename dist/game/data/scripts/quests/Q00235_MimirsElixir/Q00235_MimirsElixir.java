@@ -217,6 +217,10 @@ public class Q00235_MimirsElixir extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -296,6 +300,10 @@ public class Q00235_MimirsElixir extends Quest
 							htmltext = "30721-17.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -318,6 +326,10 @@ public class Q00235_MimirsElixir extends Quest
 							htmltext = "30718-05.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					break;
 				}
@@ -327,6 +339,10 @@ public class Q00235_MimirsElixir extends Quest
 					{
 						htmltext = "31149-01.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

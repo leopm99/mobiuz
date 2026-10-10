@@ -192,6 +192,10 @@ public class Q00021_HiddenTruth extends Quest
 					npc.deleteMe();
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -221,6 +225,10 @@ public class Q00021_HiddenTruth extends Quest
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(player);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -269,6 +277,10 @@ public class Q00021_HiddenTruth extends Quest
 						htmltext = "31524-07c.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -312,6 +324,10 @@ public class Q00021_HiddenTruth extends Quest
 					case 6:
 					{
 						htmltext = "31526-15.html";
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -407,6 +423,10 @@ public class Q00021_HiddenTruth extends Quest
 						htmltext = "31328-06.html";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

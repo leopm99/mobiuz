@@ -154,6 +154,10 @@ public class Q00131_BirdInACage extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -209,6 +213,10 @@ public class Q00131_BirdInACage extends Quest
 							htmltext = "32264-18.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				else if (npc.getId() == PARME)
@@ -222,6 +230,10 @@ public class Q00131_BirdInACage extends Quest
 						htmltext = "32271-02.html";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -148,6 +148,10 @@ public class Q00409_PathOfTheElvenOracle extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -183,6 +187,10 @@ public class Q00409_PathOfTheElvenOracle extends Quest
 							npc.broadcastPacket(new NpcSay(npc, ChatType.NPC_GENERAL, NpcStringId.AS_YOU_WISH_MASTER));
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					
 					npc.setScriptValue(1);
@@ -195,6 +203,10 @@ public class Q00409_PathOfTheElvenOracle extends Quest
 					{
 						npc.setScriptValue(2);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -235,6 +247,10 @@ public class Q00409_PathOfTheElvenOracle extends Quest
 						giveItems(killer, TAMIL_NECKLACE, 1);
 						qs.setCond(5, true);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -388,6 +404,10 @@ public class Q00409_PathOfTheElvenOracle extends Quest
 							htmltext = "30428-01.html";
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

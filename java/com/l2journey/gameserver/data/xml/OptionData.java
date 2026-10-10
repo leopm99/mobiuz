@@ -105,6 +105,10 @@ public class OptionData implements IXmlReader
 											{
 												parseFuncs(fd.getAttributes(), fd.getNodeName(), option);
 											}
+											default:
+											{
+												break;
+											}
 										}
 									}
 									break;
@@ -182,6 +186,10 @@ public class OptionData implements IXmlReader
 									{
 										LOGGER.info(() -> getClass().getSimpleName() + ": Could not find skill " + skillId + "(" + skillLevel + ") used by option " + id + ".");
 									}
+									break;
+								}
+								default:
+								{
 									break;
 								}
 							}

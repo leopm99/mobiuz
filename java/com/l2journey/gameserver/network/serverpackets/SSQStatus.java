@@ -80,6 +80,10 @@ public class SSQStatus extends ServerPacket
 						buffer.writeInt(SystemMessageId.THIS_IS_THE_SEAL_VALIDATION_PERIOD.getId());
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				switch (currentPeriod)
 				{
@@ -91,6 +95,10 @@ public class SSQStatus extends ServerPacket
 					case SevenSigns.PERIOD_COMPETITION, SevenSigns.PERIOD_SEAL_VALIDATION:
 					{
 						buffer.writeInt(SystemMessageId.UNTIL_NEXT_MONDAY_AT_6_00_P_M.getId());
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -273,6 +281,10 @@ public class SSQStatus extends ServerPacket
 									}
 									break;
 								}
+								default:
+								{
+									break;
+								}
 							}
 							break;
 						}
@@ -325,6 +337,10 @@ public class SSQStatus extends ServerPacket
 										buffer.writeByte(SevenSigns.CABAL_NULL);
 										buffer.writeInt(SystemMessageId.ALTHOUGH_THE_SEAL_WAS_OWNED_DURING_THE_PREVIOUS_PERIOD_LESS_THAN_10_OF_PEOPLE_HAVE_VOTED.getId());
 									}
+									break;
+								}
+								default:
+								{
 									break;
 								}
 							}
@@ -381,11 +397,23 @@ public class SSQStatus extends ServerPacket
 									}
 									break;
 								}
+								default:
+								{
+									break;
+								}
 							}
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

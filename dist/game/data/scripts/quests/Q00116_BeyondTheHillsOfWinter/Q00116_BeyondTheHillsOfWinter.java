@@ -110,6 +110,10 @@ public class Q00116_BeyondTheHillsOfWinter extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -161,7 +165,15 @@ public class Q00116_BeyondTheHillsOfWinter extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -114,6 +114,10 @@ public class Q00003_WillTheSealBeBroken extends Quest
 				giveItem(member, qs, SUCCUBUS_BLOOD, getRegisteredItemIds());
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	
@@ -160,6 +164,10 @@ public class Q00003_WillTheSealBeBroken extends Quest
 			case State.COMPLETED:
 			{
 				htmltext = getAlreadyCompletedMsg(player);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -632,6 +632,10 @@ public class FortSiege implements Siegable
 							npcString = NpcStringId.I_FEEL_SO_MUCH_GRIEF_THAT_I_CAN_T_EVEN_TAKE_CARE_OF_MYSELF_THERE_ISN_T_ANY_REASON_FOR_ME_TO_STAY_HERE_ANY_LONGER;
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 					if (npcString != null)
 					{

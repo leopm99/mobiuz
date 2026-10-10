@@ -242,6 +242,10 @@ public class NpcTemplate extends CreatureTemplate
 					_clanHelpRange *= Config.DEFENDER_CLAN_HELP_RANGE_MULTIPLIER;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}

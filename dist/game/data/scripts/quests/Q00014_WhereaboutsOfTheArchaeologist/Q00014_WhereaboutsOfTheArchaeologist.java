@@ -79,6 +79,10 @@ public class Q00014_WhereaboutsOfTheArchaeologist extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -121,8 +125,16 @@ public class Q00014_WhereaboutsOfTheArchaeologist extends Quest
 							htmltext = "31538-00.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

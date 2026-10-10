@@ -485,6 +485,10 @@ public class Q00343_UnderTheShadowOfTheIvoryTower extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -537,6 +541,10 @@ public class Q00343_UnderTheShadowOfTheIvoryTower extends Quest
 					{
 						qs.setMemoStateEx(1, qs.getMemoStateEx(1) - 1);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -608,6 +616,10 @@ public class Q00343_UnderTheShadowOfTheIvoryTower extends Quest
 				{
 					qs.set("param1", 0);
 					htmltext = "30935-01.html";
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

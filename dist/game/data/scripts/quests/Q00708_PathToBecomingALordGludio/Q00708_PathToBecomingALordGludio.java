@@ -156,6 +156,10 @@ public class Q00708_PathToBecomingALordGludio extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -297,6 +301,10 @@ public class Q00708_PathToBecomingALordGludio extends Quest
 				{
 					htmltext = "30332-04.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -1569,6 +1569,10 @@ public class Attackable extends Npc
 					count *= 9;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		

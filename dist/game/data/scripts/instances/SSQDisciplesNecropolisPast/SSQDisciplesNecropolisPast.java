@@ -184,6 +184,10 @@ public class SSQDisciplesNecropolisPast extends AbstractInstance
 				world.openDoor(DOOR_5);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	
@@ -308,6 +312,10 @@ public class SSQDisciplesNecropolisPast extends AbstractInstance
 					startQuestTimer("FIGHT", 1000, null, player);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return super.onEvent(event, npc, player);
@@ -352,6 +360,10 @@ public class SSQDisciplesNecropolisPast extends AbstractInstance
 					npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.NPC_GENERAL, npc.getId(), NpcStringId.LEAVE_NOW));
 					npc.setScriptValue(1);
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -410,6 +422,10 @@ public class SSQDisciplesNecropolisPast extends AbstractInstance
 				npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.NPC_GENERAL, npc.getId(), NpcStringId.FOR_SHILEN));
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	
@@ -464,6 +480,10 @@ public class SSQDisciplesNecropolisPast extends AbstractInstance
 						startQuestTimer("FIGHT", 1000, null, talker);
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

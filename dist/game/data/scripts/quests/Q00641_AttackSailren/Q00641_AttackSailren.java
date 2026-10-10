@@ -81,6 +81,10 @@ public class Q00641_AttackSailren extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}
@@ -131,6 +135,10 @@ public class Q00641_AttackSailren extends Quest
 			case State.STARTED:
 			{
 				htmltext = qs.isCond(1) ? "32109-1a.html" : "32109-2.html";
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -69,6 +69,10 @@ public class Q10282_ToTheSeedOfAnnihilation extends Quest
 					qs.exitQuest(false);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -113,6 +117,10 @@ public class Q10282_ToTheSeedOfAnnihilation extends Quest
 						htmltext = "32734-01.htm";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

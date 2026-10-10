@@ -542,6 +542,10 @@ public class SpawnData implements IXmlReader
 					ret = 1;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 			
 			final String fileName = spawnInfo.getString("fileName", "None");

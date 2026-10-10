@@ -121,6 +121,10 @@ public class RequestGMCommand extends ClientPacket
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 }

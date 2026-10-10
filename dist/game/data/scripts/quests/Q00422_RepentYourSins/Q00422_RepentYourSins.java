@@ -205,6 +205,10 @@ public class Q00422_RepentYourSins extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -275,6 +279,10 @@ public class Q00422_RepentYourSins extends Quest
 							playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -492,6 +500,10 @@ public class Q00422_RepentYourSins extends Quest
 					{
 						htmltext = "30718-04.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

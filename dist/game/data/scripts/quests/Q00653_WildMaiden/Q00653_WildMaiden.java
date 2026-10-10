@@ -92,6 +92,10 @@ public class Q00653_WildMaiden extends Quest
 						htmltext = "32013-02.htm";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -103,6 +107,10 @@ public class Q00653_WildMaiden extends Quest
 					qs.exitQuest(true, true);
 					htmltext = "30181-01.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -155,6 +155,10 @@ public class Q00601_WatchingEyes extends Quest
 				htmltext = (qs.isCond(1)) ? "31683-03.html" : "31683-04.html";
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

@@ -1103,6 +1103,10 @@ public class SeedOfDestruction extends AbstractNpcAI
 				// instance end
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		world.incStatus();
 	}
@@ -1276,6 +1280,10 @@ public class SeedOfDestruction extends AbstractNpcAI
 							mob.getAI().setIntention(Intention.MOVE_TO, MOVE_TO_TIAT);
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

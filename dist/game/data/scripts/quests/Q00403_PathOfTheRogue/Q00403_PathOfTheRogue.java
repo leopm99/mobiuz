@@ -164,6 +164,10 @@ public class Q00403_PathOfTheRogue extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -203,6 +207,10 @@ public class Q00403_PathOfTheRogue extends Quest
 					{
 						npc.setScriptValue(2);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -355,6 +363,10 @@ public class Q00403_PathOfTheRogue extends Quest
 					{
 						htmltext = "30425-08.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

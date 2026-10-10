@@ -192,6 +192,10 @@ public class Q00408_PathOfTheElvenWizard extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -250,6 +254,10 @@ public class Q00408_PathOfTheElvenWizard extends Quest
 							playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -430,6 +438,10 @@ public class Q00408_PathOfTheElvenWizard extends Quest
 							htmltext = "30423-03.html";
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

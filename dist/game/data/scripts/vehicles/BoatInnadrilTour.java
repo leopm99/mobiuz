@@ -190,6 +190,10 @@ public class BoatInnadrilTour implements Runnable
 					ThreadPool.schedule(this, 300000);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 			_cycle++;
 			if (_cycle > 9)

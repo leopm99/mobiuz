@@ -253,6 +253,10 @@ public class Q10294_SevenSignsToTheMonasteryOfSilence extends Quest
 				addSpawn(SOLINA_LAY_BROTHER, 88655, -250591, -8320, 144, false, 0, false, player.getInstanceId());
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -304,6 +308,10 @@ public class Q10294_SevenSignsToTheMonasteryOfSilence extends Quest
 					case 3:
 					{
 						htmltext = player.isSubClassActive() ? "32792-09.html" : "32792-07.html";
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -383,6 +391,10 @@ public class Q10294_SevenSignsToTheMonasteryOfSilence extends Quest
 				{
 					htmltext = npc.getId() + "-01.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

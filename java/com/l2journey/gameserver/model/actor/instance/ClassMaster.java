@@ -250,6 +250,10 @@ public class ClassMaster extends Merchant
 					sb.append("There is no class change available for you anymore.<br>");
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 			sb.append("</body></html>");
 			html.setHtml(sb.toString());

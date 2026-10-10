@@ -183,6 +183,10 @@ public class Q00049_TheRoadHome extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -262,12 +266,20 @@ public class Q00049_TheRoadHome extends Quest
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(talker);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -292,6 +304,10 @@ public class Q00049_TheRoadHome extends Quest
 						htmltext = npc.getId() + "-04.html";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

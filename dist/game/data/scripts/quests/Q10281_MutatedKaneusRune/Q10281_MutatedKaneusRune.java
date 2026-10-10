@@ -75,6 +75,10 @@ public class Q10281_MutatedKaneusRune extends Quest
 				qs.exitQuest(false, true);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}
@@ -137,6 +141,10 @@ public class Q10281_MutatedKaneusRune extends Quest
 						htmltext = "31340-06.htm";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -159,6 +167,10 @@ public class Q10281_MutatedKaneusRune extends Quest
 						break;
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

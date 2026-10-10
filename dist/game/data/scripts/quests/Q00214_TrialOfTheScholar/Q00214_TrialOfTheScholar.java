@@ -374,6 +374,10 @@ public class Q00214_TrialOfTheScholar extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -521,6 +525,10 @@ public class Q00214_TrialOfTheScholar extends Quest
 							playSound(killer, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -1033,6 +1041,10 @@ public class Q00214_TrialOfTheScholar extends Quest
 					{
 						htmltext = "30612-08.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

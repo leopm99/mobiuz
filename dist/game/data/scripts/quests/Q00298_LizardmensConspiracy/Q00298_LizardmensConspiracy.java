@@ -106,6 +106,10 @@ public class Q00298_LizardmensConspiracy extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -158,6 +162,10 @@ public class Q00298_LizardmensConspiracy extends Quest
 					case 3:
 					{
 						htmltext = "30344-03.html";
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}

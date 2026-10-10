@@ -142,6 +142,10 @@ public class MonasteryOfSilence extends AbstractNpcAI
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return super.onEvent(event, npc, player);
 	}
@@ -204,6 +208,10 @@ public class MonasteryOfSilence extends AbstractNpcAI
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	
@@ -251,6 +259,10 @@ public class MonasteryOfSilence extends AbstractNpcAI
 						npc.setScriptValue(1);
 						startQuestTimer("DO_CAST", 20000, npc, player);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

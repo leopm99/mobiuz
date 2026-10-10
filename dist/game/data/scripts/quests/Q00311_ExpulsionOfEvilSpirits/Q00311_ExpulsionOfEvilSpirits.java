@@ -220,6 +220,10 @@ public class Q00311_ExpulsionOfEvilSpirits extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

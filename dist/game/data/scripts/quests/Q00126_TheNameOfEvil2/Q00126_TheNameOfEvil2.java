@@ -403,6 +403,10 @@ public class Q00126_TheNameOfEvil2 extends Quest
 				qs.exitQuest(false, true);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}
@@ -466,12 +470,20 @@ public class Q00126_TheNameOfEvil2 extends Quest
 								htmltext = "32115-5a.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(player);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -507,6 +519,10 @@ public class Q00126_TheNameOfEvil2 extends Quest
 						case 5:
 						{
 							htmltext = "32119-5a.html";
+							break;
+						}
+						default:
+						{
 							break;
 						}
 					}
@@ -716,6 +732,10 @@ public class Q00126_TheNameOfEvil2 extends Quest
 						htmltext = "32114-2.html";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

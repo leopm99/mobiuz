@@ -154,6 +154,10 @@ public class Q10290_LandDragonConqueror extends Quest
 				htmltext = "30755-09.html";
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

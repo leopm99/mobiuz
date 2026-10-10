@@ -211,12 +211,20 @@ public class Q00102_SeaOfSporesFever extends Quest
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(player);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -277,6 +285,10 @@ public class Q00102_SeaOfSporesFever extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -291,6 +303,10 @@ public class Q00102_SeaOfSporesFever extends Quest
 					}
 					htmltext = npc.getId() + "-01.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

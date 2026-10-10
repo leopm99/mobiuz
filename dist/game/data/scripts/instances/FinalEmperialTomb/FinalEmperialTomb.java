@@ -719,6 +719,10 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		world.incStatus();
@@ -913,6 +917,10 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 					final Npc activeScarlet = _world.getParameters().getObject("activeScarlet", Npc.class);
 					activeScarlet.setRHandId(SECOND_SCARLET_WEAPON);
 					activeScarlet.setInvul(false);
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -1350,6 +1358,10 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 					startPc();
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 			
 			running = false;
@@ -1455,6 +1467,10 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 				case 4:
 				{
 					controlStatus(_world);
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

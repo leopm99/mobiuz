@@ -184,6 +184,10 @@ public class Q00233_TestOfTheWarSpirit extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -333,6 +337,10 @@ public class Q00233_TestOfTheWarSpirit extends Quest
 						giveItems(killer, HERMODTS_SKULL, 1);
 						playSound(killer, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -606,6 +614,10 @@ public class Q00233_TestOfTheWarSpirit extends Quest
 					{
 						htmltext = "30682-05.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

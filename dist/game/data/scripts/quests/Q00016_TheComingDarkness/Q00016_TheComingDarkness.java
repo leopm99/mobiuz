@@ -80,6 +80,10 @@ public class Q00016_TheComingDarkness extends Quest
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -132,6 +136,10 @@ public class Q00016_TheComingDarkness extends Quest
 				{
 					htmltext = npcId + "-01.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

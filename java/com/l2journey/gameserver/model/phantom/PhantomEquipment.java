@@ -924,6 +924,10 @@ public class PhantomEquipment
 					customWeaponId = 9227; // Sharpshooter
 				}
 				break;
+			default:
+			{
+				break;
+			}
 		}
 
 		// Montamos um novo Kit filtrando escudos se o bot usa armas de duas maos

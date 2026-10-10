@@ -253,6 +253,10 @@ public class Q00289_NoMoreSoupForYou extends Quest
 					}
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;

@@ -445,6 +445,10 @@ public class WatermelonNinja extends LongTimeEvent
 					randomSpawn(13278, 13277, 13276, npc, caster);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 	}

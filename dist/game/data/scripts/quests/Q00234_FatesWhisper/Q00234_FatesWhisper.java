@@ -179,6 +179,10 @@ public class Q00234_FatesWhisper extends Quest
 				startQuestTimer("23404", 1000 * 120L, npc, null);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	
@@ -204,6 +208,10 @@ public class Q00234_FatesWhisper extends Quest
 					case 8:
 					{
 						return "30178-04.html";
+					}
+					default:
+					{
+						break;
 					}
 				}
 				break;
@@ -456,6 +464,10 @@ public class Q00234_FatesWhisper extends Quest
 						}
 						return "31002-43i.html";
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -515,6 +527,10 @@ public class Q00234_FatesWhisper extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -568,6 +584,10 @@ public class Q00234_FatesWhisper extends Quest
 						playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 						return "30178-02.html";
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -590,6 +610,10 @@ public class Q00234_FatesWhisper extends Quest
 							giveItems(player, Q_INFERNIUM_VARNISH, 1);
 							return "30182-04.html";
 						}
+					}
+					default:
+					{
+						break;
 					}
 				}
 				break;
@@ -628,6 +652,10 @@ public class Q00234_FatesWhisper extends Quest
 							qs.showQuestionMark(234);
 							return "30833-03b.html";
 						}
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -1023,7 +1051,15 @@ public class Q00234_FatesWhisper extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+			}
+			default:
+			{
+				break;
 			}
 		}
 		return htmltext;
@@ -1085,6 +1121,10 @@ public class Q00234_FatesWhisper extends Quest
 			{
 				return getReward(qs, player, BONE_OF_KAIM_VANUL, BONE_OF_KAIM_VANUL_MANAUP, BONE_OF_KAIM_VANUL_MAGICSILENCE, BONE_OF_KAIM_VANUL_UPDOWN, reward);
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return false;
 	}
@@ -1143,6 +1183,10 @@ public class Q00234_FatesWhisper extends Quest
 				addSpawn(CHEST_OF_HALLATE, npc.getLocation());
 				return;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		final QuestState qs = getRandomPlayerFromParty(killer, npc, 8);
@@ -1167,6 +1211,10 @@ public class Q00234_FatesWhisper extends Quest
 							playSound(member, QuestSound.ITEMSOUND_QUEST_ITEMGET);
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

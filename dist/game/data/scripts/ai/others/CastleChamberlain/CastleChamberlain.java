@@ -235,6 +235,10 @@ public class CastleChamberlain extends AbstractNpcAI
 				fee = (level == 1) ? Config.CS_TELE1_FEE : Config.CS_TELE2_FEE;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return fee;
 	}
@@ -269,6 +273,10 @@ public class CastleChamberlain extends AbstractNpcAI
 				ratio = Config.CS_TELE_FEE_RATIO;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return ratio;
 	}
@@ -297,6 +305,10 @@ public class CastleChamberlain extends AbstractNpcAI
 						price = Config.OUTER_DOOR_UPGRADE_PRICE5;
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -317,6 +329,10 @@ public class CastleChamberlain extends AbstractNpcAI
 					case 5:
 					{
 						price = Config.INNER_DOOR_UPGRADE_PRICE5;
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -341,7 +357,15 @@ public class CastleChamberlain extends AbstractNpcAI
 						price = Config.WALL_UPGRADE_PRICE5;
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -355,6 +379,10 @@ public class CastleChamberlain extends AbstractNpcAI
 			case SevenSigns.CABAL_DAWN:
 			{
 				price *= 0.8;
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -434,6 +462,10 @@ public class CastleChamberlain extends AbstractNpcAI
 				price = Config.TRAP_UPGRADE_PRICE4;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		switch (SevenSigns.getInstance().getSealOwner(SevenSigns.SEAL_STRIFE))
@@ -446,6 +478,10 @@ public class CastleChamberlain extends AbstractNpcAI
 			case SevenSigns.CABAL_DAWN:
 			{
 				price *= 0.8;
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
@@ -765,6 +801,10 @@ public class CastleChamberlain extends AbstractNpcAI
 							case SevenSigns.PERIOD_SEAL_VALIDATION, SevenSigns.PERIOD_COMP_RESULTS:
 							{
 								html.replace("%ss_event%", "1000508");
+								break;
+							}
+							default:
+							{
 								break;
 							}
 						}
@@ -1375,6 +1415,10 @@ public class CastleChamberlain extends AbstractNpcAI
 				{
 					htmltext = "chamberlain-21.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

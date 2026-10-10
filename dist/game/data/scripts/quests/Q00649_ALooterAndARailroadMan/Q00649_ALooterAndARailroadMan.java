@@ -93,6 +93,10 @@ public class Q00649_ALooterAndARailroadMan extends Quest
 					htmltext = event;
 				}
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -112,6 +116,10 @@ public class Q00649_ALooterAndARailroadMan extends Quest
 			case State.STARTED:
 			{
 				htmltext = (getQuestItemsCount(player, THIEF_GUILD_MARK) == 200) ? "32052-04.html" : "32052-05.html";
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

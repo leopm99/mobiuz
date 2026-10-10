@@ -167,6 +167,10 @@ public class Q00128_PailakaSongOfIceAndFire extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -270,6 +274,10 @@ public class Q00128_PailakaSongOfIceAndFire extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -341,6 +349,10 @@ public class Q00128_PailakaSongOfIceAndFire extends Quest
 						takeItems(player, BOOK7, -1);
 						addSpawn(ADLER2, -53297, 185027, -4617, 33486, false, 0, false, npc.getInstanceId());
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

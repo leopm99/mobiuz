@@ -243,7 +243,15 @@ public class Q00695_DefendTheHallOfSuffering extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

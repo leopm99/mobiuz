@@ -132,6 +132,10 @@ public class Q00138_TempleChampionPart2 extends Quest
 				qs.unset("talk");
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}
@@ -235,6 +239,10 @@ public class Q00138_TempleChampionPart2 extends Quest
 						htmltext = "30118-10.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -265,6 +273,10 @@ public class Q00138_TempleChampionPart2 extends Quest
 					case 5:
 					{
 						htmltext = "30474-05.html";
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -301,7 +313,15 @@ public class Q00138_TempleChampionPart2 extends Quest
 						htmltext = "30666-09.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

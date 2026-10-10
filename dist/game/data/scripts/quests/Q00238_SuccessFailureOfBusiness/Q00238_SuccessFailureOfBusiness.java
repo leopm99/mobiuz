@@ -90,6 +90,10 @@ public class Q00238_SuccessFailureOfBusiness extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -204,7 +208,15 @@ public class Q00238_SuccessFailureOfBusiness extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -168,6 +168,10 @@ public class Q00643_RiseAndFallOfTheElrokiTribe extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -239,6 +243,10 @@ public class Q00643_RiseAndFallOfTheElrokiTribe extends Quest
 						htmltext = "32117-03.html";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

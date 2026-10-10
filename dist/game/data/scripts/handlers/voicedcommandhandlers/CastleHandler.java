@@ -139,6 +139,10 @@ public class CastleHandler implements IVoicedCommandHandler
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return true;
 	}

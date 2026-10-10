@@ -210,6 +210,10 @@ public class Q00458_PerfectForm extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		if (overHitHtml)
@@ -319,7 +323,15 @@ public class Q00458_PerfectForm extends Quest
 						htmltext = "32768-13.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

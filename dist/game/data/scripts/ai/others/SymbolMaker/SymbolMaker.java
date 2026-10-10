@@ -85,6 +85,10 @@ public class SymbolMaker extends AbstractNpcAI
 				player.sendPacket(new HennaRemoveList(player));
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

@@ -137,6 +137,10 @@ public class Quarry extends AbstractNpcAI
 					npc.deleteMe();
 				}
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

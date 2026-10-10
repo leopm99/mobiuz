@@ -102,6 +102,10 @@ public class Q00124_MeetingTheElroki extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}
@@ -141,12 +145,20 @@ public class Q00124_MeetingTheElroki extends Quest
 								htmltext = "32113-07.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
 					case State.COMPLETED:
 					{
 						htmltext = getAlreadyCompletedMsg(player);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}
@@ -215,6 +227,10 @@ public class Q00124_MeetingTheElroki extends Quest
 							}
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				break;
@@ -245,6 +261,10 @@ public class Q00124_MeetingTheElroki extends Quest
 							htmltext = "32117-06.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 				break;
@@ -270,8 +290,16 @@ public class Q00124_MeetingTheElroki extends Quest
 							htmltext = "32118-02.html";
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

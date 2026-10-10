@@ -117,6 +117,10 @@ public class Q00370_AnElderSowsSeeds extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

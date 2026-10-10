@@ -89,6 +89,10 @@ public class Q00030_ChestCaughtWithABaitOfFire extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -143,6 +147,10 @@ public class Q00030_ChestCaughtWithABaitOfFire extends Quest
 								htmltext = "31577-05.htm";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -154,7 +162,15 @@ public class Q00030_ChestCaughtWithABaitOfFire extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

@@ -123,6 +123,10 @@ public class Q00712_PathToBecomingALordOren extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}
@@ -245,6 +249,10 @@ public class Q00712_PathToBecomingALordOren extends Quest
 				{
 					htmltext = "30176-01.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

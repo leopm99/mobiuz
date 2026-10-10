@@ -195,6 +195,10 @@ public class Q10285_MeetingSirra extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -249,6 +253,10 @@ public class Q10285_MeetingSirra extends Quest
 								htmltext = "32020-08.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -288,6 +296,10 @@ public class Q10285_MeetingSirra extends Quest
 									htmltext = "32760-15.html";
 									break;
 								}
+								default:
+								{
+									break;
+								}
 							}
 						}
 						break;
@@ -311,6 +323,10 @@ public class Q10285_MeetingSirra extends Quest
 								case 3:
 								{
 									htmltext = "32761-04.html";
+									break;
+								}
+								default:
+								{
 									break;
 								}
 							}
@@ -354,7 +370,15 @@ public class Q10285_MeetingSirra extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

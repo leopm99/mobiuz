@@ -445,6 +445,10 @@ public abstract class AbstractSagaQuest extends Quest
 				}
 				return null;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -994,6 +998,10 @@ public abstract class AbstractSagaQuest extends Quest
 							htmltext = "0-010.htm";
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

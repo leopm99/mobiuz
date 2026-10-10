@@ -128,6 +128,10 @@ public class Rabbits extends Event
 								LOGGER.info("Event " + name + " scheduled at " + TimeUtil.getDateTimeString(System.currentTimeMillis() + delay));
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 					}
 				});
@@ -249,6 +253,10 @@ public class Rabbits extends Event
 			{
 				Broadcast.toAllOnlinePlayers("Rabbits Event: Time up!");
 				eventStop();
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

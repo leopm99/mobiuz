@@ -180,6 +180,10 @@ public class Q00184_ArtOfPersuasion extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -260,6 +264,10 @@ public class Q00184_ArtOfPersuasion extends Quest
 					{
 						htmltext = "32366-07.html";
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

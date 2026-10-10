@@ -1347,6 +1347,10 @@ public class Item extends WorldObject
 				player.sendPacket(sm);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		if (_mana == 0) // The life time has expired.

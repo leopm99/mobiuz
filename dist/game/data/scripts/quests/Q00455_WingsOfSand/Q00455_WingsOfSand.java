@@ -115,6 +115,10 @@ public class Q00455_WingsOfSand extends Quest
 					htmltext = event;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -162,6 +166,10 @@ public class Q00455_WingsOfSand extends Quest
 						htmltext = "32864-07.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -179,6 +187,10 @@ public class Q00455_WingsOfSand extends Quest
 						htmltext = "32864-01.htm";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

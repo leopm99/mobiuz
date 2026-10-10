@@ -92,6 +92,10 @@ public class Q00651_RunawayYouth extends Quest
 						htmltext = "32014-02.html";
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -103,6 +107,10 @@ public class Q00651_RunawayYouth extends Quest
 					qs.exitQuest(true, true);
 					htmltext = "31989-01.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

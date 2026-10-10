@@ -335,6 +335,10 @@ public class Q00194_SevenSignsMammonsContract extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -460,6 +464,10 @@ public class Q00194_SevenSignsMammonsContract extends Quest
 								htmltext = "32571-28.html";
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -483,6 +491,10 @@ public class Q00194_SevenSignsMammonsContract extends Quest
 								{
 									htmltext = "32572-07.html";
 								}
+								break;
+							}
+							default:
+							{
 								break;
 							}
 						}
@@ -510,6 +522,10 @@ public class Q00194_SevenSignsMammonsContract extends Quest
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -535,6 +551,10 @@ public class Q00194_SevenSignsMammonsContract extends Quest
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						break;
 					}
@@ -546,7 +566,15 @@ public class Q00194_SevenSignsMammonsContract extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

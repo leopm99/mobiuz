@@ -325,6 +325,10 @@ public class Q00327_RecoverTheFarmland extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		return html;
@@ -437,6 +441,10 @@ public class Q00327_RecoverTheFarmland extends Quest
 				{
 					html = "30314-01.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

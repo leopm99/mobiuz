@@ -131,6 +131,10 @@ public class LairOfAntharas extends AbstractNpcAI
 				cancelQuestTimer("CHECK_HOME", npc, null);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	

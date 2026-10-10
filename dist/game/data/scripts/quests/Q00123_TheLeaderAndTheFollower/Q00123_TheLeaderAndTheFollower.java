@@ -142,10 +142,18 @@ public class Q00123_TheLeaderAndTheFollower extends Quest
 								}
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 					}
 				}
 					break;
+				default:
+				{
+					break;
+				}
 			}
 			return htmltext;
 		}
@@ -209,6 +217,10 @@ public class Q00123_TheLeaderAndTheFollower extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -239,6 +251,10 @@ public class Q00123_TheLeaderAndTheFollower extends Quest
 							qs.setCond(8);
 						}
 					}
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}
@@ -374,6 +390,10 @@ public class Q00123_TheLeaderAndTheFollower extends Quest
 			case State.COMPLETED:
 			{
 				htmltext = getAlreadyCompletedMsg(player);
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

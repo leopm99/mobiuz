@@ -92,6 +92,10 @@ public class InitialShortcutData implements IXmlReader
 							parseMacros(d);
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 				}
 			}
@@ -201,6 +205,10 @@ public class InitialShortcutData implements IXmlReader
 								d1 = parseInteger(attrs, "delay"); // Delay in seconds
 								break;
 							}
+							default:
+							{
+								break;
+							}
 						}
 						commands.add(new MacroCmd(entry++, type, d1, d2, cmd));
 					}
@@ -301,6 +309,10 @@ public class InitialShortcutData implements IXmlReader
 					player.registerMacro(macro);
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 			
 			// Register shortcut
@@ -343,6 +355,10 @@ public class InitialShortcutData implements IXmlReader
 							continue;
 						}
 						player.registerMacro(macro);
+						break;
+					}
+					default:
+					{
 						break;
 					}
 				}

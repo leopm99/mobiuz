@@ -100,6 +100,10 @@ public class Q00377_ExplorationOfTheGiantsCavePart2 extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

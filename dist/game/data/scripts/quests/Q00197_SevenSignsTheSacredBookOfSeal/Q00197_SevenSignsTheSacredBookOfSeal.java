@@ -211,6 +211,10 @@ public class Q00197_SevenSignsTheSacredBookOfSeal extends Quest
 				}
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}
@@ -332,7 +336,15 @@ public class Q00197_SevenSignsTheSacredBookOfSeal extends Quest
 						}
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

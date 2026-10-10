@@ -828,6 +828,10 @@ public class WildBeastReserve extends ClanHallSiegeEngine
 				result = "35627-20.htm";
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return result;
 	}
@@ -860,6 +864,10 @@ public class WildBeastReserve extends ClanHallSiegeEngine
 			case 35622:
 			{
 				result = "35627-20a.htm";
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

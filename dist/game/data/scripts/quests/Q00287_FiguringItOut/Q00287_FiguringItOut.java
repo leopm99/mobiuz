@@ -201,6 +201,10 @@ public class Q00287_FiguringItOut extends Quest
 				htmltext = (getQuestItemsCount(player, VIAL_OF_TANTA_BLOOD) < 100) ? "32742-04.html" : "32742-05.html";
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

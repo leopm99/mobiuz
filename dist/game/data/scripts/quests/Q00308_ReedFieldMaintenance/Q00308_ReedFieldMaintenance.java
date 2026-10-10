@@ -191,6 +191,10 @@ public class Q00308_ReedFieldMaintenance extends Quest
 				htmltext = event;
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return htmltext;
 	}

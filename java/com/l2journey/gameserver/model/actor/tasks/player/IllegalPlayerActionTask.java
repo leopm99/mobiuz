@@ -81,6 +81,10 @@ public class IllegalPlayerActionTask implements Runnable
 				_actor.sendMessage("You will be teleported to GM Consultation Service area and jailed.");
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 	}
 	
@@ -118,6 +122,10 @@ public class IllegalPlayerActionTask implements Runnable
 				case JAIL:
 				{
 					PunishmentManager.getInstance().startPunishment(new PunishmentTask(_actor.getObjectId(), PunishmentAffect.CHARACTER, PunishmentType.JAIL, System.currentTimeMillis() + (Config.DEFAULT_PUNISH_PARAM * 1000), _message, getClass().getSimpleName()));
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

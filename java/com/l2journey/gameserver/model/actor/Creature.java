@@ -449,6 +449,10 @@ public abstract class Creature extends WorldObject
 					return false;
 				}
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		return _zones[zone.ordinal()] > 0;
@@ -5602,6 +5606,10 @@ public abstract class Creature extends WorldObject
 				case CROSSBOW:
 				{
 					return (int) ((1200 * 333 * _stat.getWeaponReuseModifier(null)) / _stat.getPAtkSpd());
+				}
+				default:
+				{
+					break;
 				}
 			}
 		}

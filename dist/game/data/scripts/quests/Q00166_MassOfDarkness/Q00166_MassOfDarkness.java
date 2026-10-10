@@ -147,6 +147,10 @@ public class Q00166_MassOfDarkness extends Quest
 						htmltext = getAlreadyCompletedMsg(player);
 						break;
 					}
+					default:
+					{
+						break;
+					}
 				}
 				break;
 			}
@@ -170,6 +174,10 @@ public class Q00166_MassOfDarkness extends Quest
 						htmltext = npcId + "-02.html";
 					}
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}

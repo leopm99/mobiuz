@@ -75,6 +75,10 @@ public class Q00510_AClansPrestige extends Quest
 				qs.exitQuest(true, true);
 				break;
 			}
+			default:
+			{
+				break;
+			}
 		}
 		return event;
 	}

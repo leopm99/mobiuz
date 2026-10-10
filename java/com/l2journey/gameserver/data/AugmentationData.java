@@ -757,6 +757,10 @@ public class AugmentationData
 					generateSkill = true;
 				}
 			}
+			default:
+			{
+				break;
+			}
 		}
 		
 		if (!generateSkill && (Rnd.get(1, 100) <= Config.AUGMENTATION_BASESTAT_CHANCE))
@@ -815,6 +819,10 @@ public class AugmentationData
 				case 3: // red skill
 				{
 					stat34 = _redSkills.get(lifeStoneLevel).get(Rnd.get(0, _redSkills.get(lifeStoneLevel).size() - 1));
+					break;
+				}
+				default:
+				{
 					break;
 				}
 			}

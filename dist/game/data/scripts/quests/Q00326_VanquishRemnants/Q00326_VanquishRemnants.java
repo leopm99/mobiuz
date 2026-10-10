@@ -93,6 +93,10 @@ public class Q00326_VanquishRemnants extends Quest
 					htmltext = event;
 					break;
 				}
+				default:
+				{
+					break;
+				}
 			}
 		}
 		return htmltext;
@@ -155,6 +159,10 @@ public class Q00326_VanquishRemnants extends Quest
 				{
 					htmltext = "30435-04.html";
 				}
+				break;
+			}
+			default:
+			{
 				break;
 			}
 		}
