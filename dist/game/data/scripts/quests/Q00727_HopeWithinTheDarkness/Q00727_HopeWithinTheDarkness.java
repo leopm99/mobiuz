@@ -66,18 +66,18 @@ public class Q00727_HopeWithinTheDarkness extends Quest
 	
 	public static class CastleDungeon
 	{
-		private final int INSTANCEID;
+		private final int instanceId;
 		private final int _wardenId;
 		
 		public CastleDungeon(int iId, int wardenId)
 		{
-			INSTANCEID = iId;
+			instanceId = iId;
 			_wardenId = wardenId;
 		}
 		
 		public int getInstanceId()
 		{
-			return INSTANCEID;
+			return instanceId;
 		}
 		
 		public long getReEnterTime()

@@ -39,16 +39,16 @@ public class Q00717_ForTheSakeOfTheTerritoryGludio extends TerritoryWarSuperClas
 	public Q00717_ForTheSakeOfTheTerritoryGludio()
 	{
 		super(717);
-		CATAPULT_ID = 36499;
-		TERRITORY_ID = 81;
-		LEADER_IDS = new int[]
+		catapultId = 36499;
+		territoryId = 81;
+		leaderIds = new int[]
 		{
 			36508,
 			36510,
 			36513,
 			36591
 		};
-		GUARD_IDS = new int[]
+		guardIds = new int[]
 		{
 			36509,
 			36511,

@@ -39,16 +39,16 @@ public class Q00719_ForTheSakeOfTheTerritoryGiran extends TerritoryWarSuperClass
 	public Q00719_ForTheSakeOfTheTerritoryGiran()
 	{
 		super(719);
-		CATAPULT_ID = 36501;
-		TERRITORY_ID = 83;
-		LEADER_IDS = new int[]
+		catapultId = 36501;
+		territoryId = 83;
+		leaderIds = new int[]
 		{
 			36520,
 			36522,
 			36525,
 			36593
 		};
-		GUARD_IDS = new int[]
+		guardIds = new int[]
 		{
 			36521,
 			36523,

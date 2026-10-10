@@ -37,7 +37,7 @@ public class Q00730_ProtectTheSuppliesSafe extends TerritoryWarSuperClass
 	public Q00730_ProtectTheSuppliesSafe()
 	{
 		super(730);
-		NPC_IDS = new int[]
+		npcIds = new int[]
 		{
 			36591,
 			36592,
@@ -49,7 +49,7 @@ public class Q00730_ProtectTheSuppliesSafe extends TerritoryWarSuperClass
 			36598,
 			36599
 		};
-		addAttackId(NPC_IDS);
+		addAttackId(npcIds);
 	}
 	
 	@Override

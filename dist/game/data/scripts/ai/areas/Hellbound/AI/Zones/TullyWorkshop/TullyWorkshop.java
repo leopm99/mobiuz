@@ -131,7 +131,7 @@ public class TullyWorkshop extends AbstractNpcAI
 	private int killedFollowersCount = 0;
 	private boolean allowServantSpawn = true;
 	private boolean allowAgentSpawn = true;
-	private boolean allowAgentSpawn_7th = true;
+	private boolean allowAgentSpawn7th = true;
 	private boolean is7thFloorAttackBegan = false;
 	
 	protected ScheduledFuture<?> _countdown = null;
@@ -785,7 +785,7 @@ public class TullyWorkshop extends AbstractNpcAI
 				}
 			});
 			
-			allowAgentSpawn_7th = true;
+			allowAgentSpawn7th = true;
 			spawnedAgent = null;
 			npc.deleteMe();
 		}
@@ -937,14 +937,14 @@ public class TullyWorkshop extends AbstractNpcAI
 				if (party == null)
 				{
 					player.teleToLocation(-12501, 281397, -11936);
-					if (allowAgentSpawn_7th)
+					if (allowAgentSpawn7th)
 					{
 						if (spawnedAgent != null)
 						{
 							spawnedAgent.deleteMe();
 						}
 						spawnedAgent = addSpawn(AGENT, -12527, 279714, -11622, 16384, false, 0, false);
-						allowAgentSpawn_7th = false;
+						allowAgentSpawn7th = false;
 					}
 				}
 				else
@@ -963,19 +963,19 @@ public class TullyWorkshop extends AbstractNpcAI
 							}
 						}
 						
-						if (allowAgentSpawn_7th)
+						if (allowAgentSpawn7th)
 						{
 							if (spawnedAgent != null)
 							{
 								spawnedAgent.deleteMe();
 							}
 							spawnedAgent = addSpawn(AGENT, -12527, 279714, -11622, 16384, false, 0, false);
-							allowAgentSpawn_7th = false;
+							allowAgentSpawn7th = false;
 						}
 					}
 				}
 			}
-			else if (event.equalsIgnoreCase("buff") && !allowAgentSpawn_7th)
+			else if (event.equalsIgnoreCase("buff") && !allowAgentSpawn7th)
 			{
 				htmltext = null;
 				final Party party = player.getParty();
@@ -1009,9 +1009,9 @@ public class TullyWorkshop extends AbstractNpcAI
 					startQuestTimer("despawn_agent_7", 60000, npc, null);
 				}
 			}
-			else if (event.equalsIgnoreCase("refuse") && !allowAgentSpawn_7th)
+			else if (event.equalsIgnoreCase("refuse") && !allowAgentSpawn7th)
 			{
-				allowAgentSpawn_7th = true;
+				allowAgentSpawn7th = true;
 				spawnedAgent = null;
 				for (Monster monster : spawnedFollowers)
 				{
@@ -1177,7 +1177,7 @@ public class TullyWorkshop extends AbstractNpcAI
 				{
 					spawnedAgent.deleteMe();
 					spawnedAgent = null;
-					allowAgentSpawn_7th = true;
+					allowAgentSpawn7th = true;
 				}
 			}
 		}

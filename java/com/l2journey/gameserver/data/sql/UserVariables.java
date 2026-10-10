@@ -39,7 +39,7 @@ import com.l2journey.gameserver.model.actor.Player;
 
 public class UserVariables
 {
-	private final Logger LOGGER = Logger.getLogger(UserVariables.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(UserVariables.class.getName());
 	private final Map<String, String> databaseVariablesMap = new ConcurrentHashMap<>();
 	private final Map<String, Object> memoryVariablesMap = new ConcurrentHashMap<>();
 	

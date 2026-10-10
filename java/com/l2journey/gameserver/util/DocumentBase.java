@@ -152,7 +152,7 @@ import com.l2journey.gameserver.model.stats.functions.FuncTemplate;
  */
 public abstract class DocumentBase
 {
-	protected final Logger LOGGER = Logger.getLogger(getClass().getName());
+	protected static final Logger LOGGER = Logger.getLogger(DocumentBase.class.getName());
 	
 	private final File _file;
 	protected final Map<String, String[]> _tables = new HashMap<>();

@@ -316,9 +316,9 @@ public class RimKamaloka extends AbstractNpcAI
 	private class RimKamaWorld extends InstanceWorld
 	{
 		public int index;
-		public int KANABION;
-		public int DOPPLER;
-		public int VOIDER;
+		public int kanabion;
+		public int doppler;
+		public int voider;
 		
 		public int kanabionsCount = 0;
 		public int dopplersCount = 0;
@@ -527,27 +527,27 @@ public class RimKamaloka extends AbstractNpcAI
 				final int chance = Rnd.get(100);
 				int nextId = 0;
 
-				if (npcId == world.KANABION)
+				if (npcId == world.kanabion)
 				{
 					if (chance < 5)
 					{
-						nextId = world.DOPPLER;
+						nextId = world.doppler;
 					}
 				}
-				else if (npcId == world.DOPPLER)
+				else if (npcId == world.doppler)
 				{
 					if (chance < 5)
 					{
-						nextId = world.DOPPLER;
+						nextId = world.doppler;
 					}
 					else if (chance < 10)
 					{
-						nextId = world.VOIDER;
+						nextId = world.voider;
 					}
 				}
-				else if ((npcId == world.VOIDER) && (chance < 5))
+				else if ((npcId == world.voider) && (chance < 5))
 				{
-					nextId = world.VOIDER;
+					nextId = world.voider;
 				}
 
 				if (nextId > 0)
@@ -578,64 +578,64 @@ public class RimKamaloka extends AbstractNpcAI
 			final int chance = Rnd.get(100);
 			int nextId = 0;
 			
-			if (npcId == world.KANABION)
+			if (npcId == world.kanabion)
 			{
 				world.kanabionsCount++;
 				if (((Attackable) npc).isOverhit())
 				{
 					if (chance < 30)
 					{
-						nextId = world.DOPPLER;
+						nextId = world.doppler;
 					}
 					else if (chance < 40)
 					{
-						nextId = world.VOIDER;
+						nextId = world.voider;
 					}
 				}
 				else if (chance < 15)
 				{
-					nextId = world.DOPPLER;
+					nextId = world.doppler;
 				}
 			}
-			else if (npcId == world.DOPPLER)
+			else if (npcId == world.doppler)
 			{
 				world.dopplersCount++;
 				if (((Attackable) npc).isOverhit())
 				{
 					if (chance < 30)
 					{
-						nextId = world.DOPPLER;
+						nextId = world.doppler;
 					}
 					else if (chance < 60)
 					{
-						nextId = world.VOIDER;
+						nextId = world.voider;
 					}
 				}
 				else
 				{
 					if (chance < 10)
 					{
-						nextId = world.DOPPLER;
+						nextId = world.doppler;
 					}
 					else if (chance < 20)
 					{
-						nextId = world.VOIDER;
+						nextId = world.voider;
 					}
 				}
 			}
-			else if (npcId == world.VOIDER)
+			else if (npcId == world.voider)
 			{
 				world.voidersCount++;
 				if (((Attackable) npc).isOverhit())
 				{
 					if (chance < 50)
 					{
-						nextId = world.VOIDER;
+						nextId = world.voider;
 					}
 				}
 				else if (chance < 20)
 				{
-					nextId = world.VOIDER;
+					nextId = world.voider;
 				}
 			}
 			
@@ -805,13 +805,13 @@ public class RimKamaloka extends AbstractNpcAI
 	{
 		int[][] spawnlist;
 		final int index = world.index;
-		world.KANABION = KANABIONS[index][0];
-		world.DOPPLER = KANABIONS[index][1];
-		world.VOIDER = KANABIONS[index][2];
+		world.kanabion = KANABIONS[index][0];
+		world.doppler = KANABIONS[index][1];
+		world.voider = KANABIONS[index][2];
 		
 		try
 		{
-			final NpcTemplate mob1 = NpcData.getInstance().getTemplate(world.KANABION);
+			final NpcTemplate mob1 = NpcData.getInstance().getTemplate(world.kanabion);
 			spawnlist = SPAWNLIST[index];
 			
 			Spawn spawn;

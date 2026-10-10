@@ -39,16 +39,16 @@ public class Q00720_ForTheSakeOfTheTerritoryOren extends TerritoryWarSuperClass
 	public Q00720_ForTheSakeOfTheTerritoryOren()
 	{
 		super(720);
-		CATAPULT_ID = 36502;
-		TERRITORY_ID = 84;
-		LEADER_IDS = new int[]
+		catapultId = 36502;
+		territoryId = 84;
+		leaderIds = new int[]
 		{
 			36526,
 			36528,
 			36531,
 			36594
 		};
-		GUARD_IDS = new int[]
+		guardIds = new int[]
 		{
 			36527,
 			36529,

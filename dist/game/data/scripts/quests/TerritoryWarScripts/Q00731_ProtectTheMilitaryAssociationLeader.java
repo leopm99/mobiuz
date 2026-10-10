@@ -37,7 +37,7 @@ public class Q00731_ProtectTheMilitaryAssociationLeader extends TerritoryWarSupe
 	public Q00731_ProtectTheMilitaryAssociationLeader()
 	{
 		super(731);
-		NPC_IDS = new int[]
+		npcIds = new int[]
 		{
 			36508,
 			36514,
@@ -49,7 +49,7 @@ public class Q00731_ProtectTheMilitaryAssociationLeader extends TerritoryWarSupe
 			36550,
 			36556
 		};
-		addAttackId(NPC_IDS);
+		addAttackId(npcIds);
 	}
 	
 	@Override

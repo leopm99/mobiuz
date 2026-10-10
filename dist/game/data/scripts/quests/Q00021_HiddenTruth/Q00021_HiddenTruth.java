@@ -59,8 +59,8 @@ public class Q00021_HiddenTruth extends Quest
 	private static final String PAGE_ROUTE_NAME = "rune_ghost1b";
 	private static int PAGE_COUNT = 0;
 	private static boolean GHOST_SPAWNED = false;
-	private boolean PAGE_SPAWNED = false;
-	private boolean MOVE_ENDED = false;
+	private boolean pageSpawned = false;
+	private boolean moveEnded = false;
 	
 	public Q00021_HiddenTruth()
 	{
@@ -242,7 +242,7 @@ public class Q00021_HiddenTruth extends Quest
 					}
 					case 3:
 					{
-						if (PAGE_SPAWNED)
+						if (pageSpawned)
 						{
 							htmltext = "31524-07b.html";
 						}
@@ -252,7 +252,7 @@ public class Q00021_HiddenTruth extends Quest
 							{
 								final Npc page = addSpawn(GHOST_OF_VON_HELLMANS_PAGE, PAGE_LOC, true, 0);
 								PAGE_COUNT++;
-								PAGE_SPAWNED = true;
+								pageSpawned = true;
 								page.setScriptValue(player.getObjectId());
 								WalkingManager.getInstance().startMoving(page, PAGE_ROUTE_NAME);
 								htmltext = "31524-07.html";
@@ -276,7 +276,7 @@ public class Q00021_HiddenTruth extends Quest
 			{
 				if (qs.isCond(3))
 				{
-					if (MOVE_ENDED)
+					if (moveEnded)
 					{
 						htmltext = "31525-02.html";
 						startQuestTimer("DESPAWN", 3000, npc, player);
@@ -429,7 +429,7 @@ public class Q00021_HiddenTruth extends Quest
 		if (qs != null)
 		{
 			startQuestTimer("DESPAWN", 15000, npc, null);
-			MOVE_ENDED = true;
+			moveEnded = true;
 		}
 	}
 }

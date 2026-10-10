@@ -39,16 +39,16 @@ public class Q00718_ForTheSakeOfTheTerritoryDion extends TerritoryWarSuperClass
 	public Q00718_ForTheSakeOfTheTerritoryDion()
 	{
 		super(718);
-		CATAPULT_ID = 36500;
-		TERRITORY_ID = 82;
-		LEADER_IDS = new int[]
+		catapultId = 36500;
+		territoryId = 82;
+		leaderIds = new int[]
 		{
 			36514,
 			36516,
 			36519,
 			36592
 		};
-		GUARD_IDS = new int[]
+		guardIds = new int[]
 		{
 			36515,
 			36517,

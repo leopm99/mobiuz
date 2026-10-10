@@ -39,7 +39,7 @@ public class Q00736_WeakenTheMagic extends TerritoryWarSuperClass
 	public Q00736_WeakenTheMagic()
 	{
 		super(736);
-		CLASS_IDS = new int[]
+		classIds = new int[]
 		{
 			40,
 			110,
@@ -56,8 +56,8 @@ public class Q00736_WeakenTheMagic extends TerritoryWarSuperClass
 			14,
 			96
 		};
-		RANDOM_MIN = 10;
-		RANDOM_MAX = 15;
+		randomMin = 10;
+		randomMax = 15;
 		npcString = new NpcStringId[]
 		{
 			NpcStringId.YOU_HAVE_DEFEATED_S2_OF_S1_ENEMIES,

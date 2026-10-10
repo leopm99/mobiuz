@@ -60,7 +60,7 @@ import com.l2journey.gameserver.network.serverpackets.SystemMessage;
 public class ItemAuctionInstance
 {
 	protected static final Logger LOGGER = Logger.getLogger(ItemAuctionInstance.class.getName());
-	private final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("HH:mm:ss dd.MM.yy");
+	private final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss dd.MM.yy");
 	
 	private static final long START_TIME_SPACE = TimeUnit.MILLISECONDS.convert(1, TimeUnit.MINUTES);
 	private static final long FINISH_TIME_SPACE = TimeUnit.MILLISECONDS.convert(10, TimeUnit.MINUTES);
@@ -341,7 +341,7 @@ public class ItemAuctionInstance
 		{
 			setStateTask(ThreadPool.schedule(new ScheduleAuctionTask(nextAuction), Math.max(nextAuction.getStartingTime() - System.currentTimeMillis(), 0)));
 			final ItemAuction scheduledNext = nextAuction;
-			LOGGER.log(Level.INFO, () -> getClass().getSimpleName() + ": Schedule next auction " + scheduledNext.getAuctionId() + " on " + DATE_FORMAT.format(new Date(scheduledNext.getStartingTime())) + " for instance " + _instanceId);
+			LOGGER.log(Level.INFO, () -> getClass().getSimpleName() + ": Schedule next auction " + scheduledNext.getAuctionId() + " on " + dateFormat.format(new Date(scheduledNext.getStartingTime())) + " for instance " + _instanceId);
 		}
 	}
 	

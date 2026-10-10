@@ -36,9 +36,9 @@ public class AuctionDateGenerator
 	private final Calendar _calendar;
 	
 	private final int _interval;
-	private int _day_of_week;
-	private int _hour_of_day;
-	private int _minute_of_hour;
+	private int _dayOfWeek;
+	private int _hourOfDay;
+	private int _minuteOfHour;
 	
 	public AuctionDateGenerator(StatSet config)
 	{
@@ -46,9 +46,9 @@ public class AuctionDateGenerator
 		_interval = config.getInt(FIELD_INTERVAL, -1);
 		// NC week start in Monday.
 		final int fixedDayWeek = config.getInt(FIELD_DAY_OF_WEEK, -1) + 1;
-		_day_of_week = (fixedDayWeek > 7) ? 1 : fixedDayWeek;
-		_hour_of_day = config.getInt(FIELD_HOUR_OF_DAY, -1);
-		_minute_of_hour = config.getInt(FIELD_MINUTE_OF_HOUR, -1);
+		_dayOfWeek = (fixedDayWeek > 7) ? 1 : fixedDayWeek;
+		_hourOfDay = config.getInt(FIELD_HOUR_OF_DAY, -1);
+		_minuteOfHour = config.getInt(FIELD_MINUTE_OF_HOUR, -1);
 		checkDayOfWeek(-1);
 		checkHourOfDay(-1);
 		checkMinuteOfHour(0);
@@ -59,11 +59,11 @@ public class AuctionDateGenerator
 		_calendar.setTimeInMillis(date);
 		_calendar.set(Calendar.MILLISECOND, 0);
 		_calendar.set(Calendar.SECOND, 0);
-		_calendar.set(Calendar.MINUTE, _minute_of_hour);
-		_calendar.set(Calendar.HOUR_OF_DAY, _hour_of_day);
-		if (_day_of_week > 0)
+		_calendar.set(Calendar.MINUTE, _minuteOfHour);
+		_calendar.set(Calendar.HOUR_OF_DAY, _hourOfDay);
+		if (_dayOfWeek > 0)
 		{
-			_calendar.set(Calendar.DAY_OF_WEEK, _day_of_week);
+			_calendar.set(Calendar.DAY_OF_WEEK, _dayOfWeek);
 			return calcDestTime(_calendar.getTimeInMillis(), date, MILLIS_IN_WEEK);
 		}
 		return calcDestTime(_calendar.getTimeInMillis(), date, TimeUnit.MILLISECONDS.convert(_interval, TimeUnit.DAYS));
@@ -85,13 +85,13 @@ public class AuctionDateGenerator
 	
 	private void checkDayOfWeek(int defaultValue)
 	{
-		if ((_day_of_week < 1) || (_day_of_week > 7))
+		if ((_dayOfWeek < 1) || (_dayOfWeek > 7))
 		{
 			if ((defaultValue == -1) && (_interval < 1))
 			{
-				throw new IllegalArgumentException("Illegal params for '" + FIELD_DAY_OF_WEEK + "': " + (_day_of_week == -1 ? "not found" : _day_of_week));
+				throw new IllegalArgumentException("Illegal params for '" + FIELD_DAY_OF_WEEK + "': " + (_dayOfWeek == -1 ? "not found" : _dayOfWeek));
 			}
-			_day_of_week = defaultValue;
+			_dayOfWeek = defaultValue;
 		}
 		else if (_interval > 1)
 		{
@@ -101,25 +101,25 @@ public class AuctionDateGenerator
 	
 	private void checkHourOfDay(int defaultValue)
 	{
-		if ((_hour_of_day < 0) || (_hour_of_day > 23))
+		if ((_hourOfDay < 0) || (_hourOfDay > 23))
 		{
 			if (defaultValue == -1)
 			{
-				throw new IllegalArgumentException("Illegal params for '" + FIELD_HOUR_OF_DAY + "': " + (_hour_of_day == -1 ? "not found" : _hour_of_day));
+				throw new IllegalArgumentException("Illegal params for '" + FIELD_HOUR_OF_DAY + "': " + (_hourOfDay == -1 ? "not found" : _hourOfDay));
 			}
-			_hour_of_day = defaultValue;
+			_hourOfDay = defaultValue;
 		}
 	}
 	
 	private void checkMinuteOfHour(int defaultValue)
 	{
-		if ((_minute_of_hour < 0) || (_minute_of_hour > 59))
+		if ((_minuteOfHour < 0) || (_minuteOfHour > 59))
 		{
 			if (defaultValue == -1)
 			{
-				throw new IllegalArgumentException("Illegal params for '" + FIELD_MINUTE_OF_HOUR + "': " + (_minute_of_hour == -1 ? "not found" : _minute_of_hour));
+				throw new IllegalArgumentException("Illegal params for '" + FIELD_MINUTE_OF_HOUR + "': " + (_minuteOfHour == -1 ? "not found" : _minuteOfHour));
 			}
-			_minute_of_hour = defaultValue;
+			_minuteOfHour = defaultValue;
 		}
 	}
 }

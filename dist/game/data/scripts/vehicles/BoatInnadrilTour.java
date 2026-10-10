@@ -89,37 +89,37 @@ public class BoatInnadrilTour implements Runnable
 	private final Boat _boat;
 	private int _cycle = 0;
 	
-	private final CreatureSay ARRIVED_AT_INNADRIL;
-	private final CreatureSay LEAVE_INNADRIL5;
-	private final CreatureSay LEAVE_INNADRIL1;
-	private final CreatureSay LEAVE_INNADRIL0;
-	private final CreatureSay LEAVING_INNADRIL;
+	private final CreatureSay arrivedAtInnadril;
+	private final CreatureSay leaveInnadril5;
+	private final CreatureSay leaveInnadril1;
+	private final CreatureSay leaveInnadril0;
+	private final CreatureSay leavingInnadril;
 	
-	private final CreatureSay ARRIVAL20;
-	private final CreatureSay ARRIVAL15;
-	private final CreatureSay ARRIVAL10;
-	private final CreatureSay ARRIVAL5;
-	private final CreatureSay ARRIVAL1;
+	private final CreatureSay arrival20;
+	private final CreatureSay arrival15;
+	private final CreatureSay arrival10;
+	private final CreatureSay arrival5;
+	private final CreatureSay arrival1;
 	
-	private final PlaySound INNADRIL_SOUND;
+	private final PlaySound innadrilSound;
 	
 	public BoatInnadrilTour(Boat boat)
 	{
 		_boat = boat;
 		
-		ARRIVED_AT_INNADRIL = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_INNADRIL_PLEASURE_BOAT_HAS_ARRIVED_IT_WILL_ANCHOR_FOR_TEN_MINUTES);
-		LEAVE_INNADRIL5 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_INNADRIL_PLEASURE_BOAT_WILL_LEAVE_IN_FIVE_MINUTES);
-		LEAVE_INNADRIL1 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_INNADRIL_PLEASURE_BOAT_WILL_LEAVE_IN_ONE_MINUTE);
-		LEAVE_INNADRIL0 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_INNADRIL_PLEASURE_BOAT_WILL_BE_LEAVING_SOON);
-		LEAVING_INNADRIL = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_INNADRIL_PLEASURE_BOAT_IS_LEAVING);
+		arrivedAtInnadril = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_INNADRIL_PLEASURE_BOAT_HAS_ARRIVED_IT_WILL_ANCHOR_FOR_TEN_MINUTES);
+		leaveInnadril5 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_INNADRIL_PLEASURE_BOAT_WILL_LEAVE_IN_FIVE_MINUTES);
+		leaveInnadril1 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_INNADRIL_PLEASURE_BOAT_WILL_LEAVE_IN_ONE_MINUTE);
+		leaveInnadril0 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_INNADRIL_PLEASURE_BOAT_WILL_BE_LEAVING_SOON);
+		leavingInnadril = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_INNADRIL_PLEASURE_BOAT_IS_LEAVING);
 		
-		ARRIVAL20 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_INNADRIL_PLEASURE_BOAT_WILL_ARRIVE_IN_APPROXIMATELY_20_MINUTES);
-		ARRIVAL15 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_INNADRIL_PLEASURE_BOAT_WILL_ARRIVE_IN_APPROXIMATELY_15_MINUTES);
-		ARRIVAL10 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_INNADRIL_PLEASURE_BOAT_WILL_ARRIVE_IN_APPROXIMATELY_10_MINUTES);
-		ARRIVAL5 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_INNADRIL_PLEASURE_BOAT_WILL_ARRIVE_IN_APPROXIMATELY_5_MINUTES);
-		ARRIVAL1 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_INNADRIL_PLEASURE_BOAT_WILL_ARRIVE_IN_APPROXIMATELY_1_MINUTE);
+		arrival20 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_INNADRIL_PLEASURE_BOAT_WILL_ARRIVE_IN_APPROXIMATELY_20_MINUTES);
+		arrival15 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_INNADRIL_PLEASURE_BOAT_WILL_ARRIVE_IN_APPROXIMATELY_15_MINUTES);
+		arrival10 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_INNADRIL_PLEASURE_BOAT_WILL_ARRIVE_IN_APPROXIMATELY_10_MINUTES);
+		arrival5 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_INNADRIL_PLEASURE_BOAT_WILL_ARRIVE_IN_APPROXIMATELY_5_MINUTES);
+		arrival1 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_INNADRIL_PLEASURE_BOAT_WILL_ARRIVE_IN_APPROXIMATELY_1_MINUTE);
 		
-		INNADRIL_SOUND = new PlaySound(0, "itemsound.ship_arrival_departure", 1, _boat.getObjectId(), DOCK.getX(), DOCK.getY(), DOCK.getZ());
+		innadrilSound = new PlaySound(0, "itemsound.ship_arrival_departure", 1, _boat.getObjectId(), DOCK.getX(), DOCK.getY(), DOCK.getZ());
 	}
 	
 	@Override
@@ -131,25 +131,25 @@ public class BoatInnadrilTour implements Runnable
 			{
 				case 0:
 				{
-					BoatManager.getInstance().broadcastPacket(DOCK, DOCK, LEAVE_INNADRIL5);
+					BoatManager.getInstance().broadcastPacket(DOCK, DOCK, leaveInnadril5);
 					ThreadPool.schedule(this, 240000);
 					break;
 				}
 				case 1:
 				{
-					BoatManager.getInstance().broadcastPacket(DOCK, DOCK, LEAVE_INNADRIL1);
+					BoatManager.getInstance().broadcastPacket(DOCK, DOCK, leaveInnadril1);
 					ThreadPool.schedule(this, 40000);
 					break;
 				}
 				case 2:
 				{
-					BoatManager.getInstance().broadcastPacket(DOCK, DOCK, LEAVE_INNADRIL0);
+					BoatManager.getInstance().broadcastPacket(DOCK, DOCK, leaveInnadril0);
 					ThreadPool.schedule(this, 20000);
 					break;
 				}
 				case 3:
 				{
-					BoatManager.getInstance().broadcastPackets(DOCK, DOCK, LEAVING_INNADRIL, INNADRIL_SOUND);
+					BoatManager.getInstance().broadcastPackets(DOCK, DOCK, leavingInnadril, innadrilSound);
 					_boat.payForRide(0, 1, 107092, 219098, -3952);
 					_boat.executePath(TOUR);
 					ThreadPool.schedule(this, 650000);
@@ -157,36 +157,36 @@ public class BoatInnadrilTour implements Runnable
 				}
 				case 4:
 				{
-					BoatManager.getInstance().broadcastPacket(DOCK, DOCK, ARRIVAL20);
+					BoatManager.getInstance().broadcastPacket(DOCK, DOCK, arrival20);
 					ThreadPool.schedule(this, 300000);
 					break;
 				}
 				case 5:
 				{
-					BoatManager.getInstance().broadcastPacket(DOCK, DOCK, ARRIVAL15);
+					BoatManager.getInstance().broadcastPacket(DOCK, DOCK, arrival15);
 					ThreadPool.schedule(this, 300000);
 					break;
 				}
 				case 6:
 				{
-					BoatManager.getInstance().broadcastPacket(DOCK, DOCK, ARRIVAL10);
+					BoatManager.getInstance().broadcastPacket(DOCK, DOCK, arrival10);
 					ThreadPool.schedule(this, 300000);
 					break;
 				}
 				case 7:
 				{
-					BoatManager.getInstance().broadcastPacket(DOCK, DOCK, ARRIVAL5);
+					BoatManager.getInstance().broadcastPacket(DOCK, DOCK, arrival5);
 					ThreadPool.schedule(this, 240000);
 					break;
 				}
 				case 8:
 				{
-					BoatManager.getInstance().broadcastPacket(DOCK, DOCK, ARRIVAL1);
+					BoatManager.getInstance().broadcastPacket(DOCK, DOCK, arrival1);
 					break;
 				}
 				case 9:
 				{
-					BoatManager.getInstance().broadcastPackets(DOCK, DOCK, ARRIVED_AT_INNADRIL, INNADRIL_SOUND);
+					BoatManager.getInstance().broadcastPackets(DOCK, DOCK, arrivedAtInnadril, innadrilSound);
 					ThreadPool.schedule(this, 300000);
 					break;
 				}

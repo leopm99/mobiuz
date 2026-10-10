@@ -39,16 +39,16 @@ public class Q00721_ForTheSakeOfTheTerritoryAden extends TerritoryWarSuperClass
 	public Q00721_ForTheSakeOfTheTerritoryAden()
 	{
 		super(721);
-		CATAPULT_ID = 36503;
-		TERRITORY_ID = 85;
-		LEADER_IDS = new int[]
+		catapultId = 36503;
+		territoryId = 85;
+		leaderIds = new int[]
 		{
 			36532,
 			36534,
 			36537,
 			36595
 		};
-		GUARD_IDS = new int[]
+		guardIds = new int[]
 		{
 			36533,
 			36535,

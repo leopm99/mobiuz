@@ -97,7 +97,7 @@ public class SeedOfAnnihilation extends AbstractNpcAI
 		}
 		for (SeedRegion element : _regionsData)
 		{
-			for (int elite_mob_id : element.elite_mob_ids)
+			for (int elite_mob_id : element.eliteMobIds)
 			{
 				addSpawnId(elite_mob_id);
 			}
@@ -275,12 +275,12 @@ public class SeedOfAnnihilation extends AbstractNpcAI
 	{
 		for (SeedRegion a_regionsData : _regionsData)
 		{
-			for (int j = 0; j < a_regionsData.af_spawns.length; j++)
+			for (int j = 0; j < a_regionsData.afSpawns.length; j++)
 			{
-				a_regionsData.af_npcs[j] = addSpawn(ANNIHILATION_FURNACE, a_regionsData.af_spawns[j][0], a_regionsData.af_spawns[j][1], a_regionsData.af_spawns[j][2], a_regionsData.af_spawns[j][3], false, 0);
-				a_regionsData.af_npcs[j].setDisplayEffect(a_regionsData.activeBuff);
+				a_regionsData.afNpcs[j] = addSpawn(ANNIHILATION_FURNACE, a_regionsData.afSpawns[j][0], a_regionsData.afSpawns[j][1], a_regionsData.afSpawns[j][2], a_regionsData.afSpawns[j][3], false, 0);
+				a_regionsData.afNpcs[j].setDisplayEffect(a_regionsData.activeBuff);
 			}
-			ZoneManager.getInstance().getZoneById(a_regionsData.buff_zone, EffectZone.class).addSkill(ZONE_BUFFS[a_regionsData.activeBuff], 1);
+			ZoneManager.getInstance().getZoneById(a_regionsData.buffZone, EffectZone.class).addSkill(ZONE_BUFFS[a_regionsData.activeBuff], 1);
 		}
 		startQuestTimer("ChangeSeedsStatus", _seedsNextStatusChange - System.currentTimeMillis(), null, null);
 	}
@@ -298,9 +298,9 @@ public class SeedOfAnnihilation extends AbstractNpcAI
 	{
 		for (SeedRegion element : _regionsData)
 		{
-			if (ArrayUtil.contains(element.elite_mob_ids, npc.getId()))
+			if (ArrayUtil.contains(element.eliteMobIds, npc.getId()))
 			{
-				spawnGroupOfMinion(npc.asMonster(), getRandomEntry(element.minion_lists));
+				spawnGroupOfMinion(npc.asMonster(), getRandomEntry(element.minionLists));
 			}
 		}
 	}
@@ -318,12 +318,12 @@ public class SeedOfAnnihilation extends AbstractNpcAI
 			{
 				_regionsData[i].activeBuff = ZONE_BUFFS_LIST[buffsNow][i];
 				
-				for (Npc af : _regionsData[i].af_npcs)
+				for (Npc af : _regionsData[i].afNpcs)
 				{
 					af.setDisplayEffect(_regionsData[i].activeBuff);
 				}
 				
-				final EffectZone zone = ZoneManager.getInstance().getZoneById(_regionsData[i].buff_zone, EffectZone.class);
+				final EffectZone zone = ZoneManager.getInstance().getZoneById(_regionsData[i].buffZone, EffectZone.class);
 				zone.clearSkills();
 				zone.addSkill(ZONE_BUFFS[_regionsData[i].activeBuff], 1);
 			}
@@ -358,19 +358,19 @@ public class SeedOfAnnihilation extends AbstractNpcAI
 	
 	private static class SeedRegion
 	{
-		public int[] elite_mob_ids;
-		public int[][] minion_lists;
-		public int buff_zone;
-		public int[][] af_spawns;
-		public Npc[] af_npcs = new Npc[2];
+		public int[] eliteMobIds;
+		public int[][] minionLists;
+		public int buffZone;
+		public int[][] afSpawns;
+		public Npc[] afNpcs = new Npc[2];
 		public int activeBuff = 0;
 		
 		public SeedRegion(int[] emi, int[][] ml, int bz, int[][] as)
 		{
-			elite_mob_ids = emi;
-			minion_lists = ml;
-			buff_zone = bz;
-			af_spawns = as;
+			eliteMobIds = emi;
+			minionLists = ml;
+			buffZone = bz;
+			afSpawns = as;
 		}
 	}
 }

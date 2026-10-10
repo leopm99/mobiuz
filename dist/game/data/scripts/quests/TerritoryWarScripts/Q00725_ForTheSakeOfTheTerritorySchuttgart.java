@@ -39,16 +39,16 @@ public class Q00725_ForTheSakeOfTheTerritorySchuttgart extends TerritoryWarSuper
 	public Q00725_ForTheSakeOfTheTerritorySchuttgart()
 	{
 		super(725);
-		CATAPULT_ID = 36507;
-		TERRITORY_ID = 89;
-		LEADER_IDS = new int[]
+		catapultId = 36507;
+		territoryId = 89;
+		leaderIds = new int[]
 		{
 			36556,
 			36558,
 			36561,
 			36599
 		};
-		GUARD_IDS = new int[]
+		guardIds = new int[]
 		{
 			36557,
 			36559,

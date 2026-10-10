@@ -92,26 +92,26 @@ public class FloodProtectorAction
 		final int curTick = GameTimeTaskManager.getInstance().getGameTicks();
 		if ((curTick < _nextGameTick) || _punishmentInProgress)
 		{
-			if (_config.LOG_FLOODING && !_logged && LOGGER.isLoggable(Level.WARNING))
+			if (_config.logFlooding && !_logged && LOGGER.isLoggable(Level.WARNING))
 			{
-				log(" called command ", _config.FLOOD_PROTECTOR_TYPE, " ~", String.valueOf((_config.FLOOD_PROTECTION_INTERVAL - (_nextGameTick - curTick)) * GameTimeTaskManager.MILLIS_IN_TICK), " ms after previous command");
+				log(" called command ", _config.floodProtectorType, " ~", String.valueOf((_config.floodProtectionInterval - (_nextGameTick - curTick)) * GameTimeTaskManager.MILLIS_IN_TICK), " ms after previous command");
 				_logged = true;
 			}
 			
 			_count.incrementAndGet();
 			
-			if (!_punishmentInProgress && (_config.PUNISHMENT_LIMIT > 0) && (_count.get() >= _config.PUNISHMENT_LIMIT) && (_config.PUNISHMENT_TYPE != null))
+			if (!_punishmentInProgress && (_config.punishmentLimit > 0) && (_count.get() >= _config.punishmentLimit) && (_config.punishmentType != null))
 			{
 				_punishmentInProgress = true;
-				if ("kick".equals(_config.PUNISHMENT_TYPE))
+				if ("kick".equals(_config.punishmentType))
 				{
 					kickPlayer();
 				}
-				else if ("ban".equals(_config.PUNISHMENT_TYPE))
+				else if ("ban".equals(_config.punishmentType))
 				{
 					banAccount();
 				}
-				else if ("jail".equals(_config.PUNISHMENT_TYPE))
+				else if ("jail".equals(_config.punishmentType))
 				{
 					jailChar();
 				}
@@ -121,12 +121,12 @@ public class FloodProtectorAction
 			return false;
 		}
 		
-		if ((_count.get() > 0) && _config.LOG_FLOODING && LOGGER.isLoggable(Level.WARNING))
+		if ((_count.get() > 0) && _config.logFlooding && LOGGER.isLoggable(Level.WARNING))
 		{
-			log(" issued ", String.valueOf(_count), " extra requests within ~", String.valueOf(_config.FLOOD_PROTECTION_INTERVAL * GameTimeTaskManager.MILLIS_IN_TICK), " ms");
+			log(" issued ", String.valueOf(_count), " extra requests within ~", String.valueOf(_config.floodProtectionInterval * GameTimeTaskManager.MILLIS_IN_TICK), " ms");
 		}
 		
-		_nextGameTick = curTick + _config.FLOOD_PROTECTION_INTERVAL;
+		_nextGameTick = curTick + _config.floodProtectionInterval;
 		_logged = false;
 		_count.set(0);
 		return true;
@@ -150,10 +150,10 @@ public class FloodProtectorAction
 	 */
 	private void banAccount()
 	{
-		PunishmentManager.getInstance().startPunishment(new PunishmentTask(_client.getAccountName(), PunishmentAffect.ACCOUNT, PunishmentType.BAN, System.currentTimeMillis() + _config.PUNISHMENT_TIME, "", getClass().getSimpleName()));
+		PunishmentManager.getInstance().startPunishment(new PunishmentTask(_client.getAccountName(), PunishmentAffect.ACCOUNT, PunishmentType.BAN, System.currentTimeMillis() + _config.punishmentTime, "", getClass().getSimpleName()));
 		if (LOGGER.isLoggable(Level.WARNING))
 		{
-			log(" banned for flooding ", _config.PUNISHMENT_TIME <= 0 ? "forever" : "for " + (_config.PUNISHMENT_TIME / 60000) + " mins");
+			log(" banned for flooding ", _config.punishmentTime <= 0 ? "forever" : "for " + (_config.punishmentTime / 60000) + " mins");
 		}
 	}
 	
@@ -170,19 +170,19 @@ public class FloodProtectorAction
 		final int charId = _client.getPlayer().getObjectId();
 		if (charId > 0)
 		{
-			PunishmentManager.getInstance().startPunishment(new PunishmentTask(charId, PunishmentAffect.CHARACTER, PunishmentType.JAIL, System.currentTimeMillis() + _config.PUNISHMENT_TIME, "", getClass().getSimpleName()));
+			PunishmentManager.getInstance().startPunishment(new PunishmentTask(charId, PunishmentAffect.CHARACTER, PunishmentType.JAIL, System.currentTimeMillis() + _config.punishmentTime, "", getClass().getSimpleName()));
 		}
 		
 		if (LOGGER.isLoggable(Level.WARNING))
 		{
-			log(" jailed for flooding ", _config.PUNISHMENT_TIME <= 0 ? "forever" : "for " + (_config.PUNISHMENT_TIME / 60000) + " mins");
+			log(" jailed for flooding ", _config.punishmentTime <= 0 ? "forever" : "for " + (_config.punishmentTime / 60000) + " mins");
 		}
 	}
 	
 	private void log(String... lines)
 	{
 		final StringBuilder output = new StringBuilder(100);
-		output.append(_config.FLOOD_PROTECTOR_TYPE);
+		output.append(_config.floodProtectorType);
 		output.append(": ");
 		String address = null;
 		try

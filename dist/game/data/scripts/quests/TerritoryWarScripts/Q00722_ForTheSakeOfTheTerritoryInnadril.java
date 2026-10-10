@@ -39,16 +39,16 @@ public class Q00722_ForTheSakeOfTheTerritoryInnadril extends TerritoryWarSuperCl
 	public Q00722_ForTheSakeOfTheTerritoryInnadril()
 	{
 		super(722);
-		CATAPULT_ID = 36504;
-		TERRITORY_ID = 86;
-		LEADER_IDS = new int[]
+		catapultId = 36504;
+		territoryId = 86;
+		leaderIds = new int[]
 		{
 			36538,
 			36540,
 			36543,
 			36596
 		};
-		GUARD_IDS = new int[]
+		guardIds = new int[]
 		{
 			36539,
 			36541,

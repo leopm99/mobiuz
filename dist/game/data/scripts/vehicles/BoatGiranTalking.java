@@ -105,63 +105,63 @@ public class BoatGiranTalking implements Runnable
 	private int _cycle = 0;
 	private int _shoutCount = 0;
 	
-	private final CreatureSay ARRIVED_AT_GIRAN;
-	private final CreatureSay ARRIVED_AT_GIRAN_2;
-	private final CreatureSay LEAVE_GIRAN5;
-	private final CreatureSay LEAVE_GIRAN1;
-	private final CreatureSay LEAVE_GIRAN0;
-	private final CreatureSay LEAVING_GIRAN;
-	private final CreatureSay ARRIVED_AT_TALKING;
-	private final CreatureSay ARRIVED_AT_TALKING_2;
-	private final CreatureSay LEAVE_TALKING5;
-	private final CreatureSay LEAVE_TALKING1;
-	private final CreatureSay LEAVE_TALKING0;
-	private final CreatureSay LEAVING_TALKING;
-	private final CreatureSay BUSY_TALKING;
+	private final CreatureSay arrivedAtGiran;
+	private final CreatureSay arrivedAtGiran2;
+	private final CreatureSay leaveGiran5;
+	private final CreatureSay leaveGiran1;
+	private final CreatureSay leaveGiran0;
+	private final CreatureSay leavingGiran;
+	private final CreatureSay arrivedAtTalking;
+	private final CreatureSay arrivedAtTalking2;
+	private final CreatureSay leaveTalking5;
+	private final CreatureSay leaveTalking1;
+	private final CreatureSay leaveTalking0;
+	private final CreatureSay leavingTalking;
+	private final CreatureSay busyTalking;
 	
-	private final CreatureSay ARRIVAL_TALKING15;
-	private final CreatureSay ARRIVAL_TALKING10;
-	private final CreatureSay ARRIVAL_TALKING5;
-	private final CreatureSay ARRIVAL_TALKING1;
-	private final CreatureSay ARRIVAL_GIRAN20;
-	private final CreatureSay ARRIVAL_GIRAN15;
-	private final CreatureSay ARRIVAL_GIRAN10;
-	private final CreatureSay ARRIVAL_GIRAN5;
-	private final CreatureSay ARRIVAL_GIRAN1;
+	private final CreatureSay arrivalTalking15;
+	private final CreatureSay arrivalTalking10;
+	private final CreatureSay arrivalTalking5;
+	private final CreatureSay arrivalTalking1;
+	private final CreatureSay arrivalGiran20;
+	private final CreatureSay arrivalGiran15;
+	private final CreatureSay arrivalGiran10;
+	private final CreatureSay arrivalGiran5;
+	private final CreatureSay arrivalGiran1;
 	
-	private final PlaySound GIRAN_SOUND;
-	private final PlaySound TALKING_SOUND;
+	private final PlaySound giranSound;
+	private final PlaySound talkingSound;
 	
 	public BoatGiranTalking(Boat boat)
 	{
 		_boat = boat;
 		
-		ARRIVED_AT_GIRAN = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_HAS_ARRIVED_AT_GIRAN_HARBOR);
-		ARRIVED_AT_GIRAN_2 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_WILL_LEAVE_FOR_TALKING_ISLAND_HARBOR_AFTER_ANCHORING_FOR_TEN_MINUTES);
-		LEAVE_GIRAN5 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_WILL_LEAVE_FOR_TALKING_ISLAND_HARBOR_IN_FIVE_MINUTES);
-		LEAVE_GIRAN1 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_WILL_LEAVE_FOR_TALKING_ISLAND_HARBOR_IN_ONE_MINUTE);
-		LEAVE_GIRAN0 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_WILL_BE_LEAVING_SOON_FOR_TALKING_ISLAND_HARBOR);
-		LEAVING_GIRAN = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_IS_LEAVING_FOR_TALKING_ISLAND_HARBOR);
-		ARRIVED_AT_TALKING = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_HAS_ARRIVED_AT_TALKING_ISLAND_HARBOR);
-		ARRIVED_AT_TALKING_2 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_WILL_LEAVE_FOR_GIRAN_HARBOR_AFTER_ANCHORING_FOR_TEN_MINUTES);
-		LEAVE_TALKING5 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_WILL_LEAVE_FOR_GIRAN_HARBOR_IN_FIVE_MINUTES);
-		LEAVE_TALKING1 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_WILL_LEAVE_FOR_GIRAN_HARBOR_IN_ONE_MINUTE);
-		LEAVE_TALKING0 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_WILL_BE_LEAVING_SOON_FOR_GIRAN_HARBOR);
-		LEAVING_TALKING = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_IS_LEAVING_FOR_GIRAN_HARBOR);
-		BUSY_TALKING = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_GIRAN_HARBOR_TO_TALKING_ISLAND_HAS_BEEN_DELAYED);
+		arrivedAtGiran = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_HAS_ARRIVED_AT_GIRAN_HARBOR);
+		arrivedAtGiran2 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_WILL_LEAVE_FOR_TALKING_ISLAND_HARBOR_AFTER_ANCHORING_FOR_TEN_MINUTES);
+		leaveGiran5 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_WILL_LEAVE_FOR_TALKING_ISLAND_HARBOR_IN_FIVE_MINUTES);
+		leaveGiran1 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_WILL_LEAVE_FOR_TALKING_ISLAND_HARBOR_IN_ONE_MINUTE);
+		leaveGiran0 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_WILL_BE_LEAVING_SOON_FOR_TALKING_ISLAND_HARBOR);
+		leavingGiran = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_IS_LEAVING_FOR_TALKING_ISLAND_HARBOR);
+		arrivedAtTalking = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_HAS_ARRIVED_AT_TALKING_ISLAND_HARBOR);
+		arrivedAtTalking2 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_WILL_LEAVE_FOR_GIRAN_HARBOR_AFTER_ANCHORING_FOR_TEN_MINUTES);
+		leaveTalking5 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_WILL_LEAVE_FOR_GIRAN_HARBOR_IN_FIVE_MINUTES);
+		leaveTalking1 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_WILL_LEAVE_FOR_GIRAN_HARBOR_IN_ONE_MINUTE);
+		leaveTalking0 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_WILL_BE_LEAVING_SOON_FOR_GIRAN_HARBOR);
+		leavingTalking = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_IS_LEAVING_FOR_GIRAN_HARBOR);
+		busyTalking = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_GIRAN_HARBOR_TO_TALKING_ISLAND_HAS_BEEN_DELAYED);
 		
-		ARRIVAL_TALKING15 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_GIRAN_HARBOR_WILL_BE_ARRIVING_AT_TALKING_ISLAND_IN_APPROXIMATELY_15_MINUTES);
-		ARRIVAL_TALKING10 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_GIRAN_HARBOR_WILL_BE_ARRIVING_AT_TALKING_ISLAND_IN_APPROXIMATELY_10_MINUTES);
-		ARRIVAL_TALKING5 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_GIRAN_HARBOR_WILL_BE_ARRIVING_AT_TALKING_ISLAND_IN_APPROXIMATELY_5_MINUTES);
-		ARRIVAL_TALKING1 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_GIRAN_HARBOR_WILL_BE_ARRIVING_AT_TALKING_ISLAND_IN_APPROXIMATELY_1_MINUTE);
-		ARRIVAL_GIRAN20 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_TALKING_ISLAND_WILL_BE_ARRIVING_AT_GIRAN_HARBOR_IN_APPROXIMATELY_20_MINUTES);
-		ARRIVAL_GIRAN15 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_TALKING_ISLAND_WILL_BE_ARRIVING_AT_GIRAN_HARBOR_IN_APPROXIMATELY_15_MINUTES);
-		ARRIVAL_GIRAN10 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_TALKING_ISLAND_WILL_BE_ARRIVING_AT_GIRAN_HARBOR_IN_APPROXIMATELY_10_MINUTES);
-		ARRIVAL_GIRAN5 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_TALKING_ISLAND_WILL_BE_ARRIVING_AT_GIRAN_HARBOR_IN_APPROXIMATELY_5_MINUTES);
-		ARRIVAL_GIRAN1 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_TALKING_ISLAND_WILL_BE_ARRIVING_AT_GIRAN_HARBOR_IN_APPROXIMATELY_1_MINUTE);
+		arrivalTalking15 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_GIRAN_HARBOR_WILL_BE_ARRIVING_AT_TALKING_ISLAND_IN_APPROXIMATELY_15_MINUTES);
+		arrivalTalking10 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_GIRAN_HARBOR_WILL_BE_ARRIVING_AT_TALKING_ISLAND_IN_APPROXIMATELY_10_MINUTES);
+		arrivalTalking5 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_GIRAN_HARBOR_WILL_BE_ARRIVING_AT_TALKING_ISLAND_IN_APPROXIMATELY_5_MINUTES);
+		arrivalTalking1 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_GIRAN_HARBOR_WILL_BE_ARRIVING_AT_TALKING_ISLAND_IN_APPROXIMATELY_1_MINUTE);
+		arrivalGiran20 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_TALKING_ISLAND_WILL_BE_ARRIVING_AT_GIRAN_HARBOR_IN_APPROXIMATELY_20_MINUTES);
+		arrivalGiran15 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_TALKING_ISLAND_WILL_BE_ARRIVING_AT_GIRAN_HARBOR_IN_APPROXIMATELY_15_MINUTES);
+		arrivalGiran10 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_TALKING_ISLAND_WILL_BE_ARRIVING_AT_GIRAN_HARBOR_IN_APPROXIMATELY_10_MINUTES);
+		arrivalGiran5 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_TALKING_ISLAND_WILL_BE_ARRIVING_AT_GIRAN_HARBOR_IN_APPROXIMATELY_5_MINUTES);
+		arrivalGiran1 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_TALKING_ISLAND_WILL_BE_ARRIVING_AT_GIRAN_HARBOR_IN_APPROXIMATELY_1_MINUTE);
 		
-		GIRAN_SOUND = new PlaySound(0, "itemsound.ship_arrival_departure", 1, _boat.getObjectId(), GIRAN_DOCK.getX(), GIRAN_DOCK.getY(), GIRAN_DOCK.getZ());
-		TALKING_SOUND = new PlaySound(0, "itemsound.ship_arrival_departure", 1, _boat.getObjectId(), TALKING_DOCK[0].getX(), TALKING_DOCK[0].getY(), TALKING_DOCK[0].getZ());
+		giranSound = new PlaySound(0, "itemsound.ship_arrival_departure", 1, _boat.getObjectId(), GIRAN_DOCK.getX(), GIRAN_DOCK.getY(), GIRAN_DOCK.getZ());
+		talkingSound = new PlaySound(0, "itemsound.ship_arrival_departure", 1, _boat.getObjectId(), TALKING_DOCK[0].getX(), TALKING_DOCK[0].getY(), TALKING_DOCK[0].getZ());
 	}
 	
 	@Override
@@ -173,26 +173,26 @@ public class BoatGiranTalking implements Runnable
 			{
 				case 0:
 				{
-					BoatManager.getInstance().broadcastPacket(GIRAN_DOCK, TALKING_DOCK[0], LEAVE_GIRAN5);
+					BoatManager.getInstance().broadcastPacket(GIRAN_DOCK, TALKING_DOCK[0], leaveGiran5);
 					ThreadPool.schedule(this, 240000);
 					break;
 				}
 				case 1:
 				{
-					BoatManager.getInstance().broadcastPacket(GIRAN_DOCK, TALKING_DOCK[0], LEAVE_GIRAN1);
+					BoatManager.getInstance().broadcastPacket(GIRAN_DOCK, TALKING_DOCK[0], leaveGiran1);
 					ThreadPool.schedule(this, 40000);
 					break;
 				}
 				case 2:
 				{
-					BoatManager.getInstance().broadcastPacket(GIRAN_DOCK, TALKING_DOCK[0], LEAVE_GIRAN0);
+					BoatManager.getInstance().broadcastPacket(GIRAN_DOCK, TALKING_DOCK[0], leaveGiran0);
 					ThreadPool.schedule(this, 20000);
 					break;
 				}
 				case 3:
 				{
-					BoatManager.getInstance().broadcastPackets(GIRAN_DOCK, TALKING_DOCK[0], LEAVING_GIRAN, ARRIVAL_TALKING15);
-					_boat.broadcastPacket(GIRAN_SOUND);
+					BoatManager.getInstance().broadcastPackets(GIRAN_DOCK, TALKING_DOCK[0], leavingGiran, arrivalTalking15);
+					_boat.broadcastPacket(giranSound);
 					_boat.payForRide(3946, 1, 46763, 187041, -3451);
 					_boat.executePath(GIRAN_TO_TALKING);
 					ThreadPool.schedule(this, 250000);
@@ -200,19 +200,19 @@ public class BoatGiranTalking implements Runnable
 				}
 				case 4:
 				{
-					BoatManager.getInstance().broadcastPacket(TALKING_DOCK[0], GIRAN_DOCK, ARRIVAL_TALKING10);
+					BoatManager.getInstance().broadcastPacket(TALKING_DOCK[0], GIRAN_DOCK, arrivalTalking10);
 					ThreadPool.schedule(this, 300000);
 					break;
 				}
 				case 5:
 				{
-					BoatManager.getInstance().broadcastPacket(TALKING_DOCK[0], GIRAN_DOCK, ARRIVAL_TALKING5);
+					BoatManager.getInstance().broadcastPacket(TALKING_DOCK[0], GIRAN_DOCK, arrivalTalking5);
 					ThreadPool.schedule(this, 240000);
 					break;
 				}
 				case 6:
 				{
-					BoatManager.getInstance().broadcastPacket(TALKING_DOCK[0], GIRAN_DOCK, ARRIVAL_TALKING1);
+					BoatManager.getInstance().broadcastPacket(TALKING_DOCK[0], GIRAN_DOCK, arrivalTalking1);
 					break;
 				}
 				case 7:
@@ -221,7 +221,7 @@ public class BoatGiranTalking implements Runnable
 					{
 						if (_shoutCount == 0)
 						{
-							BoatManager.getInstance().broadcastPacket(TALKING_DOCK[0], GIRAN_DOCK, BUSY_TALKING);
+							BoatManager.getInstance().broadcastPacket(TALKING_DOCK[0], GIRAN_DOCK, busyTalking);
 						}
 						_shoutCount++;
 						if (_shoutCount > 35)
@@ -237,34 +237,34 @@ public class BoatGiranTalking implements Runnable
 				case 8:
 				{
 					BoatManager.getInstance().dockShip(BoatManager.TALKING_ISLAND, true);
-					BoatManager.getInstance().broadcastPackets(TALKING_DOCK[0], GIRAN_DOCK, ARRIVED_AT_TALKING, ARRIVED_AT_TALKING_2);
-					_boat.broadcastPacket(TALKING_SOUND);
+					BoatManager.getInstance().broadcastPackets(TALKING_DOCK[0], GIRAN_DOCK, arrivedAtTalking, arrivedAtTalking2);
+					_boat.broadcastPacket(talkingSound);
 					ThreadPool.schedule(this, 300000);
 					break;
 				}
 				case 9:
 				{
-					BoatManager.getInstance().broadcastPacket(TALKING_DOCK[0], GIRAN_DOCK, LEAVE_TALKING5);
+					BoatManager.getInstance().broadcastPacket(TALKING_DOCK[0], GIRAN_DOCK, leaveTalking5);
 					ThreadPool.schedule(this, 240000);
 					break;
 				}
 				case 10:
 				{
-					BoatManager.getInstance().broadcastPacket(TALKING_DOCK[0], GIRAN_DOCK, LEAVE_TALKING1);
+					BoatManager.getInstance().broadcastPacket(TALKING_DOCK[0], GIRAN_DOCK, leaveTalking1);
 					ThreadPool.schedule(this, 40000);
 					break;
 				}
 				case 11:
 				{
-					BoatManager.getInstance().broadcastPacket(TALKING_DOCK[0], GIRAN_DOCK, LEAVE_TALKING0);
+					BoatManager.getInstance().broadcastPacket(TALKING_DOCK[0], GIRAN_DOCK, leaveTalking0);
 					ThreadPool.schedule(this, 20000);
 					break;
 				}
 				case 12:
 				{
 					BoatManager.getInstance().dockShip(BoatManager.TALKING_ISLAND, false);
-					BoatManager.getInstance().broadcastPackets(TALKING_DOCK[0], GIRAN_DOCK, LEAVING_TALKING);
-					_boat.broadcastPacket(TALKING_SOUND);
+					BoatManager.getInstance().broadcastPackets(TALKING_DOCK[0], GIRAN_DOCK, leavingTalking);
+					_boat.broadcastPacket(talkingSound);
 					_boat.payForRide(3945, 1, -96777, 258970, -3623);
 					_boat.executePath(TALKING_TO_GIRAN);
 					ThreadPool.schedule(this, 200000);
@@ -272,37 +272,37 @@ public class BoatGiranTalking implements Runnable
 				}
 				case 13:
 				{
-					BoatManager.getInstance().broadcastPacket(GIRAN_DOCK, TALKING_DOCK[0], ARRIVAL_GIRAN20);
+					BoatManager.getInstance().broadcastPacket(GIRAN_DOCK, TALKING_DOCK[0], arrivalGiran20);
 					ThreadPool.schedule(this, 300000);
 					break;
 				}
 				case 14:
 				{
-					BoatManager.getInstance().broadcastPacket(GIRAN_DOCK, TALKING_DOCK[0], ARRIVAL_GIRAN15);
+					BoatManager.getInstance().broadcastPacket(GIRAN_DOCK, TALKING_DOCK[0], arrivalGiran15);
 					ThreadPool.schedule(this, 300000);
 					break;
 				}
 				case 15:
 				{
-					BoatManager.getInstance().broadcastPacket(GIRAN_DOCK, TALKING_DOCK[0], ARRIVAL_GIRAN10);
+					BoatManager.getInstance().broadcastPacket(GIRAN_DOCK, TALKING_DOCK[0], arrivalGiran10);
 					ThreadPool.schedule(this, 300000);
 					break;
 				}
 				case 16:
 				{
-					BoatManager.getInstance().broadcastPacket(GIRAN_DOCK, TALKING_DOCK[0], ARRIVAL_GIRAN5);
+					BoatManager.getInstance().broadcastPacket(GIRAN_DOCK, TALKING_DOCK[0], arrivalGiran5);
 					ThreadPool.schedule(this, 240000);
 					break;
 				}
 				case 17:
 				{
-					BoatManager.getInstance().broadcastPacket(GIRAN_DOCK, TALKING_DOCK[0], ARRIVAL_GIRAN1);
+					BoatManager.getInstance().broadcastPacket(GIRAN_DOCK, TALKING_DOCK[0], arrivalGiran1);
 					break;
 				}
 				case 18:
 				{
-					BoatManager.getInstance().broadcastPackets(GIRAN_DOCK, TALKING_DOCK[0], ARRIVED_AT_GIRAN, ARRIVED_AT_GIRAN_2);
-					_boat.broadcastPacket(GIRAN_SOUND);
+					BoatManager.getInstance().broadcastPackets(GIRAN_DOCK, TALKING_DOCK[0], arrivedAtGiran, arrivedAtGiran2);
+					_boat.broadcastPacket(giranSound);
 					ThreadPool.schedule(this, 300000);
 					break;
 				}

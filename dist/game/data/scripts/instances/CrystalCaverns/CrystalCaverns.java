@@ -106,7 +106,7 @@ public class CrystalCaverns extends AbstractInstance
 		public List<Npc> copys = new ArrayList<>();
 		public Map<Npc, CrystalGolem> crystalGolems = new HashMap<>();
 		public int correctGolems = 0;
-		public boolean[] OracleTriggered =
+		public boolean[] oracleTriggered =
 		{
 			false,
 			false,
@@ -891,7 +891,7 @@ public class CrystalCaverns extends AbstractInstance
 			if (tmpworld instanceof CCWorld)
 			{
 				final CCWorld world = (CCWorld) tmpworld;
-				if (!world.OracleTriggered[npc.getId() - 32275])
+				if (!world.oracleTriggered[npc.getId() - 32275])
 				{
 					return "no.htm"; // TODO: Missing HTML.
 				}
@@ -964,7 +964,7 @@ public class CrystalCaverns extends AbstractInstance
 						oracle.decayMe();
 					}
 				}
-				((CCWorld) tmpworld).OracleTriggered[npc.getId() - 32275] = true;
+				((CCWorld) tmpworld).oracleTriggered[npc.getId() - 32275] = true;
 			}
 		}
 		else if (npc.isInvul() && (npc.getId() == BAYLOR) && (skill.getId() == 2360) && (caster != null))
@@ -1802,7 +1802,7 @@ public class CrystalCaverns extends AbstractInstance
 			{
 				return null;
 			}
-			else if ((npc.getId() >= 32275) && (npc.getId() <= 32277) && world.OracleTriggered[npc.getId() - 32275])
+			else if ((npc.getId() >= 32275) && (npc.getId() <= 32277) && world.oracleTriggered[npc.getId() - 32275])
 			{
 				boolean doTeleport = false;
 				Location loc = null;

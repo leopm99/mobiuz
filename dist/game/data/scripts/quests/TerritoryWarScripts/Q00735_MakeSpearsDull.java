@@ -39,7 +39,7 @@ public class Q00735_MakeSpearsDull extends TerritoryWarSuperClass
 	public Q00735_MakeSpearsDull()
 	{
 		super(735);
-		CLASS_IDS = new int[]
+		classIds = new int[]
 		{
 			23,
 			101,
@@ -78,8 +78,8 @@ public class Q00735_MakeSpearsDull extends TerritoryWarSuperClass
 			135,
 			136
 		};
-		RANDOM_MIN = 15;
-		RANDOM_MAX = 20;
+		randomMin = 15;
+		randomMax = 20;
 		npcString = new NpcStringId[]
 		{
 			NpcStringId.YOU_HAVE_DEFEATED_S2_OF_S1_WARRIORS_AND_ROGUES,

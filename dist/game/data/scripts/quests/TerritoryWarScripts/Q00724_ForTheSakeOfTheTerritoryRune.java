@@ -39,16 +39,16 @@ public class Q00724_ForTheSakeOfTheTerritoryRune extends TerritoryWarSuperClass
 	public Q00724_ForTheSakeOfTheTerritoryRune()
 	{
 		super(724);
-		CATAPULT_ID = 36506;
-		TERRITORY_ID = 88;
-		LEADER_IDS = new int[]
+		catapultId = 36506;
+		territoryId = 88;
+		leaderIds = new int[]
 		{
 			36550,
 			36552,
 			36555,
 			36598
 		};
-		GUARD_IDS = new int[]
+		guardIds = new int[]
 		{
 			36551,
 			36553,

@@ -82,7 +82,7 @@ public abstract class ClanHallSiegeEngine extends Quest implements Siegable
 	public static final int BEAST_FARM = 63;
 	public static final int FORTRESS_OF_DEAD = 64;
 	
-	protected final Logger LOGGER;
+	protected static final Logger LOGGER = Logger.getLogger(ClanHallSiegeEngine.class.getName());
 	
 	private final Map<Integer, SiegeClan> _attackers = new ConcurrentHashMap<>();
 	private Collection<Spawn> _guards;
@@ -94,7 +94,6 @@ public abstract class ClanHallSiegeEngine extends Quest implements Siegable
 	public ClanHallSiegeEngine(int hallId)
 	{
 		super(-1);
-		LOGGER = Logger.getLogger(getClass().getName());
 		_hall = CHSiegeManager.getInstance().getSiegableHall(hallId);
 		_hall.setSiege(this);
 		

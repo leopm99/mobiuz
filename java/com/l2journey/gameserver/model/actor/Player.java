@@ -15349,46 +15349,46 @@ public class Player extends Playable
 	
 	// ======================================================================= //
 	// Variaveis Adicionadas para testar o funcionamento do painel de usuarios
-	private final UserVariables _UserVariables = new UserVariables(this);
+	private final UserVariables _userVariables = new UserVariables(this);
 	
 	public UserVariables getUserVariables()
 	{
-		return _UserVariables;
+		return _userVariables;
 	}
 	
 	public void setVar(String name, String value)
 	{
-		_UserVariables.setVar(name, value);
+		_userVariables.setVar(name, value);
 	}
 	
 	public void unsetVar(String name)
 	{
-		_UserVariables.unsetVar(name);
+		_userVariables.unsetVar(name);
 	}
 	
 	public String getVar(String name, String defaultVal)
 	{
-		return _UserVariables.getVar(name, defaultVal);
+		return _userVariables.getVar(name, defaultVal);
 	}
 	
 	public boolean getVarB(String name, boolean defaultVal)
 	{
-		return _UserVariables.getVarB(name, defaultVal);
+		return _userVariables.getVarB(name, defaultVal);
 	}
 	
 	public boolean getVarB(String name)
 	{
-		return _UserVariables.getVarB(name);
+		return _userVariables.getVarB(name);
 	}
 	
 	public Map<String, String> getVars()
 	{
-		return _UserVariables.getVars();
+		return _userVariables.getVars();
 	}
 	
 	private void loadVariables()
 	{
-		_UserVariables.loadVariables();
+		_userVariables.loadVariables();
 	}
 	
 	public AutoPlaySettingsHolder getAutoPlaySettings()

@@ -58,11 +58,11 @@ public abstract class Chamber extends AbstractInstance
 	private static final int DELUSION_MARK = 15311;
 	
 	// NPCs
-	private final int ENTRANCE_GATEKEEPER;
-	private final int ROOM_GATEKEEPER_FIRST;
-	private final int ROOM_GATEKEEPER_LAST;
-	private final int AENKINEL;
-	private final int BOX;
+	private final int entranceGatekeeper;
+	private final int roomGatekeeperFirst;
+	private final int roomGatekeeperLast;
+	private final int aenkinel;
+	private final int box;
 	
 	// Skills
 	private static final SkillHolder SUCCESS_SKILL = new SkillHolder(5758, 1);
@@ -76,42 +76,42 @@ public abstract class Chamber extends AbstractInstance
 	private static final int RESET_MIN = 30;
 	
 	// Following values vary between scripts
-	private final int INSTANCEID;
+	private final int instanceId;
 	
-	protected Location[] ROOM_ENTER_POINTS;
+	protected Location[] roomEnterPoints;
 	// Misc
 	private static final String RETURN = Chamber.class.getSimpleName() + "_return";
 	
 	protected Chamber(int instanceId, int entranceGKId, int roomGKFirstId, int roomGKLastId, int aenkinelId, int boxId)
 	{
-		INSTANCEID = instanceId;
-		ENTRANCE_GATEKEEPER = entranceGKId;
-		ROOM_GATEKEEPER_FIRST = roomGKFirstId;
-		ROOM_GATEKEEPER_LAST = roomGKLastId;
-		AENKINEL = aenkinelId;
-		BOX = boxId;
+		this.instanceId = instanceId;
+		entranceGatekeeper = entranceGKId;
+		roomGatekeeperFirst = roomGKFirstId;
+		roomGatekeeperLast = roomGKLastId;
+		aenkinel = aenkinelId;
+		box = boxId;
 		
-		addStartNpc(ENTRANCE_GATEKEEPER);
-		addTalkId(ENTRANCE_GATEKEEPER);
-		for (int i = ROOM_GATEKEEPER_FIRST; i <= ROOM_GATEKEEPER_LAST; i++)
+		addStartNpc(entranceGatekeeper);
+		addTalkId(entranceGatekeeper);
+		for (int i = roomGatekeeperFirst; i <= roomGatekeeperLast; i++)
 		{
 			addStartNpc(i);
 			addTalkId(i);
 		}
-		addKillId(AENKINEL);
-		addAttackId(BOX);
-		addSpellFinishedId(BOX);
-		addEventReceivedId(BOX);
+		addKillId(aenkinel);
+		addAttackId(box);
+		addSpellFinishedId(box);
+		addEventReceivedId(box);
 	}
 	
 	private boolean isBigChamber()
 	{
-		return ((INSTANCEID == 131) || (INSTANCEID == 132));
+		return ((instanceId == 131) || (instanceId == 132));
 	}
 	
 	private boolean isBossRoom(InstanceWorld world)
 	{
-		return (world.getParameters().getInt("currentRoom", 0) == (ROOM_ENTER_POINTS.length - 1));
+		return (world.getParameters().getInt("currentRoom", 0) == (roomEnterPoints.length - 1));
 	}
 	
 	@Override
@@ -150,7 +150,7 @@ public abstract class Chamber extends AbstractInstance
 			
 			if (isBigChamber())
 			{
-				final long reentertime = InstanceManager.getInstance().getInstanceTime(partyMember.getObjectId(), INSTANCEID);
+				final long reentertime = InstanceManager.getInstance().getInstanceTime(partyMember.getObjectId(), instanceId);
 				if (System.currentTimeMillis() < reentertime)
 				{
 					final SystemMessage sm = new SystemMessage(SystemMessageId.C1_MAY_NOT_RE_ENTER_YET);
@@ -209,18 +209,18 @@ public abstract class Chamber extends AbstractInstance
 		// Teleport to raid room 10 min or lesser before instance end time for Tower and Square Chambers
 		else if (isBigChamber() && ((instance.getInstanceEndTime() - System.currentTimeMillis()) < 600000))
 		{
-			newRoom = ROOM_ENTER_POINTS.length - 1;
+			newRoom = roomEnterPoints.length - 1;
 		}
 		// 10% chance for teleport to raid room if not here already for Northern, Southern, Western and Eastern Chambers
 		else if (!isBigChamber() && !isBossRoom(world) && (getRandom(100) < 10))
 		{
-			newRoom = ROOM_ENTER_POINTS.length - 1;
+			newRoom = roomEnterPoints.length - 1;
 		}
 		else
 		{
 			while (newRoom == world.getParameters().getInt("currentRoom", 0)) // otherwise teleport to another room, except current
 			{
-				newRoom = getRandom(ROOM_ENTER_POINTS.length);
+				newRoom = getRandom(roomEnterPoints.length);
 			}
 		}
 		
@@ -229,7 +229,7 @@ public abstract class Chamber extends AbstractInstance
 			if (world.getInstanceId() == partyMember.getInstanceId())
 			{
 				partyMember.getAI().setIntention(Intention.IDLE);
-				teleportPlayer(partyMember, ROOM_ENTER_POINTS[newRoom], world.getInstanceId());
+				teleportPlayer(partyMember, roomEnterPoints[newRoom], world.getInstanceId());
 			}
 		}
 		
@@ -241,7 +241,7 @@ public abstract class Chamber extends AbstractInstance
 			instance.setDuration((int) ((instance.getInstanceEndTime() - System.currentTimeMillis()) + 1200000)); // Add 20 min to instance time if raid room is reached
 			for (Npc npc : instance.getNpcs())
 			{
-				if (npc.getId() == ROOM_GATEKEEPER_LAST)
+				if (npc.getId() == roomGatekeeperLast)
 				{
 					npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.NPC_GENERAL, npc.getId(), NpcStringId.TWENTY_MINUTES_ARE_ADDED_TO_THE_REMAINING_TIME_IN_THE_INSTANT_ZONE));
 				}
@@ -311,7 +311,7 @@ public abstract class Chamber extends AbstractInstance
 		}
 		else
 		{
-			teleportPlayer(player, ROOM_ENTER_POINTS[world.getParameters().getInt("currentRoom", 0)], world.getInstanceId());
+			teleportPlayer(player, roomEnterPoints[world.getParameters().getInt("currentRoom", 0)], world.getInstanceId());
 		}
 	}
 	
@@ -357,7 +357,7 @@ public abstract class Chamber extends AbstractInstance
 	{
 		String htmltext = "";
 		final InstanceWorld world = InstanceManager.getInstance().getWorld(npc);
-		if ((player != null) && (world != null) && (npc.getId() >= ROOM_GATEKEEPER_FIRST) && (npc.getId() <= ROOM_GATEKEEPER_LAST))
+		if ((player != null) && (world != null) && (npc.getId() >= roomGatekeeperFirst) && (npc.getId() <= roomGatekeeperLast))
 		{
 			final Party party = player.getParty();
 			switch (event)
@@ -414,7 +414,7 @@ public abstract class Chamber extends AbstractInstance
 				{
 					if ((party != null) && (party == world.getParameters().getObject("PartyInside", Party.class)))
 					{
-						teleportPlayer(player, ROOM_ENTER_POINTS[world.getParameters().getInt("currentRoom", 0)], world.getInstanceId(), false);
+						teleportPlayer(player, roomEnterPoints[world.getParameters().getInt("currentRoom", 0)], world.getInstanceId(), false);
 					}
 					break;
 				}
@@ -509,7 +509,7 @@ public abstract class Chamber extends AbstractInstance
 	@Override
 	public void onSpellFinished(Npc npc, Player player, Skill skill)
 	{
-		if ((npc.getId() == BOX) && ((skill.getId() == 5376) || (skill.getId() == 5758)) && !npc.isDead())
+		if ((npc.getId() == box) && ((skill.getId() == 5376) || (skill.getId() == 5758)) && !npc.isDead())
 		{
 			npc.doDie(player);
 		}
@@ -521,9 +521,9 @@ public abstract class Chamber extends AbstractInstance
 		final int npcId = npc.getId();
 		getQuestState(player, true);
 		
-		if ((npcId == ENTRANCE_GATEKEEPER) && checkConditions(player))
+		if ((npcId == entranceGatekeeper) && checkConditions(player))
 		{
-			enterInstance(player, INSTANCEID);
+			enterInstance(player, instanceId);
 		}
 		return "";
 	}
