@@ -68,7 +68,7 @@ public class BoatGiranTalking implements Runnable
 		new VehiclePathPoint(-83344, 261610, -3610, 200, 800),
 		new VehiclePathPoint(-88344, 261660, -3610, 180, 800),
 		new VehiclePathPoint(-92344, 261660, -3610, 180, 800),
-		new VehiclePathPoint(-94242, 261659, -3610, 150, 800)
+		new VehiclePathPoint(-94242, 261660, -3610, 150, 800)
 	};
 	
 	private static final VehiclePathPoint[] TALKING_DOCK =

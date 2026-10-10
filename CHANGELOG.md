@@ -29,6 +29,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+- Ferries dock straight at Talking Island and Gludin. The Talking Island berth line is aligned, the Gludin arrival is one straight run into the harbor, and a finished route places the ship on the server position so the client stops instead of steering around the berth
 - Community Board epic boss status is read from `GrandBossManager` when the board opens, so kills and respawns no longer wait for the hourly cache
 - Olympiad weekly-change countdown log used period-end locals (`countDown` / `numMins`) instead of weekly-change locals (`countDown2` / `numMins2`), so logged days/hours/mins were wrong
 - Closed broken `<title>` tags on Tetrarch Thifiell village-master pages (`30358.htm`, `30358-1.htm`)

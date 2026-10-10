@@ -4458,8 +4458,9 @@ public abstract class Creature extends WorldObject
 		// Define o timer da ultima atualizacao de posicao para agora.
 		move.moveTimestamp = gameTicks;
 		
-		// Envia MoveToLocation ao chegar.
-		if (arrived && !isOnGeodataPath())
+		// Envia MoveToLocation ao chegar. Veiculos usam VehicleDeparture; um MoveToLocation
+		// de distancia zero no fim de cada trecho zera o heading e faz o barco girar.
+		if (arrived && !isOnGeodataPath() && !isVehicle())
 		{
 			broadcastMoveToLocation(true);
 		}

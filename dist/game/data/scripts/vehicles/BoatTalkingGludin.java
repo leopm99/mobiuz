@@ -57,9 +57,7 @@ public class BoatTalkingGludin implements Runnable
 		new VehiclePathPoint(-109663, 135704, -3610, 180, 800),
 		new VehiclePathPoint(-102151, 135704, -3610, 180, 800),
 		new VehiclePathPoint(-96686, 140595, -3610, 180, 800),
-		new VehiclePathPoint(-95686, 147718, -3610, 180, 800),
-		new VehiclePathPoint(-95686, 148718, -3610, 180, 800),
-		new VehiclePathPoint(-95686, 149718, -3610, 150, 800)
+		new VehiclePathPoint(-95686, 147718, -3610, 180, 1800)
 	};
 	
 	private static final VehiclePathPoint[] GLUDIN_DOCK =
@@ -78,7 +76,7 @@ public class BoatTalkingGludin implements Runnable
 		new VehiclePathPoint(-83344, 261560, -3610, 180, 1800),
 		new VehiclePathPoint(-88344, 261660, -3610, 180, 1800),
 		new VehiclePathPoint(-92344, 261660, -3610, 150, 1800),
-		new VehiclePathPoint(-94242, 261659, -3610, 150, 1800)
+		new VehiclePathPoint(-94242, 261660, -3610, 150, 1800)
 	};
 	
 	private static final VehiclePathPoint[] TALKING_DOCK =

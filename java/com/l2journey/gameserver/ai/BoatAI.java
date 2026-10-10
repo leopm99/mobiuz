@@ -174,6 +174,9 @@ public class BoatAI extends CreatureAI
 	@Override
 	protected void clientStoppedMoving()
 	{
+		// moveToNextRoutePoint already cleared _move, so clientStopMoving(null) sends nothing.
+		// The client would keep steering and orbit the last point. Stop places it on the server pose.
+		getActor().stopMove(null);
 	}
 	
 	@Override
