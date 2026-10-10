@@ -39,7 +39,7 @@ public class Q00734_PierceThroughAShield extends TerritoryWarSuperClass
 	public Q00734_PierceThroughAShield()
 	{
 		super(734);
-		CLASS_IDS = new int[]
+		classIds = new int[]
 		{
 			6,
 			91,
@@ -50,8 +50,8 @@ public class Q00734_PierceThroughAShield extends TerritoryWarSuperClass
 			33,
 			106
 		};
-		RANDOM_MIN = 10;
-		RANDOM_MAX = 15;
+		randomMin = 10;
+		randomMax = 15;
 		npcString = new NpcStringId[]
 		{
 			NpcStringId.YOU_HAVE_DEFEATED_S2_OF_S1_KNIGHTS,

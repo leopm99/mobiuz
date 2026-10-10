@@ -49,16 +49,16 @@ public class SoDManager
 	
 	// Seed of Destruction
 	private static final byte SODTYPE = 1;
-	private int _SoDTiatKilled = 0;
-	private int _SoDState = 1;
-	private final Calendar _SoDLastStateChangeDate;
+	private int _soDTiatKilled = 0;
+	private int _soDState = 1;
+	private final Calendar _soDLastStateChangeDate;
 	
 	protected SoDManager()
 	{
-		_SoDLastStateChangeDate = Calendar.getInstance();
+		_soDLastStateChangeDate = Calendar.getInstance();
 		loadData();
 		handleSodStages();
-		LOGGER.info(() -> "Seed of Destruction Manager: Loaded. Current stage is: " + _SoDState);
+		LOGGER.info(() -> "Seed of Destruction Manager: Loaded. Current stage is: " + _soDState);
 	}
 	
 	public void saveData(byte seedType)
@@ -68,9 +68,9 @@ public class SoDManager
 			case SODTYPE:
 			{
 				// Seed of Destruction
-				GlobalVariablesManager.getInstance().set("SoDState", _SoDState);
-				GlobalVariablesManager.getInstance().set("SoDTiatKilled", _SoDTiatKilled);
-				GlobalVariablesManager.getInstance().set("SoDLSCDate", _SoDLastStateChangeDate.getTimeInMillis());
+				GlobalVariablesManager.getInstance().set("SoDState", _soDState);
+				GlobalVariablesManager.getInstance().set("SoDTiatKilled", _soDTiatKilled);
+				GlobalVariablesManager.getInstance().set("SoDLSCDate", _soDLastStateChangeDate.getTimeInMillis());
 				break;
 			}
 			case SOITYPE:
@@ -96,9 +96,9 @@ public class SoDManager
 		// Seed of Destruction variables
 		if (GlobalVariablesManager.getInstance().hasVariable("SoDState"))
 		{
-			_SoDState = GlobalVariablesManager.getInstance().getInt("SoDState", 0);
-			_SoDTiatKilled = GlobalVariablesManager.getInstance().getInt("SoDTiatKilled", 0);
-			_SoDLastStateChangeDate.setTimeInMillis(GlobalVariablesManager.getInstance().getLong("SoDLSCDate", 0));
+			_soDState = GlobalVariablesManager.getInstance().getInt("SoDState", 0);
+			_soDTiatKilled = GlobalVariablesManager.getInstance().getInt("SoDTiatKilled", 0);
+			_soDLastStateChangeDate.setTimeInMillis(GlobalVariablesManager.getInstance().getLong("SoDLSCDate", 0));
 		}
 		else
 		{
@@ -109,7 +109,7 @@ public class SoDManager
 	
 	private void handleSodStages()
 	{
-		switch (_SoDState)
+		switch (_soDState)
 		{
 			case 1:
 			{
@@ -119,7 +119,7 @@ public class SoDManager
 			case 2:
 			{
 				// Conquest Complete state, if too much time is passed than change to defense state
-				final long timePast = System.currentTimeMillis() - _SoDLastStateChangeDate.getTimeInMillis();
+				final long timePast = System.currentTimeMillis() - _soDLastStateChangeDate.getTimeInMillis();
 				if (timePast >= Config.SOD_STAGE_2_LENGTH)
 				{
 					// change to Attack state because Defend statet is not implemented
@@ -139,7 +139,7 @@ public class SoDManager
 			}
 			default:
 			{
-				LOGGER.warning(() -> getClass().getSimpleName() + ": Unknown Seed of Destruction state(" + _SoDState + ")! ");
+				LOGGER.warning(() -> getClass().getSimpleName() + ": Unknown Seed of Destruction state(" + _soDState + ")! ");
 			}
 		}
 		
@@ -149,7 +149,7 @@ public class SoDManager
 	private void manageEdricSpawn()
 	{
 		final Npc edric = World.getInstance().getNpc(32527);
-		if (_SoDState == 2)
+		if (_soDState == 2)
 		{
 			if (edric == null)
 			{
@@ -177,10 +177,10 @@ public class SoDManager
 	
 	public void increaseSoDTiatKilled()
 	{
-		if (_SoDState == 1)
+		if (_soDState == 1)
 		{
-			_SoDTiatKilled++;
-			if (_SoDTiatKilled >= Config.SOD_TIAT_KILL_COUNT)
+			_soDTiatKilled++;
+			if (_soDTiatKilled >= Config.SOD_TIAT_KILL_COUNT)
 			{
 				setSoDState(2, false);
 			}
@@ -199,19 +199,19 @@ public class SoDManager
 	
 	public int getSoDTiatKilled()
 	{
-		return _SoDTiatKilled;
+		return _soDTiatKilled;
 	}
 	
 	public void setSoDState(int value, boolean doSave)
 	{
 		LOGGER.info(() -> getClass().getSimpleName() + ": New Seed of Destruction state -> " + value + ".");
-		_SoDLastStateChangeDate.setTimeInMillis(System.currentTimeMillis());
-		_SoDState = value;
+		_soDLastStateChangeDate.setTimeInMillis(System.currentTimeMillis());
+		_soDState = value;
 		
 		// Reset number of Tiat kills.
-		if (_SoDState == 1)
+		if (_soDState == 1)
 		{
-			_SoDTiatKilled = 0;
+			_soDTiatKilled = 0;
 		}
 		
 		handleSodStages();
@@ -224,7 +224,7 @@ public class SoDManager
 	
 	public long getSoDTimeForNextStateChange()
 	{
-		switch (_SoDState)
+		switch (_soDState)
 		{
 			case 1:
 			{
@@ -232,7 +232,7 @@ public class SoDManager
 			}
 			case 2:
 			{
-				return ((_SoDLastStateChangeDate.getTimeInMillis() + Config.SOD_STAGE_2_LENGTH) - System.currentTimeMillis());
+				return ((_soDLastStateChangeDate.getTimeInMillis() + Config.SOD_STAGE_2_LENGTH) - System.currentTimeMillis());
 			}
 			case 3:
 			{
@@ -249,12 +249,12 @@ public class SoDManager
 	
 	public Calendar getSoDLastStateChangeDate()
 	{
-		return _SoDLastStateChangeDate;
+		return _soDLastStateChangeDate;
 	}
 	
 	public int getSoDState()
 	{
-		return _SoDState;
+		return _soDState;
 	}
 	
 	/**

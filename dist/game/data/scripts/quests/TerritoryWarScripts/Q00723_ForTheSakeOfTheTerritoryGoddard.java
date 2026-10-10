@@ -39,16 +39,16 @@ public class Q00723_ForTheSakeOfTheTerritoryGoddard extends TerritoryWarSuperCla
 	public Q00723_ForTheSakeOfTheTerritoryGoddard()
 	{
 		super(723);
-		CATAPULT_ID = 36505;
-		TERRITORY_ID = 87;
-		LEADER_IDS = new int[]
+		catapultId = 36505;
+		territoryId = 87;
+		leaderIds = new int[]
 		{
 			36544,
 			36546,
 			36549,
 			36597
 		};
-		GUARD_IDS = new int[]
+		guardIds = new int[]
 		{
 			36545,
 			36547,

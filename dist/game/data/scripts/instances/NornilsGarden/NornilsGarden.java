@@ -59,11 +59,11 @@ public class NornilsGarden extends AbstractInstance
 {
 	protected class NornilsWorld extends InstanceWorld
 	{
-		protected Npc first_npc = null;
-		protected boolean spawned_1 = false;
-		protected boolean spawned_2 = false;
-		protected boolean spawned_3 = false;
-		protected boolean spawned_4 = false;
+		protected Npc firstNpc = null;
+		protected boolean spawned1 = false;
+		protected boolean spawned2 = false;
+		protected boolean spawned3 = false;
+		protected boolean spawned4 = false;
 	}
 	
 	// NPCs
@@ -289,7 +289,7 @@ public class NornilsGarden extends AbstractInstance
 		instance.setEmptyDestroyTime(EMPTY_DESTROY_TIME * 60000L);
 		final int instanceId = newWorld.getInstanceId();
 		LOGGER.info("Nornils Garden: started, Instance: " + instanceId + " created by player: " + player.getName());
-		newWorld.first_npc = addSpawn(18362, -109702, 74696, -12528, 49568, false, 0, false, newWorld.getInstanceId());
+		newWorld.firstNpc = addSpawn(18362, -109702, 74696, -12528, 49568, false, 0, false, newWorld.getInstanceId());
 		final Door door = instance.getDoor(16200010);
 		if (door != null)
 		{
@@ -313,9 +313,9 @@ public class NornilsGarden extends AbstractInstance
 	private void spawn1(Npc npc)
 	{
 		final InstanceWorld inst = InstanceManager.getInstance().getWorld(npc);
-		if ((inst instanceof NornilsWorld world) && (npc.equals(world.first_npc) && !world.spawned_1))
+		if ((inst instanceof NornilsWorld world) && (npc.equals(world.firstNpc) && !world.spawned1))
 		{
-			world.spawned_1 = true;
+			world.spawned1 = true;
 			for (int[] mob : GROUP_1)
 			{
 				addSpawn(mob[0], mob[1], mob[2], mob[3], mob[4], false, 0, false, world.getInstanceId());
@@ -326,9 +326,9 @@ public class NornilsGarden extends AbstractInstance
 	private void spawn2(Npc npc)
 	{
 		final InstanceWorld inst = InstanceManager.getInstance().getWorld(npc);
-		if ((inst instanceof NornilsWorld world) && (!world.spawned_2))
+		if ((inst instanceof NornilsWorld world) && (!world.spawned2))
 		{
-			world.spawned_2 = true;
+			world.spawned2 = true;
 			for (int[] mob : GROUP_2)
 			{
 				addSpawn(mob[0], mob[1], mob[2], mob[3], mob[4], false, 0, false, world.getInstanceId());
@@ -339,9 +339,9 @@ public class NornilsGarden extends AbstractInstance
 	private void spawn3(Creature creature)
 	{
 		final InstanceWorld inst = InstanceManager.getInstance().getWorld(creature);
-		if ((inst instanceof NornilsWorld world) && (!world.spawned_3))
+		if ((inst instanceof NornilsWorld world) && (!world.spawned3))
 		{
-			world.spawned_3 = true;
+			world.spawned3 = true;
 			for (int[] mob : GROUP_3)
 			{
 				addSpawn(mob[0], mob[1], mob[2], mob[3], mob[4], false, 0, false, world.getInstanceId());
@@ -352,9 +352,9 @@ public class NornilsGarden extends AbstractInstance
 	private void spawn4(Creature creature)
 	{
 		final InstanceWorld inst = InstanceManager.getInstance().getWorld(creature);
-		if ((inst instanceof NornilsWorld world) && (!world.spawned_4))
+		if ((inst instanceof NornilsWorld world) && (!world.spawned4))
 		{
-			world.spawned_4 = true;
+			world.spawned4 = true;
 			for (int[] mob : GROUP_4)
 			{
 				addSpawn(mob[0], mob[1], mob[2], mob[3], mob[4], false, 0, false, world.getInstanceId());

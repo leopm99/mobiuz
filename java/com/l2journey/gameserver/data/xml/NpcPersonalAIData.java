@@ -43,7 +43,7 @@ import com.l2journey.gameserver.model.actor.Npc;
  */
 public class NpcPersonalAIData
 {
-	private final Map<String, Map<String, Integer>> _AIData = new HashMap<>();
+	private final Map<String, Map<String, Integer>> _aiData = new HashMap<>();
 	
 	/**
 	 * Instantiates a new table.
@@ -67,7 +67,7 @@ public class NpcPersonalAIData
 				spawnDat.setName(Long.toString(Rnd.nextLong()));
 			}
 			
-			_AIData.put(spawnDat.getName(), data);
+			_aiData.put(spawnDat.getName(), data);
 		}
 	}
 	
@@ -79,7 +79,7 @@ public class NpcPersonalAIData
 	 */
 	public int getAIValue(String spawnName, String paramName)
 	{
-		return hasAIValue(spawnName, paramName) ? _AIData.get(spawnName).get(paramName) : -1;
+		return hasAIValue(spawnName, paramName) ? _aiData.get(spawnName).get(paramName) : -1;
 	}
 	
 	/**
@@ -90,7 +90,7 @@ public class NpcPersonalAIData
 	 */
 	public boolean hasAIValue(String spawnName, String paramName)
 	{
-		return (spawnName != null) && _AIData.containsKey(spawnName) && _AIData.get(spawnName).containsKey(paramName);
+		return (spawnName != null) && _aiData.containsKey(spawnName) && _aiData.get(spawnName).containsKey(paramName);
 	}
 	
 	/**
@@ -101,9 +101,9 @@ public class NpcPersonalAIData
 	 */
 	public void initializeNpcParameters(Npc npc, Spawn spawn, String spawnName)
 	{
-		if (_AIData.containsKey(spawnName))
+		if (_aiData.containsKey(spawnName))
 		{
-			final Map<String, Integer> map = _AIData.get(spawnName);
+			final Map<String, Integer> map = _aiData.get(spawnName);
 			
 			try
 			{

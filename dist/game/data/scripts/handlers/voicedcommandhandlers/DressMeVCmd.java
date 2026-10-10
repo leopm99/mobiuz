@@ -100,32 +100,32 @@ public class DressMeVCmd implements IVoicedCommandHandler
 		"undressme-hat"
 	};
 	
-	private final int ITEMS_PER_PAGE = 6;
+	private static final int ITEMS_PER_PAGE = 6;
 	
-	String index_path = "data/html/dressme/index.htm";
-	String info_path = "data/html/dressme/info.htm";
-	String undressme_path = "data/html/dressme/undressme.htm";
+	String indexPath = "data/html/dressme/index.htm";
+	String infoPath = "data/html/dressme/info.htm";
+	String undressmePath = "data/html/dressme/undressme.htm";
 	
-	String index_armor_path = "data/html/dressme/index-armor.htm";
-	String template_armor_path = "data/html/dressme/template-armor.htm";
+	String indexArmorPath = "data/html/dressme/index-armor.htm";
+	String templateArmorPath = "data/html/dressme/template-armor.htm";
 	
-	String index_cloak = "data/html/dressme/index-cloak.htm";
-	String template_cloak_path = "data/html/dressme/template-cloak.htm";
+	String indexCloak = "data/html/dressme/index-cloak.htm";
+	String templateCloakPath = "data/html/dressme/template-cloak.htm";
 	
-	String index_shield_path = "data/html/dressme/index-shield.htm";
-	String template_shield_path = "data/html/dressme/template-shield.htm";
+	String indexShieldPath = "data/html/dressme/index-shield.htm";
+	String templateShieldPath = "data/html/dressme/template-shield.htm";
 	
-	String index_weapon_path = "data/html/dressme/index-weapon.htm";
-	String template_weapon_path = "data/html/dressme/template-weapon.htm";
+	String indexWeaponPath = "data/html/dressme/index-weapon.htm";
+	String templateWeaponPath = "data/html/dressme/template-weapon.htm";
 	
-	String index_hat_path = "data/html/dressme/index-hat.htm";
-	String template_hat_path = "data/html/dressme/template-hat.htm";
+	String indexHatPath = "data/html/dressme/index-hat.htm";
+	String templateHatPath = "data/html/dressme/template-hat.htm";
 	
-	String dress_cloak_path = "data/html/dressme/dress-cloak.htm";
-	String dress_shield_path = "data/html/dressme/dress-shield.htm";
-	String dress_armor_path = "data/html/dressme/dress-armor.htm";
-	String dress_weapon_path = "data/html/dressme/dress-weapon.htm";
-	String dress_hat_path = "data/html/dressme/dress-hat.htm";
+	String dressCloakPath = "data/html/dressme/dress-cloak.htm";
+	String dressShieldPath = "data/html/dressme/dress-shield.htm";
+	String dressArmorPath = "data/html/dressme/dress-armor.htm";
+	String dressWeaponPath = "data/html/dressme/dress-weapon.htm";
+	String dressHatPath = "data/html/dressme/dress-hat.htm";
 	
 	/**
 	 * Implementation of the "dressme" command.
@@ -135,7 +135,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 	 */
 	private boolean command_Dressme(Player player, String params)
 	{
-		String html = HtmCache.getInstance().getHtm(player, index_path);
+		String html = HtmCache.getInstance().getHtm(player, indexPath);
 		html = html.replace("<?show_hide?>", !player.getVarB("showVisualChange") ? "Show visual equip on other player!" : "Hide visual equip on other player!");
 		html = html.replace("<?show_hide_b?>", !player.getVarB("showVisualChange") ? "showdress" : "hidedress");
 		
@@ -159,8 +159,8 @@ public class DressMeVCmd implements IVoicedCommandHandler
 			return false;
 		}
 		
-		String html = HtmCache.getInstance().getHtm(player, index_armor_path);
-		String template = HtmCache.getInstance().getHtm(player, template_armor_path);
+		String html = HtmCache.getInstance().getHtm(player, indexArmorPath);
+		String template = HtmCache.getInstance().getHtm(player, templateArmorPath);
 		String block = "";
 		String list = "";
 		
@@ -259,8 +259,8 @@ public class DressMeVCmd implements IVoicedCommandHandler
 			player.sendMessage("Error: Cloak must be equiped!");
 			return false;
 		}
-		String html = HtmCache.getInstance().getHtm(player, index_cloak);
-		String template = HtmCache.getInstance().getHtm(player, template_cloak_path);
+		String html = HtmCache.getInstance().getHtm(player, indexCloak);
+		String template = HtmCache.getInstance().getHtm(player, templateCloakPath);
 		String block = "";
 		String list = "";
 		String[] param = args.split(" ");
@@ -349,8 +349,8 @@ public class DressMeVCmd implements IVoicedCommandHandler
 			return false;
 		}
 		
-		String html = HtmCache.getInstance().getHtm(player, index_shield_path);
-		String template = HtmCache.getInstance().getHtm(player, template_shield_path);
+		String html = HtmCache.getInstance().getHtm(player, indexShieldPath);
+		String template = HtmCache.getInstance().getHtm(player, templateShieldPath);
 		String block = "";
 		String list = "";
 		String[] param = args.split(" ");
@@ -439,8 +439,8 @@ public class DressMeVCmd implements IVoicedCommandHandler
 			return false;
 		}
 		
-		String html = HtmCache.getInstance().getHtm(player, index_weapon_path);
-		String template = HtmCache.getInstance().getHtm(player, template_weapon_path);
+		String html = HtmCache.getInstance().getHtm(player, indexWeaponPath);
+		String template = HtmCache.getInstance().getHtm(player, templateWeaponPath);
 		String block = "";
 		String list = "";
 		String[] param = args.split(" ");
@@ -542,8 +542,8 @@ public class DressMeVCmd implements IVoicedCommandHandler
 			return false;
 		}
 		
-		String html = HtmCache.getInstance().getHtm(player, index_hat_path);
-		String template = HtmCache.getInstance().getHtm(player, template_hat_path);
+		String html = HtmCache.getInstance().getHtm(player, indexHatPath);
+		String template = HtmCache.getInstance().getHtm(player, templateHatPath);
 		String block = "";
 		String list = "";
 		String[] param = args.split(" ");
@@ -649,7 +649,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 			return false;
 		}
 		
-		String html = HtmCache.getInstance().getHtm(player, dress_armor_path);
+		String html = HtmCache.getInstance().getHtm(player, dressArmorPath);
 		final Inventory inv = player.getInventory();
 		
 		final Item my_chest = inv.getPaperdollItem(Inventory.PAPERDOLL_CHEST);
@@ -728,7 +728,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 		DressMeCloakData cloak = DressMeCloakHolder.getInstance().getCloak(set);
 		if (cloak != null)
 		{
-			String html = HtmCache.getInstance().getHtm(player, dress_cloak_path);
+			String html = HtmCache.getInstance().getHtm(player, dressCloakPath);
 			
 			Inventory inv = player.getInventory();
 			Item my_cloak = inv.getPaperdollItem(Inventory.PAPERDOLL_CLOAK);
@@ -762,7 +762,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 		DressMeShieldData shield = DressMeShieldHolder.getInstance().getShield(set);
 		if (shield != null)
 		{
-			String html = HtmCache.getInstance().getHtm(player, dress_shield_path);
+			String html = HtmCache.getInstance().getHtm(player, dressShieldPath);
 			
 			Inventory inv = player.getInventory();
 			Item my_shield = inv.getPaperdollItem(Inventory.PAPERDOLL_LHAND);
@@ -796,7 +796,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 		DressMeWeaponData weapon = DressMeWeaponHolder.getInstance().getWeapon(set);
 		if (weapon != null)
 		{
-			String html = HtmCache.getInstance().getHtm(player, dress_weapon_path);
+			String html = HtmCache.getInstance().getHtm(player, dressWeaponPath);
 			
 			Inventory inv = player.getInventory();
 			Item my_weapon = inv.getPaperdollItem(Inventory.PAPERDOLL_RHAND);
@@ -830,7 +830,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 		DressMeHatData hat = DressMeHatHolder.getInstance().getHat(set);
 		if (hat != null)
 		{
-			String html = HtmCache.getInstance().getHtm(player, dress_hat_path);
+			String html = HtmCache.getInstance().getHtm(player, dressHatPath);
 			
 			Inventory inv = player.getInventory();
 			
@@ -870,7 +870,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 	 */
 	private boolean command_dressinfo(Player player, String params)
 	{
-		String html = HtmCache.getInstance().getHtm(player, info_path);
+		String html = HtmCache.getInstance().getHtm(player, infoPath);
 		sendHtml(player, html);
 		return true;
 	}
@@ -1136,7 +1136,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 	 */
 	private boolean command_undressme(Player player, String params)
 	{
-		String html = HtmCache.getInstance().getHtm(player, undressme_path);
+		String html = HtmCache.getInstance().getHtm(player, undressmePath);
 		html = html.replace("<?show_hide?>", !player.getVarB("showVisualChange") ? "Show visual equip on other player!" : "Hide visual equip on other player!");
 		html = html.replace("<?show_hide_b?>", !player.getVarB("showVisualChange") ? "showdress" : "hidedress");
 		

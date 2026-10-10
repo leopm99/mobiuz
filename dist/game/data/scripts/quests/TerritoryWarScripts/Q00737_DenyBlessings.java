@@ -39,7 +39,7 @@ public class Q00737_DenyBlessings extends TerritoryWarSuperClass
 	public Q00737_DenyBlessings()
 	{
 		super(737);
-		CLASS_IDS = new int[]
+		classIds = new int[]
 		{
 			43,
 			112,
@@ -52,8 +52,8 @@ public class Q00737_DenyBlessings extends TerritoryWarSuperClass
 			52,
 			116
 		};
-		RANDOM_MIN = 3;
-		RANDOM_MAX = 8;
+		randomMin = 3;
+		randomMax = 8;
 		npcString = new NpcStringId[]
 		{
 			NpcStringId.YOU_HAVE_DEFEATED_S2_OF_S1_HEALERS_AND_BUFFERS,

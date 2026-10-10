@@ -61,7 +61,7 @@ public class ChamberOfDelusionTower extends Chamber
 	private ChamberOfDelusionTower()
 	{
 		super(INSTANCEID, ENTRANCE_GATEKEEPER, ROOM_GATEKEEPER_FIRST, ROOM_GATEKEEPER_LAST, AENKINEL, BOX);
-		ROOM_ENTER_POINTS = ENTER_POINTS;
+		roomEnterPoints = ENTER_POINTS;
 	}
 	
 	public static void main(String[] args)

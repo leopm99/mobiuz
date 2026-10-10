@@ -57,7 +57,7 @@ public class DimensionalRift
 	protected Party _party;
 	protected List<Byte> _completedRooms = new ArrayList<>();
 	private static final long FIVE_SECONDS = 5000;
-	protected byte jumps_current = 0;
+	protected byte jumpsCurrent = 0;
 	
 	private Timer teleporterTimer;
 	private TimerTask teleporterTimerTask;
@@ -147,9 +147,9 @@ public class DimensionalRift
 					DimensionalRiftManager.getInstance().getRoom(_type, _choosenRoom).unspawn().setPartyInside(false);
 				}
 				
-				if (reasonTP && (jumps_current < getMaxJumps()) && (_party.getMemberCount() > _deadPlayers.size()))
+				if (reasonTP && (jumpsCurrent < getMaxJumps()) && (_party.getMemberCount() > _deadPlayers.size()))
 				{
-					jumps_current++;
+					jumpsCurrent++;
 					
 					_completedRooms.add(_choosenRoom);
 					_choosenRoom = -1;

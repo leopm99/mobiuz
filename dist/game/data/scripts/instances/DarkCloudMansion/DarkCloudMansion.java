@@ -237,7 +237,7 @@ public class DarkCloudMansion extends AbstractInstance
 		public int counter = 0;
 		public int reset = 0;
 		public int founded = 0;
-		public int[] Order;
+		public int[] order;
 	}
 	
 	@Override
@@ -461,11 +461,11 @@ public class DarkCloudMansion extends AbstractInstance
 		DMCNpc thisNpc;
 		
 		// TODO: find a better way to initialize to [1,0,0,0,0,0,0]
-		secondRoom.Order = new int[7];
-		secondRoom.Order[0] = 1;
+		secondRoom.order = new int[7];
+		secondRoom.order[0] = 1;
 		for (int i = 1; i < 7; i++)
 		{
-			secondRoom.Order[i] = 0;
+			secondRoom.order[i] = 0;
 		}
 		
 		final int i = getRandom(MonolithOrder.length);
@@ -1037,7 +1037,7 @@ public class DarkCloudMansion extends AbstractInstance
 				{
 					if (mob.npc == npc)
 					{
-						checkStone(npc, secondRoom.Order, mob, world);
+						checkStone(npc, secondRoom.order, mob, world);
 					}
 				}
 				

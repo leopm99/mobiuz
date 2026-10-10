@@ -39,7 +39,7 @@ import com.l2journey.gameserver.network.ServerPackets;
 public class ExMPCCPartyInfoUpdate extends ServerPacket
 {
 	private final int _mode;
-	private final int _LeaderOID;
+	private final int _leaderOID;
 	private final int _memberCount;
 	private final String _name;
 	
@@ -50,7 +50,7 @@ public class ExMPCCPartyInfoUpdate extends ServerPacket
 	public ExMPCCPartyInfoUpdate(Party party, int mode)
 	{
 		_name = party.getLeader().getName();
-		_LeaderOID = party.getLeaderObjectId();
+		_leaderOID = party.getLeaderObjectId();
 		_memberCount = party.getMemberCount();
 		_mode = mode;
 	}
@@ -60,7 +60,7 @@ public class ExMPCCPartyInfoUpdate extends ServerPacket
 	{
 		ServerPackets.EX_MPCC_PARTY_INFO_UPDATE.writeId(this, buffer);
 		buffer.writeString(_name);
-		buffer.writeInt(_LeaderOID);
+		buffer.writeInt(_leaderOID);
 		buffer.writeInt(_memberCount);
 		buffer.writeInt(_mode); // mode 0 = Remove Party, 1 = AddParty, maybe more...
 	}

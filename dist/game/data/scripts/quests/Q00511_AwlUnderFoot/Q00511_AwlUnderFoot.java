@@ -51,17 +51,17 @@ public class Q00511_AwlUnderFoot extends Quest
 	
 	public static class FortDungeon
 	{
-		private final int INSTANCEID;
+		private final int instanceId;
 		private long _reEnterTime = 0;
 		
 		public FortDungeon(int iId)
 		{
-			INSTANCEID = iId;
+			instanceId = iId;
 		}
 		
 		public int getInstanceId()
 		{
-			return INSTANCEID;
+			return instanceId;
 		}
 		
 		public long getReEnterTime()

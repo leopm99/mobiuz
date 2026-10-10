@@ -52,7 +52,7 @@ public class FortressOfResistance extends ClanHallSiegeEngine
 	private static final int MESSENGER = 35382;
 	private static final int BLOODY_LORD_NURKA = 35375;
 	
-	private final Location[] NURKA_COORDS =
+	private static final Location[] NURKA_COORDS =
 	{
 		new Location(45109, 112124, -1900), // 30%
 		new Location(47653, 110816, -2110), // 40%

@@ -201,8 +201,8 @@ public class CtF extends Event
 	private static InstanceWorld PVP_WORLD = null;
 	private static Npc MANAGER_NPC_INSTANCE = null;
 	private static boolean TEAM_FORFEIT = false;
-	private final Lock BLUE_LOCK = new ReentrantLock();
-	private final Lock RED_LOCK = new ReentrantLock();
+	private final Lock blueLock = new ReentrantLock();
+	private final Lock redLock = new ReentrantLock();
 	
 	private CtF()
 	{
@@ -867,7 +867,7 @@ public class CtF extends Event
 						}
 						else
 						{
-							Lock locked = (BLUE_TEAM.contains(player) ? BLUE_LOCK : RED_LOCK);
+							Lock locked = (BLUE_TEAM.contains(player) ? blueLock : redLock);
 							boolean lockAcquired = locked.tryLock();
 							if (lockAcquired)
 							{

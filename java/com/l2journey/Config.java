@@ -3695,11 +3695,11 @@ public class Config
 	 */
 	private static void loadFloodProtectorConfig(ConfigReader configs, FloodProtectorConfig config, String configString, int defaultInterval)
 	{
-		config.FLOOD_PROTECTION_INTERVAL = configs.getInt("FloodProtector" + configString + "Interval", defaultInterval);
-		config.LOG_FLOODING = configs.getBoolean("FloodProtector" + configString + "LogFlooding", false);
-		config.PUNISHMENT_LIMIT = configs.getInt("FloodProtector" + configString + "PunishmentLimit", 0);
-		config.PUNISHMENT_TYPE = configs.getString("FloodProtector" + configString + "PunishmentType", "none");
-		config.PUNISHMENT_TIME = configs.getInt("FloodProtector" + configString + "PunishmentTime", 0) * 60000L;
+		config.floodProtectionInterval = configs.getInt("FloodProtector" + configString + "Interval", defaultInterval);
+		config.logFlooding = configs.getBoolean("FloodProtector" + configString + "LogFlooding", false);
+		config.punishmentLimit = configs.getInt("FloodProtector" + configString + "PunishmentLimit", 0);
+		config.punishmentType = configs.getString("FloodProtector" + configString + "PunishmentType", "none");
+		config.punishmentTime = configs.getInt("FloodProtector" + configString + "PunishmentTime", 0) * 60000L;
 	}
 	
 	/**

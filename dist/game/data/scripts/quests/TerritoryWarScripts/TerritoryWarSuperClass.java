@@ -59,17 +59,17 @@ import quests.Q00176_StepsForHonor.Q00176_StepsForHonor;
 public class TerritoryWarSuperClass extends Quest
 {
 	// "For the Sake of the Territory ..." quests variables
-	public int CATAPULT_ID;
-	public int TERRITORY_ID;
-	public int[] LEADER_IDS;
-	public int[] GUARD_IDS;
+	public int catapultId;
+	public int territoryId;
+	public int[] leaderIds;
+	public int[] guardIds;
 	public NpcStringId[] npcString = {};
 	// "Protect the ..." quests variables
-	public int[] NPC_IDS;
+	public int[] npcIds;
 	// "Kill The ..."
-	public int[] CLASS_IDS;
-	public int RANDOM_MIN;
-	public int RANDOM_MAX;
+	public int[] classIds;
+	public int randomMin;
+	public int randomMax;
 	
 	public TerritoryWarSuperClass(int questId)
 	{
@@ -103,7 +103,7 @@ public class TerritoryWarSuperClass extends Quest
 				qs.setState(State.STARTED);
 				qs.setCond(1);
 				qs.set("kill", "1");
-				max = getRandom(RANDOM_MIN, RANDOM_MAX);
+				max = getRandom(randomMin, randomMax);
 				qs.set("max", String.valueOf(max));
 			}
 			else
@@ -135,7 +135,7 @@ public class TerritoryWarSuperClass extends Quest
 			qs.setState(State.STARTED);
 			qs.setCond(1);
 			qs.set("kill", "1");
-			max = getRandom(RANDOM_MIN, RANDOM_MAX);
+			max = getRandom(randomMin, randomMax);
 			qs.set("max", String.valueOf(max));
 			
 			final ExShowScreenMessage message = new ExShowScreenMessage(npcString[0], 2, 10000);
@@ -150,7 +150,7 @@ public class TerritoryWarSuperClass extends Quest
 			qs.setState(State.STARTED);
 			qs.setCond(1);
 			qs.set("kill", "1");
-			max = getRandom(RANDOM_MIN, RANDOM_MAX);
+			max = getRandom(randomMin, randomMax);
 			qs.set("max", String.valueOf(max));
 			
 			final ExShowScreenMessage message = new ExShowScreenMessage(npcString[0], 2, 10000);
@@ -163,7 +163,7 @@ public class TerritoryWarSuperClass extends Quest
 	@Override
 	public void onAttack(Npc npc, Player player, int damage, boolean isSummon)
 	{
-		if ((npc.getCurrentHp() == npc.getMaxHp()) && ArrayUtil.contains(NPC_IDS, npc.getId()))
+		if ((npc.getCurrentHp() == npc.getMaxHp()) && ArrayUtil.contains(npcIds, npc.getId()))
 		{
 			final int territoryId = getTerritoryIdForThisNPCId(npc.getId());
 			if ((territoryId >= 81) && (territoryId <= 89))
@@ -268,19 +268,19 @@ public class TerritoryWarSuperClass extends Quest
 	public void onKill(Npc npc, Player killer, boolean isSummon)
 	{
 		final TerritoryWarManager manager = TerritoryWarManager.getInstance();
-		if (npc.getId() == CATAPULT_ID)
+		if (npc.getId() == catapultId)
 		{
-			manager.territoryCatapultDestroyed(TERRITORY_ID - 80);
-			manager.giveTWPoint(killer, TERRITORY_ID, 4);
+			manager.territoryCatapultDestroyed(territoryId - 80);
+			manager.giveTWPoint(killer, territoryId, 4);
 			manager.announceToParticipants(new ExShowScreenMessage(npcString[0], 2, 10000), 135000, 13500);
 			handleBecomeMercenaryQuest(killer, true);
 		}
-		else if (ArrayUtil.contains(LEADER_IDS, npc.getId()))
+		else if (ArrayUtil.contains(leaderIds, npc.getId()))
 		{
-			manager.giveTWPoint(killer, TERRITORY_ID, 3);
+			manager.giveTWPoint(killer, territoryId, 3);
 		}
 		
-		if ((killer.getSiegeSide() != TERRITORY_ID) && (TerritoryWarManager.getInstance().getTerritory(killer.getSiegeSide() - 80) != null))
+		if ((killer.getSiegeSide() != territoryId) && (TerritoryWarManager.getInstance().getTerritory(killer.getSiegeSide() - 80) != null))
 		{
 			manager.getTerritory(killer.getSiegeSide() - 80).getQuestDone()[0]++;
 		}
@@ -340,12 +340,12 @@ public class TerritoryWarSuperClass extends Quest
 	// Used to register NPCs "For the Sake of the Territory ..." quests
 	public void registerKillIds()
 	{
-		addKillId(CATAPULT_ID);
-		for (int mobid : LEADER_IDS)
+		addKillId(catapultId);
+		for (int mobid : leaderIds)
 		{
 			addKillId(mobid);
 		}
-		for (int mobid : GUARD_IDS)
+		for (int mobid : guardIds)
 		{
 			addKillId(mobid);
 		}

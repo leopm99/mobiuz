@@ -70,7 +70,7 @@ public class SeedOfDestruction extends AbstractNpcAI
 		public Map<Npc, Boolean> npcList = new HashMap<>();
 		public int killedDevice = 0;
 		public int deviceSpawnedMobCount = 0;
-		public boolean ZoneWaitForTP = true;
+		public boolean zoneWaitForTp = true;
 		public List<Npc> _mags = new ArrayList<>();
 		Npc _tiat;
 		Npc _naezdTR1;
@@ -933,7 +933,7 @@ public class SeedOfDestruction extends AbstractNpcAI
 			}
 			LOGGER.info("Seed of Destruction started " + INSTANCE_ID + " Instance: " + instanceId + " created by player: " + player.getName());
 			
-			((SODWorld) world).ZoneWaitForTP = true;
+			((SODWorld) world).zoneWaitForTp = true;
 			teleto.instanceId = instanceId;
 			
 			final Party party = player.getParty();
@@ -1454,11 +1454,11 @@ public class SeedOfDestruction extends AbstractNpcAI
 			if (tmpworld instanceof SODWorld)
 			{
 				final SODWorld world = (SODWorld) tmpworld;
-				if ((zone.getId() == 25253) && world.ZoneWaitForTP)
+				if ((zone.getId() == 25253) && world.zoneWaitForTp)
 				{
 					startQuestTimer("ThroneSpawn", 55000, null, creature.asPlayer());
 					playMovie(world, Movie.SC_BOSS_TIAT_OPENING);
-					world.ZoneWaitForTP = false;
+					world.zoneWaitForTp = false;
 				}
 			}
 		}

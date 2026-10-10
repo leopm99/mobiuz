@@ -34,7 +34,7 @@ import com.l2journey.gameserver.network.serverpackets.OnEventTrigger;
  */
 public class SwampZone extends ZoneType
 {
-	private double _move_bonus;
+	private double _moveBonus;
 	private int _castleId;
 	private Castle _castle;
 	private int _eventId;
@@ -44,7 +44,7 @@ public class SwampZone extends ZoneType
 		super(id);
 		
 		// Setup default speed reduce (in %)
-		_move_bonus = 0.5;
+		_moveBonus = 0.5;
 		
 		// no castle by default
 		_castleId = 0;
@@ -59,7 +59,7 @@ public class SwampZone extends ZoneType
 	{
 		if (name.equals("move_bonus"))
 		{
-			_move_bonus = Double.parseDouble(value);
+			_moveBonus = Double.parseDouble(value);
 		}
 		else if (name.equals("castleId"))
 		{
@@ -137,6 +137,6 @@ public class SwampZone extends ZoneType
 	
 	public double getMoveBonus()
 	{
-		return _move_bonus;
+		return _moveBonus;
 	}
 }

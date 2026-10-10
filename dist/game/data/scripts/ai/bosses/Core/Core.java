@@ -65,7 +65,7 @@ import ai.AbstractNpcAI;
  */
 public class Core extends AbstractNpcAI implements IXmlReader
 {
-	final Logger LOGGER = Logger.getLogger(Core.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(Core.class.getName());
 	
 	// NPCs
 	private static final int CORE = 29006;

@@ -1096,21 +1096,21 @@ public class BlowfishEngine
 	private static final int BLOCK_SIZE = 8; // bytes = 64 bits
 	private static final int SBOX_SK = 256;
 	private static final int P_SZ = ROUNDS + 2;
-	private final int[] S0; // the s-boxes
-	private final int[] S1;
-	private final int[] S2;
-	private final int[] S3;
-	private final int[] P; // the p-array
+	private final int[] s0; // the s-boxes
+	private final int[] s1;
+	private final int[] s2;
+	private final int[] s3;
+	private final int[] p; // the p-array
 	private boolean encrypting = false;
 	private byte[] workingKey = null;
 	
 	public BlowfishEngine()
 	{
-		S0 = new int[SBOX_SK];
-		S1 = new int[SBOX_SK];
-		S2 = new int[SBOX_SK];
-		S3 = new int[SBOX_SK];
-		P = new int[P_SZ];
+		s0 = new int[SBOX_SK];
+		s1 = new int[SBOX_SK];
+		s2 = new int[SBOX_SK];
+		s3 = new int[SBOX_SK];
+		p = new int[P_SZ];
 	}
 	
 	/**
@@ -1155,7 +1155,7 @@ public class BlowfishEngine
 	
 	private int func(int x)
 	{
-		return (((S0[(x >>> 24)] + S1[(x >>> 16) & 0xff]) ^ S2[(x >>> 8) & 0xff]) + S3[x & 0xff]);
+		return (((s0[(x >>> 24)] + s1[(x >>> 16) & 0xff]) ^ s2[(x >>> 8) & 0xff]) + s3[x & 0xff]);
 	}
 	
 	/**
@@ -1169,13 +1169,13 @@ public class BlowfishEngine
 		int size = table.length;
 		for (int s = 0; s < size; s += 2)
 		{
-			xl ^= P[0];
+			xl ^= p[0];
 			for (int i = 1; i < ROUNDS; i += 2)
 			{
-				xr ^= func(xl) ^ P[i];
-				xl ^= func(xr) ^ P[i + 1];
+				xr ^= func(xl) ^ p[i];
+				xl ^= func(xr) ^ p[i + 1];
 			}
-			xr ^= P[ROUNDS + 1];
+			xr ^= p[ROUNDS + 1];
 			table[s] = xr;
 			table[s + 1] = xl;
 			xr = xl; // end of cycle swap
@@ -1188,13 +1188,13 @@ public class BlowfishEngine
 		/*
 		 * - comments are from _Applied Crypto_, Schneier, p338 please be careful comparing the two, AC numbers the arrays from 1, the enclosed code from 0. (1) Initialize the S-boxes and the P-array, with a fixed string This string contains the hexadecimal digits of pi (3.141...)
 		 */
-		System.arraycopy(KS0, 0, S0, 0, SBOX_SK);
-		System.arraycopy(KS1, 0, S1, 0, SBOX_SK);
-		System.arraycopy(KS2, 0, S2, 0, SBOX_SK);
-		System.arraycopy(KS3, 0, S3, 0, SBOX_SK);
-		System.arraycopy(KP, 0, P, 0, P_SZ);
+		System.arraycopy(KS0, 0, s0, 0, SBOX_SK);
+		System.arraycopy(KS1, 0, s1, 0, SBOX_SK);
+		System.arraycopy(KS2, 0, s2, 0, SBOX_SK);
+		System.arraycopy(KS3, 0, s3, 0, SBOX_SK);
+		System.arraycopy(KP, 0, p, 0, P_SZ);
 		/*
-		 * (2) Now, XOR P[0] with the first 32 bits of the key, XOR P[1] with the second 32-bits of the key, and so on for all bits of the key (up to P[17]). Repeatedly cycle through the key bits until the entire P-array has been XOR-ed with the key bits
+		 * (2) Now, XOR p[0] with the first 32 bits of the key, XOR p[1] with the second 32-bits of the key, and so on for all bits of the key (up to p[17]). Repeatedly cycle through the key bits until the entire P-array has been XOR-ed with the key bits
 		 */
 		int keyLength = key.length;
 		int keyIndex = 0;
@@ -1213,17 +1213,17 @@ public class BlowfishEngine
 				}
 			}
 			// XOR the newly created 32 bit chunk onto the P-array
-			P[i] ^= data;
+			p[i] ^= data;
 		}
 		/*
 		 * (3) Encrypt the all-zero string with the Blowfish algorithm, using the subkeys described in (1) and (2) (4) Replace P1 and P2 with the output of step (3) (5) Encrypt the output of step(3) using the Blowfish algorithm, with the modified subkeys. (6) Replace P3 and P4 with the output of
 		 * step (5) (7) Continue the process, replacing all elements of the P-array and then all four S-boxes in order, with the output of the continuously changing Blowfish algorithm
 		 */
-		processTable(0, 0, P);
-		processTable(P[P_SZ - 2], P[P_SZ - 1], S0);
-		processTable(S0[SBOX_SK - 2], S0[SBOX_SK - 1], S1);
-		processTable(S1[SBOX_SK - 2], S1[SBOX_SK - 1], S2);
-		processTable(S2[SBOX_SK - 2], S2[SBOX_SK - 1], S3);
+		processTable(0, 0, p);
+		processTable(p[P_SZ - 2], p[P_SZ - 1], s0);
+		processTable(s0[SBOX_SK - 2], s0[SBOX_SK - 1], s1);
+		processTable(s1[SBOX_SK - 2], s1[SBOX_SK - 1], s2);
+		processTable(s2[SBOX_SK - 2], s2[SBOX_SK - 1], s3);
 	}
 	
 	/**
@@ -1235,13 +1235,13 @@ public class BlowfishEngine
 	{
 		int xl = data.readInt(index);
 		int xr = data.readInt(index + 4);
-		xl ^= P[0];
+		xl ^= p[0];
 		for (int i = 1; i < ROUNDS; i += 2)
 		{
-			xr ^= func(xl) ^ P[i];
-			xl ^= func(xr) ^ P[i + 1];
+			xr ^= func(xl) ^ p[i];
+			xl ^= func(xr) ^ p[i + 1];
 		}
-		xr ^= P[ROUNDS + 1];
+		xr ^= p[ROUNDS + 1];
 		bits32ToBytes(xr, data, index);
 		bits32ToBytes(xl, data, index + 4);
 	}
@@ -1255,13 +1255,13 @@ public class BlowfishEngine
 	{
 		int xl = data.readInt(index);
 		int xr = data.readInt(index + 4);
-		xl ^= P[ROUNDS + 1];
+		xl ^= p[ROUNDS + 1];
 		for (int i = ROUNDS; i > 0; i -= 2)
 		{
-			xr ^= func(xl) ^ P[i];
-			xl ^= func(xr) ^ P[i - 1];
+			xr ^= func(xl) ^ p[i];
+			xl ^= func(xr) ^ p[i - 1];
 		}
-		xr ^= P[0];
+		xr ^= p[0];
 		bits32ToBytes(xr, data, index);
 		bits32ToBytes(xl, data, index + 4);
 	}

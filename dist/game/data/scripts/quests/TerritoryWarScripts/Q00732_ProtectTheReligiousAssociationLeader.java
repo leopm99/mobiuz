@@ -37,7 +37,7 @@ public class Q00732_ProtectTheReligiousAssociationLeader extends TerritoryWarSup
 	public Q00732_ProtectTheReligiousAssociationLeader()
 	{
 		super(732);
-		NPC_IDS = new int[]
+		npcIds = new int[]
 		{
 			36510,
 			36516,
@@ -49,7 +49,7 @@ public class Q00732_ProtectTheReligiousAssociationLeader extends TerritoryWarSup
 			36552,
 			36558
 		};
-		addAttackId(NPC_IDS);
+		addAttackId(npcIds);
 	}
 	
 	@Override

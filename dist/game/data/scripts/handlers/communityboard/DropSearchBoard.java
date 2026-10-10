@@ -94,7 +94,7 @@ public class DropSearchBoard implements IParseBoardHandler
 		}
 	}
 	
-	private final Map<Integer, List<CBDropHolder>> DROP_INDEX_CACHE = new HashMap<>();
+	private final Map<Integer, List<CBDropHolder>> dropIndexCache = new HashMap<>();
 	
 	// nonsupport items
 	private static final Set<Integer> BLOCK_ID = new HashSet<>();
@@ -136,7 +136,7 @@ public class DropSearchBoard implements IParseBoardHandler
 			}
 		});
 		
-		DROP_INDEX_CACHE.values().forEach(l -> l.sort((d1, d2) -> Byte.compare(d1.npcLevel, d2.npcLevel)));
+		dropIndexCache.values().forEach(l -> l.sort((d1, d2) -> Byte.compare(d1.npcLevel, d2.npcLevel)));
 	}
 	
 	private void addToDropList(NpcTemplate npcTemplate, DropHolder dropHolder)
@@ -146,11 +146,11 @@ public class DropSearchBoard implements IParseBoardHandler
 			return;
 		}
 		
-		List<CBDropHolder> dropList = DROP_INDEX_CACHE.get(dropHolder.getItemId());
+		List<CBDropHolder> dropList = dropIndexCache.get(dropHolder.getItemId());
 		if (dropList == null)
 		{
 			dropList = new ArrayList<>();
-			DROP_INDEX_CACHE.put(dropHolder.getItemId(), dropList);
+			dropIndexCache.put(dropHolder.getItemId(), dropList);
 		}
 		
 		dropList.add(new CBDropHolder(npcTemplate, dropHolder));
@@ -184,7 +184,7 @@ public class DropSearchBoard implements IParseBoardHandler
 				final DecimalFormat chanceFormat = new DecimalFormat("0.###");
 				final int itemId = Integer.parseInt(params[1]);
 				int page = Integer.parseInt(params[2]);
-				final List<CBDropHolder> list = DROP_INDEX_CACHE.get(itemId);
+				final List<CBDropHolder> list = dropIndexCache.get(itemId);
 				final int perPage = 10;
 				int pages = ((list.size() + perPage) - 1) / perPage;
 				if (pages == 0)
@@ -394,7 +394,7 @@ public class DropSearchBoard implements IParseBoardHandler
 	private String buildItemSearchResult(String itemName)
 	{
 		int limit = 0;
-		final Set<Integer> existInDropData = DROP_INDEX_CACHE.keySet();
+		final Set<Integer> existInDropData = dropIndexCache.keySet();
 		final List<ItemTemplate> items = new ArrayList<>();
 		for (ItemTemplate item : ItemData.getInstance().getAllItems())
 		{

@@ -40,7 +40,7 @@ import com.l2journey.gameserver.network.ServerPackets;
  */
 public class ExOlympiadMatchResult extends ServerPacket
 {
-	private final int MESSAGE_TYPE = 1; // 0 = Match List; 1 = Match Result.
+	private static final int MESSAGE_TYPE = 1; // 0 = Match List; 1 = Match Result.
 	private final boolean _isTie; // 0 - win, 1 - tie.
 	private final int _winTeam;
 	private final List<OlympiadInfo> _winnerList;

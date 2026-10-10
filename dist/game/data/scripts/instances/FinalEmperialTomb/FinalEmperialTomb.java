@@ -84,7 +84,7 @@ import instances.AbstractInstance;
  */
 public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 {
-	final Logger LOGGER = Logger.getLogger(FinalEmperialTomb.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(FinalEmperialTomb.class.getName());
 	
 	protected static class FETSpawn
 	{

@@ -39,15 +39,15 @@ public class Q00738_DestroyKeyTargets extends TerritoryWarSuperClass
 	public Q00738_DestroyKeyTargets()
 	{
 		super(738);
-		CLASS_IDS = new int[]
+		classIds = new int[]
 		{
 			51,
 			115,
 			57,
 			118
 		};
-		RANDOM_MIN = 3;
-		RANDOM_MAX = 8;
+		randomMin = 3;
+		randomMax = 8;
 		npcString = new NpcStringId[]
 		{
 			NpcStringId.YOU_HAVE_DEFEATED_S2_OF_S1_WARSMITHS_AND_OVERLORDS,

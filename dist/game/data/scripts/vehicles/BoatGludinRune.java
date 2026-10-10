@@ -120,63 +120,63 @@ public class BoatGludinRune implements Runnable
 	private int _cycle = 0;
 	private int _shoutCount = 0;
 	
-	private final CreatureSay ARRIVED_AT_GLUDIN;
-	private final CreatureSay ARRIVED_AT_GLUDIN_2;
-	private final CreatureSay LEAVE_GLUDIN5;
-	private final CreatureSay LEAVE_GLUDIN1;
-	private final CreatureSay LEAVE_GLUDIN0;
-	private final CreatureSay LEAVING_GLUDIN;
-	private final CreatureSay ARRIVED_AT_RUNE;
-	private final CreatureSay ARRIVED_AT_RUNE_2;
-	private final CreatureSay LEAVE_RUNE5;
-	private final CreatureSay LEAVE_RUNE1;
-	private final CreatureSay LEAVE_RUNE0;
-	private final CreatureSay LEAVING_RUNE;
-	private final CreatureSay BUSY_GLUDIN;
-	private final CreatureSay BUSY_RUNE;
+	private final CreatureSay arrivedAtGludin;
+	private final CreatureSay arrivedAtGludin2;
+	private final CreatureSay leaveGludin5;
+	private final CreatureSay leaveGludin1;
+	private final CreatureSay leaveGludin0;
+	private final CreatureSay leavingGludin;
+	private final CreatureSay arrivedAtRune;
+	private final CreatureSay arrivedAtRune2;
+	private final CreatureSay leaveRune5;
+	private final CreatureSay leaveRune1;
+	private final CreatureSay leaveRune0;
+	private final CreatureSay leavingRune;
+	private final CreatureSay busyGludin;
+	private final CreatureSay busyRune;
 	
-	private final CreatureSay ARRIVAL_RUNE15;
-	private final CreatureSay ARRIVAL_RUNE10;
-	private final CreatureSay ARRIVAL_RUNE5;
-	private final CreatureSay ARRIVAL_RUNE1;
-	private final CreatureSay ARRIVAL_GLUDIN15;
-	private final CreatureSay ARRIVAL_GLUDIN10;
-	private final CreatureSay ARRIVAL_GLUDIN5;
-	private final CreatureSay ARRIVAL_GLUDIN1;
+	private final CreatureSay arrivalRune15;
+	private final CreatureSay arrivalRune10;
+	private final CreatureSay arrivalRune5;
+	private final CreatureSay arrivalRune1;
+	private final CreatureSay arrivalGludin15;
+	private final CreatureSay arrivalGludin10;
+	private final CreatureSay arrivalGludin5;
+	private final CreatureSay arrivalGludin1;
 	
-	private final PlaySound GLUDIN_SOUND;
-	private final PlaySound RUNE_SOUND;
+	private final PlaySound gludinSound;
+	private final PlaySound runeSound;
 	
 	public BoatGludinRune(Boat boat)
 	{
 		_boat = boat;
 		
-		ARRIVED_AT_GLUDIN = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_HAS_ARRIVED_AT_GLUDIN_HARBOR);
-		ARRIVED_AT_GLUDIN_2 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.DEPARTURE_FOR_RUNE_HARBOR_WILL_TAKE_PLACE_AFTER_ANCHORING_FOR_TEN_MINUTES);
-		LEAVE_GLUDIN5 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.DEPARTURE_FOR_RUNE_HARBOR_WILL_TAKE_PLACE_IN_FIVE_MINUTES);
-		LEAVE_GLUDIN1 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.DEPARTURE_FOR_RUNE_HARBOR_WILL_TAKE_PLACE_IN_ONE_MINUTE);
-		LEAVE_GLUDIN0 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.MAKE_HASTE_WE_WILL_BE_DEPARTING_FOR_GLUDIN_HARBOR_SHORTLY_2);
-		LEAVING_GLUDIN = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.WE_ARE_NOW_DEPARTING_FOR_GLUDIN_HARBOR_HOLD_ON_AND_ENJOY_THE_RIDE);
-		ARRIVED_AT_RUNE = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.WELCOME_TO_RUNE_HARBOR);
-		ARRIVED_AT_RUNE_2 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_WILL_LEAVE_FOR_GLUDIN_HARBOR_AFTER_ANCHORING_FOR_TEN_MINUTES);
-		LEAVE_RUNE5 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.DEPARTURE_FOR_GLUDIN_HARBOR_WILL_TAKE_PLACE_IN_FIVE_MINUTES);
-		LEAVE_RUNE1 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.DEPARTURE_FOR_GLUDIN_HARBOR_WILL_TAKE_PLACE_IN_ONE_MINUTE);
-		LEAVE_RUNE0 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.MAKE_HASTE_WE_WILL_BE_DEPARTING_FOR_GLUDIN_HARBOR_SHORTLY);
-		LEAVING_RUNE = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.WE_ARE_NOW_DEPARTING_FOR_GLUDIN_HARBOR_HOLD_ON_AND_ENJOY_THE_RIDE);
-		BUSY_GLUDIN = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_RUNE_HARBOR_TO_GLUDIN_HARBOR_HAS_BEEN_DELAYED);
-		BUSY_RUNE = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_GLUDIN_HARBOR_TO_RUNE_HARBOR_HAS_BEEN_DELAYED);
+		arrivedAtGludin = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_HAS_ARRIVED_AT_GLUDIN_HARBOR);
+		arrivedAtGludin2 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.DEPARTURE_FOR_RUNE_HARBOR_WILL_TAKE_PLACE_AFTER_ANCHORING_FOR_TEN_MINUTES);
+		leaveGludin5 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.DEPARTURE_FOR_RUNE_HARBOR_WILL_TAKE_PLACE_IN_FIVE_MINUTES);
+		leaveGludin1 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.DEPARTURE_FOR_RUNE_HARBOR_WILL_TAKE_PLACE_IN_ONE_MINUTE);
+		leaveGludin0 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.MAKE_HASTE_WE_WILL_BE_DEPARTING_FOR_GLUDIN_HARBOR_SHORTLY_2);
+		leavingGludin = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.WE_ARE_NOW_DEPARTING_FOR_GLUDIN_HARBOR_HOLD_ON_AND_ENJOY_THE_RIDE);
+		arrivedAtRune = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.WELCOME_TO_RUNE_HARBOR);
+		arrivedAtRune2 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_WILL_LEAVE_FOR_GLUDIN_HARBOR_AFTER_ANCHORING_FOR_TEN_MINUTES);
+		leaveRune5 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.DEPARTURE_FOR_GLUDIN_HARBOR_WILL_TAKE_PLACE_IN_FIVE_MINUTES);
+		leaveRune1 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.DEPARTURE_FOR_GLUDIN_HARBOR_WILL_TAKE_PLACE_IN_ONE_MINUTE);
+		leaveRune0 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.MAKE_HASTE_WE_WILL_BE_DEPARTING_FOR_GLUDIN_HARBOR_SHORTLY);
+		leavingRune = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.WE_ARE_NOW_DEPARTING_FOR_GLUDIN_HARBOR_HOLD_ON_AND_ENJOY_THE_RIDE);
+		busyGludin = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_RUNE_HARBOR_TO_GLUDIN_HARBOR_HAS_BEEN_DELAYED);
+		busyRune = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_GLUDIN_HARBOR_TO_RUNE_HARBOR_HAS_BEEN_DELAYED);
 		
-		ARRIVAL_RUNE15 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_GLUDIN_HARBOR_WILL_BE_ARRIVING_AT_RUNE_HARBOR_IN_APPROXIMATELY_15_MINUTES);
-		ARRIVAL_RUNE10 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_GLUDIN_HARBOR_WILL_BE_ARRIVING_AT_RUNE_HARBOR_IN_APPROXIMATELY_10_MINUTES);
-		ARRIVAL_RUNE5 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_GLUDIN_HARBOR_WILL_BE_ARRIVING_AT_RUNE_HARBOR_IN_APPROXIMATELY_5_MINUTES);
-		ARRIVAL_RUNE1 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_GLUDIN_HARBOR_WILL_BE_ARRIVING_AT_RUNE_HARBOR_IN_APPROXIMATELY_1_MINUTE);
-		ARRIVAL_GLUDIN15 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_RUNE_HARBOR_WILL_BE_ARRIVING_AT_GLUDIN_HARBOR_IN_APPROXIMATELY_15_MINUTES);
-		ARRIVAL_GLUDIN10 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_RUNE_HARBOR_WILL_BE_ARRIVING_AT_GLUDIN_HARBOR_IN_APPROXIMATELY_10_MINUTES);
-		ARRIVAL_GLUDIN5 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_RUNE_HARBOR_WILL_BE_ARRIVING_AT_GLUDIN_HARBOR_IN_APPROXIMATELY_5_MINUTES);
-		ARRIVAL_GLUDIN1 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_RUNE_HARBOR_WILL_BE_ARRIVING_AT_GLUDIN_HARBOR_IN_APPROXIMATELY_1_MINUTE);
+		arrivalRune15 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_GLUDIN_HARBOR_WILL_BE_ARRIVING_AT_RUNE_HARBOR_IN_APPROXIMATELY_15_MINUTES);
+		arrivalRune10 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_GLUDIN_HARBOR_WILL_BE_ARRIVING_AT_RUNE_HARBOR_IN_APPROXIMATELY_10_MINUTES);
+		arrivalRune5 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_GLUDIN_HARBOR_WILL_BE_ARRIVING_AT_RUNE_HARBOR_IN_APPROXIMATELY_5_MINUTES);
+		arrivalRune1 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_GLUDIN_HARBOR_WILL_BE_ARRIVING_AT_RUNE_HARBOR_IN_APPROXIMATELY_1_MINUTE);
+		arrivalGludin15 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_RUNE_HARBOR_WILL_BE_ARRIVING_AT_GLUDIN_HARBOR_IN_APPROXIMATELY_15_MINUTES);
+		arrivalGludin10 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_RUNE_HARBOR_WILL_BE_ARRIVING_AT_GLUDIN_HARBOR_IN_APPROXIMATELY_10_MINUTES);
+		arrivalGludin5 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_RUNE_HARBOR_WILL_BE_ARRIVING_AT_GLUDIN_HARBOR_IN_APPROXIMATELY_5_MINUTES);
+		arrivalGludin1 = new CreatureSay(ChatType.BOAT, 801, SystemMessageId.THE_FERRY_FROM_RUNE_HARBOR_WILL_BE_ARRIVING_AT_GLUDIN_HARBOR_IN_APPROXIMATELY_1_MINUTE);
 		
-		GLUDIN_SOUND = new PlaySound(0, "itemsound.ship_arrival_departure", 1, _boat.getObjectId(), GLUDIN_DOCK[0].getX(), GLUDIN_DOCK[0].getY(), GLUDIN_DOCK[0].getZ());
-		RUNE_SOUND = new PlaySound(0, "itemsound.ship_arrival_departure", 1, _boat.getObjectId(), RUNE_DOCK[0].getX(), RUNE_DOCK[0].getY(), RUNE_DOCK[0].getZ());
+		gludinSound = new PlaySound(0, "itemsound.ship_arrival_departure", 1, _boat.getObjectId(), GLUDIN_DOCK[0].getX(), GLUDIN_DOCK[0].getY(), GLUDIN_DOCK[0].getZ());
+		runeSound = new PlaySound(0, "itemsound.ship_arrival_departure", 1, _boat.getObjectId(), RUNE_DOCK[0].getX(), RUNE_DOCK[0].getY(), RUNE_DOCK[0].getZ());
 	}
 	
 	@Override
@@ -188,27 +188,27 @@ public class BoatGludinRune implements Runnable
 			{
 				case 0:
 				{
-					BoatManager.getInstance().broadcastPacket(GLUDIN_DOCK[0], RUNE_DOCK[0], LEAVE_GLUDIN5);
+					BoatManager.getInstance().broadcastPacket(GLUDIN_DOCK[0], RUNE_DOCK[0], leaveGludin5);
 					ThreadPool.schedule(this, 240000);
 					break;
 				}
 				case 1:
 				{
-					BoatManager.getInstance().broadcastPacket(GLUDIN_DOCK[0], RUNE_DOCK[0], LEAVE_GLUDIN1);
+					BoatManager.getInstance().broadcastPacket(GLUDIN_DOCK[0], RUNE_DOCK[0], leaveGludin1);
 					ThreadPool.schedule(this, 40000);
 					break;
 				}
 				case 2:
 				{
-					BoatManager.getInstance().broadcastPacket(GLUDIN_DOCK[0], RUNE_DOCK[0], LEAVE_GLUDIN0);
+					BoatManager.getInstance().broadcastPacket(GLUDIN_DOCK[0], RUNE_DOCK[0], leaveGludin0);
 					ThreadPool.schedule(this, 20000);
 					break;
 				}
 				case 3:
 				{
 					BoatManager.getInstance().dockShip(BoatManager.GLUDIN_HARBOR, false);
-					BoatManager.getInstance().broadcastPackets(GLUDIN_DOCK[0], RUNE_DOCK[0], LEAVING_GLUDIN);
-					_boat.broadcastPacket(GLUDIN_SOUND);
+					BoatManager.getInstance().broadcastPackets(GLUDIN_DOCK[0], RUNE_DOCK[0], leavingGludin);
+					_boat.broadcastPacket(gludinSound);
 					_boat.payForRide(7905, 1, -90015, 150422, -3610);
 					_boat.executePath(GLUDIN_TO_RUNE);
 					ThreadPool.schedule(this, 250000);
@@ -216,25 +216,25 @@ public class BoatGludinRune implements Runnable
 				}
 				case 4:
 				{
-					BoatManager.getInstance().broadcastPacket(RUNE_DOCK[0], GLUDIN_DOCK[0], ARRIVAL_RUNE15);
+					BoatManager.getInstance().broadcastPacket(RUNE_DOCK[0], GLUDIN_DOCK[0], arrivalRune15);
 					ThreadPool.schedule(this, 300000);
 					break;
 				}
 				case 5:
 				{
-					BoatManager.getInstance().broadcastPacket(RUNE_DOCK[0], GLUDIN_DOCK[0], ARRIVAL_RUNE10);
+					BoatManager.getInstance().broadcastPacket(RUNE_DOCK[0], GLUDIN_DOCK[0], arrivalRune10);
 					ThreadPool.schedule(this, 300000);
 					break;
 				}
 				case 6:
 				{
-					BoatManager.getInstance().broadcastPacket(RUNE_DOCK[0], GLUDIN_DOCK[0], ARRIVAL_RUNE5);
+					BoatManager.getInstance().broadcastPacket(RUNE_DOCK[0], GLUDIN_DOCK[0], arrivalRune5);
 					ThreadPool.schedule(this, 240000);
 					break;
 				}
 				case 7:
 				{
-					BoatManager.getInstance().broadcastPacket(RUNE_DOCK[0], GLUDIN_DOCK[0], ARRIVAL_RUNE1);
+					BoatManager.getInstance().broadcastPacket(RUNE_DOCK[0], GLUDIN_DOCK[0], arrivalRune1);
 					break;
 				}
 				case 8:
@@ -243,7 +243,7 @@ public class BoatGludinRune implements Runnable
 					{
 						if (_shoutCount == 0)
 						{
-							BoatManager.getInstance().broadcastPacket(RUNE_DOCK[0], GLUDIN_DOCK[0], BUSY_RUNE);
+							BoatManager.getInstance().broadcastPacket(RUNE_DOCK[0], GLUDIN_DOCK[0], busyRune);
 						}
 						_shoutCount++;
 						if (_shoutCount > 35)
@@ -259,34 +259,34 @@ public class BoatGludinRune implements Runnable
 				case 9:
 				{
 					BoatManager.getInstance().dockShip(BoatManager.RUNE_HARBOR, true);
-					BoatManager.getInstance().broadcastPackets(RUNE_DOCK[0], GLUDIN_DOCK[0], ARRIVED_AT_RUNE, ARRIVED_AT_RUNE_2);
-					_boat.broadcastPacket(RUNE_SOUND);
+					BoatManager.getInstance().broadcastPackets(RUNE_DOCK[0], GLUDIN_DOCK[0], arrivedAtRune, arrivedAtRune2);
+					_boat.broadcastPacket(runeSound);
 					ThreadPool.schedule(this, 300000);
 					break;
 				}
 				case 10:
 				{
-					BoatManager.getInstance().broadcastPacket(RUNE_DOCK[0], GLUDIN_DOCK[0], LEAVE_RUNE5);
+					BoatManager.getInstance().broadcastPacket(RUNE_DOCK[0], GLUDIN_DOCK[0], leaveRune5);
 					ThreadPool.schedule(this, 240000);
 					break;
 				}
 				case 11:
 				{
-					BoatManager.getInstance().broadcastPacket(RUNE_DOCK[0], GLUDIN_DOCK[0], LEAVE_RUNE1);
+					BoatManager.getInstance().broadcastPacket(RUNE_DOCK[0], GLUDIN_DOCK[0], leaveRune1);
 					ThreadPool.schedule(this, 40000);
 					break;
 				}
 				case 12:
 				{
-					BoatManager.getInstance().broadcastPacket(RUNE_DOCK[0], GLUDIN_DOCK[0], LEAVE_RUNE0);
+					BoatManager.getInstance().broadcastPacket(RUNE_DOCK[0], GLUDIN_DOCK[0], leaveRune0);
 					ThreadPool.schedule(this, 20000);
 					break;
 				}
 				case 13:
 				{
 					BoatManager.getInstance().dockShip(BoatManager.RUNE_HARBOR, false);
-					BoatManager.getInstance().broadcastPackets(RUNE_DOCK[0], GLUDIN_DOCK[0], LEAVING_RUNE);
-					_boat.broadcastPacket(RUNE_SOUND);
+					BoatManager.getInstance().broadcastPackets(RUNE_DOCK[0], GLUDIN_DOCK[0], leavingRune);
+					_boat.broadcastPacket(runeSound);
 					_boat.payForRide(7904, 1, 34513, -38009, -3640);
 					_boat.executePath(RUNE_TO_GLUDIN);
 					ThreadPool.schedule(this, 60000);
@@ -294,25 +294,25 @@ public class BoatGludinRune implements Runnable
 				}
 				case 14:
 				{
-					BoatManager.getInstance().broadcastPacket(GLUDIN_DOCK[0], RUNE_DOCK[0], ARRIVAL_GLUDIN15);
+					BoatManager.getInstance().broadcastPacket(GLUDIN_DOCK[0], RUNE_DOCK[0], arrivalGludin15);
 					ThreadPool.schedule(this, 300000);
 					break;
 				}
 				case 15:
 				{
-					BoatManager.getInstance().broadcastPacket(GLUDIN_DOCK[0], RUNE_DOCK[0], ARRIVAL_GLUDIN10);
+					BoatManager.getInstance().broadcastPacket(GLUDIN_DOCK[0], RUNE_DOCK[0], arrivalGludin10);
 					ThreadPool.schedule(this, 300000);
 					break;
 				}
 				case 16:
 				{
-					BoatManager.getInstance().broadcastPacket(GLUDIN_DOCK[0], RUNE_DOCK[0], ARRIVAL_GLUDIN5);
+					BoatManager.getInstance().broadcastPacket(GLUDIN_DOCK[0], RUNE_DOCK[0], arrivalGludin5);
 					ThreadPool.schedule(this, 240000);
 					break;
 				}
 				case 17:
 				{
-					BoatManager.getInstance().broadcastPacket(GLUDIN_DOCK[0], RUNE_DOCK[0], ARRIVAL_GLUDIN1);
+					BoatManager.getInstance().broadcastPacket(GLUDIN_DOCK[0], RUNE_DOCK[0], arrivalGludin1);
 					break;
 				}
 				case 18:
@@ -321,7 +321,7 @@ public class BoatGludinRune implements Runnable
 					{
 						if (_shoutCount == 0)
 						{
-							BoatManager.getInstance().broadcastPacket(GLUDIN_DOCK[0], RUNE_DOCK[0], BUSY_GLUDIN);
+							BoatManager.getInstance().broadcastPacket(GLUDIN_DOCK[0], RUNE_DOCK[0], busyGludin);
 						}
 						_shoutCount++;
 						if (_shoutCount > 35)
@@ -337,8 +337,8 @@ public class BoatGludinRune implements Runnable
 				case 19:
 				{
 					BoatManager.getInstance().dockShip(BoatManager.GLUDIN_HARBOR, true);
-					BoatManager.getInstance().broadcastPackets(GLUDIN_DOCK[0], RUNE_DOCK[0], ARRIVED_AT_GLUDIN, ARRIVED_AT_GLUDIN_2);
-					_boat.broadcastPacket(GLUDIN_SOUND);
+					BoatManager.getInstance().broadcastPackets(GLUDIN_DOCK[0], RUNE_DOCK[0], arrivedAtGludin, arrivedAtGludin2);
+					_boat.broadcastPacket(gludinSound);
 					ThreadPool.schedule(this, 300000);
 					break;
 				}

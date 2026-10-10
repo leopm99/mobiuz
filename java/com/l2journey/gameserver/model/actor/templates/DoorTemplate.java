@@ -44,7 +44,7 @@ public class DoorTemplate extends CreatureTemplate
 	private final byte _masterDoorOpen;
 	
 	private final boolean _isTargetable;
-	private final boolean _default_status;
+	private final boolean _defaultStatus;
 	
 	private int _openTime;
 	private int _randomTime;
@@ -116,7 +116,7 @@ public class DoorTemplate extends CreatureTemplate
 		}
 		_masterDoorOpen = masterDoorOpen;
 		_isTargetable = set.getBoolean("targetable", true);
-		_default_status = set.getString("default_status", "close").equals("open");
+		_defaultStatus = set.getString("default_status", "close").equals("open");
 		_closeTime = set.getInt("close_time", -1);
 		_level = set.getInt("level", 0);
 		_openType = set.getInt("open_method", 0);
@@ -222,7 +222,7 @@ public class DoorTemplate extends CreatureTemplate
 	
 	public boolean isOpenByDefault()
 	{
-		return _default_status;
+		return _defaultStatus;
 	}
 	
 	public int getOpenTime()

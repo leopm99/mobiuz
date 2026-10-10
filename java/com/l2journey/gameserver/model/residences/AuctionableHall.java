@@ -137,7 +137,7 @@ public class AuctionableHall extends ClanHall
 	/** Fee Task */
 	protected class FeeTask implements Runnable
 	{
-		private final Logger LOGGER = Logger.getLogger(FeeTask.class.getName());
+		private static final Logger LOGGER = Logger.getLogger(FeeTask.class.getName());
 		
 		@Override
 		public void run()

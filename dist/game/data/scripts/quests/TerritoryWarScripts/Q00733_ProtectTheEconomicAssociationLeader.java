@@ -37,7 +37,7 @@ public class Q00733_ProtectTheEconomicAssociationLeader extends TerritoryWarSupe
 	public Q00733_ProtectTheEconomicAssociationLeader()
 	{
 		super(733);
-		NPC_IDS = new int[]
+		npcIds = new int[]
 		{
 			36513,
 			36519,
@@ -49,7 +49,7 @@ public class Q00733_ProtectTheEconomicAssociationLeader extends TerritoryWarSupe
 			36555,
 			36561
 		};
-		addAttackId(NPC_IDS);
+		addAttackId(npcIds);
 	}
 	
 	@Override

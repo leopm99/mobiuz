@@ -25,8 +25,8 @@ import com.l2journey.gameserver.model.zone.ZoneType;
  */
 public class ConditionZone extends ZoneType
 {
-	private boolean NO_ITEM_DROP = false;
-	private boolean NO_BOOKMARK = false;
+	private boolean noItemDrop = false;
+	private boolean noBookmark = false;
 	
 	public ConditionZone(int id)
 	{
@@ -38,11 +38,11 @@ public class ConditionZone extends ZoneType
 	{
 		if (name.equalsIgnoreCase("NoBookmark"))
 		{
-			NO_BOOKMARK = Boolean.parseBoolean(value);
+			noBookmark = Boolean.parseBoolean(value);
 		}
 		else if (name.equalsIgnoreCase("NoItemDrop"))
 		{
-			NO_ITEM_DROP = Boolean.parseBoolean(value);
+			noItemDrop = Boolean.parseBoolean(value);
 		}
 		else
 		{
@@ -55,11 +55,11 @@ public class ConditionZone extends ZoneType
 	{
 		if (creature.isPlayer())
 		{
-			if (NO_BOOKMARK)
+			if (noBookmark)
 			{
 				creature.setInsideZone(ZoneId.NO_BOOKMARK, true);
 			}
-			if (NO_ITEM_DROP)
+			if (noItemDrop)
 			{
 				creature.setInsideZone(ZoneId.NO_ITEM_DROP, true);
 			}
@@ -71,11 +71,11 @@ public class ConditionZone extends ZoneType
 	{
 		if (creature.isPlayer())
 		{
-			if (NO_BOOKMARK)
+			if (noBookmark)
 			{
 				creature.setInsideZone(ZoneId.NO_BOOKMARK, false);
 			}
-			if (NO_ITEM_DROP)
+			if (noItemDrop)
 			{
 				creature.setInsideZone(ZoneId.NO_ITEM_DROP, false);
 			}

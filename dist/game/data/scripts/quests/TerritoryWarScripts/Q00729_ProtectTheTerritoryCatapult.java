@@ -37,7 +37,7 @@ public class Q00729_ProtectTheTerritoryCatapult extends TerritoryWarSuperClass
 	public Q00729_ProtectTheTerritoryCatapult()
 	{
 		super(729);
-		NPC_IDS = new int[]
+		npcIds = new int[]
 		{
 			36499,
 			36500,
@@ -49,7 +49,7 @@ public class Q00729_ProtectTheTerritoryCatapult extends TerritoryWarSuperClass
 			36506,
 			36507
 		};
-		addAttackId(NPC_IDS);
+		addAttackId(npcIds);
 	}
 	
 	@Override

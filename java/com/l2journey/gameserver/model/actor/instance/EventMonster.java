@@ -27,12 +27,12 @@ public class EventMonster extends Monster
 	// Block offensive skills usage on event mobs
 	// mainly for AoE skills, disallow kill many event mobs
 	// with one skill
-	public boolean block_skill_attack = false;
+	public boolean blockSkillAttack = false;
 	
 	// Event mobs should drop items to ground
 	// but item pickup must be protected to killer
 	// TODO: Some mobs need protect drop for spawner
-	public boolean drop_on_ground = false;
+	public boolean dropOnGround = false;
 	
 	/**
 	 * Creates an event monster.
@@ -46,21 +46,21 @@ public class EventMonster extends Monster
 	
 	public void eventSetBlockOffensiveSkills(boolean value)
 	{
-		block_skill_attack = value;
+		blockSkillAttack = value;
 	}
 	
 	public void eventSetDropOnGround(boolean value)
 	{
-		drop_on_ground = value;
+		dropOnGround = value;
 	}
 	
 	public boolean eventDropOnGround()
 	{
-		return drop_on_ground;
+		return dropOnGround;
 	}
 	
 	public boolean eventSkillAttackBlocked()
 	{
-		return block_skill_attack;
+		return blockSkillAttack;
 	}
 }

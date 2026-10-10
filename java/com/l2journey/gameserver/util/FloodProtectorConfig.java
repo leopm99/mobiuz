@@ -37,35 +37,35 @@ public class FloodProtectorConfig
 	/**
 	 * Type used for identification of logging output.
 	 */
-	public String FLOOD_PROTECTOR_TYPE;
+	public String floodProtectorType;
 	/**
 	 * Flood protection interval in game ticks.
 	 */
-	public int FLOOD_PROTECTION_INTERVAL;
+	public int floodProtectionInterval;
 	/**
 	 * Whether flooding should be logged.
 	 */
-	public boolean LOG_FLOODING;
+	public boolean logFlooding;
 	/**
 	 * If specified punishment limit is exceeded, punishment is applied.
 	 */
-	public int PUNISHMENT_LIMIT;
+	public int punishmentLimit;
 	/**
 	 * Punishment type. Either 'none', 'kick', 'ban' or 'jail'.
 	 */
-	public String PUNISHMENT_TYPE;
+	public String punishmentType;
 	/**
 	 * For how long should the char/account be punished.
 	 */
-	public long PUNISHMENT_TIME;
+	public long punishmentTime;
 	
 	/**
 	 * Creates new instance of FloodProtectorConfig.
-	 * @param floodProtectorType {@link #FLOOD_PROTECTOR_TYPE}
+	 * @param floodProtectorType {@link #floodProtectorType}
 	 */
 	public FloodProtectorConfig(String floodProtectorType)
 	{
 		super();
-		FLOOD_PROTECTOR_TYPE = floodProtectorType;
+		this.floodProtectorType = floodProtectorType;
 	}
 }

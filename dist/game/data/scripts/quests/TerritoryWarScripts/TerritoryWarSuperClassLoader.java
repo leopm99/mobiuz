@@ -63,23 +63,23 @@ public class TerritoryWarSuperClassLoader
 		// initialize subclasses
 		// "For The Sake" quests
 		final TerritoryWarSuperClass gludio = new Q00717_ForTheSakeOfTheTerritoryGludio();
-		_forTheSakeScripts.put(gludio.TERRITORY_ID, gludio);
+		_forTheSakeScripts.put(gludio.territoryId, gludio);
 		final TerritoryWarSuperClass dion = new Q00718_ForTheSakeOfTheTerritoryDion();
-		_forTheSakeScripts.put(dion.TERRITORY_ID, dion);
+		_forTheSakeScripts.put(dion.territoryId, dion);
 		final TerritoryWarSuperClass giran = new Q00719_ForTheSakeOfTheTerritoryGiran();
-		_forTheSakeScripts.put(giran.TERRITORY_ID, giran);
+		_forTheSakeScripts.put(giran.territoryId, giran);
 		final TerritoryWarSuperClass oren = new Q00720_ForTheSakeOfTheTerritoryOren();
-		_forTheSakeScripts.put(oren.TERRITORY_ID, oren);
+		_forTheSakeScripts.put(oren.territoryId, oren);
 		final TerritoryWarSuperClass aden = new Q00721_ForTheSakeOfTheTerritoryAden();
-		_forTheSakeScripts.put(aden.TERRITORY_ID, aden);
+		_forTheSakeScripts.put(aden.territoryId, aden);
 		final TerritoryWarSuperClass innadril = new Q00722_ForTheSakeOfTheTerritoryInnadril();
-		_forTheSakeScripts.put(innadril.TERRITORY_ID, innadril);
+		_forTheSakeScripts.put(innadril.territoryId, innadril);
 		final TerritoryWarSuperClass goddard = new Q00723_ForTheSakeOfTheTerritoryGoddard();
-		_forTheSakeScripts.put(goddard.TERRITORY_ID, goddard);
+		_forTheSakeScripts.put(goddard.territoryId, goddard);
 		final TerritoryWarSuperClass rune = new Q00724_ForTheSakeOfTheTerritoryRune();
-		_forTheSakeScripts.put(rune.TERRITORY_ID, rune);
+		_forTheSakeScripts.put(rune.territoryId, rune);
 		final TerritoryWarSuperClass schuttgart = new Q00725_ForTheSakeOfTheTerritorySchuttgart();
-		_forTheSakeScripts.put(schuttgart.TERRITORY_ID, schuttgart);
+		_forTheSakeScripts.put(schuttgart.territoryId, schuttgart);
 		// "Protect the" quests
 		final TerritoryWarSuperClass catapult = new Q00729_ProtectTheTerritoryCatapult();
 		_protectTheScripts.put(catapult.getId(), catapult);
@@ -93,27 +93,27 @@ public class TerritoryWarSuperClassLoader
 		_protectTheScripts.put(economic.getId(), economic);
 		// "Kill" quests
 		final TerritoryWarSuperClass knights = new Q00734_PierceThroughAShield();
-		for (int i : knights.CLASS_IDS)
+		for (int i : knights.classIds)
 		{
 			_killTheScripts.put(i, knights);
 		}
 		final TerritoryWarSuperClass warriors = new Q00735_MakeSpearsDull();
-		for (int i : warriors.CLASS_IDS)
+		for (int i : warriors.classIds)
 		{
 			_killTheScripts.put(i, warriors);
 		}
 		final TerritoryWarSuperClass wizards = new Q00736_WeakenTheMagic();
-		for (int i : wizards.CLASS_IDS)
+		for (int i : wizards.classIds)
 		{
 			_killTheScripts.put(i, wizards);
 		}
 		final TerritoryWarSuperClass priests = new Q00737_DenyBlessings();
-		for (int i : priests.CLASS_IDS)
+		for (int i : priests.classIds)
 		{
 			_killTheScripts.put(i, priests);
 		}
 		final TerritoryWarSuperClass keys = new Q00738_DestroyKeyTargets();
-		for (int i : keys.CLASS_IDS)
+		for (int i : keys.classIds)
 		{
 			_killTheScripts.put(i, keys);
 		}
