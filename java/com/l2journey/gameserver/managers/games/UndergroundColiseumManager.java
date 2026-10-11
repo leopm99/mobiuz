@@ -100,9 +100,7 @@ public class UndergroundColiseumManager implements IXmlReader
 		}
 		else
 		{
-			final long nextTime = _periodStartTime - curerntTime;
-			_regTask = ThreadPool.schedule(new UCRegistrationTask(true), nextTime);
-			LOGGER.info(() -> getClass().getSimpleName() + ": Starts at " + TimeUtil.getDateTimeString(_periodStartTime));
+			scheduleStartTask();
 		}
 		
 		restoreBestTeams();
@@ -331,20 +329,58 @@ public class UndergroundColiseumManager implements IXmlReader
 			_regTask = null;
 		}
 		
-		setStarted(isStart);
 		if (isStart)
 		{
-			final long nextTime = _periodEndTime - System.currentTimeMillis();
-			_regTask = ThreadPool.schedule(new UCRegistrationTask(false), nextTime);
+			final long remaining = remainingUntilPeriodEnd(_periodEndTime, System.currentTimeMillis());
+			if (remaining <= 0)
+			{
+				// Start task ran after the period already ended (e.g. delayed scheduler after host sleep).
+				LOGGER.warning(() -> getClass().getSimpleName() + ": Skipping period that already ended at " + TimeUtil.getDateTimeString(_periodEndTime));
+				scheduleNextStart();
+				return;
+			}
+			
+			setStarted(true);
+			_regTask = ThreadPool.schedule(new UCRegistrationTask(false), remaining);
 			LOGGER.info(() -> getClass().getSimpleName() + ": Ends at " + TimeUtil.getDateTimeString(_periodEndTime));
 		}
 		else
 		{
-			generateNewDate();
-			final long nextTime = _periodStartTime - System.currentTimeMillis();
-			_regTask = ThreadPool.schedule(new UCRegistrationTask(true), nextTime);
-			LOGGER.info(() -> getClass().getSimpleName() + ": Starts at " + TimeUtil.getDateTimeString(_periodStartTime));
+			setStarted(false);
+			scheduleNextStart();
 		}
+	}
+	
+	private void scheduleNextStart()
+	{
+		generateNewDate();
+		scheduleStartTask();
+	}
+	
+	private void scheduleStartTask()
+	{
+		final long nextTime = clampScheduleDelay(_periodStartTime - System.currentTimeMillis());
+		_regTask = ThreadPool.schedule(new UCRegistrationTask(true), nextTime);
+		LOGGER.info(() -> getClass().getSimpleName() + ": Starts at " + TimeUtil.getDateTimeString(_periodStartTime));
+	}
+	
+	/**
+	 * @param periodEndTime absolute period end time in millis
+	 * @param now current time in millis
+	 * @return remaining millis until period end; {@code <= 0} means the period has already ended and must be skipped
+	 */
+	static long remainingUntilPeriodEnd(long periodEndTime, long now)
+	{
+		return periodEndTime - now;
+	}
+	
+	/**
+	 * @param delay proposed schedule delay in millis
+	 * @return delay clamped to a non-negative value safe for {@link ThreadPool#schedule(Runnable, long)}
+	 */
+	static long clampScheduleDelay(long delay)
+	{
+		return Math.max(0L, delay);
 	}
 	
 	public class UCRegistrationTask implements Runnable

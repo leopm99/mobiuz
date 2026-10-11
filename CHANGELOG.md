@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Phantom cursed-sword hunts: wielders attack players (real players first), a configurable squad (`PhantomCursedHunterLimit`) chases the holder, and one hunter loots the drop on death
 - Unit tests for phantom cursed hunts, return relocation, and related progression guards (`ant test`)
 - Unit test that the script compiler accepts an ordinary Java 8 script and a Java 25 constructor
+- Unit tests for Underground Coliseum schedule delay clamping and skipping expired periods
 
 ### Changed
 
@@ -38,6 +39,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Phantom gear progression no longer strips D-grade Mithril Stockings from mages (levels 20–39), which had recreated the kit every AI tick until OOM
 - Gear progression skips while a cursed weapon is equipped so the sword is not destroyed
 - Event and agathion skills that had `targetType` `NONE` and no effects now apply their described buffs: Gift of Thanks (23156), Donateloph's / Raphaeloph's / Leonardoph's / Michelangeloph's Blessing (23157–23160), Rudolphina's Blessing - Maintain Vitality (23161), Turkey's Big Mistake (23163), Inadequate Affection (23165), and Ball Trapping Buff of Cheers (23183, 23185, 23187, 23189, 23191, 23193, 23195, 23197, 23199)
+- Underground Coliseum no longer schedules a negative ThreadPool delay when a delayed start task runs after the period has already ended; the expired period is skipped and the next start is scheduled instead
 
 ## [2026-09-30]
 
