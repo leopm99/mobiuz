@@ -412,19 +412,30 @@
 	<skill id="3331" levels="1" name="Enslave">
 		<!-- Emits force to nearby people, giving them the curse of sword. -->
 		<set name="icon" val="icon.skill3631" />
-		<set name="operateType" val="A1" /> <!-- Should be A2 -->
+		<set name="operateType" val="A2" /> <!-- Should be A2 -->
 		<set name="targetType" val="AURA" />
+		<set name="abnormalLevel" val="4" />
+		<set name="abnormalTime" val="10" />
+		<set name="abnormalType" val="ALL_SPEED_DOWN" />
 		<set name="activateRate" val="60" />
 		<set name="affectLimit" val="10-10" />
 		<set name="basicProperty" val="MEN" />
-		<set name="effectPoint" val="-1" />
-		<set name="effectRange" val="200" />
+		<set name="effectPoint" val="-100" />
+		<set name="affectRange" val="200" />
 		<set name="hitTime" val="3000" />
+		<set name="isDebuff" val="true" />
+		<set name="isMagic" val="1" /> <!-- Magic Skill -->
+		<set name="lvlBonusRate" val="1" />
 		<set name="magicLevel" val="78" />
 		<set name="mpConsume" val="200" />
 		<set name="power" val="200" />
 		<set name="reuseDelay" val="8000" />
 		<effects>
+			<effect name="Debuff">
+				<mul stat="runSpd" val="0.7" />
+				<mul stat="pAtkSpd" val="0.7" />
+				<mul stat="mAtkSpd" val="0.7" />
+			</effect>
 			<effect name="HpDrain">
 				<param power="0.05" />
 			</effect>

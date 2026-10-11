@@ -9390,6 +9390,12 @@ public class Player extends Playable
 				return false;
 			}
 			
+			// Cursed weapon holders ignore flag/karma/clan/ally protections; the curse marks every nearby player as a valid target.
+			if (isCursedWeaponEquipped())
+			{
+				return true;
+			}
+			
 			// PvP Skills
 			if (skill.isPvPOnly() && ((targetPlayer.getPvpFlag() == 0) && (targetPlayer.getKarma() == 0)) && !isInsideZone(ZoneId.PVP) && !isInsideZone(ZoneId.SIEGE))
 			{
