@@ -39,15 +39,21 @@ import com.l2journey.gameserver.model.skill.Skill;
  */
 public class OnCreatureDamageDealt implements IBaseEvent
 {
-	private Creature _attacker;
-	private Creature _target;
-	private double _damage;
-	private Skill _skill;
-	private boolean _crit;
-	private boolean _damageOverTime;
+	private final Creature _attacker;
+	private final Creature _target;
+	private final double _damage;
+	private final Skill _skill;
+	private final boolean _crit;
+	private final boolean _damageOverTime;
 	
-	public OnCreatureDamageDealt()
+	public OnCreatureDamageDealt(Creature attacker, Creature target, double damage, Skill skill, boolean crit, boolean damageOverTime)
 	{
+		_attacker = attacker;
+		_target = target;
+		_damage = damage;
+		_skill = skill;
+		_crit = crit;
+		_damageOverTime = damageOverTime;
 	}
 	
 	public Creature getAttacker()
@@ -55,19 +61,9 @@ public class OnCreatureDamageDealt implements IBaseEvent
 		return _attacker;
 	}
 	
-	public synchronized void setAttacker(Creature attacker)
-	{
-		_attacker = attacker;
-	}
-	
 	public Creature getTarget()
 	{
 		return _target;
-	}
-	
-	public synchronized void setTarget(Creature target)
-	{
-		_target = target;
 	}
 	
 	public double getDamage()
@@ -75,19 +71,9 @@ public class OnCreatureDamageDealt implements IBaseEvent
 		return _damage;
 	}
 	
-	public synchronized void setDamage(double damage)
-	{
-		_damage = damage;
-	}
-	
 	public Skill getSkill()
 	{
 		return _skill;
-	}
-	
-	public synchronized void setSkill(Skill skill)
-	{
-		_skill = skill;
 	}
 	
 	public boolean isCritical()
@@ -95,19 +81,9 @@ public class OnCreatureDamageDealt implements IBaseEvent
 		return _crit;
 	}
 	
-	public synchronized void setCritical(boolean crit)
-	{
-		_crit = crit;
-	}
-	
 	public boolean isDamageOverTime()
 	{
 		return _damageOverTime;
-	}
-	
-	public synchronized void setDamageOverTime(boolean damageOverTime)
-	{
-		_damageOverTime = damageOverTime;
 	}
 	
 	@Override

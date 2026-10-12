@@ -38,11 +38,13 @@ import com.l2journey.gameserver.model.events.holders.IBaseEvent;
  */
 public class OnCreatureAttacked implements IBaseEvent
 {
-	private Creature _attacker;
-	private Creature _target;
+	private final Creature _attacker;
+	private final Creature _target;
 	
-	public OnCreatureAttacked()
+	public OnCreatureAttacked(Creature attacker, Creature target)
 	{
+		_attacker = attacker;
+		_target = target;
 	}
 	
 	public Creature getAttacker()
@@ -50,19 +52,9 @@ public class OnCreatureAttacked implements IBaseEvent
 		return _attacker;
 	}
 	
-	public synchronized void setAttacker(Creature attacker)
-	{
-		_attacker = attacker;
-	}
-	
 	public Creature getTarget()
 	{
 		return _target;
-	}
-	
-	public synchronized void setTarget(Creature target)
-	{
-		_target = target;
 	}
 	
 	@Override

@@ -38,12 +38,15 @@ import com.l2journey.gameserver.model.events.holders.IBaseEvent;
  */
 public class OnCreatureAttackAvoid implements IBaseEvent
 {
-	private Creature _attacker;
-	private Creature _target;
-	private boolean _damageOverTime;
+	private final Creature _attacker;
+	private final Creature _target;
+	private final boolean _damageOverTime;
 	
-	public OnCreatureAttackAvoid()
+	public OnCreatureAttackAvoid(Creature attacker, Creature target, boolean damageOverTime)
 	{
+		_attacker = attacker;
+		_target = target;
+		_damageOverTime = damageOverTime;
 	}
 	
 	public Creature getAttacker()
@@ -51,29 +54,14 @@ public class OnCreatureAttackAvoid implements IBaseEvent
 		return _attacker;
 	}
 	
-	public synchronized void setAttacker(Creature attacker)
-	{
-		_attacker = attacker;
-	}
-	
 	public Creature getTarget()
 	{
 		return _target;
 	}
 	
-	public synchronized void setTarget(Creature target)
-	{
-		_target = target;
-	}
-	
 	public boolean isDamageOverTime()
 	{
 		return _damageOverTime;
-	}
-	
-	public synchronized void setDamageOverTime(boolean damageOverTime)
-	{
-		_damageOverTime = damageOverTime;
 	}
 	
 	@Override
