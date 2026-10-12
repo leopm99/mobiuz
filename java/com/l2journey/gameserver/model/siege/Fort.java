@@ -420,6 +420,12 @@ public class Fort extends AbstractResidence
 		if (clan.getCastleId() > 0)
 		{
 			getSiege().announceToPlayer(new SystemMessage(SystemMessageId.THE_REBEL_ARMY_RECAPTURED_THE_FORTRESS));
+			// The siege is over, the fortress went back to the rebels instead of to the castle owner.
+			if (getSiege().isInProgress())
+			{
+				getSiege().endSiege();
+			}
+			
 			return false;
 		}
 		
