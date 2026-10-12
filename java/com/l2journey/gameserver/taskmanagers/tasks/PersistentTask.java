@@ -38,7 +38,7 @@ import com.l2journey.gameserver.taskmanagers.PersistentTaskManager.ExecutedTask;
  */
 public abstract class PersistentTask
 {
-	protected static final Logger LOGGER = Logger.getLogger(PersistentTask.class.getName());
+	protected final Logger LOGGER = Logger.getLogger(getClass().getName());
 	
 	public void initializate()
 	{

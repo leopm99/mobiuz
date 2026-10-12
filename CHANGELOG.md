@@ -15,6 +15,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Unit tests for phantom cursed hunts, return relocation, and related progression guards (`ant test`)
 - Unit test that the script compiler accepts an ordinary Java 8 script and a Java 25 constructor
 - Unit tests for Underground Coliseum schedule delay clamping and skipping expired periods
+- Unit tests for phantom ground-skill fallback, aggro-distance leash, base-class logger names, and Tattoo of Divine kit exclusion
+- Unit test that offline `sendInventoryUpdate` does not write the coalesced inventory map
 
 ### Changed
 
@@ -40,6 +42,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Gear progression skips while a cursed weapon is equipped so the sword is not destroyed
 - Event and agathion skills that had `targetType` `NONE` and no effects now apply their described buffs: Gift of Thanks (23156), Donateloph's / Raphaeloph's / Leonardoph's / Michelangeloph's Blessing (23157–23160), Rudolphina's Blessing - Maintain Vitality (23161), Turkey's Big Mistake (23163), Inadequate Affection (23165), and Ball Trapping Buff of Cheers (23183, 23185, 23187, 23189, 23191, 23193, 23195, 23197, 23199)
 - Underground Coliseum no longer schedules a negative ThreadPool delay when a delayed start task runs after the period has already ended; the expired period is skipped and the next start is scheduled instead
+- Level-80 phantom mages no longer pick ground channel skills (Volcano, Cyclone, Raging Waves, Gehenna) as offensive fallback, which caused a NullPointerException in `Creature.checkDoCastConditions()` when no skill world position was set (reported by fCodiff)
+- `Creature.checkDoCastConditions()` rejects a player ground cast when `getCurrentSkillWorldPosition()` is null, before the peace-zone check calls `getX()` (reported by fCodiff)
+- Aggro-distance check leashes only the mobs the config includes. With `AggroDistanceCheckRaids` and `AggroDistanceCheckInstances` left false, raids and instance monsters keep fighting past the leash instead of stalling in combat (reported by fCodiff)
+- `PersistentTask`, `DocumentBase`, `ClanHallSiegeEngine`, and `AbstractInstance` loggers are instance fields bound to the runtime class name so subclass log categories are not collapsed to the base class (reported by fCodiff)
+- Phantom equipment kits no longer include Tattoo of Divine (item 496), which overwrote the chest slot (reported by fCodiff)
+- Clan hall siege admin errors no longer reopen the hall HTML page after the system message (reported by fCodiff)
+- `sendInventoryUpdate` skips players in offline mode, so phantoms no longer retain every inventory change in memory (reported by fCodiff)
 
 ## [2026-09-30]
 

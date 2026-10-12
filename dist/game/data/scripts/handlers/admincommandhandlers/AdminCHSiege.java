@@ -94,6 +94,8 @@ public class AdminCHSiege implements IAdminCommandHandler
 			}
 			else
 			{
+				// Opening the hall page is the default command. Error paths must not refresh it.
+				boolean refreshHallPage = split[0].equals(COMMANDS[0]);
 				if (split[0].equals(COMMANDS[1]))
 				{
 					if (hall.isInSiege())
@@ -110,6 +112,7 @@ public class AdminCHSiege implements IAdminCommandHandler
 							hall.addAttacker(owner);
 						}
 						hall.getSiege().startSiege();
+						refreshHallPage = true;
 					}
 				}
 				else if (split[0].equals(COMMANDS[2]))
@@ -121,6 +124,7 @@ public class AdminCHSiege implements IAdminCommandHandler
 					else
 					{
 						hall.getSiege().endSiege();
+						refreshHallPage = true;
 					}
 				}
 				else if (split[0].equals(COMMANDS[3]))
@@ -178,6 +182,7 @@ public class AdminCHSiege implements IAdminCommandHandler
 										hall.setNextSiegeDate(c.getTimeInMillis());
 										hall.getSiege().updateSiege();
 										hall.updateDb();
+										refreshHallPage = true;
 									}
 									else
 									{
@@ -242,6 +247,7 @@ public class AdminCHSiege implements IAdminCommandHandler
 						if (attacker != null)
 						{
 							hall.addAttacker(attacker);
+							refreshHallPage = true;
 						}
 					}
 				}
@@ -274,6 +280,7 @@ public class AdminCHSiege implements IAdminCommandHandler
 						else
 						{
 							hall.removeAttacker(target.getClan());
+							refreshHallPage = true;
 						}
 					}
 					else
@@ -290,6 +297,7 @@ public class AdminCHSiege implements IAdminCommandHandler
 						else
 						{
 							hall.removeAttacker(rawClan);
+							refreshHallPage = true;
 						}
 					}
 				}
@@ -302,11 +310,13 @@ public class AdminCHSiege implements IAdminCommandHandler
 					else
 					{
 						hall.getSiege().getAttackers().clear();
+						refreshHallPage = true;
 					}
 				}
 				else if (split[0].equals(COMMANDS[7]))
 				{
 					activeChar.sendPacket(new SiegeInfo(hall, activeChar));
+					refreshHallPage = true;
 				}
 				else if (split[0].equals(COMMANDS[8]))
 				{
@@ -330,9 +340,13 @@ public class AdminCHSiege implements IAdminCommandHandler
 							break;
 						}
 					}
+					refreshHallPage = true;
 				}
 				
-				sendSiegableHallPage(activeChar, split[1], hall);
+				if (refreshHallPage)
+				{
+					sendSiegableHallPage(activeChar, split[1], hall);
+				}
 			}
 		}
 		return false;

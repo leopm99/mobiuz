@@ -184,7 +184,6 @@ public class PhantomEquipment
 		864,
 		895,
 		895,
-		496,
 		8187,
 		14796
 	};
@@ -201,7 +200,6 @@ public class PhantomEquipment
 		864,
 		895,
 		6660,
-		496,
 		8187
 	};
 	private static final int[] HEAVY_KIT_B =
@@ -218,7 +216,6 @@ public class PhantomEquipment
 		864,
 		895,
 		6660,
-		496,
 		8187
 	};
 
@@ -236,7 +233,6 @@ public class PhantomEquipment
 		862,
 		893,
 		893,
-		496,
 		8187,
 		14925,
 		14796
@@ -254,7 +250,6 @@ public class PhantomEquipment
 		862,
 		893,
 		6660,
-		496,
 		8187,
 		14925
 	};
@@ -271,7 +266,6 @@ public class PhantomEquipment
 		862,
 		893,
 		6660,
-		496,
 		8187,
 		14925
 	};
@@ -290,7 +284,6 @@ public class PhantomEquipment
 		10500,
 		6657,
 		858,
-		496,
 		858,
 		889,
 		889,
@@ -310,7 +303,6 @@ public class PhantomEquipment
 		858,
 		858,
 		889,
-		496,
 		6660,
 		8187,
 		14929
@@ -328,7 +320,6 @@ public class PhantomEquipment
 		858,
 		889,
 		6657,
-		496,
 		6660,
 		8187,
 		14929
@@ -347,7 +338,6 @@ public class PhantomEquipment
 		10500,
 		6657,
 		858,
-		496,
 		858,
 		889,
 		889,
@@ -367,7 +357,6 @@ public class PhantomEquipment
 		858,
 		858,
 		889,
-		496,
 		6660,
 		8187,
 		14929
@@ -385,7 +374,6 @@ public class PhantomEquipment
 		858,
 		889,
 		6657,
-		496,
 		6660,
 		8187,
 		14929

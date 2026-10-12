@@ -15188,6 +15188,12 @@ public class Player extends Playable
 	
 	public void sendInventoryUpdate(InventoryUpdate iu)
 	{
+		// Phantoms and offline shops have no client. The packet is never written, so writeItems() never clears the coalesced map.
+		if (isInOfflineMode())
+		{
+			return;
+		}
+		
 		if (_inventoryUpdateTask != null)
 		{
 			_inventoryUpdateTask.cancel(false);

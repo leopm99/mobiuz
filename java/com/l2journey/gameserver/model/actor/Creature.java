@@ -2154,12 +2154,29 @@ public abstract class Creature extends WorldObject
 	}
 	
 	/**
+	 * A player ground skill needs the client world position. Without it, peace-zone checks dereference null.
+	 * @param skill the skill about to be cast
+	 * @return {@code true} when this creature is a player casting {@code GROUND} with no world position
+	 */
+	private boolean isGroundCastMissingWorldPosition(Skill skill)
+	{
+		return (skill != null) && (skill.getTargetType() == TargetType.GROUND) && isPlayer() && (asPlayer().getCurrentSkillWorldPosition() == null);
+	}
+	
+	/**
 	 * Verifica se a conjuracao da skill e possivel
 	 * @param skill
 	 * @return True se a conjuracao e possivel
 	 */
 	public boolean checkDoCastConditions(Skill skill)
 	{
+		// Ground casts read getCurrentSkillWorldPosition() later. A missing position must fail here, before that dereference.
+		if (isGroundCastMissingWorldPosition(skill))
+		{
+			sendPacket(ActionFailed.STATIC_PACKET);
+			return false;
+		}
+		
 		if ((skill == null) || isSkillDisabled(skill) || ((skill.getFlyType() == FlyType.CHARGE) && isMovementDisabled()))
 		{
 			// Envia um pacote Server->Client ActionFailed para o Player
@@ -2222,7 +2239,7 @@ public abstract class Creature extends WorldObject
 			if ((skill.getTargetType() == TargetType.GROUND) && isPlayer())
 			{
 				final Location wp = asPlayer().getCurrentSkillWorldPosition();
-				if (!zoneRegion.checkEffectRangeInsidePeaceZone(skill, wp.getX(), wp.getY(), wp.getZ()))
+				if ((wp == null) || !zoneRegion.checkEffectRangeInsidePeaceZone(skill, wp.getX(), wp.getY(), wp.getZ()))
 				{
 					canCast = false;
 				}

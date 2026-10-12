@@ -12,6 +12,7 @@ import com.l2journey.gameserver.model.actor.Player;
 import com.l2journey.gameserver.model.actor.Summon;
 import com.l2journey.gameserver.model.item.enums.ItemProcessType;
 import com.l2journey.gameserver.model.skill.Skill;
+import com.l2journey.gameserver.model.skill.targets.TargetType;
 import com.l2journey.gameserver.util.LocationUtil;
 
 public class PhantomSkills
@@ -32,7 +33,7 @@ public class PhantomSkills
 	private static final Map<Integer, Integer> FIGHTER_ATTACK_PROFILES = new ConcurrentHashMap<>();
 	private static final Map<Integer, MageAttackProfile> MAGE_ATTACK_PROFILES = new ConcurrentHashMap<>();
 	private static final List<Integer> FORBIDDEN_FALLBACK = Arrays.asList(1151, 1159, 1288, 1266, 1267, 1417);
-	
+
 	private static final List<Integer> SUMMON_SKILL_IDS = Arrays.asList(1334, // Cursed Man (Necromancer)
 		1278, // Silhouette (Phantom Summoner)
 		1227, // Kai the Cat (Warlock)
@@ -45,7 +46,7 @@ public class PhantomSkills
 		1111, // Reanimated Man (Human Wizard/Necro)
 		25 // Mechanic Golem (Artisan)
 	);
-	
+
 	static
 	{
 		// Linha de magos humanos
@@ -56,21 +57,21 @@ public class PhantomSkills
 		registerMageProfile(95, 1148, 0); // Soultaker: Death Spike (3a classe)
 		registerMageProfile(14, 1220, 0); // Warlock: Blaze
 		registerMageProfile(96, 1220, 0); // Arcana Lord: Blaze (3a classe)
-		
+
 		// Linha de magos elfos
 		registerMageProfile(26, 1175, 0); // Elven Wizard: Aqua Swirl
 		registerMageProfile(27, 1235, 0); // Spellsinger: Hydro Blast + Surrender to Water
 		registerMageProfile(103, 1235, 0); // Mystic Muse: Hydro Blast + Surrender to Water (3a classe)
 		registerMageProfile(28, 1114, 0); // Elemental Summoner: Aqua Swirl
 		registerMageProfile(104, 1114, 0); // Elemental Master: Aqua Swirl (3a classe)
-		
+
 		// Linha de magos sombrios
 		registerMageProfile(39, 1178, 0); // Dark Wizard: Twister
 		registerMageProfile(40, 1239, 0); // Spellhowler: Hurricane + Surrender to Wind
 		registerMageProfile(110, 1239, 0); // Storm Screamer: Hurricane + Surrender to Wind (3a classe)
 		registerMageProfile(41, 1530, 0); // Phantom Summoner: Death Spike
 		registerMageProfile(111, 1530, 0); // Spectral Master: Death Spike (3a classe)
-		
+
 		// --- Skills para Guerreiros Lvl 40-85 ---
 		registerFighterProfile(3, 920); // Warlord
 		registerFighterProfile(89, 920); // Dreadnought
@@ -116,7 +117,7 @@ public class PhantomSkills
 		registerFighterProfile(108, 263); // ghost hunter
 		registerFighterProfile(2, 1); // gladiator
 		registerFighterProfile(88, 1); // duelist
-		
+
 		// Skills para Guerreiros Lvl 10
 		registerFighterProfile(0, 3); // Human Fighter
 		registerFighterProfile(1, 3); // warrior
@@ -132,7 +133,7 @@ public class PhantomSkills
 		registerFighterProfile(18, 3); // elven Fighter
 		registerFighterProfile(31, 3); // Dark Fighter
 		// registerFighterProfile(54, 100); // scavenger
-		
+
 	}
 	private PhantomSkills()
 	{
@@ -142,52 +143,52 @@ public class PhantomSkills
 	{
 		MAGE_ATTACK_PROFILES.put(classId, new MageAttackProfile(mainNukeId, debuffId));
 	}
-	
+
 	// --- Metodo para registrar o perfil de Guerreiro ---
 	private static void registerFighterProfile(int classId, int skillId)
 	{
 		FIGHTER_ATTACK_PROFILES.put(classId, skillId);
 	}
-	
+
 	private static final class MageAttackProfile
 	{
 		private final int mainNukeId;
 		private final int debuffId;
-		
+
 		private MageAttackProfile(int mainNukeId, int debuffId)
 		{
 			this.mainNukeId = mainNukeId;
 			this.debuffId = debuffId;
 		}
 	}
-	
+
 	public static Skill getMageAttackSkill(Player bot)
 	{
 		return getMageAttackSkill(bot, null);
 	}
-	
+
 	public static Skill getMageAttackSkill(Player bot, Creature target)
 	{
 		if ((bot == null) || !bot.isMageClass())
 		{
 			return null;
 		}
-		
+
 		if (bot.getLevel() < 20)
 		{
 			return null;
 		}
-		
+
 		int classId = getPlayerClassId(bot);
 		MageAttackProfile profile = MAGE_ATTACK_PROFILES.get(classId);
 		if (profile == null)
 		{
 			return null;
 		}
-		
+
 		Skill debuff = bot.getKnownSkill(profile.debuffId);
 		Skill mainNuke = bot.getKnownSkill(profile.mainNukeId);
-		
+
 		if ((debuff != null) && (target != null) && !bot.isSkillDisabled(debuff) && (bot.getCurrentMp() >= debuff.getMpConsume()))
 		{
 			if ((!target.isAffectedBySkill(debuff.getId())) && ((debuff.getCastRange() > 0) && (LocationUtil.calculateDistance(bot, target, true, false) <= debuff.getCastRange())))
@@ -195,7 +196,7 @@ public class PhantomSkills
 				return debuff;
 			}
 		}
-		
+
 		if ((mainNuke != null) && !bot.isSkillDisabled(mainNuke) && (bot.getCurrentMp() >= mainNuke.getMpConsume()))
 		{
 			if (((target != null) && (mainNuke.getCastRange() > 0)) && (LocationUtil.calculateDistance(bot, target, true, false) > mainNuke.getCastRange()))
@@ -204,10 +205,10 @@ public class PhantomSkills
 			}
 			return mainNuke;
 		}
-		
+
 		return null;
 	}
-	
+
 	// Metodo para obter a skill de ataque do guerreiro ---
 	public static Skill getFighterAttackSkill(Player bot, Creature target)
 	{
@@ -216,33 +217,33 @@ public class PhantomSkills
 		{
 			return null;
 		}
-		
+
 		int classId = getPlayerClassId(bot);
 		Integer skillId = FIGHTER_ATTACK_PROFILES.get(classId);
-		
+
 		// Se nao tem skill registrada para sua classe
 		if (skillId == null)
 		{
 			return null;
 		}
-		
+
 		Skill attackSkill = bot.getKnownSkill(skillId);
-		
+
 		// Nunca usamos skills banidas como skill de ataque automatico
 		if (BANNED_ATTACK_SKILLS.contains(skillId))
 		{
 			return null;
 		}
-		
+
 		// Verificamos se tem a skill, se nao esta em cooldown e tem MP suficiente
 		if ((attackSkill != null) && !bot.isSkillDisabled(attackSkill) && (bot.getCurrentMp() >= attackSkill.getMpConsume()))
 		{
 			return attackSkill;
 		}
-		
+
 		return null;
 	}
-	
+
 	private static int getPlayerClassId(Player bot)
 	{
 		try
@@ -254,19 +255,19 @@ public class PhantomSkills
 			return -1;
 		}
 	}
-	
+
 	public static boolean handleCombatSummons(Player bot, Creature target)
 	{
 		if ((bot == null) || bot.isCastingNow())
 		{
 			return true;
 		}
-		
+
 		if (bot.isAffectedBySkill(5076))
 		{
 			bot.getEffectList().stopSkillEffects(com.l2journey.gameserver.model.skill.enums.SkillFinishType.REMOVED, 5076);
 		}
-		
+
 		if (bot.getInventory().getInventoryItemCount(SPIRIT_ORE, -1) < 100)
 		{
 			bot.getInventory().addItem(ItemProcessType.NONE, SPIRIT_ORE, 500, bot, null);
@@ -275,7 +276,7 @@ public class PhantomSkills
 		{
 			bot.getInventory().addItem(ItemProcessType.NONE, PET_SOULSHOT, 500, bot, null);
 		}
-		
+
 		for (int cryId : CRYSTALS)
 		{
 			if (bot.getInventory().getInventoryItemCount(cryId, -1) < 10)
@@ -283,10 +284,10 @@ public class PhantomSkills
 				bot.getInventory().addItem(ItemProcessType.NONE, cryId, 100, bot, null);
 			}
 		}
-		
+
 		Summon summon = bot.getSummon();
 		boolean hasActiveSummon = (summon != null) && !summon.isDead();
-		
+
 		if (!hasActiveSummon)
 		{
 			for (int summonId : SUMMON_SKILL_IDS)
@@ -307,7 +308,7 @@ public class PhantomSkills
 				}
 			}
 		}
-		
+
 		int knownCubics = 0;
 		for (int cubicId : CUBIC_SKILL_IDS)
 		{
@@ -316,10 +317,10 @@ public class PhantomSkills
 				knownCubics++;
 			}
 		}
-		
+
 		int maxCubics = Math.min(knownCubics, 3);
 		int currentCubics = (bot.getCubics() == null) ? 0 : bot.getCubics().size();
-		
+
 		if (currentCubics == 0)
 		{
 			for (int cubicId : CUBIC_SKILL_IDS)
@@ -327,7 +328,7 @@ public class PhantomSkills
 				CAST_TIMERS.remove(bot.getObjectId() + "_cubic_" + cubicId);
 			}
 		}
-		
+
 		if (currentCubics < maxCubics)
 		{
 			for (int cubicId : CUBIC_SKILL_IDS)
@@ -348,7 +349,7 @@ public class PhantomSkills
 				}
 			}
 		}
-		
+
 		if (hasActiveSummon && (summon != null))
 		{
 			if (LocationUtil.calculateDistance(bot, summon, false, false) > 2500)
@@ -358,13 +359,13 @@ public class PhantomSkills
 			else
 			{
 				givePhantomPetBuffs(summon);
-				
+
 				// Validacao para nao mandar a ordem se ja esta ativado
 				if (!bot.getAutoSoulShot().contains(PET_SOULSHOT))
 				{
 					bot.addAutoSoulShot(PET_SOULSHOT);
 				}
-				
+
 				if ((target != null) && (summon.getTarget() != target))
 				{
 					summon.setTarget(target);
@@ -372,26 +373,35 @@ public class PhantomSkills
 				}
 			}
 		}
-		
+
 		return false;
 	}
-	
+
 	public static Skill getBestOffensiveSkill(Player bot)
 	{
 		if (bot == null)
 		{
 			return null;
 		}
-		
-		return bot.getAllSkills().stream().filter(s -> s != null).filter(s -> !s.isPassive() && s.isMagic() && (s.getPower() > 0)).filter(s -> !FORBIDDEN_FALLBACK.contains(s.getId())).filter(s -> s.getCastRange() >= 400).filter(s -> !bot.isSkillDisabled(s) && (bot.getCurrentMp() >= s.getMpConsume())).sorted((s1, s2) -> Double.compare(s2.getPower(), s1.getPower())).findFirst().orElse(null);
+
+		return bot.getAllSkills().stream()
+			.filter(s -> s != null)
+			.filter(s -> !s.isPassive() && s.isMagic() && (s.getPower() > 0))
+			.filter(s -> s.getTargetType() != TargetType.GROUND)
+			.filter(s -> !FORBIDDEN_FALLBACK.contains(s.getId()))
+			.filter(s -> s.getCastRange() >= 400)
+			.filter(s -> !bot.isSkillDisabled(s) && (bot.getCurrentMp() >= s.getMpConsume()))
+			.sorted((s1, s2) -> Double.compare(s2.getPower(), s1.getPower()))
+			.findFirst()
+			.orElse(null);
 	}
-	
+
 	public static void applyBasicBuffs(Player bot)
 	{
 		if (bot.getEffectList().getBuffCount() < 5)
 		{
 			boolean isMage = bot.isMageClass();
-			
+
 			int[] mageBuffs =
 			{
 				1085,
@@ -439,14 +449,14 @@ public class PhantomSkills
 				304,
 				310
 			};
-			
+
 			int[] buffsToApply = isMage ? mageBuffs : fighterBuffs;
-			
+
 			for (int id : buffsToApply)
 			{
 				int maxLevel = SkillData.getInstance().getMaxLevel(id);
 				Skill buff = SkillData.getInstance().getSkill(id, maxLevel);
-				
+
 				if (buff != null)
 				{
 					buff.applyEffects(bot, bot);
@@ -454,19 +464,19 @@ public class PhantomSkills
 			}
 		}
 	}
-	
+
 	public static void givePhantomPetBuffs(Summon pet)
 	{
 		if ((pet == null) || pet.isDead())
 		{
 			return;
 		}
-		
+
 		if (pet.getEffectList().getBuffCount() >= 5)
 		{
 			return;
 		}
-		
+
 		int[][] buffs =
 		{
 			{
@@ -554,7 +564,7 @@ public class PhantomSkills
 				1
 			}
 		};
-		
+
 		for (int[] buffInfo : buffs)
 		{
 			Skill buffSkill = SkillData.getInstance().getSkill(buffInfo[0], buffInfo[1]);
@@ -564,22 +574,22 @@ public class PhantomSkills
 			}
 		}
 	}
-	
+
 	public static boolean handleSelfBuffs(Player bot)
 	{
 		if ((bot == null) || bot.isDead() || bot.isCastingNow())
 		{
 			return false;
 		}
-		
+
 		int classId = getPlayerClassId(bot);
 		List<Integer> archerClasses = Arrays.asList(9, 92, 37, 109, 130, 134);
-		
+
 		if (archerClasses.contains(classId))
 		{
 			int rapidShotId = 99;
 			Skill rapidShot = bot.getKnownSkill(rapidShotId);
-			
+
 			if (((rapidShot != null) && !bot.isAffectedBySkill(rapidShotId) && !bot.isSkillDisabled(rapidShot)) && (bot.getCurrentMp() >= rapidShot.getMpConsume()))
 			{
 				bot.stopMove(null);
@@ -589,7 +599,7 @@ public class PhantomSkills
 		}
 		return false;
 	}
-	
+
 	public static void unregisterBot(int objectId)
 	{
 		CAST_TIMERS.entrySet().removeIf(entry -> entry.getKey().startsWith(objectId + "_"));

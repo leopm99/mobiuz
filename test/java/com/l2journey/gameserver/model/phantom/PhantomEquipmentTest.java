@@ -28,16 +28,35 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.lang.reflect.Field;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import com.l2journey.gameserver.model.actor.Player;
 
 /**
- * Unit tests for {@link PhantomEquipment} progression guard.
+ * Unit tests for {@link PhantomEquipment} progression guard and kit contents.
  */
 class PhantomEquipmentTest
 {
+	private static final int TATTOO_OF_DIVINE = 496;
+	private static final List<String> KITS_THAT_MUST_NOT_USE_CHEST_TATTOO = List.of(
+		"ROBE_KIT_B",
+		"LIGHT_KIT_B",
+		"HEAVY_KIT_B",
+		"ROBE_KIT_A",
+		"LIGHT_KIT_A",
+		"HEAVY_KIT_A",
+		"ROBE_KIT_S",
+		"LIGHT_KIT_S",
+		"HEAVY_KIT_S",
+		"ROBE_KIT_S84",
+		"LIGHT_KIT_S84",
+		"HEAVY_KIT_S84");
+	
 	@AfterEach
 	void tearDown()
 	{
@@ -75,5 +94,22 @@ class PhantomEquipmentTest
 		
 		PhantomEquipment.clearRuntimeState();
 		assertTrue(PhantomEquipment.beginProgressionCheck(bot));
+	}
+	
+	@Test
+	void gradeKitsDoNotIncludeTattooOfDivineChest() throws Exception
+	{
+		for (String kitName : KITS_THAT_MUST_NOT_USE_CHEST_TATTOO)
+		{
+			int[] kit = readKit(kitName);
+			assertTrue(Arrays.stream(kit).noneMatch(id -> id == TATTOO_OF_DIVINE), () -> kitName + " must not contain Tattoo of Divine (" + TATTOO_OF_DIVINE + "), which overwrites the chest slot");
+		}
+	}
+	
+	private static int[] readKit(String fieldName) throws Exception
+	{
+		Field field = PhantomEquipment.class.getDeclaredField(fieldName);
+		field.setAccessible(true);
+		return (int[]) field.get(null);
 	}
 }
