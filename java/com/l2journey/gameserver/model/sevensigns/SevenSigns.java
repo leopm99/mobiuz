@@ -186,6 +186,7 @@ public class SevenSigns
 		}
 		
 		// Schedule a time for the next period change.
+		milliToChange = delayUntilPeriodChange(milliToChange);
 		final SevenSignsPeriodChange sspc = new SevenSignsPeriodChange();
 		ThreadPool.schedule(sspc, milliToChange);
 		
@@ -515,6 +516,34 @@ public class SevenSigns
 		return (_nextPeriodChange.getTimeInMillis() - System.currentTimeMillis());
 	}
 	
+	/**
+	 * @param previousBoundaryMillis start of a recruiting or results period
+	 * @return that period's end, {@link #PERIOD_MINOR_LENGTH} later. Kept on the official boundary so the next major period still lines up with Monday {@link #PERIOD_START_HOUR}:00.
+	 */
+	static long nextMinorPeriodBoundary(long previousBoundaryMillis)
+	{
+		return previousBoundaryMillis + PERIOD_MINOR_LENGTH;
+	}
+	
+	/**
+	 * Delay passed to {@link ThreadPool#schedule(Runnable, long)}. A period-change task can run after its boundary (host sleep or a stalled scheduler). ThreadPool logs a stack trace for a negative delay, so that case runs immediately.
+	 * @param delay millis until the next boundary, possibly negative
+	 * @return {@code delay} when it is still in the future, otherwise {@code 0}
+	 */
+	static long clampScheduleDelay(long delay)
+	{
+		return Math.max(0L, delay);
+	}
+	
+	private static long delayUntilPeriodChange(long delay)
+	{
+		if (delay < 0)
+		{
+			LOGGER.warning("SevenSigns: Next period change is already past; advancing immediately.");
+		}
+		return clampScheduleDelay(delay);
+	}
+	
 	protected void setCalendarForNextPeriodChange()
 	{
 		// Calculate the number of days until the next period
@@ -546,7 +575,7 @@ public class SevenSigns
 			}
 			case PERIOD_COMP_RECRUITING, PERIOD_COMP_RESULTS:
 			{
-				_nextPeriodChange.add(Calendar.MILLISECOND, PERIOD_MINOR_LENGTH);
+				_nextPeriodChange.setTimeInMillis(nextMinorPeriodBoundary(_nextPeriodChange.getTimeInMillis()));
 				break;
 			}
 			default:
@@ -1646,7 +1675,7 @@ public class SevenSigns
 			setCalendarForNextPeriodChange();
 			
 			final SevenSignsPeriodChange sspc = new SevenSignsPeriodChange();
-			ThreadPool.schedule(sspc, getMilliToPeriodChange());
+			ThreadPool.schedule(sspc, delayUntilPeriodChange(getMilliToPeriodChange()));
 		}
 	}
 	
