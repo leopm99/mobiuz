@@ -47,6 +47,8 @@ import ai.AbstractNpcAI;
  */
 public class FortressSiegeManager extends AbstractNpcAI
 {
+	private static final String PH_CLANNAME = "%clanName%";
+
 	// NPCs
 	private static final int[] MANAGERS =
 	{
@@ -105,7 +107,7 @@ public class FortressSiegeManager extends AbstractNpcAI
 					{
 						final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
 						html.setHtml(getHtm(player, "FortressSiegeManager-12.html"));
-						html.replace("%clanName%", fortress.getOwnerClan().getName());
+						html.replace(PH_CLANNAME, fortress.getOwnerClan().getName());
 						return html.getHtml();
 					}
 					else if (!player.hasAccess(ClanAccess.CASTLE_SIEGE))
@@ -178,7 +180,7 @@ public class FortressSiegeManager extends AbstractNpcAI
 					{
 						final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
 						html.setHtml(getHtm(player, "FortressSiegeManager-12.html"));
-						html.replace("%clanName%", fortress.getOwnerClan().getName());
+						html.replace(PH_CLANNAME, fortress.getOwnerClan().getName());
 						return html.getHtml();
 					}
 					else if (!player.hasAccess(ClanAccess.CASTLE_SIEGE))
@@ -220,7 +222,7 @@ public class FortressSiegeManager extends AbstractNpcAI
 		}
 		final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
 		html.setHtml(getHtm(player, "FortressSiegeManager-01.html"));
-		html.replace("%clanName%", fortress.getOwnerClan().getName());
+		html.replace(PH_CLANNAME, fortress.getOwnerClan().getName());
 		html.replace("%objectId%", npc.getObjectId());
 		return html.getHtml();
 	}

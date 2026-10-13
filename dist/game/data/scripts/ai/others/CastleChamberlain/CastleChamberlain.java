@@ -78,6 +78,15 @@ import ai.AbstractNpcAI;
  */
 public class CastleChamberlain extends AbstractNpcAI
 {
+	private static final String HTML_CASTLEFUNCDISABLED = "castlefuncdisabled.html";
+	private static final String HTML_CHAMBERLAIN_21 = "chamberlain-21.html";
+	private static final String HTML_CHAMBERLAIN_01 = "chamberlain-01.html";
+	private static final String HTML_CHAMBERLAIN_08 = "chamberlain-08.html";
+	private static final String HTML_CHAMBERLAIN_09 = "chamberlain-09.html";
+	private static final String PH_NEXT_TAX_RATE = "%next_tax_rate%";
+	private static final String PH_SS_EVENT = "%ss_event%";
+	private static final String HTML_PATH = ".html";
+
 	// NPCs
 	private static final int[] NPC =
 	{
@@ -172,7 +181,7 @@ public class CastleChamberlain extends AbstractNpcAI
 			}
 			else
 			{
-				html = getHtmlPacket(player, npc, "castledeco-0" + func + ".html");
+				html = getHtmlPacket(player, npc, "castledeco-0" + func + HTML_PATH);
 				html.replace("%AgitDecoCost%", "<fstring p1=\"" + getFunctionFee(func, level) + "\" p2=\"" + (getFunctionRatio(func) / 86400000) + "\">6</fstring>");
 				html.replace("%AgitDecoEffect%", "<fstring p1=\"" + level + "\">" + fstring + "</fstring>");
 				html.replace("%AgitDecoSubmit%", func + " " + level);
@@ -180,7 +189,7 @@ public class CastleChamberlain extends AbstractNpcAI
 			player.sendPacket(html);
 			return null;
 		}
-		return "chamberlain-21.html";
+		return HTML_CHAMBERLAIN_21;
 	}
 	
 	private void funcReplace(Castle castle, NpcHtmlMessage html, int func, String str)
@@ -516,7 +525,7 @@ public class CastleChamberlain extends AbstractNpcAI
 		String htmltext = null;
 		switch (st.nextToken())
 		{
-			case "chamberlain-01.html", "manor-help-01.html", "manor-help-02.html", "manor-help-03.html", "manor-help-04.html":
+			case HTML_CHAMBERLAIN_01, "manor-help-01.html", "manor-help-02.html", "manor-help-03.html", "manor-help-04.html":
 			{
 				htmltext = event;
 				break;
@@ -561,7 +570,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -571,7 +580,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				{
 					if (castle.getSiege().isInProgress())
 					{
-						htmltext = "chamberlain-08.html";
+						htmltext = HTML_CHAMBERLAIN_08;
 					}
 					else if (!isDomainFortressInContractStatus(castle.getResidenceId()))
 					{
@@ -588,7 +597,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -615,7 +624,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -632,7 +641,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -642,7 +651,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				{
 					if (castle.getSiege().isInProgress())
 					{
-						htmltext = "chamberlain-08.html";
+						htmltext = HTML_CHAMBERLAIN_08;
 					}
 					else
 					{
@@ -675,14 +684,14 @@ public class CastleChamberlain extends AbstractNpcAI
 							}
 							else
 							{
-								htmltext = "chamberlain-09.html";
+								htmltext = HTML_CHAMBERLAIN_09;
 							}
 						}
 					}
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -711,7 +720,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -729,7 +738,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -739,7 +748,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				{
 					if (castle.getSiege().isInProgress())
 					{
-						htmltext = "chamberlain-08.html";
+						htmltext = HTML_CHAMBERLAIN_08;
 					}
 					else
 					{
@@ -761,13 +770,13 @@ public class CastleChamberlain extends AbstractNpcAI
 						}
 						else
 						{
-							htmltext = "chamberlain-09.html";
+							htmltext = HTML_CHAMBERLAIN_09;
 						}
 					}
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -790,17 +799,17 @@ public class CastleChamberlain extends AbstractNpcAI
 						{
 							case SevenSigns.PERIOD_COMP_RECRUITING:
 							{
-								html.replace("%ss_event%", "1000509");
+								html.replace(PH_SS_EVENT, "1000509");
 								break;
 							}
 							case SevenSigns.PERIOD_COMPETITION:
 							{
-								html.replace("%ss_event%", "1000507");
+								html.replace(PH_SS_EVENT, "1000507");
 								break;
 							}
 							case SevenSigns.PERIOD_SEAL_VALIDATION, SevenSigns.PERIOD_COMP_RESULTS:
 							{
-								html.replace("%ss_event%", "1000508");
+								html.replace(PH_SS_EVENT, "1000508");
 								break;
 							}
 							default:
@@ -816,7 +825,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -826,13 +835,13 @@ public class CastleChamberlain extends AbstractNpcAI
 				{
 					if (castle.getSiege().isInProgress())
 					{
-						htmltext = "chamberlain-08.html";
+						htmltext = HTML_CHAMBERLAIN_08;
 					}
 					else
 					{
 						final NpcHtmlMessage html = getHtmlPacket(player, npc, "castlesettaxrate.html");
 						html.replace("%tax_rate%", Integer.toString(castle.getTaxPercent()));
-						html.replace("%next_tax_rate%", "0"); // TODO: Implement me!
+						html.replace(PH_NEXT_TAX_RATE, "0"); // TODO: Implement me!
 						html.replace("%tax_limit%", Integer.toString(getTaxLimit()));
 						player.sendPacket(html);
 					}
@@ -841,12 +850,12 @@ public class CastleChamberlain extends AbstractNpcAI
 				{
 					final NpcHtmlMessage html = getHtmlPacket(player, npc, "chamberlain-03.html");
 					html.replace("%tax_rate%", Integer.toString(castle.getTaxPercent()));
-					html.replace("%next_tax_rate%", "0"); // TODO: Implement me!
+					html.replace(PH_NEXT_TAX_RATE, "0"); // TODO: Implement me!
 					player.sendPacket(html);
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -856,7 +865,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				{
 					if (castle.getSiege().isInProgress())
 					{
-						htmltext = "chamberlain-08.html";
+						htmltext = HTML_CHAMBERLAIN_08;
 					}
 					else
 					{
@@ -872,14 +881,14 @@ public class CastleChamberlain extends AbstractNpcAI
 						{
 							castle.setTaxPercent(tax);
 							html = getHtmlPacket(player, npc, "castleaftersettaxrate.html");
-							html.replace("%next_tax_rate%", Integer.toString(tax));
+							html.replace(PH_NEXT_TAX_RATE, Integer.toString(tax));
 						}
 						player.sendPacket(html);
 					}
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -907,7 +916,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -928,11 +937,11 @@ public class CastleChamberlain extends AbstractNpcAI
 							player.sendPacket(SystemMessageId.YOU_DO_NOT_HAVE_ENOUGH_ADENA);
 						}
 					}
-					htmltext = "chamberlain-01.html";
+					htmltext = HTML_CHAMBERLAIN_01;
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -945,7 +954,7 @@ public class CastleChamberlain extends AbstractNpcAI
 					{
 						castle.addToTreasuryNoTax((-1) * amount);
 						giveAdena(player, amount, false);
-						htmltext = "chamberlain-01.html";
+						htmltext = HTML_CHAMBERLAIN_01;
 					}
 					else
 					{
@@ -957,7 +966,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -965,11 +974,11 @@ public class CastleChamberlain extends AbstractNpcAI
 			{
 				if (!isOwner(player, npc))
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				else if (castle.getSiege().isInProgress())
 				{
-					htmltext = "chamberlain-08.html";
+					htmltext = HTML_CHAMBERLAIN_08;
 				}
 				else
 				{
@@ -981,11 +990,11 @@ public class CastleChamberlain extends AbstractNpcAI
 			{
 				if (!isOwner(player, npc) || !player.hasAccess(ClanAccess.CASTLE_BANISH))
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				else if (castle.getSiege().isInProgress())
 				{
-					htmltext = "chamberlain-08.html";
+					htmltext = HTML_CHAMBERLAIN_08;
 				}
 				else
 				{
@@ -999,7 +1008,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				{
 					if (castle.getSiege().isInProgress())
 					{
-						htmltext = "chamberlain-08.html";
+						htmltext = HTML_CHAMBERLAIN_08;
 					}
 					else
 					{
@@ -1009,7 +1018,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -1017,11 +1026,11 @@ public class CastleChamberlain extends AbstractNpcAI
 			{
 				if (!isOwner(player, npc) || !player.hasAccess(ClanAccess.CASTLE_OPEN_DOOR))
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				else if (castle.getSiege().isInProgress())
 				{
-					htmltext = "chamberlain-08.html";
+					htmltext = HTML_CHAMBERLAIN_08;
 				}
 				else
 				{
@@ -1033,11 +1042,11 @@ public class CastleChamberlain extends AbstractNpcAI
 			{
 				if (!isOwner(player, npc) || !player.hasAccess(ClanAccess.CASTLE_OPEN_DOOR))
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				else if (castle.getSiege().isInProgress())
 				{
-					htmltext = "chamberlain-08.html";
+					htmltext = HTML_CHAMBERLAIN_08;
 				}
 				else
 				{
@@ -1052,7 +1061,7 @@ public class CastleChamberlain extends AbstractNpcAI
 			}
 			case "additional_functions":
 			{
-				htmltext = (isOwner(player, npc) && player.hasAccess(ClanAccess.CASTLE_MANAGE_FUNCTIONS)) ? "castletdecomanage.html" : "chamberlain-21.html";
+				htmltext = (isOwner(player, npc) && player.hasAccess(ClanAccess.CASTLE_MANAGE_FUNCTIONS)) ? "castletdecomanage.html" : HTML_CHAMBERLAIN_21;
 				break;
 			}
 			case "recovery":
@@ -1067,7 +1076,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -1082,7 +1091,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -1128,12 +1137,12 @@ public class CastleChamberlain extends AbstractNpcAI
 					}
 					else if (!castle.updateFunctions(player, func, level, getFunctionFee(func, level), getFunctionRatio(func), castle.getFunction(func) == null))
 					{
-						htmltext = "chamberlain-09.html";
+						htmltext = HTML_CHAMBERLAIN_09;
 					}
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -1152,7 +1161,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -1160,15 +1169,15 @@ public class CastleChamberlain extends AbstractNpcAI
 			{
 				if (!isOwner(player, npc) || !player.hasAccess(ClanAccess.CASTLE_FUNCTIONS))
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				else if (castle.getFunction(Castle.FUNC_TELEPORT) == null)
 				{
-					htmltext = "castlefuncdisabled.html";
+					htmltext = HTML_CASTLEFUNCDISABLED;
 				}
 				else
 				{
-					htmltext = npc.getId() + "-t" + castle.getFunction(Castle.FUNC_TELEPORT).getLvl() + ".html";
+					htmltext = npc.getId() + "-t" + castle.getFunction(Castle.FUNC_TELEPORT).getLvl() + HTML_PATH;
 				}
 				break;
 			}
@@ -1185,7 +1194,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -1195,18 +1204,18 @@ public class CastleChamberlain extends AbstractNpcAI
 				{
 					if (castle.getFunction(Castle.FUNC_SUPPORT) == null)
 					{
-						htmltext = "castlefuncdisabled.html";
+						htmltext = HTML_CASTLEFUNCDISABLED;
 					}
 					else
 					{
-						final NpcHtmlMessage html = getHtmlPacket(player, npc, "castlebuff-0" + castle.getFunction(Castle.FUNC_SUPPORT).getLvl() + ".html");
+						final NpcHtmlMessage html = getHtmlPacket(player, npc, "castlebuff-0" + castle.getFunction(Castle.FUNC_SUPPORT).getLvl() + HTML_PATH);
 						html.replace("%MPLeft%", Integer.toString((int) npc.getCurrentMp()));
 						player.sendPacket(html);
 					}
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -1216,7 +1225,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				{
 					if (castle.getFunction(Castle.FUNC_SUPPORT) == null)
 					{
-						htmltext = "castlefuncdisabled.html";
+						htmltext = HTML_CASTLEFUNCDISABLED;
 					}
 					else
 					{
@@ -1242,7 +1251,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -1254,7 +1263,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -1266,7 +1275,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -1274,7 +1283,7 @@ public class CastleChamberlain extends AbstractNpcAI
 			{
 				if (Config.ALLOW_MANOR)
 				{
-					htmltext = (isOwner(player, npc) && player.hasAccess(ClanAccess.CASTLE_MANOR)) ? "manor.html" : "chamberlain-21.html";
+					htmltext = (isOwner(player, npc) && player.hasAccess(ClanAccess.CASTLE_MANOR)) ? "manor.html" : HTML_CHAMBERLAIN_21;
 				}
 				else
 				{
@@ -1292,7 +1301,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -1304,7 +1313,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -1312,7 +1321,7 @@ public class CastleChamberlain extends AbstractNpcAI
 			{
 				if (castle.getSiege().isInProgress())
 				{
-					htmltext = "chamberlain-08.html";
+					htmltext = HTML_CHAMBERLAIN_08;
 				}
 				else if (npc.isMyLord(player))
 				{
@@ -1331,7 +1340,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -1341,7 +1350,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				{
 					if (castle.getSiege().isInProgress())
 					{
-						htmltext = "chamberlain-08.html";
+						htmltext = HTML_CHAMBERLAIN_08;
 					}
 					else
 					{
@@ -1369,7 +1378,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -1379,7 +1388,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				{
 					if (castle.getSiege().isInProgress())
 					{
-						htmltext = "chamberlain-08.html";
+						htmltext = HTML_CHAMBERLAIN_08;
 					}
 					else
 					{
@@ -1397,7 +1406,7 @@ public class CastleChamberlain extends AbstractNpcAI
 								}
 								else
 								{
-									htmltext = "chamberlain-09.html";
+									htmltext = HTML_CHAMBERLAIN_09;
 								}
 							}
 							else
@@ -1413,7 +1422,7 @@ public class CastleChamberlain extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "chamberlain-21.html";
+					htmltext = HTML_CHAMBERLAIN_21;
 				}
 				break;
 			}
@@ -1428,7 +1437,7 @@ public class CastleChamberlain extends AbstractNpcAI
 	@Override
 	public String onFirstTalk(Npc npc, Player player)
 	{
-		return (isOwner(player, npc)) ? "chamberlain-01.html" : "chamberlain-04.html";
+		return (isOwner(player, npc)) ? HTML_CHAMBERLAIN_01 : "chamberlain-04.html";
 	}
 	
 	// @formatter:off

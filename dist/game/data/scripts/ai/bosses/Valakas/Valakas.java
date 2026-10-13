@@ -66,6 +66,10 @@ import ai.AbstractNpcAI;
  */
 public class Valakas extends AbstractNpcAI
 {
+	private static final String VALAKAS_UNLOCK = "valakas_unlock";
+	private static final String REGEN_TASK = "regen_task";
+	private static final String SKILL_TASK = "skill_task";
+
 	// NPC
 	private static final int VALAKAS = 29028;
 	// Skills
@@ -149,7 +153,7 @@ public class Valakas extends AbstractNpcAI
 			if (temp > 0)
 			{
 				// The time has not yet expired. Mark Valakas as currently locked (dead).
-				startQuestTimer("valakas_unlock", temp, null, null);
+				startQuestTimer(VALAKAS_UNLOCK, temp, null, null);
 			}
 			else
 			{
@@ -186,8 +190,8 @@ public class Valakas extends AbstractNpcAI
 				// stores current time for inactivity task.
 				_timeTracker = System.currentTimeMillis();
 				
-				startQuestTimer("regen_task", 60000, _valakas, null, true);
-				startQuestTimer("skill_task", 2000, _valakas, null, true);
+				startQuestTimer(REGEN_TASK, 60000, _valakas, null, true);
+				startQuestTimer(SKILL_TASK, 2000, _valakas, null, true);
 			}
 			else
 			{
@@ -233,7 +237,7 @@ public class Valakas extends AbstractNpcAI
 				startQuestTimer("spawn_10", 26000, npc, null); // 2500 - AI + unlock
 			}
 			// Regeneration && inactivity task
-			else if (event.equalsIgnoreCase("regen_task"))
+			else if (event.equalsIgnoreCase(REGEN_TASK))
 			{
 				// Inactivity task - 15min
 				if ((GrandBossManager.getInstance().getStatus(VALAKAS) == FIGHTING) && ((_timeTracker + 900000) < System.currentTimeMillis()))
@@ -248,8 +252,8 @@ public class Valakas extends AbstractNpcAI
 					BOSS_ZONE.oustAllPlayers();
 					
 					// Cancel skill_task and regen_task.
-					cancelQuestTimer("regen_task", npc, null);
-					cancelQuestTimer("skill_task", npc, null);
+					cancelQuestTimer(REGEN_TASK, npc, null);
+					cancelQuestTimer(SKILL_TASK, npc, null);
 					return null;
 				}
 				
@@ -332,8 +336,8 @@ public class Valakas extends AbstractNpcAI
 				GrandBossManager.getInstance().setStatus(VALAKAS, FIGHTING);
 				npc.setInvul(false);
 				
-				startQuestTimer("regen_task", 60000, npc, null, true);
-				startQuestTimer("skill_task", 2000, npc, null, true);
+				startQuestTimer(REGEN_TASK, 60000, npc, null, true);
+				startQuestTimer(SKILL_TASK, 2000, npc, null, true);
 				
 				for (Player insidePlayer : BOSS_ZONE.getPlayersInside())
 				{
@@ -384,12 +388,12 @@ public class Valakas extends AbstractNpcAI
 				
 				startQuestTimer("remove_players", 900000, null, null);
 			}
-			else if (event.equalsIgnoreCase("skill_task"))
+			else if (event.equalsIgnoreCase(SKILL_TASK))
 			{
 				callSkillAI(npc);
 			}
 		}
-		else if (event.equalsIgnoreCase("valakas_unlock"))
+		else if (event.equalsIgnoreCase(VALAKAS_UNLOCK))
 		{
 			_valakas = (GrandBoss) addSpawn(VALAKAS, VALAKAS_REGENERATION_LOC, false, 0);
 			_valakas.teleToLocation(VALAKAS_HIDDEN_LOC);
@@ -446,8 +450,8 @@ public class Valakas extends AbstractNpcAI
 	public void onKill(Npc npc, Player killer, boolean isSummon)
 	{
 		// Cancel skill_task and regen_task.
-		cancelQuestTimer("regen_task", npc, null);
-		cancelQuestTimer("skill_task", npc, null);
+		cancelQuestTimer(REGEN_TASK, npc, null);
+		cancelQuestTimer(SKILL_TASK, npc, null);
 		
 		// Launch death animation.
 		BOSS_ZONE.broadcastPacket(new PlaySound(1, "B03_D", 0, 0, 0, 0, 0));
@@ -472,7 +476,7 @@ public class Valakas extends AbstractNpcAI
 		final long nextRespawnTime = System.currentTimeMillis() + respawnTime;
 		LOGGER.info("Valakas will respawn at: " + TimeUtil.getDateTimeString(nextRespawnTime));
 		
-		startQuestTimer("valakas_unlock", respawnTime, null, null);
+		startQuestTimer(VALAKAS_UNLOCK, respawnTime, null, null);
 		// also save the respawn time so that the info is maintained past reboots
 		final StatSet info = GrandBossManager.getInstance().getStatSet(VALAKAS);
 		info.set("respawn_time", System.currentTimeMillis() + respawnTime);
@@ -487,7 +491,7 @@ public class Valakas extends AbstractNpcAI
 	@Override
 	public void onSpellFinished(Npc npc, Player player, Skill skill)
 	{
-		startQuestTimer("skill_task", 1000, npc, null);
+		startQuestTimer(SKILL_TASK, 1000, npc, null);
 		if (!GROUND_ZONE.isCharacterInZone(npc) && (_valakas != null))
 		{
 			_valakas.teleToLocation(VALAKAS_LAIR);

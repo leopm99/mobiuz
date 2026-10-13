@@ -46,6 +46,13 @@ import ai.AbstractNpcAI;
  */
 public class DarkWaterDragon extends AbstractNpcAI
 {
+	private static final String FAFURION_DESPAWN = "fafurion_despawn";
+	private static final String FAFURION_POISON = "fafurion_poison";
+	private static final String SECOND_SPAWN_KEY = "second_spawn";
+	private static final String FOURTH_SPAWN = "fourth_spawn";
+	private static final String FIRST_SPAWN = "first_spawn";
+	private static final String THIRD_SPAWN = "third_spawn";
+
 	private static final int DRAGON = 22267;
 	private static final int SHADE1 = 22268;
 	private static final int SHADE2 = 22269;
@@ -79,19 +86,19 @@ public class DarkWaterDragon extends AbstractNpcAI
 	{
 		if (npc != null)
 		{
-			if (event.equalsIgnoreCase("first_spawn")) // timer to start timer "1"
+			if (event.equalsIgnoreCase(FIRST_SPAWN)) // timer to start timer "1"
 			{
 				startQuestTimer("1", 40000, npc, null, true); // spawns detractor every 40 seconds
 			}
-			else if (event.equalsIgnoreCase("second_spawn")) // timer to start timer "2"
+			else if (event.equalsIgnoreCase(SECOND_SPAWN_KEY)) // timer to start timer "2"
 			{
 				startQuestTimer("2", 40000, npc, null, true); // spawns detractor every 40 seconds
 			}
-			else if (event.equalsIgnoreCase("third_spawn")) // timer to start timer "3"
+			else if (event.equalsIgnoreCase(THIRD_SPAWN)) // timer to start timer "3"
 			{
 				startQuestTimer("3", 40000, npc, null, true); // spawns detractor every 40 seconds
 			}
-			else if (event.equalsIgnoreCase("fourth_spawn")) // timer to start timer "4"
+			else if (event.equalsIgnoreCase(FOURTH_SPAWN)) // timer to start timer "4"
 			{
 				startQuestTimer("4", 40000, npc, null, true); // spawns detractor every 40 seconds
 			}
@@ -111,9 +118,9 @@ public class DarkWaterDragon extends AbstractNpcAI
 			{
 				addSpawn(DETRACTOR2, npc.getX() - 100, npc.getY() - 100, npc.getZ(), 0, false, 40000);
 			}
-			else if (event.equalsIgnoreCase("fafurion_despawn")) // Fafurion Kindred disappears and drops reward
+			else if (event.equalsIgnoreCase(FAFURION_DESPAWN)) // Fafurion Kindred disappears and drops reward
 			{
-				cancelQuestTimer("fafurion_poison", npc, null);
+				cancelQuestTimer(FAFURION_POISON, npc, null);
 				cancelQuestTimer("1", npc, null);
 				cancelQuestTimer("2", npc, null);
 				cancelQuestTimer("3", npc, null);
@@ -128,15 +135,15 @@ public class DarkWaterDragon extends AbstractNpcAI
 				
 				npc.deleteMe();
 			}
-			else if (event.equalsIgnoreCase("fafurion_poison")) // Reduces Fafurions hp like it is poisoned
+			else if (event.equalsIgnoreCase(FAFURION_POISON)) // Reduces Fafurions hp like it is poisoned
 			{
 				if (npc.getCurrentHp() <= 500)
 				{
-					cancelQuestTimer("fafurion_despawn", npc, null);
-					cancelQuestTimer("first_spawn", npc, null);
-					cancelQuestTimer("second_spawn", npc, null);
-					cancelQuestTimer("third_spawn", npc, null);
-					cancelQuestTimer("fourth_spawn", npc, null);
+					cancelQuestTimer(FAFURION_DESPAWN, npc, null);
+					cancelQuestTimer(FIRST_SPAWN, npc, null);
+					cancelQuestTimer(SECOND_SPAWN_KEY, npc, null);
+					cancelQuestTimer(THIRD_SPAWN, npc, null);
+					cancelQuestTimer(FOURTH_SPAWN, npc, null);
 					cancelQuestTimer("1", npc, null);
 					cancelQuestTimer("2", npc, null);
 					cancelQuestTimer("3", npc, null);
@@ -196,12 +203,12 @@ public class DarkWaterDragon extends AbstractNpcAI
 		}
 		else if (npcId == FAFURION)
 		{
-			cancelQuestTimer("fafurion_poison", npc, null);
-			cancelQuestTimer("fafurion_despawn", npc, null);
-			cancelQuestTimer("first_spawn", npc, null);
-			cancelQuestTimer("second_spawn", npc, null);
-			cancelQuestTimer("third_spawn", npc, null);
-			cancelQuestTimer("fourth_spawn", npc, null);
+			cancelQuestTimer(FAFURION_POISON, npc, null);
+			cancelQuestTimer(FAFURION_DESPAWN, npc, null);
+			cancelQuestTimer(FIRST_SPAWN, npc, null);
+			cancelQuestTimer(SECOND_SPAWN_KEY, npc, null);
+			cancelQuestTimer(THIRD_SPAWN, npc, null);
+			cancelQuestTimer(FOURTH_SPAWN, npc, null);
 			cancelQuestTimer("1", npc, null);
 			cancelQuestTimer("2", npc, null);
 			cancelQuestTimer("3", npc, null);
@@ -226,12 +233,12 @@ public class DarkWaterDragon extends AbstractNpcAI
 			addSpawn(DETRACTOR1, x + 100, y - 100, npc.getZ(), 0, false, 40000);
 			addSpawn(DETRACTOR2, x - 100, y + 100, npc.getZ(), 0, false, 40000);
 			addSpawn(DETRACTOR1, x - 100, y - 100, npc.getZ(), 0, false, 40000);
-			startQuestTimer("first_spawn", 2000, npc, null);
-			startQuestTimer("second_spawn", 4000, npc, null);
-			startQuestTimer("third_spawn", 8000, npc, null);
-			startQuestTimer("fourth_spawn", 10000, npc, null);
-			startQuestTimer("fafurion_poison", 3000, npc, null, true);
-			startQuestTimer("fafurion_despawn", 120000, npc, null);
+			startQuestTimer(FIRST_SPAWN, 2000, npc, null);
+			startQuestTimer(SECOND_SPAWN_KEY, 4000, npc, null);
+			startQuestTimer(THIRD_SPAWN, 8000, npc, null);
+			startQuestTimer(FOURTH_SPAWN, 10000, npc, null);
+			startQuestTimer(FAFURION_POISON, 3000, npc, null, true);
+			startQuestTimer(FAFURION_DESPAWN, 120000, npc, null);
 		}
 	}
 	

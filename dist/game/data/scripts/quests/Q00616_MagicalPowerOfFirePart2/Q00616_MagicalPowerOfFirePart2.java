@@ -34,6 +34,9 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Q00616_MagicalPowerOfFirePart2 extends Quest
 {
+	private static final String DESPAWN_NASTRON = "despawn_nastron";
+	private static final String SPAWN_NPC = "spawn_npc";
+
 	// NPCs
 	private static final int UDAN = 31379;
 	private static final int KETRA_TOTEM = 31558;
@@ -57,7 +60,7 @@ public class Q00616_MagicalPowerOfFirePart2 extends Quest
 		final long remain = test != 0 ? test - System.currentTimeMillis() : 0;
 		if (remain > 0)
 		{
-			startQuestTimer("spawn_npc", remain, null, null);
+			startQuestTimer(SPAWN_NPC, remain, null, null);
 		}
 		else
 		{
@@ -142,13 +145,13 @@ public class Q00616_MagicalPowerOfFirePart2 extends Quest
 		}
 		else
 		{
-			if (event.equals("despawn_nastron"))
+			if (event.equals(DESPAWN_NASTRON))
 			{
 				npc.broadcastPacket(new NpcSay(npc, ChatType.NPC_GENERAL, NpcStringId.THE_POWER_OF_CONSTRAINT_IS_GETTING_WEAKER_YOUR_RITUAL_HAS_FAILED));
 				npc.deleteMe();
 				addSpawn(KETRA_TOTEM, 142368, -82512, -6487, 58000, false, 0, true);
 			}
-			else if (event.equals("spawn_npc"))
+			else if (event.equals(SPAWN_NPC))
 			{
 				addSpawn(KETRA_TOTEM, 142368, -82512, -6487, 58000, false, 0, true);
 			}
@@ -162,9 +165,9 @@ public class Q00616_MagicalPowerOfFirePart2 extends Quest
 		final int respawnMinDelay = (int) (43200000 * Config.RAID_MIN_RESPAWN_MULTIPLIER);
 		final int respawnMaxDelay = (int) (129600000 * Config.RAID_MAX_RESPAWN_MULTIPLIER);
 		final int respawnDelay = getRandom(respawnMinDelay, respawnMaxDelay);
-		cancelQuestTimer("despawn_nastron", npc, null);
+		cancelQuestTimer(DESPAWN_NASTRON, npc, null);
 		GlobalVariablesManager.getInstance().set("Q00616_respawn", String.valueOf(System.currentTimeMillis() + respawnDelay));
-		startQuestTimer("spawn_npc", respawnDelay, null, null);
+		startQuestTimer(SPAWN_NPC, respawnDelay, null, null);
 		executeForEachPlayer(killer, npc, isSummon, true, false);
 	}
 	
@@ -263,7 +266,7 @@ public class Q00616_MagicalPowerOfFirePart2 extends Quest
 	
 	private String spawnNastron(Npc npc, QuestState qs)
 	{
-		if (getQuestTimer("spawn_npc", null, null) != null)
+		if (getQuestTimer(SPAWN_NPC, null, null) != null)
 		{
 			return "31558-03.html";
 		}
@@ -275,7 +278,7 @@ public class Q00616_MagicalPowerOfFirePart2 extends Quest
 		npc.deleteMe();
 		final Npc nastron = addSpawn(NASTRON, 142528, -82528, -6496, 0, false, 0);
 		nastron.broadcastPacket(new NpcSay(nastron, ChatType.NPC_GENERAL, NpcStringId.THE_MAGICAL_POWER_OF_FIRE_IS_ALSO_THE_POWER_OF_FLAMES_AND_LAVA_IF_YOU_DARE_TO_CONFRONT_IT_ONLY_DEATH_WILL_AWAIT_YOU));
-		startQuestTimer("despawn_nastron", 1200000, nastron, null);
+		startQuestTimer(DESPAWN_NASTRON, 1200000, nastron, null);
 		return "31558-02.html";
 	}
 }

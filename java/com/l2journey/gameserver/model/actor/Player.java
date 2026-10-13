@@ -403,6 +403,9 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Player extends Playable
 {
+	private static final String MAILROOT = "MailRoot";
+	private static final String MEMOROOT = "MemoRoot";
+
 	// Debug path para geodata (AdminDebug)
 	private List<Location> _geoPath = null;
 	
@@ -7418,12 +7421,12 @@ public class Player extends Playable
 	{
 		if (_forumMail == null)
 		{
-			setMail(ForumsBBSManager.getInstance().getForumByName("MailRoot").getChildByName(getName()));
+			setMail(ForumsBBSManager.getInstance().getForumByName(MAILROOT).getChildByName(getName()));
 			
 			if (_forumMail == null)
 			{
-				ForumsBBSManager.getInstance().createNewForum(getName(), ForumsBBSManager.getInstance().getForumByName("MailRoot"), Forum.MAIL, Forum.OWNERONLY, getObjectId());
-				setMail(ForumsBBSManager.getInstance().getForumByName("MailRoot").getChildByName(getName()));
+				ForumsBBSManager.getInstance().createNewForum(getName(), ForumsBBSManager.getInstance().getForumByName(MAILROOT), Forum.MAIL, Forum.OWNERONLY, getObjectId());
+				setMail(ForumsBBSManager.getInstance().getForumByName(MAILROOT).getChildByName(getName()));
 			}
 		}
 		
@@ -7439,12 +7442,12 @@ public class Player extends Playable
 	{
 		if (_forumMemo == null)
 		{
-			setMemo(ForumsBBSManager.getInstance().getForumByName("MemoRoot").getChildByName(_accountName));
+			setMemo(ForumsBBSManager.getInstance().getForumByName(MEMOROOT).getChildByName(_accountName));
 			
 			if (_forumMemo == null)
 			{
-				ForumsBBSManager.getInstance().createNewForum(_accountName, ForumsBBSManager.getInstance().getForumByName("MemoRoot"), Forum.MEMO, Forum.OWNERONLY, getObjectId());
-				setMemo(ForumsBBSManager.getInstance().getForumByName("MemoRoot").getChildByName(_accountName));
+				ForumsBBSManager.getInstance().createNewForum(_accountName, ForumsBBSManager.getInstance().getForumByName(MEMOROOT), Forum.MEMO, Forum.OWNERONLY, getObjectId());
+				setMemo(ForumsBBSManager.getInstance().getForumByName(MEMOROOT).getChildByName(_accountName));
 			}
 		}
 		

@@ -58,6 +58,9 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Q00727_HopeWithinTheDarkness extends Quest
 {
+	private static final String CHECK_FOR_FOES = "check_for_foes";
+	private static final String PH_PLAYER = "%player%";
+
 	protected class CAUWorld extends InstanceWorld
 	{
 		public boolean underAttack = false;
@@ -230,7 +233,7 @@ public class Q00727_HopeWithinTheDarkness extends Quest
 				{
 					if ((_npc != null) && ((_npc.getId() >= NPC_KNIGHT) && (_npc.getId() <= NPC_WARRIOR)))
 					{
-						cancelQuestTimer("check_for_foes", _npc, null);
+						cancelQuestTimer(CHECK_FOR_FOES, _npc, null);
 						cancelQuestTimer("buff", _npc, null);
 						if (!_npc.isDead())
 						{
@@ -259,7 +262,7 @@ public class Q00727_HopeWithinTheDarkness extends Quest
 			startQuestTimer("buff", 120000, npc, null);
 			return null;
 		}
-		else if (event.equalsIgnoreCase("check_for_foes"))
+		else if (event.equalsIgnoreCase(CHECK_FOR_FOES))
 		{
 			if (npc.getAI().getIntention() != Intention.ATTACK)
 			{
@@ -273,7 +276,7 @@ public class Q00727_HopeWithinTheDarkness extends Quest
 				}
 			}
 			
-			startQuestTimer("check_for_foes", 5000, npc, null);
+			startQuestTimer(CHECK_FOR_FOES, 5000, npc, null);
 			return null;
 		}
 		
@@ -434,7 +437,7 @@ public class Q00727_HopeWithinTheDarkness extends Quest
 			
 			// All other friendly NPCs do suicide - start timer
 			startQuestTimer("suicide", 1500, npc, null);
-			cancelQuestTimer("check_for_foes", npc, null);
+			cancelQuestTimer(CHECK_FOR_FOES, npc, null);
 			cancelQuestTimer("buff", npc, null);
 		}
 		
@@ -482,7 +485,7 @@ public class Q00727_HopeWithinTheDarkness extends Quest
 		if ((npc.getId() >= NPC_KNIGHT) && (npc.getId() <= NPC_WARRIOR))
 		{
 			startQuestTimer("buff", 120000, npc, null);
-			startQuestTimer("check_for_foes", 120000, npc, null);
+			startQuestTimer(CHECK_FOR_FOES, 120000, npc, null);
 			if (npc.getId() == NPC_KNIGHT)
 			{
 				npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.NPC_GENERAL, npc.getId(), STRINGID_WELCOME));
@@ -565,19 +568,19 @@ public class Q00727_HopeWithinTheDarkness extends Quest
 			// Check if each party member has quest
 			if ((qs == null) || qs.isCreated())
 			{
-				return getHtm(player, "CastleWarden-12.html").replace("%player%", partyMember.getName());
+				return getHtm(player, "CastleWarden-12.html").replace(PH_PLAYER, partyMember.getName());
 			}
 			
 			final Clan clan = player.getClan();
 			if ((clan == null) || (clan.getCastleId() != castle.getResidenceId()))
 			{
-				return getHtm(player, "CastleWarden-11.html").replace("%player%", partyMember.getName());
+				return getHtm(player, "CastleWarden-11.html").replace(PH_PLAYER, partyMember.getName());
 			}
 			
 			// Check if each party member not very far from leader
 			if (!LocationUtil.checkIfInRange(1000, player, partyMember, true))
 			{
-				return getHtm(player, "CastleWarden-17.html").replace("%player%", partyMember.getName());
+				return getHtm(player, "CastleWarden-17.html").replace(PH_PLAYER, partyMember.getName());
 			}
 		}
 		
@@ -754,7 +757,7 @@ public class Q00727_HopeWithinTheDarkness extends Quest
 					{
 						if ((_npc != null) && ((_npc.getId() >= NPC_KNIGHT) && (_npc.getId() <= NPC_WARRIOR)))
 						{
-							cancelQuestTimer("check_for_foes", _npc, null);
+							cancelQuestTimer(CHECK_FOR_FOES, _npc, null);
 							cancelQuestTimer("buff", _npc, null);
 							if (_npc.getId() == NPC_KNIGHT)
 							{

@@ -44,6 +44,8 @@ import com.l2journey.gameserver.network.serverpackets.SystemMessage;
 
 public class Q00695_DefendTheHallOfSuffering extends Quest
 {
+	private static final String HTML_N_32530_11 = "32530-11.html";
+
 	private static final int TEPIOS = 32603;
 	private static final int TEPIOS2 = 32530;
 	private static final int SOE = 736;
@@ -116,7 +118,7 @@ public class Q00695_DefendTheHallOfSuffering extends Quest
 							final int tag = world.getParameters().getInt("tag", -1);
 							if (tag == -1)
 							{
-								htmltext = "32530-11.html";
+								htmltext = HTML_N_32530_11;
 							}
 							else if ((player.getParty() != null) && (player.getParty().getLeaderObjectId() == player.getObjectId()))
 							{
@@ -227,7 +229,7 @@ public class Q00695_DefendTheHallOfSuffering extends Quest
 										}
 										else
 										{
-											htmltext = "32530-11.html";
+											htmltext = HTML_N_32530_11;
 										}
 									}
 								}
@@ -239,7 +241,7 @@ public class Q00695_DefendTheHallOfSuffering extends Quest
 						}
 						else
 						{
-							htmltext = "32530-11.html";
+							htmltext = HTML_N_32530_11;
 						}
 						break;
 					}

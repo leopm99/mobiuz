@@ -49,6 +49,8 @@ import ai.AbstractNpcAI;
  */
 public class NevitsHerald extends AbstractNpcAI
 {
+	private static final String TEXT_SPAM = "text_spam";
+
 	private static final int NEVITS_HERALD = 4326;
 	private static final List<Npc> SPAWNS = new ArrayList<>();
 	private static final Location[] NEVITS_HERALD_LOC =
@@ -105,16 +107,16 @@ public class NevitsHerald extends AbstractNpcAI
 				npc.doCast(FALL_OF_THE_DRAGON.getSkill());
 			}
 		}
-		else if (event.equalsIgnoreCase("text_spam"))
+		else if (event.equalsIgnoreCase(TEXT_SPAM))
 		{
 			npc.broadcastSay(ChatType.SHOUT, SPAM[getRandom(0, SPAM.length - 1)]);
-			startQuestTimer("text_spam", 60000, npc, null);
+			startQuestTimer(TEXT_SPAM, 60000, npc, null);
 		}
 		else if (event.equalsIgnoreCase("despawn"))
 		{
 			for (Npc spawn : SPAWNS)
 			{
-				cancelQuestTimer("text_spam", spawn, null);
+				cancelQuestTimer(TEXT_SPAM, spawn, null);
 				spawn.deleteMe();
 			}
 			SPAWNS.clear();
@@ -149,7 +151,7 @@ public class NevitsHerald extends AbstractNpcAI
 			for (Location loc : NEVITS_HERALD_LOC)
 			{
 				final Npc herald = addSpawn(NEVITS_HERALD, loc, false, 0);
-				startQuestTimer("text_spam", 3000, herald, null);
+				startQuestTimer(TEXT_SPAM, 3000, herald, null);
 				SPAWNS.add(herald);
 			}
 			startQuestTimer("despawn", 14400000, null, null);

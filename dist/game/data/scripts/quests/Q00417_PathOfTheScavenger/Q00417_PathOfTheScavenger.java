@@ -32,6 +32,8 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Q00417_PathOfTheScavenger extends Quest
 {
+	private static final String HTML_N_30519_07 = "30519-07.html";
+
 	// NPCs
 	private static final int WAREHOUSE_KEEPER_RAUT = 30316;
 	private static final int TRADER_SHARI = 30517;
@@ -167,7 +169,7 @@ public class Q00417_PathOfTheScavenger extends Quest
 				}
 				break;
 			}
-			case "30519-07.html":
+			case HTML_N_30519_07:
 			{
 				qs.setMemoStateEx(1, qs.getMemoStateEx(1) + 1);
 				htmltext = event;
@@ -199,11 +201,11 @@ public class Q00417_PathOfTheScavenger extends Quest
 				if ((qs.getMemoStateEx(1) % 10) < 2)
 				{
 					qs.setMemoStateEx(1, qs.getMemoStateEx(1) + 1);
-					htmltext = "30519-07.html";
+					htmltext = HTML_N_30519_07;
 				}
 				else if (((qs.getMemoStateEx(1) % 10) == 2) && qs.isMemoState(0))
 				{
-					htmltext = "30519-07.html";
+					htmltext = HTML_N_30519_07;
 				}
 				else if (((qs.getMemoStateEx(1) % 10) == 2) && qs.isMemoState(1))
 				{

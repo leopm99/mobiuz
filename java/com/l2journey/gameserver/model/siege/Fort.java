@@ -75,6 +75,9 @@ import com.l2journey.gameserver.network.serverpackets.SystemMessage;
 
 public class Fort extends AbstractResidence
 {
+	private static final String HEADING = "heading";
+	private static final String NPCID = "npcId";
+
 	protected static final Logger LOGGER = Logger.getLogger(Fort.class.getName());
 	
 	private final List<Door> _doors = new ArrayList<>();
@@ -1148,10 +1151,10 @@ public class Fort extends AbstractResidence
 			{
 				while (rs.next())
 				{
-					final Spawn spawnDat = new Spawn(rs.getInt("npcId"));
+					final Spawn spawnDat = new Spawn(rs.getInt(NPCID));
 					spawnDat.setAmount(1);
 					spawnDat.setXYZ(rs.getInt("x"), rs.getInt("y"), rs.getInt("z"));
-					spawnDat.setHeading(rs.getInt("heading"));
+					spawnDat.setHeading(rs.getInt(HEADING));
 					spawnDat.setRespawnDelay(60);
 					SpawnTable.getInstance().addSpawn(spawnDat);
 					spawnDat.doSpawn(false);
@@ -1177,10 +1180,10 @@ public class Fort extends AbstractResidence
 			{
 				while (rs.next())
 				{
-					final Spawn spawnDat = new Spawn(rs.getInt("npcId"));
+					final Spawn spawnDat = new Spawn(rs.getInt(NPCID));
 					spawnDat.setAmount(1);
 					spawnDat.setXYZ(rs.getInt("x"), rs.getInt("y"), rs.getInt("z"));
-					spawnDat.setHeading(rs.getInt("heading"));
+					spawnDat.setHeading(rs.getInt(HEADING));
 					spawnDat.setRespawnDelay(60);
 					_siegeNpcs.add(spawnDat);
 				}
@@ -1204,10 +1207,10 @@ public class Fort extends AbstractResidence
 			{
 				while (rs.next())
 				{
-					final Spawn spawnDat = new Spawn(rs.getInt("npcId"));
+					final Spawn spawnDat = new Spawn(rs.getInt(NPCID));
 					spawnDat.setAmount(1);
 					spawnDat.setXYZ(rs.getInt("x"), rs.getInt("y"), rs.getInt("z"));
-					spawnDat.setHeading(rs.getInt("heading"));
+					spawnDat.setHeading(rs.getInt(HEADING));
 					spawnDat.setRespawnDelay(60);
 					_npcCommanders.add(spawnDat);
 				}
@@ -1235,10 +1238,10 @@ public class Fort extends AbstractResidence
 				while (rs.next())
 				{
 					final int castleId = rs.getInt("castleId");
-					final Spawn spawnDat = new Spawn(rs.getInt("npcId"));
+					final Spawn spawnDat = new Spawn(rs.getInt(NPCID));
 					spawnDat.setAmount(1);
 					spawnDat.setXYZ(rs.getInt("x"), rs.getInt("y"), rs.getInt("z"));
-					spawnDat.setHeading(rs.getInt("heading"));
+					spawnDat.setHeading(rs.getInt(HEADING));
 					spawnDat.setRespawnDelay(60);
 					_specialEnvoys.add(spawnDat);
 					_envoyCastles.put(spawnDat.getId(), castleId);

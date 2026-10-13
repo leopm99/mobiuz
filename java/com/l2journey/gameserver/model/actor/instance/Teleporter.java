@@ -55,6 +55,10 @@ import com.l2journey.gameserver.network.serverpackets.NpcHtmlMessage;
  */
 public class Teleporter extends Npc
 {
+	private static final String HTML_PATH = "data/html/teleporter/";
+	private static final String PH_OBJECTID = "%objectId%";
+	private static final String PH_NPCNAME = "%npcname%";
+
 	private static final int COND_ALL_FALSE = 0;
 	private static final int COND_BUSY_BECAUSE_OF_SIEGE = 1;
 	private static final int COND_OWNER = 2;
@@ -83,8 +87,8 @@ public class Teleporter extends Npc
 			final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 			final String filename = "data/html/teleporter/epictransformed.htm";
 			html.setFile(player, filename);
-			html.replace("%objectId%", String.valueOf(getObjectId()));
-			html.replace("%npcname%", getName());
+			html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
+			html.replace(PH_NPCNAME, getName());
 			player.sendPacket(html);
 			return;
 		}
@@ -184,7 +188,7 @@ public class Teleporter extends Npc
 		{
 			pom = npcId + "-" + value;
 		}
-		return "data/html/teleporter/" + pom + ".htm";
+		return HTML_PATH + pom + ".htm";
 	}
 	
 	private void showNewbieHtml(Player player)
@@ -199,12 +203,12 @@ public class Teleporter extends Npc
 		final File file = new File(Config.DATAPACK_ROOT, fileName);
 		if (!file.isFile())
 		{
-			fileName = "data/html/teleporter/" + getTemplate().getId() + "-1.htm";
+			fileName = HTML_PATH + getTemplate().getId() + "-1.htm";
 		}
 		
 		html.setFile(player, fileName);
-		html.replace("%objectId%", String.valueOf(getObjectId()));
-		html.replace("%npcname%", getName());
+		html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
+		html.replace(PH_NPCNAME, getName());
 		player.sendPacket(html);
 	}
 	
@@ -220,12 +224,12 @@ public class Teleporter extends Npc
 		final File file = new File(Config.DATAPACK_ROOT, fileName);
 		if (!file.isFile())
 		{
-			fileName = "data/html/teleporter/" + getId() + "-1.htm";
+			fileName = HTML_PATH + getId() + "-1.htm";
 		}
 		
 		html.setFile(player, fileName);
-		html.replace("%objectId%", String.valueOf(getObjectId()));
-		html.replace("%npcname%", getName());
+		html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
+		html.replace(PH_NPCNAME, getName());
 		player.sendPacket(html);
 	}
 	
@@ -254,8 +258,8 @@ public class Teleporter extends Npc
 		
 		final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 		html.setFile(player, filename);
-		html.replace("%objectId%", String.valueOf(getObjectId()));
-		html.replace("%npcname%", getName());
+		html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
+		html.replace(PH_NPCNAME, getName());
 		player.sendPacket(html);
 	}
 	
@@ -301,8 +305,8 @@ public class Teleporter extends Npc
 				final String filename = "data/html/teleporter/nobleteleporter-no.htm";
 				final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 				html.setFile(player, filename);
-				html.replace("%objectId%", String.valueOf(getObjectId()));
-				html.replace("%npcname%", getName());
+				html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
+				html.replace(PH_NPCNAME, getName());
 				player.sendPacket(html);
 				return;
 			}

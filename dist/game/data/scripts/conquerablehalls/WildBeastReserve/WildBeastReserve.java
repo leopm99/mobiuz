@@ -71,6 +71,9 @@ import com.l2journey.gameserver.util.Broadcast;
  */
 public class WildBeastReserve extends ClanHallSiegeEngine
 {
+	private static final String HTML_N_35627_03 = "35627-03.htm";
+	private static final String HTML_N_35627_10 = "35627-10.htm";
+
 	private static final String SQL_LOAD_ATTACKERS = "SELECT clan_id, flag, npc FROM siegable_hall_flagwar_attackers WHERE hall_id = ?";
 	private static final String SQL_SAVE_ATTACKER = "INSERT INTO siegable_hall_flagwar_attackers_members VALUES (?,?,?)";
 	private static final String SQL_LOAD_MEMEBERS = "SELECT object_id FROM siegable_hall_flagwar_attackers_members WHERE clan_id = ?";
@@ -193,7 +196,7 @@ public class WildBeastReserve extends ClanHallSiegeEngine
 			}
 			else if ((clan == null) || !player.isClanLeader())
 			{
-				htmltext = "35627-03.htm";
+				htmltext = HTML_N_35627_03;
 			}
 			else if (getAttackers().size() >= 5)
 			{
@@ -247,7 +250,7 @@ public class WildBeastReserve extends ClanHallSiegeEngine
 			}
 			else if (!_data.containsKey(clan.getId()))
 			{
-				htmltext = "35627-10.htm";
+				htmltext = HTML_N_35627_10;
 			}
 			else
 			{
@@ -280,11 +283,11 @@ public class WildBeastReserve extends ClanHallSiegeEngine
 			ClanData cd = null;
 			if (clan == null)
 			{
-				htmltext = "35627-10.htm";
+				htmltext = HTML_N_35627_10;
 			}
 			else if ((cd = _data.get(clan.getId())) == null)
 			{
-				htmltext = "35627-03.htm";
+				htmltext = HTML_N_35627_03;
 			}
 			else if (cd.npc == 0)
 			{
@@ -299,7 +302,7 @@ public class WildBeastReserve extends ClanHallSiegeEngine
 		{
 			if (clan == null)
 			{
-				htmltext = "35627-10.htm";
+				htmltext = HTML_N_35627_10;
 			}
 			else if (!_hall.isRegistering())
 			{
@@ -307,7 +310,7 @@ public class WildBeastReserve extends ClanHallSiegeEngine
 			}
 			else if (!_data.containsKey(clan.getId()))
 			{
-				htmltext = "35627-03.htm";
+				htmltext = HTML_N_35627_03;
 			}
 			else if (_data.get(clan.getId()).players.size() >= 18)
 			{

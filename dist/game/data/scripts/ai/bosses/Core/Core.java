@@ -65,6 +65,9 @@ import ai.AbstractNpcAI;
  */
 public class Core extends AbstractNpcAI implements IXmlReader
 {
+	private static final String SPAWN_MINION = "spawn_minion";
+	private static final String CORE_UNLOCK = "core_unlock";
+
 	private static final Logger LOGGER = Logger.getLogger(Core.class.getName());
 	
 	// NPCs
@@ -134,7 +137,7 @@ public class Core extends AbstractNpcAI implements IXmlReader
 			// If Core is locked until a certain time, mark it so and start the unlock timer the unlock time has not yet expired.
 			if (temp > 0)
 			{
-				startQuestTimer("core_unlock", temp, null, null);
+				startQuestTimer(CORE_UNLOCK, temp, null, null);
 			}
 			else
 			{
@@ -221,13 +224,13 @@ public class Core extends AbstractNpcAI implements IXmlReader
 	@Override
 	public String onEvent(String event, Npc npc, Player player)
 	{
-		if (event.equalsIgnoreCase("core_unlock"))
+		if (event.equalsIgnoreCase(CORE_UNLOCK))
 		{
 			final GrandBoss core = (GrandBoss) addSpawn(CORE, 17726, 108915, -6480, 0, false, 0);
 			GrandBossManager.getInstance().setStatus(CORE, ALIVE);
 			spawnBoss(core);
 		}
-		else if (event.equalsIgnoreCase("spawn_minion"))
+		else if (event.equalsIgnoreCase(SPAWN_MINION))
 		{
 			final Attackable mob = addSpawn(npc.getId(), npc.getX(), npc.getY(), npc.getZ(), npc.getHeading(), false, 0).asAttackable();
 			mob.setIsRaidMinion(true);
@@ -283,14 +286,14 @@ public class Core extends AbstractNpcAI implements IXmlReader
 			final long nextRespawnTime = System.currentTimeMillis() + respawnTime;
 			LOGGER.info(() -> "Core will respawn at: " + TimeUtil.getDateTimeString(nextRespawnTime));
 			
-			startQuestTimer("core_unlock", respawnTime, null, null);
+			startQuestTimer(CORE_UNLOCK, respawnTime, null, null);
 			// Also save the respawn time so that the info is maintained past reboots.
 			final StatSet info = GrandBossManager.getInstance().getStatSet(CORE);
 			info.set("respawn_time", System.currentTimeMillis() + respawnTime);
 			GrandBossManager.getInstance().setStatSet(CORE, info);
 			// Despawn minions after 10 seconds
 			startQuestTimer("despawn_minions", 10000, null, null);
-			cancelQuestTimers("spawn_minion");
+			cancelQuestTimers(SPAWN_MINION);
 		}
 		else if ((GrandBossManager.getInstance().getStatus(CORE) == ALIVE) && _minions.contains(npc))
 		{
@@ -305,7 +308,7 @@ public class Core extends AbstractNpcAI implements IXmlReader
 					break;
 				}
 			}
-			startQuestTimer("spawn_minion", respawnTime, npc, null);
+			startQuestTimer(SPAWN_MINION, respawnTime, npc, null);
 		}
 	}
 	

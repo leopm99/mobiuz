@@ -37,6 +37,9 @@ import quests.Q00241_PossessorOfAPreciousSoul1.Q00241_PossessorOfAPreciousSoul1;
  */
 public class Q00242_PossessorOfAPreciousSoul2 extends Quest
 {
+	private static final String CORNERSTONES = "cornerstones";
+	private static final String AWAITSDROPS = "awaitsDrops";
+
 	// NPCs
 	private static final int VIRGIL = 31742;
 	private static final int KASSANDRA = 31743;
@@ -135,9 +138,9 @@ public class Q00242_PossessorOfAPreciousSoul2 extends Quest
 				{
 					takeItems(player, GOLDEN_HAIR, -1);
 					takeItems(player, SORCERY_INGREDIENT, -1);
-					st.set("awaitsDrops", "1");
+					st.set(AWAITSDROPS, "1");
 					st.setCond(9, true);
-					st.set("cornerstones", "0");
+					st.set(CORNERSTONES, "0");
 				}
 				break;
 			}
@@ -166,7 +169,7 @@ public class Q00242_PossessorOfAPreciousSoul2 extends Quest
 	@Override
 	public void onKill(Npc npc, Player player, boolean isSummon)
 	{
-		final Player partyMember = getRandomPartyMember(player, "awaitsDrops", "1");
+		final Player partyMember = getRandomPartyMember(player, AWAITSDROPS, "1");
 		if (partyMember == null)
 		{
 			return;
@@ -180,7 +183,7 @@ public class Q00242_PossessorOfAPreciousSoul2 extends Quest
 		}
 		if (getQuestItemsCount(partyMember, ORB_OF_BINDING) >= 4)
 		{
-			st.unset("awaitsDrops");
+			st.unset(AWAITSDROPS);
 		}
 	}
 	
@@ -423,8 +426,8 @@ public class Q00242_PossessorOfAPreciousSoul2 extends Quest
 						takeItems(player, ORB_OF_BINDING, 1);
 						npc.doDie(npc);
 						
-						st.set("cornerstones", Integer.toString(st.getInt("cornerstones") + 1));
-						if (st.getInt("cornerstones") == 4)
+						st.set(CORNERSTONES, Integer.toString(st.getInt(CORNERSTONES) + 1));
+						if (st.getInt(CORNERSTONES) == 4)
 						{
 							st.setCond(10);
 						}

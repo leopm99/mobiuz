@@ -50,6 +50,20 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Q00454_CompletelyLost extends Quest
 {
+	private static final String SCE_A_SEED_ESCORT_QUEST_FAILURE = "SCE_A_SEED_ESCORT_QUEST_FAILURE";
+	private static final String SCE_A_SEED_ESCORT_QUEST_START = "SCE_A_SEED_ESCORT_QUEST_START";
+	private static final String EXPIRED_TIMER = "EXPIRED_TIMER";
+	private static final String QUEST_ESCORT = "quest_escort";
+	private static final String TIME_LIMIT1 = "TIME_LIMIT1";
+	private static final String TIME_LIMIT2 = "TIME_LIMIT2";
+	private static final String TIME_LIMIT3 = "TIME_LIMIT3";
+	private static final String TIME_LIMIT4 = "TIME_LIMIT4";
+	private static final String TIME_LIMIT5 = "TIME_LIMIT5";
+	private static final String CHECK_TIMER = "CHECK_TIMER";
+	private static final String PH_LEADER = "%leader%";
+	private static final String WHISPER = "whisper";
+	private static final String LEADER = "leader";
+
 	// NPCs
 	private static final int INJURED_SOLDIER = 32738;
 	private static final int ERMIAN = 32736;
@@ -80,12 +94,12 @@ public class Q00454_CompletelyLost extends Quest
 			case "SAY_TIMER2":
 			{
 				broadcastNpcSay(npc, NpcStringId.SOB_TO_SEE_ERMIAN_AGAIN_CAN_I_GO_TO_MY_FAMILY_NOW);
-				startQuestTimer("EXPIRED_TIMER", 2000, npc, null);
+				startQuestTimer(EXPIRED_TIMER, 2000, npc, null);
 				break;
 			}
-			case "CHECK_TIMER":
+			case CHECK_TIMER:
 			{
-				final Player leader = npc.getVariables().getObject("leader", Player.class);
+				final Player leader = npc.getVariables().getObject(LEADER, Player.class);
 				if (leader != null)
 				{
 					final double dist = LocationUtil.calculateDistance(npc, leader, false, false);
@@ -95,78 +109,78 @@ public class Q00454_CompletelyLost extends Quest
 						{
 							npc.teleToLocation(leader);
 						}
-						else if (npc.getVariables().getInt("whisper", 0) == 0)
+						else if (npc.getVariables().getInt(WHISPER, 0) == 0)
 						{
 							whisper(npc, leader, NpcStringId.WHERE_ARE_YOU_I_CAN_T_SEE_ANYTHING);
-							npc.getVariables().set("whisper", 1);
+							npc.getVariables().set(WHISPER, 1);
 						}
-						else if (npc.getVariables().getInt("whisper", 0) == 1)
+						else if (npc.getVariables().getInt(WHISPER, 0) == 1)
 						{
 							whisper(npc, leader, NpcStringId.WHERE_ARE_YOU_REALLY_I_CAN_T_FOLLOW_YOU_LIKE_THIS);
-							npc.getVariables().set("whisper", 2);
+							npc.getVariables().set(WHISPER, 2);
 						}
-						else if (npc.getVariables().getInt("whisper", 0) == 2)
+						else if (npc.getVariables().getInt(WHISPER, 0) == 2)
 						{
 							whisper(npc, leader, NpcStringId.I_M_SORRY_THIS_IS_IT_FOR_ME);
-							npc.sendScriptEvent("SCE_A_SEED_ESCORT_QUEST_FAILURE", npc, null);
+							npc.sendScriptEvent(SCE_A_SEED_ESCORT_QUEST_FAILURE, npc, null);
 						}
 					}
 				}
-				startQuestTimer("CHECK_TIMER", 2000, npc, null);
+				startQuestTimer(CHECK_TIMER, 2000, npc, null);
 				break;
 			}
-			case "TIME_LIMIT1":
+			case TIME_LIMIT1:
 			{
-				final Player leader = npc.getVariables().getObject("leader", Player.class);
+				final Player leader = npc.getVariables().getObject(LEADER, Player.class);
 				if (leader != null)
 				{
-					startQuestTimer("TIME_LIMIT2", 150000, npc, null);
+					startQuestTimer(TIME_LIMIT2, 150000, npc, null);
 					whisper(npc, leader, NpcStringId.IS_IT_STILL_LONG_OFF);
 				}
 				break;
 			}
-			case "TIME_LIMIT2":
+			case TIME_LIMIT2:
 			{
-				final Player leader = npc.getVariables().getObject("leader", Player.class);
+				final Player leader = npc.getVariables().getObject(LEADER, Player.class);
 				if (leader != null)
 				{
-					startQuestTimer("TIME_LIMIT3", 150000, npc, null);
+					startQuestTimer(TIME_LIMIT3, 150000, npc, null);
 					whisper(npc, leader, NpcStringId.IS_ERMIAN_WELL_EVEN_I_CAN_T_BELIEVE_THAT_I_SURVIVED_IN_A_PLACE_LIKE_THIS);
 				}
 				break;
 			}
-			case "TIME_LIMIT3":
+			case TIME_LIMIT3:
 			{
-				final Player leader = npc.getVariables().getObject("leader", Player.class);
+				final Player leader = npc.getVariables().getObject(LEADER, Player.class);
 				if (leader != null)
 				{
-					startQuestTimer("TIME_LIMIT4", 150000, npc, null);
+					startQuestTimer(TIME_LIMIT4, 150000, npc, null);
 					whisper(npc, leader, NpcStringId.I_DON_T_KNOW_HOW_LONG_IT_S_BEEN_SINCE_I_PARTED_COMPANY_WITH_YOU_TIME_DOESN_T_SEEM_TO_MOVE_IT_JUST_FEELS_TOO_LONG);
 				}
 				break;
 			}
-			case "TIME_LIMIT4":
+			case TIME_LIMIT4:
 			{
-				final Player leader = npc.getVariables().getObject("leader", Player.class);
+				final Player leader = npc.getVariables().getObject(LEADER, Player.class);
 				if (leader != null)
 				{
-					startQuestTimer("TIME_LIMIT5", 150000, npc, null);
+					startQuestTimer(TIME_LIMIT5, 150000, npc, null);
 					whisper(npc, leader, NpcStringId.SORRY_TO_SAY_THIS_BUT_THE_PLACE_YOU_STRUCK_ME_BEFORE_NOW_HURTS_GREATLY);
 				}
 				break;
 			}
-			case "TIME_LIMIT5":
+			case TIME_LIMIT5:
 			{
-				final Player leader = npc.getVariables().getObject("leader", Player.class);
+				final Player leader = npc.getVariables().getObject(LEADER, Player.class);
 				if (leader != null)
 				{
 					whisper(npc, leader, NpcStringId.UGH_I_M_SORRY_IT_LOOKS_LIKE_THIS_IS_IT_FOR_ME_I_WANTED_TO_LIVE_AND_SEE_MY_FAMILY);
 				}
-				npc.sendScriptEvent("SCE_A_SEED_ESCORT_QUEST_FAILURE", npc, null);
-				startQuestTimer("EXPIRED_TIMER", 2000, npc, null);
+				npc.sendScriptEvent(SCE_A_SEED_ESCORT_QUEST_FAILURE, npc, null);
+				startQuestTimer(EXPIRED_TIMER, 2000, npc, null);
 				break;
 			}
-			case "EXPIRED_TIMER":
+			case EXPIRED_TIMER:
 			{
 				npc.deleteMe();
 				break;
@@ -196,10 +210,10 @@ public class Q00454_CompletelyLost extends Quest
 			{
 				if (player.getLevel() >= MIN_LEVEL)
 				{
-					if (npc.getVariables().getInt("quest_escort", 0) == 0)
+					if (npc.getVariables().getInt(QUEST_ESCORT, 0) == 0)
 					{
-						npc.getVariables().set("leader", player);
-						npc.getVariables().set("quest_escort", 1);
+						npc.getVariables().set(LEADER, player);
+						npc.getVariables().set(QUEST_ESCORT, 1);
 						if (player.isInParty())
 						{
 							npc.getVariables().set("partyId", player.getParty().getLeaderObjectId());
@@ -210,18 +224,18 @@ public class Q00454_CompletelyLost extends Quest
 					}
 					else
 					{
-						final Player leader = npc.getVariables().getObject("leader", Player.class);
+						final Player leader = npc.getVariables().getObject(LEADER, Player.class);
 						if (leader.isInParty() && leader.getParty().containsPlayer(player))
 						{
 							qs.startQuest();
 							qs.setMemoState(1);
 							htmltext = getHtm(player, "32738-04a.htm");
-							htmltext = htmltext.replace("%leader%", leader.getName());
+							htmltext = htmltext.replace(PH_LEADER, leader.getName());
 						}
 						else
 						{
 							htmltext = getHtm(player, "32738-01b.htm");
-							htmltext = htmltext.replace("%leader%", leader.getName());
+							htmltext = htmltext.replace(PH_LEADER, leader.getName());
 						}
 					}
 				}
@@ -231,13 +245,13 @@ public class Q00454_CompletelyLost extends Quest
 			{
 				if (qs.isMemoState(1))
 				{
-					final Player leader = npc.getVariables().getObject("leader", Player.class);
+					final Player leader = npc.getVariables().getObject(LEADER, Player.class);
 					if (leader != null)
 					{
 						if (leader.isInParty())
 						{
 							qs.setMemoState(2);
-							npc.sendScriptEvent("SCE_A_SEED_ESCORT_QUEST_START", npc, null);
+							npc.sendScriptEvent(SCE_A_SEED_ESCORT_QUEST_START, npc, null);
 							htmltext = "32738-06.html";
 						}
 						else
@@ -254,8 +268,8 @@ public class Q00454_CompletelyLost extends Quest
 				{
 					qs.setMemoState(2);
 					htmltext = "32738-06.html";
-					npc.sendScriptEvent("SCE_A_SEED_ESCORT_QUEST_START", npc, null);
-					final Player leader = npc.getVariables().getObject("leader", Player.class);
+					npc.sendScriptEvent(SCE_A_SEED_ESCORT_QUEST_START, npc, null);
+					final Player leader = npc.getVariables().getObject(LEADER, Player.class);
 					if ((leader != null) && leader.isInParty())
 					{
 						for (Player member : leader.getParty().getMembers())
@@ -295,24 +309,24 @@ public class Q00454_CompletelyLost extends Quest
 	{
 		switch (eventName)
 		{
-			case "SCE_A_SEED_ESCORT_QUEST_START":
+			case SCE_A_SEED_ESCORT_QUEST_START:
 			{
-				final Player leader = receiver.getVariables().getObject("leader", Player.class);
+				final Player leader = receiver.getVariables().getObject(LEADER, Player.class);
 				if (leader != null)
 				{
 					receiver.setTarget(leader);
 					receiver.getAI().setIntention(Intention.FOLLOW, leader);
 				}
 				
-				startQuestTimer("CHECK_TIMER", 1000, receiver, null);
-				startQuestTimer("TIME_LIMIT1", 60000, receiver, null);
+				startQuestTimer(CHECK_TIMER, 1000, receiver, null);
+				startQuestTimer(TIME_LIMIT1, 60000, receiver, null);
 				receiver.setScriptValue(2);
-				receiver.getVariables().set("quest_escort", 99);
+				receiver.getVariables().set(QUEST_ESCORT, 99);
 				break;
 			}
 			case "SCE_A_SEED_ESCORT_QUEST_SUCCESS":
 			{
-				final Player leader = receiver.getVariables().getObject("leader", Player.class);
+				final Player leader = receiver.getVariables().getObject(LEADER, Player.class);
 				if (leader != null)
 				{
 					if (leader.isInParty())
@@ -339,17 +353,17 @@ public class Q00454_CompletelyLost extends Quest
 					}
 				}
 				// Timers cleanup
-				cancelQuestTimer("CHECK_TIMER", receiver, null);
-				cancelQuestTimer("TIME_LIMIT1", receiver, null);
-				cancelQuestTimer("TIME_LIMIT2", receiver, null);
-				cancelQuestTimer("TIME_LIMIT3", receiver, null);
-				cancelQuestTimer("TIME_LIMIT4", receiver, null);
-				cancelQuestTimer("TIME_LIMIT5", receiver, null);
+				cancelQuestTimer(CHECK_TIMER, receiver, null);
+				cancelQuestTimer(TIME_LIMIT1, receiver, null);
+				cancelQuestTimer(TIME_LIMIT2, receiver, null);
+				cancelQuestTimer(TIME_LIMIT3, receiver, null);
+				cancelQuestTimer(TIME_LIMIT4, receiver, null);
+				cancelQuestTimer(TIME_LIMIT5, receiver, null);
 				break;
 			}
-			case "SCE_A_SEED_ESCORT_QUEST_FAILURE":
+			case SCE_A_SEED_ESCORT_QUEST_FAILURE:
 			{
-				final Player leader = receiver.getVariables().getObject("leader", Player.class);
+				final Player leader = receiver.getVariables().getObject(LEADER, Player.class);
 				if (leader != null)
 				{
 					if (leader.isInParty())
@@ -377,12 +391,12 @@ public class Q00454_CompletelyLost extends Quest
 				}
 				receiver.deleteMe();
 				// Timers cleanup
-				cancelQuestTimer("CHECK_TIMER", receiver, null);
-				cancelQuestTimer("TIME_LIMIT1", receiver, null);
-				cancelQuestTimer("TIME_LIMIT2", receiver, null);
-				cancelQuestTimer("TIME_LIMIT3", receiver, null);
-				cancelQuestTimer("TIME_LIMIT4", receiver, null);
-				cancelQuestTimer("TIME_LIMIT5", receiver, null);
+				cancelQuestTimer(CHECK_TIMER, receiver, null);
+				cancelQuestTimer(TIME_LIMIT1, receiver, null);
+				cancelQuestTimer(TIME_LIMIT2, receiver, null);
+				cancelQuestTimer(TIME_LIMIT3, receiver, null);
+				cancelQuestTimer(TIME_LIMIT4, receiver, null);
+				cancelQuestTimer(TIME_LIMIT5, receiver, null);
 				break;
 			}
 			default:
@@ -444,7 +458,7 @@ public class Q00454_CompletelyLost extends Quest
 			{
 				if (player.getLevel() >= MIN_LEVEL)
 				{
-					final int quest_escort = npc.getVariables().getInt("quest_escort", 0);
+					final int quest_escort = npc.getVariables().getInt(QUEST_ESCORT, 0);
 					if (quest_escort == 0)
 					{
 						htmltext = "32738-01.htm";
@@ -455,17 +469,17 @@ public class Q00454_CompletelyLost extends Quest
 					}
 					else
 					{
-						final Player leader = npc.getVariables().getObject("leader", Player.class);
+						final Player leader = npc.getVariables().getObject(LEADER, Player.class);
 						if (leader.isInParty() && leader.getParty().containsPlayer(player))
 						{
 							htmltext = getHtm(player, "32738-01a.htm");
-							htmltext = htmltext.replace("%leader%", leader.getName());
+							htmltext = htmltext.replace(PH_LEADER, leader.getName());
 							htmltext = htmltext.replace("%name%", player.getName());
 						}
 						else
 						{
 							htmltext = getHtm(player, "32738-01b.htm");
-							htmltext = htmltext.replace("%leader%", leader.getName());
+							htmltext = htmltext.replace(PH_LEADER, leader.getName());
 						}
 					}
 				}

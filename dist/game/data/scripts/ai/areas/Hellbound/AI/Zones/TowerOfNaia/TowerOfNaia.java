@@ -65,6 +65,10 @@ import ai.AbstractNpcAI;
  */
 public class TowerOfNaia extends AbstractNpcAI
 {
+	private static final String DESPAWN_TOTAL = "despawn_total";
+	private static final String DESPAWN_SPORE = "despawn_spore";
+	private static final String SPAWN_LOCK = "spawn_lock";
+
 	// Challenge states
 	private static final int STATE_SPORE_CHALLENGE_IN_PROGRESS = 1;
 	private static final int STATE_SPORE_CHALLENGE_SUCCESSFULL = 2;
@@ -421,7 +425,7 @@ public class TowerOfNaia extends AbstractNpcAI
 		String htmltext = event;
 		
 		// Timer. Spawns Naia Lock
-		if (event.equalsIgnoreCase("spawn_lock"))
+		if (event.equalsIgnoreCase(SPAWN_LOCK))
 		{
 			htmltext = null;
 			_lock = addSpawn(LOCK, 16409, 244438, 11620, -1048, false, 0, false).asMonster();
@@ -429,7 +433,7 @@ public class TowerOfNaia extends AbstractNpcAI
 		}
 		
 		// Timer. Depending of _challengeState despans all spawned spores, or spores, reached assembly point
-		else if (event.equalsIgnoreCase("despawn_total"))
+		else if (event.equalsIgnoreCase(DESPAWN_TOTAL))
 		{
 			// Spores is not attacked too long - despawn them all, reinit values
 			if (_challengeState == STATE_SPORE_IDLE_TOO_LONG)
@@ -463,7 +467,7 @@ public class TowerOfNaia extends AbstractNpcAI
 							_despawnedSporesCount.incrementAndGet();
 						}
 					}
-					startQuestTimer("despawn_total", 3000, null, null);
+					startQuestTimer(DESPAWN_TOTAL, 3000, null, null);
 				}
 			}
 		}
@@ -474,7 +478,7 @@ public class TowerOfNaia extends AbstractNpcAI
 		}
 		
 		final int npcId = npc.getId();
-		if (event.equalsIgnoreCase("despawn_spore") && !npc.isDead() && (_challengeState == STATE_SPORE_CHALLENGE_IN_PROGRESS))
+		if (event.equalsIgnoreCase(DESPAWN_SPORE) && !npc.isDead() && (_challengeState == STATE_SPORE_CHALLENGE_IN_PROGRESS))
 		{
 			htmltext = null;
 			_sporeSpawn.remove(npc);
@@ -496,7 +500,7 @@ public class TowerOfNaia extends AbstractNpcAI
 				else
 				{
 					_challengeState = STATE_SPORE_IDLE_TOO_LONG;
-					startQuestTimer("despawn_total", 60000, null, null);
+					startQuestTimer(DESPAWN_TOTAL, 60000, null, null);
 				}
 			}
 			
@@ -528,8 +532,8 @@ public class TowerOfNaia extends AbstractNpcAI
 					}
 					_lock.deleteMe();
 					_lock = null;
-					cancelQuestTimers("spawn_lock");
-					startQuestTimer("spawn_lock", 1200000, null, null);
+					cancelQuestTimers(SPAWN_LOCK);
+					startQuestTimer(SPAWN_LOCK, 1200000, null, null);
 				}
 				else
 				{
@@ -542,8 +546,8 @@ public class TowerOfNaia extends AbstractNpcAI
 				player.teleToLocation(-47271, 246098, -9120);
 				_lock.deleteMe();
 				_lock = null;
-				cancelQuestTimers("spawn_lock");
-				startQuestTimer("spawn_lock", 1200000, null, null);
+				cancelQuestTimers(SPAWN_LOCK);
+				startQuestTimer(SPAWN_LOCK, 1200000, null, null);
 			}
 		}
 		else if (event.equalsIgnoreCase("go") && _activeRooms.containsKey(npcId) && !_activeRooms.get(npcId))
@@ -595,8 +599,8 @@ public class TowerOfNaia extends AbstractNpcAI
 		if (npcId == LOCK)
 		{
 			_lock = null;
-			cancelQuestTimers("spawn_lock");
-			startQuestTimer("spawn_lock", 300000, null, null);
+			cancelQuestTimers(SPAWN_LOCK);
+			startQuestTimer(SPAWN_LOCK, 300000, null, null);
 		}
 		
 		else if (Arrays.binarySearch(TOWER_MONSTERS, npcId) >= 0)
@@ -712,7 +716,7 @@ public class TowerOfNaia extends AbstractNpcAI
 							}
 						}
 						
-						startQuestTimer("despawn_total", 3000, null, null);
+						startQuestTimer(DESPAWN_TOTAL, 3000, null, null);
 					}
 				}
 			}
@@ -737,7 +741,7 @@ public class TowerOfNaia extends AbstractNpcAI
 			final int[] coord = SPORES_MOVE_POINTS[getRandom(SPORES_MOVE_POINTS.length)];
 			npc.getSpawn().setXYZ(coord[0], coord[1], coord[2]);
 			npc.getAI().setIntention(Intention.MOVE_TO, new Location(coord[0], coord[1], coord[2], 0));
-			startQuestTimer("despawn_spore", 60000, npc, null);
+			startQuestTimer(DESPAWN_SPORE, 60000, npc, null);
 		}
 	}
 	
@@ -920,7 +924,7 @@ public class TowerOfNaia extends AbstractNpcAI
 			}
 		}
 		_sporeSpawn.clear();
-		cancelQuestTimers("despawn_spore");
+		cancelQuestTimers(DESPAWN_SPORE);
 	}
 	
 	private class StopRoomTask implements Runnable

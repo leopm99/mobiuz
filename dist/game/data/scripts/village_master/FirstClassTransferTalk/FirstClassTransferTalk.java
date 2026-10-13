@@ -46,6 +46,11 @@ import ai.AbstractNpcAI;
  */
 public class FirstClassTransferTalk extends AbstractNpcAI
 {
+	private static final String HTML_TRANSFER_1 = "transfer_1.html";
+	private static final String HTML_TRANSFER_2 = "transfer_2.html";
+	private static final String HTML_FIGHTER = "fighter.html";
+	private static final String HTML_NO = "no.html";
+
 	private static final Map<Integer, Race> MASTERS = new HashMap<>();
 	static
 	{
@@ -85,7 +90,7 @@ public class FirstClassTransferTalk extends AbstractNpcAI
 		String htmltext = npc.getId() + "_";
 		if (MASTERS.get(npc.getId()) != player.getRace())
 		{
-			htmltext += "no.html";
+			htmltext += HTML_NO;
 			return htmltext;
 		}
 		
@@ -104,25 +109,25 @@ public class FirstClassTransferTalk extends AbstractNpcAI
 						}
 						else
 						{
-							htmltext += "no.html";
+							htmltext += HTML_NO;
 						}
 					}
 					else if (npc instanceof VillageMasterFighter)
 					{
-						htmltext += "fighter.html";
+						htmltext += HTML_FIGHTER;
 					}
 					else
 					{
-						htmltext += "no.html";
+						htmltext += HTML_NO;
 					}
 				}
 				else if (player.getPlayerClass().level() == 1)
 				{
-					htmltext += "transfer_1.html";
+					htmltext += HTML_TRANSFER_1;
 				}
 				else
 				{
-					htmltext += "transfer_2.html";
+					htmltext += HTML_TRANSFER_2;
 				}
 				break;
 			}
@@ -136,16 +141,16 @@ public class FirstClassTransferTalk extends AbstractNpcAI
 					}
 					else
 					{
-						htmltext += "fighter.html";
+						htmltext += HTML_FIGHTER;
 					}
 				}
 				else if (player.getPlayerClass().level() == 1)
 				{
-					htmltext += "transfer_1.html";
+					htmltext += HTML_TRANSFER_1;
 				}
 				else
 				{
-					htmltext += "transfer_2.html";
+					htmltext += HTML_TRANSFER_2;
 				}
 				break;
 			}
@@ -153,21 +158,21 @@ public class FirstClassTransferTalk extends AbstractNpcAI
 			{
 				if (player.getPlayerClass().level() == 0)
 				{
-					htmltext += "fighter.html";
+					htmltext += HTML_FIGHTER;
 				}
 				else if (player.getPlayerClass().level() == 1)
 				{
-					htmltext += "transfer_1.html";
+					htmltext += HTML_TRANSFER_1;
 				}
 				else
 				{
-					htmltext += "transfer_2.html";
+					htmltext += HTML_TRANSFER_2;
 				}
 				break;
 			}
 			default:
 			{
-				htmltext += "no.html";
+				htmltext += HTML_NO;
 				break;
 			}
 		}

@@ -35,6 +35,8 @@ import quests.Q00024_InhabitantsOfTheForestOfTheDead.Q00024_InhabitantsOfTheFore
  */
 public class Q00023_LidiasHeart extends Quest
 {
+	private static final String SPAWNED = "SPAWNED";
+
 	// NPCs
 	private static final int HIGH_PRIEST_INNOCENTIN = 31328;
 	private static final int TRADER_VIOLET = 31386;
@@ -71,7 +73,7 @@ public class Q00023_LidiasHeart extends Quest
 			final Npc npc0 = npc.getVariables().getObject("npc0", Npc.class);
 			if (npc0 != null)
 			{
-				npc0.getVariables().set("SPAWNED", false);
+				npc0.getVariables().set(SPAWNED, false);
 			}
 			npc.deleteMe();
 			return super.onEvent(event, npc, player);
@@ -166,9 +168,9 @@ public class Q00023_LidiasHeart extends Quest
 				if (qs.isMemoState(8) || qs.isMemoState(9))
 				{
 					playSound(player, QuestSound.SKILLSOUND_HORROR_02);
-					if (!npc.getVariables().getBoolean("SPAWNED", false))
+					if (!npc.getVariables().getBoolean(SPAWNED, false))
 					{
-						npc.getVariables().set("SPAWNED", true);
+						npc.getVariables().set(SPAWNED, true);
 						final Npc ghost = addSpawn(npc, GHOST_OF_VON_HELLMANN, GHOST_SPAWN, false, 0);
 						ghost.getVariables().set("npc0", npc);
 						htmltext = event;

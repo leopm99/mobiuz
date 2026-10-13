@@ -42,6 +42,9 @@ import com.l2journey.gameserver.model.quest.LongTimeEvent;
  */
 public class L2Day extends LongTimeEvent
 {
+	private static final String HTML_MANAGER_NO = "manager-no.htm";
+	private static final String HTML_MANAGER_1 = "manager-1.htm";
+
 	// NPCs
 	private static final Map<Integer, Integer> MANAGERS = new HashMap<>();
 	static
@@ -187,11 +190,11 @@ public class L2Day extends LongTimeEvent
 							}
 						}
 					}
-					htmltext = "manager-1.htm";
+					htmltext = HTML_MANAGER_1;
 				}
 				else
 				{
-					htmltext = "manager-no.htm";
+					htmltext = HTML_MANAGER_NO;
 				}
 				break;
 			}
@@ -216,11 +219,11 @@ public class L2Day extends LongTimeEvent
 							}
 						}
 					}
-					htmltext = "manager-1.htm";
+					htmltext = HTML_MANAGER_1;
 				}
 				else
 				{
-					htmltext = "manager-no.htm";
+					htmltext = HTML_MANAGER_NO;
 				}
 				break;
 			}
@@ -245,11 +248,11 @@ public class L2Day extends LongTimeEvent
 							}
 						}
 					}
-					htmltext = "manager-1.htm";
+					htmltext = HTML_MANAGER_1;
 				}
 				else
 				{
-					htmltext = "manager-no.htm";
+					htmltext = HTML_MANAGER_NO;
 				}
 				break;
 			}
@@ -264,7 +267,7 @@ public class L2Day extends LongTimeEvent
 	@Override
 	public String onFirstTalk(Npc npc, Player player)
 	{
-		return "manager-1.htm";
+		return HTML_MANAGER_1;
 	}
 	
 	public static void main(String[] args)

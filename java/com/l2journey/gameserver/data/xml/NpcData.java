@@ -66,6 +66,11 @@ import com.l2journey.gameserver.util.ArrayUtil;
  */
 public class NpcData implements IXmlReader
 {
+	private static final String CHANCE = "chance";
+	private static final String LEVEL = "level";
+	private static final String VALUE = "value";
+	private static final String SKILL = "skill";
+
 	private final Map<Integer, NpcTemplate> _npcs = new ConcurrentHashMap<>();
 	private final Map<String, Integer> _clans = new ConcurrentHashMap<>();
 	private static final Collection<Integer> _masterMonsterIDs = ConcurrentHashMap.newKeySet();
@@ -107,7 +112,7 @@ public class NpcData implements IXmlReader
 						NamedNodeMap attrs = listNode.getAttributes();
 						final StatSet set = new StatSet(new HashMap<>());
 						final int npcId = parseInteger(attrs, "id");
-						final int level = parseInteger(attrs, "level", 85);
+						final int level = parseInteger(attrs, LEVEL, 85);
 						final String type = parseString(attrs, "type", "Folk");
 						Map<String, Object> parameters = null;
 						Map<Integer, Skill> skills = null;
@@ -117,7 +122,7 @@ public class NpcData implements IXmlReader
 						List<DropGroupHolder> dropGroups = null;
 						set.set("id", npcId);
 						set.set("displayId", parseInteger(attrs, "displayId"));
-						set.set("level", level);
+						set.set(LEVEL, level);
 						set.set("type", type);
 						set.set("name", parseString(attrs, "name"));
 						set.set("usingServerSideName", parseBoolean(attrs, "usingServerSideName"));
@@ -142,12 +147,12 @@ public class NpcData implements IXmlReader
 										{
 											case "param":
 											{
-												parameters.put(parseString(attrs, "name"), parseString(attrs, "value"));
+												parameters.put(parseString(attrs, "name"), parseString(attrs, VALUE));
 												break;
 											}
-											case "skill":
+											case SKILL:
 											{
-												parameters.put(parseString(attrs, "name"), new SkillHolder(parseInteger(attrs, "id"), parseInteger(attrs, "level")));
+												parameters.put(parseString(attrs, "name"), new SkillHolder(parseInteger(attrs, "id"), parseInteger(attrs, LEVEL)));
 												break;
 											}
 											case "minions":
@@ -256,32 +261,32 @@ public class NpcData implements IXmlReader
 															{
 																case "FIRE":
 																{
-																	set.set("baseFire", parseInteger(attrs, "value"));
+																	set.set("baseFire", parseInteger(attrs, VALUE));
 																	break;
 																}
 																case "WATER":
 																{
-																	set.set("baseWater", parseInteger(attrs, "value"));
+																	set.set("baseWater", parseInteger(attrs, VALUE));
 																	break;
 																}
 																case "WIND":
 																{
-																	set.set("baseWind", parseInteger(attrs, "value"));
+																	set.set("baseWind", parseInteger(attrs, VALUE));
 																	break;
 																}
 																case "EARTH":
 																{
-																	set.set("baseEarth", parseInteger(attrs, "value"));
+																	set.set("baseEarth", parseInteger(attrs, VALUE));
 																	break;
 																}
 																case "DARK":
 																{
-																	set.set("baseDark", parseInteger(attrs, "value"));
+																	set.set("baseDark", parseInteger(attrs, VALUE));
 																	break;
 																}
 																case "HOLY":
 																{
-																	set.set("baseHoly", parseInteger(attrs, "value"));
+																	set.set("baseHoly", parseInteger(attrs, VALUE));
 																	break;
 																}
 																default:
@@ -377,11 +382,11 @@ public class NpcData implements IXmlReader
 									skills = new HashMap<>();
 									for (Node skillListNode = npcNode.getFirstChild(); skillListNode != null; skillListNode = skillListNode.getNextSibling())
 									{
-										if ("skill".equalsIgnoreCase(skillListNode.getNodeName()))
+										if (SKILL.equalsIgnoreCase(skillListNode.getNodeName()))
 										{
 											attrs = skillListNode.getAttributes();
 											final int skillId = parseInteger(attrs, "id");
-											final int skillLevel = parseInteger(attrs, "level");
+											final int skillLevel = parseInteger(attrs, LEVEL);
 											final Skill skill = SkillData.getInstance().getSkill(skillId, skillLevel);
 											if (skill != null)
 											{
@@ -430,7 +435,7 @@ public class NpcData implements IXmlReader
 										attrs = aiNode.getAttributes();
 										switch (aiNode.getNodeName().toLowerCase())
 										{
-											case "skill":
+											case SKILL:
 											{
 												set.set("minSkillChance", parseInteger(attrs, "minChance"));
 												set.set("maxSkillChance", parseInteger(attrs, "maxChance"));
@@ -509,7 +514,7 @@ public class NpcData implements IXmlReader
 														dropGroups = new ArrayList<>();
 													}
 													
-													final DropGroupHolder group = new DropGroupHolder(parseDouble(dropNode.getAttributes(), "chance"));
+													final DropGroupHolder group = new DropGroupHolder(parseDouble(dropNode.getAttributes(), CHANCE));
 													for (Node groupNode = dropNode.getFirstChild(); groupNode != null; groupNode = groupNode.getNextSibling())
 													{
 														if (groupNode.getNodeName().equalsIgnoreCase("item"))
@@ -523,7 +528,7 @@ public class NpcData implements IXmlReader
 															}
 															else
 															{
-																group.addDrop(new DropHolder(dropType, itemId, parseLong(groupAttrs, "min"), parseLong(groupAttrs, "max"), parseDouble(groupAttrs, "chance")));
+																group.addDrop(new DropHolder(dropType, itemId, parseLong(groupAttrs, "min"), parseLong(groupAttrs, "max"), parseDouble(groupAttrs, CHANCE)));
 															}
 														}
 													}
@@ -548,7 +553,7 @@ public class NpcData implements IXmlReader
 													}
 													else
 													{
-														dropLists.add(new DropHolder(dropType, itemId, parseLong(dropAttrs, "min"), parseLong(dropAttrs, "max"), parseDouble(dropAttrs, "chance")));
+														dropLists.add(new DropHolder(dropType, itemId, parseLong(dropAttrs, "min"), parseLong(dropAttrs, "max"), parseDouble(dropAttrs, CHANCE)));
 													}
 												}
 											}

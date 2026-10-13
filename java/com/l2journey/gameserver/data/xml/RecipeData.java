@@ -39,6 +39,8 @@ import com.l2journey.gameserver.model.actor.Player;
  */
 public class RecipeData implements IXmlReader
 {
+	private static final String COUNT = "count";
+
 	private final Map<Integer, RecipeList> _recipes = new HashMap<>();
 	
 	/**
@@ -168,18 +170,18 @@ public class RecipeData implements IXmlReader
 							else if ("ingredient".equalsIgnoreCase(c.getNodeName()))
 							{
 								final int ingId = Integer.parseInt(c.getAttributes().getNamedItem("id").getNodeValue());
-								final int ingCount = Integer.parseInt(c.getAttributes().getNamedItem("count").getNodeValue());
+								final int ingCount = Integer.parseInt(c.getAttributes().getNamedItem(COUNT).getNodeValue());
 								recipePartList.add(new RecipeHolder(ingId, ingCount));
 							}
 							else if ("production".equalsIgnoreCase(c.getNodeName()))
 							{
 								set.set("itemId", Integer.parseInt(c.getAttributes().getNamedItem("id").getNodeValue()));
-								set.set("count", Integer.parseInt(c.getAttributes().getNamedItem("count").getNodeValue()));
+								set.set(COUNT, Integer.parseInt(c.getAttributes().getNamedItem(COUNT).getNodeValue()));
 							}
 							else if ("productionRare".equalsIgnoreCase(c.getNodeName()))
 							{
 								set.set("rareItemId", Integer.parseInt(c.getAttributes().getNamedItem("id").getNodeValue()));
-								set.set("rareCount", Integer.parseInt(c.getAttributes().getNamedItem("count").getNodeValue()));
+								set.set("rareCount", Integer.parseInt(c.getAttributes().getNamedItem(COUNT).getNodeValue()));
 								set.set("rarity", Integer.parseInt(c.getAttributes().getNamedItem("rarity").getNodeValue()));
 								haveRare = true;
 							}

@@ -46,6 +46,9 @@ import ai.AbstractNpcAI;
  */
 public class Anais extends AbstractNpcAI
 {
+	private static final String GUARD_ATTACK = "GUARD_ATTACK";
+	private static final String CHECK = "CHECK";
+
 	// NPCs
 	private static final int ANAIS = 25701;
 	private static final int DIVINE_BURNER = 18915;
@@ -73,14 +76,14 @@ public class Anais extends AbstractNpcAI
 		if (pot < 4)
 		{
 			_current = npc;
-			if (getQuestTimer("CHECK", anais, null) == null)
+			if (getQuestTimer(CHECK, anais, null) == null)
 			{
-				startQuestTimer("CHECK", 3000, anais, null);
+				startQuestTimer(CHECK, 3000, anais, null);
 			}
 		}
 		else
 		{
-			cancelQuestTimer("CHECK", anais, null);
+			cancelQuestTimer(CHECK, anais, null);
 		}
 	}
 	
@@ -89,11 +92,11 @@ public class Anais extends AbstractNpcAI
 	{
 		switch (event)
 		{
-			case "CHECK":
+			case CHECK:
 			{
 				if (!npc.isAttackingNow())
 				{
-					cancelQuestTimer("CHECK", npc, null);
+					cancelQuestTimer(CHECK, npc, null);
 				}
 				if ((_current != null) || (_pot < 4))
 				{
@@ -107,13 +110,13 @@ public class Anais extends AbstractNpcAI
 					ward.asAttackable().addDamageHate(_nextTarget, 0, 999);
 					ward.setRunning();
 					ward.getAI().setIntention(Intention.ATTACK, _nextTarget, null);
-					startQuestTimer("GUARD_ATTACK", 1000, ward, _nextTarget, true);
+					startQuestTimer(GUARD_ATTACK, 1000, ward, _nextTarget, true);
 					startQuestTimer("SUICIDE", 20000, ward, null);
 					ward.getAI().setIntention(Intention.ATTACK, _nextTarget);
 				}
 				break;
 			}
-			case "GUARD_ATTACK":
+			case GUARD_ATTACK:
 			{
 				if (_nextTarget != null)
 				{
@@ -125,7 +128,7 @@ public class Anais extends AbstractNpcAI
 					else if (distance > 2000)
 					{
 						npc.doDie(null);
-						cancelQuestTimer("GUARD_ATTACK", npc, player);
+						cancelQuestTimer(GUARD_ATTACK, npc, player);
 					}
 				}
 				break;
@@ -133,7 +136,7 @@ public class Anais extends AbstractNpcAI
 			case "SUICIDE":
 			{
 				npc.doCast(DIVINE_NOVA.getSkill());
-				cancelQuestTimer("GUARD_ATTACK", npc, _nextTarget);
+				cancelQuestTimer(GUARD_ATTACK, npc, _nextTarget);
 				if (_current != null)
 				{
 					_current.setDisplayEffect(2);
@@ -182,8 +185,8 @@ public class Anais extends AbstractNpcAI
 	public void onKill(Npc npc, Player killer, boolean isSummon)
 	{
 		npc.doCast(DIVINE_NOVA.getSkill());
-		cancelQuestTimer("GUARD_ATTACK", npc, _nextTarget);
-		cancelQuestTimer("CHECK", npc, null);
+		cancelQuestTimer(GUARD_ATTACK, npc, _nextTarget);
+		cancelQuestTimer(CHECK, npc, null);
 		if (_current != null)
 		{
 			_current.setDisplayEffect(2);

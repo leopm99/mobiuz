@@ -36,20 +36,22 @@ import com.l2journey.gameserver.network.SystemMessageId;
  */
 public class AdminHeal implements IAdminCommandHandler
 {
+	private static final String ADMIN_HEAL = "admin_heal";
+
 	private static final Logger LOGGER = Logger.getLogger(AdminRes.class.getName());
 	private static final String[] ADMIN_COMMANDS =
 	{
-		"admin_heal"
+		ADMIN_HEAL
 	};
 	
 	@Override
 	public boolean useAdminCommand(String command, Player activeChar)
 	{
-		if (command.equals("admin_heal"))
+		if (command.equals(ADMIN_HEAL))
 		{
 			handleHeal(activeChar);
 		}
-		else if (command.startsWith("admin_heal"))
+		else if (command.startsWith(ADMIN_HEAL))
 		{
 			try
 			{

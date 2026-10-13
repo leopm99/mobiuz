@@ -40,6 +40,8 @@ import com.l2journey.gameserver.model.actor.Player;
 
 public class SoIManager
 {
+	private static final String SOI_OPENED = "SoI_opened";
+
 	protected static final Logger LOGGER = Logger.getLogger(SoIManager.class.getName());
 	
 	private static final long SOI_OPEN_TIME = (24 * 60L) * 60 * 1000;
@@ -87,7 +89,7 @@ public class SoIManager
 		{
 			return 0;
 		}
-		return (GlobalVariablesManager.getInstance().getLong("SoI_opened", 0) * 1000) - System.currentTimeMillis();
+		return (GlobalVariablesManager.getInstance().getLong(SOI_OPENED, 0) * 1000) - System.currentTimeMillis();
 	}
 	
 	public static void setCurrentStage(int stage)
@@ -125,7 +127,7 @@ public class SoIManager
 		}
 		
 		final long closeTime = System.currentTimeMillis() + time;
-		GlobalVariablesManager.getInstance().set("SoI_opened", closeTime / 1000);
+		GlobalVariablesManager.getInstance().set(SOI_OPENED, closeTime / 1000);
 		LOGGER.info(() -> "Seed of Infinity Manager: Opening the seed until " + TimeUtil.getDateTimeString(time));
 		spawnOpenedSeed();
 		DoorData.getInstance().getDoor(14240102).openMe();
@@ -140,7 +142,7 @@ public class SoIManager
 	public static void closeSeed()
 	{
 		LOGGER.info("Seed of Infinity Manager: Closing the seed.");
-		GlobalVariablesManager.getInstance().remove("SoI_opened");
+		GlobalVariablesManager.getInstance().remove(SOI_OPENED);
 		DoorData.getInstance().getDoor(14240102).closeMe();
 		for (Player ch : ZoneManager.getInstance().getZoneById(60010).getPlayersInside())
 		{

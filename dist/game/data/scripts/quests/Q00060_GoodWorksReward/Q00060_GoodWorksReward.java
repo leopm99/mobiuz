@@ -60,6 +60,10 @@ import quests.Q00233_TestOfTheWarSpirit.Q00233_TestOfTheWarSpirit;
  */
 public class Q00060_GoodWorksReward extends Quest
 {
+	private static final String HTML_N_31092_25 = "31092-25.html";
+	private static final String PLAYER_ID = "PLAYER_ID";
+	private static final String SPAWNED = "SPAWNED";
+
 	// NPCs
 	private static final int GROCER_HELVERIA = 30081;
 	private static final int BLACK_MARKETEER_OF_MAMMON = 31092;
@@ -123,7 +127,7 @@ public class Q00060_GoodWorksReward extends Quest
 			final Npc npc0 = npc.getVariables().getObject("npc0", Npc.class);
 			if (npc0 != null)
 			{
-				npc0.getVariables().set("SPAWNED", false);
+				npc0.getVariables().set(SPAWNED, false);
 			}
 			
 			npc.deleteMe();
@@ -516,7 +520,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_DUELIST, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -539,7 +543,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_CHAMPION, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -562,7 +566,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_HEALER, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -585,7 +589,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_WITCHCRAFT, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -608,7 +612,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_SEARCHER, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -631,7 +635,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_SAGITTARIUS, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -654,7 +658,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_MAGUS, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -677,7 +681,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_WITCHCRAFT, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -700,7 +704,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_SUMMONER, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -723,7 +727,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_HEALER, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -746,7 +750,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_REFORMER, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -769,7 +773,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_HEALER, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -792,7 +796,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_DUELIST, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -815,7 +819,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_SEARCHER, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -838,7 +842,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_SAGITTARIUS, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -861,7 +865,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_MAGUS, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -884,7 +888,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_SUMMONER, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -907,7 +911,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_HEALER, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -930,7 +934,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_WITCHCRAFT, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -953,7 +957,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_DUELIST, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -976,7 +980,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_SEARCHER, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -999,7 +1003,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_SAGITTARIUS, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -1022,7 +1026,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_MAGUS, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -1045,7 +1049,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_SUMMONER, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -1068,7 +1072,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_REFORMER, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -1091,7 +1095,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_CHAMPION, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -1114,7 +1118,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_DUELIST, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -1137,7 +1141,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_LORD, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -1160,7 +1164,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_WARSPIRIT, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -1183,7 +1187,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_SEARCHER, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -1206,7 +1210,7 @@ public class Q00060_GoodWorksReward extends Quest
 						giveItems(player, MARK_OF_MAESTRO, 1);
 					}
 					
-					htmltext = "31092-25.html";
+					htmltext = HTML_N_31092_25;
 				}
 				break;
 			}
@@ -1214,12 +1218,12 @@ public class Q00060_GoodWorksReward extends Quest
 			{
 				if (qs.isMemoState(1))
 				{
-					if (!npc.getVariables().getBoolean("SPAWNED", false))
+					if (!npc.getVariables().getBoolean(SPAWNED, false))
 					{
-						npc.getVariables().set("SPAWNED", true);
-						npc.getVariables().set("PLAYER_ID", player.getObjectId());
+						npc.getVariables().set(SPAWNED, true);
+						npc.getVariables().set(PLAYER_ID, player.getObjectId());
 						final Npc pursuer = addSpawn(PURSUER, player.getX() + 50, player.getY() + 50, player.getZ(), 0, false, 0);
-						pursuer.getVariables().set("PLAYER_ID", player.getObjectId());
+						pursuer.getVariables().set(PLAYER_ID, player.getObjectId());
 						pursuer.getVariables().set("npc0", npc);
 						pursuer.getVariables().set("player0", player);
 						addAttackDesire(pursuer, player);
@@ -1239,9 +1243,9 @@ public class Q00060_GoodWorksReward extends Quest
 					takeItems(player, HELVETIAS_ANTIDOTE, 1);
 					qs.setMemoState(8);
 					qs.setCond(8, true);
-					if (npc.getVariables().getBoolean("SPAWNED", true))
+					if (npc.getVariables().getBoolean(SPAWNED, true))
 					{
-						npc.getVariables().set("SPAWNED", false);
+						npc.getVariables().set(SPAWNED, false);
 					}
 					
 					htmltext = event;
@@ -1265,7 +1269,7 @@ public class Q00060_GoodWorksReward extends Quest
 		{
 			if (qs.isMemoState(1) && killer.isPlayer())
 			{
-				if (killer.getObjectId() == npc.getVariables().getInt("PLAYER_ID", 0))
+				if (killer.getObjectId() == npc.getVariables().getInt(PLAYER_ID, 0))
 				{
 					qs.setMemoState(2);
 					qs.setCond(2, true);
@@ -1280,7 +1284,7 @@ public class Q00060_GoodWorksReward extends Quest
 			final Npc npc0 = npc.getVariables().getObject("npc0", Npc.class);
 			if (npc0 != null)
 			{
-				npc0.getVariables().set("SPAWNED", false);
+				npc0.getVariables().set(SPAWNED, false);
 			}
 		}
 		
@@ -1288,7 +1292,7 @@ public class Q00060_GoodWorksReward extends Quest
 		final Npc npc0 = npc.getVariables().getObject("npc0", Npc.class);
 		if (npc0 != null)
 		{
-			npc0.getVariables().set("SPAWNED", false);
+			npc0.getVariables().set(SPAWNED, false);
 		}
 	}
 	
@@ -1407,15 +1411,15 @@ public class Q00060_GoodWorksReward extends Quest
 				{
 					if (memoState == 1)
 					{
-						if (!npc.getVariables().getBoolean("SPAWNED", false))
+						if (!npc.getVariables().getBoolean(SPAWNED, false))
 						{
 							htmltext = "32487-01.html";
 						}
-						else if (npc.getVariables().getBoolean("SPAWNED", true) && (npc.getVariables().getInt("PLAYER_ID", 0) == player.getObjectId()))
+						else if (npc.getVariables().getBoolean(SPAWNED, true) && (npc.getVariables().getInt(PLAYER_ID, 0) == player.getObjectId()))
 						{
 							htmltext = "32487-03.html";
 						}
-						else if (npc.getVariables().getBoolean("SPAWNED", true))
+						else if (npc.getVariables().getBoolean(SPAWNED, true))
 						{
 							htmltext = "32487-02.html";
 						}

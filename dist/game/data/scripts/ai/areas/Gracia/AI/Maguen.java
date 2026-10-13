@@ -51,6 +51,14 @@ import ai.areas.Gracia.AI.NPC.Nemo.Nemo;
  */
 public class Maguen extends AbstractNpcAI
 {
+	private static final String DIST_CHECK_TIMER = "DIST_CHECK_TIMER";
+	private static final String SECOND_TIMER = "SECOND_TIMER";
+	private static final String FIRST_TIMER = "FIRST_TIMER";
+	private static final String THIRD_TIMER = "THIRD_TIMER";
+	private static final String FORTH_TIMER = "FORTH_TIMER";
+	private static final String NPC_EFFECT = "NPC_EFFECT";
+	private static final String END_TIMER = "END_TIMER";
+
 	// NPC
 	private static final int MAGUEN = 18839; // Wild Maguen
 	private static final int[] ELITES =
@@ -113,61 +121,61 @@ public class Maguen extends AbstractNpcAI
 				maguen.getAI().setIntention(Intention.FOLLOW, player);
 				maguen.broadcastStatusUpdate();
 				showOnScreenMsg(player, NpcStringId.MAGUEN_APPEARANCE, 2, 4000);
-				startQuestTimer("DIST_CHECK_TIMER", 1000, maguen, player);
+				startQuestTimer(DIST_CHECK_TIMER, 1000, maguen, player);
 				break;
 			}
-			case "DIST_CHECK_TIMER":
+			case DIST_CHECK_TIMER:
 			{
 				if ((npc.calculateDistance3D(player) < 100) && (npc.getVariables().getInt("IS_NEAR_PLAYER") == 0))
 				{
 					npc.getVariables().set("IS_NEAR_PLAYER", 1);
-					startQuestTimer("FIRST_TIMER", 4000, npc, player);
+					startQuestTimer(FIRST_TIMER, 4000, npc, player);
 				}
 				else
 				{
-					startQuestTimer("DIST_CHECK_TIMER", 1000, npc, player);
+					startQuestTimer(DIST_CHECK_TIMER, 1000, npc, player);
 				}
 				break;
 			}
-			case "FIRST_TIMER":
+			case FIRST_TIMER:
 			{
 				npc.getAI().stopFollow();
 				final int randomEffect = getRandom(1, 3);
 				npc.setDisplayEffect(randomEffect);
-				npc.getVariables().set("NPC_EFFECT", randomEffect);
-				startQuestTimer("SECOND_TIMER", 5000 + getRandom(300), npc, player);
+				npc.getVariables().set(NPC_EFFECT, randomEffect);
+				startQuestTimer(SECOND_TIMER, 5000 + getRandom(300), npc, player);
 				npc.broadcastSocialAction(getRandom(1, 3));
 				break;
 			}
-			case "SECOND_TIMER":
+			case SECOND_TIMER:
 			{
 				final int randomEffect = getRandom(1, 3);
 				npc.setDisplayEffect(4);
 				npc.setDisplayEffect(randomEffect);
-				npc.getVariables().set("NPC_EFFECT", randomEffect);
-				startQuestTimer("THIRD_TIMER", 4600 + getRandom(600), npc, player);
+				npc.getVariables().set(NPC_EFFECT, randomEffect);
+				startQuestTimer(THIRD_TIMER, 4600 + getRandom(600), npc, player);
 				npc.broadcastSocialAction(getRandom(1, 3));
 				break;
 			}
-			case "THIRD_TIMER":
+			case THIRD_TIMER:
 			{
 				final int randomEffect = getRandom(1, 3);
 				npc.setDisplayEffect(4);
 				npc.setDisplayEffect(randomEffect);
-				npc.getVariables().set("NPC_EFFECT", randomEffect);
-				startQuestTimer("FORTH_TIMER", 4200 + getRandom(900), npc, player);
+				npc.getVariables().set(NPC_EFFECT, randomEffect);
+				startQuestTimer(FORTH_TIMER, 4200 + getRandom(900), npc, player);
 				npc.broadcastSocialAction(getRandom(1, 3));
 				break;
 			}
-			case "FORTH_TIMER":
+			case FORTH_TIMER:
 			{
-				npc.getVariables().set("NPC_EFFECT", 0);
+				npc.getVariables().set(NPC_EFFECT, 0);
 				npc.setDisplayEffect(4);
-				startQuestTimer("END_TIMER", 500, npc, player);
+				startQuestTimer(END_TIMER, 500, npc, player);
 				npc.broadcastSocialAction(getRandom(1, 3));
 				break;
 			}
-			case "END_TIMER":
+			case END_TIMER:
 			{
 				if (npc.getVariables().getInt("TEST_MAGUEN") == 1)
 				{
@@ -203,7 +211,7 @@ public class Maguen extends AbstractNpcAI
 			npc.setTarget(player);
 			npc.doCast((getRandom(100) < 70) ? B_BUFF_1.getSkill() : B_BUFF_2.getSkill());
 			maguenPetChance(player);
-			startQuestTimer("END_TIMER", 3000, npc, player);
+			startQuestTimer(END_TIMER, 3000, npc, player);
 		}
 		else if ((b == 0) && (c == 3) && (r == 0))
 		{
@@ -212,7 +220,7 @@ public class Maguen extends AbstractNpcAI
 			npc.setTarget(player);
 			npc.doCast((getRandom(100) < 70) ? C_BUFF_1.getSkill() : C_BUFF_2.getSkill());
 			maguenPetChance(player);
-			startQuestTimer("END_TIMER", 3000, npc, player);
+			startQuestTimer(END_TIMER, 3000, npc, player);
 		}
 		else if ((b == 0) && (c == 0) && (r == 3))
 		{
@@ -221,7 +229,7 @@ public class Maguen extends AbstractNpcAI
 			npc.setTarget(player);
 			npc.doCast((getRandom(100) < 70) ? R_BUFF_1.getSkill() : R_BUFF_2.getSkill());
 			maguenPetChance(player);
-			startQuestTimer("END_TIMER", 3000, npc, player);
+			startQuestTimer(END_TIMER, 3000, npc, player);
 		}
 		else if ((b + c + r) == 3)
 		{
@@ -257,7 +265,7 @@ public class Maguen extends AbstractNpcAI
 					npc.doCast(skillToCast.getSkill());
 				}
 				maguenPetChance(player);
-				startQuestTimer("END_TIMER", 3000, npc, player);
+				startQuestTimer(END_TIMER, 3000, npc, player);
 			}
 			else
 			{
@@ -269,7 +277,7 @@ public class Maguen extends AbstractNpcAI
 		}
 		else
 		{
-			startQuestTimer("END_TIMER", 1000, npc, player);
+			startQuestTimer(END_TIMER, 1000, npc, player);
 		}
 		npc.setDisplayEffect(4);
 	}
@@ -278,7 +286,7 @@ public class Maguen extends AbstractNpcAI
 	public void onSkillSee(Npc npc, Player caster, Skill skill, List<WorldObject> targets, boolean isSummon)
 	{
 		if (((skill == MACHINE.getSkill()) && (caster == npc.getVariables().getObject("SUMMON_PLAYER", Player.class))) //
-			&& ((npc.getVariables().getInt("NPC_EFFECT") != 0) && (npc.getVariables().getInt("BLOCKED_SKILLSEE") == 0)))
+			&& ((npc.getVariables().getInt(NPC_EFFECT) != 0) && (npc.getVariables().getInt("BLOCKED_SKILLSEE") == 0)))
 		{
 			final BuffInfo info1 = caster.getEffectList().getBuffInfoByAbnormalType(B_PLASMA1.getSkill().getAbnormalType());
 			final BuffInfo info2 = caster.getEffectList().getBuffInfoByAbnormalType(C_PLASMA1.getSkill().getAbnormalType());
@@ -289,13 +297,13 @@ public class Maguen extends AbstractNpcAI
 			caster.getEffectList().stopSkillEffects(SkillFinishType.REMOVED, B_PLASMA1.getSkill().getAbnormalType());
 			caster.getEffectList().stopSkillEffects(SkillFinishType.REMOVED, C_PLASMA1.getSkill().getAbnormalType());
 			caster.getEffectList().stopSkillEffects(SkillFinishType.REMOVED, R_PLASMA1.getSkill().getAbnormalType());
-			cancelQuestTimer("FIRST_TIMER", npc, caster);
-			cancelQuestTimer("SECOND_TIMER", npc, caster);
-			cancelQuestTimer("THIRD_TIMER", npc, caster);
-			cancelQuestTimer("FORTH_TIMER", npc, caster);
+			cancelQuestTimer(FIRST_TIMER, npc, caster);
+			cancelQuestTimer(SECOND_TIMER, npc, caster);
+			cancelQuestTimer(THIRD_TIMER, npc, caster);
+			cancelQuestTimer(FORTH_TIMER, npc, caster);
 			npc.getVariables().set("BLOCKED_SKILLSEE", 1);
 			SkillHolder skillToCast = null;
-			switch (npc.getVariables().getInt("NPC_EFFECT"))
+			switch (npc.getVariables().getInt(NPC_EFFECT))
 			{
 				case 1:
 				{

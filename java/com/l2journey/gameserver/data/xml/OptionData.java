@@ -53,6 +53,9 @@ import com.l2journey.gameserver.model.stats.functions.FuncTemplate;
  */
 public class OptionData implements IXmlReader
 {
+	private static final String CHANCE = "chance";
+	private static final String LEVEL = "level";
+
 	private static final Logger LOGGER = Logger.getLogger(OptionData.class.getName());
 	
 	private static Options[] options;
@@ -116,7 +119,7 @@ public class OptionData implements IXmlReader
 								case "active_skill":
 								{
 									final int skillId = parseInteger(cd.getAttributes(), "id");
-									final int skillLevel = parseInteger(cd.getAttributes(), "level");
+									final int skillLevel = parseInteger(cd.getAttributes(), LEVEL);
 									final Skill skill = SkillData.getInstance().getSkill(skillId, skillLevel);
 									if (skill != null)
 									{
@@ -131,7 +134,7 @@ public class OptionData implements IXmlReader
 								case "passive_skill":
 								{
 									final int skillId = parseInteger(cd.getAttributes(), "id");
-									final int skillLevel = parseInteger(cd.getAttributes(), "level");
+									final int skillLevel = parseInteger(cd.getAttributes(), LEVEL);
 									final Skill skill = SkillData.getInstance().getSkill(skillId, skillLevel);
 									if (skill != null)
 									{
@@ -146,11 +149,11 @@ public class OptionData implements IXmlReader
 								case "attack_skill":
 								{
 									final int skillId = parseInteger(cd.getAttributes(), "id");
-									final int skillLevel = parseInteger(cd.getAttributes(), "level");
+									final int skillLevel = parseInteger(cd.getAttributes(), LEVEL);
 									final Skill skill = SkillData.getInstance().getSkill(skillId, skillLevel);
 									if (skill != null)
 									{
-										option.addActivationSkill(new OptionSkillHolder(skill, parseDouble(cd.getAttributes(), "chance"), OptionSkillType.ATTACK));
+										option.addActivationSkill(new OptionSkillHolder(skill, parseDouble(cd.getAttributes(), CHANCE), OptionSkillType.ATTACK));
 									}
 									else
 									{
@@ -161,11 +164,11 @@ public class OptionData implements IXmlReader
 								case "magic_skill":
 								{
 									final int skillId = parseInteger(cd.getAttributes(), "id");
-									final int skillLevel = parseInteger(cd.getAttributes(), "level");
+									final int skillLevel = parseInteger(cd.getAttributes(), LEVEL);
 									final Skill skill = SkillData.getInstance().getSkill(skillId, skillLevel);
 									if (skill != null)
 									{
-										option.addActivationSkill(new OptionSkillHolder(skill, parseDouble(cd.getAttributes(), "chance"), OptionSkillType.MAGIC));
+										option.addActivationSkill(new OptionSkillHolder(skill, parseDouble(cd.getAttributes(), CHANCE), OptionSkillType.MAGIC));
 									}
 									else
 									{
@@ -176,11 +179,11 @@ public class OptionData implements IXmlReader
 								case "critical_skill":
 								{
 									final int skillId = parseInteger(cd.getAttributes(), "id");
-									final int skillLevel = parseInteger(cd.getAttributes(), "level");
+									final int skillLevel = parseInteger(cd.getAttributes(), LEVEL);
 									final Skill skill = SkillData.getInstance().getSkill(skillId, skillLevel);
 									if (skill != null)
 									{
-										option.addActivationSkill(new OptionSkillHolder(skill, parseDouble(cd.getAttributes(), "chance"), OptionSkillType.CRITICAL));
+										option.addActivationSkill(new OptionSkillHolder(skill, parseDouble(cd.getAttributes(), CHANCE), OptionSkillType.CRITICAL));
 									}
 									else
 									{

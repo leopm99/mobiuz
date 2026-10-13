@@ -33,6 +33,9 @@ import com.l2journey.gameserver.model.quest.State;
  */
 public class Q00691_MatrasSuspiciousRequest extends Quest
 {
+	private static final String SUBMITTED_GEMS = "submitted_gems";
+	private static final String PH_ITEMCOUNT = "%itemcount%";
+
 	// NPC
 	private static final int MATRAS = 32245;
 	// Items
@@ -91,16 +94,16 @@ public class Q00691_MatrasSuspiciousRequest extends Quest
 			{
 				if (qs.isStarted())
 				{
-					final int gemsCount = qs.getInt("submitted_gems");
+					final int gemsCount = qs.getInt(SUBMITTED_GEMS);
 					if (gemsCount >= 744)
 					{
-						qs.set("submitted_gems", Integer.toString(gemsCount - 744));
+						qs.set(SUBMITTED_GEMS, Integer.toString(gemsCount - 744));
 						giveItems(player, DYNASTY_SOUL_II, 1);
 						htmltext = "32245-09.html";
 					}
 					else
 					{
-						htmltext = getHtm(player, "32245-10.html").replace("%itemcount%", qs.get("submitted_gems"));
+						htmltext = getHtm(player, "32245-10.html").replace(PH_ITEMCOUNT, qs.get(SUBMITTED_GEMS));
 					}
 				}
 				break;
@@ -109,12 +112,12 @@ public class Q00691_MatrasSuspiciousRequest extends Quest
 			{
 				if (qs.isStarted())
 				{
-					final int submittedCount = qs.getInt("submitted_gems");
+					final int submittedCount = qs.getInt(SUBMITTED_GEMS);
 					final int broughtCount = (int) getQuestItemsCount(player, RED_GEM);
 					final int finalCount = submittedCount + broughtCount;
 					takeItems(player, RED_GEM, broughtCount);
-					qs.set("submitted_gems", Integer.toString(finalCount));
-					htmltext = getHtm(player, "32245-08.html").replace("%itemcount%", Integer.toString(finalCount));
+					qs.set(SUBMITTED_GEMS, Integer.toString(finalCount));
+					htmltext = getHtm(player, "32245-08.html").replace(PH_ITEMCOUNT, Integer.toString(finalCount));
 				}
 				break;
 			}
@@ -122,7 +125,7 @@ public class Q00691_MatrasSuspiciousRequest extends Quest
 			{
 				if (qs.isStarted())
 				{
-					giveAdena(player, (qs.getInt("submitted_gems") * 10000), true);
+					giveAdena(player, (qs.getInt(SUBMITTED_GEMS) * 10000), true);
 					qs.exitQuest(true, true);
 					htmltext = event;
 				}
@@ -173,9 +176,9 @@ public class Q00691_MatrasSuspiciousRequest extends Quest
 				{
 					htmltext = "32245-05.html";
 				}
-				else if (qs.getInt("submitted_gems") > 0)
+				else if (qs.getInt(SUBMITTED_GEMS) > 0)
 				{
-					htmltext = getHtm(player, "32245-07.html").replace("%itemcount%", qs.get("submitted_gems"));
+					htmltext = getHtm(player, "32245-07.html").replace(PH_ITEMCOUNT, qs.get(SUBMITTED_GEMS));
 				}
 				else
 				{

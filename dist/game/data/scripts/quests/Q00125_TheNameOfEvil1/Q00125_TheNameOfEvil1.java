@@ -36,6 +36,8 @@ import quests.Q00124_MeetingTheElroki.Q00124_MeetingTheElroki;
  */
 public class Q00125_TheNameOfEvil1 extends Quest
 {
+	private static final String HTML_N_32119_18 = "32119-18.html";
+
 	// NPCs
 	private static final int MUSHIKA = 32114;
 	private static final int KARAKAWEI = 32117;
@@ -162,7 +164,7 @@ public class Q00125_TheNameOfEvil1 extends Quest
 				qs.unset("U");
 				break;
 			}
-			case "32119-18.html":
+			case HTML_N_32119_18:
 			{
 				if (qs.isCond(5))
 				{
@@ -485,7 +487,7 @@ public class Q00125_TheNameOfEvil1 extends Quest
 						}
 						case 6:
 						{
-							htmltext = "32119-18.html";
+							htmltext = HTML_N_32119_18;
 							break;
 						}
 						default:
@@ -532,7 +534,7 @@ public class Q00125_TheNameOfEvil1 extends Quest
 						}
 						default:
 						{
-							htmltext = "32119-18.html";
+							htmltext = HTML_N_32119_18;
 							break;
 						}
 					}

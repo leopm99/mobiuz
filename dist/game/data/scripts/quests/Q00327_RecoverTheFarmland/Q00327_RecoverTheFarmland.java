@@ -33,6 +33,9 @@ import com.l2journey.gameserver.model.quest.QuestState;
 
 public class Q00327_RecoverTheFarmland extends Quest
 {
+	private static final String HTML_N_30313_10 = "30313-10.html";
+	private static final String HTML_N_30314_07 = "30314-07.html";
+
 	// NPCs
 	private static final int IRIS = 30034;
 	private static final int ASHA = 30313;
@@ -189,7 +192,7 @@ public class Q00327_RecoverTheFarmland extends Quest
 					}
 					else
 					{
-						html = "30313-10.html";
+						html = HTML_N_30313_10;
 					}
 				}
 				break;
@@ -210,7 +213,7 @@ public class Q00327_RecoverTheFarmland extends Quest
 					}
 					else
 					{
-						html = "30313-10.html";
+						html = HTML_N_30313_10;
 					}
 				}
 				break;
@@ -231,7 +234,7 @@ public class Q00327_RecoverTheFarmland extends Quest
 					}
 					else
 					{
-						html = "30313-10.html";
+						html = HTML_N_30313_10;
 					}
 				}
 				break;
@@ -252,7 +255,7 @@ public class Q00327_RecoverTheFarmland extends Quest
 					}
 					else
 					{
-						html = "30313-10.html";
+						html = HTML_N_30313_10;
 					}
 				}
 				break;
@@ -261,7 +264,7 @@ public class Q00327_RecoverTheFarmland extends Quest
 			{
 				if (!hasQuestItems(player, ANCIENT_CLAY_URN))
 				{
-					html = "30314-07.html";
+					html = HTML_N_30314_07;
 				}
 				else
 				{
@@ -275,7 +278,7 @@ public class Q00327_RecoverTheFarmland extends Quest
 			{
 				if (!hasQuestItems(player, ANCIENT_BRASS_TIARA))
 				{
-					html = "30314-07.html";
+					html = HTML_N_30314_07;
 				}
 				else
 				{
@@ -301,7 +304,7 @@ public class Q00327_RecoverTheFarmland extends Quest
 			{
 				if (!hasQuestItems(player, ANCIENT_BRONZE_MIRROR))
 				{
-					html = "30314-07.html";
+					html = HTML_N_30314_07;
 				}
 				else
 				{
@@ -315,7 +318,7 @@ public class Q00327_RecoverTheFarmland extends Quest
 			{
 				if (!hasQuestItems(player, ANCIENT_JADE_NECKLACE))
 				{
-					html = "30314-07.html";
+					html = HTML_N_30314_07;
 				}
 				else
 				{

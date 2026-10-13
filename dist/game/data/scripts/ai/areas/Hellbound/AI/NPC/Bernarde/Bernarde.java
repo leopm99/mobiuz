@@ -41,6 +41,8 @@ import ai.areas.Hellbound.HellboundEngine;
  */
 public class Bernarde extends AbstractNpcAI
 {
+	private static final String HTML_N_32300_03 = "32300-03.htm";
+
 	// NPCs
 	private static final int BERNARDE = 32300;
 	// Misc
@@ -105,19 +107,19 @@ public class Bernarde extends AbstractNpcAI
 			}
 			case 2:
 			{
-				return isTransformed(player) ? "32300-02.htm" : "32300-03.htm";
+				return isTransformed(player) ? "32300-02.htm" : HTML_N_32300_03;
 			}
 			case 3:
 			{
-				return isTransformed(player) ? "32300-01c.htm" : "32300-03.htm";
+				return isTransformed(player) ? "32300-01c.htm" : HTML_N_32300_03;
 			}
 			case 4:
 			{
-				return isTransformed(player) ? "32300-01d.htm" : "32300-03.htm";
+				return isTransformed(player) ? "32300-01d.htm" : HTML_N_32300_03;
 			}
 			default:
 			{
-				return isTransformed(player) ? "32300-01f.htm" : "32300-03.htm";
+				return isTransformed(player) ? "32300-01f.htm" : HTML_N_32300_03;
 			}
 		}
 	}

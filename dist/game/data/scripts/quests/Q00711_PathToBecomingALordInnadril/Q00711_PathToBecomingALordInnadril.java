@@ -36,6 +36,8 @@ import com.l2journey.gameserver.network.serverpackets.NpcSay;
  */
 public class Q00711_PathToBecomingALordInnadril extends Quest
 {
+	private static final String CONFIDANT = "confidant";
+
 	private static final int NEURATH = 35316;
 	private static final int IASON_HEINE = 30969;
 	
@@ -86,7 +88,7 @@ public class Q00711_PathToBecomingALordInnadril extends Quest
 			{
 				if (isLordAvailable(2, qs))
 				{
-					castleOwner.getQuestState(getName()).set("confidant", String.valueOf(qs.getPlayer().getObjectId()));
+					castleOwner.getQuestState(getName()).set(CONFIDANT, String.valueOf(qs.getPlayer().getObjectId()));
 					castleOwner.getQuestState(getName()).setCond(3);
 					qs.setState(State.STARTED);
 				}
@@ -229,7 +231,7 @@ public class Q00711_PathToBecomingALordInnadril extends Quest
 				{
 					if (isLordAvailable(3, qs))
 					{
-						if (castleOwner.getQuestState(getName()).getInt("confidant") == qs.getPlayer().getObjectId())
+						if (castleOwner.getQuestState(getName()).getInt(CONFIDANT) == qs.getPlayer().getObjectId())
 						{
 							htmltext = "30969-01.html";
 						}
@@ -240,7 +242,7 @@ public class Q00711_PathToBecomingALordInnadril extends Quest
 					}
 					else if (isLordAvailable(4, qs))
 					{
-						if (castleOwner.getQuestState(getName()).getInt("confidant") == qs.getPlayer().getObjectId())
+						if (castleOwner.getQuestState(getName()).getInt(CONFIDANT) == qs.getPlayer().getObjectId())
 						{
 							htmltext = "30969-03.html";
 						}

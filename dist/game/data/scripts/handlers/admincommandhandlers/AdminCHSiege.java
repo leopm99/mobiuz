@@ -48,6 +48,8 @@ import com.l2journey.gameserver.network.serverpackets.SiegeInfo;
  */
 public class AdminCHSiege implements IAdminCommandHandler
 {
+	private static final String PH_CLANHALLOWNER = "%clanhallOwner%";
+
 	private static final Logger LOGGER = Logger.getLogger(AdminCHSiege.class.getName());
 	
 	private static final String[] COMMANDS =
@@ -395,16 +397,16 @@ public class AdminCHSiege implements IAdminCommandHandler
 			final Clan owner = ClanTable.getInstance().getClan(hall.getOwnerId());
 			if (owner != null)
 			{
-				msg.replace("%clanhallOwner%", owner.getName());
+				msg.replace(PH_CLANHALLOWNER, owner.getName());
 			}
 			else
 			{
-				msg.replace("%clanhallOwner%", "No Owner");
+				msg.replace(PH_CLANHALLOWNER, "No Owner");
 			}
 		}
 		else
 		{
-			msg.replace("%clanhallOwner%", "No Owner");
+			msg.replace(PH_CLANHALLOWNER, "No Owner");
 		}
 		activeChar.sendPacket(msg);
 	}

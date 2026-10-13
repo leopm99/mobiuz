@@ -64,6 +64,8 @@ import com.l2journey.gameserver.util.Broadcast;
  */
 public class AdminEffects implements IAdminCommandHandler
 {
+	private static final String ADMIN_PLAY_SOUNDS = "admin_play_sounds";
+
 	private static final String[] ADMIN_COMMANDS =
 	{
 		"admin_invis",
@@ -94,7 +96,7 @@ public class AdminEffects implements IAdminCommandHandler
 		"admin_ave_special",
 		"admin_ave_event",
 		"admin_social_menu",
-		"admin_play_sounds",
+		ADMIN_PLAY_SOUNDS,
 		"admin_play_sound",
 		"admin_atmosphere",
 		"admin_atmosphere_menu",
@@ -204,11 +206,11 @@ public class AdminEffects implements IAdminCommandHandler
 				activeChar.sendSysMessage("Usage: //atmosphere <signsky dawn|dusk>|<sky day|night|red> <duration>");
 			}
 		}
-		else if (command.equals("admin_play_sounds"))
+		else if (command.equals(ADMIN_PLAY_SOUNDS))
 		{
 			AdminHtml.showAdminHtml(activeChar, "songs/songs.htm");
 		}
-		else if (command.startsWith("admin_play_sounds"))
+		else if (command.startsWith(ADMIN_PLAY_SOUNDS))
 		{
 			try
 			{

@@ -56,6 +56,10 @@ import quests.Q00694_BreakThroughTheHallOfSuffering.Q00694_BreakThroughTheHallOf
 
 public class HallOfSufferingAttack extends AbstractNpcAI
 {
+	private static final String SPAWNBOSSGUARDS = "spawnBossGuards";
+	private static final String ISTWINSEPARATED = "isTwinSeparated";
+	private static final String RESSURECTTWIN = "ressurectTwin";
+
 	private class HSAWorld extends InstanceWorld
 	{
 		public HSAWorld()
@@ -384,7 +388,7 @@ public class HallOfSufferingAttack extends AbstractNpcAI
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
 		if (tmpworld instanceof HSAWorld world)
 		{
-			if (event.equalsIgnoreCase("spawnBossGuards"))
+			if (event.equalsIgnoreCase(SPAWNBOSSGUARDS))
 			{
 				if (!world.klanikus.isInCombat() && !world.klodekus.isInCombat())
 				{
@@ -398,9 +402,9 @@ public class HallOfSufferingAttack extends AbstractNpcAI
 					mob = addSpawn(getRandomEntry(TWIN_MOBIDS), TWIN_SPAWNS[1][1], TWIN_SPAWNS[1][2], TWIN_SPAWNS[1][3], 0, false, 0, false, npc.getInstanceId());
 					mob.asAttackable().addDamageHate(npc.asAttackable().getMostHated(), 0, 1);
 				}
-				startQuestTimer("spawnBossGuards", BOSS_MINION_SPAWN_TIME, npc, null);
+				startQuestTimer(SPAWNBOSSGUARDS, BOSS_MINION_SPAWN_TIME, npc, null);
 			}
-			else if (event.equalsIgnoreCase("isTwinSeparated"))
+			else if (event.equalsIgnoreCase(ISTWINSEPARATED))
 			{
 				if (LocationUtil.checkIfInRange(500, world.klanikus, world.klodekus, false))
 				{
@@ -412,9 +416,9 @@ public class HallOfSufferingAttack extends AbstractNpcAI
 					world.klanikus.setInvul(true);
 					world.klodekus.setInvul(true);
 				}
-				startQuestTimer("isTwinSeparated", 10000, npc, null);
+				startQuestTimer(ISTWINSEPARATED, 10000, npc, null);
 			}
-			else if (event.equalsIgnoreCase("ressurectTwin"))
+			else if (event.equalsIgnoreCase(RESSURECTTWIN))
 			{
 				final Skill skill = SkillData.getInstance().getSkill(5824, 1);
 				final Npc aliveTwin = (world.klanikus == npc ? world.klodekus : world.klanikus);
@@ -467,8 +471,8 @@ public class HallOfSufferingAttack extends AbstractNpcAI
 						}
 					}
 				}
-				startQuestTimer("spawnBossGuards", BOSS_MINION_SPAWN_TIME, npc, null);
-				startQuestTimer("isTwinSeparated", 10000, npc, null);
+				startQuestTimer(SPAWNBOSSGUARDS, BOSS_MINION_SPAWN_TIME, npc, null);
+				startQuestTimer(ISTWINSEPARATED, 10000, npc, null);
 			}
 			else if (damage >= npc.getCurrentHp())
 			{
@@ -487,7 +491,7 @@ public class HallOfSufferingAttack extends AbstractNpcAI
 				else
 				{
 					bossSimpleDie(npc);
-					startQuestTimer("ressurectTwin", BOSS_RESSURECT_TIME, npc, null);
+					startQuestTimer(RESSURECTTWIN, BOSS_RESSURECT_TIME, npc, null);
 				}
 			}
 		}
@@ -569,9 +573,9 @@ public class HallOfSufferingAttack extends AbstractNpcAI
 				
 				world.klanikus = null;
 				world.klodekus = null;
-				cancelQuestTimers("ressurectTwin");
-				cancelQuestTimers("spawnBossGuards");
-				cancelQuestTimers("isTwinSeparated");
+				cancelQuestTimers(RESSURECTTWIN);
+				cancelQuestTimers(SPAWNBOSSGUARDS);
+				cancelQuestTimers(ISTWINSEPARATED);
 				addSpawn(TEPIOS, TEPIOS_SPAWN[0], TEPIOS_SPAWN[1], TEPIOS_SPAWN[2], 0, false, 0, false, world.getInstanceId());
 				
 				for (Player killer : world.getAllowed())

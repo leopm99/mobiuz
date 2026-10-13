@@ -51,14 +51,18 @@ import com.l2journey.gameserver.network.serverpackets.FriendPacket;
  */
 public class FriendsBoard implements IWriteBoardHandler
 {
+	private static final String FRIENDBLOCKLIST = "_friendblocklist";
+	private static final String FRIENDINFO = "_friendinfo_";
+	private static final String FRIENDLIST = "_friendlist";
+
 	private static final Logger LOGGER = Logger.getLogger(FriendsBoard.class.getName());
 	
 	private static final String[] COMMANDS =
 	{
 		"_bbsfriends",
-		"_friendlist",
+		FRIENDLIST,
 		"_friendinfo",
-		"_friendblocklist",
+		FRIENDBLOCKLIST,
 		"_frienddelete",
 		"_frienddeleteall",
 		"_friendblockdelete",
@@ -75,16 +79,16 @@ public class FriendsBoard implements IWriteBoardHandler
 	@Override
 	public boolean parseCommunityBoardCommand(String command, Player player)
 	{
-		if (command.equals("_bbsfriends") || command.equals("_friendlist"))
+		if (command.equals("_bbsfriends") || command.equals(FRIENDLIST))
 		{
 			showFriendList(player, "");
 		}
-		else if (command.startsWith("_friendinfo_"))
+		else if (command.startsWith(FRIENDINFO))
 		{
-			final String name = command.substring("_friendinfo_".length());
+			final String name = command.substring(FRIENDINFO.length());
 			showFriendInfo(player, name);
 		}
-		else if (command.equals("_friendblocklist"))
+		else if (command.equals(FRIENDBLOCKLIST))
 		{
 			showBlockList(player, "");
 		}
@@ -197,7 +201,7 @@ public class FriendsBoard implements IWriteBoardHandler
 	
 	private void showFriendList(Player player, String message)
 	{
-		CommunityBoardHandler.getInstance().addBypass(player, "Friends List", "_friendlist");
+		CommunityBoardHandler.getInstance().addBypass(player, "Friends List", FRIENDLIST);
 		
 		String html = HtmCache.getInstance().getHtm(player, "data/html/CommunityBoard/friends_list.html");
 		
@@ -254,7 +258,7 @@ public class FriendsBoard implements IWriteBoardHandler
 	
 	private void showFriendInfo(Player player, String friendName)
 	{
-		CommunityBoardHandler.getInstance().addBypass(player, "Friend Info", "_friendinfo_" + friendName);
+		CommunityBoardHandler.getInstance().addBypass(player, "Friend Info", FRIENDINFO + friendName);
 		
 		final Player friend = World.getInstance().getPlayer(friendName);
 		
@@ -426,7 +430,7 @@ public class FriendsBoard implements IWriteBoardHandler
 	
 	private void showBlockList(Player player, String message)
 	{
-		CommunityBoardHandler.getInstance().addBypass(player, "Ignore List", "_friendblocklist");
+		CommunityBoardHandler.getInstance().addBypass(player, "Ignore List", FRIENDBLOCKLIST);
 		
 		String html = HtmCache.getInstance().getHtm(player, "data/html/CommunityBoard/friends_block_list.html");
 		

@@ -55,6 +55,26 @@ import com.l2journey.gameserver.network.serverpackets.NpcHtmlMessage;
 
 public class ClanHallManager extends Merchant
 {
+	private static final String HTML_FUNCTIONS_CANCEL_CONFIRMED = "data/html/clanHallManager/functions-cancel_confirmed.htm";
+	private static final String HTML_FUNCTIONS_APPLY_CONFIRMED = "data/html/clanHallManager/functions-apply_confirmed.htm";
+	private static final String HTML_FUNCTIONS_CANCEL = "data/html/clanHallManager/functions-cancel.htm";
+	private static final String HTML_CHAMBERLAIN_NAC = "data/html/clanHallManager/chamberlain-nac.htm";
+	private static final String HTML_FUNCTIONS_APPLY = "data/html/clanHallManager/functions-apply.htm";
+	private static final String HTML_NOT_AUTHORIZED = "data/html/clanHallManager/not_authorized.htm";
+	private static final String HTML_FUNCTIONS_USED = "data/html/clanHallManager/functions-used.htm";
+	private static final String HTML_LOW_ADENA = "data/html/clanHallManager/low_adena.htm";
+	private static final String PH_CHANGE_SUPPORT = "%change_support%";
+	private static final String PH_CHANGE_EXP = "%change_exp%";
+	private static final String PH_CHANGE_HP = "%change_hp%";
+	private static final String PH_CHANGE_MP = "%change_mp%";
+	private static final String PH_OBJECTID = "%objectId%";
+	private static final String SUPPORT = "support";
+	private static final String PH_APPLY = "%apply%";
+	private static final String PH_NAME = "%name%";
+	private static final String PH_COST = "%cost%";
+	private static final String PH_USE = "%use%";
+	private static final String PH_VAL = "%val%";
+
 	protected static final int COND_OWNER_FALSE = 0;
 	protected static final int COND_ALL_FALSE = 1;
 	protected static final int COND_BUSY_BECAUSE_OF_SIEGE = 2;
@@ -120,7 +140,7 @@ public class ClanHallManager extends Merchant
 				}
 				else
 				{
-					html.setFile(player, "data/html/clanHallManager/not_authorized.htm");
+					html.setFile(player, HTML_NOT_AUTHORIZED);
 				}
 				
 				sendHtmlMessage(player, html);
@@ -146,7 +166,7 @@ public class ClanHallManager extends Merchant
 				}
 				else
 				{
-					html.setFile(player, "data/html/clanHallManager/not_authorized.htm");
+					html.setFile(player, HTML_NOT_AUTHORIZED);
 					sendHtmlMessage(player, html);
 				}
 				
@@ -176,7 +196,7 @@ public class ClanHallManager extends Merchant
 				}
 				else
 				{
-					html.setFile(player, "data/html/clanHallManager/not_authorized.htm");
+					html.setFile(player, HTML_NOT_AUTHORIZED);
 					sendHtmlMessage(player, html);
 				}
 				
@@ -189,7 +209,7 @@ public class ClanHallManager extends Merchant
 					final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 					if (getClanHall().getFunction(ClanHall.FUNC_TELEPORT) == null)
 					{
-						html.setFile(player, "data/html/clanHallManager/chamberlain-nac.htm");
+						html.setFile(player, HTML_CHAMBERLAIN_NAC);
 					}
 					else
 					{
@@ -203,7 +223,7 @@ public class ClanHallManager extends Merchant
 					if (getClanHall().getFunction(ClanHall.FUNC_ITEM_CREATE) == null)
 					{
 						final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-						html.setFile(player, "data/html/clanHallManager/chamberlain-nac.htm");
+						html.setFile(player, HTML_CHAMBERLAIN_NAC);
 						sendHtmlMessage(player, html);
 						return;
 					}
@@ -216,12 +236,12 @@ public class ClanHallManager extends Merchant
 					final int valbuy = Integer.parseInt(st.nextToken()) + (getClanHall().getFunction(ClanHall.FUNC_ITEM_CREATE).getLevel() * 100000);
 					showBuyWindow(player, valbuy);
 				}
-				else if (val.equalsIgnoreCase("support"))
+				else if (val.equalsIgnoreCase(SUPPORT))
 				{
 					final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 					if (getClanHall().getFunction(ClanHall.FUNC_SUPPORT) == null)
 					{
-						html.setFile(player, "data/html/clanHallManager/chamberlain-nac.htm");
+						html.setFile(player, HTML_CHAMBERLAIN_NAC);
 					}
 					else
 					{
@@ -288,24 +308,24 @@ public class ClanHallManager extends Merchant
 							if (val.equalsIgnoreCase("hp_cancel"))
 							{
 								final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-								html.setFile(player, "data/html/clanHallManager/functions-cancel.htm");
-								html.replace("%apply%", "recovery hp 0");
+								html.setFile(player, HTML_FUNCTIONS_CANCEL);
+								html.replace(PH_APPLY, "recovery hp 0");
 								sendHtmlMessage(player, html);
 								return;
 							}
 							else if (val.equalsIgnoreCase("mp_cancel"))
 							{
 								final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-								html.setFile(player, "data/html/clanHallManager/functions-cancel.htm");
-								html.replace("%apply%", "recovery mp 0");
+								html.setFile(player, HTML_FUNCTIONS_CANCEL);
+								html.replace(PH_APPLY, "recovery mp 0");
 								sendHtmlMessage(player, html);
 								return;
 							}
 							else if (val.equalsIgnoreCase("exp_cancel"))
 							{
 								final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-								html.setFile(player, "data/html/clanHallManager/functions-cancel.htm");
-								html.replace("%apply%", "recovery exp 0");
+								html.setFile(player, HTML_FUNCTIONS_CANCEL);
+								html.replace(PH_APPLY, "recovery exp 0");
 								sendHtmlMessage(player, html);
 								return;
 							}
@@ -313,8 +333,8 @@ public class ClanHallManager extends Merchant
 							{
 								val = st.nextToken();
 								final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-								html.setFile(player, "data/html/clanHallManager/functions-apply.htm");
-								html.replace("%name%", "Fireplace (HP Recovery Device)");
+								html.setFile(player, HTML_FUNCTIONS_APPLY);
+								html.replace(PH_NAME, "Fireplace (HP Recovery Device)");
 								final int percent = Integer.parseInt(val);
 								int cost;
 								switch (percent)
@@ -386,9 +406,9 @@ public class ClanHallManager extends Merchant
 									}
 								}
 								
-								html.replace("%cost%", cost + "</font>Adena /" + (Config.CH_HPREG_FEE_RATIO / 1000 / 60 / 60 / 24) + " Day</font>)");
-								html.replace("%use%", "Provides additional HP recovery for clan members in the clan hall.<font color=\"00FFFF\">" + percent + "%</font>");
-								html.replace("%apply%", "recovery hp " + percent);
+								html.replace(PH_COST, cost + "</font>Adena /" + (Config.CH_HPREG_FEE_RATIO / 1000 / 60 / 60 / 24) + " Day</font>)");
+								html.replace(PH_USE, "Provides additional HP recovery for clan members in the clan hall.<font color=\"00FFFF\">" + percent + "%</font>");
+								html.replace(PH_APPLY, "recovery hp " + percent);
 								sendHtmlMessage(player, html);
 								return;
 							}
@@ -396,8 +416,8 @@ public class ClanHallManager extends Merchant
 							{
 								val = st.nextToken();
 								final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-								html.setFile(player, "data/html/clanHallManager/functions-apply.htm");
-								html.replace("%name%", "Carpet (MP Recovery)");
+								html.setFile(player, HTML_FUNCTIONS_APPLY);
+								html.replace(PH_NAME, "Carpet (MP Recovery)");
 								final int percent = Integer.parseInt(val);
 								int cost;
 								switch (percent)
@@ -429,9 +449,9 @@ public class ClanHallManager extends Merchant
 									}
 								}
 								
-								html.replace("%cost%", cost + "</font>Adena /" + (Config.CH_MPREG_FEE_RATIO / 1000 / 60 / 60 / 24) + " Day</font>)");
-								html.replace("%use%", "Provides additional MP recovery for clan members in the clan hall.<font color=\"00FFFF\">" + percent + "%</font>");
-								html.replace("%apply%", "recovery mp " + percent);
+								html.replace(PH_COST, cost + "</font>Adena /" + (Config.CH_MPREG_FEE_RATIO / 1000 / 60 / 60 / 24) + " Day</font>)");
+								html.replace(PH_USE, "Provides additional MP recovery for clan members in the clan hall.<font color=\"00FFFF\">" + percent + "%</font>");
+								html.replace(PH_APPLY, "recovery mp " + percent);
 								sendHtmlMessage(player, html);
 								return;
 							}
@@ -439,8 +459,8 @@ public class ClanHallManager extends Merchant
 							{
 								val = st.nextToken();
 								final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-								html.setFile(player, "data/html/clanHallManager/functions-apply.htm");
-								html.replace("%name%", "Chandelier (EXP Recovery Device)");
+								html.setFile(player, HTML_FUNCTIONS_APPLY);
+								html.replace(PH_NAME, "Chandelier (EXP Recovery Device)");
 								final int percent = Integer.parseInt(val);
 								int cost;
 								switch (percent)
@@ -482,9 +502,9 @@ public class ClanHallManager extends Merchant
 									}
 								}
 								
-								html.replace("%cost%", cost + "</font>Adena /" + (Config.CH_EXPREG_FEE_RATIO / 1000 / 60 / 60 / 24) + " Day</font>)");
-								html.replace("%use%", "Restores the Exp of any clan member who is resurrected in the clan hall.<font color=\"00FFFF\">" + percent + "%</font>");
-								html.replace("%apply%", "recovery exp " + percent);
+								html.replace(PH_COST, cost + "</font>Adena /" + (Config.CH_EXPREG_FEE_RATIO / 1000 / 60 / 60 / 24) + " Day</font>)");
+								html.replace(PH_USE, "Restores the Exp of any clan member who is resurrected in the clan hall.<font color=\"00FFFF\">" + percent + "%</font>");
+								html.replace(PH_APPLY, "recovery exp " + percent);
 								sendHtmlMessage(player, html);
 								return;
 							}
@@ -495,11 +515,11 @@ public class ClanHallManager extends Merchant
 									int fee;
 									val = st.nextToken();
 									final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-									html.setFile(player, "data/html/clanHallManager/functions-apply_confirmed.htm");
+									html.setFile(player, HTML_FUNCTIONS_APPLY_CONFIRMED);
 									if ((getClanHall().getFunction(ClanHall.FUNC_RESTORE_HP) != null) && (getClanHall().getFunction(ClanHall.FUNC_RESTORE_HP).getLevel() == Integer.parseInt(val)))
 									{
-										html.setFile(player, "data/html/clanHallManager/functions-used.htm");
-										html.replace("%val%", val + "%");
+										html.setFile(player, HTML_FUNCTIONS_USED);
+										html.replace(PH_VAL, val + "%");
 										sendHtmlMessage(player, html);
 										return;
 									}
@@ -510,7 +530,7 @@ public class ClanHallManager extends Merchant
 										case 0:
 										{
 											fee = 0;
-											html.setFile(player, "data/html/clanHallManager/functions-cancel_confirmed.htm");
+											html.setFile(player, HTML_FUNCTIONS_CANCEL_CONFIRMED);
 											break;
 										}
 										case 20:
@@ -582,7 +602,7 @@ public class ClanHallManager extends Merchant
 									
 									if (!getClanHall().updateFunctions(player, ClanHall.FUNC_RESTORE_HP, percent, fee, Config.CH_HPREG_FEE_RATIO, (getClanHall().getFunction(ClanHall.FUNC_RESTORE_HP) == null)))
 									{
-										html.setFile(player, "data/html/clanHallManager/low_adena.htm");
+										html.setFile(player, HTML_LOW_ADENA);
 										sendHtmlMessage(player, html);
 									}
 									else
@@ -602,11 +622,11 @@ public class ClanHallManager extends Merchant
 									int fee;
 									val = st.nextToken();
 									final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-									html.setFile(player, "data/html/clanHallManager/functions-apply_confirmed.htm");
+									html.setFile(player, HTML_FUNCTIONS_APPLY_CONFIRMED);
 									if ((getClanHall().getFunction(ClanHall.FUNC_RESTORE_MP) != null) && (getClanHall().getFunction(ClanHall.FUNC_RESTORE_MP).getLevel() == Integer.parseInt(val)))
 									{
-										html.setFile(player, "data/html/clanHallManager/functions-used.htm");
-										html.replace("%val%", val + "%");
+										html.setFile(player, HTML_FUNCTIONS_USED);
+										html.replace(PH_VAL, val + "%");
 										sendHtmlMessage(player, html);
 										return;
 									}
@@ -617,7 +637,7 @@ public class ClanHallManager extends Merchant
 										case 0:
 										{
 											fee = 0;
-											html.setFile(player, "data/html/clanHallManager/functions-cancel_confirmed.htm");
+											html.setFile(player, HTML_FUNCTIONS_CANCEL_CONFIRMED);
 											break;
 										}
 										case 5:
@@ -649,7 +669,7 @@ public class ClanHallManager extends Merchant
 									
 									if (!getClanHall().updateFunctions(player, ClanHall.FUNC_RESTORE_MP, percent, fee, Config.CH_MPREG_FEE_RATIO, (getClanHall().getFunction(ClanHall.FUNC_RESTORE_MP) == null)))
 									{
-										html.setFile(player, "data/html/clanHallManager/low_adena.htm");
+										html.setFile(player, HTML_LOW_ADENA);
 										sendHtmlMessage(player, html);
 									}
 									else
@@ -669,11 +689,11 @@ public class ClanHallManager extends Merchant
 									int fee;
 									val = st.nextToken();
 									final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-									html.setFile(player, "data/html/clanHallManager/functions-apply_confirmed.htm");
+									html.setFile(player, HTML_FUNCTIONS_APPLY_CONFIRMED);
 									if ((getClanHall().getFunction(ClanHall.FUNC_RESTORE_EXP) != null) && (getClanHall().getFunction(ClanHall.FUNC_RESTORE_EXP).getLevel() == Integer.parseInt(val)))
 									{
-										html.setFile(player, "data/html/clanHallManager/functions-used.htm");
-										html.replace("%val%", val + "%");
+										html.setFile(player, HTML_FUNCTIONS_USED);
+										html.replace(PH_VAL, val + "%");
 										sendHtmlMessage(player, html);
 										return;
 									}
@@ -684,7 +704,7 @@ public class ClanHallManager extends Merchant
 										case 0:
 										{
 											fee = 0;
-											html.setFile(player, "data/html/clanHallManager/functions-cancel_confirmed.htm");
+											html.setFile(player, HTML_FUNCTIONS_CANCEL_CONFIRMED);
 											break;
 										}
 										case 5:
@@ -726,7 +746,7 @@ public class ClanHallManager extends Merchant
 									
 									if (!getClanHall().updateFunctions(player, ClanHall.FUNC_RESTORE_EXP, percent, fee, Config.CH_EXPREG_FEE_RATIO, (getClanHall().getFunction(ClanHall.FUNC_RESTORE_EXP) == null)))
 									{
-										html.setFile(player, "data/html/clanHallManager/low_adena.htm");
+										html.setFile(player, HTML_LOW_ADENA);
 										sendHtmlMessage(player, html);
 									}
 									else
@@ -764,22 +784,22 @@ public class ClanHallManager extends Merchant
 							{
 								case 0:
 								{
-									html.replace("%change_hp%", "[<a action=\"bypass -h npc_%objectId%_manage recovery hp_cancel\">Deactivate</a>]" + hp_grade0);
+									html.replace(PH_CHANGE_HP, "[<a action=\"bypass -h npc_%objectId%_manage recovery hp_cancel\">Deactivate</a>]" + hp_grade0);
 									break;
 								}
 								case 1:
 								{
-									html.replace("%change_hp%", "[<a action=\"bypass -h npc_%objectId%_manage recovery hp_cancel\">Deactivate</a>]" + hp_grade1);
+									html.replace(PH_CHANGE_HP, "[<a action=\"bypass -h npc_%objectId%_manage recovery hp_cancel\">Deactivate</a>]" + hp_grade1);
 									break;
 								}
 								case 2:
 								{
-									html.replace("%change_hp%", "[<a action=\"bypass -h npc_%objectId%_manage recovery hp_cancel\">Deactivate</a>]" + hp_grade2);
+									html.replace(PH_CHANGE_HP, "[<a action=\"bypass -h npc_%objectId%_manage recovery hp_cancel\">Deactivate</a>]" + hp_grade2);
 									break;
 								}
 								case 3:
 								{
-									html.replace("%change_hp%", "[<a action=\"bypass -h npc_%objectId%_manage recovery hp_cancel\">Deactivate</a>]" + hp_grade3);
+									html.replace(PH_CHANGE_HP, "[<a action=\"bypass -h npc_%objectId%_manage recovery hp_cancel\">Deactivate</a>]" + hp_grade3);
 									break;
 								}
 								default:
@@ -797,22 +817,22 @@ public class ClanHallManager extends Merchant
 							{
 								case 0:
 								{
-									html.replace("%change_hp%", hp_grade0);
+									html.replace(PH_CHANGE_HP, hp_grade0);
 									break;
 								}
 								case 1:
 								{
-									html.replace("%change_hp%", hp_grade1);
+									html.replace(PH_CHANGE_HP, hp_grade1);
 									break;
 								}
 								case 2:
 								{
-									html.replace("%change_hp%", hp_grade2);
+									html.replace(PH_CHANGE_HP, hp_grade2);
 									break;
 								}
 								case 3:
 								{
-									html.replace("%change_hp%", hp_grade3);
+									html.replace(PH_CHANGE_HP, hp_grade3);
 									break;
 								}
 								default:
@@ -831,22 +851,22 @@ public class ClanHallManager extends Merchant
 							{
 								case 0:
 								{
-									html.replace("%change_exp%", "[<a action=\"bypass -h npc_%objectId%_manage recovery exp_cancel\">Deactivate</a>]" + exp_grade0);
+									html.replace(PH_CHANGE_EXP, "[<a action=\"bypass -h npc_%objectId%_manage recovery exp_cancel\">Deactivate</a>]" + exp_grade0);
 									break;
 								}
 								case 1:
 								{
-									html.replace("%change_exp%", "[<a action=\"bypass -h npc_%objectId%_manage recovery exp_cancel\">Deactivate</a>]" + exp_grade1);
+									html.replace(PH_CHANGE_EXP, "[<a action=\"bypass -h npc_%objectId%_manage recovery exp_cancel\">Deactivate</a>]" + exp_grade1);
 									break;
 								}
 								case 2:
 								{
-									html.replace("%change_exp%", "[<a action=\"bypass -h npc_%objectId%_manage recovery exp_cancel\">Deactivate</a>]" + exp_grade2);
+									html.replace(PH_CHANGE_EXP, "[<a action=\"bypass -h npc_%objectId%_manage recovery exp_cancel\">Deactivate</a>]" + exp_grade2);
 									break;
 								}
 								case 3:
 								{
-									html.replace("%change_exp%", "[<a action=\"bypass -h npc_%objectId%_manage recovery exp_cancel\">Deactivate</a>]" + exp_grade3);
+									html.replace(PH_CHANGE_EXP, "[<a action=\"bypass -h npc_%objectId%_manage recovery exp_cancel\">Deactivate</a>]" + exp_grade3);
 									break;
 								}
 								default:
@@ -864,22 +884,22 @@ public class ClanHallManager extends Merchant
 							{
 								case 0:
 								{
-									html.replace("%change_exp%", exp_grade0);
+									html.replace(PH_CHANGE_EXP, exp_grade0);
 									break;
 								}
 								case 1:
 								{
-									html.replace("%change_exp%", exp_grade1);
+									html.replace(PH_CHANGE_EXP, exp_grade1);
 									break;
 								}
 								case 2:
 								{
-									html.replace("%change_exp%", exp_grade2);
+									html.replace(PH_CHANGE_EXP, exp_grade2);
 									break;
 								}
 								case 3:
 								{
-									html.replace("%change_exp%", exp_grade3);
+									html.replace(PH_CHANGE_EXP, exp_grade3);
 									break;
 								}
 								default:
@@ -898,22 +918,22 @@ public class ClanHallManager extends Merchant
 							{
 								case 0:
 								{
-									html.replace("%change_mp%", "[<a action=\"bypass -h npc_%objectId%_manage recovery mp_cancel\">Deactivate</a>]" + mp_grade0);
+									html.replace(PH_CHANGE_MP, "[<a action=\"bypass -h npc_%objectId%_manage recovery mp_cancel\">Deactivate</a>]" + mp_grade0);
 									break;
 								}
 								case 1:
 								{
-									html.replace("%change_mp%", "[<a action=\"bypass -h npc_%objectId%_manage recovery mp_cancel\">Deactivate</a>]" + mp_grade1);
+									html.replace(PH_CHANGE_MP, "[<a action=\"bypass -h npc_%objectId%_manage recovery mp_cancel\">Deactivate</a>]" + mp_grade1);
 									break;
 								}
 								case 2:
 								{
-									html.replace("%change_mp%", "[<a action=\"bypass -h npc_%objectId%_manage recovery mp_cancel\">Deactivate</a>]" + mp_grade2);
+									html.replace(PH_CHANGE_MP, "[<a action=\"bypass -h npc_%objectId%_manage recovery mp_cancel\">Deactivate</a>]" + mp_grade2);
 									break;
 								}
 								case 3:
 								{
-									html.replace("%change_mp%", "[<a action=\"bypass -h npc_%objectId%_manage recovery mp_cancel\">Deactivate</a>]" + mp_grade3);
+									html.replace(PH_CHANGE_MP, "[<a action=\"bypass -h npc_%objectId%_manage recovery mp_cancel\">Deactivate</a>]" + mp_grade3);
 									break;
 								}
 								default:
@@ -931,22 +951,22 @@ public class ClanHallManager extends Merchant
 							{
 								case 0:
 								{
-									html.replace("%change_mp%", mp_grade0);
+									html.replace(PH_CHANGE_MP, mp_grade0);
 									break;
 								}
 								case 1:
 								{
-									html.replace("%change_mp%", mp_grade1);
+									html.replace(PH_CHANGE_MP, mp_grade1);
 									break;
 								}
 								case 2:
 								{
-									html.replace("%change_mp%", mp_grade2);
+									html.replace(PH_CHANGE_MP, mp_grade2);
 									break;
 								}
 								case 3:
 								{
-									html.replace("%change_mp%", mp_grade3);
+									html.replace(PH_CHANGE_MP, mp_grade3);
 									break;
 								}
 								default:
@@ -971,24 +991,24 @@ public class ClanHallManager extends Merchant
 							if (val.equalsIgnoreCase("item_cancel"))
 							{
 								final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-								html.setFile(player, "data/html/clanHallManager/functions-cancel.htm");
-								html.replace("%apply%", "other item 0");
+								html.setFile(player, HTML_FUNCTIONS_CANCEL);
+								html.replace(PH_APPLY, "other item 0");
 								sendHtmlMessage(player, html);
 								return;
 							}
 							else if (val.equalsIgnoreCase("tele_cancel"))
 							{
 								final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-								html.setFile(player, "data/html/clanHallManager/functions-cancel.htm");
-								html.replace("%apply%", "other tele 0");
+								html.setFile(player, HTML_FUNCTIONS_CANCEL);
+								html.replace(PH_APPLY, "other tele 0");
 								sendHtmlMessage(player, html);
 								return;
 							}
 							else if (val.equalsIgnoreCase("support_cancel"))
 							{
 								final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-								html.setFile(player, "data/html/clanHallManager/functions-cancel.htm");
-								html.replace("%apply%", "other support 0");
+								html.setFile(player, HTML_FUNCTIONS_CANCEL);
+								html.replace(PH_APPLY, "other support 0");
 								sendHtmlMessage(player, html);
 								return;
 							}
@@ -996,8 +1016,8 @@ public class ClanHallManager extends Merchant
 							{
 								val = st.nextToken();
 								final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-								html.setFile(player, "data/html/clanHallManager/functions-apply.htm");
-								html.replace("%name%", "Magic Equipment (Item Production Facilities)");
+								html.setFile(player, HTML_FUNCTIONS_APPLY);
+								html.replace(PH_NAME, "Magic Equipment (Item Production Facilities)");
 								final int stage = Integer.parseInt(val);
 								int cost;
 								switch (stage)
@@ -1018,9 +1038,9 @@ public class ClanHallManager extends Merchant
 										break;
 									}
 								}
-								html.replace("%cost%", cost + "</font>Adena /" + (Config.CH_ITEM_FEE_RATIO / 1000 / 60 / 60 / 24) + " Day</font>)");
-								html.replace("%use%", "Allow the purchase of special items at fixed intervals.");
-								html.replace("%apply%", "other item " + stage);
+								html.replace(PH_COST, cost + "</font>Adena /" + (Config.CH_ITEM_FEE_RATIO / 1000 / 60 / 60 / 24) + " Day</font>)");
+								html.replace(PH_USE, "Allow the purchase of special items at fixed intervals.");
+								html.replace(PH_APPLY, "other item " + stage);
 								sendHtmlMessage(player, html);
 								return;
 							}
@@ -1028,8 +1048,8 @@ public class ClanHallManager extends Merchant
 							{
 								val = st.nextToken();
 								final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-								html.setFile(player, "data/html/clanHallManager/functions-apply.htm");
-								html.replace("%name%", "Insignia (Supplementary Magic)");
+								html.setFile(player, HTML_FUNCTIONS_APPLY);
+								html.replace(PH_NAME, "Insignia (Supplementary Magic)");
 								final int stage = Integer.parseInt(val);
 								int cost;
 								switch (stage)
@@ -1076,9 +1096,9 @@ public class ClanHallManager extends Merchant
 									}
 								}
 								
-								html.replace("%cost%", cost + "</font>Adena /" + (Config.CH_SUPPORT_FEE_RATIO / 1000 / 60 / 60 / 24) + " Day</font>)");
-								html.replace("%use%", "Enables the use of supplementary magic.");
-								html.replace("%apply%", "other support " + stage);
+								html.replace(PH_COST, cost + "</font>Adena /" + (Config.CH_SUPPORT_FEE_RATIO / 1000 / 60 / 60 / 24) + " Day</font>)");
+								html.replace(PH_USE, "Enables the use of supplementary magic.");
+								html.replace(PH_APPLY, "other support " + stage);
 								sendHtmlMessage(player, html);
 								return;
 							}
@@ -1086,8 +1106,8 @@ public class ClanHallManager extends Merchant
 							{
 								val = st.nextToken();
 								final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-								html.setFile(player, "data/html/clanHallManager/functions-apply.htm");
-								html.replace("%name%", "Mirror (Teleportation Device)");
+								html.setFile(player, HTML_FUNCTIONS_APPLY);
+								html.replace(PH_NAME, "Mirror (Teleportation Device)");
 								final int stage = Integer.parseInt(val);
 								int cost;
 								switch (stage)
@@ -1104,9 +1124,9 @@ public class ClanHallManager extends Merchant
 									}
 								}
 								
-								html.replace("%cost%", cost + "</font>Adena /" + (Config.CH_TELE_FEE_RATIO / 1000 / 60 / 60 / 24) + " Day</font>)");
-								html.replace("%use%", "Teleports clan members in a clan hall to the target <font color=\"00FFFF\">Stage " + stage + "</font> staging area");
-								html.replace("%apply%", "other tele " + stage);
+								html.replace(PH_COST, cost + "</font>Adena /" + (Config.CH_TELE_FEE_RATIO / 1000 / 60 / 60 / 24) + " Day</font>)");
+								html.replace(PH_USE, "Teleports clan members in a clan hall to the target <font color=\"00FFFF\">Stage " + stage + "</font> staging area");
+								html.replace(PH_APPLY, "other tele " + stage);
 								sendHtmlMessage(player, html);
 								return;
 							}
@@ -1122,11 +1142,11 @@ public class ClanHallManager extends Merchant
 									
 									val = st.nextToken();
 									final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-									html.setFile(player, "data/html/clanHallManager/functions-apply_confirmed.htm");
+									html.setFile(player, HTML_FUNCTIONS_APPLY_CONFIRMED);
 									if ((getClanHall().getFunction(ClanHall.FUNC_ITEM_CREATE) != null) && (getClanHall().getFunction(ClanHall.FUNC_ITEM_CREATE).getLevel() == Integer.parseInt(val)))
 									{
-										html.setFile(player, "data/html/clanHallManager/functions-used.htm");
-										html.replace("%val%", "Stage " + val);
+										html.setFile(player, HTML_FUNCTIONS_USED);
+										html.replace(PH_VAL, "Stage " + val);
 										sendHtmlMessage(player, html);
 										return;
 									}
@@ -1138,7 +1158,7 @@ public class ClanHallManager extends Merchant
 										case 0:
 										{
 											fee = 0;
-											html.setFile(player, "data/html/clanHallManager/functions-cancel_confirmed.htm");
+											html.setFile(player, HTML_FUNCTIONS_CANCEL_CONFIRMED);
 											break;
 										}
 										case 1:
@@ -1160,7 +1180,7 @@ public class ClanHallManager extends Merchant
 									
 									if (!getClanHall().updateFunctions(player, ClanHall.FUNC_ITEM_CREATE, level, fee, Config.CH_ITEM_FEE_RATIO, (getClanHall().getFunction(ClanHall.FUNC_ITEM_CREATE) == null)))
 									{
-										html.setFile(player, "data/html/clanHallManager/low_adena.htm");
+										html.setFile(player, HTML_LOW_ADENA);
 										sendHtmlMessage(player, html);
 									}
 									else
@@ -1180,11 +1200,11 @@ public class ClanHallManager extends Merchant
 									int fee;
 									val = st.nextToken();
 									final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-									html.setFile(player, "data/html/clanHallManager/functions-apply_confirmed.htm");
+									html.setFile(player, HTML_FUNCTIONS_APPLY_CONFIRMED);
 									if ((getClanHall().getFunction(ClanHall.FUNC_TELEPORT) != null) && (getClanHall().getFunction(ClanHall.FUNC_TELEPORT).getLevel() == Integer.parseInt(val)))
 									{
-										html.setFile(player, "data/html/clanHallManager/functions-used.htm");
-										html.replace("%val%", "Stage " + val);
+										html.setFile(player, HTML_FUNCTIONS_USED);
+										html.replace(PH_VAL, "Stage " + val);
 										sendHtmlMessage(player, html);
 										return;
 									}
@@ -1195,7 +1215,7 @@ public class ClanHallManager extends Merchant
 										case 0:
 										{
 											fee = 0;
-											html.setFile(player, "data/html/clanHallManager/functions-cancel_confirmed.htm");
+											html.setFile(player, HTML_FUNCTIONS_CANCEL_CONFIRMED);
 											break;
 										}
 										case 1:
@@ -1212,7 +1232,7 @@ public class ClanHallManager extends Merchant
 									
 									if (!getClanHall().updateFunctions(player, ClanHall.FUNC_TELEPORT, level, fee, Config.CH_TELE_FEE_RATIO, (getClanHall().getFunction(ClanHall.FUNC_TELEPORT) == null)))
 									{
-										html.setFile(player, "data/html/clanHallManager/low_adena.htm");
+										html.setFile(player, HTML_LOW_ADENA);
 										sendHtmlMessage(player, html);
 									}
 									else
@@ -1225,18 +1245,18 @@ public class ClanHallManager extends Merchant
 								
 								return;
 							}
-							else if (val.equalsIgnoreCase("support"))
+							else if (val.equalsIgnoreCase(SUPPORT))
 							{
 								if (st.countTokens() >= 1)
 								{
 									int fee;
 									val = st.nextToken();
 									final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-									html.setFile(player, "data/html/clanHallManager/functions-apply_confirmed.htm");
+									html.setFile(player, HTML_FUNCTIONS_APPLY_CONFIRMED);
 									if ((getClanHall().getFunction(ClanHall.FUNC_SUPPORT) != null) && (getClanHall().getFunction(ClanHall.FUNC_SUPPORT).getLevel() == Integer.parseInt(val)))
 									{
-										html.setFile(player, "data/html/clanHallManager/functions-used.htm");
-										html.replace("%val%", "Stage " + val);
+										html.setFile(player, HTML_FUNCTIONS_USED);
+										html.replace(PH_VAL, "Stage " + val);
 										sendHtmlMessage(player, html);
 										return;
 									}
@@ -1247,7 +1267,7 @@ public class ClanHallManager extends Merchant
 										case 0:
 										{
 											fee = 0;
-											html.setFile(player, "data/html/clanHallManager/functions-cancel_confirmed.htm");
+											html.setFile(player, HTML_FUNCTIONS_CANCEL_CONFIRMED);
 											break;
 										}
 										case 1:
@@ -1294,7 +1314,7 @@ public class ClanHallManager extends Merchant
 									
 									if (!getClanHall().updateFunctions(player, ClanHall.FUNC_SUPPORT, level, fee, Config.CH_SUPPORT_FEE_RATIO, (getClanHall().getFunction(ClanHall.FUNC_SUPPORT) == null)))
 									{
-										html.setFile(player, "data/html/clanHallManager/low_adena.htm");
+										html.setFile(player, HTML_LOW_ADENA);
 										sendHtmlMessage(player, html);
 									}
 									else
@@ -1339,22 +1359,22 @@ public class ClanHallManager extends Merchant
 							{
 								case 0:
 								{
-									html.replace("%change_support%", "[<a action=\"bypass -h npc_%objectId%_manage other support_cancel\">Deactivate</a>]" + support_grade0);
+									html.replace(PH_CHANGE_SUPPORT, "[<a action=\"bypass -h npc_%objectId%_manage other support_cancel\">Deactivate</a>]" + support_grade0);
 									break;
 								}
 								case 1:
 								{
-									html.replace("%change_support%", "[<a action=\"bypass -h npc_%objectId%_manage other support_cancel\">Deactivate</a>]" + support_grade1);
+									html.replace(PH_CHANGE_SUPPORT, "[<a action=\"bypass -h npc_%objectId%_manage other support_cancel\">Deactivate</a>]" + support_grade1);
 									break;
 								}
 								case 2:
 								{
-									html.replace("%change_support%", "[<a action=\"bypass -h npc_%objectId%_manage other support_cancel\">Deactivate</a>]" + support_grade2);
+									html.replace(PH_CHANGE_SUPPORT, "[<a action=\"bypass -h npc_%objectId%_manage other support_cancel\">Deactivate</a>]" + support_grade2);
 									break;
 								}
 								case 3:
 								{
-									html.replace("%change_support%", "[<a action=\"bypass -h npc_%objectId%_manage other support_cancel\">Deactivate</a>]" + support_grade3);
+									html.replace(PH_CHANGE_SUPPORT, "[<a action=\"bypass -h npc_%objectId%_manage other support_cancel\">Deactivate</a>]" + support_grade3);
 									break;
 								}
 								default:
@@ -1372,22 +1392,22 @@ public class ClanHallManager extends Merchant
 							{
 								case 0:
 								{
-									html.replace("%change_support%", support_grade0);
+									html.replace(PH_CHANGE_SUPPORT, support_grade0);
 									break;
 								}
 								case 1:
 								{
-									html.replace("%change_support%", support_grade1);
+									html.replace(PH_CHANGE_SUPPORT, support_grade1);
 									break;
 								}
 								case 2:
 								{
-									html.replace("%change_support%", support_grade2);
+									html.replace(PH_CHANGE_SUPPORT, support_grade2);
 									break;
 								}
 								case 3:
 								{
-									html.replace("%change_support%", support_grade3);
+									html.replace(PH_CHANGE_SUPPORT, support_grade3);
 									break;
 								}
 								default:
@@ -1426,16 +1446,16 @@ public class ClanHallManager extends Merchant
 							if (val.equalsIgnoreCase("curtains_cancel"))
 							{
 								final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-								html.setFile(player, "data/html/clanHallManager/functions-cancel.htm");
-								html.replace("%apply%", "deco curtains 0");
+								html.setFile(player, HTML_FUNCTIONS_CANCEL);
+								html.replace(PH_APPLY, "deco curtains 0");
 								sendHtmlMessage(player, html);
 								return;
 							}
 							else if (val.equalsIgnoreCase("fixtures_cancel"))
 							{
 								final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-								html.setFile(player, "data/html/clanHallManager/functions-cancel.htm");
-								html.replace("%apply%", "deco fixtures 0");
+								html.setFile(player, HTML_FUNCTIONS_CANCEL);
+								html.replace(PH_APPLY, "deco fixtures 0");
 								sendHtmlMessage(player, html);
 								return;
 							}
@@ -1443,8 +1463,8 @@ public class ClanHallManager extends Merchant
 							{
 								val = st.nextToken();
 								final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-								html.setFile(player, "data/html/clanHallManager/functions-apply.htm");
-								html.replace("%name%", "Curtains (Decoration)");
+								html.setFile(player, HTML_FUNCTIONS_APPLY);
+								html.replace(PH_NAME, "Curtains (Decoration)");
 								final int stage = Integer.parseInt(val);
 								int cost;
 								switch (stage)
@@ -1461,9 +1481,9 @@ public class ClanHallManager extends Merchant
 									}
 								}
 								
-								html.replace("%cost%", cost + "</font>Adena /" + (Config.CH_CURTAIN_FEE_RATIO / 1000 / 60 / 60 / 24) + " Day</font>)");
-								html.replace("%use%", "These curtains can be used to decorate the clan hall.");
-								html.replace("%apply%", "deco curtains " + stage);
+								html.replace(PH_COST, cost + "</font>Adena /" + (Config.CH_CURTAIN_FEE_RATIO / 1000 / 60 / 60 / 24) + " Day</font>)");
+								html.replace(PH_USE, "These curtains can be used to decorate the clan hall.");
+								html.replace(PH_APPLY, "deco curtains " + stage);
 								sendHtmlMessage(player, html);
 								return;
 							}
@@ -1471,8 +1491,8 @@ public class ClanHallManager extends Merchant
 							{
 								val = st.nextToken();
 								final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-								html.setFile(player, "data/html/clanHallManager/functions-apply.htm");
-								html.replace("%name%", "Front Platform (Decoration)");
+								html.setFile(player, HTML_FUNCTIONS_APPLY);
+								html.replace(PH_NAME, "Front Platform (Decoration)");
 								final int stage = Integer.parseInt(val);
 								int cost;
 								switch (stage)
@@ -1489,9 +1509,9 @@ public class ClanHallManager extends Merchant
 									}
 								}
 								
-								html.replace("%cost%", cost + "</font>Adena /" + (Config.CH_FRONT_FEE_RATIO / 1000 / 60 / 60 / 24) + " Day</font>)");
-								html.replace("%use%", "Used to decorate the clan hall.");
-								html.replace("%apply%", "deco fixtures " + stage);
+								html.replace(PH_COST, cost + "</font>Adena /" + (Config.CH_FRONT_FEE_RATIO / 1000 / 60 / 60 / 24) + " Day</font>)");
+								html.replace(PH_USE, "Used to decorate the clan hall.");
+								html.replace(PH_APPLY, "deco fixtures " + stage);
 								sendHtmlMessage(player, html);
 								return;
 							}
@@ -1502,11 +1522,11 @@ public class ClanHallManager extends Merchant
 									int fee;
 									val = st.nextToken();
 									final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-									html.setFile(player, "data/html/clanHallManager/functions-apply_confirmed.htm");
+									html.setFile(player, HTML_FUNCTIONS_APPLY_CONFIRMED);
 									if ((getClanHall().getFunction(ClanHall.FUNC_DECO_CURTAINS) != null) && (getClanHall().getFunction(ClanHall.FUNC_DECO_CURTAINS).getLevel() == Integer.parseInt(val)))
 									{
-										html.setFile(player, "data/html/clanHallManager/functions-used.htm");
-										html.replace("%val%", "Stage " + val);
+										html.setFile(player, HTML_FUNCTIONS_USED);
+										html.replace(PH_VAL, "Stage " + val);
 										sendHtmlMessage(player, html);
 										return;
 									}
@@ -1517,7 +1537,7 @@ public class ClanHallManager extends Merchant
 										case 0:
 										{
 											fee = 0;
-											html.setFile(player, "data/html/clanHallManager/functions-cancel_confirmed.htm");
+											html.setFile(player, HTML_FUNCTIONS_CANCEL_CONFIRMED);
 											break;
 										}
 										case 1:
@@ -1534,7 +1554,7 @@ public class ClanHallManager extends Merchant
 									
 									if (!getClanHall().updateFunctions(player, ClanHall.FUNC_DECO_CURTAINS, level, fee, Config.CH_CURTAIN_FEE_RATIO, (getClanHall().getFunction(ClanHall.FUNC_DECO_CURTAINS) == null)))
 									{
-										html.setFile(player, "data/html/clanHallManager/low_adena.htm");
+										html.setFile(player, HTML_LOW_ADENA);
 										sendHtmlMessage(player, html);
 									}
 									else
@@ -1554,11 +1574,11 @@ public class ClanHallManager extends Merchant
 									int fee;
 									val = st.nextToken();
 									final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-									html.setFile(player, "data/html/clanHallManager/functions-apply_confirmed.htm");
+									html.setFile(player, HTML_FUNCTIONS_APPLY_CONFIRMED);
 									if ((getClanHall().getFunction(ClanHall.FUNC_DECO_FRONTPLATEFORM) != null) && (getClanHall().getFunction(ClanHall.FUNC_DECO_FRONTPLATEFORM).getLevel() == Integer.parseInt(val)))
 									{
-										html.setFile(player, "data/html/clanHallManager/functions-used.htm");
-										html.replace("%val%", "Stage " + val);
+										html.setFile(player, HTML_FUNCTIONS_USED);
+										html.replace(PH_VAL, "Stage " + val);
 										sendHtmlMessage(player, html);
 										return;
 									}
@@ -1569,7 +1589,7 @@ public class ClanHallManager extends Merchant
 										case 0:
 										{
 											fee = 0;
-											html.setFile(player, "data/html/clanHallManager/functions-cancel_confirmed.htm");
+											html.setFile(player, HTML_FUNCTIONS_CANCEL_CONFIRMED);
 											break;
 										}
 										case 1:
@@ -1586,7 +1606,7 @@ public class ClanHallManager extends Merchant
 									
 									if (!getClanHall().updateFunctions(player, ClanHall.FUNC_DECO_FRONTPLATEFORM, level, fee, Config.CH_FRONT_FEE_RATIO, (getClanHall().getFunction(ClanHall.FUNC_DECO_FRONTPLATEFORM) == null)))
 									{
-										html.setFile(player, "data/html/clanHallManager/low_adena.htm");
+										html.setFile(player, HTML_LOW_ADENA);
 										sendHtmlMessage(player, html);
 									}
 									else
@@ -1647,13 +1667,13 @@ public class ClanHallManager extends Merchant
 				else
 				{
 					final NpcHtmlMessage html = new NpcHtmlMessage(1);
-					html.setFile(player, "data/html/clanHallManager/not_authorized.htm");
+					html.setFile(player, HTML_NOT_AUTHORIZED);
 					sendHtmlMessage(player, html);
 				}
 				
 				return;
 			}
-			else if (actualCommand.equalsIgnoreCase("support"))
+			else if (actualCommand.equalsIgnoreCase(SUPPORT))
 			{
 				if (player.isCursedWeaponEquipped())
 				{
@@ -1741,7 +1761,7 @@ public class ClanHallManager extends Merchant
 				}
 				
 				html.setFile(player, fileName);
-				html.replace("%objectId%", String.valueOf(getObjectId()));
+				html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 				html.replace("%npcname%", getName());
 				sendHtmlMessage(player, html);
 				return;
@@ -1772,7 +1792,7 @@ public class ClanHallManager extends Merchant
 	
 	private void sendHtmlMessage(Player player, NpcHtmlMessage html)
 	{
-		html.replace("%objectId%", String.valueOf(getObjectId()));
+		html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 		html.replace("%npcId%", String.valueOf(getId()));
 		player.sendPacket(html);
 	}
@@ -1800,7 +1820,7 @@ public class ClanHallManager extends Merchant
 		
 		final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 		html.setFile(player, fileName);
-		html.replace("%objectId%", String.valueOf(getObjectId()));
+		html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 		html.replace("%npcId%", String.valueOf(getId()));
 		player.sendPacket(html);
 	}

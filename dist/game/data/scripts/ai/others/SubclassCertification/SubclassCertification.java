@@ -51,6 +51,12 @@ import ai.AbstractNpcAI;
  */
 public class SubclassCertification extends AbstractNpcAI
 {
+	private static final String HTML_EMERGENTABILITY = "EmergentAbility.html";
+	private static final String CLASSABILITY = "ClassAbility";
+	private static final String PH_SKILLTYPE = "%skilltype%";
+	private static final String PH_EVENT = "%event%";
+	private static final String PH_LEVEL = "%level%";
+
 	// @formatter:off
 	private static final int[] NPCS =
 	{
@@ -141,12 +147,12 @@ public class SubclassCertification extends AbstractNpcAI
 			}
 			case "Obtain65":
 			{
-				htmltext = replaceHtml(player, "EmergentAbility.html", true, null).replace("%level%", "65").replace("%skilltype%", "common skill").replace("%event%", "lvl65Emergent");
+				htmltext = replaceHtml(player, HTML_EMERGENTABILITY, true, null).replace(PH_LEVEL, "65").replace(PH_SKILLTYPE, "common skill").replace(PH_EVENT, "lvl65Emergent");
 				break;
 			}
 			case "Obtain70":
 			{
-				htmltext = replaceHtml(player, "EmergentAbility.html", true, null).replace("%level%", "70").replace("%skilltype%", "common skill").replace("%event%", "lvl70Emergent");
+				htmltext = replaceHtml(player, HTML_EMERGENTABILITY, true, null).replace(PH_LEVEL, "70").replace(PH_SKILLTYPE, "common skill").replace(PH_EVENT, "lvl70Emergent");
 				break;
 			}
 			case "Obtain75":
@@ -156,7 +162,7 @@ public class SubclassCertification extends AbstractNpcAI
 			}
 			case "Obtain80":
 			{
-				htmltext = replaceHtml(player, "EmergentAbility.html", true, null).replace("%level%", "80").replace("%skilltype%", "transformation skill").replace("%event%", "lvl80Class");
+				htmltext = replaceHtml(player, HTML_EMERGENTABILITY, true, null).replace(PH_LEVEL, "80").replace(PH_SKILLTYPE, "transformation skill").replace(PH_EVENT, "lvl80Class");
 				break;
 			}
 			case "lvl65Emergent":
@@ -171,17 +177,17 @@ public class SubclassCertification extends AbstractNpcAI
 			}
 			case "lvl75Master":
 			{
-				htmltext = doCertification(player, "ClassAbility", CERTIFICATE_MASTER_ABILITY, 75);
+				htmltext = doCertification(player, CLASSABILITY, CERTIFICATE_MASTER_ABILITY, 75);
 				break;
 			}
 			case "lvl75Class":
 			{
-				htmltext = doCertification(player, "ClassAbility", ABILITY_CERTIFICATES.get(getClassIndex(player)), 75);
+				htmltext = doCertification(player, CLASSABILITY, ABILITY_CERTIFICATES.get(getClassIndex(player)), 75);
 				break;
 			}
 			case "lvl80Class":
 			{
-				htmltext = doCertification(player, "ClassAbility", TRANSFORMATION_SEALBOOKS.get(getClassIndex(player)), 80);
+				htmltext = doCertification(player, CLASSABILITY, TRANSFORMATION_SEALBOOKS.get(getClassIndex(player)), 80);
 				break;
 			}
 			case "Main.html", "Explanation.html", "NotObtain.html":
@@ -206,7 +212,7 @@ public class SubclassCertification extends AbstractNpcAI
 		}
 		if (levelToReplace != null)
 		{
-			htmltext = htmltext.replace("%level%", levelToReplace);
+			htmltext = htmltext.replace(PH_LEVEL, levelToReplace);
 		}
 		return htmltext;
 	}

@@ -36,6 +36,9 @@ import com.l2journey.gameserver.network.serverpackets.NpcHtmlMessage;
  */
 public class AdminPForge implements IAdminCommandHandler
 {
+	private static final String PH_OPFORMAT = "%opformat%";
+	private static final String PH_FORMAT = "%format%";
+
 	private static final String[] ADMIN_COMMANDS =
 	{
 		"admin_forge",
@@ -207,17 +210,17 @@ public class AdminPForge implements IAdminCommandHandler
 		String valuesHtml = HtmCache.getInstance().getHtm(activeChar, "data/html/admin/pforge/values.htm");
 		if (opCodes.length == 3)
 		{
-			valuesHtml = valuesHtml.replace("%opformat%", "chd");
+			valuesHtml = valuesHtml.replace(PH_OPFORMAT, "chd");
 			sendBypass = opCodes[0] + ";" + opCodes[1] + ";" + opCodes[2];
 		}
 		else if (opCodes.length == 2)
 		{
-			valuesHtml = valuesHtml.replace("%opformat%", "ch");
+			valuesHtml = valuesHtml.replace(PH_OPFORMAT, "ch");
 			sendBypass = opCodes[0] + ";" + opCodes[1];
 		}
 		else
 		{
-			valuesHtml = valuesHtml.replace("%opformat%", "c");
+			valuesHtml = valuesHtml.replace(PH_OPFORMAT, "c");
 			sendBypass = opCodes[0];
 		}
 		
@@ -225,12 +228,12 @@ public class AdminPForge implements IAdminCommandHandler
 		String editorsHtml = "";
 		if (format == null)
 		{
-			valuesHtml = valuesHtml.replace("%format%", "");
+			valuesHtml = valuesHtml.replace(PH_FORMAT, "");
 			editorsHtml = "";
 		}
 		else
 		{
-			valuesHtml = valuesHtml.replace("%format%", format);
+			valuesHtml = valuesHtml.replace(PH_FORMAT, format);
 			sendBypass += " " + format;
 			
 			final String editorTemplate = HtmCache.getInstance().getHtm(activeChar, "data/html/admin/pforge/inc/editor.htm");
@@ -242,7 +245,7 @@ public class AdminPForge implements IAdminCommandHandler
 				{
 					final char ch = format.charAt(chIdx);
 					singleCharSequence.setCharAt(0, ch);
-					editorsHtml += editorTemplate.replace("%format%", singleCharSequence).replace("%editor_index%", String.valueOf(chIdx));
+					editorsHtml += editorTemplate.replace(PH_FORMAT, singleCharSequence).replace("%editor_index%", String.valueOf(chIdx));
 					sendBypass += " $v" + chIdx;
 				}
 			}

@@ -39,6 +39,10 @@ import quests.Q00242_PossessorOfAPreciousSoul2.Q00242_PossessorOfAPreciousSoul2;
  */
 public class Q00246_PossessorOfAPreciousSoul3 extends Quest
 {
+	private static final String AWAITSWATERBINDER = "awaitsWaterbinder";
+	private static final String AWAITSEVERGREEN = "awaitsEvergreen";
+	private static final String HTML_N_31741_8 = "31741-8.html";
+
 	// NPCs
 	private static final int LADD = 30721;
 	private static final int CARADINE = 31740;
@@ -105,8 +109,8 @@ public class Q00246_PossessorOfAPreciousSoul3 extends Quest
 			{
 				if (st.isStarted() && st.isCond(1))
 				{
-					st.set("awaitsWaterbinder", "1");
-					st.set("awaitsEvergreen", "1");
+					st.set(AWAITSWATERBINDER, "1");
+					st.set(AWAITSEVERGREEN, "1");
 					st.setCond(2, true);
 				}
 				break;
@@ -132,7 +136,7 @@ public class Q00246_PossessorOfAPreciousSoul3 extends Quest
 				}
 				else
 				{
-					return "31741-8.html";
+					return HTML_N_31741_8;
 				}
 				break;
 			}
@@ -164,7 +168,7 @@ public class Q00246_PossessorOfAPreciousSoul3 extends Quest
 		{
 			case PILGRIM_OF_SPLENDOR:
 			{
-				partyMember = getRandomPartyMember(player, "awaitsWaterbinder", "1");
+				partyMember = getRandomPartyMember(player, AWAITSWATERBINDER, "1");
 				if (partyMember != null)
 				{
 					st = getQuestState(partyMember, false);
@@ -172,7 +176,7 @@ public class Q00246_PossessorOfAPreciousSoul3 extends Quest
 					if (st.isCond(2) && !hasQuestItems(partyMember, WATERBINDER) && (chance < CHANCE_FOR_DROP))
 					{
 						giveItems(partyMember, WATERBINDER, 1);
-						st.unset("awaitsWaterbinder");
+						st.unset(AWAITSWATERBINDER);
 						if (hasQuestItems(partyMember, EVERGREEN))
 						{
 							st.setCond(3, true);
@@ -187,7 +191,7 @@ public class Q00246_PossessorOfAPreciousSoul3 extends Quest
 			}
 			case JUDGE_OF_SPLENDOR:
 			{
-				partyMember = getRandomPartyMember(player, "awaitsEvergreen", "1");
+				partyMember = getRandomPartyMember(player, AWAITSEVERGREEN, "1");
 				if (partyMember != null)
 				{
 					st = getQuestState(partyMember, false);
@@ -195,7 +199,7 @@ public class Q00246_PossessorOfAPreciousSoul3 extends Quest
 					if (st.isCond(2) && !hasQuestItems(partyMember, EVERGREEN) && (chance < CHANCE_FOR_DROP))
 					{
 						giveItems(partyMember, EVERGREEN, 1);
-						st.unset("awaitsEvergreen");
+						st.unset(AWAITSEVERGREEN);
 						if (hasQuestItems(partyMember, WATERBINDER))
 						{
 							st.setCond(3, true);
@@ -327,7 +331,7 @@ public class Q00246_PossessorOfAPreciousSoul3 extends Quest
 							}
 							case 4:
 							{
-								htmltext = "31741-8.html";
+								htmltext = HTML_N_31741_8;
 								break;
 							}
 							case 5:
@@ -338,7 +342,7 @@ public class Q00246_PossessorOfAPreciousSoul3 extends Quest
 								}
 								else
 								{
-									htmltext = "31741-8.html";
+									htmltext = HTML_N_31741_8;
 								}
 								break;
 							}

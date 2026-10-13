@@ -29,6 +29,8 @@ import com.l2journey.gameserver.model.quest.State;
  */
 public class Q00019_GoToThePastureland extends Quest
 {
+	private static final String HTML_N_31537_02 = "31537-02.html";
+
 	// NPCs
 	private static final int VLADIMIR = 31302;
 	private static final int TUNATUN = 31537;
@@ -59,21 +61,21 @@ public class Q00019_GoToThePastureland extends Quest
 			qs.startQuest();
 			giveItems(player, VEAL, 1);
 		}
-		else if (event.equalsIgnoreCase("31537-02.html"))
+		else if (event.equalsIgnoreCase(HTML_N_31537_02))
 		{
 			if (hasQuestItems(player, YOUNG_WILD_BEAST_MEAT))
 			{
 				giveAdena(player, 50000, true);
 				addExpAndSp(player, 136766, 12688);
 				qs.exitQuest(false, true);
-				htmltext = "31537-02.html";
+				htmltext = HTML_N_31537_02;
 			}
 			else if (hasQuestItems(player, VEAL))
 			{
 				giveAdena(player, 147200, true);
 				addExpAndSp(player, 385040, 75250);
 				qs.exitQuest(false, true);
-				htmltext = "31537-02.html";
+				htmltext = HTML_N_31537_02;
 			}
 			else
 			{

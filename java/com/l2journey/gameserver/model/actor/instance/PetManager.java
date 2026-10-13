@@ -48,6 +48,8 @@ import com.l2journey.gameserver.network.serverpackets.SystemMessage;
 
 public class PetManager extends Merchant
 {
+	private static final String HTML_PATH = "data/html/petmanager/";
+
 	/**
 	 * Creates a pet manager.
 	 * @param template the pet manager NPC template.
@@ -70,13 +72,13 @@ public class PetManager extends Merchant
 		{
 			pom = npcId + "-" + value;
 		}
-		return "data/html/petmanager/" + pom + ".htm";
+		return HTML_PATH + pom + ".htm";
 	}
 	
 	@Override
 	public void showChatWindow(Player player)
 	{
-		String filename = "data/html/petmanager/" + getId() + ".htm";
+		String filename = HTML_PATH + getId() + ".htm";
 		if ((getId() == 36478) && player.hasSummon())
 		{
 			filename = "data/html/petmanager/restore-unsummonpet.htm";
@@ -226,7 +228,7 @@ public class PetManager extends Merchant
 		if (player.destroyItemByItemId(null, itemIdtake, 1, this, true))
 		{
 			player.addItem(ItemProcessType.NONE, itemIdgive, 1, this, true);
-			html.setFile(player, "data/html/petmanager/" + getId() + ".htm");
+			html.setFile(player, HTML_PATH + getId() + ".htm");
 			player.sendPacket(html);
 		}
 		else

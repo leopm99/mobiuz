@@ -42,6 +42,8 @@ import ai.AbstractNpcAI;
  */
 public class NoblessMaster extends AbstractNpcAI
 {
+	private static final String HTML_N_36605_BLOCKED = "36605-blocked.htm";
+
 	// Item
 	private static final int NOBLESS_TIARA = 7694;
 	
@@ -76,31 +78,31 @@ public class NoblessMaster extends AbstractNpcAI
 			if (player.getPkKills() > 0)
 			{
 				player.sendMessage("You cannot become a Noblesse while flagged as a PK.");
-				return "36605-blocked.htm";
+				return HTML_N_36605_BLOCKED;
 			}
 			
 			if (player.isInCombat())
 			{
 				player.sendMessage("You cannot become a Noblesse while in combat.");
-				return "36605-blocked.htm";
+				return HTML_N_36605_BLOCKED;
 			}
 			
 			if (player.isOnEvent() || player.isRegisteredOnEvent() || player.isInOlympiadMode() || player.isInDuel())
 			{
 				player.sendMessage("You cannot become a Noblesse while participating in an event.");
-				return "36605-blocked.htm";
+				return HTML_N_36605_BLOCKED;
 			}
 			
 			if (player.isTransformed())
 			{
 				player.sendMessage("You cannot become a Noblesse while transformed.");
-				return "36605-blocked.htm";
+				return HTML_N_36605_BLOCKED;
 			}
 			
 			if (player.isSubClassActive())
 			{
 				player.sendMessage("You must be on your main class to become a Noblesse.");
-				return "36605-blocked.htm";
+				return HTML_N_36605_BLOCKED;
 			}
 			
 			if (getQuestItemsCount(player, Config.NOBLESS_COIN) < Config.NOBLESS_COIN_COUNT)

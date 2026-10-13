@@ -73,6 +73,13 @@ import com.l2journey.gameserver.util.Broadcast;
  */
 public class Instance
 {
+	private static final String ALLOWRANDOMWALK = "allowRandomWalk";
+	private static final String RESPAWNRANDOM = "respawnRandom";
+	private static final String HEADING = "heading";
+	private static final String RESPAWN = "respawn";
+	private static final String DOORID = "DoorId";
+	private static final String DELAY = "delay";
+
 	private static final Logger LOGGER = Logger.getLogger(Instance.class.getName());
 	
 	private final int _id;
@@ -260,7 +267,7 @@ public class Instance
 	{
 		if (_doorTemplates.contains(set))
 		{
-			LOGGER.warning(() -> "Door ID " + set.getInt("DoorId") + " already exists in instance " + _id);
+			LOGGER.warning(() -> "Door ID " + set.getInt(DOORID) + " already exists in instance " + _id);
 			return;
 		}
 		_doorTemplates.add(set);
@@ -274,7 +281,7 @@ public class Instance
 		for (StatSet template : _doorTemplates)
 		{
 			// Create new door instance
-			final int doorId = template.getInt("DoorId");
+			final int doorId = template.getInt(DOORID);
 			final StatSet doorTemplate = DoorData.getInstance().getDoorTemplate(doorId);
 			final Door newdoor = new Door(new DoorTemplate(doorTemplate));
 			newdoor.setInstanceId(_id);
@@ -437,16 +444,16 @@ public class Instance
 					final Spawn spawnDat = new Spawn(set.getInt("npcId"));
 					spawnDat.setXYZ(set.getInt("x"), set.getInt("y"), set.getInt("z"));
 					spawnDat.setAmount(1);
-					spawnDat.setHeading(set.getInt("heading"));
-					spawnDat.setRespawnDelay(set.getInt("respawn"), set.getInt("respawnRandom"));
+					spawnDat.setHeading(set.getInt(HEADING));
+					spawnDat.setRespawnDelay(set.getInt(RESPAWN), set.getInt(RESPAWNRANDOM));
 					spawnDat.setInstanceId(_id);
-					spawnDat.setRandomWalking(set.getBoolean("allowRandomWalk"));
+					spawnDat.setRandomWalking(set.getBoolean(ALLOWRANDOMWALK));
 					final Npc spawned = spawnDat.doSpawn(false);
-					if ((set.getInt("delay") >= 0) && spawned.isAttackable())
+					if ((set.getInt(DELAY) >= 0) && spawned.isAttackable())
 					{
-						spawned.asAttackable().setOnKillDelay(set.getInt("delay"));
+						spawned.asAttackable().setOnKillDelay(set.getInt(DELAY));
 					}
-					if (set.getInt("respawn") == 0)
+					if (set.getInt(RESPAWN) == 0)
 					{
 						spawnDat.stopRespawn();
 					}
@@ -503,7 +510,7 @@ public class Instance
 		{
 			_ejectTime = 1000 * Integer.parseInt(a.getNodeValue());
 		}
-		a = n.getAttributes().getNamedItem("allowRandomWalk");
+		a = n.getAttributes().getNamedItem(ALLOWRANDOMWALK);
 		if (a != null)
 		{
 			_allowRandomWalk = Boolean.parseBoolean(a.getNodeValue());
@@ -577,7 +584,7 @@ public class Instance
 						{
 							doorId = Integer.parseInt(d.getAttributes().getNamedItem("id").getNodeValue());
 							final StatSet set = new StatSet();
-							set.set("DoorId", doorId);
+							set.set(DOORID, doorId);
 							for (Node bean = d.getFirstChild(); bean != null; bean = bean.getNextSibling())
 							{
 								if ("set".equalsIgnoreCase(bean.getNodeName()))
@@ -617,25 +624,25 @@ public class Instance
 									x = Integer.parseInt(d.getAttributes().getNamedItem("x").getNodeValue());
 									y = Integer.parseInt(d.getAttributes().getNamedItem("y").getNodeValue());
 									z = Integer.parseInt(d.getAttributes().getNamedItem("z").getNodeValue());
-									if (d.getAttributes().getNamedItem("heading") != null)
+									if (d.getAttributes().getNamedItem(HEADING) != null)
 									{
-										heading = Integer.parseInt(d.getAttributes().getNamedItem("heading").getNodeValue());
+										heading = Integer.parseInt(d.getAttributes().getNamedItem(HEADING).getNodeValue());
 									}
-									if (d.getAttributes().getNamedItem("respawn") != null)
+									if (d.getAttributes().getNamedItem(RESPAWN) != null)
 									{
-										respawn = Integer.parseInt(d.getAttributes().getNamedItem("respawn").getNodeValue());
+										respawn = Integer.parseInt(d.getAttributes().getNamedItem(RESPAWN).getNodeValue());
 									}
 									if (d.getAttributes().getNamedItem("onKillDelay") != null)
 									{
 										delay = Integer.parseInt(d.getAttributes().getNamedItem("onKillDelay").getNodeValue());
 									}
-									if (d.getAttributes().getNamedItem("respawnRandom") != null)
+									if (d.getAttributes().getNamedItem(RESPAWNRANDOM) != null)
 									{
-										respawnRandom = Integer.parseInt(d.getAttributes().getNamedItem("respawnRandom").getNodeValue());
+										respawnRandom = Integer.parseInt(d.getAttributes().getNamedItem(RESPAWNRANDOM).getNodeValue());
 									}
-									if (d.getAttributes().getNamedItem("allowRandomWalk") != null)
+									if (d.getAttributes().getNamedItem(ALLOWRANDOMWALK) != null)
 									{
-										allowRandomWalk = Boolean.parseBoolean(d.getAttributes().getNamedItem("allowRandomWalk").getNodeValue());
+										allowRandomWalk = Boolean.parseBoolean(d.getAttributes().getNamedItem(ALLOWRANDOMWALK).getNodeValue());
 									}
 									
 									final StatSet spawnSet = new StatSet();
@@ -644,17 +651,17 @@ public class Instance
 									spawnSet.set("x", x);
 									spawnSet.set("y", y);
 									spawnSet.set("z", z);
-									spawnSet.set("heading", heading);
-									spawnSet.set("delay", delay);
-									spawnSet.set("respawn", respawn);
-									spawnSet.set("respawnRandom", respawnRandom);
+									spawnSet.set(HEADING, heading);
+									spawnSet.set(DELAY, delay);
+									spawnSet.set(RESPAWN, respawn);
+									spawnSet.set(RESPAWNRANDOM, respawnRandom);
 									if (allowRandomWalk == null)
 									{
-										spawnSet.set("allowRandomWalk", !_allowRandomWalk);
+										spawnSet.set(ALLOWRANDOMWALK, !_allowRandomWalk);
 									}
 									else
 									{
-										spawnSet.set("allowRandomWalk", !allowRandomWalk);
+										spawnSet.set(ALLOWRANDOMWALK, !allowRandomWalk);
 									}
 									_spawnTemplates.add(spawnSet);
 								}

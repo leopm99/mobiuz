@@ -41,6 +41,8 @@ import com.l2journey.gameserver.network.serverpackets.SystemMessage;
 
 public class RaceManager extends Npc
 {
+	private static final String PH_OBJECTID = "%objectId%";
+
 	protected static final int[] TICKET_PRICES =
 	{
 		100,
@@ -184,7 +186,7 @@ public class RaceManager extends Npc
 				return;
 			}
 			html.replace("1race", MonsterRaceManager.getInstance().getRaceNumber());
-			html.replace("%objectId%", getObjectId());
+			html.replace(PH_OBJECTID, getObjectId());
 			player.sendPacket(html);
 			player.sendPacket(ActionFailed.STATIC_PACKET);
 		}
@@ -209,7 +211,7 @@ public class RaceManager extends Npc
 				html.replace("Odd" + n, (odd > 0D) ? String.format(Locale.ENGLISH, "%.1f", odd) : "&$804;");
 			}
 			html.replace("1race", MonsterRaceManager.getInstance().getRaceNumber());
-			html.replace("%objectId%", getObjectId());
+			html.replace(PH_OBJECTID, getObjectId());
 			player.sendPacket(html);
 			player.sendPacket(ActionFailed.STATIC_PACKET);
 		}
@@ -228,7 +230,7 @@ public class RaceManager extends Npc
 				String search = "Mob" + n;
 				html.replace(search, MonsterRaceManager.getInstance().getMonsters()[i].getTemplate().getName());
 			}
-			html.replace("%objectId%", getObjectId());
+			html.replace(PH_OBJECTID, getObjectId());
 			player.sendPacket(html);
 			player.sendPacket(ActionFailed.STATIC_PACKET);
 		}
@@ -258,7 +260,7 @@ public class RaceManager extends Npc
 			final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 			html.setFile(player, getHtmlPath(getId(), 7));
 			html.replace("%tickets%", sb.toString());
-			html.replace("%objectId%", getObjectId());
+			html.replace(PH_OBJECTID, getObjectId());
 			player.sendPacket(html);
 			player.sendPacket(ActionFailed.STATIC_PACKET);
 		}
@@ -299,7 +301,7 @@ public class RaceManager extends Npc
 			html.replace("%bet%", bet);
 			html.replace("%firstLane%", info.getFirst() + 1);
 			html.replace("%odd%", (lane == (info.getFirst() + 1)) ? String.format(Locale.ENGLISH, "%.2f", info.getOddRate()) : "0.01");
-			html.replace("%objectId%", getObjectId());
+			html.replace(PH_OBJECTID, getObjectId());
 			html.replace("%ticketObjectId%", val);
 			player.sendPacket(html);
 			player.sendPacket(ActionFailed.STATIC_PACKET);
@@ -364,7 +366,7 @@ public class RaceManager extends Npc
 			final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 			html.setFile(player, getHtmlPath(getId(), 9));
 			html.replace("%infos%", sb.toString());
-			html.replace("%objectId%", getObjectId());
+			html.replace(PH_OBJECTID, getObjectId());
 			player.sendPacket(html);
 			player.sendPacket(ActionFailed.STATIC_PACKET);
 		}

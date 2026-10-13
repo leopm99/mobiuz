@@ -50,6 +50,12 @@ import quests.Q00195_SevenSignsSecretRitualOfThePriests.Q00195_SevenSignsSecretR
  */
 public class SSQSanctumOfTheLordsOfDawn extends AbstractInstance
 {
+	private static final String SAVE_POINT1 = "save_point1";
+	private static final String SAVE_POINT2 = "save_point2";
+	private static final String SAVE_POINT3 = "save_point3";
+	private static final String SAVE_POINT4 = "save_point4";
+	private static final String DOORST = "doorst";
+
 	// NPCs
 	private static final int GUARDS_OF_THE_DAWN = 18834;
 	private static final int GUARDS_OF_THE_DAWN_2 = 18835;
@@ -130,7 +136,7 @@ public class SSQSanctumOfTheLordsOfDawn extends AbstractInstance
 				if (world != null)
 				{
 					boolean teleported = false;
-					for (Npc monster : world.getParameters().getList("save_point1", Npc.class))
+					for (Npc monster : world.getParameters().getList(SAVE_POINT1, Npc.class))
 					{
 						if ((monster != null) && (monster.getObjectId() == npc.getObjectId()))
 						{
@@ -141,7 +147,7 @@ public class SSQSanctumOfTheLordsOfDawn extends AbstractInstance
 					}
 					if (!teleported)
 					{
-						for (Npc monster : world.getParameters().getList("save_point2", Npc.class))
+						for (Npc monster : world.getParameters().getList(SAVE_POINT2, Npc.class))
 						{
 							if ((monster != null) && (monster.getObjectId() == npc.getObjectId()))
 							{
@@ -153,7 +159,7 @@ public class SSQSanctumOfTheLordsOfDawn extends AbstractInstance
 					}
 					if (!teleported)
 					{
-						for (Npc monster : world.getParameters().getList("save_point3", Npc.class))
+						for (Npc monster : world.getParameters().getList(SAVE_POINT3, Npc.class))
 						{
 							if ((monster != null) && (monster.getObjectId() == npc.getObjectId()))
 							{
@@ -165,7 +171,7 @@ public class SSQSanctumOfTheLordsOfDawn extends AbstractInstance
 					}
 					if (!teleported)
 					{
-						for (Npc monster : world.getParameters().getList("save_point4", Npc.class))
+						for (Npc monster : world.getParameters().getList(SAVE_POINT4, Npc.class))
 						{
 							if ((monster != null) && (monster.getObjectId() == npc.getObjectId()))
 							{
@@ -190,10 +196,10 @@ public class SSQSanctumOfTheLordsOfDawn extends AbstractInstance
 		if (firstEntrance)
 		{
 			world.addAllowed(player);
-			world.setParameter("save_point1", world.spawnGroup("save_point1"));
-			world.setParameter("save_point2", world.spawnGroup("save_point2"));
-			world.setParameter("save_point3", world.spawnGroup("save_point3"));
-			world.setParameter("save_point4", world.spawnGroup("save_point4"));
+			world.setParameter(SAVE_POINT1, world.spawnGroup(SAVE_POINT1));
+			world.setParameter(SAVE_POINT2, world.spawnGroup(SAVE_POINT2));
+			world.setParameter(SAVE_POINT3, world.spawnGroup(SAVE_POINT3));
+			world.setParameter(SAVE_POINT4, world.spawnGroup(SAVE_POINT4));
 		}
 		teleportPlayer(player, ENTER, world.getInstanceId());
 	}
@@ -220,20 +226,20 @@ public class SSQSanctumOfTheLordsOfDawn extends AbstractInstance
 				{
 					if (hasQuestItems(talker, IDENTITY_CARD) && (talker.getTransformationId() == 113))
 					{
-						final int doorst = world.getParameters().getInt("doorst", 0);
+						final int doorst = world.getParameters().getInt(DOORST, 0);
 						if (doorst == 0)
 						{
 							world.openDoor(DOOR_ONE);
 							talker.sendPacket(SystemMessageId.BY_USING_THE_INVISIBLE_SKILL_SNEAK_INTO_THE_DAWN_S_DOCUMENT_STORAGE);
 							talker.sendPacket(SystemMessageId.MALE_GUARDS_CAN_DETECT_THE_CONCEALMENT_BUT_THE_FEMALE_GUARDS_CANNOT);
 							talker.sendPacket(SystemMessageId.FEMALE_GUARDS_NOTICE_THE_DISGUISES_FROM_FAR_AWAY_BETTER_THAN_THE_MALE_GUARDS_DO_SO_BEWARE);
-							world.setParameter("doorst", doorst + 1);
+							world.setParameter(DOORST, doorst + 1);
 							npc.decayMe();
 						}
 						else if (doorst == 1)
 						{
 							world.openDoor(DOOR_TWO);
-							world.setParameter("doorst", doorst + 1);
+							world.setParameter(DOORST, doorst + 1);
 							npc.decayMe();
 							for (Player plr : world.getAllowed())
 							{

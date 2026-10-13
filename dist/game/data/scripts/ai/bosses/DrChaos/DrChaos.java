@@ -56,6 +56,11 @@ import ai.AbstractNpcAI;
  */
 public class DrChaos extends AbstractNpcAI
 {
+	private static final String PARANOIA_ACTIVITY = "paranoia_activity";
+	private static final String DISTANCE_CHECK = "DISTANCE_CHECK";
+	private static final String GOLEM_DESPAWN = "golem_despawn";
+	private static final String RESET_DRCHAOS = "reset_drchaos";
+
 	private static final int DOCTOR_CHAOS = 32033;
 	private static final int CHAOS_GOLEM = 25512;
 	
@@ -86,7 +91,7 @@ public class DrChaos extends AbstractNpcAI
 			final long temp = (info.getLong("respawn_time") - System.currentTimeMillis());
 			if (temp > 0)
 			{
-				startQuestTimer("reset_drchaos", temp, null, null, false);
+				startQuestTimer(RESET_DRCHAOS, temp, null, null, false);
 			}
 			else
 			{
@@ -113,7 +118,7 @@ public class DrChaos extends AbstractNpcAI
 			
 			// start monitoring Dr. Chaos's inactivity
 			_lastAttackVsGolem = System.currentTimeMillis();
-			startQuestTimer("golem_despawn", 60000, golem, null, true);
+			startQuestTimer(GOLEM_DESPAWN, 60000, golem, null, true);
 		}
 		// Spawn the regular NPC.
 		else
@@ -127,20 +132,20 @@ public class DrChaos extends AbstractNpcAI
 	{
 		switch (event)
 		{
-			case "reset_drchaos":
+			case RESET_DRCHAOS:
 			{
 				GrandBossManager.getInstance().setStatus(CHAOS_GOLEM, NORMAL);
 				addSpawn(DOCTOR_CHAOS, CHAOS_X, CHAOS_Y, CHAOS_Z, CHAOS_HEAD, false, 0, false);
 				break;
 			}
-			case "golem_despawn": // despawn the live Dr. Chaos after 30 minutes of inactivity
+			case GOLEM_DESPAWN: // despawn the live Dr. Chaos after 30 minutes of inactivity
 			{
 				if ((npc.getId() == CHAOS_GOLEM) && ((_lastAttackVsGolem + 1800000) < System.currentTimeMillis()))
 				{
 					final Npc chaos = addSpawn(DOCTOR_CHAOS, CHAOS_X, CHAOS_Y, CHAOS_Z, CHAOS_HEAD, false, 0, false); // spawn Dr. Chaos
 					GrandBossManager.getInstance().setStatus(CHAOS_GOLEM, NORMAL); // mark Dr. Chaos is not crazy any more
-					cancelQuestTimer("golem_despawn", chaos, null);
-					cancelQuestTimers("DISTANCE_CHECK");
+					cancelQuestTimer(GOLEM_DESPAWN, chaos, null);
+					cancelQuestTimers(DISTANCE_CHECK);
 					
 					// Despawn the war golem.
 					npc.deleteMe();
@@ -173,20 +178,20 @@ public class DrChaos extends AbstractNpcAI
 			{
 				final GrandBoss golem = (GrandBoss) addSpawn(CHAOS_GOLEM, 96080, -110822, -3343, 0, false, 0, false);
 				GrandBossManager.getInstance().addBoss(golem);
-				startQuestTimer("DISTANCE_CHECK", 10000, golem, null, true);
+				startQuestTimer(DISTANCE_CHECK, 10000, golem, null, true);
 				golem.broadcastPacket(new SpecialCamera(npc, 30, 200, 20, 6000, 700, 8000, 0, 0, 0, 0, 0));
 				golem.broadcastPacket(new SocialAction(npc.getObjectId(), 1));
 				golem.broadcastPacket(new PlaySound(1, "Rm03_A", 0, 0, 0, 0, 0));
 				
 				// start monitoring Dr. Chaos's inactivity
 				_lastAttackVsGolem = System.currentTimeMillis();
-				startQuestTimer("golem_despawn", 60000, golem, null, true);
+				startQuestTimer(GOLEM_DESPAWN, 60000, golem, null, true);
 				
 				// Delete Dr. Chaos after spawned the war golem.
 				npc.deleteMe();
 				break;
 			}
-			case "paranoia_activity":
+			case PARANOIA_ACTIVITY:
 			{
 				if (GrandBossManager.getInstance().getStatus(CHAOS_GOLEM) == NORMAL)
 				{
@@ -219,11 +224,11 @@ public class DrChaos extends AbstractNpcAI
 				}
 				break;
 			}
-			case "DISTANCE_CHECK":
+			case DISTANCE_CHECK:
 			{
 				if ((npc == null) || npc.isDead())
 				{
-					cancelQuestTimers("DISTANCE_CHECK");
+					cancelQuestTimers(DISTANCE_CHECK);
 				}
 				else if (npc.calculateDistance2D(npc.getSpawn()) > 10000)
 				{
@@ -274,22 +279,22 @@ public class DrChaos extends AbstractNpcAI
 		_pissedOffTimer = 30;
 		
 		// Initialization of the paranoia.
-		startQuestTimer("paranoia_activity", 1000, npc, null, true);
+		startQuestTimer(PARANOIA_ACTIVITY, 1000, npc, null, true);
 		
-		cancelQuestTimer("DISTANCE_CHECK", npc, null);
-		startQuestTimer("DISTANCE_CHECK", 10000, npc, null, true);
+		cancelQuestTimer(DISTANCE_CHECK, npc, null);
+		startQuestTimer(DISTANCE_CHECK, 10000, npc, null, true);
 	}
 	
 	@Override
 	public void onKill(Npc npc, Player player, boolean isPet)
 	{
-		cancelQuestTimer("golem_despawn", npc, null);
+		cancelQuestTimer(GOLEM_DESPAWN, npc, null);
 		npc.broadcastSay(ChatType.NPC_GENERAL, "Urggh! You will pay dearly for this insult.");
 		
 		// "lock" Dr. Chaos for regular RB time (36H fixed +- 24H random)
 		final long respawnTime = (36 + getRandom(-24, 24)) * 3600000;
 		GrandBossManager.getInstance().setStatus(CHAOS_GOLEM, DEAD);
-		startQuestTimer("reset_drchaos", respawnTime, null, null, false);
+		startQuestTimer(RESET_DRCHAOS, respawnTime, null, null, false);
 		
 		// also save the respawn time so that the info is maintained past reboots
 		final StatSet info = GrandBossManager.getInstance().getStatSet(CHAOS_GOLEM);
@@ -297,7 +302,7 @@ public class DrChaos extends AbstractNpcAI
 		GrandBossManager.getInstance().setStatSet(CHAOS_GOLEM, info);
 		
 		// Stop distance check task.
-		cancelQuestTimers("DISTANCE_CHECK");
+		cancelQuestTimers(DISTANCE_CHECK);
 	}
 	
 	@Override
@@ -345,7 +350,7 @@ public class DrChaos extends AbstractNpcAI
 			GrandBossManager.getInstance().setStatus(CHAOS_GOLEM, CRAZY);
 			
 			// Cancels the paranoia timer.
-			cancelQuestTimer("paranoia_activity", npc, null);
+			cancelQuestTimer(PARANOIA_ACTIVITY, npc, null);
 			
 			// Makes the NPC moves near the Strange Box speaking.
 			npc.getAI().setIntention(Intention.MOVE_TO, new Location(96323, -110914, -3328, 0));

@@ -29,6 +29,8 @@ import com.l2journey.gameserver.model.quest.State;
  */
 public class Q00136_MoreThanMeetsTheEye extends Quest
 {
+	private static final String TALKED = "talked";
+
 	// NPCs
 	private static final int HARDIN = 30832;
 	private static final int ERRICKIN = 30701;
@@ -109,19 +111,19 @@ public class Q00136_MoreThanMeetsTheEye extends Quest
 			}
 			case "30832-11.html":
 			{
-				qs.set("talked", "2");
+				qs.set(TALKED, "2");
 				break;
 			}
 			case "30832-14.html":
 			{
-				qs.unset("talked");
+				qs.unset(TALKED);
 				giveItems(player, ORDER, 1);
 				qs.setCond(6, true);
 				break;
 			}
 			case "30832-17.html":
 			{
-				qs.set("talked", "2");
+				qs.set(TALKED, "2");
 				break;
 			}
 			case "30832-19.html":
@@ -209,18 +211,18 @@ public class Q00136_MoreThanMeetsTheEye extends Quest
 							}
 							case 5:
 							{
-								if (qs.getInt("talked") == 1)
+								if (qs.getInt(TALKED) == 1)
 								{
 									htmltext = "30832-10.html";
 								}
-								else if (qs.getInt("talked") == 2)
+								else if (qs.getInt(TALKED) == 2)
 								{
 									htmltext = "30832-12.html";
 								}
 								else if (hasQuestItems(player, STABILIZED_ECTOPLASM))
 								{
 									takeItems(player, STABILIZED_ECTOPLASM, -1);
-									qs.set("talked", "1");
+									qs.set(TALKED, "1");
 									htmltext = "30832-09.html";
 								}
 								else
@@ -236,19 +238,19 @@ public class Q00136_MoreThanMeetsTheEye extends Quest
 							}
 							case 9:
 							{
-								if (qs.getInt("talked") == 1)
+								if (qs.getInt(TALKED) == 1)
 								{
-									qs.set("talked", "2");
+									qs.set(TALKED, "2");
 									htmltext = "30832-17.html";
 								}
-								else if (qs.getInt("talked") == 2)
+								else if (qs.getInt(TALKED) == 2)
 								{
 									htmltext = "30832-18.html";
 								}
 								else
 								{
 									takeItems(player, BOOK_OF_SEAL, -1);
-									qs.set("talked", "1");
+									qs.set(TALKED, "1");
 									htmltext = "30832-16.html";
 								}
 								break;

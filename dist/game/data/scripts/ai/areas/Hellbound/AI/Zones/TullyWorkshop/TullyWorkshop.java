@@ -71,6 +71,9 @@ import ai.AbstractNpcAI;
  */
 public class TullyWorkshop extends AbstractNpcAI
 {
+	private static final String END_7TH_FLOOR_ATTACK = "end_7th_floor_attack";
+	private static final String DESPAWN_SERVANT = "despawn_servant";
+
 	// NPCs
 	private static final int AGENT = 32372;
 	private static final int CUBE_68 = 32467;
@@ -722,7 +725,7 @@ public class TullyWorkshop extends AbstractNpcAI
 			final Npc spawnedNpc = addSpawn(CUBE_68, 12527, 279714, -11622, 16384, false, 0, false);
 			startQuestTimer("cube_68_despawn", 600000, spawnedNpc, null);
 		}
-		else if (event.equalsIgnoreCase("end_7th_floor_attack"))
+		else if (event.equalsIgnoreCase(END_7TH_FLOOR_ATTACK))
 		{
 			do7thFloorDespawn();
 		}
@@ -757,7 +760,7 @@ public class TullyWorkshop extends AbstractNpcAI
 			npc.broadcastSay(ChatType.NPC_SHOUT, NpcStringId.DE_ACTIVATE_THE_ALARM);
 			brokenContraptions.remove(npc.getObjectId());
 		}
-		else if (event.equalsIgnoreCase("despawn_servant") && !npc.isDead())
+		else if (event.equalsIgnoreCase(DESPAWN_SERVANT) && !npc.isDead())
 		{
 			if ((npc.getAI().getIntention() != Intention.ATTACK) && (npc.getAI().getIntention() != Intention.CAST) && (npc.getCurrentHp() == npc.getMaxHp()))
 			{
@@ -766,7 +769,7 @@ public class TullyWorkshop extends AbstractNpcAI
 			}
 			else
 			{
-				startQuestTimer("despawn_servant", 180000, npc, null);
+				startQuestTimer(DESPAWN_SERVANT, 180000, npc, null);
 			}
 		}
 		else if (event.equalsIgnoreCase("despawn_agent"))
@@ -1035,7 +1038,7 @@ public class TullyWorkshop extends AbstractNpcAI
 				if (!is7thFloorAttackBegan)
 				{
 					is7thFloorAttackBegan = true;
-					startQuestTimer("end_7th_floor_attack", 1200000, null, null);
+					startQuestTimer(END_7TH_FLOOR_ATTACK, 1200000, null, null);
 				}
 				
 				npc.deleteMe();
@@ -1172,7 +1175,7 @@ public class TullyWorkshop extends AbstractNpcAI
 			if (!is7thFloorAttackBegan)
 			{
 				is7thFloorAttackBegan = true;
-				startQuestTimer("end_7th_floor_attack", 1200000, null, null);
+				startQuestTimer(END_7TH_FLOOR_ATTACK, 1200000, null, null);
 				if (spawnedAgent != null)
 				{
 					spawnedAgent.deleteMe();
@@ -1305,7 +1308,7 @@ public class TullyWorkshop extends AbstractNpcAI
 						final int[] coords = SERVANT_COORDINATES[(room + cf)];
 						final Npc spawnedNpc = addSpawn(servantId, coords[0], coords[1], coords[2], 0, false, 0, false);
 						allowServantSpawn = false;
-						startQuestTimer("despawn_servant", 180000, spawnedNpc, null);
+						startQuestTimer(DESPAWN_SERVANT, 180000, spawnedNpc, null);
 					}
 				}
 			}
@@ -1496,7 +1499,7 @@ public class TullyWorkshop extends AbstractNpcAI
 	
 	private void do7thFloorDespawn()
 	{
-		cancelQuestTimers("end_7th_floor_attack");
+		cancelQuestTimers(END_7TH_FLOOR_ATTACK);
 		for (Monster monster : spawnedFollowers)
 		{
 			if ((monster != null) && !monster.isDead())

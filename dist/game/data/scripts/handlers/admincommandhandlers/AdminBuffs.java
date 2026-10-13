@@ -53,6 +53,8 @@ import com.l2journey.gameserver.util.GMAudit;
  */
 public class AdminBuffs implements IAdminCommandHandler
 {
+	private static final String PH_PAGES = "%pages%";
+
 	private static final int PAGE_LIMIT = 7;
 	private static final String FONT_RED1 = "<font color=\"FF0000\">";
 	private static final String FONT_RED2 = "</font>";
@@ -399,11 +401,11 @@ public class AdminBuffs implements IAdminCommandHandler
 		html.setFile(activeChar, "data/html/admin/getbuff_skills.htm");
 		if (result.getPages() > 1)
 		{
-			html.replace("%pages%", "<table width=280 cellspacing=0><tr>" + result.getPagerTemplate() + "</tr></table>");
+			html.replace(PH_PAGES, "<table width=280 cellspacing=0><tr>" + result.getPagerTemplate() + "</tr></table>");
 		}
 		else
 		{
-			html.replace("%pages%", "");
+			html.replace(PH_PAGES, "");
 		}
 		
 		html.replace("%buffsText%", passive ? "Hide Passives" : "Show Passives");
@@ -505,11 +507,11 @@ public class AdminBuffs implements IAdminCommandHandler
 		html.setFile(activeChar, "data/html/admin/getbuff_effects.htm");
 		if (result.getPages() > 1)
 		{
-			html.replace("%pages%", "<table width=280 cellspacing=0><tr>" + result.getPagerTemplate() + "</tr></table>");
+			html.replace(PH_PAGES, "<table width=280 cellspacing=0><tr>" + result.getPagerTemplate() + "</tr></table>");
 		}
 		else
 		{
-			html.replace("%pages%", "");
+			html.replace(PH_PAGES, "");
 		}
 		
 		html.replace("%buffsText%", passive ? "Hide Passives" : "Show Passives");

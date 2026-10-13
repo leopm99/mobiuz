@@ -32,6 +32,9 @@ import instances.AbstractInstance;
  */
 public class SSQLibraryOfSages extends AbstractInstance
 {
+	private static final String ELCADIA = "elcadia";
+	private static final String FOLLOW = "FOLLOW";
+
 	// NPCs
 	private static final int SOPHIA1 = 32596;
 	private static final int PILE_OF_BOOKS1 = 32809;
@@ -75,29 +78,29 @@ public class SSQLibraryOfSages extends AbstractInstance
 				case "TELEPORT2":
 				{
 					teleportPlayer(player, LIBRARY_LOC, world.getInstanceId());
-					world.getParameters().getObject("elcadia", Npc.class).teleToLocation(LIBRARY_LOC.getX(), LIBRARY_LOC.getY(), LIBRARY_LOC.getZ(), 0, world.getInstanceId());
+					world.getParameters().getObject(ELCADIA, Npc.class).teleToLocation(LIBRARY_LOC.getX(), LIBRARY_LOC.getY(), LIBRARY_LOC.getZ(), 0, world.getInstanceId());
 					break;
 				}
 				case "exit":
 				{
-					cancelQuestTimer("FOLLOW", npc, player);
+					cancelQuestTimer(FOLLOW, npc, player);
 					player.teleToLocation(EXIT_LOC);
-					world.getParameters().getObject("elcadia", Npc.class).deleteMe();
+					world.getParameters().getObject(ELCADIA, Npc.class).deleteMe();
 					break;
 				}
-				case "FOLLOW":
+				case FOLLOW:
 				{
 					npc.setRunning();
 					npc.getAI().startFollow(player);
 					npc.broadcastSay(ChatType.NPC_GENERAL, getRandomEntry(ELCADIA_DIALOGS));
-					startQuestTimer("FOLLOW", 10000, npc, player);
+					startQuestTimer(FOLLOW, 10000, npc, player);
 					break;
 				}
 				case "ENTER":
 				{
-					cancelQuestTimer("FOLLOW", npc, player);
+					cancelQuestTimer(FOLLOW, npc, player);
 					teleportPlayer(player, START_LOC, world.getInstanceId());
-					world.getParameters().getObject("elcadia", Npc.class).teleToLocation(START_LOC.getX(), START_LOC.getY(), START_LOC.getZ(), 0, world.getInstanceId());
+					world.getParameters().getObject(ELCADIA, Npc.class).teleToLocation(START_LOC.getX(), START_LOC.getY(), START_LOC.getZ(), 0, world.getInstanceId());
 					break;
 				}
 				default:
@@ -129,13 +132,13 @@ public class SSQLibraryOfSages extends AbstractInstance
 	
 	private void spawnElcadia(Player player, InstanceWorld world)
 	{
-		final Npc elcadia = world.getParameters().getObject("elcadia", Npc.class);
+		final Npc elcadia = world.getParameters().getObject(ELCADIA, Npc.class);
 		if (elcadia != null)
 		{
 			elcadia.deleteMe();
 		}
-		world.setParameter("elcadia", addSpawn(ELCADIA_INSTANCE, player, false, 0, false, player.getInstanceId()));
-		startQuestTimer("FOLLOW", 3000, elcadia, player);
+		world.setParameter(ELCADIA, addSpawn(ELCADIA_INSTANCE, player, false, 0, false, player.getInstanceId()));
+		startQuestTimer(FOLLOW, 3000, elcadia, player);
 	}
 	
 	public static void main(String[] args)

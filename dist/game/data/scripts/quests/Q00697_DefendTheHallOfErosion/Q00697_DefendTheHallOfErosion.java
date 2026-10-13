@@ -29,6 +29,8 @@ import com.l2journey.gameserver.model.quest.State;
 
 public class Q00697_DefendTheHallOfErosion extends Quest
 {
+	private static final String DEFENCEDONE = "defenceDone";
+
 	private static final int TEPIOS = 32603;
 	private static final int VESPER_STONE = 14052;
 	
@@ -80,14 +82,14 @@ public class Q00697_DefendTheHallOfErosion extends Quest
 			}
 			case State.STARTED:
 			{
-				if (qs.isCond(1) && (qs.getInt("defenceDone") == 0))
+				if (qs.isCond(1) && (qs.getInt(DEFENCEDONE) == 0))
 				{
 					htmltext = "32603-04.html";
 				}
-				else if (qs.isCond(1) && (qs.getInt("defenceDone") != 0))
+				else if (qs.isCond(1) && (qs.getInt(DEFENCEDONE) != 0))
 				{
 					giveItems(player, VESPER_STONE, getRandom(12, 20));
-					qs.unset("defenceDone");
+					qs.unset(DEFENCEDONE);
 					qs.exitQuest(true);
 					htmltext = "32603-05.html";
 				}

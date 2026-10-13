@@ -45,6 +45,9 @@ import ai.AbstractNpcAI;
  */
 public class Epidos extends AbstractNpcAI
 {
+	private static final String CHECK_MINIONS = "check_minions";
+	private static final String CHECK_IDLE = "check_idle";
+
 	private static final int[] EPIDOSES =
 	{
 		25609,
@@ -79,7 +82,7 @@ public class Epidos extends AbstractNpcAI
 	@Override
 	public String onEvent(String event, Npc npc, Player player)
 	{
-		if (event.equalsIgnoreCase("check_minions"))
+		if (event.equalsIgnoreCase(CHECK_MINIONS))
 		{
 			if ((getRandom(1000) > 250) && _lastHp.containsKey(npc.getObjectId()))
 			{
@@ -108,9 +111,9 @@ public class Epidos extends AbstractNpcAI
 				_lastHp.put(npc.getObjectId(), npc.getCurrentHp());
 			}
 			
-			startQuestTimer("check_minions", 10000, npc, null);
+			startQuestTimer(CHECK_MINIONS, 10000, npc, null);
 		}
-		else if (event.equalsIgnoreCase("check_idle"))
+		else if (event.equalsIgnoreCase(CHECK_IDLE))
 		{
 			if (npc.getAI().getIntention() == Intention.ACTIVE)
 			{
@@ -118,7 +121,7 @@ public class Epidos extends AbstractNpcAI
 			}
 			else
 			{
-				startQuestTimer("check_idle", 600000, npc, null);
+				startQuestTimer(CHECK_IDLE, 600000, npc, null);
 			}
 		}
 		return null;
@@ -138,8 +141,8 @@ public class Epidos extends AbstractNpcAI
 	@Override
 	public void onSpawn(Npc npc)
 	{
-		startQuestTimer("check_minions", 10000, npc, null);
-		startQuestTimer("check_idle", 600000, npc, null);
+		startQuestTimer(CHECK_MINIONS, 10000, npc, null);
+		startQuestTimer(CHECK_IDLE, 600000, npc, null);
 		_lastHp.put(npc.getObjectId(), (double) npc.getMaxHp());
 	}
 	

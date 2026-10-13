@@ -69,6 +69,9 @@ import com.l2journey.gameserver.network.serverpackets.SystemMessage;
  */
 public class AdminEditChar implements IAdminCommandHandler
 {
+	private static final String PH_RESULTS = "%results%";
+	private static final String PH_NUMBER = "%number%";
+
 	private static final Logger LOGGER = Logger.getLogger(AdminEditChar.class.getName());
 	
 	private static final String[] ADMIN_COMMANDS =
@@ -1193,7 +1196,7 @@ public class AdminEditChar implements IAdminCommandHandler
 				break;
 			}
 		}
-		adminReply.replace("%results%", replyMSG.toString());
+		adminReply.replace(PH_RESULTS, replyMSG.toString());
 		
 		final String replyMSG2;
 		if (charactersFound == 0)
@@ -1202,7 +1205,7 @@ public class AdminEditChar implements IAdminCommandHandler
 		}
 		else if (charactersFound > 20)
 		{
-			adminReply.replace("%number%", " more than 20");
+			adminReply.replace(PH_NUMBER, " more than 20");
 			replyMSG2 = "s.<br>Please refine your search to see all of the results.";
 		}
 		else if (charactersFound == 1)
@@ -1214,7 +1217,7 @@ public class AdminEditChar implements IAdminCommandHandler
 			replyMSG2 = "s.";
 		}
 		
-		adminReply.replace("%number%", String.valueOf(charactersFound));
+		adminReply.replace(PH_NUMBER, String.valueOf(charactersFound));
 		adminReply.replace("%end%", replyMSG2);
 		activeChar.sendPacket(adminReply);
 	}
@@ -1294,7 +1297,7 @@ public class AdminEditChar implements IAdminCommandHandler
 				break;
 			}
 		}
-		adminReply.replace("%results%", replyMSG.toString());
+		adminReply.replace(PH_RESULTS, replyMSG.toString());
 		
 		final String replyMSG2;
 		if (charactersFound == 0)
@@ -1303,7 +1306,7 @@ public class AdminEditChar implements IAdminCommandHandler
 		}
 		else if (charactersFound > 20)
 		{
-			adminReply.replace("%number%", " more than " + charactersFound);
+			adminReply.replace(PH_NUMBER, " more than " + charactersFound);
 			replyMSG2 = "s.<br>In order to avoid you a client crash I won't <br1>display results beyond the 20th character.";
 		}
 		else if (charactersFound == 1)
@@ -1315,7 +1318,7 @@ public class AdminEditChar implements IAdminCommandHandler
 			replyMSG2 = "s.";
 		}
 		adminReply.replace("%ip%", ipAdress);
-		adminReply.replace("%number%", String.valueOf(charactersFound));
+		adminReply.replace(PH_NUMBER, String.valueOf(charactersFound));
 		adminReply.replace("%end%", replyMSG2);
 		activeChar.sendPacket(adminReply);
 	}
@@ -1397,7 +1400,7 @@ public class AdminEditChar implements IAdminCommandHandler
 		final NpcHtmlMessage adminReply = new NpcHtmlMessage();
 		adminReply.setFile(activeChar, "data/html/admin/dualbox.htm");
 		adminReply.replace("%multibox%", String.valueOf(multibox));
-		adminReply.replace("%results%", results.toString());
+		adminReply.replace(PH_RESULTS, results.toString());
 		adminReply.replace("%strict%", "");
 		activeChar.sendPacket(adminReply);
 	}
@@ -1450,7 +1453,7 @@ public class AdminEditChar implements IAdminCommandHandler
 		final NpcHtmlMessage adminReply = new NpcHtmlMessage();
 		adminReply.setFile(activeChar, "data/html/admin/dualbox.htm");
 		adminReply.replace("%multibox%", String.valueOf(multibox));
-		adminReply.replace("%results%", results.toString());
+		adminReply.replace(PH_RESULTS, results.toString());
 		adminReply.replace("%strict%", "strict_");
 		activeChar.sendPacket(adminReply);
 	}

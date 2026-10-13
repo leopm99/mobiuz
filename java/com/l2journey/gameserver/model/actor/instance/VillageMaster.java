@@ -70,6 +70,8 @@ import com.l2journey.gameserver.network.serverpackets.SystemMessage;
  */
 public class VillageMaster extends Folk
 {
+	private static final String PH_LIST = "%list%";
+
 	private static final Logger LOGGER = Logger.getLogger(VillageMaster.class.getName());
 	
 	private static final Set<PlayerClass> mainSubclassSet;
@@ -421,7 +423,7 @@ public class VillageMaster extends Folk
 						{
 							content1.append("<a action=\"bypass npc_%objectId%_Subclass 4 " + subClass.getId() + "\" msg=\"1268;" + ClassListData.getInstance().getClass(subClass.getId()).getClassName() + "\">" + ClassListData.getInstance().getClass(subClass.getId()).getClientCode() + "</a><br>");
 						}
-						html.replace("%list%", content1.toString());
+						html.replace(PH_LIST, content1.toString());
 					}
 					else
 					{
@@ -470,7 +472,7 @@ public class VillageMaster extends Folk
 						if (!content2.isEmpty())
 						{
 							html.setFile(player, "data/html/villagemaster/SubClass_Change.htm");
-							html.replace("%list%", content2.toString());
+							html.replace(PH_LIST, content2.toString());
 						}
 						else
 						{
@@ -498,7 +500,7 @@ public class VillageMaster extends Folk
 							final SubClassHolder subClass = subList.next();
 							content3.append("Sub-class " + classIndex++ + "<br><a action=\"bypass -h npc_%objectId%_Subclass 6 " + subClass.getClassIndex() + "\">" + ClassListData.getInstance().getClass(subClass.getId()).getClientCode() + "</a><br>");
 						}
-						html.replace("%list%", content3.toString());
+						html.replace(PH_LIST, content3.toString());
 					}
 					else
 					{
@@ -681,7 +683,7 @@ public class VillageMaster extends Folk
 							html.setFile(player, "data/html/villagemaster/SubClass_ModifyChoice.htm");
 						}
 					}
-					html.replace("%list%", content6.toString());
+					html.replace(PH_LIST, content6.toString());
 					break;
 				}
 				case 7: // Change Subclass - Action

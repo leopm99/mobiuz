@@ -42,6 +42,8 @@ import com.l2journey.gameserver.network.serverpackets.NpcHtmlMessage;
  */
 public class AdminSiege implements IAdminCommandHandler
 {
+	private static final String PH_CLANHALLOWNER = "%clanhallOwner%";
+
 	private static final String[] ADMIN_COMMANDS =
 	{
 		// Castle commands
@@ -514,7 +516,7 @@ public class AdminSiege implements IAdminCommandHandler
 		adminReply.replace("%clanhallName%", clanhall.getName());
 		adminReply.replace("%clanhallId%", String.valueOf(clanhall.getId()));
 		final Clan owner = ClanTable.getInstance().getClan(clanhall.getOwnerId());
-		adminReply.replace("%clanhallOwner%", (owner == null) ? "None" : owner.getName());
+		adminReply.replace(PH_CLANHALLOWNER, (owner == null) ? "None" : owner.getName());
 		player.sendPacket(adminReply);
 	}
 	
@@ -532,11 +534,11 @@ public class AdminSiege implements IAdminCommandHandler
 		if (hall.getOwnerId() > 0)
 		{
 			final Clan owner = ClanTable.getInstance().getClan(hall.getOwnerId());
-			msg.replace("%clanhallOwner%", (owner != null) ? owner.getName() : "No Owner");
+			msg.replace(PH_CLANHALLOWNER, (owner != null) ? owner.getName() : "No Owner");
 		}
 		else
 		{
-			msg.replace("%clanhallOwner%", "No Owner");
+			msg.replace(PH_CLANHALLOWNER, "No Owner");
 		}
 		player.sendPacket(msg);
 	}

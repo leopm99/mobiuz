@@ -45,6 +45,10 @@ import ai.AbstractNpcAI;
  */
 public class PaganTeleporters extends AbstractNpcAI
 {
+	private static final String HTML_FADEDMARK = "FadedMark.htm";
+	private static final String CLOSE_DOOR1 = "Close_Door1";
+	private static final String CLOSE_DOOR2 = "Close_Door2";
+
 	// NPCs
 	private static final int TRIOLS_MIRROR_1 = 32039;
 	private static final int TRIOLS_MIRROR_2 = 32040;
@@ -78,12 +82,12 @@ public class PaganTeleporters extends AbstractNpcAI
 	{
 		switch (event)
 		{
-			case "Close_Door1":
+			case CLOSE_DOOR1:
 			{
 				DoorData.getInstance().getDoor(19160001).closeMe();
 				break;
 			}
-			case "Close_Door2":
+			case CLOSE_DOOR2:
 			{
 				DoorData.getInstance().getDoor(19160010).closeMe();
 				DoorData.getInstance().getDoor(19160011).closeMe();
@@ -119,14 +123,14 @@ public class PaganTeleporters extends AbstractNpcAI
 					return "noItem.htm";
 				}
 				DoorData.getInstance().getDoor(19160001).openMe();
-				startQuestTimer("Close_Door1", 10000, null, null);
-				return "FadedMark.htm";
+				startQuestTimer(CLOSE_DOOR1, 10000, null, null);
+				return HTML_FADEDMARK;
 			}
 			case 32035:
 			{
 				DoorData.getInstance().getDoor(19160001).openMe();
-				startQuestTimer("Close_Door1", 10000, null, null);
-				return "FadedMark.htm";
+				startQuestTimer(CLOSE_DOOR1, 10000, null, null);
+				return HTML_FADEDMARK;
 			}
 			case 32036:
 			{
@@ -136,15 +140,15 @@ public class PaganTeleporters extends AbstractNpcAI
 				}
 				DoorData.getInstance().getDoor(19160010).openMe();
 				DoorData.getInstance().getDoor(19160011).openMe();
-				startQuestTimer("Close_Door2", 10000, null, null);
+				startQuestTimer(CLOSE_DOOR2, 10000, null, null);
 				return "world.openDoor.htm";
 			}
 			case 32037:
 			{
 				DoorData.getInstance().getDoor(19160010).openMe();
 				DoorData.getInstance().getDoor(19160011).openMe();
-				startQuestTimer("Close_Door2", 10000, null, null);
-				return "FadedMark.htm";
+				startQuestTimer(CLOSE_DOOR2, 10000, null, null);
+				return HTML_FADEDMARK;
 			}
 			default:
 			{

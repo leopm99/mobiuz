@@ -45,6 +45,8 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Q00511_AwlUnderFoot extends Quest
 {
+	private static final String PH_PLAYER = "%player%";
+
 	protected class FAUWorld extends InstanceWorld
 	{
 	}
@@ -210,11 +212,11 @@ public class Q00511_AwlUnderFoot extends Quest
 			final QuestState qs = getQuestState(partyMember, false);
 			if ((qs == null) || (qs.getCond() < 1))
 			{
-				return getHtm(player, "FortressWarden-05.htm").replace("%player%", partyMember.getName());
+				return getHtm(player, "FortressWarden-05.htm").replace(PH_PLAYER, partyMember.getName());
 			}
 			if (!LocationUtil.checkIfInRange(1000, player, partyMember, true))
 			{
-				return getHtm(player, "FortressWarden-06.htm").replace("%player%", partyMember.getName());
+				return getHtm(player, "FortressWarden-06.htm").replace(PH_PLAYER, partyMember.getName());
 			}
 		}
 		return null;
@@ -254,7 +256,7 @@ public class Q00511_AwlUnderFoot extends Quest
 		{
 			if ((partyMember.getClan() == null) || (partyMember.getClan().getFortId() == 0) || (partyMember.getClan().getFortId() != fortress.getResidenceId()))
 			{
-				return getHtm(player, "FortressWarden-05.htm").replace("%player%", partyMember.getName());
+				return getHtm(player, "FortressWarden-05.htm").replace(PH_PLAYER, partyMember.getName());
 			}
 		}
 		return null;

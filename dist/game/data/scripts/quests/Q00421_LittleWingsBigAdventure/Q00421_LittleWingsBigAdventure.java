@@ -45,6 +45,8 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Q00421_LittleWingsBigAdventure extends Quest
 {
+	private static final String FLUTEOBJECTID = "fluteObjectId";
+
 	// NPCs
 	private static final int CRONOS = 30610;
 	private static final int MIMYU = 30747;
@@ -125,7 +127,7 @@ public class Q00421_LittleWingsBigAdventure extends Quest
 						{
 							qs.startQuest();
 							qs.setMemoState(100);
-							qs.set("fluteObjectId", flute.getObjectId());
+							qs.set(FLUTEOBJECTID, flute.getObjectId());
 							htmltext = event;
 						}
 					}
@@ -143,7 +145,7 @@ public class Q00421_LittleWingsBigAdventure extends Quest
 				{
 					htmltext = "30747-02.html";
 				}
-				else if (summon.getControlObjectId() != qs.getInt("fluteObjectId"))
+				else if (summon.getControlObjectId() != qs.getInt(FLUTEOBJECTID))
 				{
 					htmltext = "30747-03.html";
 				}
@@ -160,7 +162,7 @@ public class Q00421_LittleWingsBigAdventure extends Quest
 				{
 					htmltext = "30747-06.html";
 				}
-				else if (summon.getControlObjectId() != qs.getInt("fluteObjectId"))
+				else if (summon.getControlObjectId() != qs.getInt(FLUTEOBJECTID))
 				{
 					htmltext = "30747-06.html";
 				}
@@ -258,7 +260,7 @@ public class Q00421_LittleWingsBigAdventure extends Quest
 						{
 							htmltext = "30747-02.html";
 						}
-						else if (summon.getControlObjectId() != qs.getInt("fluteObjectId"))
+						else if (summon.getControlObjectId() != qs.getInt(FLUTEOBJECTID))
 						{
 							htmltext = "30747-03.html";
 						}
@@ -290,7 +292,7 @@ public class Q00421_LittleWingsBigAdventure extends Quest
 							{
 								htmltext = "30747-12.html";
 							}
-							else if (summon.getControlObjectId() == qs.getInt("fluteObjectId"))
+							else if (summon.getControlObjectId() == qs.getInt(FLUTEOBJECTID))
 							{
 								qs.setMemoState(16);
 								htmltext = "30747-13.html";
@@ -320,7 +322,7 @@ public class Q00421_LittleWingsBigAdventure extends Quest
 								else if (fluteCount == 1)
 								{
 									final Item flute = getFlute(talker);
-									if (flute.getObjectId() == qs.getInt("fluteObjectId"))
+									if (flute.getObjectId() == qs.getInt(FLUTEOBJECTID))
 									{
 										// TODO what if the hatchling has items in his inventory?
 										// Should they be transfered to the strider or given to the player?
@@ -390,7 +392,7 @@ public class Q00421_LittleWingsBigAdventure extends Quest
 				final NpcData data = NPC_DATA.get(npc.getId());
 				if ((qs.getMemoState() % data.memoStateMod) < data.memoStateValue)
 				{
-					if (attacker.getSummon().getControlObjectId() == qs.getInt("fluteObjectId"))
+					if (attacker.getSummon().getControlObjectId() == qs.getInt(FLUTEOBJECTID))
 					{
 						final int hits = qs.getInt("hits") + 1;
 						qs.set("hits", hits);

@@ -53,6 +53,12 @@ import ai.AbstractNpcAI;
  */
 public class Minigame extends AbstractNpcAI
 {
+	private static final String HURRY_UP2 = "hurry_up2";
+	private static final String AFTERTHAT = "afterthat";
+	private static final String HURRY_UP = "hurry_up";
+	private static final String EXPIRE = "expire";
+	private static final String TIMER = "timer";
+
 	private static final int SUMIEL = 32758;
 	private static final int BURNER = 18913;
 	private static final int TREASURE_BOX = 18911;
@@ -107,11 +113,11 @@ public class Minigame extends AbstractNpcAI
 				{
 					room.getOrder()[i] = getRandom(8);
 				}
-				cancelQuestTimer("hurry_up", npc, null);
-				cancelQuestTimer("hurry_up2", npc, null);
-				cancelQuestTimer("expire", npc, null);
-				startQuestTimer("hurry_up", 120000, npc, null);
-				startQuestTimer("expire", 190000, npc, null);
+				cancelQuestTimer(HURRY_UP, npc, null);
+				cancelQuestTimer(HURRY_UP2, npc, null);
+				cancelQuestTimer(EXPIRE, npc, null);
+				startQuestTimer(HURRY_UP, 120000, npc, null);
+				startQuestTimer(EXPIRE, 190000, npc, null);
 				startQuestTimer("start", 1000, npc, null);
 				return null;
 			}
@@ -146,10 +152,10 @@ public class Minigame extends AbstractNpcAI
 			{
 				room.burnThemAll();
 				startQuestTimer("off", 2000, npc, null); // It should be null to stop burnthemAll 2s after
-				startQuestTimer("timer", 4000, npc, null);
+				startQuestTimer(TIMER, 4000, npc, null);
 				break;
 			}
-			case "timer":
+			case TIMER:
 			{
 				if (room.getCurrentPot() < 9)
 				{
@@ -157,7 +163,7 @@ public class Minigame extends AbstractNpcAI
 					b.setDisplayEffect(1);
 					b.setWalking();
 					startQuestTimer("off", 2000, b, null); // Stopping burning each pot 2s after
-					startQuestTimer("timer", TIMER_INTERVAL * 1000, npc, null);
+					startQuestTimer(TIMER, TIMER_INTERVAL * 1000, npc, null);
 					room.setCurrentPot(room.getCurrentPot() + 1);
 				}
 				else
@@ -171,32 +177,32 @@ public class Minigame extends AbstractNpcAI
 				}
 				break;
 			}
-			case "hurry_up":
+			case HURRY_UP:
 			{
 				npc.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.THERE_S_ABOUT_1_MINUTE_LEFT);
-				startQuestTimer("hurry_up2", 60000, npc, null);
+				startQuestTimer(HURRY_UP2, 60000, npc, null);
 				break;
 			}
-			case "hurry_up2":
+			case HURRY_UP2:
 			{
 				npc.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.THERE_S_JUST_10_SECONDS_LEFT);
-				startQuestTimer("expire", 10000, npc, null);
+				startQuestTimer(EXPIRE, 10000, npc, null);
 				break;
 			}
-			case "expire":
+			case EXPIRE:
 			{
 				npc.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.TIME_IS_UP_AND_YOU_HAVE_FAILED_ANY_MORE_WILL_BE_DIFFICULT);
 				break;
 			}
 			case "end":
 			{
-				cancelQuestTimer("expire", npc, null);
-				cancelQuestTimer("hurry_up", npc, null);
-				cancelQuestTimer("hurry_up2", npc, null);
+				cancelQuestTimer(EXPIRE, npc, null);
+				cancelQuestTimer(HURRY_UP, npc, null);
+				cancelQuestTimer(HURRY_UP2, npc, null);
 				room.clean();
 				break;
 			}
-			case "afterthat":
+			case AFTERTHAT:
 			{
 				npc.deleteMe();
 				break;
@@ -258,8 +264,8 @@ public class Minigame extends AbstractNpcAI
 			case TREASURE_BOX:
 			{
 				npc.disableCoreAI(true);
-				cancelQuestTimer("afterthat", npc, null);
-				startQuestTimer("afterthat", 180000, npc, null);
+				cancelQuestTimer(AFTERTHAT, npc, null);
+				startQuestTimer(AFTERTHAT, 180000, npc, null);
 				break;
 			}
 			default:

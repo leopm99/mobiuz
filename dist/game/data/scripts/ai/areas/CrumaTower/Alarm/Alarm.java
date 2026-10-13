@@ -45,6 +45,10 @@ import quests.Q00185_NikolasCooperation.Q00185_NikolasCooperation;
  */
 public class Alarm extends AbstractNpcAI
 {
+	private static final String SELF_DESTRUCT_IN_60 = "SELF_DESTRUCT_IN_60";
+	private static final String PLAYER0 = "player0";
+	private static final String SPAWNED = "SPAWNED";
+
 	// NPC
 	private static final int ALARM = 32367;
 	// Misc
@@ -63,11 +67,11 @@ public class Alarm extends AbstractNpcAI
 	public String onEvent(String event, Npc npc, Player player)
 	{
 		String htmltext = null;
-		final Player player0 = npc.getVariables().getObject("player0", Player.class);
+		final Player player0 = npc.getVariables().getObject(PLAYER0, Player.class);
 		final Npc npc0 = npc.getVariables().getObject("npc0", Npc.class);
 		switch (event)
 		{
-			case "SELF_DESTRUCT_IN_60":
+			case SELF_DESTRUCT_IN_60:
 			{
 				startQuestTimer("SELF_DESTRUCT_IN_30", 30000, npc, null);
 				npc.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.THE_ALARM_WILL_SELF_DESTRUCT_IN_60_SECONDS_ENTER_PASSCODE_TO_OVERRIDE);
@@ -87,9 +91,9 @@ public class Alarm extends AbstractNpcAI
 			}
 			case "RECORDER_CRUSHED":
 			{
-				if ((npc0 != null) && npc0.getVariables().getBoolean("SPAWNED"))
+				if ((npc0 != null) && npc0.getVariables().getBoolean(SPAWNED))
 				{
-					npc0.getVariables().set("SPAWNED", false);
+					npc0.getVariables().set(SPAWNED, false);
 					if (player0 != null)
 					{
 						npc.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.RECORDER_CRUSHED);
@@ -174,9 +178,9 @@ public class Alarm extends AbstractNpcAI
 				{
 					if (getMemoStateEx(player, ART_OF_PERSUASION_ID, 1) >= 3)
 					{
-						if ((npc0 != null) && npc0.getVariables().getBoolean("SPAWNED"))
+						if ((npc0 != null) && npc0.getVariables().getBoolean(SPAWNED))
 						{
-							npc0.getVariables().set("SPAWNED", false);
+							npc0.getVariables().set(SPAWNED, false);
 						}
 						setMemoState(player, ART_OF_PERSUASION_ID, 4);
 						htmltext = "32367-184_09.html";
@@ -192,9 +196,9 @@ public class Alarm extends AbstractNpcAI
 				{
 					if (getMemoStateEx(player, NIKOLAS_COOPERATION_ID, 1) >= 3)
 					{
-						if ((npc0 != null) && npc0.getVariables().getBoolean("SPAWNED"))
+						if ((npc0 != null) && npc0.getVariables().getBoolean(SPAWNED))
 						{
-							npc0.getVariables().set("SPAWNED", false);
+							npc0.getVariables().set(SPAWNED, false);
 						}
 						setMemoState(player, NIKOLAS_COOPERATION_ID, 4);
 						htmltext = "32367-185_09.html";
@@ -222,7 +226,7 @@ public class Alarm extends AbstractNpcAI
 		String htmltext = getNoQuestMsg(talker);
 		if (verifyMemoState(talker, ART_OF_PERSUASION_ID, 3) || verifyMemoState(talker, NIKOLAS_COOPERATION_ID, 3))
 		{
-			if (npc.getVariables().getObject("player0", Player.class) == talker)
+			if (npc.getVariables().getObject(PLAYER0, Player.class) == talker)
 			{
 				htmltext = "32367-01.html";
 			}
@@ -237,10 +241,10 @@ public class Alarm extends AbstractNpcAI
 	@Override
 	public void onSpawn(Npc npc)
 	{
-		cancelQuestTimer("SELF_DESTRUCT_IN_60", npc, null);
-		startQuestTimer("SELF_DESTRUCT_IN_60", 60000, npc, null);
+		cancelQuestTimer(SELF_DESTRUCT_IN_60, npc, null);
+		startQuestTimer(SELF_DESTRUCT_IN_60, 60000, npc, null);
 		npc.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.INTRUDER_ALERT_THE_ALARM_WILL_SELF_DESTRUCT_IN_2_MINUTES);
-		final Player player = npc.getVariables().getObject("player0", Player.class);
+		final Player player = npc.getVariables().getObject(PLAYER0, Player.class);
 		if (player != null)
 		{
 			playSound(player, QuestSound.ITEMSOUND_SIREN);

@@ -68,6 +68,9 @@ import com.l2journey.gameserver.util.HtmlUtil;
  */
 public class AutoPlay implements IVoicedCommandHandler
 {
+	private static final String AUTO_USE_MP_POTION = "AUTO_USE_MP_POTION";
+	private static final String PH_ITEMS = "%items%";
+
 	private static final int PAGE_LIMIT = 7;
 	private static final Integer AUTO_ATTACK_ACTION = 2;
 	
@@ -98,7 +101,7 @@ public class AutoPlay implements IVoicedCommandHandler
 		player.getVariables().getIntegerList(PlayerVariables.AUTO_USE_SKILLS).forEach(id -> player.getAutoUseSettings().getAutoSkills().add(id));
 		player.getVariables().getIntegerList(PlayerVariables.AUTO_USE_ITEMS).forEach(id -> player.getAutoUseSettings().getAutoSupplyItems().add(id));
 		player.getAutoUseSettings().setAutoPotionItem(player.getVariables().getInt(PlayerVariables.AUTO_USE_POTION, 0));
-		player.getAutoUseSettings().setAutoManaPotionItem(player.getVariables().getInt("AUTO_USE_MP_POTION", 0));
+		player.getAutoUseSettings().setAutoManaPotionItem(player.getVariables().getInt(AUTO_USE_MP_POTION, 0));
 		
 		final List<Integer> settings = player.getVariables().getIntegerList(PlayerVariables.AUTO_USE_SETTINGS);
 		if (settings.isEmpty() || (settings.size() < 8))
@@ -155,11 +158,11 @@ public class AutoPlay implements IVoicedCommandHandler
 		final int manaPotionId = player.getAutoUseSettings().getAutoManaPotionItem();
 		if (manaPotionId < 1)
 		{
-			player.getVariables().remove("AUTO_USE_MP_POTION");
+			player.getVariables().remove(AUTO_USE_MP_POTION);
 		}
 		else
 		{
-			player.getVariables().set("AUTO_USE_MP_POTION", manaPotionId);
+			player.getVariables().set(AUTO_USE_MP_POTION, manaPotionId);
 		}
 		
 		final List<Integer> settings = new ArrayList<>(8);
@@ -400,7 +403,7 @@ public class AutoPlay implements IVoicedCommandHandler
 					sb.append("<td align=right width=70>" + (page < max ? "<a action=\"bypass voice .plaympotion " + (page + 1) + "\"><font color=\"CDB67F\">Próxima</font></a>" : "<font color=\"B09878\">Próxima</font>") + "</td>");
 					sb.append("</tr></table><img src=\"L2UI.SquareGray\" width=295 height=1>");
 				}
-				html.setHtml(content.replace("%items%", sb.toString()));
+				html.setHtml(content.replace(PH_ITEMS, sb.toString()));
 				player.sendPacket(html);
 				break;
 			}
@@ -606,7 +609,7 @@ public class AutoPlay implements IVoicedCommandHandler
 					sb.append("<td align=right width=70>" + (page < max ? "<a action=\"bypass voice .playitems " + (page + 1) + "\"><font color=\"CDB67F\">Next</font></a>" : "<font color=\"B09878\">Next</font>") + "</td>");
 					sb.append("</tr></table><img src=\"L2UI.SquareGray\" width=295 height=1>");
 				}
-				html.setHtml(content.replace("%items%", sb.toString()));
+				html.setHtml(content.replace(PH_ITEMS, sb.toString()));
 				player.sendPacket(html);
 				break;
 			}
@@ -689,7 +692,7 @@ public class AutoPlay implements IVoicedCommandHandler
 					sb.append("<td align=right width=70>" + (page < max ? "<a action=\"bypass voice .playpotion " + (page + 1) + "\"><font color=\"CDB67F\">Próxima</font></a>" : "<font color=\"B09878\">Próxima</font>") + "</td>");
 					sb.append("</tr></table><img src=\"L2UI.SquareGray\" width=295 height=1>");
 				}
-				html.setHtml(content.replace("%items%", sb.toString()));
+				html.setHtml(content.replace(PH_ITEMS, sb.toString()));
 				player.sendPacket(html);
 				break;
 			}

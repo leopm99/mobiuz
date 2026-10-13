@@ -65,6 +65,8 @@ import ai.AbstractNpcAI;
 
 public class SeedOfDestruction extends AbstractNpcAI
 {
+	private static final String SPAWN = "Spawn";
+
 	private class SODWorld extends InstanceWorld
 	{
 		public Map<Npc, Boolean> npcList = new HashMap<>();
@@ -1136,7 +1138,7 @@ public class SeedOfDestruction extends AbstractNpcAI
 			if (mob[0] == SPAWN_DEVICE)
 			{
 				npc.disableCoreAI(true);
-				startQuestTimer("Spawn", 30000, npc, null, true); // Edit Spawn Mob Time 30000 = 30 sec
+				startQuestTimer(SPAWN, 30000, npc, null, true); // Edit Spawn Mob Time 30000 = 30 sec
 			}
 		}
 	}
@@ -1266,7 +1268,7 @@ public class SeedOfDestruction extends AbstractNpcAI
 					InstanceManager.getInstance().getInstance(world.getInstanceId()).getNpcs().forEach(Npc::deleteMe);
 					break;
 				}
-				case "Spawn":
+				case SPAWN:
 				{
 					if (world.getStatus() <= 7)
 					{
@@ -1296,7 +1298,7 @@ public class SeedOfDestruction extends AbstractNpcAI
 	{
 		if (npc.getId() == SPAWN_DEVICE)
 		{
-			cancelQuestTimer("Spawn", npc, null);
+			cancelQuestTimer(SPAWN, npc, null);
 			return;
 		}
 		
@@ -1352,7 +1354,7 @@ public class SeedOfDestruction extends AbstractNpcAI
 					inst.setEmptyDestroyTime(0);
 					startQuestTimer("KillTiatPart1", 250, world._tiat, null);
 					_numAtk = 0;
-					cancelQuestTimer("Spawn", npc, null);
+					cancelQuestTimer(SPAWN, npc, null);
 				}
 				else if (npc.getId() == NAEZD)
 				{
@@ -1368,7 +1370,7 @@ public class SeedOfDestruction extends AbstractNpcAI
 					skilla.applyEffects(world._tiat, world._tiat);
 					final Skill skillb = SkillData.getInstance().getSkill(5700, 7);
 					skillb.applyEffects(world._tiat, world._tiat);
-					cancelQuestTimer("Spawn", npc, null);
+					cancelQuestTimer(SPAWN, npc, null);
 				}
 			}
 		}

@@ -52,6 +52,14 @@ import com.l2journey.gameserver.util.Broadcast;
  */
 public class SevenSigns
 {
+	private static final String ANCIENT_ADENA_AMOUNT = "ancient_adena_amount";
+	private static final String CONTRIBUTION_SCORE = "contribution_score";
+	private static final String GREEN_STONES = "green_stones";
+	private static final String BLUE_STONES = "blue_stones";
+	private static final String RED_STONES = "red_stones";
+	private static final String CABAL = "cabal";
+	private static final String CHAR_ID = "charId";
+
 	protected static final Logger LOGGER = Logger.getLogger(SevenSigns.class.getName());
 	
 	// Basic Seven Signs Constants \\
@@ -804,7 +812,7 @@ public class SevenSigns
 		final String cabalName = getCabalShortName(cabal);
 		for (StatSet sevenDat : _signsPlayerData.values())
 		{
-			if (sevenDat.getString("cabal").equals(cabalName))
+			if (sevenDat.getString(CABAL).equals(cabalName))
 			{
 				cabalMembers++;
 			}
@@ -821,9 +829,9 @@ public class SevenSigns
 		}
 		
 		int stoneCount = 0;
-		stoneCount += currPlayer.getInt("red_stones");
-		stoneCount += currPlayer.getInt("green_stones");
-		stoneCount += currPlayer.getInt("blue_stones");
+		stoneCount += currPlayer.getInt(RED_STONES);
+		stoneCount += currPlayer.getInt(GREEN_STONES);
+		stoneCount += currPlayer.getInt(BLUE_STONES);
 		return stoneCount;
 	}
 	
@@ -834,7 +842,7 @@ public class SevenSigns
 		{
 			return 0;
 		}
-		return currPlayer.getInt("contribution_score");
+		return currPlayer.getInt(CONTRIBUTION_SCORE);
 	}
 	
 	public int getPlayerAdenaCollect(int objectId)
@@ -844,7 +852,7 @@ public class SevenSigns
 		{
 			return 0;
 		}
-		return currPlayer.getInt("ancient_adena_amount");
+		return currPlayer.getInt(ANCIENT_ADENA_AMOUNT);
 	}
 	
 	public int getPlayerSeal(int objectId)
@@ -865,7 +873,7 @@ public class SevenSigns
 			return CABAL_NULL;
 		}
 		
-		final String playerCabal = currPlayer.getString("cabal");
+		final String playerCabal = currPlayer.getString(CABAL);
 		if (playerCabal.equalsIgnoreCase("dawn"))
 		{
 			return CABAL_DAWN;
@@ -894,16 +902,16 @@ public class SevenSigns
 				int charObjId;
 				while (rs.next())
 				{
-					charObjId = rs.getInt("charId");
+					charObjId = rs.getInt(CHAR_ID);
 					sevenDat = new StatSet();
-					sevenDat.set("charId", charObjId);
-					sevenDat.set("cabal", rs.getString("cabal"));
+					sevenDat.set(CHAR_ID, charObjId);
+					sevenDat.set(CABAL, rs.getString(CABAL));
 					sevenDat.set("seal", rs.getInt("seal"));
-					sevenDat.set("red_stones", rs.getInt("red_stones"));
-					sevenDat.set("green_stones", rs.getInt("green_stones"));
-					sevenDat.set("blue_stones", rs.getInt("blue_stones"));
-					sevenDat.set("ancient_adena_amount", rs.getDouble("ancient_adena_amount"));
-					sevenDat.set("contribution_score", rs.getDouble("contribution_score"));
+					sevenDat.set(RED_STONES, rs.getInt(RED_STONES));
+					sevenDat.set(GREEN_STONES, rs.getInt(GREEN_STONES));
+					sevenDat.set(BLUE_STONES, rs.getInt(BLUE_STONES));
+					sevenDat.set(ANCIENT_ADENA_AMOUNT, rs.getDouble(ANCIENT_ADENA_AMOUNT));
+					sevenDat.set(CONTRIBUTION_SCORE, rs.getDouble(CONTRIBUTION_SCORE));
 					_signsPlayerData.put(charObjId, sevenDat);
 				}
 			}
@@ -953,14 +961,14 @@ public class SevenSigns
 		{
 			for (StatSet sevenDat : _signsPlayerData.values())
 			{
-				ps.setString(1, sevenDat.getString("cabal"));
+				ps.setString(1, sevenDat.getString(CABAL));
 				ps.setInt(2, sevenDat.getInt("seal"));
-				ps.setInt(3, sevenDat.getInt("red_stones"));
-				ps.setInt(4, sevenDat.getInt("green_stones"));
-				ps.setInt(5, sevenDat.getInt("blue_stones"));
-				ps.setDouble(6, sevenDat.getDouble("ancient_adena_amount"));
-				ps.setDouble(7, sevenDat.getDouble("contribution_score"));
-				ps.setInt(8, sevenDat.getInt("charId"));
+				ps.setInt(3, sevenDat.getInt(RED_STONES));
+				ps.setInt(4, sevenDat.getInt(GREEN_STONES));
+				ps.setInt(5, sevenDat.getInt(BLUE_STONES));
+				ps.setDouble(6, sevenDat.getDouble(ANCIENT_ADENA_AMOUNT));
+				ps.setDouble(7, sevenDat.getDouble(CONTRIBUTION_SCORE));
+				ps.setInt(8, sevenDat.getInt(CHAR_ID));
 				ps.addBatch();
 			}
 			ps.executeBatch();
@@ -982,14 +990,14 @@ public class SevenSigns
 		try (Connection con = DatabaseFactory.getConnection();
 			PreparedStatement ps = con.prepareStatement(UPDATE_PLAYER))
 		{
-			ps.setString(1, sevenDat.getString("cabal"));
+			ps.setString(1, sevenDat.getString(CABAL));
 			ps.setInt(2, sevenDat.getInt("seal"));
-			ps.setInt(3, sevenDat.getInt("red_stones"));
-			ps.setInt(4, sevenDat.getInt("green_stones"));
-			ps.setInt(5, sevenDat.getInt("blue_stones"));
-			ps.setDouble(6, sevenDat.getDouble("ancient_adena_amount"));
-			ps.setDouble(7, sevenDat.getDouble("contribution_score"));
-			ps.setInt(8, sevenDat.getInt("charId"));
+			ps.setInt(3, sevenDat.getInt(RED_STONES));
+			ps.setInt(4, sevenDat.getInt(GREEN_STONES));
+			ps.setInt(5, sevenDat.getInt(BLUE_STONES));
+			ps.setDouble(6, sevenDat.getDouble(ANCIENT_ADENA_AMOUNT));
+			ps.setDouble(7, sevenDat.getDouble(CONTRIBUTION_SCORE));
+			ps.setInt(8, sevenDat.getInt(CHAR_ID));
 			ps.execute();
 		}
 		catch (SQLException e)
@@ -1044,9 +1052,9 @@ public class SevenSigns
 		for (StatSet sevenDat : _signsPlayerData.values())
 		{
 			// Reset the player's cabal and seal information
-			sevenDat.set("cabal", "");
+			sevenDat.set(CABAL, "");
 			sevenDat.set("seal", SEAL_NULL);
-			sevenDat.set("contribution_score", 0);
+			sevenDat.set(CONTRIBUTION_SCORE, 0);
 		}
 	}
 	
@@ -1065,21 +1073,21 @@ public class SevenSigns
 		{
 			// If the seal validation period has passed,
 			// cabal information was removed and so "re-register" player
-			currPlayerData.set("cabal", getCabalShortName(chosenCabal));
+			currPlayerData.set(CABAL, getCabalShortName(chosenCabal));
 			currPlayerData.set("seal", chosenSeal);
 			_signsPlayerData.put(objectId, currPlayerData);
 		}
 		else
 		{
 			currPlayerData = new StatSet();
-			currPlayerData.set("charId", objectId);
-			currPlayerData.set("cabal", getCabalShortName(chosenCabal));
+			currPlayerData.set(CHAR_ID, objectId);
+			currPlayerData.set(CABAL, getCabalShortName(chosenCabal));
 			currPlayerData.set("seal", chosenSeal);
-			currPlayerData.set("red_stones", 0);
-			currPlayerData.set("green_stones", 0);
-			currPlayerData.set("blue_stones", 0);
-			currPlayerData.set("ancient_adena_amount", 0);
-			currPlayerData.set("contribution_score", 0);
+			currPlayerData.set(RED_STONES, 0);
+			currPlayerData.set(GREEN_STONES, 0);
+			currPlayerData.set(BLUE_STONES, 0);
+			currPlayerData.set(ANCIENT_ADENA_AMOUNT, 0);
+			currPlayerData.set(CONTRIBUTION_SCORE, 0);
 			_signsPlayerData.put(objectId, currPlayerData);
 			
 			// Update data in database, as we have a new player signing up.
@@ -1098,7 +1106,7 @@ public class SevenSigns
 		}
 		
 		// Increasing Seal total score for the player chosen Seal.
-		if ("dawn".equals(currPlayerData.getString("cabal")))
+		if ("dawn".equals(currPlayerData.getString(CABAL)))
 		{
 			_signsDawnSealTotals.put(chosenSeal, _signsDawnSealTotals.get(chosenSeal) + 1);
 		}
@@ -1125,11 +1133,11 @@ public class SevenSigns
 	public int getAncientAdenaReward(int objectId, boolean removeReward)
 	{
 		final StatSet currPlayer = _signsPlayerData.get(objectId);
-		final int rewardAmount = currPlayer.getInt("ancient_adena_amount");
-		currPlayer.set("red_stones", 0);
-		currPlayer.set("green_stones", 0);
-		currPlayer.set("blue_stones", 0);
-		currPlayer.set("ancient_adena_amount", 0);
+		final int rewardAmount = currPlayer.getInt(ANCIENT_ADENA_AMOUNT);
+		currPlayer.set(RED_STONES, 0);
+		currPlayer.set(GREEN_STONES, 0);
+		currPlayer.set(BLUE_STONES, 0);
+		currPlayer.set(ANCIENT_ADENA_AMOUNT, 0);
 		if (removeReward)
 		{
 			_signsPlayerData.put(objectId, currPlayer);
@@ -1156,18 +1164,18 @@ public class SevenSigns
 	{
 		final StatSet currPlayer = _signsPlayerData.get(objectId);
 		final long contribScore = calcContributionScore(blueCount, greenCount, redCount);
-		final long totalAncientAdena = currPlayer.getLong("ancient_adena_amount") + calcAncientAdenaReward(blueCount, greenCount, redCount);
-		final long totalContribScore = currPlayer.getLong("contribution_score") + contribScore;
+		final long totalAncientAdena = currPlayer.getLong(ANCIENT_ADENA_AMOUNT) + calcAncientAdenaReward(blueCount, greenCount, redCount);
+		final long totalContribScore = currPlayer.getLong(CONTRIBUTION_SCORE) + contribScore;
 		if (totalContribScore > Config.ALT_MAXIMUM_PLAYER_CONTRIB)
 		{
 			return -1;
 		}
 		
-		currPlayer.set("red_stones", currPlayer.getInt("red_stones") + redCount);
-		currPlayer.set("green_stones", currPlayer.getInt("green_stones") + greenCount);
-		currPlayer.set("blue_stones", currPlayer.getInt("blue_stones") + blueCount);
-		currPlayer.set("ancient_adena_amount", totalAncientAdena);
-		currPlayer.set("contribution_score", totalContribScore);
+		currPlayer.set(RED_STONES, currPlayer.getInt(RED_STONES) + redCount);
+		currPlayer.set(GREEN_STONES, currPlayer.getInt(GREEN_STONES) + greenCount);
+		currPlayer.set(BLUE_STONES, currPlayer.getInt(BLUE_STONES) + blueCount);
+		currPlayer.set(ANCIENT_ADENA_AMOUNT, totalAncientAdena);
+		currPlayer.set(CONTRIBUTION_SCORE, totalContribScore);
 		_signsPlayerData.put(objectId, currPlayer);
 		
 		switch (getPlayerCabal(objectId))
@@ -1544,7 +1552,7 @@ public class SevenSigns
 			final StatSet currPlayer = _signsPlayerData.get(player.getObjectId());
 			if (isSealValidationPeriod() || isCompResultsPeriod())
 			{
-				if (!player.isGM() && player.isIn7sDungeon() && ((currPlayer == null) || !currPlayer.getString("cabal").equals(compWinner)))
+				if (!player.isGM() && player.isIn7sDungeon() && ((currPlayer == null) || !currPlayer.getString(CABAL).equals(compWinner)))
 				{
 					player.teleToLocation(TeleportWhereType.TOWN);
 					player.setIn7sDungeon(false);
@@ -1553,7 +1561,7 @@ public class SevenSigns
 			}
 			else
 			{
-				if (!player.isGM() && player.isIn7sDungeon() && ((currPlayer == null) || !currPlayer.getString("cabal").isEmpty()))
+				if (!player.isGM() && player.isIn7sDungeon() && ((currPlayer == null) || !currPlayer.getString(CABAL).isEmpty()))
 				{
 					player.teleToLocation(TeleportWhereType.TOWN);
 					player.setIn7sDungeon(false);

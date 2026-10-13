@@ -33,6 +33,12 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Q00336_CoinsOfMagic extends Quest
 {
+	private static final String HTML_N_30232_24 = "30232-24.html";
+	private static final String HTML_N_11 = "-11.html";
+	private static final String HTML_N_10 = "-10.html";
+	private static final String HTML_N_07 = "-07.html";
+	private static final String HTML_N_01 = "-01.html";
+
 	// NPCs
 	private static final int PANO = 30078;
 	private static final int COLLOB = 30092;
@@ -171,7 +177,7 @@ public class Q00336_CoinsOfMagic extends Quest
 				if (hasQuestItems(player, Q_CC_MEMBERSHIP_1))
 				{
 					resetParams(qs);
-					return npc.getId() + "-01.html";
+					return npc.getId() + HTML_N_01;
 				}
 				if (hasQuestItems(player, Q_CC_MEMBERSHIP_2) || hasQuestItems(player, Q_CC_MEMBERSHIP_3))
 				{
@@ -184,7 +190,7 @@ public class Q00336_CoinsOfMagic extends Quest
 				if (hasQuestItems(player, Q_CC_MEMBERSHIP_1) || hasQuestItems(player, Q_CC_MEMBERSHIP_2))
 				{
 					resetParams(qs);
-					return npc.getId() + "-01.html";
+					return npc.getId() + HTML_N_01;
 				}
 				if (hasQuestItems(player, Q_CC_MEMBERSHIP_3))
 				{
@@ -197,7 +203,7 @@ public class Q00336_CoinsOfMagic extends Quest
 				if (hasQuestItems(player, Q_CC_MEMBERSHIP_1) || hasQuestItems(player, Q_CC_MEMBERSHIP_2) || hasQuestItems(player, Q_CC_MEMBERSHIP_3))
 				{
 					resetParams(qs);
-					return npc.getId() + "-01.html";
+					return npc.getId() + HTML_N_01;
 				}
 				break;
 			}
@@ -370,7 +376,7 @@ public class Q00336_CoinsOfMagic extends Quest
 					}
 					case 22:
 					{
-						return npcId + "-01.html";
+						return npcId + HTML_N_01;
 					}
 					default:
 					{
@@ -959,7 +965,7 @@ public class Q00336_CoinsOfMagic extends Quest
 							playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 							return "30232-24a.html";
 						}
-						return "30232-24.html";
+						return HTML_N_30232_24;
 					}
 					case 21:
 					{
@@ -973,7 +979,7 @@ public class Q00336_CoinsOfMagic extends Quest
 							playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 							return "30232-24b.html";
 						}
-						return "30232-24.html";
+						return HTML_N_30232_24;
 					}
 					case 22:
 					{
@@ -987,7 +993,7 @@ public class Q00336_CoinsOfMagic extends Quest
 							playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 							return "30232-24c.html";
 						}
-						return "30232-24.html";
+						return HTML_N_30232_24;
 					}
 					case 23:
 					{
@@ -1001,7 +1007,7 @@ public class Q00336_CoinsOfMagic extends Quest
 							playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 							return "30232-24d.html";
 						}
-						return "30232-24.html";
+						return HTML_N_30232_24;
 					}
 					case 24:
 					{
@@ -1012,7 +1018,7 @@ public class Q00336_CoinsOfMagic extends Quest
 							playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 							return "30232-24e.html";
 						}
-						return "30232-24.html";
+						return HTML_N_30232_24;
 					}
 					case 25:
 					{
@@ -1024,7 +1030,7 @@ public class Q00336_CoinsOfMagic extends Quest
 							playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 							return "30232-24f.html";
 						}
-						return "30232-24.html";
+						return HTML_N_30232_24;
 					}
 					case 26:
 					{
@@ -1035,7 +1041,7 @@ public class Q00336_CoinsOfMagic extends Quest
 							playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 							return "30232-24g.html";
 						}
-						return "30232-24.html";
+						return HTML_N_30232_24;
 					}
 					case 27:
 					{
@@ -1048,7 +1054,7 @@ public class Q00336_CoinsOfMagic extends Quest
 							playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 							return "30232-24h.html";
 						}
-						return "30232-24.html";
+						return HTML_N_30232_24;
 					}
 					case 28:
 					{
@@ -1062,7 +1068,7 @@ public class Q00336_CoinsOfMagic extends Quest
 							playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 							return "30232-24i.html";
 						}
-						return "30232-24.html";
+						return HTML_N_30232_24;
 					}
 					case 29:
 					{
@@ -1076,7 +1082,7 @@ public class Q00336_CoinsOfMagic extends Quest
 							playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 							return "30232-24j.html";
 						}
-						return "30232-24.html";
+						return HTML_N_30232_24;
 					}
 					case 30:
 					{
@@ -1090,7 +1096,7 @@ public class Q00336_CoinsOfMagic extends Quest
 							playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 							return "30232-24k.html";
 						}
-						return "30232-24.html";
+						return HTML_N_30232_24;
 					}
 					case 31:
 					{
@@ -1104,7 +1110,7 @@ public class Q00336_CoinsOfMagic extends Quest
 							playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
 							return "30232-24l.html";
 						}
-						return "30232-24.html";
+						return HTML_N_30232_24;
 					}
 					case 100:
 					{
@@ -1410,7 +1416,7 @@ public class Q00336_CoinsOfMagic extends Quest
 					param1 += (getRandom(3) + 1) * 4;
 					param1 += (getRandom(3) + 1) * 16;
 					qs.set(PARAM_1, param1);
-					return npcId + "-11.html";
+					return npcId + HTML_N_11;
 				}
 				break;
 			}
@@ -1425,7 +1431,7 @@ public class Q00336_CoinsOfMagic extends Quest
 					param1 += (getRandom(3) + 1) * 4;
 					param1 += (getRandom(3) + 1) * 16;
 					qs.set(PARAM_1, param1);
-					return npcId + "-11.html";
+					return npcId + HTML_N_11;
 				}
 				break;
 			}
@@ -1440,7 +1446,7 @@ public class Q00336_CoinsOfMagic extends Quest
 					param1 += (getRandom(3) + 1) * 4;
 					param1 += (getRandom(3) + 1) * 16;
 					qs.set(PARAM_1, param1);
-					return npcId + "-11.html";
+					return npcId + HTML_N_11;
 				}
 				break;
 			}
@@ -1455,7 +1461,7 @@ public class Q00336_CoinsOfMagic extends Quest
 					param1 += (getRandom(3) + 1) * 4;
 					param1 += (getRandom(3) + 1) * 16;
 					qs.set(PARAM_1, param1);
-					return npcId + "-11.html";
+					return npcId + HTML_N_11;
 				}
 				break;
 			}
@@ -1464,7 +1470,7 @@ public class Q00336_CoinsOfMagic extends Quest
 				break;
 			}
 		}
-		return npcId + "-10.html";
+		return npcId + HTML_N_10;
 	}
 	
 	/**
@@ -1494,7 +1500,7 @@ public class Q00336_CoinsOfMagic extends Quest
 					takeItems(player, item1, (10L * mul) * item1Mul);
 					giveItems(player, reward1, 1L * mul);
 					playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-					return npcId + "-07.html";
+					return npcId + HTML_N_07;
 				}
 				break;
 			}
@@ -1505,7 +1511,7 @@ public class Q00336_CoinsOfMagic extends Quest
 					takeItems(player, item2, 5L * mul);
 					giveItems(player, reward2, 1L * mul);
 					playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-					return npcId + "-07.html";
+					return npcId + HTML_N_07;
 				}
 				break;
 			}
@@ -1516,7 +1522,7 @@ public class Q00336_CoinsOfMagic extends Quest
 					takeItems(player, item3, 5L * mul);
 					giveItems(player, reward3, 1L * mul);
 					playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-					return npcId + "-07.html";
+					return npcId + HTML_N_07;
 				}
 				break;
 			}
@@ -1527,7 +1533,7 @@ public class Q00336_CoinsOfMagic extends Quest
 					takeItems(player, item4, 5L * mul);
 					giveItems(player, reward4, 1L * mul);
 					playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-					return npcId + "-07.html";
+					return npcId + HTML_N_07;
 				}
 				break;
 			}
@@ -1536,7 +1542,7 @@ public class Q00336_CoinsOfMagic extends Quest
 				break;
 			}
 		}
-		return npcId + "-10.html";
+		return npcId + HTML_N_10;
 	}
 	
 	/**
@@ -1570,7 +1576,7 @@ public class Q00336_CoinsOfMagic extends Quest
 					takeItems(player, item1b, 10L * mul);
 					giveItems(player, reward1, 1L * mul);
 					playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-					return npcId + "-07.html";
+					return npcId + HTML_N_07;
 				}
 				break;
 			}
@@ -1582,7 +1588,7 @@ public class Q00336_CoinsOfMagic extends Quest
 					takeItems(player, item2b, 5L * mul);
 					giveItems(player, reward2, 1L * mul);
 					playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-					return npcId + "-07.html";
+					return npcId + HTML_N_07;
 				}
 				break;
 			}
@@ -1594,7 +1600,7 @@ public class Q00336_CoinsOfMagic extends Quest
 					takeItems(player, item3b, 5L * mul);
 					giveItems(player, reward3, 1L * mul);
 					playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-					return npcId + "-07.html";
+					return npcId + HTML_N_07;
 				}
 				break;
 			}
@@ -1606,7 +1612,7 @@ public class Q00336_CoinsOfMagic extends Quest
 					takeItems(player, item4b, 5L * mul);
 					giveItems(player, reward4, 1L * mul);
 					playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-					return npcId + "-07.html";
+					return npcId + HTML_N_07;
 				}
 				break;
 			}
@@ -1615,7 +1621,7 @@ public class Q00336_CoinsOfMagic extends Quest
 				break;
 			}
 		}
-		return npcId + "-10.html";
+		return npcId + HTML_N_10;
 	}
 	
 	/**

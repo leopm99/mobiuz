@@ -41,6 +41,10 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Q00230_TestOfTheSummoner extends Quest
 {
+	private static final String KILLED_ATTACKER = "KILLED_ATTACKER";
+	private static final String ATTACKER = "ATTACKER";
+	private static final String DESPAWN = "DESPAWN";
+
 	// NPCs
 	private static final int GROCER_LARA = 30063;
 	private static final int HIGH_SUMMONER_GALATEA = 30634;
@@ -168,21 +172,21 @@ public class Q00230_TestOfTheSummoner extends Quest
 	{
 		switch (event)
 		{
-			case "DESPAWN":
+			case DESPAWN:
 			{
 				npc.deleteMe();
 				break;
 			}
-			case "KILLED_ATTACKER":
+			case KILLED_ATTACKER:
 			{
-				final Summon summon = npc.getVariables().getObject("ATTACKER", Summon.class);
+				final Summon summon = npc.getVariables().getObject(ATTACKER, Summon.class);
 				if ((summon != null) && summon.isDead())
 				{
 					npc.deleteMe();
 				}
 				else
 				{
-					startQuestTimer("KILLED_ATTACKER", 5000, npc, null);
+					startQuestTimer(KILLED_ATTACKER, 5000, npc, null);
 				}
 				break;
 			}
@@ -461,10 +465,10 @@ public class Q00230_TestOfTheSummoner extends Quest
 					{
 						if (isSummon)
 						{
-							npc.getVariables().set("ATTACKER", attacker.getSummon());
+							npc.getVariables().set(ATTACKER, attacker.getSummon());
 							npc.setScriptValue(1);
-							startQuestTimer("DESPAWN", 120000, npc, null);
-							startQuestTimer("KILLED_ATTACKER", 5000, npc, null);
+							startQuestTimer(DESPAWN, 120000, npc, null);
+							startQuestTimer(KILLED_ATTACKER, 5000, npc, null);
 							
 							final QuestState qs = getQuestState(attacker, false);
 							if (hasQuestItems(attacker, CRYSTAL_OF_STARTING_1ST) && (qs != null) && qs.isStarted())
@@ -479,7 +483,7 @@ public class Q00230_TestOfTheSummoner extends Quest
 					}
 					case 1:
 					{
-						if (!isSummon || (npc.getVariables().getObject("ATTACKER", Summon.class) != attacker.getSummon()))
+						if (!isSummon || (npc.getVariables().getObject(ATTACKER, Summon.class) != attacker.getSummon()))
 						{
 							final QuestState qs = getQuestState(attacker, false);
 							if (!hasQuestItems(attacker, CRYSTAL_OF_STARTING_1ST) && hasQuestItems(attacker, CRYSTAL_OF_INPROGRESS_1ST) && (qs != null) && qs.isStarted())
@@ -509,10 +513,10 @@ public class Q00230_TestOfTheSummoner extends Quest
 					{
 						if (isSummon)
 						{
-							npc.getVariables().set("ATTACKER", attacker.getSummon());
+							npc.getVariables().set(ATTACKER, attacker.getSummon());
 							npc.setScriptValue(1);
-							startQuestTimer("DESPAWN", 120000, npc, null);
-							startQuestTimer("KILLED_ATTACKER", 5000, npc, null);
+							startQuestTimer(DESPAWN, 120000, npc, null);
+							startQuestTimer(KILLED_ATTACKER, 5000, npc, null);
 							
 							final QuestState qs = getQuestState(attacker, false);
 							if (hasQuestItems(attacker, CRYSTAL_OF_STARTING_3RD) && (qs != null) && qs.isStarted())
@@ -527,7 +531,7 @@ public class Q00230_TestOfTheSummoner extends Quest
 					}
 					case 1:
 					{
-						if (!isSummon || (npc.getVariables().getObject("ATTACKER", Summon.class) != attacker.getSummon()))
+						if (!isSummon || (npc.getVariables().getObject(ATTACKER, Summon.class) != attacker.getSummon()))
 						{
 							final QuestState qs = getQuestState(attacker, false);
 							if (!hasQuestItems(attacker, CRYSTAL_OF_STARTING_3RD) && hasQuestItems(attacker, CRYSTAL_OF_INPROGRESS_3RD) && (qs != null) && qs.isStarted())
@@ -557,10 +561,10 @@ public class Q00230_TestOfTheSummoner extends Quest
 					{
 						if (isSummon)
 						{
-							npc.getVariables().set("ATTACKER", attacker.getSummon());
+							npc.getVariables().set(ATTACKER, attacker.getSummon());
 							npc.setScriptValue(1);
-							startQuestTimer("DESPAWN", 120000, npc, null);
-							startQuestTimer("KILLED_ATTACKER", 5000, npc, null);
+							startQuestTimer(DESPAWN, 120000, npc, null);
+							startQuestTimer(KILLED_ATTACKER, 5000, npc, null);
 							
 							final QuestState qs = getQuestState(attacker, false);
 							if (hasQuestItems(attacker, CRYSTAL_OF_STARTING_5TH) && (qs != null) && qs.isStarted())
@@ -575,7 +579,7 @@ public class Q00230_TestOfTheSummoner extends Quest
 					}
 					case 1:
 					{
-						if (!isSummon || (npc.getVariables().getObject("ATTACKER", Summon.class) != attacker.getSummon()))
+						if (!isSummon || (npc.getVariables().getObject(ATTACKER, Summon.class) != attacker.getSummon()))
 						{
 							final QuestState qs = getQuestState(attacker, false);
 							if (!hasQuestItems(attacker, CRYSTAL_OF_STARTING_5TH) && hasQuestItems(attacker, CRYSTAL_OF_INPROGRESS_5TH) && (qs != null) && qs.isStarted())
@@ -605,10 +609,10 @@ public class Q00230_TestOfTheSummoner extends Quest
 					{
 						if (isSummon)
 						{
-							npc.getVariables().set("ATTACKER", attacker.getSummon());
+							npc.getVariables().set(ATTACKER, attacker.getSummon());
 							npc.setScriptValue(1);
-							startQuestTimer("DESPAWN", 120000, npc, null);
-							startQuestTimer("KILLED_ATTACKER", 5000, npc, null);
+							startQuestTimer(DESPAWN, 120000, npc, null);
+							startQuestTimer(KILLED_ATTACKER, 5000, npc, null);
 							
 							final QuestState qs = getQuestState(attacker, false);
 							if (hasQuestItems(attacker, CRYSTAL_OF_STARTING_2ND) && (qs != null) && qs.isStarted())
@@ -623,7 +627,7 @@ public class Q00230_TestOfTheSummoner extends Quest
 					}
 					case 1:
 					{
-						if (!isSummon || (npc.getVariables().getObject("ATTACKER", Summon.class) != attacker.getSummon()))
+						if (!isSummon || (npc.getVariables().getObject(ATTACKER, Summon.class) != attacker.getSummon()))
 						{
 							final QuestState qs = getQuestState(attacker, false);
 							if (!hasQuestItems(attacker, CRYSTAL_OF_STARTING_2ND) && hasQuestItems(attacker, CRYSTAL_OF_INPROGRESS_2ND) && (qs != null) && qs.isStarted())
@@ -653,10 +657,10 @@ public class Q00230_TestOfTheSummoner extends Quest
 					{
 						if (isSummon)
 						{
-							npc.getVariables().set("ATTACKER", attacker.getSummon());
+							npc.getVariables().set(ATTACKER, attacker.getSummon());
 							npc.setScriptValue(1);
-							startQuestTimer("DESPAWN", 120000, npc, null);
-							startQuestTimer("KILLED_ATTACKER", 5000, npc, null);
+							startQuestTimer(DESPAWN, 120000, npc, null);
+							startQuestTimer(KILLED_ATTACKER, 5000, npc, null);
 							
 							final QuestState qs = getQuestState(attacker, false);
 							if (hasQuestItems(attacker, CRYSTAL_OF_STARTING_4TH) && (qs != null) && qs.isStarted())
@@ -671,7 +675,7 @@ public class Q00230_TestOfTheSummoner extends Quest
 					}
 					case 1:
 					{
-						if (!isSummon || (npc.getVariables().getObject("ATTACKER", Summon.class) != attacker.getSummon()))
+						if (!isSummon || (npc.getVariables().getObject(ATTACKER, Summon.class) != attacker.getSummon()))
 						{
 							final QuestState qs = getQuestState(attacker, false);
 							if (!hasQuestItems(attacker, CRYSTAL_OF_STARTING_4TH) && hasQuestItems(attacker, CRYSTAL_OF_INPROGRESS_4TH) && (qs != null) && qs.isStarted())
@@ -701,10 +705,10 @@ public class Q00230_TestOfTheSummoner extends Quest
 					{
 						if (isSummon)
 						{
-							npc.getVariables().set("ATTACKER", attacker.getSummon());
+							npc.getVariables().set(ATTACKER, attacker.getSummon());
 							npc.setScriptValue(1);
-							startQuestTimer("DESPAWN", 120000, npc, null);
-							startQuestTimer("KILLED_ATTACKER", 5000, npc, null);
+							startQuestTimer(DESPAWN, 120000, npc, null);
+							startQuestTimer(KILLED_ATTACKER, 5000, npc, null);
 							
 							final QuestState qs = getQuestState(attacker, false);
 							if (hasQuestItems(attacker, CRYSTAL_OF_STARTING_6TH) && (qs != null) && qs.isStarted())
@@ -719,7 +723,7 @@ public class Q00230_TestOfTheSummoner extends Quest
 					}
 					case 1:
 					{
-						if (!isSummon || (npc.getVariables().getObject("ATTACKER", Summon.class) != attacker.getSummon()))
+						if (!isSummon || (npc.getVariables().getObject(ATTACKER, Summon.class) != attacker.getSummon()))
 						{
 							final QuestState qs = getQuestState(attacker, false);
 							if (!hasQuestItems(attacker, CRYSTAL_OF_STARTING_6TH) && hasQuestItems(attacker, CRYSTAL_OF_INPROGRESS_6TH) && (qs != null) && qs.isStarted())

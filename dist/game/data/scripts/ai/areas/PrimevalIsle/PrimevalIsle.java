@@ -55,6 +55,11 @@ import ai.AbstractNpcAI;
  */
 public class PrimevalIsle extends AbstractNpcAI
 {
+	private static final String SKILL_MULTIPLER = "SKILL_MULTIPLER";
+	private static final String GHOST_DESPAWN = "GHOST_DESPAWN";
+	private static final String SELFBUFF_USED = "SELFBUFF_USED";
+	private static final String USE_SKILL = "USE_SKILL";
+
 	// NPC
 	private static final int EGG = 18344; // Ancient Egg
 	private static final int SAILREN = 29065; // Sailren
@@ -194,16 +199,16 @@ public class PrimevalIsle extends AbstractNpcAI
 	{
 		switch (event)
 		{
-			case "USE_SKILL":
+			case USE_SKILL:
 			{
 				if ((npc != null) && !npc.isDead())
 				{
 					npc.doCast((npc.getId() == SPRIGNANT[0] ? ANESTHESIA.getSkill() : DEADLY_POISON.getSkill()));
-					startQuestTimer("USE_SKILL", 15000, npc, null);
+					startQuestTimer(USE_SKILL, 15000, npc, null);
 				}
 				break;
 			}
-			case "GHOST_DESPAWN":
+			case GHOST_DESPAWN:
 			{
 				if ((npc != null) && !npc.isDead())
 				{
@@ -213,7 +218,7 @@ public class PrimevalIsle extends AbstractNpcAI
 					}
 					else
 					{
-						startQuestTimer("GHOST_DESPAWN", 1800000, npc, null);
+						startQuestTimer(GHOST_DESPAWN, 1800000, npc, null);
 					}
 				}
 				break;
@@ -290,7 +295,7 @@ public class PrimevalIsle extends AbstractNpcAI
 				}
 				else if (ag_type == 1)
 				{
-					if (getRandom(100) <= (probPhysicalSpecial1 * npc.getVariables().getInt("SKILL_MULTIPLER")))
+					if (getRandom(100) <= (probPhysicalSpecial1 * npc.getVariables().getInt(SKILL_MULTIPLER)))
 					{
 						if (!npc.isSkillDisabled(physicalSpecial1.getSkill()))
 						{
@@ -298,7 +303,7 @@ public class PrimevalIsle extends AbstractNpcAI
 							npc.doCast(physicalSpecial1.getSkill());
 						}
 					}
-					else if ((getRandom(100) <= (probPhysicalSpecial2 * npc.getVariables().getInt("SKILL_MULTIPLER"))) && !npc.isSkillDisabled(physicalSpecial2.getSkill()))
+					else if ((getRandom(100) <= (probPhysicalSpecial2 * npc.getVariables().getInt(SKILL_MULTIPLER))) && !npc.isSkillDisabled(physicalSpecial2.getSkill()))
 					{
 						npc.setTarget(creature);
 						npc.doCast(physicalSpecial2.getSkill());
@@ -412,21 +417,21 @@ public class PrimevalIsle extends AbstractNpcAI
 			
 			if (((npc.getCurrentHp() / npc.getMaxHp()) * 100) <= 50)
 			{
-				npc.getVariables().set("SKILL_MULTIPLER", 2);
+				npc.getVariables().set(SKILL_MULTIPLER, 2);
 			}
 			else
 			{
-				npc.getVariables().set("SKILL_MULTIPLER", 1);
+				npc.getVariables().set(SKILL_MULTIPLER, 1);
 			}
 			
-			if ((((npc.getCurrentHp() / npc.getMaxHp()) * 100) <= 30) && (npc.getVariables().getInt("SELFBUFF_USED") == 0))
+			if ((((npc.getCurrentHp() / npc.getMaxHp()) * 100) <= 30) && (npc.getVariables().getInt(SELFBUFF_USED) == 0))
 			{
 				final Attackable mob = npc.asAttackable();
 				target = mob.getMostHated();
 				mob.clearAggroList();
 				if (!npc.isSkillDisabled(selfRangeBuff1.getSkill()))
 				{
-					npc.getVariables().set("SELFBUFF_USED", 1);
+					npc.getVariables().set(SELFBUFF_USED, 1);
 					npc.doCast(selfRangeBuff1.getSkill());
 					npc.setRunning();
 					npc.getAI().setIntention(Intention.ATTACK, target);
@@ -435,12 +440,12 @@ public class PrimevalIsle extends AbstractNpcAI
 			
 			if (target != null)
 			{
-				if ((getRandom(100) <= (probPhysicalSpecial1 * npc.getVariables().getInt("SKILL_MULTIPLER"))) && !npc.isSkillDisabled(physicalSpecial1.getSkill()))
+				if ((getRandom(100) <= (probPhysicalSpecial1 * npc.getVariables().getInt(SKILL_MULTIPLER))) && !npc.isSkillDisabled(physicalSpecial1.getSkill()))
 				{
 					npc.setTarget(target);
 					npc.doCast(physicalSpecial1.getSkill());
 				}
-				if ((getRandom(100) <= (probPhysicalSpecial2 * npc.getVariables().getInt("SKILL_MULTIPLER"))) && !npc.isSkillDisabled(physicalSpecial2.getSkill()))
+				if ((getRandom(100) <= (probPhysicalSpecial2 * npc.getVariables().getInt(SKILL_MULTIPLER))) && !npc.isSkillDisabled(physicalSpecial2.getSkill()))
 				{
 					npc.setTarget(target);
 					npc.doCast(physicalSpecial2.getSkill());
@@ -483,8 +488,8 @@ public class PrimevalIsle extends AbstractNpcAI
 	{
 		if (ArrayUtil.contains(SPRIGNANT, npc.getId()))
 		{
-			cancelQuestTimer("USE_SKILL", npc, null);
-			startQuestTimer("USE_SKILL", 15000, npc, null);
+			cancelQuestTimer(USE_SKILL, npc, null);
+			startQuestTimer(USE_SKILL, 15000, npc, null);
 		}
 		else if (ArrayUtil.contains(TREX, npc.getId()))
 		{
@@ -493,14 +498,14 @@ public class PrimevalIsle extends AbstractNpcAI
 			
 			if (collectGhost == 1)
 			{
-				cancelQuestTimer("GHOST_DESPAWN", npc, null);
-				startQuestTimer("GHOST_DESPAWN", collectDespawn * 60000, npc, null);
+				cancelQuestTimer(GHOST_DESPAWN, npc, null);
+				startQuestTimer(GHOST_DESPAWN, collectDespawn * 60000, npc, null);
 			}
 		}
 		else
 		{
-			npc.getVariables().set("SELFBUFF_USED", 0);
-			npc.getVariables().set("SKILL_MULTIPLER", 1);
+			npc.getVariables().set(SELFBUFF_USED, 0);
+			npc.getVariables().set(SKILL_MULTIPLER, 1);
 		}
 	}
 	

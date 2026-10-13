@@ -47,6 +47,11 @@ import ai.AbstractNpcAI;
  */
 public class SelMahumDrill extends AbstractNpcAI
 {
+	private static final String SOCIAL_ACTION_REMAINED_COUNT = "SOCIAL_ACTION_REMAINED_COUNT";
+	private static final String SOCIAL_ACTION_NEXT_INDEX = "SOCIAL_ACTION_NEXT_INDEX";
+	private static final String DO_SOCIAL_ACTION = "do_social_action";
+	private static final String BUSY_STATE = "BUSY_STATE";
+
 	private static final int[] MAHUM_CHIEFS =
 	{
 		22775, // Sel Mahum Drill Sergeant
@@ -147,28 +152,28 @@ public class SelMahumDrill extends AbstractNpcAI
 	{
 		switch (event)
 		{
-			case "do_social_action":
+			case DO_SOCIAL_ACTION:
 			{
 				if ((npc != null) && !npc.isDead())
 				{
 					if (ArrayUtil.contains(MAHUM_CHIEFS, npc.getId()))
 					{
-						if ((npc.getVariables().getInt("BUSY_STATE") == 0) && (npc.getAI().getIntention() == Intention.ACTIVE) && npc.staysInSpawnLoc())
+						if ((npc.getVariables().getInt(BUSY_STATE) == 0) && (npc.getAI().getIntention() == Intention.ACTIVE) && npc.staysInSpawnLoc())
 						{
 							final int idx = getRandom(6);
 							if (idx <= (CHIEF_SOCIAL_ACTIONS.length - 1))
 							{
 								npc.broadcastSocialAction(CHIEF_SOCIAL_ACTIONS[idx]);
-								npc.getVariables().set("SOCIAL_ACTION_NEXT_INDEX", idx); // Pass social action index to soldiers via script value
-								npc.broadcastEvent("do_social_action", TRAINING_RANGE, null);
+								npc.getVariables().set(SOCIAL_ACTION_NEXT_INDEX, idx); // Pass social action index to soldiers via script value
+								npc.broadcastEvent(DO_SOCIAL_ACTION, TRAINING_RANGE, null);
 							}
 						}
 						
-						startQuestTimer("do_social_action", 15000, npc, null);
+						startQuestTimer(DO_SOCIAL_ACTION, 15000, npc, null);
 					}
 					else if (ArrayUtil.contains(MAHUM_SOLDIERS, npc.getId()))
 					{
-						handleSocialAction(npc, SOLDIER_SOCIAL_ACTIONS[npc.getVariables().getInt("SOCIAL_ACTION_NEXT_INDEX")], false);
+						handleSocialAction(npc, SOLDIER_SOCIAL_ACTIONS[npc.getVariables().getInt(SOCIAL_ACTION_NEXT_INDEX)], false);
 					}
 				}
 				break;
@@ -177,7 +182,7 @@ public class SelMahumDrill extends AbstractNpcAI
 			{
 				if (npc != null)
 				{
-					npc.getVariables().remove("BUSY_STATE");
+					npc.getVariables().remove(BUSY_STATE);
 					npc.disableCoreAI(false);
 				}
 				break;
@@ -222,12 +227,12 @@ public class SelMahumDrill extends AbstractNpcAI
 		{
 			switch (eventName)
 			{
-				case "do_social_action":
+				case DO_SOCIAL_ACTION:
 				{
 					if (ArrayUtil.contains(MAHUM_SOLDIERS, receiver.getId()))
 					{
-						final int actionIndex = sender.getVariables().getInt("SOCIAL_ACTION_NEXT_INDEX");
-						receiver.getVariables().set("SOCIAL_ACTION_NEXT_INDEX", actionIndex);
+						final int actionIndex = sender.getVariables().getInt(SOCIAL_ACTION_NEXT_INDEX);
+						receiver.getVariables().set(SOCIAL_ACTION_NEXT_INDEX, actionIndex);
 						handleSocialAction(receiver, SOLDIER_SOCIAL_ACTIONS[actionIndex], true);
 					}
 					break;
@@ -249,7 +254,7 @@ public class SelMahumDrill extends AbstractNpcAI
 							receiver.asAttackable().clearAggroList();
 						}
 						receiver.disableCoreAI(true);
-						receiver.getVariables().set("BUSY_STATE", 1);
+						receiver.getVariables().set(BUSY_STATE, 1);
 						receiver.setRunning();
 						receiver.getAI().setIntention(Intention.MOVE_TO, new Location((receiver.getX() + getRandom(-800, 800)), (receiver.getY() + getRandom(-800, 800)), receiver.getZ(), receiver.getHeading()));
 						startQuestTimer("reset_busy_state", 5000, receiver, null);
@@ -284,8 +289,8 @@ public class SelMahumDrill extends AbstractNpcAI
 	{
 		if (ArrayUtil.contains(MAHUM_CHIEFS, npc.getId()))
 		{
-			cancelQuestTimer("do_social_action", npc, null);
-			startQuestTimer("do_social_action", 15000, npc, null);
+			cancelQuestTimer(DO_SOCIAL_ACTION, npc, null);
+			startQuestTimer(DO_SOCIAL_ACTION, 15000, npc, null);
 		}
 		
 		else if ((getRandom(18) < 1) && ArrayUtil.contains(MAHUM_SOLDIERS, npc.getId()))
@@ -299,7 +304,7 @@ public class SelMahumDrill extends AbstractNpcAI
 	
 	private void handleSocialAction(Npc npc, Actions action, boolean firstCall)
 	{
-		if ((npc.getVariables().getInt("BUSY_STATE") != 0) || (npc.getAI().getIntention() != Intention.ACTIVE) || !npc.staysInSpawnLoc())
+		if ((npc.getVariables().getInt(BUSY_STATE) != 0) || (npc.getAI().getIntention() != Intention.ACTIVE) || !npc.staysInSpawnLoc())
 		{
 			return;
 		}
@@ -312,16 +317,16 @@ public class SelMahumDrill extends AbstractNpcAI
 		
 		if (firstCall)
 		{
-			npc.getVariables().set("SOCIAL_ACTION_REMAINED_COUNT", action.getRepeatCount());
+			npc.getVariables().set(SOCIAL_ACTION_REMAINED_COUNT, action.getRepeatCount());
 		}
 		
 		npc.broadcastSocialAction(socialActionId);
 		
-		final int remainedCount = npc.getVariables().getInt("SOCIAL_ACTION_REMAINED_COUNT");
+		final int remainedCount = npc.getVariables().getInt(SOCIAL_ACTION_REMAINED_COUNT);
 		if (remainedCount > 0)
 		{
-			npc.getVariables().set("SOCIAL_ACTION_REMAINED_COUNT", (remainedCount - 1));
-			startQuestTimer("do_social_action", action.getRepeatInterval(), npc, null);
+			npc.getVariables().set(SOCIAL_ACTION_REMAINED_COUNT, (remainedCount - 1));
+			startQuestTimer(DO_SOCIAL_ACTION, action.getRepeatInterval(), npc, null);
 		}
 	}
 	

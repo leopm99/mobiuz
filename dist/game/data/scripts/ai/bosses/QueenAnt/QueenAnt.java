@@ -68,6 +68,11 @@ import ai.AbstractNpcAI;
  */
 public class QueenAnt extends AbstractNpcAI implements IXmlReader
 {
+	private static final String DISTANCE_CHECK = "DISTANCE_CHECK";
+	private static final String QUEEN_UNLOCK = "queen_unlock";
+	private static final String SPAWN_MINION = "spawn_minion";
+	private static final String ACTION = "action";
+
 	// Explicit LOGGER to resolve ambiguity between Quest.LOGGER and IXmlReader.LOGGER.
 	private static final Logger LOGGER = Logger.getLogger(QueenAnt.class.getName());
 	
@@ -183,7 +188,7 @@ public class QueenAnt extends AbstractNpcAI implements IXmlReader
 			// the unlock time has not yet expired.
 			if (temp > 0)
 			{
-				startQuestTimer("queen_unlock", temp, null, null);
+				startQuestTimer(QUEEN_UNLOCK, temp, null, null);
 			}
 			else
 			{
@@ -256,7 +261,7 @@ public class QueenAnt extends AbstractNpcAI implements IXmlReader
 			_zone.movePlayersTo(OUST_LOC_3);
 		}
 		GrandBossManager.getInstance().addBoss(npc);
-		startQuestTimer("action", 10000, npc, null, true);
+		startQuestTimer(ACTION, 10000, npc, null, true);
 		startQuestTimer("heal", 1000, null, null, true);
 		npc.broadcastPacket(new PlaySound(1, "BS01_A", 1, npc.getObjectId(), npc.getX(), npc.getY(), npc.getZ()));
 		_queen = npc;
@@ -325,7 +330,7 @@ public class QueenAnt extends AbstractNpcAI implements IXmlReader
 				}
 				break;
 			}
-			case "action":
+			case ACTION:
 			{
 				if ((npc != null) && (getRandom(3) == 0))
 				{
@@ -340,24 +345,24 @@ public class QueenAnt extends AbstractNpcAI implements IXmlReader
 				}
 				break;
 			}
-			case "queen_unlock":
+			case QUEEN_UNLOCK:
 			{
 				final GrandBoss queen = (GrandBoss) addSpawn(QUEEN, QUEEN_X, QUEEN_Y, QUEEN_Z, 0, false, 0);
 				GrandBossManager.getInstance().setStatus(QUEEN, ALIVE);
 				spawnBoss(queen);
 				break;
 			}
-			case "spawn_minion":
+			case SPAWN_MINION:
 			{
 				final Monster mob = addSpawn(npc.getId(), npc.getX(), npc.getY(), npc.getZ(), getRandom(61794), false, 0).asMonster();
 				_minions.add(mob);
 				break;
 			}
-			case "DISTANCE_CHECK":
+			case DISTANCE_CHECK:
 			{
 				if ((_queen == null) || _queen.isDead())
 				{
-					cancelQuestTimers("DISTANCE_CHECK");
+					cancelQuestTimers(DISTANCE_CHECK);
 					break;
 				}
 				else if (_queen.calculateDistance2D(QUEEN_X, QUEEN_Y, QUEEN_Z) > 2000)
@@ -446,8 +451,8 @@ public class QueenAnt extends AbstractNpcAI implements IXmlReader
 			}
 			case QUEEN:
 			{
-				cancelQuestTimer("DISTANCE_CHECK", npc, null);
-				startQuestTimer("DISTANCE_CHECK", 5000, npc, null, true);
+				cancelQuestTimer(DISTANCE_CHECK, npc, null);
+				startQuestTimer(DISTANCE_CHECK, 5000, npc, null, true);
 				break;
 			}
 			default:
@@ -588,8 +593,8 @@ public class QueenAnt extends AbstractNpcAI implements IXmlReader
 			final long nextRespawnTime = System.currentTimeMillis() + respawnTime;
 			LOGGER.info(() -> "Queen Ant will respawn at: " + TimeUtil.getDateTimeString(nextRespawnTime));
 			
-			startQuestTimer("queen_unlock", respawnTime, null, null);
-			cancelQuestTimer("action", npc, null);
+			startQuestTimer(QUEEN_UNLOCK, respawnTime, null, null);
+			cancelQuestTimer(ACTION, npc, null);
 			cancelQuestTimer("heal", null, null);
 			// also save the respawn time so that the info is maintained past reboots
 			final StatSet info = GrandBossManager.getInstance().getStatSet(QUEEN);
@@ -602,8 +607,8 @@ public class QueenAnt extends AbstractNpcAI implements IXmlReader
 			}
 			_larva = null;
 			_queen = null;
-			cancelQuestTimers("DISTANCE_CHECK");
-			cancelQuestTimers("spawn_minion");
+			cancelQuestTimers(DISTANCE_CHECK);
+			cancelQuestTimers(SPAWN_MINION);
 			for (Monster minion : _minions)
 			{
 				if (minion != null)
@@ -633,7 +638,7 @@ public class QueenAnt extends AbstractNpcAI implements IXmlReader
 				}
 			}
 			final long minionRespawnTime = (npcId == ROYAL) ? (baseRespawnSeconds + getRandom(40)) * 1000L : baseRespawnSeconds * 1000L;
-			startQuestTimer("spawn_minion", minionRespawnTime, npc, null);
+			startQuestTimer(SPAWN_MINION, minionRespawnTime, npc, null);
 		}
 	}
 	

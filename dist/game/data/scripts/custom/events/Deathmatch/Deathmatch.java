@@ -84,6 +84,9 @@ import com.l2journey.gameserver.util.MapUtil;
  */
 public class Deathmatch extends Event
 {
+	private static final String KICKPLAYERWARNING = "KickPlayerWarning";
+	private static final String KICKPLAYER = "KickPlayer";
+
 	// NPC
 	private static final int MANAGER = 70011;
 	// Skills
@@ -547,7 +550,7 @@ public class Deathmatch extends Event
 			}
 		}
 		// Activity timer.
-		if (event.startsWith("KickPlayer") && (player != null) && (player.getInstanceId() == PVP_WORLD.getInstanceId()))
+		if (event.startsWith(KICKPLAYER) && (player != null) && (player.getInstanceId() == PVP_WORLD.getInstanceId()))
 		{
 			if (event.contains("Warning"))
 			{
@@ -604,8 +607,8 @@ public class Deathmatch extends Event
 			final Player player = creature.asPlayer();
 			if (player.isOnEvent())
 			{
-				cancelQuestTimer("KickPlayer" + player.getObjectId(), null, player);
-				cancelQuestTimer("KickPlayerWarning" + player.getObjectId(), null, player);
+				cancelQuestTimer(KICKPLAYER + player.getObjectId(), null, player);
+				cancelQuestTimer(KICKPLAYERWARNING + player.getObjectId(), null, player);
 				
 				// Removed invulnerability shield.
 				if (player.isAffectedBySkill(GHOST_WALKING.getSkillId()))
@@ -743,10 +746,10 @@ public class Deathmatch extends Event
 	
 	private void resetActivityTimers(Player player)
 	{
-		cancelQuestTimer("KickPlayer" + player.getObjectId(), null, player);
-		cancelQuestTimer("KickPlayerWarning" + player.getObjectId(), null, player);
-		startQuestTimer("KickPlayer" + player.getObjectId(), PVP_WORLD.getDoor(BLUE_DOOR_ID).isOpen() ? INACTIVITY_TIME * 60000 : (INACTIVITY_TIME * 60000) + (WAIT_TIME * 1000), null, player);
-		startQuestTimer("KickPlayerWarning" + player.getObjectId(), PVP_WORLD.getDoor(BLUE_DOOR_ID).isOpen() ? (INACTIVITY_TIME / 2) * 60000 : ((INACTIVITY_TIME / 2) * 60000) + (WAIT_TIME * 1000), null, player);
+		cancelQuestTimer(KICKPLAYER + player.getObjectId(), null, player);
+		cancelQuestTimer(KICKPLAYERWARNING + player.getObjectId(), null, player);
+		startQuestTimer(KICKPLAYER + player.getObjectId(), PVP_WORLD.getDoor(BLUE_DOOR_ID).isOpen() ? INACTIVITY_TIME * 60000 : (INACTIVITY_TIME * 60000) + (WAIT_TIME * 1000), null, player);
+		startQuestTimer(KICKPLAYERWARNING + player.getObjectId(), PVP_WORLD.getDoor(BLUE_DOOR_ID).isOpen() ? (INACTIVITY_TIME / 2) * 60000 : ((INACTIVITY_TIME / 2) * 60000) + (WAIT_TIME * 1000), null, player);
 	}
 	
 	@RegisterEvent(EventType.ON_PLAYER_LOGOUT)

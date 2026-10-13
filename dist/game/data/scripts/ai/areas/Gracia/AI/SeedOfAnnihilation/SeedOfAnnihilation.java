@@ -52,6 +52,10 @@ import ai.AbstractNpcAI;
  */
 public class SeedOfAnnihilation extends AbstractNpcAI
 {
+	private static final String SEEDNEXTSTATUSCHANGE = "SeedNextStatusChange";
+	private static final String CHANGESEEDSSTATUS = "ChangeSeedsStatus";
+	private static final String SEEDBUFFSLIST = "SeedBuffsList";
+
 	private static final Map<Integer, Location> TELEPORT_ZONES = new HashMap<>();
 	static
 	{
@@ -238,18 +242,18 @@ public class SeedOfAnnihilation extends AbstractNpcAI
 		});
 		
 		int buffsNow = 0;
-		final Long var = GlobalVariablesManager.getInstance().getLong("SeedNextStatusChange", 0);
+		final Long var = GlobalVariablesManager.getInstance().getLong(SEEDNEXTSTATUSCHANGE, 0);
 		if (var < System.currentTimeMillis())
 		{
 			buffsNow = getRandom(ZONE_BUFFS_LIST.length);
-			GlobalVariablesManager.getInstance().set("SeedBuffsList", String.valueOf(buffsNow));
+			GlobalVariablesManager.getInstance().set(SEEDBUFFSLIST, String.valueOf(buffsNow));
 			_seedsNextStatusChange = getNextSeedsStatusChangeTime();
-			GlobalVariablesManager.getInstance().set("SeedNextStatusChange", String.valueOf(_seedsNextStatusChange));
+			GlobalVariablesManager.getInstance().set(SEEDNEXTSTATUSCHANGE, String.valueOf(_seedsNextStatusChange));
 		}
 		else
 		{
 			_seedsNextStatusChange = var;
-			buffsNow = GlobalVariablesManager.getInstance().getInt("SeedBuffsList", 0);
+			buffsNow = GlobalVariablesManager.getInstance().getInt(SEEDBUFFSLIST, 0);
 		}
 		for (int i = 0; i < _regionsData.length; i++)
 		{
@@ -282,7 +286,7 @@ public class SeedOfAnnihilation extends AbstractNpcAI
 			}
 			ZoneManager.getInstance().getZoneById(a_regionsData.buffZone, EffectZone.class).addSkill(ZONE_BUFFS[a_regionsData.activeBuff], 1);
 		}
-		startQuestTimer("ChangeSeedsStatus", _seedsNextStatusChange - System.currentTimeMillis(), null, null);
+		startQuestTimer(CHANGESEEDSSTATUS, _seedsNextStatusChange - System.currentTimeMillis(), null, null);
 	}
 	
 	private void spawnGroupOfMinion(Monster npc, int[] mobIds)
@@ -308,12 +312,12 @@ public class SeedOfAnnihilation extends AbstractNpcAI
 	@Override
 	public String onEvent(String event, Npc npc, Player player)
 	{
-		if (event.equalsIgnoreCase("ChangeSeedsStatus"))
+		if (event.equalsIgnoreCase(CHANGESEEDSSTATUS))
 		{
 			final int buffsNow = getRandom(ZONE_BUFFS_LIST.length);
-			GlobalVariablesManager.getInstance().set("SeedBuffsList", String.valueOf(buffsNow));
+			GlobalVariablesManager.getInstance().set(SEEDBUFFSLIST, String.valueOf(buffsNow));
 			_seedsNextStatusChange = getNextSeedsStatusChangeTime();
-			GlobalVariablesManager.getInstance().set("SeedNextStatusChange", String.valueOf(_seedsNextStatusChange));
+			GlobalVariablesManager.getInstance().set(SEEDNEXTSTATUSCHANGE, String.valueOf(_seedsNextStatusChange));
 			for (int i = 0; i < _regionsData.length; i++)
 			{
 				_regionsData[i].activeBuff = ZONE_BUFFS_LIST[buffsNow][i];
@@ -327,7 +331,7 @@ public class SeedOfAnnihilation extends AbstractNpcAI
 				zone.clearSkills();
 				zone.addSkill(ZONE_BUFFS[_regionsData[i].activeBuff], 1);
 			}
-			startQuestTimer("ChangeSeedsStatus", _seedsNextStatusChange - System.currentTimeMillis(), null, null);
+			startQuestTimer(CHANGESEEDSSTATUS, _seedsNextStatusChange - System.currentTimeMillis(), null, null);
 		}
 		else if (event.equalsIgnoreCase("transform"))
 		{

@@ -43,6 +43,8 @@ import quests.Q00065_CertifiedSoulBreaker.Q00065_CertifiedSoulBreaker;
  */
 public class Katenar extends AbstractNpcAI
 {
+	private static final String SPAWNED = "SPAWNED";
+
 	// NPC
 	private static final int KATENAR = 32242;
 	// Item
@@ -65,9 +67,9 @@ public class Katenar extends AbstractNpcAI
 		{
 			case "CREATED_50":
 			{
-				if ((npc0 != null) && !npc.getVariables().getBoolean("SPAWNED", false))
+				if ((npc0 != null) && !npc.getVariables().getBoolean(SPAWNED, false))
 				{
-					npc0.getVariables().set("SPAWNED", false);
+					npc0.getVariables().set(SPAWNED, false);
 				}
 				npc.deleteMe();
 				break;
@@ -77,9 +79,9 @@ public class Katenar extends AbstractNpcAI
 				final QuestState qs = player.getQuestState(Q00065_CertifiedSoulBreaker.class.getSimpleName());
 				if (qs.isMemoState(14))
 				{
-					if ((npc0 != null) && !npc.getVariables().getBoolean("SPAWNED", false))
+					if ((npc0 != null) && !npc.getVariables().getBoolean(SPAWNED, false))
 					{
-						npc0.getVariables().set("SPAWNED", false);
+						npc0.getVariables().set(SPAWNED, false);
 						npc.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.GOOD_LUCK);
 					}
 					npc.deleteMe();

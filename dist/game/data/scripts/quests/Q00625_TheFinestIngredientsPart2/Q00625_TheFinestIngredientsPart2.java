@@ -40,6 +40,8 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Q00625_TheFinestIngredientsPart2 extends Quest
 {
+	private static final String HTML_N_31542_03 = "31542-03.html";
+
 	// NPCs
 	private static final int JEREMY = 31521;
 	private static final int YETIS_TABLE = 31542;
@@ -161,7 +163,7 @@ public class Q00625_TheFinestIngredientsPart2 extends Quest
 						}
 						else
 						{
-							htmltext = "31542-03.html";
+							htmltext = HTML_N_31542_03;
 						}
 					}
 					else
@@ -179,7 +181,7 @@ public class Q00625_TheFinestIngredientsPart2 extends Quest
 					}
 					else
 					{
-						htmltext = "31542-03.html";
+						htmltext = HTML_N_31542_03;
 					}
 				}
 				break;
@@ -276,7 +278,7 @@ public class Q00625_TheFinestIngredientsPart2 extends Quest
 						}
 						else
 						{
-							htmltext = "31542-03.html";
+							htmltext = HTML_N_31542_03;
 						}
 						break;
 					}

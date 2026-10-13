@@ -41,11 +41,14 @@ import com.l2journey.gameserver.util.HtmlUtil;
  */
 public class AdminAnnouncements implements IAdminCommandHandler
 {
+	private static final String ADMIN_ANNOUNCE_SCREEN = "admin_announce_screen";
+	private static final String ADMIN_ANNOUNCE_CRIT = "admin_announce_crit";
+
 	private static final String[] ADMIN_COMMANDS =
 	{
 		"admin_announce",
-		"admin_announce_crit",
-		"admin_announce_screen",
+		ADMIN_ANNOUNCE_CRIT,
+		ADMIN_ANNOUNCE_SCREEN,
 		"admin_announces",
 	};
 	
@@ -56,7 +59,7 @@ public class AdminAnnouncements implements IAdminCommandHandler
 		final String cmd = st.hasMoreTokens() ? st.nextToken() : "";
 		switch (cmd)
 		{
-			case "admin_announce", "admin_announce_crit", "admin_announce_screen":
+			case "admin_announce", ADMIN_ANNOUNCE_CRIT, ADMIN_ANNOUNCE_SCREEN:
 			{
 				if (!st.hasMoreTokens())
 				{
@@ -68,7 +71,7 @@ public class AdminAnnouncements implements IAdminCommandHandler
 				{
 					announce += " " + st.nextToken();
 				}
-				if (cmd.equals("admin_announce_screen"))
+				if (cmd.equals(ADMIN_ANNOUNCE_SCREEN))
 				{
 					Broadcast.toAllOnlinePlayersOnScreen(announce);
 				}
@@ -78,7 +81,7 @@ public class AdminAnnouncements implements IAdminCommandHandler
 					{
 						announce = announce + " [" + activeChar.getName() + "]";
 					}
-					Broadcast.toAllOnlinePlayers(announce, cmd.equals("admin_announce_crit"));
+					Broadcast.toAllOnlinePlayers(announce, cmd.equals(ADMIN_ANNOUNCE_CRIT));
 				}
 				AdminHtml.showAdminHtml(activeChar, "gm_menu.htm");
 				break;

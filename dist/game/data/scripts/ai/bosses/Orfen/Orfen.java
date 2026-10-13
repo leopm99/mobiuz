@@ -61,6 +61,11 @@ import ai.AbstractNpcAI;
  */
 public class Orfen extends AbstractNpcAI
 {
+	private static final String CHECK_MINION_LOC = "check_minion_loc";
+	private static final String CHECK_ORFEN_POS = "check_orfen_pos";
+	private static final String ORFEN_UNLOCK = "orfen_unlock";
+	private static final String SPAWN_MINION = "spawn_minion";
+
 	private static final Location[] POS =
 	{
 		new Location(43728, 17220, -4342),
@@ -108,7 +113,7 @@ public class Orfen extends AbstractNpcAI
 			// the unlock time has not yet expired.
 			if (temp > 0)
 			{
-				startQuestTimer("orfen_unlock", temp, null, null);
+				startQuestTimer(ORFEN_UNLOCK, temp, null, null);
 			}
 			else
 			{
@@ -159,7 +164,7 @@ public class Orfen extends AbstractNpcAI
 	{
 		GrandBossManager.getInstance().addBoss(npc);
 		npc.broadcastPacket(new PlaySound(1, "BS01_A", 1, npc.getObjectId(), npc.getX(), npc.getY(), npc.getZ()));
-		startQuestTimer("check_orfen_pos", 10000, npc, null, true);
+		startQuestTimer(CHECK_ORFEN_POS, 10000, npc, null, true);
 		// Spawn minions
 		final int x = npc.getX();
 		final int y = npc.getY();
@@ -176,13 +181,13 @@ public class Orfen extends AbstractNpcAI
 		mob = addSpawn(RAIKEL_LEOS, x - 100, y - 100, npc.getZ(), 0, false, 0).asAttackable();
 		mob.setIsRaidMinion(true);
 		MINIONS.add(mob);
-		startQuestTimer("check_minion_loc", 10000, npc, null, true);
+		startQuestTimer(CHECK_MINION_LOC, 10000, npc, null, true);
 	}
 	
 	@Override
 	public String onEvent(String event, Npc npc, Player player)
 	{
-		if (event.equalsIgnoreCase("orfen_unlock"))
+		if (event.equalsIgnoreCase(ORFEN_UNLOCK))
 		{
 			final int i = getRandom(10);
 			Location loc;
@@ -202,7 +207,7 @@ public class Orfen extends AbstractNpcAI
 			GrandBossManager.getInstance().setStatus(ORFEN, ALIVE);
 			spawnBoss(orfen);
 		}
-		else if (event.equalsIgnoreCase("check_orfen_pos"))
+		else if (event.equalsIgnoreCase(CHECK_ORFEN_POS))
 		{
 			if ((_hasTeleported && (npc.getCurrentHp() > (npc.getMaxHp() * 0.95))) || (!ZONE.isInsideZone(npc) && !_hasTeleported))
 			{
@@ -214,7 +219,7 @@ public class Orfen extends AbstractNpcAI
 				setSpawnPoint(npc, 0);
 			}
 		}
-		else if (event.equalsIgnoreCase("check_minion_loc"))
+		else if (event.equalsIgnoreCase(CHECK_MINION_LOC))
 		{
 			for (Attackable mob : MINIONS)
 			{
@@ -237,7 +242,7 @@ public class Orfen extends AbstractNpcAI
 			}
 			MINIONS.clear();
 		}
-		else if (event.equalsIgnoreCase("spawn_minion"))
+		else if (event.equalsIgnoreCase(SPAWN_MINION))
 		{
 			final Attackable mob = addSpawn(RAIKEL_LEOS, npc.getX(), npc.getY(), npc.getZ(), 0, false, 0).asAttackable();
 			mob.setIsRaidMinion(true);
@@ -339,20 +344,20 @@ public class Orfen extends AbstractNpcAI
 			final long nextRespawnTime = System.currentTimeMillis() + respawnTime;
 			LOGGER.info("Orfen will respawn at: " + TimeUtil.getDateTimeString(nextRespawnTime));
 			
-			startQuestTimer("orfen_unlock", respawnTime, null, null);
+			startQuestTimer(ORFEN_UNLOCK, respawnTime, null, null);
 			// also save the respawn time so that the info is maintained past reboots
 			final StatSet info = GrandBossManager.getInstance().getStatSet(ORFEN);
 			info.set("respawn_time", System.currentTimeMillis() + respawnTime);
 			GrandBossManager.getInstance().setStatSet(ORFEN, info);
-			cancelQuestTimer("check_minion_loc", npc, null);
-			cancelQuestTimer("check_orfen_pos", npc, null);
+			cancelQuestTimer(CHECK_MINION_LOC, npc, null);
+			cancelQuestTimer(CHECK_ORFEN_POS, npc, null);
 			startQuestTimer("despawn_minions", 20000, null, null);
-			cancelQuestTimers("spawn_minion");
+			cancelQuestTimers(SPAWN_MINION);
 		}
 		else if ((GrandBossManager.getInstance().getStatus(ORFEN) == ALIVE) && (npc.getId() == RAIKEL_LEOS))
 		{
 			MINIONS.remove(npc);
-			startQuestTimer("spawn_minion", 360000, npc, null);
+			startQuestTimer(SPAWN_MINION, 360000, npc, null);
 		}
 	}
 	

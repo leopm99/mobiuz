@@ -51,6 +51,8 @@ import ai.AbstractNpcAI;
  */
 public class AndreasVanHalter extends AbstractNpcAI
 {
+	private static final String RESET_CHECK = "RESET_CHECK";
+
 	// NPCs
 	private static final int BOSS = 29062;
 	private static final int RITUAL_OFFERING = 32038;
@@ -137,7 +139,7 @@ public class AndreasVanHalter extends AbstractNpcAI
 		closeDoor(ALTAR_DOOR_1);
 		closeDoor(ALTAR_DOOR_2);
 		
-		startQuestTimer("RESET_CHECK", 60_000, npc, null, true);
+		startQuestTimer(RESET_CHECK, 60_000, npc, null, true);
 	}
 	
 	@Override
@@ -327,7 +329,7 @@ public class AndreasVanHalter extends AbstractNpcAI
 				_status = STATUS_FIGHT;
 				break;
 			}
-			case "RESET_CHECK":
+			case RESET_CHECK:
 			{
 				if ((_boss != null) && !_boss.isDead() && !_boss.isAttackingNow() && ((System.currentTimeMillis() - _lastAttack) >= RAID_RESET_DELAY))
 				{
@@ -364,7 +366,7 @@ public class AndreasVanHalter extends AbstractNpcAI
 		openDoor(BALCONY_DOOR_2);
 		closeDoor(ALTAR_DOOR_1);
 		closeDoor(ALTAR_DOOR_2);
-		cancelQuestTimer("RESET_CHECK", _boss, null);
+		cancelQuestTimer(RESET_CHECK, _boss, null);
 		_boss = null;
 	}
 	

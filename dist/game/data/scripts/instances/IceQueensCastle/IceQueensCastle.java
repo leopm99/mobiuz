@@ -53,6 +53,8 @@ import quests.Q10285_MeetingSirra.Q10285_MeetingSirra;
  */
 public class IceQueensCastle extends AbstractInstance
 {
+	private static final String ATTACK_KNIGHT = "ATTACK_KNIGHT";
+
 	// NPCs
 	private static final int FREYA = 18847;
 	private static final int BATTALION_LEADER = 18848;
@@ -85,7 +87,7 @@ public class IceQueensCastle extends AbstractInstance
 	{
 		switch (event)
 		{
-			case "ATTACK_KNIGHT":
+			case ATTACK_KNIGHT:
 			{
 				World.getInstance().forEachVisibleObject(npc, Creature.class, character ->
 				{
@@ -96,7 +98,7 @@ public class IceQueensCastle extends AbstractInstance
 						npc.asAttackable().addDamageHate(character, 0, 999999);
 					}
 				});
-				startQuestTimer("ATTACK_KNIGHT", 3000, npc, null);
+				startQuestTimer(ATTACK_KNIGHT, 3000, npc, null);
 				break;
 			}
 			case "TIMER_MOVING":
@@ -160,7 +162,7 @@ public class IceQueensCastle extends AbstractInstance
 					npc.getAI().setIntention(Intention.ATTACK, character);
 					npc.asAttackable().addDamageHate(character, 0, 999999);
 					npc.setScriptValue(1);
-					startQuestTimer("ATTACK_KNIGHT", 5000, npc, null);
+					startQuestTimer(ATTACK_KNIGHT, 5000, npc, null);
 				}
 			});
 			npc.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.S1_MAY_THE_PROTECTION_OF_THE_GODS_BE_UPON_YOU, creature.getName());

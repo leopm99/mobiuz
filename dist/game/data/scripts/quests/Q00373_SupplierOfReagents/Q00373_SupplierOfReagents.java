@@ -33,6 +33,9 @@ import quests.Q00235_MimirsElixir.Q00235_MimirsElixir;
  */
 public class Q00373_SupplierOfReagents extends Quest
 {
+	private static final String HTML_N_31149_19 = "31149-19.html";
+	private static final String HTML_N_31149_44 = "31149-44.html";
+
 	// NPCs
 	private static final int WESLEY = 30166;
 	private static final int ALCHEMIST_MIXING_URN = 31149;
@@ -114,7 +117,7 @@ public class Q00373_SupplierOfReagents extends Quest
 		MEMO_STATE_TO_ITEM.put(24, new ItemHolder(LUNARGENT, 1));
 		
 		// List of catalysts to mix
-		HTML_TO_MEMO_STATE.put("31149-19.html", 1100);
+		HTML_TO_MEMO_STATE.put(HTML_N_31149_19, 1100);
 		HTML_TO_MEMO_STATE.put("31149-20.html", 1200);
 		HTML_TO_MEMO_STATE.put("31149-21.html", 1300);
 		HTML_TO_MEMO_STATE.put("31149-22.html", 1400);
@@ -194,7 +197,7 @@ public class Q00373_SupplierOfReagents extends Quest
 				htmltext = event;
 				break;
 			}
-			case "31149-03.html", "31149-04.html", "31149-05.html", "31149-06.html", "31149-07.html", "31149-08.html", "31149-09.html", "31149-10.html", "31149-11.html", "31149-12.html", "31149-13.html", "31149-14.html", "31149-15.html", "31149-16.html", "31149-19.html", "31149-20.html", "31149-21.html", "31149-22.html", "31149-23.html", "31149-24.html":
+			case "31149-03.html", "31149-04.html", "31149-05.html", "31149-06.html", "31149-07.html", "31149-08.html", "31149-09.html", "31149-10.html", "31149-11.html", "31149-12.html", "31149-13.html", "31149-14.html", "31149-15.html", "31149-16.html", HTML_N_31149_19, "31149-20.html", "31149-21.html", "31149-22.html", "31149-23.html", "31149-24.html":
 			{
 				final int memoState = HTML_TO_MEMO_STATE.get(event);
 				if (hasItem(player, MEMO_STATE_TO_ITEM.get(memoState)))
@@ -208,7 +211,7 @@ public class Q00373_SupplierOfReagents extends Quest
 				{
 					// If the player has not the chosen catalyst, we take the ingredient previously saved (if not null)
 					takeItem(player, MEMO_STATE_TO_ITEM.get(qs.getMemoState()));
-					if (event.equals("31149-19.html"))
+					if (event.equals(HTML_N_31149_19))
 					{
 						htmltext = "31149-25.html";
 					}
@@ -274,7 +277,7 @@ public class Q00373_SupplierOfReagents extends Quest
 				{
 					takeItem(player, item1);
 					takeItem(player, item2);
-					htmltext = (reward == null) ? "31149-44.html" : "31149-45.html";
+					htmltext = (reward == null) ? HTML_N_31149_44 : "31149-45.html";
 					playSound(player, QuestSound.SKILLSOUND_LIQUID_FAIL);
 				}
 				else if ((memoState != 1324) || ((memoState == 1324) && (q235 != null) && q235.isStarted() && !hasQuestItems(player, reward.getItem())))
@@ -291,13 +294,13 @@ public class Q00373_SupplierOfReagents extends Quest
 					}
 					else
 					{
-						htmltext = "31149-44.html";
+						htmltext = HTML_N_31149_44;
 						playSound(player, QuestSound.SKILLSOUND_LIQUID_FAIL);
 					}
 				}
 				else
 				{
-					htmltext = "31149-44.html";
+					htmltext = HTML_N_31149_44;
 				}
 				break;
 			}

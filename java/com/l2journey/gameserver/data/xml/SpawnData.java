@@ -67,6 +67,15 @@ import com.l2journey.gameserver.model.zone.type.NpcSpawnTerritory;
  */
 public class SpawnData implements IXmlReader
 {
+	private static final String RANDOMWALKRANGE = "randomWalkRange";
+	private static final String RESPAWNRANDOM = "respawnRandom";
+	private static final String RESPAWNDELAY = "respawnDelay";
+	private static final String PERIODOFDAY = "periodOfDay";
+	private static final String CHASERANGE = "chaseRange";
+	private static final String HEADING = "heading";
+	private static final String NPOLY = "NPoly";
+	private static final String COUNT = "count";
+
 	private static final Logger LOGGER = Logger.getLogger(SpawnData.class.getName());
 	
 	private static final String OTHER_XML_FOLDER = "data/spawns/Others";
@@ -195,7 +204,7 @@ public class SpawnData implements IXmlReader
 								
 								final int minZ = parseInteger(attrs, "minZ");
 								final int maxZ = parseInteger(attrs, "maxZ");
-								final String zoneShape = parseString(attrs, "shape", "NPoly");
+								final String zoneShape = parseString(attrs, "shape", NPOLY);
 								
 								final List<int[]> rs = new ArrayList<>();
 								int[][] coords;
@@ -239,7 +248,7 @@ public class SpawnData implements IXmlReader
 											continue;
 										}
 									}
-									else if (zoneShape.equalsIgnoreCase("NPoly"))
+									else if (zoneShape.equalsIgnoreCase(NPOLY))
 									{
 										// nPoly needs to have at least 3 vertices.
 										if (coords.length > 2)
@@ -302,7 +311,7 @@ public class SpawnData implements IXmlReader
 								
 								final int minZ = parseInteger(attrs, "minZ");
 								final int maxZ = parseInteger(attrs, "maxZ");
-								final String zoneShape = parseString(attrs, "shape", "NPoly");
+								final String zoneShape = parseString(attrs, "shape", NPOLY);
 								
 								final List<int[]> rs = new ArrayList<>();
 								int[][] coords;
@@ -346,7 +355,7 @@ public class SpawnData implements IXmlReader
 											continue;
 										}
 									}
-									else if (zoneShape.equalsIgnoreCase("NPoly"))
+									else if (zoneShape.equalsIgnoreCase(NPOLY))
 									{
 										// nPoly needs to have at least 3 vertices.
 										if (coords.length > 2)
@@ -431,8 +440,8 @@ public class SpawnData implements IXmlReader
 									continue;
 								}
 								
-								final Node countNode = attrs.getNamedItem("count");
-								final int count = countNode == null ? 1 : parseInteger(attrs, "count");
+								final Node countNode = attrs.getNamedItem(COUNT);
+								final int count = countNode == null ? 1 : parseInteger(attrs, COUNT);
 								
 								for (int i = 0; i < count; i++)
 								{
@@ -445,37 +454,37 @@ public class SpawnData implements IXmlReader
 									spawnInfo.set("spawnName", spawnName);
 									
 									// Trying to read optional parameters.
-									if (attrs.getNamedItem("heading") != null)
+									if (attrs.getNamedItem(HEADING) != null)
 									{
-										spawnInfo.set("heading", parseInteger(attrs, "heading"));
+										spawnInfo.set(HEADING, parseInteger(attrs, HEADING));
 									}
 									
-									if (attrs.getNamedItem("respawnDelay") != null)
+									if (attrs.getNamedItem(RESPAWNDELAY) != null)
 									{
-										spawnInfo.set("respawnDelay", parseInteger(attrs, "respawnDelay"));
+										spawnInfo.set(RESPAWNDELAY, parseInteger(attrs, RESPAWNDELAY));
 									}
 									
-									if (attrs.getNamedItem("respawnRandom") != null)
+									if (attrs.getNamedItem(RESPAWNRANDOM) != null)
 									{
-										spawnInfo.set("respawnRandom", parseInteger(attrs, "respawnRandom"));
+										spawnInfo.set(RESPAWNRANDOM, parseInteger(attrs, RESPAWNRANDOM));
 									}
 									
-									if (attrs.getNamedItem("chaseRange") != null)
+									if (attrs.getNamedItem(CHASERANGE) != null)
 									{
-										spawnInfo.set("chaseRange", parseInteger(attrs, "chaseRange"));
+										spawnInfo.set(CHASERANGE, parseInteger(attrs, CHASERANGE));
 									}
 									
-									if (attrs.getNamedItem("randomWalkRange") != null)
+									if (attrs.getNamedItem(RANDOMWALKRANGE) != null)
 									{
-										spawnInfo.set("randomWalkRange", parseInteger(attrs, "randomWalkRange"));
+										spawnInfo.set(RANDOMWALKRANGE, parseInteger(attrs, RANDOMWALKRANGE));
 									}
 									
-									if (attrs.getNamedItem("periodOfDay") != null)
+									if (attrs.getNamedItem(PERIODOFDAY) != null)
 									{
-										final String period = attrs.getNamedItem("periodOfDay").getNodeValue();
+										final String period = attrs.getNamedItem(PERIODOFDAY).getNodeValue();
 										if (period.equalsIgnoreCase("day") || period.equalsIgnoreCase("night"))
 										{
-											spawnInfo.set("periodOfDay", period.equalsIgnoreCase("day") ? 1 : 2);
+											spawnInfo.set(PERIODOFDAY, period.equalsIgnoreCase("day") ? 1 : 2);
 										}
 									}
 									
@@ -503,12 +512,12 @@ public class SpawnData implements IXmlReader
 		try
 		{
 			spawnDat = new Spawn(spawnInfo.getInt("npcTemplateid"));
-			spawnDat.setAmount(spawnInfo.getInt("count", 1));
+			spawnDat.setAmount(spawnInfo.getInt(COUNT, 1));
 			spawnDat.setXYZ(spawnInfo.getInt("x", 0), spawnInfo.getInt("y", 0), spawnInfo.getInt("z", 0));
-			spawnDat.setHeading(spawnInfo.getInt("heading", -1));
-			spawnDat.setRespawnDelay(spawnInfo.getInt("respawnDelay", 0), spawnInfo.getInt("respawnRandom", 0));
-			spawnDat.setChaseRange(spawnInfo.getInt("chaseRange", 0));
-			spawnDat.setRandomWalkRange(spawnInfo.getInt("randomWalkRange", 0));
+			spawnDat.setHeading(spawnInfo.getInt(HEADING, -1));
+			spawnDat.setRespawnDelay(spawnInfo.getInt(RESPAWNDELAY, 0), spawnInfo.getInt(RESPAWNRANDOM, 0));
+			spawnDat.setChaseRange(spawnInfo.getInt(CHASERANGE, 0));
+			spawnDat.setRandomWalkRange(spawnInfo.getInt(RANDOMWALKRANGE, 0));
 			spawnDat.setLocationId(spawnInfo.getInt("locId", 0));
 			final String territoryName = spawnInfo.getString("territoryName", "");
 			final String spawnName = spawnInfo.getString("spawnName", "");
@@ -523,7 +532,7 @@ public class SpawnData implements IXmlReader
 			
 			// Register AI Data for this spawn.
 			NpcPersonalAIData.getInstance().storeData(spawnDat, aiData);
-			switch (spawnInfo.getInt("periodOfDay", 0))
+			switch (spawnInfo.getInt(PERIODOFDAY, 0))
 			{
 				case 0: // Default
 				{

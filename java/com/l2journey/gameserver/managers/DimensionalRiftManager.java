@@ -65,6 +65,9 @@ import com.l2journey.gameserver.network.serverpackets.NpcHtmlMessage;
  */
 public class DimensionalRiftManager
 {
+	private static final String PH_NPC_NAME = "%npc_name%";
+	private static final String PH_COUNT = "%count%";
+
 	private static final Logger LOGGER = Logger.getLogger(DimensionalRiftManager.class.getName());
 	private final Map<Byte, Map<Byte, DimensionalRiftRoom>> _rooms = HashMap.newHashMap(7);
 	private static final int DIMENSIONAL_FRAGMENT_ITEM_ID = 7079;
@@ -295,8 +298,8 @@ public class DimensionalRiftManager
 		{
 			final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
 			html.setFile(player, "data/html/seven_signs/rift/SmallParty.htm");
-			html.replace("%npc_name%", npc.getName());
-			html.replace("%count%", Integer.toString(Config.RIFT_MIN_PARTY_SIZE));
+			html.replace(PH_NPC_NAME, npc.getName());
+			html.replace(PH_COUNT, Integer.toString(Config.RIFT_MIN_PARTY_SIZE));
 			player.sendPacket(html);
 			return;
 		}
@@ -353,8 +356,8 @@ public class DimensionalRiftManager
 		{
 			final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
 			html.setFile(player, "data/html/seven_signs/rift/NoFragments.htm");
-			html.replace("%npc_name%", npc.getName());
-			html.replace("%count%", Integer.toString(count));
+			html.replace(PH_NPC_NAME, npc.getName());
+			html.replace(PH_COUNT, Integer.toString(count));
 			player.sendPacket(html);
 			return;
 		}
@@ -366,8 +369,8 @@ public class DimensionalRiftManager
 			{
 				final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
 				html.setFile(player, "data/html/seven_signs/rift/NoFragments.htm");
-				html.replace("%npc_name%", npc.getName());
-				html.replace("%count%", Integer.toString(count));
+				html.replace(PH_NPC_NAME, npc.getName());
+				html.replace(PH_COUNT, Integer.toString(count));
 				player.sendPacket(html);
 				return;
 			}
@@ -451,7 +454,7 @@ public class DimensionalRiftManager
 	{
 		final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
 		html.setFile(player, file);
-		html.replace("%npc_name%", npc.getName());
+		html.replace(PH_NPC_NAME, npc.getName());
 		player.sendPacket(html);
 	}
 	

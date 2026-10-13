@@ -41,6 +41,13 @@ import ai.AbstractNpcAI;
  */
 public class DestroyedTumors extends AbstractNpcAI
 {
+	private static final String EXAMINE_TUMOR = "examine_tumor";
+	private static final String SHOWCHECKPAGE = "showcheckpage";
+	private static final String HTML_N_32535_2 = "32535-2.htm";
+	private static final String HTML_N_32535_6 = "32535-6.htm";
+	private static final String HTML_N_32535_4 = "32535-4.htm";
+	private static final String HTML_N_32535_3 = "32535-3.htm";
+
 	private final long warpTimer = System.currentTimeMillis();
 	
 	public DestroyedTumors()
@@ -69,30 +76,30 @@ public class DestroyedTumors extends AbstractNpcAI
 		
 		if ((world != null) && (world.getTemplateId() == 119))
 		{
-			if (event.equalsIgnoreCase("examine_tumor"))
+			if (event.equalsIgnoreCase(EXAMINE_TUMOR))
 			{
 				if ((player.getParty() == null) || (player.getParty().getLeader() != player))
 				{
-					htmltext = "32535-2.htm";
+					htmltext = HTML_N_32535_2;
 				}
 				else
 				{
 					htmltext = "32535-1.htm";
 				}
 			}
-			else if (event.equalsIgnoreCase("showcheckpage"))
+			else if (event.equalsIgnoreCase(SHOWCHECKPAGE))
 			{
 				if (player.getInventory().getItemByItemId(13797) == null)
 				{
-					htmltext = "32535-6.htm";
+					htmltext = HTML_N_32535_6;
 				}
 				else if ((warpTimer + 60000) > System.currentTimeMillis())
 				{
-					htmltext = "32535-4.htm";
+					htmltext = HTML_N_32535_4;
 				}
 				else if (world.getParameters().getInt("tag", 0) <= 0)
 				{
-					htmltext = "32535-3.htm";
+					htmltext = HTML_N_32535_3;
 				}
 				else
 				{
@@ -102,30 +109,30 @@ public class DestroyedTumors extends AbstractNpcAI
 		}
 		else if ((world != null) && (world.getTemplateId() == 120))
 		{
-			if (event.equalsIgnoreCase("examine_tumor"))
+			if (event.equalsIgnoreCase(EXAMINE_TUMOR))
 			{
 				if ((player.getParty() == null) || (player.getParty().getLeader() != player))
 				{
-					htmltext = "32535-2.htm";
+					htmltext = HTML_N_32535_2;
 				}
 				else
 				{
 					htmltext = "32535-1.htm";
 				}
 			}
-			else if (event.equalsIgnoreCase("showcheckpage"))
+			else if (event.equalsIgnoreCase(SHOWCHECKPAGE))
 			{
 				if (player.getInventory().getItemByItemId(13797) == null)
 				{
-					htmltext = "32535-6.htm";
+					htmltext = HTML_N_32535_6;
 				}
 				else if ((warpTimer + 60000) > System.currentTimeMillis())
 				{
-					htmltext = "32535-4.htm";
+					htmltext = HTML_N_32535_4;
 				}
 				else if (world.getParameters().getInt("tag", 0) <= 0)
 				{
-					htmltext = "32535-3.htm";
+					htmltext = HTML_N_32535_3;
 				}
 				else
 				{
@@ -135,7 +142,7 @@ public class DestroyedTumors extends AbstractNpcAI
 		}
 		else if ((world != null) && (world.getTemplateId() == 121))
 		{
-			if (event.equalsIgnoreCase("examine_tumor"))
+			if (event.equalsIgnoreCase(EXAMINE_TUMOR))
 			{
 				if (npc.getId() == 32536)
 				{
@@ -152,7 +159,7 @@ public class DestroyedTumors extends AbstractNpcAI
 				{
 					if ((player.getParty() == null) || (player.getParty().getLeader() != player))
 					{
-						htmltext = "32535-2.htm";
+						htmltext = HTML_N_32535_2;
 					}
 					else
 					{
@@ -160,19 +167,19 @@ public class DestroyedTumors extends AbstractNpcAI
 					}
 				}
 			}
-			else if (event.equalsIgnoreCase("showcheckpage"))
+			else if (event.equalsIgnoreCase(SHOWCHECKPAGE))
 			{
 				if (player.getInventory().getItemByItemId(13797) == null)
 				{
-					htmltext = "32535-6.htm";
+					htmltext = HTML_N_32535_6;
 				}
 				else if ((warpTimer + 60000) > System.currentTimeMillis())
 				{
-					htmltext = "32535-4.htm";
+					htmltext = HTML_N_32535_4;
 				}
 				else if (world.getParameters().getInt("tag", 0) <= 0)
 				{
-					htmltext = "32535-3.htm";
+					htmltext = HTML_N_32535_3;
 				}
 				else
 				{
@@ -183,7 +190,7 @@ public class DestroyedTumors extends AbstractNpcAI
 			{
 				if ((player.getInventory().getItemByItemId(13797) == null) || (player.getInventory().getItemByItemId(13797).getCount() < 3))
 				{
-					htmltext = "32535-6.htm";
+					htmltext = HTML_N_32535_6;
 				}
 				else
 				{
@@ -191,9 +198,9 @@ public class DestroyedTumors extends AbstractNpcAI
 				}
 			}
 		}
-		else if (((world != null) && (world.getTemplateId() == 122)) && ((event.equalsIgnoreCase("examine_tumor")) && (npc.getId() == 32535)))
+		else if (((world != null) && (world.getTemplateId() == 122)) && ((event.equalsIgnoreCase(EXAMINE_TUMOR)) && (npc.getId() == 32535)))
 		{
-			htmltext = "32535-4.htm";
+			htmltext = HTML_N_32535_4;
 		}
 		return htmltext;
 	}

@@ -44,6 +44,8 @@ import ai.AbstractNpcAI;
  */
 public class SilentValley extends AbstractNpcAI
 {
+	private static final String CLEAR_EVENT = "CLEAR_EVENT";
+
 	// Skills
 	private static final SkillHolder BETRAYAL = new SkillHolder(6033, 1); // Treasure Seeker's Betrayal
 	private static final SkillHolder BLAZE = new SkillHolder(4157, 10); // NPC Blaze - Magic
@@ -92,7 +94,7 @@ public class SilentValley extends AbstractNpcAI
 					npc.doDie(null);
 					break;
 				}
-				case "CLEAR_EVENT":
+				case CLEAR_EVENT:
 				{
 					npc.broadcastEvent("CLEAR_ALL_INSTANT", 2000, null);
 					npc.doDie(null);
@@ -131,7 +133,7 @@ public class SilentValley extends AbstractNpcAI
 					npc.dropItem(player, SACK, 1);
 					npc.broadcastEvent("CLEAR_ALL", 2000, null);
 					npc.doDie(null);
-					cancelQuestTimer("CLEAR_EVENT", npc, null);
+					cancelQuestTimer(CLEAR_EVENT, npc, null);
 				}
 				break;
 			}
@@ -190,7 +192,7 @@ public class SilentValley extends AbstractNpcAI
 		if (npc.getId() == CHEST)
 		{
 			npc.setInvul(true);
-			startQuestTimer("CLEAR_EVENT", 300000, npc, null);
+			startQuestTimer(CLEAR_EVENT, 300000, npc, null);
 		}
 		else
 		{

@@ -36,6 +36,10 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Q00334_TheWishingPotion extends Quest
 {
+	private static final String HTML_N_30738_14 = "30738-14.html";
+	private static final String HTML_N_30738_20 = "30738-20.html";
+	private static final String N_2336008 = "2336008";
+
 	// NPCs
 	private static final int TORAI = 30557;
 	private static final int ALCHEMIST_MATILD = 30738;
@@ -514,7 +518,7 @@ public class Q00334_TheWishingPotion extends Quest
 							}
 							return "30738-13.html";
 						}
-						return "30738-14.html";
+						return HTML_N_30738_14;
 					}
 					case 6:
 					{
@@ -535,12 +539,12 @@ public class Q00334_TheWishingPotion extends Quest
 								takeItems(player, Q_WISH_POTION, 1);
 								qs.set(I_QUEST0, 1);
 								qs.set(FLAG, 1);
-								startQuestTimer("2336008", 3 * 1000L, npc, player);
+								startQuestTimer(N_2336008, 3 * 1000L, npc, player);
 								return "30738-16.html";
 							}
-							return "30738-20.html";
+							return HTML_N_30738_20;
 						}
-						return "30738-14.html";
+						return HTML_N_30738_14;
 					}
 					case 8:
 					{
@@ -551,12 +555,12 @@ public class Q00334_TheWishingPotion extends Quest
 								takeItems(player, Q_WISH_POTION, 1);
 								qs.set(I_QUEST0, 2);
 								qs.set(FLAG, 2);
-								startQuestTimer("2336008", 3 * 1000L, npc, player);
+								startQuestTimer(N_2336008, 3 * 1000L, npc, player);
 								return "30738-17.html";
 							}
-							return "30738-20.html";
+							return HTML_N_30738_20;
 						}
-						return "30738-14.html";
+						return HTML_N_30738_14;
 					}
 					case 9:
 					{
@@ -567,12 +571,12 @@ public class Q00334_TheWishingPotion extends Quest
 								takeItems(player, Q_WISH_POTION, 1);
 								qs.set(I_QUEST0, 3);
 								qs.set(FLAG, 3);
-								startQuestTimer("2336008", 3 * 1000L, npc, player);
+								startQuestTimer(N_2336008, 3 * 1000L, npc, player);
 								return "30738-18.html";
 							}
-							return "30738-20.html";
+							return HTML_N_30738_20;
 						}
-						return "30738-14.html";
+						return HTML_N_30738_14;
 					}
 					case 10:
 					{
@@ -583,12 +587,12 @@ public class Q00334_TheWishingPotion extends Quest
 								takeItems(player, Q_WISH_POTION, 1);
 								qs.set(I_QUEST0, 4);
 								qs.set(FLAG, 4);
-								startQuestTimer("2336008", 3 * 1000L, npc, player);
+								startQuestTimer(N_2336008, 3 * 1000L, npc, player);
 								return "30738-19.html";
 							}
-							return "30738-20.html";
+							return HTML_N_30738_20;
 						}
-						return "30738-14.html";
+						return HTML_N_30738_14;
 					}
 					case 2336008:
 					{

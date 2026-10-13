@@ -28,6 +28,8 @@ import com.l2journey.gameserver.network.serverpackets.NpcHtmlMessage;
  */
 public class BroadcastingTower extends Npc
 {
+	private static final String HTML_PATH = "data/html/observation/";
+
 	/**
 	 * Creates an observation.
 	 * @param template the observation NPC template
@@ -46,22 +48,22 @@ public class BroadcastingTower extends Npc
 		{
 			if (value == 0)
 			{
-				filename = "data/html/observation/" + getId() + "-Oracle.htm";
+				filename = HTML_PATH + getId() + "-Oracle.htm";
 			}
 			else
 			{
-				filename = "data/html/observation/" + getId() + "-Oracle-" + value + ".htm";
+				filename = HTML_PATH + getId() + "-Oracle-" + value + ".htm";
 			}
 		}
 		else
 		{
 			if (value == 0)
 			{
-				filename = "data/html/observation/" + getId() + ".htm";
+				filename = HTML_PATH + getId() + ".htm";
 			}
 			else
 			{
-				filename = "data/html/observation/" + getId() + "-" + value + ".htm";
+				filename = HTML_PATH + getId() + "-" + value + ".htm";
 			}
 		}
 		

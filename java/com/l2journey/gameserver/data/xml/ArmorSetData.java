@@ -36,6 +36,8 @@ import com.l2journey.gameserver.model.skill.holders.SkillHolder;
  */
 public class ArmorSetData implements IXmlReader
 {
+	private static final String LEVEL = "level";
+
 	private ArmorSet[] _armorSets;
 	private final Map<Integer, ArmorSet> _armorSetMap = new ConcurrentHashMap<>();
 	
@@ -112,21 +114,21 @@ public class ArmorSetData implements IXmlReader
 								case "skill":
 								{
 									final int skillId = parseInteger(attrs, "id");
-									final int skillLevel = parseInteger(attrs, "level");
+									final int skillLevel = parseInteger(attrs, LEVEL);
 									set.addSkill(new SkillHolder(skillId, skillLevel));
 									break;
 								}
 								case "shield_skill":
 								{
 									final int skillId = parseInteger(attrs, "id");
-									final int skillLevel = parseInteger(attrs, "level");
+									final int skillLevel = parseInteger(attrs, LEVEL);
 									set.addShieldSkill(new SkillHolder(skillId, skillLevel));
 									break;
 								}
 								case "enchant6skill":
 								{
 									final int skillId = parseInteger(attrs, "id");
-									final int skillLevel = parseInteger(attrs, "level");
+									final int skillLevel = parseInteger(attrs, LEVEL);
 									set.addEnchant6Skill(new SkillHolder(skillId, skillLevel));
 									break;
 								}

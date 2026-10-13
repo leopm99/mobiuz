@@ -37,6 +37,8 @@ import com.l2journey.gameserver.network.serverpackets.NpcSay;
  */
 public class Q00463_IMustBeaGenius extends Quest
 {
+	private static final String NUMBER = "number";
+
 	private static class DropInfo
 	{
 		private final int _count;
@@ -126,14 +128,14 @@ public class Q00463_IMustBeaGenius extends Quest
 			{
 				qs.startQuest();
 				final int number = getRandom(51) + 550;
-				qs.set("number", String.valueOf(number));
+				qs.set(NUMBER, String.valueOf(number));
 				qs.set("chance", String.valueOf(getRandom(4)));
 				htmltext = getHtm(player, event).replace("%num%", String.valueOf(number));
 				break;
 			}
 			case "32069-05.htm":
 			{
-				htmltext = getHtm(player, event).replace("%num%", qs.get("number"));
+				htmltext = getHtm(player, event).replace("%num%", qs.get(NUMBER));
 				break;
 			}
 			case "reward":
@@ -193,7 +195,7 @@ public class Q00463_IMustBeaGenius extends Quest
 				npc.broadcastPacket(ns);
 				
 				playSound(player, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-				if (getQuestItemsCount(player, CORPSE_LOG) == qs.getInt("number"))
+				if (getQuestItemsCount(player, CORPSE_LOG) == qs.getInt(NUMBER))
 				{
 					takeItems(player, CORPSE_LOG, -1);
 					giveItems(player, COLLECTION, 1);

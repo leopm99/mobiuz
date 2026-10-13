@@ -38,6 +38,11 @@ import quests.Q00022_TragedyInVonHellmannForest.Q00022_TragedyInVonHellmannFores
  */
 public class Q00021_HiddenTruth extends Quest
 {
+	private static final String BENEDICT_KEY = "BENEDICT";
+	private static final String DESPAWN = "DESPAWN";
+	private static final String AGRIPEL_KEY = "AGRIPEL";
+	private static final String DOMINIC_KEY = "DOMINIC";
+
 	// NPCs
 	private static final int INNOCENTIN = 31328;
 	private static final int AGRIPEL = 31348;
@@ -186,7 +191,7 @@ public class Q00021_HiddenTruth extends Quest
 					npc.deleteMe();
 					break;
 				}
-				case "DESPAWN":
+				case DESPAWN:
 				{
 					PAGE_COUNT--;
 					npc.deleteMe();
@@ -291,7 +296,7 @@ public class Q00021_HiddenTruth extends Quest
 					if (moveEnded)
 					{
 						htmltext = "31525-02.html";
-						startQuestTimer("DESPAWN", 3000, npc, player);
+						startQuestTimer(DESPAWN, 3000, npc, player);
 					}
 					else
 					{
@@ -337,13 +342,13 @@ public class Q00021_HiddenTruth extends Quest
 			{
 				if (hasQuestItems(player, CROSS_OF_EINHASAD) && qs.isCond(6))
 				{
-					qs.set("AGRIPEL", "1");
-					if ((qs.getInt("AGRIPEL") == 1) && (qs.getInt("DOMINIC") == 1) && (qs.getInt("BENEDICT") == 1))
+					qs.set(AGRIPEL_KEY, "1");
+					if ((qs.getInt(AGRIPEL_KEY) == 1) && (qs.getInt(DOMINIC_KEY) == 1) && (qs.getInt(BENEDICT_KEY) == 1))
 					{
 						htmltext = "31348-03.html";
 						qs.setCond(7);
 					}
-					else if ((qs.getInt("DOMINIC") == 1) || (qs.getInt("BENEDICT") == 1))
+					else if ((qs.getInt(DOMINIC_KEY) == 1) || (qs.getInt(BENEDICT_KEY) == 1))
 					{
 						htmltext = "31348-02.html";
 					}
@@ -363,13 +368,13 @@ public class Q00021_HiddenTruth extends Quest
 			{
 				if (hasQuestItems(player, CROSS_OF_EINHASAD) && qs.isCond(6))
 				{
-					qs.set("BENEDICT", "1");
-					if ((qs.getInt("AGRIPEL") == 1) && (qs.getInt("DOMINIC") == 1) && (qs.getInt("BENEDICT") == 1))
+					qs.set(BENEDICT_KEY, "1");
+					if ((qs.getInt(AGRIPEL_KEY) == 1) && (qs.getInt(DOMINIC_KEY) == 1) && (qs.getInt(BENEDICT_KEY) == 1))
 					{
 						htmltext = "31349-03.html";
 						qs.setCond(7);
 					}
-					else if ((qs.getInt("AGRIPEL") == 1) || (qs.getInt("DOMINIC") == 1))
+					else if ((qs.getInt(AGRIPEL_KEY) == 1) || (qs.getInt(DOMINIC_KEY) == 1))
 					{
 						htmltext = "31349-02.html";
 					}
@@ -388,13 +393,13 @@ public class Q00021_HiddenTruth extends Quest
 			{
 				if (hasQuestItems(player, CROSS_OF_EINHASAD) && qs.isCond(6))
 				{
-					qs.set("DOMINIC", "1");
-					if ((qs.getInt("AGRIPEL") == 1) && (qs.getInt("DOMINIC") == 1) && (qs.getInt("BENEDICT") == 1))
+					qs.set(DOMINIC_KEY, "1");
+					if ((qs.getInt(AGRIPEL_KEY) == 1) && (qs.getInt(DOMINIC_KEY) == 1) && (qs.getInt(BENEDICT_KEY) == 1))
 					{
 						htmltext = "31350-03.html";
 						qs.setCond(7);
 					}
-					else if ((qs.getInt("AGRIPEL") == 1) || (qs.getInt("BENEDICT") == 1))
+					else if ((qs.getInt(AGRIPEL_KEY) == 1) || (qs.getInt(BENEDICT_KEY) == 1))
 					{
 						htmltext = "31350-02.html";
 					}
@@ -448,7 +453,7 @@ public class Q00021_HiddenTruth extends Quest
 		final QuestState qs = World.getInstance().getPlayer(npc.getScriptValue()).getQuestState(getName());
 		if (qs != null)
 		{
-			startQuestTimer("DESPAWN", 15000, npc, null);
+			startQuestTimer(DESPAWN, 15000, npc, null);
 			moveEnded = true;
 		}
 	}

@@ -52,6 +52,10 @@ import ai.areas.Hellbound.HellboundEngine;
  */
 public class AnomicFoundry extends AbstractNpcAI
 {
+	private static final String RESET_RESPAWN_TIME = "reset_respawn_time";
+	private static final String RETURN_LABORER = "return_laborer";
+	private static final String MAKE_SPAWN_1 = "make_spawn_1";
+
 	// NPCs
 	private static int LABORER = 22396;
 	private static int FOREMAN = 22397;
@@ -91,13 +95,13 @@ public class AnomicFoundry extends AbstractNpcAI
 		addKillId(LABORER, LESSER_EVIL, GREATER_EVIL);
 		addSpawnId(LABORER, LESSER_EVIL, GREATER_EVIL);
 		addTeleportId(LABORER, LESSER_EVIL, GREATER_EVIL);
-		startQuestTimer("make_spawn_1", respawnTime, null, null);
+		startQuestTimer(MAKE_SPAWN_1, respawnTime, null, null);
 	}
 	
 	@Override
 	public String onEvent(String event, Npc npc, Player player)
 	{
-		if (event.equalsIgnoreCase("make_spawn_1"))
+		if (event.equalsIgnoreCase(MAKE_SPAWN_1))
 		{
 			if (HellboundEngine.getInstance().getLevel() >= 10)
 			{
@@ -107,7 +111,7 @@ public class AnomicFoundry extends AbstractNpcAI
 					addSpawn(SPAWNS[idx][0], SPAWNS[idx][1], SPAWNS[idx][2], SPAWNS[idx][3], SPAWNS[idx][4], false, 0, false);
 					respawnTime += 10000;
 				}
-				startQuestTimer("make_spawn_1", respawnTime, null, null);
+				startQuestTimer(MAKE_SPAWN_1, respawnTime, null, null);
 			}
 		}
 		else if (event.equalsIgnoreCase("make_spawn_2"))
@@ -117,14 +121,14 @@ public class AnomicFoundry extends AbstractNpcAI
 				addSpawn(SPAWNS[4][0], SPAWNS[4][1], SPAWNS[4][2], SPAWNS[4][3], SPAWNS[4][4], false, 0, false);
 			}
 		}
-		else if (event.equalsIgnoreCase("return_laborer"))
+		else if (event.equalsIgnoreCase(RETURN_LABORER))
 		{
 			if ((npc != null) && !npc.isDead())
 			{
 				npc.asAttackable().returnHome();
 			}
 		}
-		else if (event.equalsIgnoreCase("reset_respawn_time"))
+		else if (event.equalsIgnoreCase(RESET_RESPAWN_TIME))
 		{
 			respawnTime = 60000;
 		}
@@ -149,15 +153,15 @@ public class AnomicFoundry extends AbstractNpcAI
 		if (atkIndex == 0)
 		{
 			npc.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.ENEMY_INVASION_HURRY_UP);
-			cancelQuestTimer("return_laborer", npc, null);
-			startQuestTimer("return_laborer", 60000, npc, null);
+			cancelQuestTimer(RETURN_LABORER, npc, null);
+			startQuestTimer(RETURN_LABORER, 60000, npc, null);
 			if (respawnTime > respawnMin)
 			{
 				respawnTime -= 5000;
 			}
-			else if ((respawnTime <= respawnMin) && (getQuestTimer("reset_respawn_time", null, null) == null))
+			else if ((respawnTime <= respawnMin) && (getQuestTimer(RESET_RESPAWN_TIME, null, null) == null))
 			{
-				startQuestTimer("reset_respawn_time", 600000, null, null);
+				startQuestTimer(RESET_RESPAWN_TIME, 600000, null, null);
 			}
 		}
 		
@@ -192,9 +196,9 @@ public class AnomicFoundry extends AbstractNpcAI
 				{
 					respawnTime += 10000;
 				}
-				else if ((respawnTime >= respawnMax) && (getQuestTimer("reset_respawn_time", null, null) == null))
+				else if ((respawnTime >= respawnMax) && (getQuestTimer(RESET_RESPAWN_TIME, null, null) == null))
 				{
-					startQuestTimer("reset_respawn_time", 600000, null, null);
+					startQuestTimer(RESET_RESPAWN_TIME, 600000, null, null);
 				}
 			}
 			_atkIndex.remove(npc.getObjectId());

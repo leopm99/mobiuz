@@ -37,6 +37,8 @@ import com.l2journey.gameserver.network.serverpackets.CreatureSay;
  */
 public class Q00335_TheSongOfTheHunter extends Quest
 {
+	private static final String HTML_N_30745_16 = "30745-16.html";
+
 	// NPCs
 	private static final int GREY = 30744;
 	private static final int TOR = 30745;
@@ -760,7 +762,7 @@ public class Q00335_TheSongOfTheHunter extends Quest
 					i2 += 33520;
 					i3 += 33520;
 					i4 += 33520;
-					htmltext = getHtml(player, "30745-16.html", i0, i1, i2, i3, i4);
+					htmltext = getHtml(player, HTML_N_30745_16, i0, i1, i2, i3, i4);
 				}
 				else
 				{
@@ -779,7 +781,7 @@ public class Q00335_TheSongOfTheHunter extends Quest
 					i2 += 33520;
 					i3 += 33520;
 					i4 += 33520;
-					htmltext = getHtml(player, "30745-16.html", i4, i3, i2, i1, i0);
+					htmltext = getHtml(player, HTML_N_30745_16, i4, i3, i2, i1, i0);
 				}
 				break;
 			}
@@ -864,7 +866,7 @@ public class Q00335_TheSongOfTheHunter extends Quest
 					i2 = 33520 + (i2 + 20);
 					i3 = 33520 + (i3 + 20);
 					i4 = 33520 + (i4 + 20);
-					htmltext = getHtml(player, "30745-16.html", i0, i1, i2, i3, i4);
+					htmltext = getHtml(player, HTML_N_30745_16, i0, i1, i2, i3, i4);
 				}
 				else
 				{
@@ -883,7 +885,7 @@ public class Q00335_TheSongOfTheHunter extends Quest
 					i2 = 33520 + (i2 + 20);
 					i3 = 33520 + (i3 + 20);
 					i4 = 33520 + (i4 + 20);
-					htmltext = getHtml(player, "30745-16.html", i4, i3, i2, i1, i0);
+					htmltext = getHtml(player, HTML_N_30745_16, i4, i3, i2, i1, i0);
 				}
 				break;
 			}

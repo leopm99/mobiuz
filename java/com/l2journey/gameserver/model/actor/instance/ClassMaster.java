@@ -45,6 +45,9 @@ import com.l2journey.gameserver.network.serverpackets.TutorialShowQuestionMark;
  */
 public class ClassMaster extends Merchant
 {
+	private static final String PH_RACEICON = "%RaceIcon%";
+	private static final String PH_NAME = "%name%";
+
 	/**
 	 * Creates a class master.
 	 * @param template the class master NPC template
@@ -92,8 +95,8 @@ public class ClassMaster extends Merchant
 			{
 				final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 				html.setFile(player, "data/html/classmaster/ok.htm");
-				html.replace("%name%", ClassListData.getInstance().getClass(val).getClientCode());
-				html.replace("%RaceIcon%", getRaceIcon(player));
+				html.replace(PH_NAME, ClassListData.getInstance().getClass(val).getClientCode());
+				html.replace(PH_RACEICON, getRaceIcon(player));
 				player.sendPacket(html);
 			}
 		}
@@ -286,8 +289,8 @@ public class ClassMaster extends Merchant
 					if (!menu.isEmpty())
 					{
 						html.setFile(player, "data/html/classmaster/template.htm");
-						html.replace("%name%", ClassListData.getInstance().getClass(currentClassId).getClientCode());
-						html.replace("%RaceIcon%", getRaceIcon(player));
+						html.replace(PH_NAME, ClassListData.getInstance().getClass(currentClassId).getClientCode());
+						html.replace(PH_RACEICON, getRaceIcon(player));
 						html.replace("%menu%", menu.toString());
 					}
 					else
@@ -325,8 +328,8 @@ public class ClassMaster extends Merchant
 		}
 		
 		String msg = HtmCache.getInstance().getHtm(player, "data/html/classmaster/tutorialtemplate.htm");
-		msg = msg.replace("%name%", ClassListData.getInstance().getClass(currentClassId).getClassName());
-		msg = msg.replace("%RaceIcon%", getRaceIcon(player));
+		msg = msg.replace(PH_NAME, ClassListData.getInstance().getClass(currentClassId).getClassName());
+		msg = msg.replace(PH_RACEICON, getRaceIcon(player));
 		
 		final StringBuilder menu = new StringBuilder(100);
 		for (PlayerClass cid : PlayerClass.values())

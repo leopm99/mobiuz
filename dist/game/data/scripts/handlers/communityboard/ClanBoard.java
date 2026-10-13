@@ -48,11 +48,14 @@ import com.l2journey.gameserver.util.HtmlUtil;
  */
 public class ClanBoard implements IWriteBoardHandler
 {
+	private static final String BBSCLAN_CLANHOME = "_bbsclan_clanhome";
+	private static final String BBSCLAN_CLANLIST = "_bbsclan_clanlist";
+
 	private static final String[] COMMANDS =
 	{
 		"_bbsclan",
 		"_bbsclan_list",
-		"_bbsclan_clanhome"
+		BBSCLAN_CLANHOME
 	};
 	
 	@Override
@@ -77,10 +80,10 @@ public class ClanBoard implements IWriteBoardHandler
 				clanHome(player);
 			}
 		}
-		else if (command.startsWith("_bbsclan_clanlist"))
+		else if (command.startsWith(BBSCLAN_CLANLIST))
 		{
 			CommunityBoardHandler.getInstance().addBypass(player, "Clan List", command);
-			if (command.equals("_bbsclan_clanlist"))
+			if (command.equals(BBSCLAN_CLANLIST))
 			{
 				clanList(player, 1);
 			}
@@ -97,10 +100,10 @@ public class ClanBoard implements IWriteBoardHandler
 				}
 			}
 		}
-		else if (command.startsWith("_bbsclan_clanhome"))
+		else if (command.startsWith(BBSCLAN_CLANHOME))
 		{
 			CommunityBoardHandler.getInstance().addBypass(player, "Clan Home", command);
-			if (command.equals("_bbsclan_clanhome"))
+			if (command.equals(BBSCLAN_CLANHOME))
 			{
 				clanHome(player);
 			}
@@ -160,7 +163,7 @@ public class ClanBoard implements IWriteBoardHandler
 			if (cl.getLevel() < 2)
 			{
 				player.sendPacket(SystemMessageId.THERE_ARE_NO_COMMUNITIES_IN_MY_CLAN_CLAN_COMMUNITIES_ARE_ALLOWED_FOR_CLANS_WITH_SKILL_LEVELS_OF_2_AND_HIGHER);
-				parseCommunityBoardCommand("_bbsclan_clanlist", player);
+				parseCommunityBoardCommand(BBSCLAN_CLANLIST, player);
 			}
 			else
 			{
@@ -301,7 +304,7 @@ public class ClanBoard implements IWriteBoardHandler
 			if (cl.getLevel() < 2)
 			{
 				player.sendPacket(SystemMessageId.THERE_ARE_NO_COMMUNITIES_IN_MY_CLAN_CLAN_COMMUNITIES_ARE_ALLOWED_FOR_CLANS_WITH_SKILL_LEVELS_OF_2_AND_HIGHER);
-				parseCommunityBoardCommand("_bbsclan_clanlist", player);
+				parseCommunityBoardCommand(BBSCLAN_CLANLIST, player);
 			}
 			else
 			{

@@ -64,6 +64,14 @@ import ai.AbstractNpcAI;
  */
 public class Baium extends AbstractNpcAI
 {
+	private static final String SELECT_TARGET = "SELECT_TARGET";
+	private static final String CHECK_ATTACK = "CHECK_ATTACK";
+	private static final String CLEAR_STATUS = "CLEAR_STATUS";
+	private static final String PLAYER_KILL = "PLAYER_KILL";
+	private static final String CLEAR_ZONE = "CLEAR_ZONE";
+	private static final String C_QUEST = "c_quest";
+	private static final String I_QUEST = "i_quest";
+
 	// NPCs
 	private static final int BAIUM = 29020; // Baium
 	private static final int BAIUM_STONE = 29025; // Baium
@@ -154,9 +162,9 @@ public class Baium extends AbstractNpcAI
 				for (Location loc : ARCHANGEL_LOC)
 				{
 					final Npc archangel = addSpawn(ARCHANGEL, loc, false, 0, true);
-					startQuestTimer("SELECT_TARGET", 5000, archangel, null);
+					startQuestTimer(SELECT_TARGET, 5000, archangel, null);
 				}
-				startQuestTimer("CHECK_ATTACK", 60000, _baium, null);
+				startQuestTimer(CHECK_ATTACK, 60000, _baium, null);
 				break;
 			}
 			case DEAD:
@@ -164,11 +172,11 @@ public class Baium extends AbstractNpcAI
 				final long remain = respawnTime - System.currentTimeMillis();
 				if (remain > 0)
 				{
-					startQuestTimer("CLEAR_STATUS", remain, null, null);
+					startQuestTimer(CLEAR_STATUS, remain, null, null);
 				}
 				else
 				{
-					notifyEvent("CLEAR_STATUS", null, null);
+					notifyEvent(CLEAR_STATUS, null, null);
 				}
 				break;
 			}
@@ -229,7 +237,7 @@ public class Baium extends AbstractNpcAI
 					startQuestTimer("WAKEUP_ACTION", 50, _baium, null);
 					startQuestTimer("MANAGE_EARTHQUAKE", 2000, _baium, null);
 					startQuestTimer("SOCIAL_ACTION", 10000, _baium, player);
-					startQuestTimer("CHECK_ATTACK", 60000, _baium, null);
+					startQuestTimer(CHECK_ATTACK, 60000, _baium, null);
 					npc.deleteMe();
 				}
 				break;
@@ -267,7 +275,7 @@ public class Baium extends AbstractNpcAI
 					if ((player != null) && player.isInsideRadius3D(npc, 16000))
 					{
 						player.teleToLocation(BAIUM_GIFT_LOC);
-						startQuestTimer("PLAYER_KILL", 3000, npc, player);
+						startQuestTimer(PLAYER_KILL, 3000, npc, player);
 					}
 					else
 					{
@@ -275,17 +283,17 @@ public class Baium extends AbstractNpcAI
 						if (randomPlayer != null)
 						{
 							randomPlayer.teleToLocation(BAIUM_GIFT_LOC);
-							startQuestTimer("PLAYER_KILL", 3000, npc, randomPlayer);
+							startQuestTimer(PLAYER_KILL, 3000, npc, randomPlayer);
 						}
 						else
 						{
-							startQuestTimer("PLAYER_KILL", 3000, npc, null);
+							startQuestTimer(PLAYER_KILL, 3000, npc, null);
 						}
 					}
 				}
 				break;
 			}
-			case "PLAYER_KILL":
+			case PLAYER_KILL:
 			{
 				if ((player != null) && player.isInsideRadius3D(npc, 16000))
 				{
@@ -314,7 +322,7 @@ public class Baium extends AbstractNpcAI
 				for (Location loc : ARCHANGEL_LOC)
 				{
 					final Npc archangel = addSpawn(ARCHANGEL, loc, false, 0, true);
-					startQuestTimer("SELECT_TARGET", 5000, archangel, null);
+					startQuestTimer(SELECT_TARGET, 5000, archangel, null);
 				}
 				
 				if ((player != null) && !player.isDead())
@@ -331,7 +339,7 @@ public class Baium extends AbstractNpcAI
 				}
 				break;
 			}
-			case "SELECT_TARGET":
+			case SELECT_TARGET:
 			{
 				if (npc != null)
 				{
@@ -384,16 +392,16 @@ public class Baium extends AbstractNpcAI
 							}
 						}
 					}
-					startQuestTimer("SELECT_TARGET", 5000, npc, null);
+					startQuestTimer(SELECT_TARGET, 5000, npc, null);
 				}
 				break;
 			}
-			case "CHECK_ATTACK":
+			case CHECK_ATTACK:
 			{
 				if ((npc != null) && ((_lastAttack + 1800000) < System.currentTimeMillis()))
 				{
-					cancelQuestTimers("SELECT_TARGET");
-					notifyEvent("CLEAR_ZONE", null, null);
+					cancelQuestTimers(SELECT_TARGET);
+					notifyEvent(CLEAR_ZONE, null, null);
 					addSpawn(BAIUM_STONE, BAIUM_LOC, false, 0);
 					setStatus(ALIVE);
 				}
@@ -404,17 +412,17 @@ public class Baium extends AbstractNpcAI
 						npc.setTarget(npc);
 						npc.doCast(HEAL_OF_BAIUM.getSkill());
 					}
-					startQuestTimer("CHECK_ATTACK", 60000, npc, null);
+					startQuestTimer(CHECK_ATTACK, 60000, npc, null);
 				}
 				break;
 			}
-			case "CLEAR_STATUS":
+			case CLEAR_STATUS:
 			{
 				setStatus(ALIVE);
 				addSpawn(BAIUM_STONE, BAIUM_LOC, false, 0);
 				break;
 			}
-			case "CLEAR_ZONE":
+			case CLEAR_ZONE:
 			{
 				for (Creature creature : zone.getCharactersInside())
 				{
@@ -437,8 +445,8 @@ public class Baium extends AbstractNpcAI
 				if (getStatus() == DEAD)
 				{
 					setRespawn(0);
-					cancelQuestTimer("CLEAR_STATUS", null, null);
-					notifyEvent("CLEAR_STATUS", null, null);
+					cancelQuestTimer(CLEAR_STATUS, null, null);
+					notifyEvent(CLEAR_STATUS, null, null);
 				}
 				else
 				{
@@ -451,16 +459,16 @@ public class Baium extends AbstractNpcAI
 				if (getStatus() == IN_FIGHT)
 				{
 					_baium = null;
-					notifyEvent("CLEAR_ZONE", null, null);
-					notifyEvent("CLEAR_STATUS", null, null);
+					notifyEvent(CLEAR_ZONE, null, null);
+					notifyEvent(CLEAR_STATUS, null, null);
 					player.sendMessage(getClass().getSimpleName() + ": Aborting fight!");
 				}
 				else
 				{
 					player.sendMessage(getClass().getSimpleName() + ": You cannot abort attack right now!");
 				}
-				cancelQuestTimers("CHECK_ATTACK");
-				cancelQuestTimers("SELECT_TARGET");
+				cancelQuestTimers(CHECK_ATTACK);
+				cancelQuestTimers(SELECT_TARGET);
 				break;
 			}
 			case "DESPAWN_MINIONS":
@@ -579,10 +587,10 @@ public class Baium extends AbstractNpcAI
 			LOGGER.info("Baium will respawn at: " + TimeUtil.getDateTimeString(nextRespawnTime));
 			
 			setRespawn(respawnTime);
-			startQuestTimer("CLEAR_STATUS", respawnTime, null, null);
-			startQuestTimer("CLEAR_ZONE", 900000, null, null);
-			cancelQuestTimer("CHECK_ATTACK", npc, null);
-			cancelQuestTimers("SELECT_TARGET");
+			startQuestTimer(CLEAR_STATUS, respawnTime, null, null);
+			startQuestTimer(CLEAR_ZONE, 900000, null, null);
+			cancelQuestTimer(CHECK_ATTACK, npc, null);
+			cancelQuestTimers(SELECT_TARGET);
 		}
 	}
 	
@@ -652,18 +660,18 @@ public class Baium extends AbstractNpcAI
 		final NpcVariables vars = npc.getVariables();
 		for (int i = 0; i < 3; i++)
 		{
-			if (attacker == vars.getObject("c_quest" + i, Creature.class))
+			if (attacker == vars.getObject(C_QUEST + i, Creature.class))
 			{
-				if (vars.getInt("i_quest" + i) < aggroVal)
+				if (vars.getInt(I_QUEST + i) < aggroVal)
 				{
-					vars.set("i_quest" + i, newAggroVal);
+					vars.set(I_QUEST + i, newAggroVal);
 				}
 				return;
 			}
 		}
 		final int index = MathUtil.getIndexOfMinValue(vars.getInt("i_quest0"), vars.getInt("i_quest1"), vars.getInt("i_quest2"));
-		vars.set("i_quest" + index, newAggroVal);
-		vars.set("c_quest" + index, attacker);
+		vars.set(I_QUEST + index, newAggroVal);
+		vars.set(C_QUEST + index, attacker);
 	}
 	
 	private int getStatus()
@@ -696,18 +704,18 @@ public class Baium extends AbstractNpcAI
 		final NpcVariables vars = npc.getVariables();
 		for (int i = 0; i < 3; i++)
 		{
-			final Creature attacker = vars.getObject("c_quest" + i, Creature.class);
+			final Creature attacker = vars.getObject(C_QUEST + i, Creature.class);
 			if ((attacker == null) || (npc.calculateDistance3D(attacker) > 9000) || attacker.isDead())
 			{
-				vars.set("i_quest" + i, 0);
+				vars.set(I_QUEST + i, 0);
 			}
 		}
 		final int index = MathUtil.getIndexOfMaxValue(vars.getInt("i_quest0"), vars.getInt("i_quest1"), vars.getInt("i_quest2"));
-		final Creature creature = vars.getObject("c_quest" + index, Creature.class);
-		final int i2 = vars.getInt("i_quest" + index);
+		final Creature creature = vars.getObject(C_QUEST + index, Creature.class);
+		final int i2 = vars.getInt(I_QUEST + index);
 		if ((i2 > 0) && (getRandom(100) < 70))
 		{
-			vars.set("i_quest" + index, 500);
+			vars.set(I_QUEST + index, 500);
 		}
 		
 		SkillHolder skillToCast = null;

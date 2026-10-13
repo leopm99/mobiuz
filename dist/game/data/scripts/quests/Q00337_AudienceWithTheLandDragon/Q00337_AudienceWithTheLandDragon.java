@@ -30,6 +30,10 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Q00337_AudienceWithTheLandDragon extends Quest
 {
+	private static final String DESPAWN_240 = "DESPAWN_240";
+	private static final String I_QUEST0 = "i_quest0";
+	private static final String DESPAWN = "DESPAWN";
+
 	// NPCs
 	private static final int WAREHOUSE_CHIEF_MOKE = 30498;
 	private static final int BLACKSMITH_HELTON = 30678;
@@ -94,12 +98,12 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 	@Override
 	public String onEvent(String event, Npc npc, Player player)
 	{
-		if ("DESPAWN".equals(event))
+		if (DESPAWN.equals(event))
 		{
 			npc.deleteMe();
 			return super.onEvent(event, npc, player);
 		}
-		else if ("DESPAWN_240".equals(event))
+		else if (DESPAWN_240.equals(event))
 		{
 			npc.deleteMe();
 			return super.onEvent(event, npc, player);
@@ -175,21 +179,21 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 				{
 					if (qs.isMemoState(40000) || (qs.isMemoState(40001)))
 					{
-						if ((npc.getCurrentHp() < (npc.getMaxHp() * 0.8)) && (npc.getVariables().getInt("i_quest0") == 0))
+						if ((npc.getCurrentHp() < (npc.getMaxHp() * 0.8)) && (npc.getVariables().getInt(I_QUEST0) == 0))
 						{
 							for (int i = 0; i < 20; i++)
 							{
 								addAttackDesire(addSpawn(JEWEL_GUARDIAN_MARA, npc, true, 180000), attacker);
 							}
-							npc.getVariables().set("i_quest0", 1);
-							startQuestTimer("DESPAWN", 900000, npc, attacker);
+							npc.getVariables().set(I_QUEST0, 1);
+							startQuestTimer(DESPAWN, 900000, npc, attacker);
 						}
 						
 						if ((npc.getCurrentHp() < (npc.getMaxHp() * 0.4)) && !hasQuestItems(attacker, FRAGMENT_OF_ABYSS_JEWEL_1ST))
 						{
 							giveItems(attacker, FRAGMENT_OF_ABYSS_JEWEL_1ST, 1);
 							playSound(attacker, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-							startQuestTimer("DESPAWN_240", 240000, npc, attacker);
+							startQuestTimer(DESPAWN_240, 240000, npc, attacker);
 						}
 					}
 					
@@ -203,21 +207,21 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 				{
 					if (qs.isMemoState(40000) || (qs.isMemoState(40010)))
 					{
-						if ((npc.getCurrentHp() < (npc.getMaxHp() * 0.8)) && (npc.getVariables().getInt("i_quest0") == 0))
+						if ((npc.getCurrentHp() < (npc.getMaxHp() * 0.8)) && (npc.getVariables().getInt(I_QUEST0) == 0))
 						{
 							for (int i = 0; i < 20; i++)
 							{
 								addAttackDesire(addSpawn(JEWEL_GUARDIAN_MUSFEL, npc, true, 180000), attacker);
 							}
-							npc.getVariables().set("i_quest0", 1);
-							startQuestTimer("DESPAWN", 900000, npc, attacker);
+							npc.getVariables().set(I_QUEST0, 1);
+							startQuestTimer(DESPAWN, 900000, npc, attacker);
 						}
 						
 						if ((npc.getCurrentHp() < (npc.getMaxHp() * 0.4)) && !hasQuestItems(attacker, FRAGMENT_OF_ABYSS_JEWEL_2ND))
 						{
 							giveItems(attacker, FRAGMENT_OF_ABYSS_JEWEL_2ND, 1);
 							playSound(attacker, QuestSound.ITEMSOUND_QUEST_ITEMGET);
-							startQuestTimer("DESPAWN_240", 240000, npc, attacker);
+							startQuestTimer(DESPAWN_240, 240000, npc, attacker);
 						}
 					}
 					
@@ -231,13 +235,13 @@ public class Q00337_AudienceWithTheLandDragon extends Quest
 				{
 					if (qs.isMemoState(70000))
 					{
-						if ((npc.getCurrentHp() < (npc.getMaxHp() * 0.8)) && (npc.getVariables().getInt("i_quest0") == 0))
+						if ((npc.getCurrentHp() < (npc.getMaxHp() * 0.8)) && (npc.getVariables().getInt(I_QUEST0) == 0))
 						{
 							addAttackDesire(addSpawn(JEWEL_GUARDIAN_PYTON, npc, true, 180000), attacker);
 							addAttackDesire(addSpawn(JEWEL_GUARDIAN_PYTON, npc, true, 180000), attacker);
 							addAttackDesire(addSpawn(JEWEL_GUARDIAN_PYTON, npc, true, 180000), attacker);
 							addAttackDesire(addSpawn(JEWEL_GUARDIAN_PYTON, npc, true, 180000), attacker);
-							npc.getVariables().set("i_quest0", 1);
+							npc.getVariables().set(I_QUEST0, 1);
 						}
 						
 						if ((npc.getCurrentHp() < (npc.getMaxHp() * 0.4)) && !hasQuestItems(attacker, FRAGMENT_OF_ABYSS_JEWEL_3RD))

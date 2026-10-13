@@ -74,6 +74,16 @@ import com.l2journey.gameserver.network.serverpackets.SystemMessage;
  */
 public class Hero
 {
+	private static final String OPONENTCLASS = "oponentclass";
+	private static final String PH_BUTTPREV = "%buttprev%";
+	private static final String PH_BUTTNEXT = "%buttnext%";
+	private static final String CLASSED = "classed";
+	private static final String OPONENT = "oponent";
+	private static final String ACTION = "action";
+	private static final String RESULT = "result";
+	private static final String PH_LIST = "%list%";
+	private static final String START = "start";
+
 	private static final Logger LOGGER = Logger.getLogger(Hero.class.getName());
 	
 	private static final String GET_HEROES = "SELECT heroes.charId, characters.char_name, heroes.class_id, heroes.count, heroes.played, heroes.claimed FROM heroes, characters WHERE characters.charId = heroes.charId AND heroes.played = 1";
@@ -242,7 +252,7 @@ public class Hero
 				{
 					final StatSet diaryEntry = new StatSet();
 					final long time = rset.getLong("time");
-					final int action = rset.getInt("action");
+					final int action = rset.getInt(ACTION);
 					final int param = rset.getInt("param");
 					final String date = (new SimpleDateFormat("yyyy-MM-dd HH")).format(new Date(time));
 					diaryEntry.set("date", date);
@@ -251,19 +261,19 @@ public class Hero
 						final NpcTemplate template = NpcData.getInstance().getTemplate(param);
 						if (template != null)
 						{
-							diaryEntry.set("action", template.getName() + " was defeated");
+							diaryEntry.set(ACTION, template.getName() + " was defeated");
 						}
 					}
 					else if (action == ACTION_HERO_GAINED)
 					{
-						diaryEntry.set("action", "Gained Hero status");
+						diaryEntry.set(ACTION, "Gained Hero status");
 					}
 					else if (action == ACTION_CASTLE_TAKEN)
 					{
 						final Castle castle = CastleManager.getInstance().getCastleById(param);
 						if (castle != null)
 						{
-							diaryEntry.set("action", castle.getName() + " Castle was successfuly taken");
+							diaryEntry.set(ACTION, castle.getName() + " Castle was successfuly taken");
 						}
 					}
 					diary.add(diaryEntry);
@@ -320,9 +330,9 @@ public class Hero
 					charTwoId = rset.getInt("charTwoId");
 					charTwoClass = rset.getInt("charTwoClass");
 					winner = rset.getInt("winner");
-					start = rset.getLong("start");
+					start = rset.getLong(START);
 					time = rset.getLong("time");
-					classed = rset.getInt("classed");
+					classed = rset.getInt(CLASSED);
 					if (charId == charOneId)
 					{
 						final String name = CharInfoTable.getInstance().getNameById(charTwoId);
@@ -330,25 +340,25 @@ public class Hero
 						if ((name != null) && (cls != null))
 						{
 							final StatSet fight = new StatSet();
-							fight.set("oponent", name);
-							fight.set("oponentclass", cls);
+							fight.set(OPONENT, name);
+							fight.set(OPONENTCLASS, cls);
 							fight.set("time", calcFightTime(time));
 							final String date = (new SimpleDateFormat("yyyy-MM-dd HH:mm")).format(new Date(start));
-							fight.set("start", date);
-							fight.set("classed", classed);
+							fight.set(START, date);
+							fight.set(CLASSED, classed);
 							if (winner == 1)
 							{
-								fight.set("result", "<font color=\"00ff00\">victory</font>");
+								fight.set(RESULT, "<font color=\"00ff00\">victory</font>");
 								victories++;
 							}
 							else if (winner == 2)
 							{
-								fight.set("result", "<font color=\"ff0000\">loss</font>");
+								fight.set(RESULT, "<font color=\"ff0000\">loss</font>");
 								losses++;
 							}
 							else if (winner == 0)
 							{
-								fight.set("result", "<font color=\"ffff00\">draw</font>");
+								fight.set(RESULT, "<font color=\"ffff00\">draw</font>");
 								draws++;
 							}
 							fights.add(fight);
@@ -362,25 +372,25 @@ public class Hero
 						if ((name != null) && (cls != null))
 						{
 							final StatSet fight = new StatSet();
-							fight.set("oponent", name);
-							fight.set("oponentclass", cls);
+							fight.set(OPONENT, name);
+							fight.set(OPONENTCLASS, cls);
 							fight.set("time", calcFightTime(time));
 							final String date = (new SimpleDateFormat("yyyy-MM-dd HH:mm")).format(new Date(start));
-							fight.set("start", date);
-							fight.set("classed", classed);
+							fight.set(START, date);
+							fight.set(CLASSED, classed);
 							if (winner == 1)
 							{
-								fight.set("result", "<font color=\"ff0000\">loss</font>");
+								fight.set(RESULT, "<font color=\"ff0000\">loss</font>");
 								losses++;
 							}
 							else if (winner == 2)
 							{
-								fight.set("result", "<font color=\"00ff00\">victory</font>");
+								fight.set(RESULT, "<font color=\"00ff00\">victory</font>");
 								victories++;
 							}
 							else if (winner == 0)
 							{
-								fight.set("result", "<font color=\"ffff00\">draw</font>");
+								fight.set(RESULT, "<font color=\"ffff00\">draw</font>");
 								draws++;
 							}
 							fights.add(fight);
@@ -469,7 +479,7 @@ public class Hero
 							fList.append("<table width=270>");
 						}
 						fList.append("<tr><td width=270><font color=\"LEVEL\">" + diaryEntry.getString("date") + ":xx</font></td></tr>");
-						fList.append("<tr><td width=270>" + diaryEntry.getString("action", "") + "</td></tr>");
+						fList.append("<tr><td width=270>" + diaryEntry.getString(ACTION, "") + "</td></tr>");
 						fList.append("<tr><td>&nbsp;</td></tr></table>");
 						fList.append("</td></tr>");
 						color = !color;
@@ -482,29 +492,29 @@ public class Hero
 					
 					if (breakat < (list.size() - 1))
 					{
-						diaryReply.replace("%buttprev%", "<button value=\"Prev\" action=\"bypass _diary?class=" + heroclass + "&page=" + (page + 1) + "\" width=60 height=25 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\">");
+						diaryReply.replace(PH_BUTTPREV, "<button value=\"Prev\" action=\"bypass _diary?class=" + heroclass + "&page=" + (page + 1) + "\" width=60 height=25 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\">");
 					}
 					else
 					{
-						diaryReply.replace("%buttprev%", "");
+						diaryReply.replace(PH_BUTTPREV, "");
 					}
 					
 					if (page > 1)
 					{
-						diaryReply.replace("%buttnext%", "<button value=\"Next\" action=\"bypass _diary?class=" + heroclass + "&page=" + (page - 1) + "\" width=60 height=25 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\">");
+						diaryReply.replace(PH_BUTTNEXT, "<button value=\"Next\" action=\"bypass _diary?class=" + heroclass + "&page=" + (page - 1) + "\" width=60 height=25 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\">");
 					}
 					else
 					{
-						diaryReply.replace("%buttnext%", "");
+						diaryReply.replace(PH_BUTTNEXT, "");
 					}
 					
-					diaryReply.replace("%list%", fList.toString());
+					diaryReply.replace(PH_LIST, fList.toString());
 				}
 				else
 				{
-					diaryReply.replace("%list%", "");
-					diaryReply.replace("%buttprev%", "");
-					diaryReply.replace("%buttnext%", "");
+					diaryReply.replace(PH_LIST, "");
+					diaryReply.replace(PH_BUTTPREV, "");
+					diaryReply.replace(PH_BUTTNEXT, "");
 				}
 				
 				player.sendPacket(diaryReply);
@@ -555,8 +565,8 @@ public class Hero
 						{
 							fList.append("<table width=270>");
 						}
-						fList.append("<tr><td width=220><font color=\"LEVEL\">" + fight.getString("start") + "</font>&nbsp;&nbsp;" + fight.getString("result") + "</td><td width=50 align=right>" + (fight.getInt("classed") > 0 ? "<font color=\"FFFF99\">cls</font>" : "<font color=\"999999\">non-cls<font>") + "</td></tr>");
-						fList.append("<tr><td width=220>vs " + fight.getString("oponent") + " (" + fight.getString("oponentclass") + ")</td><td width=50 align=right>(" + fight.getString("time") + ")</td></tr>");
+						fList.append("<tr><td width=220><font color=\"LEVEL\">" + fight.getString(START) + "</font>&nbsp;&nbsp;" + fight.getString(RESULT) + "</td><td width=50 align=right>" + (fight.getInt(CLASSED) > 0 ? "<font color=\"FFFF99\">cls</font>" : "<font color=\"999999\">non-cls<font>") + "</td></tr>");
+						fList.append("<tr><td width=220>vs " + fight.getString(OPONENT) + " (" + fight.getString(OPONENTCLASS) + ")</td><td width=50 align=right>(" + fight.getString("time") + ")</td></tr>");
 						fList.append("<tr><td colspan=2>&nbsp;</td></tr></table>");
 						fList.append("</td></tr>");
 						color = !color;
@@ -569,29 +579,29 @@ public class Hero
 					
 					if (breakat < (heroFights.size() - 1))
 					{
-						fightReply.replace("%buttprev%", "<button value=\"Prev\" action=\"bypass _match?class=" + heroclass + "&page=" + (page + 1) + "\" width=60 height=25 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\">");
+						fightReply.replace(PH_BUTTPREV, "<button value=\"Prev\" action=\"bypass _match?class=" + heroclass + "&page=" + (page + 1) + "\" width=60 height=25 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\">");
 					}
 					else
 					{
-						fightReply.replace("%buttprev%", "");
+						fightReply.replace(PH_BUTTPREV, "");
 					}
 					
 					if (page > 1)
 					{
-						fightReply.replace("%buttnext%", "<button value=\"Next\" action=\"bypass _match?class=" + heroclass + "&page=" + (page - 1) + "\" width=60 height=25 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\">");
+						fightReply.replace(PH_BUTTNEXT, "<button value=\"Next\" action=\"bypass _match?class=" + heroclass + "&page=" + (page - 1) + "\" width=60 height=25 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\">");
 					}
 					else
 					{
-						fightReply.replace("%buttnext%", "");
+						fightReply.replace(PH_BUTTNEXT, "");
 					}
 					
-					fightReply.replace("%list%", fList.toString());
+					fightReply.replace(PH_LIST, fList.toString());
 				}
 				else
 				{
-					fightReply.replace("%list%", "");
-					fightReply.replace("%buttprev%", "");
-					fightReply.replace("%buttnext%", "");
+					fightReply.replace(PH_LIST, "");
+					fightReply.replace(PH_BUTTPREV, "");
+					fightReply.replace(PH_BUTTNEXT, "");
 				}
 				
 				fightReply.replace("%win%", String.valueOf(win));
@@ -782,7 +792,7 @@ public class Hero
 		final StatSet diaryEntry = new StatSet();
 		final String date = (new SimpleDateFormat("yyyy-MM-dd HH")).format(new Date(System.currentTimeMillis()));
 		diaryEntry.set("date", date);
-		diaryEntry.set("action", template.getName() + " was defeated");
+		diaryEntry.set(ACTION, template.getName() + " was defeated");
 		
 		// Add to old list
 		list.add(diaryEntry);
@@ -803,7 +813,7 @@ public class Hero
 		final StatSet diaryEntry = new StatSet();
 		final String date = (new SimpleDateFormat("yyyy-MM-dd HH")).format(new Date(System.currentTimeMillis()));
 		diaryEntry.set("date", date);
-		diaryEntry.set("action", castle.getName() + " Castle was successfuly taken");
+		diaryEntry.set(ACTION, castle.getName() + " Castle was successfuly taken");
 		
 		// Add to old list
 		list.add(diaryEntry);

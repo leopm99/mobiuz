@@ -47,6 +47,8 @@ import com.l2journey.gameserver.network.serverpackets.TutorialShowQuestionMark;
  */
 public class QuestState
 {
+	private static final String COMPLTDSTATEFLAGS = "__compltdStateFlags";
+
 	protected static final Logger LOGGER = Logger.getLogger(QuestState.class.getName());
 	
 	// Constants
@@ -324,11 +326,11 @@ public class QuestState
 		// Finally, more than 31 steps CANNOT be supported in any way with skipping.
 		if ((cond < 3) || (cond > 31))
 		{
-			unset("__compltdStateFlags");
+			unset(COMPLTDSTATEFLAGS);
 		}
 		else
 		{
-			completedStateFlags = getInt("__compltdStateFlags");
+			completedStateFlags = getInt(COMPLTDSTATEFLAGS);
 		}
 		
 		// case 1: No steps have been skipped so far...
@@ -347,7 +349,7 @@ public class QuestState
 				
 				// now, just set the bit corresponding to the passed cond to 1 (current step)
 				completedStateFlags |= 1 << (cond - 1);
-				set("__compltdStateFlags", String.valueOf(completedStateFlags));
+				set(COMPLTDSTATEFLAGS, String.valueOf(completedStateFlags));
 			}
 		}
 		// case 2: There were exist previously skipped steps
@@ -358,14 +360,14 @@ public class QuestState
 			// now, check if this resulted in no steps being skipped any more
 			if (completedStateFlags == ((1 << cond) - 1))
 			{
-				unset("__compltdStateFlags");
+				unset(COMPLTDSTATEFLAGS);
 			}
 			else
 			{
 				// set the most significant bit back to 1 again, to correctly indicate that this skips states.
 				// also, ensure that the least significant bit is an 1 (the first step is never skipped, no matter what the cond says)
 				completedStateFlags |= 0x80000001;
-				set("__compltdStateFlags", String.valueOf(completedStateFlags));
+				set(COMPLTDSTATEFLAGS, String.valueOf(completedStateFlags));
 			}
 		}
 		// If this moves forward, it changes nothing on previously skipped steps.
@@ -373,7 +375,7 @@ public class QuestState
 		else
 		{
 			completedStateFlags |= 1 << (cond - 1);
-			set("__compltdStateFlags", String.valueOf(completedStateFlags));
+			set(COMPLTDSTATEFLAGS, String.valueOf(completedStateFlags));
 		}
 		
 		// send a packet to the client to inform it of the quest progress (step change)

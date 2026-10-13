@@ -65,6 +65,8 @@ import com.l2journey.gameserver.util.FloodProtectors;
  */
 public class GameClient extends Client<com.l2journey.commons.network.Connection<GameClient>>
 {
+	private static final String DISCONNECTED = "disconnected";
+
 	private static final Logger LOGGER = Logger.getLogger(GameClient.class.getName());
 	private static final Logger LOGGER_ACCOUNTING = Logger.getLogger("accounting");
 	
@@ -675,21 +677,21 @@ public class GameClient extends Client<com.l2journey.commons.network.Connection<
 				{
 					if (_accountName != null)
 					{
-						return "[Account: " + _accountName + " - IP: " + (ip == null ? "disconnected" : ip) + "]";
+						return "[Account: " + _accountName + " - IP: " + (ip == null ? DISCONNECTED : ip) + "]";
 					}
-					return "[IP: " + (ip == null ? "disconnected" : ip) + "]";
+					return "[IP: " + (ip == null ? DISCONNECTED : ip) + "]";
 				}
 				case CONNECTED:
 				{
-					return "[IP: " + (ip == null ? "disconnected" : ip) + "]";
+					return "[IP: " + (ip == null ? DISCONNECTED : ip) + "]";
 				}
 				case AUTHENTICATED:
 				{
-					return "[Account: " + _accountName + " - IP: " + (ip == null ? "disconnected" : ip) + "]";
+					return "[Account: " + _accountName + " - IP: " + (ip == null ? DISCONNECTED : ip) + "]";
 				}
 				case ENTERING, IN_GAME:
 				{
-					return "[Character: " + (_player == null ? "disconnected" : _player.getName() + "[" + _player.getObjectId() + "]") + " - Account: " + _accountName + " - IP: " + (ip == null ? "disconnected" : ip) + "]";
+					return "[Character: " + (_player == null ? DISCONNECTED : _player.getName() + "[" + _player.getObjectId() + "]") + " - Account: " + _accountName + " - IP: " + (ip == null ? DISCONNECTED : ip) + "]";
 				}
 				default:
 				{

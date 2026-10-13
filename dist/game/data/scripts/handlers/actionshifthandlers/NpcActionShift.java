@@ -46,6 +46,10 @@ import handlers.bypasshandlers.NpcViewMod;
 
 public class NpcActionShift implements IActionShiftHandler
 {
+	private static final String PH_SPAWNTYPE = "%spawntype%";
+	private static final String PH_SPAWN = "%spawn%";
+	private static final String PH_RESP = "%resp%";
+
 	/**
 	 * Manage and Display the GM console to modify the Npc (GM only).<br>
 	 * <br>
@@ -124,27 +128,27 @@ public class NpcActionShift implements IActionShiftHandler
 				html.replace("%territory%", target.asNpc().getSpawn().getSpawnTerritory() == null ? "None" : target.asNpc().getSpawn().getSpawnTerritory().getName());
 				if (target.asNpc().getSpawn().isTerritoryBased())
 				{
-					html.replace("%spawntype%", "Random");
+					html.replace(PH_SPAWNTYPE, "Random");
 					final Location spawnLoc = target.asNpc().getSpawn();
-					html.replace("%spawn%", spawnLoc.getX() + " " + spawnLoc.getY() + " " + spawnLoc.getZ());
+					html.replace(PH_SPAWN, spawnLoc.getX() + " " + spawnLoc.getY() + " " + spawnLoc.getZ());
 				}
 				else
 				{
-					html.replace("%spawntype%", "Fixed");
+					html.replace(PH_SPAWNTYPE, "Fixed");
 					final Location spawnLoc = target.asNpc().getSpawn().getSpawnLocation() != null ? target.asNpc().getSpawn().getSpawnLocation() : target.asNpc().getSpawn();
-					html.replace("%spawn%", spawnLoc.getX() + " " + spawnLoc.getY() + " " + spawnLoc.getZ());
+					html.replace(PH_SPAWN, spawnLoc.getX() + " " + spawnLoc.getY() + " " + spawnLoc.getZ());
 				}
 				if (target.asNpc().getSpawn().getRespawnMinDelay() == 0)
 				{
-					html.replace("%resp%", "None");
+					html.replace(PH_RESP, "None");
 				}
 				else if (target.asNpc().getSpawn().hasRespawnRandom())
 				{
-					html.replace("%resp%", (target.asNpc().getSpawn().getRespawnMinDelay() / 1000) + "-" + (target.asNpc().getSpawn().getRespawnMaxDelay() / 1000) + " sec");
+					html.replace(PH_RESP, (target.asNpc().getSpawn().getRespawnMinDelay() / 1000) + "-" + (target.asNpc().getSpawn().getRespawnMaxDelay() / 1000) + " sec");
 				}
 				else
 				{
-					html.replace("%resp%", (target.asNpc().getSpawn().getRespawnMinDelay() / 1000) + " sec");
+					html.replace(PH_RESP, (target.asNpc().getSpawn().getRespawnMinDelay() / 1000) + " sec");
 				}
 				
 				final String spawnFile = SpawnData.getInstance().getSpawnFile(target.asNpc().getSpawn().getNpcSpawnTemplateId());
@@ -154,9 +158,9 @@ public class NpcActionShift implements IActionShiftHandler
 			{
 				html.replace("%spawnfile%", "<font color=FF0000>--</font>");
 				html.replace("%territory%", "<font color=FF0000>--</font>");
-				html.replace("%spawntype%", "<font color=FF0000>--</font>");
-				html.replace("%spawn%", "<font color=FF0000>null</font>");
-				html.replace("%resp%", "<font color=FF0000>--</font>");
+				html.replace(PH_SPAWNTYPE, "<font color=FF0000>--</font>");
+				html.replace(PH_SPAWN, "<font color=FF0000>null</font>");
+				html.replace(PH_RESP, "<font color=FF0000>--</font>");
 			}
 			
 			if (target.asNpc().hasAI())

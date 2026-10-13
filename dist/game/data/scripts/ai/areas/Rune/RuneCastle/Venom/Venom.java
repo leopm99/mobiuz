@@ -54,6 +54,10 @@ import ai.AbstractNpcAI;
  */
 public class Venom extends AbstractNpcAI
 {
+	private static final String TOWER_CHECK = "tower_check";
+	private static final String VENOMSTATUS = "VenomStatus";
+	private static final String RAID_CHECK = "raid_check";
+
 	private static final int CASTLE = 8; // Rune
 	
 	private static final int VENOM = 29054;
@@ -164,18 +168,18 @@ public class Venom extends AbstractNpcAI
 	{
 		switch (event)
 		{
-			case "tower_check":
+			case TOWER_CHECK:
 			{
 				if (CastleManager.getInstance().getCastleById(CASTLE).getSiege().getControlTowerCount() <= 1)
 				{
 					changeLocation(MoveTo.THRONE);
 					_massymore.broadcastSay(ChatType.NPC_SHOUT, NpcStringId.OH_NO_THE_DEFENSES_HAVE_FAILED_IT_IS_TOO_DANGEROUS_TO_REMAIN_INSIDE_THE_CASTLE_FLEE_EVERY_MAN_FOR_HIMSELF);
-					cancelQuestTimer("tower_check", npc, null);
-					startQuestTimer("raid_check", 10000, npc, null, true);
+					cancelQuestTimer(TOWER_CHECK, npc, null);
+					startQuestTimer(RAID_CHECK, 10000, npc, null, true);
 				}
 				break;
 			}
-			case "raid_check":
+			case RAID_CHECK:
 			{
 				if (!npc.isInsideZone(ZoneId.SIEGE) && !npc.isTeleporting())
 				{
@@ -223,7 +227,7 @@ public class Venom extends AbstractNpcAI
 			_venom.setCurrentMp(_venom.getMaxMp());
 			_venom.enableSkill(VENOM_TELEPORT.getSkill());
 			_venom.enableSkill(RANGE_TELEPORT.getSkill());
-			startQuestTimer("tower_check", 30000, _venom, null, true);
+			startQuestTimer(TOWER_CHECK, 30000, _venom, null, true);
 		}
 	}
 	
@@ -237,8 +241,8 @@ public class Venom extends AbstractNpcAI
 			_venom.disableSkill(RANGE_TELEPORT.getSkill(), -1);
 		}
 		updateStatus(ALIVE);
-		cancelQuestTimer("tower_check", _venom, null);
-		cancelQuestTimer("raid_check", _venom, null);
+		cancelQuestTimer(TOWER_CHECK, _venom, null);
+		cancelQuestTimer(RAID_CHECK, _venom, null);
 	}
 	
 	@Override
@@ -362,7 +366,7 @@ public class Venom extends AbstractNpcAI
 			final Npc cube = addSpawn(TELEPORT_CUBE, CUBE, false, 0);
 			startQuestTimer("cube_despawn", 120000, cube, null);
 		}
-		cancelQuestTimer("raid_check", npc, null);
+		cancelQuestTimer(RAID_CHECK, npc, null);
 	}
 	
 	/**
@@ -388,8 +392,8 @@ public class Venom extends AbstractNpcAI
 				{
 					_venom.teleToLocation(DUNGEON, false);
 				}
-				cancelQuestTimer("raid_check", _venom, null);
-				cancelQuestTimer("tower_check", _venom, null);
+				cancelQuestTimer(RAID_CHECK, _venom, null);
+				cancelQuestTimer(TOWER_CHECK, _venom, null);
 				break;
 			}
 		}
@@ -413,13 +417,13 @@ public class Venom extends AbstractNpcAI
 	private int checkStatus()
 	{
 		int checkStatus = ALIVE;
-		if (GlobalVariablesManager.getInstance().hasVariable("VenomStatus"))
+		if (GlobalVariablesManager.getInstance().hasVariable(VENOMSTATUS))
 		{
-			checkStatus = GlobalVariablesManager.getInstance().getInt("VenomStatus");
+			checkStatus = GlobalVariablesManager.getInstance().getInt(VENOMSTATUS);
 		}
 		else
 		{
-			GlobalVariablesManager.getInstance().set("VenomStatus", 0);
+			GlobalVariablesManager.getInstance().set(VENOMSTATUS, 0);
 		}
 		return checkStatus;
 	}
@@ -430,7 +434,7 @@ public class Venom extends AbstractNpcAI
 	 */
 	private void updateStatus(int status)
 	{
-		GlobalVariablesManager.getInstance().set("VenomStatus", Integer.toString(status));
+		GlobalVariablesManager.getInstance().set(VENOMSTATUS, Integer.toString(status));
 	}
 	
 	private enum MoveTo

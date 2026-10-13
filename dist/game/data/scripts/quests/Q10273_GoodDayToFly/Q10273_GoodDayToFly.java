@@ -35,6 +35,8 @@ import com.l2journey.gameserver.model.skill.holders.SkillHolder;
  */
 public class Q10273_GoodDayToFly extends Quest
 {
+	private static final String TRANSFORM = "transform";
+
 	// NPC
 	private static final int LEKON = 32557;
 	// Monsters
@@ -76,19 +78,19 @@ public class Q10273_GoodDayToFly extends Quest
 			}
 			case "32557-09.html":
 			{
-				qs.set("transform", "1");
+				qs.set(TRANSFORM, "1");
 				AURA_BIRD_FALCON.getSkill().applyEffects(player, player);
 				break;
 			}
 			case "32557-10.html":
 			{
-				qs.set("transform", "2");
+				qs.set(TRANSFORM, "2");
 				AURA_BIRD_OWL.getSkill().applyEffects(player, player);
 				break;
 			}
 			case "32557-13.html":
 			{
-				switch (qs.getInt("transform"))
+				switch (qs.getInt(TRANSFORM))
 				{
 					case 1:
 					{
@@ -145,7 +147,7 @@ public class Q10273_GoodDayToFly extends Quest
 		final QuestState qs = getQuestState(player, true);
 		String htmltext;
 		
-		final int transform = qs.getInt("transform");
+		final int transform = qs.getInt(TRANSFORM);
 		switch (qs.getState())
 		{
 			case State.COMPLETED:

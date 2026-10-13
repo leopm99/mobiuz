@@ -31,6 +31,8 @@ import com.l2journey.gameserver.network.serverpackets.RadarControl;
  */
 public class Q00307_ControlDeviceOfTheGiants extends Quest
 {
+	private static final String HTML_N_32711_09 = "32711-09.html";
+
 	// NPC
 	private static final int DROPH = 32711;
 	// RB
@@ -99,7 +101,7 @@ public class Q00307_ControlDeviceOfTheGiants extends Quest
 				}
 				if ((hekaton != null) && !hekaton.isDead())
 				{
-					return "32711-09.html";
+					return HTML_N_32711_09;
 				}
 				if ((GlobalVariablesManager.getInstance().getLong("GiantsControlDeviceRespawn", 0) - System.currentTimeMillis()) > 0)
 				{
@@ -109,7 +111,7 @@ public class Q00307_ControlDeviceOfTheGiants extends Quest
 				takeItems(player, CET_2_SHEET, 1);
 				takeItems(player, CET_3_SHEET, 1);
 				hekaton = addSpawn(HEKATON_PRIME, 191777, 56197, -7624, 0, false, 0);
-				htmltext = "32711-09.html";
+				htmltext = HTML_N_32711_09;
 				break;
 			}
 			case "32711-03.htm", "32711-05.html", "32711-06.html":
@@ -193,7 +195,7 @@ public class Q00307_ControlDeviceOfTheGiants extends Quest
 			{
 				if ((hekaton != null) && !hekaton.isDead())
 				{
-					htmltext = "32711-09.html";
+					htmltext = HTML_N_32711_09;
 				}
 				else if (qs.isCond(1))
 				{

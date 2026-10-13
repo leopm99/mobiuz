@@ -50,6 +50,9 @@ import ai.AbstractNpcAI;
  */
 public class Wedding extends AbstractNpcAI
 {
+	private static final String HTML_NOFORMAL = "NoFormal.html";
+	private static final String PH_PLAYER = "%player%";
+
 	// NPC
 	private static final int MANAGER_ID = 50007;
 	// Item
@@ -91,14 +94,14 @@ public class Wedding extends AbstractNpcAI
 		{
 			if (!isWearingFormalWear(player) || !isWearingFormalWear(partner))
 			{
-				htmltext = sendHtml(partner, "NoFormal.html", null, null);
+				htmltext = sendHtml(partner, HTML_NOFORMAL, null, null);
 			}
 			else
 			{
 				player.setMarryRequest(false);
 				partner.setMarryRequest(false);
 				htmltext = getHtm(player, "Ask.html");
-				htmltext = htmltext.replace("%player%", partner.getName());
+				htmltext = htmltext.replace(PH_PLAYER, partner.getName());
 			}
 			return htmltext;
 		}
@@ -109,16 +112,16 @@ public class Wedding extends AbstractNpcAI
 			{
 				if (!isWearingFormalWear(player) || !isWearingFormalWear(partner))
 				{
-					htmltext = sendHtml(partner, "NoFormal.html", null, null);
+					htmltext = sendHtml(partner, HTML_NOFORMAL, null, null);
 				}
 				else
 				{
 					player.setMarryAccepted(true);
 					partner.setMarryRequest(true);
 					
-					sendHtml(partner, "Ask.html", "%player%", player.getName());
+					sendHtml(partner, "Ask.html", PH_PLAYER, player.getName());
 					htmltext = getHtm(player, "Requested.html");
-					htmltext = htmltext.replace("%player%", partner.getName());
+					htmltext = htmltext.replace(PH_PLAYER, partner.getName());
 				}
 				break;
 			}
@@ -126,7 +129,7 @@ public class Wedding extends AbstractNpcAI
 			{
 				if (!isWearingFormalWear(player) || !isWearingFormalWear(partner))
 				{
-					htmltext = sendHtml(partner, "NoFormal.html", null, null);
+					htmltext = sendHtml(partner, HTML_NOFORMAL, null, null);
 				}
 				else if ((player.getAdena() < EventsConfig.WEDDING_PRICE) || (partner.getAdena() < EventsConfig.WEDDING_PRICE))
 				{

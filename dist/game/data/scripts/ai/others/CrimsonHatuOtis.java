@@ -42,6 +42,8 @@ import ai.AbstractNpcAI;
  */
 public class CrimsonHatuOtis extends AbstractNpcAI
 {
+	private static final String SKILL = "SKILL";
+
 	// Npc
 	private static final int CRIMSON_HATU_OTIS = 18558;
 	// Skills
@@ -59,16 +61,16 @@ public class CrimsonHatuOtis extends AbstractNpcAI
 	{
 		switch (event)
 		{
-			case "SKILL":
+			case SKILL:
 			{
 				if (npc.isDead())
 				{
-					cancelQuestTimer("SKILL", npc, null);
+					cancelQuestTimer(SKILL, npc, null);
 					return null;
 				}
 				npc.setTarget(player);
 				npc.doCast(BOSS_SPINING_SLASH.getSkill());
-				startQuestTimer("SKILL", 60000, npc, null);
+				startQuestTimer(SKILL, 60000, npc, null);
 				break;
 			}
 			case "BUFF":
@@ -94,7 +96,7 @@ public class CrimsonHatuOtis extends AbstractNpcAI
 		if (npc.isScriptValue(0))
 		{
 			npc.setScriptValue(1);
-			startQuestTimer("SKILL", 5000, npc, null);
+			startQuestTimer(SKILL, 5000, npc, null);
 		}
 		else if (npc.isScriptValue(1) && (npc.getCurrentHp() < (npc.getMaxHp() * 0.3)))
 		{
@@ -107,7 +109,7 @@ public class CrimsonHatuOtis extends AbstractNpcAI
 	@Override
 	public void onKill(Npc npc, Player player, boolean isSummon)
 	{
-		cancelQuestTimer("SKILL", npc, null);
+		cancelQuestTimer(SKILL, npc, null);
 		cancelQuestTimer("BUFF", npc, null);
 	}
 	

@@ -29,6 +29,14 @@ import com.l2journey.gameserver.model.quest.State;
  */
 public class Q00115_TheOtherSideOfTruth extends Quest
 {
+	private static final String HTML_N_32021_01 = "32021-01.html";
+	private static final String HTML_N_32021_05 = "32021-05.html";
+	private static final String HTML_N_32021_07 = "32021-07.html";
+	private static final String HTML_N_32021_04 = "32021-04.html";
+	private static final String HTML_N_32021_08 = "32021-08.html";
+	private static final String HTML_N_32021_09 = "32021-09.html";
+	private static final String HTML_N_32021_10 = "32021-10.html";
+
 	// NPCs
 	private static final int MISA = 32018;
 	private static final int RAFFORTY = 32020;
@@ -596,28 +604,28 @@ public class Q00115_TheOtherSideOfTruth extends Quest
 									int ex = qs.getInt("ex");
 									if ((ex == 6) || (ex == 10) || (ex == 12))
 									{
-										htmltext = "32021-01.html";
+										htmltext = HTML_N_32021_01;
 									}
 									else if (ex == 14)
 									{
-										htmltext = "32021-05.html";
+										htmltext = HTML_N_32021_05;
 									}
 									else
 									{
 										ex++;
 										qs.set("ex", ex);
-										htmltext = "32021-07.html";
+										htmltext = HTML_N_32021_07;
 									}
 								}
 								else
 								{
-									htmltext = "32021-04.html";
+									htmltext = HTML_N_32021_04;
 								}
 								break;
 							}
 							case 8:
 							{
-								htmltext = "32021-08.html";
+								htmltext = HTML_N_32021_08;
 								break;
 							}
 							case 11:
@@ -625,11 +633,11 @@ public class Q00115_TheOtherSideOfTruth extends Quest
 								if (!hasQuestItems(player, PIECE_OF_TABLET))
 								{
 									giveItems(player, PIECE_OF_TABLET, 1);
-									htmltext = "32021-09.html";
+									htmltext = HTML_N_32021_09;
 								}
 								else
 								{
-									htmltext = "32021-10.html";
+									htmltext = HTML_N_32021_10;
 								}
 								break;
 							}
@@ -651,28 +659,28 @@ public class Q00115_TheOtherSideOfTruth extends Quest
 									int ex = qs.getInt("ex");
 									if ((ex == 5) || (ex == 9) || (ex == 12))
 									{
-										htmltext = "32021-01.html";
+										htmltext = HTML_N_32021_01;
 									}
 									else if (ex == 13)
 									{
-										htmltext = "32021-05.html";
+										htmltext = HTML_N_32021_05;
 									}
 									else
 									{
 										ex += 2;
 										qs.set("ex", ex);
-										htmltext = "32021-07.html";
+										htmltext = HTML_N_32021_07;
 									}
 								}
 								else
 								{
-									htmltext = "32021-04.html";
+									htmltext = HTML_N_32021_04;
 								}
 								break;
 							}
 							case 8:
 							{
-								htmltext = "32021-08.html";
+								htmltext = HTML_N_32021_08;
 								break;
 							}
 							case 11:
@@ -680,11 +688,11 @@ public class Q00115_TheOtherSideOfTruth extends Quest
 								if (!hasQuestItems(player, PIECE_OF_TABLET))
 								{
 									giveItems(player, PIECE_OF_TABLET, 1);
-									htmltext = "32021-09.html";
+									htmltext = HTML_N_32021_09;
 								}
 								else
 								{
-									htmltext = "32021-10.html";
+									htmltext = HTML_N_32021_10;
 								}
 								break;
 							}
@@ -706,28 +714,28 @@ public class Q00115_TheOtherSideOfTruth extends Quest
 									int ex = qs.getInt("ex");
 									if ((ex == 3) || (ex == 9) || (ex == 10))
 									{
-										htmltext = "32021-01.html";
+										htmltext = HTML_N_32021_01;
 									}
 									else if (ex == 11)
 									{
-										htmltext = "32021-05.html";
+										htmltext = HTML_N_32021_05;
 									}
 									else
 									{
 										ex += 4;
 										qs.set("ex", ex);
-										htmltext = "32021-07.html";
+										htmltext = HTML_N_32021_07;
 									}
 								}
 								else
 								{
-									htmltext = "32021-04.html";
+									htmltext = HTML_N_32021_04;
 								}
 								break;
 							}
 							case 8:
 							{
-								htmltext = "32021-08.html";
+								htmltext = HTML_N_32021_08;
 								break;
 							}
 							case 11:
@@ -735,11 +743,11 @@ public class Q00115_TheOtherSideOfTruth extends Quest
 								if (!hasQuestItems(player, PIECE_OF_TABLET))
 								{
 									giveItems(player, PIECE_OF_TABLET, 1);
-									htmltext = "32021-09.html";
+									htmltext = HTML_N_32021_09;
 								}
 								else
 								{
-									htmltext = "32021-10.html";
+									htmltext = HTML_N_32021_10;
 								}
 								break;
 							}
@@ -761,28 +769,28 @@ public class Q00115_TheOtherSideOfTruth extends Quest
 									int ex = qs.getInt("ex");
 									if ((ex == 3) || (ex == 5) || (ex == 6))
 									{
-										htmltext = "32021-01.html";
+										htmltext = HTML_N_32021_01;
 									}
 									else if (ex == 7)
 									{
-										htmltext = "32021-05.html";
+										htmltext = HTML_N_32021_05;
 									}
 									else
 									{
 										ex += 8;
 										qs.set("ex", ex);
-										htmltext = "32021-07.html";
+										htmltext = HTML_N_32021_07;
 									}
 								}
 								else
 								{
-									htmltext = "32021-04.html";
+									htmltext = HTML_N_32021_04;
 								}
 								break;
 							}
 							case 8:
 							{
-								htmltext = "32021-08.html";
+								htmltext = HTML_N_32021_08;
 								break;
 							}
 							case 11:
@@ -790,11 +798,11 @@ public class Q00115_TheOtherSideOfTruth extends Quest
 								if (!hasQuestItems(player, PIECE_OF_TABLET))
 								{
 									giveItems(player, PIECE_OF_TABLET, 1);
-									htmltext = "32021-09.html";
+									htmltext = HTML_N_32021_09;
 								}
 								else
 								{
-									htmltext = "32021-10.html";
+									htmltext = HTML_N_32021_10;
 								}
 								break;
 							}

@@ -37,6 +37,10 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Q00065_CertifiedSoulBreaker extends Quest
 {
+	private static final String PLAYER_ID = "PLAYER_ID";
+	private static final String PLAYER0 = "player0";
+	private static final String SPAWNED = "SPAWNED";
+
 	// NPCs
 	private static final int CAPTAIN_LUCAS = 30071;
 	private static final int JACOB = 30073;
@@ -95,10 +99,10 @@ public class Q00065_CertifiedSoulBreaker extends Quest
 		else if ("DESPAWN_70".equals(event))
 		{
 			final Npc npc0 = npc.getVariables().getObject("npc0", Npc.class);
-			final Player c0 = npc.getVariables().getObject("player0", Player.class);
-			if ((npc0 != null) && npc0.getVariables().getBoolean("SPAWNED"))
+			final Player c0 = npc.getVariables().getObject(PLAYER0, Player.class);
+			if ((npc0 != null) && npc0.getVariables().getBoolean(SPAWNED))
 			{
-				npc0.getVariables().set("SPAWNED", false);
+				npc0.getVariables().set(SPAWNED, false);
 				if (c0 != null)
 				{
 					npc.broadcastPacket(new NpcSay(npc, ChatType.NPC_GENERAL, NpcStringId.S1_I_WILL_BE_BACK_SOON_STAY_THERE_AND_DON_T_YOU_DARE_WANDER_OFF).addStringParameter(c0.getAppearance().getVisibleName()));
@@ -312,14 +316,14 @@ public class Q00065_CertifiedSoulBreaker extends Quest
 				}
 				case GUARDIAN_ANGEL:
 				{
-					final Player c0 = npc.getVariables().getObject("player0", Player.class);
+					final Player c0 = npc.getVariables().getObject(PLAYER0, Player.class);
 					final Npc npc0 = npc.getVariables().getObject("npc0", Npc.class);
 					if (killer == c0)
 					{
 						if ((c0 != null) && qs.isMemoState(12))
 						{
 							final Npc katenar = addSpawn(KATENAR, killer.getX() + 20, killer.getY() + 20, killer.getZ(), 0, false, 0);
-							katenar.getVariables().set("player0", killer);
+							katenar.getVariables().set(PLAYER0, killer);
 							katenar.getVariables().set("npc0", npc);
 							qs.setMemoState(13);
 							npc.broadcastPacket(new NpcSay(npc, ChatType.NPC_GENERAL, NpcStringId.GRR_I_VE_BEEN_HIT));
@@ -327,9 +331,9 @@ public class Q00065_CertifiedSoulBreaker extends Quest
 					}
 					else
 					{
-						if ((npc0 != null) && npc0.getVariables().getBoolean("SPAWNED"))
+						if ((npc0 != null) && npc0.getVariables().getBoolean(SPAWNED))
 						{
-							npc0.getVariables().set("SPAWNED", false);
+							npc0.getVariables().set(SPAWNED, false);
 						}
 						npc.broadcastPacket(new NpcSay(npc, ChatType.NPC_GENERAL, NpcStringId.GRR_WHO_ARE_YOU_AND_WHY_HAVE_YOU_STOPPED_ME));
 					}
@@ -668,17 +672,17 @@ public class Q00065_CertifiedSoulBreaker extends Quest
 				{
 					if (memoState == 12)
 					{
-						if (!npc.getVariables().getBoolean("SPAWNED", false))
+						if (!npc.getVariables().getBoolean(SPAWNED, false))
 						{
-							npc.getVariables().set("SPAWNED", true);
-							npc.getVariables().set("PLAYER_ID", player.getObjectId());
+							npc.getVariables().set(SPAWNED, true);
+							npc.getVariables().set(PLAYER_ID, player.getObjectId());
 							final Npc angel = addSpawn(GUARDIAN_ANGEL, 36110, 191921, -3712, 0, true, 0, false);
 							angel.getVariables().set("npc0", npc);
-							angel.getVariables().set("player0", player);
+							angel.getVariables().set(PLAYER0, player);
 							addAttackDesire(angel, player);
 							htmltext = "32243-01.html";
 						}
-						else if (npc.getVariables().getInt("PLAYER_ID") == player.getObjectId())
+						else if (npc.getVariables().getInt(PLAYER_ID) == player.getObjectId())
 						{
 							htmltext = "32243-03.html";
 						}
@@ -689,16 +693,16 @@ public class Q00065_CertifiedSoulBreaker extends Quest
 					}
 					else if (memoState == 13)
 					{
-						if (!npc.getVariables().getBoolean("SPAWNED", false))
+						if (!npc.getVariables().getBoolean(SPAWNED, false))
 						{
-							npc.getVariables().set("SPAWNED", true);
-							npc.getVariables().set("PLAYER_ID", player.getObjectId());
+							npc.getVariables().set(SPAWNED, true);
+							npc.getVariables().set(PLAYER_ID, player.getObjectId());
 							final Npc katenar = addSpawn(KATENAR, 36110, 191921, -3712, 0, false, 0);
-							katenar.getVariables().set("player0", player);
+							katenar.getVariables().set(PLAYER0, player);
 							katenar.getVariables().set("npc0", npc);
 							htmltext = "32243-06.html";
 						}
-						else if (npc.getVariables().getInt("PLAYER_ID") == player.getObjectId())
+						else if (npc.getVariables().getInt(PLAYER_ID) == player.getObjectId())
 						{
 							htmltext = "32243-04.html";
 						}
@@ -738,7 +742,7 @@ public class Q00065_CertifiedSoulBreaker extends Quest
 		}
 		else if (npc.getId() == GUARDIAN_ANGEL)
 		{
-			final Player c0 = npc.getVariables().getObject("player0", Player.class);
+			final Player c0 = npc.getVariables().getObject(PLAYER0, Player.class);
 			startQuestTimer("DESPAWN_70", 70000, npc, null);
 			if (c0 != null)
 			{

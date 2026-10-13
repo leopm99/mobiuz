@@ -32,6 +32,8 @@ import quests.Q00198_SevenSignsEmbryo.Q00198_SevenSignsEmbryo;
  */
 public class Q10292_SevenSignsGirlOfDoubt extends Quest
 {
+	private static final String KILLCOUNT = "killCount";
+
 	// NPCs
 	private static final int HARDIN = 30832;
 	private static final int WOOD = 32593;
@@ -138,7 +140,7 @@ public class Q10292_SevenSignsGirlOfDoubt extends Quest
 			{
 				if (!npc.getVariables().getBoolean(I_QUEST1, false))
 				{
-					qs.set("killCount", 0);
+					qs.set(KILLCOUNT, 0);
 					npc.getVariables().set(I_QUEST1, true);
 					addSpawn(CREATURE_OF_THE_DUSK1, 89440, -238016, -9632, getRandom(360), false, 0, false, player.getInstanceId());
 					addSpawn(CREATURE_OF_THE_DUSK2, 89524, -238131, -9632, getRandom(360), false, 0, false, player.getInstanceId());
@@ -208,8 +210,8 @@ public class Q10292_SevenSignsGirlOfDoubt extends Quest
 			}
 			else
 			{
-				final int killCount = qs.getInt("killCount") + 1;
-				qs.set("killCount", killCount);
+				final int killCount = qs.getInt(KILLCOUNT) + 1;
+				qs.set(KILLCOUNT, killCount);
 				if (killCount == 2)
 				{
 					qs.setMemoState(6);

@@ -48,6 +48,11 @@ import ai.AbstractNpcAI;
  */
 public class Sailren extends AbstractNpcAI
 {
+	private static final String CHECK_ATTACK = "CHECK_ATTACK";
+	private static final String CLEAR_STATUS = "CLEAR_STATUS";
+	private static final String ANIMATION_KEY = "ANIMATION";
+	private static final String TIME_OUT = "TIME_OUT";
+
 	// NPCs
 	private static final int STATUE = 32109; // Shilen's Stone Statue
 	private static final int MOVIE_NPC = 32110; // Invisible NPC for movie
@@ -88,7 +93,7 @@ public class Sailren extends AbstractNpcAI
 		if (remain > 0)
 		{
 			STATUS = Status.DEAD;
-			startQuestTimer("CLEAR_STATUS", remain, null, null);
+			startQuestTimer(CLEAR_STATUS, remain, null, null);
 		}
 	}
 	
@@ -138,8 +143,8 @@ public class Sailren extends AbstractNpcAI
 						}
 					}
 					startQuestTimer("SPAWN_VELOCIRAPTOR", 60000, null, null);
-					startQuestTimer("TIME_OUT", MAX_TIME * 1000, null, null);
-					startQuestTimer("CHECK_ATTACK", 120000, null, null);
+					startQuestTimer(TIME_OUT, MAX_TIME * 1000, null, null);
+					startQuestTimer(CHECK_ATTACK, 120000, null, null);
 				}
 				return htmltext;
 			}
@@ -164,17 +169,17 @@ public class Sailren extends AbstractNpcAI
 				sailren.setImmobilized(true);
 				zone.broadcastPacket(new SpecialCamera(movieNpc, 60, 110, 30, 4000, 1500, 20000, 0, 65, 1, 0, 0));
 				startQuestTimer("ATTACK", 24600, sailren, null);
-				startQuestTimer("ANIMATION", 2000, movieNpc, null);
+				startQuestTimer(ANIMATION_KEY, 2000, movieNpc, null);
 				startQuestTimer("CAMERA_1", 4100, movieNpc, null);
 				break;
 			}
-			case "ANIMATION":
+			case ANIMATION_KEY:
 			{
 				if (npc != null)
 				{
 					npc.setTarget(npc);
 					npc.doCast(ANIMATION.getSkill());
-					startQuestTimer("ANIMATION", 2000, npc, null);
+					startQuestTimer(ANIMATION_KEY, 2000, npc, null);
 				}
 				break;
 			}
@@ -219,12 +224,12 @@ public class Sailren extends AbstractNpcAI
 				npc.setImmobilized(false);
 				break;
 			}
-			case "CLEAR_STATUS":
+			case CLEAR_STATUS:
 			{
 				STATUS = Status.ALIVE;
 				break;
 			}
-			case "TIME_OUT":
+			case TIME_OUT:
 			{
 				if (STATUS == Status.IN_FIGHT)
 				{
@@ -246,16 +251,16 @@ public class Sailren extends AbstractNpcAI
 				}
 				break;
 			}
-			case "CHECK_ATTACK":
+			case CHECK_ATTACK:
 			{
 				if (!zone.getPlayersInside().isEmpty() && ((_lastAttack + 600000) < System.currentTimeMillis()))
 				{
-					cancelQuestTimer("TIME_OUT", null, null);
-					notifyEvent("TIME_OUT", null, null);
+					cancelQuestTimer(TIME_OUT, null, null);
+					notifyEvent(TIME_OUT, null, null);
 				}
 				else
 				{
-					startQuestTimer("CHECK_ATTACK", 120000, null, null);
+					startQuestTimer(CHECK_ATTACK, 120000, null, null);
 				}
 				break;
 			}
@@ -289,10 +294,10 @@ public class Sailren extends AbstractNpcAI
 					addSpawn(CUBIC, 27644, -6638, -2008, 0, false, 300000);
 					final long respawnTime = RESPAWN * 3600000L;
 					GlobalVariablesManager.getInstance().set("SailrenRespawn", System.currentTimeMillis() + respawnTime);
-					cancelQuestTimer("CHECK_ATTACK", null, null);
-					cancelQuestTimer("TIME_OUT", null, null);
-					startQuestTimer("CLEAR_STATUS", respawnTime, null, null);
-					startQuestTimer("TIME_OUT", 300000, null, null);
+					cancelQuestTimer(CHECK_ATTACK, null, null);
+					cancelQuestTimer(TIME_OUT, null, null);
+					startQuestTimer(CLEAR_STATUS, respawnTime, null, null);
+					startQuestTimer(TIME_OUT, 300000, null, null);
 					break;
 				}
 				case VELOCIRAPTOR:
@@ -331,7 +336,7 @@ public class Sailren extends AbstractNpcAI
 		if (STATUS == Status.IN_FIGHT)
 		{
 			LOGGER.info(getClass().getSimpleName() + ": Script is being unloaded while Sailren is active, clearing zone.");
-			notifyEvent("TIME_OUT", null, null);
+			notifyEvent(TIME_OUT, null, null);
 		}
 		super.unload(removeFromList);
 	}

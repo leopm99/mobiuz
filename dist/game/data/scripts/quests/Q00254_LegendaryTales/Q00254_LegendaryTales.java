@@ -33,6 +33,8 @@ import com.l2journey.gameserver.model.quest.State;
  */
 public class Q00254_LegendaryTales extends Quest
 {
+	private static final String RAIDS = "raids";
+
 	// NPC
 	private static final int GILMORE = 30754;
 	
@@ -239,11 +241,11 @@ public class Q00254_LegendaryTales extends Quest
 		final QuestState qs = player.getQuestState(Q00254_LegendaryTales.class.getSimpleName());
 		if ((qs != null) && qs.isCond(1))
 		{
-			final int raids = qs.getInt("raids");
+			final int raids = qs.getInt(RAIDS);
 			final Bosses boss = Bosses.valueOf(npc.getId());
 			if (!checkMask(qs, boss))
 			{
-				qs.set("raids", raids | boss.getMask());
+				qs.set(RAIDS, raids | boss.getMask());
 				giveItems(player, LARGE_DRAGON_SKULL, 1);
 				if (getQuestItemsCount(player, LARGE_DRAGON_SKULL) < 7)
 				{
@@ -260,6 +262,6 @@ public class Q00254_LegendaryTales extends Quest
 	private static boolean checkMask(QuestState qs, Bosses boss)
 	{
 		final int pos = boss.getMask();
-		return (qs.getInt("raids") & pos) == pos;
+		return (qs.getInt(RAIDS) & pos) == pos;
 	}
 }

@@ -31,6 +31,13 @@ import quests.Q10293_SevenSignsForbiddenBookOfTheElmoreAdenKingdom.Q10293_SevenS
  */
 public class Q10294_SevenSignsToTheMonasteryOfSilence extends Quest
 {
+	private static final String HTML_N_32821_02 = "32821-02.html";
+	private static final String HTML_N_32821_03 = "32821-03.html";
+	private static final String GOOD1 = "good1";
+	private static final String GOOD2 = "good2";
+	private static final String GOOD3 = "good3";
+	private static final String GOOD4 = "good4";
+
 	// NPCs
 	private static final int ELCADIA = 32784;
 	private static final int ELCADIA_INSTANCE = 32787;
@@ -143,10 +150,10 @@ public class Q10294_SevenSignsToTheMonasteryOfSilence extends Quest
 			{
 				if (qs.isCond(3))
 				{
-					qs.unset("good1");
-					qs.unset("good2");
-					qs.unset("good3");
-					qs.unset("good4");
+					qs.unset(GOOD1);
+					qs.unset(GOOD2);
+					qs.unset(GOOD3);
+					qs.unset(GOOD4);
 					addExpAndSp(player, 25000000, 2500000);
 					qs.exitQuest(false, true);
 					htmltext = event;
@@ -174,10 +181,10 @@ public class Q10294_SevenSignsToTheMonasteryOfSilence extends Quest
 			}
 			case "RIGHT_BOOK1":
 			{
-				qs.set("good1", "1");
+				qs.set(GOOD1, "1");
 				npc.setDisplayEffect(1);
 				startQuestTimer("SPAWN_MOBS", 22000, npc, player);
-				htmltext = "32821-02.html";
+				htmltext = HTML_N_32821_02;
 				if (hasCheckedAllRightBooks(qs))
 				{
 					playMovie(player, Movie.SSQ2_HOLY_BURIAL_GROUND_CLOSING);
@@ -186,11 +193,11 @@ public class Q10294_SevenSignsToTheMonasteryOfSilence extends Quest
 			}
 			case "RIGHT_BOOK2":
 			{
-				qs.set("good2", "1");
+				qs.set(GOOD2, "1");
 				npc.setDisplayEffect(1);
 				npc.setTarget(player);
 				npc.doCast(VAMPIRIC_RAGE.getSkill());
-				htmltext = "32821-02.html";
+				htmltext = HTML_N_32821_02;
 				if (hasCheckedAllRightBooks(qs))
 				{
 					playMovie(player, Movie.SSQ2_HOLY_BURIAL_GROUND_CLOSING);
@@ -199,12 +206,12 @@ public class Q10294_SevenSignsToTheMonasteryOfSilence extends Quest
 			}
 			case "RIGHT_BOOK3":
 			{
-				qs.set("good3", "1");
+				qs.set(GOOD3, "1");
 				npc.setDisplayEffect(1);
 				final Npc jude = addSpawn(JUDE_VAN_ETINA, 85783, -253471, -8320, 65, false, 0, false, player.getInstanceId());
 				jude.setTarget(player);
 				jude.doCast(RESIST_HOLY.getSkill());
-				htmltext = "32821-02.html";
+				htmltext = HTML_N_32821_02;
 				if (hasCheckedAllRightBooks(qs))
 				{
 					playMovie(player, Movie.SSQ2_HOLY_BURIAL_GROUND_CLOSING);
@@ -213,12 +220,12 @@ public class Q10294_SevenSignsToTheMonasteryOfSilence extends Quest
 			}
 			case "RIGHT_BOOK4":
 			{
-				qs.set("good4", "1");
+				qs.set(GOOD4, "1");
 				npc.setDisplayEffect(1);
 				final Npc solina = addSpawn(SOLINAS_EVIL_THOUGHTS, 85793, -247581, -8320, 0, false, 0, false, player.getInstanceId());
 				solina.setTarget(player);
 				solina.doCast(RESIST_HOLY.getSkill());
-				htmltext = "32821-02.html";
+				htmltext = HTML_N_32821_02;
 				if (hasCheckedAllRightBooks(qs))
 				{
 					playMovie(player, Movie.SSQ2_HOLY_BURIAL_GROUND_CLOSING);
@@ -227,22 +234,22 @@ public class Q10294_SevenSignsToTheMonasteryOfSilence extends Quest
 			}
 			case "DONE1":
 			{
-				htmltext = (qs.getInt("good1") == 1) ? "32804-05.html" : "32804-03.html";
+				htmltext = (qs.getInt(GOOD1) == 1) ? "32804-05.html" : "32804-03.html";
 				break;
 			}
 			case "DONE2":
 			{
-				htmltext = (qs.getInt("good2") == 1) ? "32805-05.html" : "32805-03.html";
+				htmltext = (qs.getInt(GOOD2) == 1) ? "32805-05.html" : "32805-03.html";
 				break;
 			}
 			case "DONE3":
 			{
-				htmltext = (qs.getInt("good3") == 1) ? "32806-05.html" : "32806-03.html";
+				htmltext = (qs.getInt(GOOD3) == 1) ? "32806-05.html" : "32806-03.html";
 				break;
 			}
 			case "DONE4":
 			{
-				htmltext = (qs.getInt("good4") == 1) ? "32807-05.html" : "32807-03.html";
+				htmltext = (qs.getInt(GOOD4) == 1) ? "32807-05.html" : "32807-03.html";
 				break;
 			}
 			case "SPAWN_MOBS":
@@ -367,22 +374,22 @@ public class Q10294_SevenSignsToTheMonasteryOfSilence extends Quest
 			}
 			case READING_DESK1:
 			{
-				htmltext = (qs.getInt("good1") == 1) ? "32821-03.html" : "32821-01.html";
+				htmltext = (qs.getInt(GOOD1) == 1) ? HTML_N_32821_03 : "32821-01.html";
 				break;
 			}
 			case READING_DESK5:
 			{
-				htmltext = (qs.getInt("good2") == 1) ? "32821-03.html" : "32825-01.html";
+				htmltext = (qs.getInt(GOOD2) == 1) ? HTML_N_32821_03 : "32825-01.html";
 				break;
 			}
 			case READING_DESK9:
 			{
-				htmltext = (qs.getInt("good3") == 1) ? "32821-03.html" : "32829-01.html";
+				htmltext = (qs.getInt(GOOD3) == 1) ? HTML_N_32821_03 : "32829-01.html";
 				break;
 			}
 			case READING_DESK13:
 			{
-				htmltext = (qs.getInt("good4") == 1) ? "32821-03.html" : "32833-01.html";
+				htmltext = (qs.getInt(GOOD4) == 1) ? HTML_N_32821_03 : "32833-01.html";
 				break;
 			}
 			case SOLINAS_EVIL_THOUGHTS, JUDE_VAN_ETINA, RELIC_WATCHER1, RELIC_WATCHER2, RELIC_WATCHER3, RELIC_WATCHER4:
@@ -403,6 +410,6 @@ public class Q10294_SevenSignsToTheMonasteryOfSilence extends Quest
 	
 	private boolean hasCheckedAllRightBooks(QuestState qs)
 	{
-		return (qs.getInt("good1") == 1) && (qs.getInt("good2") == 1) && (qs.getInt("good3") == 1) && (qs.getInt("good4") == 1);
+		return (qs.getInt(GOOD1) == 1) && (qs.getInt(GOOD2) == 1) && (qs.getInt(GOOD3) == 1) && (qs.getInt(GOOD4) == 1);
 	}
 }

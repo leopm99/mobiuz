@@ -36,6 +36,8 @@ import com.l2journey.gameserver.model.actor.Player;
  */
 public class ExperienceGain implements IVoicedCommandHandler
 {
+	private static final String EXPOFF = "EXPOFF";
+
 	private static final String[] COMMANDS =
 	{
 		"expoff",
@@ -47,17 +49,17 @@ public class ExperienceGain implements IVoicedCommandHandler
 	{
 		if (command.equals("expoff"))
 		{
-			if (!player.getVariables().getBoolean("EXPOFF", false))
+			if (!player.getVariables().getBoolean(EXPOFF, false))
 			{
 				player.disableExpGain();
-				player.getVariables().set("EXPOFF", true);
+				player.getVariables().set(EXPOFF, true);
 				player.sendMessage("Experience gain is disabled.");
 			}
 		}
-		else if ((command.equals("expon")) && (player.getVariables().getBoolean("EXPOFF", false)))
+		else if ((command.equals("expon")) && (player.getVariables().getBoolean(EXPOFF, false)))
 		{
 			player.enableExpGain();
-			player.getVariables().set("EXPOFF", false);
+			player.getVariables().set(EXPOFF, false);
 			player.sendMessage("Experience gain is enabled.");
 		}
 		return true;

@@ -38,6 +38,8 @@ import quests.Q00021_HiddenTruth.Q00021_HiddenTruth;
  */
 public class Q00022_TragedyInVonHellmannForest extends Quest
 {
+	private static final String DESPAWN_GHOST2 = "DESPAWN_GHOST2";
+
 	// NPCs
 	private static final int INNOCENTIN = 31328;
 	private static final int TIFAREN = 31334;
@@ -154,7 +156,7 @@ public class Q00022_TragedyInVonHellmannForest extends Quest
 						tifarenOwner = player.getObjectId();
 						final Npc ghost2 = addSpawn(GHOST_OF_PRIEST, PRIEST_LOC, true, 0);
 						ghost2.setScriptValue(player.getObjectId());
-						startQuestTimer("DESPAWN_GHOST2", 1000 * 120L, ghost2, player);
+						startQuestTimer(DESPAWN_GHOST2, 1000 * 120L, ghost2, player);
 						ghost2.broadcastPacket(new NpcSay(ghost2.getObjectId(), ChatType.NPC_GENERAL, ghost2.getId(), NpcStringId.DID_YOU_CALL_ME_S1).addStringParameter(player.getName()));
 						if (((cond == 5) || (cond == 6)) && hasQuestItems(player, LOST_SKULL_OF_ELF))
 						{
@@ -182,18 +184,18 @@ public class Q00022_TragedyInVonHellmannForest extends Quest
 			}
 			case "31528-08.html":
 			{
-				final QuestTimer qt = getQuestTimer("DESPAWN_GHOST2", npc, player);
+				final QuestTimer qt = getQuestTimer(DESPAWN_GHOST2, npc, player);
 				if ((qt != null) && (npc.getScriptValue() == player.getObjectId()))
 				{
 					qt.cancel();
 					npc.setScriptValue(0);
-					startQuestTimer("DESPAWN_GHOST2", 1000 * 3L, npc, player);
+					startQuestTimer(DESPAWN_GHOST2, 1000 * 3L, npc, player);
 					qs.setCond(8);
 					htmltext = event;
 				}
 				break;
 			}
-			case "DESPAWN_GHOST2":
+			case DESPAWN_GHOST2:
 			{
 				tifarenOwner = 0;
 				if (npc.getScriptValue() != 0)

@@ -50,6 +50,8 @@ import ai.bosses.Valakas.Valakas;
  */
 public class ValakasTeleporters extends AbstractNpcAI
 {
+	private static final String ALLOWENTER = "allowEnter";
+
 	// NPCs
 	private static final int[] NPCs =
 	{
@@ -83,7 +85,7 @@ public class ValakasTeleporters extends AbstractNpcAI
 		{
 			takeItems(player, VACUALITE_FLOATING_STONE, 1);
 			player.teleToLocation(ENTER_HALL_OF_FLAMES);
-			qs.set("allowEnter", "1");
+			qs.set(ALLOWENTER, "1");
 		}
 		else
 		{
@@ -111,9 +113,9 @@ public class ValakasTeleporters extends AbstractNpcAI
 						{
 							htmltext = "31385-03.htm";
 						}
-						else if (qs.getInt("allowEnter") == 1)
+						else if (qs.getInt(ALLOWENTER) == 1)
 						{
-							qs.unset("allowEnter");
+							qs.unset(ALLOWENTER);
 							final BossZone zone = GrandBossManager.getInstance().getZone(212852, -114842, -1632);
 							if (zone != null)
 							{

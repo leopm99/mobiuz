@@ -49,6 +49,18 @@ import ai.AbstractNpcAI;
  */
 public class TalentShow extends AbstractNpcAI
 {
+	private static final String SOCIAL1 = "social1";
+	private static final String NPC1_1 = "npc1_1";
+	private static final String NPC2_1 = "npc2_1";
+	private static final String NPC3_1 = "npc3_1";
+	private static final String NPC4_1 = "npc4_1";
+	private static final String NPC5_2 = "npc5_2";
+	private static final String NPC6_1 = "npc6_1";
+	private static final String NPC7_1 = "npc7_1";
+	private static final String NPC8_1 = "npc8_1";
+	private static final String NPC9_1 = "npc9_1";
+	private static final String START = "Start";
+
 	private static int MC = 32433;
 	// @formatter:off
 	private static int[] SINGERS =
@@ -204,21 +216,21 @@ public class TalentShow extends AbstractNpcAI
 		TALKS.put("25", new ShoutInfo(MESSAGES[21], "26", 5000));
 		TALKS.put("26", new ShoutInfo(MESSAGES[22], "27", 5400));
 		
-		WALKS.put("npc1_1", new WalkInfo(new Location(-56546, -56384, -2008, 0), "npc1_2", 1200));
+		WALKS.put(NPC1_1, new WalkInfo(new Location(-56546, -56384, -2008, 0), "npc1_2", 1200));
 		WALKS.put("npc1_2", new WalkInfo(new Location(-56597, -56384, -2008, 0), "npc1_3", 1200));
 		WALKS.put("npc1_3", new WalkInfo(new Location(-56596, -56428, -2008, 0), "npc1_4", 1200));
 		WALKS.put("npc1_4", new WalkInfo(new Location(-56593, -56474, -2008, 0), "npc1_5", 1000));
 		WALKS.put("npc1_5", new WalkInfo(new Location(-56542, -56474, -2008, 0), "npc1_6", 1000));
 		WALKS.put("npc1_6", new WalkInfo(new Location(-56493, -56473, -2008, 0), "npc1_7", 2000));
-		WALKS.put("npc1_7", new WalkInfo(new Location(-56495, -56425, -2008, 0), "npc1_1", 4000));
-		WALKS.put("npc2_1", new WalkInfo(new Location(-56550, -56291, -2008, 0), "npc2_2", 1200));
+		WALKS.put("npc1_7", new WalkInfo(new Location(-56495, -56425, -2008, 0), NPC1_1, 4000));
+		WALKS.put(NPC2_1, new WalkInfo(new Location(-56550, -56291, -2008, 0), "npc2_2", 1200));
 		WALKS.put("npc2_2", new WalkInfo(new Location(-56601, -56293, -2008, 0), "npc2_3", 1200));
 		WALKS.put("npc2_3", new WalkInfo(new Location(-56603, -56247, -2008, 0), "npc2_4", 1200));
 		WALKS.put("npc2_4", new WalkInfo(new Location(-56605, -56203, -2008, 0), "npc2_5", 1000));
 		WALKS.put("npc2_5", new WalkInfo(new Location(-56553, -56202, -2008, 0), "npc2_6", 1100));
 		WALKS.put("npc2_6", new WalkInfo(new Location(-56504, -56200, -2008, 0), "npc2_7", 2000));
-		WALKS.put("npc2_7", new WalkInfo(new Location(-56503, -56243, -2008, 0), "npc2_1", 4000));
-		WALKS.put("npc3_1", new WalkInfo(new Location(-56500, -56290, -2008, 0), "npc3_2", 1200));
+		WALKS.put("npc2_7", new WalkInfo(new Location(-56503, -56243, -2008, 0), NPC2_1, 4000));
+		WALKS.put(NPC3_1, new WalkInfo(new Location(-56500, -56290, -2008, 0), "npc3_2", 1200));
 		WALKS.put("npc3_2", new WalkInfo(new Location(-56551, -56313, -2008, 0), "npc3_3", 1200));
 		WALKS.put("npc3_3", new WalkInfo(new Location(-56601, -56293, -2008, 0), "npc3_4", 1200));
 		WALKS.put("npc3_4", new WalkInfo(new Location(-56651, -56294, -2008, 0), "npc3_5", 1200));
@@ -227,8 +239,8 @@ public class TalentShow extends AbstractNpcAI
 		WALKS.put("npc3_7", new WalkInfo(new Location(-56605, -56203, -2008, 0), "npc3_8", 1200));
 		WALKS.put("npc3_8", new WalkInfo(new Location(-56554, -56202, -2008, 0), "npc3_9", 1200));
 		WALKS.put("npc3_9", new WalkInfo(new Location(-56503, -56200, -2008, 0), "npc3_10", 1200));
-		WALKS.put("npc3_10", new WalkInfo(new Location(-56502, -56244, -2008, 0), "npc3_1", 900));
-		WALKS.put("npc4_1", new WalkInfo(new Location(-56495, -56381, -2008, 0), "npc4_2", 1200));
+		WALKS.put("npc3_10", new WalkInfo(new Location(-56502, -56244, -2008, 0), NPC3_1, 900));
+		WALKS.put(NPC4_1, new WalkInfo(new Location(-56495, -56381, -2008, 0), "npc4_2", 1200));
 		WALKS.put("npc4_2", new WalkInfo(new Location(-56548, -56383, -2008, 0), "npc4_3", 1200));
 		WALKS.put("npc4_3", new WalkInfo(new Location(-56597, -56383, -2008, 0), "npc4_4", 1200));
 		WALKS.put("npc4_4", new WalkInfo(new Location(-56643, -56385, -2008, 0), "npc4_5", 1200));
@@ -237,14 +249,14 @@ public class TalentShow extends AbstractNpcAI
 		WALKS.put("npc4_7", new WalkInfo(new Location(-56589, -56473, -2008, 0), "npc4_8", 1200));
 		WALKS.put("npc4_8", new WalkInfo(new Location(-56541, -56473, -2008, 0), "npc4_9", 1200));
 		WALKS.put("npc4_9", new WalkInfo(new Location(-56496, -56473, -2008, 0), "npc4_10", 1200));
-		WALKS.put("npc4_10", new WalkInfo(new Location(-56496, -56429, -2008, 0), "npc4_1", 900));
-		WALKS.put("npc5_1", new WalkInfo(new Location(-56549, -56335, -2008, 0), "npc5_2", 1000));
-		WALKS.put("npc5_2", new WalkInfo(new Location(-56599, -56337, -2008, 0), "npc5_3", 2000));
+		WALKS.put("npc4_10", new WalkInfo(new Location(-56496, -56429, -2008, 0), NPC4_1, 900));
+		WALKS.put("npc5_1", new WalkInfo(new Location(-56549, -56335, -2008, 0), NPC5_2, 1000));
+		WALKS.put(NPC5_2, new WalkInfo(new Location(-56599, -56337, -2008, 0), "npc5_3", 2000));
 		WALKS.put("npc5_3", new WalkInfo(new Location(-56649, -56341, -2008, 0), "npc5_4", 26000));
 		WALKS.put("npc5_4", new WalkInfo(new Location(-56600, -56341, -2008, 0), "npc5_5", 1000));
 		WALKS.put("npc5_5", new WalkInfo(new Location(-56553, -56341, -2008, 0), "npc5_6", 1000));
-		WALKS.put("npc5_6", new WalkInfo(new Location(-56508, -56331, -2008, 0), "npc5_2", 8000));
-		WALKS.put("npc6_1", new WalkInfo(new Location(-56595, -56428, -2008, 0), "npc6_2", 1000));
+		WALKS.put("npc5_6", new WalkInfo(new Location(-56508, -56331, -2008, 0), NPC5_2, 8000));
+		WALKS.put(NPC6_1, new WalkInfo(new Location(-56595, -56428, -2008, 0), "npc6_2", 1000));
 		WALKS.put("npc6_2", new WalkInfo(new Location(-56596, -56383, -2008, 0), "npc6_3", 1000));
 		WALKS.put("npc6_3", new WalkInfo(new Location(-56648, -56384, -2008, 0), "npc6_4", 1000));
 		WALKS.put("npc6_4", new WalkInfo(new Location(-56645, -56429, -2008, 0), "npc6_5", 1000));
@@ -253,8 +265,8 @@ public class TalentShow extends AbstractNpcAI
 		WALKS.put("npc6_7", new WalkInfo(new Location(-56542, -56473, -2008, 0), "npc6_8", 1000));
 		WALKS.put("npc6_8", new WalkInfo(new Location(-56492, -56472, -2008, 0), "npc6_9", 1200));
 		WALKS.put("npc6_9", new WalkInfo(new Location(-56495, -56426, -2008, 0), "npc6_10", 2000));
-		WALKS.put("npc6_10", new WalkInfo(new Location(-56540, -56426, -2008, 0), "npc6_1", 3000));
-		WALKS.put("npc7_1", new WalkInfo(new Location(-56603, -56249, -2008, 0), "npc7_2", 1000));
+		WALKS.put("npc6_10", new WalkInfo(new Location(-56540, -56426, -2008, 0), NPC6_1, 3000));
+		WALKS.put(NPC7_1, new WalkInfo(new Location(-56603, -56249, -2008, 0), "npc7_2", 1000));
 		WALKS.put("npc7_2", new WalkInfo(new Location(-56601, -56294, -2008, 0), "npc7_3", 1000));
 		WALKS.put("npc7_3", new WalkInfo(new Location(-56651, -56295, -2008, 0), "npc7_4", 1000));
 		WALKS.put("npc7_4", new WalkInfo(new Location(-56653, -56248, -2008, 0), "npc7_5", 1000));
@@ -263,8 +275,8 @@ public class TalentShow extends AbstractNpcAI
 		WALKS.put("npc7_7", new WalkInfo(new Location(-56504, -56201, -2008, 0), "npc7_8", 1000));
 		WALKS.put("npc7_8", new WalkInfo(new Location(-56502, -56247, -2008, 0), "npc7_9", 1200));
 		WALKS.put("npc7_9", new WalkInfo(new Location(-56549, -56248, -2008, 0), "npc7_10", 2000));
-		WALKS.put("npc7_10", new WalkInfo(new Location(-56549, -56248, -2008, 0), "npc7_1", 3000));
-		WALKS.put("npc8_1", new WalkInfo(new Location(-56493, -56426, -2008, 0), "npc8_2", 1000));
+		WALKS.put("npc7_10", new WalkInfo(new Location(-56549, -56248, -2008, 0), NPC7_1, 3000));
+		WALKS.put(NPC8_1, new WalkInfo(new Location(-56493, -56426, -2008, 0), "npc8_2", 1000));
 		WALKS.put("npc8_2", new WalkInfo(new Location(-56497, -56381, -2008, 0), "npc8_3", 1200));
 		WALKS.put("npc8_3", new WalkInfo(new Location(-56544, -56381, -2008, 0), "npc8_4", 1200));
 		WALKS.put("npc8_4", new WalkInfo(new Location(-56596, -56383, -2008, 0), "npc8_5", 1200));
@@ -276,8 +288,8 @@ public class TalentShow extends AbstractNpcAI
 		WALKS.put("npc8_10", new WalkInfo(new Location(-56644, -56474, -2008, 0), "npc8_11", 900));
 		WALKS.put("npc8_11", new WalkInfo(new Location(-56593, -56473, -2008, 0), "npc8_12", 1100));
 		WALKS.put("npc8_12", new WalkInfo(new Location(-56543, -56472, -2008, 0), "npc8_13", 1200));
-		WALKS.put("npc8_13", new WalkInfo(new Location(-56491, -56471, -2008, 0), "npc8_1", 1200));
-		WALKS.put("npc9_1", new WalkInfo(new Location(-56505, -56246, -2008, 0), "npc9_2", 1000));
+		WALKS.put("npc8_13", new WalkInfo(new Location(-56491, -56471, -2008, 0), NPC8_1, 1200));
+		WALKS.put(NPC9_1, new WalkInfo(new Location(-56505, -56246, -2008, 0), "npc9_2", 1000));
 		WALKS.put("npc9_2", new WalkInfo(new Location(-56504, -56291, -2008, 0), "npc9_3", 1200));
 		WALKS.put("npc9_3", new WalkInfo(new Location(-56550, -56291, -2008, 0), "npc9_4", 1200));
 		WALKS.put("npc9_4", new WalkInfo(new Location(-56600, -56292, -2008, 0), "npc9_5", 1200));
@@ -289,7 +301,7 @@ public class TalentShow extends AbstractNpcAI
 		WALKS.put("npc9_10", new WalkInfo(new Location(-56656, -56205, -2008, 0), "npc9_11", 900));
 		WALKS.put("npc9_11", new WalkInfo(new Location(-56606, -56204, -2008, 0), "npc9_12", 1100));
 		WALKS.put("npc9_12", new WalkInfo(new Location(-56554, -56203, -2008, 0), "npc9_13", 1200));
-		WALKS.put("npc9_13", new WalkInfo(new Location(-56506, -56203, -2008, 0), "npc9_1", 1200));
+		WALKS.put("npc9_13", new WalkInfo(new Location(-56506, -56203, -2008, 0), NPC9_1, 1200));
 		WALKS.put("24", new WalkInfo(new Location(-56730, -56340, -2008, 0), "25", 1800));
 		WALKS.put("27", new WalkInfo(new Location(-56702, -56340, -2008, 0), "29", 1800));
 	}
@@ -316,7 +328,7 @@ public class TalentShow extends AbstractNpcAI
 		minDiff *= 60000;
 		diff = (long) (hourDiff) + minDiff;
 		LOGGER.info("Fantasy Isle: MC show script starting at " + (new SimpleDateFormat("dd/MM/yyyy HH:mm:ss")).format(System.currentTimeMillis() + diff) + " and is scheduled each next 4 hours.");
-		startQuestTimer("Start", diff, null, null); // first start
+		startQuestTimer(START, diff, null, null); // first start
 	}
 	
 	@Override
@@ -335,13 +347,13 @@ public class TalentShow extends AbstractNpcAI
 				case 32431:
 				{
 					npc.getAI().setIntention(Intention.MOVE_TO, new Location(-56657, -56338, -2008, 33102));
-					startQuestTimer("social1", 6000, npc, null, true);
+					startQuestTimer(SOCIAL1, 6000, npc, null, true);
 					startQuestTimer("7", 215000, npc, null);
 					break;
 				}
 				case 32432:
 				{
-					startQuestTimer("social1", 6000, npc, null, true);
+					startQuestTimer(SOCIAL1, 6000, npc, null, true);
 					startQuestTimer("7", 215000, npc, null);
 					break;
 				}
@@ -352,8 +364,8 @@ public class TalentShow extends AbstractNpcAI
 				}
 				case 32424, 32425, 32426, 32427, 32428:
 				{
-					startQuestTimer("social1", 5500, npc, null);
-					startQuestTimer("social1", 12500, npc, null);
+					startQuestTimer(SOCIAL1, 5500, npc, null);
+					startQuestTimer(SOCIAL1, 12500, npc, null);
 					startQuestTimer("28", 19700, npc, null);
 					break;
 				}
@@ -374,11 +386,11 @@ public class TalentShow extends AbstractNpcAI
 			return null;
 		}
 		
-		if (event.equalsIgnoreCase("Start"))
+		if (event.equalsIgnoreCase(START))
 		{
 			HAS_STARTED = true;
 			addSpawn(MC, -56698, -56430, -2008, 32768, false, 0);
-			startQuestTimer("Start", 14400000L, null, null); // repeat
+			startQuestTimer(START, 14400000L, null, null); // repeat
 		}
 		else if ((npc != null) && HAS_STARTED)
 		{
@@ -410,7 +422,7 @@ public class TalentShow extends AbstractNpcAI
 					}
 					default:
 					{
-						cancelQuestTimer("social1", npc, null);
+						cancelQuestTimer(SOCIAL1, npc, null);
 						npc.getAI().setIntention(Intention.MOVE_TO, new Location(-56594, -56064, -2008, 32768));
 						break;
 					}
@@ -420,15 +432,15 @@ public class TalentShow extends AbstractNpcAI
 			{
 				npc.getAI().setIntention(Intention.MOVE_TO, new Location(-56483, -56665, -2034, 32768));
 				npc.broadcastPacket(new PlaySound(1, "TP05_F", 0, 0, 0, 0, 0));
-				startQuestTimer("npc1_1", 3000, addSpawn(CIRCUS[0], -56495, -56375, -2008, 32768, false, 101000), null);
-				startQuestTimer("npc2_1", 3000, addSpawn(CIRCUS[0], -56491, -56289, -2008, 32768, false, 101000), null);
-				startQuestTimer("npc3_1", 3000, addSpawn(CIRCUS[1], -56502, -56246, -2008, 32768, false, 101000), null);
-				startQuestTimer("npc4_1", 3000, addSpawn(CIRCUS[1], -56496, -56429, -2008, 32768, false, 101000), null);
+				startQuestTimer(NPC1_1, 3000, addSpawn(CIRCUS[0], -56495, -56375, -2008, 32768, false, 101000), null);
+				startQuestTimer(NPC2_1, 3000, addSpawn(CIRCUS[0], -56491, -56289, -2008, 32768, false, 101000), null);
+				startQuestTimer(NPC3_1, 3000, addSpawn(CIRCUS[1], -56502, -56246, -2008, 32768, false, 101000), null);
+				startQuestTimer(NPC4_1, 3000, addSpawn(CIRCUS[1], -56496, -56429, -2008, 32768, false, 101000), null);
 				startQuestTimer("npc5_1", 3500, addSpawn(CIRCUS[2], -56505, -56334, -2008, 32768, false, 101000), null);
-				startQuestTimer("npc6_1", 4000, addSpawn(CIRCUS[3], -56545, -56427, -2008, 32768, false, 101000), null);
-				startQuestTimer("npc7_1", 4000, addSpawn(CIRCUS[3], -56552, -56248, -2008, 32768, false, 101000), null);
-				startQuestTimer("npc8_1", 3000, addSpawn(CIRCUS[4], -56493, -56473, -2008, 32768, false, 101000), null);
-				startQuestTimer("npc9_1", 3000, addSpawn(CIRCUS[4], -56504, -56201, -2008, 32768, false, 101000), null);
+				startQuestTimer(NPC6_1, 4000, addSpawn(CIRCUS[3], -56545, -56427, -2008, 32768, false, 101000), null);
+				startQuestTimer(NPC7_1, 4000, addSpawn(CIRCUS[3], -56552, -56248, -2008, 32768, false, 101000), null);
+				startQuestTimer(NPC8_1, 3000, addSpawn(CIRCUS[4], -56493, -56473, -2008, 32768, false, 101000), null);
+				startQuestTimer(NPC9_1, 3000, addSpawn(CIRCUS[4], -56504, -56201, -2008, 32768, false, 101000), null);
 				startQuestTimer("11", 100000, npc, null);
 			}
 			else if (event.equalsIgnoreCase("11"))
@@ -451,18 +463,18 @@ public class TalentShow extends AbstractNpcAI
 			}
 			else if (event.equalsIgnoreCase("14"))
 			{
-				startQuestTimer("social1", 2000, addSpawn(INDIVIDUALS[0], -56700, -56385, -2008, 32768, false, 49000), null);
+				startQuestTimer(SOCIAL1, 2000, addSpawn(INDIVIDUALS[0], -56700, -56385, -2008, 32768, false, 49000), null);
 				startQuestTimer("15", 7000, npc, null);
 			}
 			else if (event.equalsIgnoreCase("17"))
 			{
 				npc.broadcastSay(ChatType.NPC_SHOUT, MESSAGES[16]);
-				startQuestTimer("social1", 2000, addSpawn(INDIVIDUALS[1], -56700, -56340, -2008, 32768, false, 32000), null);
+				startQuestTimer(SOCIAL1, 2000, addSpawn(INDIVIDUALS[1], -56700, -56340, -2008, 32768, false, 32000), null);
 				startQuestTimer("18", 9000, npc, null);
 			}
 			else if (event.equalsIgnoreCase("20"))
 			{
-				startQuestTimer("social1", 2000, addSpawn(INDIVIDUALS[2], -56703, -56296, -2008, 32768, false, 13000), null);
+				startQuestTimer(SOCIAL1, 2000, addSpawn(INDIVIDUALS[2], -56703, -56296, -2008, 32768, false, 13000), null);
 				startQuestTimer("21", 8000, npc, null);
 			}
 			else if (event.equalsIgnoreCase("23"))
@@ -478,7 +490,7 @@ public class TalentShow extends AbstractNpcAI
 			else if (event.equalsIgnoreCase("28"))
 			{
 				npc.broadcastSay(ChatType.NPC_SHOUT, MESSAGES[23]);
-				startQuestTimer("social1", 1, npc, null);
+				startQuestTimer(SOCIAL1, 1, npc, null);
 			}
 			else if (event.equalsIgnoreCase("29"))
 			{
@@ -486,7 +498,7 @@ public class TalentShow extends AbstractNpcAI
 				startQuestTimer("clean_npc", 4100, npc, null);
 				startQuestTimer("timer_check", 60000, null, null, true);
 			}
-			else if (event.equalsIgnoreCase("social1"))
+			else if (event.equalsIgnoreCase(SOCIAL1))
 			{
 				npc.broadcastSocialAction(1);
 			}

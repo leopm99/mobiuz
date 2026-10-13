@@ -122,6 +122,8 @@ import com.l2journey.gameserver.util.Broadcast;
  */
 public class Npc extends Creature
 {
+	private static final String PH_OBJECTID = "%objectId%";
+
 	/** The interaction distance of the Npc(is used as offset in MovetoLocation method) */
 	public static final int INTERACTION_DISTANCE = 250;
 	/** Maximum distance where the drop may appear given this NPC position. */
@@ -774,7 +776,7 @@ public class Npc extends Creature
 	public void insertObjectIdAndShowChatWindow(Player player, String content)
 	{
 		// Send a Server->Client packet NpcHtmlMessage to the Player in order to display the message of the Npc
-		player.sendPacket(new NpcHtmlMessage(getObjectId(), content.replace("%objectId%", String.valueOf(getObjectId()))));
+		player.sendPacket(new NpcHtmlMessage(getObjectId(), content.replace(PH_OBJECTID, String.valueOf(getObjectId()))));
 	}
 	
 	/**
@@ -1107,7 +1109,7 @@ public class Npc extends Creature
 		}
 		
 		html.replace("%npcname%", String.valueOf(getName()));
-		html.replace("%objectId%", String.valueOf(getObjectId()));
+		html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 		html.replace("%festivalMins%", SevenSignsFestival.getInstance().getTimeToNextFestivalStr());
 		player.sendPacket(html);
 		
@@ -1125,7 +1127,7 @@ public class Npc extends Creature
 		// Send a Server->Client NpcHtmlMessage containing the text of the Npc to the Player
 		final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 		html.setFile(player, filename);
-		html.replace("%objectId%", String.valueOf(getObjectId()));
+		html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 		player.sendPacket(html);
 		
 		// Send a Server->Client ActionFailed to the Player in order to avoid that the client wait another packet
@@ -1457,7 +1459,7 @@ public class Npc extends Creature
 		else
 		{
 			noTeachMsg.setHtml(html);
-			noTeachMsg.replace("%objectId%", String.valueOf(getObjectId()));
+			noTeachMsg.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 		}
 		
 		player.sendPacket(noTeachMsg);

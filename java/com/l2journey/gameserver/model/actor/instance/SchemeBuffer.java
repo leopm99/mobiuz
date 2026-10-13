@@ -44,6 +44,8 @@ import com.l2journey.gameserver.util.HtmlUtil;
 
 public class SchemeBuffer extends Npc
 {
+	private static final String PH_OBJECTID = "%objectId%";
+
 	private static final int PAGE_LIMIT = 6;
 	
 	public SchemeBuffer(NpcTemplate template)
@@ -63,7 +65,7 @@ public class SchemeBuffer extends Npc
 		{
 			final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 			html.setFile(player, getHtmlPath(getId(), 0));
-			html.replace("%objectId%", getObjectId());
+			html.replace(PH_OBJECTID, getObjectId());
 			player.sendPacket(html);
 		}
 		else if (currentCommand.startsWith("cleanup"))
@@ -78,7 +80,7 @@ public class SchemeBuffer extends Npc
 			
 			final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 			html.setFile(player, getHtmlPath(getId(), 0));
-			html.replace("%objectId%", getObjectId());
+			html.replace(PH_OBJECTID, getObjectId());
 			player.sendPacket(html);
 		}
 		else if (currentCommand.startsWith("heal"))
@@ -94,7 +96,7 @@ public class SchemeBuffer extends Npc
 			
 			final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 			html.setFile(player, getHtmlPath(getId(), 0));
-			html.replace("%objectId%", getObjectId());
+			html.replace(PH_OBJECTID, getObjectId());
 			player.sendPacket(html);
 		}
 		else if (currentCommand.startsWith("support"))
@@ -279,7 +281,7 @@ public class SchemeBuffer extends Npc
 		html.setFile(player, getHtmlPath(getId(), 1));
 		html.replace("%schemes%", sb.toString());
 		html.replace("%max_schemes%", Config.BUFFER_MAX_SCHEMES);
-		html.replace("%objectId%", getObjectId());
+		html.replace(PH_OBJECTID, getObjectId());
 		player.sendPacket(html);
 	}
 	
@@ -299,7 +301,7 @@ public class SchemeBuffer extends Npc
 		html.replace("%count%", getCountOf(schemeSkills, false) + " / " + player.getStat().getMaxBuffCount() + " buffs, " + getCountOf(schemeSkills, true) + " / " + Config.DANCES_MAX_AMOUNT + " dances/songs");
 		html.replace("%typesframe%", getTypesFrame(groupType, schemeName));
 		html.replace("%skilllistframe%", getGroupSkillList(player, groupType, schemeName, page));
-		html.replace("%objectId%", getObjectId());
+		html.replace(PH_OBJECTID, getObjectId());
 		player.sendPacket(html);
 	}
 	

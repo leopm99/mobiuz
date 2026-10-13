@@ -57,6 +57,9 @@ import quests.Q00179_IntoTheLargeCavern.Q00179_IntoTheLargeCavern;
  */
 public class NornilsGarden extends AbstractInstance
 {
+	private static final String HTML_N_32330_08 = "32330-08.html";
+	private static final String CORRECT = "correct";
+
 	protected class NornilsWorld extends InstanceWorld
 	{
 		protected Npc firstNpc = null;
@@ -364,7 +367,7 @@ public class NornilsGarden extends AbstractInstance
 	
 	public void openDoor(QuestState st, Player player, int doorId)
 	{
-		st.unset("correct");
+		st.unset(CORRECT);
 		final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(player);
 		if (tmpworld instanceof NornilsWorld)
 		{
@@ -385,7 +388,7 @@ public class NornilsGarden extends AbstractInstance
 		if (party.getLeader() != player)
 		{
 			player.sendPacket(SystemMessageId.ONLY_A_PARTY_LEADER_CAN_MAKE_THE_REQUEST_TO_ENTER);
-			return "32330-08.html";
+			return HTML_N_32330_08;
 		}
 		boolean kamael = false;
 		// for each party member
@@ -419,7 +422,7 @@ public class NornilsGarden extends AbstractInstance
 				final SystemMessage sm = new SystemMessage(SystemMessageId.C1_IS_IN_A_LOCATION_WHICH_CANNOT_BE_ENTERED_THEREFORE_IT_CANNOT_BE_PROCESSED);
 				sm.addPcName(partyMember);
 				player.sendPacket(sm);
-				return "32330-08.html";
+				return HTML_N_32330_08;
 			}
 			if (partyMember.getRace().ordinal() == 5)
 			{
@@ -433,13 +436,13 @@ public class NornilsGarden extends AbstractInstance
 					final SystemMessage sm = new SystemMessage(SystemMessageId.C1_S_QUEST_REQUIREMENT_IS_NOT_SUFFICIENT_AND_CANNOT_BE_ENTERED);
 					sm.addPcName(partyMember);
 					player.sendPacket(sm);
-					return "32330-08.html";
+					return HTML_N_32330_08;
 				}
 			}
 		}
 		if (!kamael)
 		{
-			return "32330-08.html";
+			return HTML_N_32330_08;
 		}
 		return "ok";
 	}
@@ -510,18 +513,18 @@ public class NornilsGarden extends AbstractInstance
 		{
 			if (event.equalsIgnoreCase("32260-02.html") || event.equalsIgnoreCase("32261-02.html") || event.equalsIgnoreCase("32262-02.html"))
 			{
-				st.unset("correct");
+				st.unset(CORRECT);
 			}
 			else if (StringUtil.isNumeric(event))
 			{
-				int correct = st.getInt("correct");
+				int correct = st.getInt(CORRECT);
 				correct++;
-				st.set("correct", String.valueOf(correct));
+				st.set(CORRECT, String.valueOf(correct));
 				htmltext = npc.getId() + "-0" + Integer.sum(correct, 2) + ".html";
 			}
 			else if (event.equalsIgnoreCase("check"))
 			{
-				final int correct = st.getInt("correct");
+				final int correct = st.getInt(CORRECT);
 				if ((npc.getId() == 32260) && (correct == 3))
 				{
 					openDoor(st, player, 16200014);

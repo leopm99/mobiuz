@@ -48,6 +48,22 @@ import com.l2journey.gameserver.network.serverpackets.WareHouseWithdrawalList;
  */
 public class FortManager extends Merchant
 {
+	private static final String HTML_FUNCTIONS_CANCEL_CONFIRMED = "data/html/fortress/functions-cancel_confirmed.htm";
+	private static final String HTML_FUNCTIONS_APPLY_CONFIRMED = "data/html/fortress/functions-apply_confirmed.htm";
+	private static final String HTML_FUNCTIONS_CANCEL = "data/html/fortress/functions-cancel.htm";
+	private static final String HTML_FOREMAN_NOPRIVS = "data/html/fortress/foreman-noprivs.htm";
+	private static final String HTML_FUNCTIONS_APPLY = "data/html/fortress/functions-apply.htm";
+	private static final String HTML_FUNCTIONS_USED = "data/html/fortress/functions-used.htm";
+	private static final String HTML_LOW_ADENA = "data/html/fortress/low_adena.htm";
+	private static final String PH_OBJECTID = "%objectId%";
+	private static final String SUPPORT = "support";
+	private static final String PH_APPLY = "%apply%";
+	private static final String PH_NAME = "%name%";
+	private static final String PH_COST = "%cost%";
+	private static final String PH_MIN = "%min%";
+	private static final String PH_USE = "%use%";
+	private static final String PH_VAL = "%val%";
+
 	protected static final int COND_ALL_FALSE = 0;
 	protected static final int COND_BUSY_BECAUSE_OF_SIEGE = 1;
 	protected static final int COND_OWNER = 2;
@@ -70,7 +86,7 @@ public class FortManager extends Merchant
 	
 	private void sendHtmlMessage(Player player, NpcHtmlMessage html)
 	{
-		html.replace("%objectId%", String.valueOf(getObjectId()));
+		html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 		html.replace("%npcId%", String.valueOf(getId()));
 		player.sendPacket(html);
 	}
@@ -106,14 +122,14 @@ public class FortManager extends Merchant
 				{
 					final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 					html.setFile(player, "data/html/fortress/foreman-expel.htm");
-					html.replace("%objectId%", String.valueOf(getObjectId()));
+					html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 					player.sendPacket(html);
 				}
 				else
 				{
 					final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-					html.setFile(player, "data/html/fortress/foreman-noprivs.htm");
-					html.replace("%objectId%", String.valueOf(getObjectId()));
+					html.setFile(player, HTML_FOREMAN_NOPRIVS);
+					html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 					player.sendPacket(html);
 				}
 				return;
@@ -125,14 +141,14 @@ public class FortManager extends Merchant
 					getFort().banishForeigners(); // Move non-clan members off fortress area
 					final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 					html.setFile(player, "data/html/fortress/foreman-expeled.htm");
-					html.replace("%objectId%", String.valueOf(getObjectId()));
+					html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 					player.sendPacket(html);
 				}
 				else
 				{
 					final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-					html.setFile(player, "data/html/fortress/foreman-noprivs.htm");
-					html.replace("%objectId%", String.valueOf(getObjectId()));
+					html.setFile(player, HTML_FOREMAN_NOPRIVS);
+					html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 					player.sendPacket(html);
 				}
 				return;
@@ -143,20 +159,20 @@ public class FortManager extends Merchant
 				{
 					final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 					html.setFile(player, "data/html/fortress/foreman-report.htm");
-					html.replace("%objectId%", String.valueOf(getObjectId()));
+					html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 					if (Config.FS_MAX_OWN_TIME > 0)
 					{
 						final int hour = getFort().getTimeTillRebelArmy() / 3600;
 						final int minutes = (getFort().getTimeTillRebelArmy() - (hour * 3600)) / 60;
 						html.replace("%hr%", String.valueOf(hour));
-						html.replace("%min%", String.valueOf(minutes));
+						html.replace(PH_MIN, String.valueOf(minutes));
 					}
 					else
 					{
 						final int hour = getFort().getOwnedTime() / 3600;
 						final int minutes = (getFort().getOwnedTime() - (hour * 3600)) / 60;
 						html.replace("%hr%", String.valueOf(hour));
-						html.replace("%min%", String.valueOf(minutes));
+						html.replace(PH_MIN, String.valueOf(minutes));
 					}
 					player.sendPacket(html);
 				}
@@ -164,7 +180,7 @@ public class FortManager extends Merchant
 				{
 					final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 					html.setFile(player, "data/html/fortress/foreman-castlereport.htm");
-					html.replace("%objectId%", String.valueOf(getObjectId()));
+					html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 					int hour;
 					int minutes;
 					if (Config.FS_MAX_OWN_TIME > 0)
@@ -172,14 +188,14 @@ public class FortManager extends Merchant
 						hour = getFort().getTimeTillRebelArmy() / 3600;
 						minutes = (getFort().getTimeTillRebelArmy() - (hour * 3600)) / 60;
 						html.replace("%hr%", String.valueOf(hour));
-						html.replace("%min%", String.valueOf(minutes));
+						html.replace(PH_MIN, String.valueOf(minutes));
 					}
 					else
 					{
 						hour = getFort().getOwnedTime() / 3600;
 						minutes = (getFort().getOwnedTime() - (hour * 3600)) / 60;
 						html.replace("%hr%", String.valueOf(hour));
-						html.replace("%min%", String.valueOf(minutes));
+						html.replace(PH_MIN, String.valueOf(minutes));
 					}
 					hour = (int) (getFort().getTimeTillNextFortUpdate() / 3600);
 					minutes = (int) ((getFort().getTimeTillNextFortUpdate() - (hour * 3600)) / 60);
@@ -206,14 +222,14 @@ public class FortManager extends Merchant
 						{
 							final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 							html.setFile(player, "data/html/fortress/foreman-opened.htm");
-							html.replace("%objectId%", String.valueOf(getObjectId()));
+							html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 							player.sendPacket(html);
 						}
 						else
 						{
 							final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 							html.setFile(player, "data/html/fortress/foreman-closed.htm");
-							html.replace("%objectId%", String.valueOf(getObjectId()));
+							html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 							player.sendPacket(html);
 						}
 					}
@@ -221,7 +237,7 @@ public class FortManager extends Merchant
 					{
 						final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 						html.setFile(player, "data/html/fortress/" + getTemplate().getId() + "-d.htm");
-						html.replace("%objectId%", String.valueOf(getObjectId()));
+						html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 						html.replace("%npcname%", getName());
 						player.sendPacket(html);
 					}
@@ -229,8 +245,8 @@ public class FortManager extends Merchant
 				else
 				{
 					final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-					html.setFile(player, "data/html/fortress/foreman-noprivs.htm");
-					html.replace("%objectId%", String.valueOf(getObjectId()));
+					html.setFile(player, HTML_FOREMAN_NOPRIVS);
+					html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 					player.sendPacket(html);
 				}
 				return;
@@ -254,7 +270,7 @@ public class FortManager extends Merchant
 							{
 								final NpcHtmlMessage npcHtmlMessage = new NpcHtmlMessage(getObjectId());
 								npcHtmlMessage.setHtml(htmContent);
-								npcHtmlMessage.replace("%objectId%", String.valueOf(getObjectId()));
+								npcHtmlMessage.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 								player.sendPacket(npcHtmlMessage);
 							}
 							else
@@ -275,7 +291,7 @@ public class FortManager extends Merchant
 				}
 				else
 				{
-					html.setFile(player, "data/html/fortress/foreman-noprivs.htm");
+					html.setFile(player, HTML_FOREMAN_NOPRIVS);
 					sendHtmlMessage(player, html);
 				}
 				return;
@@ -312,7 +328,7 @@ public class FortManager extends Merchant
 					}
 					sendHtmlMessage(player, html);
 				}
-				else if (val.equalsIgnoreCase("support"))
+				else if (val.equalsIgnoreCase(SUPPORT))
 				{
 					final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 					if (getFort().getFunction(Fort.FUNC_SUPPORT) == null)
@@ -379,24 +395,24 @@ public class FortManager extends Merchant
 							if (val.equalsIgnoreCase("hp_cancel"))
 							{
 								final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-								html.setFile(player, "data/html/fortress/functions-cancel.htm");
-								html.replace("%apply%", "recovery hp 0");
+								html.setFile(player, HTML_FUNCTIONS_CANCEL);
+								html.replace(PH_APPLY, "recovery hp 0");
 								sendHtmlMessage(player, html);
 								return;
 							}
 							else if (val.equalsIgnoreCase("mp_cancel"))
 							{
 								final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-								html.setFile(player, "data/html/fortress/functions-cancel.htm");
-								html.replace("%apply%", "recovery mp 0");
+								html.setFile(player, HTML_FUNCTIONS_CANCEL);
+								html.replace(PH_APPLY, "recovery mp 0");
 								sendHtmlMessage(player, html);
 								return;
 							}
 							else if (val.equalsIgnoreCase("exp_cancel"))
 							{
 								final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-								html.setFile(player, "data/html/fortress/functions-cancel.htm");
-								html.replace("%apply%", "recovery exp 0");
+								html.setFile(player, HTML_FUNCTIONS_CANCEL);
+								html.replace(PH_APPLY, "recovery exp 0");
 								sendHtmlMessage(player, html);
 								return;
 							}
@@ -404,8 +420,8 @@ public class FortManager extends Merchant
 							{
 								val = st.nextToken();
 								final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-								html.setFile(player, "data/html/fortress/functions-apply.htm");
-								html.replace("%name%", "(HP Recovery Device)");
+								html.setFile(player, HTML_FUNCTIONS_APPLY);
+								html.replace(PH_NAME, "(HP Recovery Device)");
 								final int percent = Integer.parseInt(val);
 								int cost;
 								switch (percent)
@@ -422,9 +438,9 @@ public class FortManager extends Merchant
 									}
 								}
 								
-								html.replace("%cost%", cost + "</font>Adena /" + (Config.FS_HPREG_FEE_RATIO / 1000 / 60 / 60 / 24) + " Day</font>)");
-								html.replace("%use%", "Provides additional HP recovery for clan members in the fortress.<font color=\"00FFFF\">" + percent + "%</font>");
-								html.replace("%apply%", "recovery hp " + percent);
+								html.replace(PH_COST, cost + "</font>Adena /" + (Config.FS_HPREG_FEE_RATIO / 1000 / 60 / 60 / 24) + " Day</font>)");
+								html.replace(PH_USE, "Provides additional HP recovery for clan members in the fortress.<font color=\"00FFFF\">" + percent + "%</font>");
+								html.replace(PH_APPLY, "recovery hp " + percent);
 								sendHtmlMessage(player, html);
 								return;
 							}
@@ -432,8 +448,8 @@ public class FortManager extends Merchant
 							{
 								val = st.nextToken();
 								final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-								html.setFile(player, "data/html/fortress/functions-apply.htm");
-								html.replace("%name%", "(MP Recovery)");
+								html.setFile(player, HTML_FUNCTIONS_APPLY);
+								html.replace(PH_NAME, "(MP Recovery)");
 								final int percent = Integer.parseInt(val);
 								int cost;
 								switch (percent)
@@ -449,9 +465,9 @@ public class FortManager extends Merchant
 										break;
 									}
 								}
-								html.replace("%cost%", cost + "</font>Adena /" + (Config.FS_MPREG_FEE_RATIO / 1000 / 60 / 60 / 24) + " Day</font>)");
-								html.replace("%use%", "Provides additional MP recovery for clan members in the fortress.<font color=\"00FFFF\">" + percent + "%</font>");
-								html.replace("%apply%", "recovery mp " + percent);
+								html.replace(PH_COST, cost + "</font>Adena /" + (Config.FS_MPREG_FEE_RATIO / 1000 / 60 / 60 / 24) + " Day</font>)");
+								html.replace(PH_USE, "Provides additional MP recovery for clan members in the fortress.<font color=\"00FFFF\">" + percent + "%</font>");
+								html.replace(PH_APPLY, "recovery mp " + percent);
 								sendHtmlMessage(player, html);
 								return;
 							}
@@ -459,8 +475,8 @@ public class FortManager extends Merchant
 							{
 								val = st.nextToken();
 								final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-								html.setFile(player, "data/html/fortress/functions-apply.htm");
-								html.replace("%name%", "(EXP Recovery Device)");
+								html.setFile(player, HTML_FUNCTIONS_APPLY);
+								html.replace(PH_NAME, "(EXP Recovery Device)");
 								final int percent = Integer.parseInt(val);
 								int cost;
 								switch (percent)
@@ -476,9 +492,9 @@ public class FortManager extends Merchant
 										break;
 									}
 								}
-								html.replace("%cost%", cost + "</font>Adena /" + (Config.FS_EXPREG_FEE_RATIO / 1000 / 60 / 60 / 24) + " Day</font>)");
-								html.replace("%use%", "Restores the Exp of any clan member who is resurrected in the fortress.<font color=\"00FFFF\">" + percent + "%</font>");
-								html.replace("%apply%", "recovery exp " + percent);
+								html.replace(PH_COST, cost + "</font>Adena /" + (Config.FS_EXPREG_FEE_RATIO / 1000 / 60 / 60 / 24) + " Day</font>)");
+								html.replace(PH_USE, "Restores the Exp of any clan member who is resurrected in the fortress.<font color=\"00FFFF\">" + percent + "%</font>");
+								html.replace(PH_APPLY, "recovery exp " + percent);
 								sendHtmlMessage(player, html);
 								return;
 							}
@@ -489,11 +505,11 @@ public class FortManager extends Merchant
 									int fee;
 									val = st.nextToken();
 									final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-									html.setFile(player, "data/html/fortress/functions-apply_confirmed.htm");
+									html.setFile(player, HTML_FUNCTIONS_APPLY_CONFIRMED);
 									if ((getFort().getFunction(Fort.FUNC_RESTORE_HP) != null) && (getFort().getFunction(Fort.FUNC_RESTORE_HP).getLevel() == Integer.parseInt(val)))
 									{
-										html.setFile(player, "data/html/fortress/functions-used.htm");
-										html.replace("%val%", val + "%");
+										html.setFile(player, HTML_FUNCTIONS_USED);
+										html.replace(PH_VAL, val + "%");
 										sendHtmlMessage(player, html);
 										return;
 									}
@@ -503,7 +519,7 @@ public class FortManager extends Merchant
 										case 0:
 										{
 											fee = 0;
-											html.setFile(player, "data/html/fortress/functions-cancel_confirmed.htm");
+											html.setFile(player, HTML_FUNCTIONS_CANCEL_CONFIRMED);
 											break;
 										}
 										case 300:
@@ -519,7 +535,7 @@ public class FortManager extends Merchant
 									}
 									if (!getFort().updateFunctions(player, Fort.FUNC_RESTORE_HP, percent, fee, Config.FS_HPREG_FEE_RATIO, (getFort().getFunction(Fort.FUNC_RESTORE_HP) == null)))
 									{
-										html.setFile(player, "data/html/fortress/low_adena.htm");
+										html.setFile(player, HTML_LOW_ADENA);
 										sendHtmlMessage(player, html);
 									}
 									sendHtmlMessage(player, html);
@@ -533,11 +549,11 @@ public class FortManager extends Merchant
 									int fee;
 									val = st.nextToken();
 									final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-									html.setFile(player, "data/html/fortress/functions-apply_confirmed.htm");
+									html.setFile(player, HTML_FUNCTIONS_APPLY_CONFIRMED);
 									if ((getFort().getFunction(Fort.FUNC_RESTORE_MP) != null) && (getFort().getFunction(Fort.FUNC_RESTORE_MP).getLevel() == Integer.parseInt(val)))
 									{
-										html.setFile(player, "data/html/fortress/functions-used.htm");
-										html.replace("%val%", val + "%");
+										html.setFile(player, HTML_FUNCTIONS_USED);
+										html.replace(PH_VAL, val + "%");
 										sendHtmlMessage(player, html);
 										return;
 									}
@@ -547,7 +563,7 @@ public class FortManager extends Merchant
 										case 0:
 										{
 											fee = 0;
-											html.setFile(player, "data/html/fortress/functions-cancel_confirmed.htm");
+											html.setFile(player, HTML_FUNCTIONS_CANCEL_CONFIRMED);
 											break;
 										}
 										case 40:
@@ -563,7 +579,7 @@ public class FortManager extends Merchant
 									}
 									if (!getFort().updateFunctions(player, Fort.FUNC_RESTORE_MP, percent, fee, Config.FS_MPREG_FEE_RATIO, (getFort().getFunction(Fort.FUNC_RESTORE_MP) == null)))
 									{
-										html.setFile(player, "data/html/fortress/low_adena.htm");
+										html.setFile(player, HTML_LOW_ADENA);
 										sendHtmlMessage(player, html);
 									}
 									sendHtmlMessage(player, html);
@@ -577,11 +593,11 @@ public class FortManager extends Merchant
 									int fee;
 									val = st.nextToken();
 									final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-									html.setFile(player, "data/html/fortress/functions-apply_confirmed.htm");
+									html.setFile(player, HTML_FUNCTIONS_APPLY_CONFIRMED);
 									if ((getFort().getFunction(Fort.FUNC_RESTORE_EXP) != null) && (getFort().getFunction(Fort.FUNC_RESTORE_EXP).getLevel() == Integer.parseInt(val)))
 									{
-										html.setFile(player, "data/html/fortress/functions-used.htm");
-										html.replace("%val%", val + "%");
+										html.setFile(player, HTML_FUNCTIONS_USED);
+										html.replace(PH_VAL, val + "%");
 										sendHtmlMessage(player, html);
 										return;
 									}
@@ -591,7 +607,7 @@ public class FortManager extends Merchant
 										case 0:
 										{
 											fee = 0;
-											html.setFile(player, "data/html/fortress/functions-cancel_confirmed.htm");
+											html.setFile(player, HTML_FUNCTIONS_CANCEL_CONFIRMED);
 											break;
 										}
 										case 45:
@@ -607,7 +623,7 @@ public class FortManager extends Merchant
 									}
 									if (!getFort().updateFunctions(player, Fort.FUNC_RESTORE_EXP, percent, fee, Config.FS_EXPREG_FEE_RATIO, (getFort().getFunction(Fort.FUNC_RESTORE_EXP) == null)))
 									{
-										html.setFile(player, "data/html/fortress/low_adena.htm");
+										html.setFile(player, HTML_LOW_ADENA);
 										sendHtmlMessage(player, html);
 									}
 									sendHtmlMessage(player, html);
@@ -671,16 +687,16 @@ public class FortManager extends Merchant
 							if (val.equalsIgnoreCase("tele_cancel"))
 							{
 								final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-								html.setFile(player, "data/html/fortress/functions-cancel.htm");
-								html.replace("%apply%", "other tele 0");
+								html.setFile(player, HTML_FUNCTIONS_CANCEL);
+								html.replace(PH_APPLY, "other tele 0");
 								sendHtmlMessage(player, html);
 								return;
 							}
 							else if (val.equalsIgnoreCase("support_cancel"))
 							{
 								final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-								html.setFile(player, "data/html/fortress/functions-cancel.htm");
-								html.replace("%apply%", "other support 0");
+								html.setFile(player, HTML_FUNCTIONS_CANCEL);
+								html.replace(PH_APPLY, "other support 0");
 								sendHtmlMessage(player, html);
 								return;
 							}
@@ -688,8 +704,8 @@ public class FortManager extends Merchant
 							{
 								val = st.nextToken();
 								final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-								html.setFile(player, "data/html/fortress/functions-apply.htm");
-								html.replace("%name%", "Insignia (Supplementary Magic)");
+								html.setFile(player, HTML_FUNCTIONS_APPLY);
+								html.replace(PH_NAME, "Insignia (Supplementary Magic)");
 								final int stage = Integer.parseInt(val);
 								int cost;
 								switch (stage)
@@ -705,9 +721,9 @@ public class FortManager extends Merchant
 										break;
 									}
 								}
-								html.replace("%cost%", cost + "</font>Adena /" + (Config.FS_SUPPORT_FEE_RATIO / 1000 / 60 / 60 / 24) + " Day</font>)");
-								html.replace("%use%", "Enables the use of supplementary magic.");
-								html.replace("%apply%", "other support " + stage);
+								html.replace(PH_COST, cost + "</font>Adena /" + (Config.FS_SUPPORT_FEE_RATIO / 1000 / 60 / 60 / 24) + " Day</font>)");
+								html.replace(PH_USE, "Enables the use of supplementary magic.");
+								html.replace(PH_APPLY, "other support " + stage);
 								sendHtmlMessage(player, html);
 								return;
 							}
@@ -715,8 +731,8 @@ public class FortManager extends Merchant
 							{
 								val = st.nextToken();
 								final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-								html.setFile(player, "data/html/fortress/functions-apply.htm");
-								html.replace("%name%", "Mirror (Teleportation Device)");
+								html.setFile(player, HTML_FUNCTIONS_APPLY);
+								html.replace(PH_NAME, "Mirror (Teleportation Device)");
 								final int stage = Integer.parseInt(val);
 								int cost;
 								switch (stage)
@@ -732,9 +748,9 @@ public class FortManager extends Merchant
 										break;
 									}
 								}
-								html.replace("%cost%", cost + "</font>Adena /" + (Config.FS_TELE_FEE_RATIO / 1000 / 60 / 60 / 24) + " Day</font>)");
-								html.replace("%use%", "Teleports clan members in a fort to the target <font color=\"00FFFF\">Stage " + stage + "</font> staging area");
-								html.replace("%apply%", "other tele " + stage);
+								html.replace(PH_COST, cost + "</font>Adena /" + (Config.FS_TELE_FEE_RATIO / 1000 / 60 / 60 / 24) + " Day</font>)");
+								html.replace(PH_USE, "Teleports clan members in a fort to the target <font color=\"00FFFF\">Stage " + stage + "</font> staging area");
+								html.replace(PH_APPLY, "other tele " + stage);
 								sendHtmlMessage(player, html);
 								return;
 							}
@@ -745,11 +761,11 @@ public class FortManager extends Merchant
 									int fee;
 									val = st.nextToken();
 									final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-									html.setFile(player, "data/html/fortress/functions-apply_confirmed.htm");
+									html.setFile(player, HTML_FUNCTIONS_APPLY_CONFIRMED);
 									if ((getFort().getFunction(Fort.FUNC_TELEPORT) != null) && (getFort().getFunction(Fort.FUNC_TELEPORT).getLevel() == Integer.parseInt(val)))
 									{
-										html.setFile(player, "data/html/fortress/functions-used.htm");
-										html.replace("%val%", "Stage " + val);
+										html.setFile(player, HTML_FUNCTIONS_USED);
+										html.replace(PH_VAL, "Stage " + val);
 										sendHtmlMessage(player, html);
 										return;
 									}
@@ -759,7 +775,7 @@ public class FortManager extends Merchant
 										case 0:
 										{
 											fee = 0;
-											html.setFile(player, "data/html/fortress/functions-cancel_confirmed.htm");
+											html.setFile(player, HTML_FUNCTIONS_CANCEL_CONFIRMED);
 											break;
 										}
 										case 1:
@@ -775,25 +791,25 @@ public class FortManager extends Merchant
 									}
 									if (!getFort().updateFunctions(player, Fort.FUNC_TELEPORT, level, fee, Config.FS_TELE_FEE_RATIO, (getFort().getFunction(Fort.FUNC_TELEPORT) == null)))
 									{
-										html.setFile(player, "data/html/fortress/low_adena.htm");
+										html.setFile(player, HTML_LOW_ADENA);
 										sendHtmlMessage(player, html);
 									}
 									sendHtmlMessage(player, html);
 								}
 								return;
 							}
-							else if (val.equalsIgnoreCase("support"))
+							else if (val.equalsIgnoreCase(SUPPORT))
 							{
 								if (st.countTokens() >= 1)
 								{
 									int fee;
 									val = st.nextToken();
 									final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-									html.setFile(player, "data/html/fortress/functions-apply_confirmed.htm");
+									html.setFile(player, HTML_FUNCTIONS_APPLY_CONFIRMED);
 									if ((getFort().getFunction(Fort.FUNC_SUPPORT) != null) && (getFort().getFunction(Fort.FUNC_SUPPORT).getLevel() == Integer.parseInt(val)))
 									{
-										html.setFile(player, "data/html/fortress/functions-used.htm");
-										html.replace("%val%", "Stage " + val);
+										html.setFile(player, HTML_FUNCTIONS_USED);
+										html.replace(PH_VAL, "Stage " + val);
 										sendHtmlMessage(player, html);
 										return;
 									}
@@ -803,7 +819,7 @@ public class FortManager extends Merchant
 										case 0:
 										{
 											fee = 0;
-											html.setFile(player, "data/html/fortress/functions-cancel_confirmed.htm");
+											html.setFile(player, HTML_FUNCTIONS_CANCEL_CONFIRMED);
 											break;
 										}
 										case 1:
@@ -819,7 +835,7 @@ public class FortManager extends Merchant
 									}
 									if (!getFort().updateFunctions(player, Fort.FUNC_SUPPORT, level, fee, Config.FS_SUPPORT_FEE_RATIO, (getFort().getFunction(Fort.FUNC_SUPPORT) == null)))
 									{
-										html.setFile(player, "data/html/fortress/low_adena.htm");
+										html.setFile(player, HTML_LOW_ADENA);
 										sendHtmlMessage(player, html);
 									}
 									else
@@ -874,12 +890,12 @@ public class FortManager extends Merchant
 				else
 				{
 					final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-					html.setFile(player, "data/html/fortress/foreman-noprivs.htm");
+					html.setFile(player, HTML_FOREMAN_NOPRIVS);
 					sendHtmlMessage(player, html);
 				}
 				return;
 			}
-			else if (actualCommand.equalsIgnoreCase("support"))
+			else if (actualCommand.equalsIgnoreCase(SUPPORT))
 			{
 				setTarget(player);
 				Skill skill;
@@ -980,7 +996,7 @@ public class FortManager extends Merchant
 		
 		final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 		html.setFile(player, filename);
-		html.replace("%objectId%", String.valueOf(getObjectId()));
+		html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 		html.replace("%npcname%", getName());
 		player.sendPacket(html);
 	}
@@ -1043,7 +1059,7 @@ public class FortManager extends Merchant
 		else
 		{
 			final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-			html.setFile(player, "data/html/fortress/foreman-noprivs.htm");
+			html.setFile(player, HTML_FOREMAN_NOPRIVS);
 			sendHtmlMessage(player, html);
 		}
 	}

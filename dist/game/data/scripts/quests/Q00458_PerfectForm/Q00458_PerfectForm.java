@@ -32,6 +32,14 @@ import com.l2journey.gameserver.network.serverpackets.ExQuestNpcLogList;
  */
 public class Q00458_PerfectForm extends Quest
 {
+	private static final String OVERHITSCONSECUTIVE = "overhitsConsecutive";
+	private static final String OVERHITSCRITICAL = "overhitsCritical";
+	private static final String OVERHITSTOTAL = "overhitsTotal";
+	private static final String N_18879 = "18879";
+	private static final String N_18886 = "18886";
+	private static final String N_18893 = "18893";
+	private static final String N_18900 = "18900";
+
 	// NPCs
 	private static final int KELLEYIA = 32768;
 	// Monsters
@@ -107,7 +115,7 @@ public class Q00458_PerfectForm extends Quest
 			{
 				if (qs.isCond(2))
 				{
-					final int overhitsTotal = qs.getInt("overhitsTotal");
+					final int overhitsTotal = qs.getInt(OVERHITSTOTAL);
 					if (overhitsTotal >= 35)
 					{
 						htmltext = "32768-14a.html";
@@ -133,7 +141,7 @@ public class Q00458_PerfectForm extends Quest
 			{
 				if (qs.isCond(2))
 				{
-					final int overhitsCritical = qs.getInt("overhitsCritical");
+					final int overhitsCritical = qs.getInt(OVERHITSCRITICAL);
 					if (overhitsCritical >= 30)
 					{
 						htmltext = "32768-15a.html";
@@ -159,7 +167,7 @@ public class Q00458_PerfectForm extends Quest
 			{
 				if (qs.isCond(2))
 				{
-					final int overhitsConsecutive = qs.getInt("overhitsConsecutive");
+					final int overhitsConsecutive = qs.getInt(OVERHITSCONSECUTIVE);
 					if (overhitsConsecutive >= 20)
 					{
 						htmltext = "32768-16a.html";
@@ -185,7 +193,7 @@ public class Q00458_PerfectForm extends Quest
 			{
 				if (qs.isCond(2))
 				{
-					final int overhitsConsecutive = qs.getInt("overhitsConsecutive");
+					final int overhitsConsecutive = qs.getInt(OVERHITSCONSECUTIVE);
 					if (overhitsConsecutive >= 20)
 					{
 						rewardItems(player, ICARUS_WEAPON_RECIPES[getRandom(ICARUS_WEAPON_RECIPES.length)], 1);
@@ -245,23 +253,23 @@ public class Q00458_PerfectForm extends Quest
 				final Attackable mob = npc.asAttackable();
 				if (mob.isOverhit())
 				{
-					qs.set("overhitsTotal", String.valueOf(qs.getInt("overhitsTotal") + 1)); // memoStateEx 1
+					qs.set(OVERHITSTOTAL, String.valueOf(qs.getInt(OVERHITSTOTAL) + 1)); // memoStateEx 1
 					final int maxHp = mob.getMaxHp();
 					// Attackable#calculateOverhitExp() way of calculating overhit % seems illogical
 					final double overhitPercentage = (maxHp + mob.getOverhitDamage()) / maxHp;
 					if (overhitPercentage >= 1.2)
 					{
-						qs.set("overhitsCritical", String.valueOf(qs.getInt("overhitsCritical") + 1)); // memoStateEx 2
+						qs.set(OVERHITSCRITICAL, String.valueOf(qs.getInt(OVERHITSCRITICAL) + 1)); // memoStateEx 2
 					}
-					qs.set("overhitsConsecutive", String.valueOf(qs.getInt("overhitsConsecutive") + 1)); // memoStateEx 3
+					qs.set(OVERHITSCONSECUTIVE, String.valueOf(qs.getInt(OVERHITSCONSECUTIVE) + 1)); // memoStateEx 3
 				}
-				else if (qs.getInt("overhitsConsecutive") > 0)
+				else if (qs.getInt(OVERHITSCONSECUTIVE) > 0)
 				{
 					// avoid writing to database if variable is already zero
-					qs.set("overhitsConsecutive", "0");
+					qs.set(OVERHITSCONSECUTIVE, "0");
 				}
 				
-				if ((qs.getInt("18879") == 10) && (qs.getInt("18886") == 10) && (qs.getInt("18893") == 10) && (qs.getInt("18900") == 10))
+				if ((qs.getInt(N_18879) == 10) && (qs.getInt(N_18886) == 10) && (qs.getInt(N_18893) == 10) && (qs.getInt(N_18900) == 10))
 				{
 					qs.setCond(2, true);
 				}
@@ -271,10 +279,10 @@ public class Q00458_PerfectForm extends Quest
 				}
 				
 				final ExQuestNpcLogList log = new ExQuestNpcLogList(getId());
-				log.addNpc(18879, qs.getInt("18879"));
-				log.addNpc(18886, qs.getInt("18886"));
-				log.addNpc(18893, qs.getInt("18893"));
-				log.addNpc(18900, qs.getInt("18900"));
+				log.addNpc(18879, qs.getInt(N_18879));
+				log.addNpc(18886, qs.getInt(N_18886));
+				log.addNpc(18893, qs.getInt(N_18893));
+				log.addNpc(18900, qs.getInt(N_18900));
 				player.sendPacket(log);
 			}
 		}
@@ -308,7 +316,7 @@ public class Q00458_PerfectForm extends Quest
 				{
 					case 1:
 					{
-						if ((qs.getInt("18879") == 0) && (qs.getInt("18886") == 0) && (qs.getInt("18893") == 0) && (qs.getInt("18900") == 0))
+						if ((qs.getInt(N_18879) == 0) && (qs.getInt(N_18886) == 0) && (qs.getInt(N_18893) == 0) && (qs.getInt(N_18900) == 0))
 						{
 							htmltext = "32768-11.html";
 						}

@@ -35,11 +35,13 @@ import com.l2journey.gameserver.network.serverpackets.CreatureSay;
  */
 public class AdminGmChat implements IAdminCommandHandler
 {
+	private static final String ADMIN_GMCHAT_MENU = "admin_gmchat_menu";
+
 	private static final String[] ADMIN_COMMANDS =
 	{
 		"admin_gmchat",
 		"admin_snoop",
-		"admin_gmchat_menu"
+		ADMIN_GMCHAT_MENU
 	};
 	
 	@Override
@@ -53,7 +55,7 @@ public class AdminGmChat implements IAdminCommandHandler
 		{
 			snoop(command, activeChar);
 		}
-		if (command.startsWith("admin_gmchat_menu"))
+		if (command.startsWith(ADMIN_GMCHAT_MENU))
 		{
 			AdminHtml.showAdminHtml(activeChar, "gm_menu.htm");
 		}
@@ -105,7 +107,7 @@ public class AdminGmChat implements IAdminCommandHandler
 	{
 		final int offset;
 		final String usage;
-		if (command.startsWith("admin_gmchat_menu"))
+		if (command.startsWith(ADMIN_GMCHAT_MENU))
 		{
 			offset = 18;
 			usage = "Usage: //gmchat_menu <message>";

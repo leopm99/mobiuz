@@ -32,6 +32,8 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Q00223_TestOfTheChampion extends Quest
 {
+	private static final String LASTATTACKER = "lastAttacker";
+
 	// NPCs
 	private static final int TRADER_GROOT = 30093;
 	private static final int CAPTAIN_MOUEN = 30196;
@@ -218,7 +220,7 @@ public class Q00223_TestOfTheChampion extends Quest
 					{
 						case 0:
 						{
-							npc.getVariables().set("lastAttacker", attacker.getObjectId());
+							npc.getVariables().set(LASTATTACKER, attacker.getObjectId());
 							if (hasQuestItems(attacker, WHITE_ROSE_INSIGNIA) && (getQuestItemsCount(attacker, HARPYS_EGG) < 30) && getRandomBoolean())
 							{
 								if (getRandom(10) < 7)
@@ -252,7 +254,7 @@ public class Q00223_TestOfTheChampion extends Quest
 					{
 						case 0:
 						{
-							npc.getVariables().set("lastAttacker", attacker.getObjectId());
+							npc.getVariables().set(LASTATTACKER, attacker.getObjectId());
 							if (hasQuestItems(attacker, MOUENS_1ST_ORDER) && (getQuestItemsCount(attacker, ROAD_RATMAN_HEAD) < 10) && getRandomBoolean())
 							{
 								if (getRandom(10) < 7)
@@ -286,7 +288,7 @@ public class Q00223_TestOfTheChampion extends Quest
 					{
 						case 0:
 						{
-							npc.getVariables().set("lastAttacker", attacker.getObjectId());
+							npc.getVariables().set(LASTATTACKER, attacker.getObjectId());
 							if (hasQuestItems(attacker, IRON_ROSE_RING) && (getQuestItemsCount(attacker, BLOODY_AXE_HEAD) < 10) && getRandomBoolean())
 							{
 								addAttackDesire(addSpawn(BLOODY_AXE_ELITE, npc, true, 0, false), attacker);

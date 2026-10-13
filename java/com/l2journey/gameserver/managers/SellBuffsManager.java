@@ -61,6 +61,8 @@ import com.l2journey.gameserver.util.HtmlUtil;
  */
 public class SellBuffsManager implements IXmlReader
 {
+	private static final String PH_LIST = "%list%";
+
 	private static final Logger LOGGER = Logger.getLogger(SellBuffsManager.class.getName());
 	
 	private static final Set<Integer> ALLOWED_BUFFS = new HashSet<>();
@@ -118,7 +120,7 @@ public class SellBuffsManager implements IXmlReader
 	public void sendBuffChoiceMenu(Player player, int index)
 	{
 		String html = HtmCache.getInstance().getHtm(player, HTML_FOLDER + "BuffChoice.html");
-		html = html.replace("%list%", buildSkillMenu(player, index));
+		html = html.replace(PH_LIST, buildSkillMenu(player, index));
 		CommunityBoardHandler.separateAndSend(html, player);
 	}
 	
@@ -129,7 +131,7 @@ public class SellBuffsManager implements IXmlReader
 	public void sendBuffEditMenu(Player player)
 	{
 		String html = HtmCache.getInstance().getHtm(player, HTML_FOLDER + "BuffChoice.html");
-		html = html.replace("%list%", buildEditMenu(player));
+		html = html.replace(PH_LIST, buildEditMenu(player));
 		CommunityBoardHandler.separateAndSend(html, player);
 	}
 	
@@ -147,7 +149,7 @@ public class SellBuffsManager implements IXmlReader
 		}
 		
 		String html = HtmCache.getInstance().getHtm(player, HTML_FOLDER + "BuffBuyMenu.html");
-		html = html.replace("%list%", buildBuffMenu(seller, index));
+		html = html.replace(PH_LIST, buildBuffMenu(seller, index));
 		CommunityBoardHandler.separateAndSend(html, player);
 	}
 	
