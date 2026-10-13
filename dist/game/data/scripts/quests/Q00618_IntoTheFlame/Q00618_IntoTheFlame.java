@@ -31,6 +31,8 @@ import com.l2journey.gameserver.model.quest.QuestState;
  */
 public class Q00618_IntoTheFlame extends Quest
 {
+	private static final String HTML_N_31540_03 = "31540-03.htm";
+
 	// NPCs
 	private static final int KLEIN = 31540;
 	private static final int HILDA = 31271;
@@ -75,7 +77,7 @@ public class Q00618_IntoTheFlame extends Quest
 		String htmltext = null;
 		switch (event)
 		{
-			case "31540-03.htm":
+			case HTML_N_31540_03:
 			{
 				qs.startQuest();
 				htmltext = event;
@@ -85,7 +87,7 @@ public class Q00618_IntoTheFlame extends Quest
 			{
 				if (!hasQuestItems(player, VACUALITE))
 				{
-					htmltext = "31540-03.htm";
+					htmltext = HTML_N_31540_03;
 				}
 				else
 				{
@@ -164,7 +166,7 @@ public class Q00618_IntoTheFlame extends Quest
 				}
 				else if (qs.isStarted())
 				{
-					htmltext = qs.isCond(4) ? "31540-04.html" : "31540-03.htm";
+					htmltext = qs.isCond(4) ? "31540-04.html" : HTML_N_31540_03;
 				}
 				break;
 			}

@@ -50,6 +50,8 @@ import ai.areas.Hellbound.HellboundEngine;
  */
 public class Quarry extends AbstractNpcAI
 {
+	private static final String TIME_LIMIT = "TIME_LIMIT";
+
 	// NPCs
 	private static final int SLAVE = 32299;
 	// Items
@@ -91,14 +93,14 @@ public class Quarry extends AbstractNpcAI
 				npc.setRHandId(9136);
 				npc.setWalking();
 				
-				if (getQuestTimer("TIME_LIMIT", npc, null) == null)
+				if (getQuestTimer(TIME_LIMIT, npc, null) == null)
 				{
-					startQuestTimer("TIME_LIMIT", 900000, npc, null); // 15 min limit for save
+					startQuestTimer(TIME_LIMIT, 900000, npc, null); // 15 min limit for save
 				}
 				htmltext = "32299-02.htm";
 				break;
 			}
-			case "TIME_LIMIT":
+			case TIME_LIMIT:
 			{
 				for (ZoneType zone : ZoneManager.getInstance().getZones(npc))
 				{

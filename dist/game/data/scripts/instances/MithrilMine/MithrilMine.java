@@ -51,6 +51,8 @@ import quests.Q10284_AcquisitionOfDivineSword.Q10284_AcquisitionOfDivineSword;
  */
 public class MithrilMine extends AbstractInstance
 {
+	private static final String COUNT = "count";
+
 	// NPCs
 	private static final int KEGOR = 18846;
 	private static final int MITHRIL_MILLIPEDE = 22766;
@@ -177,11 +179,11 @@ public class MithrilMine extends AbstractInstance
 		{
 			if (npc.isScriptValue(1))
 			{
-				final int count = world.getParameters().getInt("count", 0);
-				world.setParameter("count", count + 1);
+				final int count = world.getParameters().getInt(COUNT, 0);
+				world.setParameter(COUNT, count + 1);
 			}
 			
-			if (world.getParameters().getInt("count", 0) >= 5)
+			if (world.getParameters().getInt(COUNT, 0) >= 5)
 			{
 				final QuestState qs = player.getQuestState(Q10284_AcquisitionOfDivineSword.class.getSimpleName());
 				if ((qs != null) && qs.isMemoState(2))

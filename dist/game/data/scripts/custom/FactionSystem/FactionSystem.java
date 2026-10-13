@@ -43,6 +43,8 @@ import ai.AbstractNpcAI;
  */
 public class FactionSystem extends AbstractNpcAI
 {
+	private static final String PH_NAME = "%name%";
+
 	// NPCs
 	private static final int MANAGER = 500;
 	// Other
@@ -78,7 +80,7 @@ public class FactionSystem extends AbstractNpcAI
 					final String htmltext = null;
 					final NpcHtmlMessage packet = new NpcHtmlMessage(npc.getObjectId());
 					packet.setHtml(getHtm(player, "onlinelimit.html"));
-					packet.replace("%name%", player.getName());
+					packet.replace(PH_NAME, player.getName());
 					packet.replace("%more%", EventsConfig.FACTION_GOOD_TEAM_NAME);
 					packet.replace("%less%", EventsConfig.FACTION_EVIL_TEAM_NAME);
 					player.sendPacket(packet);
@@ -106,7 +108,7 @@ public class FactionSystem extends AbstractNpcAI
 					final String htmltext = null;
 					final NpcHtmlMessage packet = new NpcHtmlMessage(npc.getObjectId());
 					packet.setHtml(getHtm(player, "onlinelimit.html"));
-					packet.replace("%name%", player.getName());
+					packet.replace(PH_NAME, player.getName());
 					packet.replace("%more%", EventsConfig.FACTION_EVIL_TEAM_NAME);
 					packet.replace("%less%", EventsConfig.FACTION_GOOD_TEAM_NAME);
 					player.sendPacket(packet);
@@ -149,7 +151,7 @@ public class FactionSystem extends AbstractNpcAI
 		final String htmltext = null;
 		final NpcHtmlMessage packet = new NpcHtmlMessage(npc.getObjectId());
 		packet.setHtml(getHtm(player, "manager.html"));
-		packet.replace("%name%", player.getName());
+		packet.replace(PH_NAME, player.getName());
 		packet.replace("%good%", EventsConfig.FACTION_GOOD_TEAM_NAME);
 		packet.replace("%evil%", EventsConfig.FACTION_EVIL_TEAM_NAME);
 		player.sendPacket(packet);

@@ -66,6 +66,9 @@ import ai.AbstractNpcAI;
  */
 public class AchievementNpc extends AbstractNpcAI
 {
+	private static final String COUNT = "count";
+	private static final String ADENA = "adena";
+
 	private static final Logger LOGGER = Logger.getLogger(AchievementNpc.class.getName());
 	
 	private static final int ACHIEVEMENT_NPC_ID = 70000;
@@ -165,7 +168,7 @@ public class AchievementNpc extends AbstractNpcAI
 			this.name = name;
 			this.description = description;
 			this.target = target;
-			this.type = (type == null) ? "adena" : type.toLowerCase();
+			this.type = (type == null) ? ADENA : type.toLowerCase();
 			this.icon = ((icon == null) || icon.isEmpty()) ? DEFAULT_ICON : icon;
 		}
 	}
@@ -279,7 +282,7 @@ public class AchievementNpc extends AbstractNpcAI
 		String name = parseString(n, "name", "Unnamed");
 		String desc = parseString(n, "desc", parseString(n, "description", ""));
 		long target = parseLong(n, "target", 0L);
-		String type = parseString(n, "type", "adena");
+		String type = parseString(n, "type", ADENA);
 		String icon = parseString(n, "icon", DEFAULT_ICON);
 		Achievement a = new Achievement(id, name, desc, target, type, icon);
 		for (Node r = n.getFirstChild(); r != null; r = r.getNextSibling())
@@ -292,7 +295,7 @@ public class AchievementNpc extends AbstractNpcAI
 			if ("reward".equalsIgnoreCase(nodeName))
 			{
 				int itemId = parseInt(r, "id", 0);
-				long count = parseLong(r, "count", 0L);
+				long count = parseLong(r, COUNT, 0L);
 				if ((itemId > 0) && (count > 0))
 				{
 					a.rewards.add(new RewardItem(itemId, count));
@@ -302,7 +305,7 @@ public class AchievementNpc extends AbstractNpcAI
 					if ((c.getNodeType() == Node.ELEMENT_NODE) && "item".equalsIgnoreCase(c.getNodeName()))
 					{
 						int ci = parseInt(c, "id", 0);
-						long cc = parseLong(c, "count", 0L);
+						long cc = parseLong(c, COUNT, 0L);
 						if ((ci > 0) && (cc > 0))
 						{
 							a.rewards.add(new RewardItem(ci, cc));
@@ -313,7 +316,7 @@ public class AchievementNpc extends AbstractNpcAI
 			else if ("item".equalsIgnoreCase(nodeName))
 			{
 				int itemId = parseInt(r, "id", 0);
-				long count = parseLong(r, "count", 0L);
+				long count = parseLong(r, COUNT, 0L);
 				if ((itemId > 0) && (count > 0))
 				{
 					a.rewards.add(new RewardItem(itemId, count));
@@ -328,7 +331,7 @@ public class AchievementNpc extends AbstractNpcAI
 	{
 		int baseId = parseInt(n, "id", -1);
 		int catId = parseInt(n, "cat", -1);
-		String type = parseString(n, "type", "adena");
+		String type = parseString(n, "type", ADENA);
 		String desc = parseString(n, "desc", "");
 		if ((baseId < 0) || (catId < 0))
 		{
@@ -386,7 +389,7 @@ public class AchievementNpc extends AbstractNpcAI
 									if ((it.getNodeType() == Node.ELEMENT_NODE) && "item".equalsIgnoreCase(it.getNodeName()))
 									{
 										int iid = parseInt(it, "id", 0);
-										long cnt = parseLong(it, "count", 0L);
+										long cnt = parseLong(it, COUNT, 0L);
 										if ((iid > 0) && (cnt > 0))
 										{
 											le.rewards.add(new RewardItem(iid, cnt));
@@ -408,7 +411,7 @@ public class AchievementNpc extends AbstractNpcAI
 					if ((it.getNodeType() == Node.ELEMENT_NODE) && "item".equalsIgnoreCase(it.getNodeName()))
 					{
 						int iid = parseInt(it, "id", 0);
-						long cnt = parseLong(it, "count", 0L);
+						long cnt = parseLong(it, COUNT, 0L);
 						if ((iid > 0) && (cnt > 0))
 						{
 							base.globalRewards.add(new RewardItem(iid, cnt));
@@ -1058,7 +1061,7 @@ public class AchievementNpc extends AbstractNpcAI
 	{
 		switch (type)
 		{
-			case "adena":
+			case ADENA:
 				return player.getAdena();
 			case "pvpkill":
 				return player.getPvpKills();

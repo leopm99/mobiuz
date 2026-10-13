@@ -41,6 +41,9 @@ import com.l2journey.gameserver.network.serverpackets.ExBasicActionList;
  */
 public class TransformData implements IXmlReader
 {
+	private static final String ACTIONS = "actions";
+	private static final String LEVEL = "level";
+
 	private final Map<Integer, Transform> _transformData = new ConcurrentHashMap<>();
 	
 	protected TransformData()
@@ -124,21 +127,21 @@ public class TransformData implements IXmlReader
 												{
 													attrs = s.getAttributes();
 													final int skillId = parseInteger(attrs, "id");
-													final int skillLevel = parseInteger(attrs, "level");
+													final int skillLevel = parseInteger(attrs, LEVEL);
 													templateData.addSkill(new SkillHolder(skillId, skillLevel));
 												}
 											}
 											break;
 										}
-										case "actions":
+										case ACTIONS:
 										{
 											if (templateData == null)
 											{
 												templateData = new TransformTemplate(set);
 												transform.setTemplate(isMale, templateData);
 											}
-											set.set("actions", z.getTextContent());
-											final int[] actions = set.getIntArray("actions", " ");
+											set.set(ACTIONS, z.getTextContent());
+											final int[] actions = set.getIntArray(ACTIONS, " ");
 											templateData.setBasicActionList(new ExBasicActionList(actions));
 											break;
 										}
@@ -155,7 +158,7 @@ public class TransformData implements IXmlReader
 												{
 													attrs = s.getAttributes();
 													final int skillId = parseInteger(attrs, "id");
-													final int skillLevel = parseInteger(attrs, "level");
+													final int skillLevel = parseInteger(attrs, LEVEL);
 													final int minLevel = parseInteger(attrs, "minLevel");
 													templateData.addAdditionalSkill(new AdditionalSkillHolder(skillId, skillLevel, minLevel));
 												}
@@ -192,7 +195,7 @@ public class TransformData implements IXmlReader
 											final StatSet levelsSet = new StatSet();
 											for (Node s = z.getFirstChild(); s != null; s = s.getNextSibling())
 											{
-												if ("level".equals(s.getNodeName()))
+												if (LEVEL.equals(s.getNodeName()))
 												{
 													attrs = s.getAttributes();
 													for (int i = 0; i < attrs.getLength(); i++)

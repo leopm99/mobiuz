@@ -31,6 +31,10 @@ import com.l2journey.gameserver.model.quest.State;
  */
 public class Q00552_OlympiadVeteran extends Quest
 {
+	private static final String NONCLASSED = "nonclassed";
+	private static final String CLASSED = "classed";
+	private static final String TEAMS = "teams";
+
 	// NPC
 	private static final int MANAGER = 31688;
 	// Items
@@ -96,8 +100,8 @@ public class Q00552_OlympiadVeteran extends Quest
 				{
 					case CLASSED:
 					{
-						matches = qs.getInt("classed") + 1;
-						qs.set("classed", String.valueOf(matches));
+						matches = qs.getInt(CLASSED) + 1;
+						qs.set(CLASSED, String.valueOf(matches));
 						if ((matches == 5) && !hasQuestItems(player, CLASS_BATTLE_CERTIFICATE))
 						{
 							giveItems(player, CLASS_BATTLE_CERTIFICATE, 1);
@@ -106,8 +110,8 @@ public class Q00552_OlympiadVeteran extends Quest
 					}
 					case NON_CLASSED:
 					{
-						matches = qs.getInt("nonclassed") + 1;
-						qs.set("nonclassed", String.valueOf(matches));
+						matches = qs.getInt(NONCLASSED) + 1;
+						qs.set(NONCLASSED, String.valueOf(matches));
 						if ((matches == 5) && !hasQuestItems(player, CLASS_FREE_BATTLE_CERTIFICATE))
 						{
 							giveItems(player, CLASS_FREE_BATTLE_CERTIFICATE, 1);
@@ -116,8 +120,8 @@ public class Q00552_OlympiadVeteran extends Quest
 					}
 					case TEAMS:
 					{
-						matches = qs.getInt("teams") + 1;
-						qs.set("teams", String.valueOf(matches));
+						matches = qs.getInt(TEAMS) + 1;
+						qs.set(TEAMS, String.valueOf(matches));
 						if ((matches == 5) && !hasQuestItems(player, TEAM_EVENT_CERTIFICATE))
 						{
 							giveItems(player, TEAM_EVENT_CERTIFICATE, 1);
@@ -147,8 +151,8 @@ public class Q00552_OlympiadVeteran extends Quest
 				{
 					case CLASSED:
 					{
-						matches = qs.getInt("classed") + 1;
-						qs.set("classed", String.valueOf(matches));
+						matches = qs.getInt(CLASSED) + 1;
+						qs.set(CLASSED, String.valueOf(matches));
 						if (matches == 5)
 						{
 							giveItems(player, CLASS_BATTLE_CERTIFICATE, 1);
@@ -157,8 +161,8 @@ public class Q00552_OlympiadVeteran extends Quest
 					}
 					case NON_CLASSED:
 					{
-						matches = qs.getInt("nonclassed") + 1;
-						qs.set("nonclassed", String.valueOf(matches));
+						matches = qs.getInt(NONCLASSED) + 1;
+						qs.set(NONCLASSED, String.valueOf(matches));
 						if (matches == 5)
 						{
 							giveItems(player, CLASS_FREE_BATTLE_CERTIFICATE, 1);
@@ -167,8 +171,8 @@ public class Q00552_OlympiadVeteran extends Quest
 					}
 					case TEAMS:
 					{
-						matches = qs.getInt("teams") + 1;
-						qs.set("teams", String.valueOf(matches));
+						matches = qs.getInt(TEAMS) + 1;
+						qs.set(TEAMS, String.valueOf(matches));
 						if (matches == 5)
 						{
 							giveItems(player, TEAM_EVENT_CERTIFICATE, 1);

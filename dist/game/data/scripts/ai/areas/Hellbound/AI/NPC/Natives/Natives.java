@@ -44,6 +44,8 @@ import ai.areas.Hellbound.HellboundEngine;
  */
 public class Natives extends AbstractNpcAI
 {
+	private static final String CLOSE_DOORS = "close_doors";
+
 	// NPCs
 	private static final int NATIVE = 32362;
 	private static final int INSURGENT = 32363;
@@ -135,8 +137,8 @@ public class Natives extends AbstractNpcAI
 						}
 					}
 					
-					cancelQuestTimers("close_doors");
-					startQuestTimer("close_doors", 1800000, npc, player); // 30 min
+					cancelQuestTimers(CLOSE_DOORS);
+					startQuestTimer(CLOSE_DOORS, 1800000, npc, player); // 30 min
 				}
 				else if (hasQuestItems(player, MARK_OF_BETRAYAL))
 				{
@@ -147,7 +149,7 @@ public class Natives extends AbstractNpcAI
 					htmltext = "32364-02.htm";
 				}
 			}
-			else if (event.equalsIgnoreCase("close_doors"))
+			else if (event.equalsIgnoreCase(CLOSE_DOORS))
 			{
 				for (int doorId : DOORS)
 				{

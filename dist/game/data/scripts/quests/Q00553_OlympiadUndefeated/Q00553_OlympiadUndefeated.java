@@ -31,6 +31,8 @@ import com.l2journey.gameserver.model.quest.State;
  */
 public class Q00553_OlympiadUndefeated extends Quest
 {
+	private static final String UNDEFEATABLE = "undefeatable";
+
 	// NPC
 	private static final int MANAGER = 31688;
 	// Items
@@ -96,8 +98,8 @@ public class Q00553_OlympiadUndefeated extends Quest
 			final QuestState qs = getQuestState(player, false);
 			if ((qs != null) && qs.isStarted() && qs.isCond(1))
 			{
-				final int matches = qs.getInt("undefeatable") + 1;
-				qs.set("undefeatable", String.valueOf(matches));
+				final int matches = qs.getInt(UNDEFEATABLE) + 1;
+				qs.set(UNDEFEATABLE, String.valueOf(matches));
 				switch (matches)
 				{
 					case 2:
@@ -144,7 +146,7 @@ public class Q00553_OlympiadUndefeated extends Quest
 			final QuestState qs = getQuestState(player, false);
 			if ((qs != null) && qs.isStarted() && qs.isCond(1))
 			{
-				qs.unset("undefeatable");
+				qs.unset(UNDEFEATABLE);
 				takeItems(player, WIN_CONF_2, -1);
 				takeItems(player, WIN_CONF_5, -1);
 				takeItems(player, WIN_CONF_10, -1);

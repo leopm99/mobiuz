@@ -34,6 +34,8 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Q00372_LegacyOfInsolence extends Quest
 {
+	private static final String HTML_N_30844_07E = "30844-07e.html";
+
 	// NPCs
 	private static final int TRADER_HOLLY = 30839;
 	private static final int WAREHOUSE_KEEPER_WALDERAL = 30844;
@@ -227,7 +229,7 @@ public class Q00372_LegacyOfInsolence extends Quest
 				}
 				else
 				{
-					htmltext = "30844-07e.html";
+					htmltext = HTML_N_30844_07E;
 				}
 				break;
 			}
@@ -291,7 +293,7 @@ public class Q00372_LegacyOfInsolence extends Quest
 				}
 				else
 				{
-					htmltext = "30844-07e.html";
+					htmltext = HTML_N_30844_07E;
 				}
 				break;
 			}
@@ -355,7 +357,7 @@ public class Q00372_LegacyOfInsolence extends Quest
 				}
 				else
 				{
-					htmltext = "30844-07e.html";
+					htmltext = HTML_N_30844_07E;
 				}
 				break;
 			}
@@ -419,7 +421,7 @@ public class Q00372_LegacyOfInsolence extends Quest
 				}
 				else
 				{
-					htmltext = "30844-07e.html";
+					htmltext = HTML_N_30844_07E;
 				}
 				break;
 			}

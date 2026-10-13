@@ -47,6 +47,8 @@ import ai.AbstractNpcAI;
  */
 public class WyvernManager extends AbstractNpcAI
 {
+	private static final String HTML_WYVERNMANAGER_DUSK = "wyvernmanager-dusk.html";
+
 	private enum ManagerType
 	{
 		CASTLE,
@@ -253,7 +255,7 @@ public class WyvernManager extends AbstractNpcAI
 					final ManagerType type = MANAGERS.get(npc.getId());
 					if ((type == ManagerType.CASTLE) && SevenSigns.getInstance().isSealValidationPeriod() && (SevenSigns.getInstance().getSealOwner(SevenSigns.SEAL_STRIFE) == SevenSigns.CABAL_DUSK))
 					{
-						htmltext = "wyvernmanager-dusk.html";
+						htmltext = HTML_WYVERNMANAGER_DUSK;
 					}
 					else
 					{
@@ -280,7 +282,7 @@ public class WyvernManager extends AbstractNpcAI
 					final ManagerType type = MANAGERS.get(npc.getId());
 					if ((type == ManagerType.CASTLE) && SevenSigns.getInstance().isSealValidationPeriod() && ((SevenSigns.getInstance()).getSealOwner(SevenSigns.SEAL_STRIFE) == SevenSigns.CABAL_DUSK))
 					{
-						htmltext = "wyvernmanager-dusk.html";
+						htmltext = HTML_WYVERNMANAGER_DUSK;
 					}
 					else
 					{
@@ -320,7 +322,7 @@ public class WyvernManager extends AbstractNpcAI
 				final ManagerType type = MANAGERS.get(npc.getId());
 				if ((type == ManagerType.CASTLE) && SevenSigns.getInstance().isSealValidationPeriod() && (SevenSigns.getInstance().getSealOwner(SevenSigns.SEAL_STRIFE) == SevenSigns.CABAL_DUSK))
 				{
-					htmltext = "wyvernmanager-dusk.html";
+					htmltext = HTML_WYVERNMANAGER_DUSK;
 				}
 				else
 				{

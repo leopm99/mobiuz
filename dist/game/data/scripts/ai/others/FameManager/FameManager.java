@@ -41,6 +41,8 @@ import ai.AbstractNpcAI;
  */
 public class FameManager extends AbstractNpcAI
 {
+	private static final String HTML_N_01 = "-01.html";
+
 	// Npc
 	private static final int[] FAME_MANAGER =
 	{
@@ -85,7 +87,7 @@ public class FameManager extends AbstractNpcAI
 					}
 					else
 					{
-						htmltext = npc.getId() + "-01.html";
+						htmltext = npc.getId() + HTML_N_01;
 					}
 				}
 				else
@@ -109,7 +111,7 @@ public class FameManager extends AbstractNpcAI
 					}
 					else
 					{
-						htmltext = npc.getId() + "-01.html";
+						htmltext = npc.getId() + HTML_N_01;
 					}
 				}
 				else
@@ -129,7 +131,7 @@ public class FameManager extends AbstractNpcAI
 	@Override
 	public String onFirstTalk(Npc npc, Player player)
 	{
-		return ((player.getFame() > 0) && (player.getLevel() >= MIN_LEVEL) && (player.getPlayerClass().level() >= CLASS_LEVEL)) ? npc.getId() + ".html" : npc.getId() + "-01.html";
+		return ((player.getFame() > 0) && (player.getLevel() >= MIN_LEVEL) && (player.getPlayerClass().level() >= CLASS_LEVEL)) ? npc.getId() + ".html" : npc.getId() + HTML_N_01;
 	}
 	
 	public static void main(String[] args)

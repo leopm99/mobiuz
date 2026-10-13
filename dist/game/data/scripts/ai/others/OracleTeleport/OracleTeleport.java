@@ -46,6 +46,8 @@ import ai.AbstractNpcAI;
  */
 public class OracleTeleport extends AbstractNpcAI
 {
+	private static final String HTML_ZIGGURAT_NOADENA = "ziggurat_noadena.htm";
+
 	// @formatter:off
 	private static final int[] TOWN_DAWN =
 	{
@@ -366,32 +368,32 @@ public class OracleTeleport extends AbstractNpcAI
 			}
 			else if ((playerLevel >= 20) && (playerLevel < 30) && (player.getAdena() < 2000))
 			{
-				htmltext = "ziggurat_noadena.htm";
+				htmltext = HTML_ZIGGURAT_NOADENA;
 				qs.exitQuest(true);
 			}
 			else if ((playerLevel >= 30) && (playerLevel < 40) && (player.getAdena() < 4500))
 			{
-				htmltext = "ziggurat_noadena.htm";
+				htmltext = HTML_ZIGGURAT_NOADENA;
 				qs.exitQuest(true);
 			}
 			else if ((playerLevel >= 40) && (playerLevel < 50) && (player.getAdena() < 8000))
 			{
-				htmltext = "ziggurat_noadena.htm";
+				htmltext = HTML_ZIGGURAT_NOADENA;
 				qs.exitQuest(true);
 			}
 			else if ((playerLevel >= 50) && (playerLevel < 60) && (player.getAdena() < 12500))
 			{
-				htmltext = "ziggurat_noadena.htm";
+				htmltext = HTML_ZIGGURAT_NOADENA;
 				qs.exitQuest(true);
 			}
 			else if ((playerLevel >= 60) && (playerLevel < 70) && (player.getAdena() < 18000))
 			{
-				htmltext = "ziggurat_noadena.htm";
+				htmltext = HTML_ZIGGURAT_NOADENA;
 				qs.exitQuest(true);
 			}
 			else if ((playerLevel >= 70) && (player.getAdena() < 24500))
 			{
-				htmltext = "ziggurat_noadena.htm";
+				htmltext = HTML_ZIGGURAT_NOADENA;
 				qs.exitQuest(true);
 			}
 			else

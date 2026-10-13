@@ -28,6 +28,9 @@ import com.l2journey.gameserver.model.quest.QuestState;
  */
 public class Q00132_MatrasCuriosity extends Quest
 {
+	private static final String REWARDED_PRINCE = "rewarded_prince";
+	private static final String REWARDED_RANKU = "rewarded_ranku";
+
 	// NPCs
 	private static final int MATRAS = 32245;
 	private static final int DEMON_PRINCE = 25540;
@@ -66,8 +69,8 @@ public class Q00132_MatrasCuriosity extends Quest
 			if (qs.isCreated())
 			{
 				qs.startQuest();
-				qs.set("rewarded_prince", "1");
-				qs.set("rewarded_ranku", "1");
+				qs.set(REWARDED_PRINCE, "1");
+				qs.set(REWARDED_RANKU, "1");
 			}
 			else
 			{
@@ -97,12 +100,12 @@ public class Q00132_MatrasCuriosity extends Quest
 		{
 			case DEMON_PRINCE:
 			{
-				pl = getRandomPartyMember(player, "rewarded_prince", "1");
+				pl = getRandomPartyMember(player, REWARDED_PRINCE, "1");
 				if (pl != null)
 				{
 					final QuestState qs = getQuestState(pl, false);
 					giveItems(player, BLUEPRINT_PRINCE, 1);
-					qs.set("rewarded_prince", "2");
+					qs.set(REWARDED_PRINCE, "2");
 					if (hasQuestItems(player, BLUEPRINT_RANKU))
 					{
 						qs.setCond(2, true);
@@ -116,12 +119,12 @@ public class Q00132_MatrasCuriosity extends Quest
 			}
 			case RANKU:
 			{
-				pl = getRandomPartyMember(player, "rewarded_ranku", "1");
+				pl = getRandomPartyMember(player, REWARDED_RANKU, "1");
 				if (pl != null)
 				{
 					final QuestState qs = getQuestState(pl, false);
 					giveItems(player, BLUEPRINT_RANKU, 1);
-					qs.set("rewarded_ranku", "2");
+					qs.set(REWARDED_RANKU, "2");
 					if (hasQuestItems(player, BLUEPRINT_PRINCE))
 					{
 						qs.setCond(2, true);

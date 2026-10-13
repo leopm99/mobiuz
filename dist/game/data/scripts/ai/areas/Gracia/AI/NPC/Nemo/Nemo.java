@@ -44,6 +44,8 @@ import ai.areas.Gracia.AI.Maguen;
  */
 public class Nemo extends AbstractNpcAI
 {
+	private static final String TEST_MAGUEN = "TEST_MAGUEN";
+
 	// NPC
 	private static final int NEMO = 32735; // Nemo
 	private static final int MAGUEN = 18839; // Wild Maguen
@@ -89,13 +91,13 @@ public class Nemo extends AbstractNpcAI
 			}
 			case "summonMaguen":
 			{
-				if ((player.getVariables().getInt("TEST_MAGUEN", 0) == 0) && (npc.getScriptValue() < MAXIMUM_MAGUEN))
+				if ((player.getVariables().getInt(TEST_MAGUEN, 0) == 0) && (npc.getScriptValue() < MAXIMUM_MAGUEN))
 				{
 					final Npc maguen = addSpawn(MAGUEN, npc.getLocation(), true, 60000, true);
 					maguen.getVariables().set("SUMMON_PLAYER", player);
 					maguen.getVariables().set("SPAWNED_NPC", npc);
-					maguen.getVariables().set("TEST_MAGUEN", 1);
-					player.getVariables().set("TEST_MAGUEN", 1);
+					maguen.getVariables().set(TEST_MAGUEN, 1);
+					player.getVariables().set(TEST_MAGUEN, 1);
 					maguen.setTitle(player.getName());
 					maguen.setRunning();
 					maguen.getAI().setIntention(Intention.FOLLOW, player);
@@ -116,7 +118,7 @@ public class Nemo extends AbstractNpcAI
 				final Npc spawnedNpc = npc.getVariables().getObject("SPAWNED_NPC", Npc.class);
 				if ((spawnedNpc != null) && (spawnedNpc.getScriptValue() > 0))
 				{
-					player.getVariables().remove("TEST_MAGUEN");
+					player.getVariables().remove(TEST_MAGUEN);
 					spawnedNpc.setScriptValue(spawnedNpc.getScriptValue() - 1);
 				}
 			}

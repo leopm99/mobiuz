@@ -94,6 +94,13 @@ import com.l2journey.gameserver.util.FloodProtectorConfig;
 @SuppressWarnings({ "java:S3008", "java:S1444", "java:S1104" })
 public class Config
 {
+	private static final String ALTGAMECANCELBYHIT = "AltGameCancelByHit";
+	private static final String FLOODPROTECTOR = "FloodProtector";
+	private static final String SERVERID = "ServerID";
+	private static final String N_00FF00 = "00FF00";
+	private static final String TITLE = "Title";
+	private static final String HEXID = "HexID";
+
 	private static final Logger LOGGER = Logger.getLogger(Config.class.getName());
 	
 	// --------------------------------------------------
@@ -2890,8 +2897,8 @@ public class Config
 		ALT_STORE_DANCES = characterConfig.getBoolean("AltStoreDances", false);
 		ALT_STORE_TOGGLES = characterConfig.getBoolean("AltStoreToggles", false);
 		AUTO_LEARN_DIVINE_INSPIRATION = characterConfig.getBoolean("AutoLearnDivineInspiration", false);
-		ALT_GAME_CANCEL_BOW = characterConfig.getString("AltGameCancelByHit", "Cast").equalsIgnoreCase("bow") || characterConfig.getString("AltGameCancelByHit", "Cast").equalsIgnoreCase("all");
-		ALT_GAME_CANCEL_CAST = characterConfig.getString("AltGameCancelByHit", "Cast").equalsIgnoreCase("cast") || characterConfig.getString("AltGameCancelByHit", "Cast").equalsIgnoreCase("all");
+		ALT_GAME_CANCEL_BOW = characterConfig.getString(ALTGAMECANCELBYHIT, "Cast").equalsIgnoreCase("bow") || characterConfig.getString(ALTGAMECANCELBYHIT, "Cast").equalsIgnoreCase("all");
+		ALT_GAME_CANCEL_CAST = characterConfig.getString(ALTGAMECANCELBYHIT, "Cast").equalsIgnoreCase("cast") || characterConfig.getString(ALTGAMECANCELBYHIT, "Cast").equalsIgnoreCase("all");
 		ALT_GAME_MAGICFAILURES = characterConfig.getBoolean("MagicFailures", true);
 		PLAYER_FAKEDEATH_UP_PROTECTION = characterConfig.getInt("PlayerFakeDeathUpProtection", 0);
 		STORE_SKILL_COOLTIME = characterConfig.getBoolean("StoreSkillCooltime", true);
@@ -3419,16 +3426,16 @@ public class Config
 		PVP_AMOUNT3 = pvpTitleColorConfig.getInt("PvpAmount3", 1500);
 		PVP_AMOUNT4 = pvpTitleColorConfig.getInt("PvpAmount4", 2500);
 		PVP_AMOUNT5 = pvpTitleColorConfig.getInt("PvpAmount5", 5000);
-		NAME_COLOR_FOR_PVP_AMOUNT1 = Integer.decode("0x" + pvpTitleColorConfig.getString("ColorForAmount1", "00FF00"));
-		NAME_COLOR_FOR_PVP_AMOUNT2 = Integer.decode("0x" + pvpTitleColorConfig.getString("ColorForAmount2", "00FF00"));
-		NAME_COLOR_FOR_PVP_AMOUNT3 = Integer.decode("0x" + pvpTitleColorConfig.getString("ColorForAmount3", "00FF00"));
-		NAME_COLOR_FOR_PVP_AMOUNT4 = Integer.decode("0x" + pvpTitleColorConfig.getString("ColorForAmount4", "00FF00"));
-		NAME_COLOR_FOR_PVP_AMOUNT5 = Integer.decode("0x" + pvpTitleColorConfig.getString("ColorForAmount5", "00FF00"));
-		TITLE_FOR_PVP_AMOUNT1 = pvpTitleColorConfig.getString("PvPTitleForAmount1", "Title");
-		TITLE_FOR_PVP_AMOUNT2 = pvpTitleColorConfig.getString("PvPTitleForAmount2", "Title");
-		TITLE_FOR_PVP_AMOUNT3 = pvpTitleColorConfig.getString("PvPTitleForAmount3", "Title");
-		TITLE_FOR_PVP_AMOUNT4 = pvpTitleColorConfig.getString("PvPTitleForAmount4", "Title");
-		TITLE_FOR_PVP_AMOUNT5 = pvpTitleColorConfig.getString("PvPTitleForAmount5", "Title");
+		NAME_COLOR_FOR_PVP_AMOUNT1 = Integer.decode("0x" + pvpTitleColorConfig.getString("ColorForAmount1", N_00FF00));
+		NAME_COLOR_FOR_PVP_AMOUNT2 = Integer.decode("0x" + pvpTitleColorConfig.getString("ColorForAmount2", N_00FF00));
+		NAME_COLOR_FOR_PVP_AMOUNT3 = Integer.decode("0x" + pvpTitleColorConfig.getString("ColorForAmount3", N_00FF00));
+		NAME_COLOR_FOR_PVP_AMOUNT4 = Integer.decode("0x" + pvpTitleColorConfig.getString("ColorForAmount4", N_00FF00));
+		NAME_COLOR_FOR_PVP_AMOUNT5 = Integer.decode("0x" + pvpTitleColorConfig.getString("ColorForAmount5", N_00FF00));
+		TITLE_FOR_PVP_AMOUNT1 = pvpTitleColorConfig.getString("PvPTitleForAmount1", TITLE);
+		TITLE_FOR_PVP_AMOUNT2 = pvpTitleColorConfig.getString("PvPTitleForAmount2", TITLE);
+		TITLE_FOR_PVP_AMOUNT3 = pvpTitleColorConfig.getString("PvPTitleForAmount3", TITLE);
+		TITLE_FOR_PVP_AMOUNT4 = pvpTitleColorConfig.getString("PvPTitleForAmount4", TITLE);
+		TITLE_FOR_PVP_AMOUNT5 = pvpTitleColorConfig.getString("PvPTitleForAmount5", TITLE);
 	}
 	
 	/**
@@ -3695,11 +3702,11 @@ public class Config
 	 */
 	private static void loadFloodProtectorConfig(ConfigReader configs, FloodProtectorConfig config, String configString, int defaultInterval)
 	{
-		config.floodProtectionInterval = configs.getInt("FloodProtector" + configString + "Interval", defaultInterval);
-		config.logFlooding = configs.getBoolean("FloodProtector" + configString + "LogFlooding", false);
-		config.punishmentLimit = configs.getInt("FloodProtector" + configString + "PunishmentLimit", 0);
-		config.punishmentType = configs.getString("FloodProtector" + configString + "PunishmentType", "none");
-		config.punishmentTime = configs.getInt("FloodProtector" + configString + "PunishmentTime", 0) * 60000L;
+		config.floodProtectionInterval = configs.getInt(FLOODPROTECTOR + configString + "Interval", defaultInterval);
+		config.logFlooding = configs.getBoolean(FLOODPROTECTOR + configString + "LogFlooding", false);
+		config.punishmentLimit = configs.getInt(FLOODPROTECTOR + configString + "PunishmentLimit", 0);
+		config.punishmentType = configs.getString(FLOODPROTECTOR + configString + "PunishmentType", "none");
+		config.punishmentTime = configs.getInt(FLOODPROTECTOR + configString + "PunishmentTime", 0) * 60000L;
 	}
 	
 	/**
@@ -3990,12 +3997,12 @@ public class Config
 		if (hexIdFile.exists())
 		{
 			final ConfigReader hexId = new ConfigReader(HEXID_FILE);
-			if (hexId.containsKey("ServerID") && hexId.containsKey("HexID"))
+			if (hexId.containsKey(SERVERID) && hexId.containsKey(HEXID))
 			{
-				SERVER_ID = hexId.getInt("ServerID", 1);
+				SERVER_ID = hexId.getInt(SERVERID, 1);
 				try
 				{
-					HEX_ID = new BigInteger(hexId.getString("HexID", null), 16).toByteArray();
+					HEX_ID = new BigInteger(hexId.getString(HEXID, null), 16).toByteArray();
 				}
 				catch (Exception _)
 				{
@@ -4036,14 +4043,14 @@ public class Config
 			if (!shouldSave)
 			{
 				final ConfigReader existingSettings = new ConfigReader(fileName);
-				shouldSave = (existingSettings.getInt("ServerID", -1) != serverId) || !hexId.equals(existingSettings.getString("HexID", null));
+				shouldSave = (existingSettings.getInt(SERVERID, -1) != serverId) || !hexId.equals(existingSettings.getString(HEXID, null));
 			}
 			if (shouldSave)
 			{
 				try (OutputStream out = new FileOutputStream(file))
 				{
-					hexSetting.setProperty("ServerID", String.valueOf(serverId));
-					hexSetting.setProperty("HexID", hexId);
+					hexSetting.setProperty(SERVERID, String.valueOf(serverId));
+					hexSetting.setProperty(HEXID, hexId);
 					hexSetting.store(out, "The HexId to Auth into LoginServer");
 				}
 			}

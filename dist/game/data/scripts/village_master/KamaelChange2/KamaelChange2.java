@@ -48,6 +48,11 @@ import quests.Q00066_CertifiedArbalester.Q00066_CertifiedArbalester;
  */
 public class KamaelChange2 extends AbstractNpcAI
 {
+	private static final String HTML_N_32145_02 = "32145-02.htm";
+	private static final String HTML_N_32145_03 = "32145-03.htm";
+	private static final String HTML_N_32145_10 = "32145-10.htm";
+	private static final String HTML_N_32145_04 = "32145-04.htm";
+
 	// NPCs
 	private static int[] NPCS_MALE =
 	{
@@ -121,11 +126,11 @@ public class KamaelChange2 extends AbstractNpcAI
 			{
 				if (ArrayUtil.contains(NPCS_MALE, npc.getId()))
 				{
-					htmltext = "32145-02.htm"; // master_all_kamael012b
+					htmltext = HTML_N_32145_02; // master_all_kamael012b
 				}
 				else
 				{
-					htmltext = "32145-03.htm"; // master_all_kamael012c
+					htmltext = HTML_N_32145_03; // master_all_kamael012c
 				}
 			}
 			else if (player.isInCategory(CategoryType.KAMAEL_THIRD_CLASS_GROUP))
@@ -215,14 +220,14 @@ public class KamaelChange2 extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "32145-10.htm"; // master_all_kamael002c
+					htmltext = HTML_N_32145_10; // master_all_kamael002c
 				}
 			}
 			else if (player.getPlayerClass() == PlayerClass.WARDER)
 			{
 				if (ArrayUtil.contains(NPCS_MALE, npc.getId()))
 				{
-					htmltext = "32145-04.htm"; // master_all_kamael002b
+					htmltext = HTML_N_32145_04; // master_all_kamael002b
 				}
 				else
 				{
@@ -302,11 +307,11 @@ public class KamaelChange2 extends AbstractNpcAI
 		{
 			if (player.getPlayerClass() == PlayerClass.MALE_SOLDIER)
 			{
-				htmltext = "32145-02.htm"; // master_all_kamael012b
+				htmltext = HTML_N_32145_02; // master_all_kamael012b
 			}
 			else if (player.getPlayerClass() == PlayerClass.FEMALE_SOLDIER)
 			{
-				htmltext = "32145-03.htm"; // master_all_kamael012c
+				htmltext = HTML_N_32145_03; // master_all_kamael012c
 			}
 		}
 		else if (player.isInCategory(CategoryType.KAMAEL_SECOND_CLASS_GROUP))
@@ -315,7 +320,7 @@ public class KamaelChange2 extends AbstractNpcAI
 			{
 				if (player.isInCategory(CategoryType.KAMAEL_FEMALE_MAIN_OCCUPATION))
 				{
-					htmltext = "32145-04.htm"; // master_all_kamael002b
+					htmltext = HTML_N_32145_04; // master_all_kamael002b
 					return htmltext;
 				}
 				
@@ -325,20 +330,20 @@ public class KamaelChange2 extends AbstractNpcAI
 				}
 				else if (player.getPlayerClass() == PlayerClass.WARDER)
 				{
-					htmltext = "32145-02.htm"; // master_all_kamael012b
+					htmltext = HTML_N_32145_02; // master_all_kamael012b
 				}
 			}
 			else
 			{
 				if (player.isInCategory(CategoryType.KAMAEL_MALE_MAIN_OCCUPATION))
 				{
-					htmltext = "32145-10.htm"; // master_all_kamael002c
+					htmltext = HTML_N_32145_10; // master_all_kamael002c
 					return htmltext;
 				}
 				
 				if (player.getPlayerClass() == PlayerClass.TROOPER)
 				{
-					htmltext = "32145-03.htm"; // master_all_kamael012c
+					htmltext = HTML_N_32145_03; // master_all_kamael012c
 				}
 				else if (player.getPlayerClass() == PlayerClass.WARDER)
 				{
@@ -356,7 +361,7 @@ public class KamaelChange2 extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "32145-04.htm"; // master_all_kamael002b
+					htmltext = HTML_N_32145_04; // master_all_kamael002b
 				}
 			}
 			else
@@ -367,7 +372,7 @@ public class KamaelChange2 extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "32145-10.htm"; // master_all_kamael002c
+					htmltext = HTML_N_32145_10; // master_all_kamael002c
 				}
 			}
 		}
@@ -381,7 +386,7 @@ public class KamaelChange2 extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "32145-04.htm"; // master_all_kamael002b
+					htmltext = HTML_N_32145_04; // master_all_kamael002b
 				}
 			}
 			else
@@ -392,7 +397,7 @@ public class KamaelChange2 extends AbstractNpcAI
 				}
 				else
 				{
-					htmltext = "32145-10.htm"; // master_all_kamael002c
+					htmltext = HTML_N_32145_10; // master_all_kamael002c
 				}
 			}
 		}

@@ -35,9 +35,11 @@ import com.l2journey.gameserver.util.Broadcast;
  */
 public class AdminMobGroup implements IAdminCommandHandler
 {
+	private static final String ADMIN_MOBMENU = "admin_mobmenu";
+
 	private static final String[] ADMIN_COMMANDS =
 	{
-		"admin_mobmenu",
+		ADMIN_MOBMENU,
 		"admin_mobgroup_list",
 		"admin_mobgroup_create",
 		"admin_mobgroup_remove",
@@ -59,7 +61,7 @@ public class AdminMobGroup implements IAdminCommandHandler
 	@Override
 	public boolean useAdminCommand(String command, Player activeChar)
 	{
-		if (command.equals("admin_mobmenu"))
+		if (command.equals(ADMIN_MOBMENU))
 		{
 			showMainPage(activeChar);
 		}
@@ -131,7 +133,7 @@ public class AdminMobGroup implements IAdminCommandHandler
 		{
 			teleportGroup(command, activeChar);
 		}
-		if (!command.equals("admin_mobmenu"))
+		if (!command.equals(ADMIN_MOBMENU))
 		{
 			showMainPage(activeChar);
 		}

@@ -40,6 +40,8 @@ import ai.AbstractNpcAI;
  */
 public class CastleWarehouse extends AbstractNpcAI
 {
+	private static final String HTML_WAREHOUSE_NO = "warehouse-no.html";
+
 	// NPCs
 	private static final int[] NPCS =
 	{
@@ -76,7 +78,7 @@ public class CastleWarehouse extends AbstractNpcAI
 			}
 			case "warehouse-04.html":
 			{
-				htmltext = !npc.isMyLord(player) ? "warehouse-no.html" : getHtm(player, "warehouse-04.html").replace("%blood%", Integer.toString(player.getClan().getBloodAllianceCount()));
+				htmltext = !npc.isMyLord(player) ? HTML_WAREHOUSE_NO : getHtm(player, "warehouse-04.html").replace("%blood%", Integer.toString(player.getClan().getBloodAllianceCount()));
 				break;
 			}
 			case "Receive":
@@ -84,7 +86,7 @@ public class CastleWarehouse extends AbstractNpcAI
 				final Clan clan = player.getClan();
 				if (!npc.isMyLord(player))
 				{
-					htmltext = "warehouse-no.html";
+					htmltext = HTML_WAREHOUSE_NO;
 				}
 				else if (clan.getBloodAllianceCount() == 0)
 				{
@@ -102,7 +104,7 @@ public class CastleWarehouse extends AbstractNpcAI
 			{
 				if (!npc.isMyLord(player))
 				{
-					htmltext = "warehouse-no.html";
+					htmltext = HTML_WAREHOUSE_NO;
 				}
 				else if (!hasQuestItems(player, BLOOD_ALLIANCE))
 				{

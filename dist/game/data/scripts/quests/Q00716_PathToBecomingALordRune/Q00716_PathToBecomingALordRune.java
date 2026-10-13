@@ -41,6 +41,8 @@ import quests.Q00025_HidingBehindTheTruth.Q00025_HidingBehindTheTruth;
  */
 public class Q00716_PathToBecomingALordRune extends Quest
 {
+	private static final String PAGANCOUNT = "paganCount";
+
 	private static final int FREDERICK = 35509;
 	private static final int AGRIPEL = 31348;
 	private static final int INNOCENTIN = 31328;
@@ -253,7 +255,7 @@ public class Q00716_PathToBecomingALordRune extends Quest
 				}
 				else if (qs.isCond(7))
 				{
-					if ((qs.get("paganCount") != null) && (qs.getInt("paganCount") >= 100))
+					if ((qs.get(PAGANCOUNT) != null) && (qs.getInt(PAGANCOUNT) >= 100))
 					{
 						htmltext = "31348-07.html";
 					}
@@ -311,13 +313,13 @@ public class Q00716_PathToBecomingALordRune extends Quest
 		final Player castleOwner = castle.getOwner().getLeader().getPlayer();
 		if ((qs.getState() == State.STARTED) && qs.isCond(0) && (castleOwner != null) && (castleOwner != qs.getPlayer()) && (castleOwner.getQuestState(Q00716_PathToBecomingALordRune.class.getSimpleName()) != null) && (castleOwner.getQuestState(Q00716_PathToBecomingALordRune.class.getSimpleName()).isCond(7)))
 		{
-			if (castleOwner.getQuestState(Q00716_PathToBecomingALordRune.class.getSimpleName()).get("paganCount") != null)
+			if (castleOwner.getQuestState(Q00716_PathToBecomingALordRune.class.getSimpleName()).get(PAGANCOUNT) != null)
 			{
-				castleOwner.getQuestState(Q00716_PathToBecomingALordRune.class.getSimpleName()).set("paganCount", String.valueOf(castleOwner.getQuestState(Q00716_PathToBecomingALordRune.class.getSimpleName()).getInt("paganCount") + 1));
+				castleOwner.getQuestState(Q00716_PathToBecomingALordRune.class.getSimpleName()).set(PAGANCOUNT, String.valueOf(castleOwner.getQuestState(Q00716_PathToBecomingALordRune.class.getSimpleName()).getInt(PAGANCOUNT) + 1));
 			}
 			else
 			{
-				castleOwner.getQuestState(Q00716_PathToBecomingALordRune.class.getSimpleName()).set("paganCount", "1");
+				castleOwner.getQuestState(Q00716_PathToBecomingALordRune.class.getSimpleName()).set(PAGANCOUNT, "1");
 			}
 		}
 	}

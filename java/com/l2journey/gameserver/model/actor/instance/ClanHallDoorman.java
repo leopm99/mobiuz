@@ -35,6 +35,9 @@ import com.l2journey.gameserver.network.serverpackets.NpcHtmlMessage;
 
 public class ClanHallDoorman extends Doorman
 {
+	private static final String PH_CLANNAME = "%clanname%";
+	private static final String PH_OBJECTID = "%objectId%";
+
 	private volatile boolean _init = false;
 	private ClanHall _clanHall = null;
 	private boolean _hasEvolve = false;
@@ -141,12 +144,12 @@ public class ClanHallDoorman extends Doorman
 				if (_hasEvolve)
 				{
 					html.setFile(player, "data/html/clanHallDoorman/doorman2.htm");
-					html.replace("%clanname%", owner.getName());
+					html.replace(PH_CLANNAME, owner.getName());
 				}
 				else
 				{
 					html.setFile(player, "data/html/clanHallDoorman/doorman1.htm");
-					html.replace("%clanname%", owner.getName());
+					html.replace(PH_CLANNAME, owner.getName());
 				}
 			}
 			else
@@ -155,7 +158,7 @@ public class ClanHallDoorman extends Doorman
 				{
 					html.setFile(player, "data/html/clanHallDoorman/doorman-no.htm");
 					html.replace("%leadername%", owner.getLeaderName());
-					html.replace("%clanname%", owner.getName());
+					html.replace(PH_CLANNAME, owner.getName());
 				}
 				else
 				{
@@ -169,7 +172,7 @@ public class ClanHallDoorman extends Doorman
 			return;
 		}
 		
-		html.replace("%objectId%", String.valueOf(getObjectId()));
+		html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 		player.sendPacket(html);
 	}
 	
@@ -179,7 +182,7 @@ public class ClanHallDoorman extends Doorman
 		getClanHall().openCloseDoors(true);
 		final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 		html.setFile(player, "data/html/clanHallDoorman/doorman-opened.htm");
-		html.replace("%objectId%", String.valueOf(getObjectId()));
+		html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 		player.sendPacket(html);
 	}
 	
@@ -189,7 +192,7 @@ public class ClanHallDoorman extends Doorman
 		getClanHall().openCloseDoors(false);
 		final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 		html.setFile(player, "data/html/clanHallDoorman/doorman-closed.htm");
-		html.replace("%objectId%", String.valueOf(getObjectId()));
+		html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 		player.sendPacket(html);
 	}
 	

@@ -47,6 +47,8 @@ import ai.AbstractNpcAI;
  */
 public class DragonValley extends AbstractNpcAI
 {
+	private static final String SELF_DESTRUCTION_KEY = "SELF_DESTRUCTION";
+
 	// NPC
 	private static final int NECROMANCER_OF_THE_VALLEY = 22858;
 	private static final int EXPLODING_ORC_GHOST = 22818;
@@ -151,7 +153,7 @@ public class DragonValley extends AbstractNpcAI
 	@Override
 	public String onEvent(String event, Npc npc, Player player)
 	{
-		if (event.equals("SELF_DESTRUCTION") && (npc != null) && !npc.isDead())
+		if (event.equals(SELF_DESTRUCTION_KEY) && (npc != null) && !npc.isDead())
 		{
 			final Playable playable = npc.getVariables().getObject("playable", Playable.class);
 			if ((playable != null) && (npc.calculateDistance3D(playable) < 250))
@@ -161,7 +163,7 @@ public class DragonValley extends AbstractNpcAI
 			}
 			else if (playable != null)
 			{
-				startQuestTimer("SELF_DESTRUCTION", 3000, npc, null);
+				startQuestTimer(SELF_DESTRUCTION_KEY, 3000, npc, null);
 			}
 		}
 		return super.onEvent(event, npc, player);
@@ -210,7 +212,7 @@ public class DragonValley extends AbstractNpcAI
 		npc.asAttackable().setOnKillDelay(0);
 		if (npc.getId() == EXPLODING_ORC_GHOST)
 		{
-			startQuestTimer("SELF_DESTRUCTION", 3000, npc, null);
+			startQuestTimer(SELF_DESTRUCTION_KEY, 3000, npc, null);
 		}
 		else if (ArrayUtil.contains(SPAWN_ANIMATION, npc.getId()))
 		{

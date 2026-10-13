@@ -34,6 +34,8 @@ import com.l2journey.gameserver.network.serverpackets.NpcSay;
  */
 public class Q00348_AnArrogantSearch extends Quest
 {
+	private static final String DESPAWN = "DESPAWN";
+
 	// NPCs
 	private static final int HARNE = 30144;
 	private static final int MARTIEN = 30645;
@@ -124,7 +126,7 @@ public class Q00348_AnArrogantSearch extends Quest
 		{
 			case ARK_GUARDIAN_ELBEROTH, ARK_GUARDIAN_SHADOWFANG, ANGEL_KILLER:
 			{
-				if ("DESPAWN".equals(event))
+				if (DESPAWN.equals(event))
 				{
 					npc.deleteMe();
 					return super.onEvent(event, npc, player);
@@ -596,20 +598,20 @@ public class Q00348_AnArrogantSearch extends Quest
 			{
 				npc.getVariables().set(I_QUEST0, false);
 				npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.NPC_GENERAL, npc.getId(), NpcStringId.THAT_DOESN_T_BELONG_TO_YOU_DON_T_TOUCH_IT));
-				startQuestTimer("DESPAWN", 600000, npc, null);
+				startQuestTimer(DESPAWN, 600000, npc, null);
 				break;
 			}
 			case ARK_GUARDIAN_SHADOWFANG:
 			{
 				npc.getVariables().set(I_QUEST0, false);
 				npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.NPC_GENERAL, npc.getId(), NpcStringId.GET_OUT_OF_MY_SIGHT_YOU_INFIDELS));
-				startQuestTimer("DESPAWN", 600000, npc, null);
+				startQuestTimer(DESPAWN, 600000, npc, null);
 				break;
 			}
 			case ANGEL_KILLER:
 			{
 				npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.NPC_GENERAL, npc.getId(), NpcStringId.I_HAVE_THE_KEY_WHY_DON_T_YOU_COME_AND_TAKE_IT));
-				startQuestTimer("DESPAWN", 600000, npc, null);
+				startQuestTimer(DESPAWN, 600000, npc, null);
 			}
 			default:
 			{

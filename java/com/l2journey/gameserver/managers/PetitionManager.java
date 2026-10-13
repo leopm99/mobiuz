@@ -51,6 +51,9 @@ import com.l2journey.gameserver.network.serverpackets.SystemMessage;
  */
 public class PetitionManager
 {
+	private static final String N_00FF00 = "00FF00";
+	private static final String N_999999 = "999999";
+
 	protected static final Logger LOGGER = Logger.getLogger(PetitionManager.class.getName());
 	
 	private final Map<Integer, Petition> _pendingPetitions;
@@ -376,7 +379,7 @@ public class PetitionManager
 			}
 			
 			htmlContent.append("<tr><td width=\"270\"><table width=\"270\" cellpadding=\"2\" bgcolor=" + (color ? "131210" : "444444") + "><tr><td width=\"130\">" + dateFormat.format(new Date(currPetition.getSubmitTime())));
-			htmlContent.append("</td><td width=\"140\" align=right><font color=\"" + (currPetition.getPetitioner().isOnline() ? "00FF00" : "999999") + "\">" + currPetition.getPetitioner().getName() + "</font></td></tr>");
+			htmlContent.append("</td><td width=\"140\" align=right><font color=\"" + (currPetition.getPetitioner().isOnline() ? N_00FF00 : N_999999) + "\">" + currPetition.getPetitioner().getName() + "</font></td></tr>");
 			htmlContent.append("<tr><td width=\"130\">");
 			if (currPetition.getState() != PetitionState.IN_PROCESS)
 			{
@@ -384,7 +387,7 @@ public class PetitionManager
 			}
 			else
 			{
-				htmlContent.append("<font color=\"" + (currPetition.getResponder().isOnline() ? "00FF00" : "999999") + "\">" + currPetition.getResponder().getName() + "</font>");
+				htmlContent.append("<font color=\"" + (currPetition.getResponder().isOnline() ? N_00FF00 : N_999999) + "\">" + currPetition.getResponder().getName() + "</font>");
 			}
 			htmlContent.append("</td>" + currPetition.getTypeAsString() + "<td width=\"140\" align=right>" + currPetition.getTypeAsString() + "</td></tr></table></td></tr>");
 			color = !color;
@@ -431,7 +434,7 @@ public class PetitionManager
 		html.replace("%time%", dateFormat.format(new Date(currPetition.getSubmitTime())));
 		html.replace("%type%", currPetition.getTypeAsString());
 		html.replace("%petitioner%", currPetition.getPetitioner().getName());
-		html.replace("%online%", currPetition.getPetitioner().isOnline() ? "00FF00" : "999999");
+		html.replace("%online%", currPetition.getPetitioner().isOnline() ? N_00FF00 : N_999999);
 		html.replace("%text%", currPetition.getContent());
 		player.sendPacket(html);
 	}

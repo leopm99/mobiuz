@@ -34,6 +34,8 @@ import com.l2journey.gameserver.network.serverpackets.SocialAction;
  */
 public class Q00235_MimirsElixir extends Quest
 {
+	private static final String HTML_N_31149_03 = "31149-03.html";
+
 	// NPCs
 	private static final int JOAN = 30718;
 	private static final int LADD = 30721;
@@ -185,7 +187,7 @@ public class Q00235_MimirsElixir extends Quest
 			{
 				if (qs.isMemoState(7))
 				{
-					htmltext = ((hasQuestItems(player, PURE_SILVER)) ? "31149-04.html" : "31149-03.html");
+					htmltext = ((hasQuestItems(player, PURE_SILVER)) ? "31149-04.html" : HTML_N_31149_03);
 				}
 				break;
 			}
@@ -193,7 +195,7 @@ public class Q00235_MimirsElixir extends Quest
 			{
 				if (qs.isMemoState(7))
 				{
-					htmltext = ((hasQuestItems(player, TRUE_GOLD)) ? "31149-06.html" : "31149-03.html");
+					htmltext = ((hasQuestItems(player, TRUE_GOLD)) ? "31149-06.html" : HTML_N_31149_03);
 				}
 				break;
 			}
@@ -201,7 +203,7 @@ public class Q00235_MimirsElixir extends Quest
 			{
 				if (qs.isMemoState(7))
 				{
-					htmltext = ((hasQuestItems(player, BLOOD_FIRE)) ? "31149-08.html" : "31149-03.html");
+					htmltext = ((hasQuestItems(player, BLOOD_FIRE)) ? "31149-08.html" : HTML_N_31149_03);
 				}
 				break;
 			}

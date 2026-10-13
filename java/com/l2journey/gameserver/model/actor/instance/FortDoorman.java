@@ -30,6 +30,8 @@ import com.l2journey.gameserver.network.serverpackets.NpcHtmlMessage;
 
 public class FortDoorman extends Doorman
 {
+	private static final String HTML_PATH = "data/html/doorman/";
+
 	/**
 	 * Creates a fort doorman.
 	 * @param template the fort doorman NPC template
@@ -48,15 +50,15 @@ public class FortDoorman extends Doorman
 		final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 		if (!isOwnerClan(player))
 		{
-			html.setFile(player, "data/html/doorman/" + getTemplate().getId() + "-no.htm");
+			html.setFile(player, HTML_PATH + getTemplate().getId() + "-no.htm");
 		}
 		else if (isUnderSiege())
 		{
-			html.setFile(player, "data/html/doorman/" + getTemplate().getId() + "-busy.htm");
+			html.setFile(player, HTML_PATH + getTemplate().getId() + "-busy.htm");
 		}
 		else
 		{
-			html.setFile(player, "data/html/doorman/" + getTemplate().getId() + ".htm");
+			html.setFile(player, HTML_PATH + getTemplate().getId() + ".htm");
 		}
 		
 		html.replace("%objectId%", String.valueOf(getObjectId()));

@@ -62,41 +62,53 @@ import com.l2journey.gameserver.network.serverpackets.NpcHtmlMessage;
  */
 public class DressMeVCmd implements IVoicedCommandHandler
 {
+	private static final String SHOWVISUALCHANGE = "showVisualChange";
+	private static final String DRESS_SHIELDPAGE = "dress-shieldpage";
+	private static final String DRESS_WEAPONPAGE = "dress-weaponpage";
+	private static final String DRESS_ARMORPAGE = "dress-armorpage";
+	private static final String DRESS_CLOAKPAGE = "dress-cloakpage";
+	private static final String DRESSME_WEAPON = "dressme-weapon";
+	private static final String DRESS_HATPAGE = "dress-hatpage";
+	private static final String UNDRESSME = "undressme";
+	private static final String SHOWDRESS = "showdress";
+	private static final String HIDEDRESS = "hidedress";
+	private static final String DRESSME = "dressme";
+
 	private static final Logger LOGGER = Logger.getLogger(DressMeVCmd.class.getName());
 	
 	private static final String[] VOICED_COMMANDS =
 	{
-		"dressme",
-		"undressme",
+		DRESSME,
+		UNDRESSME,
 		
 		"dressinfo",
 		
-		"showdress",
-		"hidedress",
+		SHOWDRESS,
+		HIDEDRESS,
 		
 		"dressme-armor",
 		"dress-armor",
-		"dress-armorpage",
+		DRESS_ARMORPAGE,
 		"undressme-armor",
 		
 		"dressme-cloak",
 		"dress-cloak",
-		"dress-cloakpage",
+		DRESS_CLOAKPAGE,
 		"undressme-cloak",
 		
 		"dressme-shield",
 		"dress-shield",
-		"dress-shieldpage",
+		DRESS_SHIELDPAGE,
 		"undressme-shield",
 		
-		"dressme-weapon",
+		DRESSME_WEAPON,
 		"dress-weapon",
-		"dress-weaponpage",
+		DRESS_WEAPONPAGE,
 		"undressme-weapon",
 		
 		"dressme-hat",
 		"dress-hat",
-		"dress-hatpage",
+		DRESS_HATPAGE,
 		"undressme-hat"
 	};
 	
@@ -128,7 +140,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 	String dressHatPath = "data/html/dressme/dress-hat.htm";
 	
 	/**
-	 * Implementation of the "dressme" command.
+	 * Implementation of the DRESSME command.
 	 * @param player The instance of the player that used the command.
 	 * @param params The params required by the command.
 	 * @return TRUE if the command was successful, FALSE otherwise.
@@ -136,8 +148,8 @@ public class DressMeVCmd implements IVoicedCommandHandler
 	private boolean command_Dressme(Player player, String params)
 	{
 		String html = HtmCache.getInstance().getHtm(player, indexPath);
-		html = html.replace("<?show_hide?>", !player.getVarB("showVisualChange") ? "Show visual equip on other player!" : "Hide visual equip on other player!");
-		html = html.replace("<?show_hide_b?>", !player.getVarB("showVisualChange") ? "showdress" : "hidedress");
+		html = html.replace("<?show_hide?>", !player.getVarB(SHOWVISUALCHANGE) ? "Show visual equip on other player!" : "Hide visual equip on other player!");
+		html = html.replace("<?show_hide_b?>", !player.getVarB(SHOWVISUALCHANGE) ? SHOWDRESS : HIDEDRESS);
 		
 		sendHtml(player, html);
 		return true;
@@ -424,7 +436,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 	}
 	
 	/**
-	 * Implementation of the "dressme-weapon" command.
+	 * Implementation of the DRESSME_WEAPON command.
 	 * @param player The instance of the player that used the command.
 	 * @param params The params required by the command.
 	 * @return TRUE if the command was successful, FALSE otherwise.
@@ -624,7 +636,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 	}
 	
 	/**
-	 * Implementation of the "dress-armorpage" command.
+	 * Implementation of the DRESS_ARMORPAGE command.
 	 * @param player The instance of the player that used the command.
 	 * @param params The params required by the command.
 	 * @return TRUE if the command was successful, FALSE otherwise.
@@ -716,7 +728,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 	}
 	
 	/**
-	 * Implementation of the "dress-cloakpage" command.
+	 * Implementation of the DRESS_CLOAKPAGE command.
 	 * @param player The instance of the player that used the command.
 	 * @param params The params required by the command.
 	 * @return TRUE if the command was successful, FALSE otherwise.
@@ -750,7 +762,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 	}
 	
 	/**
-	 * Implementation of the "dress-shieldpage" command.
+	 * Implementation of the DRESS_SHIELDPAGE command.
 	 * @param player The instance of the player that used the command.
 	 * @param params The params required by the command.
 	 * @return TRUE if the command was successful, FALSE otherwise.
@@ -784,7 +796,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 	}
 	
 	/**
-	 * Implementation of the "dress-weaponpage" command.
+	 * Implementation of the DRESS_WEAPONPAGE command.
 	 * @param player The instance of the player that used the command.
 	 * @param params The params required by the command.
 	 * @return TRUE if the command was successful, FALSE otherwise.
@@ -818,7 +830,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 	}
 	
 	/**
-	 * Implementation of the "dress-hatpage" command.
+	 * Implementation of the DRESS_HATPAGE command.
 	 * @param player The instance of the player that used the command.
 	 * @param params The params required by the command.
 	 * @return TRUE if the command was successful, FALSE otherwise.
@@ -901,7 +913,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 		if (chest == null)
 		{
 			player.sendMessage("Error: Chest must be equiped.");
-			useVoicedCommand("dress-armorpage", player, args);
+			useVoicedCommand(DRESS_ARMORPAGE, player, args);
 			return false;
 		}
 		
@@ -911,7 +923,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 			if ((chest.getTemplate().getBodyPart() != visual.getBodyPart()) && (visual.getBodyPart() != ItemTemplate.SLOT_ALLDRESS))
 			{
 				player.sendMessage("Error: You can't change visual in full armor type not full armors.");
-				useVoicedCommand("dress-armorpage", player, args);
+				useVoicedCommand(DRESS_ARMORPAGE, player, args);
 				return false;
 			}
 		}
@@ -920,7 +932,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 		if (!ArmorSetData.getInstance().isArmorSet(chest.getId()))
 		{
 			player.sendMessage("Error: You can't visualize current set.");
-			useVoicedCommand("dress-armorpage", player, args);
+			useVoicedCommand(DRESS_ARMORPAGE, player, args);
 			return false;
 		}
 		
@@ -928,14 +940,14 @@ public class DressMeVCmd implements IVoicedCommandHandler
 		if ((armoSet == null) || !armoSet.containAll(player))
 		{
 			player.sendMessage("Error: You can't visualize, set is not complete.");
-			useVoicedCommand("dress-armorpage", player, args);
+			useVoicedCommand(DRESS_ARMORPAGE, player, args);
 			return false;
 		}
 		
 		if (!chest.getArmorItem().getItemType().getDescription().equals(dress.getType()))
 		{
 			player.sendMessage("Error: You can't visualize current set.");
-			useVoicedCommand("dress-armorpage", player, args);
+			useVoicedCommand(DRESS_ARMORPAGE, player, args);
 			return false;
 		}
 		
@@ -972,7 +984,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 			}
 			player.broadcastUserInfo();
 		}
-		useVoicedCommand("dressme", player, null);
+		useVoicedCommand(DRESSME, player, null);
 		return true;
 	}
 	
@@ -995,7 +1007,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 		if (cloak == null)
 		{
 			player.sendMessage("Error: Cloak must be equiped.");
-			useVoicedCommand("dress-cloakpage", player, args);
+			useVoicedCommand(DRESS_CLOAKPAGE, player, args);
 			return false;
 		}
 		
@@ -1005,7 +1017,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 			DressMeHandler.visuality(player, cloak, cloak_data.getCloakId());
 		}
 		player.broadcastUserInfo();
-		useVoicedCommand("dressme", player, null);
+		useVoicedCommand(DRESSME, player, null);
 		return true;
 	}
 	
@@ -1028,7 +1040,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 		if (shield == null)
 		{
 			player.sendMessage("Error: Shield must be equiped.");
-			useVoicedCommand("dress-shieldpage", player, args);
+			useVoicedCommand(DRESS_SHIELDPAGE, player, args);
 			return false;
 		}
 		
@@ -1038,7 +1050,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 			DressMeHandler.visuality(player, shield, shield_data.getShieldId());
 		}
 		player.broadcastUserInfo();
-		useVoicedCommand("dressme", player, null);
+		useVoicedCommand(DRESSME, player, null);
 		return true;
 	}
 	
@@ -1061,14 +1073,14 @@ public class DressMeVCmd implements IVoicedCommandHandler
 		if (weapon == null)
 		{
 			player.sendMessage("Error: Weapon must be equiped.");
-			useVoicedCommand("dress-weaponpage", player, args);
+			useVoicedCommand(DRESS_WEAPONPAGE, player, args);
 			return false;
 		}
 		
 		if (!weapon.getItemType().toString().equals(weapon_data.getType()))
 		{
 			player.sendMessage("Error: Weapon must be equals type.");
-			useVoicedCommand("dressme-weapon", player, null);
+			useVoicedCommand(DRESSME_WEAPON, player, null);
 			return false;
 		}
 		
@@ -1078,7 +1090,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 			DressMeHandler.visuality(player, weapon, weapon_data.getId());
 		}
 		player.broadcastUserInfo();
-		useVoicedCommand("dressme", player, null);
+		useVoicedCommand(DRESSME, player, null);
 		return true;
 	}
 	
@@ -1114,7 +1126,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 		if (hat == null)
 		{
 			player.sendMessage("Error: Hat must be equiped.");
-			useVoicedCommand("dress-hatpage", player, args);
+			useVoicedCommand(DRESS_HATPAGE, player, args);
 			return false;
 		}
 		
@@ -1122,7 +1134,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 		if (hat.getTemplate().getBodyPart() != visual.getBodyPart())
 		{
 			player.sendMessage("Error: You can't change visual on different hat types!");
-			useVoicedCommand("dress-hatpage", player, args);
+			useVoicedCommand(DRESS_HATPAGE, player, args);
 			return false;
 		}
 		
@@ -1132,12 +1144,12 @@ public class DressMeVCmd implements IVoicedCommandHandler
 			DressMeHandler.visuality(player, hat, hat_data.getHatId());
 		}
 		player.broadcastUserInfo();
-		useVoicedCommand("dressme", player, null);
+		useVoicedCommand(DRESSME, player, null);
 		return true;
 	}
 	
 	/**
-	 * Implementation of the "undressme" command.
+	 * Implementation of the UNDRESSME command.
 	 * @param player The instance of the player that used the command.
 	 * @param params The params required by the command.
 	 * @return TRUE if the command was successful, FALSE otherwise.
@@ -1145,8 +1157,8 @@ public class DressMeVCmd implements IVoicedCommandHandler
 	private boolean command_undressme(Player player, String params)
 	{
 		String html = HtmCache.getInstance().getHtm(player, undressmePath);
-		html = html.replace("<?show_hide?>", !player.getVarB("showVisualChange") ? "Show visual equip on other player!" : "Hide visual equip on other player!");
-		html = html.replace("<?show_hide_b?>", !player.getVarB("showVisualChange") ? "showdress" : "hidedress");
+		html = html.replace("<?show_hide?>", !player.getVarB(SHOWVISUALCHANGE) ? "Show visual equip on other player!" : "Hide visual equip on other player!");
+		html = html.replace("<?show_hide_b?>", !player.getVarB(SHOWVISUALCHANGE) ? SHOWDRESS : HIDEDRESS);
 		
 		sendHtml(player, html);
 		return true;
@@ -1184,7 +1196,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 		}
 		
 		player.broadcastUserInfo();
-		useVoicedCommand("undressme", player, null);
+		useVoicedCommand(UNDRESSME, player, null);
 		return true;
 	}
 	
@@ -1202,7 +1214,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 			DressMeHandler.visuality(player, cloak, 0);
 		}
 		player.broadcastUserInfo();
-		useVoicedCommand("undressme", player, null);
+		useVoicedCommand(UNDRESSME, player, null);
 		return true;
 	}
 	
@@ -1220,7 +1232,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 			DressMeHandler.visuality(player, shield, 0);
 		}
 		player.broadcastUserInfo();
-		useVoicedCommand("undressme", player, null);
+		useVoicedCommand(UNDRESSME, player, null);
 		return true;
 	}
 	
@@ -1238,7 +1250,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 			DressMeHandler.visuality(player, weapon, 0);
 		}
 		player.broadcastUserInfo();
-		useVoicedCommand("undressme", player, null);
+		useVoicedCommand(UNDRESSME, player, null);
 		return true;
 	}
 	
@@ -1261,35 +1273,35 @@ public class DressMeVCmd implements IVoicedCommandHandler
 			DressMeHandler.visuality(player, slot, 0);
 		}
 		player.broadcastUserInfo();
-		useVoicedCommand("undressme", player, null);
+		useVoicedCommand(UNDRESSME, player, null);
 		return true;
 	}
 	
 	/**
-	 * Implementation of the "showdress" command.
+	 * Implementation of the SHOWDRESS command.
 	 * @param player The instance of the player that used the command.
 	 * @param params The params required by the command.
 	 * @return TRUE if the command was successful, FALSE otherwise.
 	 */
 	private boolean command_showdress(Player player, String params)
 	{
-		player.setVar("showVisualChange", "true");
+		player.setVar(SHOWVISUALCHANGE, "true");
 		player.broadcastUserInfo();
-		useVoicedCommand("dressme", player, null);
+		useVoicedCommand(DRESSME, player, null);
 		return true;
 	}
 	
 	/**
-	 * Implementation of the "hidedress" command.
+	 * Implementation of the HIDEDRESS command.
 	 * @param player The instance of the player that used the command.
 	 * @param params The params required by the command.
 	 * @return TRUE if the command was successful, FALSE otherwise.
 	 */
 	private boolean command_hidedress(Player player, String params)
 	{
-		player.setVar("showVisualChange", "false");
+		player.setVar(SHOWVISUALCHANGE, "false");
 		player.broadcastUserInfo();
-		useVoicedCommand("dressme", player, null);
+		useVoicedCommand(DRESSME, player, null);
 		return true;
 	}
 	
@@ -1298,7 +1310,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 	{
 		switch (command)
 		{
-			case "dressme":
+			case DRESSME:
 				return command_Dressme(player, params);
 			case "dressme-armor":
 				return command_dressme_armor(player, params);
@@ -1306,19 +1318,19 @@ public class DressMeVCmd implements IVoicedCommandHandler
 				return command_dressme_cloak(player, params);
 			case "dressme-shield":
 				return command_dressme_shield(player, params);
-			case "dressme-weapon":
+			case DRESSME_WEAPON:
 				return command_dressme_weapon(player, params);
 			case "dressme-hat":
 				return command_dressme_hat(player, params);
-			case "dress-armorpage":
+			case DRESS_ARMORPAGE:
 				return command_dress_armorpage(player, params);
-			case "dress-cloakpage":
+			case DRESS_CLOAKPAGE:
 				return command_dress_cloakpage(player, params);
-			case "dress-shieldpage":
+			case DRESS_SHIELDPAGE:
 				return command_dress_shieldpage(player, params);
-			case "dress-weaponpage":
+			case DRESS_WEAPONPAGE:
 				return command_dress_weaponpage(player, params);
-			case "dress-hatpage":
+			case DRESS_HATPAGE:
 				return command_dress_hatpage(player, params);
 			case "dressinfo":
 				return command_dressinfo(player, params);
@@ -1332,7 +1344,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 				return command_dress_weapon(player, params);
 			case "dress-hat":
 				return command_dress_hat(player, params);
-			case "undressme":
+			case UNDRESSME:
 				return command_undressme(player, params);
 			case "undressme-armor":
 				return command_undressme_armor(player, params);
@@ -1344,9 +1356,9 @@ public class DressMeVCmd implements IVoicedCommandHandler
 				return command_undressme_weapon(player, params);
 			case "undressme-hat":
 				return command_undressme_hat(player, params);
-			case "showdress":
+			case SHOWDRESS:
 				return command_showdress(player, params);
-			case "hidedress":
+			case HIDEDRESS:
 				return command_hidedress(player, params);
 			default:
 				return false;

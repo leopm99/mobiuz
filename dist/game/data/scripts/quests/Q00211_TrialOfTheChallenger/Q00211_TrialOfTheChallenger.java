@@ -40,6 +40,8 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Q00211_TrialOfTheChallenger extends Quest
 {
+	private static final String N_2ND_CLASS_DIAMOND_REWARD = "2ND_CLASS_DIAMOND_REWARD";
+
 	// NPCs
 	private static final int FILAUR = 30535;
 	private static final int KASH = 30644;
@@ -110,10 +112,10 @@ public class Q00211_TrialOfTheChallenger extends Quest
 				if (qs.isCreated())
 				{
 					final PlayerVariables vars = player.getVariables();
-					if (vars.getInt("2ND_CLASS_DIAMOND_REWARD", 0) == 0)
+					if (vars.getInt(N_2ND_CLASS_DIAMOND_REWARD, 0) == 0)
 					{
 						giveItems(player, DIMENSIONAL_DIAMONDS);
-						vars.set("2ND_CLASS_DIAMOND_REWARD", 1);
+						vars.set(N_2ND_CLASS_DIAMOND_REWARD, 1);
 						htmltext = event;
 					}
 					else
@@ -346,10 +348,10 @@ public class Q00211_TrialOfTheChallenger extends Quest
 						
 						// redundant retail check - already rewarded at beginning of quest
 						final PlayerVariables vars = talker.getVariables();
-						if (vars.getInt("2ND_CLASS_DIAMOND_REWARD", 0) == 0)
+						if (vars.getInt(N_2ND_CLASS_DIAMOND_REWARD, 0) == 0)
 						{
 							giveItems(talker, DIMENSIONAL_DIAMONDS);
-							vars.set("2ND_CLASS_DIAMOND_REWARD", 1);
+							vars.set(N_2ND_CLASS_DIAMOND_REWARD, 1);
 						}
 						
 						talker.sendPacket(new SocialAction(talker.getObjectId(), 3));

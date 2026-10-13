@@ -50,6 +50,16 @@ import ai.AbstractNpcAI;
  */
 public class SelMahumSquad extends AbstractNpcAI
 {
+	private static final String INVUL_REMOVE_TIMER_STARTED = "INVUL_REMOVE_TIMER_STARTED";
+	private static final String CHEF_DISABLE_REWARD = "chef_disable_reward";
+	private static final String CHEF_REMOVE_INVUL = "chef_remove_invul";
+	private static final String CHEF_HEAL_PLAYER = "chef_heal_player";
+	private static final String CHEF_SET_INVUL = "chef_set_invul";
+	private static final String REMOVE_EFFECTS = "remove_effects";
+	private static final String DESTINATION_X = "DESTINATION_X";
+	private static final String DESTINATION_Y = "DESTINATION_Y";
+	private static final String BUSY_STATE = "BUSY_STATE";
+
 	// NPCs
 	private static final int CHEF = 18908;
 	private static final int FIRE = 18927;
@@ -100,22 +110,22 @@ public class SelMahumSquad extends AbstractNpcAI
 	{
 		switch (event)
 		{
-			case "chef_disable_reward":
+			case CHEF_DISABLE_REWARD:
 			{
 				npc.getVariables().set("REWARD_TIME_GONE", 1);
 				break;
 			}
-			case "chef_heal_player":
+			case CHEF_HEAL_PLAYER:
 			{
 				healPlayer(npc, player);
 				break;
 			}
-			case "chef_remove_invul":
+			case CHEF_REMOVE_INVUL:
 			{
 				if (npc.isMonster())
 				{
 					npc.setInvul(false);
-					npc.getVariables().remove("INVUL_REMOVE_TIMER_STARTED");
+					npc.getVariables().remove(INVUL_REMOVE_TIMER_STARTED);
 					if ((player != null) && !player.isDead() && npc.isInSurroundingRegion(player))
 					{
 						addAttackDesire(npc, player);
@@ -123,7 +133,7 @@ public class SelMahumSquad extends AbstractNpcAI
 				}
 				break;
 			}
-			case "chef_set_invul":
+			case CHEF_SET_INVUL:
 			{
 				if (!npc.isDead())
 				{
@@ -159,13 +169,13 @@ public class SelMahumSquad extends AbstractNpcAI
 					npc.doCast(SkillData.getInstance().getSkill(6331, 1));
 					npc.setDisplayEffect(MAHUM_EFFECT_SLEEP);
 				}
-				if (npc.getVariables().getInt("BUSY_STATE") == 1) // Eating
+				if (npc.getVariables().getInt(BUSY_STATE) == 1) // Eating
 				{
 					npc.doCast(SkillData.getInstance().getSkill(6332, 1));
 					npc.setDisplayEffect(MAHUM_EFFECT_EAT);
 				}
 				
-				startQuestTimer("remove_effects", 300000, npc, null);
+				startQuestTimer(REMOVE_EFFECTS, 300000, npc, null);
 				break;
 			}
 			case "notify_dinner":
@@ -173,7 +183,7 @@ public class SelMahumSquad extends AbstractNpcAI
 				npc.broadcastEvent("SCE_DINNER_EAT", 600, null);
 				break;
 			}
-			case "remove_effects":
+			case REMOVE_EFFECTS:
 			{
 				// myself.i_quest0 = 0;
 				npc.setRunning();
@@ -204,17 +214,17 @@ public class SelMahumSquad extends AbstractNpcAI
 	@Override
 	public void onAttack(Npc npc, Player attacker, int damage, boolean isSummon, Skill skill)
 	{
-		if ((npc.getId() == CHEF) && (npc.getVariables().getInt("BUSY_STATE") == 0))
+		if ((npc.getId() == CHEF) && (npc.getVariables().getInt(BUSY_STATE) == 0))
 		{
-			if (npc.getVariables().getInt("INVUL_REMOVE_TIMER_STARTED") == 0)
+			if (npc.getVariables().getInt(INVUL_REMOVE_TIMER_STARTED) == 0)
 			{
-				startQuestTimer("chef_remove_invul", 180000, npc, attacker);
-				startQuestTimer("chef_disable_reward", 60000, npc, null);
-				npc.getVariables().set("INVUL_REMOVE_TIMER_STARTED", 1);
+				startQuestTimer(CHEF_REMOVE_INVUL, 180000, npc, attacker);
+				startQuestTimer(CHEF_DISABLE_REWARD, 60000, npc, null);
+				npc.getVariables().set(INVUL_REMOVE_TIMER_STARTED, 1);
 			}
-			startQuestTimer("chef_heal_player", 1000, npc, attacker);
-			startQuestTimer("chef_set_invul", 60000, npc, null);
-			npc.getVariables().set("BUSY_STATE", 1);
+			startQuestTimer(CHEF_HEAL_PLAYER, 1000, npc, attacker);
+			startQuestTimer(CHEF_SET_INVUL, 60000, npc, null);
+			npc.getVariables().set(BUSY_STATE, 1);
 		}
 		else if (ArrayUtil.contains(SQUAD_LEADERS, npc.getId()))
 		{
@@ -254,8 +264,8 @@ public class SelMahumSquad extends AbstractNpcAI
 					final Location loc = sender.getPointInRange(100, 200);
 					loc.setHeading(receiver.getHeading());
 					receiver.stopMove(null);
-					receiver.getVariables().set("DESTINATION_X", loc.getX());
-					receiver.getVariables().set("DESTINATION_Y", loc.getY());
+					receiver.getVariables().set(DESTINATION_X, loc.getX());
+					receiver.getVariables().set(DESTINATION_Y, loc.getY());
 					receiver.getAI().setIntention(Intention.MOVE_TO, loc);
 				}
 				break;
@@ -269,7 +279,7 @@ public class SelMahumSquad extends AbstractNpcAI
 				else if ((receiver.getAI().getIntention() != Intention.ATTACK) && ArrayUtil.contains(SQUAD_LEADERS, receiver.getId()))
 				{
 					receiver.setRandomWalking(true);
-					receiver.getVariables().remove("BUSY_STATE");
+					receiver.getVariables().remove(BUSY_STATE);
 					receiver.setRHandId(THS_WEAPON);
 					startQuestTimer("return_from_fire", 3000, receiver, null);
 				}
@@ -277,21 +287,21 @@ public class SelMahumSquad extends AbstractNpcAI
 			}
 			case "SCE_DINNER_EAT":
 			{
-				if (!receiver.isDead() && (receiver.getAI().getIntention() != Intention.ATTACK) && (receiver.getVariables().getInt("BUSY_STATE", 0) == 0) && ArrayUtil.contains(SQUAD_LEADERS, receiver.getId()))
+				if (!receiver.isDead() && (receiver.getAI().getIntention() != Intention.ATTACK) && (receiver.getVariables().getInt(BUSY_STATE, 0) == 0) && ArrayUtil.contains(SQUAD_LEADERS, receiver.getId()))
 				{
 					if (!receiver.isRandomWalkingEnabled()) // i_ai0 == 1
 					{
 						receiver.setRHandId(THS_WEAPON);
 					}
 					receiver.setRandomWalking(false); // Moving to fire - i_ai0 = 1
-					receiver.getVariables().set("BUSY_STATE", 1); // Eating - i_ai3 = 1
+					receiver.getVariables().set(BUSY_STATE, 1); // Eating - i_ai3 = 1
 					receiver.setRunning();
 					receiver.broadcastSay(ChatType.NPC_GENERAL, (getRandom(3) < 1) ? NpcStringId.LOOKS_DELICIOUS : NpcStringId.LET_S_GO_EAT, 1250);
 					final Location loc = sender.getPointInRange(100, 200);
 					loc.setHeading(receiver.getHeading());
 					receiver.stopMove(null);
-					receiver.getVariables().set("DESTINATION_X", loc.getX());
-					receiver.getVariables().set("DESTINATION_Y", loc.getY());
+					receiver.getVariables().set(DESTINATION_X, loc.getX());
+					receiver.getVariables().set(DESTINATION_Y, loc.getY());
 					receiver.getAI().setIntention(Intention.MOVE_TO, loc);
 				}
 				break;
@@ -320,10 +330,10 @@ public class SelMahumSquad extends AbstractNpcAI
 		{
 			npc.asMonster().dropItem(killer, 15492, 1);
 		}
-		cancelQuestTimer("chef_remove_invul", npc, null);
-		cancelQuestTimer("chef_disable_reward", npc, null);
-		cancelQuestTimer("chef_heal_player", npc, null);
-		cancelQuestTimer("chef_set_invul", npc, null);
+		cancelQuestTimer(CHEF_REMOVE_INVUL, npc, null);
+		cancelQuestTimer(CHEF_DISABLE_REWARD, npc, null);
+		cancelQuestTimer(CHEF_HEAL_PLAYER, npc, null);
+		cancelQuestTimer(CHEF_SET_INVUL, npc, null);
 		
 		npc.setDisplayEffect(MAHUM_EFFECT_NONE);
 	}
@@ -332,7 +342,7 @@ public class SelMahumSquad extends AbstractNpcAI
 	public void onMoveFinished(Npc npc)
 	{
 		// NPC moves to fire
-		if (!npc.isRandomWalkingEnabled() && (npc.getX() == npc.getVariables().getInt("DESTINATION_X")) && (npc.getY() == npc.getVariables().getInt("DESTINATION_Y")))
+		if (!npc.isRandomWalkingEnabled() && (npc.getX() == npc.getVariables().getInt(DESTINATION_X)) && (npc.getY() == npc.getVariables().getInt(DESTINATION_Y)))
 		{
 			npc.setRHandId(OHS_WEAPON);
 			startQuestTimer("fire_arrived", 3000, npc, null);
@@ -385,24 +395,24 @@ public class SelMahumSquad extends AbstractNpcAI
 	
 	private void healPlayer(Npc npc, Player player)
 	{
-		if ((player != null) && !player.isDead() && (npc.getVariables().getInt("INVUL_REMOVE_TIMER_STARTED") != 1) && ((npc.getAI().getIntention() == Intention.ATTACK) || (npc.getAI().getIntention() == Intention.CAST)))
+		if ((player != null) && !player.isDead() && (npc.getVariables().getInt(INVUL_REMOVE_TIMER_STARTED) != 1) && ((npc.getAI().getIntention() == Intention.ATTACK) || (npc.getAI().getIntention() == Intention.CAST)))
 		{
 			npc.setTarget(player);
 			npc.doCast(SkillData.getInstance().getSkill(6330, 1));
 		}
 		else
 		{
-			cancelQuestTimer("chef_set_invul", npc, null);
-			npc.getVariables().remove("BUSY_STATE");
-			npc.getVariables().remove("INVUL_REMOVE_TIMER_STARTED");
+			cancelQuestTimer(CHEF_SET_INVUL, npc, null);
+			npc.getVariables().remove(BUSY_STATE);
+			npc.getVariables().remove(INVUL_REMOVE_TIMER_STARTED);
 			npc.setWalking();
 		}
 	}
 	
 	private void handlePreAttackMotion(Npc attacked)
 	{
-		cancelQuestTimer("remove_effects", attacked, null);
-		attacked.getVariables().remove("BUSY_STATE");
+		cancelQuestTimer(REMOVE_EFFECTS, attacked, null);
+		attacked.getVariables().remove(BUSY_STATE);
 		attacked.setRandomWalking(true);
 		attacked.setDisplayEffect(MAHUM_EFFECT_NONE);
 		if (attacked.getRightHandItem() == OHS_WEAPON)

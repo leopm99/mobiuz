@@ -41,6 +41,9 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Q00227_TestOfTheReformer extends Quest
 {
+	private static final String DESPAWN = "DESPAWN";
+	private static final String SPAWNED_KEY = "SPAWNED";
+
 	// NPCs
 	private static final int PRIESTESS_PUPINA = 30118;
 	private static final int PREACHER_SLA = 30666;
@@ -116,12 +119,12 @@ public class Q00227_TestOfTheReformer extends Quest
 	@Override
 	public String onEvent(String event, Npc npc, Player player)
 	{
-		if ("DESPAWN".equals(event))
+		if (DESPAWN.equals(event))
 		{
-			final int SPAWNED = npc.getVariables().getInt("SPAWNED", 0);
+			final int SPAWNED = npc.getVariables().getInt(SPAWNED_KEY, 0);
 			if (SPAWNED < 60)
 			{
-				npc.getVariables().set("SPAWNED", SPAWNED + 1);
+				npc.getVariables().set(SPAWNED_KEY, SPAWNED + 1);
 			}
 			else
 			{
@@ -668,16 +671,16 @@ public class Q00227_TestOfTheReformer extends Quest
 		{
 			case OL_MAHUM_INSPECTOR, CRIMSON_WEREWOLF, KRUDEL_LIZARDMAN, OL_MAHUM_PILGRIM:
 			{
-				startQuestTimer("DESPAWN", 5000, npc, null, true);
-				npc.getVariables().set("SPAWNED", 0);
+				startQuestTimer(DESPAWN, 5000, npc, null, true);
+				npc.getVariables().set(SPAWNED_KEY, 0);
 				break;
 			}
 			case OL_MAHUM_BETRAYER:
 			{
-				startQuestTimer("DESPAWN", 5000, npc, null, true);
+				startQuestTimer(DESPAWN, 5000, npc, null, true);
 				npc.setRunning();
 				npc.getAI().setIntention(Intention.MOVE_TO, MOVE_TO);
-				npc.getVariables().set("SPAWNED", 0);
+				npc.getVariables().set(SPAWNED_KEY, 0);
 				break;
 			}
 			default:

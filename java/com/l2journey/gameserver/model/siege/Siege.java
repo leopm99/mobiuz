@@ -79,6 +79,8 @@ import com.l2journey.gameserver.util.Broadcast;
 
 public class Siege implements Siegable
 {
+	private static final String CLAN_ID = "clan_id";
+
 	protected static final Logger LOGGER = Logger.getLogger(Siege.class.getName());
 	
 	// typeId's
@@ -1246,15 +1248,15 @@ public class Siege implements Siegable
 					typeId = rs.getInt("type");
 					if (typeId == DEFENDER)
 					{
-						addDefender(rs.getInt("clan_id"));
+						addDefender(rs.getInt(CLAN_ID));
 					}
 					else if (typeId == ATTACKER)
 					{
-						addAttacker(rs.getInt("clan_id"));
+						addAttacker(rs.getInt(CLAN_ID));
 					}
 					else if (typeId == DEFENDER_NOT_APPROVED)
 					{
-						addDefenderWaiting(rs.getInt("clan_id"));
+						addDefenderWaiting(rs.getInt(CLAN_ID));
 					}
 				}
 			}

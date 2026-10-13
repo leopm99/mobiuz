@@ -74,6 +74,11 @@ import quests.Q00620_FourGoblets.Q00620_FourGoblets;
  */
 public class FourSepulchers extends AbstractNpcAI implements IXmlReader
 {
+	private static final String WAVE_DEFEATED_CHECK = "WAVE_DEFEATED_CHECK";
+	private static final String REMOVE_PETRIFY = "REMOVE_PETRIFY";
+	private static final String VICTIM_FLEE = "VICTIM_FLEE";
+	private static final String ANNOUNCE = "ANNOUNCE";
+
 	private static final Logger LOGGER = Logger.getLogger(FourSepulchers.class.getName());
 	
 	// NPCs
@@ -245,7 +250,7 @@ public class FourSepulchers extends AbstractNpcAI implements IXmlReader
 			calendar.add(Calendar.HOUR_OF_DAY, 1);
 		}
 		calendar.set(Calendar.MINUTE, ENTRY_TIME);
-		startQuestTimer("ANNOUNCE", calendar.getTimeInMillis() - System.currentTimeMillis(), null, null);
+		startQuestTimer(ANNOUNCE, calendar.getTimeInMillis() - System.currentTimeMillis(), null, null);
 	}
 	
 	@Override
@@ -321,7 +326,7 @@ public class FourSepulchers extends AbstractNpcAI implements IXmlReader
 				spawnMysteriousChest(player);
 				return null;
 			}
-			case "VICTIM_FLEE":
+			case VICTIM_FLEE:
 			{
 				if ((npc != null) && !npc.isDead())
 				{
@@ -331,17 +336,17 @@ public class FourSepulchers extends AbstractNpcAI implements IXmlReader
 						npc.getAI().setIntention(Intention.MOVE_TO, destination);
 					}
 					npc.broadcastSay(ChatType.NPC_GENERAL, getRandomEntry(VICTIM_MSG));
-					startQuestTimer("VICTIM_FLEE", 3000, npc, null, false);
+					startQuestTimer(VICTIM_FLEE, 3000, npc, null, false);
 				}
 				return null;
 			}
-			case "REMOVE_PETRIFY":
+			case REMOVE_PETRIFY:
 			{
 				npc.stopSkillEffects(SkillFinishType.REMOVED, PETRIFY.getSkillId());
 				npc.setInvul(false);
 				return null;
 			}
-			case "WAVE_DEFEATED_CHECK":
+			case WAVE_DEFEATED_CHECK:
 			{
 				final int sepulcherId = getSepulcherId(player);
 				final int currentWave = STORED_PROGRESS.get(sepulcherId);
@@ -375,11 +380,11 @@ public class FourSepulchers extends AbstractNpcAI implements IXmlReader
 				}
 				else if (sepulcherId > 0)
 				{
-					startQuestTimer("WAVE_DEFEATED_CHECK", 5000, null, player, false);
+					startQuestTimer(WAVE_DEFEATED_CHECK, 5000, null, player, false);
 				}
 				return null;
 			}
-			case "ANNOUNCE":
+			case ANNOUNCE:
 			{
 				for (int managerId : MANAGER_ZONES.keySet())
 				{
@@ -405,7 +410,7 @@ public class FourSepulchers extends AbstractNpcAI implements IXmlReader
 					calendar.add(Calendar.HOUR_OF_DAY, 1);
 				}
 				calendar.set(Calendar.MINUTE, ENTRY_TIME);
-				startQuestTimer("ANNOUNCE", calendar.getTimeInMillis() - System.currentTimeMillis(), null, null);
+				startQuestTimer(ANNOUNCE, calendar.getTimeInMillis() - System.currentTimeMillis(), null, null);
 				break;
 			}
 			default:
@@ -454,15 +459,15 @@ public class FourSepulchers extends AbstractNpcAI implements IXmlReader
 		{
 			npc.disableCoreAI(true);
 			npc.setRunning();
-			startQuestTimer("VICTIM_FLEE", 1000, npc, null, false);
+			startQuestTimer(VICTIM_FLEE, 1000, npc, null, false);
 		}
 		if (npc.getId() == ROOM_5_STATUE_GUARD)
 		{
 			npc.setTarget(npc);
 			npc.doCast(PETRIFY.getSkill());
 			npc.asAttackable().setCanReturnToSpawnPoint(false);
-			cancelQuestTimer("REMOVE_PETRIFY", npc, null);
-			startQuestTimer("REMOVE_PETRIFY", 5 * 60 * 1000, npc, null, false); // 5 minutes
+			cancelQuestTimer(REMOVE_PETRIFY, npc, null);
+			startQuestTimer(REMOVE_PETRIFY, 5 * 60 * 1000, npc, null, false); // 5 minutes
 		}
 	}
 	
@@ -678,7 +683,7 @@ public class FourSepulchers extends AbstractNpcAI implements IXmlReader
 		}
 		if ((currentWave == 2) || (currentWave == 5))
 		{
-			startQuestTimer("WAVE_DEFEATED_CHECK", 5000, null, player, false);
+			startQuestTimer(WAVE_DEFEATED_CHECK, 5000, null, player, false);
 		}
 		else
 		{

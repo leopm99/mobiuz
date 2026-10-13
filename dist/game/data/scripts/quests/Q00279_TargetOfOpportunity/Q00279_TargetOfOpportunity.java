@@ -32,6 +32,8 @@ import com.l2journey.gameserver.model.quest.State;
  */
 public class Q00279_TargetOfOpportunity extends Quest
 {
+	private static final String PROGRESS = "progress";
+
 	// NPCs
 	private static final int JERIAN = 32302;
 	private static final int[] MONSTERS =
@@ -77,9 +79,9 @@ public class Q00279_TargetOfOpportunity extends Quest
 		if (event.equalsIgnoreCase("32302-05.html"))
 		{
 			qs.startQuest();
-			qs.set("progress", "1");
+			qs.set(PROGRESS, "1");
 		}
-		else if (event.equalsIgnoreCase("32302-08.html") && (qs.getInt("progress") == 1) && hasQuestItems(player, SEAL_COMPONENTS[0]) && hasQuestItems(player, SEAL_COMPONENTS[1]) && hasQuestItems(player, SEAL_COMPONENTS[2]) && hasQuestItems(player, SEAL_COMPONENTS[3]))
+		else if (event.equalsIgnoreCase("32302-08.html") && (qs.getInt(PROGRESS) == 1) && hasQuestItems(player, SEAL_COMPONENTS[0]) && hasQuestItems(player, SEAL_COMPONENTS[1]) && hasQuestItems(player, SEAL_COMPONENTS[2]) && hasQuestItems(player, SEAL_COMPONENTS[3]))
 		{
 			giveItems(player, SEAL_BREAKERS[0], 1);
 			giveItems(player, SEAL_BREAKERS[1], 1);
@@ -91,7 +93,7 @@ public class Q00279_TargetOfOpportunity extends Quest
 	@Override
 	public void onKill(Npc npc, Player player, boolean isSummon)
 	{
-		final Player pl = getRandomPartyMember(player, "progress", "1");
+		final Player pl = getRandomPartyMember(player, PROGRESS, "1");
 		final int idx = Arrays.binarySearch(MONSTERS, npc.getId());
 		if ((pl == null) || (idx < 0))
 		{
@@ -122,7 +124,7 @@ public class Q00279_TargetOfOpportunity extends Quest
 		{
 			htmltext = (player.getLevel() >= 82) ? "32302-01.htm" : "32302-02.html";
 		}
-		else if ((qs.getState() == State.STARTED) && (qs.getInt("progress") == 1))
+		else if ((qs.getState() == State.STARTED) && (qs.getInt(PROGRESS) == 1))
 		{
 			htmltext = (hasQuestItems(player, SEAL_COMPONENTS[0]) && hasQuestItems(player, SEAL_COMPONENTS[1]) && hasQuestItems(player, SEAL_COMPONENTS[2]) && hasQuestItems(player, SEAL_COMPONENTS[3])) ? "32302-07.html" : "32302-06.html";
 		}

@@ -45,6 +45,8 @@ import ai.AbstractNpcAI;
  */
 public class QueenShyeed extends AbstractNpcAI
 {
+	private static final String RESPAWN_KEY = "respawn";
+
 	// NPC
 	private static final int SHYEED = 25671;
 	private static final Location SHYEED_LOC = new Location(79634, -55428, -6104, 0);
@@ -67,7 +69,7 @@ public class QueenShyeed extends AbstractNpcAI
 	{
 		switch (event)
 		{
-			case "respawn":
+			case RESPAWN_KEY:
 			{
 				spawnShyeed();
 				break;
@@ -110,7 +112,7 @@ public class QueenShyeed extends AbstractNpcAI
 			MOB_BUFF_ZONE.setEnabled(false);
 			MOB_BUFF_DISPLAY_ZONE.setEnabled(false);
 			FULL_AUTHORITY_ZONE.setEnabled(true);
-			startQuestTimer("respawn", remain, null, null);
+			startQuestTimer(RESPAWN_KEY, remain, null, null);
 			return;
 		}
 		// Zones must be enabled before spawning, otherwise the boss and her minions
@@ -127,7 +129,7 @@ public class QueenShyeed extends AbstractNpcAI
 	{
 		final int respawnTime = RESPAWN - getRandom(RANDOM_RESPAWN);
 		GlobalVariablesManager.getInstance().set("QueenShyeedRespawn", Long.toString(System.currentTimeMillis() + respawnTime));
-		startQuestTimer("respawn", respawnTime, null, null);
+		startQuestTimer(RESPAWN_KEY, respawnTime, null, null);
 		MOB_BUFF_ZONE.setEnabled(false);
 		MOB_BUFF_DISPLAY_ZONE.setEnabled(false);
 	}

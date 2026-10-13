@@ -97,6 +97,8 @@ import com.l2journey.gameserver.model.zone.type.WaterZone;
  */
 public class ZoneManager implements IXmlReader
 {
+	private static final String NPCSPAWNTERRITORY = "NpcSpawnTerritory";
+
 	private static final Logger LOGGER = Logger.getLogger(ZoneManager.class.getName());
 	
 	private static final Map<String, AbstractZoneSettings> SETTINGS = new HashMap<>();
@@ -224,7 +226,7 @@ public class ZoneManager implements IXmlReader
 						}
 						else
 						{
-							zoneId = zoneType.equalsIgnoreCase("NpcSpawnTerritory") ? 0 : _lastDynamicId.incrementAndGet();
+							zoneId = zoneType.equalsIgnoreCase(NPCSPAWNTERRITORY) ? 0 : _lastDynamicId.incrementAndGet();
 						}
 						
 						attribute = attrs.getNamedItem("name");
@@ -238,7 +240,7 @@ public class ZoneManager implements IXmlReader
 						}
 						
 						// Check zone name for NpcSpawnTerritory. Must exist and to be unique
-						if (zoneType.equalsIgnoreCase("NpcSpawnTerritory"))
+						if (zoneType.equalsIgnoreCase(NPCSPAWNTERRITORY))
 						{
 							if (zoneName == null)
 							{
@@ -351,7 +353,7 @@ public class ZoneManager implements IXmlReader
 						}
 						
 						// No further parameters needed, if NpcSpawnTerritory is loading
-						if (zoneType.equalsIgnoreCase("NpcSpawnTerritory"))
+						if (zoneType.equalsIgnoreCase(NPCSPAWNTERRITORY))
 						{
 							_spawnTerritories.put(zoneName, new NpcSpawnTerritory(zoneName, zoneForm));
 							continue;

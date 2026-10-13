@@ -67,12 +67,23 @@ import com.l2journey.gameserver.network.serverpackets.SetSummonRemainTime;
  */
 public class BufferBoardPremium implements IParseBoardHandler
 {
+	private static final String SQL_NPCBUFFERPREMIUM_SCHEME_LIST = "SELECT id, scheme_name FROM npcbufferpremium_scheme_list WHERE player_id=?";
+	private static final String SKILL_LEVEL = "skill_level";
+	private static final String SCHEME_NAME = "scheme_name";
+	private static final String CBBBUFFER = "_cbbbuffer";
+	private static final String BUFFLEVEL = "buffLevel";
+	private static final String SKILL_ID = "skill_id";
+	private static final String BUFFID = "buffId";
+	private static final String ERROR = "Error";
+	private static final String SORRY = "Sorry";
+	private static final String CUBIC = "cubic";
+
 	private static final Logger LOG = Logger.getLogger(BufferBoardPremium.class.getName());
 	
 	private static final String TITLE = "Community Buffer Premium";
 	private static final String[] COMMANDS =
 	{
-		"_cbbbuffer"
+		CBBBUFFER
 	};
 	
 	private static final int MAX_SCHEME_BUFFS = Config.BUFFS_MAX_AMOUNT;
@@ -283,7 +294,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 				final String[] ap = actionPage.split("-", 2);
 				if (!gmManageSelectedBuff(gp[0], ap[0]))
 				{
-					html = showInfo("Error", "Failed to update buff. Please try again later.");
+					html = showInfo(ERROR, "Failed to update buff. Please try again later.");
 				}
 				else
 				{
@@ -587,8 +598,8 @@ public class BufferBoardPremium implements IParseBoardHandler
 			final ResultSet rs = ps.executeQuery();
 			while (rs.next())
 			{
-				final int buffId = rs.getInt("buffId");
-				final int buffLevel = rs.getInt("buffLevel");
+				final int buffId = rs.getInt(BUFFID);
+				final int buffLevel = rs.getInt(BUFFLEVEL);
 				String buffName = SkillData.getInstance().getSkill(buffId, buffLevel).getName();
 				buffName = buffName.replace(" ", "+");
 				availableBuffs.add(buffName + "_" + buffId + "_" + buffLevel);
@@ -630,7 +641,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 			html.append("</table>");
 		}
 		
-		html.append("<br>").append(button("Back", "_cbbbuffer", 100));
+		html.append("<br>").append(button("Back", CBBBUFFER, 100));
 		html.append("<br><font color=303030>").append(TITLE).append("</font></center></body></html>");
 		return html.toString();
 	}
@@ -665,7 +676,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 			final int cost = getCategoryPrice(buffType);
 			if (player.getInventory().getInventoryItemCount(Config.PREMIUM_CONSUMABLE_ID, -1) < cost)
 			{
-				return showInfo("Sorry", "You don't have enough items:<br>You need: <font color=LEVEL>" + formatAdena(cost) + " " + getItemNameHtml(Config.PREMIUM_CONSUMABLE_ID) + "!");
+				return showInfo(SORRY, "You don't have enough items:<br>You need: <font color=LEVEL>" + formatAdena(cost) + " " + getItemNameHtml(Config.PREMIUM_CONSUMABLE_ID) + "!");
 			}
 			player.destroyItemByItemId(ItemProcessType.FEE, Config.PREMIUM_CONSUMABLE_ID, cost, player, true);
 		}
@@ -679,11 +690,11 @@ public class BufferBoardPremium implements IParseBoardHandler
 		final boolean petMode = isPetMode(player);
 		
 		// Cubic special handling
-		if ("cubic".equals(buffType))
+		if (CUBIC.equals(buffType))
 		{
 			if (skill.hasEffectType(EffectType.SUMMON) && (player.getInventory().getInventoryItemCount(skill.getItemConsumeId(), -1) < skill.getItemConsumeCount()))
 			{
-				return showInfo("Sorry", "You don't have enough items for this cubic!");
+				return showInfo(SORRY, "You don't have enough items for this cubic!");
 			}
 			
 			final Map<Integer, Cubic> playerCubics = player.getCubics();
@@ -725,7 +736,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 		{
 			if (player.getInventory().getInventoryItemCount(Config.PREMIUM_CONSUMABLE_ID, -1) < Config.PREMIUM_HEAL_PRICE)
 			{
-				return showInfo("Sorry", "You don't have enough items:<br>You need: <font color=LEVEL>" + formatAdena(Config.PREMIUM_HEAL_PRICE) + " " + getItemNameHtml(Config.PREMIUM_CONSUMABLE_ID) + "!");
+				return showInfo(SORRY, "You don't have enough items:<br>You need: <font color=LEVEL>" + formatAdena(Config.PREMIUM_HEAL_PRICE) + " " + getItemNameHtml(Config.PREMIUM_CONSUMABLE_ID) + "!");
 			}
 			player.destroyItemByItemId(ItemProcessType.FEE, Config.PREMIUM_CONSUMABLE_ID, Config.PREMIUM_HEAL_PRICE, player, true);
 		}
@@ -779,7 +790,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 		{
 			if (player.getInventory().getInventoryItemCount(Config.PREMIUM_CONSUMABLE_ID, -1) < Config.PREMIUM_BUFF_REMOVE_PRICE)
 			{
-				return showInfo("Sorry", "You don't have enough items:<br>You need: <font color=LEVEL>" + formatAdena(Config.PREMIUM_BUFF_REMOVE_PRICE) + " " + getItemNameHtml(Config.PREMIUM_CONSUMABLE_ID) + "!");
+				return showInfo(SORRY, "You don't have enough items:<br>You need: <font color=LEVEL>" + formatAdena(Config.PREMIUM_BUFF_REMOVE_PRICE) + " " + getItemNameHtml(Config.PREMIUM_CONSUMABLE_ID) + "!");
 			}
 			player.destroyItemByItemId(ItemProcessType.FEE, Config.PREMIUM_CONSUMABLE_ID, Config.PREMIUM_BUFF_REMOVE_PRICE, player, true);
 		}
@@ -809,7 +820,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 		{
 			if (player.getInventory().getInventoryItemCount(Config.PREMIUM_CONSUMABLE_ID, -1) < Config.PREMIUM_BUFF_SET_PRICE)
 			{
-				return showInfo("Sorry", "You don't have enough items:<br>You need: <font color=LEVEL>" + formatAdena(Config.PREMIUM_BUFF_SET_PRICE) + " " + getItemNameHtml(Config.PREMIUM_CONSUMABLE_ID) + "!");
+				return showInfo(SORRY, "You don't have enough items:<br>You need: <font color=LEVEL>" + formatAdena(Config.PREMIUM_BUFF_SET_PRICE) + " " + getItemNameHtml(Config.PREMIUM_CONSUMABLE_ID) + "!");
 			}
 			player.destroyItemByItemId(ItemProcessType.FEE, Config.PREMIUM_CONSUMABLE_ID, Config.PREMIUM_BUFF_SET_PRICE, player, true);
 		}
@@ -827,8 +838,8 @@ public class BufferBoardPremium implements IParseBoardHandler
 			{
 				buffSets.add(new int[]
 				{
-					rs.getInt("buffId"),
-					rs.getInt("buffLevel")
+					rs.getInt(BUFFID),
+					rs.getInt(BUFFLEVEL)
 				});
 			}
 			rs.close();
@@ -879,8 +890,8 @@ public class BufferBoardPremium implements IParseBoardHandler
 			final ResultSet rs = ps.executeQuery();
 			while (rs.next())
 			{
-				final int id = rs.getInt("skill_id");
-				final int level = rs.getInt("skill_level");
+				final int id = rs.getInt(SKILL_ID);
+				final int level = rs.getInt(SKILL_LEVEL);
 				final String type = rs.getString("buffType");
 				final String canUse = rs.getString("canUse");
 				
@@ -907,7 +918,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 		{
 			if (player.getInventory().getInventoryItemCount(Config.PREMIUM_CONSUMABLE_ID, -1) < Config.PREMIUM_SCHEME_BUFF_PRICE)
 			{
-				return showInfo("Sorry", "You don't have enough items:<br>You need: <font color=LEVEL>" + formatAdena(Config.PREMIUM_SCHEME_BUFF_PRICE) + " " + getItemNameHtml(Config.PREMIUM_CONSUMABLE_ID) + "!");
+				return showInfo(SORRY, "You don't have enough items:<br>You need: <font color=LEVEL>" + formatAdena(Config.PREMIUM_SCHEME_BUFF_PRICE) + " " + getItemNameHtml(Config.PREMIUM_CONSUMABLE_ID) + "!");
 			}
 			player.destroyItemByItemId(ItemProcessType.FEE, Config.PREMIUM_CONSUMABLE_ID, Config.PREMIUM_SCHEME_BUFF_PRICE, player, true);
 		}
@@ -960,7 +971,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 		final List<String[]> schemes = new ArrayList<>();
 		try (Connection con = DatabaseFactory.getConnection())
 		{
-			final PreparedStatement ps = con.prepareStatement("SELECT id, scheme_name FROM npcbufferpremium_scheme_list WHERE player_id=?");
+			final PreparedStatement ps = con.prepareStatement(SQL_NPCBUFFERPREMIUM_SCHEME_LIST);
 			ps.setInt(1, player.getObjectId());
 			final ResultSet rs = ps.executeQuery();
 			while (rs.next())
@@ -968,7 +979,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 				schemes.add(new String[]
 				{
 					rs.getString("id"),
-					rs.getString("scheme_name")
+					rs.getString(SCHEME_NAME)
 				});
 			}
 			rs.close();
@@ -983,7 +994,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 	
 	private String createSchemeForm()
 	{
-		return "<html noscrollbar><title>" + TITLE + "</title><body><center>" + "<img src=\"L2UI_CH3.herotower_deco\" width=256 height=32><br><br>" + "You MUST separate new words with a dot (.)<br><br>" + "Scheme name: <edit var=\"sname\" width=120><br><br>" + button("Create Scheme", "_cbbbuffer;create $sname", 130) + "<br>" + button("Back", "_cbbbuffer", 100) + "<br><font color=303030>" + TITLE + "</font></center></body></html>";
+		return "<html noscrollbar><title>" + TITLE + "</title><body><center>" + "<img src=\"L2UI_CH3.herotower_deco\" width=256 height=32><br><br>" + "You MUST separate new words with a dot (.)<br><br>" + "Scheme name: <edit var=\"sname\" width=120><br><br>" + button("Create Scheme", "_cbbbuffer;create $sname", 130) + "<br>" + button("Back", CBBBUFFER, 100) + "<br><font color=303030>" + TITLE + "</font></center></body></html>";
 	}
 	
 	private String handleCreateScheme(Player player, String rawName)
@@ -1014,7 +1025,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 		catch (SQLException e)
 		{
 			LOG.warning("BufferBoardPremium createScheme error: " + e.getMessage());
-			return showInfo("Error", "Failed to create scheme. Please try again later.");
+			return showInfo(ERROR, "Failed to create scheme. Please try again later.");
 		}
 		
 		return buildMainPage(player);
@@ -1029,12 +1040,12 @@ public class BufferBoardPremium implements IParseBoardHandler
 		
 		try (Connection con = DatabaseFactory.getConnection())
 		{
-			final PreparedStatement ps = con.prepareStatement("SELECT id, scheme_name FROM npcbufferpremium_scheme_list WHERE player_id=?");
+			final PreparedStatement ps = con.prepareStatement(SQL_NPCBUFFERPREMIUM_SCHEME_LIST);
 			ps.setInt(1, player.getObjectId());
 			final ResultSet rs = ps.executeQuery();
 			while (rs.next())
 			{
-				html.append(button(rs.getString("scheme_name"), "_cbbbuffer;manage;" + rs.getString("id"), 130));
+				html.append(button(rs.getString(SCHEME_NAME), "_cbbbuffer;manage;" + rs.getString("id"), 130));
 			}
 			rs.close();
 			ps.close();
@@ -1044,7 +1055,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 			LOG.warning("BufferBoardPremium editSchemeList error: " + e.getMessage());
 		}
 		
-		html.append("<br>").append(button("Back", "_cbbbuffer", 100));
+		html.append("<br>").append(button("Back", CBBBUFFER, 100));
 		html.append("<br><font color=303030>").append(TITLE).append("</font></center></body></html>");
 		return html.toString();
 	}
@@ -1058,13 +1069,13 @@ public class BufferBoardPremium implements IParseBoardHandler
 		
 		try (Connection con = DatabaseFactory.getConnection())
 		{
-			final PreparedStatement ps = con.prepareStatement("SELECT id, scheme_name FROM npcbufferpremium_scheme_list WHERE player_id=?");
+			final PreparedStatement ps = con.prepareStatement(SQL_NPCBUFFERPREMIUM_SCHEME_LIST);
 			ps.setInt(1, player.getObjectId());
 			final ResultSet rs = ps.executeQuery();
 			while (rs.next())
 			{
 				final String id = rs.getString("id");
-				final String name = rs.getString("scheme_name");
+				final String name = rs.getString(SCHEME_NAME);
 				html.append(button(name, "_cbbbuffer;delete_c;" + id + ";" + name, 130));
 			}
 			rs.close();
@@ -1075,7 +1086,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 			LOG.warning("BufferBoardPremium deleteSchemeList error: " + e.getMessage());
 		}
 		
-		html.append("<br>").append(button("Back", "_cbbbuffer", 100));
+		html.append("<br>").append(button("Back", CBBBUFFER, 100));
 		html.append("<br><font color=303030>").append(TITLE).append("</font></center></body></html>");
 		return html.toString();
 	}
@@ -1107,7 +1118,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 		catch (SQLException e)
 		{
 			LOG.warning("BufferBoardPremium deleteScheme error: " + e.getMessage());
-			return showInfo("Error", "Failed to delete scheme. Please try again later.");
+			return showInfo(ERROR, "Failed to delete scheme. Please try again later.");
 		}
 		
 		return buildMainPage(player);
@@ -1136,7 +1147,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 		}
 		
 		html.append("<br>").append(button("Back", "_cbbbuffer;edit_1", 100));
-		html.append(button("Home", "_cbbbuffer", 100));
+		html.append(button("Home", CBBBUFFER, 100));
 		html.append("<br><font color=303030>").append(TITLE).append("</font></center></body></html>");
 		return html.toString();
 	}
@@ -1172,7 +1183,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 				{
 					html.append("<br>No more buff slots available!");
 					html.append("<br>").append(button("Back", "_cbbbuffer;manage;" + scheme, 100));
-					html.append(button("Home", "_cbbbuffer", 100));
+					html.append(button("Home", CBBBUFFER, 100));
 					html.append("<br><font color=303030>").append(TITLE).append("</font></center></body></html>");
 					return html.toString();
 				}
@@ -1181,9 +1192,9 @@ public class BufferBoardPremium implements IParseBoardHandler
 				final ResultSet rs = ps.executeQuery();
 				while (rs.next())
 				{
-					String name = SkillData.getInstance().getSkill(rs.getInt("buffId"), rs.getInt("buffLevel")).getName();
+					String name = SkillData.getInstance().getSkill(rs.getInt(BUFFID), rs.getInt(BUFFLEVEL)).getName();
 					name = name.replace(" ", "+");
-					buffList.add(name + "_" + rs.getInt("buffId") + "_" + rs.getInt("buffLevel"));
+					buffList.add(name + "_" + rs.getInt(BUFFID) + "_" + rs.getInt(BUFFLEVEL));
 				}
 				rs.close();
 				ps.close();
@@ -1197,9 +1208,9 @@ public class BufferBoardPremium implements IParseBoardHandler
 				final ResultSet rs = ps.executeQuery();
 				while (rs.next())
 				{
-					String name = SkillData.getInstance().getSkill(rs.getInt("skill_id"), rs.getInt("skill_level")).getName();
+					String name = SkillData.getInstance().getSkill(rs.getInt(SKILL_ID), rs.getInt(SKILL_LEVEL)).getName();
 					name = name.replace(" ", "+");
-					buffList.add(name + "_" + rs.getInt("skill_id") + "_" + rs.getInt("skill_level"));
+					buffList.add(name + "_" + rs.getInt(SKILL_ID) + "_" + rs.getInt(SKILL_LEVEL));
 				}
 				rs.close();
 				ps.close();
@@ -1254,7 +1265,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 				final ResultSet rs = ps.executeQuery();
 				while (rs.next())
 				{
-					usedBuffs.add(rs.getInt("skill_id") + "_" + rs.getInt("skill_level"));
+					usedBuffs.add(rs.getInt(SKILL_ID) + "_" + rs.getInt(SKILL_LEVEL));
 				}
 				rs.close();
 				ps.close();
@@ -1302,7 +1313,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 		}
 		
 		html.append("<br><br>").append(button("Back", "_cbbbuffer;manage;" + scheme, 100));
-		html.append(button("Home", "_cbbbuffer", 100));
+		html.append(button("Home", CBBBUFFER, 100));
 		html.append("<br><font color=303030>").append(TITLE).append("</font></center></body></html>");
 		return html.toString();
 	}
@@ -1373,7 +1384,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 		catch (SQLException e)
 		{
 			LOG.warning("BufferBoardPremium addBuff error: " + e.getMessage());
-			return showInfo("Error", "Failed to add buff to scheme. Please try again later.");
+			return showInfo(ERROR, "Failed to add buff to scheme. Please try again later.");
 		}
 		
 		if ((currentTotal + 1) >= (MAX_SCHEME_BUFFS + MAX_SCHEME_DANCES))
@@ -1423,7 +1434,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 		catch (SQLException e)
 		{
 			LOG.warning("BufferBoardPremium removeBuff error: " + e.getMessage());
-			return showInfo("Error", "Failed to remove buff from scheme. Please try again later.");
+			return showInfo(ERROR, "Failed to remove buff from scheme. Please try again later.");
 		}
 		
 		// Use server-side count instead of trusting client total
@@ -1687,7 +1698,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 			html.append("<br1>").append(button("Buff Sets", "_cbbbuffer;gmEditList;set;Buff_Sets;1", 118));
 		}
 		
-		html.append("<br>").append(button("Back", "_cbbbuffer", 100));
+		html.append("<br>").append(button("Back", CBBBUFFER, 100));
 		html.append("<br><font color=303030>").append(TITLE).append("</font></center></body></html>");
 		return html.toString();
 	}
@@ -1714,9 +1725,9 @@ public class BufferBoardPremium implements IParseBoardHandler
 			final ResultSet rs = ps.executeQuery();
 			while (rs.next())
 			{
-				String name = SkillData.getInstance().getSkill(rs.getInt("buffId"), rs.getInt("buffLevel")).getName();
+				String name = SkillData.getInstance().getSkill(rs.getInt(BUFFID), rs.getInt(BUFFLEVEL)).getName();
 				name = name.replace(" ", "+");
-				buffList.add(name + "_" + rs.getString("forClass") + "_" + page + "_" + rs.getString("canUse") + "_" + rs.getString("buffId") + "_" + rs.getString("buffLevel"));
+				buffList.add(name + "_" + rs.getString("forClass") + "_" + page + "_" + rs.getString("canUse") + "_" + rs.getString(BUFFID) + "_" + rs.getString(BUFFLEVEL));
 			}
 			rs.close();
 			ps.close();
@@ -1798,7 +1809,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 		}
 		
 		html.append("<br><br>").append(button("Back", "_cbbbuffer;gmManage", 100));
-		html.append(button("Home", "_cbbbuffer", 100));
+		html.append(button("Home", CBBBUFFER, 100));
 		html.append("<br><font color=303030>").append(TITLE).append("</font></center></body></html>");
 		return html.toString();
 	}
@@ -1861,7 +1872,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 		catch (SQLException e)
 		{
 			LOG.warning("BufferBoardPremium gmManageSelectedSet error: " + e.getMessage());
-			return showInfo("Error", "Failed to update buff set. Please try again later.");
+			return showInfo(ERROR, "Failed to update buff set. Please try again later.");
 		}
 		return gmViewAllBuffs("set", "Buff_Sets", page);
 	}
@@ -1915,7 +1926,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 				return Config.PREMIUM_ENABLE_OTHERS;
 			case "special":
 				return Config.PREMIUM_ENABLE_SPECIAL;
-			case "cubic":
+			case CUBIC:
 				return Config.PREMIUM_ENABLE_CUBIC;
 			default:
 				return false;
@@ -1940,7 +1951,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 				return Config.PREMIUM_OTHERS_PRICE;
 			case "special":
 				return Config.PREMIUM_SPECIAL_PRICE;
-			case "cubic":
+			case CUBIC:
 				return Config.PREMIUM_CUBIC_PRICE;
 			default:
 				return 0;

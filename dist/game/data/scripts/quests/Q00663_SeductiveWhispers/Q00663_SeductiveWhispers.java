@@ -38,6 +38,11 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Q00663_SeductiveWhispers extends Quest
 {
+	private static final String HTML_N_30846_14 = "30846-14.html";
+	private static final String HTML_N_30846_19 = "30846-19.html";
+	private static final String HTML_N_30846_25 = "30846-25.html";
+	private static final String HTML_N_30846_29 = "30846-29.html";
+
 	// NPCs
 	private static final int WILBERT = 30846;
 	// Misc
@@ -280,7 +285,7 @@ public class Q00663_SeductiveWhispers extends Quest
 				}
 				break;
 			}
-			case "30846-14.html":
+			case HTML_N_30846_14:
 			{
 				if (qs.isStarted() && ((qs.getMemoState() % 10) == 5) && ((qs.getMemoState() / 1000) == 0))
 				{
@@ -302,7 +307,7 @@ public class Q00663_SeductiveWhispers extends Quest
 								giveItems(player, SCROLL_ENCHANT_WEAPON_A_GRADE);
 								giveItems(player, SCROLL_ENCHANT_ARMOR_A_GRADE);
 								qs.setMemoState(4);
-								htmltext = getHtml(player, "30846-14.html", card1pic, card2pic, winCount, -1);
+								htmltext = getHtml(player, HTML_N_30846_14, card1pic, card2pic, winCount, -1);
 							}
 							else
 							{
@@ -327,7 +332,7 @@ public class Q00663_SeductiveWhispers extends Quest
 								giveItems(player, SCROLL_ENCHANT_WEAPON_A_GRADE);
 								giveItems(player, SCROLL_ENCHANT_ARMOR_A_GRADE);
 								qs.setMemoState(4);
-								htmltext = getHtml(player, "30846-14.html", card1pic, card2pic, winCount, -1);
+								htmltext = getHtml(player, HTML_N_30846_14, card1pic, card2pic, winCount, -1);
 							}
 							else
 							{
@@ -345,7 +350,7 @@ public class Q00663_SeductiveWhispers extends Quest
 				}
 				break;
 			}
-			case "30846-19.html":
+			case HTML_N_30846_19:
 			{
 				if (qs.isStarted() && ((qs.getMemoState() % 10) == 6) && ((qs.getMemoState() / 1000) == 0))
 				{
@@ -362,7 +367,7 @@ public class Q00663_SeductiveWhispers extends Quest
 						{
 							qs.setMemoState(1);
 							qs.setMemoStateEx(1, 0);
-							htmltext = getHtml(player, "30846-19.html", card1pic, card2pic, -1, -1);
+							htmltext = getHtml(player, HTML_N_30846_19, card1pic, card2pic, -1, -1);
 						}
 						else
 						{
@@ -376,7 +381,7 @@ public class Q00663_SeductiveWhispers extends Quest
 						if ((rnd2 == 5) || (i1 == 5))
 						{
 							qs.setMemoState(1);
-							htmltext = getHtml(player, "30846-19.html", card1pic, card2pic, -1, -1);
+							htmltext = getHtml(player, HTML_N_30846_19, card1pic, card2pic, -1, -1);
 						}
 						else
 						{
@@ -612,7 +617,7 @@ public class Q00663_SeductiveWhispers extends Quest
 				}
 				break;
 			}
-			case "30846-25.html":
+			case HTML_N_30846_25:
 			{
 				if (qs.isStarted() && qs.isMemoState(1005))
 				{
@@ -634,7 +639,7 @@ public class Q00663_SeductiveWhispers extends Quest
 							qs.setMemoState(1);
 							qs.setMemoStateEx(1, 0);
 							giveAdena(player, 800, true);
-							htmltext = getHtml(player, "30846-25.html", card1pic, card2pic, -1, card1);
+							htmltext = getHtml(player, HTML_N_30846_25, card1pic, card2pic, -1, card1);
 						}
 						else
 						{
@@ -650,7 +655,7 @@ public class Q00663_SeductiveWhispers extends Quest
 							qs.setMemoState(1);
 							qs.setMemoStateEx(1, 0);
 							giveAdena(player, 800, true);
-							htmltext = getHtml(player, "30846-25.html", card1pic, card2pic, -1, -1);
+							htmltext = getHtml(player, HTML_N_30846_25, card1pic, card2pic, -1, -1);
 						}
 						else
 						{
@@ -662,7 +667,7 @@ public class Q00663_SeductiveWhispers extends Quest
 				}
 				break;
 			}
-			case "30846-29.html":
+			case HTML_N_30846_29:
 			{
 				if (qs.isStarted() && qs.isMemoState(1006))
 				{
@@ -679,7 +684,7 @@ public class Q00663_SeductiveWhispers extends Quest
 						{
 							qs.setMemoState(1);
 							qs.setMemoStateEx(1, 0);
-							htmltext = getHtml(player, "30846-29.html", card1pic, card2pic, 0, -1);
+							htmltext = getHtml(player, HTML_N_30846_29, card1pic, card2pic, 0, -1);
 						}
 						else
 						{
@@ -694,7 +699,7 @@ public class Q00663_SeductiveWhispers extends Quest
 						{
 							qs.setMemoState(1);
 							qs.setMemoStateEx(1, 0);
-							htmltext = getHtml(player, "30846-29.html", card1pic, card2pic, 0, -1);
+							htmltext = getHtml(player, HTML_N_30846_29, card1pic, card2pic, 0, -1);
 						}
 						else
 						{

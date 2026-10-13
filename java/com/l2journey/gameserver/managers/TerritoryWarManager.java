@@ -76,6 +76,8 @@ import com.l2journey.gameserver.util.LocationUtil;
 
 public class TerritoryWarManager implements Siegable
 {
+	private static final String CASTLEID = "castleId";
+
 	private static final Logger LOGGER = Logger.getLogger(TerritoryWarManager.class.getName());
 	
 	// SQL
@@ -816,7 +818,7 @@ public class TerritoryWarManager implements Siegable
 		{
 			while (rs.next())
 			{
-				final int castleId = rs.getInt("castleId");
+				final int castleId = rs.getInt(CASTLEID);
 				final int npcId = rs.getInt("npcId");
 				final Location loc = new Location(rs.getInt("x"), rs.getInt("y"), rs.getInt("z"), rs.getInt("heading"));
 				final int spawnType = rs.getInt("spawnType");
@@ -855,7 +857,7 @@ public class TerritoryWarManager implements Siegable
 		{
 			while (rs.next())
 			{
-				final int castleId = rs.getInt("castleId");
+				final int castleId = rs.getInt(CASTLEID);
 				final int fortId = rs.getInt("fortId");
 				final String ownedWardIds = rs.getString("OwnedWardIds");
 				final Territory t = _territoryList.get(castleId);
@@ -892,7 +894,7 @@ public class TerritoryWarManager implements Siegable
 		{
 			while (rs.next())
 			{
-				final int castleId = rs.getInt("castleId");
+				final int castleId = rs.getInt(CASTLEID);
 				final int registeredId = rs.getInt("registeredId");
 				if (ClanTable.getInstance().getClan(registeredId) != null)
 				{

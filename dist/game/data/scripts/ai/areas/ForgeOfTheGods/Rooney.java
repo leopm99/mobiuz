@@ -43,6 +43,8 @@ import ai.AbstractNpcAI;
  */
 public class Rooney extends AbstractNpcAI
 {
+	private static final String TELEPORT = "teleport";
+
 	// NPC
 	private static final int ROONEY = 32049;
 	// Locations
@@ -98,7 +100,7 @@ public class Rooney extends AbstractNpcAI
 	@Override
 	public String onEvent(String event, Npc npc, Player player)
 	{
-		if (event.equals("teleport") && !npc.isDecayed())
+		if (event.equals(TELEPORT) && !npc.isDecayed())
 		{
 			final int aiVal = npc.getScriptValue();
 			switch (aiVal)
@@ -131,7 +133,7 @@ public class Rooney extends AbstractNpcAI
 				}
 			}
 			npc.setScriptValue(aiVal + 1);
-			startQuestTimer("teleport", 60000, npc, null);
+			startQuestTimer(TELEPORT, 60000, npc, null);
 		}
 		return null;
 	}
@@ -142,7 +144,7 @@ public class Rooney extends AbstractNpcAI
 		if (creature.isPlayer() && npc.isScriptValue(0))
 		{
 			npc.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.WELCOME);
-			startQuestTimer("teleport", 60000, npc, null);
+			startQuestTimer(TELEPORT, 60000, npc, null);
 			npc.setScriptValue(1);
 		}
 	}

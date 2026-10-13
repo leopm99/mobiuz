@@ -32,6 +32,8 @@ import com.l2journey.gameserver.network.serverpackets.NpcSay;
  */
 public class Q00615_MagicalPowerOfFirePart1 extends Quest
 {
+	private static final String SPAWNED = "spawned";
+
 	// NPCs
 	private static final int NARAN = 31378;
 	private static final int UDAN = 31379;
@@ -115,7 +117,7 @@ public class Q00615_MagicalPowerOfFirePart1 extends Quest
 				}
 				else if (qs.isCond(2))
 				{
-					if (qs.isSet("spawned"))
+					if (qs.isSet(SPAWNED))
 					{
 						takeItems(player, KEY, 1);
 						htmltext = "31559-04.html";
@@ -148,9 +150,9 @@ public class Q00615_MagicalPowerOfFirePart1 extends Quest
 	public void onAttack(Npc npc, Player attacker, int damage, boolean isSummon)
 	{
 		final QuestState qs = getQuestState(attacker, false);
-		if ((qs != null) && qs.isCond(2) && !qs.isSet("spawned"))
+		if ((qs != null) && qs.isCond(2) && !qs.isSet(SPAWNED))
 		{
-			qs.set("spawned", "1");
+			qs.set(SPAWNED, "1");
 			npc.setTarget(attacker);
 			npc.doCast(GOW.getSkill());
 			final Npc eye = addSpawn(ASEFA_EYE, npc);
@@ -218,9 +220,9 @@ public class Q00615_MagicalPowerOfFirePart1 extends Quest
 						}
 						case 2:
 						{
-							if (qs.isSet("spawned"))
+							if (qs.isSet(SPAWNED))
 							{
-								qs.unset("spawned");
+								qs.unset(SPAWNED);
 								npc.setTarget(player);
 								npc.doCast(DISPEL_GOW.getSkill());
 								htmltext = "31379-03.html";

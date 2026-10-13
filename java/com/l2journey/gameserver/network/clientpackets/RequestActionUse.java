@@ -74,6 +74,13 @@ import com.l2journey.gameserver.taskmanagers.AttackStanceTaskManager;
  */
 public class RequestActionUse extends ClientPacket
 {
+	private static final String PHYSICALSPECIAL1 = "PhysicalSpecial1";
+	private static final String PHYSICALSPECIAL2 = "PhysicalSpecial2";
+	private static final String DDMAGIC = "DDMagic";
+	private static final String BUFF3 = "buff3";
+	private static final String BUFF4 = "buff4";
+	private static final String BUFF5 = "buff5";
+
 	private static final int SIN_EATER_ID = 12564;
 	private static final int SWITCH_STANCE_ID = 6054;
 	
@@ -262,7 +269,7 @@ public class RequestActionUse extends ClientPacket
 			}
 			case 32: // Wild Hog Cannon - Wild Cannon
 			{
-				useSkill(player, "DDMagic", false);
+				useSkill(player, DDMAGIC, false);
 				break;
 			}
 			case 36: // Soulless - Toxic Smoke
@@ -321,12 +328,12 @@ public class RequestActionUse extends ClientPacket
 			}
 			case 43: // Merrow the Unicorn - Hydro Screw
 			{
-				useSkill(player, "DDMagic", false);
+				useSkill(player, DDMAGIC, false);
 				break;
 			}
 			case 44: // Big Boom - Boom Attack
 			{
-				useSkill(player, "DDMagic", false);
+				useSkill(player, DDMAGIC, false);
 				break;
 			}
 			case 45: // Boxer the Unicorn - Master Recharge
@@ -336,17 +343,17 @@ public class RequestActionUse extends ClientPacket
 			}
 			case 46: // Mew the Cat - Mega Storm Strike
 			{
-				useSkill(player, "DDMagic", false);
+				useSkill(player, DDMAGIC, false);
 				break;
 			}
 			case 47: // Silhouette - Steal Blood
 			{
-				useSkill(player, "DDMagic", false);
+				useSkill(player, DDMAGIC, false);
 				break;
 			}
 			case 48: // Mechanic Golem - Mech. Cannon
 			{
-				useSkill(player, "DDMagic", false);
+				useSkill(player, DDMAGIC, false);
 				break;
 			}
 			case 51: // General Manufacture
@@ -509,7 +516,7 @@ public class RequestActionUse extends ClientPacket
 			}
 			case 1009: // Feline Queen - Cure of Queen
 			{
-				useSkill(player, "DDMagic", false);
+				useSkill(player, DDMAGIC, false);
 				break;
 			}
 			case 1010: // Unicorn Seraphim - Blessing of Seraphim
@@ -524,7 +531,7 @@ public class RequestActionUse extends ClientPacket
 			}
 			case 1012: // Unicorn Seraphim - Cure of Seraphim
 			{
-				useSkill(player, "DDMagic", false);
+				useSkill(player, DDMAGIC, false);
 				break;
 			}
 			case 1013: // Nightshade - Curse of Shade
@@ -544,22 +551,22 @@ public class RequestActionUse extends ClientPacket
 			}
 			case 1016: // Cursed Man - Cursed Blow
 			{
-				useSkill(player, "PhysicalSpecial1", false);
+				useSkill(player, PHYSICALSPECIAL1, false);
 				break;
 			}
 			case 1017: // Cursed Man - Cursed Strike
 			{
-				useSkill(player, "PhysicalSpecial2", false);
+				useSkill(player, PHYSICALSPECIAL2, false);
 				break;
 			}
 			case 1031: // Feline King - Slash
 			{
-				useSkill(player, "PhysicalSpecial1", false);
+				useSkill(player, PHYSICALSPECIAL1, false);
 				break;
 			}
 			case 1032: // Feline King - Spinning Slash
 			{
-				useSkill(player, "PhysicalSpecial2", false);
+				useSkill(player, PHYSICALSPECIAL2, false);
 				break;
 			}
 			case 1033: // Feline King - Hold of King
@@ -569,22 +576,22 @@ public class RequestActionUse extends ClientPacket
 			}
 			case 1034: // Magnus the Unicorn - Whiplash
 			{
-				useSkill(player, "PhysicalSpecial1", false);
+				useSkill(player, PHYSICALSPECIAL1, false);
 				break;
 			}
 			case 1035: // Magnus the Unicorn - Tridal Wave
 			{
-				useSkill(player, "PhysicalSpecial2", false);
+				useSkill(player, PHYSICALSPECIAL2, false);
 				break;
 			}
 			case 1036: // Spectral Lord - Corpse Kaboom
 			{
-				useSkill(player, "PhysicalSpecial1", false);
+				useSkill(player, PHYSICALSPECIAL1, false);
 				break;
 			}
 			case 1037: // Spectral Lord - Dicing Death
 			{
-				useSkill(player, "PhysicalSpecial2", false);
+				useSkill(player, PHYSICALSPECIAL2, false);
 				break;
 			}
 			case 1038: // Spectral Lord - Dark Curse
@@ -654,32 +661,32 @@ public class RequestActionUse extends ClientPacket
 			}
 			case 1051: // Feline Queen - Bless The Body
 			{
-				useSkill(player, "buff3", false);
+				useSkill(player, BUFF3, false);
 				break;
 			}
 			case 1052: // Feline Queen - Bless The Soul
 			{
-				useSkill(player, "buff4", false);
+				useSkill(player, BUFF4, false);
 				break;
 			}
 			case 1053: // Feline Queen - Haste
 			{
-				useSkill(player, "buff5", false);
+				useSkill(player, BUFF5, false);
 				break;
 			}
 			case 1054: // Unicorn Seraphim - Acumen
 			{
-				useSkill(player, "buff3", false);
+				useSkill(player, BUFF3, false);
 				break;
 			}
 			case 1055: // Unicorn Seraphim - Clarity
 			{
-				useSkill(player, "buff4", false);
+				useSkill(player, BUFF4, false);
 				break;
 			}
 			case 1056: // Unicorn Seraphim - Empower
 			{
-				useSkill(player, "buff5", false);
+				useSkill(player, BUFF5, false);
 				break;
 			}
 			case 1057: // Unicorn Seraphim - Wild Magic
@@ -689,17 +696,17 @@ public class RequestActionUse extends ClientPacket
 			}
 			case 1058: // Nightshade - Death Whisper
 			{
-				useSkill(player, "buff3", false);
+				useSkill(player, BUFF3, false);
 				break;
 			}
 			case 1059: // Nightshade - Focus
 			{
-				useSkill(player, "buff4", false);
+				useSkill(player, BUFF4, false);
 				break;
 			}
 			case 1060: // Nightshade - Guidance
 			{
-				useSkill(player, "buff5", false);
+				useSkill(player, BUFF5, false);
 				break;
 			}
 			case 1061: // Wild Beast Fighter, White Weasel - Death blow
@@ -754,7 +761,7 @@ public class RequestActionUse extends ClientPacket
 			}
 			case 1071: // Tigress - Power Strike
 			{
-				useSkill(player, "DDMagic", true);
+				useSkill(player, DDMAGIC, true);
 				break;
 			}
 			case 1072: // Toy Knight - Piercing attack

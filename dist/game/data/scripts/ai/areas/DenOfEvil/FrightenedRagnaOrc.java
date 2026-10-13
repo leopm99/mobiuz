@@ -45,6 +45,8 @@ import ai.AbstractNpcAI;
  */
 public class FrightenedRagnaOrc extends AbstractNpcAI
 {
+	private static final String REWARD = "reward";
+
 	// NPC ID
 	private static final int MOB_ID = 18807;
 	// Chances
@@ -71,7 +73,7 @@ public class FrightenedRagnaOrc extends AbstractNpcAI
 		}
 		else if ((npc.getCurrentHp() < (npc.getMaxHp() * 0.2)) && npc.isScriptValue(1))
 		{
-			startQuestTimer("reward", 10000, npc, attacker);
+			startQuestTimer(REWARD, 10000, npc, attacker);
 			npc.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.WAIT_WAIT_STOP_SAVE_ME_AND_I_LL_GIVE_YOU_10_000_000_ADENA);
 			npc.setScriptValue(2);
 		}
@@ -83,7 +85,7 @@ public class FrightenedRagnaOrc extends AbstractNpcAI
 		final NpcStringId msg = getRandomBoolean() ? NpcStringId.UGH_A_CURSE_UPON_YOU : NpcStringId.I_REALLY_DIDN_T_WANT_TO_FIGHT;
 		npc.broadcastSay(ChatType.NPC_GENERAL, msg);
 		cancelQuestTimer("say", npc, null);
-		cancelQuestTimer("reward", npc, player);
+		cancelQuestTimer(REWARD, npc, player);
 	}
 	
 	@Override
@@ -102,7 +104,7 @@ public class FrightenedRagnaOrc extends AbstractNpcAI
 				npc.broadcastSay(ChatType.NPC_GENERAL, msg);
 				break;
 			}
-			case "reward":
+			case REWARD:
 			{
 				if (!npc.isDead() && npc.isScriptValue(2))
 				{

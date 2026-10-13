@@ -50,6 +50,8 @@ import com.l2journey.gameserver.network.serverpackets.NpcHtmlMessage;
  */
 public class AdminTeleport implements IAdminCommandHandler
 {
+	private static final String HTML_TELEPORTS = "teleports.htm";
+
 	private static final Logger LOGGER = Logger.getLogger(AdminTeleport.class.getName());
 	
 	private static final String[] ADMIN_COMMANDS =
@@ -101,7 +103,7 @@ public class AdminTeleport implements IAdminCommandHandler
 		}
 		if (command.equals("admin_show_moves"))
 		{
-			AdminHtml.showAdminHtml(activeChar, "teleports.htm");
+			AdminHtml.showAdminHtml(activeChar, HTML_TELEPORTS);
 		}
 		if (command.equals("admin_show_moves_other"))
 		{
@@ -150,12 +152,12 @@ public class AdminTeleport implements IAdminCommandHandler
 			catch (StringIndexOutOfBoundsException _)
 			{
 				// Case of empty or missing coordinates
-				AdminHtml.showAdminHtml(activeChar, "teleports.htm");
+				AdminHtml.showAdminHtml(activeChar, HTML_TELEPORTS);
 			}
 			catch (NumberFormatException _)
 			{
 				activeChar.sendSysMessage("Usage: //move_to <x> <y> <z>");
-				AdminHtml.showAdminHtml(activeChar, "teleports.htm");
+				AdminHtml.showAdminHtml(activeChar, HTML_TELEPORTS);
 			}
 		}
 		else if (command.startsWith("admin_teleport_character"))

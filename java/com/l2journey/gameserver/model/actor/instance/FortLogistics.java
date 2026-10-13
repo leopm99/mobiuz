@@ -32,6 +32,9 @@ import com.l2journey.gameserver.network.serverpackets.NpcHtmlMessage;
  */
 public class FortLogistics extends Merchant
 {
+	private static final String HTML_LOGISTICS_NOPRIVS = "data/html/fortress/logistics-noprivs.htm";
+	private static final String PH_OBJECTID = "%objectId%";
+
 	private static final int[] SUPPLY_BOX_IDS =
 	{
 		35665,
@@ -87,9 +90,9 @@ public class FortLogistics extends Merchant
 			}
 			else
 			{
-				html.setFile(player, "data/html/fortress/logistics-noprivs.htm");
+				html.setFile(player, HTML_LOGISTICS_NOPRIVS);
 			}
-			html.replace("%objectId%", String.valueOf(getObjectId()));
+			html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 			player.sendPacket(html);
 		}
 		else if (actualCommand.equalsIgnoreCase("blood"))
@@ -111,9 +114,9 @@ public class FortLogistics extends Merchant
 			}
 			else
 			{
-				html.setFile(player, "data/html/fortress/logistics-noprivs.htm");
+				html.setFile(player, HTML_LOGISTICS_NOPRIVS);
 			}
-			html.replace("%objectId%", String.valueOf(getObjectId()));
+			html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 			player.sendPacket(html);
 		}
 		else if (actualCommand.equalsIgnoreCase("supplylvl"))
@@ -127,14 +130,14 @@ public class FortLogistics extends Merchant
 				}
 				else
 				{
-					html.setFile(player, "data/html/fortress/logistics-noprivs.htm");
+					html.setFile(player, HTML_LOGISTICS_NOPRIVS);
 				}
 			}
 			else
 			{
 				html.setFile(player, "data/html/fortress/logistics-1.htm"); // TODO: Missing HTML?
 			}
-			html.replace("%objectId%", String.valueOf(getObjectId()));
+			html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 			player.sendPacket(html);
 		}
 		else if (actualCommand.equalsIgnoreCase("supply"))
@@ -174,9 +177,9 @@ public class FortLogistics extends Merchant
 			}
 			else
 			{
-				html.setFile(player, "data/html/fortress/logistics-noprivs.htm");
+				html.setFile(player, HTML_LOGISTICS_NOPRIVS);
 			}
-			html.replace("%objectId%", String.valueOf(getObjectId()));
+			html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 			player.sendPacket(html);
 		}
 		else
@@ -207,7 +210,7 @@ public class FortLogistics extends Merchant
 		
 		final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 		html.setFile(player, filename);
-		html.replace("%objectId%", String.valueOf(getObjectId()));
+		html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 		html.replace("%npcId%", String.valueOf(getId()));
 		if (getFort().getOwnerClan() != null)
 		{

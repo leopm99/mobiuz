@@ -60,6 +60,9 @@ import com.l2journey.gameserver.util.MapUtil;
  */
 public class AdminSpawn implements IAdminCommandHandler
 {
+	private static final String ADMIN_LIST_POSITIONS = "admin_list_positions";
+	private static final String HTML_SPAWNS = "spawns.htm";
+
 	private static final Logger LOGGER = Logger.getLogger(AdminSpawn.class.getName());
 	
 	private static final String[] ADMIN_COMMANDS =
@@ -78,7 +81,7 @@ public class AdminSpawn implements IAdminCommandHandler
 		"admin_spawnday",
 		"admin_instance_spawns",
 		"admin_list_spawns",
-		"admin_list_positions",
+		ADMIN_LIST_POSITIONS,
 		"admin_spawn_debug_menu",
 		"admin_spawn_debug_print",
 		"admin_spawn_debug_print_menu",
@@ -91,7 +94,7 @@ public class AdminSpawn implements IAdminCommandHandler
 	{
 		if (command.equals("admin_show_spawns"))
 		{
-			AdminHtml.showAdminHtml(activeChar, "spawns.htm");
+			AdminHtml.showAdminHtml(activeChar, HTML_SPAWNS);
 		}
 		else if (command.equalsIgnoreCase("admin_spawn_debug_menu"))
 		{
@@ -143,7 +146,7 @@ public class AdminSpawn implements IAdminCommandHandler
 			}
 			catch (Exception _)
 			{
-				AdminHtml.showAdminHtml(activeChar, "spawns.htm");
+				AdminHtml.showAdminHtml(activeChar, HTML_SPAWNS);
 			}
 		}
 		else if (command.equals("admin_show_npcs"))
@@ -369,10 +372,10 @@ public class AdminSpawn implements IAdminCommandHandler
 			catch (Exception _)
 			{
 				// Case of wrong or missing monster data.
-				AdminHtml.showAdminHtml(activeChar, "spawns.htm");
+				AdminHtml.showAdminHtml(activeChar, HTML_SPAWNS);
 			}
 		}
-		else if (command.startsWith("admin_list_spawns") || command.startsWith("admin_list_positions"))
+		else if (command.startsWith("admin_list_spawns") || command.startsWith(ADMIN_LIST_POSITIONS))
 		{
 			int npcId = 0;
 			int teleportIndex = -1;
@@ -416,7 +419,7 @@ public class AdminSpawn implements IAdminCommandHandler
 			}
 			
 			// Call the findNpcs method with the parsed NPC ID and teleport index.
-			findNpcs(activeChar, npcId, teleportIndex, command.startsWith("admin_list_positions"));
+			findNpcs(activeChar, npcId, teleportIndex, command.startsWith(ADMIN_LIST_POSITIONS));
 		}
 		else if (command.startsWith("admin_topspawncount") || command.startsWith("admin_top_spawn_count"))
 		{

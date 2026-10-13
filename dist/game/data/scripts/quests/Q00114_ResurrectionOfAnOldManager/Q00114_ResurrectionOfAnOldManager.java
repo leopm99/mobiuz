@@ -38,6 +38,11 @@ import quests.Q00121_PavelTheGiant.Q00121_PavelTheGiant;
  */
 public class Q00114_ResurrectionOfAnOldManager extends Quest
 {
+	private static final String GOLEM_DESPAWN = "golem_despawn";
+	private static final String SPAWNED = "spawned";
+	private static final String CHOICE = "choice";
+	private static final String TALK1 = "talk1";
+
 	// NPCs
 	private static final int NEWYEAR = 31961;
 	private static final int YUMI = 32041;
@@ -149,7 +154,7 @@ public class Q00114_ResurrectionOfAnOldManager extends Quest
 			}
 			case "32041-38.html":
 			{
-				if (qs.getInt("choice") == 2)
+				if (qs.getInt(CHOICE) == 2)
 				{
 					htmltext = "32041-37.html";
 				}
@@ -189,15 +194,15 @@ public class Q00114_ResurrectionOfAnOldManager extends Quest
 			}
 			case "32047-03.html":
 			{
-				if (qs.getInt("talk1") == 0)
+				if (qs.getInt(TALK1) == 0)
 				{
-					qs.set("talk1", "1");
+					qs.set(TALK1, "1");
 				}
 				break;
 			}
 			case "32047-05.html":
 			{
-				if ((qs.getInt("talk") == 0) || (qs.getInt("talk1") == 0))
+				if ((qs.getInt("talk") == 0) || (qs.getInt(TALK1) == 0))
 				{
 					htmltext = "32047-04.html";
 				}
@@ -205,31 +210,31 @@ public class Q00114_ResurrectionOfAnOldManager extends Quest
 			}
 			case "32047-06.html":
 			{
-				qs.set("choice", "1");
+				qs.set(CHOICE, "1");
 				qs.setCond(3, true);
-				qs.unset("talk1");
+				qs.unset(TALK1);
 				qs.unset("talk");
 				break;
 			}
 			case "32047-07.html":
 			{
-				qs.set("choice", "2");
+				qs.set(CHOICE, "2");
 				qs.setCond(4, true);
-				qs.unset("talk1");
+				qs.unset(TALK1);
 				qs.unset("talk");
 				break;
 			}
 			case "32047-09.html":
 			{
-				qs.set("choice", "3");
+				qs.set(CHOICE, "3");
 				qs.setCond(5, true);
-				qs.unset("talk1");
+				qs.unset(TALK1);
 				qs.unset("talk");
 				break;
 			}
 			case "32047-14ab.html":
 			{
-				qs.set("choice", "3");
+				qs.set(CHOICE, "3");
 				qs.setCond(7, true);
 				break;
 			}
@@ -247,10 +252,10 @@ public class Q00114_ResurrectionOfAnOldManager extends Quest
 					golem.setRunning();
 					golem.addDamageHate(player, 0, 999);
 					golem.getAI().setIntention(Intention.ATTACK, player);
-					qs.set("spawned", "1");
-					startQuestTimer("golem_despawn", 300000, null, player);
+					qs.set(SPAWNED, "1");
+					startQuestTimer(GOLEM_DESPAWN, 300000, null, player);
 				}
-				else if (qs.getInt("spawned") == 1)
+				else if (qs.getInt(SPAWNED) == 1)
 				{
 					htmltext = "32047-17b.html";
 				}
@@ -336,9 +341,9 @@ public class Q00114_ResurrectionOfAnOldManager extends Quest
 				qs.setCond(22, true);
 				break;
 			}
-			case "golem_despawn":
+			case GOLEM_DESPAWN:
 			{
-				qs.unset("spawned");
+				qs.unset(SPAWNED);
 				golem.broadcastPacket(new NpcSay(golem.getObjectId(), ChatType.NPC_GENERAL, golem.getId(), NpcStringId.S1_YOUR_ENEMY_WAS_DRIVEN_OUT_I_WILL_NOW_WITHDRAW_AND_AWAIT_YOUR_NEXT_COMMAND).addStringParameter(player.getName()));
 				golem.deleteMe();
 				golem = null;
@@ -362,12 +367,12 @@ public class Q00114_ResurrectionOfAnOldManager extends Quest
 	public void onKill(Npc npc, Player player, boolean isSummon)
 	{
 		final QuestState qs = getQuestState(player, false);
-		if ((qs != null) && qs.isCond(10) && (qs.getInt("spawned") == 1))
+		if ((qs != null) && qs.isCond(10) && (qs.getInt(SPAWNED) == 1))
 		{
 			npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.NPC_GENERAL, npc.getId(), NpcStringId.THIS_ENEMY_IS_FAR_TOO_POWERFUL_FOR_ME_TO_FIGHT_I_MUST_WITHDRAW));
 			qs.setCond(11, true);
-			qs.unset("spawned");
-			cancelQuestTimers("golem_despawn");
+			qs.unset(SPAWNED);
+			cancelQuestTimers(GOLEM_DESPAWN);
 		}
 	}
 	
@@ -522,7 +527,7 @@ public class Q00114_ResurrectionOfAnOldManager extends Quest
 					{
 						case 2:
 						{
-							htmltext = ((talk == 1) && (qs.getInt("talk1") == 1)) ? "32047-05.html" : "32047-01.html";
+							htmltext = ((talk == 1) && (qs.getInt(TALK1) == 1)) ? "32047-05.html" : "32047-01.html";
 							break;
 						}
 						case 3:
@@ -542,7 +547,7 @@ public class Q00114_ResurrectionOfAnOldManager extends Quest
 						}
 						case 6:
 						{
-							switch (qs.getInt("choice"))
+							switch (qs.getInt(CHOICE))
 							{
 								case 1:
 								{
@@ -609,7 +614,7 @@ public class Q00114_ResurrectionOfAnOldManager extends Quest
 						}
 						case 20:
 						{
-							if (qs.getInt("choice") == 1)
+							if (qs.getInt(CHOICE) == 1)
 							{
 								htmltext = "32047-22a.html";
 							}

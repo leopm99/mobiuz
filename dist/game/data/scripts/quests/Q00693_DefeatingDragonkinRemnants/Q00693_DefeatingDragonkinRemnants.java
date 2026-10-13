@@ -34,6 +34,9 @@ import com.l2journey.gameserver.network.SystemMessageId;
  */
 public class Q00693_DefeatingDragonkinRemnants extends Quest
 {
+	private static final String DIFFICULTY = "difficulty";
+	private static final String MEMBERS = "members";
+
 	private static final int EDRIC = 32527;
 	private static final int MIN_LEVEL = 75;
 	private static Location ENTER_TELEPORT_LOC = new Location(-242754, 219982, -10011);
@@ -76,7 +79,7 @@ public class Q00693_DefeatingDragonkinRemnants extends Quest
 				final Party party = talker.getParty();
 				if (qs.getMemoState() >= 3)
 				{
-					if (qs.isMemoState(3) && rewardPlayer(qs, qs.getInt("difficulty"), qs.getInt("members")))
+					if (qs.isMemoState(3) && rewardPlayer(qs, qs.getInt(DIFFICULTY), qs.getInt(MEMBERS)))
 					{
 						htmltext = "32527-reward.html";
 					}
@@ -84,8 +87,8 @@ public class Q00693_DefeatingDragonkinRemnants extends Quest
 					{
 						htmltext = "32527-noreward.html";
 					}
-					qs.unset("difficulty");
-					qs.unset("members");
+					qs.unset(DIFFICULTY);
+					qs.unset(MEMBERS);
 					playSound(talker, QuestSound.ITEMSOUND_QUEST_FINISH);
 					qs.exitQuest(true);
 				}
@@ -155,7 +158,7 @@ public class Q00693_DefeatingDragonkinRemnants extends Quest
 			case "reenter":
 			{
 				htmltext = "";
-				if (qs.getInt("difficulty") >= 1)
+				if (qs.getInt(DIFFICULTY) >= 1)
 				{
 					final InstanceWorld world = InstanceManager.getInstance().getPlayerWorld(player);
 					if (world != null) // player already in the instance
@@ -172,8 +175,8 @@ public class Q00693_DefeatingDragonkinRemnants extends Quest
 					else
 					{
 						htmltext = "32527-noreward.html";
-						qs.unset("difficulty");
-						qs.unset("members");
+						qs.unset(DIFFICULTY);
+						qs.unset(MEMBERS);
 						playSound(player, QuestSound.ITEMSOUND_QUEST_FINISH);
 						qs.exitQuest(true);
 					}

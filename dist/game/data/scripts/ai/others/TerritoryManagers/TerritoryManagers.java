@@ -52,6 +52,9 @@ import ai.AbstractNpcAI;
  */
 public class TerritoryManagers extends AbstractNpcAI
 {
+	private static final String HTML_REWARD_0A = "data/scripts/ai/others/TerritoryManagers/reward-0a.html";
+	private static final String PH_CASTLE = "%castle%";
+
 	private static final int[] preciousSoul1ItemIds =
 	{
 		7587,
@@ -198,21 +201,21 @@ public class TerritoryManagers extends AbstractNpcAI
 				final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
 				if (TerritoryWarManager.getInstance().isTWInProgress() || (reward[0] == 0))
 				{
-					html.setFile(player, "data/scripts/ai/others/TerritoryManagers/reward-0a.html");
+					html.setFile(player, HTML_REWARD_0A);
 				}
 				else if (reward[0] != territoryId)
 				{
 					html.setFile(player, "data/scripts/ai/others/TerritoryManagers/reward-0b.html");
-					html.replace("%castle%", CastleManager.getInstance().getCastleById(reward[0] - 80).getName());
+					html.replace(PH_CASTLE, CastleManager.getInstance().getCastleById(reward[0] - 80).getName());
 				}
 				else if (reward[1] == 0)
 				{
-					html.setFile(player, "data/scripts/ai/others/TerritoryManagers/reward-0a.html");
+					html.setFile(player, HTML_REWARD_0A);
 				}
 				else
 				{
 					html.setFile(player, "data/scripts/ai/others/TerritoryManagers/reward-1.html");
-					html.replace("%castle%", CastleManager.getInstance().getCastleById(reward[0] - 80).getName());
+					html.replace(PH_CASTLE, CastleManager.getInstance().getCastleById(reward[0] - 80).getName());
 					html.replace("%badge%", String.valueOf(reward[1]));
 					html.replace("%adena%", String.valueOf(reward[1] * 5000));
 				}
@@ -233,16 +236,16 @@ public class TerritoryManagers extends AbstractNpcAI
 				final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
 				if (TerritoryWarManager.getInstance().isTWInProgress() || (reward[0] == 0))
 				{
-					html.setFile(player, "data/scripts/ai/others/TerritoryManagers/reward-0a.html");
+					html.setFile(player, HTML_REWARD_0A);
 				}
 				else if (reward[0] != territoryId)
 				{
 					html.setFile(player, "data/scripts/ai/others/TerritoryManagers/reward-0b.html");
-					html.replace("%castle%", CastleManager.getInstance().getCastleById(reward[0] - 80).getName());
+					html.replace(PH_CASTLE, CastleManager.getInstance().getCastleById(reward[0] - 80).getName());
 				}
 				else if (reward[1] == 0)
 				{
-					html.setFile(player, "data/scripts/ai/others/TerritoryManagers/reward-0a.html");
+					html.setFile(player, HTML_REWARD_0A);
 				}
 				else
 				{

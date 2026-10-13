@@ -29,6 +29,8 @@ import com.l2journey.gameserver.model.quest.QuestState;
  */
 public class Q00178_IconicTrinity extends Quest
 {
+	private static final String PH_NAME1 = "%name1%";
+
 	// NPCs
 	private static final int HIERARCH_KEKROPUS = 32138;
 	private static final int ICON_OF_THE_PAST = 32255;
@@ -72,7 +74,7 @@ public class Q00178_IconicTrinity extends Quest
 			case "32255-11.html", "32256-11.html", "32256-12.html", "32256-13.html":
 			{
 				htmltext = getHtm(player, event);
-				htmltext = htmltext.replace("%name1%", player.getName());
+				htmltext = htmltext.replace(PH_NAME1, player.getName());
 				break;
 			}
 			case "32138-14.html":
@@ -168,7 +170,7 @@ public class Q00178_IconicTrinity extends Quest
 					qs.setMemoState(4);
 					qs.setCond(2, true);
 					htmltext = getHtm(player, event);
-					htmltext = htmltext.replace("%name1%", player.getName());
+					htmltext = htmltext.replace(PH_NAME1, player.getName());
 				}
 				break;
 			}
@@ -244,7 +246,7 @@ public class Q00178_IconicTrinity extends Quest
 					qs.setMemoState(7);
 					qs.setCond(3, true);
 					htmltext = getHtm(player, event);
-					htmltext = htmltext.replace("%name1%", player.getName());
+					htmltext = htmltext.replace(PH_NAME1, player.getName());
 				}
 				break;
 			}
@@ -330,7 +332,7 @@ public class Q00178_IconicTrinity extends Quest
 					qs.setMemoState(10);
 					qs.setCond(4, true);
 					htmltext = getHtm(player, event);
-					htmltext = htmltext.replace("%name1%", player.getName());
+					htmltext = htmltext.replace(PH_NAME1, player.getName());
 				}
 				break;
 			}

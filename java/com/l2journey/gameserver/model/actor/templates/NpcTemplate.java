@@ -62,6 +62,8 @@ import com.l2journey.gameserver.util.MathUtil;
 public class NpcTemplate extends CreatureTemplate
 {
 	
+	private static final String MONSTER = "Monster";
+
 	private int _id;
 	private int _displayId;
 	private byte _level;
@@ -154,7 +156,7 @@ public class NpcTemplate extends CreatureTemplate
 		_targetable = set.getBoolean("targetable", true);
 		_talkable = set.getBoolean("talkable", true);
 		_isQuestMonster = _title.contains("Quest");
-		_undying = set.getBoolean("undying", !_type.equals("Monster") && !_type.equals("RaidBoss") && !_type.equals("GrandBoss"));
+		_undying = set.getBoolean("undying", !_type.equals(MONSTER) && !_type.equals("RaidBoss") && !_type.equals("GrandBoss"));
 		_showName = set.getBoolean("showName", true);
 		_randomWalk = set.getBoolean("randomWalk", !_type.equals("Guard"));
 		_randomAnimation = set.getBoolean("randomAnimation", true);
@@ -169,7 +171,7 @@ public class NpcTemplate extends CreatureTemplate
 		
 		// L2J aggro range tempfix
 		final int aggroValue = set.getInt("aggroRange", 0);
-		if (_type.equalsIgnoreCase("Monster") && (aggroValue > Config.MAX_AGGRO_RANGE))
+		if (_type.equalsIgnoreCase(MONSTER) && (aggroValue > Config.MAX_AGGRO_RANGE))
 		{
 			_aggroRange = Config.MAX_AGGRO_RANGE;
 		}
@@ -194,7 +196,7 @@ public class NpcTemplate extends CreatureTemplate
 		{
 			switch (_type)
 			{
-				case "Monster":
+				case MONSTER:
 				{
 					_baseHpMax *= Config.MONSTER_HP_MULTIPLIER;
 					_baseMpMax *= Config.MONSTER_MP_MULTIPLIER;

@@ -39,6 +39,9 @@ import quests.Q00024_InhabitantsOfTheForestOfTheDead.Q00024_InhabitantsOfTheFore
  */
 public class Q00025_HidingBehindTheTruth extends Quest
 {
+	private static final String DESPAWN_BOX = "DESPAWN_BOX";
+	private static final String Q00025 = "Q00025";
+
 	// NPCs
 	private static final int HIGH_PRIEST_AGRIPEL = 31348;
 	private static final int PRIEST_BENEDICT = 31349;
@@ -257,12 +260,12 @@ public class Q00025_HidingBehindTheTruth extends Quest
 				{
 					if (!hasQuestItems(player, TOTEM_DOLL3))
 					{
-						final int brokenDeskOwner = npc.getVariables().getInt("Q00025", 0);
+						final int brokenDeskOwner = npc.getVariables().getInt(Q00025, 0);
 						if (brokenDeskOwner == 0)
 						{
-							npc.getVariables().set("Q00025", player.getObjectId());
+							npc.getVariables().set(Q00025, player.getObjectId());
 							final Npc triyol = addSpawn(TRIOL_PAWN, TRIOL_PAWN_LOC.get(npc.getId()), true, 0);
-							triyol.getVariables().set("Q00025", npc);
+							triyol.getVariables().set(Q00025, npc);
 							triyol.setScriptValue(player.getObjectId());
 							startQuestTimer("SAY_TRIYOL", 500, triyol, player);
 							startQuestTimer("DESPAWN_TRIYOL", 120000, triyol, player);
@@ -305,10 +308,10 @@ public class Q00025_HidingBehindTheTruth extends Quest
 			}
 			case "DESPAWN_TRIYOL":
 			{
-				final Npc brokenDesk = npc.getVariables().getObject("Q00025", Npc.class);
+				final Npc brokenDesk = npc.getVariables().getObject(Q00025, Npc.class);
 				if (brokenDesk != null)
 				{
-					brokenDesk.getVariables().set("Q00025", 0);
+					brokenDesk.getVariables().set(Q00025, 0);
 				}
 				npc.deleteMe();
 				break;
@@ -390,13 +393,13 @@ public class Q00025_HidingBehindTheTruth extends Quest
 				if (qs.isMemoState(11))
 				{
 					final Npc box = addSpawn(COFFIN, COFFIN_LOC, true, 0);
-					startQuestTimer("DESPAWN_BOX", 20000, box, player);
+					startQuestTimer(DESPAWN_BOX, 20000, box, player);
 					qs.setCond(12, true);
 					htmltext = event;
 				}
 				break;
 			}
-			case "DESPAWN_BOX":
+			case DESPAWN_BOX:
 			{
 				npc.deleteMe();
 				break;
@@ -421,10 +424,10 @@ public class Q00025_HidingBehindTheTruth extends Quest
 				qs.setCond(8, true);
 				npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.GENERAL, npc.getId(), NpcStringId.YOU_VE_ENDED_MY_IMMORTAL_LIFE_YOU_RE_PROTECTED_BY_THE_FEUDAL_LORD_AREN_T_YOU));
 				
-				final Npc brokenDesk = npc.getVariables().getObject("Q00025", Npc.class);
+				final Npc brokenDesk = npc.getVariables().getObject(Q00025, Npc.class);
 				if (brokenDesk != null)
 				{
-					brokenDesk.getVariables().set("Q00025", 0);
+					brokenDesk.getVariables().set(Q00025, 0);
 				}
 				npc.deleteMe();
 			}
@@ -719,8 +722,8 @@ public class Q00025_HidingBehindTheTruth extends Quest
 						if (qs.isMemoState(11))
 						{
 							giveItems(talker, LIDAS_DRESS, 1);
-							cancelQuestTimer("DESPAWN_BOX", npc, talker);
-							startQuestTimer("DESPAWN_BOX", 3000, npc, talker);
+							cancelQuestTimer(DESPAWN_BOX, npc, talker);
+							startQuestTimer(DESPAWN_BOX, 3000, npc, talker);
 							qs.setMemoState(12);
 							qs.setCond(13, true);
 							htmltext = "31536-01.html";

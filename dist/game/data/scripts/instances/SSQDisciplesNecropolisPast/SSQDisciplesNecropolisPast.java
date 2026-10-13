@@ -57,6 +57,8 @@ import quests.Q00196_SevenSignsSealOfTheEmperor.Q00196_SevenSignsSealOfTheEmpero
  */
 public class SSQDisciplesNecropolisPast extends AbstractInstance
 {
+	private static final String FIGHT = "FIGHT";
+
 	// NPCs
 	private static final int SEAL_DEVICE = 27384;
 	private static final int PROMISE_OF_MAMMON = 32585;
@@ -234,7 +236,7 @@ public class SSQDisciplesNecropolisPast extends AbstractInstance
 					player.teleToLocation(ENTER, player.getInstanceId(), 0);
 					break;
 				}
-				case "FIGHT":
+				case FIGHT:
 				{
 					final List<Npc> anakimGroup = world.getParameters().getList("anakimGroup", Npc.class, new ArrayList<>());
 					final List<Npc> lilithGroup = world.getParameters().getList("lilithGroup", Npc.class, new ArrayList<>());
@@ -309,7 +311,7 @@ public class SSQDisciplesNecropolisPast extends AbstractInstance
 							}
 						}
 					}
-					startQuestTimer("FIGHT", 1000, null, player);
+					startQuestTimer(FIGHT, 1000, null, player);
 					break;
 				}
 				default:
@@ -381,7 +383,7 @@ public class SSQDisciplesNecropolisPast extends AbstractInstance
 				player.sendPacket(SystemMessageId.THE_SEALING_DEVICE_GLITTERS_AND_MOVES_ACTIVATION_COMPLETE_NORMALLY);
 				npc.setScriptValue(1);
 				startQuestTimer("FINISH", 1000, npc, player);
-				cancelQuestTimer("FIGHT", npc, player);
+				cancelQuestTimer(FIGHT, npc, player);
 			}
 			if (getRandom(100) < 50)
 			{
@@ -477,7 +479,7 @@ public class SSQDisciplesNecropolisPast extends AbstractInstance
 					{
 						world.openDoor(DISCIPLES_NECROPOLIS_DOOR);
 						playMovie(talker, Movie.SSQ_SEALING_EMPEROR_1ST);
-						startQuestTimer("FIGHT", 1000, null, talker);
+						startQuestTimer(FIGHT, 1000, null, talker);
 					}
 				}
 				break;

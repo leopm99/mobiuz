@@ -40,11 +40,15 @@ import com.l2journey.gameserver.network.serverpackets.NpcHtmlMessage;
  */
 public class AdminFightCalculator implements IAdminCommandHandler
 {
+	private static final String ADMIN_FIGHT_CALCULATOR_SHOW = "admin_fight_calculator_show";
+	private static final String ADMIN_FIGHT_CALCULATOR = "admin_fight_calculator";
+	private static final String ADMIN_FCS = "admin_fcs";
+
 	private static final String[] ADMIN_COMMANDS =
 	{
-		"admin_fight_calculator",
-		"admin_fight_calculator_show",
-		"admin_fcs",
+		ADMIN_FIGHT_CALCULATOR,
+		ADMIN_FIGHT_CALCULATOR_SHOW,
+		ADMIN_FCS,
 	};
 	
 	@Override
@@ -52,17 +56,17 @@ public class AdminFightCalculator implements IAdminCommandHandler
 	{
 		try
 		{
-			if (command.startsWith("admin_fight_calculator_show"))
+			if (command.startsWith(ADMIN_FIGHT_CALCULATOR_SHOW))
 			{
-				handleShow(command.substring("admin_fight_calculator_show".length()), activeChar);
+				handleShow(command.substring(ADMIN_FIGHT_CALCULATOR_SHOW.length()), activeChar);
 			}
-			else if (command.startsWith("admin_fcs"))
+			else if (command.startsWith(ADMIN_FCS))
 			{
-				handleShow(command.substring("admin_fcs".length()), activeChar);
+				handleShow(command.substring(ADMIN_FCS.length()), activeChar);
 			}
-			else if (command.startsWith("admin_fight_calculator"))
+			else if (command.startsWith(ADMIN_FIGHT_CALCULATOR))
 			{
-				handleStart(command.substring("admin_fight_calculator".length()), activeChar);
+				handleStart(command.substring(ADMIN_FIGHT_CALCULATOR.length()), activeChar);
 			}
 		}
 		catch (StringIndexOutOfBoundsException _)

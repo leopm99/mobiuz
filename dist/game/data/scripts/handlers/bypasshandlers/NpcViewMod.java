@@ -61,6 +61,8 @@ import com.l2journey.gameserver.util.HtmlUtil;
  */
 public class NpcViewMod implements IBypassHandler
 {
+	private static final String PH_RESPAWN = "%respawn%";
+
 	private static final String[] COMMANDS =
 	{
 		"NpcViewMod"
@@ -225,7 +227,7 @@ public class NpcViewMod implements IBypassHandler
 		final Spawn npcSpawn = npc.getSpawn();
 		if ((npcSpawn == null) || (npcSpawn.getRespawnMinDelay() == 0))
 		{
-			html.replace("%respawn%", "None");
+			html.replace(PH_RESPAWN, "None");
 		}
 		else
 		{
@@ -250,11 +252,11 @@ public class NpcViewMod implements IBypassHandler
 			final String timeUnitName = timeUnit.name().charAt(0) + timeUnit.name().toLowerCase().substring(1);
 			if (npcSpawn.hasRespawnRandom())
 			{
-				html.replace("%respawn%", minRespawnDelay + "-" + maxRespawnDelay + " " + timeUnitName);
+				html.replace(PH_RESPAWN, minRespawnDelay + "-" + maxRespawnDelay + " " + timeUnitName);
 			}
 			else
 			{
-				html.replace("%respawn%", minRespawnDelay + " " + timeUnitName);
+				html.replace(PH_RESPAWN, minRespawnDelay + " " + timeUnitName);
 			}
 		}
 		

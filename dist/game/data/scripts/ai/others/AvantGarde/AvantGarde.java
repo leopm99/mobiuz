@@ -60,6 +60,8 @@ import custom.Validators.SubClassSkills;
  */
 public class AvantGarde extends AbstractNpcAI
 {
+	private static final String HTML_N_32323_08 = "32323-08.html";
+
 	// NPC
 	private static final int AVANT_GARDE = 32323;
 	// Items
@@ -151,7 +153,7 @@ public class AvantGarde extends AbstractNpcAI
 				}
 				if (player.isSubClassActive())
 				{
-					htmltext = "32323-08.html";
+					htmltext = HTML_N_32323_08;
 				}
 				else
 				{
@@ -170,7 +172,7 @@ public class AvantGarde extends AbstractNpcAI
 					}
 					else
 					{
-						htmltext = "32323-08.html";
+						htmltext = HTML_N_32323_08;
 					}
 				}
 				break;
@@ -183,7 +185,7 @@ public class AvantGarde extends AbstractNpcAI
 				}
 				else if (player.isSubClassActive())
 				{
-					htmltext = "32323-08.html";
+					htmltext = HTML_N_32323_08;
 				}
 				else if (player.getAdena() < Config.FEE_DELETE_SUBCLASS_SKILLS)
 				{

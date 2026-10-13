@@ -55,6 +55,8 @@ import com.l2journey.gameserver.network.serverpackets.SystemMessage;
  */
 public class AdminSkill implements IAdminCommandHandler
 {
+	private static final String PH_PAGES = "%pages%";
+
 	private static final Logger LOGGER = Logger.getLogger(AdminSkill.class.getName());
 	
 	private static final int PAGE_LIMIT = 7;
@@ -485,11 +487,11 @@ public class AdminSkill implements IAdminCommandHandler
 		html.replace("%skilllist%", result.getBodyTemplate().toString());
 		if (result.getPages() > 1)
 		{
-			html.replace("%pages%", "<table width=280 cellspacing=0><tr>" + result.getPagerTemplate() + "</tr></table>");
+			html.replace(PH_PAGES, "<table width=280 cellspacing=0><tr>" + result.getPagerTemplate() + "</tr></table>");
 		}
 		else
 		{
-			html.replace("%pages%", "");
+			html.replace(PH_PAGES, "");
 		}
 		player.sendPacket(html);
 	}
@@ -532,11 +534,11 @@ public class AdminSkill implements IAdminCommandHandler
 		html.replace("%classId%", classId.toString());
 		if (result.getPages() > 1)
 		{
-			html.replace("%pages%", "<table width=280 cellspacing=0><tr>" + result.getPagerTemplate() + "</tr></table>");
+			html.replace(PH_PAGES, "<table width=280 cellspacing=0><tr>" + result.getPagerTemplate() + "</tr></table>");
 		}
 		else
 		{
-			html.replace("%pages%", "");
+			html.replace(PH_PAGES, "");
 		}
 		player.sendPacket(html);
 	}

@@ -67,6 +67,13 @@ import ai.AbstractNpcAI;
  */
 public class Antharas extends AbstractNpcAI
 {
+	private static final String TID_FEAR_MOVE_TIMEOVER = "TID_FEAR_MOVE_TIMEOVER";
+	private static final String SPAWN_ANTHARAS = "SPAWN_ANTHARAS";
+	private static final String CHECK_ATTACK = "CHECK_ATTACK";
+	private static final String SPAWN_MINION = "SPAWN_MINION";
+	private static final String CLEAR_STATUS = "CLEAR_STATUS";
+	private static final String SET_REGEN = "SET_REGEN";
+
 	// NPCs
 	private static final int ANTHARAS = 29068; // Antharas
 	private static final int BEHEMOTH = 29069; // Behemoth Dragon
@@ -173,7 +180,7 @@ public class Antharas extends AbstractNpcAI
 				_antharas = (GrandBoss) addSpawn(ANTHARAS, 185708, 114298, -8221, 0, false, 0);
 				_antharas.setCurrentHpMp(curr_hp, curr_mp);
 				addBoss(_antharas);
-				startQuestTimer("SPAWN_ANTHARAS", Config.ANTHARAS_WAIT_TIME * 60000, null, null);
+				startQuestTimer(SPAWN_ANTHARAS, Config.ANTHARAS_WAIT_TIME * 60000, null, null);
 				break;
 			}
 			case IN_FIGHT:
@@ -182,8 +189,8 @@ public class Antharas extends AbstractNpcAI
 				_antharas.setCurrentHpMp(curr_hp, curr_mp);
 				addBoss(_antharas);
 				lastAttack = System.currentTimeMillis();
-				startQuestTimer("CHECK_ATTACK", 60000, _antharas, null);
-				startQuestTimer("SPAWN_MINION", 300000, _antharas, null);
+				startQuestTimer(CHECK_ATTACK, 60000, _antharas, null);
+				startQuestTimer(SPAWN_MINION, 300000, _antharas, null);
 				break;
 			}
 			case DEAD:
@@ -191,7 +198,7 @@ public class Antharas extends AbstractNpcAI
 				final long remain = respawnTime - System.currentTimeMillis();
 				if (remain > 0)
 				{
-					startQuestTimer("CLEAR_STATUS", remain, null, null);
+					startQuestTimer(CLEAR_STATUS, remain, null, null);
 				}
 				else
 				{
@@ -258,7 +265,7 @@ public class Antharas extends AbstractNpcAI
 						if (getStatus() != WAITING)
 						{
 							setStatus(WAITING);
-							startQuestTimer("SPAWN_ANTHARAS", Config.ANTHARAS_WAIT_TIME * 60000, null, null);
+							startQuestTimer(SPAWN_ANTHARAS, Config.ANTHARAS_WAIT_TIME * 60000, null, null);
 						}
 					}
 				}
@@ -272,7 +279,7 @@ public class Antharas extends AbstractNpcAI
 					if (getStatus() != WAITING)
 					{
 						setStatus(WAITING);
-						startQuestTimer("SPAWN_ANTHARAS", Config.ANTHARAS_WAIT_TIME * 60000, null, null);
+						startQuestTimer(SPAWN_ANTHARAS, Config.ANTHARAS_WAIT_TIME * 60000, null, null);
 					}
 				}
 				return htmltext;
@@ -282,7 +289,7 @@ public class Antharas extends AbstractNpcAI
 				player.teleToLocation(79800 + getRandom(600), 151200 + getRandom(1100), -3534);
 				break;
 			}
-			case "SPAWN_ANTHARAS":
+			case SPAWN_ANTHARAS:
 			{
 				_antharas.disableCoreAI(true);
 				_antharas.setRandomWalking(false);
@@ -344,11 +351,11 @@ public class Antharas extends AbstractNpcAI
 					}
 				}
 				npc.getAI().setIntention(Intention.MOVE_TO, new Location(179011, 114871, -7704));
-				startQuestTimer("CHECK_ATTACK", 60000, npc, null);
-				startQuestTimer("SPAWN_MINION", 300000, npc, null);
+				startQuestTimer(CHECK_ATTACK, 60000, npc, null);
+				startQuestTimer(SPAWN_MINION, 300000, npc, null);
 				break;
 			}
-			case "SET_REGEN":
+			case SET_REGEN:
 			{
 				if (npc != null)
 				{
@@ -377,11 +384,11 @@ public class Antharas extends AbstractNpcAI
 					{
 						npc.getAI().setIntention(Intention.CAST, ANTH_REGEN_1.getSkill(), npc);
 					}
-					startQuestTimer("SET_REGEN", 60000, npc, null);
+					startQuestTimer(SET_REGEN, 60000, npc, null);
 				}
 				break;
 			}
-			case "CHECK_ATTACK":
+			case CHECK_ATTACK:
 			{
 				if ((npc != null) && ((lastAttack + 900000) < System.currentTimeMillis()))
 				{
@@ -407,8 +414,8 @@ public class Antharas extends AbstractNpcAI
 							}
 						}
 					}
-					cancelQuestTimer("CHECK_ATTACK", npc, null);
-					cancelQuestTimer("SPAWN_MINION", npc, null);
+					cancelQuestTimer(CHECK_ATTACK, npc, null);
+					cancelQuestTimer(SPAWN_MINION, npc, null);
 				}
 				else if (npc != null)
 				{
@@ -425,11 +432,11 @@ public class Antharas extends AbstractNpcAI
 						attacker3Hate -= getRandom(10);
 					}
 					manageSkills(npc);
-					startQuestTimer("CHECK_ATTACK", 60000, npc, null);
+					startQuestTimer(CHECK_ATTACK, 60000, npc, null);
 				}
 				break;
 			}
-			case "SPAWN_MINION":
+			case SPAWN_MINION:
 			{
 				if ((minionMultipler > 1) && (minionCount < (100 - (minionMultipler * 2))))
 				{
@@ -456,7 +463,7 @@ public class Antharas extends AbstractNpcAI
 				{
 					minionMultipler++;
 				}
-				startQuestTimer("SPAWN_MINION", 300000, npc, null);
+				startQuestTimer(SPAWN_MINION, 300000, npc, null);
 				break;
 			}
 			case "CLEAR_ZONE":
@@ -484,7 +491,7 @@ public class Antharas extends AbstractNpcAI
 					sandStorm = 1;
 					npc.disableCoreAI(true);
 					npc.getAI().setIntention(Intention.MOVE_TO, new Location(177648, 114816, -7735));
-					startQuestTimer("TID_FEAR_MOVE_TIMEOVER", 2000, npc, null);
+					startQuestTimer(TID_FEAR_MOVE_TIMEOVER, 2000, npc, null);
 					startQuestTimer("TID_FEAR_COOLTIME", 300000, npc, null);
 				}
 				break;
@@ -494,7 +501,7 @@ public class Antharas extends AbstractNpcAI
 				sandStorm = 0;
 				break;
 			}
-			case "TID_FEAR_MOVE_TIMEOVER":
+			case TID_FEAR_MOVE_TIMEOVER:
 			{
 				if ((sandStorm == 1) && (npc.getX() == 177648) && (npc.getY() == 114816))
 				{
@@ -509,17 +516,17 @@ public class Antharas extends AbstractNpcAI
 					{
 						moveChance++;
 						npc.getAI().setIntention(Intention.MOVE_TO, new Location(177648, 114816, -7735));
-						startQuestTimer("TID_FEAR_MOVE_TIMEOVER", 5000, npc, null);
+						startQuestTimer(TID_FEAR_MOVE_TIMEOVER, 5000, npc, null);
 					}
 					else
 					{
 						npc.teleToLocation(177648, 114816, -7735, npc.getHeading());
-						startQuestTimer("TID_FEAR_MOVE_TIMEOVER", 1000, npc, null);
+						startQuestTimer(TID_FEAR_MOVE_TIMEOVER, 1000, npc, null);
 					}
 				}
 				break;
 			}
-			case "CLEAR_STATUS":
+			case CLEAR_STATUS:
 			{
 				_antharas = (GrandBoss) addSpawn(ANTHARAS, 185708, 114298, -8221, 0, false, 0);
 				addBoss(_antharas);
@@ -531,8 +538,8 @@ public class Antharas extends AbstractNpcAI
 			{
 				if (getStatus() == WAITING)
 				{
-					cancelQuestTimer("SPAWN_ANTHARAS", null, null);
-					notifyEvent("SPAWN_ANTHARAS", null, null);
+					cancelQuestTimer(SPAWN_ANTHARAS, null, null);
+					notifyEvent(SPAWN_ANTHARAS, null, null);
 					player.sendMessage(getClass().getSimpleName() + ": Skipping waiting time ...");
 				}
 				else
@@ -546,8 +553,8 @@ public class Antharas extends AbstractNpcAI
 				if (getStatus() == DEAD)
 				{
 					setRespawn(0);
-					cancelQuestTimer("CLEAR_STATUS", null, null);
-					notifyEvent("CLEAR_STATUS", null, null);
+					cancelQuestTimer(CLEAR_STATUS, null, null);
+					notifyEvent(CLEAR_STATUS, null, null);
 					player.sendMessage(getClass().getSimpleName() + ": Antharas has been respawned.");
 				}
 				else
@@ -584,8 +591,8 @@ public class Antharas extends AbstractNpcAI
 				if (getStatus() == IN_FIGHT)
 				{
 					setStatus(ALIVE);
-					cancelQuestTimer("CHECK_ATTACK", _antharas, null);
-					cancelQuestTimer("SPAWN_MINION", _antharas, null);
+					cancelQuestTimer(CHECK_ATTACK, _antharas, null);
+					cancelQuestTimer(SPAWN_MINION, _antharas, null);
 					for (Creature creature : zone.getCharactersInside())
 					{
 						if (creature != null)
@@ -701,10 +708,10 @@ public class Antharas extends AbstractNpcAI
 				final long randomRangeMillis = Config.ANTHARAS_SPAWN_RANDOM * 3600000L;
 				final long respawnTime = baseIntervalMillis + getRandom(-randomRangeMillis, randomRangeMillis);
 				setRespawn(respawnTime);
-				startQuestTimer("CLEAR_STATUS", respawnTime, null, null);
-				cancelQuestTimer("SET_REGEN", npc, null);
-				cancelQuestTimer("CHECK_ATTACK", npc, null);
-				cancelQuestTimer("SPAWN_MINION", npc, null);
+				startQuestTimer(CLEAR_STATUS, respawnTime, null, null);
+				cancelQuestTimer(SET_REGEN, npc, null);
+				cancelQuestTimer(CHECK_ATTACK, npc, null);
+				cancelQuestTimer(SPAWN_MINION, npc, null);
 				startQuestTimer("CLEAR_ZONE", 900000, null, null);
 				setStatus(DEAD);
 				
@@ -734,8 +741,8 @@ public class Antharas extends AbstractNpcAI
 			npc.asAttackable().setCanReturnToSpawnPoint(false);
 			npc.setRandomWalking(false);
 			
-			cancelQuestTimer("SET_REGEN", npc, null);
-			startQuestTimer("SET_REGEN", 60000, npc, null);
+			cancelQuestTimer(SET_REGEN, npc, null);
+			startQuestTimer(SET_REGEN, 60000, npc, null);
 			npc.asAttackable().setOnKillDelay(0);
 		}
 		else

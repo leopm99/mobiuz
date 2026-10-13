@@ -48,6 +48,8 @@ import ai.AbstractNpcAI;
  */
 public class Ranku extends AbstractNpcAI
 {
+	private static final String CHECKUP = "checkup";
+
 	// NPCs
 	private static final int RANKU = 25542;
 	private static final int MINION = 32305;
@@ -64,7 +66,7 @@ public class Ranku extends AbstractNpcAI
 	@Override
 	public String onEvent(String event, Npc npc, Player player)
 	{
-		if (event.equalsIgnoreCase("checkup") && (npc.getId() == RANKU) && !npc.isDead())
+		if (event.equalsIgnoreCase(CHECKUP) && (npc.getId() == RANKU) && !npc.isDead())
 		{
 			for (Monster minion : npc.asMonster().getMinionList().getSpawnedMinions())
 			{
@@ -74,7 +76,7 @@ public class Ranku extends AbstractNpcAI
 					minion.reduceCurrentHp(minion.getMaxHp() / 100, killer, null);
 				}
 			}
-			startQuestTimer("checkup", 1000, npc, null);
+			startQuestTimer(CHECKUP, 1000, npc, null);
 		}
 		return super.onEvent(event, npc, player);
 	}
@@ -89,7 +91,7 @@ public class Ranku extends AbstractNpcAI
 				if ((minion != null) && !minion.isDead() && !MY_TRACKING_SET.contains(minion.getObjectId()))
 				{
 					minion.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.DON_T_KILL_ME_PLEASE_SOMETHING_S_STRANGLING_ME);
-					startQuestTimer("checkup", 1000, npc, null);
+					startQuestTimer(CHECKUP, 1000, npc, null);
 					MY_TRACKING_SET.add(minion.getObjectId());
 				}
 			}

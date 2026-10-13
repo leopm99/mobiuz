@@ -43,6 +43,11 @@ import com.l2journey.gameserver.network.serverpackets.NpcSay;
 
 public abstract class AbstractSagaQuest extends Quest
 {
+	private static final String PLAYERNAME = "PLAYERNAME";
+	private static final String SPAWNED = "spawned";
+	private static final String QUEST0 = "Quest0";
+	private static final String QUEST1 = "Quest1";
+
 	protected int[] _npc;
 	protected int[] _items;
 	protected int[] _mob;
@@ -240,8 +245,8 @@ public abstract class AbstractSagaQuest extends Quest
 			{
 				giveItems(player, _items[9], 1);
 				st.setCond(18, true);
-				autoChat(npc, _text[13].replace("PLAYERNAME", player.getName()));
-				st.set("Quest0", "0");
+				autoChat(npc, _text[13].replace(PLAYERNAME, player.getName()));
+				st.set(QUEST0, "0");
 				cancelQuestTimer("Mob_2 has despawned", npc, player);
 				deleteSpawn(npc);
 				return null;
@@ -257,7 +262,7 @@ public abstract class AbstractSagaQuest extends Quest
 			case "6-1":
 			{
 				st.setCond(8, true);
-				st.set("spawned", "0");
+				st.set(SPAWNED, "0");
 				takeItems(player, _items[5], 1);
 				cast(npc, player, 4546, 1);
 				htmltext = "6-03.htm";
@@ -265,14 +270,14 @@ public abstract class AbstractSagaQuest extends Quest
 			}
 			case "7-1":
 			{
-				if (st.getInt("spawned") == 1)
+				if (st.getInt(SPAWNED) == 1)
 				{
 					htmltext = "7-03.htm";
 				}
-				else if (st.getInt("spawned") == 0)
+				else if (st.getInt(SPAWNED) == 0)
 				{
 					final Npc mob1 = addSpawn(_mob[0], _npcSpawnLocations[0], false, 0);
-					st.set("spawned", "1");
+					st.set(SPAWNED, "1");
 					startQuestTimer("Mob_1 Timer 1", 500, mob1, player);
 					startQuestTimer("Mob_1 has despawned", 300000, mob1, player);
 					addSpawn(st, mob1);
@@ -303,7 +308,7 @@ public abstract class AbstractSagaQuest extends Quest
 			case "9-1":
 			{
 				st.setCond(17, true);
-				st.set("Quest0", "0");
+				st.set(QUEST0, "0");
 				st.set("Tab", "0");
 				takeItems(player, _items[8], 1);
 				cast(npc, player, 4546, 1);
@@ -312,22 +317,22 @@ public abstract class AbstractSagaQuest extends Quest
 			}
 			case "10-1":
 			{
-				if (st.getInt("Quest0") == 0)
+				if (st.getInt(QUEST0) == 0)
 				{
 					final Npc mob3 = addSpawn(_mob[2], _npcSpawnLocations[1], false, 0);
 					final Npc mob2 = addSpawn(_npc[4], _npcSpawnLocations[2], false, 0);
 					addSpawn(st, mob3);
 					addSpawn(st, mob2);
 					st.set("Mob_2", String.valueOf(mob2.getObjectId()));
-					st.set("Quest0", "1");
-					st.set("Quest1", "45");
+					st.set(QUEST0, "1");
+					st.set(QUEST1, "45");
 					startQuestTimer("Mob_3 Timer 1", 500, mob3, player, true);
 					startQuestTimer("Mob_3 has despawned", 59000, mob3, player);
 					startQuestTimer("Mob_2 Timer 1", 500, mob2, player);
 					startQuestTimer("Mob_2 has despawned", 60000, mob2, player);
 					htmltext = "10-02.htm";
 				}
-				else if (st.getInt("Quest1") == 45)
+				else if (st.getInt(QUEST1) == 45)
 				{
 					htmltext = "10-03.htm";
 				}
@@ -353,20 +358,20 @@ public abstract class AbstractSagaQuest extends Quest
 			}
 			case "Mob_1 Timer 1":
 			{
-				autoChat(npc, _text[0].replace("PLAYERNAME", player.getName()));
+				autoChat(npc, _text[0].replace(PLAYERNAME, player.getName()));
 				return null;
 			}
 			case "Mob_1 has despawned":
 			{
-				autoChat(npc, _text[1].replace("PLAYERNAME", player.getName()));
-				st.set("spawned", "0");
+				autoChat(npc, _text[1].replace(PLAYERNAME, player.getName()));
+				st.set(SPAWNED, "0");
 				deleteSpawn(npc);
 				return null;
 			}
 			case "Archon Hellisha has despawned":
 			{
-				autoChat(npc, _text[6].replace("PLAYERNAME", player.getName()));
-				st.set("spawned", "0");
+				autoChat(npc, _text[6].replace(PLAYERNAME, player.getName()));
+				st.set(SPAWNED, "0");
 				deleteSpawn(npc);
 				return null;
 			}
@@ -378,64 +383,64 @@ public abstract class AbstractSagaQuest extends Quest
 					npc.asAttackable().addDamageHate(mob2, 0, 99999);
 					npc.getAI().setIntention(Intention.ATTACK, mob2, null);
 					mob2.getAI().setIntention(Intention.ATTACK, npc, null);
-					autoChat(npc, _text[14].replace("PLAYERNAME", player.getName()));
+					autoChat(npc, _text[14].replace(PLAYERNAME, player.getName()));
 					cancelQuestTimer("Mob_3 Timer 1", npc, player);
 				}
 				return null;
 			}
 			case "Mob_3 has despawned":
 			{
-				autoChat(npc, _text[15].replace("PLAYERNAME", player.getName()));
-				st.set("Quest0", "2");
+				autoChat(npc, _text[15].replace(PLAYERNAME, player.getName()));
+				st.set(QUEST0, "2");
 				deleteSpawn(npc);
 				return null;
 			}
 			case "Mob_2 Timer 1":
 			{
-				autoChat(npc, _text[7].replace("PLAYERNAME", player.getName()));
+				autoChat(npc, _text[7].replace(PLAYERNAME, player.getName()));
 				startQuestTimer("Mob_2 Timer 2", 1500, npc, player);
-				if (st.getInt("Quest1") == 45)
+				if (st.getInt(QUEST1) == 45)
 				{
-					st.set("Quest1", "0");
+					st.set(QUEST1, "0");
 				}
 				return null;
 			}
 			case "Mob_2 Timer 2":
 			{
-				autoChat(npc, _text[8].replace("PLAYERNAME", player.getName()));
+				autoChat(npc, _text[8].replace(PLAYERNAME, player.getName()));
 				startQuestTimer("Mob_2 Timer 3", 10000, npc, player);
 				return null;
 			}
 			case "Mob_2 Timer 3":
 			{
-				if (st.getInt("Quest0") == 0)
+				if (st.getInt(QUEST0) == 0)
 				{
 					startQuestTimer("Mob_2 Timer 3", 13000, npc, player);
 					if (getRandomBoolean())
 					{
-						autoChat(npc, _text[9].replace("PLAYERNAME", player.getName()));
+						autoChat(npc, _text[9].replace(PLAYERNAME, player.getName()));
 					}
 					else
 					{
-						autoChat(npc, _text[10].replace("PLAYERNAME", player.getName()));
+						autoChat(npc, _text[10].replace(PLAYERNAME, player.getName()));
 					}
 				}
 				return null;
 			}
 			case "Mob_2 has despawned":
 			{
-				st.set("Quest1", String.valueOf(st.getInt("Quest1") + 1));
-				if ((st.getInt("Quest0") == 1) || (st.getInt("Quest0") == 2) || (st.getInt("Quest1") > 3))
+				st.set(QUEST1, String.valueOf(st.getInt(QUEST1) + 1));
+				if ((st.getInt(QUEST0) == 1) || (st.getInt(QUEST0) == 2) || (st.getInt(QUEST1) > 3))
 				{
-					st.set("Quest0", "0");
+					st.set(QUEST0, "0");
 					// TODO: This "if" will never be true.
-					if (st.getInt("Quest0") == 1)
+					if (st.getInt(QUEST0) == 1)
 					{
-						autoChat(npc, _text[11].replace("PLAYERNAME", player.getName()));
+						autoChat(npc, _text[11].replace(PLAYERNAME, player.getName()));
 					}
 					else
 					{
-						autoChat(npc, _text[12].replace("PLAYERNAME", player.getName()));
+						autoChat(npc, _text[12].replace(PLAYERNAME, player.getName()));
 					}
 					deleteSpawn(npc);
 				}
@@ -464,28 +469,28 @@ public abstract class AbstractSagaQuest extends Quest
 			final int npcId = npc.getId();
 			if ((npcId == _mob[2]) && (st == st2) && (cond == 17))
 			{
-				int quest0 = st.getInt("Quest0") + 1;
+				int quest0 = st.getInt(QUEST0) + 1;
 				if (quest0 == 1)
 				{
-					autoChat(npc, _text[16].replace("PLAYERNAME", player.getName()));
+					autoChat(npc, _text[16].replace(PLAYERNAME, player.getName()));
 				}
 				
 				if (quest0 > 15)
 				{
 					quest0 = 1;
-					autoChat(npc, _text[17].replace("PLAYERNAME", player.getName()));
+					autoChat(npc, _text[17].replace(PLAYERNAME, player.getName()));
 					cancelQuestTimer("Mob_3 has despawned", npc, st2.getPlayer());
 					st.set("Tab", "1");
 					deleteSpawn(npc);
 				}
 				
-				st.set("Quest0", Integer.toString(quest0));
+				st.set(QUEST0, Integer.toString(quest0));
 			}
 			else if ((npcId == _mob[1]) && (cond == 15) && ((st != st2) || player.isInParty()))
 			{
-				autoChat(npc, _text[5].replace("PLAYERNAME", player.getName()));
+				autoChat(npc, _text[5].replace(PLAYERNAME, player.getName()));
 				cancelQuestTimer("Archon Hellisha has despawned", npc, st2.getPlayer());
-				st2.set("spawned", "0");
+				st2.set(SPAWNED, "0");
 				deleteSpawn(npc);
 			}
 		}
@@ -507,7 +512,7 @@ public abstract class AbstractSagaQuest extends Quest
 				{
 					player.setLastQuestNpcObject(npc.getObjectId());
 					final int tab = st.getInt("Tab");
-					final int quest0 = st.getInt("Quest0");
+					final int quest0 = st.getInt(QUEST0);
 					if (st == st2)
 					{
 						if (tab == 1)
@@ -606,7 +611,7 @@ public abstract class AbstractSagaQuest extends Quest
 				if ((st1 != null) && st1.isCond(15))
 				{
 					// This is just a guess....not really sure what it actually says, if anything
-					autoChat(npc, _text[4].replace("PLAYERNAME", st1.getPlayer().getName()));
+					autoChat(npc, _text[4].replace(PLAYERNAME, st1.getPlayer().getName()));
 					giveItems(player, _items[8], 1);
 					takeItems(player, _items[3], -1);
 					st1.setCond(16, true);
@@ -647,12 +652,12 @@ public abstract class AbstractSagaQuest extends Quest
 				{
 					if (!player.isInParty() && (st == st2))
 					{
-						autoChat(npc, _text[12].replace("PLAYERNAME", player.getName()));
+						autoChat(npc, _text[12].replace(PLAYERNAME, player.getName()));
 						giveItems(player, _items[6], 1);
 						st.setCond(9, true);
 					}
 					cancelQuestTimer("Mob_1 has despawned", npc, st2.getPlayer());
-					st2.set("spawned", "0");
+					st2.set(SPAWNED, "0");
 					deleteSpawn(npc);
 				}
 				else if ((npcId == _mob[1]) && (cond == 15))
@@ -661,18 +666,18 @@ public abstract class AbstractSagaQuest extends Quest
 					{
 						if (st == st2)
 						{
-							autoChat(npc, _text[4].replace("PLAYERNAME", player.getName()));
+							autoChat(npc, _text[4].replace(PLAYERNAME, player.getName()));
 							giveItems(player, _items[8], 1);
 							takeItems(player, _items[3], -1);
 							st.setCond(16, true);
 						}
 						else
 						{
-							autoChat(npc, _text[5].replace("PLAYERNAME", player.getName()));
+							autoChat(npc, _text[5].replace(PLAYERNAME, player.getName()));
 						}
 					}
 					cancelQuestTimer("Archon Hellisha has despawned", npc, st2.getPlayer());
-					st2.set("spawned", "0");
+					st2.set(SPAWNED, "0");
 					deleteSpawn(npc);
 				}
 			}
@@ -683,7 +688,7 @@ public abstract class AbstractSagaQuest extends Quest
 			if (st != null)
 			{
 				cancelQuestTimer("Mob_1 has despawned", npc, st.getPlayer());
-				st.set("spawned", "0");
+				st.set(SPAWNED, "0");
 				deleteSpawn(npc);
 			}
 		}
@@ -693,7 +698,7 @@ public abstract class AbstractSagaQuest extends Quest
 			if (st != null)
 			{
 				cancelQuestTimer("Archon Hellisha has despawned", npc, st.getPlayer());
-				st.set("spawned", "0");
+				st.set(SPAWNED, "0");
 				deleteSpawn(npc);
 			}
 		}
@@ -703,8 +708,8 @@ public abstract class AbstractSagaQuest extends Quest
 			if (st != null)
 			{
 				st.setCond(18, true);
-				autoChat(npc, _text[13].replace("PLAYERNAME", player.getName()));
-				st.set("Quest0", "0");
+				autoChat(npc, _text[13].replace(PLAYERNAME, player.getName()));
+				st.set(QUEST0, "0");
 				cancelQuestTimer("Mob_2 has despawned", npc, player);
 				deleteSpawn(npc);
 			}
@@ -732,9 +737,9 @@ public abstract class AbstractSagaQuest extends Quest
 						return;
 					}
 					
-					autoChat(npc, _text[5].replace("PLAYERNAME", player.getName()));
+					autoChat(npc, _text[5].replace(PLAYERNAME, player.getName()));
 					cancelQuestTimer("Archon Hellisha has despawned", npc, st2.getPlayer());
-					st2.set("spawned", "0");
+					st2.set(SPAWNED, "0");
 					deleteSpawn(npc);
 				}
 			}
@@ -1105,7 +1110,7 @@ public abstract class AbstractSagaQuest extends Quest
 	
 	private void giveHalishaMark(QuestState st)
 	{
-		if (st.getInt("spawned") == 0)
+		if (st.getInt(SPAWNED) == 0)
 		{
 			final Player player = st.getPlayer();
 			if (getQuestItemsCount(player, _items[3]) >= 700)
@@ -1116,9 +1121,9 @@ public abstract class AbstractSagaQuest extends Quest
 				final int zz = st.getPlayer().getZ();
 				final Npc archon = addSpawn(_mob[1], xx, yy, zz, -1);
 				addSpawn(st, archon);
-				st.set("spawned", "1");
+				st.set(SPAWNED, "1");
 				startQuestTimer("Archon Hellisha has despawned", 600000, archon, player);
-				autoChat(archon, _text[13].replace("PLAYERNAME", st.getPlayer().getName()));
+				autoChat(archon, _text[13].replace(PLAYERNAME, st.getPlayer().getName()));
 				archon.asAttackable().addDamageHate(st.getPlayer(), 0, 99999);
 				archon.getAI().setIntention(Intention.ATTACK, st.getPlayer(), null);
 			}

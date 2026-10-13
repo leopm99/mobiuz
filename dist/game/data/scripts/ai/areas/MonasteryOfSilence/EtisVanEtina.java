@@ -40,6 +40,9 @@ import ai.AbstractNpcAI;
  */
 public class EtisVanEtina extends AbstractNpcAI
 {
+	private static final String PHANTOMSALIVE = "phantomsAlive";
+	private static final String PHASE = "phase";
+
 	// NPCs
 	private static final int ETIS_VAN_ETINA = 18949;
 	private static final int PHANTOM_REAL = 18950;
@@ -63,8 +66,8 @@ public class EtisVanEtina extends AbstractNpcAI
 	@Override
 	public void onSpawn(Npc npc)
 	{
-		npc.getVariables().set("phase", PHASE_NORMAL);
-		npc.getVariables().set("phantomsAlive", false);
+		npc.getVariables().set(PHASE, PHASE_NORMAL);
+		npc.getVariables().set(PHANTOMSALIVE, false);
 		startQuestTimer(THINK_TIMER, THINK_INTERVAL, npc, null);
 	}
 	
@@ -73,13 +76,13 @@ public class EtisVanEtina extends AbstractNpcAI
 	{
 		if (event.equals(THINK_TIMER) && (npc != null) && !npc.isDead())
 		{
-			final int phase = npc.getVariables().getInt("phase", PHASE_NORMAL);
+			final int phase = npc.getVariables().getInt(PHASE, PHASE_NORMAL);
 			if ((phase == PHASE_NORMAL) && (npc.getCurrentHp() < (npc.getMaxRecoverableHp() * 0.5)))
 			{
-				npc.getVariables().set("phase", PHASE_TRANSFORM);
+				npc.getVariables().set(PHASE, PHASE_TRANSFORM);
 			}
 			
-			if ((npc.getVariables().getInt("phase", PHASE_NORMAL) == PHASE_TRANSFORM) && !npc.getVariables().getBoolean("phantomsAlive", false))
+			if ((npc.getVariables().getInt(PHASE, PHASE_NORMAL) == PHASE_TRANSFORM) && !npc.getVariables().getBoolean(PHANTOMSALIVE, false))
 			{
 				final Npc dr = addSpawn(PHANTOM_REAL, npc.getLocation(), true, 0, false, npc.getInstanceId());
 				final Npc df = addSpawn(PHANTOM_FAKE, npc.getLocation(), true, 0, false, npc.getInstanceId());
@@ -97,7 +100,7 @@ public class EtisVanEtina extends AbstractNpcAI
 						df.getVariables().set("etisTargetId", targetId);
 					}
 				}
-				npc.getVariables().set("phantomsAlive", true);
+				npc.getVariables().set(PHANTOMSALIVE, true);
 			}
 			
 			startQuestTimer(THINK_TIMER, THINK_INTERVAL, npc, null);
@@ -111,7 +114,7 @@ public class EtisVanEtina extends AbstractNpcAI
 	{
 		if (eventName.equals(EVT_PHANTOM_REAL_DEAD) && (receiver != null) && (receiver.getId() == ETIS_VAN_ETINA) && !receiver.isDead())
 		{
-			receiver.getVariables().set("phantomsAlive", false);
+			receiver.getVariables().set(PHANTOMSALIVE, false);
 		}
 		
 		return super.onEventReceived(eventName, sender, receiver, reference);

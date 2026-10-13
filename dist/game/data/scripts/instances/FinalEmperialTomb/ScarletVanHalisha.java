@@ -50,6 +50,8 @@ import ai.AbstractNpcAI;
  */
 public class ScarletVanHalisha extends AbstractNpcAI
 {
+	private static final String ATTACK = "attack";
+
 	// NPCs
 	private static final int HALISHA2 = 29046;
 	private static final int HALISHA3 = 29047;
@@ -72,7 +74,7 @@ public class ScarletVanHalisha extends AbstractNpcAI
 	{
 		switch (event)
 		{
-			case "attack":
+			case ATTACK:
 			{
 				if (npc != null)
 				{
@@ -103,13 +105,13 @@ public class ScarletVanHalisha extends AbstractNpcAI
 	public void onAttack(Npc npc, Player attacker, int damage, boolean isSummon)
 	{
 		startQuestTimer("random_Target", 5000, npc, null, true);
-		startQuestTimer("attack", 500, npc, null, true);
+		startQuestTimer(ATTACK, 500, npc, null, true);
 	}
 	
 	@Override
 	public void onKill(Npc npc, Player killer, boolean isSummon)
 	{
-		cancelQuestTimers("attack");
+		cancelQuestTimers(ATTACK);
 		cancelQuestTimers("random_Target");
 	}
 	

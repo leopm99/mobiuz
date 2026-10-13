@@ -54,6 +54,21 @@ import com.l2journey.gameserver.network.serverpackets.NpcHtmlMessage;
 
 public class Auctioneer extends Npc
 {
+	private static final String HTML_NOT_AUTHORIZED = "data/html/auction/not_authorized.htm";
+	private static final String PH_AGIT_AUCTION_MINBID = "%AGIT_AUCTION_MINBID%";
+	private static final String PH_OWNER_PLEDGE_MASTER = "%OWNER_PLEDGE_MASTER%";
+	private static final String PH_AGIT_AUCTION_REMAIN = "%AGIT_AUCTION_REMAIN%";
+	private static final String PH_AGIT_AUCTION_DESC = "%AGIT_AUCTION_DESC%";
+	private static final String PH_AGIT_AUCTION_END = "%AGIT_AUCTION_END%";
+	private static final String PH_AGIT_LINK_BACK = "%AGIT_LINK_BACK%";
+	private static final String PH_AGIT_LOCATION = "%AGIT_LOCATION%";
+	private static final String SELECTEDITEMS = "_selectedItems";
+	private static final String PH_AGIT_LEASE = "%AGIT_LEASE%";
+	private static final String PH_AGIT_NAME = "%AGIT_NAME%";
+	private static final String PH_AGIT_SIZE = "%AGIT_SIZE%";
+	private static final String PH_OBJECTID = "%objectId%";
+	private static final String START = "_start";
+
 	private static final int COND_ALL_FALSE = 0;
 	private static final int COND_BUSY_BECAUSE_OF_SIEGE = 1;
 	private static final int COND_REGULAR = 3;
@@ -80,7 +95,7 @@ public class Auctioneer extends Npc
 			final String filename = "data/html/auction/auction-busy.htm";
 			final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 			html.setFile(player, filename);
-			html.replace("%objectId%", String.valueOf(getObjectId()));
+			html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 			player.sendPacket(html);
 			return;
 		}
@@ -127,12 +142,12 @@ public class Auctioneer extends Npc
 						final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 						html.setFile(player, filename);
 						html.replace("%x%", val);
-						html.replace("%AGIT_AUCTION_END%", format.format(a.getEndDate()));
-						html.replace("%AGIT_AUCTION_MINBID%", String.valueOf(a.getStartingBid()));
+						html.replace(PH_AGIT_AUCTION_END, format.format(a.getEndDate()));
+						html.replace(PH_AGIT_AUCTION_MINBID, String.valueOf(a.getStartingBid()));
 						html.replace("%AGIT_AUCTION_MIN%", String.valueOf(a.getStartingBid()));
-						html.replace("%AGIT_AUCTION_DESC%", ClanHallTable.getInstance().getClanHallByOwner(clan).getDesc());
-						html.replace("%AGIT_LINK_BACK%", "bypass -h npc_" + getObjectId() + "_sale2");
-						html.replace("%objectId%", String.valueOf((getObjectId())));
+						html.replace(PH_AGIT_AUCTION_DESC, ClanHallTable.getInstance().getClanHallByOwner(clan).getDesc());
+						html.replace(PH_AGIT_LINK_BACK, "bypass -h npc_" + getObjectId() + "_sale2");
+						html.replace(PH_OBJECTID, String.valueOf((getObjectId())));
 						player.sendPacket(html);
 					}
 					catch (Exception _)
@@ -179,18 +194,18 @@ public class Auctioneer extends Npc
 					html.setFile(player, filename);
 					if (a != null)
 					{
-						html.replace("%AGIT_NAME%", a.getItemName());
+						html.replace(PH_AGIT_NAME, a.getItemName());
 						html.replace("%OWNER_PLEDGE_NAME%", a.getSellerClanName());
-						html.replace("%OWNER_PLEDGE_MASTER%", a.getSellerName());
-						html.replace("%AGIT_SIZE%", String.valueOf(ClanHallTable.getInstance().getAuctionableHallById(a.getItemId()).getGrade() * 10));
-						html.replace("%AGIT_LEASE%", String.valueOf(ClanHallTable.getInstance().getAuctionableHallById(a.getItemId()).getLease()));
-						html.replace("%AGIT_LOCATION%", ClanHallTable.getInstance().getAuctionableHallById(a.getItemId()).getLocation());
-						html.replace("%AGIT_AUCTION_END%", format.format(a.getEndDate()));
-						html.replace("%AGIT_AUCTION_REMAIN%", ((a.getEndDate() - System.currentTimeMillis()) / 3600000) + " hours " + (((a.getEndDate() - System.currentTimeMillis()) / 60000) % 60) + " minutes");
-						html.replace("%AGIT_AUCTION_MINBID%", String.valueOf(a.getStartingBid()));
+						html.replace(PH_OWNER_PLEDGE_MASTER, a.getSellerName());
+						html.replace(PH_AGIT_SIZE, String.valueOf(ClanHallTable.getInstance().getAuctionableHallById(a.getItemId()).getGrade() * 10));
+						html.replace(PH_AGIT_LEASE, String.valueOf(ClanHallTable.getInstance().getAuctionableHallById(a.getItemId()).getLease()));
+						html.replace(PH_AGIT_LOCATION, ClanHallTable.getInstance().getAuctionableHallById(a.getItemId()).getLocation());
+						html.replace(PH_AGIT_AUCTION_END, format.format(a.getEndDate()));
+						html.replace(PH_AGIT_AUCTION_REMAIN, ((a.getEndDate() - System.currentTimeMillis()) / 3600000) + " hours " + (((a.getEndDate() - System.currentTimeMillis()) / 60000) % 60) + " minutes");
+						html.replace(PH_AGIT_AUCTION_MINBID, String.valueOf(a.getStartingBid()));
 						html.replace("%AGIT_AUCTION_COUNT%", String.valueOf(a.getBidders().size()));
-						html.replace("%AGIT_AUCTION_DESC%", ClanHallTable.getInstance().getAuctionableHallById(a.getItemId()).getDesc());
-						html.replace("%AGIT_LINK_BACK%", "bypass -h npc_" + getObjectId() + "_list");
+						html.replace(PH_AGIT_AUCTION_DESC, ClanHallTable.getInstance().getAuctionableHallById(a.getItemId()).getDesc());
+						html.replace(PH_AGIT_LINK_BACK, "bypass -h npc_" + getObjectId() + "_list");
 						html.replace("%AGIT_LINK_BIDLIST%", "bypass -h npc_" + getObjectId() + "_bidlist " + a.getId());
 						html.replace("%AGIT_LINK_RE%", "bypass -h npc_" + getObjectId() + "_bid1 " + a.getId());
 					}
@@ -269,9 +284,9 @@ public class Auctioneer extends Npc
 					
 					final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 					html.setFile(player, filename);
-					html.replace("%AGIT_LINK_BACK%", "bypass -h npc_" + getObjectId() + "_bidding " + val);
+					html.replace(PH_AGIT_LINK_BACK, "bypass -h npc_" + getObjectId() + "_bidding " + val);
 					html.replace("%PLEDGE_ADENA%", String.valueOf(clan.getWarehouse().getAdena()));
-					html.replace("%AGIT_AUCTION_MINBID%", String.valueOf(minimumBid));
+					html.replace(PH_AGIT_AUCTION_MINBID, String.valueOf(minimumBid));
 					html.replace("npc_%objectId%_bid", "npc_" + getObjectId() + "_bid " + val);
 					player.sendPacket(html);
 				}
@@ -362,7 +377,7 @@ public class Auctioneer extends Npc
 				
 				final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 				html.setFile(player, filename);
-				html.replace("%AGIT_LINK_BACK%", "bypass -h npc_" + getObjectId() + "_start");
+				html.replace(PH_AGIT_LINK_BACK, "bypass -h npc_" + getObjectId() + START);
 				html.replace("%itemsField%", items.toString());
 				player.sendPacket(html);
 				return;
@@ -394,9 +409,9 @@ public class Auctioneer extends Npc
 				final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 				html.setFile(player, filename);
 				html.replace("%AGIT_LIST%", biders);
-				html.replace("%AGIT_LINK_BACK%", "bypass -h npc_" + getObjectId() + "_selectedItems");
+				html.replace(PH_AGIT_LINK_BACK, "bypass -h npc_" + getObjectId() + SELECTEDITEMS);
 				html.replace("%x%", val);
-				html.replace("%objectId%", String.valueOf(getObjectId()));
+				html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 				player.sendPacket(html);
 				return;
 			}
@@ -411,19 +426,19 @@ public class Auctioneer extends Npc
 					final ClanHallAuction a = ClanHallAuctionManager.getInstance().getAuction(clan.getAuctionBiddedAt());
 					if (a != null)
 					{
-						html.replace("%AGIT_NAME%", a.getItemName());
+						html.replace(PH_AGIT_NAME, a.getItemName());
 						html.replace("%OWNER_PLEDGE_NAME%", a.getSellerClanName());
-						html.replace("%OWNER_PLEDGE_MASTER%", a.getSellerName());
-						html.replace("%AGIT_SIZE%", String.valueOf(ClanHallTable.getInstance().getAuctionableHallById(a.getItemId()).getGrade() * 10));
-						html.replace("%AGIT_LEASE%", String.valueOf(ClanHallTable.getInstance().getAuctionableHallById(a.getItemId()).getLease()));
-						html.replace("%AGIT_LOCATION%", ClanHallTable.getInstance().getAuctionableHallById(a.getItemId()).getLocation());
-						html.replace("%AGIT_AUCTION_END%", format.format(a.getEndDate()));
-						html.replace("%AGIT_AUCTION_REMAIN%", ((a.getEndDate() - System.currentTimeMillis()) / 3600000) + " hours " + (((a.getEndDate() - System.currentTimeMillis()) / 60000) % 60) + " minutes");
-						html.replace("%AGIT_AUCTION_MINBID%", String.valueOf(a.getStartingBid()));
+						html.replace(PH_OWNER_PLEDGE_MASTER, a.getSellerName());
+						html.replace(PH_AGIT_SIZE, String.valueOf(ClanHallTable.getInstance().getAuctionableHallById(a.getItemId()).getGrade() * 10));
+						html.replace(PH_AGIT_LEASE, String.valueOf(ClanHallTable.getInstance().getAuctionableHallById(a.getItemId()).getLease()));
+						html.replace(PH_AGIT_LOCATION, ClanHallTable.getInstance().getAuctionableHallById(a.getItemId()).getLocation());
+						html.replace(PH_AGIT_AUCTION_END, format.format(a.getEndDate()));
+						html.replace(PH_AGIT_AUCTION_REMAIN, ((a.getEndDate() - System.currentTimeMillis()) / 3600000) + " hours " + (((a.getEndDate() - System.currentTimeMillis()) / 60000) % 60) + " minutes");
+						html.replace(PH_AGIT_AUCTION_MINBID, String.valueOf(a.getStartingBid()));
 						html.replace("%AGIT_AUCTION_MYBID%", String.valueOf(a.getBidders().get(player.getClanId()).getBid()));
-						html.replace("%AGIT_AUCTION_DESC%", ClanHallTable.getInstance().getAuctionableHallById(a.getItemId()).getDesc());
-						html.replace("%objectId%", String.valueOf(getObjectId()));
-						html.replace("%AGIT_LINK_BACK%", "bypass -h npc_" + getObjectId() + "_start");
+						html.replace(PH_AGIT_AUCTION_DESC, ClanHallTable.getInstance().getAuctionableHallById(a.getItemId()).getDesc());
+						html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
+						html.replace(PH_AGIT_LINK_BACK, "bypass -h npc_" + getObjectId() + START);
 					}
 					else
 					{
@@ -442,20 +457,20 @@ public class Auctioneer extends Npc
 					final ClanHallAuction a = ClanHallAuctionManager.getInstance().getAuction(clan.getHideoutId());
 					if (a != null)
 					{
-						html.replace("%AGIT_NAME%", a.getItemName());
+						html.replace(PH_AGIT_NAME, a.getItemName());
 						html.replace("%AGIT_OWNER_PLEDGE_NAME%", a.getSellerClanName());
-						html.replace("%OWNER_PLEDGE_MASTER%", a.getSellerName());
-						html.replace("%AGIT_SIZE%", String.valueOf(ClanHallTable.getInstance().getAuctionableHallById(a.getItemId()).getGrade() * 10));
-						html.replace("%AGIT_LEASE%", String.valueOf(ClanHallTable.getInstance().getAuctionableHallById(a.getItemId()).getLease()));
-						html.replace("%AGIT_LOCATION%", ClanHallTable.getInstance().getAuctionableHallById(a.getItemId()).getLocation());
-						html.replace("%AGIT_AUCTION_END%", format.format(a.getEndDate()));
-						html.replace("%AGIT_AUCTION_REMAIN%", ((a.getEndDate() - System.currentTimeMillis()) / 3600000) + " hours " + (((a.getEndDate() - System.currentTimeMillis()) / 60000) % 60) + " minutes");
-						html.replace("%AGIT_AUCTION_MINBID%", String.valueOf(a.getStartingBid()));
+						html.replace(PH_OWNER_PLEDGE_MASTER, a.getSellerName());
+						html.replace(PH_AGIT_SIZE, String.valueOf(ClanHallTable.getInstance().getAuctionableHallById(a.getItemId()).getGrade() * 10));
+						html.replace(PH_AGIT_LEASE, String.valueOf(ClanHallTable.getInstance().getAuctionableHallById(a.getItemId()).getLease()));
+						html.replace(PH_AGIT_LOCATION, ClanHallTable.getInstance().getAuctionableHallById(a.getItemId()).getLocation());
+						html.replace(PH_AGIT_AUCTION_END, format.format(a.getEndDate()));
+						html.replace(PH_AGIT_AUCTION_REMAIN, ((a.getEndDate() - System.currentTimeMillis()) / 3600000) + " hours " + (((a.getEndDate() - System.currentTimeMillis()) / 60000) % 60) + " minutes");
+						html.replace(PH_AGIT_AUCTION_MINBID, String.valueOf(a.getStartingBid()));
 						html.replace("%AGIT_AUCTION_BIDCOUNT%", String.valueOf(a.getBidders().size()));
-						html.replace("%AGIT_AUCTION_DESC%", ClanHallTable.getInstance().getAuctionableHallById(a.getItemId()).getDesc());
-						html.replace("%AGIT_LINK_BACK%", "bypass -h npc_" + getObjectId() + "_start");
+						html.replace(PH_AGIT_AUCTION_DESC, ClanHallTable.getInstance().getAuctionableHallById(a.getItemId()).getDesc());
+						html.replace(PH_AGIT_LINK_BACK, "bypass -h npc_" + getObjectId() + START);
 						html.replace("%id%", String.valueOf(a.getId()));
-						html.replace("%objectId%", String.valueOf(getObjectId()));
+						html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 					}
 					else
 					{
@@ -473,14 +488,14 @@ public class Auctioneer extends Npc
 					html.setFile(player, filename);
 					if (ClanHallTable.getInstance().getAuctionableHallById(ItemId) != null)
 					{
-						html.replace("%AGIT_NAME%", ClanHallTable.getInstance().getAuctionableHallById(ItemId).getName());
+						html.replace(PH_AGIT_NAME, ClanHallTable.getInstance().getAuctionableHallById(ItemId).getName());
 						html.replace("%AGIT_OWNER_PLEDGE_NAME%", clan.getName());
-						html.replace("%OWNER_PLEDGE_MASTER%", clan.getLeaderName());
-						html.replace("%AGIT_SIZE%", String.valueOf(ClanHallTable.getInstance().getAuctionableHallById(ItemId).getGrade() * 10));
-						html.replace("%AGIT_LEASE%", String.valueOf(ClanHallTable.getInstance().getAuctionableHallById(ItemId).getLease()));
-						html.replace("%AGIT_LOCATION%", ClanHallTable.getInstance().getAuctionableHallById(ItemId).getLocation());
-						html.replace("%AGIT_LINK_BACK%", "bypass -h npc_" + getObjectId() + "_start");
-						html.replace("%objectId%", String.valueOf(getObjectId()));
+						html.replace(PH_OWNER_PLEDGE_MASTER, clan.getLeaderName());
+						html.replace(PH_AGIT_SIZE, String.valueOf(ClanHallTable.getInstance().getAuctionableHallById(ItemId).getGrade() * 10));
+						html.replace(PH_AGIT_LEASE, String.valueOf(ClanHallTable.getInstance().getAuctionableHallById(ItemId).getLease()));
+						html.replace(PH_AGIT_LOCATION, ClanHallTable.getInstance().getAuctionableHallById(ItemId).getLocation());
+						html.replace(PH_AGIT_LINK_BACK, "bypass -h npc_" + getObjectId() + START);
+						html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 					}
 					else
 					{
@@ -509,8 +524,8 @@ public class Auctioneer extends Npc
 				html.setFile(player, filename);
 				html.replace("%AGIT_BID%", String.valueOf(bid));
 				html.replace("%AGIT_BID_REMAIN%", String.valueOf((long) (bid * 0.9)));
-				html.replace("%AGIT_LINK_BACK%", "bypass -h npc_" + getObjectId() + "_selectedItems");
-				html.replace("%objectId%", String.valueOf(getObjectId()));
+				html.replace(PH_AGIT_LINK_BACK, "bypass -h npc_" + getObjectId() + SELECTEDITEMS);
+				html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 				player.sendPacket(html);
 				return;
 			}
@@ -527,10 +542,10 @@ public class Auctioneer extends Npc
 			{
 				if (!player.hasAccess(ClanAccess.HALL_AUCTION))
 				{
-					final String filename = "data/html/auction/not_authorized.htm";
+					final String filename = HTML_NOT_AUTHORIZED;
 					final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 					html.setFile(player, filename);
-					html.replace("%objectId%", String.valueOf(getObjectId()));
+					html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 					player.sendPacket(html);
 					return;
 				}
@@ -539,8 +554,8 @@ public class Auctioneer extends Npc
 				final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 				html.setFile(player, filename);
 				html.replace("%AGIT_DEPOSIT%", String.valueOf(ClanHallTable.getInstance().getClanHallByOwner(clan).getLease()));
-				html.replace("%AGIT_LINK_BACK%", "bypass -h npc_" + getObjectId() + "_selectedItems");
-				html.replace("%objectId%", String.valueOf(getObjectId()));
+				html.replace(PH_AGIT_LINK_BACK, "bypass -h npc_" + getObjectId() + SELECTEDITEMS);
+				html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 				player.sendPacket(html);
 				return;
 			}
@@ -559,8 +574,8 @@ public class Auctioneer extends Npc
 				final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 				html.setFile(player, filename);
 				html.replace("%AGIT_LAST_PRICE%", String.valueOf(ClanHallTable.getInstance().getClanHallByOwner(clan).getLease()));
-				html.replace("%AGIT_LINK_BACK%", "bypass -h npc_" + getObjectId() + "_sale");
-				html.replace("%objectId%", String.valueOf(getObjectId()));
+				html.replace(PH_AGIT_LINK_BACK, "bypass -h npc_" + getObjectId() + "_sale");
+				html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 				player.sendPacket(html);
 				return;
 			}
@@ -568,10 +583,10 @@ public class Auctioneer extends Npc
 			{
 				if (!player.hasAccess(ClanAccess.HALL_AUCTION))
 				{
-					final String filename = "data/html/auction/not_authorized.htm";
+					final String filename = HTML_NOT_AUTHORIZED;
 					final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 					html.setFile(player, filename);
-					html.replace("%objectId%", String.valueOf(getObjectId()));
+					html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 					player.sendPacket(html);
 					return;
 				}
@@ -581,8 +596,8 @@ public class Auctioneer extends Npc
 				html.setFile(player, filename);
 				html.replace("%AGIT_DEPOSIT%", String.valueOf(ClanHallTable.getInstance().getClanHallByOwner(clan).getLease()));
 				html.replace("%AGIT_PLEDGE_ADENA%", String.valueOf(clan.getWarehouse().getAdena()));
-				html.replace("%AGIT_LINK_BACK%", "bypass -h npc_" + getObjectId() + "_selectedItems");
-				html.replace("%objectId%", String.valueOf(getObjectId()));
+				html.replace(PH_AGIT_LINK_BACK, "bypass -h npc_" + getObjectId() + SELECTEDITEMS);
+				html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 				player.sendPacket(html);
 				return;
 			}
@@ -591,10 +606,10 @@ public class Auctioneer extends Npc
 				final SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 				if (!player.hasAccess(ClanAccess.HALL_AUCTION))
 				{
-					final String filename = "data/html/auction/not_authorized.htm";
+					final String filename = HTML_NOT_AUTHORIZED;
 					final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 					html.setFile(player, filename);
-					html.replace("%objectId%", String.valueOf(getObjectId()));
+					html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 					player.sendPacket(html);
 					return;
 				}
@@ -607,9 +622,9 @@ public class Auctioneer extends Npc
 					if (a != null)
 					{
 						html.replace("%AGIT_AUCTION_BID%", String.valueOf(a.getBidders().get(player.getClanId()).getBid()));
-						html.replace("%AGIT_AUCTION_MINBID%", String.valueOf(a.getStartingBid()));
-						html.replace("%AGIT_AUCTION_END%", format.format(a.getEndDate()));
-						html.replace("%AGIT_LINK_BACK%", "bypass -h npc_" + getObjectId() + "_selectedItems");
+						html.replace(PH_AGIT_AUCTION_MINBID, String.valueOf(a.getStartingBid()));
+						html.replace(PH_AGIT_AUCTION_END, format.format(a.getEndDate()));
+						html.replace(PH_AGIT_LINK_BACK, "bypass -h npc_" + getObjectId() + SELECTEDITEMS);
 						html.replace("npc_%objectId%_bid1", "npc_" + getObjectId() + "_bid1 " + a.getId());
 					}
 					else
@@ -637,7 +652,7 @@ public class Auctioneer extends Npc
 				html.replace("%location%", MapRegionManager.getInstance().getClosestTownName(player));
 				html.replace("%LOCATION%", getPictureName(player));
 				html.replace("%locIcon%", iconHtml);
-				html.replace("%AGIT_LINK_BACK%", "bypass -h npc_" + getObjectId() + "_start");
+				html.replace(PH_AGIT_LINK_BACK, "bypass -h npc_" + getObjectId() + START);
 				player.sendPacket(html);
 				return;
 			}
@@ -668,7 +683,7 @@ public class Auctioneer extends Npc
 		
 		final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 		html.setFile(player, filename);
-		html.replace("%objectId%", String.valueOf(getObjectId()));
+		html.replace(PH_OBJECTID, String.valueOf(getObjectId()));
 		html.replace("%npcId%", String.valueOf(getId()));
 		html.replace("%npcname%", getName());
 		player.sendPacket(html);

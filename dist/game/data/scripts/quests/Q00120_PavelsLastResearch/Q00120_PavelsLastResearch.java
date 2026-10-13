@@ -35,6 +35,9 @@ import quests.Q00114_ResurrectionOfAnOldManager.Q00114_ResurrectionOfAnOldManage
  */
 public class Q00120_PavelsLastResearch extends Quest
 {
+	private static final String HTML_N_32042_06 = "32042-06.html";
+	private static final String HTML_N_32043_06 = "32043-06.html";
+
 	// NPCs
 	private static final int SUSPICIOUS_LOOKING_PILE_OF_STONES = 32046;
 	private static final int WENDY = 32047;
@@ -529,7 +532,7 @@ public class Q00120_PavelsLastResearch extends Quest
 						qs.setMemoState(9);
 						qs.setCond(11, true);
 						qs.setMemoStateEx(0, 0);
-						html = "32042-06.html";
+						html = HTML_N_32042_06;
 					}
 					else
 					{
@@ -538,7 +541,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "32042-15.html", "32042-06.html", "32042-07.html":
+			case "32042-15.html", HTML_N_32042_06, "32042-07.html":
 			{
 				if (qs.isMemoState(9))
 				{
@@ -665,7 +668,7 @@ public class Q00120_PavelsLastResearch extends Quest
 						qs.setMemoState(17);
 						qs.setCond(18, true);
 						qs.setMemoStateEx(0, 0);
-						html = "32043-06.html";
+						html = HTML_N_32043_06;
 					}
 					else
 					{
@@ -674,7 +677,7 @@ public class Q00120_PavelsLastResearch extends Quest
 				}
 				break;
 			}
-			case "32043-31.html", "32043-30.html", "32043-29.html", "32043-28.html", "32043-06.html", "32043-07.html", "32043-08.html":
+			case "32043-31.html", "32043-30.html", "32043-29.html", "32043-28.html", HTML_N_32043_06, "32043-07.html", "32043-08.html":
 			{
 				if (qs.isMemoState(17))
 				{
@@ -1284,7 +1287,7 @@ public class Q00120_PavelsLastResearch extends Quest
 					}
 					case 9:
 					{
-						html = "32042-06.html";
+						html = HTML_N_32042_06;
 						break;
 					}
 					case 10:
@@ -1315,7 +1318,7 @@ public class Q00120_PavelsLastResearch extends Quest
 					}
 					case 17:
 					{
-						html = "32043-06.html";
+						html = HTML_N_32043_06;
 						break;
 					}
 					case 18:

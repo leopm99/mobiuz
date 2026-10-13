@@ -35,6 +35,8 @@ import com.l2journey.gameserver.model.quest.State;
  */
 public class Q00603_DaimonTheWhiteEyedPart1 extends Quest
 {
+	private static final String TABLET = "tablet_";
+
 	// NPC
 	private static final int EYE_OF_ARGOS = 31683;
 	private static final int TABLET_1 = 31548;
@@ -83,11 +85,11 @@ public class Q00603_DaimonTheWhiteEyedPart1 extends Quest
 			{
 				if (qs.isCreated())
 				{
-					qs.set("tablet_" + TABLET_1, 0);
-					qs.set("tablet_" + TABLET_2, 0);
-					qs.set("tablet_" + TABLET_3, 0);
-					qs.set("tablet_" + TABLET_4, 0);
-					qs.set("tablet_" + TABLET_5, 0);
+					qs.set(TABLET + TABLET_1, 0);
+					qs.set(TABLET + TABLET_2, 0);
+					qs.set(TABLET + TABLET_3, 0);
+					qs.set(TABLET + TABLET_4, 0);
+					qs.set(TABLET + TABLET_5, 0);
 					qs.startQuest();
 					htmltext = event;
 				}

@@ -34,6 +34,9 @@ import com.l2journey.gameserver.model.actor.Player;
  */
 public class FavoriteBoard implements IParseBoardHandler
 {
+	private static final String BBSDELFAV = "_bbsdelfav_";
+	private static final String BBSGETFAV = "_bbsgetfav";
+
 	// SQL Queries
 	private static final String SELECT_FAVORITES = "SELECT `favId`, `favTitle`, `favBypass`, `favAddDate` FROM `bbs_favorites` WHERE `playerId`=? ORDER BY `favAddDate` DESC";
 	private static final String DELETE_FAVORITE = "DELETE FROM `bbs_favorites` WHERE `playerId`=? AND `favId`=?";
@@ -41,9 +44,9 @@ public class FavoriteBoard implements IParseBoardHandler
 	
 	private static final String[] COMMANDS =
 	{
-		"_bbsgetfav",
+		BBSGETFAV,
 		"bbs_add_fav",
-		"_bbsdelfav_"
+		BBSDELFAV
 	};
 	
 	@Override
@@ -56,7 +59,7 @@ public class FavoriteBoard implements IParseBoardHandler
 	public boolean parseCommunityBoardCommand(String command, Player player)
 	{
 		// None of this commands can be added to favorites.
-		if (command.startsWith("_bbsgetfav"))
+		if (command.startsWith(BBSGETFAV))
 		{
 			// Load Favorite links
 			final String list = HtmCache.getInstance().getHtm(player, "data/html/CommunityBoard/favorite_list.html");
@@ -107,7 +110,7 @@ public class FavoriteBoard implements IParseBoardHandler
 					ps.setString(3, parts[1].trim());
 					ps.execute();
 					// Callback
-					parseCommunityBoardCommand("_bbsgetfav", player);
+					parseCommunityBoardCommand(BBSGETFAV, player);
 				}
 				catch (Exception _)
 				{
@@ -115,9 +118,9 @@ public class FavoriteBoard implements IParseBoardHandler
 				}
 			}
 		}
-		else if (command.startsWith("_bbsdelfav_"))
+		else if (command.startsWith(BBSDELFAV))
 		{
-			final String favId = command.replace("_bbsdelfav_", "");
+			final String favId = command.replace(BBSDELFAV, "");
 			if (!StringUtil.isNumeric(favId))
 			{
 				final String loggedFavId = favId;
@@ -132,7 +135,7 @@ public class FavoriteBoard implements IParseBoardHandler
 				ps.setInt(2, Integer.parseInt(favId));
 				ps.execute();
 				// Callback
-				parseCommunityBoardCommand("_bbsgetfav", player);
+				parseCommunityBoardCommand(BBSGETFAV, player);
 			}
 			catch (Exception _)
 			{

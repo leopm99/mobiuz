@@ -44,6 +44,8 @@ import com.l2journey.gameserver.model.actor.Player;
 
 public class CharInfoTable
 {
+	private static final String ACCESSLEVEL = "accesslevel";
+
 	private static final Logger LOGGER = Logger.getLogger(CharInfoTable.class.getName());
 	
 	private final Map<Integer, String> _names = new ConcurrentHashMap<>();
@@ -59,7 +61,7 @@ public class CharInfoTable
 			{
 				final int id = rs.getInt("charId");
 				_names.put(id, rs.getString("char_name"));
-				_accessLevels.put(id, rs.getInt("accesslevel"));
+				_accessLevels.put(id, rs.getInt(ACCESSLEVEL));
 			}
 		}
 		catch (SQLException e)
@@ -121,7 +123,7 @@ public class CharInfoTable
 				while (rs.next())
 				{
 					id = rs.getInt("charId");
-					accessLevel = rs.getInt("accesslevel");
+					accessLevel = rs.getInt(ACCESSLEVEL);
 				}
 			}
 		}
@@ -163,7 +165,7 @@ public class CharInfoTable
 				{
 					name = rset.getString("char_name");
 					_names.put(id, name);
-					_accessLevels.put(id, rset.getInt("accesslevel"));
+					_accessLevels.put(id, rset.getInt(ACCESSLEVEL));
 					return name;
 				}
 			}

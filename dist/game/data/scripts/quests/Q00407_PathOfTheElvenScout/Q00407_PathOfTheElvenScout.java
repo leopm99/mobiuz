@@ -32,6 +32,8 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Q00407_PathOfTheElvenScout extends Quest
 {
+	private static final String VARIABLE = "variable";
+
 	// NPCs
 	private static final int MASTER_REORIA = 30328;
 	private static final int GUARD_BABENCO = 30334;
@@ -91,7 +93,7 @@ public class Q00407_PathOfTheElvenScout extends Quest
 						else
 						{
 							qs.startQuest();
-							qs.unset("variable");
+							qs.unset(VARIABLE);
 							giveItems(player, REISAS_LETTER, 1);
 							htmltext = "30328-05.htm";
 						}
@@ -121,7 +123,7 @@ public class Q00407_PathOfTheElvenScout extends Quest
 				if (hasQuestItems(player, REISAS_LETTER))
 				{
 					takeItems(player, REISAS_LETTER, -1);
-					qs.set("variable", 1);
+					qs.set(VARIABLE, 1);
 					qs.setCond(2, true);
 					htmltext = event;
 				}
@@ -228,7 +230,7 @@ public class Q00407_PathOfTheElvenScout extends Quest
 					{
 						htmltext = "30328-06.html";
 					}
-					else if ((qs.getInt("variable") == 1) && !hasAtLeastOneQuestItem(player, REISAS_LETTER, HONORARY_GUARD))
+					else if ((qs.getInt(VARIABLE) == 1) && !hasAtLeastOneQuestItem(player, REISAS_LETTER, HONORARY_GUARD))
 					{
 						htmltext = "30328-08.html";
 					}
@@ -258,7 +260,7 @@ public class Q00407_PathOfTheElvenScout extends Quest
 				}
 				case GUARD_BABENCO:
 				{
-					if (qs.getInt("variable") == 1)
+					if (qs.getInt(VARIABLE) == 1)
 					{
 						htmltext = "30334-01.html";
 					}
@@ -271,7 +273,7 @@ public class Q00407_PathOfTheElvenScout extends Quest
 					{
 						htmltext = "30337-01.html";
 					}
-					else if ((qs.getInt("variable") == 1) && !hasAtLeastOneQuestItem(player, MORETTIS_LETTER, PRIASS_LETTER, HONORARY_GUARD))
+					else if ((qs.getInt(VARIABLE) == 1) && !hasAtLeastOneQuestItem(player, MORETTIS_LETTER, PRIASS_LETTER, HONORARY_GUARD))
 					{
 						if (letterCount == 0)
 						{

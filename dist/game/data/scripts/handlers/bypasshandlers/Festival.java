@@ -50,6 +50,9 @@ import com.l2journey.gameserver.network.serverpackets.SystemMessage;
 
 public class Festival implements IBypassHandler
 {
+	private static final String MEMBERS = "members";
+	private static final String SCORE = "score";
+
 	private static final String[] COMMANDS =
 	{
 		"festival",
@@ -202,18 +205,18 @@ public class Festival implements IBypassHandler
 					final StatSet dawnData = SevenSignsFestival.getInstance().getHighestScoreData(SevenSigns.CABAL_DAWN, npc.getFestivalType());
 					final StatSet duskData = SevenSignsFestival.getInstance().getHighestScoreData(SevenSigns.CABAL_DUSK, npc.getFestivalType());
 					final StatSet overallData = SevenSignsFestival.getInstance().getOverallHighestScoreData(npc.getFestivalType());
-					final int dawnScore = dawnData.getInt("score");
-					final int duskScore = duskData.getInt("score");
+					final int dawnScore = dawnData.getInt(SCORE);
+					final int duskScore = duskData.getInt(SCORE);
 					int overallScore = 0;
 					// If no data is returned, assume there is no record, or all scores are 0.
 					if (overallData != null)
 					{
-						overallScore = overallData.getInt("score");
+						overallScore = overallData.getInt(SCORE);
 					}
 					strBuffer.append(SevenSignsFestival.getFestivalName(npc.getFestivalType()) + " festival.<br>");
 					if (dawnScore > 0)
 					{
-						strBuffer.append("Dawn: " + calculateDate(dawnData.getString("date")) + ". Score " + dawnScore + "<br>" + dawnData.getString("members") + "<br>");
+						strBuffer.append("Dawn: " + calculateDate(dawnData.getString("date")) + ". Score " + dawnScore + "<br>" + dawnData.getString(MEMBERS) + "<br>");
 					}
 					else
 					{
@@ -221,7 +224,7 @@ public class Festival implements IBypassHandler
 					}
 					if (duskScore > 0)
 					{
-						strBuffer.append("Dusk: " + calculateDate(duskData.getString("date")) + ". Score " + duskScore + "<br>" + duskData.getString("members") + "<br>");
+						strBuffer.append("Dusk: " + calculateDate(duskData.getString("date")) + ". Score " + duskScore + "<br>" + duskData.getString(MEMBERS) + "<br>");
 					}
 					else
 					{
@@ -238,7 +241,7 @@ public class Festival implements IBypassHandler
 						{
 							cabalStr = "Children of Dusk";
 						}
-						strBuffer.append("Consecutive top scores: " + calculateDate(overallData.getString("date")) + ". Score " + overallScore + "<br>Affilated side: " + cabalStr + "<br>" + overallData.getString("members") + "<br>");
+						strBuffer.append("Consecutive top scores: " + calculateDate(overallData.getString("date")) + ". Score " + overallScore + "<br>Affilated side: " + cabalStr + "<br>" + overallData.getString(MEMBERS) + "<br>");
 					}
 					else
 					{

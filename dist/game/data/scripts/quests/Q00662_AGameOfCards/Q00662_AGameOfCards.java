@@ -35,6 +35,20 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Q00662_AGameOfCards extends Quest
 {
+	private static final String EXMEMOSTATE = "ExMemoState";
+	private static final String FONTCOLOR1 = "FontColor1";
+	private static final String FONTCOLOR2 = "FontColor2";
+	private static final String FONTCOLOR3 = "FontColor3";
+	private static final String FONTCOLOR4 = "FontColor4";
+	private static final String FONTCOLOR5 = "FontColor5";
+	private static final String FFFF00 = "FFFF00";
+	private static final String FF6F6F = "FF6F6F";
+	private static final String CELL1 = "Cell1";
+	private static final String CELL2 = "Cell2";
+	private static final String CELL3 = "Cell3";
+	private static final String CELL4 = "Cell4";
+	private static final String CELL5 = "Cell5";
+
 	// NPC
 	private static final int KLUMP = 30845;
 	// Items
@@ -233,7 +247,7 @@ public class Q00662_AGameOfCards extends Quest
 						i5 -= 14;
 					}
 					qs.set("v1", (i4 * 1000000) + (i3 * 10000) + (i2 * 100) + i1);
-					qs.set("ExMemoState", i5);
+					qs.set(EXMEMOSTATE, i5);
 					takeItems(player, RED_GEM, REQUIRED_CHIP_COUNT);
 					htmltext = event;
 				}
@@ -242,7 +256,7 @@ public class Q00662_AGameOfCards extends Quest
 			case "turncard1", "turncard2", "turncard3", "turncard4", "turncard5":
 			{
 				final int cond = qs.getInt("v1");
-				int i1 = qs.getInt("ExMemoState");
+				int i1 = qs.getInt(EXMEMOSTATE);
 				final int i5 = i1 % 100;
 				int i9 = i1 / 100;
 				i1 = cond % 100;
@@ -259,7 +273,7 @@ public class Q00662_AGameOfCards extends Quest
 						}
 						if ((i9 % 32) < 31)
 						{
-							qs.set("ExMemoState", (i9 * 100) + i5);
+							qs.set(EXMEMOSTATE, (i9 * 100) + i5);
 						}
 						break;
 					}
@@ -271,7 +285,7 @@ public class Q00662_AGameOfCards extends Quest
 						}
 						if ((i9 % 32) < 31)
 						{
-							qs.set("ExMemoState", (i9 * 100) + i5);
+							qs.set(EXMEMOSTATE, (i9 * 100) + i5);
 						}
 						break;
 					}
@@ -283,7 +297,7 @@ public class Q00662_AGameOfCards extends Quest
 						}
 						if ((i9 % 32) < 31)
 						{
-							qs.set("ExMemoState", (i9 * 100) + i5);
+							qs.set(EXMEMOSTATE, (i9 * 100) + i5);
 						}
 						break;
 					}
@@ -295,7 +309,7 @@ public class Q00662_AGameOfCards extends Quest
 						}
 						if ((i9 % 32) < 31)
 						{
-							qs.set("ExMemoState", (i9 * 100) + i5);
+							qs.set(EXMEMOSTATE, (i9 * 100) + i5);
 						}
 						break;
 					}
@@ -307,7 +321,7 @@ public class Q00662_AGameOfCards extends Quest
 						}
 						if ((i9 % 32) < 31)
 						{
-							qs.set("ExMemoState", (i9 * 100) + i5);
+							qs.set(EXMEMOSTATE, (i9 * 100) + i5);
 						}
 						break;
 					}
@@ -433,7 +447,7 @@ public class Q00662_AGameOfCards extends Quest
 						rewardItems(player, ZIGGOS_GEMSTONE, 43);
 						rewardItems(player, 959, 3);
 						rewardItems(player, 729, 1);
-						qs.set("ExMemoState", 0);
+						qs.set(EXMEMOSTATE, 0);
 						qs.set("v1", 0);
 						htmltext = getHtm(player, "30845-13.html");
 					}
@@ -441,7 +455,7 @@ public class Q00662_AGameOfCards extends Quest
 					{
 						rewardItems(player, 959, 2);
 						rewardItems(player, 951, 2);
-						qs.set("ExMemoState", 0);
+						qs.set(EXMEMOSTATE, 0);
 						qs.set("v1", 0);
 						htmltext = getHtm(player, "30845-14.html");
 					}
@@ -450,34 +464,34 @@ public class Q00662_AGameOfCards extends Quest
 						rewardItems(player, 729, 1);
 						rewardItems(player, 947, 2);
 						rewardItems(player, 955, 1);
-						qs.set("ExMemoState", 0);
+						qs.set(EXMEMOSTATE, 0);
 						qs.set("v1", 0);
 						htmltext = getHtm(player, "30845-15.html");
 					}
 					else if (i6 == 20)
 					{
 						rewardItems(player, 951, 2);
-						qs.set("ExMemoState", 0);
+						qs.set(EXMEMOSTATE, 0);
 						qs.set("v1", 0);
 						htmltext = getHtm(player, "30845-16.html");
 					}
 					else if (i6 == 11)
 					{
 						rewardItems(player, 951, 1);
-						qs.set("ExMemoState", 0);
+						qs.set(EXMEMOSTATE, 0);
 						qs.set("v1", 0);
 						htmltext = getHtm(player, "30845-17.html");
 					}
 					else if (i6 == 10)
 					{
 						rewardItems(player, 956, 2);
-						qs.set("ExMemoState", 0);
+						qs.set(EXMEMOSTATE, 0);
 						qs.set("v1", 0);
 						htmltext = getHtm(player, "30845-18.html");
 					}
 					else if (i6 == 0)
 					{
-						qs.set("ExMemoState", 0);
+						qs.set(EXMEMOSTATE, 0);
 						qs.set("v1", 0);
 						htmltext = getHtm(player, "30845-19.html");
 					}
@@ -487,53 +501,53 @@ public class Q00662_AGameOfCards extends Quest
 				{
 					if ((i9 % 2) < 1)
 					{
-						htmltext = htmltext.replace("FontColor1", "FFFF00");
-						htmltext = htmltext.replace("Cell1", "?");
+						htmltext = htmltext.replace(FONTCOLOR1, FFFF00);
+						htmltext = htmltext.replace(CELL1, "?");
 					}
 					else
 					{
-						htmltext = htmltext.replace("FontColor1", "FF6F6F");
-						htmltext = setHtml(htmltext, i1, "Cell1");
+						htmltext = htmltext.replace(FONTCOLOR1, FF6F6F);
+						htmltext = setHtml(htmltext, i1, CELL1);
 					}
 					if ((i9 % 4) < 2)
 					{
-						htmltext = htmltext.replace("FontColor2", "FFFF00");
-						htmltext = htmltext.replace("Cell2", "?");
+						htmltext = htmltext.replace(FONTCOLOR2, FFFF00);
+						htmltext = htmltext.replace(CELL2, "?");
 					}
 					else
 					{
-						htmltext = htmltext.replace("FontColor2", "FF6F6F");
-						htmltext = setHtml(htmltext, i2, "Cell2");
+						htmltext = htmltext.replace(FONTCOLOR2, FF6F6F);
+						htmltext = setHtml(htmltext, i2, CELL2);
 					}
 					if ((i9 % 8) < 4)
 					{
-						htmltext = htmltext.replace("FontColor3", "FFFF00");
-						htmltext = htmltext.replace("Cell3", "?");
+						htmltext = htmltext.replace(FONTCOLOR3, FFFF00);
+						htmltext = htmltext.replace(CELL3, "?");
 					}
 					else
 					{
-						htmltext = htmltext.replace("FontColor3", "FF6F6F");
-						htmltext = setHtml(htmltext, i3, "Cell3");
+						htmltext = htmltext.replace(FONTCOLOR3, FF6F6F);
+						htmltext = setHtml(htmltext, i3, CELL3);
 					}
 					if ((i9 % 16) < 8)
 					{
-						htmltext = htmltext.replace("FontColor4", "FFFF00");
-						htmltext = htmltext.replace("Cell4", "?");
+						htmltext = htmltext.replace(FONTCOLOR4, FFFF00);
+						htmltext = htmltext.replace(CELL4, "?");
 					}
 					else
 					{
-						htmltext = htmltext.replace("FontColor4", "FF6F6F");
-						htmltext = setHtml(htmltext, i4, "Cell4");
+						htmltext = htmltext.replace(FONTCOLOR4, FF6F6F);
+						htmltext = setHtml(htmltext, i4, CELL4);
 					}
 					if ((i9 % 32) < 16)
 					{
-						htmltext = htmltext.replace("FontColor5", "FFFF00");
-						htmltext = htmltext.replace("Cell5", "?");
+						htmltext = htmltext.replace(FONTCOLOR5, FFFF00);
+						htmltext = htmltext.replace(CELL5, "?");
 					}
 					else
 					{
-						htmltext = htmltext.replace("FontColor5", "FF6F6F");
-						htmltext = setHtml(htmltext, i5, "Cell5");
+						htmltext = htmltext.replace(FONTCOLOR5, FF6F6F);
+						htmltext = setHtml(htmltext, i5, CELL5);
 					}
 				}
 				break;
@@ -569,10 +583,10 @@ public class Q00662_AGameOfCards extends Quest
 				{
 					htmltext = getQuestItemsCount(player, RED_GEM) < REQUIRED_CHIP_COUNT ? "30845-04.html" : "30845-05.html";
 				}
-				else if (qs.getInt("ExMemoState") != 0)
+				else if (qs.getInt(EXMEMOSTATE) != 0)
 				{
 					final int i0 = qs.getInt("v1");
-					int i1 = qs.getInt("ExMemoState");
+					int i1 = qs.getInt(EXMEMOSTATE);
 					final int i5 = i1 % 100;
 					final int i9 = i1 / 100;
 					i1 = i0 % 100;
@@ -582,55 +596,55 @@ public class Q00662_AGameOfCards extends Quest
 					htmltext = getHtm(player, "30845-11a.html");
 					if ((i9 % 2) < 1)
 					{
-						htmltext = htmltext.replace("FontColor1", "FFFF00");
-						htmltext = htmltext.replace("Cell1", "?");
+						htmltext = htmltext.replace(FONTCOLOR1, FFFF00);
+						htmltext = htmltext.replace(CELL1, "?");
 					}
 					else
 					{
-						htmltext = htmltext.replace("FontColor1", "FF6F6F");
-						htmltext = setHtml(htmltext, i1, "Cell1");
+						htmltext = htmltext.replace(FONTCOLOR1, FF6F6F);
+						htmltext = setHtml(htmltext, i1, CELL1);
 					}
 					
 					if ((i9 % 4) < 2)
 					{
-						htmltext = htmltext.replace("FontColor2", "FFFF00");
-						htmltext = htmltext.replace("Cell2", "?");
+						htmltext = htmltext.replace(FONTCOLOR2, FFFF00);
+						htmltext = htmltext.replace(CELL2, "?");
 					}
 					else
 					{
-						htmltext = htmltext.replace("FontColor2", "FF6F6F");
-						htmltext = setHtml(htmltext, i2, "Cell2");
+						htmltext = htmltext.replace(FONTCOLOR2, FF6F6F);
+						htmltext = setHtml(htmltext, i2, CELL2);
 					}
 					
 					if ((i9 % 8) < 4)
 					{
-						htmltext = htmltext.replace("FontColor3", "FFFF00");
-						htmltext = htmltext.replace("Cell3", "?");
+						htmltext = htmltext.replace(FONTCOLOR3, FFFF00);
+						htmltext = htmltext.replace(CELL3, "?");
 					}
 					else
 					{
-						htmltext = htmltext.replace("FontColor3", "FF6F6F");
-						htmltext = setHtml(htmltext, i3, "Cell3");
+						htmltext = htmltext.replace(FONTCOLOR3, FF6F6F);
+						htmltext = setHtml(htmltext, i3, CELL3);
 					}
 					if ((i9 % 16) < 8)
 					{
-						htmltext = htmltext.replace("FontColor4", "FFFF00");
-						htmltext = htmltext.replace("Cell4", "?");
+						htmltext = htmltext.replace(FONTCOLOR4, FFFF00);
+						htmltext = htmltext.replace(CELL4, "?");
 					}
 					else
 					{
-						htmltext = htmltext.replace("FontColor4", "FF6F6F");
-						htmltext = setHtml(htmltext, i4, "Cell4");
+						htmltext = htmltext.replace(FONTCOLOR4, FF6F6F);
+						htmltext = setHtml(htmltext, i4, CELL4);
 					}
 					if ((i9 % 32) < 16)
 					{
-						htmltext = htmltext.replace("FontColor5", "FFFF00");
-						htmltext = htmltext.replace("Cell5", "?");
+						htmltext = htmltext.replace(FONTCOLOR5, FFFF00);
+						htmltext = htmltext.replace(CELL5, "?");
 					}
 					else
 					{
-						htmltext = htmltext.replace("FontColor5", "FF6F6F");
-						htmltext = setHtml(htmltext, i5, "Cell5");
+						htmltext = htmltext.replace(FONTCOLOR5, FF6F6F);
+						htmltext = setHtml(htmltext, i5, CELL5);
 					}
 				}
 				break;

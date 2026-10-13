@@ -46,6 +46,8 @@ import com.l2journey.gameserver.util.Broadcast;
  */
 public class Rabbits extends Event
 {
+	private static final String END_RABBITS_EVENT = "END_RABBITS_EVENT";
+
 	// NPCs
 	private static final int NPC_MANAGER = 900101;
 	private static final int CHEST = 900102;
@@ -187,7 +189,7 @@ public class Rabbits extends Event
 		Broadcast.toAllOnlinePlayers("Rabbits Event: You have " + EVENT_TIME + " minutes!");
 		Broadcast.toAllOnlinePlayers("Rabbits Event: After that time all chests will disappear...");
 		// Schedule event end
-		startQuestTimer("END_RABBITS_EVENT", EVENT_TIME * 60000L, null, eventMaker);
+		startQuestTimer(END_RABBITS_EVENT, EVENT_TIME * 60000L, null, eventMaker);
 		return true;
 	}
 	
@@ -204,7 +206,7 @@ public class Rabbits extends Event
 		_isActive = false;
 		
 		// Cancel timer
-		cancelQuestTimers("END_RABBITS_EVENT");
+		cancelQuestTimers(END_RABBITS_EVENT);
 		
 		// Despawn NPCs
 		for (Npc npc : _npcs)
@@ -249,7 +251,7 @@ public class Rabbits extends Event
 				_players.add(player);
 				break;
 			}
-			case "END_RABBITS_EVENT":
+			case END_RABBITS_EVENT:
 			{
 				Broadcast.toAllOnlinePlayers("Rabbits Event: Time up!");
 				eventStop();

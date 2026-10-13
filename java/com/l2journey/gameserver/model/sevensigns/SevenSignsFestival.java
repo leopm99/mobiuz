@@ -70,6 +70,13 @@ import com.l2journey.gameserver.network.serverpackets.SystemMessage;
  */
 public class SevenSignsFestival
 {
+	private static final String ACCUMULATED_BONUS = "accumulated_bonus";
+	private static final String FESTIVALID = "festivalId";
+	private static final String MEMBERS = "members";
+	private static final String CYCLE = "cycle";
+	private static final String CABAL = "cabal";
+	private static final String SCORE = "score";
+
 	protected static final Logger LOGGER = Logger.getLogger(SevenSignsFestival.class.getName());
 	
 	private static final String GET_CLAN_NAME = "SELECT clan_name FROM clan_data WHERE clan_id = (SELECT clanid FROM characters WHERE char_name = ?)";
@@ -947,16 +954,16 @@ public class SevenSignsFestival
 		{
 			while (rs.next())
 			{
-				final int festivalCycle = rs.getInt("cycle");
-				int festivalId = rs.getInt("festivalId");
-				final String cabal = rs.getString("cabal");
+				final int festivalCycle = rs.getInt(CYCLE);
+				int festivalId = rs.getInt(FESTIVALID);
+				final String cabal = rs.getString(CABAL);
 				final StatSet festivalDat = new StatSet();
-				festivalDat.set("festivalId", festivalId);
-				festivalDat.set("cabal", cabal);
-				festivalDat.set("cycle", festivalCycle);
+				festivalDat.set(FESTIVALID, festivalId);
+				festivalDat.set(CABAL, cabal);
+				festivalDat.set(CYCLE, festivalCycle);
 				festivalDat.set("date", rs.getString("date"));
-				festivalDat.set("score", rs.getInt("score"));
-				festivalDat.set("members", rs.getString("members"));
+				festivalDat.set(SCORE, rs.getInt(SCORE));
+				festivalDat.set(MEMBERS, rs.getString(MEMBERS));
 				if (cabal.equals("dawn"))
 				{
 					festivalId += FESTIVAL_COUNT;
@@ -976,12 +983,12 @@ public class SevenSignsFestival
 		query.append("SELECT festival_cycle, ");
 		for (int i = 0; i < (FESTIVAL_COUNT - 1); i++)
 		{
-			query.append("accumulated_bonus");
+			query.append(ACCUMULATED_BONUS);
 			query.append(String.valueOf(i));
 			query.append(", ");
 		}
 		
-		query.append("accumulated_bonus");
+		query.append(ACCUMULATED_BONUS);
 		query.append(String.valueOf(FESTIVAL_COUNT - 1));
 		query.append(' ');
 		query.append("FROM seven_signs_status WHERE id=0");
@@ -995,7 +1002,7 @@ public class SevenSignsFestival
 				_festivalCycle = rs.getInt("festival_cycle");
 				for (int i = 0; i < FESTIVAL_COUNT; i++)
 				{
-					_accumulatedBonuses.add(i, rs.getInt("accumulated_bonus" + i));
+					_accumulatedBonuses.add(i, rs.getInt(ACCUMULATED_BONUS + i));
 				}
 			}
 		}
@@ -1018,12 +1025,12 @@ public class SevenSignsFestival
 			{
 				for (StatSet festivalDat : currCycleData.values())
 				{
-					psInsert.setInt(1, festivalDat.getInt("festivalId"));
-					psInsert.setString(2, festivalDat.getString("cabal"));
-					psInsert.setInt(3, festivalDat.getInt("cycle"));
+					psInsert.setInt(1, festivalDat.getInt(FESTIVALID));
+					psInsert.setString(2, festivalDat.getString(CABAL));
+					psInsert.setInt(3, festivalDat.getInt(CYCLE));
 					psInsert.setLong(4, Long.parseLong(festivalDat.getString("date")));
-					psInsert.setInt(5, festivalDat.getInt("score"));
-					psInsert.setString(6, festivalDat.getString("members"));
+					psInsert.setInt(5, festivalDat.getInt(SCORE));
+					psInsert.setString(6, festivalDat.getString(MEMBERS));
 					psInsert.addBatch();
 				}
 			}
@@ -1050,7 +1057,7 @@ public class SevenSignsFestival
 		StatSet overallData = getOverallHighestScoreData(FESTIVAL_LEVEL_MAX_31);
 		if (overallData != null)
 		{
-			partyMembers = overallData.getString("members").split(",");
+			partyMembers = overallData.getString(MEMBERS).split(",");
 			for (String partyMemberName : partyMembers)
 			{
 				addReputationPointsForPartyMemberClan(partyMemberName);
@@ -1060,7 +1067,7 @@ public class SevenSignsFestival
 		overallData = getOverallHighestScoreData(FESTIVAL_LEVEL_MAX_42);
 		if (overallData != null)
 		{
-			partyMembers = overallData.getString("members").split(",");
+			partyMembers = overallData.getString(MEMBERS).split(",");
 			for (String partyMemberName : partyMembers)
 			{
 				addReputationPointsForPartyMemberClan(partyMemberName);
@@ -1070,7 +1077,7 @@ public class SevenSignsFestival
 		overallData = getOverallHighestScoreData(FESTIVAL_LEVEL_MAX_53);
 		if (overallData != null)
 		{
-			partyMembers = overallData.getString("members").split(",");
+			partyMembers = overallData.getString(MEMBERS).split(",");
 			for (String partyMemberName : partyMembers)
 			{
 				addReputationPointsForPartyMemberClan(partyMemberName);
@@ -1080,7 +1087,7 @@ public class SevenSignsFestival
 		overallData = getOverallHighestScoreData(FESTIVAL_LEVEL_MAX_64);
 		if (overallData != null)
 		{
-			partyMembers = overallData.getString("members").split(",");
+			partyMembers = overallData.getString(MEMBERS).split(",");
 			for (String partyMemberName : partyMembers)
 			{
 				addReputationPointsForPartyMemberClan(partyMemberName);
@@ -1090,7 +1097,7 @@ public class SevenSignsFestival
 		overallData = getOverallHighestScoreData(FESTIVAL_LEVEL_MAX_NONE);
 		if (overallData != null)
 		{
-			partyMembers = overallData.getString("members").split(",");
+			partyMembers = overallData.getString(MEMBERS).split(",");
 			for (String partyMemberName : partyMembers)
 			{
 				addReputationPointsForPartyMemberClan(partyMemberName);
@@ -1181,18 +1188,18 @@ public class SevenSignsFestival
 			
 			// Create a new StatSet with "default" data for Dusk
 			final StatSet tempStats = new StatSet();
-			tempStats.set("festivalId", festivalId);
-			tempStats.set("cycle", _signsCycle);
+			tempStats.set(FESTIVALID, festivalId);
+			tempStats.set(CYCLE, _signsCycle);
 			tempStats.set("date", "0");
-			tempStats.set("score", 0);
-			tempStats.set("members", "");
+			tempStats.set(SCORE, 0);
+			tempStats.set(MEMBERS, "");
 			if (i >= FESTIVAL_COUNT)
 			{
-				tempStats.set("cabal", SevenSigns.getCabalShortName(SevenSigns.CABAL_DAWN));
+				tempStats.set(CABAL, SevenSigns.getCabalShortName(SevenSigns.CABAL_DAWN));
 			}
 			else
 			{
-				tempStats.set("cabal", SevenSigns.getCabalShortName(SevenSigns.CABAL_DUSK));
+				tempStats.set(CABAL, SevenSigns.getCabalShortName(SevenSigns.CABAL_DUSK));
 			}
 			
 			newData.put(i, tempStats);
@@ -1436,7 +1443,7 @@ public class SevenSignsFestival
 	
 	public int getHighestScore(int oracle, int festivalId)
 	{
-		return getHighestScoreData(oracle, festivalId).getInt("score");
+		return getHighestScoreData(oracle, festivalId).getInt(SCORE);
 	}
 	
 	/**
@@ -1464,8 +1471,8 @@ public class SevenSignsFestival
 		catch (Exception _)
 		{
 			currData = new StatSet();
-			currData.set("score", 0);
-			currData.set("members", "");
+			currData.set(SCORE, 0);
+			currData.set(MEMBERS, "");
 		}
 		
 		return currData;
@@ -1484,8 +1491,8 @@ public class SevenSignsFestival
 		{
 			for (StatSet currFestData : currCycleData.values())
 			{
-				final int currFestID = currFestData.getInt("festivalId");
-				final int festivalScore = currFestData.getInt("score");
+				final int currFestID = currFestData.getInt(FESTIVALID);
+				final int festivalScore = currFestData.getInt(SCORE);
 				if (currFestID != festivalId)
 				{
 					continue;
@@ -1552,8 +1559,8 @@ public class SevenSignsFestival
 			
 			// Update the highest scores and party list.
 			currFestData.set("date", String.valueOf(System.currentTimeMillis()));
-			currFestData.set("score", offeringScore);
-			currFestData.set("members", sj.toString());
+			currFestData.set(SCORE, offeringScore);
+			currFestData.set(MEMBERS, sj.toString());
 			
 			// Only add the score to the cabal's overall if it's higher than the other cabal's score.
 			if (offeringScore > otherCabalHighScore)
@@ -1638,10 +1645,10 @@ public class SevenSignsFestival
 		{
 			for (StatSet festivalData : festivalDataMap.values())
 			{
-				if (festivalData.getString("members").contains(playerName))
+				if (festivalData.getString(MEMBERS).contains(playerName))
 				{
-					final int festivalId = festivalData.getInt("festivalId");
-					final int numPartyMembers = festivalData.getString("members").split(",").length;
+					final int festivalId = festivalData.getInt(FESTIVALID);
+					final int numPartyMembers = festivalData.getString(MEMBERS).split(",").length;
 					final int totalAccumBonus = _accumulatedBonuses.get(festivalId);
 					playerBonus = totalAccumBonus / numPartyMembers;
 					_accumulatedBonuses.set(festivalId, totalAccumBonus - playerBonus);

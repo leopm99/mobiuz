@@ -37,6 +37,8 @@ import quests.Q00196_SevenSignsSealOfTheEmperor.Q00196_SevenSignsSealOfTheEmpero
  */
 public class Q00197_SevenSignsTheSacredBookOfSeal extends Quest
 {
+	private static final String DESPAWN = "despawn";
+
 	// NPCs
 	private static final int SHILENS_EVIL_THOUGHTS = 27396;
 	private static final int ORVEN = 30857;
@@ -63,7 +65,7 @@ public class Q00197_SevenSignsTheSacredBookOfSeal extends Quest
 	@Override
 	public String onEvent(String event, Npc npc, Player player)
 	{
-		if ((npc.getId() == SHILENS_EVIL_THOUGHTS) && "despawn".equals(event))
+		if ((npc.getId() == SHILENS_EVIL_THOUGHTS) && DESPAWN.equals(event))
 		{
 			if (!npc.isDead())
 			{
@@ -172,7 +174,7 @@ public class Q00197_SevenSignsTheSacredBookOfSeal extends Quest
 					monster.setRunning();
 					monster.addDamageHate(player, 0, 999);
 					monster.getAI().setIntention(Intention.ATTACK, player);
-					startQuestTimer("despawn", 300000, monster, null);
+					startQuestTimer(DESPAWN, 300000, monster, null);
 				}
 				break;
 			}
@@ -237,7 +239,7 @@ public class Q00197_SevenSignsTheSacredBookOfSeal extends Quest
 		}
 		
 		isBusy = false;
-		cancelQuestTimers("despawn");
+		cancelQuestTimers(DESPAWN);
 		npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.NPC_GENERAL, npc.getId(), NpcStringId.S1_YOU_MAY_HAVE_WON_THIS_TIME_BUT_NEXT_TIME_I_WILL_SURELY_CAPTURE_YOU).addStringParameter(partyMember.getName()));
 	}
 	

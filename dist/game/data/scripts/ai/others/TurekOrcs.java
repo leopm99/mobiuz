@@ -46,6 +46,11 @@ import ai.AbstractNpcAI;
 
 public class TurekOrcs extends AbstractNpcAI
 {
+	private static final String STATE = "state";
+	private static final String FLEEX = "fleeX";
+	private static final String FLEEY = "fleeY";
+	private static final String FLEEZ = "fleeZ";
+
 	// NPCs
 	private static final int[] MOBS =
 	{
@@ -69,14 +74,14 @@ public class TurekOrcs extends AbstractNpcAI
 	{
 		if (event.equalsIgnoreCase("checkState") && !npc.isDead() && (npc.getAI().getIntention() != Intention.ATTACK))
 		{
-			if ((npc.getCurrentHp() > (npc.getMaxHp() * 0.7)) && (npc.getVariables().getInt("state") == 2))
+			if ((npc.getCurrentHp() > (npc.getMaxHp() * 0.7)) && (npc.getVariables().getInt(STATE) == 2))
 			{
-				npc.getVariables().set("state", 3);
+				npc.getVariables().set(STATE, 3);
 				npc.asAttackable().returnHome();
 			}
 			else
 			{
-				npc.getVariables().remove("state");
+				npc.getVariables().remove(STATE);
 			}
 		}
 		return super.onEvent(event, npc, player);
@@ -89,14 +94,14 @@ public class TurekOrcs extends AbstractNpcAI
 		{
 			npc.getVariables().set("isHit", 1);
 		}
-		else if ((npc.getCurrentHp() < (npc.getMaxHp() * 0.5)) && (npc.getCurrentHp() > (npc.getMaxHp() * 0.3)) && (attacker.getCurrentHp() > (attacker.getMaxHp() * 0.25)) && npc.hasAIValue("fleeX") && npc.hasAIValue("fleeY") && npc.hasAIValue("fleeZ") && (npc.getVariables().getInt("state") == 0) && (getRandom(100) < 10))
+		else if ((npc.getCurrentHp() < (npc.getMaxHp() * 0.5)) && (npc.getCurrentHp() > (npc.getMaxHp() * 0.3)) && (attacker.getCurrentHp() > (attacker.getMaxHp() * 0.25)) && npc.hasAIValue(FLEEX) && npc.hasAIValue(FLEEY) && npc.hasAIValue(FLEEZ) && (npc.getVariables().getInt(STATE) == 0) && (getRandom(100) < 10))
 		{
 			// Say and flee
 			npc.broadcastSay(ChatType.GENERAL, NpcStringId.getNpcStringId(getRandom(1000007, 1000027)));
 			npc.disableCoreAI(true); // to avoid attacking behaviour, while flee
 			npc.setRunning();
-			npc.getAI().setIntention(Intention.MOVE_TO, new Location(npc.getAIValue("fleeX"), npc.getAIValue("fleeY"), npc.getAIValue("fleeZ")));
-			npc.getVariables().set("state", 1);
+			npc.getAI().setIntention(Intention.MOVE_TO, new Location(npc.getAIValue(FLEEX), npc.getAIValue(FLEEY), npc.getAIValue(FLEEZ)));
+			npc.getVariables().set(STATE, 1);
 			npc.getVariables().set("attacker", attacker.getObjectId());
 		}
 	}
@@ -109,7 +114,7 @@ public class TurekOrcs extends AbstractNpcAI
 			final Player player = reference.asPlayer();
 			if ((player != null) && !player.isDead())
 			{
-				receiver.getVariables().set("state", 3);
+				receiver.getVariables().set(STATE, 3);
 				receiver.setRunning();
 				receiver.asAttackable().addDamageHate(player, 0, 99999);
 				receiver.getAI().setIntention(Intention.ATTACK, player);
@@ -122,24 +127,24 @@ public class TurekOrcs extends AbstractNpcAI
 	public void onMoveFinished(Npc npc)
 	{
 		// NPC reaches flee point
-		if (npc.getVariables().getInt("state") == 1)
+		if (npc.getVariables().getInt(STATE) == 1)
 		{
-			if ((npc.getX() == npc.getAIValue("fleeX")) && (npc.getY() == npc.getAIValue("fleeY")))
+			if ((npc.getX() == npc.getAIValue(FLEEX)) && (npc.getY() == npc.getAIValue(FLEEY)))
 			{
 				npc.disableCoreAI(false);
 				startQuestTimer("checkState", 15000, npc, null);
-				npc.getVariables().set("state", 2);
+				npc.getVariables().set(STATE, 2);
 				npc.broadcastEvent("WARNING", 400, World.getInstance().getPlayer(npc.getVariables().getInt("attacker")));
 			}
 			else
 			{
-				npc.getAI().setIntention(Intention.MOVE_TO, new Location(npc.getAIValue("fleeX"), npc.getAIValue("fleeY"), npc.getAIValue("fleeZ")));
+				npc.getAI().setIntention(Intention.MOVE_TO, new Location(npc.getAIValue(FLEEX), npc.getAIValue(FLEEY), npc.getAIValue(FLEEZ)));
 			}
 		}
-		else if ((npc.getVariables().getInt("state") == 3) && npc.staysInSpawnLoc())
+		else if ((npc.getVariables().getInt(STATE) == 3) && npc.staysInSpawnLoc())
 		{
 			npc.disableCoreAI(false);
-			npc.getVariables().remove("state");
+			npc.getVariables().remove(STATE);
 		}
 	}
 	

@@ -32,6 +32,9 @@ import com.l2journey.gameserver.model.quest.State;
  */
 public class Q00628_HuntGoldenRam extends Quest
 {
+	private static final String HTML_N_31554_06 = "31554-06.html";
+	private static final String HTML_N_31554_07 = "31554-07.html";
+
 	// NPCs
 	private static final int KAHMAN = 31554;
 	// Items
@@ -171,7 +174,7 @@ public class Q00628_HuntGoldenRam extends Quest
 				{
 					case 1:
 					{
-						htmltext = ((itemCountSplinter >= REQUIRED_ITEM_COUNT) ? "31554-07.html" : "31554-06.html");
+						htmltext = ((itemCountSplinter >= REQUIRED_ITEM_COUNT) ? HTML_N_31554_07 : HTML_N_31554_06);
 						break;
 					}
 					case 2:
@@ -195,7 +198,7 @@ public class Q00628_HuntGoldenRam extends Quest
 						else
 						{
 							qs.setCond(1);
-							htmltext = ((itemCountSplinter >= REQUIRED_ITEM_COUNT) ? "31554-07.html" : "31554-06.html");
+							htmltext = ((itemCountSplinter >= REQUIRED_ITEM_COUNT) ? HTML_N_31554_07 : HTML_N_31554_06);
 						}
 						break;
 					}
@@ -208,7 +211,7 @@ public class Q00628_HuntGoldenRam extends Quest
 						else
 						{
 							qs.setCond(1);
-							htmltext = ((itemCountSplinter >= REQUIRED_ITEM_COUNT) ? "31554-07.html" : "31554-06.html");
+							htmltext = ((itemCountSplinter >= REQUIRED_ITEM_COUNT) ? HTML_N_31554_07 : HTML_N_31554_06);
 						}
 						break;
 					}

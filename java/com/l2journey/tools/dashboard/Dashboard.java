@@ -57,6 +57,10 @@ import javax.swing.border.EmptyBorder;
  */
 public final class Dashboard
 {
+	private static final String LOGINSERVER = "loginserver";
+	private static final String GAMESERVER = "gameserver";
+	private static final String LOGIN = "login";
+
 	private static final Color BACKGROUND = new Color(5, 25, 31);
 	private static final Color CARD = new Color(6, 34, 42);
 	private static final Color BORDER = new Color(11, 76, 87);
@@ -144,8 +148,8 @@ public final class Dashboard
 		frame.setVisible(true);
 		// Fonte so pode ser derivada apos setVisible(): antes disso o Frame (AWT pesado) ainda nao tem font resolvida (getFont() == null).
 		resizeFont(frame, 12);
-		restoreConsole("login", "loginserver", _loginConsole);
-		restoreConsole("game", "gameserver", _gameConsole);
+		restoreConsole(LOGIN, LOGINSERVER, _loginConsole);
+		restoreConsole("game", GAMESERVER, _gameConsole);
 		new Timer(2000, event -> refresh()).start();
 		refresh();
 	}
@@ -202,14 +206,14 @@ public final class Dashboard
 	}
 	
 	/**
-	 * Troca para a aba de console correspondente ao tipo de servico "login"/"game".
+	 * Troca para a aba de console correspondente ao tipo de servico LOGIN/"game".
 	 * @param type
 	 */
 	private void selectTab(String type)
 	{
 		if (_tabs != null)
 		{
-			_tabs.setSelectedIndex(type.equals("login") ? 2 : 1);
+			_tabs.setSelectedIndex(type.equals(LOGIN) ? 2 : 1);
 		}
 	}
 	
@@ -389,7 +393,7 @@ public final class Dashboard
 		final JPanel panel = new JPanel(new GridLayout(1, 2, 12, 0));
 		panel.setOpaque(false);
 		panel.add(serviceControls("GAME SERVER", _gameState, "game", _gameConsole));
-		panel.add(serviceControls("LOGIN SERVER", _loginState, "login", _loginConsole));
+		panel.add(serviceControls("LOGIN SERVER", _loginState, LOGIN, _loginConsole));
 		return panel;
 	}
 	
@@ -523,7 +527,7 @@ public final class Dashboard
 			JOptionPane.showMessageDialog(null, "Ja existe uma sessao ativa. Encerre-a antes de iniciar outra.", "Sessao ja ativa", JOptionPane.WARNING_MESSAGE);
 			return;
 		}
-		final String script = type.equals("login") ? "startLoginServer.bat" : "startGameServer.bat";
+		final String script = type.equals(LOGIN) ? "startLoginServer.bat" : "startGameServer.bat";
 		final Path directory = ROOT.resolve(type);
 		if (!Files.isRegularFile(directory.resolve(script)))
 		{
@@ -634,14 +638,14 @@ public final class Dashboard
 	{
 		try
 		{
-			stop("gameserver", _gameConsole);
+			stop(GAMESERVER, _gameConsole);
 		}
 		catch (Exception _)
 		{
 		}
 		try
 		{
-			stop("loginserver", _loginConsole);
+			stop(LOGINSERVER, _loginConsole);
 		}
 		catch (Exception _)
 		{
@@ -650,8 +654,8 @@ public final class Dashboard
 	
 	private void refresh()
 	{
-		final Optional<ProcessHandle> login = find("loginserver");
-		final Optional<ProcessHandle> game = find("gameserver");
+		final Optional<ProcessHandle> login = find(LOGINSERVER);
+		final Optional<ProcessHandle> game = find(GAMESERVER);
 		status(_loginState, login.isPresent());
 		status(_gameState, game.isPresent());
 		final Optional<Instant> started = login.flatMap(p -> p.info().startInstant()).stream().findFirst().or(() -> game.flatMap(p -> p.info().startInstant()));

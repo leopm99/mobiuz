@@ -36,6 +36,8 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Q00604_DaimonTheWhiteEyedPart2 extends Quest
 {
+	private static final String HTML_N_31541_04 = "31541-04.html";
+
 	// NPCs
 	private static final int DAIMONS_ALTAR = 31541;
 	private static final int EYE_OF_ARGOS = 31683;
@@ -160,7 +162,7 @@ public class Q00604_DaimonTheWhiteEyedPart2 extends Quest
 				}
 				else
 				{
-					htmltext = "31541-04.html";
+					htmltext = HTML_N_31541_04;
 				}
 				break;
 			}
@@ -223,7 +225,7 @@ public class Q00604_DaimonTheWhiteEyedPart2 extends Quest
 					}
 					else
 					{
-						htmltext = "31541-04.html";
+						htmltext = HTML_N_31541_04;
 					}
 				}
 				else if (qs.isMemoState(21))
@@ -238,7 +240,7 @@ public class Q00604_DaimonTheWhiteEyedPart2 extends Quest
 						}
 						else
 						{
-							htmltext = "31541-04.html";
+							htmltext = HTML_N_31541_04;
 						}
 					}
 					else

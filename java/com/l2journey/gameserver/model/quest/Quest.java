@@ -196,6 +196,9 @@ import com.l2journey.gameserver.util.MinionList;
  */
 public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String>
 {
+	private static final String PH_PLAYERNAME = "%playername%";
+	private static final String NRMEMO = "NRmemo";
+
 	public static final Logger LOGGER = Logger.getLogger(Quest.class.getName());
 	
 	private static final String DEFAULT_NO_QUEST_MSG = "<html><body>You are either not on a quest that involves this NPC, or you don't meet this NPC's minimum quest requirements.</body></html>";
@@ -1217,7 +1220,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 		else if (res.startsWith("<html"))
 		{
 			final NpcHtmlMessage npcReply = new NpcHtmlMessage(npc != null ? npc.getObjectId() : 0, res);
-			npcReply.replace("%playername%", player.getName());
+			npcReply.replace(PH_PLAYERNAME, player.getName());
 			player.sendPacket(npcReply);
 			player.sendPacket(ActionFailed.STATIC_PACKET);
 		}
@@ -2279,13 +2282,13 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 			{
 				final NpcQuestHtmlMessage npcReply = new NpcQuestHtmlMessage(npc != null ? npc.getObjectId() : 0, _questId);
 				npcReply.setHtml(content);
-				npcReply.replace("%playername%", player.getName());
+				npcReply.replace(PH_PLAYERNAME, player.getName());
 				player.sendPacket(npcReply);
 			}
 			else
 			{
 				final NpcHtmlMessage npcReply = new NpcHtmlMessage(npc != null ? npc.getObjectId() : 0, content);
-				npcReply.replace("%playername%", player.getName());
+				npcReply.replace(PH_PLAYERNAME, player.getName());
 				player.sendPacket(npcReply);
 			}
 			player.sendPacket(ActionFailed.STATIC_PACKET);
@@ -5571,7 +5574,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 	// TODO Maybe value determine what to be removed?
 	public void removeNRMemo(QuestState qs, int value)
 	{
-		qs.unset("NRmemo");
+		qs.unset(NRMEMO);
 	}
 	
 	// TODO Find what unknown do (always 1)
@@ -5598,7 +5601,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 	
 	public void setNRMemo(QuestState qs, int value)
 	{
-		qs.set("NRmemo", String.valueOf(value));
+		qs.set(NRMEMO, String.valueOf(value));
 	}
 	
 	public void setNRMemoState(QuestState qs, int slot, int value)
@@ -5613,6 +5616,6 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 	
 	public boolean haveNRMemo(QuestState qs, int slot)
 	{
-		return qs.getInt("NRmemo") == slot;
+		return qs.getInt(NRMEMO) == slot;
 	}
 }

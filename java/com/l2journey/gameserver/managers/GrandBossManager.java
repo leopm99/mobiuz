@@ -61,6 +61,8 @@ import com.l2journey.gameserver.model.zone.type.BossZone;
  */
 public class GrandBossManager
 {
+	private static final String RESPAWN_TIME = "respawn_time";
+
 	// SQL queries
 	private static final String DELETE_GRAND_BOSS_LIST = "DELETE FROM grandboss_list";
 	private static final String INSERT_GRAND_BOSS_LIST = "INSERT INTO grandboss_list (player_id,zone) VALUES (?,?)";
@@ -98,7 +100,7 @@ public class GrandBossManager
 				info.set("loc_y", rs.getInt("loc_y"));
 				info.set("loc_z", rs.getInt("loc_z"));
 				info.set("heading", rs.getInt("heading"));
-				info.set("respawn_time", rs.getLong("respawn_time"));
+				info.set(RESPAWN_TIME, rs.getLong(RESPAWN_TIME));
 				info.set("currentHP", rs.getDouble("currentHP"));
 				info.set("currentMP", rs.getDouble("currentMP"));
 				final int status = rs.getInt("status");
@@ -107,7 +109,7 @@ public class GrandBossManager
 				LOGGER.info(() -> getClass().getSimpleName() + ": " + NpcData.getInstance().getTemplate(bossId).getName() + "(" + bossId + ") status is " + status + ".");
 				if (status > 0)
 				{
-					LOGGER.info(() -> getClass().getSimpleName() + ": Next spawn date of " + NpcData.getInstance().getTemplate(bossId).getName() + " is " + new Date(info.getLong("respawn_time")) + ".");
+					LOGGER.info(() -> getClass().getSimpleName() + ": Next spawn date of " + NpcData.getInstance().getTemplate(bossId).getName() + " is " + new Date(info.getLong(RESPAWN_TIME)) + ".");
 				}
 			}
 			LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + _storedInfo.size() + " Instances");
@@ -294,7 +296,7 @@ public class GrandBossManager
 					updateFull.setInt(2, boss.getY());
 					updateFull.setInt(3, boss.getZ());
 					updateFull.setInt(4, boss.getHeading());
-					updateFull.setLong(5, info.getLong("respawn_time"));
+					updateFull.setLong(5, info.getLong(RESPAWN_TIME));
 					double hp = boss.getCurrentHp();
 					double mp = boss.getCurrentMp();
 					if (boss.isDead())
@@ -342,7 +344,7 @@ public class GrandBossManager
 					ps.setInt(2, boss.getY());
 					ps.setInt(3, boss.getZ());
 					ps.setInt(4, boss.getHeading());
-					ps.setLong(5, info.getLong("respawn_time"));
+					ps.setLong(5, info.getLong(RESPAWN_TIME));
 					double hp = boss.getCurrentHp();
 					double mp = boss.getCurrentMp();
 					if (boss.isDead())

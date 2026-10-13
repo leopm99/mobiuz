@@ -41,6 +41,9 @@ import com.l2journey.gameserver.network.serverpackets.SystemMessage;
  */
 public class MasterOfEnchanting extends LongTimeEvent
 {
+	private static final String MASTEROFENCHANTING = "MasterOfEnchanting";
+	private static final String HTML_N_32599_SCROLL24 = "32599-scroll24.htm";
+
 	// NPC
 	private static final int MASTER_YOGI = 32599;
 	// Items
@@ -99,7 +102,7 @@ public class MasterOfEnchanting extends LongTimeEvent
 		else if (event.equalsIgnoreCase("buy_scroll_24"))
 		{
 			final long curTime = System.currentTimeMillis();
-			final String value = player.getVariables().getString("MasterOfEnchanting", "");
+			final String value = player.getVariables().getString(MASTEROFENCHANTING, "");
 			final long reuse = value.equals("") ? 0 : Long.parseLong(value);
 			if (player.getCreateDate().after(getStartDate()))
 			{
@@ -112,8 +115,8 @@ public class MasterOfEnchanting extends LongTimeEvent
 				{
 					takeItems(player, Inventory.ADENA_ID, SCROLL_24_PRICE);
 					giveItems(player, MASTER_YOGI_SCROLL, 24);
-					player.getVariables().set("MasterOfEnchanting", Long.toString(System.currentTimeMillis() + (SCROLL_24_TIME * 3600000)));
-					htmltext = "32599-scroll24.htm";
+					player.getVariables().set(MASTEROFENCHANTING, Long.toString(System.currentTimeMillis() + (SCROLL_24_TIME * 3600000)));
+					htmltext = HTML_N_32599_SCROLL24;
 				}
 				else
 				{
@@ -131,14 +134,14 @@ public class MasterOfEnchanting extends LongTimeEvent
 					sm.addInt(hours);
 					sm.addInt(minutes);
 					player.sendPacket(sm);
-					htmltext = "32599-scroll24.htm";
+					htmltext = HTML_N_32599_SCROLL24;
 				}
 				else if (minutes > 0)
 				{
 					final SystemMessage sm = new SystemMessage(SystemMessageId.THERE_ARE_S1_MINUTE_S_REMAINING_UNTIL_THE_ITEM_CAN_BE_PURCHASED_AGAIN);
 					sm.addInt(minutes);
 					player.sendPacket(sm);
-					htmltext = "32599-scroll24.htm";
+					htmltext = HTML_N_32599_SCROLL24;
 				}
 				// Little glitch. There is no SystemMessage with seconds only.
 				// If time is less than 1 minute player can buy scrolls
@@ -146,8 +149,8 @@ public class MasterOfEnchanting extends LongTimeEvent
 				{
 					takeItems(player, Inventory.ADENA_ID, SCROLL_24_PRICE);
 					giveItems(player, MASTER_YOGI_SCROLL, 24);
-					player.getVariables().set("MasterOfEnchanting", Long.toString(System.currentTimeMillis() + (SCROLL_24_TIME * 3600000)));
-					htmltext = "32599-scroll24.htm";
+					player.getVariables().set(MASTEROFENCHANTING, Long.toString(System.currentTimeMillis() + (SCROLL_24_TIME * 3600000)));
+					htmltext = HTML_N_32599_SCROLL24;
 				}
 				else
 				{

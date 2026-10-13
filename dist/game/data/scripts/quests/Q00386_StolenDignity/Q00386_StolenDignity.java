@@ -35,6 +35,9 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Q00386_StolenDignity extends Quest
 {
+	private static final String SELECTED = "selected";
+	private static final String NUMBERS = "numbers";
+
 	// NPCs
 	private static final int WAREHOUSE_KEEPER_ROMP = 30843;
 	// Monsters
@@ -555,8 +558,8 @@ public class Q00386_StolenDignity extends Quest
 		final Integer[] arr = {1,2,3,4,5,6,7,8,9};
 		//@formatter:on
 		Collections.shuffle(Arrays.asList(arr));
-		qs.set("numbers", Arrays.asList(arr).toString().replaceAll("[^\\d ]", ""));
-		qs.set("selected", "? ? ? ? ? ? ? ? ?");
+		qs.set(NUMBERS, Arrays.asList(arr).toString().replaceAll("[^\\d ]", ""));
+		qs.set(SELECTED, "? ? ? ? ? ? ? ? ?");
 	}
 	
 	/**
@@ -565,7 +568,7 @@ public class Q00386_StolenDignity extends Quest
 	 */
 	private int getMatchedBingoLineCount(QuestState qs)
 	{
-		final String[] q = qs.get("selected").split(" ");
+		final String[] q = qs.get(SELECTED).split(" ");
 		int found = 0;
 		// Horizontal
 		if ((q[0] + q[1] + q[2]).matches("\\d+"))
@@ -611,7 +614,7 @@ public class Q00386_StolenDignity extends Quest
 	 */
 	private void selectBingoNumber(QuestState qs, int num)
 	{
-		final String[] numbers = qs.get("numbers").split(" ");
+		final String[] numbers = qs.get(NUMBERS).split(" ");
 		int pos = 0;
 		for (int i = 0; i < numbers.length; i++)
 		{
@@ -621,7 +624,7 @@ public class Q00386_StolenDignity extends Quest
 				break;
 			}
 		}
-		final String[] selected = qs.get("selected").split(" ");
+		final String[] selected = qs.get(SELECTED).split(" ");
 		for (int i = 0; i < selected.length; i++)
 		{
 			if (i == pos)
@@ -634,7 +637,7 @@ public class Q00386_StolenDignity extends Quest
 		{
 			result += " " + selected[i];
 		}
-		qs.set("selected", result);
+		qs.set(SELECTED, result);
 	}
 	
 	/**
@@ -644,7 +647,7 @@ public class Q00386_StolenDignity extends Quest
 	 */
 	private boolean isSelectedBingoNumber(QuestState qs, int num)
 	{
-		return qs.get("selected").contains(Integer.toString(num));
+		return qs.get(SELECTED).contains(Integer.toString(num));
 	}
 	
 	/**
@@ -654,7 +657,7 @@ public class Q00386_StolenDignity extends Quest
 	 */
 	private int getNumberFromBingoBoard(QuestState qs, int num)
 	{
-		return Integer.parseInt(qs.get("numbers").split(" ")[num]);
+		return Integer.parseInt(qs.get(NUMBERS).split(" ")[num]);
 	}
 	
 	/**
@@ -663,7 +666,7 @@ public class Q00386_StolenDignity extends Quest
 	 */
 	private int getBingoSelectCount(QuestState qs)
 	{
-		return qs.get("selected").replaceAll("\\D", "").length();
+		return qs.get(SELECTED).replaceAll("\\D", "").length();
 	}
 	
 	@Override

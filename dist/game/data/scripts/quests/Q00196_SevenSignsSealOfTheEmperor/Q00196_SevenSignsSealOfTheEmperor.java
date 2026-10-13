@@ -34,6 +34,8 @@ import quests.Q00195_SevenSignsSecretRitualOfThePriests.Q00195_SevenSignsSecretR
  */
 public class Q00196_SevenSignsSealOfTheEmperor extends Quest
 {
+	private static final String DESPAWN = "DESPAWN";
+
 	// NPCs
 	private static final int IASON_HEINE = 30969;
 	private static final int MERCHANT_OF_MAMMON = 32584;
@@ -61,7 +63,7 @@ public class Q00196_SevenSignsSealOfTheEmperor extends Quest
 	@Override
 	public String onEvent(String event, Npc npc, Player player)
 	{
-		if ((npc.getId() == MERCHANT_OF_MAMMON) && "DESPAWN".equals(event))
+		if ((npc.getId() == MERCHANT_OF_MAMMON) && DESPAWN.equals(event))
 		{
 			isBusy = false;
 			npc.broadcastPacket(new NpcSay(npc.getObjectId(), ChatType.NPC_GENERAL, npc.getId(), NpcStringId.THE_ANCIENT_PROMISE_TO_THE_EMPEROR_HAS_BEEN_FULFILLED));
@@ -100,7 +102,7 @@ public class Q00196_SevenSignsSealOfTheEmperor extends Quest
 						final Npc merchant = addSpawn(MERCHANT_OF_MAMMON, 109743, 219975, -3512, 0, false, 0, false);
 						merchant.broadcastPacket(new NpcSay(merchant.getObjectId(), ChatType.NPC_GENERAL, merchant.getId(), NpcStringId.WHO_DARES_SUMMON_THE_MERCHANT_OF_MAMMON));
 						htmltext = "30969-06.html";
-						startQuestTimer("DESPAWN", 120000, merchant, null);
+						startQuestTimer(DESPAWN, 120000, merchant, null);
 					}
 					else
 					{
@@ -140,7 +142,7 @@ public class Q00196_SevenSignsSealOfTheEmperor extends Quest
 				{
 					qs.setCond(2, true);
 					htmltext = event;
-					cancelQuestTimers("DESPAWN");
+					cancelQuestTimers(DESPAWN);
 					npc.deleteMe();
 					isBusy = false;
 				}

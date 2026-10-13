@@ -27,6 +27,9 @@ import com.l2journey.gameserver.model.quest.QuestState;
  */
 public class Q00378_GrandFeast extends Quest
 {
+	private static final String HTML_N_30594_17 = "30594-17.html";
+	private static final String HTML_N_30594_08 = "30594-08.html";
+
 	// NPC
 	private static final int RANSPO = 30594;
 	// Items
@@ -87,7 +90,7 @@ public class Q00378_GrandFeast extends Quest
 				}
 				else
 				{
-					htmltext = "30594-08.html";
+					htmltext = HTML_N_30594_08;
 				}
 				break;
 			}
@@ -103,7 +106,7 @@ public class Q00378_GrandFeast extends Quest
 				}
 				else
 				{
-					htmltext = "30594-08.html";
+					htmltext = HTML_N_30594_08;
 				}
 				break;
 			}
@@ -119,7 +122,7 @@ public class Q00378_GrandFeast extends Quest
 				}
 				else
 				{
-					htmltext = "30594-08.html";
+					htmltext = HTML_N_30594_08;
 				}
 				break;
 			}
@@ -138,7 +141,7 @@ public class Q00378_GrandFeast extends Quest
 				}
 				else
 				{
-					htmltext = "30594-08.html";
+					htmltext = HTML_N_30594_08;
 				}
 				break;
 			}
@@ -154,7 +157,7 @@ public class Q00378_GrandFeast extends Quest
 				}
 				else
 				{
-					htmltext = "30594-17.html";
+					htmltext = HTML_N_30594_17;
 				}
 				break;
 			}
@@ -170,7 +173,7 @@ public class Q00378_GrandFeast extends Quest
 				}
 				else
 				{
-					htmltext = "30594-17.html";
+					htmltext = HTML_N_30594_17;
 				}
 				break;
 			}
@@ -186,7 +189,7 @@ public class Q00378_GrandFeast extends Quest
 				}
 				else
 				{
-					htmltext = "30594-17.html";
+					htmltext = HTML_N_30594_17;
 				}
 				break;
 			}

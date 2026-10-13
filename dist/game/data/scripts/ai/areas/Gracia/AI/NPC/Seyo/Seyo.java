@@ -41,6 +41,9 @@ import ai.AbstractNpcAI;
  */
 public class Seyo extends AbstractNpcAI
 {
+	private static final String TRICKERY_TIMER = "TRICKERY_TIMER";
+	private static final String HTML_N_32737_04 = "32737-04.html";
+
 	// NPC
 	private static final int SEYO = 32737;
 	// Item
@@ -72,7 +75,7 @@ public class Seyo extends AbstractNpcAI
 		}
 		switch (event)
 		{
-			case "TRICKERY_TIMER":
+			case TRICKERY_TIMER:
 			{
 				if (npc.isScriptValue(1))
 				{
@@ -85,7 +88,7 @@ public class Seyo extends AbstractNpcAI
 			{
 				if (npc.isScriptValue(1))
 				{
-					htmltext = "32737-04.html";
+					htmltext = HTML_N_32737_04;
 				}
 				else if (!hasQuestItems(player, STONE_FRAGMENT))
 				{
@@ -104,7 +107,7 @@ public class Seyo extends AbstractNpcAI
 					{
 						npc.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.HMM_HEY_DID_YOU_GIVE_S1_SOMETHING_BUT_IT_WAS_JUST_1_HAHA, player.getName());
 					}
-					startQuestTimer("TRICKERY_TIMER", 5000, npc, null);
+					startQuestTimer(TRICKERY_TIMER, 5000, npc, null);
 				}
 				break;
 			}
@@ -112,7 +115,7 @@ public class Seyo extends AbstractNpcAI
 			{
 				if (npc.isScriptValue(1))
 				{
-					htmltext = "32737-04.html";
+					htmltext = HTML_N_32737_04;
 				}
 				else if (getQuestItemsCount(player, STONE_FRAGMENT) < 5)
 				{
@@ -138,7 +141,7 @@ public class Seyo extends AbstractNpcAI
 						giveItems(player, STONE_FRAGMENT, itemCount);
 						npc.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.S1_PULLED_ONE_WITH_S2_DIGITS_LUCKY_NOT_BAD, player.getName(), String.valueOf(itemCount));
 					}
-					startQuestTimer("TRICKERY_TIMER", 5000, npc, null);
+					startQuestTimer(TRICKERY_TIMER, 5000, npc, null);
 				}
 				break;
 			}
@@ -146,7 +149,7 @@ public class Seyo extends AbstractNpcAI
 			{
 				if (npc.isScriptValue(1))
 				{
-					htmltext = "32737-04.html";
+					htmltext = HTML_N_32737_04;
 				}
 				else if (getQuestItemsCount(player, STONE_FRAGMENT) < 20)
 				{
@@ -172,7 +175,7 @@ public class Seyo extends AbstractNpcAI
 						giveItems(player, STONE_FRAGMENT, getRandom(1, 100));
 						npc.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.A_BIG_PIECE_IS_MADE_UP_OF_LITTLE_PIECES_SO_HERE_S_A_LITTLE_PIECE);
 					}
-					startQuestTimer("TRICKERY_TIMER", 5000, npc, null);
+					startQuestTimer(TRICKERY_TIMER, 5000, npc, null);
 				}
 				break;
 			}

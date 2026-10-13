@@ -43,6 +43,9 @@ import ai.AbstractNpcAI;
  */
 public class GiantsCave extends AbstractNpcAI
 {
+	private static final String ATTACK = "ATTACK";
+	private static final String CLEAR = "CLEAR";
+
 	// NPC
 	private static final int[] SCOUTS =
 	{
@@ -59,7 +62,7 @@ public class GiantsCave extends AbstractNpcAI
 	@Override
 	public String onEvent(String event, Npc npc, Player player)
 	{
-		if (event.equals("ATTACK") && (player != null) && (npc != null) && !npc.isDead())
+		if (event.equals(ATTACK) && (player != null) && (npc != null) && !npc.isDead())
 		{
 			if (npc.getId() == SCOUTS[0]) // Gamlin
 			{
@@ -78,7 +81,7 @@ public class GiantsCave extends AbstractNpcAI
 				}
 			});
 		}
-		else if (event.equals("CLEAR") && (npc != null) && !npc.isDead())
+		else if (event.equals(CLEAR) && (npc != null) && !npc.isDead())
 		{
 			npc.setScriptValue(0);
 		}
@@ -91,8 +94,8 @@ public class GiantsCave extends AbstractNpcAI
 		if (npc.isScriptValue(0))
 		{
 			npc.setScriptValue(1);
-			startQuestTimer("ATTACK", 6000, npc, attacker);
-			startQuestTimer("CLEAR", 120000, npc, null);
+			startQuestTimer(ATTACK, 6000, npc, attacker);
+			startQuestTimer(CLEAR, 120000, npc, null);
 		}
 	}
 	
@@ -110,8 +113,8 @@ public class GiantsCave extends AbstractNpcAI
 			{
 				npc.broadcastSay(ChatType.NPC_GENERAL, NpcStringId.WHAT_KIND_OF_CREATURES_ARE_YOU);
 			}
-			startQuestTimer("ATTACK", 6000, npc, player);
-			startQuestTimer("CLEAR", 120000, npc, null);
+			startQuestTimer(ATTACK, 6000, npc, player);
+			startQuestTimer(CLEAR, 120000, npc, null);
 		}
 	}
 	

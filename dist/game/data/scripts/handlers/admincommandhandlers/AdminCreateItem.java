@@ -42,6 +42,8 @@ import com.l2journey.gameserver.network.serverpackets.GMViewItemList;
  */
 public class AdminCreateItem implements IAdminCommandHandler
 {
+	private static final String HTML_ITEMCREATION = "itemcreation.htm";
+
 	private static final String[] ADMIN_COMMANDS =
 	{
 		"admin_itemcreate",
@@ -58,7 +60,7 @@ public class AdminCreateItem implements IAdminCommandHandler
 	{
 		if (command.equals("admin_itemcreate"))
 		{
-			AdminHtml.showAdminHtml(activeChar, "itemcreation.htm");
+			AdminHtml.showAdminHtml(activeChar, HTML_ITEMCREATION);
 		}
 		else if (command.startsWith("admin_create_item"))
 		{
@@ -98,7 +100,7 @@ public class AdminCreateItem implements IAdminCommandHandler
 			{
 				activeChar.sendSysMessage("Specify a valid number.");
 			}
-			AdminHtml.showAdminHtml(activeChar, "itemcreation.htm");
+			AdminHtml.showAdminHtml(activeChar, HTML_ITEMCREATION);
 		}
 		else if (command.startsWith("admin_create_coin"))
 		{
@@ -132,7 +134,7 @@ public class AdminCreateItem implements IAdminCommandHandler
 			{
 				activeChar.sendSysMessage("Specify a valid number.");
 			}
-			AdminHtml.showAdminHtml(activeChar, "itemcreation.htm");
+			AdminHtml.showAdminHtml(activeChar, HTML_ITEMCREATION);
 		}
 		else if (command.startsWith("admin_give_item_target"))
 		{
@@ -170,7 +172,7 @@ public class AdminCreateItem implements IAdminCommandHandler
 			{
 				activeChar.sendSysMessage("Specify a valid number.");
 			}
-			AdminHtml.showAdminHtml(activeChar, "itemcreation.htm");
+			AdminHtml.showAdminHtml(activeChar, HTML_ITEMCREATION);
 		}
 		else if (command.startsWith("admin_give_item_to_all"))
 		{

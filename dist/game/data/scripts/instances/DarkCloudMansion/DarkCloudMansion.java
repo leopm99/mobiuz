@@ -54,6 +54,13 @@ import instances.AbstractInstance;
  */
 public class DarkCloudMansion extends AbstractInstance
 {
+	private static final String SECONDROOM = "SecondRoom";
+	private static final String STARTROOM = "StartRoom";
+	private static final String FIRSTROOM = "FirstRoom";
+	private static final String THIRDROOM = "ThirdRoom";
+	private static final String FORTHROOM = "ForthRoom";
+	private static final String FIFTHROOM = "FifthRoom";
+
 	// NPCs
 	private static int YIYEN = 32282;
 	private static int SOFaith = 32288; // Symbol of Faith
@@ -325,7 +332,7 @@ public class DarkCloudMansion extends AbstractInstance
 		{
 			thisNpc.npc.setRandomWalking(false);
 		}
-		world.setParameter("StartRoom", startRoom);
+		world.setParameter(STARTROOM, startRoom);
 	}
 	
 	protected void spawnHall(InstanceWorld world)
@@ -443,7 +450,7 @@ public class DarkCloudMansion extends AbstractInstance
 		}
 		firstRoom.npcList.add(thisNpc);
 		
-		world.setParameter("FirstRoom", firstRoom);
+		world.setParameter(FIRSTROOM, firstRoom);
 		world.setStatus(2);
 		world.openDoor(D2);
 	}
@@ -499,7 +506,7 @@ public class DarkCloudMansion extends AbstractInstance
 		thisNpc.order = MonolithOrder[i][5];
 		secondRoom.npcList.add(thisNpc);
 		
-		world.setParameter("SecondRoom", secondRoom);
+		world.setParameter(SECONDROOM, secondRoom);
 		world.setStatus(4);
 		world.openDoor(D3);
 	}
@@ -552,7 +559,7 @@ public class DarkCloudMansion extends AbstractInstance
 			thisNpc.npc.setRandomWalking(false);
 		}
 		thirdRoom.npcList.add(thisNpc);
-		world.setParameter("ThirdRoom", thirdRoom);
+		world.setParameter(THIRDROOM, thirdRoom);
 		world.setStatus(6);
 		world.openDoor(D4);
 	}
@@ -645,7 +652,7 @@ public class DarkCloudMansion extends AbstractInstance
 			}
 		}
 		
-		world.setParameter("ForthRoom", forthRoom);
+		world.setParameter(FORTHROOM, forthRoom);
 		world.setStatus(7);
 		world.openDoor(D5);
 	}
@@ -686,7 +693,7 @@ public class DarkCloudMansion extends AbstractInstance
 			idx++;
 		}
 		
-		world.setParameter("FifthRoom", fifthRoom);
+		world.setParameter(FIFTHROOM, fifthRoom);
 	}
 	
 	protected boolean checkKillProgress(Npc npc, DMCRoom room)
@@ -746,18 +753,18 @@ public class DarkCloudMansion extends AbstractInstance
 	{
 		world.setStatus(10);
 		addSpawn(SOTruth, 148911, 181940, -6117, 16383, false, 0, false, world.getInstanceId());
-		world.getParameters().remove("StartRoom");
+		world.getParameters().remove(STARTROOM);
 		world.getParameters().remove("Hall");
-		world.getParameters().remove("FirstRoom");
-		world.getParameters().remove("SecondRoom");
-		world.getParameters().remove("ThirdRoom");
-		world.getParameters().remove("ForthRoom");
-		world.getParameters().remove("FifthRoom");
+		world.getParameters().remove(FIRSTROOM);
+		world.getParameters().remove(SECONDROOM);
+		world.getParameters().remove(THIRDROOM);
+		world.getParameters().remove(FORTHROOM);
+		world.getParameters().remove(FIFTHROOM);
 	}
 	
 	protected void checkBelethSample(InstanceWorld world, Npc npc, Player player)
 	{
-		final DMCRoom fifthRoom = world.getParameters().getObject("FifthRoom", DMCRoom.class);
+		final DMCRoom fifthRoom = world.getParameters().getObject(FIFTHROOM, DMCRoom.class);
 		for (DMCNpc mob : fifthRoom.npcList)
 		{
 			if (mob.npc == npc)
@@ -792,7 +799,7 @@ public class DarkCloudMansion extends AbstractInstance
 	
 	protected void killedBelethSample(InstanceWorld world, Npc npc)
 	{
-		final DMCRoom fifthRoom = world.getParameters().getObject("FifthRoom", DMCRoom.class);
+		final DMCRoom fifthRoom = world.getParameters().getObject(FIFTHROOM, DMCRoom.class);
 		
 		if (fifthRoom == null)
 		{
@@ -840,7 +847,7 @@ public class DarkCloudMansion extends AbstractInstance
 	
 	protected boolean allStonesDone(InstanceWorld world)
 	{
-		final DMCRoom secondRoom = world.getParameters().getObject("SecondRoom", DMCRoom.class);
+		final DMCRoom secondRoom = world.getParameters().getObject(SECONDROOM, DMCRoom.class);
 		for (DMCNpc mob : secondRoom.npcList)
 		{
 			if (mob.isDead)
@@ -854,7 +861,7 @@ public class DarkCloudMansion extends AbstractInstance
 	
 	protected void removeMonoliths(InstanceWorld world)
 	{
-		final DMCRoom secondRoom = world.getParameters().getObject("SecondRoom", DMCRoom.class);
+		final DMCRoom secondRoom = world.getParameters().getObject(SECONDROOM, DMCRoom.class);
 		for (DMCNpc mob : secondRoom.npcList)
 		{
 			mob.npc.decayMe();
@@ -863,7 +870,7 @@ public class DarkCloudMansion extends AbstractInstance
 	
 	protected void chkShadowColumn(InstanceWorld world, Npc npc)
 	{
-		final DMCRoom forthRoom = world.getParameters().getObject("ForthRoom", DMCRoom.class);
+		final DMCRoom forthRoom = world.getParameters().getObject(FORTHROOM, DMCRoom.class);
 		for (DMCNpc mob : forthRoom.npcList)
 		{
 			if (mob.npc == npc)
@@ -898,7 +905,7 @@ public class DarkCloudMansion extends AbstractInstance
 			return "";
 		}
 		
-		final DMCRoom fifthRoom = world.getParameters().getObject("FifthRoom", DMCRoom.class);
+		final DMCRoom fifthRoom = world.getParameters().getObject(FIFTHROOM, DMCRoom.class);
 		if (fifthRoom != null)
 		{
 			if (event.equalsIgnoreCase("decayMe"))
@@ -942,7 +949,7 @@ public class DarkCloudMansion extends AbstractInstance
 		final InstanceWorld world = InstanceManager.getInstance().getWorld(npc);
 		if (world != null)
 		{
-			if ((world.getStatus() == 0) && (checkKillProgress(npc, world.getParameters().getObject("StartRoom", DMCRoom.class))))
+			if ((world.getStatus() == 0) && (checkKillProgress(npc, world.getParameters().getObject(STARTROOM, DMCRoom.class))))
 			{
 				runHall(world);
 			}
@@ -950,7 +957,7 @@ public class DarkCloudMansion extends AbstractInstance
 			{
 				runFirstRoom(world);
 			}
-			if ((world.getStatus() == 2) && (checkKillProgress(npc, world.getParameters().getObject("FirstRoom", DMCRoom.class))))
+			if ((world.getStatus() == 2) && (checkKillProgress(npc, world.getParameters().getObject(FIRSTROOM, DMCRoom.class))))
 			{
 				runHall2(world);
 			}
@@ -960,7 +967,7 @@ public class DarkCloudMansion extends AbstractInstance
 			}
 			if (world.getStatus() == 4)
 			{
-				final DMCRoom secondRoom = world.getParameters().getObject("SecondRoom", DMCRoom.class);
+				final DMCRoom secondRoom = world.getParameters().getObject(SECONDROOM, DMCRoom.class);
 				for (DMCNpc mob : secondRoom.npcList)
 				{
 					if (mob.golem == npc)
@@ -973,7 +980,7 @@ public class DarkCloudMansion extends AbstractInstance
 			{
 				runThirdRoom(world);
 			}
-			if ((world.getStatus() == 6) && (checkKillProgress(npc, world.getParameters().getObject("ThirdRoom", DMCRoom.class))))
+			if ((world.getStatus() == 6) && (checkKillProgress(npc, world.getParameters().getObject(THIRDROOM, DMCRoom.class))))
 			{
 				runForthRoom(world);
 			}
@@ -1000,7 +1007,7 @@ public class DarkCloudMansion extends AbstractInstance
 		{
 			if (world.getStatus() == 7)
 			{
-				final DMCRoom forthRoom = world.getParameters().getObject("ForthRoom", DMCRoom.class);
+				final DMCRoom forthRoom = world.getParameters().getObject(FORTHROOM, DMCRoom.class);
 				for (DMCNpc mob : forthRoom.npcList)
 				{
 					if (mob.npc == npc)
@@ -1032,7 +1039,7 @@ public class DarkCloudMansion extends AbstractInstance
 		{
 			if (world.getStatus() == 4)
 			{
-				final DMCRoom secondRoom = world.getParameters().getObject("SecondRoom", DMCRoom.class);
+				final DMCRoom secondRoom = world.getParameters().getObject(SECONDROOM, DMCRoom.class);
 				for (DMCNpc mob : secondRoom.npcList)
 				{
 					if (mob.npc == npc)

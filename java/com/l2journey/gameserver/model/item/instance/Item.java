@@ -106,6 +106,8 @@ import com.l2journey.gameserver.util.GMAudit;
  */
 public class Item extends WorldObject
 {
+	private static final String SQL_ITEM_ELEMENTALS = "DELETE FROM item_elementals WHERE itemId = ?";
+
 	private static final Logger LOGGER = Logger.getLogger(Item.class.getName());
 	private static final Logger LOG_ITEMS = Logger.getLogger("item");
 	
@@ -1061,7 +1063,7 @@ public class Item extends WorldObject
 	private void updateItemElements(Connection con)
 	{
 		try (final PreparedStatement psUpdate = con.prepareStatement("INSERT INTO item_elementals (itemId, elemType, elemValue) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE elemValue = ?");
-			final PreparedStatement psDelete = con.prepareStatement("DELETE FROM item_elementals WHERE itemId = ?"))
+			final PreparedStatement psDelete = con.prepareStatement(SQL_ITEM_ELEMENTALS))
 		{
 			final Integer objectId = getObjectId();
 			
@@ -1241,7 +1243,7 @@ public class Item extends WorldObject
 		}
 		_elementals = array;
 		
-		final String query = (element != -1) ? "DELETE FROM item_elementals WHERE itemId = ? AND elemType = ?" : "DELETE FROM item_elementals WHERE itemId = ?";
+		final String query = (element != -1) ? "DELETE FROM item_elementals WHERE itemId = ? AND elemType = ?" : SQL_ITEM_ELEMENTALS;
 		try (Connection con = DatabaseFactory.getConnection();
 			PreparedStatement ps = con.prepareStatement(query))
 		{
@@ -1931,7 +1933,7 @@ public class Item extends WorldObject
 				ps.executeUpdate();
 			}
 			
-			try (PreparedStatement ps = con.prepareStatement("DELETE FROM item_elementals WHERE itemId = ?"))
+			try (PreparedStatement ps = con.prepareStatement(SQL_ITEM_ELEMENTALS))
 			{
 				ps.setInt(1, getObjectId());
 				ps.executeUpdate();

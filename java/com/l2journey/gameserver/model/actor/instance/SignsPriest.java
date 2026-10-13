@@ -39,6 +39,10 @@ import com.l2journey.gameserver.network.serverpackets.SystemMessage;
  */
 public class SignsPriest extends Npc
 {
+	private static final String DAWN_NO_STONES = "dawn_no_stones";
+	private static final String DUSK_NO_STONES = "dusk_no_stones";
+	private static final String HTML_BLKMRKT_3 = "blkmrkt_3.htm";
+
 	public SignsPriest(NpcTemplate template)
 	{
 		super(template);
@@ -572,11 +576,11 @@ public class SignsPriest extends Npc
 								{
 									if (this instanceof DawnPriest)
 									{
-										showChatWindow(player, val, "dawn_no_stones", false);
+										showChatWindow(player, val, DAWN_NO_STONES, false);
 									}
 									else
 									{
-										showChatWindow(player, val, "dusk_no_stones", false);
+										showChatWindow(player, val, DUSK_NO_STONES, false);
 									}
 								}
 								else
@@ -642,18 +646,18 @@ public class SignsPriest extends Npc
 					}
 					catch (NumberFormatException _)
 					{
-						showChatWindow(player, SevenSigns.SEVEN_SIGNS_HTML_PATH + "blkmrkt_3.htm");
+						showChatWindow(player, SevenSigns.SEVEN_SIGNS_HTML_PATH + HTML_BLKMRKT_3);
 						break;
 					}
 					catch (StringIndexOutOfBoundsException _)
 					{
-						showChatWindow(player, SevenSigns.SEVEN_SIGNS_HTML_PATH + "blkmrkt_3.htm");
+						showChatWindow(player, SevenSigns.SEVEN_SIGNS_HTML_PATH + HTML_BLKMRKT_3);
 						break;
 					}
 					
 					if (ancientAdenaConvert < 1)
 					{
-						showChatWindow(player, SevenSigns.SEVEN_SIGNS_HTML_PATH + "blkmrkt_3.htm");
+						showChatWindow(player, SevenSigns.SEVEN_SIGNS_HTML_PATH + HTML_BLKMRKT_3);
 						break;
 					}
 					
@@ -780,11 +784,11 @@ public class SignsPriest extends Npc
 							{
 								if (this instanceof DawnPriest)
 								{
-									showChatWindow(player, 18, "dawn_no_stones", false);
+									showChatWindow(player, 18, DAWN_NO_STONES, false);
 								}
 								else
 								{
-									showChatWindow(player, 18, "dusk_no_stones", false);
+									showChatWindow(player, 18, DUSK_NO_STONES, false);
 								}
 								return;
 							}
@@ -937,11 +941,11 @@ public class SignsPriest extends Npc
 					{
 						if (this instanceof DawnPriest)
 						{
-							showChatWindow(player, 18, "dawn_no_stones", false);
+							showChatWindow(player, 18, DAWN_NO_STONES, false);
 						}
 						else
 						{
-							showChatWindow(player, 18, "dusk_no_stones", false);
+							showChatWindow(player, 18, DUSK_NO_STONES, false);
 						}
 						break;
 					}

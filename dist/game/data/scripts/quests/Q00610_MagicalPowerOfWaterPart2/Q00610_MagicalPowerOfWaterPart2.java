@@ -34,6 +34,9 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Q00610_MagicalPowerOfWaterPart2 extends Quest
 {
+	private static final String DESPAWN_ASHUTAR = "despawn_ashutar";
+	private static final String SPAWN_NPC = "spawn_npc";
+
 	// NPCs
 	private static final int ASEFA = 31372;
 	private static final int VARKA_TOTEM = 31560;
@@ -57,7 +60,7 @@ public class Q00610_MagicalPowerOfWaterPart2 extends Quest
 		final long remain = test != 0 ? test - System.currentTimeMillis() : 0;
 		if (remain > 0)
 		{
-			startQuestTimer("spawn_npc", remain, null, null);
+			startQuestTimer(SPAWN_NPC, remain, null, null);
 		}
 		else
 		{
@@ -142,13 +145,13 @@ public class Q00610_MagicalPowerOfWaterPart2 extends Quest
 		}
 		else
 		{
-			if (event.equals("despawn_ashutar"))
+			if (event.equals(DESPAWN_ASHUTAR))
 			{
 				npc.broadcastPacket(new NpcSay(npc, ChatType.NPC_GENERAL, NpcStringId.THE_POWER_OF_CONSTRAINT_IS_GETTING_WEAKER_YOUR_RITUAL_HAS_FAILED));
 				npc.deleteMe();
 				addSpawn(VARKA_TOTEM, 105452, -36775, -1050, 34000, false, 0, true);
 			}
-			else if (event.equals("spawn_npc"))
+			else if (event.equals(SPAWN_NPC))
 			{
 				addSpawn(VARKA_TOTEM, 105452, -36775, -1050, 34000, false, 0, true);
 			}
@@ -162,9 +165,9 @@ public class Q00610_MagicalPowerOfWaterPart2 extends Quest
 		final int respawnMinDelay = (int) (43200000 * Config.RAID_MIN_RESPAWN_MULTIPLIER);
 		final int respawnMaxDelay = (int) (129600000 * Config.RAID_MAX_RESPAWN_MULTIPLIER);
 		final int respawnDelay = getRandom(respawnMinDelay, respawnMaxDelay);
-		cancelQuestTimer("despawn_ashutar", npc, null);
+		cancelQuestTimer(DESPAWN_ASHUTAR, npc, null);
 		GlobalVariablesManager.getInstance().set("Q00610_respawn", String.valueOf(System.currentTimeMillis() + respawnDelay));
-		startQuestTimer("spawn_npc", respawnDelay, null, null);
+		startQuestTimer(SPAWN_NPC, respawnDelay, null, null);
 		executeForEachPlayer(killer, npc, isSummon, true, false);
 	}
 	
@@ -263,7 +266,7 @@ public class Q00610_MagicalPowerOfWaterPart2 extends Quest
 	
 	private String spawnAshutar(Npc npc, QuestState qs)
 	{
-		if (getQuestTimer("spawn_npc", null, null) != null)
+		if (getQuestTimer(SPAWN_NPC, null, null) != null)
 		{
 			return "31560-03.html";
 		}
@@ -275,7 +278,7 @@ public class Q00610_MagicalPowerOfWaterPart2 extends Quest
 		npc.deleteMe();
 		final Npc ashutar = addSpawn(ASHUTAR, 104825, -36926, -1136, 0, false, 0);
 		ashutar.broadcastPacket(new NpcSay(ashutar, ChatType.NPC_GENERAL, NpcStringId.THE_MAGICAL_POWER_OF_WATER_COMES_FROM_THE_POWER_OF_STORM_AND_HAIL_IF_YOU_DARE_TO_CONFRONT_IT_ONLY_DEATH_WILL_AWAIT_YOU));
-		startQuestTimer("despawn_ashutar", 1200000, ashutar, null);
+		startQuestTimer(DESPAWN_ASHUTAR, 1200000, ashutar, null);
 		return "31560-02.html";
 	}
 }

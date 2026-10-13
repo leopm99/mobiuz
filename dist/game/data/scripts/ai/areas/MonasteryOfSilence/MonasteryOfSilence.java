@@ -50,6 +50,9 @@ import ai.AbstractNpcAI;
  */
 public class MonasteryOfSilence extends AbstractNpcAI
 {
+	private static final String TRAINING = "TRAINING";
+	private static final String DO_CAST = "DO_CAST";
+
 	// NPCs
 	private static final int CAPTAIN = 18910; // Solina Knight Captain
 	private static final int KNIGHT = 18909; // Solina Knights
@@ -99,7 +102,7 @@ public class MonasteryOfSilence extends AbstractNpcAI
 	{
 		switch (event)
 		{
-			case "TRAINING":
+			case TRAINING:
 			{
 				World.getInstance().forEachVisibleObjectInRange(npc, Npc.class, 400, character ->
 				{
@@ -121,7 +124,7 @@ public class MonasteryOfSilence extends AbstractNpcAI
 				});
 				break;
 			}
-			case "DO_CAST":
+			case DO_CAST:
 			{
 				if ((npc != null) && (player != null) && (getRandom(100) < 3))
 				{
@@ -204,7 +207,7 @@ public class MonasteryOfSilence extends AbstractNpcAI
 				if ((mob.getMostHated() == player) && npc.isScriptValue(0))
 				{
 					npc.setScriptValue(1);
-					startQuestTimer("DO_CAST", 20000, npc, player);
+					startQuestTimer(DO_CAST, 20000, npc, player);
 				}
 				break;
 			}
@@ -257,7 +260,7 @@ public class MonasteryOfSilence extends AbstractNpcAI
 					if (npc.isScriptValue(0))
 					{
 						npc.setScriptValue(1);
-						startQuestTimer("DO_CAST", 20000, npc, player);
+						startQuestTimer(DO_CAST, 20000, npc, player);
 					}
 					break;
 				}
@@ -304,8 +307,8 @@ public class MonasteryOfSilence extends AbstractNpcAI
 	{
 		npc.setInvul(true);
 		npc.disableCoreAI(true);
-		cancelQuestTimer("TRAINING", npc, null);
-		startQuestTimer("TRAINING", 30000, npc, null, true);
+		cancelQuestTimer(TRAINING, npc, null);
+		startQuestTimer(TRAINING, 30000, npc, null, true);
 	}
 	
 	public static void main(String[] args)

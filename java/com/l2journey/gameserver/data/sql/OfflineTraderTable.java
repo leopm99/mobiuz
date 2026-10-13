@@ -56,6 +56,9 @@ import com.l2journey.gameserver.network.serverpackets.ServerClose;
 
 public class OfflineTraderTable
 {
+	private static final String PRICE = "price";
+	private static final String TITLE = "title";
+
 	private static final Logger LOGGER = Logger.getLogger(OfflineTraderTable.class.getName());
 	private static final Logger LOGGER_ACCOUNTING = Logger.getLogger("accounting");
 	
@@ -262,12 +265,12 @@ public class OfflineTraderTable
 							{
 								while (items.next())
 								{
-									if (player.getBuyList().addItemByItemId(items.getInt("item"), items.getLong("count"), items.getLong("price")) == null)
+									if (player.getBuyList().addItemByItemId(items.getInt("item"), items.getLong("count"), items.getLong(PRICE)) == null)
 									{
 									}
 								}
 								
-								player.getBuyList().setTitle(rs.getString("title"));
+								player.getBuyList().setTitle(rs.getString(TITLE));
 								break;
 							}
 							case SELL, PACKAGE_SELL:
@@ -276,20 +279,20 @@ public class OfflineTraderTable
 								{
 									while (items.next())
 									{
-										player.getSellingBuffs().add(new SellBuffHolder(items.getInt("item"), items.getLong("price")));
+										player.getSellingBuffs().add(new SellBuffHolder(items.getInt("item"), items.getLong(PRICE)));
 									}
 								}
 								else
 								{
 									while (items.next())
 									{
-										if (player.getSellList().addItem(items.getInt("item"), items.getLong("count"), items.getLong("price")) == null)
+										if (player.getSellList().addItem(items.getInt("item"), items.getLong("count"), items.getLong(PRICE)) == null)
 										{
 										}
 									}
 								}
 								
-								player.getSellList().setTitle(rs.getString("title"));
+								player.getSellList().setTitle(rs.getString(TITLE));
 								player.getSellList().setPackaged(type == PrivateStoreType.PACKAGE_SELL);
 								break;
 							}
@@ -297,10 +300,10 @@ public class OfflineTraderTable
 							{
 								while (items.next())
 								{
-									player.getManufactureItems().put(items.getInt("item"), new ManufactureItem(items.getInt("item"), items.getLong("price")));
+									player.getManufactureItems().put(items.getInt("item"), new ManufactureItem(items.getInt("item"), items.getLong(PRICE)));
 								}
 								
-								player.setStoreName(rs.getString("title"));
+								player.setStoreName(rs.getString(TITLE));
 								break;
 							}
 							default:

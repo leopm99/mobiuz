@@ -41,6 +41,8 @@ import instances.PailakaInjuredDragon.PailakaInjuredDragon;
  */
 public class Q00144_PailakaInjuredDragon extends Quest
 {
+	private static final String HTML_N_32512_03 = "32512-03.html";
+
 	// NPCs
 	private static final int KETRA_ORC_SHAMAN = 32499;
 	private static final int KETRA_ORC_SUPPORTER_1 = 32502;
@@ -208,7 +210,7 @@ public class Q00144_PailakaInjuredDragon extends Quest
 						}
 						else
 						{
-							htmltext = "32512-03.html";
+							htmltext = HTML_N_32512_03;
 						}
 						break;
 					}
@@ -268,7 +270,7 @@ public class Q00144_PailakaInjuredDragon extends Quest
 					{
 						if (qs.isCompleted())
 						{
-							htmltext = "32512-03.html";
+							htmltext = HTML_N_32512_03;
 						}
 						break;
 					}
@@ -432,7 +434,7 @@ public class Q00144_PailakaInjuredDragon extends Quest
 			final QuestState qs = getQuestState(player, false);
 			if ((qs != null) && qs.isCompleted())
 			{
-				return "32512-03.html";
+				return HTML_N_32512_03;
 			}
 		}
 		

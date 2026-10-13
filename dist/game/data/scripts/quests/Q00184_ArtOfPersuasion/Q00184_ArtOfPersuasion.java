@@ -30,6 +30,8 @@ import quests.Q00185_NikolasCooperation.Q00185_NikolasCooperation;
  */
 public class Q00184_ArtOfPersuasion extends Quest
 {
+	private static final String SPAWNED = "SPAWNED";
+
 	// NPCs
 	private static final int MAESTRO_NIKOLA = 30621;
 	private static final int RESEARCHER_LORAIN = 30673;
@@ -148,9 +150,9 @@ public class Q00184_ArtOfPersuasion extends Quest
 			}
 			case "32366-03.html":
 			{
-				if (qs.isMemoState(3) && !npc.getVariables().getBoolean("SPAWNED", false))
+				if (qs.isMemoState(3) && !npc.getVariables().getBoolean(SPAWNED, false))
 				{
-					npc.getVariables().set("SPAWNED", true);
+					npc.getVariables().set(SPAWNED, true);
 					npc.getVariables().set("PLAYER_ID", player.getObjectId());
 					final Npc alarm = addSpawn(ALARM_OF_GIANT, player.getX() + 80, player.getY() + 60, player.getZ(), 16384, false, 0);
 					alarm.getVariables().set("player0", player);
@@ -243,7 +245,7 @@ public class Q00184_ArtOfPersuasion extends Quest
 				{
 					if (memoState == 3)
 					{
-						if (!npc.getVariables().getBoolean("SPAWNED", false))
+						if (!npc.getVariables().getBoolean(SPAWNED, false))
 						{
 							htmltext = "32366-01.html";
 						}

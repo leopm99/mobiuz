@@ -103,6 +103,13 @@ import com.l2journey.gameserver.util.MapUtil;
  */
 public class CtF extends Event
 {
+	private static final String KICKPLAYERWARNING = "KickPlayerWarning";
+	private static final String PH_ENEMYTEAM = "%enemyteam%";
+	private static final String KICKPLAYER = "KickPlayer";
+	private static final String ENDFIGHT = "EndFight";
+	private static final String PH_PLAYER = "%player%";
+	private static final String PH_TEAM = "%team%";
+
 	enum EventState
 	{
 		INACTIVE,
@@ -542,10 +549,10 @@ public class CtF extends Event
 				startQuestTimer("3", (FIGHT_TIME * 60000) - 3000L, null, null);
 				startQuestTimer("2", (FIGHT_TIME * 60000) - 2000L, null, null);
 				startQuestTimer("1", (FIGHT_TIME * 60000) - 1000L, null, null);
-				startQuestTimer("EndFight", FIGHT_TIME * 60000L, null, null);
+				startQuestTimer(ENDFIGHT, FIGHT_TIME * 60000L, null, null);
 				break;
 			}
-			case "EndFight":
+			case ENDFIGHT:
 			{
 				// Close doors.
 				PVP_WORLD.closeDoor(BLUE_DOOR_ID);
@@ -753,7 +760,7 @@ public class CtF extends Event
 			}
 		}
 		// Activity timer.
-		if (event.startsWith("KickPlayer") && (player != null) && (player.getInstanceId() == PVP_WORLD.getInstanceId()))
+		if (event.startsWith(KICKPLAYER) && (player != null) && (player.getInstanceId() == PVP_WORLD.getInstanceId()))
 		{
 			if (event.contains("Warning"))
 			{
@@ -839,9 +846,9 @@ public class CtF extends Event
 						// team flag is missing
 						final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
 						html.setFile(player, HTML_PATH + "flag_friendly.html");
-						html.replace("%enemyteam%", enemyteam);
-						html.replace("%team%", team);
-						html.replace("%player%", player.getName());
+						html.replace(PH_ENEMYTEAM, enemyteam);
+						html.replace(PH_TEAM, team);
+						html.replace(PH_PLAYER, player.getName());
 						player.sendPacket(html);
 					}
 					else
@@ -849,9 +856,9 @@ public class CtF extends Event
 						// go get the flag
 						final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
 						html.setFile(player, HTML_PATH + "flag_friendly_missing.html");
-						html.replace("%enemyteam%", enemyteam);
-						html.replace("%team%", team);
-						html.replace("%player%", player.getName());
+						html.replace(PH_ENEMYTEAM, enemyteam);
+						html.replace(PH_TEAM, team);
+						html.replace(PH_PLAYER, player.getName());
 						player.sendPacket(html);
 					}
 				}
@@ -862,8 +869,8 @@ public class CtF extends Event
 						// enemy flag enemy is missing
 						final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
 						html.setFile(player, HTML_PATH + "flag_enemy_missing.html");
-						html.replace("%enemyteam%", enemyteam);
-						html.replace("%player%", CtF.getTeamCarrier(player).getName());
+						html.replace(PH_ENEMYTEAM, enemyteam);
+						html.replace(PH_PLAYER, CtF.getTeamCarrier(player).getName());
 						player.sendPacket(html);
 					}
 					else
@@ -884,9 +891,9 @@ public class CtF extends Event
 									// player has flag
 									final NpcHtmlMessage html = new NpcHtmlMessage(npc.getObjectId());
 									html.setFile(player, HTML_PATH + "flag_enemy.html");
-									html.replace("%enemyteam%", enemyteam);
-									html.replace("%team%", team);
-									html.replace("%player%", player.getName());
+									html.replace(PH_ENEMYTEAM, enemyteam);
+									html.replace(PH_TEAM, team);
+									html.replace(PH_PLAYER, player.getName());
 									player.sendPacket(html);
 									
 									// take flag
@@ -980,8 +987,8 @@ public class CtF extends Event
 			final Player player = creature.asPlayer();
 			if (player.isOnEvent())
 			{
-				cancelQuestTimer("KickPlayer" + player.getObjectId(), null, player);
-				cancelQuestTimer("KickPlayerWarning" + player.getObjectId(), null, player);
+				cancelQuestTimer(KICKPLAYER + player.getObjectId(), null, player);
+				cancelQuestTimer(KICKPLAYERWARNING + player.getObjectId(), null, player);
 				
 				// Removed invulnerability shield.
 				if (player.isAffectedBySkill(GHOST_WALKING.getSkillId()))
@@ -1292,10 +1299,10 @@ public class CtF extends Event
 	
 	private void resetActivityTimers(Player player)
 	{
-		cancelQuestTimer("KickPlayer" + player.getObjectId(), null, player);
-		cancelQuestTimer("KickPlayerWarning" + player.getObjectId(), null, player);
-		startQuestTimer("KickPlayer" + player.getObjectId(), IS_STARTED() ? INACTIVITY_TIME * 60000 : (INACTIVITY_TIME * 60000) + (WAIT_TIME * 60000), null, player);
-		startQuestTimer("KickPlayerWarning" + player.getObjectId(), IS_STARTED() ? (INACTIVITY_TIME / 2) * 60000 : ((INACTIVITY_TIME / 2) * 60000) + (WAIT_TIME * 60000), null, player);
+		cancelQuestTimer(KICKPLAYER + player.getObjectId(), null, player);
+		cancelQuestTimer(KICKPLAYERWARNING + player.getObjectId(), null, player);
+		startQuestTimer(KICKPLAYER + player.getObjectId(), IS_STARTED() ? INACTIVITY_TIME * 60000 : (INACTIVITY_TIME * 60000) + (WAIT_TIME * 60000), null, player);
+		startQuestTimer(KICKPLAYERWARNING + player.getObjectId(), IS_STARTED() ? (INACTIVITY_TIME / 2) * 60000 : ((INACTIVITY_TIME / 2) * 60000) + (WAIT_TIME * 60000), null, player);
 	}
 	
 	private void manageForfeit()
@@ -1311,8 +1318,8 @@ public class CtF extends Event
 		cancelQuestTimer("3", null, null);
 		cancelQuestTimer("2", null, null);
 		cancelQuestTimer("1", null, null);
-		cancelQuestTimer("EndFight", null, null);
-		startQuestTimer("EndFight", 10000, null, null);
+		cancelQuestTimer(ENDFIGHT, null, null);
+		startQuestTimer(ENDFIGHT, 10000, null, null);
 		broadcastScreenMessageWithEffect("Enemy team forfeit!", 7);
 	}
 	

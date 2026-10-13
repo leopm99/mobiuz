@@ -54,6 +54,10 @@ import quests.Q00423_TakeYourBestShot.Q00423_TakeYourBestShot;
  */
 public class SeerUgoros extends AbstractNpcAI
 {
+	private static final String UGOROS_RESPAWN = "ugoros_respawn";
+	private static final String UGOROS_SHOUT = "ugoros_shout";
+	private static final String WEED_CHECK = "weed_check";
+
 	// NPCs
 	private static final int SEER_UGOROS = 18863;
 	private static final int BATRACOS = 32740;
@@ -90,7 +94,7 @@ public class SeerUgoros extends AbstractNpcAI
 		addKillId(SEER_UGOROS);
 		addAttackId(WEED_ID);
 		
-		startQuestTimer("ugoros_respawn", 60000, null, null);
+		startQuestTimer(UGOROS_RESPAWN, 60000, null, null);
 	}
 	
 	@Override
@@ -98,18 +102,18 @@ public class SeerUgoros extends AbstractNpcAI
 	{
 		switch (event)
 		{
-			case "ugoros_respawn":
+			case UGOROS_RESPAWN:
 			{
 				if (_ugoros == null)
 				{
 					_ugoros = addSpawn(SEER_UGOROS, UGOROS_SPAWN_LOCATION, false, 0).asAttackable();
 					_state = ALIVE;
 					broadcastInRegion(_ugoros, NpcStringId.LISTEN_OH_TANTAS_I_HAVE_RETURNED_THE_PROPHET_YUGOROS_OF_THE_BLACK_ABYSS_IS_WITH_ME_SO_DO_NOT_BE_AFRAID);
-					startQuestTimer("ugoros_shout", 120000, null, null);
+					startQuestTimer(UGOROS_SHOUT, 120000, null, null);
 				}
 				break;
 			}
-			case "ugoros_shout":
+			case UGOROS_SHOUT:
 			{
 				if (_state == FIGHTING)
 				{
@@ -127,7 +131,7 @@ public class SeerUgoros extends AbstractNpcAI
 				{
 					broadcastInRegion(_ugoros, NpcStringId.LISTEN_OH_TANTAS_THE_BLACK_ABYSS_IS_FAMISHED_FIND_SOME_FRESH_OFFERINGS);
 				}
-				startQuestTimer("ugoros_shout", 120000, null, null);
+				startQuestTimer(UGOROS_SHOUT, 120000, null, null);
 				break;
 			}
 			case "ugoros_attack":
@@ -146,7 +150,7 @@ public class SeerUgoros extends AbstractNpcAI
 				}
 				break;
 			}
-			case "weed_check":
+			case WEED_CHECK:
 			{
 				if (_weedAttack && (_ugoros != null) && (_weed != null))
 				{
@@ -160,7 +164,7 @@ public class SeerUgoros extends AbstractNpcAI
 					}
 					else
 					{
-						startQuestTimer("weed_check", 2000, null, null);
+						startQuestTimer(WEED_CHECK, 2000, null, null);
 					}
 				}
 				else
@@ -276,7 +280,7 @@ public class SeerUgoros extends AbstractNpcAI
 		addSpawn(BATRACOS, BATRACOS_SPAWN_LOCATION, false, 60000);
 		
 		startQuestTimer("ugoros_expel", 50000, null, null);
-		startQuestTimer("ugoros_respawn", 60000, null, null);
+		startQuestTimer(UGOROS_RESPAWN, 60000, null, null);
 		
 		final QuestState qs = killer.getQuestState(Q00288_HandleWithCare.class.getSimpleName());
 		if ((qs != null) && qs.isCond(1) && (qs.getInt("drop") == 1))
@@ -334,7 +338,7 @@ public class SeerUgoros extends AbstractNpcAI
 							_weedAttack = true;
 							_weed = attackable;
 							changeAttackTarget(_weed);
-							startQuestTimer("weed_check", 1000, null, null);
+							startQuestTimer(WEED_CHECK, 1000, null, null);
 							break;
 						}
 					}

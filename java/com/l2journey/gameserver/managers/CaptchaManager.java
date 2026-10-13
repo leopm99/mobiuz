@@ -64,6 +64,8 @@ import com.l2journey.gameserver.util.DDSConverter;
  */
 public class CaptchaManager
 {
+	private static final String PUNISHMENT = "Punishment";
+
 	private static final Logger LOGGER = Logger.getLogger(CaptchaManager.class.getName());
 	
 	private static final Map<Integer, Integer> JAIL_COUNT = new ConcurrentHashMap<>();
@@ -242,7 +244,7 @@ public class CaptchaManager
 				punishmentWindow(player);
 				QuestSound soundForTeleport = QuestSound.ITEMSOUND_QUEST_GIVEUP;
 				player.sendPacket(soundForTeleport.getPacket());
-				AdminData.getInstance().broadcastToGMs(new CreatureSay(null, ChatType.ALLIANCE, "Punishment", player.getName() + " has been teleported."));
+				AdminData.getInstance().broadcastToGMs(new CreatureSay(null, ChatType.ALLIANCE, PUNISHMENT, player.getName() + " has been teleported."));
 				PacketLogger.warning(player + "[TELEPORT] Wrong Captcha maybe boting?");
 				break;
 			}
@@ -251,7 +253,7 @@ public class CaptchaManager
 				if (player.isOnline())
 				{
 					Disconnection.of(player).storeAndDeleteWith(LeaveWorld.STATIC_PACKET);
-					AdminData.getInstance().broadcastToGMs(new CreatureSay(null, ChatType.ALLIANCE, "Punishment", player.getName() + " has been kicked."));
+					AdminData.getInstance().broadcastToGMs(new CreatureSay(null, ChatType.ALLIANCE, PUNISHMENT, player.getName() + " has been kicked."));
 					PacketLogger.warning(player + "[KICK] Wrong Captcha maybe boting?");
 					return;
 				}
@@ -262,14 +264,14 @@ public class CaptchaManager
 				applyJailPunishment(player);
 				QuestSound soundForJail = QuestSound.ETCSOUND_ELROKI_SONG_FULL;
 				player.sendPacket(soundForJail.getPacket());
-				AdminData.getInstance().broadcastToGMs(new CreatureSay(null, ChatType.ALLIANCE, "Punishment", player.getName() + " has been jailed."));
+				AdminData.getInstance().broadcastToGMs(new CreatureSay(null, ChatType.ALLIANCE, PUNISHMENT, player.getName() + " has been jailed."));
 				PacketLogger.warning(player + "[JAIL] Wrong Captcha maybe boting?");
 				break;
 			}
 			case 3:
 			{
 				changeAccessLevel(player);
-				AdminData.getInstance().broadcastToGMs(new CreatureSay(null, ChatType.ALLIANCE, "Punishment", player.getName() + " has been banned."));
+				AdminData.getInstance().broadcastToGMs(new CreatureSay(null, ChatType.ALLIANCE, PUNISHMENT, player.getName() + " has been banned."));
 				PacketLogger.warning(player + "[BAN] Wrong Captcha maybe boting?");
 				break;
 			}

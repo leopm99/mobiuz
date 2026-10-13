@@ -33,6 +33,8 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Q00503_PursuitOfClanAmbition extends Quest
 {
+	private static final String DESPAWN = "DESPAWN";
+
 	// NPCs
 	private static final int HEAD_BLACKSMITH_KUSTO = 30512;
 	private static final int MARTIEN = 30645;
@@ -180,7 +182,7 @@ public class Q00503_PursuitOfClanAmbition extends Quest
 					addAttackDesire(wyrm1, player);
 					final Npc wyrm2 = addSpawn(BLITZ_WYRM, npc.getX(), npc.getY(), npc.getZ(), 0, true, 180000);
 					addAttackDesire(wyrm2, player);
-					startQuestTimer("DESPAWN", 10000, npc, player);
+					startQuestTimer(DESPAWN, 10000, npc, player);
 					htmltext = event;
 				}
 				else if (qs.isMemoState(2100) || qs.isMemoState(2111) || qs.isMemoState(2110) || qs.isMemoState(2101))
@@ -189,7 +191,7 @@ public class Q00503_PursuitOfClanAmbition extends Quest
 					addAttackDesire(wyrm1, player);
 					final Npc wyrm2 = addSpawn(BLITZ_WYRM, npc.getX(), npc.getY(), npc.getZ(), 0, true, 180000);
 					addAttackDesire(wyrm2, player);
-					startQuestTimer("DESPAWN", 10000, npc, player);
+					startQuestTimer(DESPAWN, 10000, npc, player);
 					htmltext = "30761-03.html";
 				}
 				break;
@@ -205,7 +207,7 @@ public class Q00503_PursuitOfClanAmbition extends Quest
 					addAttackDesire(wyrm1, player);
 					final Npc wyrm2 = addSpawn(BLITZ_WYRM, npc.getX(), npc.getY(), npc.getZ(), 0, true, 180000);
 					addAttackDesire(wyrm2, player);
-					startQuestTimer("DESPAWN", 10000, npc, player);
+					startQuestTimer(DESPAWN, 10000, npc, player);
 					htmltext = event;
 				}
 				else if (qs.isMemoState(2100) || qs.isMemoState(2111) || qs.isMemoState(2011) || qs.isMemoState(2110))
@@ -214,7 +216,7 @@ public class Q00503_PursuitOfClanAmbition extends Quest
 					addAttackDesire(wyrm1, player);
 					final Npc wyrm2 = addSpawn(BLITZ_WYRM, npc.getX(), npc.getY(), npc.getZ(), 0, true, 180000);
 					addAttackDesire(wyrm2, player);
-					startQuestTimer("DESPAWN", 10000, npc, player);
+					startQuestTimer(DESPAWN, 10000, npc, player);
 					htmltext = "30762-03.html";
 				}
 				break;
@@ -305,7 +307,7 @@ public class Q00503_PursuitOfClanAmbition extends Quest
 				kalis.broadcastPacket(new NpcSay(kalis, ChatType.NPC_GENERAL, NpcStringId.AMBITION_AND_POWER));
 				break;
 			}
-			case "DESPAWN":
+			case DESPAWN:
 			{
 				npc.deleteMe();
 				break;

@@ -41,6 +41,10 @@ import com.l2journey.gameserver.network.serverpackets.NpcSay;
  */
 public class Q00420_LittleWing extends Quest
 {
+	private static final String FAIRY_STONE_KEY = "fairy_stone";
+	private static final String DRAKE_HUNT = "drake_hunt";
+	private static final String OLD_STONE = "old_stone";
+
 	// NPCs
 	private static final int MARIA = 30608;
 	private static final int CRONOS = 30610;
@@ -163,8 +167,8 @@ public class Q00420_LittleWing extends Quest
 				if (qs.isCond(1))
 				{
 					qs.setCond(2, true);
-					qs.set("old_stone", 0);
-					qs.set("fairy_stone", 1);
+					qs.set(OLD_STONE, 0);
+					qs.set(FAIRY_STONE_KEY, 1);
 					giveItems(player, FAIRY_STONE_LIST, 1);
 					htmltext = event;
 				}
@@ -175,8 +179,8 @@ public class Q00420_LittleWing extends Quest
 				if (qs.isCond(1))
 				{
 					qs.setCond(2, true);
-					qs.set("old_stone", 0);
-					qs.set("fairy_stone", 2);
+					qs.set(OLD_STONE, 0);
+					qs.set(FAIRY_STONE_KEY, 2);
 					giveItems(player, DELUXE_STONE_LIST, 1);
 					htmltext = event;
 				}
@@ -187,8 +191,8 @@ public class Q00420_LittleWing extends Quest
 				if (qs.isCond(5))
 				{
 					qs.setCond(2, true);
-					qs.set("old_stone", qs.getInt("fairy_stone"));
-					qs.set("fairy_stone", 1);
+					qs.set(OLD_STONE, qs.getInt(FAIRY_STONE_KEY));
+					qs.set(FAIRY_STONE_KEY, 1);
 					giveItems(player, FAIRY_STONE_LIST, 1);
 					htmltext = event;
 				}
@@ -199,8 +203,8 @@ public class Q00420_LittleWing extends Quest
 				if (qs.isCond(5))
 				{
 					qs.setCond(2, true);
-					qs.set("old_stone", qs.getInt("fairy_stone"));
-					qs.set("fairy_stone", 2);
+					qs.set(OLD_STONE, qs.getInt(FAIRY_STONE_KEY));
+					qs.set(FAIRY_STONE_KEY, 2);
 					giveItems(player, DELUXE_STONE_LIST, 1);
 					htmltext = event;
 				}
@@ -210,7 +214,7 @@ public class Q00420_LittleWing extends Quest
 			{
 				if (qs.isCond(2))
 				{
-					if ((qs.getInt("fairy_stone") == 1) && (getQuestItemsCount(player, COAL) >= 10) && (getQuestItemsCount(player, CHARCOAL) >= 10) && (getQuestItemsCount(player, GEMSTONE_D) >= 1) && (getQuestItemsCount(player, SILVER_NUGGET) >= 3) && (getQuestItemsCount(player, TOAD_SKIN) >= 10))
+					if ((qs.getInt(FAIRY_STONE_KEY) == 1) && (getQuestItemsCount(player, COAL) >= 10) && (getQuestItemsCount(player, CHARCOAL) >= 10) && (getQuestItemsCount(player, GEMSTONE_D) >= 1) && (getQuestItemsCount(player, SILVER_NUGGET) >= 3) && (getQuestItemsCount(player, TOAD_SKIN) >= 10))
 					{
 						takeItems(player, FAIRY_STONE_LIST, -1);
 						takeItems(player, COAL, 10);
@@ -229,7 +233,7 @@ public class Q00420_LittleWing extends Quest
 			{
 				if (qs.isCond(2))
 				{
-					if ((qs.getInt("fairy_stone") == 2) && (getQuestItemsCount(player, COAL) >= 10) && (getQuestItemsCount(player, CHARCOAL) >= 10) && (getQuestItemsCount(player, GEMSTONE_C) >= 1) && (getQuestItemsCount(player, STONE_OF_PURITY) >= 1) && (getQuestItemsCount(player, SILVER_NUGGET) >= 5) && (getQuestItemsCount(player, TOAD_SKIN) >= 20))
+					if ((qs.getInt(FAIRY_STONE_KEY) == 2) && (getQuestItemsCount(player, COAL) >= 10) && (getQuestItemsCount(player, CHARCOAL) >= 10) && (getQuestItemsCount(player, GEMSTONE_C) >= 1) && (getQuestItemsCount(player, STONE_OF_PURITY) >= 1) && (getQuestItemsCount(player, SILVER_NUGGET) >= 5) && (getQuestItemsCount(player, TOAD_SKIN) >= 20))
 					{
 						takeItems(player, DELUXE_STONE_LIST, -1);
 						takeItems(player, COAL, 10);
@@ -250,7 +254,7 @@ public class Q00420_LittleWing extends Quest
 				if (qs.isCond(3))
 				{
 					qs.setCond(4, true);
-					if (qs.getInt("fairy_stone") == 2)
+					if (qs.getInt(FAIRY_STONE_KEY) == 2)
 					{
 						htmltext = "30711-04.html";
 					}
@@ -266,7 +270,7 @@ public class Q00420_LittleWing extends Quest
 				if (qs.isCond(4) && ((getQuestItemsCount(player, FAIRY_STONE) + getQuestItemsCount(player, DELUXE_FAIRY_STONE)) > 0))
 				{
 					takeItems(player, -1, FAIRY_STONE, DELUXE_FAIRY_STONE);
-					if (qs.getInt("fairy_stone") == 2)
+					if (qs.getInt(FAIRY_STONE_KEY) == 2)
 					{
 						giveItems(player, FAIRY_DUST, 1);
 					}
@@ -288,7 +292,7 @@ public class Q00420_LittleWing extends Quest
 			{
 				if (qs.isCond(7))
 				{
-					if ((qs.getInt("fairy_stone") == 1) || (getQuestItemsCount(player, FAIRY_DUST) == 0))
+					if ((qs.getInt(FAIRY_STONE_KEY) == 1) || (getQuestItemsCount(player, FAIRY_DUST) == 0))
 					{
 						giveReward(player);
 						qs.exitQuest(true, true);
@@ -343,7 +347,7 @@ public class Q00420_LittleWing extends Quest
 					takeItems(player, MONKSHOOD_JUICE, -1);
 					giveItems(player, EXARION_SCALE, 1);
 					qs.setCond(6, true);
-					qs.set("drake_hunt", LETO_WARRIOR);
+					qs.set(DRAKE_HUNT, LETO_WARRIOR);
 					htmltext = event;
 				}
 				break;
@@ -355,7 +359,7 @@ public class Q00420_LittleWing extends Quest
 					takeItems(player, MONKSHOOD_JUICE, -1);
 					giveItems(player, ZWOV_SCALE, 1);
 					qs.setCond(6, true);
-					qs.set("drake_hunt", MARSH_SPIDER);
+					qs.set(DRAKE_HUNT, MARSH_SPIDER);
 					htmltext = event;
 				}
 				break;
@@ -367,7 +371,7 @@ public class Q00420_LittleWing extends Quest
 					takeItems(player, MONKSHOOD_JUICE, -1);
 					giveItems(player, KALIBRAN_SCALE, 1);
 					qs.setCond(6, true);
-					qs.set("drake_hunt", ROAD_SCAVENGER);
+					qs.set(DRAKE_HUNT, ROAD_SCAVENGER);
 					htmltext = event;
 				}
 				break;
@@ -390,7 +394,7 @@ public class Q00420_LittleWing extends Quest
 					takeItems(player, MONKSHOOD_JUICE, -1);
 					giveItems(player, SUZET_SCALE, 1);
 					qs.setCond(6, true);
-					qs.set("drake_hunt", BREKA_OVERLORD);
+					qs.set(DRAKE_HUNT, BREKA_OVERLORD);
 					htmltext = event;
 				}
 				break;
@@ -402,7 +406,7 @@ public class Q00420_LittleWing extends Quest
 					takeItems(player, MONKSHOOD_JUICE, -1);
 					giveItems(player, SHAMHAI_SCALE, 1);
 					qs.setCond(6, true);
-					qs.set("drake_hunt", DEAD_SEEKER);
+					qs.set(DRAKE_HUNT, DEAD_SEEKER);
 					htmltext = event;
 				}
 				break;
@@ -467,7 +471,7 @@ public class Q00420_LittleWing extends Quest
 							}
 							case 3:
 							{
-								if (qs.getInt("old_stone") > 0)
+								if (qs.getInt(OLD_STONE) > 0)
 								{
 									htmltext = "30610-14.html";
 								}
@@ -507,11 +511,11 @@ public class Q00420_LittleWing extends Quest
 						{
 							case 2:
 							{
-								if ((qs.getInt("fairy_stone") == 1) && (getQuestItemsCount(talker, COAL) >= 10) && (getQuestItemsCount(talker, CHARCOAL) >= 10) && (getQuestItemsCount(talker, GEMSTONE_D) >= 1) && (getQuestItemsCount(talker, SILVER_NUGGET) >= 3) && (getQuestItemsCount(talker, TOAD_SKIN) >= 10))
+								if ((qs.getInt(FAIRY_STONE_KEY) == 1) && (getQuestItemsCount(talker, COAL) >= 10) && (getQuestItemsCount(talker, CHARCOAL) >= 10) && (getQuestItemsCount(talker, GEMSTONE_D) >= 1) && (getQuestItemsCount(talker, SILVER_NUGGET) >= 3) && (getQuestItemsCount(talker, TOAD_SKIN) >= 10))
 								{
 									htmltext = "30608-02.html";
 								}
-								else if ((qs.getInt("fairy_stone") == 2) && (getQuestItemsCount(talker, COAL) >= 10) && (getQuestItemsCount(talker, CHARCOAL) >= 10) && (getQuestItemsCount(talker, GEMSTONE_C) >= 1) && (getQuestItemsCount(talker, STONE_OF_PURITY) >= 1) && (getQuestItemsCount(talker, SILVER_NUGGET) >= 5) && (getQuestItemsCount(talker, TOAD_SKIN) >= 20))
+								else if ((qs.getInt(FAIRY_STONE_KEY) == 2) && (getQuestItemsCount(talker, COAL) >= 10) && (getQuestItemsCount(talker, CHARCOAL) >= 10) && (getQuestItemsCount(talker, GEMSTONE_C) >= 1) && (getQuestItemsCount(talker, STONE_OF_PURITY) >= 1) && (getQuestItemsCount(talker, SILVER_NUGGET) >= 5) && (getQuestItemsCount(talker, TOAD_SKIN) >= 20))
 								{
 									htmltext = "30608-04.html";
 								}
@@ -544,11 +548,11 @@ public class Q00420_LittleWing extends Quest
 							}
 							case 3:
 							{
-								if (qs.getInt("old_stone") == 0)
+								if (qs.getInt(OLD_STONE) == 0)
 								{
 									htmltext = "30711-01.html";
 								}
-								else if (qs.getInt("old_stone") == 1)
+								else if (qs.getInt(OLD_STONE) == 1)
 								{
 									qs.setCond(5, true);
 									htmltext = "30711-05.html";
@@ -605,7 +609,7 @@ public class Q00420_LittleWing extends Quest
 								{
 									htmltext = "30747-09.html";
 								}
-								else if (qs.getInt("fairy_stone") == 1)
+								else if (qs.getInt(FAIRY_STONE_KEY) == 1)
 								{
 									htmltext = "30747-05.html";
 								}
@@ -864,7 +868,7 @@ public class Q00420_LittleWing extends Quest
 		{
 			if (qs.isCond(2) && (npc.getId() == TOAD_LORD))
 			{
-				if (qs.getInt("fairy_stone") == 1)
+				if (qs.getInt(FAIRY_STONE_KEY) == 1)
 				{
 					giveItemRandomly(qs.getPlayer(), npc, TOAD_SKIN, 1, 10, 0.3, true);
 				}
@@ -873,7 +877,7 @@ public class Q00420_LittleWing extends Quest
 					giveItemRandomly(qs.getPlayer(), npc, TOAD_SKIN, 1, 20, 0.3, true);
 				}
 			}
-			else if (qs.isCond(6) && (npc.getId() == qs.getInt("drake_hunt")))
+			else if (qs.isCond(6) && (npc.getId() == qs.getInt(DRAKE_HUNT)))
 			{
 				giveItemRandomly(qs.getPlayer(), npc, EGG_DROPS.get(npc.getId()), 1, 20, 0.5, true);
 			}

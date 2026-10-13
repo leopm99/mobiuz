@@ -33,6 +33,9 @@ import quests.Q10288_SecretMission.Q10288_SecretMission;
  */
 public class Q00270_TheOneWhoEndsSilence extends Quest
 {
+	private static final String HTML_N_32757_09 = "32757-09.html";
+	private static final String HTML_N_32757_10 = "32757-10.html";
+
 	// NPC
 	private static final int FAKE_GREYMORE = 32757;
 	// Monsters
@@ -133,11 +136,11 @@ public class Q00270_TheOneWhoEndsSilence extends Quest
 					
 					takeItems(player, TATTERED_MONK_CLOTHES, 100);
 					playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-					htmltext = "32757-09.html";
+					htmltext = HTML_N_32757_09;
 				}
 				else
 				{
-					htmltext = "32757-10.html";
+					htmltext = HTML_N_32757_10;
 				}
 				break;
 			}
@@ -156,11 +159,11 @@ public class Q00270_TheOneWhoEndsSilence extends Quest
 					rewardScroll(player, 2);
 					takeItems(player, TATTERED_MONK_CLOTHES, 200);
 					playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-					htmltext = "32757-09.html";
+					htmltext = HTML_N_32757_09;
 				}
 				else
 				{
-					htmltext = "32757-10.html";
+					htmltext = HTML_N_32757_10;
 				}
 				break;
 			}
@@ -173,11 +176,11 @@ public class Q00270_TheOneWhoEndsSilence extends Quest
 					rewardScroll(player, 3);
 					takeItems(player, TATTERED_MONK_CLOTHES, 300);
 					playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-					htmltext = "32757-09.html";
+					htmltext = HTML_N_32757_09;
 				}
 				else
 				{
-					htmltext = "32757-10.html";
+					htmltext = HTML_N_32757_10;
 				}
 				break;
 			}
@@ -206,11 +209,11 @@ public class Q00270_TheOneWhoEndsSilence extends Quest
 					
 					takeItems(player, TATTERED_MONK_CLOTHES, 400);
 					playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-					htmltext = "32757-09.html";
+					htmltext = HTML_N_32757_09;
 				}
 				else
 				{
-					htmltext = "32757-10.html";
+					htmltext = HTML_N_32757_10;
 				}
 				break;
 			}
@@ -233,11 +236,11 @@ public class Q00270_TheOneWhoEndsSilence extends Quest
 					rewardScroll(player, 2);
 					takeItems(player, TATTERED_MONK_CLOTHES, 500);
 					playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-					htmltext = "32757-09.html";
+					htmltext = HTML_N_32757_09;
 				}
 				else
 				{
-					htmltext = "32757-10.html";
+					htmltext = HTML_N_32757_10;
 				}
 				break;
 			}

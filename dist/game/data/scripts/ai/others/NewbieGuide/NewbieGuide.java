@@ -54,6 +54,13 @@ import quests.Q00255_Tutorial.Q00255_Tutorial;
  */
 public final class NewbieGuide extends AbstractNpcAI
 {
+	private static final String HTML_N_30598_05 = "30598-05.htm";
+	private static final String HTML_N_30599_05 = "30599-05.htm";
+	private static final String HTML_N_30600_05 = "30600-05.htm";
+	private static final String HTML_N_30601_05 = "30601-05.htm";
+	private static final String HTML_N_30602_05 = "30602-05.htm";
+	private static final String HTML_N_32135_05 = "32135-05.htm";
+
 	// Suffix
 	private static final String SUFFIX_FIGHTER_5_LEVEL = "-f05.htm";
 	private static final String SUFFIX_FIGHTER_10_LEVEL = "-f10.htm";
@@ -1460,211 +1467,211 @@ public final class NewbieGuide extends AbstractNpcAI
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -84108, 244604, -3729);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 32:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -82236, 241573, -3728);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 33:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -82515, 241221, -3728);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 34:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -82319, 244709, -3727);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 35:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -82659, 244992, -3717);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 36:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -86114, 244682, -3727);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 37:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -86328, 244448, -3724);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 38:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -86322, 241215, -3727);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 39:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -85964, 240947, -3727);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 40:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -85026, 242689, -3729);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 41:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -83789, 240799, -3717);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 42:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -84204, 240403, -3717);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 43:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -86385, 243267, -3717);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 44:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -86733, 242918, -3717);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 45:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -84516, 245449, -3714);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 46:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -84729, 245001, -3726);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 47:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -84965, 245222, -3726);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 48:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -84981, 244764, -3726);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 49:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -85186, 245001, -3726);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 50:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -83326, 242964, -3718);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 51:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -83020, 242553, -3718);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 52:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -83175, 243065, -3718);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 53:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -82809, 242751, -3718);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 54:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -81895, 243917, -3721);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 55:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -81840, 243534, -3721);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 56:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -81512, 243424, -3720);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 57:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -84436, 242793, -3729);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 58:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -78939, 240305, -3443);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 59:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -85301, 244587, -3725);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 60:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -83163, 243560, -3728);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 61:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -97131, 258946, -3622);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 62:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -114685, 222291, -2925);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 63:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -84057, 242832, -3729);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 64:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -100332, 238019, -3573);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			case 65:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -82041, 242718, -3725);
-				return "30598-05.htm";
+				return HTML_N_30598_05;
 			}
 			default:
 			{
@@ -1718,187 +1725,187 @@ public final class NewbieGuide extends AbstractNpcAI
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 46926, 51511, -2977);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 32:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 44995, 51706, -2803);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 33:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 45727, 51721, -2803);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 34:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 42812, 51138, -2996);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 35:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 45487, 46511, -2996);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 36:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 47401, 51764, -2996);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 37:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 42971, 51372, -2996);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 38:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 47595, 51569, -2996);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 39:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 45778, 46534, -2996);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 40:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 44476, 47153, -2984);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 41:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 42700, 50057, -2984);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 42:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 42766, 50037, -2984);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 43:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 44683, 46952, -2981);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 44:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 44667, 46896, -2982);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 45:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 45725, 52105, -2795);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 46:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 44823, 52414, -2795);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 47:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 45000, 52101, -2795);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 48:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 45919, 52414, -2795);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 49:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 44692, 52261, -2795);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 50:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 47780, 49568, -2983);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 51:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 47912, 50170, -2983);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 52:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 47868, 50167, -2983);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 53:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 28928, 74248, -3773);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 54:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 43673, 49683, -3046);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 55:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 45610, 49008, -3059);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 56:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 50592, 54986, -3376);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 57:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 42978, 49115, -2994);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 58:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 46475, 50495, -3058);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 59:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 45859, 50827, -3058);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 60:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 51210, 82474, -3283);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			case 61:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 49262, 53607, -3216);
-				return "30599-05.htm";
+				return HTML_N_30599_05;
 			}
 			default:
 			{
@@ -1952,211 +1959,211 @@ public final class NewbieGuide extends AbstractNpcAI
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 9670, 15537, -4574);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 32:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 15120, 15656, -4376);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 33:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 17306, 13592, -3724);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 34:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 15272, 16310, -4377);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 35:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 6449, 19619, -3694);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 36:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -15404, 71131, -3445);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 37:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 7496, 17388, -4377);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 38:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 17102, 13002, -3743);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 39:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 6532, 19903, -3693);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 40:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -15648, 71405, -3451);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 41:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 7644, 18048, -4377);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 42:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -1301, 75883, -3566);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 43:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -1152, 76125, -3566);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 44:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 10580, 17574, -4554);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 45:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 12009, 15704, -4554);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 46:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 11951, 15661, -4554);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 47:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 10761, 17970, -4554);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 48:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 10823, 18013, -4554);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 49:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 11283, 14226, -4242);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 50:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 10447, 14620, -4242);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 51:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 11258, 14431, -4242);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 52:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 10344, 14445, -4242);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 53:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 10315, 14293, -4242);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 54:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 10775, 14190, -4242);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 55:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 11235, 14078, -4242);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 56:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 11012, 14128, -4242);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 57:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 13380, 17430, -4542);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 58:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 13464, 17751, -4541);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 59:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 13763, 17501, -4542);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 60:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -44225, 79721, -3652);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 61:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -44015, 79683, -3652);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 62:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 25856, 10832, -3724);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 63:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 12328, 14947, -4574);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 64:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 13081, 18444, -4573);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			case 65:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 12311, 17470, -4574);
-				return "30600-05.htm";
+				return HTML_N_30600_05;
 			}
 			default:
 			{
@@ -2210,217 +2217,217 @@ public final class NewbieGuide extends AbstractNpcAI
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 115072, -178176, -906);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 32:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 117847, -182339, -1537);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 33:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 116617, -184308, -1569);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 34:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 117826, -182576, -1537);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 35:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 116378, -184308, -1571);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 36:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 115183, -176728, -791);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 37:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 114969, -176752, -790);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 38:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 117366, -178725, -1118);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 39:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 117378, -178914, -1120);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 40:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 116226, -178529, -948);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 41:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 116190, -178441, -948);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 42:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 116016, -178615, -948);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 43:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 116190, -178615, -948);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 44:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 116103, -178407, -948);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 45:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 116103, -178653, -948);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 46:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 115468, -182446, -1434);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 47:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 115315, -182155, -1444);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 48:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 115271, -182692, -1445);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 49:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 115900, -177316, -915);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 50:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 116268, -177524, -914);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 51:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 115741, -181645, -1344);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 52:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 116192, -181072, -1344);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 53:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 115205, -180024, -870);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 54:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 114716, -180018, -871);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 55:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 114832, -179520, -871);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 56:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 115717, -183488, -1483);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 57:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 115618, -183265, -1483);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 58:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 114348, -178537, -813);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 59:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 114990, -177294, -854);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 60:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 114426, -178672, -812);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 61:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 114409, -178415, -812);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 62:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 117061, -181867, -1413);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 63:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 116164, -184029, -1507);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 64:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 115563, -182923, -1448);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 65:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 112656, -174864, -611);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			case 66:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), 116852, -183595, -1566);
-				return "30601-05.htm";
+				return HTML_N_30601_05;
 			}
 			default:
 			{
@@ -2478,157 +2485,157 @@ public final class NewbieGuide extends AbstractNpcAI
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -45264, -112512, -235);
-				return "30602-05.htm";
+				return HTML_N_30602_05;
 			}
 			case 32:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -46576, -117311, -242);
-				return "30602-05.htm";
+				return HTML_N_30602_05;
 			}
 			case 33:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -47360, -113791, -237);
-				return "30602-05.htm";
+				return HTML_N_30602_05;
 			}
 			case 34:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -47360, -113424, -235);
-				return "30602-05.htm";
+				return HTML_N_30602_05;
 			}
 			case 35:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -45744, -117165, -236);
-				return "30602-05.htm";
+				return HTML_N_30602_05;
 			}
 			case 36:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -46528, -109968, -250);
-				return "30602-05.htm";
+				return HTML_N_30602_05;
 			}
 			case 37:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -45808, -110055, -255);
-				return "30602-05.htm";
+				return HTML_N_30602_05;
 			}
 			case 38:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -45731, -113844, -237);
-				return "30602-05.htm";
+				return HTML_N_30602_05;
 			}
 			case 39:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -45728, -113360, -237);
-				return "30602-05.htm";
+				return HTML_N_30602_05;
 			}
 			case 40:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -45952, -114784, -199);
-				return "30602-05.htm";
+				return HTML_N_30602_05;
 			}
 			case 41:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -45952, -114496, -199);
-				return "30602-05.htm";
+				return HTML_N_30602_05;
 			}
 			case 42:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -45863, -112621, -200);
-				return "30602-05.htm";
+				return HTML_N_30602_05;
 			}
 			case 43:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -45864, -112540, -199);
-				return "30602-05.htm";
+				return HTML_N_30602_05;
 			}
 			case 44:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -43264, -112532, -220);
-				return "30602-05.htm";
+				return HTML_N_30602_05;
 			}
 			case 45:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -43910, -115518, -194);
-				return "30602-05.htm";
+				return HTML_N_30602_05;
 			}
 			case 46:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -43950, -115457, -194);
-				return "30602-05.htm";
+				return HTML_N_30602_05;
 			}
 			case 47:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -44416, -111486, -222);
-				return "30602-05.htm";
+				return HTML_N_30602_05;
 			}
 			case 48:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -43926, -111794, -222);
-				return "30602-05.htm";
+				return HTML_N_30602_05;
 			}
 			case 49:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -43109, -113770, -221);
-				return "30602-05.htm";
+				return HTML_N_30602_05;
 			}
 			case 50:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -43114, -113404, -221);
-				return "30602-05.htm";
+				return HTML_N_30602_05;
 			}
 			case 51:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -46768, -113610, -3);
-				return "30602-05.htm";
+				return HTML_N_30602_05;
 			}
 			case 52:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -46802, -114011, -112);
-				return "30602-05.htm";
+				return HTML_N_30602_05;
 			}
 			case 53:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -46247, -113866, -21);
-				return "30602-05.htm";
+				return HTML_N_30602_05;
 			}
 			case 54:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -46808, -113184, -112);
-				return "30602-05.htm";
+				return HTML_N_30602_05;
 			}
 			case 55:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -45328, -114736, -237);
-				return "30602-05.htm";
+				return HTML_N_30602_05;
 			}
 			case 56:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -44624, -111873, -238);
-				return "30602-05.htm";
+				return HTML_N_30602_05;
 			}
 			default:
 			{
@@ -2698,259 +2705,259 @@ public final class NewbieGuide extends AbstractNpcAI
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -116879, 46591, 380);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 32:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -119378, 49242, 22);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 33:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -119774, 49245, 22);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 34:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -119830, 51860, -787);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 35:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -119362, 51862, -780);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 36:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -112872, 46850, 68);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 37:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -112352, 47392, 68);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 38:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -110544, 49040, -1124);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 39:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -110536, 45162, -1132);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 40:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -115888, 43568, 524);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 41:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -115486, 43567, 525);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 42:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -116920, 47792, 464);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 43:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -116749, 48077, 462);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 44:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -117153, 48075, 463);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 45:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -119104, 43280, 559);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 46:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -119104, 43152, 559);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 47:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -117056, 43168, 559);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 48:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -117060, 43296, 559);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 49:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -118192, 42384, 838);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 50:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -117968, 42384, 838);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 51:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -118132, 42788, 723);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 52:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -118028, 42788, 720);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 53:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -114802, 44821, 524);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 54:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -114975, 44658, 524);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 55:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -114801, 45031, 525);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 56:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -120432, 45296, 416);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 57:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -120706, 45079, 419);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 58:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -120356, 45293, 416);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 59:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -120604, 44960, 423);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 60:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -120294, 46013, 384);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 61:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -120157, 45813, 355);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 62:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -120158, 46221, 354);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 63:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -120400, 46921, 415);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 64:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -120407, 46755, 423);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 65:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -120442, 47125, 422);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 66:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -118720, 48062, 473);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 67:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -118918, 47956, 474);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 68:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -118527, 47955, 473);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 69:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -117605, 48079, 472);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 70:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -117824, 48080, 476);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 71:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -118030, 47930, 465);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 72:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -119221, 46981, 380);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			case 73:
 			{
 				clearRadar(qs.getPlayer());
 				addRadar(qs.getPlayer(), -118080, 42835, 720);
-				return "32135-05.htm";
+				return HTML_N_32135_05;
 			}
 			default:
 			{

@@ -84,6 +84,10 @@ import com.l2journey.gameserver.util.MapUtil;
  */
 public class TvT extends Event
 {
+	private static final String KICKPLAYERWARNING = "KickPlayerWarning";
+	private static final String KICKPLAYER = "KickPlayer";
+	private static final String ENDFIGHT = "EndFight";
+
 	enum EventState
 	{
 		INACTIVE,
@@ -492,10 +496,10 @@ public class TvT extends Event
 				startQuestTimer("3", (FIGHT_TIME * 60000) - 3000L, null, null);
 				startQuestTimer("2", (FIGHT_TIME * 60000) - 2000L, null, null);
 				startQuestTimer("1", (FIGHT_TIME * 60000) - 1000L, null, null);
-				startQuestTimer("EndFight", FIGHT_TIME * 60000L, null, null);
+				startQuestTimer(ENDFIGHT, FIGHT_TIME * 60000L, null, null);
 				break;
 			}
-			case "EndFight":
+			case ENDFIGHT:
 			{
 				// Close doors.
 				PVP_WORLD.closeDoor(BLUE_DOOR_ID);
@@ -680,7 +684,7 @@ public class TvT extends Event
 			}
 		}
 		// Activity timer.
-		if (event.startsWith("KickPlayer") && (player != null) && (player.getInstanceId() == PVP_WORLD.getInstanceId()))
+		if (event.startsWith(KICKPLAYER) && (player != null) && (player.getInstanceId() == PVP_WORLD.getInstanceId()))
 		{
 			if (event.contains("Warning"))
 			{
@@ -782,8 +786,8 @@ public class TvT extends Event
 			final Player player = creature.asPlayer();
 			if (player.isOnEvent())
 			{
-				cancelQuestTimer("KickPlayer" + player.getObjectId(), null, player);
-				cancelQuestTimer("KickPlayerWarning" + player.getObjectId(), null, player);
+				cancelQuestTimer(KICKPLAYER + player.getObjectId(), null, player);
+				cancelQuestTimer(KICKPLAYERWARNING + player.getObjectId(), null, player);
 				
 				// Removed invulnerability shield.
 				if (player.isAffectedBySkill(GHOST_WALKING.getSkillId()))
@@ -926,10 +930,10 @@ public class TvT extends Event
 	
 	private void resetActivityTimers(Player player)
 	{
-		cancelQuestTimer("KickPlayer" + player.getObjectId(), null, player);
-		cancelQuestTimer("KickPlayerWarning" + player.getObjectId(), null, player);
-		startQuestTimer("KickPlayer" + player.getObjectId(), IS_STARTED() ? INACTIVITY_TIME * 60000 : (INACTIVITY_TIME * 60000) + (WAIT_TIME * 60000), null, player);
-		startQuestTimer("KickPlayerWarning" + player.getObjectId(), IS_STARTED() ? (INACTIVITY_TIME / 2) * 60000 : ((INACTIVITY_TIME / 2) * 60000) + (WAIT_TIME * 60000), null, player);
+		cancelQuestTimer(KICKPLAYER + player.getObjectId(), null, player);
+		cancelQuestTimer(KICKPLAYERWARNING + player.getObjectId(), null, player);
+		startQuestTimer(KICKPLAYER + player.getObjectId(), IS_STARTED() ? INACTIVITY_TIME * 60000 : (INACTIVITY_TIME * 60000) + (WAIT_TIME * 60000), null, player);
+		startQuestTimer(KICKPLAYERWARNING + player.getObjectId(), IS_STARTED() ? (INACTIVITY_TIME / 2) * 60000 : ((INACTIVITY_TIME / 2) * 60000) + (WAIT_TIME * 60000), null, player);
 	}
 	
 	private void manageForfeit()
@@ -945,8 +949,8 @@ public class TvT extends Event
 		cancelQuestTimer("3", null, null);
 		cancelQuestTimer("2", null, null);
 		cancelQuestTimer("1", null, null);
-		cancelQuestTimer("EndFight", null, null);
-		startQuestTimer("EndFight", 10000, null, null);
+		cancelQuestTimer(ENDFIGHT, null, null);
+		startQuestTimer(ENDFIGHT, 10000, null, null);
 		broadcastScreenMessageWithEffect("Enemy team forfeit!", 7);
 	}
 	

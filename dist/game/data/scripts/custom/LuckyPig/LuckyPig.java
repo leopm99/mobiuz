@@ -57,6 +57,15 @@ import ai.AbstractNpcAI;
  */
 public final class LuckyPig extends AbstractNpcAI
 {
+	private static final String LUCKY_PIG_TARGET_ADENA = "LUCKY_PIG_TARGET_ADENA";
+	private static final String LUCKY_PIG_FEED_STATE = "LUCKY_PIG_FEED_STATE";
+	private static final String LUCKY_PIG_FOOD_ITEM = "LUCKY_PIG_FOOD_ITEM";
+	private static final String LUCKY_PIG_EAT_COUNT = "LUCKY_PIG_EAT_COUNT";
+	private static final String LUCKY_PIG_EAT_ADENA = "LUCKY_PIG_EAT_ADENA";
+	private static final String DESPAWN_WINGLESS = "DESPAWN_WINGLESS";
+	private static final String CHECK_FOOD = "CHECK_FOOD";
+	private static final String TEXT_SPAM = "TEXT_SPAM";
+
 	// NPC
 	private static final int LUCKY_PIG_WINGLESS = 2502;
 	private static final int LUCKY_PIG_WINGLESS_GOLD = 2503;
@@ -174,13 +183,13 @@ public final class LuckyPig extends AbstractNpcAI
 				setPigOnline(false);
 				if (npc != null)
 				{
-					cancelQuestTimer("TEXT_SPAM", npc, null);
-					cancelQuestTimer("CHECK_FOOD", npc, null);
+					cancelQuestTimer(TEXT_SPAM, npc, null);
+					cancelQuestTimer(CHECK_FOOD, npc, null);
 					npc.deleteMe();
 				}
 				break;
 			}
-			case "DESPAWN_WINGLESS":
+			case DESPAWN_WINGLESS:
 			{
 				setPigOnline(false);
 				if (npc != null)
@@ -189,7 +198,7 @@ public final class LuckyPig extends AbstractNpcAI
 				}
 				break;
 			}
-			case "TEXT_SPAM":
+			case TEXT_SPAM:
 			{
 				final long lastEat = npc.getVariables().getLong("LUCKY_PIG_LAST_EAT", 0);
 				
@@ -204,10 +213,10 @@ public final class LuckyPig extends AbstractNpcAI
 				}
 				break;
 			}
-			case "CHECK_FOOD":
+			case CHECK_FOOD:
 			{
-				final int foodState = npc.getVariables().getInt("LUCKY_PIG_FEED_STATE", 0);
-				final Item foodItem = npc.getVariables().getObject("LUCKY_PIG_FOOD_ITEM", Item.class);
+				final int foodState = npc.getVariables().getInt(LUCKY_PIG_FEED_STATE, 0);
+				final Item foodItem = npc.getVariables().getObject(LUCKY_PIG_FOOD_ITEM, Item.class);
 				
 				switch (foodState)
 				{
@@ -227,8 +236,8 @@ public final class LuckyPig extends AbstractNpcAI
 							}
 							
 							World.getInstance().removeObject(food);
-							npc.getVariables().set("LUCKY_PIG_FEED_STATE", 1);
-							npc.getVariables().set("LUCKY_PIG_FOOD_ITEM", food);
+							npc.getVariables().set(LUCKY_PIG_FEED_STATE, 1);
+							npc.getVariables().set(LUCKY_PIG_FOOD_ITEM, food);
 						}
 						break;
 					}
@@ -237,12 +246,12 @@ public final class LuckyPig extends AbstractNpcAI
 						if (foodItem != null)
 						{
 							npc.getAI().setIntention(Intention.MOVE_TO, foodItem.getLocation());
-							npc.getVariables().set("LUCKY_PIG_FEED_STATE", 2);
+							npc.getVariables().set(LUCKY_PIG_FEED_STATE, 2);
 						}
 						else
 						{
 							// Maybe someone else pickup it? :P
-							npc.getVariables().set("LUCKY_PIG_FEED_STATE", 0);
+							npc.getVariables().set(LUCKY_PIG_FEED_STATE, 0);
 						}
 						break;
 					}
@@ -250,17 +259,17 @@ public final class LuckyPig extends AbstractNpcAI
 					{
 						if (foodItem != null)
 						{
-							final int eatCount = npc.getVariables().getInt("LUCKY_PIG_EAT_COUNT", 0) + 1;
-							final int targetAdena = npc.getVariables().getInt("LUCKY_PIG_TARGET_ADENA", 0);
-							final long countAdena = npc.getVariables().getInt("LUCKY_PIG_EAT_ADENA", 0) + foodItem.getCount();
+							final int eatCount = npc.getVariables().getInt(LUCKY_PIG_EAT_COUNT, 0) + 1;
+							final int targetAdena = npc.getVariables().getInt(LUCKY_PIG_TARGET_ADENA, 0);
+							final long countAdena = npc.getVariables().getInt(LUCKY_PIG_EAT_ADENA, 0) + foodItem.getCount();
 							
 							foodItem.decayMe();
 							npc.getVariables().set("LUCKY_PIG_LAST_EAT", System.currentTimeMillis());
-							npc.getVariables().set("LUCKY_PIG_EAT_ADENA", countAdena);
+							npc.getVariables().set(LUCKY_PIG_EAT_ADENA, countAdena);
 							npc.getVariables().set("LUCKY_PIG_FEED_COUNT", 0);
-							npc.getVariables().set("LUCKY_PIG_EAT_COUNT", eatCount);
-							npc.getVariables().set("LUCKY_PIG_FEED_STATE", 0);
-							npc.getVariables().remove("LUCKY_PIG_FOOD_ITEM");
+							npc.getVariables().set(LUCKY_PIG_EAT_COUNT, eatCount);
+							npc.getVariables().set(LUCKY_PIG_FEED_STATE, 0);
+							npc.getVariables().remove(LUCKY_PIG_FOOD_ITEM);
 							
 							if (countAdena >= targetAdena)
 							{
@@ -275,12 +284,12 @@ public final class LuckyPig extends AbstractNpcAI
 							
 							if (eatCount >= 10)
 							{
-								npc.getVariables().set("LUCKY_PIG_FEED_STATE", 3);
+								npc.getVariables().set(LUCKY_PIG_FEED_STATE, 3);
 							}
 						}
 						else
 						{
-							npc.getVariables().set("LUCKY_PIG_FEED_STATE", 0);
+							npc.getVariables().set(LUCKY_PIG_FEED_STATE, 0);
 						}
 						break;
 					}
@@ -306,10 +315,10 @@ public final class LuckyPig extends AbstractNpcAI
 	
 	private void transformLuckyPig(Npc luckyPig)
 	{
-		cancelQuestTimer("CHECK_FOOD", luckyPig, null);
-		cancelQuestTimer("TEXT_SPAM", luckyPig, null);
+		cancelQuestTimer(CHECK_FOOD, luckyPig, null);
+		cancelQuestTimer(TEXT_SPAM, luckyPig, null);
 		final Npc pig = addSpawn(calculateGoldChance(luckyPig) ? LUCKY_PIG_WINGLESS_GOLD : LUCKY_PIG_WINGLESS, luckyPig, true, 600000, true);
-		startQuestTimer("DESPAWN_WINGLESS", 600000, pig, null);
+		startQuestTimer(DESPAWN_WINGLESS, 600000, pig, null);
 		broadcastNpcSay(pig, ChatType.NPC_GENERAL, TRANSFORM_TEXTS[getRandom(TRANSFORM_TEXTS.length)]);
 		pig.getVariables().set("LUCKY_PIG_SPAWN_ID", luckyPig.getId());
 		luckyPig.deleteMe();
@@ -317,9 +326,9 @@ public final class LuckyPig extends AbstractNpcAI
 	
 	private boolean calculateGoldChance(Npc luckyPig)
 	{
-		final int eatCount = luckyPig.getVariables().getInt("LUCKY_PIG_EAT_COUNT", 0);
-		final int targetAdena = luckyPig.getVariables().getInt("LUCKY_PIG_TARGET_ADENA", 0);
-		final long countAdena = luckyPig.getVariables().getInt("LUCKY_PIG_EAT_ADENA", -1);
+		final int eatCount = luckyPig.getVariables().getInt(LUCKY_PIG_EAT_COUNT, 0);
+		final int targetAdena = luckyPig.getVariables().getInt(LUCKY_PIG_TARGET_ADENA, 0);
+		final long countAdena = luckyPig.getVariables().getInt(LUCKY_PIG_EAT_ADENA, -1);
 		
 		double finalChance = LUCKY_PIG_GOLD_BASE_CHANCE[eatCount];
 		
@@ -374,14 +383,14 @@ public final class LuckyPig extends AbstractNpcAI
 			case LUCKY_PIG_WINGLESS:
 			{
 				setPigOnline(false);
-				cancelQuestTimer("DESPAWN_WINGLESS", npc, null);
+				cancelQuestTimer(DESPAWN_WINGLESS, npc, null);
 				manageDrop(npc, killer, false);
 				break;
 			}
 			case LUCKY_PIG_WINGLESS_GOLD:
 			{
 				setPigOnline(false);
-				cancelQuestTimer("DESPAWN_WINGLESS", npc, null);
+				cancelQuestTimer(DESPAWN_WINGLESS, npc, null);
 				manageDrop(npc, killer, true);
 				break;
 			}
@@ -416,9 +425,9 @@ public final class LuckyPig extends AbstractNpcAI
 				final int targetAdena = (int) (getRandom(minAdena, (minAdena * 10)) * Config.RATE_DEATH_DROP_AMOUNT_MULTIPLIER);
 				final Npc luckyPig = addSpawn(luckyPigId, npc, true, 600000, true);
 				startQuestTimer("DESPAWN_TIME", 600000, luckyPig, null);
-				startQuestTimer("TEXT_SPAM", 5000, luckyPig, null);
-				startQuestTimer("CHECK_FOOD", 2000, luckyPig, null, true);
-				luckyPig.getVariables().set("LUCKY_PIG_TARGET_ADENA", targetAdena);
+				startQuestTimer(TEXT_SPAM, 5000, luckyPig, null);
+				startQuestTimer(CHECK_FOOD, 2000, luckyPig, null, true);
+				luckyPig.getVariables().set(LUCKY_PIG_TARGET_ADENA, targetAdena);
 				break;
 			}
 		}

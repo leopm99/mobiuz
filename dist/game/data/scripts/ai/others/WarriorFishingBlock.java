@@ -43,6 +43,9 @@ import ai.AbstractNpcAI;
  */
 public class WarriorFishingBlock extends AbstractNpcAI
 {
+	private static final String DESPAWN = "DESPAWN";
+	private static final String SPAWN = "SPAWN";
+
 	// Monsters
 	private static final int[] MONSTERS =
 	{
@@ -90,7 +93,7 @@ public class WarriorFishingBlock extends AbstractNpcAI
 	{
 		switch (event)
 		{
-			case "SPAWN":
+			case SPAWN:
 			{
 				final WorldObject obj = npc.getTarget();
 				if ((obj == null) || !obj.isPlayer())
@@ -105,11 +108,11 @@ public class WarriorFishingBlock extends AbstractNpcAI
 					npc.getAI().notifyAction(Action.ATTACKED, target);
 					npc.addAttackerToAttackByList(target);
 					
-					startQuestTimer("DESPAWN", DESPAWN_TIME * 1000, npc, target);
+					startQuestTimer(DESPAWN, DESPAWN_TIME * 1000, npc, target);
 				}
 				break;
 			}
-			case "DESPAWN":
+			case DESPAWN:
 			{
 				npc.decayMe();
 				break;
@@ -135,15 +138,15 @@ public class WarriorFishingBlock extends AbstractNpcAI
 	public void onKill(Npc npc, Player killer, boolean isSummon)
 	{
 		npc.broadcastSay(ChatType.NPC_GENERAL, getRandomEntry(NPC_STRINGS_ON_KILL));
-		cancelQuestTimer("DESPAWN", npc, killer);
+		cancelQuestTimer(DESPAWN, npc, killer);
 	}
 	
 	@Override
 	public void onSpawn(Npc npc)
 	{
-		cancelQuestTimer("SPAWN", npc, null);
-		cancelQuestTimer("DESPAWN", npc, null);
-		startQuestTimer("SPAWN", 2000, npc, null);
+		cancelQuestTimer(SPAWN, npc, null);
+		cancelQuestTimer(DESPAWN, npc, null);
+		startQuestTimer(SPAWN, 2000, npc, null);
 	}
 	
 	public static void main(String[] args)

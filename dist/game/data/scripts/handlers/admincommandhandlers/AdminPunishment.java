@@ -48,6 +48,9 @@ import com.l2journey.gameserver.util.GMAudit;
  */
 public class AdminPunishment implements IAdminCommandHandler
 {
+	private static final String ADMIN_PUNISHMENT = "admin_punishment";
+	private static final String PH_PUNISHMENTS = "%punishments%";
+
 	private static final Logger LOGGER = Logger.getLogger(AdminPunishment.class.getName());
 	
 	private static final String PUNISHMENT = "data/html/admin/punishments/punishment.htm";
@@ -56,7 +59,7 @@ public class AdminPunishment implements IAdminCommandHandler
 	
 	private static final String[] ADMIN_COMMANDS =
 	{
-		"admin_punishment",
+		ADMIN_PUNISHMENT,
 		"admin_punishment_add",
 		"admin_punishment_remove",
 		"admin_ban_acc",
@@ -84,14 +87,14 @@ public class AdminPunishment implements IAdminCommandHandler
 		final String cmd = st.nextToken();
 		switch (cmd)
 		{
-			case "admin_punishment":
+			case ADMIN_PUNISHMENT:
 			{
 				if (!st.hasMoreTokens())
 				{
 					String content = HtmCache.getInstance().getHtm(activeChar, PUNISHMENT);
 					if (content != null)
 					{
-						content = content.replace("%punishments%", StringUtil.implode(PunishmentType.values(), ";"));
+						content = content.replace(PH_PUNISHMENTS, StringUtil.implode(PunishmentType.values(), ";"));
 						content = content.replace("%affects%", StringUtil.implode(PunishmentAffect.values(), ";"));
 						activeChar.sendPacket(new NpcHtmlMessage(0, 1, content));
 					}
@@ -159,7 +162,7 @@ public class AdminPunishment implements IAdminCommandHandler
 								}
 								
 								content = content.replace("%player_name%", name);
-								content = content.replace("%punishments%", sb.toString());
+								content = content.replace(PH_PUNISHMENTS, sb.toString());
 								content = content.replace("%affects%", StringUtil.implode(PunishmentAffect.values(), ";"));
 								content = content.replace("%affect_type%", affect.name());
 								activeChar.sendPacket(new NpcHtmlMessage(0, 1, content));
@@ -178,7 +181,7 @@ public class AdminPunishment implements IAdminCommandHandler
 								final String playerName = st.nextToken();
 								if (playerName.isEmpty() && ((activeChar.getTarget() == null) || !activeChar.getTarget().isPlayer()))
 								{
-									return useAdminCommand("admin_punishment", activeChar);
+									return useAdminCommand(ADMIN_PUNISHMENT, activeChar);
 								}
 								target = World.getInstance().getPlayer(playerName);
 							}
@@ -195,7 +198,7 @@ public class AdminPunishment implements IAdminCommandHandler
 							if (content != null)
 							{
 								content = content.replace("%player_name%", target.getName());
-								content = content.replace("%punishments%", StringUtil.implode(PunishmentType.values(), ";"));
+								content = content.replace(PH_PUNISHMENTS, StringUtil.implode(PunishmentType.values(), ";"));
 								content = content.replace("%acc%", target.getAccountName());
 								content = content.replace("%char%", target.getName());
 								content = content.replace("%ip%", target.getIPAddress());

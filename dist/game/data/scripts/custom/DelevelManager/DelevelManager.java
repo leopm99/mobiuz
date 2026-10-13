@@ -42,6 +42,8 @@ import ai.AbstractNpcAI;
  */
 public class DelevelManager extends AbstractNpcAI
 {
+	private static final String HTML_N_36604 = "36604.htm";
+
 	private DelevelManager()
 	{
 		addStartNpc(Config.DELEVEL_MANAGER_NPCID);
@@ -110,7 +112,7 @@ public class DelevelManager extends AbstractNpcAI
 				// Revalidar condicoes basicas antes de executar
 				if (player.isInCombat())
 				{
-					return "36604.htm";
+					return HTML_N_36604;
 				}
 				
 				if (player.getLevel() <= Config.DELEVEL_MANAGER_MINIMUM_DELEVEL)
@@ -142,7 +144,7 @@ public class DelevelManager extends AbstractNpcAI
 				// Atualizar informacoes do jogador
 				player.broadcastUserInfo();
 				
-				return "36604.htm";
+				return HTML_N_36604;
 			}
 			default:
 			{
@@ -156,7 +158,7 @@ public class DelevelManager extends AbstractNpcAI
 	@Override
 	public String onFirstTalk(Npc npc, Player player)
 	{
-		return "36604.htm";
+		return HTML_N_36604;
 	}
 	
 	public static void main(String[] args)

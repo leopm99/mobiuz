@@ -37,6 +37,8 @@ import com.l2journey.gameserver.util.ArrayUtil;
  */
 public class Q00709_PathToBecomingALordDion extends Quest
 {
+	private static final String HTML_N_35142_05A = "35142-05a.html";
+
 	private static final int CROSBY = 35142;
 	private static final int ROUKE = 31418;
 	private static final int SOPHYA = 30735;
@@ -102,7 +104,7 @@ public class Q00709_PathToBecomingALordDion extends Quest
 				}
 				else
 				{
-					htmltext = "35142-05a.html";
+					htmltext = HTML_N_35142_05A;
 				}
 				break;
 			}
@@ -114,7 +116,7 @@ public class Q00709_PathToBecomingALordDion extends Quest
 				}
 				else
 				{
-					htmltext = "35142-05a.html";
+					htmltext = HTML_N_35142_05A;
 				}
 				break;
 			}
@@ -219,7 +221,7 @@ public class Q00709_PathToBecomingALordDion extends Quest
 						}
 						else
 						{
-							htmltext = "35142-05a.html";
+							htmltext = HTML_N_35142_05A;
 						}
 					}
 					else

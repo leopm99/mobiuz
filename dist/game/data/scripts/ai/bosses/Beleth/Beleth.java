@@ -69,6 +69,10 @@ import ai.AbstractNpcAI;
  */
 public class Beleth extends AbstractNpcAI
 {
+	private static final String BELETH_UNLOCK = "BELETH_UNLOCK";
+	private static final String CHECK_ATTACK = "CHECK_ATTACK";
+	private static final String SPAWN25 = "SPAWN25";
+
 	// Status
 	private static final int ALIVE = 0;
 	private static final int INIT = 1;
@@ -123,7 +127,7 @@ public class Beleth extends AbstractNpcAI
 			final long time = info.getLong("respawn_time") - System.currentTimeMillis();
 			if (time > 0)
 			{
-				startQuestTimer("BELETH_UNLOCK", time, null, null);
+				startQuestTimer(BELETH_UNLOCK, time, null, null);
 			}
 			else
 			{
@@ -142,7 +146,7 @@ public class Beleth extends AbstractNpcAI
 	{
 		switch (event)
 		{
-			case "BELETH_UNLOCK":
+			case BELETH_UNLOCK:
 			{
 				GrandBossManager.getInstance().setStatus(REAL_BELETH, ALIVE);
 				DoorData.getInstance().getDoor(DOOR1).openMe();
@@ -362,11 +366,11 @@ public class Beleth extends AbstractNpcAI
 				}
 				
 				_lastAttack = System.currentTimeMillis();
-				startQuestTimer("CHECK_ATTACK", 60000, null, null);
-				startQuestTimer("SPAWN25", 60000, null, null);
+				startQuestTimer(CHECK_ATTACK, 60000, null, null);
+				startQuestTimer(SPAWN25, 60000, null, null);
 				break;
 			}
-			case "SPAWN25":
+			case SPAWN25:
 			{
 				_minions.clear();
 				
@@ -517,7 +521,7 @@ public class Beleth extends AbstractNpcAI
 				}
 				break;
 			}
-			case "CHECK_ATTACK":
+			case CHECK_ATTACK:
 			{
 				if ((_lastAttack + 900000) < System.currentTimeMillis())
 				{
@@ -539,11 +543,11 @@ public class Beleth extends AbstractNpcAI
 					_minions.clear();
 					_killedCount = 0;
 					
-					cancelQuestTimer("CHECK_ATTACK", null, null);
+					cancelQuestTimer(CHECK_ATTACK, null, null);
 				}
 				else
 				{
-					startQuestTimer("CHECK_ATTACK", 60000, null, null);
+					startQuestTimer(CHECK_ATTACK, 60000, null, null);
 				}
 				break;
 			}
@@ -718,7 +722,7 @@ public class Beleth extends AbstractNpcAI
 	{
 		if (npc.getId() == REAL_BELETH)
 		{
-			cancelQuestTimer("CHECK_ATTACK", null, null);
+			cancelQuestTimer(CHECK_ATTACK, null, null);
 			setBelethKiller(killer);
 			GrandBossManager.getInstance().setStatus(REAL_BELETH, DEAD);
 			
@@ -728,7 +732,7 @@ public class Beleth extends AbstractNpcAI
 			final StatSet info = GrandBossManager.getInstance().getStatSet(REAL_BELETH);
 			info.set("respawn_time", System.currentTimeMillis() + respawnTime);
 			GrandBossManager.getInstance().setStatSet(REAL_BELETH, info);
-			startQuestTimer("BELETH_UNLOCK", respawnTime, null, null);
+			startQuestTimer(BELETH_UNLOCK, respawnTime, null, null);
 			deleteAll();
 			npc.deleteMe();
 			
@@ -765,7 +769,7 @@ public class Beleth extends AbstractNpcAI
 			}
 			else
 			{
-				startQuestTimer("SPAWN25", 60000, null, null);
+				startQuestTimer(SPAWN25, 60000, null, null);
 			}
 		}
 	}

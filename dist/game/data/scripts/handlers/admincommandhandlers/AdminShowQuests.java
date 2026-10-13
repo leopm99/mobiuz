@@ -41,6 +41,8 @@ import com.l2journey.gameserver.network.serverpackets.QuestList;
  */
 public class AdminShowQuests implements IAdminCommandHandler
 {
+	private static final String CUSTOM = "custom";
+
 	private static final Logger LOGGER = Logger.getLogger(AdminShowQuests.class.getName());
 	
 	private static final String[] ADMIN_COMMANDS =
@@ -93,9 +95,9 @@ public class AdminShowQuests implements IAdminCommandHandler
 					val[0] = "name";
 					val[1] = cmdParams[2];
 				}
-				if ((cmdParams.length > 3) && cmdParams[3].equals("custom"))
+				if ((cmdParams.length > 3) && cmdParams[3].equals(CUSTOM))
 				{
-					val[0] = "custom";
+					val[0] = CUSTOM;
 					val[1] = cmdParams[2];
 				}
 			}
@@ -234,7 +236,7 @@ public class AdminShowQuests implements IAdminCommandHandler
 					replyMSG.append("</table></body></html>");
 					break;
 				}
-				case "custom":
+				case CUSTOM:
 				{
 					boolean exqdb = true;
 					boolean exqch = true;

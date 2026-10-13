@@ -325,6 +325,8 @@ public abstract class BaseGameServerRegister
 	 */
 	private static class RegisterTask extends BaseTask
 	{
+		private static final String REGISTRATIONOK = "registrationOk";
+
 		private final int _id;
 		private final String _outDir;
 		private boolean _force;
@@ -371,7 +373,7 @@ public abstract class BaseGameServerRegister
 					}
 					else
 					{
-						System.out.printf(_bundle.getString("registrationOk") + "%n", registeredId);
+						System.out.printf(_bundle.getString(REGISTRATIONOK) + "%n", registeredId);
 					}
 				}
 				else
@@ -385,7 +387,7 @@ public abstract class BaseGameServerRegister
 							System.out.printf(_bundle.getString("forcingRegistration") + "%n", _id);
 							unregisterGameServer(_id);
 							registerGameServer(_id, _outDir);
-							System.out.printf(_bundle.getString("registrationOk") + "%n", _id);
+							System.out.printf(_bundle.getString(REGISTRATIONOK) + "%n", _id);
 						}
 						else if (_fallback)
 						{
@@ -397,7 +399,7 @@ public abstract class BaseGameServerRegister
 							}
 							else
 							{
-								System.out.printf(_bundle.getString("registrationOk") + "%n", registeredId);
+								System.out.printf(_bundle.getString(REGISTRATIONOK) + "%n", registeredId);
 							}
 						}
 						else

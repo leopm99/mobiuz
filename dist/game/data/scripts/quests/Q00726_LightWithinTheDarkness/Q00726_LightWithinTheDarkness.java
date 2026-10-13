@@ -45,6 +45,8 @@ import quests.Q00727_HopeWithinTheDarkness.Q00727_HopeWithinTheDarkness;
 
 public class Q00726_LightWithinTheDarkness extends Quest
 {
+	private static final String KANADIS = "kanadis";
+
 	protected class PAWORLD extends InstanceWorld
 	{
 	}
@@ -136,7 +138,7 @@ public class Q00726_LightWithinTheDarkness extends Quest
 		final String htmltext = event;
 		if (event.equalsIgnoreCase("FortWarden-04.htm"))
 		{
-			qs.set("kanadis", "0");
+			qs.set(KANADIS, "0");
 			qs.startQuest();
 		}
 		else if (event.equalsIgnoreCase("reward") && qs.isCond(2) && (qs.getInt("done") == 1))
@@ -227,9 +229,9 @@ public class Q00726_LightWithinTheDarkness extends Quest
 				final QuestState qs = partymember.getQuestState(getName());
 				if ((qs != null) && qs.isCond(1) && (npc.getId() == KANADIS_GUIDE3) && !partymember.isDead() && partymember.isInsideRadius3D(npc, 1000))
 				{
-					if (qs.getInt("kanadis") == 0)
+					if (qs.getInt(KANADIS) == 0)
 					{
-						qs.set("kanadis", "1");
+						qs.set(KANADIS, "1");
 					}
 					else
 					{

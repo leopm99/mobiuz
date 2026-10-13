@@ -63,6 +63,8 @@ import com.l2journey.gameserver.util.MathUtil;
  */
 public class Olympiad extends ListenersContainer
 {
+	private static final String TO_SAVE = "to_save";
+
 	protected static final Logger LOGGER = Logger.getLogger(Olympiad.class.getName());
 	protected static final Logger LOGGER_OLYMPIAD = Logger.getLogger("olympiad");
 	
@@ -282,7 +284,7 @@ public class Olympiad extends ListenersContainer
 				statData.set(COMP_DONE_WEEK_CLASSED, rset.getInt(COMP_DONE_WEEK_CLASSED));
 				statData.set(COMP_DONE_WEEK_NON_CLASSED, rset.getInt(COMP_DONE_WEEK_NON_CLASSED));
 				statData.set(COMP_DONE_WEEK_TEAM, rset.getInt(COMP_DONE_WEEK_TEAM));
-				statData.set("to_save", false);
+				statData.set(TO_SAVE, false);
 				
 				addNobleStats(rset.getInt(CHAR_ID), statData);
 			}
@@ -930,7 +932,7 @@ public class Olympiad extends ListenersContainer
 				final int compDoneWeekClassed = nobleInfo.getInt(COMP_DONE_WEEK_CLASSED);
 				final int compDoneWeekNonClassed = nobleInfo.getInt(COMP_DONE_WEEK_NON_CLASSED);
 				final int compDoneWeekTeam = nobleInfo.getInt(COMP_DONE_WEEK_TEAM);
-				final boolean toSave = nobleInfo.getBoolean("to_save");
+				final boolean toSave = nobleInfo.getBoolean(TO_SAVE);
 				
 				try (PreparedStatement statement = con.prepareStatement(toSave ? OLYMPIAD_SAVE_NOBLES : OLYMPIAD_UPDATE_NOBLES))
 				{
@@ -948,7 +950,7 @@ public class Olympiad extends ListenersContainer
 						statement.setInt(10, compDoneWeekNonClassed);
 						statement.setInt(11, compDoneWeekTeam);
 						
-						nobleInfo.set("to_save", false);
+						nobleInfo.set(TO_SAVE, false);
 					}
 					else
 					{

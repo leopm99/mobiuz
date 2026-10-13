@@ -56,6 +56,11 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Q00311_ExpulsionOfEvilSpirits extends Quest
 {
+	private static final String VARANGKARESPAWN = "VarangkaRespawn";
+	private static final String ALTARSPAWN = "altarSpawn";
+	private static final String MINION1 = "minion1";
+	private static final String MINION2 = "minion2";
+
 	// NPCs
 	private static final int CHAIREN = 32655;
 	private static final int ALTAR = 18811;
@@ -107,33 +112,33 @@ public class Q00311_ExpulsionOfEvilSpirits extends Quest
 		
 		try
 		{
-			respawnTime = GlobalVariablesManager.getInstance().getLong("VarangkaRespawn", 0);
+			respawnTime = GlobalVariablesManager.getInstance().getLong(VARANGKARESPAWN, 0);
 		}
 		catch (Exception _)
 		{
 			
 		}
-		GlobalVariablesManager.getInstance().set("VarangkaRespawn", respawnTime);
+		GlobalVariablesManager.getInstance().set(VARANGKARESPAWN, respawnTime);
 		if ((respawnTime == 0) || ((respawnTime - System.currentTimeMillis()) < 0))
 		{
-			startQuestTimer("altarSpawn", 5000, null, null);
+			startQuestTimer(ALTARSPAWN, 5000, null, null);
 		}
 		else
 		{
-			startQuestTimer("altarSpawn", respawnTime - System.currentTimeMillis(), null, null);
+			startQuestTimer(ALTARSPAWN, respawnTime - System.currentTimeMillis(), null, null);
 		}
 	}
 	
 	@Override
 	public String onEvent(String event, Npc npc, Player player)
 	{
-		if (event.equalsIgnoreCase("altarSpawn"))
+		if (event.equalsIgnoreCase(ALTARSPAWN))
 		{
 			if (!checkIfSpawned(ALTAR))
 			{
 				_altar = addSpawn(ALTAR, 74120, -101920, -960, 32760, false, 0);
 				_altar.setInvul(true);
-				GlobalVariablesManager.getInstance().set("VarangkaRespawn", 0);
+				GlobalVariablesManager.getInstance().set(VARANGKARESPAWN, 0);
 				if (LocationUtil.checkIfInRange(1200, npc, player, true))
 				{
 					ThreadPool.schedule(new zoneCheck(player), 1000);
@@ -141,7 +146,7 @@ public class Q00311_ExpulsionOfEvilSpirits extends Quest
 			}
 			return null;
 		}
-		else if (event.equalsIgnoreCase("minion1") && checkIfSpawned(VARANGKA))
+		else if (event.equalsIgnoreCase(MINION1) && checkIfSpawned(VARANGKA))
 		{
 			if (!checkIfSpawned(VARANGKA + 1) && checkIfSpawned(VARANGKA))
 			{
@@ -154,7 +159,7 @@ public class Q00311_ExpulsionOfEvilSpirits extends Quest
 			}
 			return null;
 		}
-		else if (event.equalsIgnoreCase("minion2"))
+		else if (event.equalsIgnoreCase(MINION2))
 		{
 			if (!checkIfSpawned(VARANGKA + 2) && checkIfSpawned(VARANGKA))
 			{
@@ -253,26 +258,26 @@ public class Q00311_ExpulsionOfEvilSpirits extends Quest
 				{
 					_varangkaMinion2.doDie(killer);
 				}
-				cancelQuestTimers("minion1");
-				cancelQuestTimers("minion2");
+				cancelQuestTimers(MINION1);
+				cancelQuestTimers(MINION2);
 				_varangkaMinion1 = null;
 				_varangkaMinion2 = null;
 				final long respawn = Rnd.get(14400000, 28800000);
-				GlobalVariablesManager.getInstance().set("VarangkaRespawn", System.currentTimeMillis() + respawn);
-				startQuestTimer("altarSpawn", respawn, null, null);
+				GlobalVariablesManager.getInstance().set(VARANGKARESPAWN, System.currentTimeMillis() + respawn);
+				startQuestTimer(ALTARSPAWN, respawn, null, null);
 				takeItems(member, PROTECTION_SOULS_PENDANT, 1);
 				return;
 			}
 			else if (npc.getId() == (VARANGKA + 1))
 			{
 				_varangkaMinion1 = null;
-				startQuestTimer("minion1", Rnd.get(60000, 120000), npc, killer);
+				startQuestTimer(MINION1, Rnd.get(60000, 120000), npc, killer);
 				return;
 			}
 			else if (npc.getId() == (VARANGKA + 2))
 			{
 				_varangkaMinion2 = null;
-				startQuestTimer("minion2", Rnd.get(60000, 120000), npc, killer);
+				startQuestTimer(MINION2, Rnd.get(60000, 120000), npc, killer);
 				return;
 			}
 			

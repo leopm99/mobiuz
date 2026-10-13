@@ -55,6 +55,8 @@ import com.l2journey.gameserver.network.serverpackets.NpcHtmlMessage;
  */
 public class OlympiadManagerLink implements IBypassHandler
 {
+	private static final String PH_OBJECTID = "%objectId%";
+
 	private static final String[] COMMANDS =
 	{
 		"olympiaddesc",
@@ -109,14 +111,14 @@ public class OlympiadManagerLink implements IBypassHandler
 				if (player.getClassIndex() != 0)
 				{
 					html.setFile(player, Olympiad.OLYMPIAD_HTML_PATH + "noble_sub.htm");
-					html.replace("%objectId%", String.valueOf(target.getObjectId()));
+					html.replace(PH_OBJECTID, String.valueOf(target.getObjectId()));
 					player.sendPacket(html);
 					return false;
 				}
 				if (!player.isNoble() || (player.getPlayerClass().level() < 3))
 				{
 					html.setFile(player, Olympiad.OLYMPIAD_HTML_PATH + "noble_thirdclass.htm");
-					html.replace("%objectId%", String.valueOf(target.getObjectId()));
+					html.replace(PH_OBJECTID, String.valueOf(target.getObjectId()));
 					player.sendPacket(html);
 					return false;
 				}
@@ -129,7 +131,7 @@ public class OlympiadManagerLink implements IBypassHandler
 						if (!com.l2journey.gameserver.model.olympiad.OlympiadManager.getInstance().isRegistered(player))
 						{
 							html.setFile(player, Olympiad.OLYMPIAD_HTML_PATH + "noble_desc2a.htm");
-							html.replace("%objectId%", String.valueOf(target.getObjectId()));
+							html.replace(PH_OBJECTID, String.valueOf(target.getObjectId()));
 							html.replace("%olympiad_period%", String.valueOf(Olympiad.getInstance().getPeriod()));
 							html.replace("%olympiad_cycle%", String.valueOf(Olympiad.getInstance().getCurrentCycle()));
 							html.replace("%olympiad_opponent%", String.valueOf(com.l2journey.gameserver.model.olympiad.OlympiadManager.getInstance().getCountOpponents()));
@@ -138,7 +140,7 @@ public class OlympiadManagerLink implements IBypassHandler
 						else
 						{
 							html.setFile(player, Olympiad.OLYMPIAD_HTML_PATH + "noble_unregister.htm");
-							html.replace("%objectId%", String.valueOf(target.getObjectId()));
+							html.replace(PH_OBJECTID, String.valueOf(target.getObjectId()));
 							player.sendPacket(html);
 						}
 						break;
@@ -177,7 +179,7 @@ public class OlympiadManagerLink implements IBypassHandler
 							html.replace("%listNonClassedTeam%", String.valueOf(teams));
 							html.replace("%listNonClassed%", String.valueOf(nonClassed));
 						}
-						html.replace("%objectId%", String.valueOf(target.getObjectId()));
+						html.replace(PH_OBJECTID, String.valueOf(target.getObjectId()));
 						player.sendPacket(html);
 						break;
 					}
@@ -186,7 +188,7 @@ public class OlympiadManagerLink implements IBypassHandler
 						final int points = Olympiad.getInstance().getNoblePoints(player.getObjectId());
 						html.setFile(player, Olympiad.OLYMPIAD_HTML_PATH + "noble_points1.htm");
 						html.replace("%points%", String.valueOf(points));
-						html.replace("%objectId%", String.valueOf(target.getObjectId()));
+						html.replace(PH_OBJECTID, String.valueOf(target.getObjectId()));
 						player.sendPacket(html);
 						break;
 					}
@@ -205,13 +207,13 @@ public class OlympiadManagerLink implements IBypassHandler
 						if (player.getVariables().getInt(Olympiad.UNCLAIMED_OLYMPIAD_PASSES_VAR, 0) > 0)
 						{
 							html.setFile(player, Olympiad.OLYMPIAD_HTML_PATH + "noble_settle.htm");
-							html.replace("%objectId%", String.valueOf(target.getObjectId()));
+							html.replace(PH_OBJECTID, String.valueOf(target.getObjectId()));
 							player.sendPacket(html);
 						}
 						else
 						{
 							html.setFile(player, Olympiad.OLYMPIAD_HTML_PATH + "noble_nopoints2.htm");
-							html.replace("%objectId%", String.valueOf(target.getObjectId()));
+							html.replace(PH_OBJECTID, String.valueOf(target.getObjectId()));
 							player.sendPacket(html);
 						}
 						break;
@@ -231,7 +233,7 @@ public class OlympiadManagerLink implements IBypassHandler
 						final int point = Olympiad.getInstance().getLastNobleOlympiadPoints(player.getObjectId());
 						html.setFile(player, Olympiad.OLYMPIAD_HTML_PATH + "noble_points2.htm");
 						html.replace("%points%", String.valueOf(point));
-						html.replace("%objectId%", String.valueOf(target.getObjectId()));
+						html.replace(PH_OBJECTID, String.valueOf(target.getObjectId()));
 						player.sendPacket(html);
 						break;
 					}
@@ -303,13 +305,13 @@ public class OlympiadManagerLink implements IBypassHandler
 				if (buffCount > 0)
 				{
 					html.setFile(player, buffCount == EventsConfig.OLYMPIAD_MAX_BUFFS ? Olympiad.OLYMPIAD_HTML_PATH + "olympiad_buffs.htm" : Olympiad.OLYMPIAD_HTML_PATH + "olympiad_5buffs.htm");
-					html.replace("%objectId%", String.valueOf(target.getObjectId()));
+					html.replace(PH_OBJECTID, String.valueOf(target.getObjectId()));
 					player.sendPacket(html);
 				}
 				else
 				{
 					html.setFile(player, Olympiad.OLYMPIAD_HTML_PATH + "olympiad_nobuffs.htm");
-					html.replace("%objectId%", String.valueOf(target.getObjectId()));
+					html.replace(PH_OBJECTID, String.valueOf(target.getObjectId()));
 					player.sendPacket(html);
 					target.decayMe();
 				}
@@ -345,7 +347,7 @@ public class OlympiadManagerLink implements IBypassHandler
 								reply.replace("%place" + index + "%", "");
 								reply.replace("%rank" + index + "%", "");
 							}
-							reply.replace("%objectId%", String.valueOf(target.getObjectId()));
+							reply.replace(PH_OBJECTID, String.valueOf(target.getObjectId()));
 							player.sendPacket(reply);
 						}
 						break;

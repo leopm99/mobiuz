@@ -84,6 +84,15 @@ import instances.AbstractInstance;
  */
 public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 {
+	private static final String DARKCHOIRPLAYERCOUNT = "darkChoirPlayerCount";
+	private static final String SONGEFFECTTASK = "songEffectTask";
+	private static final String ACTIVESCARLET = "activeScarlet";
+	private static final String FRINTEZZA_KEY = "frintezza";
+	private static final String SONGTASK = "songTask";
+	private static final String NPCLIST = "npcList";
+	private static final String ISVIDEO = "isVideo";
+	private static final String PORTRAITS_KEY = "portraits";
+
 	private static final Logger LOGGER = Logger.getLogger(FinalEmperialTomb.class.getName());
 	
 	protected static class FETSpawn
@@ -562,7 +571,7 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 	
 	protected synchronized boolean checkKillProgress(Npc mob, InstanceWorld world)
 	{
-		final List<Npc> npcList = world.getParameters().getList("npcList", Npc.class, new ArrayList<>());
+		final List<Npc> npcList = world.getParameters().getList(NPCLIST, Npc.class, new ArrayList<>());
 		if (npcList.contains(mob))
 		{
 			npcList.remove(mob);
@@ -607,7 +616,7 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 			LOGGER.info("[Final Emperial Tomb] Starting " + world.getStatus() + ". status.");
 		}
 		
-		world.setParameter("npcList", new ArrayList<>());
+		world.setParameter(NPCLIST, new ArrayList<>());
 		switch (world.getStatus())
 		{
 			case 0:
@@ -637,13 +646,13 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 			}
 			case 3: // first morph
 			{
-				ScheduledFuture<?> songEffectTask = world.getParameters().getObject("songEffectTask", ScheduledFuture.class);
+				ScheduledFuture<?> songEffectTask = world.getParameters().getObject(SONGEFFECTTASK, ScheduledFuture.class);
 				if (songEffectTask != null)
 				{
 					songEffectTask.cancel(false);
 				}
 				
-				final Npc activeScarlet = world.getParameters().getObject("activeScarlet", Npc.class);
+				final Npc activeScarlet = world.getParameters().getObject(ACTIVESCARLET, Npc.class);
 				if (activeScarlet != null)
 				{
 					activeScarlet.setInvul(true);
@@ -660,12 +669,12 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 			}
 			case 4: // second morph
 			{
-				final Npc frintezza = world.getParameters().getObject("frintezza", Npc.class);
+				final Npc frintezza = world.getParameters().getObject(FRINTEZZA_KEY, Npc.class);
 				if (frintezza != null)
 				{
-					world.setParameter("isVideo", true);
-					broadcastPacket(world, new MagicSkillCanceled(world.getParameters().getObject("frintezza", Npc.class).getObjectId()));
-					ScheduledFuture<?> songEffectTask = world.getParameters().getObject("songEffectTask", ScheduledFuture.class);
+					world.setParameter(ISVIDEO, true);
+					broadcastPacket(world, new MagicSkillCanceled(world.getParameters().getObject(FRINTEZZA_KEY, Npc.class).getObjectId()));
+					ScheduledFuture<?> songEffectTask = world.getParameters().getObject(SONGEFFECTTASK, ScheduledFuture.class);
 					if (songEffectTask != null)
 					{
 						songEffectTask.cancel(false);
@@ -678,15 +687,15 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 			}
 			case 5: // raid success
 			{
-				world.setParameter("isVideo", true);
-				broadcastPacket(world, new MagicSkillCanceled(world.getParameters().getObject("frintezza", Npc.class).getObjectId()));
-				ScheduledFuture<?> songTask = world.getParameters().getObject("songTask", ScheduledFuture.class);
+				world.setParameter(ISVIDEO, true);
+				broadcastPacket(world, new MagicSkillCanceled(world.getParameters().getObject(FRINTEZZA_KEY, Npc.class).getObjectId()));
+				ScheduledFuture<?> songTask = world.getParameters().getObject(SONGTASK, ScheduledFuture.class);
 				if (songTask != null)
 				{
 					songTask.cancel(true);
 				}
 				
-				ScheduledFuture<?> songEffectTask = world.getParameters().getObject("songEffectTask", ScheduledFuture.class);
+				ScheduledFuture<?> songEffectTask = world.getParameters().getObject(SONGEFFECTTASK, ScheduledFuture.class);
 				if (songEffectTask != null)
 				{
 					songEffectTask.cancel(false);
@@ -733,9 +742,9 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 		final Npc npc = addSpawn(npcId, x, y, z, h, false, 0, false, world.getInstanceId());
 		if (addToKillTable)
 		{
-			final List<Npc> npcList = world.getParameters().getList("npcList", Npc.class, new ArrayList<>());
+			final List<Npc> npcList = world.getParameters().getList(NPCLIST, Npc.class, new ArrayList<>());
 			npcList.add(npc);
-			world.setParameter("npcList", npcList);
+			world.setParameter(NPCLIST, npcList);
 		}
 		
 		npc.setRandomWalking(false);
@@ -751,12 +760,14 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 		
 		if (npcId == DARK_CHOIR_PLAYER)
 		{
-			world.setParameter("darkChoirPlayerCount", world.getParameters().getInt("darkChoirPlayerCount", 0) + 1);
+			world.setParameter(DARKCHOIRPLAYERCOUNT, world.getParameters().getInt(DARKCHOIRPLAYERCOUNT, 0) + 1);
 		}
 	}
 	
 	private class DemonSpawnTask implements Runnable
 	{
+		private static final String DEMONS_KEY = "demons";
+
 		private final InstanceWorld _world;
 		
 		DemonSpawnTask(InstanceWorld world)
@@ -767,7 +778,7 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 		@Override
 		public void run()
 		{
-			final Map<Npc, Integer> portraits = _world.getParameters().getMap("portraits", Npc.class, Integer.class);
+			final Map<Npc, Integer> portraits = _world.getParameters().getMap(PORTRAITS_KEY, Npc.class, Integer.class);
 			if ((InstanceManager.getInstance().getWorld(_world.getInstanceId()) != _world) || (portraits == null) || portraits.isEmpty())
 			{
 				if (DEBUG)
@@ -777,7 +788,7 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 				return;
 			}
 			
-			final List<Monster> demons = _world.getParameters().getList("demons", Monster.class, new ArrayList<>());
+			final List<Monster> demons = _world.getParameters().getList(DEMONS_KEY, Monster.class, new ArrayList<>());
 			for (int i : portraits.values())
 			{
 				if (_world.getAliveNpcs(DEMONS).size() > MAX_DEMONS)
@@ -789,7 +800,7 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 				demons.add(demon);
 			}
 			
-			_world.setParameter("demons", demons);
+			_world.setParameter(DEMONS_KEY, demons);
 			ThreadPool.schedule(new DemonSpawnTask(_world), TIME_BETWEEN_DEMON_SPAWNS);
 		}
 	}
@@ -833,10 +844,10 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 			{
 				case 0: // new song play
 				{
-					final Npc frintezza = _world.getParameters().getObject("frintezza", Npc.class);
-					if (_world.getParameters().getBoolean("isVideo", false))
+					final Npc frintezza = _world.getParameters().getObject(FRINTEZZA_KEY, Npc.class);
+					if (_world.getParameters().getBoolean(ISVIDEO, false))
 					{
-						_world.setParameter("songTask", ThreadPool.schedule(new SongTask(_world, 0), 1000));
+						_world.setParameter(SONGTASK, ThreadPool.schedule(new SongTask(_world, 0), 1000));
 					}
 					else if ((frintezza != null) && !frintezza.isDead())
 					{
@@ -850,8 +861,8 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 									_world.setParameter("OnSong", element);
 									broadcastPacket(_world, new ExShowScreenMessage(2, -1, 2, 0, 0, 0, 0, true, 4000, false, null, element.songName, null));
 									broadcastPacket(_world, new MagicSkillUse(frintezza, frintezza, element.skill.getSkillId(), element.skill.getSkillLevel(), element.skill.getSkill().getHitTime(), 0));
-									_world.setParameter("songEffectTask", ThreadPool.schedule(new SongTask(_world, 1), element.skill.getSkill().getHitTime() - 10000L));
-									_world.setParameter("songTask", ThreadPool.schedule(new SongTask(_world, 0), element.skill.getSkill().getHitTime()));
+									_world.setParameter(SONGEFFECTTASK, ThreadPool.schedule(new SongTask(_world, 1), element.skill.getSkill().getHitTime() - 10000L));
+									_world.setParameter(SONGTASK, ThreadPool.schedule(new SongTask(_world, 0), element.skill.getSkill().getHitTime()));
 									break;
 								}
 							}
@@ -865,7 +876,7 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 				}
 				case 1: // Frintezza song effect
 				{
-					ScheduledFuture<?> songEffectTask = _world.getParameters().getObject("songEffectTask", ScheduledFuture.class);
+					ScheduledFuture<?> songEffectTask = _world.getParameters().getObject(SONGEFFECTTASK, ScheduledFuture.class);
 					if (songEffectTask != null)
 					{
 						songEffectTask.cancel(false);
@@ -877,8 +888,8 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 						return;
 					}
 					
-					final Npc frintezza = _world.getParameters().getObject("frintezza", Npc.class);
-					final Npc activeScarlet = _world.getParameters().getObject("activeScarlet", Npc.class);
+					final Npc frintezza = _world.getParameters().getObject(FRINTEZZA_KEY, Npc.class);
+					final Npc activeScarlet = _world.getParameters().getObject(ACTIVESCARLET, Npc.class);
 					if ((frintezza != null) && !frintezza.isDead() && (activeScarlet != null) && !activeScarlet.isDead())
 					{
 						final List<WorldObject> targetList = new ArrayList<>();
@@ -914,7 +925,7 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 				}
 				case 2: // finish morph
 				{
-					final Npc activeScarlet = _world.getParameters().getObject("activeScarlet", Npc.class);
+					final Npc activeScarlet = _world.getParameters().getObject(ACTIVESCARLET, Npc.class);
 					activeScarlet.setRHandId(SECOND_SCARLET_WEAPON);
 					activeScarlet.setInvul(false);
 					break;
@@ -929,6 +940,13 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 	
 	private class IntroTask implements Runnable
 	{
+		private static final String PORTRAITDUMMY1 = "portraitDummy1";
+		private static final String PORTRAITDUMMY3 = "portraitDummy3";
+		private static final String FRINTEZZADUMMY = "frintezzaDummy";
+		private static final String OVERHEADDUMMY = "overheadDummy";
+		private static final String SCARLETDUMMY = "scarletDummy";
+		private static final String SCARLET_A = "scarlet_a";
+
 		private final InstanceWorld _world;
 		private final int _status;
 		private volatile boolean running = false;
@@ -988,31 +1006,31 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 					final Npc frintezzaDummy = addSpawn(29052, -87784, -155083, -9087, 16048, false, 0, false, _world.getInstanceId());
 					frintezzaDummy.setInvul(true);
 					frintezzaDummy.setImmobilized(true);
-					_world.setParameter("frintezzaDummy", frintezzaDummy);
+					_world.setParameter(FRINTEZZADUMMY, frintezzaDummy);
 					final Npc overheadDummy = addSpawn(29052, -87784, -153298, -9175, 16384, false, 0, false, _world.getInstanceId());
 					overheadDummy.setInvul(true);
 					overheadDummy.setImmobilized(true);
 					overheadDummy.setCollisionHeight(600);
-					_world.setParameter("overheadDummy", overheadDummy);
+					_world.setParameter(OVERHEADDUMMY, overheadDummy);
 					final Npc portraitDummy1 = addSpawn(29052, -89566, -153168, -9165, 16048, false, 0, false, _world.getInstanceId());
 					portraitDummy1.setImmobilized(true);
 					portraitDummy1.setInvul(true);
-					_world.setParameter("portraitDummy1", portraitDummy1);
+					_world.setParameter(PORTRAITDUMMY1, portraitDummy1);
 					final Npc portraitDummy3 = addSpawn(29052, -86004, -153168, -9165, 16048, false, 0, false, _world.getInstanceId());
 					portraitDummy3.setImmobilized(true);
 					portraitDummy3.setInvul(true);
-					_world.setParameter("portraitDummy3", portraitDummy3);
+					_world.setParameter(PORTRAITDUMMY3, portraitDummy3);
 					final Npc scarletDummy = addSpawn(29053, -87784, -153298, -9175, 16384, false, 0, false, _world.getInstanceId());
 					scarletDummy.setInvul(true);
 					scarletDummy.setImmobilized(true);
-					_world.setParameter("scarletDummy", scarletDummy);
+					_world.setParameter(SCARLETDUMMY, scarletDummy);
 					stopPc();
 					ThreadPool.schedule(new IntroTask(_world, 3), 1000);
 					break;
 				}
 				case 3:
 				{
-					final Npc overheadDummy = _world.getParameters().getObject("overheadDummy", Npc.class);
+					final Npc overheadDummy = _world.getParameters().getObject(OVERHEADDUMMY, Npc.class);
 					broadcastPacket(_world, new SpecialCamera(overheadDummy, 0, 75, -89, 0, 100, 0, 0, 1, 0, 0));
 					broadcastPacket(_world, new SpecialCamera(overheadDummy, 0, 75, -89, 0, 100, 0, 0, 1, 0, 0));
 					broadcastPacket(_world, new SpecialCamera(overheadDummy, 300, 90, -10, 6500, 7000, 0, 0, 1, 0, 0));
@@ -1020,7 +1038,7 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 					frintezza.setImmobilized(true);
 					frintezza.setInvul(true);
 					frintezza.disableAllSkills();
-					_world.setParameter("frintezza", frintezza);
+					_world.setParameter(FRINTEZZA_KEY, frintezza);
 					final List<Monster> demons = _world.getParameters().getList("demons", Monster.class, new ArrayList<>());
 					for (int[] element : PORTRAIT_SPAWNS)
 					{
@@ -1036,19 +1054,19 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 				}
 				case 4:
 				{
-					broadcastPacket(_world, new SpecialCamera(_world.getParameters().getObject("frintezzaDummy", Npc.class), 1800, 90, 8, 6500, 7000, 0, 0, 1, 0, 0));
+					broadcastPacket(_world, new SpecialCamera(_world.getParameters().getObject(FRINTEZZADUMMY, Npc.class), 1800, 90, 8, 6500, 7000, 0, 0, 1, 0, 0));
 					ThreadPool.schedule(new IntroTask(_world, 5), 900);
 					break;
 				}
 				case 5:
 				{
-					broadcastPacket(_world, new SpecialCamera(_world.getParameters().getObject("frintezzaDummy", Npc.class), 140, 90, 10, 2500, 4500, 0, 0, 1, 0, 0));
+					broadcastPacket(_world, new SpecialCamera(_world.getParameters().getObject(FRINTEZZADUMMY, Npc.class), 140, 90, 10, 2500, 4500, 0, 0, 1, 0, 0));
 					ThreadPool.schedule(new IntroTask(_world, 6), 4000);
 					break;
 				}
 				case 6:
 				{
-					final Npc frintezza = _world.getParameters().getObject("frintezza", Npc.class);
+					final Npc frintezza = _world.getParameters().getObject(FRINTEZZA_KEY, Npc.class);
 					broadcastPacket(_world, new SpecialCamera(frintezza, 40, 75, -10, 0, 1000, 0, 0, 1, 0, 0));
 					broadcastPacket(_world, new SpecialCamera(frintezza, 40, 75, -10, 0, 12000, 0, 0, 1, 0, 0));
 					ThreadPool.schedule(new IntroTask(_world, 7), 1350);
@@ -1056,14 +1074,14 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 				}
 				case 7:
 				{
-					final Npc frintezza = _world.getParameters().getObject("frintezza", Npc.class);
+					final Npc frintezza = _world.getParameters().getObject(FRINTEZZA_KEY, Npc.class);
 					broadcastPacket(_world, new SocialAction(frintezza.getObjectId(), 2));
 					ThreadPool.schedule(new IntroTask(_world, 8), 7000);
 					break;
 				}
 				case 8:
 				{
-					Npc frintezzaDummy = _world.getParameters().getObject("frintezzaDummy", Npc.class);
+					Npc frintezzaDummy = _world.getParameters().getObject(FRINTEZZADUMMY, Npc.class);
 					frintezzaDummy.deleteMe();
 					ThreadPool.schedule(new IntroTask(_world, 9), 1000);
 					break;
@@ -1079,8 +1097,8 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 				case 10:
 				{
 					final List<Monster> demons = _world.getParameters().getList("demons", Monster.class);
-					final Npc portraitDummy1 = _world.getParameters().getObject("portraitDummy1", Npc.class);
-					final Npc portraitDummy3 = _world.getParameters().getObject("portraitDummy3", Npc.class);
+					final Npc portraitDummy1 = _world.getParameters().getObject(PORTRAITDUMMY1, Npc.class);
+					final Npc portraitDummy3 = _world.getParameters().getObject(PORTRAITDUMMY3, Npc.class);
 					broadcastPacket(_world, new SocialAction(demons.get(0).getObjectId(), 1));
 					broadcastPacket(_world, new SocialAction(demons.get(3).getObjectId(), 1));
 					sendPacketX(new SpecialCamera(portraitDummy1, 1000, 118, 0, 0, 1000, 0, 0, 1, 0, 0), new SpecialCamera(portraitDummy3, 1000, 62, 0, 0, 1000, 0, 0, 1, 0, 0), -87784);
@@ -1090,9 +1108,9 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 				}
 				case 11:
 				{
-					final Npc frintezza = _world.getParameters().getObject("frintezza", Npc.class);
-					Npc portraitDummy1 = _world.getParameters().getObject("portraitDummy1", Npc.class);
-					Npc portraitDummy3 = _world.getParameters().getObject("portraitDummy3", Npc.class);
+					final Npc frintezza = _world.getParameters().getObject(FRINTEZZA_KEY, Npc.class);
+					Npc portraitDummy1 = _world.getParameters().getObject(PORTRAITDUMMY1, Npc.class);
+					Npc portraitDummy3 = _world.getParameters().getObject(PORTRAITDUMMY3, Npc.class);
 					broadcastPacket(_world, new SpecialCamera(frintezza, 240, 90, 0, 0, 1000, 0, 0, 1, 0, 0));
 					broadcastPacket(_world, new SpecialCamera(frintezza, 240, 90, 25, 5500, 10000, 0, 0, 1, 0, 0));
 					broadcastPacket(_world, new SocialAction(frintezza.getObjectId(), 3));
@@ -1103,19 +1121,19 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 				}
 				case 12:
 				{
-					broadcastPacket(_world, new SpecialCamera(_world.getParameters().getObject("frintezza", Npc.class), 100, 195, 35, 0, 10000, 0, 0, 1, 0, 0));
+					broadcastPacket(_world, new SpecialCamera(_world.getParameters().getObject(FRINTEZZA_KEY, Npc.class), 100, 195, 35, 0, 10000, 0, 0, 1, 0, 0));
 					ThreadPool.schedule(new IntroTask(_world, 13), 700);
 					break;
 				}
 				case 13:
 				{
-					broadcastPacket(_world, new SpecialCamera(_world.getParameters().getObject("frintezza", Npc.class), 100, 195, 35, 0, 10000, 0, 0, 1, 0, 0));
+					broadcastPacket(_world, new SpecialCamera(_world.getParameters().getObject(FRINTEZZA_KEY, Npc.class), 100, 195, 35, 0, 10000, 0, 0, 1, 0, 0));
 					ThreadPool.schedule(new IntroTask(_world, 14), 1300);
 					break;
 				}
 				case 14:
 				{
-					final Npc frintezza = _world.getParameters().getObject("frintezza", Npc.class);
+					final Npc frintezza = _world.getParameters().getObject(FRINTEZZA_KEY, Npc.class);
 					broadcastPacket(_world, new ExShowScreenMessage(NpcStringId.MOURNFUL_CHORALE_PRELUDE, 2, 5000));
 					broadcastPacket(_world, new SpecialCamera(frintezza, 120, 180, 45, 1500, 10000, 0, 0, 1, 0, 0));
 					broadcastPacket(_world, new MagicSkillUse(frintezza, frintezza, 5006, 1, 34000, 0));
@@ -1124,20 +1142,20 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 				}
 				case 15:
 				{
-					broadcastPacket(_world, new SpecialCamera(_world.getParameters().getObject("frintezza", Npc.class), 520, 135, 45, 8000, 10000, 0, 0, 1, 0, 0));
+					broadcastPacket(_world, new SpecialCamera(_world.getParameters().getObject(FRINTEZZA_KEY, Npc.class), 520, 135, 45, 8000, 10000, 0, 0, 1, 0, 0));
 					ThreadPool.schedule(new IntroTask(_world, 16), 7500);
 					break;
 				}
 				case 16:
 				{
-					broadcastPacket(_world, new SpecialCamera(_world.getParameters().getObject("frintezza", Npc.class), 1500, 110, 25, 10000, 13000, 0, 0, 1, 0, 0));
+					broadcastPacket(_world, new SpecialCamera(_world.getParameters().getObject(FRINTEZZA_KEY, Npc.class), 1500, 110, 25, 10000, 13000, 0, 0, 1, 0, 0));
 					ThreadPool.schedule(new IntroTask(_world, 17), 9500);
 					break;
 				}
 				case 17:
 				{
-					final Npc overheadDummy = _world.getParameters().getObject("overheadDummy", Npc.class);
-					final Npc scarletDummy = _world.getParameters().getObject("scarletDummy", Npc.class);
+					final Npc overheadDummy = _world.getParameters().getObject(OVERHEADDUMMY, Npc.class);
+					final Npc scarletDummy = _world.getParameters().getObject(SCARLETDUMMY, Npc.class);
 					broadcastPacket(_world, new SpecialCamera(overheadDummy, 930, 160, -20, 0, 1000, 0, 0, 1, 0, 0));
 					broadcastPacket(_world, new SpecialCamera(overheadDummy, 600, 180, -25, 0, 10000, 0, 0, 1, 0, 0));
 					broadcastPacket(_world, new MagicSkillUse(scarletDummy, overheadDummy, 5004, 1, 5800, 0));
@@ -1152,21 +1170,21 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 					activeScarlet.setImmobilized(true);
 					activeScarlet.disableAllSkills();
 					broadcastPacket(_world, new SocialAction(activeScarlet.getObjectId(), 3));
-					broadcastPacket(_world, new SpecialCamera(_world.getParameters().getObject("scarletDummy", Npc.class), 800, 180, 10, 1000, 10000, 0, 0, 1, 0, 0));
-					_world.setParameter("activeScarlet", activeScarlet);
+					broadcastPacket(_world, new SpecialCamera(_world.getParameters().getObject(SCARLETDUMMY, Npc.class), 800, 180, 10, 1000, 10000, 0, 0, 1, 0, 0));
+					_world.setParameter(ACTIVESCARLET, activeScarlet);
 					ThreadPool.schedule(new IntroTask(_world, 19), 2100);
 					break;
 				}
 				case 19:
 				{
-					broadcastPacket(_world, new SpecialCamera(_world.getParameters().getObject("activeScarlet", Npc.class), 300, 60, 8, 0, 10000, 0, 0, 1, 0, 0));
+					broadcastPacket(_world, new SpecialCamera(_world.getParameters().getObject(ACTIVESCARLET, Npc.class), 300, 60, 8, 0, 10000, 0, 0, 1, 0, 0));
 					ThreadPool.schedule(new IntroTask(_world, 20), 2000);
 					break;
 				}
 				case 20:
 				{
-					broadcastPacket(_world, new SpecialCamera(_world.getParameters().getObject("activeScarlet", Npc.class), 500, 90, 10, 3000, 5000, 0, 0, 1, 0, 0));
-					_world.setParameter("songTask", ThreadPool.schedule(new SongTask(_world, 0), 100));
+					broadcastPacket(_world, new SpecialCamera(_world.getParameters().getObject(ACTIVESCARLET, Npc.class), 500, 90, 10, 3000, 5000, 0, 0, 1, 0, 0));
+					_world.setParameter(SONGTASK, ThreadPool.schedule(new SongTask(_world, 0), 100));
 					ThreadPool.schedule(new IntroTask(_world, 21), 3000);
 					break;
 				}
@@ -1179,9 +1197,9 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 						portraitsC.put(portrait, i);
 					}
 					
-					_world.setParameter("portraits", portraitsC);
-					Npc scarletDummy = _world.getParameters().getObject("scarletDummy", Npc.class);
-					Npc overheadDummy = _world.getParameters().getObject("overheadDummy", Npc.class);
+					_world.setParameter(PORTRAITS_KEY, portraitsC);
+					Npc scarletDummy = _world.getParameters().getObject(SCARLETDUMMY, Npc.class);
+					Npc overheadDummy = _world.getParameters().getObject(OVERHEADDUMMY, Npc.class);
 					overheadDummy.deleteMe();
 					scarletDummy.deleteMe();
 					ThreadPool.schedule(new IntroTask(_world, 22), 2000);
@@ -1195,13 +1213,13 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 						demon.enableAllSkills();
 					}
 					
-					final Npc activeScarlet = _world.getParameters().getObject("activeScarlet", Npc.class);
+					final Npc activeScarlet = _world.getParameters().getObject(ACTIVESCARLET, Npc.class);
 					activeScarlet.setInvul(false);
 					activeScarlet.setImmobilized(false);
 					activeScarlet.enableAllSkills();
 					activeScarlet.setRunning();
 					activeScarlet.doCast(INTRO_SKILL.getSkill());
-					final Npc frintezza = _world.getParameters().getObject("frintezza", Npc.class);
+					final Npc frintezza = _world.getParameters().getObject(FRINTEZZA_KEY, Npc.class);
 					frintezza.enableAllSkills();
 					frintezza.disableCoreAI(true);
 					frintezza.setMortal(false);
@@ -1211,7 +1229,7 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 				}
 				case 23:
 				{
-					broadcastPacket(_world, new SocialAction(_world.getParameters().getObject("frintezza", Npc.class).getObjectId(), 4));
+					broadcastPacket(_world, new SocialAction(_world.getParameters().getObject(FRINTEZZA_KEY, Npc.class).getObjectId(), 4));
 					break;
 				}
 				case 24:
@@ -1224,10 +1242,10 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 						demon.disableAllSkills();
 					}
 					
-					final Npc frintezza = _world.getParameters().getObject("frintezza", Npc.class);
+					final Npc frintezza = _world.getParameters().getObject(FRINTEZZA_KEY, Npc.class);
 					broadcastPacket(_world, new SpecialCamera(frintezza, 250, 120, 15, 0, 1000, 0, 0, 1, 0, 0));
 					broadcastPacket(_world, new SpecialCamera(frintezza, 250, 120, 15, 0, 10000, 0, 0, 1, 0, 0));
-					final Npc activeScarlet = _world.getParameters().getObject("activeScarlet", Npc.class);
+					final Npc activeScarlet = _world.getParameters().getObject(ACTIVESCARLET, Npc.class);
 					activeScarlet.abortAttack();
 					activeScarlet.abortCast();
 					activeScarlet.setInvul(true);
@@ -1238,7 +1256,7 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 				}
 				case 25:
 				{
-					final Npc frintezza = _world.getParameters().getObject("frintezza", Npc.class);
+					final Npc frintezza = _world.getParameters().getObject(FRINTEZZA_KEY, Npc.class);
 					broadcastPacket(_world, new MagicSkillUse(frintezza, frintezza, 5006, 1, 34000, 0));
 					broadcastPacket(_world, new SpecialCamera(frintezza, 500, 70, 15, 3000, 10000, 0, 0, 1, 0, 0));
 					ThreadPool.schedule(new IntroTask(_world, 26), 3000);
@@ -1246,13 +1264,13 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 				}
 				case 26:
 				{
-					broadcastPacket(_world, new SpecialCamera(_world.getParameters().getObject("frintezza", Npc.class), 2500, 90, 12, 6000, 10000, 0, 0, 1, 0, 0));
+					broadcastPacket(_world, new SpecialCamera(_world.getParameters().getObject(FRINTEZZA_KEY, Npc.class), 2500, 90, 12, 6000, 10000, 0, 0, 1, 0, 0));
 					ThreadPool.schedule(new IntroTask(_world, 27), 3000);
 					break;
 				}
 				case 27:
 				{
-					final Npc activeScarlet = _world.getParameters().getObject("activeScarlet", Npc.class);
+					final Npc activeScarlet = _world.getParameters().getObject(ACTIVESCARLET, Npc.class);
 					_world.setParameter("scarlet_x", activeScarlet.getX());
 					_world.setParameter("scarlet_y", activeScarlet.getY());
 					_world.setParameter("scarlet_z", activeScarlet.getZ());
@@ -1267,7 +1285,7 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 						scarlet_a = Math.abs(540 - (int) (activeScarlet.getHeading() / 182.044444444));
 					}
 					
-					_world.setParameter("scarlet_a", scarlet_a);
+					_world.setParameter(SCARLET_A, scarlet_a);
 					broadcastPacket(_world, new SpecialCamera(activeScarlet, 250, scarlet_a, 12, 0, 1000, 0, 0, 1, 0, 0));
 					broadcastPacket(_world, new SpecialCamera(activeScarlet, 250, scarlet_a, 12, 0, 10000, 0, 0, 1, 0, 0));
 					ThreadPool.schedule(new IntroTask(_world, 28), 500);
@@ -1275,16 +1293,16 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 				}
 				case 28:
 				{
-					final Npc activeScarlet = _world.getParameters().getObject("activeScarlet", Npc.class);
+					final Npc activeScarlet = _world.getParameters().getObject(ACTIVESCARLET, Npc.class);
 					activeScarlet.doDie(activeScarlet);
-					broadcastPacket(_world, new SpecialCamera(activeScarlet, 450, _world.getParameters().getInt("scarlet_a", 0), 14, 8000, 8000, 0, 0, 1, 0, 0));
+					broadcastPacket(_world, new SpecialCamera(activeScarlet, 450, _world.getParameters().getInt(SCARLET_A, 0), 14, 8000, 8000, 0, 0, 1, 0, 0));
 					ThreadPool.schedule(new IntroTask(_world, 29), 6250);
 					ThreadPool.schedule(new IntroTask(_world, 30), 7200);
 					break;
 				}
 				case 29:
 				{
-					final Npc activeScarlet = _world.getParameters().getObject("activeScarlet", Npc.class);
+					final Npc activeScarlet = _world.getParameters().getObject(ACTIVESCARLET, Npc.class);
 					activeScarlet.deleteMe();
 					break;
 				}
@@ -1294,14 +1312,14 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 					activeScarlet.setInvul(true);
 					activeScarlet.setImmobilized(true);
 					activeScarlet.disableAllSkills();
-					broadcastPacket(_world, new SpecialCamera(activeScarlet, 450, _world.getParameters().getInt("scarlet_a", 0), 12, 500, 14000, 0, 0, 1, 0, 0));
-					_world.setParameter("activeScarlet", activeScarlet);
+					broadcastPacket(_world, new SpecialCamera(activeScarlet, 450, _world.getParameters().getInt(SCARLET_A, 0), 12, 500, 14000, 0, 0, 1, 0, 0));
+					_world.setParameter(ACTIVESCARLET, activeScarlet);
 					ThreadPool.schedule(new IntroTask(_world, 31), 8100);
 					break;
 				}
 				case 31:
 				{
-					broadcastPacket(_world, new SocialAction(_world.getParameters().getObject("activeScarlet", Npc.class).getObjectId(), 2));
+					broadcastPacket(_world, new SocialAction(_world.getParameters().getObject(ACTIVESCARLET, Npc.class).getObjectId(), 2));
 					ThreadPool.schedule(new IntroTask(_world, 32), 9000);
 					break;
 				}
@@ -1314,17 +1332,17 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 					}
 					
 					startPc();
-					final Npc activeScarlet = _world.getParameters().getObject("activeScarlet", Npc.class);
+					final Npc activeScarlet = _world.getParameters().getObject(ACTIVESCARLET, Npc.class);
 					activeScarlet.setInvul(false);
 					activeScarlet.setImmobilized(false);
 					activeScarlet.enableAllSkills();
-					_world.setParameter("isVideo", false);
+					_world.setParameter(ISVIDEO, false);
 					break;
 				}
 				case 33:
 				{
-					final Npc activeScarlet = _world.getParameters().getObject("activeScarlet", Npc.class);
-					final int scarlet_a = _world.getParameters().getInt("scarlet_a", 0);
+					final Npc activeScarlet = _world.getParameters().getObject(ACTIVESCARLET, Npc.class);
+					final int scarlet_a = _world.getParameters().getInt(SCARLET_A, 0);
 					broadcastPacket(_world, new SpecialCamera(activeScarlet, 300, scarlet_a - 180, 5, 0, 7000, 0, 0, 1, 0, 0));
 					broadcastPacket(_world, new SpecialCamera(activeScarlet, 200, scarlet_a, 85, 4000, 10000, 0, 0, 1, 0, 0));
 					ThreadPool.schedule(new IntroTask(_world, 34), 7400);
@@ -1333,13 +1351,13 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 				}
 				case 34:
 				{
-					final Npc frintezza = _world.getParameters().getObject("frintezza", Npc.class);
+					final Npc frintezza = _world.getParameters().getObject(FRINTEZZA_KEY, Npc.class);
 					frintezza.doDie(frintezza);
 					break;
 				}
 				case 35:
 				{
-					final Npc frintezza = _world.getParameters().getObject("frintezza", Npc.class);
+					final Npc frintezza = _world.getParameters().getObject(FRINTEZZA_KEY, Npc.class);
 					broadcastPacket(_world, new SpecialCamera(frintezza, 100, 120, 5, 0, 7000, 0, 0, 1, 0, 0));
 					broadcastPacket(_world, new SpecialCamera(frintezza, 100, 90, 5, 5000, 15000, 0, 0, 1, 0, 0));
 					ThreadPool.schedule(new IntroTask(_world, 36), 7000);
@@ -1347,14 +1365,14 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 				}
 				case 36:
 				{
-					broadcastPacket(_world, new SpecialCamera(_world.getParameters().getObject("frintezza", Npc.class), 900, 90, 25, 7000, 10000, 0, 0, 1, 0, 0));
+					broadcastPacket(_world, new SpecialCamera(_world.getParameters().getObject(FRINTEZZA_KEY, Npc.class), 900, 90, 25, 7000, 10000, 0, 0, 1, 0, 0));
 					ThreadPool.schedule(new IntroTask(_world, 37), 9000);
 					break;
 				}
 				case 37:
 				{
 					controlStatus(_world);
-					_world.setParameter("isVideo", false);
+					_world.setParameter(ISVIDEO, false);
 					startPc();
 					break;
 				}
@@ -1493,7 +1511,7 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 				}
 			}
 			
-			for (Npc mob : _world.getParameters().getList("npcList", Npc.class, new ArrayList<>()))
+			for (Npc mob : _world.getParameters().getList(NPCLIST, Npc.class, new ArrayList<>()))
 			{
 				mob.setImmobilized(false);
 				mob.disableCoreAI(false);
@@ -1531,7 +1549,7 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 		{
 			if (npc.getId() == DARK_CHOIR_PLAYER)
 			{
-				for (Npc mob : world.getParameters().getList("npcList", Npc.class, new ArrayList<>()))
+				for (Npc mob : world.getParameters().getList(NPCLIST, Npc.class, new ArrayList<>()))
 				{
 					mob.setImmobilized(true);
 					mob.disableCoreAI(true);
@@ -1596,8 +1614,8 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 			}
 			else if (npc.getId() == DARK_CHOIR_PLAYER)
 			{
-				final int darkChoirPlayerCount = world.getParameters().getInt("darkChoirPlayerCount", 0) - 1;
-				world.setParameter("darkChoirPlayerCount", darkChoirPlayerCount);
+				final int darkChoirPlayerCount = world.getParameters().getInt(DARKCHOIRPLAYERCOUNT, 0) - 1;
+				world.setParameter(DARKCHOIRPLAYERCOUNT, darkChoirPlayerCount);
 				if (darkChoirPlayerCount < 1)
 				{
 					ThreadPool.schedule(new StatusTask(world, 2), 2000);
@@ -1614,7 +1632,7 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 					mobs.doDie(null);
 				}
 				
-				world.setParameter("portraits", 0);
+				world.setParameter(PORTRAITS_KEY, 0);
 				controlStatus(world);
 			}
 			else if (world.getStatus() <= 2)
@@ -1640,11 +1658,11 @@ public class FinalEmperialTomb extends AbstractInstance implements IXmlReader
 			}
 			else if (ArrayUtil.contains(PORTRAITS, npc.getId()))
 			{
-				final Map<Npc, Integer> portraits = world.getParameters().getMap("portraits", Npc.class, Integer.class);
+				final Map<Npc, Integer> portraits = world.getParameters().getMap(PORTRAITS_KEY, Npc.class, Integer.class);
 				if (portraits != null)
 				{
 					portraits.remove(npc);
-					world.setParameter("portraits", portraits);
+					world.setParameter(PORTRAITS_KEY, portraits);
 				}
 			}
 		}

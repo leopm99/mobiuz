@@ -47,6 +47,8 @@ import ai.AbstractNpcAI;
  */
 public class PrisonGuards extends AbstractNpcAI
 {
+	private static final String CHECK_HOME = "CHECK_HOME";
+
 	// NPCs
 	private static final int GUARD_HEAD = 18367; // Prison Guard
 	private static final int GUARD = 18368; // Prison Guard
@@ -73,13 +75,13 @@ public class PrisonGuards extends AbstractNpcAI
 		{
 			npc.setScriptValue(0);
 		}
-		else if (event.equals("CHECK_HOME"))
+		else if (event.equals(CHECK_HOME))
 		{
 			if ((npc.calculateDistance2D(npc.getSpawn().getLocation()) > 10) && !npc.isInCombat() && !npc.isDead())
 			{
 				npc.teleToLocation(npc.getSpawn().getLocation());
 			}
-			startQuestTimer("CHECK_HOME", 30000, npc, null);
+			startQuestTimer(CHECK_HOME, 30000, npc, null);
 		}
 		return super.onEvent(event, npc, player);
 	}
@@ -153,8 +155,8 @@ public class PrisonGuards extends AbstractNpcAI
 		else
 		{
 			npc.setRandomWalking(false);
-			cancelQuestTimer("CHECK_HOME", npc, null);
-			startQuestTimer("CHECK_HOME", 30000, npc, null);
+			cancelQuestTimer(CHECK_HOME, npc, null);
+			startQuestTimer(CHECK_HOME, 30000, npc, null);
 		}
 	}
 	

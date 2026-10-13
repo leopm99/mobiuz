@@ -37,6 +37,9 @@ import com.l2journey.gameserver.util.HtmlUtil;
  */
 public class AdminSearch implements IAdminCommandHandler
 {
+	private static final String PH_ITEMS = "%items%";
+	private static final String PH_PAGES = "%pages%";
+
 	private static final int PAGE_LIMIT = 15;
 	
 	private static final String[] ADMIN_COMMANDS =
@@ -55,8 +58,8 @@ public class AdminSearch implements IAdminCommandHandler
 			{
 				final NpcHtmlMessage html = new NpcHtmlMessage(0);
 				html.setFile(activeChar, "data/html/admin/search.htm");
-				html.replace("%items%", "");
-				html.replace("%pages%", "");
+				html.replace(PH_ITEMS, "");
+				html.replace(PH_PAGES, "");
 				activeChar.sendPacket(html);
 			}
 			else
@@ -96,8 +99,8 @@ public class AdminSearch implements IAdminCommandHandler
 		
 		if (items.isEmpty())
 		{
-			html.replace("%items%", "<tr><td>No items found with word " + text + ".</td></tr>");
-			html.replace("%pages%", "");
+			html.replace(PH_ITEMS, "<tr><td>No items found with word " + text + ".</td></tr>");
+			html.replace(PH_PAGES, "");
 			player.sendPacket(html);
 			return;
 		}
@@ -122,7 +125,7 @@ public class AdminSearch implements IAdminCommandHandler
 				, getFontedWord(text, item.getName()) //
 				, "</td></tr>");
 		}
-		html.replace("%items%", sb.toString());
+		html.replace(PH_ITEMS, sb.toString());
 		
 		sb.setLength(0);
 		for (int i = 0; i < max; i++)
@@ -138,7 +141,7 @@ public class AdminSearch implements IAdminCommandHandler
 			}
 		}
 		
-		html.replace("%pages%", sb.toString());
+		html.replace(PH_PAGES, sb.toString());
 		player.sendPacket(html);
 	}
 	

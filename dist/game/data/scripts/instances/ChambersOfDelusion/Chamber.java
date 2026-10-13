@@ -50,6 +50,10 @@ import instances.AbstractInstance;
  */
 public abstract class Chamber extends AbstractInstance
 {
+	private static final String CURRENTROOM = "currentRoom";
+	private static final String PARTYINSIDE = "PartyInside";
+	private static final String BANISHTASK = "banishTask";
+
 	// Items
 	private static final int ENRIA = 4042;
 	private static final int ASOFE = 4043;
@@ -111,7 +115,7 @@ public abstract class Chamber extends AbstractInstance
 	
 	private boolean isBossRoom(InstanceWorld world)
 	{
-		return (world.getParameters().getInt("currentRoom", 0) == (roomEnterPoints.length - 1));
+		return (world.getParameters().getInt(CURRENTROOM, 0) == (roomEnterPoints.length - 1));
 	}
 	
 	@Override
@@ -192,14 +196,14 @@ public abstract class Chamber extends AbstractInstance
 	
 	protected void changeRoom(InstanceWorld world)
 	{
-		final Party party = world.getParameters().getObject("PartyInside", Party.class);
+		final Party party = world.getParameters().getObject(PARTYINSIDE, Party.class);
 		final Instance instance = InstanceManager.getInstance().getInstance(world.getInstanceId());
 		if ((party == null) || (instance == null))
 		{
 			return;
 		}
 		
-		int newRoom = world.getParameters().getInt("currentRoom", 0);
+		int newRoom = world.getParameters().getInt(CURRENTROOM, 0);
 		
 		// Do nothing, if there are raid room of Sqare or Tower Chamber
 		if (isBigChamber() && isBossRoom(world))
@@ -218,7 +222,7 @@ public abstract class Chamber extends AbstractInstance
 		}
 		else
 		{
-			while (newRoom == world.getParameters().getInt("currentRoom", 0)) // otherwise teleport to another room, except current
+			while (newRoom == world.getParameters().getInt(CURRENTROOM, 0)) // otherwise teleport to another room, except current
 			{
 				newRoom = getRandom(roomEnterPoints.length);
 			}
@@ -233,7 +237,7 @@ public abstract class Chamber extends AbstractInstance
 			}
 		}
 		
-		world.setParameter("currentRoom", newRoom);
+		world.setParameter(CURRENTROOM, newRoom);
 		
 		// Do not schedule room change for Square and Tower Chambers, if raid room is reached
 		if (isBigChamber() && isBossRoom(world))
@@ -255,7 +259,7 @@ public abstract class Chamber extends AbstractInstance
 	
 	private void enter(InstanceWorld world)
 	{
-		final Party party = world.getParameters().getObject("PartyInside", Party.class);
+		final Party party = world.getParameters().getObject(PARTYINSIDE, Party.class);
 		if (party == null)
 		{
 			return;
@@ -285,7 +289,7 @@ public abstract class Chamber extends AbstractInstance
 	
 	protected void earthQuake(InstanceWorld world)
 	{
-		final Party party = world.getParameters().getObject("PartyInside", Party.class);
+		final Party party = world.getParameters().getObject(PARTYINSIDE, Party.class);
 		if (party == null)
 		{
 			return;
@@ -305,13 +309,13 @@ public abstract class Chamber extends AbstractInstance
 	{
 		if (firstEntrance)
 		{
-			world.setParameter("PartyInside", player.getParty());
-			world.setParameter("banishTask", ThreadPool.scheduleAtFixedRate(new BanishTask(world), 60000, 60000));
+			world.setParameter(PARTYINSIDE, player.getParty());
+			world.setParameter(BANISHTASK, ThreadPool.scheduleAtFixedRate(new BanishTask(world), 60000, 60000));
 			enter(world);
 		}
 		else
 		{
-			teleportPlayer(player, roomEnterPoints[world.getParameters().getInt("currentRoom", 0)], world.getInstanceId());
+			teleportPlayer(player, roomEnterPoints[world.getParameters().getInt(CURRENTROOM, 0)], world.getInstanceId());
 		}
 	}
 	
@@ -412,9 +416,9 @@ public abstract class Chamber extends AbstractInstance
 				}
 				case "look_party":
 				{
-					if ((party != null) && (party == world.getParameters().getObject("PartyInside", Party.class)))
+					if ((party != null) && (party == world.getParameters().getObject(PARTYINSIDE, Party.class)))
 					{
-						teleportPlayer(player, roomEnterPoints[world.getParameters().getInt("currentRoom", 0)], world.getInstanceId(), false);
+						teleportPlayer(player, roomEnterPoints[world.getParameters().getInt(CURRENTROOM, 0)], world.getInstanceId(), false);
 					}
 					break;
 				}
@@ -538,7 +542,7 @@ public abstract class Chamber extends AbstractInstance
 	
 	protected Party getPartyInside(InstanceWorld world)
 	{
-		return world.getParameters().getObject("PartyInside", Party.class);
+		return world.getParameters().getObject(PARTYINSIDE, Party.class);
 	}
 	
 	protected void scheduleRoomChange(InstanceWorld world, boolean bossRoom)
@@ -555,7 +559,7 @@ public abstract class Chamber extends AbstractInstance
 	
 	protected void stopBanishTask(InstanceWorld world)
 	{
-		final ScheduledFuture<?> banishTask = world.getParameters().getObject("banishTask", ScheduledFuture.class);
+		final ScheduledFuture<?> banishTask = world.getParameters().getObject(BANISHTASK, ScheduledFuture.class);
 		if (banishTask != null)
 		{
 			banishTask.cancel(true);
@@ -586,7 +590,7 @@ public abstract class Chamber extends AbstractInstance
 			final Instance instance = InstanceManager.getInstance().getInstance(_world.getInstanceId());
 			if ((instance == null) || ((instance.getInstanceEndTime() - System.currentTimeMillis()) < 60000))
 			{
-				final ScheduledFuture<?> banishTask = _world.getParameters().getObject("banishTask", ScheduledFuture.class);
+				final ScheduledFuture<?> banishTask = _world.getParameters().getObject(BANISHTASK, ScheduledFuture.class);
 				if (banishTask != null)
 				{
 					banishTask.cancel(true);
@@ -599,7 +603,7 @@ public abstract class Chamber extends AbstractInstance
 					final Player pl = World.getInstance().getPlayer(objId);
 					if ((pl != null) && pl.isOnline())
 					{
-						final Party party = _world.getParameters().getObject("PartyInside", Party.class);
+						final Party party = _world.getParameters().getObject(PARTYINSIDE, Party.class);
 						if ((party == null) || !pl.isInParty() || (party != pl.getParty()))
 						{
 							exitInstance(pl);

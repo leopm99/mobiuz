@@ -33,6 +33,8 @@ import com.l2journey.gameserver.network.serverpackets.NpcHtmlMessage;
 
 public class Doorman extends Folk
 {
+	private static final String HTML_PATH = "data/html/doorman/";
+
 	/**
 	 * Creates a doorman.
 	 * @param template the doorman NPC template
@@ -100,11 +102,11 @@ public class Doorman extends Folk
 		final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
 		if (!isOwnerClan(player))
 		{
-			html.setFile(player, "data/html/doorman/" + getTemplate().getId() + "-no.htm");
+			html.setFile(player, HTML_PATH + getTemplate().getId() + "-no.htm");
 		}
 		else
 		{
-			html.setFile(player, "data/html/doorman/" + getTemplate().getId() + ".htm");
+			html.setFile(player, HTML_PATH + getTemplate().getId() + ".htm");
 		}
 		
 		html.replace("%objectId%", String.valueOf(getObjectId()));
@@ -138,7 +140,7 @@ public class Doorman extends Folk
 		player.sendPacket(ActionFailed.STATIC_PACKET);
 		
 		final NpcHtmlMessage html = new NpcHtmlMessage(getObjectId());
-		html.setFile(player, "data/html/doorman/" + getTemplate().getId() + "-busy.htm");
+		html.setFile(player, HTML_PATH + getTemplate().getId() + "-busy.htm");
 		player.sendPacket(html);
 	}
 	

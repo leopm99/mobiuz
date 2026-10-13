@@ -58,6 +58,8 @@ import quests.Q00176_StepsForHonor.Q00176_StepsForHonor;
  */
 public class TerritoryWarSuperClass extends Quest
 {
+	private static final String KILLS = "kills";
+
 	// "For the Sake of the Territory ..." quests variables
 	public int catapultId;
 	public int territoryId;
@@ -445,8 +447,8 @@ public class TerritoryWarSuperClass extends Quest
 			}
 			else if ((cond == 1) || (cond == 3))
 			{
-				final int kills = qs.getInt("kills") + 1;
-				qs.set("kills", Integer.toString(kills));
+				final int kills = qs.getInt(KILLS) + 1;
+				qs.set(KILLS, Integer.toString(kills));
 				if (kills >= enemyCount)
 				{
 					qs.setCond((cond == 1) ? 2 : 4);
@@ -463,27 +465,27 @@ public class TerritoryWarSuperClass extends Quest
 			final int cond = q176.getCond();
 			if ((cond == 1) || (cond == 3) || (cond == 5) || (cond == 7))
 			{
-				final int kills = q176.getInt("kills") + 1;
-				q176.set("kills", kills);
+				final int kills = q176.getInt(KILLS) + 1;
+				q176.set(KILLS, kills);
 				if ((cond == 1) && (kills >= 9))
 				{
 					q176.setCond(2);
-					q176.set("kills", "0");
+					q176.set(KILLS, "0");
 				}
 				else if ((cond == 3) && (kills >= 18))
 				{
 					q176.setCond(4);
-					q176.set("kills", "0");
+					q176.set(KILLS, "0");
 				}
 				else if ((cond == 5) && (kills >= 27))
 				{
 					q176.setCond(6);
-					q176.set("kills", "0");
+					q176.set(KILLS, "0");
 				}
 				else if ((cond == 7) && (kills >= 36))
 				{
 					q176.setCond(8);
-					q176.unset("kills");
+					q176.unset(KILLS);
 				}
 			}
 		}

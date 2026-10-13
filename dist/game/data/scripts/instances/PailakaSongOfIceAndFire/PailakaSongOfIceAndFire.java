@@ -46,6 +46,8 @@ import instances.AbstractInstance;
  */
 public class PailakaSongOfIceAndFire extends AbstractInstance
 {
+	private static final String BLOOM_TIMER = "BLOOM_TIMER";
+
 	// NPCs
 	private static final int ADLER1 = 32497;
 	private static final int GARGOS = 18607;
@@ -112,7 +114,7 @@ public class PailakaSongOfIceAndFire extends AbstractInstance
 				}
 				break;
 			}
-			case "BLOOM_TIMER":
+			case BLOOM_TIMER:
 			{
 				startQuestTimer("BLOOM_TIMER2", getRandom(2, 4) * 60 * 1000, npc, null);
 				break;
@@ -120,7 +122,7 @@ public class PailakaSongOfIceAndFire extends AbstractInstance
 			case "BLOOM_TIMER2":
 			{
 				npc.setInvisible(!npc.isInvisible());
-				startQuestTimer("BLOOM_TIMER", 5000, npc, null);
+				startQuestTimer(BLOOM_TIMER, 5000, npc, null);
 				break;
 			}
 			default:
@@ -203,7 +205,7 @@ public class PailakaSongOfIceAndFire extends AbstractInstance
 	public void onSpawn(Npc npc)
 	{
 		npc.setInvisible(true);
-		startQuestTimer("BLOOM_TIMER", 1000, npc, null);
+		startQuestTimer(BLOOM_TIMER, 1000, npc, null);
 	}
 	
 	public static void main(String[] args)

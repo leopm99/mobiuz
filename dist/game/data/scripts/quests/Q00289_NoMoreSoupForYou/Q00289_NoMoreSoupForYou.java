@@ -32,6 +32,8 @@ import quests.Q00252_ItSmellsDelicious.Q00252_ItSmellsDelicious;
  */
 public class Q00289_NoMoreSoupForYou extends Quest
 {
+	private static final String HTML_N_30200_04 = "30200-04.htm";
+
 	// NPC
 	public static final int STAN = 30200;
 	// Item
@@ -188,7 +190,7 @@ public class Q00289_NoMoreSoupForYou extends Quest
 					giveItems(player, WEAPONS[c][0], WEAPONS[c][1]);
 					takeItems(player, SOUP, 500);
 					playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-					htmltext = "30200-04.htm";
+					htmltext = HTML_N_30200_04;
 				}
 				else
 				{
@@ -202,7 +204,7 @@ public class Q00289_NoMoreSoupForYou extends Quest
 					giveItems(player, ARMORS[b][0], ARMORS[b][1]);
 					takeItems(player, SOUP, 100);
 					playSound(player, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-					htmltext = "30200-04.htm";
+					htmltext = HTML_N_30200_04;
 				}
 				else
 				{
@@ -249,7 +251,7 @@ public class Q00289_NoMoreSoupForYou extends Quest
 				{
 					if (qs.isCond(1))
 					{
-						htmltext = (getQuestItemsCount(player, SOUP) >= 100) ? "30200-04.htm" : "30200-03.htm";
+						htmltext = (getQuestItemsCount(player, SOUP) >= 100) ? HTML_N_30200_04 : "30200-03.htm";
 					}
 					break;
 				}

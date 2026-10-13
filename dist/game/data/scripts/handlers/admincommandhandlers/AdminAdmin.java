@@ -39,6 +39,8 @@ import com.l2journey.gameserver.network.serverpackets.NpcHtmlMessage;
  */
 public class AdminAdmin implements IAdminCommandHandler
 {
+	private static final String HTML_GM_MENU = "gm_menu.htm";
+
 	private static final Logger LOGGER = Logger.getLogger(AdminAdmin.class.getName());
 	
 	private static final String[] ADMIN_COMMANDS =
@@ -82,13 +84,13 @@ public class AdminAdmin implements IAdminCommandHandler
 		{
 			AdminData.getInstance().addGm(activeChar, false);
 			activeChar.sendSysMessage("Registered into GM list.");
-			AdminHtml.showAdminHtml(activeChar, "gm_menu.htm");
+			AdminHtml.showAdminHtml(activeChar, HTML_GM_MENU);
 		}
 		else if (command.startsWith("admin_gmlistoff"))
 		{
 			AdminData.getInstance().addGm(activeChar, true);
 			activeChar.sendSysMessage("Removed from GM list.");
-			AdminHtml.showAdminHtml(activeChar, "gm_menu.htm");
+			AdminHtml.showAdminHtml(activeChar, HTML_GM_MENU);
 		}
 		else if (command.startsWith("admin_silence"))
 		{
@@ -102,7 +104,7 @@ public class AdminAdmin implements IAdminCommandHandler
 				activeChar.setSilenceMode(true);
 				activeChar.sendPacket(SystemMessageId.MESSAGE_REFUSAL_MODE);
 			}
-			AdminHtml.showAdminHtml(activeChar, "gm_menu.htm");
+			AdminHtml.showAdminHtml(activeChar, HTML_GM_MENU);
 		}
 		else if (command.startsWith("admin_saveolymp"))
 		{
@@ -189,7 +191,7 @@ public class AdminAdmin implements IAdminCommandHandler
 			{
 				activeChar.refreshOverloaded();
 			}
-			AdminHtml.showAdminHtml(activeChar, "gm_menu.htm");
+			AdminHtml.showAdminHtml(activeChar, HTML_GM_MENU);
 		}
 		else if (command.startsWith("admin_tradeoff"))
 		{
@@ -220,7 +222,7 @@ public class AdminAdmin implements IAdminCommandHandler
 					activeChar.sendSysMessage("Trade refusal enabled");
 				}
 			}
-			AdminHtml.showAdminHtml(activeChar, "gm_menu.htm");
+			AdminHtml.showAdminHtml(activeChar, HTML_GM_MENU);
 		}
 		else if (command.startsWith("admin_setconfig"))
 		{

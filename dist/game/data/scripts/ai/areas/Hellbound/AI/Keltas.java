@@ -48,6 +48,8 @@ import ai.AbstractNpcAI;
  */
 public class Keltas extends AbstractNpcAI
 {
+	private static final String DESPAWN = "despawn";
+
 	// NPCs
 	private static final int KELTAS = 22341;
 	private static final int ENFORCER = 22342;
@@ -165,7 +167,7 @@ public class Keltas extends AbstractNpcAI
 	@Override
 	public String onEvent(String event, Npc npc, Player player)
 	{
-		if (event.equalsIgnoreCase("despawn"))
+		if (event.equalsIgnoreCase(DESPAWN))
 		{
 			final Npc keltas = _spawnedKeltas;
 			if ((keltas != null) && !keltas.isDead())
@@ -182,7 +184,7 @@ public class Keltas extends AbstractNpcAI
 	@Override
 	public void onKill(Npc npc, Player killer, boolean isSummon)
 	{
-		cancelQuestTimers("despawn");
+		cancelQuestTimers(DESPAWN);
 		despawnMinions();
 	}
 	
@@ -192,6 +194,6 @@ public class Keltas extends AbstractNpcAI
 		_spawnedKeltas = npc.asMonster();
 		_spawnedKeltas.broadcastSay(ChatType.NPC_SHOUT, NpcStringId.GUYS_SHOW_THEM_OUR_POWER);
 		spawnMinions();
-		startQuestTimer("despawn", 1800000, null, null);
+		startQuestTimer(DESPAWN, 1800000, null, null);
 	}
 }

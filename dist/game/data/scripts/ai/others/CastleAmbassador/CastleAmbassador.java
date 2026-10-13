@@ -43,6 +43,8 @@ import ai.AbstractNpcAI;
  */
 public class CastleAmbassador extends AbstractNpcAI
 {
+	private static final String DESPAWN = "DESPAWN";
+
 	// NPCs
 	// @formatter:off
 	private static final int[] CASTLE_AMBASSADOR =
@@ -83,8 +85,8 @@ public class CastleAmbassador extends AbstractNpcAI
 					if (fortresss.getFortState() == 0)
 					{
 						fortresss.setFortState(2, fortresss.getCastleIdByAmbassador(npc.getId()));
-						cancelQuestTimer("DESPAWN", npc, null);
-						startQuestTimer("DESPAWN", 3000, npc, null);
+						cancelQuestTimer(DESPAWN, npc, null);
+						startQuestTimer(DESPAWN, 3000, npc, null);
 						htmltext = "ambassador-05.html";
 					}
 					else if (fortresss.getFortState() == 1)
@@ -98,8 +100,8 @@ public class CastleAmbassador extends AbstractNpcAI
 					if (fortresss.getFortState() == 0)
 					{
 						fortresss.setFortState(1, fortresss.getCastleIdByAmbassador(npc.getId()));
-						cancelQuestTimer("DESPAWN", npc, null);
-						startQuestTimer("DESPAWN", 3000, npc, null);
+						cancelQuestTimer(DESPAWN, npc, null);
+						startQuestTimer(DESPAWN, 3000, npc, null);
 						htmltext = "ambassador-02.html";
 					}
 					else if (fortresss.getFortState() == 2)
@@ -108,14 +110,14 @@ public class CastleAmbassador extends AbstractNpcAI
 					}
 					break;
 				}
-				case "DESPAWN":
+				case DESPAWN:
 				{
 					if (fortresss.getFortState() == 0)
 					{
 						fortresss.setFortState(1, fortresss.getCastleIdByAmbassador(npc.getId()));
 					}
-					cancelQuestTimer("DESPAWN", npc, null);
-					npc.broadcastEvent("DESPAWN", 1000, null);
+					cancelQuestTimer(DESPAWN, npc, null);
+					npc.broadcastEvent(DESPAWN, 1000, null);
 					npc.deleteMe();
 					break;
 				}
@@ -180,7 +182,7 @@ public class CastleAmbassador extends AbstractNpcAI
 		}
 		else
 		{
-			startQuestTimer("DESPAWN", 3600000, npc, null);
+			startQuestTimer(DESPAWN, 3600000, npc, null);
 		}
 	}
 	

@@ -32,6 +32,9 @@ import quests.Q00109_InSearchOfTheNest.Q00109_InSearchOfTheNest;
  */
 public class Q00640_TheZeroHour extends Quest
 {
+	private static final String HTML_N_31554_09 = "31554-09.htm";
+	private static final String HTML_N_31554_07 = "31554-07.htm";
+
 	// NPCs
 	private static final int KAHMAN = 31554;
 	private static final int[] MONSTERS_TO_HUNT =
@@ -99,11 +102,11 @@ public class Q00640_TheZeroHour extends Quest
 				{
 					takeItems(player, FANG_OF_STAKATO, 12);
 					rewardItems(player, 4042, 1); // Enria
-					htmltext = "31554-09.htm";
+					htmltext = HTML_N_31554_09;
 				}
 				else
 				{
-					htmltext = "31554-07.htm";
+					htmltext = HTML_N_31554_07;
 				}
 				break;
 			}
@@ -113,11 +116,11 @@ public class Q00640_TheZeroHour extends Quest
 				{
 					takeItems(player, FANG_OF_STAKATO, 6);
 					rewardItems(player, 4043, 1); // Asofe
-					htmltext = "31554-09.htm";
+					htmltext = HTML_N_31554_09;
 				}
 				else
 				{
-					htmltext = "31554-07.htm";
+					htmltext = HTML_N_31554_07;
 				}
 				break;
 			}
@@ -127,11 +130,11 @@ public class Q00640_TheZeroHour extends Quest
 				{
 					takeItems(player, FANG_OF_STAKATO, 6);
 					rewardItems(player, 4044, 1); // Thons
-					htmltext = "31554-09.htm";
+					htmltext = HTML_N_31554_09;
 				}
 				else
 				{
-					htmltext = "31554-07.htm";
+					htmltext = HTML_N_31554_07;
 				}
 				break;
 			}
@@ -141,11 +144,11 @@ public class Q00640_TheZeroHour extends Quest
 				{
 					takeItems(player, FANG_OF_STAKATO, 81);
 					rewardItems(player, 1887, 10); // Varnish of Purity
-					htmltext = "31554-09.htm";
+					htmltext = HTML_N_31554_09;
 				}
 				else
 				{
-					htmltext = "31554-07.htm";
+					htmltext = HTML_N_31554_07;
 				}
 				break;
 			}
@@ -155,11 +158,11 @@ public class Q00640_TheZeroHour extends Quest
 				{
 					takeItems(player, FANG_OF_STAKATO, 33);
 					rewardItems(player, 1888, 5); // Synthetic Cokes
-					htmltext = "31554-09.htm";
+					htmltext = HTML_N_31554_09;
 				}
 				else
 				{
-					htmltext = "31554-07.htm";
+					htmltext = HTML_N_31554_07;
 				}
 				break;
 			}
@@ -169,11 +172,11 @@ public class Q00640_TheZeroHour extends Quest
 				{
 					takeItems(player, FANG_OF_STAKATO, 30);
 					rewardItems(player, 1889, 10); // Compound Braid
-					htmltext = "31554-09.htm";
+					htmltext = HTML_N_31554_09;
 				}
 				else
 				{
-					htmltext = "31554-07.htm";
+					htmltext = HTML_N_31554_07;
 				}
 				break;
 			}
@@ -183,11 +186,11 @@ public class Q00640_TheZeroHour extends Quest
 				{
 					takeItems(player, FANG_OF_STAKATO, 150);
 					rewardItems(player, 5550, 10); // Durable Metal Plate
-					htmltext = "31554-09.htm";
+					htmltext = HTML_N_31554_09;
 				}
 				else
 				{
-					htmltext = "31554-07.htm";
+					htmltext = HTML_N_31554_07;
 				}
 				break;
 			}
@@ -197,11 +200,11 @@ public class Q00640_TheZeroHour extends Quest
 				{
 					takeItems(player, FANG_OF_STAKATO, 131);
 					rewardItems(player, 1890, 10); // Mithril Alloy
-					htmltext = "31554-09.htm";
+					htmltext = HTML_N_31554_09;
 				}
 				else
 				{
-					htmltext = "31554-07.htm";
+					htmltext = HTML_N_31554_07;
 				}
 				break;
 			}
@@ -211,11 +214,11 @@ public class Q00640_TheZeroHour extends Quest
 				{
 					takeItems(player, FANG_OF_STAKATO, 123);
 					rewardItems(player, 1893, 5); // Oriharukon
-					htmltext = "31554-09.htm";
+					htmltext = HTML_N_31554_09;
 				}
 				else
 				{
-					htmltext = "31554-07.htm";
+					htmltext = HTML_N_31554_07;
 				}
 				break;
 			}

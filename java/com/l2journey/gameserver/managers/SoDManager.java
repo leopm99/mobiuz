@@ -40,6 +40,8 @@ import com.l2journey.gameserver.model.quest.Quest;
 
 public class SoDManager
 {
+	private static final String SODSTATE = "SoDState";
+
 	private static final Logger LOGGER = Logger.getLogger(SoDManager.class.getName());
 	
 	public static final String ENERGY_SEEDS = "EnergySeeds";
@@ -68,7 +70,7 @@ public class SoDManager
 			case SODTYPE:
 			{
 				// Seed of Destruction
-				GlobalVariablesManager.getInstance().set("SoDState", _soDState);
+				GlobalVariablesManager.getInstance().set(SODSTATE, _soDState);
 				GlobalVariablesManager.getInstance().set("SoDTiatKilled", _soDTiatKilled);
 				GlobalVariablesManager.getInstance().set("SoDLSCDate", _soDLastStateChangeDate.getTimeInMillis());
 				break;
@@ -94,9 +96,9 @@ public class SoDManager
 	public void loadData()
 	{
 		// Seed of Destruction variables
-		if (GlobalVariablesManager.getInstance().hasVariable("SoDState"))
+		if (GlobalVariablesManager.getInstance().hasVariable(SODSTATE))
 		{
-			_soDState = GlobalVariablesManager.getInstance().getInt("SoDState", 0);
+			_soDState = GlobalVariablesManager.getInstance().getInt(SODSTATE, 0);
 			_soDTiatKilled = GlobalVariablesManager.getInstance().getInt("SoDTiatKilled", 0);
 			_soDLastStateChangeDate.setTimeInMillis(GlobalVariablesManager.getInstance().getLong("SoDLSCDate", 0));
 		}

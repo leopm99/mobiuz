@@ -60,6 +60,16 @@ import quests.Q00144_PailakaInjuredDragon.Q00144_PailakaInjuredDragon;
  */
 public class PailakaInjuredDragon extends AbstractInstance
 {
+	private static final String INJURED_DRAGON_CAMERA_9999 = "INJURED_DRAGON_CAMERA_9999";
+	private static final String SCE_RATANA_CAMERA_START = "SCE_RATANA_CAMERA_START";
+	private static final String LATANA_STANCE = "LATANA_STANCE";
+	private static final String LATANA_2000 = "LATANA_2000";
+	private static final String LATANA_9000 = "LATANA_9000";
+	private static final String CINEMATIC = "cinematic";
+	private static final String PARAM1 = "param1";
+	private static final String I_AI0 = "i_ai0";
+	private static final String I_AI2 = "i_ai2";
+
 	// NPCs
 	private static final int KETRA_ORC_SUPPORTER_2 = 32512;
 	
@@ -180,14 +190,14 @@ public class PailakaInjuredDragon extends AbstractInstance
 				startQuestTimer("LATANA_501", 3000, npc, player);
 				break;
 			}
-			case "LATANA_STANCE":
+			case LATANA_STANCE:
 			{
 				// The client drops the standing pose whenever it redraws the npc,
 				// and the cinematic camera makes it redraw, so the pose has to be reasserted until the cinematic is over.
 				keepUpright(npc);
-				if (npc.getVariables().getBoolean("cinematic", false))
+				if (npc.getVariables().getBoolean(CINEMATIC, false))
 				{
-					startQuestTimer("LATANA_STANCE", 1500, npc, player);
+					startQuestTimer(LATANA_STANCE, 1500, npc, player);
 				}
 				break;
 			}
@@ -222,7 +232,7 @@ public class PailakaInjuredDragon extends AbstractInstance
 			case "LATANA_505":
 			{
 				keepUpright(npc);
-				startQuestTimer("LATANA_2000", 1000, npc, player);
+				startQuestTimer(LATANA_2000, 1000, npc, player);
 				break;
 			}
 			case "LATANA_600":
@@ -248,10 +258,10 @@ public class PailakaInjuredDragon extends AbstractInstance
 			}
 			case "LATANA_604":
 			{
-				startQuestTimer("LATANA_2000", 6000, npc, player);
+				startQuestTimer(LATANA_2000, 6000, npc, player);
 				break;
 			}
-			case "LATANA_2000":
+			case LATANA_2000:
 			{
 				// Both cinematic paths hand the fight back before this runs, but this loop is the one thing that always reaches her,
 				// so it repeats the handover rather than trust a chain of timers.
@@ -260,7 +270,7 @@ public class PailakaInjuredDragon extends AbstractInstance
 				
 				if (player == null)
 				{
-					startQuestTimer("LATANA_2000", 3000, npc, null);
+					startQuestTimer(LATANA_2000, 3000, npc, null);
 				}
 				else
 				{
@@ -280,7 +290,7 @@ public class PailakaInjuredDragon extends AbstractInstance
 					{
 						// TODO: Implement check.
 						final Npc latanSkillUse = addSpawn(LATANA_SKILL_USE, player, false, 0, false, player.getInstanceId());
-						latanSkillUse.getVariables().set("param1", npc);
+						latanSkillUse.getVariables().set(PARAM1, npc);
 						latanSkillUse.getVariables().set("param2", player);
 					}
 					else
@@ -289,16 +299,16 @@ public class PailakaInjuredDragon extends AbstractInstance
 						npc.doCast(FIRE_BREATH.getSkill());
 					}
 					
-					startQuestTimer("LATANA_2000", 6000, npc, player);
+					startQuestTimer(LATANA_2000, 6000, npc, player);
 				}
 				break;
 			}
 			case "LATANA_4000":
 			{
-				npc.getVariables().set("i_ai0", false);
+				npc.getVariables().set(I_AI0, false);
 				break;
 			}
-			case "LATANA_9000":
+			case LATANA_9000:
 			{
 				addSpawn(KETRA_ORC_SUPPORTER_2, npc.getX() + 100, npc.getY() + 100, npc.getZ(), 0, false, 0, false, npc.getInstanceId());
 				npc.decayMe();
@@ -362,7 +372,7 @@ public class PailakaInjuredDragon extends AbstractInstance
 			{
 				player.sendPacket(new SpecialCamera(npc, 300, -3, 5, 3500, 15000, 6000, 0, 6, 1, 0, 0));
 				endCinematic(npc);
-				startQuestTimer("INJURED_DRAGON_CAMERA_9999", 10000, npc, null);
+				startQuestTimer(INJURED_DRAGON_CAMERA_9999, 10000, npc, null);
 				break;
 			}
 			case "INJURED_DRAGON_CAMERA_1_2000":
@@ -387,10 +397,10 @@ public class PailakaInjuredDragon extends AbstractInstance
 			{
 				player.sendPacket(new SpecialCamera(npc, 300, 180, 5, 1500, 15000, 3000, 0, 6, 1, 1, 0));
 				endCinematic(npc);
-				startQuestTimer("INJURED_DRAGON_CAMERA_9999", 3000, npc, null);
+				startQuestTimer(INJURED_DRAGON_CAMERA_9999, 3000, npc, null);
 				break;
 			}
-			case "INJURED_DRAGON_CAMERA_9999":
+			case INJURED_DRAGON_CAMERA_9999:
 			{
 				npc.deleteMe();
 				break;
@@ -415,14 +425,14 @@ public class PailakaInjuredDragon extends AbstractInstance
 			case "INJURED_DRAGON_CAMERA_2_1002":
 			{
 				player.sendPacket(new SpecialCamera(npc, 360, 200, 5, 1000, 15000, 2000, -15, 10, 1, 1, 0));
-				startQuestTimer("INJURED_DRAGON_CAMERA_9999", 10000, npc, null);
+				startQuestTimer(INJURED_DRAGON_CAMERA_9999, 10000, npc, null);
 				break;
 			}
 			case "SCE_BOSS_2ND_SKILL":
 			{
 				// Latana is the one casting. Retail aims at the marker, but the marker is a non attackable Folk, so the fan would resolve to nothing.
 				// It stands on the player, so aim there instead.
-				final Npc latana = npc.getVariables().getObject("param1", Npc.class);
+				final Npc latana = npc.getVariables().getObject(PARAM1, Npc.class);
 				final Player victim = npc.getVariables().getObject("param2", Player.class);
 				if ((latana != null) && (victim != null) && (latana.calculateDistance2D(npc) <= 900))
 				{
@@ -431,7 +441,7 @@ public class PailakaInjuredDragon extends AbstractInstance
 				}
 				break;
 			}
-			case "SCE_RATANA_CAMERA_START":
+			case SCE_RATANA_CAMERA_START:
 			{
 				final InstanceWorld world = InstanceManager.getInstance().getWorld(npc.getInstanceId());
 				if (world == null)
@@ -480,7 +490,7 @@ public class PailakaInjuredDragon extends AbstractInstance
 		{
 			case LATANA:
 			{
-				if (!npc.getVariables().getBoolean("i_ai2", false) && creature.isPlayer())
+				if (!npc.getVariables().getBoolean(I_AI2, false) && creature.isPlayer())
 				{
 					final Player player = creature.asPlayer();
 					final QuestState qs = player.getQuestState(Q00144_PailakaInjuredDragon.class.getSimpleName());
@@ -491,25 +501,25 @@ public class PailakaInjuredDragon extends AbstractInstance
 					
 					if (qs.isCond(4))
 					{
-						startQuestTimer("LATANA_9000", 1000, npc, player);
-						npc.getVariables().set("i_ai0", true);
+						startQuestTimer(LATANA_9000, 1000, npc, player);
+						npc.getVariables().set(I_AI0, true);
 					}
 					else
 					{
 						playSound(player, QuestSound.BS08_A);
 						npc.setScriptValue(1);
-						startQuestTimer("SCE_RATANA_CAMERA_START", 2000, npc, player);
+						startQuestTimer(SCE_RATANA_CAMERA_START, 2000, npc, player);
 						startQuestTimer("LATANA_500", 1000, npc, player);
-						npc.getVariables().set("i_ai2", true);
+						npc.getVariables().set(I_AI2, true);
 					}
 				}
 				break;
 			}
 			case INJURED_DRAGON_CAMERA_1:
 			{
-				if (creature.isPlayer() && !npc.getVariables().getBoolean("i_ai0", false))
+				if (creature.isPlayer() && !npc.getVariables().getBoolean(I_AI0, false))
 				{
-					npc.getVariables().set("i_ai0", true);
+					npc.getVariables().set(I_AI0, true);
 				}
 				break;
 			}
@@ -523,7 +533,7 @@ public class PailakaInjuredDragon extends AbstractInstance
 	@Override
 	public void onAttack(Npc npc, Player player, int damage, boolean isSummon)
 	{
-		if (!npc.getVariables().getBoolean("i_ai2", false))
+		if (!npc.getVariables().getBoolean(I_AI2, false))
 		{
 			final QuestState qs = player.getQuestState(Q00144_PailakaInjuredDragon.class.getSimpleName());
 			if (qs == null)
@@ -533,24 +543,24 @@ public class PailakaInjuredDragon extends AbstractInstance
 			
 			if (qs.isCond(4))
 			{
-				startQuestTimer("LATANA_9000", 1000, npc, player);
-				npc.getVariables().set("i_ai0", true);
+				startQuestTimer(LATANA_9000, 1000, npc, player);
+				npc.getVariables().set(I_AI0, true);
 			}
 			else
 			{
 				playSound(player, QuestSound.BS08_A);
 				npc.setScriptValue(2);
-				startQuestTimer("SCE_RATANA_CAMERA_START", 4000, npc, player);
+				startQuestTimer(SCE_RATANA_CAMERA_START, 4000, npc, player);
 				startQuestTimer("LATANA_600", 1000, npc, player);
-				npc.getVariables().set("i_ai2", true);
+				npc.getVariables().set(I_AI2, true);
 			}
 		}
 		
-		if ((npc.getCurrentHp() < (npc.getMaxHp() * HP_ANGER_ACTIVATION)) && !npc.getVariables().getBoolean("i_ai0", false))
+		if ((npc.getCurrentHp() < (npc.getMaxHp() * HP_ANGER_ACTIVATION)) && !npc.getVariables().getBoolean(I_AI0, false))
 		{
 			npc.setTarget(player);
 			npc.doCast(ANGER.getSkill());
-			npc.getVariables().set("i_ai0", true);
+			npc.getVariables().set(I_AI0, true);
 			startQuestTimer("LATANA_4000", 120000, npc, player);
 		}
 	}
@@ -602,7 +612,7 @@ public class PailakaInjuredDragon extends AbstractInstance
 			case LATANA_SKILL_USE:
 			{
 				startQuestTimer("LATANA_SKILL_USE_1002", 10, npc, null);
-				final Npc latana = npc.getVariables().getObject("param1", Npc.class);
+				final Npc latana = npc.getVariables().getObject(PARAM1, Npc.class);
 				if (latana != null)
 				{
 					addAttackDesire(latana, (Creature) latana.getTarget(), 10000000);
@@ -800,9 +810,9 @@ public class PailakaInjuredDragon extends AbstractInstance
 	
 	private void startStanceLoop(Npc latana, Player player)
 	{
-		latana.getVariables().set("cinematic", true);
+		latana.getVariables().set(CINEMATIC, true);
 		keepUpright(latana);
-		startQuestTimer("LATANA_STANCE", 1500, latana, player);
+		startQuestTimer(LATANA_STANCE, 1500, latana, player);
 	}
 	
 	// The last camera shot is where the cinematic really ends, so that is where Latana takes over.
@@ -817,7 +827,7 @@ public class PailakaInjuredDragon extends AbstractInstance
 		final Npc latana = world.getNpc(LATANA);
 		if (latana != null)
 		{
-			latana.getVariables().set("cinematic", false);
+			latana.getVariables().set(CINEMATIC, false);
 			latana.disableCoreAI(false);
 			keepUpright(latana);
 		}

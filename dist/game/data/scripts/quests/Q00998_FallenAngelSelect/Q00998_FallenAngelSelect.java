@@ -34,6 +34,8 @@ import quests.Q00143_FallenAngelRequestOfDusk.Q00143_FallenAngelRequestOfDusk;
  */
 public class Q00998_FallenAngelSelect extends Quest
 {
+	private static final String HTML_N_30894_01 = "30894-01.html";
+
 	// NPCs
 	private static final int NATOOLS = 30894;
 	// Misc
@@ -58,7 +60,7 @@ public class Q00998_FallenAngelSelect extends Quest
 		
 		switch (event)
 		{
-			case "30894-01.html", "30894-02.html", "30894-03.html":
+			case HTML_N_30894_01, "30894-02.html", "30894-03.html":
 			{
 				return event;
 			}
@@ -86,7 +88,7 @@ public class Q00998_FallenAngelSelect extends Quest
 		if (q != null)
 		{
 			q.newQuestState(player);
-			q.notifyEvent("30894-01.html", null, player);
+			q.notifyEvent(HTML_N_30894_01, null, player);
 			player.getQuestState(getName()).setState(State.COMPLETED);
 		}
 	}
@@ -100,6 +102,6 @@ public class Q00998_FallenAngelSelect extends Quest
 		{
 			return getNoQuestMsg(player);
 		}
-		return ((player.getLevel() >= MIN_LEVEL) && qs.isCompleted()) ? "30894-01.html" : "30894-00.html";
+		return ((player.getLevel() >= MIN_LEVEL) && qs.isCompleted()) ? HTML_N_30894_01 : "30894-00.html";
 	}
 }

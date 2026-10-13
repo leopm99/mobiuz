@@ -52,6 +52,10 @@ import com.l2journey.gameserver.network.serverpackets.ExNevitAdventTimeChange;
  */
 public class Nevit
 {
+	private static final String HUNTING_POINTS = "hunting_points";
+	private static final String HUNTING_TIME = "hunting_time";
+	private static final String NEVIT_B = "nevit_b";
+
 	public Player _player;
 	
 	private ScheduledFuture<?> _adventTask;
@@ -79,16 +83,16 @@ public class Nevit
 		// Reset Nevit's Blessing
 		if ((_player.getLastAccess() < (cal.getTimeInMillis() / 1000)) && (System.currentTimeMillis() > cal.getTimeInMillis()))
 		{
-			_player.getVariables().set("hunting_time", 0);
+			_player.getVariables().set(HUNTING_TIME, 0);
 		}
 		
 		// Send Packets
 		_player.sendPacket(new ExNevitAdventPointInfoPacket(getAdventPoints()));
 		_player.sendPacket(new ExNevitAdventTimeChange(getAdventTime(), true));
-		startNevitEffect(_player.getVariables().getInt("nevit_b", 0));
+		startNevitEffect(_player.getVariables().getInt(NEVIT_B, 0));
 		
 		// Set percent
-		final int percent = calcPercent(_player.getVariables().getInt("hunting_points", 0));
+		final int percent = calcPercent(_player.getVariables().getInt(HUNTING_POINTS, 0));
 		if ((percent >= 45) && (percent < 50))
 		{
 			_player.sendPacket(SystemMessageId.YOU_ARE_STARTING_TO_FEEL_THE_EFFECTS_OF_NEVIT_S_ADVENT_BLESSING);
@@ -215,7 +219,7 @@ public class Nevit
 		}
 		if ((Config.NEVIT_IGNORE_ADVENT_TIME || (getAdventTime() < Config.NEVIT_ADVENT_TIME)) && (time > 0))
 		{
-			_player.getVariables().set("nevit_b", time);
+			_player.getVariables().set(NEVIT_B, time);
 			_player.sendPacket(new ExNevitAdventEffect(time));
 			_player.sendPacket(SystemMessageId.THE_ANGEL_NEVIT_HAS_BLESSED_YOU_FROM_ABOVE_YOU_ARE_IMBUED_WITH_FULL_VITALITY_AS_WELL_AS_A_VITALITY_REPLENISHING_EFFECT_AND_SHOULD_YOU_DIE_YOU_WILL_NOT_LOSE_EXP);
 			_player.startAbnormalVisualEffect(true, AbnormalVisualEffect.NAVIT_ADVENT);
@@ -232,7 +236,7 @@ public class Nevit
 			{
 				setAdventTime(0);
 			}
-			_player.getVariables().remove("nevit_b");
+			_player.getVariables().remove(NEVIT_B);
 			_player.sendPacket(new ExNevitAdventEffect(0));
 			_player.sendPacket(new ExNevitAdventPointInfoPacket(getAdventPoints()));
 			_player.sendPacket(SystemMessageId.NEVIT_S_ADVENT_BLESSING_HAS_ENDED_CONTINUE_YOUR_JOURNEY_AND_YOU_WILL_SURELY_MEET_HIS_FAVOR_AGAIN_SOMETIME_SOON);
@@ -250,11 +254,11 @@ public class Nevit
 				final int time = getEffectTime();
 				if (time > 0)
 				{
-					_player.getVariables().set("nevit_b", time);
+					_player.getVariables().set(NEVIT_B, time);
 				}
 				else
 				{
-					_player.getVariables().remove("nevit_b");
+					_player.getVariables().remove(NEVIT_B);
 				}
 			}
 			_nevitEffectTask.cancel(true);
@@ -293,21 +297,21 @@ public class Nevit
 	
 	public void setAdventPoints(int points)
 	{
-		_player.getVariables().set("hunting_points", points);
+		_player.getVariables().set(HUNTING_POINTS, points);
 	}
 	
 	public void setAdventTime(int time)
 	{
-		_player.getVariables().set("hunting_time", time);
+		_player.getVariables().set(HUNTING_TIME, time);
 	}
 	
 	public int getAdventPoints()
 	{
-		return Config.NEVIT_ENABLED ? _player.getVariables().getInt("hunting_points", 0) : 0;
+		return Config.NEVIT_ENABLED ? _player.getVariables().getInt(HUNTING_POINTS, 0) : 0;
 	}
 	
 	public int getAdventTime()
 	{
-		return Config.NEVIT_ENABLED ? _player.getVariables().getInt("hunting_time", 0) : 0;
+		return Config.NEVIT_ENABLED ? _player.getVariables().getInt(HUNTING_TIME, 0) : 0;
 	}
 }

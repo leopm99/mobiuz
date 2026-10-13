@@ -45,6 +45,8 @@ import com.l2journey.gameserver.model.actor.Player;
 
 public class TopicBBSManager extends BaseBBSManager
 {
+	private static final String BBSMEMO = "_bbsmemo";
+
 	private final Collection<Topic> _table = ConcurrentHashMap.newKeySet();
 	private final Map<Forum, Integer> _maxId = new ConcurrentHashMap<>();
 	
@@ -105,7 +107,7 @@ public class TopicBBSManager extends BaseBBSManager
 				getInstance().setMaxID(t.getID(), f);
 				final Post p = new Post(player.getName(), player.getObjectId(), currentTime, t.getID(), f.getID(), ar4);
 				PostBBSManager.getInstance().addPostByTopic(p, t);
-				parsecmd("_bbsmemo", player);
+				parsecmd(BBSMEMO, player);
 			}
 		}
 		else if (ar1.equals("del"))
@@ -131,7 +133,7 @@ public class TopicBBSManager extends BaseBBSManager
 						p.deleteMe(t);
 					}
 					t.deleteme(f);
-					parsecmd("_bbsmemo", player);
+					parsecmd(BBSMEMO, player);
 				}
 			}
 		}
@@ -144,7 +146,7 @@ public class TopicBBSManager extends BaseBBSManager
 	@Override
 	public void parsecmd(String command, Player player)
 	{
-		if (command.equals("_bbsmemo"))
+		if (command.equals(BBSMEMO))
 		{
 			showTopics(player.getMemo(), player, 1, player.getMemo().getID());
 		}
@@ -194,7 +196,7 @@ public class TopicBBSManager extends BaseBBSManager
 						p.deleteMe(t);
 					}
 					t.deleteme(f);
-					parsecmd("_bbsmemo", player);
+					parsecmd(BBSMEMO, player);
 				}
 			}
 		}

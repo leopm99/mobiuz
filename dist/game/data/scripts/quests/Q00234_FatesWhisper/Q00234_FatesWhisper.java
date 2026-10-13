@@ -36,6 +36,9 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Q00234_FatesWhisper extends Quest
 {
+	private static final String HTML_N_31002_34 = "31002-34.html";
+	private static final String HTML_N_31002_44 = "31002-44.html";
+
 	// NPCs
 	private static final int ZENKIN = 30178;
 	private static final int CLIFF = 30182;
@@ -759,7 +762,7 @@ public class Q00234_FatesWhisper extends Quest
 								qs.showQuestionMark(234);
 								return "31002-26.html";
 							}
-							return "31002-34.html";
+							return HTML_N_31002_34;
 						}
 						break;
 					}
@@ -775,7 +778,7 @@ public class Q00234_FatesWhisper extends Quest
 								qs.showQuestionMark(234);
 								return "31002-26a.html";
 							}
-							return "31002-34.html";
+							return HTML_N_31002_34;
 						}
 						break;
 					}
@@ -791,7 +794,7 @@ public class Q00234_FatesWhisper extends Quest
 								qs.showQuestionMark(234);
 								return "31002-27.html";
 							}
-							return "31002-34.html";
+							return HTML_N_31002_34;
 						}
 						break;
 					}
@@ -807,7 +810,7 @@ public class Q00234_FatesWhisper extends Quest
 								qs.showQuestionMark(234);
 								return "31002-28.html";
 							}
-							return "31002-34.html";
+							return HTML_N_31002_34;
 						}
 						break;
 					}
@@ -823,7 +826,7 @@ public class Q00234_FatesWhisper extends Quest
 								qs.showQuestionMark(234);
 								return "31002-29.html";
 							}
-							return "31002-34.html";
+							return HTML_N_31002_34;
 						}
 						break;
 					}
@@ -839,7 +842,7 @@ public class Q00234_FatesWhisper extends Quest
 								qs.showQuestionMark(234);
 								return "31002-30.html";
 							}
-							return "31002-34.html";
+							return HTML_N_31002_34;
 						}
 						break;
 					}
@@ -855,7 +858,7 @@ public class Q00234_FatesWhisper extends Quest
 								qs.showQuestionMark(234);
 								return "31002-31.html";
 							}
-							return "31002-34.html";
+							return HTML_N_31002_34;
 						}
 						break;
 					}
@@ -871,7 +874,7 @@ public class Q00234_FatesWhisper extends Quest
 								qs.showQuestionMark(234);
 								return "31002-32.html";
 							}
-							return "31002-34.html";
+							return HTML_N_31002_34;
 						}
 						break;
 					}
@@ -887,7 +890,7 @@ public class Q00234_FatesWhisper extends Quest
 								qs.showQuestionMark(234);
 								return "31002-33.html";
 							}
-							return "31002-34.html";
+							return HTML_N_31002_34;
 						}
 						break;
 					}
@@ -903,7 +906,7 @@ public class Q00234_FatesWhisper extends Quest
 								qs.showQuestionMark(234);
 								return "31002-33a.html";
 							}
-							return "31002-34.html";
+							return HTML_N_31002_34;
 						}
 						break;
 					}
@@ -919,7 +922,7 @@ public class Q00234_FatesWhisper extends Quest
 								qs.showQuestionMark(234);
 								return "31002-33b.html";
 							}
-							return "31002-34.html";
+							return HTML_N_31002_34;
 						}
 						break;
 					}
@@ -935,7 +938,7 @@ public class Q00234_FatesWhisper extends Quest
 								qs.showQuestionMark(234);
 								return "31002-33c.html";
 							}
-							return "31002-34.html";
+							return HTML_N_31002_34;
 						}
 						break;
 					}
@@ -951,7 +954,7 @@ public class Q00234_FatesWhisper extends Quest
 								qs.showQuestionMark(234);
 								return "31002-33d.html";
 							}
-							return "31002-34.html";
+							return HTML_N_31002_34;
 						}
 						break;
 					}
@@ -959,7 +962,7 @@ public class Q00234_FatesWhisper extends Quest
 					{
 						if (calculateReward(qs, player, TALLUM_BLADE))
 						{
-							return "31002-44.html";
+							return HTML_N_31002_44;
 						}
 						break;
 					}
@@ -967,7 +970,7 @@ public class Q00234_FatesWhisper extends Quest
 					{
 						if (calculateReward(qs, player, CARNIUM_BOW))
 						{
-							return "31002-44.html";
+							return HTML_N_31002_44;
 						}
 						break;
 					}
@@ -975,7 +978,7 @@ public class Q00234_FatesWhisper extends Quest
 					{
 						if (calculateReward(qs, player, HALBARD))
 						{
-							return "31002-44.html";
+							return HTML_N_31002_44;
 						}
 						break;
 					}
@@ -983,7 +986,7 @@ public class Q00234_FatesWhisper extends Quest
 					{
 						if (calculateReward(qs, player, ELEMENTAL_SWORD))
 						{
-							return "31002-44.html";
+							return HTML_N_31002_44;
 						}
 						break;
 					}
@@ -991,7 +994,7 @@ public class Q00234_FatesWhisper extends Quest
 					{
 						if (calculateReward(qs, player, DASPARIONS_STAFF))
 						{
-							return "31002-44.html";
+							return HTML_N_31002_44;
 						}
 						break;
 					}
@@ -999,7 +1002,7 @@ public class Q00234_FatesWhisper extends Quest
 					{
 						if (calculateReward(qs, player, BLOODY_ORCHID))
 						{
-							return "31002-44.html";
+							return HTML_N_31002_44;
 						}
 						break;
 					}
@@ -1007,7 +1010,7 @@ public class Q00234_FatesWhisper extends Quest
 					{
 						if (calculateReward(qs, player, BLOOD_TORNADO))
 						{
-							return "31002-44.html";
+							return HTML_N_31002_44;
 						}
 						break;
 					}
@@ -1015,7 +1018,7 @@ public class Q00234_FatesWhisper extends Quest
 					{
 						if (calculateReward(qs, player, METEOR_SHOWER))
 						{
-							return "31002-44.html";
+							return HTML_N_31002_44;
 						}
 						break;
 					}
@@ -1023,7 +1026,7 @@ public class Q00234_FatesWhisper extends Quest
 					{
 						if (calculateReward(qs, player, KSHANBERK_KSHANBERK))
 						{
-							return "31002-44.html";
+							return HTML_N_31002_44;
 						}
 						break;
 					}
@@ -1031,7 +1034,7 @@ public class Q00234_FatesWhisper extends Quest
 					{
 						if (calculateReward(qs, player, INFERNO_MASTER))
 						{
-							return "31002-44.html";
+							return HTML_N_31002_44;
 						}
 						break;
 					}
@@ -1039,7 +1042,7 @@ public class Q00234_FatesWhisper extends Quest
 					{
 						if (calculateReward(qs, player, EYE_OF_SOUL))
 						{
-							return "31002-44.html";
+							return HTML_N_31002_44;
 						}
 						break;
 					}
@@ -1047,7 +1050,7 @@ public class Q00234_FatesWhisper extends Quest
 					{
 						if (calculateReward(qs, player, HAMMER_OF_DESTROYER))
 						{
-							return "31002-44.html";
+							return HTML_N_31002_44;
 						}
 						break;
 					}

@@ -42,6 +42,11 @@ import com.l2journey.gameserver.network.serverpackets.NpcSay;
  */
 public class Q00457_LostAndFound extends Quest
 {
+	private static final String TIME_LIMIT = "TIME_LIMIT";
+	private static final String TALK_TIME2 = "TALK_TIME2";
+	private static final String TALK_TIME = "TALK_TIME";
+	private static final String CHECK = "CHECK";
+
 	// NPCs
 	private static final int GUMIEL = 32759;
 	private static final int ESCORT_CHECKER = 32764;
@@ -87,18 +92,18 @@ public class Q00457_LostAndFound extends Quest
 				npc.setTarget(player);
 				npc.setWalking();
 				npc.getAI().setIntention(Intention.FOLLOW, player);
-				startQuestTimer("CHECK", 1000, npc, player, true);
-				startQuestTimer("TIME_LIMIT", 600000, npc, player);
-				startQuestTimer("TALK_TIME", 120000, npc, player);
-				startQuestTimer("TALK_TIME2", 30000, npc, player);
+				startQuestTimer(CHECK, 1000, npc, player, true);
+				startQuestTimer(TIME_LIMIT, 600000, npc, player);
+				startQuestTimer(TALK_TIME, 120000, npc, player);
+				startQuestTimer(TALK_TIME2, 30000, npc, player);
 				break;
 			}
-			case "TALK_TIME":
+			case TALK_TIME:
 			{
 				broadcastNpcSay(npc, player, NpcStringId.AH_I_THINK_I_REMEMBER_THIS_PLACE, false);
 				break;
 			}
-			case "TALK_TIME2":
+			case TALK_TIME2:
 			{
 				broadcastNpcSay(npc, player, NpcStringId.WHAT_WERE_YOU_DOING_HERE, false);
 				startQuestTimer("TALK_TIME3", 10 * 1000L, npc, player);
@@ -109,13 +114,13 @@ public class Q00457_LostAndFound extends Quest
 				broadcastNpcSay(npc, player, NpcStringId.I_GUESS_YOU_RE_THE_SILENT_TYPE_THEN_ARE_YOU_LOOKING_FOR_TREASURE_LIKE_ME, false);
 				break;
 			}
-			case "TIME_LIMIT":
+			case TIME_LIMIT:
 			{
 				startQuestTimer("STOP", 2000, npc, player);
 				qs.exitQuest(QuestType.DAILY);
 				break;
 			}
-			case "CHECK":
+			case CHECK:
 			{
 				final double distance = npc.calculateDistance3D(player);
 				if (distance > 1000)
@@ -148,7 +153,7 @@ public class Q00457_LostAndFound extends Quest
 					{
 						startQuestTimer("STOP", 1000, npc, player);
 						startQuestTimer("BYE", 3000, npc, player);
-						cancelQuestTimer("CHECK", npc, player);
+						cancelQuestTimer(CHECK, npc, player);
 						npc.broadcastPacket(new CreatureSay(npc, ChatType.NPC_GENERAL, NpcStringId.AH_FRESH_AIR));
 						broadcastNpcSay(npc, player, NpcStringId.AH_FRESH_AIR, false);
 						giveItems(player, PACKAGED_BOOK, 1);
@@ -163,10 +168,10 @@ public class Q00457_LostAndFound extends Quest
 				npc.setTarget(null);
 				npc.getAI().stopFollow();
 				npc.getAI().setIntention(Intention.IDLE);
-				cancelQuestTimer("CHECK", npc, player);
-				cancelQuestTimer("TIME_LIMIT", npc, player);
-				cancelQuestTimer("TALK_TIME", npc, player);
-				cancelQuestTimer("TALK_TIME2", npc, player);
+				cancelQuestTimer(CHECK, npc, player);
+				cancelQuestTimer(TIME_LIMIT, npc, player);
+				cancelQuestTimer(TALK_TIME, npc, player);
+				cancelQuestTimer(TALK_TIME2, npc, player);
 				break;
 			}
 			case "BYE":

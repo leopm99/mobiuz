@@ -34,6 +34,10 @@ import com.l2journey.gameserver.util.LocationUtil;
  */
 public class Q00419_GetAPet extends Quest
 {
+	private static final String HTML_N_30731_09 = "30731-09.html";
+	private static final String HTML_N_30731_10 = "30731-10.html";
+	private static final String HTML_N_30731_11 = "30731-11.html";
+
 	// NPCs
 	private static final int GUARD_METTY = 30072;
 	private static final int ACCESSORY_MERCHANT_ELICE = 30091;
@@ -650,16 +654,16 @@ public class Q00419_GetAPet extends Quest
 						{
 							if (!hasQuestItems(player, BLOODY_RED_CLAW))
 							{
-								htmltext = "30731-09.html";
+								htmltext = HTML_N_30731_09;
 							}
 							else
 							{
-								htmltext = "30731-10.html";
+								htmltext = HTML_N_30731_10;
 							}
 						}
 						else
 						{
-							htmltext = "30731-11.html";
+							htmltext = HTML_N_30731_11;
 						}
 					}
 					else if (hasQuestItems(player, ANIMAL_SLAYERS_1ST_LIST))
@@ -668,16 +672,16 @@ public class Q00419_GetAPet extends Quest
 						{
 							if (!hasQuestItems(player, BLOODY_FANG))
 							{
-								htmltext = "30731-09.html";
+								htmltext = HTML_N_30731_09;
 							}
 							else
 							{
-								htmltext = "30731-10.html";
+								htmltext = HTML_N_30731_10;
 							}
 						}
 						else
 						{
-							htmltext = "30731-11.html";
+							htmltext = HTML_N_30731_11;
 						}
 					}
 					else if (hasQuestItems(player, ANIMAL_SLAYERS_2ND_LIST))
@@ -686,16 +690,16 @@ public class Q00419_GetAPet extends Quest
 						{
 							if (!hasQuestItems(player, BLOODY_CLAW))
 							{
-								htmltext = "30731-09.html";
+								htmltext = HTML_N_30731_09;
 							}
 							else
 							{
-								htmltext = "30731-10.html";
+								htmltext = HTML_N_30731_10;
 							}
 						}
 						else
 						{
-							htmltext = "30731-11.html";
+							htmltext = HTML_N_30731_11;
 						}
 					}
 					else if (hasQuestItems(player, ANIMAL_SLAYERS_3RD_LIST))
@@ -704,16 +708,16 @@ public class Q00419_GetAPet extends Quest
 						{
 							if (!hasQuestItems(player, BLOODY_NAIL))
 							{
-								htmltext = "30731-09.html";
+								htmltext = HTML_N_30731_09;
 							}
 							else
 							{
-								htmltext = "30731-10.html";
+								htmltext = HTML_N_30731_10;
 							}
 						}
 						else
 						{
-							htmltext = "30731-11.html";
+							htmltext = HTML_N_30731_11;
 						}
 					}
 					else if (hasQuestItems(player, ANIMAL_SLAYERS_4TH_LIST))
@@ -722,16 +726,16 @@ public class Q00419_GetAPet extends Quest
 						{
 							if (!hasQuestItems(player, BLOODY_KASHA_FANG))
 							{
-								htmltext = "30731-09.html";
+								htmltext = HTML_N_30731_09;
 							}
 							else
 							{
-								htmltext = "30731-10.html";
+								htmltext = HTML_N_30731_10;
 							}
 						}
 						else
 						{
-							htmltext = "30731-11.html";
+							htmltext = HTML_N_30731_11;
 						}
 					}
 					else if (hasQuestItems(player, ANIMAL_SLAYERS_5TH_LIST))
@@ -740,16 +744,16 @@ public class Q00419_GetAPet extends Quest
 						{
 							if (!hasQuestItems(player, BLOODY_TARANTULA_NAIL))
 							{
-								htmltext = "30731-09.html";
+								htmltext = HTML_N_30731_09;
 							}
 							else
 							{
-								htmltext = "30731-10.html";
+								htmltext = HTML_N_30731_10;
 							}
 						}
 						else
 						{
-							htmltext = "30731-11.html";
+							htmltext = HTML_N_30731_11;
 						}
 					}
 					else if (hasQuestItems(player, ANIMAL_LOVERS_LIST))

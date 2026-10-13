@@ -29,6 +29,8 @@ import ai.AbstractNpcAI;
  */
 public class ClanMaster extends AbstractNpcAI
 {
+	private static final String HTML_N_9000_07_NO = "9000-07-no.htm";
+
 	// @formatter:off
 	private static final int[] NPCS =
 	{
@@ -52,14 +54,14 @@ public class ClanMaster extends AbstractNpcAI
 		LEADER_REQUIRED.put("9000-03.htm", "9000-03-no.htm");
 		LEADER_REQUIRED.put("9000-04.htm", "9000-04-no.htm");
 		LEADER_REQUIRED.put("9000-05.htm", "9000-05-no.htm");
-		LEADER_REQUIRED.put("9000-07.htm", "9000-07-no.htm");
-		LEADER_REQUIRED.put("9000-12a.htm", "9000-07-no.htm");
-		LEADER_REQUIRED.put("9000-12b.htm", "9000-07-no.htm");
-		LEADER_REQUIRED.put("9000-13a.htm", "9000-07-no.htm");
-		LEADER_REQUIRED.put("9000-13b.htm", "9000-07-no.htm");
-		LEADER_REQUIRED.put("9000-14a.htm", "9000-07-no.htm");
-		LEADER_REQUIRED.put("9000-14b.htm", "9000-07-no.htm");
-		LEADER_REQUIRED.put("9000-15.htm", "9000-07-no.htm");
+		LEADER_REQUIRED.put("9000-07.htm", HTML_N_9000_07_NO);
+		LEADER_REQUIRED.put("9000-12a.htm", HTML_N_9000_07_NO);
+		LEADER_REQUIRED.put("9000-12b.htm", HTML_N_9000_07_NO);
+		LEADER_REQUIRED.put("9000-13a.htm", HTML_N_9000_07_NO);
+		LEADER_REQUIRED.put("9000-13b.htm", HTML_N_9000_07_NO);
+		LEADER_REQUIRED.put("9000-14a.htm", HTML_N_9000_07_NO);
+		LEADER_REQUIRED.put("9000-14b.htm", HTML_N_9000_07_NO);
+		LEADER_REQUIRED.put("9000-15.htm", HTML_N_9000_07_NO);
 	}
 	
 	private ClanMaster()

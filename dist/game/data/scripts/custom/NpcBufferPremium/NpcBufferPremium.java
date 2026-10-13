@@ -70,6 +70,24 @@ import com.l2journey.gameserver.network.serverpackets.SetupGauge;
  */
 public class NpcBufferPremium extends Quest
 {
+	private static final String SQL_NPCBUFFERPREMIUM_SCHEME_LIST = "SELECT id, scheme_name FROM npcbufferpremium_scheme_list WHERE player_id=?";
+	private static final String BLOCKUNTILTIME = "blockUntilTime";
+	private static final String SCHEME_NAME = "scheme_name";
+	private static final String SKILL_LEVEL = "skill_level";
+	private static final String PET_ON_OFF = "Pet-On-Off";
+	private static final String BUFFLEVEL = "buffLevel";
+	private static final String SKILL_ID = "skill_id";
+	private static final String SPECIAL = "special";
+	private static final String RETURN = "Return";
+	private static final String BUFFID = "buffId";
+	private static final String RESIST = "resist";
+	private static final String OTHERS = "others";
+	private static final String REMOVE = "remove";
+	private static final String SORRY = "Sorry";
+	private static final String DANCE = "dance";
+	private static final String CHANT = "chant";
+	private static final String CUBIC = "cubic";
+
 	private static final Logger LOGGER = Logger.getLogger(NpcBufferPremium.class.getName());
 	
 	private static final boolean DEBUG = false;
@@ -148,7 +166,7 @@ public class NpcBufferPremium extends Quest
 		final String buttonB;
 		final String buttonC;
 		
-		if (st.getInt("Pet-On-Off") == 1)
+		if (st.getInt(PET_ON_OFF) == 1)
 		{
 			buttonA = "Auto Buff Pet";
 			buttonB = "Heal My Pet";
@@ -302,12 +320,12 @@ public class NpcBufferPremium extends Quest
 		String html = "";
 		try (Connection con = DatabaseFactory.getConnection())
 		{
-			final PreparedStatement statement = con.prepareStatement("SELECT id, scheme_name FROM npcbufferpremium_scheme_list WHERE player_id=?");
+			final PreparedStatement statement = con.prepareStatement(SQL_NPCBUFFERPREMIUM_SCHEME_LIST);
 			statement.setInt(1, st.getPlayer().getObjectId());
 			final ResultSet rss = statement.executeQuery();
 			while (rss.next())
 			{
-				schemeName.add(rss.getString("scheme_name"));
+				schemeName.add(rss.getString(SCHEME_NAME));
 				schemeId.add(rss.getString("id"));
 			}
 			statement.close();
@@ -528,7 +546,7 @@ public class NpcBufferPremium extends Quest
 	
 	private boolean isPetBuff(QuestState st)
 	{
-		return st.getInt("Pet-On-Off") != 0;
+		return st.getInt(PET_ON_OFF) != 0;
 	}
 	
 	private String createScheme()
@@ -541,12 +559,12 @@ public class NpcBufferPremium extends Quest
 		String html = "<html><head><title>" + TITLE_NAME + "</title></head><body><center><img src=\"L2UI_CH3.herotower_deco\" width=256 height=32><br>Available schemes:<br><br>";
 		try (Connection con = DatabaseFactory.getConnection())
 		{
-			final PreparedStatement statement = con.prepareStatement("SELECT id, scheme_name FROM npcbufferpremium_scheme_list WHERE player_id=?");
+			final PreparedStatement statement = con.prepareStatement(SQL_NPCBUFFERPREMIUM_SCHEME_LIST);
 			statement.setInt(1, player.getObjectId());
 			final ResultSet rss = statement.executeQuery();
 			while (rss.next())
 			{
-				html += "<button value=\"" + rss.getString("scheme_name") + "\" action=\"bypass -h Quest " + QUEST_LOADING_INFO + " delete_c " + rss.getString("id") + " " + rss.getString("scheme_name") + " x\" width=118 height=25 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\">";
+				html += "<button value=\"" + rss.getString(SCHEME_NAME) + "\" action=\"bypass -h Quest " + QUEST_LOADING_INFO + " delete_c " + rss.getString("id") + " " + rss.getString(SCHEME_NAME) + " x\" width=118 height=25 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\">";
 			}
 			statement.close();
 			rss.close();
@@ -564,12 +582,12 @@ public class NpcBufferPremium extends Quest
 		String html = "<html><head><title>" + TITLE_NAME + "</title></head><body><center><img src=\"L2UI_CH3.herotower_deco\" width=256 height=32><br>Select a scheme that you would like to manage:<br><br>";
 		try (Connection con = DatabaseFactory.getConnection())
 		{
-			final PreparedStatement statement = con.prepareStatement("SELECT id, scheme_name FROM npcbufferpremium_scheme_list WHERE player_id=?");
+			final PreparedStatement statement = con.prepareStatement(SQL_NPCBUFFERPREMIUM_SCHEME_LIST);
 			statement.setInt(1, player.getObjectId());
 			final ResultSet rss = statement.executeQuery();
 			while (rss.next())
 			{
-				final String name = rss.getString("scheme_name");
+				final String name = rss.getString(SCHEME_NAME);
 				final String id = rss.getString("id");
 				html += "<button value=\"" + name + "\" action=\"bypass -h Quest " + QUEST_LOADING_INFO + " manage_scheme_select " + id + " x x\" width=118 height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\">";
 			}
@@ -611,8 +629,8 @@ public class NpcBufferPremium extends Quest
 			final ResultSet rss = statement.executeQuery();
 			while (rss.next())
 			{
-				final int buffId = rss.getInt("buffId");
-				final int buffLevel = rss.getInt("buffLevel");
+				final int buffId = rss.getInt(BUFFID);
+				final int buffLevel = rss.getInt(BUFFLEVEL);
 				String buffName = SkillData.getInstance().getSkill(buffId, buffLevel).getName();
 				buffName = buffName.replace(" ", "+");
 				availableBuffs.add(buffName + "_" + buffId + "_" + buffLevel);
@@ -643,25 +661,25 @@ public class NpcBufferPremium extends Quest
 					case "buff":
 						price = Config.PREMIUM_BUFF_PRICE;
 						break;
-					case "resist":
+					case RESIST:
 						price = Config.PREMIUM_RESIST_PRICE;
 						break;
 					case "song":
 						price = Config.PREMIUM_SONG_PRICE;
 						break;
-					case "dance":
+					case DANCE:
 						price = Config.PREMIUM_DANCE_PRICE;
 						break;
-					case "chant":
+					case CHANT:
 						price = Config.PREMIUM_CHANT_PRICE;
 						break;
-					case "others":
+					case OTHERS:
 						price = Config.PREMIUM_OTHERS_PRICE;
 						break;
-					case "special":
+					case SPECIAL:
 						price = Config.PREMIUM_SPECIAL_PRICE;
 						break;
-					case "cubic":
+					case CUBIC:
 						price = Config.PREMIUM_CUBIC_PRICE;
 						break;
 					default:
@@ -783,14 +801,14 @@ public class NpcBufferPremium extends Quest
 				final ResultSet rss = statement.executeQuery();
 				while (rss.next())
 				{
-					String name = SkillData.getInstance().getSkill(rss.getInt("buffId"), rss.getInt("buffLevel")).getName();
+					String name = SkillData.getInstance().getSkill(rss.getInt(BUFFID), rss.getInt(BUFFLEVEL)).getName();
 					name = name.replace(" ", "+");
-					buffList.add(name + "_" + rss.getInt("buffId") + "_" + rss.getInt("buffLevel"));
+					buffList.add(name + "_" + rss.getInt(BUFFID) + "_" + rss.getInt(BUFFLEVEL));
 				}
 				statement.close();
 				rss.close();
 			}
-			else if ("remove".equals(addOrRemove))
+			else if (REMOVE.equals(addOrRemove))
 			{
 				html += "You have <font color=LEVEL>" + buffCount + "</font> Buffs and <font color=LEVEL>" + danceSongCount + "</font> Dances";
 				final String query = "SELECT skill_id, skill_level FROM npcbufferpremium_scheme_contents WHERE scheme_id=? ORDER BY Buff_Class ASC, id";
@@ -799,9 +817,9 @@ public class NpcBufferPremium extends Quest
 				final ResultSet rss = statement.executeQuery();
 				while (rss.next())
 				{
-					String name = SkillData.getInstance().getSkill(rss.getInt("skill_id"), rss.getInt("skill_level")).getName();
+					String name = SkillData.getInstance().getSkill(rss.getInt(SKILL_ID), rss.getInt(SKILL_LEVEL)).getName();
 					name = name.replace(" ", "+");
-					buffList.add(name + "_" + rss.getInt("skill_id") + "_" + rss.getInt("skill_level"));
+					buffList.add(name + "_" + rss.getInt(SKILL_ID) + "_" + rss.getInt(SKILL_LEVEL));
 				}
 				statement.close();
 				rss.close();
@@ -844,7 +862,7 @@ public class NpcBufferPremium extends Quest
 			{
 				html += "<td width=" + width + "><button value=\"" + pageName + ii + "\" action=\"bypass -h Quest " + QUEST_LOADING_INFO + " manage_scheme_1 " + scheme + " " + ii + " x\" width=" + width + " height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td>";
 			}
-			else if ("remove".equals(addOrRemove))
+			else if (REMOVE.equals(addOrRemove))
 			{
 				html += "<td width=" + width + "><button value=\"" + pageName + ii + "\" action=\"bypass -h Quest " + QUEST_LOADING_INFO + " manage_scheme_2 " + scheme + " " + ii + " x\" width=" + width + " height=20 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td>";
 			}
@@ -882,7 +900,7 @@ public class NpcBufferPremium extends Quest
 					k++;
 				}
 			}
-			else if ("remove".equals(addOrRemove))
+			else if (REMOVE.equals(addOrRemove))
 			{
 				if ((k % 2) != 0)
 				{
@@ -966,12 +984,12 @@ public class NpcBufferPremium extends Quest
 			final ResultSet rss = statement.executeQuery();
 			while (rss.next())
 			{
-				String name = SkillData.getInstance().getSkill(rss.getInt("buffId"), rss.getInt("buffLevel")).getName();
+				String name = SkillData.getInstance().getSkill(rss.getInt(BUFFID), rss.getInt(BUFFLEVEL)).getName();
 				name = name.replace(" ", "+");
 				final String usable = rss.getString("canUse");
 				final String forClass = rss.getString("forClass");
-				final String skillId = rss.getString("buffId");
-				final String skillLevel = rss.getString("buffLevel");
+				final String skillId = rss.getString(BUFFID);
+				final String skillLevel = rss.getString(BUFFLEVEL);
 				buffList.add(name + "_" + forClass + "_" + page + "_" + usable + "_" + skillId + "_" + skillLevel);
 			}
 			statement.close();
@@ -1113,7 +1131,7 @@ public class NpcBufferPremium extends Quest
 	private void addTimeout(QuestState st, int gaugeColor, int amount, int offset)
 	{
 		final int endTime = (int) ((System.currentTimeMillis() + (amount * 1000L)) / 1000);
-		st.set("blockUntilTime", String.valueOf(endTime));
+		st.set(BLOCKUNTILTIME, String.valueOf(endTime));
 		st.getPlayer().sendPacket(new SetupGauge(gaugeColor, (amount * 1000) + offset, endTime));
 	}
 	
@@ -1198,7 +1216,7 @@ public class NpcBufferPremium extends Quest
 				if (player.isGM())
 				{
 					clearAllCaches();
-					return showText(st, "Cache Cleared", getCacheStats(), true, "Return", "main");
+					return showText(st, "Cache Cleared", getCacheStats(), true, RETURN, "main");
 				}
 				break;
 			}
@@ -1207,7 +1225,7 @@ public class NpcBufferPremium extends Quest
 			{
 				if (player.isGM())
 				{
-					return showText(st, "Cache Statistics", getCacheStats(), true, "Return", "main");
+					return showText(st, "Cache Statistics", getCacheStats(), true, RETURN, "main");
 				}
 				break;
 			}
@@ -1223,19 +1241,19 @@ public class NpcBufferPremium extends Quest
 					case "view_buffs":
 						return buildHtml("buff");
 					case "view_resists":
-						return buildHtml("resist");
+						return buildHtml(RESIST);
 					case "view_songs":
 						return buildHtml("song");
 					case "view_dances":
-						return buildHtml("dance");
+						return buildHtml(DANCE);
 					case "view_chants":
-						return buildHtml("chant");
+						return buildHtml(CHANT);
 					case "view_others":
-						return buildHtml("others");
+						return buildHtml(OTHERS);
 					case "view_special":
-						return buildHtml("special");
+						return buildHtml(SPECIAL);
 					case "view_cubic":
-						return buildHtml("cubic");
+						return buildHtml(CUBIC);
 					default:
 						if (DEBUG)
 						{
@@ -1248,9 +1266,9 @@ public class NpcBufferPremium extends Quest
 			
 			case "buffpet":
 			{
-				if ((System.currentTimeMillis() / 1000) > st.getInt("blockUntilTime"))
+				if ((System.currentTimeMillis() / 1000) > st.getInt(BLOCKUNTILTIME))
 				{
-					st.set("Pet-On-Off", eventParam1);
+					st.set(PET_ON_OFF, eventParam1);
 					if (Config.PREMIUM_TIME_OUT)
 					{
 						addTimeout(st, 3, Config.PREMIUM_TIME_OUT_TIME / 2, 600);
@@ -1265,7 +1283,7 @@ public class NpcBufferPremium extends Quest
 				if ((param.isEmpty()) || "no_name".equals(param))
 				{
 					player.sendPacket(SystemMessageId.INCORRECT_NAME_PLEASE_TRY_AGAIN);
-					return showText(st, "Info", "Please, enter the scheme name!", true, "Return", "main");
+					return showText(st, "Info", "Please, enter the scheme name!", true, RETURN, "main");
 				}
 				try (Connection con = DatabaseFactory.getConnection())
 				{
@@ -1317,7 +1335,7 @@ public class NpcBufferPremium extends Quest
 			case "manage_scheme_1":
 				return viewAllSchemeBuffs(eventParam1, eventParam2, "add");
 			case "manage_scheme_2":
-				return viewAllSchemeBuffs(eventParam1, eventParam2, "remove");
+				return viewAllSchemeBuffs(eventParam1, eventParam2, REMOVE);
 			case "manage_scheme_select":
 				return getOptionList(eventParam1);
 			
@@ -1348,7 +1366,7 @@ public class NpcBufferPremium extends Quest
 				}
 				else
 				{
-					html = viewAllSchemeBuffs(scheme, eventParam2, "remove");
+					html = viewAllSchemeBuffs(scheme, eventParam2, REMOVE);
 				}
 				return html;
 			}
@@ -1428,25 +1446,25 @@ public class NpcBufferPremium extends Quest
 					case "buff":
 						typeName = "Buffs";
 						break;
-					case "resist":
+					case RESIST:
 						typeName = "Resists";
 						break;
 					case "song":
 						typeName = "Songs";
 						break;
-					case "dance":
+					case DANCE:
 						typeName = "Dances";
 						break;
-					case "chant":
+					case CHANT:
 						typeName = "Chants";
 						break;
-					case "others":
+					case OTHERS:
 						typeName = "Others_Buffs";
 						break;
-					case "special":
+					case SPECIAL:
 						typeName = "Special_Buffs";
 						break;
-					case "cubic":
+					case CUBIC:
 						typeName = "Cubics";
 						break;
 					default:
@@ -1463,16 +1481,16 @@ public class NpcBufferPremium extends Quest
 			
 			case "heal":
 			{
-				if ((System.currentTimeMillis() / 1000) > st.getInt("blockUntilTime"))
+				if ((System.currentTimeMillis() / 1000) > st.getInt(BLOCKUNTILTIME))
 				{
 					if (player.isInCombat() && !Config.PREMIUM_ENABLE_HEAL_IN_COMBAT)
 					{
-						return showText(st, "Info", "You can't use the heal function while in combat.", false, "Return", "main");
+						return showText(st, "Info", "You can't use the heal function while in combat.", false, RETURN, "main");
 					}
 					
 					if (getQuestItemsCount(player, Config.PREMIUM_CONSUMABLE_ID) < Config.PREMIUM_HEAL_PRICE)
 					{
-						return showText(st, "Sorry", "You don't have the enough items:<br>You need: <font color=LEVEL>" + Config.PREMIUM_HEAL_PRICE + " " + getItemNameHtml(st, Config.PREMIUM_CONSUMABLE_ID) + "!", false, "0", "0");
+						return showText(st, SORRY, "You don't have the enough items:<br>You need: <font color=LEVEL>" + Config.PREMIUM_HEAL_PRICE + " " + getItemNameHtml(st, Config.PREMIUM_CONSUMABLE_ID) + "!", false, "0", "0");
 					}
 					
 					final boolean petBuff = isPetBuff(st);
@@ -1484,7 +1502,7 @@ public class NpcBufferPremium extends Quest
 						}
 						else
 						{
-							return showText(st, "Info", "You can't use the Pet's options.<br>Summon your pet first!", false, "Return", "main");
+							return showText(st, "Info", "You can't use the Pet's options.<br>Summon your pet first!", false, RETURN, "main");
 						}
 					}
 					else
@@ -1503,11 +1521,11 @@ public class NpcBufferPremium extends Quest
 			
 			case "removeBuffs":
 			{
-				if ((System.currentTimeMillis() / 1000) > st.getInt("blockUntilTime"))
+				if ((System.currentTimeMillis() / 1000) > st.getInt(BLOCKUNTILTIME))
 				{
 					if (getQuestItemsCount(player, Config.PREMIUM_CONSUMABLE_ID) < Config.PREMIUM_BUFF_REMOVE_PRICE)
 					{
-						return showText(st, "Sorry", "You don't have the enough items:<br>You need: <font color=LEVEL>" + Config.PREMIUM_BUFF_REMOVE_PRICE + " " + getItemNameHtml(st, Config.PREMIUM_CONSUMABLE_ID) + "!", false, "0", "0");
+						return showText(st, SORRY, "You don't have the enough items:<br>You need: <font color=LEVEL>" + Config.PREMIUM_BUFF_REMOVE_PRICE + " " + getItemNameHtml(st, Config.PREMIUM_CONSUMABLE_ID) + "!", false, "0", "0");
 					}
 					
 					final boolean petBuff = isPetBuff(st);
@@ -1519,7 +1537,7 @@ public class NpcBufferPremium extends Quest
 						}
 						else
 						{
-							return showText(st, "Info", "You can't use the Pet's options.<br>Summon your pet first!", false, "Return", "main");
+							return showText(st, "Info", "You can't use the Pet's options.<br>Summon your pet first!", false, RETURN, "main");
 						}
 					}
 					else
@@ -1538,7 +1556,7 @@ public class NpcBufferPremium extends Quest
 			
 			case "cast":
 			{
-				if ((System.currentTimeMillis() / 1000) > st.getInt("blockUntilTime"))
+				if ((System.currentTimeMillis() / 1000) > st.getInt(BLOCKUNTILTIME))
 				{
 					final List<Integer> buffs = new ArrayList<>();
 					final List<Integer> levels = new ArrayList<>();
@@ -1549,8 +1567,8 @@ public class NpcBufferPremium extends Quest
 						final ResultSet rss = statement.executeQuery();
 						while (rss.next())
 						{
-							final int id = Integer.parseInt(rss.getString("skill_id"));
-							final int level = Integer.parseInt(rss.getString("skill_level"));
+							final int id = Integer.parseInt(rss.getString(SKILL_ID));
+							final int level = Integer.parseInt(rss.getString(SKILL_LEVEL));
 							switch (getBuffType(id))
 							{
 								case "buff":
@@ -1560,7 +1578,7 @@ public class NpcBufferPremium extends Quest
 										levels.add(level);
 									}
 									break;
-								case "resist":
+								case RESIST:
 									if (Config.PREMIUM_ENABLE_RESIST && isEnabled(id, level))
 									{
 										buffs.add(id);
@@ -1574,28 +1592,28 @@ public class NpcBufferPremium extends Quest
 										levels.add(level);
 									}
 									break;
-								case "dance":
+								case DANCE:
 									if (Config.PREMIUM_ENABLE_DANCES && isEnabled(id, level))
 									{
 										buffs.add(id);
 										levels.add(level);
 									}
 									break;
-								case "chant":
+								case CHANT:
 									if (Config.PREMIUM_ENABLE_CHANTS && isEnabled(id, level))
 									{
 										buffs.add(id);
 										levels.add(level);
 									}
 									break;
-								case "others":
+								case OTHERS:
 									if (Config.PREMIUM_ENABLE_OTHERS && isEnabled(id, level))
 									{
 										buffs.add(id);
 										levels.add(level);
 									}
 									break;
-								case "special":
+								case SPECIAL:
 									if (Config.PREMIUM_ENABLE_SPECIAL && isEnabled(id, level))
 									{
 										buffs.add(id);
@@ -1625,7 +1643,7 @@ public class NpcBufferPremium extends Quest
 					
 					if (!Config.PREMIUM_FREE_BUFFS && (getQuestItemsCount(player, Config.PREMIUM_CONSUMABLE_ID) < Config.PREMIUM_SCHEME_BUFF_PRICE))
 					{
-						return showText(st, "Sorry", "You don't have the enough items:<br>You need: <font color=LEVEL>" + Config.PREMIUM_SCHEME_BUFF_PRICE + " " + getItemNameHtml(st, Config.PREMIUM_CONSUMABLE_ID) + "!", false, "0", "0");
+						return showText(st, SORRY, "You don't have the enough items:<br>You need: <font color=LEVEL>" + Config.PREMIUM_SCHEME_BUFF_PRICE + " " + getItemNameHtml(st, Config.PREMIUM_CONSUMABLE_ID) + "!", false, "0", "0");
 					}
 					
 					final boolean petBuff = isPetBuff(st);
@@ -1679,36 +1697,36 @@ public class NpcBufferPremium extends Quest
 					case "buff":
 						cost = Config.PREMIUM_BUFF_PRICE;
 						break;
-					case "resist":
+					case RESIST:
 						cost = Config.PREMIUM_RESIST_PRICE;
 						break;
 					case "song":
 						cost = Config.PREMIUM_SONG_PRICE;
 						break;
-					case "dance":
+					case DANCE:
 						cost = Config.PREMIUM_DANCE_PRICE;
 						break;
-					case "chant":
+					case CHANT:
 						cost = Config.PREMIUM_CHANT_PRICE;
 						break;
-					case "others":
+					case OTHERS:
 						cost = Config.PREMIUM_OTHERS_PRICE;
 						break;
-					case "special":
+					case SPECIAL:
 						cost = Config.PREMIUM_SPECIAL_PRICE;
 						break;
-					case "cubic":
+					case CUBIC:
 						cost = Config.PREMIUM_CUBIC_PRICE;
 						break;
 					default:
 						throw new RuntimeException("Unknown buff type in giveBuffs: " + eventParam3);
 				}
 				
-				if ((System.currentTimeMillis() / 1000) > st.getInt("blockUntilTime"))
+				if ((System.currentTimeMillis() / 1000) > st.getInt(BLOCKUNTILTIME))
 				{
 					if (!Config.PREMIUM_FREE_BUFFS && (getQuestItemsCount(player, Config.PREMIUM_CONSUMABLE_ID) < cost))
 					{
-						return showText(st, "Sorry", "You don't have the enough items:<br>You need: <font color=LEVEL>" + cost + " " + getItemNameHtml(st, Config.PREMIUM_CONSUMABLE_ID) + "!", false, "0", "0");
+						return showText(st, SORRY, "You don't have the enough items:<br>You need: <font color=LEVEL>" + cost + " " + getItemNameHtml(st, Config.PREMIUM_CONSUMABLE_ID) + "!", false, "0", "0");
 					}
 					
 					final int skillId = Integer.parseInt(eventParam1);
@@ -1717,14 +1735,14 @@ public class NpcBufferPremium extends Quest
 					
 					if ((skill.hasEffectType(EffectType.SUMMON)) && (getQuestItemsCount(player, skill.getItemConsumeId()) < skill.getItemConsumeCount()))
 					{
-						return showText(st, "Sorry", "You don't have the enough items:<br>You need: <font color=LEVEL>" + skill.getItemConsumeCount() + " " + getItemNameHtml(st, skill.getItemConsumeId()) + "!", false, "0", "0");
+						return showText(st, SORRY, "You don't have the enough items:<br>You need: <font color=LEVEL>" + skill.getItemConsumeCount() + " " + getItemNameHtml(st, skill.getItemConsumeId()) + "!", false, "0", "0");
 					}
 					
 					final boolean petBuff = isPetBuff(st);
 					
 					if (!petBuff)
 					{
-						if ("cubic".equals(eventParam3))
+						if (CUBIC.equals(eventParam3))
 						{
 							final Map<Integer, Cubic> playerCubics = player.getCubics();
 							if (playerCubics != null)
@@ -1743,7 +1761,7 @@ public class NpcBufferPremium extends Quest
 					}
 					else
 					{
-						if ("cubic".equals(eventParam3))
+						if (CUBIC.equals(eventParam3))
 						{
 							final Map<Integer, Cubic> playerCubics = player.getCubics();
 							if (playerCubics != null)
@@ -1763,7 +1781,7 @@ public class NpcBufferPremium extends Quest
 							}
 							else
 							{
-								return showText(st, "Info", "You can't use the Pet's options.<br>Summon your pet first!", false, "Return", "main");
+								return showText(st, "Info", "You can't use the Pet's options.<br>Summon your pet first!", false, RETURN, "main");
 							}
 						}
 					}
@@ -1779,11 +1797,11 @@ public class NpcBufferPremium extends Quest
 			
 			case "castBuffSet":
 			{
-				if ((System.currentTimeMillis() / 1000) > st.getInt("blockUntilTime"))
+				if ((System.currentTimeMillis() / 1000) > st.getInt(BLOCKUNTILTIME))
 				{
 					if (!Config.PREMIUM_FREE_BUFFS && (getQuestItemsCount(player, Config.PREMIUM_CONSUMABLE_ID) < Config.PREMIUM_BUFF_SET_PRICE))
 					{
-						return showText(st, "Sorry", "You don't have the enough items:<br>You need: <font color=LEVEL>" + Config.PREMIUM_BUFF_SET_PRICE + " " + getItemNameHtml(st, Config.PREMIUM_CONSUMABLE_ID) + "!", false, "0", "0");
+						return showText(st, SORRY, "You don't have the enough items:<br>You need: <font color=LEVEL>" + Config.PREMIUM_BUFF_SET_PRICE + " " + getItemNameHtml(st, Config.PREMIUM_CONSUMABLE_ID) + "!", false, "0", "0");
 					}
 					
 					final List<int[]> buffSets = new ArrayList<>();
@@ -1800,8 +1818,8 @@ public class NpcBufferPremium extends Quest
 							final ResultSet rss = statement.executeQuery();
 							while (rss.next())
 							{
-								final int id = rss.getInt("buffId");
-								final int lvl = rss.getInt("buffLevel");
+								final int id = rss.getInt(BUFFID);
+								final int lvl = rss.getInt(BUFFLEVEL);
 								buffSets.add(new int[]
 								{
 									id,
@@ -1833,8 +1851,8 @@ public class NpcBufferPremium extends Quest
 								final ResultSet rss = statement.executeQuery();
 								while (rss.next())
 								{
-									final int id = rss.getInt("buffId");
-									final int lvl = rss.getInt("buffLevel");
+									final int id = rss.getInt(BUFFID);
+									final int lvl = rss.getInt(BUFFLEVEL);
 									buffSets.add(new int[]
 									{
 										id,
@@ -1856,7 +1874,7 @@ public class NpcBufferPremium extends Quest
 						}
 						else
 						{
-							return showText(st, "Info", "You can't use the Pet's options.<br>Summon your pet first!", false, "Return", "main");
+							return showText(st, "Info", "You can't use the Pet's options.<br>Summon your pet first!", false, RETURN, "main");
 						}
 					}
 					
@@ -1887,7 +1905,7 @@ public class NpcBufferPremium extends Quest
 		}
 		if (!player.hasPremiumStatus())
 		{
-			return showText(st, "Info", "This buffer is available to players with a premium account.", false, "Return", "main");
+			return showText(st, "Info", "This buffer is available to players with a premium account.", false, RETURN, "main");
 		}
 		
 		if (player.isGM())
@@ -1898,34 +1916,34 @@ public class NpcBufferPremium extends Quest
 			}
 			return rebuildMainHtml(st);
 		}
-		else if ((System.currentTimeMillis() / 1000) < st.getInt("blockUntilTime"))
+		else if ((System.currentTimeMillis() / 1000) < st.getInt(BLOCKUNTILTIME))
 		{
-			return showText(st, "Sorry", "You have to wait a while!<br>if you wish to use my services!", false, "Return", "main");
+			return showText(st, SORRY, "You have to wait a while!<br>if you wish to use my services!", false, RETURN, "main");
 		}
 		
 		if (!Config.PREMIUM_BUFF_WITH_KARMA && (player.getKarma() > 0))
 		{
-			return showText(st, "Info", "You have too much <font color=FF0000>karma!</font><br>Come back,<br>when you don't have any karma!", false, "Return", "main");
+			return showText(st, "Info", "You have too much <font color=FF0000>karma!</font><br>Come back,<br>when you don't have any karma!", false, RETURN, "main");
 		}
 		else if (player.isInOlympiadMode())
 		{
-			return showText(st, "Info", "You can not buff while you are registered in the Olympiad, you can buff when you are out of the Olympiad.", false, "Return", "main");
+			return showText(st, "Info", "You can not buff while you are registered in the Olympiad, you can buff when you are out of the Olympiad.", false, RETURN, "main");
 		}
 		else if (player.isOnEvent())
 		{
-			return showText(st, "Info", "You can not buff while you are in <font color=\"FF0000\">Event!</font><br>Come back,<br>when you are out of TvT!", false, "Return", "main");
+			return showText(st, "Info", "You can not buff while you are in <font color=\"FF0000\">Event!</font><br>Come back,<br>when you are out of TvT!", false, RETURN, "main");
 		}
 		else if (player.getLevel() < Config.PREMIUM_MIN_LEVEL)
 		{
-			return showText(st, "Info", "Your level is too low!<br>You have to be at least level <font color=LEVEL>" + Config.MIN_LEVEL + "</font>,<br>to use my services!", false, "Return", "main");
+			return showText(st, "Info", "Your level is too low!<br>You have to be at least level <font color=LEVEL>" + Config.MIN_LEVEL + "</font>,<br>to use my services!", false, RETURN, "main");
 		}
 		else if (!Config.PREMIUM_BUFF_WITH_FLAG && (player.getPvpFlag() > 0))
 		{
-			return showText(st, "Info", "You can't buff while you are <font color=800080>flagged!</font><br>Wait some time and try again!", false, "Return", "main");
+			return showText(st, "Info", "You can't buff while you are <font color=800080>flagged!</font><br>Wait some time and try again!", false, RETURN, "main");
 		}
 		else if (player.isInCombat())
 		{
-			return showText(st, "Info", "You can't buff while you are attacking!<br>Stop your fight and try again!", false, "Return", "main");
+			return showText(st, "Info", "You can't buff while you are attacking!<br>Stop your fight and try again!", false, RETURN, "main");
 		}
 		
 		return rebuildMainHtml(st);

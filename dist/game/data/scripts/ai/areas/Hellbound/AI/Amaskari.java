@@ -47,6 +47,8 @@ import ai.areas.Hellbound.HellboundEngine;
  */
 public class Amaskari extends AbstractNpcAI
 {
+	private static final String ONSPAWN_MSG = "onspawn_msg";
+
 	// NPCs
 	private static final int AMASKARI = 22449;
 	private static final int AMASKARI_PRISONER = 22450;
@@ -92,7 +94,7 @@ public class Amaskari extends AbstractNpcAI
 			npc.setInvul(false);
 			// npc.doCast(INVINCIBILITY.getSkill())
 		}
-		else if (event.equalsIgnoreCase("onspawn_msg") && (npc != null) && !npc.isDead())
+		else if (event.equalsIgnoreCase(ONSPAWN_MSG) && (npc != null) && !npc.isDead())
 		{
 			if (getRandom(100) > 20)
 			{
@@ -102,7 +104,7 @@ public class Amaskari extends AbstractNpcAI
 			{
 				npc.broadcastSay(ChatType.NPC_GENERAL, MINIONS_NPCSTRING_ID[3]);
 			}
-			startQuestTimer("onspawn_msg", (getRandom(8) + 1) * 30000, npc, null);
+			startQuestTimer(ONSPAWN_MSG, (getRandom(8) + 1) * 30000, npc, null);
 		}
 		return null;
 	}
@@ -180,6 +182,6 @@ public class Amaskari extends AbstractNpcAI
 	@Override
 	public void onSpawn(Npc npc)
 	{
-		startQuestTimer("onspawn_msg", (getRandom(3) + 1) * 30000, npc, null);
+		startQuestTimer(ONSPAWN_MSG, (getRandom(3) + 1) * 30000, npc, null);
 	}
 }

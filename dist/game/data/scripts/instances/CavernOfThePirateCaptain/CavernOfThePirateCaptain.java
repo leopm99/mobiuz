@@ -50,6 +50,11 @@ import instances.AbstractInstance;
  */
 public class CavernOfThePirateCaptain extends AbstractInstance
 {
+	private static final String PLAYERSINSIDE = "playersInside";
+	private static final String BLUEFOUNDED = "blueFounded";
+	private static final String ZAKENROOM = "zakenRoom";
+	private static final String ZAKEN = "zaken";
+
 	// NPCs
 	private static final int PATHFINDER = 32713; // Pathfinder Worker
 	private static final int ZAKEN_60 = 29176; // Zaken
@@ -195,7 +200,7 @@ public class CavernOfThePirateCaptain extends AbstractInstance
 					managePlayerEnter(member, world);
 				}
 			}
-			world.setParameter("playersInside", playersInside);
+			world.setParameter(PLAYERSINSIDE, playersInside);
 			manageNpcSpawn(world);
 		}
 		else
@@ -342,7 +347,7 @@ public class CavernOfThePirateCaptain extends AbstractInstance
 						{
 							npc.setRHandId(FIRE);
 							startQuestTimer("BURN_BLUE2", 3000, npc, player);
-							if (world.getParameters().getInt("blueFounded", 0) == 4)
+							if (world.getParameters().getInt(BLUEFOUNDED, 0) == 4)
 							{
 								startQuestTimer("SHOW_ZAKEN", 5000, npc, player);
 							}
@@ -386,11 +391,11 @@ public class CavernOfThePirateCaptain extends AbstractInstance
 						{
 							manageScreenMsg(world, NpcStringId.WHO_DARES_AWAKEN_THE_MIGHTY_ZAKEN);
 						}
-						world.getParameters().getObject("zaken", Npc.class).setInvisible(false);
-						world.getParameters().getObject("zaken", Npc.class).setParalyzed(false);
-						spawnNpc(world.getParameters().getBoolean("is83", false) ? DOLL_BLADER_83 : DOLL_BLADER_60, world.getParameters().getInt("zakenRoom", 0), player, world);
-						spawnNpc(world.getParameters().getBoolean("is83", false) ? PIRATES_ZOMBIE_83 : PIRATES_ZOMBIE_60, world.getParameters().getInt("zakenRoom", 0), player, world);
-						spawnNpc(world.getParameters().getBoolean("is83", false) ? PIRATES_ZOMBIE_CAPTAIN_83 : PIRATES_ZOMBIE_CAPTAIN_60, world.getParameters().getInt("zakenRoom", 0), player, world);
+						world.getParameters().getObject(ZAKEN, Npc.class).setInvisible(false);
+						world.getParameters().getObject(ZAKEN, Npc.class).setParalyzed(false);
+						spawnNpc(world.getParameters().getBoolean("is83", false) ? DOLL_BLADER_83 : DOLL_BLADER_60, world.getParameters().getInt(ZAKENROOM, 0), player, world);
+						spawnNpc(world.getParameters().getBoolean("is83", false) ? PIRATES_ZOMBIE_83 : PIRATES_ZOMBIE_60, world.getParameters().getInt(ZAKENROOM, 0), player, world);
+						spawnNpc(world.getParameters().getBoolean("is83", false) ? PIRATES_ZOMBIE_CAPTAIN_83 : PIRATES_ZOMBIE_CAPTAIN_60, world.getParameters().getInt(ZAKENROOM, 0), player, world);
 						break;
 					}
 					default:
@@ -411,7 +416,7 @@ public class CavernOfThePirateCaptain extends AbstractInstance
 		{
 			if (npc.getId() == ZAKEN_83)
 			{
-				for (Player playersInside : world.getParameters().getList("playersInside", Player.class))
+				for (Player playersInside : world.getParameters().getList(PLAYERSINSIDE, Player.class))
 				{
 					if ((playersInside != null) && ((playersInside.getInstanceId() == world.getInstanceId()) && playersInside.isInsideRadius3D(npc, 1500)))
 					{
@@ -452,9 +457,9 @@ public class CavernOfThePirateCaptain extends AbstractInstance
 			{
 				if (isBlue)
 				{
-					int blueFounded = world.getParameters().getInt("blueFounded", 0);
+					int blueFounded = world.getParameters().getInt(BLUEFOUNDED, 0);
 					blueFounded++;
-					world.setParameter("blueFounded", blueFounded);
+					world.setParameter(BLUEFOUNDED, blueFounded);
 					startQuestTimer("BURN_BLUE", 500, npc, player);
 				}
 				else
@@ -495,7 +500,7 @@ public class CavernOfThePirateCaptain extends AbstractInstance
 	
 	private void manageScreenMsg(InstanceWorld world, NpcStringId stringId)
 	{
-		for (Player players : world.getParameters().getList("playersInside", Player.class))
+		for (Player players : world.getParameters().getList(PLAYERSINSIDE, Player.class))
 		{
 			if ((players != null) && (players.getInstanceId() == world.getInstanceId()))
 			{
@@ -518,7 +523,7 @@ public class CavernOfThePirateCaptain extends AbstractInstance
 	private void manageNpcSpawn(InstanceWorld world)
 	{
 		final List<Npc> candles = new ArrayList<>();
-		world.setParameter("zakenRoom", getRandom(1, 15));
+		world.setParameter(ZAKENROOM, getRandom(1, 15));
 		for (int i = 0; i < 36; i++)
 		{
 			final Npc candle = addSpawn(CANDLE, CANDLE_LOC[i], false, 0, false, world.getInstanceId());
@@ -528,7 +533,7 @@ public class CavernOfThePirateCaptain extends AbstractInstance
 		
 		for (int i = 3; i < 7; i++)
 		{
-			candles.get(ROOM_DATA[world.getParameters().getInt("zakenRoom", 0) - 1][i] - 1).getVariables().set("isBlue", 1);
+			candles.get(ROOM_DATA[world.getParameters().getInt(ZAKENROOM, 0) - 1][i] - 1).getVariables().set("isBlue", 1);
 		}
 		final int zakenId;
 		if (world.getParameters().getBoolean("is83", false))
@@ -543,10 +548,10 @@ public class CavernOfThePirateCaptain extends AbstractInstance
 		{
 			zakenId = ZAKEN_60;
 		}
-		final Npc zaken = spawnNpc(zakenId, world.getParameters().getInt("zakenRoom", 0), null, world);
+		final Npc zaken = spawnNpc(zakenId, world.getParameters().getInt(ZAKENROOM, 0), null, world);
 		zaken.setInvisible(true);
 		zaken.setParalyzed(true);
-		world.setParameter("zaken", zaken);
+		world.setParameter(ZAKEN, zaken);
 	}
 	
 	public static void main(String[] args)

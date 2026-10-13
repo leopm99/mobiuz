@@ -67,6 +67,8 @@ import com.l2journey.gameserver.network.serverpackets.CreatureSay;
  */
 public class KrateisCubeManager implements IXmlReader
 {
+	private static final String POINT = "point";
+
 	private static final Logger LOGGER = Logger.getLogger(KrateisCubeManager.class.getName());
 	
 	private final Map<Integer, KrateiArena> _arenas = HashMap.newHashMap(3);
@@ -174,7 +176,7 @@ public class KrateisCubeManager implements IXmlReader
 							{
 								for (Node c = kc.getFirstChild(); c != null; c = c.getNextSibling())
 								{
-									if ("point".equalsIgnoreCase(c.getNodeName()))
+									if (POINT.equalsIgnoreCase(c.getNodeName()))
 									{
 										map = c.getAttributes();
 										final int x = Integer.parseInt(map.getNamedItem("x").getNodeValue());
@@ -188,7 +190,7 @@ public class KrateisCubeManager implements IXmlReader
 							{
 								for (Node c = kc.getFirstChild(); c != null; c = c.getNextSibling())
 								{
-									if ("point".equalsIgnoreCase(c.getNodeName()))
+									if (POINT.equalsIgnoreCase(c.getNodeName()))
 									{
 										map = c.getAttributes();
 										final int x = Integer.parseInt(map.getNamedItem("x").getNodeValue());
@@ -202,7 +204,7 @@ public class KrateisCubeManager implements IXmlReader
 							{
 								for (Node c = kc.getFirstChild(); c != null; c = c.getNextSibling())
 								{
-									if ("point".equalsIgnoreCase(c.getNodeName()))
+									if (POINT.equalsIgnoreCase(c.getNodeName()))
 									{
 										map = c.getAttributes();
 										final int x = Integer.parseInt(map.getNamedItem("x").getNodeValue());

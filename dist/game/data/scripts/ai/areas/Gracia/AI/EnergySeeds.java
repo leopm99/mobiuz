@@ -68,6 +68,8 @@ import quests.Q00692_HowtoOpposeEvil.Q00692_HowtoOpposeEvil;
  */
 public class EnergySeeds extends AbstractNpcAI
 {
+	private static final String DESPAWNTASK = "DeSpawnTask";
+
 	private static final int HOW_TO_OPPOSE_EVIL_CHANCE = 60;
 	private static final int RATE = 1;
 	private static final int RESPAWN = 480000;
@@ -424,11 +426,11 @@ public class EnergySeeds extends AbstractNpcAI
 			}
 			stopAI(GraciaSeeds.DESTRUCTION);
 		}
-		else if (event.equalsIgnoreCase("DeSpawnTask"))
+		else if (event.equalsIgnoreCase(DESPAWNTASK))
 		{
 			if (npc.isInCombat())
 			{
-				startQuestTimer("DeSpawnTask", 30000, npc, null);
+				startQuestTimer(DESPAWNTASK, 30000, npc, null);
 			}
 			else
 			{
@@ -612,7 +614,7 @@ public class EnergySeeds extends AbstractNpcAI
 		monster.setInstanceId(energy.getInstanceId());
 		monster.setShowSummonAnimation(true);
 		monster.spawnMe(energy.getX(), energy.getY(), energy.getZ());
-		startQuestTimer("DeSpawnTask", 30000, monster, null);
+		startQuestTimer(DESPAWNTASK, 30000, monster, null);
 		return monster;
 	}
 	

@@ -78,6 +78,13 @@ import com.l2journey.gameserver.network.serverpackets.WareHouseWithdrawalList;
  */
 public class HomeBoard implements IParseBoardHandler
 {
+	private static final String HTML_PATH = "data/html/CommunityBoard/";
+	private static final String ACESSAR = "Acessar";
+	private static final String N_1F1F1F = "1F1F1F";
+	private static final String N_161616 = "161616";
+	private static final String ACCESS = "Access";
+	private static final String HTML_PATH_KEY = ".html";
+
 	// Carrega TipsBoard (e a dica ativa) na inicializacao do servidor.
 	static
 	{
@@ -294,13 +301,13 @@ public class HomeBoard implements IParseBoardHandler
 		sb.append("<tr><td height=10></td></tr>");
 		sb.append("<tr><td height=24 align=center bgcolor=\"2A2418\"><font name=\"hs9\" color=\"F2C75C\">").append(localize(lang, "Raid Boss Status", "Status dos Raid Bosses")).append("</font></td></tr>");
 		sb.append("<tr><td><table width=").append(innerWidth).append(" cellpadding=2 cellspacing=1 border=0>");
-		appendBossRow(sb, "1F1F1F", "Antharas", "%antharas_status%", nameColWidth, statusColWidth);
-		appendBossRow(sb, "161616", "Valakas", "%valakas_status%", nameColWidth, statusColWidth);
-		appendBossRow(sb, "1F1F1F", "Baium", "%baium_status%", nameColWidth, statusColWidth);
-		appendBossRow(sb, "161616", "Beleth", "%beleth_status%", nameColWidth, statusColWidth);
-		appendBossRow(sb, "1F1F1F", "Core", "%core_status%", nameColWidth, statusColWidth);
-		appendBossRow(sb, "161616", "Orfen", "%orfen_status%", nameColWidth, statusColWidth);
-		appendBossRow(sb, "1F1F1F", "Queen Ant", "%queenant_status%", nameColWidth, statusColWidth);
+		appendBossRow(sb, N_1F1F1F, "Antharas", "%antharas_status%", nameColWidth, statusColWidth);
+		appendBossRow(sb, N_161616, "Valakas", "%valakas_status%", nameColWidth, statusColWidth);
+		appendBossRow(sb, N_1F1F1F, "Baium", "%baium_status%", nameColWidth, statusColWidth);
+		appendBossRow(sb, N_161616, "Beleth", "%beleth_status%", nameColWidth, statusColWidth);
+		appendBossRow(sb, N_1F1F1F, "Core", "%core_status%", nameColWidth, statusColWidth);
+		appendBossRow(sb, N_161616, "Orfen", "%orfen_status%", nameColWidth, statusColWidth);
+		appendBossRow(sb, N_1F1F1F, "Queen Ant", "%queenant_status%", nameColWidth, statusColWidth);
 		sb.append("</table></td></tr>");
 		sb.append("</table></td>");
 		return sb.toString();
@@ -340,7 +347,7 @@ public class HomeBoard implements IParseBoardHandler
 			{
 				"L2UI.Crystalize_active",
 				"BlackSmith",
-				localize(lang, "Access", "Acessar"),
+				localize(lang, ACCESS, ACESSAR),
 				"bypass _bbstop;merchant/blacksmithMain.html"
 			});
 		}
@@ -360,7 +367,7 @@ public class HomeBoard implements IParseBoardHandler
 			{
 				"BranchSys2.br_spirit_rune_i00",
 				"Premium",
-				localize(lang, "Access", "Acessar"),
+				localize(lang, ACCESS, ACESSAR),
 				"bypass _bbstop;premium/main.html"
 			});
 		}
@@ -370,7 +377,7 @@ public class HomeBoard implements IParseBoardHandler
 			{
 				"icon.skill1411",
 				"Delevel",
-				localize(lang, "Access", "Acessar"),
+				localize(lang, ACCESS, ACESSAR),
 				"bypass _bbstop;delevel/main.html"
 			});
 		}
@@ -396,8 +403,8 @@ public class HomeBoard implements IParseBoardHandler
 		// Layout em linhas com cores alternadas.
 		final String[] bgColors =
 		{
-			"161616",
-			"1F1F1F"
+			N_161616,
+			N_1F1F1F
 		};
 		int cellIndex = 0;
 		for (int i = 0; i < cells.size(); i += cellsPerRow)
@@ -505,9 +512,9 @@ public class HomeBoard implements IParseBoardHandler
 		else if (command.startsWith("_bbstop;"))
 		{
 			final String path = command.replace("_bbstop;", "");
-			if (!path.isEmpty() && path.endsWith(".html"))
+			if (!path.isEmpty() && path.endsWith(HTML_PATH_KEY))
 			{
-				returnHtml = HtmCache.getInstance().getHtm(player, "data/html/CommunityBoard/" + path);
+				returnHtml = HtmCache.getInstance().getHtm(player, HTML_PATH + path);
 			}
 		}
 		else if (command.startsWith("_bbsmultisell"))
@@ -516,7 +523,7 @@ public class HomeBoard implements IParseBoardHandler
 			final String[] buypassOptions = fullBypass.split(",");
 			final int multisellId = Integer.parseInt(buypassOptions[0]);
 			final String page = buypassOptions[1];
-			returnHtml = HtmCache.getInstance().getHtm(player, "data/html/CommunityBoard/" + page + ".html");
+			returnHtml = HtmCache.getInstance().getHtm(player, HTML_PATH + page + HTML_PATH_KEY);
 			MultisellData.getInstance().separateAndSend(multisellId, player, null, false);
 		}
 		else if (command.startsWith("_bbsexcmultisell"))
@@ -525,13 +532,13 @@ public class HomeBoard implements IParseBoardHandler
 			final String[] buypassOptions = fullBypass.split(",");
 			final int multisellId = Integer.parseInt(buypassOptions[0]);
 			final String page = buypassOptions[1];
-			returnHtml = HtmCache.getInstance().getHtm(player, "data/html/CommunityBoard/" + page + ".html");
+			returnHtml = HtmCache.getInstance().getHtm(player, HTML_PATH + page + HTML_PATH_KEY);
 			MultisellData.getInstance().separateAndSend(multisellId, player, null, true);
 		}
 		else if (command.startsWith("_bbssell"))
 		{
 			final String page = command.replace("_bbssell;", "");
-			returnHtml = HtmCache.getInstance().getHtm(player, "data/html/CommunityBoard/" + page + ".html");
+			returnHtml = HtmCache.getInstance().getHtm(player, HTML_PATH + page + HTML_PATH_KEY);
 			player.sendPacket(new BuyList(BuyListData.getInstance().getBuyList(423), player.getAdena(), 0));
 			player.sendPacket(new ExBuySellList(player, false));
 		}
