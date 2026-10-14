@@ -34,6 +34,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+- Dead Orfen no longer teleports players, starts Paralysis, or moves her corpse to the nest
 - Deleting a character also removes its saved `character_summons` rows
 - Ferries dock straight at Talking Island and Gludin. The Talking Island berth line is aligned, the Gludin arrival is one straight run into the harbor, and a finished route places the ship on the server position so the client stops instead of steering around the berth
 - Community Board epic boss status is read from `GrandBossManager` when the board opens, so kills and respawns no longer wait for the hourly cache
