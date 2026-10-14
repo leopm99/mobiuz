@@ -254,6 +254,11 @@ public class Orfen extends AbstractNpcAI
 	@Override
 	public void onSkillSee(Npc npc, Player caster, Skill skill, List<WorldObject> targets, boolean isSummon)
 	{
+		if (npc.isDead())
+		{
+			return;
+		}
+		
 		if (npc.getId() == ORFEN)
 		{
 			final Creature originalCaster = isSummon ? caster.getSummon() : caster;
@@ -303,6 +308,11 @@ public class Orfen extends AbstractNpcAI
 	@Override
 	public void onAttack(Npc npc, Player attacker, int damage, boolean isSummon)
 	{
+		if (npc.isDead())
+		{
+			return;
+		}
+		
 		final int npcId = npc.getId();
 		if (npcId == ORFEN)
 		{
