@@ -419,6 +419,12 @@ public class GameClient extends Client<com.l2journey.commons.network.Connection<
 				ps.execute();
 			}
 			
+			try (PreparedStatement ps = con.prepareStatement("DELETE FROM character_summons WHERE ownerId=?"))
+			{
+				ps.setInt(1, objectId);
+				ps.execute();
+			}
+			
 			try (PreparedStatement ps = con.prepareStatement("DELETE FROM heroes WHERE charId=?"))
 			{
 				ps.setInt(1, objectId);
