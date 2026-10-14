@@ -132,12 +132,14 @@ public class SSQLibraryOfSages extends AbstractInstance
 	
 	private void spawnElcadia(Player player, InstanceWorld world)
 	{
-		final Npc elcadia = world.getParameters().getObject(ELCADIA, Npc.class);
-		if (elcadia != null)
+		final Npc previous = world.getParameters().getObject(ELCADIA, Npc.class);
+		if (previous != null)
 		{
-			elcadia.deleteMe();
+			cancelQuestTimer(FOLLOW, previous, player);
+			previous.deleteMe();
 		}
-		world.setParameter(ELCADIA, addSpawn(ELCADIA_INSTANCE, player, false, 0, false, player.getInstanceId()));
+		final Npc elcadia = addSpawn(ELCADIA_INSTANCE, player, false, 0, false, player.getInstanceId());
+		world.setParameter(ELCADIA, elcadia);
 		startQuestTimer(FOLLOW, 3000, elcadia, player);
 	}
 	
