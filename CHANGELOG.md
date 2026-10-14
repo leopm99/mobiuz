@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Unit tests for Seven Signs schedule delay clamping when a late period change would otherwise pass a negative ThreadPool delay
 - Unit tests for phantom ground-skill fallback, aggro-distance leash, base-class logger names, and Tattoo of Divine kit exclusion
 - Unit test that offline `sendInventoryUpdate` does not write the coalesced inventory map
+- Unit test that character deletion prepares and executes `DELETE FROM character_summons`
 
 ### Changed
 
@@ -33,6 +34,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+- Deleting a character also removes its saved `character_summons` rows
 - Ferries dock straight at Talking Island and Gludin. The Talking Island berth line is aligned, the Gludin arrival is one straight run into the harbor, and a finished route places the ship on the server position so the client stops instead of steering around the berth
 - Community Board epic boss status is read from `GrandBossManager` when the board opens, so kills and respawns no longer wait for the hourly cache
 - Olympiad weekly-change countdown log used period-end locals (`countDown` / `numMins`) instead of weekly-change locals (`countDown2` / `numMins2`), so logged days/hours/mins were wrong
