@@ -34,6 +34,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+- Quest "Seven Signs, One Who Seeks the Power of the Seal" (10296): Eris's second dialog option before the battle with Etis van Etina is not freezing the client anymore; After defeating Etis van Etina, Elcadia now returns to the player when the closing scene ends
 - NullPointerException when talking to Sophia in the "Seven Signs, Forbidden Book of the Elmore-Aden Kingdom" quest
 - Dead Orfen no longer teleports players, starts Paralysis, or moves her corpse to the nest
 - Deleting a character also removes its saved `character_summons` rows

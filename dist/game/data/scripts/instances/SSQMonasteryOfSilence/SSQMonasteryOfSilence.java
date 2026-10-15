@@ -1,16 +1,16 @@
 /*
  * Copyright (c) 2025 L2Journey Project
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -18,13 +18,13 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- * 
+ *
  * ---
- * 
- * Portions of this software are derived from the L2JMobius Project, 
- * shared under the MIT License. The original license terms are preserved where 
+ *
+ * Portions of this software are derived from the L2JMobius Project,
+ * shared under the MIT License. The original license terms are preserved where
  * applicable..
- * 
+ *
  */
 package instances.SSQMonasteryOfSilence;
 
@@ -70,7 +70,7 @@ public class SSQMonasteryOfSilence extends AbstractInstance
 	private static final int TELEPORT_CONTROL_DEVICE3 = 32819;
 	private static final int TELEPORT_CONTROL_DEVICE4 = 32820;
 	private static final int TOMB_OF_THE_SAINTESS = 32843;
-	
+
 	// Monsters
 	private static final int TRAINEE_OF_REST = 27403;
 	private static final int SUPPLICANT_OF_REST = 27404;
@@ -83,13 +83,13 @@ public class SSQMonasteryOfSilence extends AbstractInstance
 	private static final int GUARDIAN_OF_THE_TOMB_2 = 18957;
 	private static final int GUARDIAN_OF_THE_TOMB_3 = 18958;
 	private static final int GUARDIAN_OF_THE_TOMB_4 = 18959;
-	
+
 	// Items
 	private static final int SCROLL_OF_ABSTINENCE = 17228;
 	private static final int SHIELD_OF_SACRIFICE = 17229;
 	private static final int SWORD_OF_HOLY_SPIRIT = 17230;
 	private static final int STAFF_OF_BLESSING = 17231;
-	
+
 	// Skills
 	private static final SkillHolder[] BUFFS =
 	{
@@ -97,7 +97,7 @@ public class SSQMonasteryOfSilence extends AbstractInstance
 		new SkillHolder(6728, 1), // Recharge of Elcadia
 		new SkillHolder(6730, 1), // Greater Battle Heal of Elcadia
 	};
-	
+
 	// Locations
 	private static final Location START_LOC = new Location(120717, -86879, -3424);
 	private static final Location EXIT_LOC = new Location(115983, -87351, -3397);
@@ -150,7 +150,7 @@ public class SSQMonasteryOfSilence extends AbstractInstance
 		new Location(56336, -252168, -6752),
 		new Location(56336, -252288, -6752),
 	};
-	
+
 	// NpcString
 	private static final NpcStringId[] ELCADIA_DIALOGS_Q010294 =
 	{
@@ -158,17 +158,17 @@ public class SSQMonasteryOfSilence extends AbstractInstance
 		NpcStringId.REMEMBER_THE_CONTENT_OF_THE_BOOKS_THAT_YOU_FOUND_YOU_CAN_T_TAKE_THEM_OUT_WITH_YOU,
 		NpcStringId.IT_SEEMS_THAT_YOU_CANNOT_REMEMBER_TO_THE_ROOM_OF_THE_WATCHER_WHO_FOUND_THE_BOOK
 	};
-	
+
 	private static final NpcStringId[] ELCADIA_DIALOGS_Q010295 =
 	{
 		NpcStringId.THE_GUARDIAN_OF_THE_SEAL_DOESN_T_SEEM_TO_GET_INJURED_AT_ALL_UNTIL_THE_BARRIER_IS_DESTROYED,
 		NpcStringId.THE_DEVICE_LOCATED_IN_THE_ROOM_IN_FRONT_OF_THE_GUARDIAN_OF_THE_SEAL_IS_DEFINITELY_THE_BARRIER_THAT_CONTROLS_THE_GUARDIAN_S_POWER,
 		NpcStringId.TO_REMOVE_THE_BARRIER_YOU_MUST_FIND_THE_RELICS_THAT_FIT_THE_BARRIER_AND_ACTIVATE_THE_DEVICE
 	};
-	
+
 	// Misc
 	private static final int TEMPLATE_ID = 151;
-	
+
 	// Doors
 	private static final int TOMB_DOOR = 21100018;
 	private static final int[] DOORS =
@@ -190,7 +190,7 @@ public class SSQMonasteryOfSilence extends AbstractInstance
 		21100013,
 		21100011
 	};
-	
+
 	private static final int[] FAKE_TOMB_DOORS =
 	{
 		21100101,
@@ -198,7 +198,7 @@ public class SSQMonasteryOfSilence extends AbstractInstance
 		21100103,
 		21100104
 	};
-	
+
 	private SSQMonasteryOfSilence()
 	{
 		addFirstTalkId(TELEPORT_CONTROL_DEVICE1, TELEPORT_CONTROL_DEVICE2, TELEPORT_CONTROL_DEVICE3, TELEPORT_CONTROL_DEVICE4);
@@ -207,7 +207,7 @@ public class SSQMonasteryOfSilence extends AbstractInstance
 		addStartNpc(ODD_GLOBE, TELEPORT_CONTROL_DEVICE1, TELEPORT_CONTROL_DEVICE2, TELEPORT_CONTROL_DEVICE3, TELEPORT_CONTROL_DEVICE4, ERIS_EVIL_THOUGHTS);
 		addTalkId(ODD_GLOBE, ERIS_EVIL_THOUGHTS, RELIC_GUARDIAN, RELIC_WATCHER1, RELIC_WATCHER2, RELIC_WATCHER3, RELIC_WATCHER4, TELEPORT_CONTROL_DEVICE1, TELEPORT_CONTROL_DEVICE2, TELEPORT_CONTROL_DEVICE3, TELEPORT_CONTROL_DEVICE4, ERIS_EVIL_THOUGHTS);
 	}
-	
+
 	@Override
 	public void onEnterInstance(Player player, InstanceWorld world, boolean firstEntrance)
 	{
@@ -215,11 +215,11 @@ public class SSQMonasteryOfSilence extends AbstractInstance
 		{
 			world.addAllowed(player);
 		}
-		
+
 		teleportPlayer(player, START_LOC, world.getInstanceId(), false);
 		spawnElcadia(player, world);
 	}
-	
+
 	@Override
 	public String onEvent(String event, Npc npc, Player player)
 	{
@@ -292,7 +292,7 @@ public class SSQMonasteryOfSilence extends AbstractInstance
 					{
 						npc.doCast(getRandomEntry(BUFFS).getSkill());
 					}
-					
+
 					startQuestTimer(FOLLOW, 5000, npc, player);
 					break;
 				}
@@ -304,12 +304,12 @@ public class SSQMonasteryOfSilence extends AbstractInstance
 					{
 						npc.broadcastSay(ChatType.NPC_GENERAL, getRandomEntry(ELCADIA_DIALOGS_Q010294));
 					}
-					
+
 					if ((qs10295 != null) && qs10295.isMemoState(1))
 					{
 						npc.broadcastSay(ChatType.NPC_GENERAL, getRandomEntry(ELCADIA_DIALOGS_Q010295));
 					}
-					
+
 					startQuestTimer(DIALOG, 10000, npc, player);
 					break;
 				}
@@ -411,31 +411,31 @@ public class SSQMonasteryOfSilence extends AbstractInstance
 					{
 						world.openDoor(doorId);
 					}
-					
+
 					addSpawn(GUARDIAN_OF_THE_TOMB_1, GUARDIAN_OF_THE_TOMB_1_LOC, false, 0, false, world.getInstanceId());
 					for (Location LOC : SLAVE_SPAWN_1_LOC)
 					{
 						sendSlaveAtPlayer(addSpawn(TRAINEE_OF_REST, LOC, false, 0, false, world.getInstanceId()), player);
 					}
-					
+
 					addSpawn(GUARDIAN_OF_THE_TOMB_2, GUARDIAN_OF_THE_TOMB_2_LOC, false, 0, false, world.getInstanceId());
 					for (Location LOC : SLAVE_SPAWN_2_LOC)
 					{
 						sendSlaveAtPlayer(addSpawn(TRAINEE_OF_REST, LOC, false, 0, false, world.getInstanceId()), player);
 					}
-					
+
 					addSpawn(GUARDIAN_OF_THE_TOMB_3, GUARDIAN_OF_THE_TOMB_3_LOC, false, 0, false, world.getInstanceId());
 					for (Location LOC : SLAVE_SPAWN_3_LOC)
 					{
 						sendSlaveAtPlayer(addSpawn(SUPPLICANT_OF_REST, LOC, false, 0, false, world.getInstanceId()), player);
 					}
-					
+
 					addSpawn(GUARDIAN_OF_THE_TOMB_4, GUARDIAN_OF_THE_TOMB_4_LOC, false, 0, false, world.getInstanceId());
 					for (Location LOC : SLAVE_SPAWN_4_LOC)
 					{
 						sendSlaveAtPlayer(addSpawn(SUPPLICANT_OF_REST, LOC, false, 0, false, world.getInstanceId()), player);
 					}
-					
+
 					return "32843-01.html";
 				}
 				case "START_MOVIE_Q10296":
@@ -463,10 +463,10 @@ public class SSQMonasteryOfSilence extends AbstractInstance
 				}
 			}
 		}
-		
+
 		return super.onEvent(event, npc, player);
 	}
-	
+
 	@Override
 	public void onKill(Npc npc, Player player, boolean isSummon)
 	{
@@ -508,8 +508,13 @@ public class SSQMonasteryOfSilence extends AbstractInstance
 				case ETIS_VAN_ETINA:
 				{
 					playMovie(player, Movie.SSQ2_BOSS_CLOSING);
-					world.getParameters().getObject(ELCADIA, Npc.class).teleToLocation(ELCADIA_LOC, world.getInstanceId(), 0);
-					startQuestTimer("TELEPORT_TO_PLAYER", 63000, npc, player);
+					final Npc elcadia = world.getParameters().getObject(ELCADIA, Npc.class);
+					if (elcadia != null)
+					{
+						elcadia.teleToLocation(ELCADIA_LOC, world.getInstanceId(), 0);
+						// Etis's corpse decays in a few seconds and cancels every timer registered on it.
+						startQuestTimer("TELEPORT_TO_PLAYER", 63000, elcadia, player);
+					}
 					final QuestState qs = player.getQuestState(Q10296_SevenSignsOneWhoSeeksThePowerOfTheSeal.class.getSimpleName());
 					if ((qs != null) && qs.isMemoState(2))
 					{
@@ -524,7 +529,7 @@ public class SSQMonasteryOfSilence extends AbstractInstance
 			}
 		}
 	}
-	
+
 	@Override
 	public void onSpawn(Npc npc)
 	{
@@ -546,7 +551,7 @@ public class SSQMonasteryOfSilence extends AbstractInstance
 			}
 		}
 	}
-	
+
 	@Override
 	public String onTalk(Npc npc, Player talker)
 	{
@@ -554,10 +559,10 @@ public class SSQMonasteryOfSilence extends AbstractInstance
 		{
 			enterInstance(talker, TEMPLATE_ID);
 		}
-		
+
 		return super.onTalk(npc, talker);
 	}
-	
+
 	/**
 	 * Sends a freshly spawned tomb slave at the player.<br>
 	 * The template of a slave can be a Folk, which is not attackable, so the aggression is only applied when it is.
@@ -571,25 +576,25 @@ public class SSQMonasteryOfSilence extends AbstractInstance
 		{
 			return;
 		}
-		
+
 		mob.setRunning();
 		mob.addDamageHate(player, 0, 999);
 		mob.getAI().setIntention(Intention.ATTACK, player);
 	}
-	
+
 	protected void spawnElcadia(Player player, InstanceWorld world)
 	{
 		if (world.getParameters().getObject(ELCADIA, Npc.class) != null)
 		{
 			world.getParameters().getObject(ELCADIA, Npc.class).deleteMe();
 		}
-		
+
 		final Npc elcadia = addSpawn(ELCADIA_INSTANCE, player.getX(), player.getY(), player.getZ(), 0, false, 0, false, world.getInstanceId());
 		world.setParameter(ELCADIA, elcadia);
 		startQuestTimer(FOLLOW, 5000, elcadia, player);
 		startQuestTimer(DIALOG, 10000, elcadia, player);
 	}
-	
+
 	public static void main(String[] args)
 	{
 		new SSQMonasteryOfSilence();
