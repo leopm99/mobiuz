@@ -72,13 +72,33 @@ public class Q00421_LittleWingsBigAdventure extends Quest
 	// Misc
 	private static final int MIN_PLAYER_LEVEL = 45;
 	private static final int MIN_HACHLING_LEVEL = 55;
+	// Memo states
+	// Tree progress is a bit field; each tree is completed once, in any order.
+	/** Tree of Wind bit. */
+	private static final int TREE_OF_WIND_FLAG = 1;
+	/** Tree of Star bit. */
+	private static final int TREE_OF_STAR_FLAG = 2;
+	/** Tree of Twilight bit. */
+	private static final int TREE_OF_TWILIGHT_FLAG = 4;
+	/** Tree of the Abyss bit. */
+	private static final int TREE_OF_ABYSS_FLAG = 8;
+	/** Wind, Star, Twilight, and Abyss are all done. */
+	private static final int MEMO_STATE_ALL_TREES = TREE_OF_WIND_FLAG | TREE_OF_STAR_FLAG | TREE_OF_TWILIGHT_FLAG | TREE_OF_ABYSS_FLAG;
+	/** Empty mask; Mimyu only offers the explanation menu. */
+	private static final int MEMO_STATE_NO_TREES = 0;
+	/** Cronos has started the quest; the player has not spoken to Mimyu. */
+	private static final int MEMO_STATE_SENT_TO_MIMYU = 100;
+	/** Mimyu is waiting for the hatchling whose flute object id was stored at the start. */
+	private static final int MEMO_STATE_AWAITING_HATCHLING = 200;
+	/** Mimyu has accepted that hatchling and is waiting for it to be unsummoned and for its flute. */
+	private static final int MEMO_STATE_AWAITING_FLUTE = 16;
 	private static final Map<Integer, NpcData> NPC_DATA = new HashMap<>();
 	static
 	{
-		NPC_DATA.put(TREE_OF_WIND, new NpcData(NpcStringId.HEY_YOU_VE_ALREADY_DRUNK_THE_ESSENCE_OF_WIND, 2, 1, 27)); // retail min hits is 270
-		NPC_DATA.put(TREE_OF_STAR, new NpcData(NpcStringId.HEY_YOU_VE_ALREADY_DRUNK_THE_ESSENCE_OF_A_STAR, 4, 2, 40)); // retail min hits is 400
-		NPC_DATA.put(TREE_OF_TWILIGHT, new NpcData(NpcStringId.HEY_YOU_VE_ALREADY_DRUNK_THE_ESSENCE_OF_DUSK, 8, 4, 15)); // retail min hits is 150
-		NPC_DATA.put(TREE_OF_ABYSS, new NpcData(NpcStringId.HEY_YOU_VE_ALREADY_DRUNK_THE_ESSENCE_OF_THE_ABYSS, 16, 8, 27)); // retail min hits is 270
+		NPC_DATA.put(TREE_OF_WIND, new NpcData(NpcStringId.HEY_YOU_VE_ALREADY_DRUNK_THE_ESSENCE_OF_WIND, TREE_OF_WIND_FLAG, 27)); // retail min hits is 270
+		NPC_DATA.put(TREE_OF_STAR, new NpcData(NpcStringId.HEY_YOU_VE_ALREADY_DRUNK_THE_ESSENCE_OF_A_STAR, TREE_OF_STAR_FLAG, 40)); // retail min hits is 400
+		NPC_DATA.put(TREE_OF_TWILIGHT, new NpcData(NpcStringId.HEY_YOU_VE_ALREADY_DRUNK_THE_ESSENCE_OF_DUSK, TREE_OF_TWILIGHT_FLAG, 15)); // retail min hits is 150
+		NPC_DATA.put(TREE_OF_ABYSS, new NpcData(NpcStringId.HEY_YOU_VE_ALREADY_DRUNK_THE_ESSENCE_OF_THE_ABYSS, TREE_OF_ABYSS_FLAG, 27)); // retail min hits is 270
 	}
 	
 	public Q00421_LittleWingsBigAdventure()
@@ -126,7 +146,7 @@ public class Q00421_LittleWingsBigAdventure extends Quest
 						else
 						{
 							qs.startQuest();
-							qs.setMemoState(100);
+							qs.setMemoState(MEMO_STATE_SENT_TO_MIMYU);
 							qs.set(FLUTEOBJECTID, flute.getObjectId());
 							htmltext = event;
 						}
@@ -170,7 +190,7 @@ public class Q00421_LittleWingsBigAdventure extends Quest
 				{
 					giveItems(player, FAIRY_LEAF, 4);
 					qs.setCond(2, true);
-					qs.setMemoState(0);
+					qs.setMemoState(MEMO_STATE_NO_TREES);
 					htmltext = event;
 				}
 				break;
@@ -247,13 +267,13 @@ public class Q00421_LittleWingsBigAdventure extends Quest
 			{
 				switch (qs.getMemoState())
 				{
-					case 100:
+					case MEMO_STATE_SENT_TO_MIMYU:
 					{
-						qs.setMemoState(200);
+						qs.setMemoState(MEMO_STATE_AWAITING_HATCHLING);
 						htmltext = "30747-01.html";
 						break;
 					}
-					case 200:
+					case MEMO_STATE_AWAITING_HATCHLING:
 					{
 						final Summon summon = talker.getSummon();
 						if (summon == null)
@@ -270,20 +290,12 @@ public class Q00421_LittleWingsBigAdventure extends Quest
 						}
 						break;
 					}
-					case 0:
+					case MEMO_STATE_NO_TREES:
 					{
 						htmltext = "30747-07.html";
 						break;
 					}
-					case 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14:
-					{
-						if (hasQuestItems(talker, FAIRY_LEAF))
-						{
-							htmltext = "30747-11.html";
-						}
-						break;
-					}
-					case 15:
+					case MEMO_STATE_ALL_TREES:
 					{
 						if (!hasQuestItems(talker, FAIRY_LEAF))
 						{
@@ -294,7 +306,7 @@ public class Q00421_LittleWingsBigAdventure extends Quest
 							}
 							else if (summon.getControlObjectId() == qs.getInt(FLUTEOBJECTID))
 							{
-								qs.setMemoState(16);
+								qs.setMemoState(MEMO_STATE_AWAITING_FLUTE);
 								htmltext = "30747-13.html";
 							}
 							else
@@ -304,7 +316,7 @@ public class Q00421_LittleWingsBigAdventure extends Quest
 						}
 						break;
 					}
-					case 16:
+					case MEMO_STATE_AWAITING_FLUTE:
 					{
 						if (!hasQuestItems(talker, FAIRY_LEAF))
 						{
@@ -368,6 +380,12 @@ public class Q00421_LittleWingsBigAdventure extends Quest
 					}
 					default:
 					{
+						// Any incomplete set of trees.
+						final int memoState = qs.getMemoState();
+						if ((memoState > MEMO_STATE_NO_TREES) && (memoState < MEMO_STATE_ALL_TREES) && hasQuestItems(talker, FAIRY_LEAF))
+						{
+							htmltext = "30747-11.html";
+						}
 						break;
 					}
 				}
@@ -390,7 +408,7 @@ public class Q00421_LittleWingsBigAdventure extends Quest
 			if (isSummon)
 			{
 				final NpcData data = NPC_DATA.get(npc.getId());
-				if ((qs.getMemoState() % data.memoStateMod) < data.memoStateValue)
+				if ((qs.getMemoState() & data.memoStateValue) == 0)
 				{
 					if (attacker.getSummon().getControlObjectId() == qs.getInt(FLUTEOBJECTID))
 					{
@@ -411,7 +429,7 @@ public class Q00421_LittleWingsBigAdventure extends Quest
 							qs.setMemoState(qs.getMemoState() + data.memoStateValue);
 							qs.unset("hits");
 							playSound(attacker, QuestSound.ITEMSOUND_QUEST_MIDDLE);
-							if (qs.getMemoState() == 15)
+							if (qs.getMemoState() == MEMO_STATE_ALL_TREES)
 							{
 								qs.setCond(3);
 							}
@@ -498,14 +516,12 @@ public class Q00421_LittleWingsBigAdventure extends Quest
 	private static class NpcData
 	{
 		public NpcStringId message;
-		public int memoStateMod;
 		public int memoStateValue;
 		public int minHits;
 		
-		public NpcData(NpcStringId message, int memoStateMod, int memoStateValue, int minHits)
+		public NpcData(NpcStringId message, int memoStateValue, int minHits)
 		{
 			this.message = message;
-			this.memoStateMod = memoStateMod;
 			this.memoStateValue = memoStateValue;
 			this.minHits = minHits;
 		}
