@@ -3344,6 +3344,27 @@ public class Config
 				}
 			}
 		}
+		
+		if (!PREMIUM_SYSTEM_ENABLED && (COMMUNITY_PREMIUM_SYSTEM_ENABLED || COMMUNITYBOARD_BUFFER_PREMIUM))
+		{
+			LOGGER.warning("Community Board Premium Manager / Premium Buffer require EnablePremiumSystem = True in config/player/premiumsystem.ini. Those features stay hidden and purchases are refused until the premium system is enabled.");
+		}
+	}
+	
+	/**
+	 * @return {@code true} when both the premium system and Community Board premium shop are enabled
+	 */
+	public static boolean isCommunityPremiumShopEnabled()
+	{
+		return PREMIUM_SYSTEM_ENABLED && COMMUNITY_PREMIUM_SYSTEM_ENABLED;
+	}
+	
+	/**
+	 * @return {@code true} when both the premium system and Community Board premium buffer are enabled
+	 */
+	public static boolean isCommunityPremiumBufferEnabled()
+	{
+		return PREMIUM_SYSTEM_ENABLED && COMMUNITYBOARD_BUFFER_PREMIUM;
 	}
 	
 	/**

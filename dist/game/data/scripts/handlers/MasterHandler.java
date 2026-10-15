@@ -501,7 +501,7 @@ public class MasterHandler
 		{
 			// Community Board
 			BufferBoard.class,
-			BufferBoardPremium.class,
+			Config.isCommunityPremiumBufferEnabled() ? BufferBoardPremium.class : null,
 			ClanBoard.class,
 			DropSearchBoard.class,
 			FavoriteBoard.class,

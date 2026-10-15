@@ -139,6 +139,11 @@ public class BufferBoardPremium implements IParseBoardHandler
 	@Override
 	public boolean parseCommunityBoardCommand(String command, Player player)
 	{
+		if (!Config.PREMIUM_SYSTEM_ENABLED)
+		{
+			sendHtml(player, showInfo("Info", "The premium system is currently <font color=FF0000>disabled</font>."));
+			return false;
+		}
 		if (!player.hasPremiumStatus())
 		{
 			sendHtml(player, showInfo("Info", "This buffer is available to players with a  <font color=FF0000>premium account.</font>"));

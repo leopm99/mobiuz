@@ -165,7 +165,7 @@ public class HomeBoard implements IParseBoardHandler
 				"bypass _bbsbuffer"
 			});
 		}
-		if (Config.COMMUNITYBOARD_BUFFER_PREMIUM)
+		if (Config.isCommunityPremiumBufferEnabled())
 		{
 			cells.add(new String[]
 			{
@@ -361,7 +361,7 @@ public class HomeBoard implements IParseBoardHandler
 				"bypass _bbstop;merchant/gmshop.html"
 			});
 		}
-		if (Config.COMMUNITY_PREMIUM_SYSTEM_ENABLED)
+		if (Config.isCommunityPremiumShopEnabled())
 		{
 			cells.add(new String[]
 			{
@@ -512,7 +512,11 @@ public class HomeBoard implements IParseBoardHandler
 		else if (command.startsWith("_bbstop;"))
 		{
 			final String path = command.replace("_bbstop;", "");
-			if (!path.isEmpty() && path.endsWith(HTML_PATH_KEY))
+			if (path.startsWith("premium/") && !Config.isCommunityPremiumShopEnabled())
+			{
+				player.sendMessage(localize(player.getLang(), "Premium system is currently disabled.", "O sistema premium esta desativado no momento."));
+			}
+			else if (!path.isEmpty() && path.endsWith(HTML_PATH_KEY))
 			{
 				returnHtml = HtmCache.getInstance().getHtm(player, HTML_PATH + path);
 			}
@@ -709,24 +713,31 @@ public class HomeBoard implements IParseBoardHandler
 		}
 		else if (command.startsWith("_bbspremium"))
 		{
-			final String fullBypass = command.replace("_bbspremium;", "");
-			final String[] buypassOptions = fullBypass.split(",");
-			final int premiumDays = Integer.parseInt(buypassOptions[0]);
-			if ((premiumDays < 1) || (premiumDays > 30) || (player.getInventory().getInventoryItemCount(Config.COMMUNITY_PREMIUM_COIN_ID, -1) < (Config.COMMUNITY_PREMIUM_PRICE_PER_DAY * premiumDays)))
+			if (!Config.isCommunityPremiumShopEnabled())
 			{
-				player.sendMessage("Not enough currency!");
+				player.sendMessage(localize(player.getLang(), "Premium system is currently disabled.", "O sistema premium esta desativado no momento."));
 			}
 			else
 			{
-				player.destroyItemByItemId(ItemProcessType.FEE, Config.COMMUNITY_PREMIUM_COIN_ID, (long) (Config.COMMUNITY_PREMIUM_PRICE_PER_DAY) * premiumDays, player, true);
-				PremiumManager.getInstance().addPremiumTime(player.getAccountName(), premiumDays, TimeUnit.DAYS);
-				player.sendMessage("Your account will now have premium status until " + new SimpleDateFormat("dd.MM.yyyy HH:mm").format(PremiumManager.getInstance().getPremiumExpiration(player.getAccountName())) + ".");
-				if (EventsConfig.PC_CAFE_RETAIL_LIKE)
+				final String fullBypass = command.replace("_bbspremium;", "");
+				final String[] buypassOptions = fullBypass.split(",");
+				final int premiumDays = Integer.parseInt(buypassOptions[0]);
+				if ((premiumDays < 1) || (premiumDays > 30) || (player.getInventory().getInventoryItemCount(Config.COMMUNITY_PREMIUM_COIN_ID, -1) < (Config.COMMUNITY_PREMIUM_PRICE_PER_DAY * premiumDays)))
 				{
-					PcCafePointsManager.getInstance().run(player);
+					player.sendMessage("Not enough currency!");
 				}
+				else
+				{
+					player.destroyItemByItemId(ItemProcessType.FEE, Config.COMMUNITY_PREMIUM_COIN_ID, (long) (Config.COMMUNITY_PREMIUM_PRICE_PER_DAY) * premiumDays, player, true);
+					PremiumManager.getInstance().addPremiumTime(player.getAccountName(), premiumDays, TimeUnit.DAYS);
+					player.sendMessage("Your account will now have premium status until " + new SimpleDateFormat("dd.MM.yyyy HH:mm").format(PremiumManager.getInstance().getPremiumExpiration(player.getAccountName())) + ".");
+					if (EventsConfig.PC_CAFE_RETAIL_LIKE)
+					{
+						PcCafePointsManager.getInstance().run(player);
+					}
 
-				returnHtml = HtmCache.getInstance().getHtm(player, "data/html/CommunityBoard/premium/thankyou.html");
+					returnHtml = HtmCache.getInstance().getHtm(player, "data/html/CommunityBoard/premium/thankyou.html");
+				}
 			}
 		}
 
