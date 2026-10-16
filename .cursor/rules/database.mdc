@@ -1,0 +1,17 @@
+---
+description: How to run SQL against the local L2Journey database
+alwaysApply: true
+---
+
+# Database access
+
+- There is no local `mysql` client on PATH for this project.
+- The DB runs in Docker as container `l2journey-db-1` (MariaDB 11).
+- Always query with:
+
+```bash
+docker exec l2journey-db-1 mariadb -ul2j -pl2j l2journey -e "YOUR SQL HERE"
+```
+
+- Do not use host `mysql`, and do not use `mysql` inside the container — use `mariadb`.
+- Credentials match `docker-compose` / `docker/config/game/database.ini` (`l2j` / `l2j`, database `l2journey`).
