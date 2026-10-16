@@ -356,12 +356,12 @@ public class Q00386_StolenDignity extends Quest
 			String html;
 			if ((i3 == 3) && (getBingoSelectCount(qs) == 6))
 			{
-				reward(player, qs, 4);
+				reward(player, 4);
 				html = getHtm(player, "30843-22.html");
 			}
 			else if ((i3 == 0) && (getBingoSelectCount(qs) == 6))
 			{
-				reward(player, qs, 10);
+				reward(player, 10);
 				html = getHtm(player, "30843-24.html");
 			}
 			else
@@ -373,7 +373,7 @@ public class Q00386_StolenDignity extends Quest
 		return fillBoard(qs, getHtm(player, "30843-25.html"));
 	}
 	
-	private void reward(Player player, QuestState qs, int count)
+	private void reward(Player player, int count)
 	{
 		switch (getRandom(33))
 		{

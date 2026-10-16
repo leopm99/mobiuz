@@ -385,12 +385,12 @@ public class NpcBuffer extends Quest
 		return html;
 	}
 	
-	private String reloadPanel(QuestState st)
+	private String reloadPanel()
 	{
 		return "<html noscrollbar><head><title>" + TITLE_NAME + "</title></head><body><center><img src=\"L2UI_CH3.herotower_deco\" width=256 height=32><br><font color=303030>" + TITLE_NAME + "</font><br><img src=\"L2UI.SquareGray\" width=250 height=1><br><table width=260 border=0 bgcolor=444444><tr><td><br></td></tr><tr><td align=center><font color=FFFFFF>This option can be seen by GMs only and it<br1>allow to update any changes made in the<br1>script. You can disable this option in<br1>the settings section within the Script.<br><font color=LEVEL>Do you want to update the SCRIPT?</font></font></td></tr><tr><td></td></tr></table><br><img src=\"L2UI.SquareGray\" width=250 height=1><br><br><button value=\"Yes\" action=\"bypass -h Quest " + QUEST_LOADING_INFO + " reloadscript 1 0 0\" width=50 height=25 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"><button value=\"No\" action=\"bypass -h Quest " + QUEST_LOADING_INFO + " reloadscript 0 0 0\" width=50 height=25 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></center></body></html>";
 	}
 	
-	private String getItemNameHtml(QuestState st, int itemId)
+	private String getItemNameHtml(int itemId)
 	{
 		return "&#" + itemId + ";";
 	}
@@ -702,7 +702,7 @@ public class NpcBuffer extends Quest
 				final int id = Integer.parseInt(buffSplit[1]);
 				final int level = Integer.parseInt(buffSplit[2]);
 				name = name.replace("+", " ");
-				html += "<tr><td>" + getSkillIconHtml(id, level) + "</td><td><button value=\"" + name + "\" action=\"bypass -h Quest " + QUEST_LOADING_INFO + " giveBuffs " + id + " " + level + " " + buffType + "\" width=190 height=32 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td></tr>";
+				html += "<tr><td>" + getSkillIconHtml(id) + "</td><td><button value=\"" + name + "\" action=\"bypass -h Quest " + QUEST_LOADING_INFO + " giveBuffs " + id + " " + level + " " + buffType + "\" width=190 height=32 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td></tr>";
 			}
 			html += "</table>";
 		}
@@ -896,7 +896,7 @@ public class NpcBuffer extends Quest
 					{
 						html += "<BR1><table border=0 bgcolor=292929>";
 					}
-					html += "<tr><td width=35>" + getSkillIconHtml(id, level) + "</td><td fixwidth=170>" + name + "</td><td><button value=\"Add\" action=\"bypass -h Quest " + QUEST_LOADING_INFO + " add_buff " + scheme + "_" + id + "_" + level + " " + page + " " + totalBuffs + "\" width=65 height=25 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td></tr></table>";
+					html += "<tr><td width=35>" + getSkillIconHtml(id) + "</td><td fixwidth=170>" + name + "</td><td><button value=\"Add\" action=\"bypass -h Quest " + QUEST_LOADING_INFO + " add_buff " + scheme + "_" + id + "_" + level + " " + page + " " + totalBuffs + "\" width=65 height=25 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td></tr></table>";
 					k++;
 				}
 			}
@@ -910,7 +910,7 @@ public class NpcBuffer extends Quest
 				{
 					html += "<BR1><table border=0 bgcolor=292929>";
 				}
-				html += "<tr><td width=35>" + getSkillIconHtml(id, level) + "</td><td fixwidth=170>" + name + "</td><td><button value=\"Remove\" action=\"bypass -h Quest " + QUEST_LOADING_INFO + " remove_buff " + scheme + "_" + id + "_" + level + " " + page + " " + totalBuffs + "\" width=65 height=25 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td></table>";
+				html += "<tr><td width=35>" + getSkillIconHtml(id) + "</td><td fixwidth=170>" + name + "</td><td><button value=\"Remove\" action=\"bypass -h Quest " + QUEST_LOADING_INFO + " remove_buff " + scheme + "_" + id + "_" + level + " " + page + " " + totalBuffs + "\" width=65 height=25 back=\"L2UI_ct1.button_df\" fore=\"L2UI_ct1.button_df\"></td></table>";
 				k++;
 			}
 		}
@@ -1490,7 +1490,7 @@ public class NpcBuffer extends Quest
 					
 					if (getQuestItemsCount(player, Config.CONSUMABLE_ID) < Config.HEAL_PRICE)
 					{
-						return showText(st, SORRY, "You don't have the enough items:<br>You need: <font color=LEVEL>" + Config.HEAL_PRICE + " " + getItemNameHtml(st, Config.CONSUMABLE_ID) + "!", false, "0", "0");
+						return showText(st, SORRY, "You don't have the enough items:<br>You need: <font color=LEVEL>" + Config.HEAL_PRICE + " " + getItemNameHtml(Config.CONSUMABLE_ID) + "!", false, "0", "0");
 					}
 					
 					final boolean petBuff = isPetBuff(st);
@@ -1525,7 +1525,7 @@ public class NpcBuffer extends Quest
 				{
 					if (getQuestItemsCount(player, Config.CONSUMABLE_ID) < Config.BUFF_REMOVE_PRICE)
 					{
-						return showText(st, SORRY, "You don't have the enough items:<br>You need: <font color=LEVEL>" + Config.BUFF_REMOVE_PRICE + " " + getItemNameHtml(st, Config.CONSUMABLE_ID) + "!", false, "0", "0");
+						return showText(st, SORRY, "You don't have the enough items:<br>You need: <font color=LEVEL>" + Config.BUFF_REMOVE_PRICE + " " + getItemNameHtml(Config.CONSUMABLE_ID) + "!", false, "0", "0");
 					}
 					
 					final boolean petBuff = isPetBuff(st);
@@ -1643,7 +1643,7 @@ public class NpcBuffer extends Quest
 					
 					if (!Config.FREE_BUFFS && (getQuestItemsCount(player, Config.CONSUMABLE_ID) < Config.SCHEME_BUFF_PRICE))
 					{
-						return showText(st, SORRY, "You don't have the enough items:<br>You need: <font color=LEVEL>" + Config.SCHEME_BUFF_PRICE + " " + getItemNameHtml(st, Config.CONSUMABLE_ID) + "!", false, "0", "0");
+						return showText(st, SORRY, "You don't have the enough items:<br>You need: <font color=LEVEL>" + Config.SCHEME_BUFF_PRICE + " " + getItemNameHtml(Config.CONSUMABLE_ID) + "!", false, "0", "0");
 					}
 					
 					final boolean petBuff = isPetBuff(st);
@@ -1672,11 +1672,11 @@ public class NpcBuffer extends Quest
 					}
 					if (!petBuff)
 					{
-						applyBuffsDirect(npc, player, buffsToApply);
+						applyBuffsDirect(player, buffsToApply);
 					}
 					else if (player.getSummon() != null)
 					{
-						applyBuffsDirect(npc, player.getSummon(), buffsToApply);
+						applyBuffsDirect(player.getSummon(), buffsToApply);
 					}
 					
 					takeItems(player, Config.CONSUMABLE_ID, Config.SCHEME_BUFF_PRICE);
@@ -1725,7 +1725,7 @@ public class NpcBuffer extends Quest
 				{
 					if (!Config.FREE_BUFFS && (getQuestItemsCount(player, Config.CONSUMABLE_ID) < cost))
 					{
-						return showText(st, SORRY, "You don't have the enough items:<br>You need: <font color=LEVEL>" + cost + " " + getItemNameHtml(st, Config.CONSUMABLE_ID) + "!", false, "0", "0");
+						return showText(st, SORRY, "You don't have the enough items:<br>You need: <font color=LEVEL>" + cost + " " + getItemNameHtml(Config.CONSUMABLE_ID) + "!", false, "0", "0");
 					}
 					
 					final int skillId = Integer.parseInt(eventParam1);
@@ -1734,7 +1734,7 @@ public class NpcBuffer extends Quest
 					
 					if ((skill.hasEffectType(EffectType.SUMMON)) && (getQuestItemsCount(player, skill.getItemConsumeId()) < skill.getItemConsumeCount()))
 					{
-						return showText(st, SORRY, "You don't have the enough items:<br>You need: <font color=LEVEL>" + skill.getItemConsumeCount() + " " + getItemNameHtml(st, skill.getItemConsumeId()) + "!", false, "0", "0");
+						return showText(st, SORRY, "You don't have the enough items:<br>You need: <font color=LEVEL>" + skill.getItemConsumeCount() + " " + getItemNameHtml(skill.getItemConsumeId()) + "!", false, "0", "0");
 					}
 					
 					final boolean petBuff = isPetBuff(st);
@@ -1800,7 +1800,7 @@ public class NpcBuffer extends Quest
 				{
 					if (!Config.FREE_BUFFS && (getQuestItemsCount(player, Config.CONSUMABLE_ID) < Config.BUFF_SET_PRICE))
 					{
-						return showText(st, SORRY, "You don't have the enough items:<br>You need: <font color=LEVEL>" + Config.BUFF_SET_PRICE + " " + getItemNameHtml(st, Config.CONSUMABLE_ID) + "!", false, "0", "0");
+						return showText(st, SORRY, "You don't have the enough items:<br>You need: <font color=LEVEL>" + Config.BUFF_SET_PRICE + " " + getItemNameHtml(Config.CONSUMABLE_ID) + "!", false, "0", "0");
 					}
 					
 					final List<int[]> buffSets = new ArrayList<>();
@@ -1836,7 +1836,7 @@ public class NpcBuffer extends Quest
 						player.setTarget(player);
 						player.broadcastPacket(new MagicSkillUse(player, SKILL_BUFF_1, 1, 1000, 0));
 						player.broadcastPacket(new MagicSkillUse(player, SKILL_BUFF_2, 1, 1000, 0));
-						applyBuffsDirect(npc, player, buffSets);
+						applyBuffsDirect(player, buffSets);
 					}
 					else
 					{
@@ -1869,7 +1869,7 @@ public class NpcBuffer extends Quest
 							player.getSummon().setTarget(player.getSummon());
 							player.getSummon().broadcastPacket(new MagicSkillUse(player.getSummon(), SKILL_BUFF_1, 1, 1000, 0));
 							player.getSummon().broadcastPacket(new MagicSkillUse(player.getSummon(), SKILL_BUFF_2, 1, 1000, 0));
-							applyBuffsDirect(npc, player.getSummon(), buffSets);
+							applyBuffsDirect(player.getSummon(), buffSets);
 						}
 						else
 						{
@@ -1907,7 +1907,7 @@ public class NpcBuffer extends Quest
 		{
 			if (Config.SCRIPT_RELOAD)
 			{
-				return reloadPanel(st);
+				return reloadPanel();
 			}
 			return rebuildMainHtml(st);
 		}
@@ -1958,13 +1958,13 @@ public class NpcBuffer extends Quest
 		return super.showResult(player, res);
 	}
 	
-	private String getSkillIconHtml(int id, int level)
+	private String getSkillIconHtml(int id)
 	{
-		final String iconNumber = getSkillIconNumber(id, level);
+		final String iconNumber = getSkillIconNumber(id);
 		return "<img src=\"Icon.skill" + iconNumber + "\" width=32 height=32>";
 	}
 	
-	private String getSkillIconNumber(int id, int level)
+	private String getSkillIconNumber(int id)
 	{
 		final String formatted;
 		if (id == 4)
@@ -2082,7 +2082,7 @@ public class NpcBuffer extends Quest
 		return "NpcBuffer Cache Stats:\\n" + "  Skill Cache: " + SKILL_CACHE.size() + " entries\\n" + "  Category Cache: " + CATEGORY_CACHE.size() + " entries\\n" + "  Cache Age: " + cacheAge + " seconds\\n" + "  TTL Remaining: " + ((CACHE_TTL / 1000) - cacheAge) + " seconds";
 	}
 	
-	private void applyBuffsDirect(Npc npc, Creature target, List<int[]> buffs)
+	private void applyBuffsDirect(Creature target, List<int[]> buffs)
 	{
 		if ((buffs == null) || buffs.isEmpty() || (target == null))
 		{

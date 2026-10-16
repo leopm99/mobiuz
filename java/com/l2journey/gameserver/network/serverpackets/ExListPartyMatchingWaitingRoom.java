@@ -48,10 +48,9 @@ public class ExListPartyMatchingWaitingRoom extends ServerPacket
 	private final int _mode;
 	private final List<Player> _members;
 	
-	public ExListPartyMatchingWaitingRoom(Player player, int page, int minLevel, int maxLevel, int mode)
+	public ExListPartyMatchingWaitingRoom(Player player, int minLevel, int maxLevel, int mode)
 	{
 		_player = player;
-		// _page = page;
 		_minLevel = minLevel;
 		_maxLevel = maxLevel;
 		_mode = mode;

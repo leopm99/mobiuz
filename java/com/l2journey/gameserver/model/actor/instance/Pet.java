@@ -1224,11 +1224,11 @@ public class Pet extends Summon
 	{
 		if (getId() == 12564)
 		{
-			getStat().addExpAndSp(Math.rint(addToExp * Config.SINEATER_XP_RATE), addToSp);
+			getStat().addExpAndSp(Math.rint(addToExp * Config.SINEATER_XP_RATE));
 		}
 		else
 		{
-			getStat().addExpAndSp(Math.rint(addToExp * Config.PET_XP_RATE), addToSp);
+			getStat().addExpAndSp(Math.rint(addToExp * Config.PET_XP_RATE));
 		}
 	}
 	

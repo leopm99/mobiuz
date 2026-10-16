@@ -118,7 +118,7 @@ public class GameServerPacketHandler
 					}
 					case 0x04:
 					{
-						msg = new ChangeAccessLevel(data, server);
+						msg = new ChangeAccessLevel(data);
 						break;
 					}
 					case 0x05:

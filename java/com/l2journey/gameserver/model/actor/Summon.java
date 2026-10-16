@@ -451,7 +451,7 @@ public abstract class Summon extends Playable
 				owner.sendPacket(new PetDelete(getSummonType(), getObjectId()));
 				owner.setPetStatusWindowOpen(false);
 				// Disable only the pet actions that the player has in their shortcuts
-				owner.sendPacket(ExBasicActionList.getPacketWithoutPlayerPetActions(owner));
+				owner.sendPacket(ExBasicActionList.getPacketWithoutPlayerPetActions());
 				owner.sendPacket(new ShortcutInit(owner));
 				final Party party = owner.getParty();
 				if (party != null)

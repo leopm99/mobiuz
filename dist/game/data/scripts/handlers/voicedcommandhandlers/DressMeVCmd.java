@@ -142,10 +142,9 @@ public class DressMeVCmd implements IVoicedCommandHandler
 	/**
 	 * Implementation of the DRESSME command.
 	 * @param player The instance of the player that used the command.
-	 * @param params The params required by the command.
 	 * @return TRUE if the command was successful, FALSE otherwise.
 	 */
-	private boolean command_Dressme(Player player, String params)
+	private boolean command_Dressme(Player player)
 	{
 		String html = HtmCache.getInstance().getHtm(player, indexPath);
 		html = html.replace("<?show_hide?>", !player.getVarB(SHOWVISUALCHANGE) ? "Show visual equip on other player!" : "Hide visual equip on other player!");
@@ -881,10 +880,9 @@ public class DressMeVCmd implements IVoicedCommandHandler
 	/**
 	 * Implementation of the "dressinfo" command.
 	 * @param player The instance of the player that used the command.
-	 * @param params The params required by the command.
 	 * @return TRUE if the command was successful, FALSE otherwise.
 	 */
-	private boolean command_dressinfo(Player player, String params)
+	private boolean command_dressinfo(Player player)
 	{
 		String html = HtmCache.getInstance().getHtm(player, infoPath);
 		sendHtml(player, html);
@@ -1151,10 +1149,9 @@ public class DressMeVCmd implements IVoicedCommandHandler
 	/**
 	 * Implementation of the UNDRESSME command.
 	 * @param player The instance of the player that used the command.
-	 * @param params The params required by the command.
 	 * @return TRUE if the command was successful, FALSE otherwise.
 	 */
-	private boolean command_undressme(Player player, String params)
+	private boolean command_undressme(Player player)
 	{
 		String html = HtmCache.getInstance().getHtm(player, undressmePath);
 		html = html.replace("<?show_hide?>", !player.getVarB(SHOWVISUALCHANGE) ? "Show visual equip on other player!" : "Hide visual equip on other player!");
@@ -1167,10 +1164,9 @@ public class DressMeVCmd implements IVoicedCommandHandler
 	/**
 	 * Implementation of the "undressme-armor" command.
 	 * @param player The instance of the player that used the command.
-	 * @param params The params required by the command.
 	 * @return TRUE if the command was successful, FALSE otherwise.
 	 */
-	private boolean command_undressme_armor(Player player, String params)
+	private boolean command_undressme_armor(Player player)
 	{
 		Inventory inv = player.getInventory();
 		Item chest = inv.getPaperdollItem(Inventory.PAPERDOLL_CHEST);
@@ -1203,10 +1199,9 @@ public class DressMeVCmd implements IVoicedCommandHandler
 	/**
 	 * Implementation of the "undressme-cloak" command.
 	 * @param player The instance of the player that used the command.
-	 * @param params The params required by the command.
 	 * @return TRUE if the command was successful, FALSE otherwise.
 	 */
-	private boolean command_undressme_cloak(Player player, String params)
+	private boolean command_undressme_cloak(Player player)
 	{
 		Item cloak = player.getInventory().getPaperdollItem(Inventory.PAPERDOLL_CLOAK);
 		if (cloak != null)
@@ -1221,10 +1216,9 @@ public class DressMeVCmd implements IVoicedCommandHandler
 	/**
 	 * Implementation of the "undressme-shield" command.
 	 * @param player The instance of the player that used the command.
-	 * @param params The params required by the command.
 	 * @return TRUE if the command was successful, FALSE otherwise.
 	 */
-	private boolean command_undressme_shield(Player player, String params)
+	private boolean command_undressme_shield(Player player)
 	{
 		Item shield = player.getInventory().getPaperdollItem(Inventory.PAPERDOLL_LHAND);
 		if (shield != null)
@@ -1239,10 +1233,9 @@ public class DressMeVCmd implements IVoicedCommandHandler
 	/**
 	 * Implementation of the "undressme-weapon" command.
 	 * @param player The instance of the player that used the command.
-	 * @param params The params required by the command.
 	 * @return TRUE if the command was successful, FALSE otherwise.
 	 */
-	private boolean command_undressme_weapon(Player player, String params)
+	private boolean command_undressme_weapon(Player player)
 	{
 		Item weapon = player.getInventory().getPaperdollItem(Inventory.PAPERDOLL_RHAND);
 		if (weapon != null)
@@ -1257,10 +1250,9 @@ public class DressMeVCmd implements IVoicedCommandHandler
 	/**
 	 * Implementation of the "undressme-hat" command.
 	 * @param player The instance of the player that used the command.
-	 * @param params The params required by the command.
 	 * @return TRUE if the command was successful, FALSE otherwise.
 	 */
-	private boolean command_undressme_hat(Player player, String params)
+	private boolean command_undressme_hat(Player player)
 	{
 		Item slot = player.getInventory().getPaperdollItem(Inventory.PAPERDOLL_HAIR);
 		if (slot == null)
@@ -1280,10 +1272,9 @@ public class DressMeVCmd implements IVoicedCommandHandler
 	/**
 	 * Implementation of the SHOWDRESS command.
 	 * @param player The instance of the player that used the command.
-	 * @param params The params required by the command.
 	 * @return TRUE if the command was successful, FALSE otherwise.
 	 */
-	private boolean command_showdress(Player player, String params)
+	private boolean command_showdress(Player player)
 	{
 		player.setVar(SHOWVISUALCHANGE, "true");
 		player.broadcastUserInfo();
@@ -1294,10 +1285,9 @@ public class DressMeVCmd implements IVoicedCommandHandler
 	/**
 	 * Implementation of the HIDEDRESS command.
 	 * @param player The instance of the player that used the command.
-	 * @param params The params required by the command.
 	 * @return TRUE if the command was successful, FALSE otherwise.
 	 */
-	private boolean command_hidedress(Player player, String params)
+	private boolean command_hidedress(Player player)
 	{
 		player.setVar(SHOWVISUALCHANGE, "false");
 		player.broadcastUserInfo();
@@ -1311,7 +1301,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 		switch (command)
 		{
 			case DRESSME:
-				return command_Dressme(player, params);
+				return command_Dressme(player);
 			case "dressme-armor":
 				return command_dressme_armor(player, params);
 			case "dressme-cloak":
@@ -1333,7 +1323,7 @@ public class DressMeVCmd implements IVoicedCommandHandler
 			case DRESS_HATPAGE:
 				return command_dress_hatpage(player, params);
 			case "dressinfo":
-				return command_dressinfo(player, params);
+				return command_dressinfo(player);
 			case "dress-armor":
 				return command_dress_armor(player, params);
 			case "dress-cloak":
@@ -1345,21 +1335,21 @@ public class DressMeVCmd implements IVoicedCommandHandler
 			case "dress-hat":
 				return command_dress_hat(player, params);
 			case UNDRESSME:
-				return command_undressme(player, params);
+				return command_undressme(player);
 			case "undressme-armor":
-				return command_undressme_armor(player, params);
+				return command_undressme_armor(player);
 			case "undressme-cloak":
-				return command_undressme_cloak(player, params);
+				return command_undressme_cloak(player);
 			case "undressme-shield":
-				return command_undressme_shield(player, params);
+				return command_undressme_shield(player);
 			case "undressme-weapon":
-				return command_undressme_weapon(player, params);
+				return command_undressme_weapon(player);
 			case "undressme-hat":
-				return command_undressme_hat(player, params);
+				return command_undressme_hat(player);
 			case SHOWDRESS:
-				return command_showdress(player, params);
+				return command_showdress(player);
 			case HIDEDRESS:
-				return command_hidedress(player, params);
+				return command_hidedress(player);
 			default:
 				return false;
 		}

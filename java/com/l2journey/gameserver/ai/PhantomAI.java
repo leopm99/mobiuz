@@ -1211,7 +1211,7 @@ public class PhantomAI
 	{
 		long now = System.currentTimeMillis();
 		long lastSkill = LAST_FIGHTER_SKILL_TIME.getOrDefault(bot.getObjectId(), 0L);
-		Skill fighterSkill = bot.isMageClass() ? null : PhantomSkills.getFighterAttackSkill(bot, target);
+		Skill fighterSkill = bot.isMageClass() ? null : PhantomSkills.getFighterAttackSkill(bot);
 		boolean skillReady = (fighterSkill != null) && !bot.isSkillDisabled(fighterSkill) && ((now - lastSkill) >= 6000);
 
 		if (skillReady)
@@ -1307,7 +1307,7 @@ public class PhantomAI
 
 			if (nearby != null)
 			{
-				PhantomChat.requestChatResponse(bot, nearby, "", false);
+				PhantomChat.requestChatResponse(bot, nearby, false);
 			}
 		}
 	}

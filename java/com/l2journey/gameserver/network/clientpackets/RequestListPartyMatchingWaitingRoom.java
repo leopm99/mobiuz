@@ -59,6 +59,6 @@ public class RequestListPartyMatchingWaitingRoom extends ClientPacket
 			return;
 		}
 		
-		player.sendPacket(new ExListPartyMatchingWaitingRoom(player, _page, _minLevel, _maxLevel, _mode));
+		player.sendPacket(new ExListPartyMatchingWaitingRoom(player, _minLevel, _maxLevel, _mode));
 	}
 }

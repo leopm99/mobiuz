@@ -33,7 +33,6 @@ import java.util.Set;
 
 import com.l2journey.commons.network.WritableBuffer;
 import com.l2journey.gameserver.data.PetActionData;
-import com.l2journey.gameserver.model.actor.Player;
 import com.l2journey.gameserver.model.actor.Summon;
 import com.l2journey.gameserver.network.GameClient;
 import com.l2journey.gameserver.network.ServerPackets;
@@ -140,10 +139,9 @@ public class ExBasicActionList extends ServerPacket
 	
 	/**
 	 * Creates a dynamic action list that excludes all pet/servitor actions. Used when pet is unsummoned - blocks basic pet actions and all skill actions.
-	 * @param player the player (unused but kept for API compatibility)
 	 * @return ExBasicActionList without any pet actions
 	 */
-	public static ExBasicActionList getPacketWithoutPlayerPetActions(Player player)
+	public static ExBasicActionList getPacketWithoutPlayerPetActions()
 	{
 		// Simply return the NO_PET_PACKET which excludes all pet/servitor actions
 		return NO_PET_PACKET;

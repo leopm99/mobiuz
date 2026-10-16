@@ -210,7 +210,7 @@ public class PhantomSkills
 	}
 
 	// Metodo para obter a skill de ataque do guerreiro ---
-	public static Skill getFighterAttackSkill(Player bot, Creature target)
+	public static Skill getFighterAttackSkill(Player bot)
 	{
 		// Se e mago ou nao existe, ignoramos
 		if ((bot == null) || bot.isMageClass())

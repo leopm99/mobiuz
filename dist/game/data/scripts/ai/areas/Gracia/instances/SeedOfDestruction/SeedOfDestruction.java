@@ -910,7 +910,7 @@ public class SeedOfDestruction extends AbstractNpcAI
 		else if (inst == 1)
 		{
 			teleto.instanceId = world.getInstanceId();
-			teleportplayer(player, teleto, (SODWorld) world);
+			teleportplayer(player, teleto);
 			return world.getInstanceId();
 		}
 		// New instance
@@ -943,7 +943,7 @@ public class SeedOfDestruction extends AbstractNpcAI
 			{
 				player.sendMessage("Welcome to Seed of Destruction. Time to finish the instance is 130 minutes.");
 				InstanceManager.getInstance().setInstanceTime(player.getObjectId(), INSTANCE_ID, (System.currentTimeMillis()));
-				teleportplayer(player, teleto, (SODWorld) world);
+				teleportplayer(player, teleto);
 				if (InstanceManager.getInstance().getInstance(instanceId).isRemoveBuffEnabled())
 				{
 					removeBuffs(player);
@@ -956,7 +956,7 @@ public class SeedOfDestruction extends AbstractNpcAI
 				{
 					player.sendMessage("Welcome to Seed of Destruction. Time to finish the instance is 130 minutes.");
 					InstanceManager.getInstance().setInstanceTime(channelMember.getObjectId(), INSTANCE_ID, (System.currentTimeMillis()));
-					teleportplayer(channelMember, teleto, (SODWorld) world);
+					teleportplayer(channelMember, teleto);
 					if (InstanceManager.getInstance().getInstance(instanceId).isRemoveBuffEnabled())
 					{
 						removeBuffs(channelMember);
@@ -970,7 +970,7 @@ public class SeedOfDestruction extends AbstractNpcAI
 				{
 					player.sendMessage("Welcome to Seed of Destruction. Time to finish the instance is 130 minutes.");
 					InstanceManager.getInstance().setInstanceTime(partyMember.getObjectId(), INSTANCE_ID, (System.currentTimeMillis()));
-					teleportplayer(partyMember, teleto, (SODWorld) world);
+					teleportplayer(partyMember, teleto);
 					if (InstanceManager.getInstance().getInstance(instanceId).isRemoveBuffEnabled())
 					{
 						removeBuffs(partyMember);
@@ -1002,7 +1002,7 @@ public class SeedOfDestruction extends AbstractNpcAI
 		player.teleToLocation(teleto.x, teleto.y, teleto.z);
 	}
 	
-	private void teleportplayer(Player player, teleCoord teleto, SODWorld world)
+	private void teleportplayer(Player player, teleCoord teleto)
 	{
 		player.getAI().setIntention(Intention.IDLE);
 		player.setInstanceId(teleto.instanceId);
@@ -1410,13 +1410,12 @@ public class SeedOfDestruction extends AbstractNpcAI
 			final InstanceWorld tmpworld = InstanceManager.getInstance().getWorld(npc);
 			if (tmpworld instanceof SODWorld)
 			{
-				final SODWorld world = (SODWorld) tmpworld;
 				final teleCoord tele = new teleCoord();
 				tele.x = -245802;
 				tele.y = 220528;
 				tele.z = -12104;
 				tele.instanceId = player.getInstanceId();
-				teleportplayer(player, tele, world);
+				teleportplayer(player, tele);
 			}
 		}
 		return "";

@@ -80,10 +80,9 @@ public class PhantomChat
 	 * Mantemos este nome de metodo (requestGemini) para NAO quebrar a compatibilidade com o script PhantomAI, mas agora usa nosso sistema de frases aleatorias.
 	 * @param bot
 	 * @param sender
-	 * @param prompt
 	 * @param isPrivate
 	 */
-	public static void requestChatResponse(Player bot, Player sender, String prompt, boolean isPrivate)
+	public static void requestChatResponse(Player bot, Player sender, boolean isPrivate)
 	{
 		handleCustomChat(bot, sender, isPrivate);
 	}

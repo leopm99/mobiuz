@@ -700,7 +700,7 @@ public class RainbowSpringsChateau extends ClanHallSiegeEngine
 		
 		if (npc.getId() == CHEST)
 		{
-			chestDie(npc);
+			chestDie();
 			if (chests.contains(npc))
 			{
 				chests.remove(npc);
@@ -1260,7 +1260,7 @@ public class RainbowSpringsChateau extends ClanHallSiegeEngine
 		}
 	}
 	
-	protected void chestDie(Npc npc)
+	protected void chestDie()
 	{
 		for (int i = 0; i < _acceptedClans.size(); i++)
 		{
