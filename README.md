@@ -41,6 +41,8 @@ ant test
 ```
 
 Test sources live under `test/java/`. Dependencies (JUnit, Mockito) are in `test/lib/` and are used automatically by the Ant `test` target and the GitLab CI `unit-test` job.
+
+Datapack scripts under `dist/game/data/scripts` are not part of the main `compile` target. `ant test` also compiles paths listed in `test/script-allowlist.txt` into `build/script-bin` so those classes are on the test classpath. To cover another script: add its `.java` path (relative to `dist/game/data/scripts`) to the allowlist, add a test under `test/java/` mirroring the script package, and construct the quest with `QuestScriptTestSupport`. Script tests must not run with JUnit parallel execution enabled (`QuestManager` is a JVM singleton).
 ## Downloads
 
 | Resource | Link |

@@ -22,6 +22,7 @@
 
 	<property name="build" location="./build" />
 	<property name="build.bin" location="${build}/bin" />
+	<property name="build.script.bin" location="${build}/script-bin" />
 	<property name="build.test.bin" location="${build}/test-bin" />
 	<property name="build.test.results" location="${build}/test-results" />
 	<property name="build.dist" location="${build}/dist" />
@@ -29,8 +30,10 @@
 	<property name="datapack" location="dist" />
 	<property name="libs" location="${datapack}/libs" />
 	<property name="src" location="java" />
+	<property name="scripts.src" location="${datapack}/game/data/scripts" />
 	<property name="test.src" location="test/java" />
 	<property name="test.libs" location="test/lib" />
+	<property name="test.script.allowlist" location="test/script-allowlist.txt" />
 	<property name="junit.standalone" location="${test.libs}/junit-platform-console-standalone-6.1.3.jar" />
 
 	<path id="classpath">
@@ -43,6 +46,7 @@
 	<path id="test.classpath">
 		<path refid="classpath" />
 		<pathelement location="${build.bin}" />
+		<pathelement location="${build.script.bin}" />
 		<fileset dir="${test.libs}">
 			<include name="*.jar" />
 		</fileset>
@@ -51,6 +55,7 @@
 	<path id="junit.runtime.classpath">
 		<path refid="classpath" />
 		<pathelement location="${build.bin}" />
+		<pathelement location="${build.script.bin}" />
 		<pathelement location="${build.test.bin}" />
 		<fileset dir="${test.libs}">
 			<include name="*.jar" />
@@ -164,7 +169,20 @@
 		<delete dir="${build.dist}" />
 	</target>
 
-	<target name="test" depends="compile" description="Compile and run unit tests.">
+	<path id="script.compile.classpath">
+		<path refid="classpath" />
+		<pathelement location="${build.bin}" />
+	</path>
+
+	<target name="compile-scripts-test" depends="compile" description="Compile allowlisted datapack scripts for unit tests.">
+		<delete dir="${build.script.bin}" quiet="true" />
+		<mkdir dir="${build.script.bin}" />
+		<javac srcdir="${scripts.src}" destdir="${build.script.bin}" classpathref="script.compile.classpath" sourcepath="${scripts.src}" compiler="modern" debug="true" debuglevel="lines,vars,source" includeantruntime="false" source="25" target="25" encoding="UTF-8">
+			<includesfile name="${test.script.allowlist}" />
+		</javac>
+	</target>
+
+	<target name="test" depends="compile-scripts-test" description="Compile and run unit tests.">
 		<delete dir="${build.test.bin}" quiet="true" />
 		<delete dir="${build.test.results}" quiet="true" />
 		<mkdir dir="${build.test.bin}" />

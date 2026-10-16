@@ -1,0 +1,16 @@
+---
+description: Match project EditorConfig when writing or editing files
+alwaysApply: true
+---
+
+# EditorConfig
+
+Follow `.editorconfig` for all edits:
+
+- Indent with tabs (`indent_size = 2` for display width)
+- UTF-8 charset
+- Trim trailing whitespace
+- Insert a final newline
+- Line endings: CRLF for most files; LF for `*.sh`, `Dockerfile`, and `.env`
+
+Do not reformat unrelated code. Match surrounding style when it already follows these rules.
