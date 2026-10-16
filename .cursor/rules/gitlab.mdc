@@ -1,0 +1,36 @@
+---
+description: How to talk to GitLab for this repo (MRs, CI, API)
+alwaysApply: true
+---
+
+# GitLab access
+
+- This project is hosted on **GitLab**, not GitHub.
+- Remote: `https://gitlab.com/l2journey/l2journey`
+- Always use **`glab`**. Never use `gh` for this repo.
+- Default assignee for MRs: `zoiosilva`
+- When the user says “PR” / “pull request” / “checks”, treat that as **MR / GitLab pipeline**.
+
+## Common commands
+
+```bash
+# Auth / identity
+glab auth status
+glab api user
+
+# Create MR (PowerShell)
+glab mr create --assignee zoiosilva --title "…" --description @"
+## Summary
+- …
+
+## Test plan
+- [ ] …
+"@
+
+# Inspect MR / CI
+glab mr view
+glab ci status
+glab api "projects/l2journey%2Fl2journey/merge_requests/<iid>/pipelines"
+```
+
+- CI is defined in `.gitlab-ci.yml`; the main job is `unit-test` (`ant test`).
