@@ -538,7 +538,7 @@ public final class Dashboard
 		{
 			append(output, "[Dashboard] Iniciando " + script + "...");
 			final Process process = new ProcessBuilder("cmd.exe", "/c", script).directory(directory.toFile()).redirectErrorStream(true).start();
-			new Thread(() -> readConsole(type, process, output), "Dashboard-" + type).start();
+			new Thread(() -> readConsole(process, output), "Dashboard-" + type).start();
 		}
 		catch (IOException e)
 		{
@@ -546,7 +546,7 @@ public final class Dashboard
 		}
 	}
 	
-	private void readConsole(String type, Process process, JTextArea output)
+	private void readConsole(Process process, JTextArea output)
 	{
 		try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream(), StandardCharsets.UTF_8)))
 		{

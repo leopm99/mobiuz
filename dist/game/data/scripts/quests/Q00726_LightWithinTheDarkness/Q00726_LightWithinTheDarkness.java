@@ -154,7 +154,7 @@ public class Q00726_LightWithinTheDarkness extends Quest
 			tele[0] = 48200;
 			tele[1] = -12232;
 			tele[2] = -9128;
-			return enterInstance(player, "RimPailakaCastle.xml", tele, _fortDungeons.get(npc.getId()), checkFortCondition(player, npc, true));
+			return enterInstance(player, tele, _fortDungeons.get(npc.getId()), checkFortCondition(player, npc, true));
 		}
 		return htmltext;
 	}
@@ -246,7 +246,7 @@ public class Q00726_LightWithinTheDarkness extends Quest
 		}
 	}
 	
-	protected String enterInstance(Player player, String template, int[] coords, FortDungeon dungeon, String retValue)
+	protected String enterInstance(Player player, int[] coords, FortDungeon dungeon, String retValue)
 	{
 		InstanceWorld world = InstanceManager.getInstance().getPlayerWorld(player);
 		if (world != null)

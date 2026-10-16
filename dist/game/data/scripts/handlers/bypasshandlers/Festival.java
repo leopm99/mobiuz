@@ -184,7 +184,7 @@ public class Festival implements IBypassHandler
 					{
 						return true;
 					}
-					final boolean isHighestScore = SevenSignsFestival.getInstance().setFinalScore(player, npc.getFestivalOracle(), npc.getFestivalType(), offeringScore);
+					final boolean isHighestScore = SevenSignsFestival.getInstance().setFinalScore(npc.getFestivalOracle(), npc.getFestivalType(), offeringScore);
 					final SystemMessage sm = new SystemMessage(SystemMessageId.YOUR_CONTRIBUTION_SCORE_HAS_INCREASED_BY_S1);
 					sm.addLong(offeringScore);
 					player.sendPacket(sm);

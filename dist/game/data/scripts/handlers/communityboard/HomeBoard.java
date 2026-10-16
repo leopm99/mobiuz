@@ -493,7 +493,7 @@ public class HomeBoard implements IParseBoardHandler
 			returnHtml = returnHtml.replace("%tip_block%", TipsBoard.getInstance().getActiveTipHtml());
 
 			returnHtml = returnHtml.replace("%fav_count%", Integer.toString(getFavoriteCount(player)));
-			returnHtml = returnHtml.replace("%region_count%", Integer.toString(getRegionCount(player)));
+			returnHtml = returnHtml.replace("%region_count%", Integer.toString(getRegionCount()));
 			returnHtml = returnHtml.replace("%clan_count%", Integer.toString(ClanTable.getInstance().getClanCount()));
 
 			// Epic boss status replacement
@@ -779,10 +779,9 @@ public class HomeBoard implements IParseBoardHandler
 
 	/**
 	 * Gets the registered regions count for the given player.
-	 * @param player the player
 	 * @return the registered regions count
 	 */
-	private static int getRegionCount(Player player)
+	private static int getRegionCount()
 	{
 		return 0; // TODO: Implement.
 	}

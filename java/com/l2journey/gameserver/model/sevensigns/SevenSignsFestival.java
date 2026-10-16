@@ -1511,13 +1511,12 @@ public class SevenSignsFestival
 	
 	/**
 	 * Set the final score details for the last participants of the specified festival data. Returns <b>true</b> if the score is higher than that previously recorded <b>this cycle</b>.
-	 * @param player
 	 * @param oracle
 	 * @param festivalId
 	 * @param offeringScore
 	 * @return boolean isHighestScore
 	 */
-	public boolean setFinalScore(Player player, int oracle, int festivalId, long offeringScore)
+	public boolean setFinalScore(int oracle, int festivalId, long offeringScore)
 	{
 		final int currDawnHighScore = getHighestScore(SevenSigns.CABAL_DAWN, festivalId);
 		final int currDuskHighScore = getHighestScore(SevenSigns.CABAL_DUSK, festivalId);

@@ -215,7 +215,7 @@ public class PhantomManager implements IVoicedCommandHandler
 			if (targetPhantom != null)
 			{
 				player.sendPacket(new CreatureSay(player, ChatType.WHISPER, "->" + targetPhantom.getName(), parts[1]));
-				PhantomChat.requestChatResponse(targetPhantom, player, parts[1], true);
+				PhantomChat.requestChatResponse(targetPhantom, player, true);
 			}
 			else
 			{

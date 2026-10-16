@@ -640,7 +640,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 				final String name = buff.substring(0, secondSep).replace("+", " ");
 				final int id = Integer.parseInt(buff.substring(secondSep + 1, lastSep));
 				final int level = Integer.parseInt(buff.substring(lastSep + 1));
-				html.append("<tr><td>").append(getSkillIconHtml(id, level)).append("</td>");
+				html.append("<tr><td>").append(getSkillIconHtml(id)).append("</td>");
 				html.append("<td>").append(button(name, "_cbbbuffer;give;" + id + ";" + level + ";" + buffType, 190)).append("</td></tr>");
 			}
 			html.append("</table>");
@@ -1302,7 +1302,7 @@ public class BufferBoardPremium implements IParseBoardHandler
 			
 			final String bgColor = ((k % 2) != 0) ? "333333" : "292929";
 			html.append("<BR1><table border=0 bgcolor=").append(bgColor).append(">");
-			html.append("<tr><td width=35>").append(getSkillIconHtml(id, level)).append("</td><td fixwidth=170>").append(name).append("</td><td>");
+			html.append("<tr><td width=35>").append(getSkillIconHtml(id)).append("</td><td fixwidth=170>").append(name).append("</td><td>");
 			
 			if ("add".equals(mode))
 			{
@@ -2052,12 +2052,12 @@ public class BufferBoardPremium implements IParseBoardHandler
 		return "&#" + itemId + ";";
 	}
 	
-	private String getSkillIconHtml(int id, int level)
+	private String getSkillIconHtml(int id)
 	{
-		return "<img src=\"Icon.skill" + getSkillIconNumber(id, level) + "\" width=32 height=32>";
+		return "<img src=\"Icon.skill" + getSkillIconNumber(id) + "\" width=32 height=32>";
 	}
 	
-	private String getSkillIconNumber(int id, int level)
+	private String getSkillIconNumber(int id)
 	{
 		if (id == 4)
 		{

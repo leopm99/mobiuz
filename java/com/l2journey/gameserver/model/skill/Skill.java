@@ -1222,7 +1222,7 @@ public class Skill
 		return !((isDead != target.isDead()) || ((radius > 0) && !LocationUtil.checkIfInRange(radius, caster, target, true)));
 	}
 	
-	public List<AbstractFunction> getStatFuncs(AbstractEffect effect, Creature creature)
+	public List<AbstractFunction> getStatFuncs(Creature creature)
 	{
 		if ((_funcTemplates == null) || (creature == null) || (!creature.isPlayable() && !creature.isAttackable()))
 		{

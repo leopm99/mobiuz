@@ -22,7 +22,7 @@ public class PhantomGeo
 		return GeoData.getInstance().canSeeTarget(cha, target);
 	}
 	
-	public static Location getValidLocation(Creature cha, int x, int y, int z)
+	public static Location getValidLocation(int x, int y, int z)
 	{
 		int gx = GeoData.getInstance().getGeoX(x);
 		int gy = GeoData.getInstance().getGeoY(y);

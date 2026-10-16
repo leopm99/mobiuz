@@ -537,8 +537,8 @@ public class HallOfErosionAttack extends AbstractNpcAI
 				npc.deleteMe();
 				world.deadTumor = addSpawn(TUMOR_DEAD, loc, world.getInstanceId());
 				world.deadTumors.add(world.deadTumor);
-				ThreadPool.schedule(new TumorRevival(world.deadTumor, world), tumorRespawnTime);
-				ThreadPool.schedule(new RegenerationCoffinSpawn(world.deadTumor, world), 20000);
+				ThreadPool.schedule(new TumorRevival(world), tumorRespawnTime);
+				ThreadPool.schedule(new RegenerationCoffinSpawn(world), 20000);
 				if (world.tumorCount >= 1)
 				{
 					broadCastPacket(world, new ExShowScreenMessage(NpcStringId.THE_TUMOR_INSIDE_S1_HAS_BEEN_DESTROYED_NIN_ORDER_TO_DRAW_OUT_THE_COWARDLY_COHEMENES_YOU_MUST_DESTROY_ALL_THE_TUMORS, 2, 8000));
@@ -619,7 +619,7 @@ public class HallOfErosionAttack extends AbstractNpcAI
 		private final Npc _deadTumor;
 		private final HEAWorld _world;
 		
-		public TumorRevival(Npc deadTumor, HEAWorld world)
+		public TumorRevival(HEAWorld world)
 		{
 			_deadTumor = world.deadTumor;
 			_world = world;
@@ -646,7 +646,7 @@ public class HallOfErosionAttack extends AbstractNpcAI
 		private final Npc _deadTumor;
 		private final HEAWorld _world;
 		
-		public RegenerationCoffinSpawn(Npc deadTumor, HEAWorld world)
+		public RegenerationCoffinSpawn(HEAWorld world)
 		{
 			_deadTumor = world.deadTumor;
 			_world = world;

@@ -447,7 +447,7 @@ public class EnterWorld extends ClientPacket
 		}
 		else
 		{
-			player.sendPacket(ExBasicActionList.getPacketWithoutPlayerPetActions(player));
+			player.sendPacket(ExBasicActionList.getPacketWithoutPlayerPetActions());
 		}
 		
 		// Send Dye Information

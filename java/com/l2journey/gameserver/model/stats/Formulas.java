@@ -1424,12 +1424,10 @@ public class Formulas
 	
 	/**
 	 * Calculate delay (in milliseconds) before next ATTACK
-	 * @param attacker
-	 * @param target
 	 * @param rate
 	 * @return
 	 */
-	public static int calcPAtkSpd(Creature attacker, Creature target, double rate)
+	public static int calcPAtkSpd(double rate)
 	{
 		// measured Oct 2006 by Tank6585, formula by Sami
 		// attack speed 312 equals 1500 ms delay... (or 300 + 40 ms delay?)

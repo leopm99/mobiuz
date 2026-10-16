@@ -818,7 +818,7 @@ public class NpcTemplate extends CreatureTemplate
 					}
 					
 					// calculate chances
-					final ItemHolder drop = calculateGroupDrop(group, dropItem, victim, killer, groupItemChance);
+					final ItemHolder drop = calculateGroupDrop(dropItem, victim, killer, groupItemChance);
 					if (drop == null)
 					{
 						continue GROUP_DROP;
@@ -1003,14 +1003,13 @@ public class NpcTemplate extends CreatureTemplate
 	}
 	
 	/**
-	 * @param group
 	 * @param dropItem
 	 * @param victim
 	 * @param killer
 	 * @param chance
 	 * @return ItemHolder
 	 */
-	private ItemHolder calculateGroupDrop(DropGroupHolder group, DropHolder dropItem, Creature victim, Creature killer, double chance)
+	private ItemHolder calculateGroupDrop(DropHolder dropItem, Creature victim, Creature killer, double chance)
 	{
 		final int itemId = dropItem.getItemId();
 		final ItemTemplate item = ItemData.getInstance().getTemplate(itemId);

@@ -97,7 +97,7 @@ public class RequestPartyMatchConfig extends ClientPacket
 			PartyMatchWaitingList.getInstance().addPlayer(player);
 			
 			// Send Room list
-			player.sendPacket(new ListPartyWating(player, _auto, _loc, _level));
+			player.sendPacket(new ListPartyWating(player, _loc, _level));
 		}
 	}
 }

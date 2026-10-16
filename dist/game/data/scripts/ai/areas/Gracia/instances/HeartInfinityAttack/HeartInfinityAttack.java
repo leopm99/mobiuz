@@ -569,7 +569,7 @@ public class HeartInfinityAttack extends AbstractNpcAI
 			if (npc.getId() == ALIVETUMOR)
 			{
 				world.addTumorCount(1);
-				handleEkimusStats(world);
+				handleEkimusStats();
 			}
 			
 			if (npc.getId() == DEADTUMOR)
@@ -594,8 +594,8 @@ public class HeartInfinityAttack extends AbstractNpcAI
 				npc.deleteMe();
 				world.deadTumor = addSpawn(DEADTUMOR, loc, world.getInstanceId());
 				world.deadTumors.add(world.deadTumor);
-				ThreadPool.schedule(new TumorRevival(world.deadTumor, world), tumorRespawnTime);
-				ThreadPool.schedule(new RegenerationCoffinSpawn(world.deadTumor, world), 20000);
+				ThreadPool.schedule(new TumorRevival(world), tumorRespawnTime);
+				ThreadPool.schedule(new RegenerationCoffinSpawn(world), 20000);
 				if (world.tumorCount < 1)
 				{
 					houndBlocked = true;
@@ -609,7 +609,7 @@ public class HeartInfinityAttack extends AbstractNpcAI
 				{
 					broadCastPacket(world, new ExShowScreenMessage(NpcStringId.THE_TUMOR_INSIDE_S1_THAT_HAS_PROVIDED_ENERGY_N_TO_EKIMUS_IS_DESTROYED, 2, 8000));
 				}
-				handleEkimusStats(world);
+				handleEkimusStats();
 			}
 			
 			if (npc.getId() == EKIMUS)
@@ -631,7 +631,7 @@ public class HeartInfinityAttack extends AbstractNpcAI
 		private final Npc _deadTumor;
 		private final HIAWorld _world;
 		
-		public TumorRevival(Npc deadTumor, HIAWorld world)
+		public TumorRevival(HIAWorld world)
 		{
 			_deadTumor = world.deadTumor;
 			_world = world;
@@ -717,7 +717,7 @@ public class HeartInfinityAttack extends AbstractNpcAI
 		{
 			broadCastPacket(world, new ExShowScreenMessage(NpcStringId.THE_TUMOR_INSIDE_S1_HAS_BEEN_COMPLETELY_RESURRECTED_N_AND_STARTED_TO_ENERGIZE_EKIMUS_AGAIN, 2, 8000));
 		}
-		handleEkimusStats(world);
+		handleEkimusStats();
 	}
 	
 	private class RegenerationCoffinSpawn implements Runnable
@@ -725,7 +725,7 @@ public class HeartInfinityAttack extends AbstractNpcAI
 		private final Npc _deadTumor;
 		private final HIAWorld _world;
 		
-		public RegenerationCoffinSpawn(Npc deadTumor, HIAWorld world)
+		public RegenerationCoffinSpawn(HIAWorld world)
 		{
 			_deadTumor = world.deadTumor;
 			_world = world;
@@ -746,7 +746,7 @@ public class HeartInfinityAttack extends AbstractNpcAI
 		}
 	}
 	
-	private void handleEkimusStats(HIAWorld world)
+	private void handleEkimusStats()
 	{
 		// TODO FIXME
 	}

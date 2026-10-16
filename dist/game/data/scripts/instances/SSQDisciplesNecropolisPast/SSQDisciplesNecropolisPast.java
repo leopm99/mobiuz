@@ -155,7 +155,7 @@ public class SSQDisciplesNecropolisPast extends AbstractInstance
 		world.setParameter("anakimGroup", anakimGroup);
 	}
 	
-	private synchronized void checkDoors(Npc npc, InstanceWorld world)
+	private synchronized void checkDoors(InstanceWorld world)
 	{
 		final int countKill = world.getParameters().getInt("countKill", 0) + 1;
 		world.setParameter("countKill", countKill);
@@ -404,7 +404,7 @@ public class SSQDisciplesNecropolisPast extends AbstractInstance
 		final InstanceWorld world = InstanceManager.getInstance().getPlayerWorld(player);
 		if (world != null)
 		{
-			checkDoors(npc, world);
+			checkDoors(world);
 		}
 		
 		switch (npc.getId())

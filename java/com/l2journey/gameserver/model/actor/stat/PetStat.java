@@ -66,7 +66,7 @@ public class PetStat extends SummonStat
 		return true;
 	}
 	
-	public boolean addExpAndSp(double addToExp, double addToSp)
+	public boolean addExpAndSp(double addToExp)
 	{
 		final long finalExp = Math.round(addToExp);
 		final Pet pet = getActiveChar();

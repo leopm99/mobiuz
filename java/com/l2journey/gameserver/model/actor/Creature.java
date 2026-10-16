@@ -4359,7 +4359,7 @@ public abstract class Creature extends WorldObject
 								final int x = xPrev + x1;
 								final int y = yPrev + y1;
 								if ((hasDoors && DoorData.getInstance().checkIfDoorsBetween(xPrev, yPrev, zPrev, x, y, zPrev, getInstanceId(), false)) //
-									|| (hasFences && FenceData.getInstance().checkIfFenceBetween(xPrev, yPrev, zPrev, x, y, zPrev, getInstanceId())))
+									|| (hasFences && FenceData.getInstance().checkIfFenceBetween(xPrev, yPrev, zPrev, x, y, getInstanceId())))
 								{
 									_move.onGeodataPathIndex = -1;
 									if (hasAI())
@@ -5656,7 +5656,7 @@ public abstract class Creature extends WorldObject
 			}
 			
 			// Adiciona objetos Func da newSkill ao conjunto de calculadores da Creature
-			addStatFuncs(newSkill.getStatFuncs(null, this));
+			addStatFuncs(newSkill.getStatFuncs(this));
 			if (newSkill.isPassive())
 			{
 				newSkill.applyEffects(this, this, false, true, false, 0);

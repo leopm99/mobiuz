@@ -79,7 +79,7 @@ public class GameServerThread extends Thread
 	public void run()
 	{
 		_connectionIPAddress = _socket.getInetAddress().getHostAddress();
-		if (isBannedGameserverIP(_connectionIPAddress))
+		if (isBannedGameserverIP())
 		{
 			LOGGER.info(() -> "GameServerRegistration: IP Address " + _connectionIPAddress + " is on Banned IP list.");
 			forceClose(LoginServerFail.REASON_IP_BANNED);
@@ -226,10 +226,9 @@ public class GameServerThread extends Thread
 	}
 	
 	/**
-	 * @param ipAddress
 	 * @return
 	 */
-	public static boolean isBannedGameserverIP(String ipAddress)
+	public static boolean isBannedGameserverIP()
 	{
 		return false;
 	}

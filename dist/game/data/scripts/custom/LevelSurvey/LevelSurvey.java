@@ -113,7 +113,7 @@ public class LevelSurvey extends Quest implements IXmlReader
 			items.add(new ItemReward(itemId, count));
 		});
 		
-		LEVEL_REWARDS.put(level, new LevelReward(level, message, items));
+		LEVEL_REWARDS.put(level, new LevelReward(message, items));
 	}
 	
 	@RegisterEvent(EventType.ON_PLAYER_LEVEL_CHANGED)
@@ -180,7 +180,7 @@ public class LevelSurvey extends Quest implements IXmlReader
 		private final String message;
 		private final List<ItemReward> items;
 		
-		public LevelReward(int level, String message, List<ItemReward> items)
+		public LevelReward(String message, List<ItemReward> items)
 		{
 			this.message = message;
 			this.items = items;

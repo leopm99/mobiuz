@@ -90,7 +90,7 @@ public class RequestOustFromPartyRoom extends ClientPacket
 			
 			// Send Room list
 			final int loc = 0; // TODO: Closes town
-			member.sendPacket(new ListPartyWating(member, 0, loc, member.getLevel()));
+			member.sendPacket(new ListPartyWating(member, loc, member.getLevel()));
 			
 			// Clean player's LFP title
 			member.broadcastUserInfo();

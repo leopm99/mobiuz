@@ -31,7 +31,6 @@ package com.l2journey.loginserver.network.gameserverpackets;
 import java.util.logging.Logger;
 
 import com.l2journey.commons.network.base.BaseReadablePacket;
-import com.l2journey.loginserver.GameServerThread;
 import com.l2journey.loginserver.LoginController;
 
 /**
@@ -41,7 +40,7 @@ public class ChangeAccessLevel extends BaseReadablePacket
 {
 	protected static final Logger LOGGER = Logger.getLogger(ChangeAccessLevel.class.getName());
 	
-	public ChangeAccessLevel(byte[] decrypt, GameServerThread server)
+	public ChangeAccessLevel(byte[] decrypt)
 	{
 		super(decrypt);
 		readByte(); // Packet id, it is already processed.

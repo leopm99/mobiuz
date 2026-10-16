@@ -48,7 +48,7 @@ public class ListPartyWating extends ServerPacket
 	private final int _lim;
 	private final List<PartyMatchRoom> _rooms;
 	
-	public ListPartyWating(Player player, int auto, int location, int limit)
+	public ListPartyWating(Player player, int location, int limit)
 	{
 		_player = player;
 		_loc = location;
