@@ -202,8 +202,13 @@
 		<!-- Increases Speed by 2%. -->
 		<set name="icon" val="BranchSys2.icon.br_worldcup_hair_i02" />
 		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="ONE" />
 		<set name="magicLevel" val="1" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="runSpd" val="1.02" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="21212" levels="1" name="Agathion Seal Cancel - Granny Tiger">
 		<!-- Removes the seal of Agathion. -->

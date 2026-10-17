@@ -390,7 +390,7 @@
 		<!-- Fires the cool air cannon of fortune. It can only be used during humid weather. -->
 		<set name="icon" val="icon.skill1184" />
 		<set name="operateType" val="A1" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="coolTime" val="700" />
 		<set name="effectPoint" val="-10000" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
@@ -479,7 +479,7 @@
 		<!-- Vitality is maintained for 10 minutes. Delicious steamed rice cake effect. -->
 		<set name="icon" val="icon.etc.event_steamed_rice_cake_i00" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="2" />
 		<set name="abnormalTime" val="600" />
 		<set name="abnormalType" val="VP_KEEP" />
@@ -490,6 +490,11 @@
 		<set name="itemConsumeId" val="15379" /> <!-- Steamed Rice Cake -->
 		<set name="magicLevel" val="1" />
 		<set name="reuseDelay" val="1800000" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="vitalityConsumeRate" val="0" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="9036" levels="1" name="Special July 7th Parcel">
 		<table name="#extractableItems">
@@ -574,7 +579,7 @@
 		<!-- Sixth Anniversary celebratory cake. Vitality is recovered for 1 hour when acquiring Exp. -->
 		<set name="icon" val="icon.event_six_party_cake_i00" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="8" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="VP_UP" />
@@ -585,6 +590,11 @@
 		<set name="itemConsumeId" val="15427" /> <!-- 6th Anniversary Party Cake - Event -->
 		<set name="magicLevel" val="-1" />
 		<set name="reuseDelay" val="43200000" />
+		<effects>
+			<effect name="Buff">
+				<sub stat="vitalityConsumeRate" val="1" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="9042" levels="1" name="6th Anniversary Cube">
 		<table name="#extractableItems">

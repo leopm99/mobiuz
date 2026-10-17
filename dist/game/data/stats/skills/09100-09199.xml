@@ -290,7 +290,7 @@
 		<!-- Maintains the current Vitality for 10 minutes. -->
 		<set name="icon" val="icon.etc_lesser_potion_blue_i00" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="2" />
 		<set name="abnormalTime" val="600" />
 		<set name="abnormalType" val="VP_KEEP" />
@@ -301,6 +301,11 @@
 		<set name="itemConsumeId" val="17093" /> <!-- Vitality Maintaining Potion (10 mintues) (Event) -->
 		<set name="magicLevel" val="-1" />
 		<set name="reuseDelay" val="1800000" />
+		<effects>
+			<effect name="Buff">
+				<sub stat="vitalityConsumeRate" val="1" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="9114" levels="1" name="Nevit's Voice">
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
@@ -1193,7 +1198,7 @@
 		<!-- For 1 hour, receives help from the Energy of Sprout to increase Max MP by 20%, MP recovery bonus by 20%, HP recovery bonus by 20%, the chance of prominent damage occurring through magic damage by 2, the power of critical attacks by 20%, P. Atk. by 10%, P. Def. by 20%, Atk. Spd. by 20%, M. Atk. by 20%, M. Def. by 20%, Casting Spd. by 20%, and Resistance to de-buffs by 10%. Decreases Speed by 20% and MP consumption needed for skill use by 5%. -->
 		<set name="icon" val="icon.etc_leaf_green_i00" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="4" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="MULTI_BUFF" />
@@ -1201,12 +1206,30 @@
 		<set name="itemConsumeCount" val="1" />
 		<set name="itemConsumeId" val="17163" /> <!-- Event - Energy of Sprout -->
 		<set name="magicLevel" val="1" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="maxMp" val="1.2" />
+				<mul stat="regMp" val="1.2" />
+				<mul stat="regHp" val="1.2" />
+				<add stat="mCritRate" val="2" />
+				<mul stat="critDmg" val="1.2" />
+				<mul stat="pAtk" val="1.1" />
+				<mul stat="pDef" val="1.2" />
+				<mul stat="pAtkSpd" val="1.2" />
+				<mul stat="mAtk" val="1.2" />
+				<mul stat="mDef" val="1.2" />
+				<mul stat="mAtkSpd" val="1.2" />
+				<sub stat="debuffVuln" val="10" />
+				<mul stat="runSpd" val="0.8" />
+				<mul stat="mpConsume" val="0.95" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="9166" levels="1" name="Vitality Replenishing Herb Tea">
 		<!-- Recovers Vitality upon acquiring Exp. points for 30 minutes. -->
 		<set name="icon" val="icon.etc_hot_spring_nectar_i00" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="3" />
 		<set name="abnormalTime" val="1800" />
 		<set name="abnormalType" val="VP_UP" />
@@ -1217,40 +1240,127 @@
 		<set name="itemConsumeId" val="14744" /> <!-- Event - Vitality Replenishing Herb Tea 30 minutes -->
 		<set name="magicLevel" val="-1" />
 		<set name="reuseDelay" val="10000" />
+		<effects>
+			<effect name="Buff">
+				<sub stat="vitalityConsumeRate" val="1" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="9167" levels="1" name="Nevit's Hourglass - 1 hour(s)">
 		<!-- Increases Nevit's blessing by 1 hour. -->
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="operateType" val="A2" />
+		<set name="targetType" val="SELF" />
+		<set name="abnormalLevel" val="2" />
+		<set name="abnormalTime" val="3600" />
+		<set name="abnormalType" val="VOTE" />
+		<set name="abnormalVisualEffect" val="VP_KEEP" />
+		<set name="canBeDispeled" val="false" />
+		<set name="isMagic" val="2" /> <!-- Static Skill -->
+		<set name="magicLevel" val="1" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="vitalityConsumeRate" val="0" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="9168" levels="1" name="Nevit's Hourglass - 1.5 hour(s)">
 		<!-- Increases Nevit's blessing by 1.5 hour(s). -->
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="operateType" val="A2" />
+		<set name="targetType" val="SELF" />
+		<set name="abnormalLevel" val="2" />
+		<set name="abnormalTime" val="5400" />
+		<set name="abnormalType" val="VOTE" />
+		<set name="abnormalVisualEffect" val="VP_KEEP" />
+		<set name="canBeDispeled" val="false" />
+		<set name="isMagic" val="2" /> <!-- Static Skill -->
+		<set name="magicLevel" val="1" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="vitalityConsumeRate" val="0" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="9169" levels="1" name="Nevit's Hourglass - 2 hour(s)">
 		<!-- Increases Nevit's blessing by 2 hour(s). -->
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="operateType" val="A2" />
+		<set name="targetType" val="SELF" />
+		<set name="abnormalLevel" val="2" />
+		<set name="abnormalTime" val="7200" />
+		<set name="abnormalType" val="VOTE" />
+		<set name="abnormalVisualEffect" val="VP_KEEP" />
+		<set name="canBeDispeled" val="false" />
+		<set name="isMagic" val="2" /> <!-- Static Skill -->
+		<set name="magicLevel" val="1" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="vitalityConsumeRate" val="0" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="9170" levels="1" name="Nevit's Hourglass - 2.5 hour(s)">
 		<!-- Increases Nevit's blessing by 2.5 hour(s). -->
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="operateType" val="A2" />
+		<set name="targetType" val="SELF" />
+		<set name="abnormalLevel" val="2" />
+		<set name="abnormalTime" val="9000" />
+		<set name="abnormalType" val="VOTE" />
+		<set name="abnormalVisualEffect" val="VP_KEEP" />
+		<set name="canBeDispeled" val="false" />
+		<set name="isMagic" val="2" /> <!-- Static Skill -->
+		<set name="magicLevel" val="1" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="vitalityConsumeRate" val="0" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="9171" levels="1" name="Nevit's Hourglass - 3 hour(s)">
 		<!-- Increases Nevit's blessing by 3 hour(s). -->
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="operateType" val="A2" />
+		<set name="targetType" val="SELF" />
+		<set name="abnormalLevel" val="2" />
+		<set name="abnormalTime" val="10800" />
+		<set name="abnormalType" val="VOTE" />
+		<set name="abnormalVisualEffect" val="VP_KEEP" />
+		<set name="canBeDispeled" val="false" />
+		<set name="isMagic" val="2" /> <!-- Static Skill -->
+		<set name="magicLevel" val="1" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="vitalityConsumeRate" val="0" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="9172" levels="1" name="Nevit's Hourglass - 4 hour(s)">
 		<!-- Increases Nevit's blessing by 4 hour(s). -->
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="operateType" val="A2" />
+		<set name="targetType" val="SELF" />
+		<set name="abnormalLevel" val="2" />
+		<set name="abnormalTime" val="14400" />
+		<set name="abnormalType" val="VOTE" />
+		<set name="abnormalVisualEffect" val="VP_KEEP" />
+		<set name="canBeDispeled" val="false" />
+		<set name="isMagic" val="2" /> <!-- Static Skill -->
+		<set name="magicLevel" val="1" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="vitalityConsumeRate" val="0" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="9173" levels="1" name="Nevit's Voice">
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="isMagic" val="2" /> <!-- Static Skill -->
+		<set name="operateType" val="A1" />
+		<set name="targetType" val="SELF" />
+		<set name="itemConsumeCount" val="1" />
+		<set name="itemConsumeId" val="17094" /> <!-- Nevit's Voice -->
+		<set name="magicLevel" val="1" />
+		<set name="reuseDelay" val="2000" />
+		<effects>
+			<effect name="GiveRecommendation">
+				<param amount="10" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="9174" levels="1" name="500,000 SP scroll">
 		<set name="operateType" val="A1" />
@@ -1382,13 +1492,35 @@
 	</skill>
 	<skill id="9183" levels="1" name="Freya's Refreshing Breeze - 4 hour(s)">
 		<!-- For 4 hours, recovers Vitality when Exp. is acquired through hunting. -->
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="operateType" val="A2" />
+		<set name="targetType" val="SELF" />
+		<set name="abnormalLevel" val="3" />
+		<set name="abnormalTime" val="14400" />
+		<set name="abnormalType" val="VP_UP" />
+		<set name="abnormalVisualEffect" val="VP_UP" />
+		<set name="effectPoint" val="100" />
+		<set name="isMagic" val="2" /> <!-- Static Skill -->
+		<effects>
+			<effect name="Buff">
+				<sub stat="vitalityConsumeRate" val="1" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="9184" levels="1" name="Freya's Refreshing Breeze - 4 hour(s)">
 		<!-- For 4 hours, recovers Vitality when Exp. is acquired through hunting. -->
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="operateType" val="A2" />
+		<set name="targetType" val="SELF" />
+		<set name="abnormalLevel" val="3" />
+		<set name="abnormalTime" val="14400" />
+		<set name="abnormalType" val="VP_UP" />
+		<set name="abnormalVisualEffect" val="VP_UP" />
+		<set name="effectPoint" val="100" />
+		<set name="isMagic" val="2" /> <!-- Static Skill -->
+		<effects>
+			<effect name="Buff">
+				<sub stat="vitalityConsumeRate" val="1" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="9185" levels="1" name="Bottle of Full Soul">
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
