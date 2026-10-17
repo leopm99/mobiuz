@@ -9,6 +9,12 @@ workflow:
 
 stages:
   - test
+  - quality
+
+variables:
+  SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"
+  # Full history is required for blame / new-code detection in Sonar analysis.
+  GIT_DEPTH: "0"
 
 unit-test:
   stage: test
@@ -23,3 +29,26 @@ unit-test:
       junit: build/test-results/TEST-*.xml
     paths:
       - build/test-results/
+      - build/bin/
+      - build/test-bin/
+    expire_in: 1 hour
+
+sonarcloud-check:
+  stage: quality
+  image:
+    name: sonarsource/sonar-scanner-cli:latest
+    entrypoint: [""]
+  needs:
+    - job: unit-test
+      artifacts: true
+  cache:
+    key: "${CI_JOB_NAME}"
+    paths:
+      - .sonar/cache
+  script:
+    - sonar-scanner
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  # First analyses often fail a strict quality gate on legacy findings; keep the pipeline green until the profile/gate are tuned.
+  allow_failure: true

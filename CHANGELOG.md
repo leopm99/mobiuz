@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - GM Shop Life Stones buylist: Level 85 and 86 Life Stones (normal, mid, high, top) and Accessory Type Life Stones
 - Large Dragon Bone in the GM Store Miscellaneous consumables buylist
+- SonarQube Cloud analysis in GitLab CI (`sonarcloud-check`) with `sonar-project.properties`
 - Unit tests for datapack scripts: Ant allowlist compile, `QuestScriptTestSupport` harness, and CREATED-state `onTalk` coverage for quest Heart in Search of Power (627)
 - Unit tests for community premium effective-enable helpers (`CommunityPremiumGateTest`)
 - Dedicated `config/npcs/phantom.ini` with `PhantomEnable` (full system off) and `PhantomAutoStart` (boot spawn)
