@@ -23,14 +23,20 @@ unit-test:
     - apt-get update && apt-get install -y --no-install-recommends ant
   script:
     - ant test
+  coverage: '/Total line coverage: ([0-9.]+)%/'
   artifacts:
     when: always
     reports:
       junit: build/test-results/TEST-*.xml
+      coverage_report:
+        coverage_format: jacoco
+        path: build/jacoco/jacoco.xml
     paths:
       - build/test-results/
       - build/bin/
       - build/test-bin/
+      # XML only (HTML is large); Sonar and GitLab visualization both consume this file.
+      - build/jacoco/jacoco.xml
     expire_in: 1 hour
 
 sonarcloud-check:

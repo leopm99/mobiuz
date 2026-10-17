@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- JaCoCo coverage on `ant test`, fed to SonarQube Cloud and GitLab (`coverage` + JaCoCo report artifacts)
 - GM Shop Life Stones buylist: Level 85 and 86 Life Stones (normal, mid, high, top) and Accessory Type Life Stones
 - Large Dragon Bone in the GM Store Miscellaneous consumables buylist
 - SonarQube Cloud analysis in GitLab CI (`sonarcloud-check`) with `sonar-project.properties`

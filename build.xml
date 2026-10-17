@@ -17,7 +17,7 @@
 	along with this program. If not, see <http://www.gnu.org/licenses/>.
 	See also LICENSE in the project root.
 -->
-<project name="L2Journey" default="cleanup" basedir=".">
+<project name="L2Journey" default="cleanup" basedir="." xmlns:jacoco="antlib:org.jacoco.ant">
 	<description>L2Journey login and game server.</description>
 
 	<property name="build" location="./build" />
@@ -25,6 +25,11 @@
 	<property name="build.script.bin" location="${build}/script-bin" />
 	<property name="build.test.bin" location="${build}/test-bin" />
 	<property name="build.test.results" location="${build}/test-results" />
+	<property name="build.jacoco" location="${build}/jacoco" />
+	<property name="build.jacoco.exec" location="${build.jacoco}/jacoco.exec" />
+	<property name="build.jacoco.xml" location="${build.jacoco}/jacoco.xml" />
+	<property name="build.jacoco.html" location="${build.jacoco}/html" />
+	<property name="build.coverage.tools" location="${build}/coverage-tools" />
 	<property name="build.dist" location="${build}/dist" />
 	<property name="build.dist.libs" location="${build.dist}/libs" />
 	<property name="datapack" location="dist" />
@@ -33,8 +38,14 @@
 	<property name="scripts.src" location="${datapack}/game/data/scripts" />
 	<property name="test.src" location="test/java" />
 	<property name="test.libs" location="test/lib" />
+	<property name="test.tools.src" location="test/tools" />
 	<property name="test.script.allowlist" location="test/script-allowlist.txt" />
 	<property name="junit.standalone" location="${test.libs}/junit-platform-console-standalone-6.1.3.jar" />
+	<property name="jacoco.ant" location="${test.libs}/org.jacoco.ant-0.8.13-nodeps.jar" />
+
+	<taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
+		<classpath path="${jacoco.ant}" />
+	</taskdef>
 
 	<path id="classpath">
 		<fileset dir="${libs}">
@@ -182,23 +193,50 @@
 		</javac>
 	</target>
 
-	<target name="test" depends="compile-scripts-test" description="Compile and run unit tests.">
+	<target name="test" depends="compile-scripts-test" description="Compile and run unit tests with JaCoCo coverage.">
 		<delete dir="${build.test.bin}" quiet="true" />
 		<delete dir="${build.test.results}" quiet="true" />
+		<delete dir="${build.jacoco}" quiet="true" />
+		<delete dir="${build.coverage.tools}" quiet="true" />
 		<mkdir dir="${build.test.bin}" />
 		<mkdir dir="${build.test.results}" />
+		<mkdir dir="${build.jacoco}" />
+		<mkdir dir="${build.coverage.tools}" />
 		<javac srcdir="${test.src}" classpathref="test.classpath" destdir="${build.test.bin}" compiler="modern" debug="true" debuglevel="lines,vars,source" includeantruntime="false" source="25" target="25" encoding="UTF-8" />
 		<pathconvert property="junit.classpath" pathsep="${path.separator}" refid="junit.runtime.classpath" />
-		<java jar="${junit.standalone}" fork="true" failonerror="true">
-			<jvmarg value="-XX:+EnableDynamicAgentLoading" />
-			<arg value="execute" />
-			<arg value="--class-path" />
-			<arg value="${junit.classpath}" />
-			<arg value="--scan-class-path" />
-			<arg value="${build.test.bin}" />
-			<arg value="--fail-if-no-tests" />
-			<arg value="--reports-dir" />
-			<arg value="${build.test.results}" />
+		<jacoco:coverage destfile="${build.jacoco.exec}" append="false">
+			<java jar="${junit.standalone}" fork="true" failonerror="true">
+				<jvmarg value="-XX:+EnableDynamicAgentLoading" />
+				<arg value="execute" />
+				<arg value="--class-path" />
+				<arg value="${junit.classpath}" />
+				<arg value="--scan-class-path" />
+				<arg value="${build.test.bin}" />
+				<arg value="--fail-if-no-tests" />
+				<arg value="--reports-dir" />
+				<arg value="${build.test.results}" />
+			</java>
+		</jacoco:coverage>
+		<!-- Match Sonar sources (java/): report production classes only. -->
+		<jacoco:report>
+			<executiondata>
+				<file file="${build.jacoco.exec}" />
+			</executiondata>
+			<structure name="L2Journey">
+				<classfiles>
+					<fileset dir="${build.bin}" />
+				</classfiles>
+				<sourcefiles encoding="UTF-8">
+					<fileset dir="${src}" />
+				</sourcefiles>
+			</structure>
+			<xml destfile="${build.jacoco.xml}" />
+			<html destdir="${build.jacoco.html}" />
+		</jacoco:report>
+		<javac srcdir="${test.tools.src}" destdir="${build.coverage.tools}" includeantruntime="false" source="25" target="25" encoding="UTF-8" />
+		<java classname="PrintJacocoLineCoverage" fork="true" failonerror="true">
+			<classpath path="${build.coverage.tools}" />
+			<arg value="${build.jacoco.xml}" />
 		</java>
 	</target>
 </project>

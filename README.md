@@ -1,5 +1,8 @@
 # L2Journey
 
+[![pipeline status](https://gitlab.com/l2journey/l2journey/badges/main/pipeline.svg?ignore_skipped=true)](https://gitlab.com/l2journey/l2journey/-/commits/main)
+[![coverage report](https://gitlab.com/l2journey/l2journey/badges/main/coverage.svg)](https://gitlab.com/l2journey/l2journey/-/commits/main)
+
 L2Journey is a High Five login and game server for Lineage II. It is derived from [L2J Mobius](https://gitlab.com/MobiusDevelopment/L2J_Mobius) (`CT_2.6_HighFive`) and adds project-specific systems, fixes, and PT-BR content.
 
 Supported client protocol revisions: `267`, `268`, `271`, `273`.
@@ -40,11 +43,11 @@ Run the unit tests with:
 ant test
 ```
 
-Test sources live under `test/java/`. Dependencies (JUnit, Mockito) are in `test/lib/` and are used automatically by the Ant `test` target and the GitLab CI `unit-test` job.
+Test sources live under `test/java/`. Dependencies (JUnit, Mockito, JaCoCo) are in `test/lib/` and are used automatically by the Ant `test` target and the GitLab CI `unit-test` job. `ant test` writes a JaCoCo report under `build/jacoco/` (XML + HTML) and prints `Total line coverage: …%` for GitLab’s coverage badge and MR widget.
 
 Datapack scripts under `dist/game/data/scripts` are not part of the main `compile` target. `ant test` also compiles paths listed in `test/script-allowlist.txt` into `build/script-bin` so those classes are on the test classpath. To cover another script: add its `.java` path (relative to `dist/game/data/scripts`) to the allowlist, add a test under `test/java/` mirroring the script package, and construct the quest with `QuestScriptTestSupport`. Script tests must not run with JUnit parallel execution enabled (`QuestManager` is a JVM singleton).
 
-Merge requests and `main` also run a `sonarcloud-check` job (SonarQube Cloud).
+Merge requests and `main` also run a `sonarcloud-check` job (SonarQube Cloud), which consumes the JaCoCo XML from the unit-test job.
 ## Downloads
 
 | Resource | Link |
