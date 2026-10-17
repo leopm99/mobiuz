@@ -445,40 +445,11 @@ public class Olympiad extends ListenersContainer
 			return;
 		}
 		
+		final Calendar now = Calendar.getInstance();
+		final OlympiadSchedule.CompetitionWindow window = OlympiadSchedule.computeCompetitionWindow(now, COMP_START, COMP_MIN, COMP_PERIOD, EventsConfig.OLYMPIAD_USE_CUSTOM_PERIOD_SETTINGS, EventsConfig.OLYMPIAD_COMPETITION_DAYS);
 		_compStart = Calendar.getInstance();
-		if (EventsConfig.OLYMPIAD_USE_CUSTOM_PERIOD_SETTINGS)
-		{
-			final int currentDay = _compStart.get(Calendar.DAY_OF_WEEK);
-			boolean dayFound = false;
-			int dayCounter = 0;
-			for (int i = currentDay; i < 8; i++)
-			{
-				if (EventsConfig.OLYMPIAD_COMPETITION_DAYS.contains(i))
-				{
-					dayFound = true;
-					break;
-				}
-				dayCounter++;
-			}
-			if (!dayFound)
-			{
-				for (int i = 1; i < 8; i++)
-				{
-					if (EventsConfig.OLYMPIAD_COMPETITION_DAYS.contains(i))
-					{
-						break;
-					}
-					dayCounter++;
-				}
-			}
-			if (dayCounter > 0)
-			{
-				_compStart.add(Calendar.DAY_OF_MONTH, dayCounter);
-			}
-		}
-		_compStart.set(Calendar.HOUR_OF_DAY, COMP_START);
-		_compStart.set(Calendar.MINUTE, COMP_MIN);
-		_compEnd = _compStart.getTimeInMillis() + COMP_PERIOD;
+		_compStart.setTimeInMillis(window.startMillis());
+		_compEnd = window.endMillis();
 		
 		if (_scheduledOlympiadEnd != null)
 		{
@@ -573,7 +544,7 @@ public class Olympiad extends ListenersContainer
 			}
 			
 			// Start task can run after the period already ended (e.g. delayed scheduler after host sleep).
-			final long remaining = remainingUntilCompEnd(_compEnd, System.currentTimeMillis());
+			final long remaining = OlympiadSchedule.remainingUntilCompEnd(_compEnd, System.currentTimeMillis());
 			if (remaining <= 0)
 			{
 				LOGGER.warning(() -> "Olympiad System: Skipping competition period that already ended at " + TimeUtil.getDateTimeString(_compEnd));
@@ -638,7 +609,7 @@ public class Olympiad extends ListenersContainer
 				
 				init();
 			}, remaining);
-		}, clampScheduleDelay(getMillisToCompBegin()));
+		}, OlympiadSchedule.clampScheduleDelay(getMillisToCompBegin()));
 	}
 	
 	public long getMillisToOlympiadEnd()
@@ -677,80 +648,15 @@ public class Olympiad extends ListenersContainer
 		sm.addInt(_currentCycle);
 		Broadcast.toAllOnlinePlayers(sm);
 		
-		if (!EventsConfig.OLYMPIAD_USE_CUSTOM_PERIOD_SETTINGS)
+		final OlympiadSchedule.SeasonSchedule season = OlympiadSchedule.computeSeasonSchedule(Calendar.getInstance(), EventsConfig.OLYMPIAD_USE_CUSTOM_PERIOD_SETTINGS, EventsConfig.OLYMPIAD_PERIOD, EventsConfig.OLYMPIAD_PERIOD_MULTIPLIER, WEEKLY_PERIOD);
+		_olympiadEnd = season.olympiadEndMillis();
+		if (season.weeklyChangeDefined())
 		{
-			final Calendar currentTime = Calendar.getInstance();
-			currentTime.add(Calendar.MONTH, 1);
-			currentTime.set(Calendar.DAY_OF_MONTH, 1);
-			currentTime.set(Calendar.AM_PM, Calendar.AM);
-			currentTime.set(Calendar.HOUR_OF_DAY, 12);
-			currentTime.set(Calendar.MINUTE, 0);
-			currentTime.set(Calendar.SECOND, 0);
-			_olympiadEnd = currentTime.getTimeInMillis();
-			
-			final Calendar nextChange = Calendar.getInstance();
-			_nextWeeklyChange = nextChange.getTimeInMillis() + WEEKLY_PERIOD;
+			_nextWeeklyChange = season.nextWeeklyChangeMillis();
 		}
-		else
+		else if (EventsConfig.OLYMPIAD_USE_CUSTOM_PERIOD_SETTINGS && "DAY".equals(EventsConfig.OLYMPIAD_PERIOD))
 		{
-			final Calendar currentTime = Calendar.getInstance();
-			currentTime.set(Calendar.AM_PM, Calendar.AM);
-			currentTime.set(Calendar.HOUR_OF_DAY, 12);
-			currentTime.set(Calendar.MINUTE, 0);
-			currentTime.set(Calendar.SECOND, 0);
-			
-			final Calendar nextChange = Calendar.getInstance();
-			
-			switch (EventsConfig.OLYMPIAD_PERIOD)
-			{
-				case "DAY":
-				{
-					currentTime.add(Calendar.DAY_OF_MONTH, EventsConfig.OLYMPIAD_PERIOD_MULTIPLIER);
-					currentTime.add(Calendar.DAY_OF_MONTH, -1); // last day is for validation
-					
-					if (EventsConfig.OLYMPIAD_PERIOD_MULTIPLIER >= 14)
-					{
-						_nextWeeklyChange = nextChange.getTimeInMillis() + WEEKLY_PERIOD;
-					}
-					else if (EventsConfig.OLYMPIAD_PERIOD_MULTIPLIER >= 7)
-					{
-						_nextWeeklyChange = nextChange.getTimeInMillis() + (WEEKLY_PERIOD / 2);
-					}
-					else
-					{
-						LOGGER.warning("Invalid config value for Config.OLYMPIAD_PERIOD_MULTIPLIER, must be >= 7");
-					}
-					break;
-				}
-				case "WEEK":
-				{
-					currentTime.add(Calendar.WEEK_OF_MONTH, EventsConfig.OLYMPIAD_PERIOD_MULTIPLIER);
-					currentTime.add(Calendar.DAY_OF_MONTH, -1); // last day is for validation
-					
-					if (EventsConfig.OLYMPIAD_PERIOD_MULTIPLIER > 1)
-					{
-						_nextWeeklyChange = nextChange.getTimeInMillis() + WEEKLY_PERIOD;
-					}
-					else
-					{
-						_nextWeeklyChange = nextChange.getTimeInMillis() + (WEEKLY_PERIOD / 2);
-					}
-					break;
-				}
-				case "MONTH":
-				{
-					currentTime.add(Calendar.MONTH, EventsConfig.OLYMPIAD_PERIOD_MULTIPLIER);
-					currentTime.add(Calendar.DAY_OF_MONTH, -1); // last day is for validation
-					
-					_nextWeeklyChange = nextChange.getTimeInMillis() + WEEKLY_PERIOD;
-					break;
-				}
-				default:
-				{
-					break;
-				}
-			}
-			_olympiadEnd = currentTime.getTimeInMillis();
+			LOGGER.warning("Invalid config value for Config.OLYMPIAD_PERIOD_MULTIPLIER, must be >= 7");
 		}
 		
 		scheduleWeeklyChange();
@@ -764,71 +670,21 @@ public class Olympiad extends ListenersContainer
 	private long getMillisToCompBegin()
 	{
 		final long currentTime = System.currentTimeMillis();
-		if ((_compStart.getTimeInMillis() < currentTime) && (_compEnd > currentTime))
+		final long delay = OlympiadSchedule.millisToCompBegin(_compStart.getTimeInMillis(), _compEnd, currentTime);
+		if (delay == OlympiadSchedule.NEED_NEXT_WINDOW)
 		{
-			return 10;
+			return setNewCompBegin();
 		}
-		
-		if (_compStart.getTimeInMillis() > currentTime)
-		{
-			return _compStart.getTimeInMillis() - currentTime;
-		}
-		
-		return setNewCompBegin();
+		return delay;
 	}
 	
 	private long setNewCompBegin()
 	{
+		final Calendar now = Calendar.getInstance();
+		final OlympiadSchedule.CompetitionWindow window = OlympiadSchedule.computeNextCompetitionWindow(now, COMP_START, COMP_MIN, COMP_PERIOD, EventsConfig.OLYMPIAD_USE_CUSTOM_PERIOD_SETTINGS, EventsConfig.OLYMPIAD_COMPETITION_DAYS);
 		_compStart = Calendar.getInstance();
-		
-		int currentDay = _compStart.get(Calendar.DAY_OF_WEEK);
-		_compStart.set(Calendar.HOUR_OF_DAY, COMP_START);
-		_compStart.set(Calendar.MINUTE, COMP_MIN);
-		
-		// Today's competitions ended, start checking from next day.
-		if (currentDay == _compStart.get(Calendar.DAY_OF_WEEK))
-		{
-			if (currentDay == Calendar.SATURDAY)
-			{
-				currentDay = Calendar.SUNDAY;
-			}
-			else
-			{
-				currentDay++;
-			}
-		}
-		
-		if (EventsConfig.OLYMPIAD_USE_CUSTOM_PERIOD_SETTINGS)
-		{
-			boolean dayFound = false;
-			int dayCounter = 0;
-			for (int i = currentDay; i < 8; i++)
-			{
-				if (EventsConfig.OLYMPIAD_COMPETITION_DAYS.contains(i))
-				{
-					dayFound = true;
-					break;
-				}
-				dayCounter++;
-			}
-			if (!dayFound)
-			{
-				for (int i = 1; i < 8; i++)
-				{
-					if (EventsConfig.OLYMPIAD_COMPETITION_DAYS.contains(i))
-					{
-						break;
-					}
-					dayCounter++;
-				}
-			}
-			if (dayCounter > 0)
-			{
-				_compStart.add(Calendar.DAY_OF_MONTH, dayCounter);
-			}
-		}
-		_compStart.add(Calendar.HOUR_OF_DAY, 24);
-		_compEnd = _compStart.getTimeInMillis() + COMP_PERIOD;
+		_compStart.setTimeInMillis(window.startMillis());
+		_compEnd = window.endMillis();
 		
 		LOGGER.info("Olympiad System: New Schedule @ " + _compStart.getTime());
 		
@@ -837,26 +693,7 @@ public class Olympiad extends ListenersContainer
 	
 	protected long getMillisToCompEnd()
 	{
-		return remainingUntilCompEnd(_compEnd, System.currentTimeMillis());
-	}
-	
-	/**
-	 * @param compEnd absolute competition period end time in millis
-	 * @param now current time in millis
-	 * @return remaining millis until competition end; {@code <= 0} means the period has already ended and must be skipped
-	 */
-	static long remainingUntilCompEnd(long compEnd, long now)
-	{
-		return compEnd - now;
-	}
-	
-	/**
-	 * @param delay proposed schedule delay in millis
-	 * @return delay clamped to a non-negative value safe for {@link ThreadPool#schedule(Runnable, long)}
-	 */
-	static long clampScheduleDelay(long delay)
-	{
-		return Math.max(0L, delay);
+		return OlympiadSchedule.remainingUntilCompEnd(_compEnd, System.currentTimeMillis());
 	}
 	
 	public long getMillisToWeekChange()

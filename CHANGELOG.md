@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Unit tests for Underground Coliseum schedule delay clamping and skipping expired periods
 - Unit tests for Seven Signs schedule delay clamping when a late period change would otherwise pass a negative ThreadPool delay
 - Unit tests for Olympiad competition schedule delay clamping and skipping expired periods
+- Unit tests for Olympiad custom season length, all-day competition windows, and in-window schedule delay (`OlympiadSchedule`), plus wiring coverage through `Olympiad` init/season/comp-begin paths (`OlympiadWiringTest`)
 - Unit tests for phantom ground-skill fallback, aggro-distance leash, base-class logger names, and Tattoo of Divine kit exclusion
 - Unit test that offline `sendInventoryUpdate` does not write the coalesced inventory map
 - Unit test that character deletion prepares and executes `DELETE FROM character_summons`
