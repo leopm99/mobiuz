@@ -47,6 +47,7 @@ import java.util.logging.Logger;
 import com.l2journey.EventsConfig;
 import com.l2journey.commons.database.DatabaseFactory;
 import com.l2journey.commons.threads.ThreadPool;
+import com.l2journey.commons.time.TimeUtil;
 import com.l2journey.gameserver.managers.AntiFeedManager;
 import com.l2journey.gameserver.managers.ZoneManager;
 import com.l2journey.gameserver.model.StatSet;
@@ -571,6 +572,15 @@ public class Olympiad extends ListenersContainer
 				return;
 			}
 			
+			// Start task can run after the period already ended (e.g. delayed scheduler after host sleep).
+			final long remaining = remainingUntilCompEnd(_compEnd, System.currentTimeMillis());
+			if (remaining <= 0)
+			{
+				LOGGER.warning(() -> "Olympiad System: Skipping competition period that already ended at " + TimeUtil.getDateTimeString(_compEnd));
+				init();
+				return;
+			}
+			
 			_inCompPeriod = true;
 			
 			Broadcast.toAllOnlinePlayers(new SystemMessage(SystemMessageId.SHARPEN_YOUR_SWORDS_TIGHTEN_THE_STITCHING_IN_YOUR_ARMOR_AND_MAKE_HASTE_TO_A_GRAND_OLYMPIAD_MANAGER_BATTLES_IN_THE_GRAND_OLYMPIAD_GAMES_ARE_NOW_TAKING_PLACE));
@@ -583,7 +593,7 @@ public class Olympiad extends ListenersContainer
 				_gameAnnouncer = ThreadPool.scheduleAtFixedRate(new OlympiadAnnouncer(), 30000, 500);
 			}
 			
-			final long regEnd = getMillisToCompEnd() - 600000;
+			final long regEnd = remaining - 600000;
 			if (regEnd > 0)
 			{
 				ThreadPool.schedule(() -> Broadcast.toAllOnlinePlayers(new SystemMessage(SystemMessageId.THE_GRAND_OLYMPIAD_REGISTRATION_PERIOD_HAS_ENDED)), regEnd);
@@ -627,8 +637,8 @@ public class Olympiad extends ListenersContainer
 				saveOlympiadStatus();
 				
 				init();
-			}, getMillisToCompEnd());
-		}, getMillisToCompBegin());
+			}, remaining);
+		}, clampScheduleDelay(getMillisToCompBegin()));
 	}
 	
 	public long getMillisToOlympiadEnd()
@@ -827,7 +837,26 @@ public class Olympiad extends ListenersContainer
 	
 	protected long getMillisToCompEnd()
 	{
-		return _compEnd - System.currentTimeMillis();
+		return remainingUntilCompEnd(_compEnd, System.currentTimeMillis());
+	}
+	
+	/**
+	 * @param compEnd absolute competition period end time in millis
+	 * @param now current time in millis
+	 * @return remaining millis until competition end; {@code <= 0} means the period has already ended and must be skipped
+	 */
+	static long remainingUntilCompEnd(long compEnd, long now)
+	{
+		return compEnd - now;
+	}
+	
+	/**
+	 * @param delay proposed schedule delay in millis
+	 * @return delay clamped to a non-negative value safe for {@link ThreadPool#schedule(Runnable, long)}
+	 */
+	static long clampScheduleDelay(long delay)
+	{
+		return Math.max(0L, delay);
 	}
 	
 	public long getMillisToWeekChange()

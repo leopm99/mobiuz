@@ -21,6 +21,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Unit test that the script compiler accepts an ordinary Java 8 script and a Java 25 constructor
 - Unit tests for Underground Coliseum schedule delay clamping and skipping expired periods
 - Unit tests for Seven Signs schedule delay clamping when a late period change would otherwise pass a negative ThreadPool delay
+- Unit tests for Olympiad competition schedule delay clamping and skipping expired periods
 - Unit tests for phantom ground-skill fallback, aggro-distance leash, base-class logger names, and Tattoo of Divine kit exclusion
 - Unit test that offline `sendInventoryUpdate` does not write the coalesced inventory map
 - Unit test that character deletion prepares and executes `DELETE FROM character_summons`
@@ -55,6 +56,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Event and agathion skills that had `targetType` `NONE` and no effects now apply their described buffs: Gift of Thanks (23156), Donateloph's / Raphaeloph's / Leonardoph's / Michelangeloph's Blessing (23157–23160), Rudolphina's Blessing - Maintain Vitality (23161), Turkey's Big Mistake (23163), Inadequate Affection (23165), and Ball Trapping Buff of Cheers (23183, 23185, 23187, 23189, 23191, 23193, 23195, 23197, 23199)
 - Underground Coliseum no longer schedules a negative ThreadPool delay when a delayed start task runs after the period has already ended; the expired period is skipped and the next start is scheduled instead
 - Seven Signs no longer schedules a negative ThreadPool delay when a period-change task runs after the next boundary (e.g. host sleep); the change advances immediately and the official calendar stays aligned
+- Olympiad no longer schedules a negative ThreadPool delay when a delayed competition start task runs after the period has already ended; the expired period is skipped and the next competition is scheduled instead
 - Level-80 phantom mages no longer pick ground channel skills (Volcano, Cyclone, Raging Waves, Gehenna) as offensive fallback, which caused a NullPointerException in `Creature.checkDoCastConditions()` when no skill world position was set (reported by fCodiff)
 - `Creature.checkDoCastConditions()` rejects a player ground cast when `getCurrentSkillWorldPosition()` is null, before the peace-zone check calls `getX()` (reported by fCodiff)
 - Aggro-distance check leashes only the mobs the config includes. With `AggroDistanceCheckRaids` and `AggroDistanceCheckInstances` left false, raids and instance monsters keep fighting past the leash instead of stalling in combat (reported by fCodiff)
