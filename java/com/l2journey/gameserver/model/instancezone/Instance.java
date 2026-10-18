@@ -48,6 +48,7 @@ import org.w3c.dom.Node;
 
 import com.l2journey.Config;
 import com.l2journey.commons.threads.ThreadPool;
+import com.l2journey.commons.util.XmlFactory;
 import com.l2journey.gameserver.data.holders.InstanceReenterTimeHolder;
 import com.l2journey.gameserver.data.xml.DoorData;
 import com.l2journey.gameserver.managers.InstanceManager;
@@ -479,7 +480,7 @@ public class Instance
 		final File xml = new File("." + File.separator + "data" + File.separator + "instances" + File.separator + InstanceManager.getInstance().getInstanceTemplateFileName(templateId));
 		try
 		{
-			final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			final DocumentBuilderFactory factory = XmlFactory.newDocumentBuilderFactory();
 			factory.setValidating(false);
 			factory.setIgnoringComments(true);
 			document = factory.newDocumentBuilder().parse(xml);

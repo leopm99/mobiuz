@@ -1,0 +1,87 @@
+/*
+ * Copyright (c) 2025 L2Journey Project
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+package com.l2journey.gameserver.data;
+
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.mockStatic;
+import static org.mockito.Mockito.when;
+
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
+
+import com.l2journey.commons.database.DatabaseFactory;
+
+/**
+ * Covers SchemeBufferTable XmlFactory call site.
+ */
+class SchemeBufferXmlFactoryTest
+{
+	private static final Path XML = Path.of("data", "SchemeBufferSkills.xml");
+	private boolean xmlExisted;
+	
+	@BeforeEach
+	void createXml() throws Exception
+	{
+		xmlExisted = Files.exists(XML);
+		Files.createDirectories(XML.getParent());
+		Files.writeString(XML, "<?xml version=\"1.0\" encoding=\"UTF-8\"?><list/>", StandardCharsets.UTF_8);
+	}
+	
+	@AfterEach
+	void cleanupXml() throws Exception
+	{
+		if (!xmlExisted)
+		{
+			Files.deleteIfExists(XML);
+		}
+	}
+	
+	@Test
+	void constructorLoadsSkillsThroughSecureFactory() throws Exception
+	{
+		final Connection connection = mock(Connection.class);
+		final PreparedStatement prepared = mock(PreparedStatement.class);
+		final ResultSet resultSet = mock(ResultSet.class);
+		when(connection.prepareStatement(anyString())).thenReturn(prepared);
+		when(prepared.executeQuery()).thenReturn(resultSet);
+		when(resultSet.next()).thenReturn(false);
+		
+		try (MockedStatic<DatabaseFactory> database = mockStatic(DatabaseFactory.class))
+		{
+			database.when(DatabaseFactory::getConnection).thenReturn(connection);
+			final SchemeBufferTable table = assertDoesNotThrow(SchemeBufferTable::new);
+			assertNotNull(table);
+		}
+	}
+}

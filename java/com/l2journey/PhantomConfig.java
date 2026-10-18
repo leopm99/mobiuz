@@ -15,7 +15,6 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
@@ -24,6 +23,7 @@ import org.xml.sax.SAXException;
 
 import com.l2journey.commons.database.DatabaseFactory;
 import com.l2journey.commons.util.Rnd;
+import com.l2journey.commons.util.XmlFactory;
 import com.l2journey.gameserver.model.phantom.PhantomHuntingSpots;
 import com.l2journey.gameserver.model.phantom.PhantomManager;
 
@@ -146,7 +146,7 @@ public class PhantomConfig
 			{
 				return;
 			}
-			Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
+			Document doc = XmlFactory.newDocumentBuilderFactory().newDocumentBuilder().parse(file);
 			NodeList list = doc.getElementsByTagName("phantom");
 			for (int i = 0; i < list.getLength(); i++)
 			{

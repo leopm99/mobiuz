@@ -635,8 +635,9 @@ public class SpawnData implements IXmlReader
 			final File tempFile = new File(spawnFile.getAbsolutePath().substring(Config.DATAPACK_ROOT.getAbsolutePath().length() + 1).replace('\\', '/') + ".tmp");
 			try
 			{
-				final BufferedReader reader = new BufferedReader(new FileReader(spawnFile));
-				final BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+				try (BufferedReader reader = new BufferedReader(new FileReader(spawnFile));
+					BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile)))
+				{
 				String currentLine;
 				while ((currentLine = reader.readLine()) != null)
 				{
@@ -651,8 +652,7 @@ public class SpawnData implements IXmlReader
 					}
 					writer.write(currentLine + System.lineSeparator());
 				}
-				writer.close();
-				reader.close();
+				}
 				if (!spawnFile.delete() || !tempFile.renameTo(spawnFile))
 				{
 					LOGGER.warning(() -> getClass().getSimpleName() + ": Could not replace spawn file: " + spawnFile);
@@ -670,14 +670,15 @@ public class SpawnData implements IXmlReader
 				final NpcTemplate template = NpcData.getInstance().getTemplate(spawn.getId());
 				final String title = template.getTitle();
 				final String name = title.isEmpty() ? template.getName() : template.getName() + " - " + title;
-				final BufferedWriter writer = new BufferedWriter(new FileWriter(spawnFile));
+				try (BufferedWriter writer = new BufferedWriter(new FileWriter(spawnFile)))
+				{
 				writer.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + System.lineSeparator());
 				writer.write("<list enabled=\"true\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"../../xsd/spawns.xsd\">" + System.lineSeparator());
 				writer.write("\t<spawn name=\"" + x + "_" + y + "\">" + System.lineSeparator());
 				writer.write("\t\t<npc id=\"" + spawnId + (spawn.getAmount() > 1 ? "\" count=\"" + spawnCount : "") + "\" x=\"" + spawnX + "\" y=\"" + spawnY + "\" z=\"" + spawnZ + (spawn.getHeading() > 0 ? "\" heading=\"" + spawnHeading : "") + "\" respawnDelay=\"" + spawnDelay + "\" /> <!-- " + name + " -->" + System.lineSeparator());
 				writer.write("\t</spawn>" + System.lineSeparator());
 				writer.write("</list>" + System.lineSeparator());
-				writer.close();
+				}
 				LOGGER.info(() -> getClass().getSimpleName() + ": Created file: " + OTHER_XML_FOLDER + "/" + x + "_" + y + ".xml");
 			}
 			catch (Exception e)
@@ -704,13 +705,13 @@ public class SpawnData implements IXmlReader
 		final File tempFile = new File(spawnFile.getAbsolutePath().substring(Config.DATAPACK_ROOT.getAbsolutePath().length() + 1).replace('\\', '/') + ".tmp");
 		try
 		{
-			final BufferedReader reader = new BufferedReader(new FileReader(spawnFile));
-			final BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
-			
+			int lineCount = 0;
+			try (BufferedReader reader = new BufferedReader(new FileReader(spawnFile));
+				BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile)))
+			{
 			boolean found = false; // In XML you can have more than one spawn with same coords.
 			boolean isMultiLine = false; // In case spawn has more stats.
 			boolean lastLineFound = false; // Used to check for empty file.
-			int lineCount = 0;
 			String currentLine;
 			
 			final NpcSpawnTerritory npcSpawnTerritory = spawn.getSpawnTerritory();
@@ -789,8 +790,7 @@ public class SpawnData implements IXmlReader
 				}
 			}
 			
-			writer.close();
-			reader.close();
+			}
 			if (!spawnFile.delete() || !tempFile.renameTo(spawnFile))
 			{
 				LOGGER.warning(() -> getClass().getSimpleName() + ": Could not replace spawn file: " + spawnFile);

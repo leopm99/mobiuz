@@ -165,8 +165,9 @@ public class MailManager
 	{
 		_messages.put(msg.getId(), msg);
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement ps = Message.getStatement(msg, con))
+			PreparedStatement ps = con.prepareStatement(Message.INSERT_SQL))
 		{
+			Message.applyInsertParameters(msg, ps);
 			ps.execute();
 		}
 		catch (SQLException e)

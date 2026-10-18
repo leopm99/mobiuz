@@ -50,6 +50,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXParseException;
+import org.xml.sax.helpers.DefaultHandler;
 
 import com.l2journey.Config;
 
@@ -90,14 +91,15 @@ public interface IXmlReader
 			return;
 		}
 		
-		final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		factory.setNamespaceAware(true);
-		factory.setValidating(isValidating());
-		factory.setIgnoringComments(true);
 		try
 		{
+			final DocumentBuilderFactory factory = XmlFactory.newDocumentBuilderFactory();
+			factory.setNamespaceAware(true);
+			factory.setValidating(isValidating());
+			factory.setIgnoringComments(true);
 			factory.setAttribute(JAXP_SCHEMA_LANGUAGE, W3C_XML_SCHEMA);
 			final DocumentBuilder builder = factory.newDocumentBuilder();
+			builder.setErrorHandler(new DefaultHandler());
 			parseDocument(builder.parse(file), file);
 		}
 		catch (SAXParseException e)
@@ -148,7 +150,8 @@ public interface IXmlReader
 		// If multithreading is enabled, use a thread pool to parse files.
 		if (Config.THREADS_FOR_LOADING)
 		{
-			final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(Runtime.getRuntime().availableProcessors());
+			try (ScheduledExecutorService executorService = Executors.newScheduledThreadPool(Runtime.getRuntime().availableProcessors()))
+			{
 			final List<Future<?>> tasks = new ArrayList<>();
 			
 			final File[] files = directory.listFiles();
@@ -183,16 +186,6 @@ public interface IXmlReader
 					LOGGER.warning("Failed to parse file: " + e.getMessage());
 				}
 			}
-			
-			executorService.shutdown();
-			try
-			{
-				executorService.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
-			}
-			catch (InterruptedException e)
-			{
-				Thread.currentThread().interrupt();
-				LOGGER.warning("Parsing process was interrupted: " + e.getMessage());
 			}
 		}
 		else // Parse files sequentially if multithreading is not enabled.

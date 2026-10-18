@@ -63,6 +63,7 @@ import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
@@ -3615,9 +3616,9 @@ public class Config
 	 */
 	private static void loadChatFilter()
 	{
-		try
+		try (Stream<String> lines = Files.lines(Paths.get(CHAT_FILTER_FILE), StandardCharsets.UTF_8))
 		{
-			FILTER_LIST = Files.lines(Paths.get(CHAT_FILTER_FILE), StandardCharsets.UTF_8).map(String::trim).filter(line -> (!line.isEmpty() && (line.charAt(0) != '#'))).collect(Collectors.toList());
+			FILTER_LIST = lines.map(String::trim).filter(line -> (!line.isEmpty() && (line.charAt(0) != '#'))).collect(Collectors.toList());
 			LOGGER.info(() -> "Loaded " + FILTER_LIST.size() + " Filter Words.");
 		}
 		catch (IOException e)

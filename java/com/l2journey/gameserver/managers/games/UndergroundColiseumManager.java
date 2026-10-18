@@ -216,7 +216,7 @@ public class UndergroundColiseumManager implements IXmlReader
 		}
 	}
 	
-	private void saveBestTeam(UCBestTeam team, boolean isNew)
+	void saveBestTeam(UCBestTeam team, boolean isNew)
 	{
 		if (isNew)
 		{
@@ -235,14 +235,13 @@ public class UndergroundColiseumManager implements IXmlReader
 		}
 		else
 		{
-			try (Connection con = DatabaseFactory.getConnection())
+			try (Connection con = DatabaseFactory.getConnection();
+				PreparedStatement stmt = con.prepareStatement("UPDATE underground_coliseum SET leader = ?, wins = ?  WHERE arenaId = ?"))
 			{
-				final PreparedStatement stmt = con.prepareStatement("UPDATE underground_coliseum SET leader = ?, wins = ?  WHERE arenaId = ?");
-				stmt.setInt(1, team.getArenaId());
+				stmt.setString(1, team.getLeaderName());
 				stmt.setInt(2, team.getWins());
 				stmt.setInt(3, team.getArenaId());
 				stmt.execute();
-				stmt.close();
 			}
 			catch (Exception _)
 			{

@@ -31,6 +31,7 @@ import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
 import com.l2journey.Config;
+import com.l2journey.commons.util.XmlFactory;
 import com.l2journey.gameserver.managers.CastleManager;
 import com.l2journey.gameserver.managers.ZoneManager;
 import com.l2journey.gameserver.model.actor.instance.Merchant;
@@ -73,7 +74,7 @@ public class MerchantPriceConfigTable
 	
 	public void loadXML() throws SAXException, IOException, ParserConfigurationException
 	{
-		final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		final DocumentBuilderFactory factory = XmlFactory.newDocumentBuilderFactory();
 		factory.setValidating(false);
 		factory.setIgnoringComments(true);
 		final File file = new File(Config.DATAPACK_ROOT + "/data/" + MPCS_FILE);

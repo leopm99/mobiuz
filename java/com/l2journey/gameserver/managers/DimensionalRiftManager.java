@@ -48,6 +48,7 @@ import org.w3c.dom.Node;
 import com.l2journey.Config;
 import com.l2journey.commons.database.DatabaseFactory;
 import com.l2journey.commons.util.Rnd;
+import com.l2journey.commons.util.XmlFactory;
 import com.l2journey.gameserver.data.SpawnTable;
 import com.l2journey.gameserver.model.DimensionalRift;
 import com.l2journey.gameserver.model.DimensionalRiftRoom;
@@ -141,7 +142,7 @@ public class DimensionalRiftManager
 		int countBad = 0;
 		try
 		{
-			final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			final DocumentBuilderFactory factory = XmlFactory.newDocumentBuilderFactory();
 			factory.setValidating(false);
 			factory.setIgnoringComments(true);
 			

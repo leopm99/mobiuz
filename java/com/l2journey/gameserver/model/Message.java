@@ -28,7 +28,6 @@
  */
 package com.l2journey.gameserver.model;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -157,9 +156,10 @@ public class Message
 		_unloadTask = ThreadPool.schedule(new AttachmentsUnloadTask(this), (long) (UNLOAD_ATTACHMENTS_INTERVAL) + Rnd.get(UNLOAD_ATTACHMENTS_INTERVAL));
 	}
 	
-	public static PreparedStatement getStatement(Message msg, Connection con) throws SQLException
+	public static final String INSERT_SQL = "INSERT INTO messages (messageId, senderId, receiverId, subject, content, expiration, reqAdena, hasAttachments, isUnread, isDeletedBySender, isDeletedByReceiver, sendBySystem, isReturned) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	
+	public static void applyInsertParameters(Message msg, PreparedStatement stmt) throws SQLException
 	{
-		final PreparedStatement stmt = con.prepareStatement("INSERT INTO messages (messageId, senderId, receiverId, subject, content, expiration, reqAdena, hasAttachments, isUnread, isDeletedBySender, isDeletedByReceiver, sendBySystem, isReturned) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 		stmt.setInt(1, msg._messageId);
 		stmt.setInt(2, msg._senderId);
 		stmt.setInt(3, msg._receiverId);
@@ -173,7 +173,6 @@ public class Message
 		stmt.setString(11, String.valueOf(msg._deletedByReceiver));
 		stmt.setString(12, String.valueOf(msg._sendBySystem));
 		stmt.setString(13, String.valueOf(msg._returned));
-		return stmt;
 	}
 	
 	public int getId()

@@ -31,13 +31,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 
 import com.l2journey.Config;
 import com.l2journey.commons.database.DatabaseFactory;
+import com.l2journey.commons.util.XmlFactory;
 import com.l2journey.commons.threads.ThreadPool;
 import com.l2journey.gameserver.data.xml.SkillData;
 import com.l2journey.gameserver.model.WorldObject;
@@ -90,7 +90,7 @@ public class BotReportTable
 					throw new FileNotFoundException(punishments.getName());
 				}
 				
-				final SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
+				final SAXParser parser = XmlFactory.newSaxParserFactory().newSAXParser();
 				parser.parse(punishments, new PunishmentsLoader());
 			}
 			catch (Exception e)

@@ -43,6 +43,7 @@ import org.w3c.dom.Node;
 
 import com.l2journey.Config;
 import com.l2journey.commons.database.DatabaseFactory;
+import com.l2journey.commons.util.XmlFactory;
 import com.l2journey.gameserver.model.actor.holders.npc.BuffSkillHolder;
 
 /**
@@ -63,7 +64,7 @@ public class SchemeBufferTable
 	{
 		try
 		{
-			final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			final DocumentBuilderFactory factory = XmlFactory.newDocumentBuilderFactory();
 			final DocumentBuilder builder = factory.newDocumentBuilder();
 			final Document document = builder.parse(new File("./data/SchemeBufferSkills.xml"));
 			final Node n = document.getFirstChild();
