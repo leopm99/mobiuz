@@ -76,7 +76,7 @@ public class UserVariables
 			return;
 		}
 		
-		final String statementQuery = "DELETE FROM `user_variables` WHERE `obj_id`=?";
+		final String statementQuery = "DELETE FROM `user_variables` WHERE `obj_id`=? AND `name`=?";
 		try (var conn = DatabaseFactory.getConnection();
 			var query = conn.prepareStatement(statementQuery))
 		{

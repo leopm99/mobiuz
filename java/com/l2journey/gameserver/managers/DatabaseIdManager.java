@@ -32,14 +32,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 import com.l2journey.Config;
@@ -242,65 +236,30 @@ public class DatabaseIdManager
 	public static Set<Integer> getUsedIds()
 	{
 		final Set<Integer> usedIds = ConcurrentHashMap.newKeySet();
-		
-		final ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
-		final List<Future<?>> futures = new ArrayList<>();
 		for (String query : EXTRACT_USED_OBJECT_ID_QUERIES)
 		{
-			futures.add(executor.submit(() ->
+			try (Connection con = DatabaseFactory.getConnection();
+				Statement statement = con.createStatement();
+				ResultSet result = statement.executeQuery(query))
 			{
-				try (Connection con = DatabaseFactory.getConnection();
-					Statement statement = con.createStatement();
-					ResultSet result = statement.executeQuery(query))
+				while (result.next())
 				{
-					while (result.next())
+					final int id = result.getInt(1);
+					if ((id >= Config.FIRST_OBJECT_ID) && (id <= Config.LAST_OBJECT_ID))
 					{
-						final int id = result.getInt(1);
-						if ((id >= Config.FIRST_OBJECT_ID) && (id <= Config.LAST_OBJECT_ID))
-						{
-							usedIds.add(id);
-						}
-						else
-						{
-							LOGGER.warning("DatabaseIdManager: ID " + id + " in database is out of valid range (" + Config.FIRST_OBJECT_ID + " - " + Config.LAST_OBJECT_ID + ")");
-						}
+						usedIds.add(id);
+					}
+					else
+					{
+						LOGGER.warning("DatabaseIdManager: ID " + id + " in database is out of valid range (" + Config.FIRST_OBJECT_ID + " - " + Config.LAST_OBJECT_ID + ")");
 					}
 				}
-				catch (Exception e)
-				{
-					LOGGER.severe("DatabaseIdManager: Could not initialize used IDs for query " + query + ": " + e.getMessage());
-				}
-			}));
-		}
-		
-		for (Future<?> future : futures)
-		{
-			try
-			{
-				future.get();
-			}
-			catch (InterruptedException _)
-			{
-				Thread.currentThread().interrupt();
-				break;
 			}
 			catch (Exception e)
 			{
-				LOGGER.warning("Failed to parse file: " + e.getMessage());
+				LOGGER.severe("DatabaseIdManager: Could not initialize used IDs for query " + query + ": " + e.getMessage());
 			}
 		}
-		
-		executor.shutdown();
-		try
-		{
-			executor.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
-		}
-		catch (InterruptedException e)
-		{
-			Thread.currentThread().interrupt();
-			LOGGER.warning("DatabaseIdManager: Extraction interrupted: " + e.getMessage());
-		}
-		
 		return usedIds;
 	}
 }

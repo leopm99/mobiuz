@@ -37,6 +37,7 @@ import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Stream;
 
 import com.l2journey.Config;
 import com.l2journey.commons.enums.ServerMode;
@@ -57,9 +58,9 @@ public class DatabaseBackup
 		{
 			final long cut = LocalDateTime.now(ZoneId.systemDefault()).minusDays(Config.BACKUP_DAYS).toEpochSecond(ZoneOffset.UTC);
 			final Path path = Paths.get(Config.BACKUP_PATH);
-			try
+			try (Stream<Path> files = Files.list(path))
 			{
-				Files.list(path).filter(n ->
+				files.filter(n ->
 				{
 					try
 					{

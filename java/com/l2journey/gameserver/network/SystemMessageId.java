@@ -37,6 +37,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import com.l2journey.Config;
+import com.l2journey.commons.util.XmlFactory;
 import com.l2journey.gameserver.model.clientstrings.Builder;
 import com.l2journey.gameserver.network.serverpackets.SystemMessage;
 
@@ -9845,7 +9846,7 @@ public class SystemMessageId
 		}
 		
 		final List<String> languages = Config.MULTILANG_ALLOWED;
-		final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		final DocumentBuilderFactory factory = XmlFactory.newDocumentBuilderFactory();
 		factory.setValidating(false);
 		factory.setIgnoringComments(true);
 		

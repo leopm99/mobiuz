@@ -31,6 +31,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
 import com.l2journey.Config;
+import com.l2journey.commons.util.XmlFactory;
 import com.l2journey.commons.util.Rnd;
 import com.l2journey.gameserver.data.xml.OptionData;
 import com.l2journey.gameserver.model.Augmentation;
@@ -223,7 +224,7 @@ public class AugmentationData
 			try
 			{
 				int badAugmantData = 0;
-				final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+				final DocumentBuilderFactory factory = XmlFactory.newDocumentBuilderFactory();
 				factory.setValidating(false);
 				factory.setIgnoringComments(true);
 				
@@ -309,7 +310,7 @@ public class AugmentationData
 		}
 		else
 		{
-			final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			final DocumentBuilderFactory factory = XmlFactory.newDocumentBuilderFactory();
 			factory.setValidating(false);
 			factory.setIgnoringComments(true);
 			
@@ -394,7 +395,7 @@ public class AugmentationData
 		}
 		if (Config.RETAIL_LIKE_AUGMENTATION_ACCESSORY)
 		{
-			final DocumentBuilderFactory factory3 = DocumentBuilderFactory.newInstance();
+			final DocumentBuilderFactory factory3 = XmlFactory.newDocumentBuilderFactory();
 			factory3.setValidating(false);
 			factory3.setIgnoringComments(true);
 			

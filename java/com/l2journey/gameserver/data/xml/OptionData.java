@@ -71,6 +71,13 @@ public class OptionData implements IXmlReader
 	{
 		parseDatapackDirectory("data/stats/augmentation/options", false);
 		
+		if (OPTION_MAP.isEmpty())
+		{
+			options = new Options[0];
+			LOGGER.warning(() -> getClass().getSimpleName() + ": No options loaded.");
+			return;
+		}
+		
 		options = new Options[Collections.max(OPTION_MAP.keySet()) + 1];
 		for (Entry<Integer, Options> option : OPTION_MAP.entrySet())
 		{

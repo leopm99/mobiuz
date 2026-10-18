@@ -7,13 +7,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import javax.xml.parsers.DocumentBuilderFactory;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import com.l2journey.commons.util.Rnd;
+import com.l2journey.commons.util.XmlFactory;
 import com.l2journey.gameserver.managers.ZoneManager;
 import com.l2journey.gameserver.model.Location;
 import com.l2journey.gameserver.model.actor.Player;
@@ -215,7 +214,7 @@ public class PhantomHuntingSpots
 	{
 		try
 		{
-			Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
+			Document doc = XmlFactory.newDocumentBuilderFactory().newDocumentBuilder().parse(file);
 			NodeList npcNodes = doc.getElementsByTagName("npc");
 			
 			for (int i = 0; i < npcNodes.getLength(); i++)
@@ -284,7 +283,7 @@ public class PhantomHuntingSpots
 	{
 		try
 		{
-			Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file);
+			Document doc = XmlFactory.newDocumentBuilderFactory().newDocumentBuilder().parse(file);
 			NodeList spawnNodes = doc.getElementsByTagName("spawn");
 			
 			for (int i = 0; i < spawnNodes.getLength(); i++)

@@ -108,14 +108,14 @@ public class FishingChampionshipManager
 		_enddate = finishtime.getTimeInMillis();
 	}
 	
-	private void restoreData()
+	void restoreData()
 	{
 		_enddate = GlobalVariablesManager.getInstance().getLong("fishChampionshipEnd", 0);
 		
-		try (Connection con = DatabaseFactory.getConnection())
+		try (Connection con = DatabaseFactory.getConnection();
+			PreparedStatement statement = con.prepareStatement(SELECT);
+			ResultSet rs = statement.executeQuery())
 		{
-			final PreparedStatement statement = con.prepareStatement(SELECT);
-			final ResultSet rs = statement.executeQuery();
 			while (rs.next())
 			{
 				final int rewarded = rs.getInt("rewarded");
@@ -128,8 +128,6 @@ public class FishingChampionshipManager
 					_winPlayers.add(new Fisher(rs.getString("player_name"), rs.getDouble("fish_length"), rewarded));
 				}
 			}
-			rs.close();
-			statement.close();
 		}
 		catch (SQLException e)
 		{
