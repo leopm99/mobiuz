@@ -209,6 +209,7 @@ public class EffectMasterHandler
 		Transformation.class,
 		TrapDetect.class,
 		TrapRemove.class,
+		TreasureHunterSearch.class,
 		TriggerSkillByAvoid.class,
 		TriggerSkillByDamageDealt.class,
 		TriggerSkillByDamageReceived.class,

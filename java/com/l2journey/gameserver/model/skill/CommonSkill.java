@@ -64,7 +64,8 @@ public enum CommonSkill
 	SERVITOR_SHARE(1557, 1),
 	CARAVANS_SECRET_MEDICINE(2341, 1),
 	PUMPING(1313, 1),
-	REELING(1314, 1);
+	REELING(1314, 1),
+	TREASURE_HUNTER_SEARCH(20000, 1);
 	
 	private final SkillHolder _holder;
 	

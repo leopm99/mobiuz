@@ -34,4 +34,65 @@
 			<height normal="23" />
 		</collision>
 	</npc>
+	<!-- Hidden Treasure Chest - spawned invisible by ai/others/HiddenTreasureChest, revealed only to players -->
+	<!-- affected by the "Treasure Hunter Search" buff (skill 20000), or to everyone once attacked. -->
+	<!-- Stats/drops reused from the regular "Treasure Chest" (id 18265). -->
+	<npc id="70002" displayId="18265" level="21" name="Hidden Treasure Chest" usingServerSideName="true" type="Chest">
+		<race>CONSTRUCT</race>
+		<sex>MALE</sex>
+		<stats str="40" int="21" dex="30" wit="20" con="43" men="20">
+			<vitals hp="376.063268689487" hpRegen="1.5" mp="205.2" mpRegen="1.5" />
+			<attack physical="47.919244061454" magical="32.7226319401133" random="30" critical="4" accuracy="4.75" attackSpeed="253" type="SWORD" range="40" distance="80" width="120" />
+			<defence physical="92.6271011629928" magical="56.1115632895055" />
+			<attribute>
+				<defence fire="20" water="20" wind="20" earth="20" holy="20" dark="20" />
+			</attribute>
+			<speed>
+				<walk ground="80" />
+				<run ground="1" />
+			</speed>
+			<hitTime>560</hitTime>
+		</stats>
+		<status undying="false" />
+		<skillList>
+			<skill id="4045" level="1" /> <!-- Resist Full Magic Attack -->
+			<skill id="4408" level="1" /> <!-- HP Increase (1x) -->
+			<skill id="4409" level="1" /> <!-- MP Increase (1x) -->
+			<skill id="4410" level="11" /> <!-- Average P. Atk. -->
+			<skill id="4411" level="11" /> <!-- Average M. Atk. -->
+			<skill id="4412" level="11" /> <!-- Average P. Def. -->
+			<skill id="4413" level="21" /> <!-- Extremely Strong M. Def. -->
+			<skill id="4414" level="2" /> <!-- Standard Type -->
+			<skill id="4415" level="3" /> <!-- One-handed Sword -->
+			<skill id="4416" level="2" /> <!-- Magic Creatures -->
+		</skillList>
+		<exCrtEffect>true</exCrtEffect>
+		<dropLists>
+			<drop>
+				<item id="736" min="4" max="8" chance="90.91" /> <!-- Scroll of Escape -->
+				<item id="737" min="1" max="3" chance="90.91" /> <!-- Scroll of Resurrection -->
+				<item id="10262" min="1" max="1" chance="40" /> <!-- Critical Hit Juice -->
+				<item id="10265" min="1" max="1" chance="40" /> <!-- Evasion Juice -->
+				<item id="10260" min="1" max="1" chance="38.1" /> <!-- Alacrity Juice -->
+				<item id="10264" min="1" max="1" chance="32.88" /> <!-- Casting Spd. Juice -->
+				<item id="10269" min="1" max="1" chance="33.72" /> <!-- Defense Juice -->
+				<item id="10268" min="1" max="1" chance="33.72" /> <!-- Speed Juice -->
+				<item id="10261" min="1" max="1" chance="29.52" /> <!-- Accuracy Juice -->
+				<item id="10267" min="1" max="1" chance="30.23" /> <!-- Power Juice -->
+				<item id="10266" min="1" max="1" chance="28.57" /> <!-- M. Atk. Juice -->
+				<item id="10263" min="1" max="1" chance="31.4" /> <!-- Critical Rate Juice -->
+				<item id="5593" min="1" max="1" chance="75.55" /> <!-- SP Scroll (Low-Grade) -->
+				<item id="5594" min="1" max="1" chance="63.55" /> <!-- SP Scroll (Medium-Grade) -->
+				<item id="955" min="1" max="1" chance="0.63" /> <!-- Scroll: Enchant Weapon (D-Grade) -->
+				<item id="956" min="1" max="1" chance="5.51" /> <!-- Scroll: Enchant Armor (D-Grade) -->
+				<item id="10133" min="1" max="1" chance="22" /> <!-- Transformation Scroll: Grail Apostle -->
+				<item id="20364" min="1" max="1" chance="22" /> <!-- Transformation Scroll: Omen Beast -->
+				<item id="10132" min="1" max="1" chance="22" /> <!-- Transformation Scroll: Death Blader -->
+			</drop>
+		</dropLists>
+		<collision>
+			<radius normal="8.5" />
+			<height normal="8.5" />
+		</collision>
+	</npc>
 </list>

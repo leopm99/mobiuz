@@ -42,6 +42,7 @@ import com.l2journey.gameserver.managers.SiegeManager;
 import com.l2journey.gameserver.managers.ZoneManager;
 import com.l2journey.gameserver.model.actor.Creature;
 import com.l2journey.gameserver.model.actor.Player;
+import com.l2journey.gameserver.model.actor.instance.Chest;
 import com.l2journey.gameserver.model.actor.instance.Cubic;
 import com.l2journey.gameserver.model.actor.instance.SiegeFlag;
 import com.l2journey.gameserver.model.actor.instance.StaticObject;
@@ -870,6 +871,11 @@ public class Formulas
 			else
 			{
 				damage *= attacker.calcStat(Stat.PVE_PHYSICAL_DMG, 1, null, null);
+			}
+			
+			if (target instanceof Chest)
+			{
+				damage *= attacker.calcStat(Stat.PVE_CHEST_DMG, 1, null, null);
 			}
 			
 			if (!target.isRaid() && !target.isRaidMinion() && (target.getLevel() >= Config.MIN_NPC_LEVEL_DMG_PENALTY))

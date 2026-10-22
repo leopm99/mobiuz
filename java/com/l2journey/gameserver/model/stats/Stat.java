@@ -84,6 +84,7 @@ public enum Stat
 	PVE_BOW_DMG("pveBowDmg"),
 	PVE_BOW_SKILL_DMG("pveBowSkillsDmg"),
 	PVE_MAGICAL_DMG("pveMagicalDmg"),
+	PVE_CHEST_DMG("pveChestDmg"), // Bonus damage dealt to Chest-type NPCs
 	
 	// ATTACK & DEFENCE RATES
 	EVASION_RATE("rEvas"),

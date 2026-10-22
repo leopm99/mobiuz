@@ -18,8 +18,11 @@ package com.l2journey.gameserver.model.actor.instance;
 
 import com.l2journey.gameserver.data.xml.NpcData;
 import com.l2journey.gameserver.model.actor.Creature;
+import com.l2journey.gameserver.model.actor.Player;
 import com.l2journey.gameserver.model.actor.enums.creature.InstanceType;
 import com.l2journey.gameserver.model.actor.templates.NpcTemplate;
+import com.l2journey.gameserver.model.skill.CommonSkill;
+import com.l2journey.gameserver.model.skill.Skill;
 
 /**
  * This class manages all chest.
@@ -102,5 +105,31 @@ public class Chest extends Monster
 	public boolean hasRandomAnimation()
 	{
 		return false;
+	}
+	
+	/**
+	 * Hidden treasure chests (spawned invisible by the HiddenTreasureChest script) are also visible
+	 * to players currently affected by the "Treasure Hunter Search" buff, in addition to the default
+	 * GM-only invisible object visibility.
+	 * @param player the player checking visibility
+	 * @return {@code true} if the chest should be visible for the given player
+	 */
+	@Override
+	public boolean isVisibleFor(Player player)
+	{
+		return super.isVisibleFor(player) || (isInvisible() && player.isAffectedBySkill(CommonSkill.TREASURE_HUNTER_SEARCH.getId()));
+	}
+	
+	/**
+	 * As soon as a hidden treasure chest is attacked, it stops being invisible and becomes visible for everyone.
+	 */
+	@Override
+	public void reduceCurrentHp(double damage, Creature attacker, boolean awake, boolean isDOT, Skill skill)
+	{
+		if (isInvisible())
+		{
+			setInvisible(false);
+		}
+		super.reduceCurrentHp(damage, attacker, awake, isDOT, skill);
 	}
 }

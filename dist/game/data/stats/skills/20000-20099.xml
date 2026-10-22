@@ -2,26 +2,41 @@
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="20000" levels="1" name="Treasure Hunter Search">
 		<!-- Open your mind and stare at the horizon, and you may find a hidden treasure chest. -->
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<!-- chests spawned by the HiddenTreasureChest script (see ai/others/HiddenTreasureChest). -->
+		<set name="operateType" val="A2" />
+		<set name="targetType" val="SELF" />
+		<set name="abnormalTime" val="3600" />
+		<set name="castRange" val="0" />
+		<set name="hitTime" val="2000" />
+		<set name="magicLevel" val="40" />
+		<set name="mpConsume" val="30" />
+		<set name="reuseDelay" val="10000" />
+		<effects>
+			<effect name="TreasureHunterSearch" />
+		</effects>
 	</skill>
 	<skill id="20001" levels="1" name="Treasure Hunter Hammer Punch">
 		<!-- Slams the treasure chest down with a hammer to break it open. -->
 		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="pveChestDmg" val="1.1" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="20002" levels="1" name="Dragon Kick">
 		<!-- A dragon's powerful kick that attacks the enemy with 3420 Power added to P. Atk. Over-hit is possible. -->
-		<set name="operateType" val="A1" /> <!-- FIXME: value unconfirmed -->
+		<set name="operateType" val="A1" />
 		<set name="targetType" val="ONE" />
 		<set name="blowChance" val="20" />
 		<set name="castRange" val="55" />
-		<set name="effectRange" val="550" /> <!-- FIXME: value unconfirmed -->
+		<set name="effectRange" val="400" />
 		<set name="hitTime" val="2000" />
-		<set name="magicLevel" val="85" /> <!-- FIXME: value unconfirmed -->
+		<set name="magicLevel" val="85" />
 		<set name="overHit" val="true" />
 		<set name="power" val="3420" />
-		<set name="reuseDelay" val="5000" /> <!-- FIXME: value unconfirmed -->
+		<set name="reuseDelay" val="4000" />
 		<effects>
 			<effect name="FatalBlow" />
 		</effects>
@@ -31,12 +46,12 @@
 		<set name="operateType" val="A1" />
 		<set name="targetType" val="ONE" />
 		<set name="castRange" val="55" />
-		<set name="effectRange" val="550" /> <!-- FIXME: value unconfirmed -->
+		<set name="effectRange" val="550" />
 		<set name="hitTime" val="2000" />
-		<set name="magicLevel" val="85" /> <!-- FIXME: value unconfirmed -->
+		<set name="magicLevel" val="85" />
 		<set name="overHit" val="true" />
 		<set name="power" val="3420" />
-		<set name="reuseDelay" val="5000" /> <!-- FIXME: value unconfirmed -->
+		<set name="reuseDelay" val="5000" />
 		<effects>
 			<effect name="PhysicalDamage" />
 		</effects>
@@ -47,7 +62,7 @@
 		<set name="targetType" val="SELF" />
 		<set name="abnormalTime" val="5" />
 		<set name="mpConsume" val="1" />
-		<set name="reuseDelay" val="30000" /> <!-- FIXME: value unconfirmed -->
+		<set name="reuseDelay" val="30000" />
 		<effects>
 			<effect name="Buff">
 				<mul stat="runSpd" val="2" />
@@ -61,7 +76,7 @@
 		<set name="abnormalTime" val="1200" />
 		<set name="hitTime" val="4000" />
 		<set name="mpConsume" val="1" />
-		<set name="reuseDelay" val="5000" /> <!-- FIXME: value unconfirmed -->
+		<set name="reuseDelay" val="5000" />
 		<effects>
 			<effect name="Buff">
 				<mul stat="critRate" val="1.3" />
