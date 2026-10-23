@@ -476,6 +476,9 @@ public class EnterWorld extends ClientPacket
 			}
 		}
 		
+		// Login systems above can replace appearance colors; purchased choices win on login.
+		player.restoreCommunityColors();
+
 		// Hitman Event - notify player about bounties
 		if (EventsConfig.HITMAN_ENABLED)
 		{

@@ -76,6 +76,13 @@ public class NpcData implements IXmlReader
 	private static final Collection<Integer> _masterMonsterIDs = ConcurrentHashMap.newKeySet();
 	private static Integer _genericClanId = null;
 	
+	private volatile long _revision;
+
+	public long getRevision()
+	{
+		return _revision;
+	}
+
 	protected NpcData()
 	{
 		load();
@@ -96,6 +103,7 @@ public class NpcData implements IXmlReader
 		}
 		
 		loadNpcsSkillLearn();
+		_revision++;
 	}
 	
 	@Override

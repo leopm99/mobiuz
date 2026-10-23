@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- Community Board name/title color service with a configurable RGB palette, item fee, persistent name/title preferences restored after PvP/faction login defaults without a schema migration, and payment refunds on database failure
+
+- Community Board Subclass Master: localized add, activate and confirmed removal actions, configurable item fee, existing subclass eligibility rules, and transactional cleanup
+
 - JaCoCo coverage on `ant test`, fed to SonarQube Cloud and GitLab (`coverage` + JaCoCo report artifacts)
 - GM Shop Life Stones buylist: Level 85 and 86 Life Stones (normal, mid, high, top) and Accessory Type Life Stones
 - Large Dragon Bone in the GM Store Miscellaneous consumables buylist
@@ -29,6 +33,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Unit test that character deletion prepares and executes `DELETE FROM character_summons`
 
 ### Changed
+
+- Drop Calculator rebuilt around an immutable, reload-aware core index and Community Board UI: paginated item/NPC lookup, sorting, drop/spoil sources, NPC stats/skills and radar; percentage/group chances and player rates are calculated in Journey units
+
+- Community Board Services replaces the Blacksmith shortcut and groups Warehouse, Symbol Maker, Blacksmith and Subclass Master in rows, with PT-BR/EN labels and per-service visibility
 
 - Datapack scripts compile with `--release 25`; Java 8 `-source` / `-target` is removed
 - Script file manager forwards JDK module APIs so `--release` compilation works

@@ -51,6 +51,8 @@ public class PlayerVariables extends AbstractVariables
 	private static final String INSERT_QUERY = "INSERT INTO character_variables (charId, var, val) VALUES (?, ?, ?)";
 	
 	// Public variable names.
+	public static final String COMMUNITY_NAME_COLOR = "COMMUNITY_NAME_COLOR";
+	public static final String COMMUNITY_TITLE_COLOR = "COMMUNITY_TITLE_COLOR";
 	public static final String RESTORE_LOCATION = "RESTORE_LOCATION";
 	public static final String AUTO_USE_SETTINGS = "AUTO_USE_SETTINGS";
 	public static final String AUTO_USE_ACTIONS = "AUTO_USE_ACTIONS";
