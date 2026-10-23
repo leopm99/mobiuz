@@ -6937,6 +6937,20 @@ public class Player extends Playable
 		return getAccessLevel().isGm();
 	}
 	
+	/** Reapply purchased colors after access-level, PvP or faction login defaults. */
+	public void restoreCommunityColors()
+	{
+		final PlayerVariables variables = getVariables();
+		final int nameColor = variables.getInt(PlayerVariables.COMMUNITY_NAME_COLOR, getAppearance().getNameColor());
+		final int titleColor = variables.getInt(PlayerVariables.COMMUNITY_TITLE_COLOR, getAppearance().getTitleColor());
+		if ((nameColor != getAppearance().getNameColor()) || (titleColor != getAppearance().getTitleColor()))
+		{
+			getAppearance().setNameColor(nameColor);
+			getAppearance().setTitleColor(titleColor);
+			broadcastUserInfo();
+		}
+	}
+
 	/**
 	 * Set the _accessLevel of the Player.
 	 * @param level
@@ -7226,6 +7240,7 @@ public class Player extends Playable
 					{
 						player.getAppearance().setTitleColor(titleColor);
 					}
+					player.restoreCommunityColors();
 					player.setFistsWeaponItem(player.findFistsWeaponItem(activeClassId));
 					player.setUptime(System.currentTimeMillis());
 					

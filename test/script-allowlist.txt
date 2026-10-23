@@ -1,3 +1,7 @@
 # Paths relative to dist/game/data/scripts (one .java file per line).
 # Used by Ant compile-scripts-test to put datapack scripts on the unit-test classpath.
 quests/Q00627_HeartInSearchOfPower/Q00627_HeartInSearchOfPower.java
+handlers/communityboard/SubClassMasterBoard.java
+handlers/communityboard/HomeBoard.java
+handlers/communityboard/ColorChangeBoard.java
+handlers/communityboard/DropSearchBoard.java

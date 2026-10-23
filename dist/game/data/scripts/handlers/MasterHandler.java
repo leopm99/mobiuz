@@ -201,6 +201,7 @@ import handlers.chathandlers.ChatWhisper;
 import handlers.communityboard.BufferBoard;
 import handlers.communityboard.BufferBoardPremium;
 import handlers.communityboard.ClanBoard;
+import handlers.communityboard.ColorChangeBoard;
 import handlers.communityboard.DropSearchBoard;
 import handlers.communityboard.FavoriteBoard;
 import handlers.communityboard.FriendsBoard;
@@ -209,6 +210,7 @@ import handlers.communityboard.HomepageBoard;
 import handlers.communityboard.MailBoard;
 import handlers.communityboard.MemoBoard;
 import handlers.communityboard.RegionBoard;
+import handlers.communityboard.SubClassMasterBoard;
 import handlers.itemhandlers.BeastSoulShot;
 import handlers.itemhandlers.BeastSpiritShot;
 import handlers.itemhandlers.BlessedSpiritShot;
@@ -503,6 +505,7 @@ public class MasterHandler
 			BufferBoard.class,
 			Config.isCommunityPremiumBufferEnabled() ? BufferBoardPremium.class : null,
 			ClanBoard.class,
+			ColorChangeBoard.class,
 			DropSearchBoard.class,
 			FavoriteBoard.class,
 			FriendsBoard.class,
@@ -511,6 +514,7 @@ public class MasterHandler
 			MailBoard.class,
 			MemoBoard.class,
 			RegionBoard.class,
+			SubClassMasterBoard.class,
 		},
 		{
 			// Item Handlers

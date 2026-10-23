@@ -48,6 +48,12 @@ Test sources live under `test/java/`. Dependencies (JUnit, Mockito, JaCoCo) are 
 Datapack scripts under `dist/game/data/scripts` are not part of the main `compile` target. `ant test` also compiles paths listed in `test/script-allowlist.txt` into `build/script-bin` so those classes are on the test classpath. To cover another script: add its `.java` path (relative to `dist/game/data/scripts`) to the allowlist, add a test under `test/java/` mirroring the script package, and construct the quest with `QuestScriptTestSupport`. Script tests must not run with JUnit parallel execution enabled (`QuestManager` is a JVM singleton).
 
 Merge requests and `main` also run a `sonarcloud-check` job (SonarQube Cloud), which consumes the JaCoCo XML from the unit-test job.
+## Drop Calculator
+
+Open **Community Board → Drop Calculator**. Search by partial item/NPC name or exact ID, select an item to see its sources, or select an NPC to inspect drop/spoil, base stats, skills, and its map marker. All lists are paginated. `CommunityBoardDropSearch` in `dist/game/config/communityboard.ini` controls both the shortcut and direct access.
+
+The calculator separates base percentages (including group probability) from nominal per-roll chances and quantities adjusted for server, premium and player bonuses. It does not simulate champion bonuses, level penalties, or competition between rolls and maximum drop occurrences. Herbs are omitted; Adena is searchable. A repeated item in separate groups remains a separate roll. The core index refreshes after NPC data reloads; formatting and routing live in `handlers/communityboard/DropSearchBoard.java`. The former `dropsearch/main.html` entry link and existing search/radar bypasses remain supported.
+
 ## Downloads
 
 | Resource | Link |

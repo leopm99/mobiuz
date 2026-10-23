@@ -181,10 +181,10 @@ public class HomeBoard implements IParseBoardHandler
 			cells.add(new String[]
 			{
 				"icon.action046",
-				"Drop Search",
+				localize(lang, "Drop Calculator", "Calculadora de Drops"),
 				localize(lang, "Find any item", "Encontre qualquer item"),
 				localize(lang, "Search", "Pesquisar"),
-				"bypass _bbstop;dropsearch/main.html"
+				"bypass _bbsdrop"
 			});
 		}
 		if (Config.COMMUNITYBOARD_ENABLE_TELEPORTS)
@@ -327,7 +327,7 @@ public class HomeBoard implements IParseBoardHandler
 		sb.append("<td fixwidth=").append(outerWidth).append(" valign=top background=\"L2UI_CT1.Windows_DF_Drawer_Bg\">");
 
 		// Build the list of enabled cells.
-		// Ordem fixa de exibicao (linha 1: Ranking, BlackSmith, Merchant; linha 2: Premium, Delevel, Recompensa).
+		// Ordem fixa: Ranking, Services, Merchant, Premium, Delevel, Recompensa.
 		final List<String[]> cells = new ArrayList<>(6);
 		// Ranking (TopBoard built-in).
 		if (Config.COMMUNITYBOARD_PLAYER_RANKING)
@@ -340,13 +340,13 @@ public class HomeBoard implements IParseBoardHandler
 				"bypass _bbstopboard"
 			});
 		}
-		// BlackSmith (acessivel quando multisells estao habilitados, pois usa _bbsmultisell internamente).
-		if (Config.COMMUNITYBOARD_BLACKSMITH)
+		// Services groups the enabled Blacksmith and character services.
+		if (Config.COMMUNITYBOARD_BLACKSMITH || Config.SUBCLASS_MASTER_BOARD || Config.COLOR_CHANGE_SERVICE_ENABLED)
 		{
 			cells.add(new String[]
 			{
 				"L2UI.Crystalize_active",
-				"BlackSmith",
+				localize(lang, "Services", "Serviços"),
 				localize(lang, ACCESS, ACESSAR),
 				"bypass _bbstop;merchant/blacksmithMain.html"
 			});
@@ -442,6 +442,57 @@ public class HomeBoard implements IParseBoardHandler
 		return commands.stream().filter(Objects::nonNull).toArray(String[]::new);
 	}
 
+
+	/** Builds a three-column service menu; adding an entry automatically adds rows. */
+	private static String buildServicesRows(String lang)
+	{
+		// { icon, title, description, action }. Each service retains its own enable flag.
+		final List<String[]> services = new ArrayList<>();
+		if (Config.COMMUNITYBOARD_BLACKSMITH)
+		{
+			services.add(new String[] { "icon.skill0629", "Warehouse", localize(lang, "Store and retrieve your items.", "Guarde e retire seus itens."), "bypass _bbstop;merchant/warehouse.html" });
+			services.add(new String[] { "icon.etc_int_symbol_i01", "Symbol Maker", localize(lang, "Apply or remove your dyes.", "Aplique ou remova suas tatuagens."), "bypass _bbstop;merchant/symbolMaker.html" });
+			services.add(new String[] { "icon.skill0818", "Blacksmith", localize(lang, "Improve your equipment.", "Aprimore seus equipamentos."), "bypass _bbstop;merchant/blacksmith.html" });
+		}
+		if (Config.SUBCLASS_MASTER_BOARD)
+		{
+			services.add(new String[] { "Icon.skill0755", "Subclass Master", localize(lang, "Manage your subclasses.", "Gerencie suas subclasses."), "bypass _bbssubclassmaster" });
+		}
+		if (Config.COLOR_CHANGE_SERVICE_ENABLED)
+		{
+			services.add(new String[] { "icon.etc_int_symbol_i01", localize(lang, "Name & Title Color", "Cor do Nome e Título"), localize(lang, "Customize your name and title.", "Personalize seu nome e título."), "bypass _bbcolorchange" });
+		}
+		if (services.isEmpty())
+		{
+			return "<table width=720><tr><td align=center>" + localize(lang, "No services are currently available.", "Nenhum serviço disponível no momento.") + "</td></tr></table>";
+		}
+		final int columns = 3;
+		final StringBuilder html = new StringBuilder(4096);
+		html.append("<table width=720 cellpadding=4 cellspacing=4 border=0>");
+		for (int i = 0; i < services.size(); i += columns)
+		{
+			html.append("<tr>");
+			for (int column = 0; column < columns; column++)
+			{
+				if ((i + column) >= services.size())
+				{
+					html.append("<td fixwidth=226></td>");
+					continue;
+				}
+				final String[] service = services.get(i + column);
+				html.append("<td fixwidth=226 height=130 align=center valign=top background=\"L2UI_CT1.Windows_DF_Drawer_Bg\">");
+				html.append("<br><img src=\"").append(service[0]).append("\" width=32 height=32><br1>");
+				html.append("<font color=\"F2C75C\">").append(service[1]).append("</font><br1>");
+				html.append("<font color=\"AE9977\">").append(service[2]).append("</font><br>");
+				html.append("<button value=\"").append(localize(lang, ACCESS, ACESSAR)).append("\" action=\"").append(service[3]);
+				html.append("\" width=160 height=24 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"><br></td>");
+			}
+			html.append("</tr>");
+		}
+		html.append("</table>");
+		return html.toString();
+	}
+
 	/**
 	 * Parses and executes a Community Board command for the given player.
 	 * @param command The command string
@@ -512,7 +563,21 @@ public class HomeBoard implements IParseBoardHandler
 		else if (command.startsWith("_bbstop;"))
 		{
 			final String path = command.replace("_bbstop;", "");
-			if (path.startsWith("premium/") && !Config.isCommunityPremiumShopEnabled())
+			if (path.equals("dropsearch/main.html"))
+			{
+				return new DropSearchBoard().parseCommunityBoardCommand("_bbsdrop", player);
+			}
+			else if (path.equals("merchant/blacksmithMain.html"))
+			{
+				final String lang = player.getLang();
+				CommunityBoardHandler.getInstance().addBypass(player, localize(lang, "Services", "Serviços"), "_bbstop;merchant/blacksmithMain.html");
+				returnHtml = HtmCache.getInstance().getHtm(player, HTML_PATH + "merchant/blacksmithMain.html");
+				returnHtml = returnHtml.replace("%services_title%", localize(lang, "Services", "Serviços"))
+					.replace("%services_description%", localize(lang, "Everything you need for your character, in one place.", "Tudo que seu personagem precisa, em um só lugar."))
+					.replace("%services_rows%", buildServicesRows(lang))
+					.replace("%back_label%", localize(lang, "Back", "Voltar"));
+			}
+			else if (path.startsWith("premium/") && !Config.isCommunityPremiumShopEnabled())
 			{
 				player.sendMessage(localize(player.getLang(), "Premium system is currently disabled.", "O sistema premium esta desativado no momento."));
 			}
