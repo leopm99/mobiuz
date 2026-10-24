@@ -545,4 +545,36 @@ class SubClassMasterBoardTest
 		assertTrue(_pages.getLast().contains("confirm_remove;3"));
 	}
 
+	@Test
+	void reportedEnglishDuelist85WithWarlockSubclassRendersEveryPageSafely() throws Exception
+	{
+		when(_player.getLang()).thenReturn("en");
+		when(_player.getLevel()).thenReturn(85);
+		when(ClassListData.getInstance().getClass(anyInt())).thenAnswer(invocation -> {
+			final PlayerClass type = PlayerClass.getPlayerClass(invocation.getArgument(0));
+			final String name = type == PlayerClass.DUELIST ? "Duelist" : type == PlayerClass.WARLOCK ? "Warlock" : type.name();
+			return new com.l2journey.gameserver.model.actor.holders.player.ClassInfoHolder(type, name, null);
+		});
+		// The subclass level was not specified: cover newly added and leveled cases.
+		for (int level : java.util.List.of(40, 75))
+		{
+			subclass(1, PlayerClass.WARLOCK, level);
+			assertTrue(command(""));
+			assertTrue(_pages.getLast().contains("Duelist (Lv. 85)"));
+			assertTrue(_pages.getLast().contains("[Sub #1] Warlock"));
+			assertTrue(_pages.getLast().contains("switch_subclass;1"));
+			assertTrue(_pages.getLast().contains("confirm_remove;1"));
+			assertTrue(_pages.getLast().contains("Your Classes and Subclasses"));
+			final var pages = java.util.regex.Pattern.compile("Page 1/(\\d+)").matcher(_pages.getLast());
+			assertTrue(pages.find());
+			final int total = Integer.parseInt(pages.group(1));
+			for (int page = 1; page <= total; page++)
+			{
+				assertTrue(command(";page;" + page));
+				assertClientHtmlStructure(_pages.getLast());
+				assertFalse(_pages.getLast().contains("add_subclass;14\""), "Do not offer the existing Warlock subclass again");
+			}
+		}
+	}
+
 }
