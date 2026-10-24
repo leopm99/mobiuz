@@ -340,7 +340,7 @@ class SubClassMasterBoardTest
 	{
 		command("");
 		assertTrue(_pages.getLast().contains("Classe Atual"));
-		assertTrue(_pages.getLast().length() < 16383);
+		assertTrue(_pages.getLast().length() < 8192);
 		when(_player.getLang()).thenReturn("en");
 		command("");
 		assertTrue(_pages.getLast().contains("Current Class"));
@@ -429,6 +429,120 @@ class SubClassMasterBoardTest
 		assertTrue(html.contains("Manage your subclasses."));
 		Config.SUBCLASS_MASTER_BOARD = false;
 		assertTrue(((String) method.invoke(null, "en")).contains("No services are currently available."));
+	}
+
+	/** Check the emitted HTML tree after normalizing the client's void tags/attributes. */
+	private static void assertClientHtmlStructure(String html) throws Exception
+	{
+		assertTrue(html.length() < 8192, "Keep the subclass page short enough for one ShowBoard content packet");
+		final String xml = html.replaceAll("<(br1?|img|button)([^>]*)>", "<$1$2/>")
+			.replaceAll("(\\s[a-zA-Z][a-zA-Z0-9]*)=([^\\s\"'=<>`]+)", "$1=\"$2\"");
+		final var factory = javax.xml.parsers.DocumentBuilderFactory.newDefaultInstance();
+		factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+		factory.setAttribute(javax.xml.XMLConstants.ACCESS_EXTERNAL_DTD, "");
+		factory.setAttribute(javax.xml.XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+		final var document = factory.newDocumentBuilder().parse(new org.xml.sax.InputSource(new java.io.StringReader(xml)));
+		final var tables = document.getElementsByTagName("table");
+		for (int i = 0; i < tables.getLength(); i++)
+		{
+			assertEquals(0, ((org.w3c.dom.Element) tables.item(i)).getElementsByTagName("table").getLength(), "Use independent tables instead of nested page layout tables");
+		}
+	}
+
+	@Test
+	void everySubclassChoiceRemainsReachableAcrossSmallPages() throws Exception
+	{
+		final var pattern = java.util.regex.Pattern.compile("add_subclass;(\\d+)\"");
+		final var choices = new java.util.HashSet<Integer>();
+		command("");
+		final String first = _pages.getLast();
+		final var pages = java.util.regex.Pattern.compile("Pagina 1/(\\d+)").matcher(first);
+		assertTrue(pages.find());
+		final int total = Integer.parseInt(pages.group(1));
+		assertTrue(total > 1);
+		for (int page = 1; page <= total; page++)
+		{
+			assertTrue(command(";page;" + page));
+			final String html = _pages.getLast();
+			assertClientHtmlStructure(html);
+			final var matcher = pattern.matcher(html);
+			int count = 0;
+			while (matcher.find())
+			{
+				assertTrue(choices.add(Integer.parseInt(matcher.group(1))), "No duplicate class choices across pages");
+				count++;
+			}
+			assertTrue((count > 0) && (count <= 6));
+		}
+		final var expected = Arrays.stream(PlayerClass.values()).filter(c -> (c.level() == 2) && (c.getRace() != Race.KAMAEL) && !java.util.Set.of(PlayerClass.GLADIATOR, PlayerClass.OVERLORD, PlayerClass.WARSMITH).contains(c)).map(PlayerClass::getId).collect(Collectors.toSet());
+		assertEquals(expected, choices);
+		final String last = _pages.getLast();
+		command(";page;2147483647");
+		assertEquals(last, _pages.getLast());
+		command(";page;-1");
+		assertEquals(first, _pages.getLast());
+		assertFalse(command(";page;invalid"));
+		verify(_player, never()).addSubClass(anyInt(), anyInt());
+		verify(_player, never()).setActiveClass(anyInt());
+	}
+
+	@Test
+	void classAndItemNamesCannotBreakHtmlTextOrButtonAttributes() throws Exception
+	{
+		when(ClassListData.getInstance().getClass(anyInt())).thenAnswer(i -> new com.l2journey.gameserver.model.actor.holders.player.ClassInfoHolder(PlayerClass.getPlayerClass(i.getArgument(0)), "Class <broken> & \"quoted\"", null));
+		fee();
+		when(ItemData.getInstance().getTemplate(57).getName()).thenReturn("Coin <broken> & \"quoted\"");
+		when(_player.getLang()).thenReturn("en");
+		command("");
+		assertClientHtmlStructure(_pages.getLast());
+		assertFalse(_pages.getLast().contains("<broken>"));
+		assertFalse(_pages.getLast().contains("Classes & Subclasses"));
+		assertTrue(_pages.getLast().contains("&lt;broken&gt; &amp; &quot;quoted&quot;"));
+		subclass(1, PlayerClass.HAWKEYE, 75);
+		command(";confirm_remove;1");
+		assertClientHtmlStructure(_pages.getLast());
+	}
+
+	@Test
+	void realClassNamesRenderInBothLanguagesForAllRacesAndExistingSubclassSlots() throws Exception
+	{
+		final var factory = javax.xml.parsers.DocumentBuilderFactory.newDefaultInstance();
+		factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+		factory.setAttribute(javax.xml.XMLConstants.ACCESS_EXTERNAL_DTD, "");
+		factory.setAttribute(javax.xml.XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+		final var nodes = factory.newDocumentBuilder().parse(new java.io.File("dist/game/data/stats/chars/classList.xml")).getElementsByTagName("class");
+		final Map<Integer, com.l2journey.gameserver.model.actor.holders.player.ClassInfoHolder> names = new HashMap<>();
+		for (int i = 0; i < nodes.getLength(); i++)
+		{
+			final var node = (org.w3c.dom.Element) nodes.item(i);
+			final int id = Integer.parseInt(node.getAttribute("classId"));
+			names.put(id, new com.l2journey.gameserver.model.actor.holders.player.ClassInfoHolder(PlayerClass.getPlayerClass(id), node.getAttribute("name"), null));
+		}
+		when(ClassListData.getInstance().getClass(anyInt())).thenAnswer(i -> names.get(i.getArgument(0)));
+		for (String lang : java.util.List.of("en", "br"))
+		{
+			when(_player.getLang()).thenReturn(lang);
+			for (PlayerClass base : java.util.List.of(PlayerClass.SAGITTARIUS, PlayerClass.MOONLIGHT_SENTINEL, PlayerClass.GHOST_SENTINEL, PlayerClass.TITAN, PlayerClass.FORTUNE_SEEKER, PlayerClass.DOOMBRINGER))
+			{
+				when(_player.getRace()).thenReturn(base.getRace());
+				when(_player.getPlayerClass()).thenReturn(base);
+				when(_player.getBaseClass()).thenReturn(base.getId());
+				when(_player.getActiveClass()).thenReturn(base.getId());
+				for (boolean female : java.util.List.of(false, true))
+				{
+					when(_player.getAppearance().isFemale()).thenReturn(female);
+					command("");
+					assertClientHtmlStructure(_pages.getLast());
+				}
+			}
+		}
+		subclass(1, PlayerClass.HAWKEYE, 75);
+		subclass(2, PlayerClass.PALADIN, 75);
+		subclass(3, PlayerClass.WARLOCK, 75);
+		_active.set(1);
+		command("");
+		assertClientHtmlStructure(_pages.getLast());
+		assertTrue(_pages.getLast().contains("confirm_remove;3"));
 	}
 
 }
