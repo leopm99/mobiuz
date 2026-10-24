@@ -50,6 +50,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 
+- Subclass Master HTML uses shallow tables, six choices per page and escaped names; removes raw ampersands and oversized fixed-height page layout for High Five client compatibility
+
 - Community Board Premium Manager and Premium Buffs are hidden, and premium purchases are refused, when `EnablePremiumSystem` is false
 - Quest "Seven Signs, One Who Seeks the Power of the Seal" (10296): Eris's second dialog option before the battle with Etis van Etina is not freezing the client anymore; After defeating Etis van Etina, Elcadia now returns to the player when the closing scene ends
 - NullPointerException when talking to Sophia in the "Seven Signs, Forbidden Book of the Elmore-Aden Kingdom" quest

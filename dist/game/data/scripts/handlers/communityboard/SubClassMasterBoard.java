@@ -70,6 +70,7 @@ public class SubClassMasterBoard implements IParseBoardHandler
 	};
 	
 	private static final int MIN_LEVEL_FOR_SUBCLASS = 75;
+	private static final int CLASSES_PER_PAGE = 6;
 	
 	// Class-scoped data cleared when permanently removing a subclass.
 	private static final String DELETE_CHAR_HENNA = "DELETE FROM character_hennas WHERE charId=? AND class_index=?";
@@ -146,6 +147,18 @@ public class SubClassMasterBoard implements IParseBoardHandler
 			CommunityBoardHandler.getInstance().addBypass(player, "Subclass Master", command);
 			CommunityBoardHandler.separateAndSend(getMainPage(player), player);
 			return true;
+		}
+		if ((params.length == 3) && params[1].equals("page"))
+		{
+			try
+			{
+				CommunityBoardHandler.separateAndSend(getMainPage(player, Integer.parseInt(params[2])), player);
+				return true;
+			}
+			catch (NumberFormatException _)
+			{
+				return false;
+			}
 		}
 		final String action = params[1];
 		final boolean base = action.equals("change_to_base");
@@ -394,145 +407,93 @@ public class SubClassMasterBoard implements IParseBoardHandler
 	
 	private String getMainPage(Player player)
 	{
+		return getMainPage(player, 1);
+	}
+
+	private String getMainPage(Player player, int requestedPage)
+	{
 		final String lang = player.getLang();
 		final StringBuilder html = new StringBuilder(4096);
-		
-		html.append("<html noscrollbar><body><center><br>");
-		html.append("<table width=755 border=0 cellpadding=0 cellspacing=0>");
-		html.append("<tr><td align=center>");
-		html.append("<table width=750 height=480 border=0 cellpadding=4 cellspacing=2 background=\"L2UI_CT1.Windows_DF_Drawer_Bg\">");
-		
-		// Header
-		html.append("<tr><td height=36 align=center bgcolor=\"2A2418\">");
-		html.append("<font name=\"hs12\" color=\"F2C75C\">Subclass Master</font><br1>");
-		html.append("<font color=\"AE9977\">").append(localize(lang, "Current Class: ", "Classe Atual: ")).append("</font>");
-		html.append("<font color=\"32C332\">").append(getClassName(player.getActiveClass())).append(" (Lv. ").append(player.getLevel()).append(")</font>");
-		html.append("</td></tr>");
-		
-		// Secao: Adicionar Subclasse
-		html.append("<tr><td align=center valign=top>");
+		// Keep the High Five HTML viewer layout shallow and bounded. Do not nest
+		// a fixed-height full-page table around the class and action tables.
+		html.append("<html><title>Subclass Master</title><body><center><br>");
+		html.append("<font name=hs12 color=F2C75C>Subclass Master</font><br>");
+		html.append(localize(lang, "Current Class: ", "Classe Atual: "));
+		html.append("<font color=32C332>").append(getClassName(player.getActiveClass())).append(" (Lv. ").append(player.getLevel()).append(")</font><br><br>");
 		if (player.getTotalSubClasses() >= Config.MAX_SUBCLASS)
 		{
-			html.append("<br><font color=\"AAAAAA\">").append(localize(lang, "You have already added the maximum of " + Config.MAX_SUBCLASS + " subclasses.", "Voce ja adicionou o limite maximo de " + Config.MAX_SUBCLASS + " subclasses.")).append("</font><br>");
+			html.append(localize(lang, "You have reached the subclass limit.", "Voce atingiu o limite de subclasses.")).append("<br>");
 		}
 		else
 		{
 			if (Config.SUBCLASS_BUY_ITEM_COUNT > 0)
 			{
 				final ItemTemplate item = ItemData.getInstance().getTemplate(Config.SUBCLASS_BUY_ITEM_ID);
-				final String itemName = (item != null) ? item.getName() : ("ID: " + Config.SUBCLASS_BUY_ITEM_ID);
-				final String itemIcon = ((item != null) && (item.getIcon() != null)) ? item.getIcon() : "icon.etc_question_mark_i00";
-				
-				html.append("<table border=0 cellpadding=2 cellspacing=2 bgcolor=\"161616\" width=360><tr>");
-				html.append("<td width=36 align=center><img src=\"").append(itemIcon).append("\" width=32 height=32></td>");
-				html.append("<td width=310 align=left><font color=\"CDB67F\">").append(localize(lang, "Required to Add:", "Requisito para Adicionar:")).append("</font><br1>");
-				html.append("<font color=\"FFFFFF\">").append(formatAdena(Config.SUBCLASS_BUY_ITEM_COUNT)).append(" ").append(itemName).append("</font></td>");
-				html.append("</tr></table><br1>");
+				final String itemName = item == null ? "ID: " + Config.SUBCLASS_BUY_ITEM_ID : item.getName();
+				html.append(localize(lang, "Cost to add: ", "Custo para adicionar: ")).append(formatAdena(Config.SUBCLASS_BUY_ITEM_COUNT)).append(' ').append(escapeHtml(itemName)).append("<br>");
 			}
-			
-			final Set<PlayerClass> availableSubs = getAvailableSubClasses(player);
-			if ((availableSubs == null) || availableSubs.isEmpty())
+			final Set<PlayerClass> available = getAvailableSubClasses(player);
+			final java.util.List<PlayerClass> classes = available == null ? java.util.List.of() : available.stream().sorted(java.util.Comparator.comparingInt(PlayerClass::getId)).toList();
+			if (classes.isEmpty())
 			{
-				html.append("<br><font color=\"FF6347\">").append(localize(lang, "No subclasses available. Make sure your class is at least 2nd job (Lv. 75+).", "Nenhuma subclasse disponivel. Certifique-se de estar pelo menos na 2a classe (Nv. 75+).")).append("</font><br>");
+				html.append(localize(lang, "No subclasses available.", "Nenhuma subclasse disponivel.")).append("<br>");
 			}
 			else
 			{
-				html.append("<font color=\"F2C75C\">").append(localize(lang, "Select a Subclass to Add:", "Selecione uma Subclasse para Adicionar:")).append("</font><br1>");
-				html.append("<table border=0 cellspacing=2 cellpadding=2 width=730>");
-				
-				int colCount = 0;
-				for (PlayerClass subClass : availableSubs)
+				final int pages = ((classes.size() - 1) / CLASSES_PER_PAGE) + 1;
+				final int page = Math.clamp(requestedPage, 1, pages);
+				final int start = (page - 1) * CLASSES_PER_PAGE;
+				final int end = Math.min(start + CLASSES_PER_PAGE, classes.size());
+				html.append("<font color=F2C75C>").append(localize(lang, "Select a Subclass to Add:", "Selecione uma Subclasse para Adicionar:")).append("</font><br>");
+				html.append("<table width=700 cellpadding=2 cellspacing=2 border=0>");
+				for (int i = start; i < end; i += 3)
 				{
-					if ((colCount % 4) == 0)
+					html.append("<tr>");
+					for (int column = 0; column < 3; column++)
 					{
-						if (colCount != 0)
+						html.append("<td width=220 align=center>");
+						if ((i + column) < end)
 						{
-							html.append("</tr>");
+							final PlayerClass sub = classes.get(i + column);
+							html.append(button(getClassName(sub.getId()), "add_subclass;" + sub.getId(), 210));
 						}
-						html.append("<tr>");
-					}
-					
-					final String className = getClassName(subClass.getId());
-					html.append("<td fixwidth=180 align=center>");
-					html.append("<button value=\"").append(className).append("\" action=\"bypass -h _bbssubclassmaster;add_subclass;").append(subClass.getId()).append("\" width=170 height=24 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\">");
-					html.append("</td>");
-					colCount++;
-				}
-				
-				if (colCount > 0)
-				{
-					while ((colCount % 4) != 0)
-					{
-						html.append("<td fixwidth=180></td>");
-						colCount++;
+						html.append("</td>");
 					}
 					html.append("</tr>");
 				}
-				html.append("</table>");
+				html.append("</table><br>");
+				if (page > 1) { html.append("<a action=\"bypass _bbssubclassmaster;page;").append(page - 1).append("\">").append(localize(lang, "Previous", "Anterior")).append("</a> "); }
+				html.append(localize(lang, "Page ", "Pagina ")).append(page).append('/').append(pages);
+				if (page < pages) { html.append(" <a action=\"bypass _bbssubclassmaster;page;").append(page + 1).append("\">").append(localize(lang, "Next", "Proxima")).append("</a>"); }
+				html.append("<br>");
 			}
 		}
-		html.append("</td></tr>");
-		
-		// Secao: Classes e Subclasses do Jogador
-		html.append("<tr><td height=24 align=center bgcolor=\"2A2418\">");
-		html.append("<font name=\"hs9\" color=\"F2C75C\">").append(localize(lang, "Your Classes & Subclasses", "Suas Classes e Subclasses")).append("</font>");
-		html.append("</td></tr>");
-		
-		html.append("<tr><td align=center valign=top>");
-		html.append("<table width=720 border=0 cellspacing=1 cellpadding=3>");
-		
-		// Linha da Classe Base
-		final boolean isBaseActive = player.getClassIndex() == 0;
-		html.append("<tr bgcolor=\"1F1F1F\">");
-		html.append("<td width=420 align=left><font color=\"CDB67F\">[Base] ").append(getClassName(player.getBaseClass())).append("</font> ");
-		html.append(isBaseActive ? "<font color=\"32C332\">(" + localize(lang, "Active", "Ativa") + ")</font>" : "").append("</td>");
-		html.append("<td width=150 align=center>");
-		if (!isBaseActive)
-		{
-			html.append("<button value=\"").append(localize(lang, "Activate", "Ativar")).append("\" action=\"bypass -h _bbssubclassmaster;change_to_base\" width=100 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\">");
-		}
-		html.append("</td>");
-		html.append("<td width=150 align=center><font color=\"4F4F4F\">-</font></td>");
-		html.append("</tr>");
-		
-		// Linhas das Subclasses
-		int rowIdx = 0;
+		html.append("<br><font color=F2C75C>").append(localize(lang, "Your Classes and Subclasses", "Suas Classes e Subclasses")).append("</font><br>");
+		html.append("<table width=700 cellpadding=3 cellspacing=1 border=0>");
+		html.append("<tr bgcolor=1F1F1F><td width=420>[Base] ").append(getClassName(player.getBaseClass())).append("</td><td width=130 align=center>");
+		html.append(player.getClassIndex() == 0 ? localize(lang, "Active", "Ativa") : button(localize(lang, "Activate", "Ativar"), "change_to_base", 110));
+		html.append("</td><td width=130></td></tr>");
 		for (SubClassHolder sub : player.getSubClasses().values().stream().sorted(java.util.Comparator.comparingInt(SubClassHolder::getClassIndex)).toList())
 		{
-			final String bg = ((rowIdx++ % 2) == 0) ? "161616" : "1F1F1F";
-			final boolean isActive = player.getClassIndex() == sub.getClassIndex();
-			final String subName = getClassName(sub.getId());
-			
-			html.append("<tr bgcolor=\"").append(bg).append("\">");
-			html.append("<td width=420 align=left><font color=\"FFFFFF\">[Sub #").append(sub.getClassIndex()).append("] ").append(subName).append(" (Lv. ").append(sub.getLevel()).append(")</font> ");
-			html.append(isActive ? "<font color=\"32C332\">(" + localize(lang, "Active", "Ativa") + ")</font>" : "").append("</td>");
-			
-			html.append("<td width=150 align=center>");
-			if (!isActive)
-			{
-				html.append("<button value=\"").append(localize(lang, "Activate", "Ativar")).append("\" action=\"bypass -h _bbssubclassmaster;switch_subclass;").append(sub.getClassIndex()).append("\" width=100 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\">");
-			}
-			html.append("</td>");
-			
-			html.append("<td width=150 align=center>");
-			html.append("<button value=\"").append(localize(lang, "Delete", "Remover")).append("\" action=\"bypass -h _bbssubclassmaster;confirm_remove;").append(sub.getClassIndex()).append("\" width=100 height=22 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\">");
-			html.append("</td>");
-			html.append("</tr>");
+			html.append("<tr bgcolor=161616><td width=420>[Sub #").append(sub.getClassIndex()).append("] ").append(getClassName(sub.getId())).append(" (Lv. ").append(sub.getLevel()).append(")</td><td width=130 align=center>");
+			html.append(player.getClassIndex() == sub.getClassIndex() ? localize(lang, "Active", "Ativa") : button(localize(lang, "Activate", "Ativar"), "switch_subclass;" + sub.getClassIndex(), 110));
+			html.append("</td><td width=130 align=center>").append(button(localize(lang, "Delete", "Remover"), "confirm_remove;" + sub.getClassIndex(), 110)).append("</td></tr>");
 		}
-		html.append("</table>");
-		html.append("</td></tr>");
-		
-		// Footer (Botao Voltar)
-		html.append("<tr><td height=36 align=center valign=bottom>");
-		html.append("<button value=\"").append(localize(lang, "Back", "Voltar")).append("\" action=\"bypass _bbstop;merchant/blacksmithMain.html\" width=120 height=25 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\">");
-		html.append("</td></tr>");
-		
-		html.append("</table>");
-		html.append("</td></tr></table>");
-		html.append("</center></body></html>");
-		return html.toString();
+		html.append("</table><br><button value=\"").append(localize(lang, "Back", "Voltar")).append("\" action=\"bypass _bbstop;merchant/blacksmithMain.html\" width=120 height=24 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\">");
+		return html.append("</center></body></html>").toString();
 	}
-	
+
+	private static String button(String label, String action, int width)
+	{
+		// Labels are escaped at their source; actions contain only fixed names and IDs.
+		return "<button value=\"" + label + "\" action=\"bypass _bbssubclassmaster;" + action + "\" width=" + width + " height=24 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\">";
+	}
+
+	private static String escapeHtml(String text)
+	{
+		return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace("\"", "&quot;").replace("'", "&#39;");
+	}
+
 	// =========================================================
 	// REGRAS DE DISPONIBILIDADE DE SUBCLASSE (VILLAGEMASTER)
 	// =========================================================
@@ -729,6 +690,6 @@ public class SubClassMasterBoard implements IParseBoardHandler
 	private static String getClassName(int classId)
 	{
 		final ClassInfoHolder info = ClassListData.getInstance().getClass(classId);
-		return (info != null) ? info.getClassName() : ("Class #" + classId);
+		return escapeHtml((info != null) ? info.getClassName() : ("Class #" + classId));
 	}
 }
