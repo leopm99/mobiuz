@@ -28,6 +28,7 @@
  */
 package com.l2journey.gameserver.model;
 
+import com.l2journey.gameserver.model.actor.appearance.PlayerVisualProfile;
 import com.l2journey.gameserver.model.itemcontainer.Inventory;
 import com.l2journey.gameserver.model.itemcontainer.PlayerInventory;
 
@@ -46,6 +47,7 @@ public class CharSelectInfoPackage
 	private int _race = 0;
 	private int _classId = 0;
 	private int _baseClassId = 0;
+	private PlayerVisualProfile _visualProfile;
 	private long _deleteTimer = 0;
 	private long _lastAccess = 0;
 	private int _face = 0;
@@ -154,6 +156,16 @@ public class CharSelectInfoPackage
 		return _baseClassId;
 	}
 	
+	public PlayerVisualProfile getVisualProfile()
+	{
+		return _visualProfile;
+	}
+
+	public void setVisualProfile(PlayerVisualProfile visualProfile)
+	{
+		_visualProfile = visualProfile;
+	}
+
 	public void setClassId(int classId)
 	{
 		_classId = classId;

@@ -88,6 +88,6 @@ public class ExReplyReceivedPost extends AbstractItemPacket
 		}
 		buffer.writeLong(_msg.getReqAdena());
 		buffer.writeInt(_msg.hasAttachments());
-		buffer.writeInt(_msg.getSendBySystem());
+		buffer.writeInt(_msg.getClientSenderType());
 	}
 }

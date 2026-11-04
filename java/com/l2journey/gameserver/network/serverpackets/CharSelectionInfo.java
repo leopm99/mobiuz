@@ -44,8 +44,12 @@ import com.l2journey.gameserver.data.xml.ExperienceData;
 import com.l2journey.gameserver.model.CharSelectInfoPackage;
 import com.l2journey.gameserver.model.World;
 import com.l2journey.gameserver.model.actor.Player;
+import com.l2journey.gameserver.model.actor.appearance.PlayerVisualProfile;
+import com.l2journey.gameserver.model.actor.enums.creature.Race;
+import com.l2journey.gameserver.model.actor.enums.player.PlayerClass;
 import com.l2journey.gameserver.model.clan.Clan;
 import com.l2journey.gameserver.model.itemcontainer.Inventory;
+import com.l2journey.gameserver.model.variables.PlayerVariables;
 import com.l2journey.gameserver.network.Disconnection;
 import com.l2journey.gameserver.network.GameClient;
 import com.l2journey.gameserver.network.ServerPackets;
@@ -115,8 +119,9 @@ public class CharSelectionInfo extends ServerPacket
 			buffer.writeInt(charInfoPackage.getClanId()); // Clan ID
 			buffer.writeInt(0); // Builder level
 			buffer.writeInt(charInfoPackage.getSex()); // Sex
-			buffer.writeInt(charInfoPackage.getRace()); // Race
-			buffer.writeInt(charInfoPackage.getBaseClassId());
+			final PlayerVisualProfile visual = charInfoPackage.getVisualProfile();
+			buffer.writeInt(visual == null ? charInfoPackage.getRace() : visual.getModelClass().getRace().ordinal());
+			buffer.writeInt(visual == null ? charInfoPackage.getBaseClassId() : visual.getModelClass().getId());
 			buffer.writeInt(1); // GameServerName
 			buffer.writeInt(charInfoPackage.getX());
 			buffer.writeInt(charInfoPackage.getY());
@@ -142,9 +147,9 @@ public class CharSelectionInfo extends ServerPacket
 			{
 				buffer.writeInt(charInfoPackage.getPaperdollItemId(slot));
 			}
-			buffer.writeInt(charInfoPackage.getHairStyle());
-			buffer.writeInt(charInfoPackage.getHairColor());
-			buffer.writeInt(charInfoPackage.getFace());
+			buffer.writeInt(visual == null ? charInfoPackage.getHairStyle() : 0);
+			buffer.writeInt(visual == null ? charInfoPackage.getHairColor() : 0);
+			buffer.writeInt(visual == null ? charInfoPackage.getFace() : 0);
 			buffer.writeDouble(charInfoPackage.getMaxHp()); // Maximum HP
 			buffer.writeDouble(charInfoPackage.getMaxMp()); // Maximum MP
 			
@@ -186,9 +191,12 @@ public class CharSelectionInfo extends ServerPacket
 		CharSelectInfoPackage charInfopackage;
 		final List<CharSelectInfoPackage> characterList = new LinkedList<>();
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement statement = con.prepareStatement("SELECT `charId`, `char_name`, `deletetime`, `clanid`, `accesslevel`, `level`, `maxHp`, `curHp`, `maxMp`, `curMp`, `karma`, `pkkills`, `pvpkills`, `face`, `hairStyle`, `hairColor`, `sex`, `exp`, `sp`, `vitality_points`, `race`, `base_class`, `classid`, `x`, `y`, `z`, `faction`, `language`, `lastAccess` FROM characters WHERE account_name=? ORDER BY createDate"))
+			PreparedStatement statement = con.prepareStatement("SELECT `charId`, `char_name`, `deletetime`, `clanid`, `accesslevel`, `level`, `maxHp`, `curHp`, `maxMp`, `curMp`, `karma`, `pkkills`, `pvpkills`, `face`, `hairStyle`, `hairColor`, `sex`, `exp`, `sp`, `vitality_points`, `race`, `base_class`, `classid`, `x`, `y`, `z`, `faction`, `language`, `lastAccess`, " +
+				"(SELECT cv.val FROM character_variables cv WHERE cv.charId=characters.charId AND cv.var=? LIMIT 1) AS visualProfile " +
+				"FROM characters WHERE account_name=? ORDER BY createDate"))
 		{
-			statement.setString(1, loginName);
+			statement.setString(1, PlayerVariables.COMMUNITY_VISUAL_PROFILE);
+			statement.setString(2, loginName);
 			try (ResultSet charList = statement.executeQuery())
 			{
 				while (charList.next()) // fills the package
@@ -318,6 +326,16 @@ public class CharSelectionInfo extends ServerPacket
 			loadCharacterSubclassInfo(charInfopackage, objectId, activeClassId);
 		}
 		charInfopackage.setClassId(activeClassId);
+		final PlayerVisualProfile visual = PlayerVisualProfile.fromKey(chardata.getString("visualProfile"));
+		if (visual != null && charInfopackage.getRace() != Race.KAMAEL.ordinal())
+		{
+			final PlayerClass baseClass = PlayerClass.getPlayerClass(baseClassId);
+			final PlayerClass activeClass = PlayerClass.getPlayerClass(activeClassId);
+			if (baseClass != null && activeClass != null && baseClass.getRace() != Race.KAMAEL && activeClass.getRace() != Race.KAMAEL)
+			{
+				charInfopackage.setVisualProfile(visual);
+			}
+		}
 		// Get the augmentation id for equipped weapon
 		int weaponObjId = charInfopackage.getPaperdollObjectId(Inventory.PAPERDOLL_RHAND);
 		if (weaponObjId < 1)

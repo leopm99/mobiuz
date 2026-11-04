@@ -1846,6 +1846,14 @@ public class Skill
 	}
 	
 	/**
+	 * @return if the skill has any effect
+	 */
+	public boolean hasEffects()
+	{
+		return !_effectLists.isEmpty();
+	}
+	
+	/**
 	 * @return icon of the current skill.
 	 */
 	public String getIcon()

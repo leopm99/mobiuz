@@ -67,7 +67,7 @@ public class ExShowReceivedPostList extends ServerPacket
 				buffer.writeInt(1);
 				buffer.writeInt(msg.hasAttachments());
 				buffer.writeInt(msg.isReturned());
-				buffer.writeInt(msg.getSendBySystem());
+				buffer.writeInt(msg.getClientSenderType());
 				buffer.writeInt(0);
 			}
 		}

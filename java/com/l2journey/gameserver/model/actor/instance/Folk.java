@@ -20,6 +20,8 @@
  */
 package com.l2journey.gameserver.model.actor.instance;
 
+import com.l2journey.RebirthEngineConfigs;
+
 import java.util.List;
 import java.util.Map;
 
@@ -38,6 +40,7 @@ import com.l2journey.gameserver.network.SystemMessageId;
 import com.l2journey.gameserver.network.serverpackets.AcquireSkillList;
 import com.l2journey.gameserver.network.serverpackets.NpcHtmlMessage;
 import com.l2journey.gameserver.network.serverpackets.SystemMessage;
+import com.l2journey.gameserver.rebirth.RebirthManager;
 
 public class Folk extends Npc
 {
@@ -78,6 +81,11 @@ public class Folk extends Npc
 	public static void showSkillList(Player player, Npc npc, PlayerClass classId)
 	{
 		final int npcId = npc.getTemplate().getId();
+		if (npcId == RebirthEngineConfigs.REBIRTH_SKILL_SELLER_ID)
+		{
+			showRebirthSkillList(player, npc);
+			return;
+		}
 		if (npcId == 32611) // Tolonis (Officer)
 		{
 			final List<SkillLearn> skills = SkillTreeData.getInstance().getAvailableCollectSkills(player);
@@ -171,5 +179,33 @@ public class Folk extends Npc
 		{
 			player.sendPacket(asl);
 		}
+	}
+
+	public static void showRebirthSkillList(Player player, Npc npc)
+	{
+		if (!RebirthEngineConfigs.REBIRTH_ENABLED || npc.getId() != RebirthEngineConfigs.REBIRTH_SKILL_SELLER_ID || !npc.canInteract(player) || player.isSubClassActive())
+		{
+			player.sendMessage("Rebirth skills are available from the configured trainer on your main class.");
+			return;
+		}
+		if (!RebirthManager.getInstance().canLearnRebirthSkills(player))
+		{
+			player.sendMessage("Finish your pending rebirth operation before learning skills.");
+			return;
+		}
+		player.setLastFolkNPC(npc);
+		player.setLearningClass(player.getPlayerClass());
+		final AcquireSkillList list = new AcquireSkillList(AcquireSkillType.CLASS);
+		int count = 0;
+		for (SkillLearn learn : SkillTreeData.getInstance().getAvailableRebirthSkills(player))
+		{
+			if (SkillData.getInstance().getSkill(learn.getSkillId(), learn.getSkillLevel()) != null)
+			{
+				list.addSkill(learn.getSkillId(), learn.getSkillLevel(), learn.getSkillLevel(), 0, 1);
+				count++;
+			}
+		}
+		if (count == 0) { player.sendPacket(SystemMessageId.THERE_ARE_NO_OTHER_SKILLS_TO_LEARN); }
+		else { player.sendPacket(list); }
 	}
 }

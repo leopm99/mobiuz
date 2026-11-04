@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:complexType name="voteRewardItems">
+        <xs:sequence>
+            <xs:element name="item" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:attribute name="itemId" type="xs:positiveInteger" use="required" />
+                    <xs:attribute name="itemCount" type="xs:positiveInteger" use="required" />
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="list">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="votesite" minOccurs="0" maxOccurs="16">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="items" type="voteRewardItems" />
+                            <xs:element name="globalItems" type="voteRewardItems" minOccurs="0" />
+                        </xs:sequence>
+                        <xs:attribute name="name" type="xs:token" use="required" />
+                        <xs:attribute name="ordinal" use="required">
+                            <xs:simpleType><xs:restriction base="xs:nonNegativeInteger"><xs:maxInclusive value="15" /></xs:restriction></xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="individualEnabled" type="xs:boolean" />
+                        <xs:attribute name="globalEnabled" type="xs:boolean" />
+                        <xs:attribute name="globalStep" type="xs:nonNegativeInteger" />
+                        <xs:attribute name="checkInterval" type="xs:nonNegativeInteger" />
+                        <xs:attribute name="timeZone" type="xs:string" />
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:unique name="uniqueVoteSiteId"><xs:selector xpath="votesite" /><xs:field xpath="@ordinal" /></xs:unique>
+    </xs:element>
+</xs:schema>

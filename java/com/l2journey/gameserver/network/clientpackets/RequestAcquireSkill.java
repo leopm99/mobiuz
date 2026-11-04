@@ -31,6 +31,8 @@ package com.l2journey.gameserver.network.clientpackets;
 import java.util.List;
 
 import com.l2journey.Config;
+import com.l2journey.RebirthEngineConfigs;
+import com.l2journey.gameserver.rebirth.RebirthManager;
 import com.l2journey.commons.util.StringUtil;
 import com.l2journey.gameserver.data.xml.SkillData;
 import com.l2journey.gameserver.data.xml.SkillTreeData;
@@ -100,6 +102,15 @@ public class RequestAcquireSkill extends ClientPacket
 	protected void runImpl()
 	{
 		final Player player = getPlayer();
+		if (player != null)
+		{
+			synchronized (player) { acquireSkill(); }
+		}
+	}
+
+	private void acquireSkill()
+	{
+		final Player player = getPlayer();
 		if (player == null)
 		{
 			return;
@@ -154,6 +165,12 @@ public class RequestAcquireSkill extends ClientPacket
 			return;
 		}
 		
+		if (trainer.getId() == RebirthEngineConfigs.REBIRTH_SKILL_SELLER_ID && !RebirthManager.getInstance().canLearnRebirthSkills(player))
+		{
+			player.sendMessage("Finish your pending rebirth operation before learning skills.");
+			return;
+		}
+
 		switch (_skillType)
 		{
 			case CLASS:
@@ -497,6 +514,7 @@ public class RequestAcquireSkill extends ClientPacket
 					if (!player.destroyItemByItemId(ItemProcessType.FEE, itemIdCount.getId(), itemIdCount.getCount(), trainer, true))
 					{
 						PunishmentManager.handleIllegalPlayerAction(player, "Somehow " + player + ", level " + player.getLevel() + " lose required item Id: " + itemIdCount.getId() + " to learn skill while learning skill Id: " + _id + " level " + _level + "!", IllegalActionPunishmentType.NONE);
+						return false;
 					}
 				}
 			}

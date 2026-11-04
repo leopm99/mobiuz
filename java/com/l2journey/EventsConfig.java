@@ -38,7 +38,12 @@ import com.l2journey.commons.util.ConfigReader;
 import com.l2journey.gameserver.model.Location;
 
 // Assigned from ini files in load(), so these fields stay public static and non-final.
-@SuppressWarnings({ "java:S3008", "java:S1444", "java:S1104" })
+@SuppressWarnings(
+{
+	"java:S3008",
+	"java:S1444",
+	"java:S1104"
+})
 public class EventsConfig
 {
 	private static final Logger LOGGER = Logger.getLogger(EventsConfig.class.getName());
@@ -52,6 +57,7 @@ public class EventsConfig
 	private static final String TOWN_WAR_EVENT_CONFIG_FILE = "./config/events/townwar.ini";
 	private static final String UNDERGROUND_COLISEUM_CONFIG_FILE = "./config/events/undergroundcoliseum.ini";
 	private static final String WEDDING_CONFIG_FILE = "./config/events/wedding.ini";
+	private static final String QUIZEVENT_CONFIG_FILE = "./config/events/quizevent.ini";
 	
 	// --------------------------------------------------
 	// Elpies Event
@@ -200,10 +206,22 @@ public class EventsConfig
 	public static boolean WEDDING_SAMESEX;
 	public static boolean WEDDING_FORMALWEAR;
 	public static int WEDDING_DIVORCE_COSTS;
+	
+	// --------------------------------------------------
+	// Quiz Event
+	// --------------------------------------------------
+	public static boolean QUIZ_EVENT_ENABLED;
+	public static int QUIZ_EVENT_QUESTION_NUMBER;
+	public static int QUIZ_EVENT_REWARD_ID;
+	public static long QUIZ_EVENT_REWARD_COUNT;
+	public static int QUIZ_EVENT_STARTING;
+	public static int QUIZ_EVENT_ANSWER_TIME;
+	public static int QUIZ_EVENT_INTERVAL;
+	
 	private EventsConfig()
 	{
 	}
-
+	
 	/**
 	 * Esta classe inicia a maioria das configuracoes custom adicionadas no servidor. Obs: Algumas Configs ainda podem estar no arquivo Config.java.
 	 */
@@ -218,6 +236,7 @@ public class EventsConfig
 		loadTownWarEvent();
 		loadUndergroundColiseum();
 		loadWeddingConfig();
+		loadQuizEventgConfig();
 	}
 	
 	/**
@@ -446,6 +465,21 @@ public class EventsConfig
 		WEDDING_SAMESEX = weddingConfig.getBoolean("WeddingAllowSameSex", false);
 		WEDDING_FORMALWEAR = weddingConfig.getBoolean("WeddingFormalWear", true);
 		WEDDING_DIVORCE_COSTS = weddingConfig.getInt("WeddingDivorceCosts", 20);
+	}
+	
+	/**
+	 * Load quizEventConfig file (if exists).
+	 */
+	private static void loadQuizEventgConfig()
+	{
+		final ConfigReader quizEventConfig = new ConfigReader(QUIZEVENT_CONFIG_FILE);
+		QUIZ_EVENT_ENABLED = quizEventConfig.getBoolean("EnableQuizEvent", true);
+		QUIZ_EVENT_QUESTION_NUMBER = quizEventConfig.getInt("QuestionNumber", 5);
+		QUIZ_EVENT_REWARD_ID = quizEventConfig.getInt("QuizRewardId", 57);
+		QUIZ_EVENT_REWARD_COUNT = quizEventConfig.getLong("QuizRewardCount", 1000);
+		QUIZ_EVENT_STARTING = quizEventConfig.getInt("QuizStartingTime", 6);
+		QUIZ_EVENT_ANSWER_TIME = quizEventConfig.getInt("QuizAnsweringTime", 20);
+		QUIZ_EVENT_INTERVAL = quizEventConfig.getInt("QuizIntervalTime", 10);
 	}
 	
 	/**

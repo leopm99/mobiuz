@@ -1,0 +1,211 @@
+<html noscrollbar>
+<title>Community Board</title>
+<body><br>
+<table width=755>
+	<tr>
+		<center><td>
+			<table border=0 cellpadding=0 cellspacing=0 width=769 height=492 background="l2ui_ct1.Windows_DF_TooltipBG">
+				<tr>
+					<td valign="top" align="center">
+						<table width=755 height=415>
+							<tr>
+								<td width=755><br>
+									<table border=0 cellspacing=0 cellpadding=0 width=755>
+										<tr>
+											<td WIDTH=755 align=center valign=top>
+												<font name="hs12">Database</font><br>
+											</td>
+										</tr>
+									</table>
+									<center>
+									<table width=480 height=50>
+										<tr>
+											<td valign="top" align="center">
+												<table border=0 width=500 height=46 cellspacing=4 cellpadding=3 background="l2ui_ct1.ComboBox_DF_Dropmenu_Bg">
+													<tr>
+														<td width=40 align=right valign=top>
+															<img src="icon.skill0319" width=32 height=32>
+														</td>
+														<td width=460 align=left valign=top>
+															<font color="LEVEL">Drop Calculator</font><br1> Shows exact informations about Drop and Spoil List of all Monsters
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</table>
+									<table width=480 height=94>
+										<tr>
+											<td valign="top" align="center">
+												<table border=0 width=250 height=90 cellspacing=1 cellpadding=0 background="l2ui_ct1.ComboBox_DF_Dropmenu_Bg">
+													<tr>
+														<td valign=top align=center>
+															<table width=250>
+																<tr>
+																	<td valign="top" align="center"><font color="FFCC00" name="CreditTextNormal">Look for Item</font></td>
+																</tr>
+															</table>
+															<table width=250 height=25>
+																<tr>
+																	<td valign="top" align="center"><edit var="item" type="text" width=160 length=20></td>
+																</tr>
+															</table>
+															<table width=250>
+																<tr>
+																	<td valign="top" align="center"><button value="Search" action="bypass -h _bbssearchdropItemsByName_ $item" width=80 height=28 back="L2UI_CT1.Button_DF_Down" fore="L2UI_CT1.Button_DF"></td>
+																</tr>
+															</table>
+														</td>
+													</tr>
+												</table>
+											</td>
+											<td valign="top" align="center">
+												<table border=0 width=250 height=90 cellspacing=1 cellpadding=0 background="l2ui_ct1.ComboBox_DF_Dropmenu_Bg">
+													<tr>
+														<td valign=top align=center>
+															<table width=250>
+																<tr>
+																	<td valign="top" align="center"><font color="FF3333" name="CreditTextNormal">Look for Monster</font></td>
+																</tr>
+															</table>
+															<table width=250 height=25>
+																<tr>
+																	<td valign="top" align="center"><edit var="monster" type="text" width=160 length=20></td>
+																</tr>
+															</table>
+															<table width=250>
+																<tr>
+																	<td valign="top" align="center"><button value="Search" action="bypass _bbssearchdropMonstersByName_ $monster" width=80 height=28 back="L2UI_CT1.Button_DF_Down" fore="L2UI_CT1.Button_DF"></td>
+																</tr>
+															</table>
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</table>
+									<table width=480 height=50>
+										<tr>
+											<td valign="top" align="center">
+												<table border=0 width=500 height=46 cellspacing=4 cellpadding=3 background="l2ui_ct1.ComboBox_DF_Dropmenu_Bg">
+													<tr>
+														<td width=40 align=right valign=top>
+															<img src="icon.skill0219" width=32 height=32>
+														</td>
+														<td width=460 align=left valign=top>
+															<font color="FF6600">How is work?</font><br1> Simply enter the name of an item or a monster in the box and click button 'search'.
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</table>
+									<table width=480 height=94>
+										<tr>
+											<td valign="top" align="center">
+												<table border=0 width=250 height=90 cellspacing=1 cellpadding=0 background="l2ui_ct1.ComboBox_DF_Dropmenu_Bg">
+													<tr>
+														<td valign=top align=center>
+															<table width=250>
+																<tr>
+																	<td valign="top" align="center"><font color="669933" name="CreditTextNormal">Popular requests for items</font></td>
+																</tr>
+															</table>
+															<table width=160 height=25>
+																<tr>
+																	<td width=60 align=center valign=top>
+																		<table border=0 cellspacing=0 cellpadding=0 width=32 height=32 background="Icon.etc_adena_i00">
+																			<tr>
+																				<td width=32 height=32 align=center valign=top>
+																					<button action="bypass -h _bbssearchdropItemsByName_ Adena" width=34 height=34 back="L2UI_CT1.ItemWindow_DF_Frame_Down" fore="L2UI_CT1.ItemWindow_DF_Frame"/>
+																				</td>
+																			</tr>
+																		</table><br>
+																		Adena
+																	</td>
+																	<td width=60 align=center valign=top>
+																		<table border=0 cellspacing=0 cellpadding=0 width=32 height=32 background="Icon.armor_t94_u_i03">
+																			<tr>
+																				<td width=32 height=32 align=center valign=top>
+																					<button action="bypass -h _bbssearchdropItemsByName_ Vorpal" width=34 height=34 back="L2UI_CT1.ItemWindow_DF_Frame_Down" fore="L2UI_CT1.ItemWindow_DF_Frame"/>
+																				</td>
+																			</tr>
+																		</table><br>
+																		Vorpal
+																	</td>
+																	<td width=60 align=center valign=top>
+																		<table border=0 cellspacing=0 cellpadding=0 width=32 height=32 background="Icon.etc_water_crystal_i00">
+																			<tr>
+																				<td width=32 height=32 align=center valign=top>
+																					<button action="bypass -h _bbssearchdropItemsByName_ Crystal" width=34 height=34 back="L2UI_CT1.ItemWindow_DF_Frame_Down" fore="L2UI_CT1.ItemWindow_DF_Frame"/>
+																				</td>
+																			</tr>
+																		</table><br>
+																		Crystal
+																	</td>
+																</tr>
+															</table>
+														</td>
+													</tr>
+												</table>
+											</td>
+											<td valign="top" align="center">
+												<table border=0 width=250 height=90 cellspacing=1 cellpadding=0 background="l2ui_ct1.ComboBox_DF_Dropmenu_Bg">
+													<tr>
+														<td valign=top align=center>
+															<table width=250>
+																<tr>
+																	<td valign="top" align="center"><font color="669933" name="CreditTextNormal">Popular requests for Monster</font></td>
+																</tr>
+															</table>
+															<table width=160 height=25>
+																<tr>
+																	<td width=60 align=center valign=top>
+																		<table border=0 cellspacing=0 cellpadding=0 width=32 height=32 background="Icon.skill4295">
+																			<tr>
+																				<td width=32 height=32 align=center valign=top>
+																					<button action="bypass _bbssearchdropMonstersByName_ Knoriks" width=34 height=34 back="L2UI_CT1.ItemWindow_DF_Frame_Down" fore="L2UI_CT1.ItemWindow_DF_Frame"/>
+																				</td>
+																			</tr>
+																		</table><br>
+																		Knoriks
+																	</td>
+																	<td width=60 align=center valign=top>
+																		<table border=0 cellspacing=0 cellpadding=0 width=32 height=32 background="Icon.skill4298">
+																			<tr>
+																				<td width=32 height=32 align=center valign=top>
+																					<button action="bypass _bbssearchdropMonstersByName_ Karik" width=34 height=34 back="L2UI_CT1.ItemWindow_DF_Frame_Down" fore="L2UI_CT1.ItemWindow_DF_Frame"/>
+																				</td>
+																			</tr>
+																		</table><br>
+																		Karik
+																	</td>
+																	<td width=60 align=center valign=top>
+																		<table border=0 cellspacing=0 cellpadding=0 width=32 height=32 background="Icon.skill4291">
+																			<tr>
+																				<td width=32 height=32 align=center valign=top>
+																					<button action="bypass _bbssearchdropMonstersByName_ Chest" width=34 height=34 back="L2UI_CT1.ItemWindow_DF_Frame_Down" fore="L2UI_CT1.ItemWindow_DF_Frame"/>
+																				</td>
+																			</tr>
+																		</table><br>
+																		Chest
+																	</td>
+																</tr>
+															</table>
+														</td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									</table>
+									</center>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td></center>
+	</tr>
+</table>
+</body></html>

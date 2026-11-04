@@ -81,7 +81,7 @@ class ColorChangeBoardTest
 	@BeforeEach
 	void setUp() throws Exception
 	{
-		for (String name : List.of("ENABLE_COMMUNITY_BOARD", "COMMUNITYBOARD_ENABLED", "COLOR_CHANGE_SERVICE_ENABLED", "COLOR_CHANGE_COLORS", "COLOR_CHANGE_COLOR_NAMES", "COLOR_CHANGE_ITEM_ID", "COLOR_CHANGE_ITEM_AMOUNT", "COMMUNITYBOARD_KARMA_DISABLED", "COMMUNITYBOARD_PEACE_ONLY", "COMMUNITYBOARD_COMBAT_DISABLED", "COMMUNITYBOARD_BLACKSMITH", "SUBCLASS_MASTER_BOARD"))
+		for (String name : List.of("ENABLE_COMMUNITY_BOARD", "COMMUNITYBOARD_ENABLED", "COLOR_CHANGE_SERVICE_ENABLED", "COLOR_CHANGE_COLORS", "COLOR_CHANGE_COLOR_NAMES", "COLOR_CHANGE_ITEM_ID", "COLOR_CHANGE_ITEM_AMOUNT", "COMMUNITYBOARD_KARMA_DISABLED", "COMMUNITYBOARD_PEACE_ONLY", "COMMUNITYBOARD_COMBAT_DISABLED", "COMMUNITYBOARD_BLACKSMITH"))
 		{
 			final Field field = Config.class.getField(name);
 			_config.put(field, field.get(null));
@@ -98,7 +98,9 @@ class ColorChangeBoardTest
 		Config.COMMUNITYBOARD_COMBAT_DISABLED = true;
 		_player = mock(Player.class, RETURNS_DEEP_STUBS);
 		when(_player.getLang()).thenReturn("br");
+		when(_player.getAccessLevel().allowTransaction()).thenReturn(true);
 		when(_player.getObjectId()).thenReturn(42);
+		when(_player.getActiveTradeList()).thenReturn(null);
 		when(_player.getAppearance().getNameColor()).thenReturn(0xFFFFFF);
 		when(_player.getAppearance().getTitleColor()).thenReturn(0xFFFFFF);
 		when(_player.getClient().getFloodProtectors().canPerformTransaction()).thenReturn(true);
@@ -190,14 +192,16 @@ class ColorChangeBoardTest
 	}
 
 	@Test
-	void nameColorUsesExistingVariableTableAndUpdatesMemoryAfterCommit() throws Exception
+	void nameColorUpdatesCharacterColumnAndLoginOverrideAfterCommit() throws Exception
 	{
 		assertTrue(command(";nick;ff0000"));
-		assertEquals(2, _statements.size());
+		assertEquals(3, _statements.size());
 		final PreparedStatement insert = _statements.get("INSERT INTO character_variables (charId,var,val) VALUES (?,?,?)");
 		verify(insert).setInt(1, 42);
 		verify(insert).setString(2, PlayerVariables.COMMUNITY_NAME_COLOR);
 		verify(insert).setString(3, "255");
+		final PreparedStatement column = _statements.get("UPDATE characters SET name_color=? WHERE charId=?");
+		verify(column).setInt(1,255); verify(column).setInt(2,42);
 		final var order = inOrder(_connection, _player.getVariables(), _player.getAppearance());
 		order.verify(_connection).commit();
 		order.verify(_player.getVariables()).set(PlayerVariables.COMMUNITY_NAME_COLOR, 255);
@@ -282,7 +286,7 @@ class ColorChangeBoardTest
 		command("");
 		assertTrue(_pages.getLast().contains("Vermelho"));
 		assertTrue(_pages.getLast().contains("&lt;custom&gt;"));
-		assertTrue(_pages.getLast().contains("merchant/blacksmithMain.html"));
+		assertTrue(_pages.getLast().contains("merchant/servicesMain.html"));
 		when(_player.getLang()).thenReturn("en");
 		command("");
 		assertTrue(_pages.getLast().contains("Cost per change: 100 Adena"));
@@ -299,18 +303,50 @@ class ColorChangeBoardTest
 	}
 
 	@Test
-	void serviceLinkAppearsWhenItIsTheOnlyEnabledService() throws Exception
+	void tenColorsUseNativeSubclassLayoutAndBalancedTables()
 	{
-		Config.COMMUNITYBOARD_BLACKSMITH = false;
-		Config.SUBCLASS_MASTER_BOARD = false;
-		final var rows = HomeBoard.class.getDeclaredMethod("buildServicesRows", String.class);
-		rows.setAccessible(true);
-		assertTrue(((String) rows.invoke(null, "br")).contains("bypass _bbcolorchange"));
-		final var home = HomeBoard.class.getDeclaredMethod("buildHotFeaturesBlock", int.class, String.class);
-		home.setAccessible(true);
-		assertTrue(((String) home.invoke(null, 720, "br")).contains("merchant/blacksmithMain.html"));
-		Config.COLOR_CHANGE_SERVICE_ENABLED = false;
-		assertFalse(((String) rows.invoke(null, "br")).contains("bypass _bbcolorchange"));
-		assertFalse(((String) home.invoke(null, 720, "br")).contains("merchant/blacksmithMain.html"));
+		Config.COLOR_CHANGE_COLORS = "FFFFFF;FF0000;00FF00;0000FF;FFD700;FF69B4;00FFFF;FFA500;9932CC;C0C0C0".split(";");
+		Config.COLOR_CHANGE_COLOR_NAMES = "White;Red;Green;Blue;Gold;Pink;Cyan;Orange;Purple;Silver".split(";");
+		assertTrue(command(""));
+		final String html = _pages.getLast();
+		assertTrue(html.contains("L2UI_CH3.refinewnd_back_Pattern"));
+		assertTrue(html.contains("L2UI_CT1.Windows_DF_Drawer_Bg"));
+		for (String color : new String[] {"FFA500", "9932CC", "C0C0C0"})
+		{
+			assertTrue(html.contains("nick;" + color));
+			assertTrue(html.contains("title;" + color));
+		}
+		assertTrue(html.contains("Laranja")); assertTrue(html.contains("Roxo")); assertTrue(html.contains("Prata"));
+		assertFalse(html.contains("<scrollbar")); assertFalse(html.contains("style=")); assertFalse(html.contains("color=#"));
+		assertTrue(html.length() < 16250);
+		final var tags = java.util.regex.Pattern.compile("<(/?)(table|tr|td)(?:\\s[^>]*|)>").matcher(html);
+		final var stack = new java.util.ArrayDeque<String>();
+		while (tags.find())
+		{
+			if (tags.group(1).isEmpty()) { stack.push(tags.group(2)); }
+			else { assertEquals(tags.group(2), stack.pop()); }
+		}
+		assertTrue(stack.isEmpty());
 	}
+
+	@Test
+	void uncertainCommitDoesNotRefundOrClaimSuccess() throws Exception
+	{
+		org.mockito.Mockito.doThrow(new SQLException("Commit acknowledgement lost")).when(_connection).commit();
+		command(";title;FF0000");
+		verify(_player, never()).addItem(any(), anyInt(), anyLong(), any(), anyBoolean());
+		verify(_player.getAppearance(), never()).setTitleColor(anyInt());
+		verify(_player, never()).broadcastUserInfo();
+	}
+
+	@Test
+	void nameAndTitleChangesUpdateMatchingLoginOverride() throws Exception
+	{
+		command(";title;0000FF");
+		final PreparedStatement insert = _statements.get("INSERT INTO character_variables (charId,var,val) VALUES (?,?,?)");
+		verify(insert).setString(2, PlayerVariables.COMMUNITY_TITLE_COLOR);
+		verify(insert).setString(3, Integer.toString(0xFF0000));
+		verify(_player.getVariables()).set(PlayerVariables.COMMUNITY_TITLE_COLOR, 0xFF0000);
+	}
+
 }

@@ -33,9 +33,11 @@ import com.l2journey.commons.network.WritableBuffer;
 import com.l2journey.gameserver.data.xml.ExperienceData;
 import com.l2journey.gameserver.managers.CursedWeaponsManager;
 import com.l2journey.gameserver.managers.TerritoryWarManager;
+import com.l2journey.gameserver.data.xml.PlayerTemplateData;
 import com.l2journey.gameserver.model.Elementals;
 import com.l2journey.gameserver.model.actor.Player;
 import com.l2journey.gameserver.model.actor.appearance.PlayerAppearance;
+import com.l2journey.gameserver.model.actor.appearance.PlayerVisualProfile;
 import com.l2journey.gameserver.model.skill.AbnormalVisualEffect;
 import com.l2journey.gameserver.model.zone.ZoneId;
 import com.l2journey.gameserver.network.GameClient;
@@ -101,10 +103,11 @@ public class UserInfo extends ServerPacket
 		buffer.writeInt(_player.getVehicle() != null ? _player.getVehicle().getObjectId() : 0);
 		buffer.writeInt(_player.getObjectId());
 		final PlayerAppearance appearance = _player.getAppearance();
+		final PlayerVisualProfile visual = PlayerVisualProfile.getVisible(_player);
 		buffer.writeString(appearance.getVisibleName());
-		buffer.writeInt(_player.getRace().ordinal());
+		buffer.writeInt(visual == null ? _player.getRace().ordinal() : visual.getModelClass().getRace().ordinal());
 		buffer.writeInt(appearance.isFemale());
-		buffer.writeInt(_player.getBaseClass());
+		buffer.writeInt(visual == null ? _player.getBaseClass() : visual.getModelClass().getId());
 		buffer.writeInt(_player.getLevel());
 		buffer.writeLong(_player.getExp());
 		buffer.writeDouble((float) (_player.getExp() - ExperienceData.getInstance().getExpForLevel(_player.getLevel())) / (ExperienceData.getInstance().getExpForLevel(_player.getLevel() + 1) - ExperienceData.getInstance().getExpForLevel(_player.getLevel()))); // High Five exp %
@@ -162,11 +165,21 @@ public class UserInfo extends ServerPacket
 		buffer.writeInt(_flyWalkSpd);
 		buffer.writeDouble(_moveMultiplier);
 		buffer.writeDouble(_player.getAttackSpeedMultiplier());
-		buffer.writeDouble(_player.getCollisionRadius());
-		buffer.writeDouble(_player.getCollisionHeight());
-		buffer.writeInt(appearance.getHairStyle());
-		buffer.writeInt(appearance.getHairColor());
-		buffer.writeInt(appearance.getFace());
+		// The client needs the dimensions of the model it is drawing.
+		final var visualTemplate = visual == null || _player.isMounted() ? null : PlayerTemplateData.getInstance().getTemplate(visual.getModelClass());
+		if (visualTemplate == null)
+		{
+			buffer.writeDouble(_player.getCollisionRadius());
+			buffer.writeDouble(_player.getCollisionHeight());
+		}
+		else
+		{
+			buffer.writeDouble(appearance.isFemale() ? visualTemplate.getFCollisionRadiusFemale() : visualTemplate.getFCollisionRadius());
+			buffer.writeDouble(appearance.isFemale() ? visualTemplate.getFCollisionHeightFemale() : visualTemplate.getFCollisionHeight());
+		}
+		buffer.writeInt(visual == null ? appearance.getHairStyle() : 0);
+		buffer.writeInt(visual == null ? appearance.getHairColor() : 0);
+		buffer.writeInt(visual == null ? appearance.getFace() : 0);
 		buffer.writeInt(_player.isGM()); // builder level
 		
 		String title = _player.getTitle();

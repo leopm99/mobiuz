@@ -31,8 +31,10 @@ package com.l2journey.gameserver.network.serverpackets;
 import com.l2journey.Config;
 import com.l2journey.commons.network.WritableBuffer;
 import com.l2journey.gameserver.managers.CursedWeaponsManager;
+import com.l2journey.gameserver.data.xml.PlayerTemplateData;
 import com.l2journey.gameserver.model.actor.Player;
 import com.l2journey.gameserver.model.actor.appearance.PlayerAppearance;
+import com.l2journey.gameserver.model.actor.appearance.PlayerVisualProfile;
 import com.l2journey.gameserver.model.actor.instance.Decoy;
 import com.l2journey.gameserver.model.clan.Clan;
 import com.l2journey.gameserver.model.itemcontainer.Inventory;
@@ -138,10 +140,11 @@ public class CharInfo extends ServerPacket
 		buffer.writeInt(_vehicleId);
 		buffer.writeInt(_objId);
 		final PlayerAppearance appearance = _player.getAppearance();
+		final PlayerVisualProfile visual = PlayerVisualProfile.getVisible(_player);
 		buffer.writeString(appearance.getVisibleName());
-		buffer.writeInt(_player.getRace().ordinal());
+		buffer.writeInt(visual == null ? _player.getRace().ordinal() : visual.getModelClass().getRace().ordinal());
 		buffer.writeInt(appearance.isFemale());
-		buffer.writeInt(_player.getBaseClass());
+		buffer.writeInt(visual == null ? _player.getBaseClass() : visual.getModelClass().getId());
 		
 		for (int slot : getPaperdollOrder())
 		{
@@ -170,11 +173,21 @@ public class CharInfo extends ServerPacket
 		buffer.writeInt(_flyWalkSpd);
 		buffer.writeDouble(_moveMultiplier);
 		buffer.writeDouble(_player.getAttackSpeedMultiplier());
-		buffer.writeDouble(_player.getCollisionRadius());
-		buffer.writeDouble(_player.getCollisionHeight());
-		buffer.writeInt(appearance.getHairStyle());
-		buffer.writeInt(appearance.getHairColor());
-		buffer.writeInt(appearance.getFace());
+		// The client needs the dimensions of the model it is drawing.
+		final var visualTemplate = visual == null || _player.isMounted() ? null : PlayerTemplateData.getInstance().getTemplate(visual.getModelClass());
+		if (visualTemplate == null)
+		{
+			buffer.writeDouble(_player.getCollisionRadius());
+			buffer.writeDouble(_player.getCollisionHeight());
+		}
+		else
+		{
+			buffer.writeDouble(appearance.isFemale() ? visualTemplate.getFCollisionRadiusFemale() : visualTemplate.getFCollisionRadius());
+			buffer.writeDouble(appearance.isFemale() ? visualTemplate.getFCollisionHeightFemale() : visualTemplate.getFCollisionHeight());
+		}
+		buffer.writeInt(visual == null ? appearance.getHairStyle() : 0);
+		buffer.writeInt(visual == null ? appearance.getHairColor() : 0);
+		buffer.writeInt(visual == null ? appearance.getFace() : 0);
 		buffer.writeString(_gmSeeInvis ? "Invisible" : appearance.getVisibleTitle());
 		if (!_player.isCursedWeaponEquipped())
 		{

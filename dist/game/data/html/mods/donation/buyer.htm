@@ -1,0 +1,25 @@
+<html>
+<title>Chat</title>
+<body>
+<br>
+<center>
+<font color=LEVEL>Dados do comprador (opcionais)</font>
+<br><br>
+<table width=260 cellpadding=4>
+<tr><td>Se desejar, informe os dados reais da pessoa que vai pagar. Eles serao enviados ao Mercado Pago para analise do pagamento.</td></tr>
+<tr><td>Nome (opcional)</td></tr>
+<tr><td><edit var="FirstName" width=220 height=15 length=64></td></tr>
+<tr><td>Sobrenome (opcional)</td></tr>
+<tr><td><edit var="LastName" width=220 height=15 length=64></td></tr>
+<tr><td>CPF (opcional, somente numeros)</td></tr>
+<tr><td><edit var="BuyerCpf" width=150 height=15 length=14></td></tr>
+</table>
+<br>
+<button value="Continuar" action="bypass -h donation buyer set| $FirstName | $LastName | $BuyerCpf |" width=120 height=25 back="L2UI_ct1.button_df" fore="L2UI_ct1.button_df">
+<br>
+<button value="Pular" action="bypass -h donation buyer skip" width=120 height=25 back="L2UI_ct1.button_df" fore="L2UI_ct1.button_df">
+<br>
+<a action="bypass donation index">Voltar</a>
+</center>
+</body>
+</html>

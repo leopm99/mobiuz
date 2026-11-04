@@ -33,5 +33,6 @@ public enum MessageSenderType
 	PLAYER,
 	NEWS,
 	NONE,
-	ALEGRIA
+	ALEGRIA,
+	AUCTION_MANAGER
 }

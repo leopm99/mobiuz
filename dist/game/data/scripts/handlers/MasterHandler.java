@@ -152,6 +152,7 @@ import handlers.admincommandhandlers.AdminTransform;
 import handlers.admincommandhandlers.AdminVitality;
 import handlers.admincommandhandlers.AdminZone;
 import handlers.admincommandhandlers.AdminZones;
+import handlers.bypasshandlers.Donation;
 import handlers.bypasshandlers.Augment;
 import handlers.bypasshandlers.Buy;
 import handlers.bypasshandlers.BuyShadowItem;
@@ -201,10 +202,12 @@ import handlers.chathandlers.ChatWhisper;
 import handlers.communityboard.BufferBoard;
 import handlers.communityboard.BufferBoardPremium;
 import handlers.communityboard.ClanBoard;
+import handlers.communityboard.AppearanceBoard;
 import handlers.communityboard.ColorChangeBoard;
 import handlers.communityboard.DropSearchBoard;
 import handlers.communityboard.FavoriteBoard;
 import handlers.communityboard.FriendsBoard;
+import handlers.communityboard.AuctionHouseBoard;
 import handlers.communityboard.HomeBoard;
 import handlers.communityboard.HomepageBoard;
 import handlers.communityboard.MailBoard;
@@ -303,6 +306,8 @@ import handlers.voicedcommandhandlers.CombineTalismans;
 import handlers.voicedcommandhandlers.DailyRewardVCmd;
 import handlers.voicedcommandhandlers.DressMeVCmd;
 import handlers.voicedcommandhandlers.Epic;
+import handlers.voicedcommandhandlers.GoToClanLeader;
+import handlers.voicedcommandhandlers.InstanceReuseClearCmd;
 import handlers.voicedcommandhandlers.HitmanVCmd;
 import handlers.voicedcommandhandlers.Lang;
 import handlers.voicedcommandhandlers.Offline;
@@ -310,6 +315,14 @@ import handlers.voicedcommandhandlers.OfflinePlay;
 import handlers.voicedcommandhandlers.Online;
 import handlers.voicedcommandhandlers.Panel;
 import handlers.voicedcommandhandlers.Premium;
+import handlers.voicedcommandhandlers.Quiz;
+import handlers.voicedcommandhandlers.ResVCmd;
+import handlers.voicedcommandhandlers.SevenRB;
+import handlers.voicedcommandhandlers.SiegeManagerCmd;
+import handlers.voicedcommandhandlers.TeleportsVCmd;
+import handlers.voicedcommandhandlers.ToMob;
+import handlers.voicedcommandhandlers.Donate;
+import handlers.voicedcommandhandlers.VoteReward;
 import handlers.voicedcommandhandlers.Wedding;
 
 /**
@@ -450,6 +463,7 @@ public class MasterHandler
 		},
 		{
 			// Bypass Handlers
+			Donation.class,
 			Augment.class,
 			Buy.class,
 			BuyShadowItem.class,
@@ -505,11 +519,13 @@ public class MasterHandler
 			BufferBoard.class,
 			Config.isCommunityPremiumBufferEnabled() ? BufferBoardPremium.class : null,
 			ClanBoard.class,
+			AppearanceBoard.class,
 			ColorChangeBoard.class,
 			DropSearchBoard.class,
 			FavoriteBoard.class,
 			FriendsBoard.class,
 			HomeBoard.class,
+			AuctionHouseBoard.class,
 			HomepageBoard.class,
 			MailBoard.class,
 			MemoBoard.class,
@@ -595,6 +611,16 @@ public class MasterHandler
 			Config.ENABLE_ONLINE_COMMAND ? Online.class : null,
 			Config.PREMIUM_SYSTEM_ENABLED ? Premium.class : null,
 			Config.AUTO_POTIONS_ENABLED ? AutoPotion.class : null,
+			Config.TOMOB_COMMAND_ENABLED ? ToMob.class : null,
+			EventsConfig.QUIZ_EVENT_ENABLED ? Quiz.class : null,
+			Config.ALLOW_GOTOCL_COMMAND || Config.ALLOW_GOTOPL_COMMAND ? GoToClanLeader.class : null,
+			Config.ENABLE_SIEGE_VCMD ? SiegeManagerCmd.class : null,
+			Config.TELEPORTS_VOICED_COMMAND ? TeleportsVCmd.class : null,
+			Config.COMMAND_RES ? ResVCmd.class : null,
+			Config.INSTANCE_REUSE_CLEAR_ENABLED ? InstanceReuseClearCmd.class : null,
+			(Config.ENABLE_VOTE_SYSTEM && Config.ENABLE_INDIVIDUAL_VOTE && Config.ENABLE_VOTING_COMMAND) ? VoteReward.class : null,
+			Donate.class,
+			Config.ENABLE_SEVEN_RB_COMMAND ? SevenRB.class : null,
 		},
 		{
 			// Target Handlers
@@ -686,6 +712,11 @@ public class MasterHandler
 			LOGGER.log(Level.INFO, () -> loadInstance.getClass().getSimpleName() + ": Loaded " + loadInstance.size() + " handlers.");
 		}
 		
+		if (EventsConfig.QUIZ_EVENT_ENABLED)
+		{
+			new events.QuizEvent.QuizEvent();
+		}
+
 		LOGGER.log(Level.INFO, "Handlers Loaded...");
 	}
 }

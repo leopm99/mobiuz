@@ -478,6 +478,11 @@ public class EnterWorld extends ClientPacket
 		
 		// Login systems above can replace appearance colors; purchased choices win on login.
 		player.restoreCommunityColors();
+		if (com.l2journey.gameserver.donation.DonationConfig.DONATION_ENABLED)
+		{
+			com.l2journey.gameserver.donation.DonationManager.getInstance().offlinePlayer(player);
+		}
+		com.l2journey.gameserver.rebirth.RebirthManager.getInstance().recoverOnLogin(player);
 
 		// Hitman Event - notify player about bounties
 		if (EventsConfig.HITMAN_ENABLED)

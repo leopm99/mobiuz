@@ -25,8 +25,7 @@ import java.util.Calendar;
 import java.util.List;
 
 /**
- * Pure Olympiad timing helpers. Input calendars are cloned; callers are never mutated.
- * Seconds and milliseconds on competition windows are left as on the cloned input (matches {@code Olympiad#init}).
+ * Pure Olympiad timing helpers. Input calendars are cloned; callers are never mutated. Seconds and milliseconds on competition windows are left as on the cloned input (matches {@code Olympiad#init}).
  */
 final class OlympiadSchedule
 {
@@ -56,8 +55,10 @@ final class OlympiadSchedule
 	}
 	
 	/**
-	 * @return {@code 10} when inside the open window, millis until start when start is in the future,
-	 *         or {@link #NEED_NEXT_WINDOW} when the window has already ended
+	 * @param compStart
+	 * @param compEnd
+	 * @param now
+	 * @return {@code 10} when inside the open window, millis until start when start is in the future, or {@link #NEED_NEXT_WINDOW} when the window has already ended
 	 */
 	static long millisToCompBegin(long compStart, long compEnd, long now)
 	{
@@ -101,6 +102,13 @@ final class OlympiadSchedule
 	
 	/**
 	 * Competition window as computed by {@code Olympiad#init} (optionally advance to a competition day, then set hour/minute).
+	 * @param now
+	 * @param startHour
+	 * @param startMin
+	 * @param cPeriodMs
+	 * @param useCustomDays
+	 * @param competitionDays
+	 * @return
 	 */
 	static CompetitionWindow computeCompetitionWindow(Calendar now, int startHour, int startMin, long cPeriodMs, boolean useCustomDays, List<Integer> competitionDays)
 	{
@@ -121,6 +129,13 @@ final class OlympiadSchedule
 	
 	/**
 	 * Next competition window as computed by {@code Olympiad#setNewCompBegin} (including the {@code +24h} advance).
+	 * @param now
+	 * @param startHour
+	 * @param startMin
+	 * @param cPeriodMs
+	 * @param useCustomDays
+	 * @param competitionDays
+	 * @return
 	 */
 	static CompetitionWindow computeNextCompetitionWindow(Calendar now, int startHour, int startMin, long cPeriodMs, boolean useCustomDays, List<Integer> competitionDays)
 	{
@@ -157,9 +172,13 @@ final class OlympiadSchedule
 	}
 	
 	/**
-	 * Season end and next weekly-change instant as computed by {@code Olympiad#setNewOlympiadEnd}.
-	 * For custom {@code DAY} with multiplier {@code < 7}, {@link SeasonSchedule#weeklyChangeDefined()} is false
-	 * (production leaves the previous weekly-change value unchanged).
+	 * Season end and next weekly-change instant as computed by {@code Olympiad#setNewOlympiadEnd}. For custom {@code DAY} with multiplier {@code < 7}, {@link SeasonSchedule#weeklyChangeDefined()} is false (production leaves the previous weekly-change value unchanged).
+	 * @param now
+	 * @param useCustom
+	 * @param period
+	 * @param multiplier
+	 * @param weeklyPeriodMs
+	 * @return
 	 */
 	static SeasonSchedule computeSeasonSchedule(Calendar now, boolean useCustom, String period, int multiplier, long weeklyPeriodMs)
 	{

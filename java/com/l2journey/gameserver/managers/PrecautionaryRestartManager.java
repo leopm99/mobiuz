@@ -82,7 +82,7 @@ public class PrecautionaryRestartManager
 				Shutdown.getInstance().startShutdown(null, 600, true);
 			}
 			
-			if (Config.PRECAUTIONARY_RESTART_MEMORY && (getProcessRamLoad() > (long) Config.PRECAUTIONARY_RESTART_PERCENTAGE))
+			if (Config.PRECAUTIONARY_RESTART_MEMORY && (getProcessRamLoad() > Config.PRECAUTIONARY_RESTART_PERCENTAGE))
 			{
 				if (serverBizzy())
 				{

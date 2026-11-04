@@ -32,6 +32,7 @@ import java.util.List;
 import java.util.logging.Level;
 
 import com.l2journey.Config;
+import com.l2journey.RebirthEngineConfigs;
 import com.l2journey.gameserver.data.xml.SkillTreeData;
 import com.l2journey.gameserver.handler.IBypassHandler;
 import com.l2journey.gameserver.model.actor.Creature;
@@ -56,6 +57,11 @@ public class SkillList implements IBypassHandler
 			return false;
 		}
 		
+		if (target.asNpc().getId() == RebirthEngineConfigs.REBIRTH_SKILL_SELLER_ID)
+		{
+			Folk.showRebirthSkillList(player, target.asNpc());
+			return true;
+		}
 		if (Config.ALT_GAME_SKILL_LEARN)
 		{
 			try

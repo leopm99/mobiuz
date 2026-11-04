@@ -95,4 +95,16 @@
 			<height normal="8.5" />
 		</collision>
 	</npc>
+	<npc id="70003" displayId="25350" name="Rebirth Skill Manager" usingServerSideName="true" title="Rebirth Trainer" usingServerSideTitle="true" type="Trainer">
+	<collision>
+		<radius normal="9" />
+		<height normal="34" />
+	</collision>
+</npc>
+<npc id="70004" displayId="25350" name="Rebirth Manager" usingServerSideName="true" title="Reborn" usingServerSideTitle="true" type="RebirthInstance">
+	<collision>
+		<radius normal="9" />
+		<height normal="34" />
+	</collision>
+</npc>
 </list>

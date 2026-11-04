@@ -168,6 +168,48 @@ public class InstanceManager implements IXmlReader
 	}
 	
 	/**
+	 * Remove a paid cooldown only if the exact, still-active reuse confirmed by the player exists. Existing administrative deletion remains unchanged.
+	 * @param playerObjId
+	 * @param id
+	 * @param expectedTime
+	 * @return
+	 */
+	public boolean deleteInstanceTimeIfMatches(int playerObjId, int id, long expectedTime)
+	{
+		final Map<Integer, Long> times = getAllInstanceTimes(playerObjId);
+		if (times == null)
+		{
+			return false;
+		}
+		synchronized (times)
+		{
+			if ((expectedTime <= System.currentTimeMillis()) || !Long.valueOf(expectedTime).equals(times.get(id)))
+			{
+				return false;
+			}
+			try (Connection con = DatabaseFactory.getConnection();
+				PreparedStatement ps = con.prepareStatement(DELETE_INSTANCE_TIME + " AND time=? AND time>?"))
+			{
+				ps.setInt(1, playerObjId);
+				ps.setInt(2, id);
+				ps.setLong(3, expectedTime);
+				ps.setLong(4, System.currentTimeMillis());
+				if (ps.executeUpdate() != 1)
+				{
+					return false;
+				}
+				times.remove(id, expectedTime);
+				return true;
+			}
+			catch (java.sql.SQLException e)
+			{
+				LOGGER.log(java.util.logging.Level.WARNING, "Could not clear paid instance reuse for character " + playerObjId, e);
+				return false;
+			}
+		}
+	}
+	
+	/**
 	 * @param playerObjId
 	 */
 	public void restoreInstanceTimes(int playerObjId)

@@ -28,7 +28,10 @@
  */
 package com.l2journey.gameserver.data.xml;
 
+import com.l2journey.RebirthEngineConfigs;
+
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -102,6 +105,7 @@ public class SkillTreeData implements IXmlReader
 	private final Map<Integer, SkillLearn> _heroSkillTree = new ConcurrentHashMap<>();
 	private final Map<Integer, SkillLearn> _gameMasterSkillTree = new ConcurrentHashMap<>();
 	private final Map<Integer, SkillLearn> _gameMasterAuraSkillTree = new ConcurrentHashMap<>();
+	private final Map<Integer, SkillLearn> _rebirthSkillTree = new ConcurrentHashMap<>();
 	
 	// Checker, sorted arrays of hash codes
 	private Map<Integer, int[]> _skillsByClassIdHashCodes; // Occupation skills
@@ -138,6 +142,7 @@ public class SkillTreeData implements IXmlReader
 		_heroSkillTree.clear();
 		_gameMasterSkillTree.clear();
 		_gameMasterAuraSkillTree.clear();
+		_rebirthSkillTree.clear();
 		
 		// Load files.
 		parseDatapackDirectory("data/skillTrees/", true);
@@ -344,6 +349,11 @@ public class SkillTreeData implements IXmlReader
 									case "gameMasterAuraSkillTree":
 									{
 										_gameMasterAuraSkillTree.put(skillHashCode, skillLearn);
+										break;
+									}
+									case "rebirthSkillTree":
+									{
+										_rebirthSkillTree.put(skillHashCode, skillLearn);
 										break;
 									}
 									default:
@@ -954,7 +964,18 @@ public class SkillTreeData implements IXmlReader
 		{
 			case CLASS:
 			{
-				sl = getClassSkill(id, lvl, player.getLearningClass());
+				final SkillLearn rebirth = getRebirthSkill(id, lvl);
+				final var trainer = player.getLastFolkNPC();
+				if (rebirth != null)
+				{
+					if (RebirthEngineConfigs.REBIRTH_ENABLED && !player.isSubClassActive() && trainer != null &&
+						trainer.getId() == RebirthEngineConfigs.REBIRTH_SKILL_SELLER_ID && trainer.canInteract(player) &&
+						getAvailableRebirthSkills(player).contains(rebirth)) { sl = rebirth; }
+				}
+				else if (trainer == null || trainer.getId() != RebirthEngineConfigs.REBIRTH_SKILL_SELLER_ID)
+				{
+					sl = getClassSkill(id, lvl, player.getLearningClass());
+				}
 				break;
 			}
 			case TRANSFORM:
@@ -1286,6 +1307,10 @@ public class SkillTreeData implements IXmlReader
 		{
 			skillHashList.add(SkillData.getSkillHashCode(skillLearn.getSkillId(), skillLearn.getSkillLevel()));
 		}
+		for (SkillLearn skillLearn : _rebirthSkillTree.values())
+		{
+			skillHashList.add(SkillData.getSkillHashCode(skillLearn.getSkillId(), skillLearn.getSkillLevel()));
+		}
 		
 		_allSkillsHashCodes = new int[skillHashList.size()];
 		int hashIndex = 0;
@@ -1372,6 +1397,7 @@ public class SkillTreeData implements IXmlReader
 		LOGGER.info(() -> className + ": Loaded " + _transformSkillTree.size() + " transform skills.");
 		LOGGER.info(() -> className + ": Loaded " + _nobleSkillTree.size() + " noble skills.");
 		LOGGER.info(() -> className + ": Loaded " + _heroSkillTree.size() + " hero skills.");
+		LOGGER.info(() -> className + ": Loaded " + _rebirthSkillTree.size() + " rebirth skills.");
 		LOGGER.info(() -> className + ": Loaded " + _gameMasterSkillTree.size() + " game master skills.");
 		LOGGER.info(() -> className + ": Loaded " + _gameMasterAuraSkillTree.size() + " game master aura skills.");
 		final int commonSkills = _commonSkillTree.size();
@@ -1379,6 +1405,39 @@ public class SkillTreeData implements IXmlReader
 		{
 			LOGGER.info(() -> className + ": Loaded " + commonSkills + " common skills.");
 		}
+	}
+	
+	public List<SkillLearn> getAvailableRebirthSkills(Player player)
+	{
+		final List<SkillLearn> result = new ArrayList<>();
+		for (SkillLearn skill : _rebirthSkillTree.values())
+		{
+			if (skill.getGetLevel() > player.getLevel()) { continue; }
+			final Skill oldSkill = player.getSkills().get(skill.getSkillId());
+			if (oldSkill != null)
+			{
+				if (oldSkill.getLevel() == (skill.getSkillLevel() - 1))
+				{
+					result.add(skill);
+				}
+			}
+			else if (skill.getSkillLevel() == 1)
+			{
+				result.add(skill);
+			}
+		}
+		return result;
+	}
+	
+	/**
+	 * Gets the rebirth skill.
+	 * @param id the rebirth skill Id
+	 * @param lvl the rebirth skill level
+	 * @return the rebirth skill from the Rebirth Skill Tree for a given {@code id} and {@code lvl}
+	 */
+	public SkillLearn getRebirthSkill(int id, int lvl)
+	{
+		return _rebirthSkillTree.get(SkillData.getSkillHashCode(id, lvl));
 	}
 	
 	/**

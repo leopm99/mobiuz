@@ -49,7 +49,7 @@ import com.l2journey.gameserver.model.actor.holders.player.SubClassHolder;
 import com.l2journey.gameserver.model.events.EventDispatcher;
 import com.l2journey.gameserver.model.events.EventType;
 import com.l2journey.gameserver.model.events.holders.actor.player.OnPlayerProfessionCancel;
-import com.l2journey.gameserver.model.quest.QuestState;
+import com.l2journey.gameserver.model.item.Henna;
 import com.l2journey.gameserver.model.item.ItemTemplate;
 import com.l2journey.gameserver.model.item.enums.ItemProcessType;
 import com.l2journey.gameserver.model.olympiad.OlympiadManager;
@@ -57,7 +57,7 @@ import com.l2journey.gameserver.model.zone.ZoneId;
 import com.l2journey.gameserver.network.SystemMessageId;
 
 /**
- * Community Board Subclass Master. Baseado nas regras oficiais de VillageMaster e Player do L2Journey.
+ * Community Board Subclass Master (Standardized with HomeBoard UI Design).
  * @author Debug, KingHanker
  */
 public class SubClassMasterBoard implements IParseBoardHandler
@@ -66,14 +66,20 @@ public class SubClassMasterBoard implements IParseBoardHandler
 	
 	private static final String[] COMMANDS =
 	{
-		"_bbssubclassmaster"
+		"_bbssubclassmaster",
+		"_bbssubclassmaster;menu_add",
+		"_bbssubclassmaster;menu_change",
+		"_bbssubclassmaster;menu_remove",
+		"_bbssubclassmaster;add_subclass",
+		"_bbssubclassmaster;switch_subclass",
+		"_bbssubclassmaster;change_to_base",
+		"_bbssubclassmaster;remove_subclass"
 	};
 	
 	private static final int MIN_LEVEL_FOR_SUBCLASS = 75;
 	private static final int CLASSES_PER_PAGE = 6;
 	
-	// Class-scoped data cleared when permanently removing a subclass.
-	private static final String DELETE_CHAR_HENNA = "DELETE FROM character_hennas WHERE charId=? AND class_index=?";
+	private static final String DELETE_CHAR_HENNA = "DELETE FROM character_hennas WHERE charId=? AND slot=? AND class_index=?";
 	private static final String DELETE_CHAR_SHORTCUTS = "DELETE FROM character_shortcuts WHERE charId=? AND class_index=?";
 	private static final String DELETE_SKILL_SAVE = "DELETE FROM character_skills_save WHERE charId=? AND class_index=?";
 	private static final String DELETE_CHAR_SKILLS = "DELETE FROM character_skills WHERE charId=? AND class_index=?";
@@ -126,28 +132,27 @@ public class SubClassMasterBoard implements IParseBoardHandler
 	@Override
 	public boolean parseCommunityBoardCommand(String command, Player player)
 	{
-		if (!Config.ENABLE_COMMUNITY_BOARD || !Config.COMMUNITYBOARD_ENABLED)
+		if (!Config.COMMUNITYBOARD_ENABLED)
 		{
 			player.sendPacket(SystemMessageId.THE_COMMUNITY_SERVER_IS_CURRENTLY_OFFLINE);
 			return false;
 		}
+		
 		final String lang = player.getLang();
-		if (!Config.SUBCLASS_MASTER_BOARD)
+		
+		if (!Config.ENABLE_SUBCLASS_BOARD)
 		{
 			player.sendMessage(localize(lang, "Subclass Master is currently disabled.", "O Subclass Master esta desativado no momento."));
 			return false;
 		}
-		final String[] params = command.split(";", -1);
-		if (!params[0].equals("_bbssubclassmaster"))
-		{
-			return false;
-		}
-		if (params.length == 1)
+		
+		if (command.equals("_bbssubclassmaster"))
 		{
 			CommunityBoardHandler.getInstance().addBypass(player, "Subclass Master", command);
-			CommunityBoardHandler.separateAndSend(getMainPage(player), player);
+			CommunityBoardHandler.separateAndSend(getMainMenuPage(player), player);
 			return true;
 		}
+<<<<<<< HEAD
 		if ((params.length == 3) && params[1].equals("page"))
 		{
 			try
@@ -163,52 +168,109 @@ public class SubClassMasterBoard implements IParseBoardHandler
 		final String action = params[1];
 		final boolean base = action.equals("change_to_base");
 		if ((base && (params.length != 2)) || (!base && ((params.length != 3) || !(action.equals("add_subclass") || action.equals("switch_subclass") || action.equals("remove_subclass") || action.equals("confirm_remove")))))
+=======
+		
+		if (command.equals("_bbssubclassmaster;menu_add"))
+>>>>>>> 6662aa1e (Added Vote System, Donate System and a lot of features on Community Board)
 		{
+			CommunityBoardHandler.separateAndSend(getAddSubclassPage(player), player);
+			return true;
+		}
+		
+		if (command.equals("_bbssubclassmaster;menu_change"))
+		{
+			CommunityBoardHandler.separateAndSend(getChangeSubclassPage(player), player);
+			return true;
+		}
+		
+		if (command.equals("_bbssubclassmaster;menu_remove"))
+		{
+			CommunityBoardHandler.separateAndSend(getRemoveSubclassPage(player), player);
+			return true;
+		}
+		
+		if (!canPerformSubclassAction(player, lang))
+		{
+			CommunityBoardHandler.separateAndSend(getMainMenuPage(player), player);
 			return false;
 		}
-		final int value;
-		try
+		
+		if (command.startsWith("_bbssubclassmaster;add_subclass"))
 		{
-			value = base ? 0 : Integer.parseInt(params[2]);
-		}
-		catch (NumberFormatException _)
-		{
-			player.sendMessage(localize(lang, "Invalid subclass parameter.", "Parametro de subclasse invalido."));
-			return false;
-		}
-		// Serialize board actions, including validation, payment and persistence.
-		synchronized (player)
-		{
-			if (!canPerformSubclassAction(player, lang))
+			final String[] params = command.split(";");
+			if (params.length == 3)
 			{
-				return false;
-			}
-			switch (action)
-			{
-				case "add_subclass" -> handleAddSubclass(player, value, lang);
-				case "switch_subclass", "change_to_base" -> handleSwitchSubclass(player, value, lang);
-				case "confirm_remove" ->
+				try
 				{
-					if ((value < 1) || !player.getSubClasses().containsKey(value))
-					{
-						return false;
-					}
-					final String name = getClassName(player.getSubClasses().get(value).getId());
-					CommunityBoardHandler.separateAndSend("<html><body><center><br><font color=F2C75C>Subclass Master</font><br>"
-						+ localize(lang, "Permanently delete ", "Remover permanentemente ") + name + "?<br>"
-						+ localize(lang, "Its levels, skills and dyes will be lost.", "Seus niveis, skills e tatuagens serao perdidos.")
-						+ "<br><a action=\"bypass _bbssubclassmaster;remove_subclass;" + value + "\">" + localize(lang, "Confirm removal", "Confirmar remocao")
-						+ "</a><br><a action=\"bypass _bbssubclassmaster\">" + localize(lang, "Cancel", "Cancelar") + "</a></center></body></html>", player);
-					return true;
+					final int classId = Integer.parseInt(params[2]);
+					handleAddSubclass(player, classId, lang);
 				}
-				case "remove_subclass" -> handleRemoveSubclass(player, value, lang);
-				default -> { return false; }
+				catch (NumberFormatException _)
+				{
+					player.sendMessage(localize(lang, "Invalid class parameter.", "Parametro de classe invalido."));
+				}
 			}
-			CommunityBoardHandler.separateAndSend(getMainPage(player), player);
+			CommunityBoardHandler.separateAndSend(getAddSubclassPage(player), player);
+			return true;
 		}
+		else if (command.startsWith("_bbssubclassmaster;switch_subclass"))
+		{
+			final String[] params = command.split(";");
+			if (params.length == 3)
+			{
+				try
+				{
+					final int classIndex = Integer.parseInt(params[2]);
+					handleSwitchSubclass(player, classIndex, lang);
+				}
+				catch (NumberFormatException _)
+				{
+					player.sendMessage(localize(lang, "Invalid subclass index.", "Indice de subclasse invalido."));
+				}
+			}
+			CommunityBoardHandler.separateAndSend(getChangeSubclassPage(player), player);
+			return true;
+		}
+		else if (command.startsWith("_bbssubclassmaster;remove_subclass"))
+		{
+			final String[] params = command.split(";");
+			if (params.length == 3)
+			{
+				try
+				{
+					final int classIndex = Integer.parseInt(params[2]);
+					handleRemoveSubclass(player, classIndex, lang);
+				}
+				catch (NumberFormatException _)
+				{
+					player.sendMessage(localize(lang, "Invalid subclass index.", "Indice de subclasse invalido."));
+				}
+			}
+			CommunityBoardHandler.separateAndSend(getRemoveSubclassPage(player), player);
+			return true;
+		}
+		else if (command.equals("_bbssubclassmaster;change_to_base"))
+		{
+			if (player.getClient().getFloodProtectors().canChangeSubclass())
+			{
+				if (player.getClassIndex() == 0)
+				{
+					player.sendMessage(localize(lang, "You are already on your main class.", "Voce ja esta na sua classe principal."));
+				}
+				else
+				{
+					player.setActiveClass(0);
+					player.sendPacket(SystemMessageId.YOU_HAVE_SUCCESSFULLY_SWITCHED_TO_YOUR_SUBCLASS);
+				}
+			}
+			CommunityBoardHandler.separateAndSend(getChangeSubclassPage(player), player);
+			return true;
+		}
+		
+		CommunityBoardHandler.separateAndSend(getMainMenuPage(player), player);
 		return true;
 	}
-
+	
 	// =========================================================
 	// HANDLERS DE ACOES
 	// =========================================================
@@ -232,7 +294,6 @@ public class SubClassMasterBoard implements IParseBoardHandler
 			return;
 		}
 		
-		// Verifica se todas as subclasses existentes ja estao no nivel 75+ (regra oficial do VillageMaster)
 		for (SubClassHolder subClass : player.getSubClasses().values())
 		{
 			if (subClass.getLevel() < MIN_LEVEL_FOR_SUBCLASS)
@@ -250,7 +311,6 @@ public class SubClassMasterBoard implements IParseBoardHandler
 			return;
 		}
 		
-		// Encontra o primeiro classIndex livre (1 ate Config.MAX_SUBCLASS)
 		final int nextIndex = getNextAvailableSubclassIndex(player);
 		if (nextIndex == -1)
 		{
@@ -258,19 +318,7 @@ public class SubClassMasterBoard implements IParseBoardHandler
 			return;
 		}
 		
-		if (!Config.ALT_GAME_SUBCLASS_WITHOUT_QUESTS && !player.isNoble())
-		{
-			final QuestState fate = player.getQuestState("Q00234_FatesWhisper");
-			final QuestState mimir = player.getQuestState("Q00235_MimirsElixir");
-			if ((fate == null) || !fate.isCompleted() || (mimir == null) || !mimir.isCompleted())
-			{
-				player.sendMessage(localize(lang, "Complete Fate's Whisper and Mimir's Elixir before adding a subclass.", "Complete Fate's Whisper e Mimir's Elixir antes de adicionar uma subclasse."));
-				return;
-			}
-		}
-		boolean paid = false;
-		// Cobranca de item (se configurado)
-		if (Config.SUBCLASS_BUY_ITEM_COUNT > 0)
+		if ((Config.SUBCLASS_BUY_ITEM_ID > 0) && (Config.SUBCLASS_BUY_ITEM_COUNT > 0))
 		{
 			final ItemTemplate item = ItemData.getInstance().getTemplate(Config.SUBCLASS_BUY_ITEM_ID);
 			final String itemName = (item != null) ? item.getName() : ("ID: " + Config.SUBCLASS_BUY_ITEM_ID);
@@ -281,25 +329,14 @@ public class SubClassMasterBoard implements IParseBoardHandler
 				return;
 			}
 			
-			if (item == null)
-			{
-				player.sendMessage(localize(lang, "Invalid subclass fee configuration.", "Configuracao de custo de subclasse invalida."));
-				return;
-			}
 			if (!player.destroyItemByItemId(ItemProcessType.FEE, Config.SUBCLASS_BUY_ITEM_ID, Config.SUBCLASS_BUY_ITEM_COUNT, player, true))
 			{
 				return;
 			}
-			paid = true;
 		}
 		
-		// Usa o metodo nativo Player.addSubClass que ja persiste no banco e concede as skills ate o nv 40
 		if (!player.addSubClass(classId, nextIndex))
 		{
-			if (paid)
-			{
-				player.addItem(ItemProcessType.REFUND, Config.SUBCLASS_BUY_ITEM_ID, Config.SUBCLASS_BUY_ITEM_COUNT, player, true);
-			}
 			player.sendMessage(localize(lang, "Could not add subclass. Please try again.", "Nao foi possivel adicionar a subclasse. Tente novamente."));
 			return;
 		}
@@ -315,7 +352,7 @@ public class SubClassMasterBoard implements IParseBoardHandler
 			return;
 		}
 		
-		if ((classIndex < 0) || ((classIndex > 0) && !player.getSubClasses().containsKey(classIndex)))
+		if ((classIndex < 1) || !player.getSubClasses().containsKey(classIndex))
 		{
 			player.sendMessage(localize(lang, "Subclass not found.", "Subclasse nao encontrada."));
 			return;
@@ -328,10 +365,7 @@ public class SubClassMasterBoard implements IParseBoardHandler
 		}
 		
 		player.setActiveClass(classIndex);
-		if (player.getClassIndex() == classIndex)
-		{
-			player.sendPacket(SystemMessageId.YOU_HAVE_SUCCESSFULLY_SWITCHED_TO_YOUR_SUBCLASS);
-		}
+		player.sendPacket(SystemMessageId.YOU_HAVE_SUCCESSFULLY_SWITCHED_TO_YOUR_SUBCLASS);
 	}
 	
 	private void handleRemoveSubclass(Player player, int classIndex, String lang)
@@ -354,58 +388,68 @@ public class SubClassMasterBoard implements IParseBoardHandler
 			return;
 		}
 		
-		// Se a subclasse deletada estiver ativa no momento, volta para a classe base primeiro
-		// (setActiveClass(0) salva dados, limpa cubics/summons e restaura a classe base)
 		if (player.getClassIndex() == classIndex)
 		{
 			player.setActiveClass(0);
-			if (player.getClassIndex() != 0)
-			{
-				return;
-			}
-			player.sendMessage(localize(lang, "You have been switched back to your main class because your active subclass was removed.", "Voce voltou para a classe principal porque a subclasse ativa foi removida."));
+			player.sendMessage(localize(lang, "You are back on the main class because the subclass you deleted was active.", "Voce voltou para a classe principal porque a subclasse removida estava ativa."));
 		}
 		
-		// Delete all class-scoped data atomically. Keep memory unchanged on SQL failure.
-		try (Connection con = DatabaseFactory.getConnection())
-		{
-			con.setAutoCommit(false);
-			try
-			{
-				for (String sql : new String[] { DELETE_CHAR_HENNA, DELETE_CHAR_SHORTCUTS, DELETE_SKILL_SAVE, DELETE_CHAR_SKILLS, DELETE_CHAR_SUBCLASS })
-				{
-					try (PreparedStatement statement = con.prepareStatement(sql))
-					{
-						statement.setInt(1, player.getObjectId());
-						statement.setInt(2, classIndex);
-						statement.executeUpdate();
-					}
-				}
-				con.commit();
-			}
-			catch (Exception e)
-			{
-				con.rollback();
-				throw e;
-			}
-		}
-		catch (Exception e)
-		{
-			LOGGER.log(Level.WARNING, e, () -> "SubClassMasterBoard: Could not delete subclass for " + player.getName() + " at index " + classIndex);
-			player.sendMessage(localize(lang, "Could not remove subclass. Please try again.", "Nao foi possivel remover a subclasse. Tente novamente."));
-			return;
-		}
-		player.getSubClasses().remove(classIndex);
 		if (EventDispatcher.getInstance().hasListener(EventType.ON_PLAYER_PROFESSION_CANCEL, player))
 		{
 			EventDispatcher.getInstance().notifyEventAsync(new OnPlayerProfessionCancel(player, subClass.getId()), player);
 		}
-
+		
+		player.getSubClasses().remove(classIndex);
+		
+		try (Connection con = DatabaseFactory.getConnection();
+			PreparedStatement deleteHennas = con.prepareStatement(DELETE_CHAR_HENNA);
+			PreparedStatement deleteShortcuts = con.prepareStatement(DELETE_CHAR_SHORTCUTS);
+			PreparedStatement deleteSkillReuse = con.prepareStatement(DELETE_SKILL_SAVE);
+			PreparedStatement deleteSkills = con.prepareStatement(DELETE_CHAR_SKILLS);
+			PreparedStatement deleteSubclass = con.prepareStatement(DELETE_CHAR_SUBCLASS))
+		{
+			deleteHennas.setInt(1, player.getObjectId());
+			deleteHennas.setInt(3, classIndex);
+			for (int slot = 1; slot < 4; slot++)
+			{
+				final Henna henna = player.getHenna(slot);
+				if ((henna != null) && !henna.isAllowedClass(player.getPlayerClass()))
+				{
+					deleteHennas.setInt(2, slot);
+					deleteHennas.execute();
+				}
+			}
+			
+			deleteShortcuts.setInt(1, player.getObjectId());
+			deleteShortcuts.setInt(2, classIndex);
+			deleteShortcuts.execute();
+			
+			deleteSkillReuse.setInt(1, player.getObjectId());
+			deleteSkillReuse.setInt(2, classIndex);
+			deleteSkillReuse.execute();
+			
+			deleteSkills.setInt(1, player.getObjectId());
+			deleteSkills.setInt(2, classIndex);
+			deleteSkills.execute();
+			
+			deleteSubclass.setInt(1, player.getObjectId());
+			deleteSubclass.setInt(2, classIndex);
+			deleteSubclass.execute();
+		}
+		catch (Exception e)
+		{
+			LOGGER.log(Level.WARNING, e, () -> "SubClassMasterBoard: Could not delete subclass for " + player.getName() + " at index " + classIndex + ": " + e.getMessage());
+		}
+		
 		player.broadcastUserInfo();
-		player.sendMessage(localize(lang, "Subclass removed successfully.", "Subclasse removida com sucesso."));
+		player.sendMessage(localize(lang, "The subclass has been successfully removed.", "A subclasse foi removida com sucesso."));
 	}
 	
-	private String getMainPage(Player player)
+	// =========================================================
+	// RENDERIZACAO HTML (PADRAO VISUAL HOMEBOARD)
+	// =========================================================
+	
+	private String getHeaderHtml(Player player)
 	{
 		return getMainPage(player, 1);
 	}
@@ -413,6 +457,7 @@ public class SubClassMasterBoard implements IParseBoardHandler
 	private String getMainPage(Player player, int requestedPage)
 	{
 		final String lang = player.getLang();
+<<<<<<< HEAD
 		final StringBuilder html = new StringBuilder(4096);
 		// Keep the High Five HTML viewer layout shallow and bounded. Do not nest
 		// a fixed-height full-page table around the class and action tables.
@@ -423,11 +468,105 @@ public class SubClassMasterBoard implements IParseBoardHandler
 		if (player.getTotalSubClasses() >= Config.MAX_SUBCLASS)
 		{
 			html.append(localize(lang, "You have reached the subclass limit.", "Voce atingiu o limite de subclasses.")).append("<br>");
+=======
+		final StringBuilder sb = new StringBuilder(1024);
+		
+		sb.append("<table width=720 height=100 cellpadding=0 cellspacing=0 border=0 background=\"L2UI_CH3.refinewnd_back_Pattern\">");
+		sb.append("<tr><td fixwidth=720 fixheight=100 align=center valign=top>");
+		sb.append("<table width=720 height=95 cellpadding=0 cellspacing=0 border=0>");
+		sb.append("<tr>");
+		sb.append("<td width=30></td>");
+		sb.append("<td width=80 align=center valign=center><img src=\"icon.skill1349\" width=64 height=64></td>");
+		sb.append("<td width=440 align=left valign=center>");
+		sb.append("<font name=\"hs12\" color=\"F2C75C\">Subclass Master</font><br1>");
+		sb.append("<font color=\"AE9977\">").append(localize(lang, "Current Class: ", "Classe Atual: ")).append(getClassName(player.getActiveClass())).append(" (Lv. ").append(player.getLevel()).append(")</font><br1>");
+		sb.append("<font color=\"6B6B6B\">").append(localize(lang, "Manage your character paths and progress.", "Gerencie suas classes e progressao.")).append("</font>");
+		sb.append("</td>");
+		sb.append("<td width=180 align=center valign=center>");
+		sb.append("<table cellpadding=0 cellspacing=1 border=0>");
+		sb.append("<tr><td bgcolor=\"222222\" width=170 height=20 align=center>&nbsp;</td></tr>");
+		sb.append("<tr><td bgcolor=\"1A1A1A\" width=170 height=18 align=center>&nbsp;</td></tr>");
+		sb.append("</table>");
+		sb.append("</td>");
+		sb.append("<td width=10>&nbsp;</td>");
+		sb.append("</tr>");
+		sb.append("</table>");
+		sb.append("</td></tr>");
+		sb.append("</table><br>");
+		
+		return sb.toString();
+	}
+	
+	private String getMainMenuPage(Player player)
+	{
+		final String lang = player.getLang();
+		final StringBuilder html = new StringBuilder(2048);
+		
+		html.append("<html noscrollbar><body><center>");
+		html.append(getHeaderHtml(player));
+		
+		// Bloco central com fundo Drawer Bg
+		html.append("<table width=720 cellpadding=0 cellspacing=0 border=0 background=\"L2UI_CT1.Windows_DF_Drawer_Bg\">");
+		html.append("<tr><td align=center><br>");
+		
+		html.append("<font color=\"FFE497\" name=\"__SYSTEMWORLDFONT\">").append(localize(lang, "S U B C L A S S   M A N A G E M E N T", "G E R E N C I A M E N T O   D E   S U B C L A S S E S")).append("</font><br><br>");
+		
+		html.append("<table border=\"0\" cellspacing=\"6\" cellpadding=\"0\" width=\"400\">");
+		
+		// Botao Adicionar
+		html.append("<tr><td align=\"center\">");
+		html.append("<button value=\"").append(localize(lang, "Add Subclass", "Adicionar Subclasse")).append("\" action=\"bypass -h _bbssubclassmaster;menu_add\" back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\" width=\"280\" height=\"30\" />");
+		html.append("</td></tr>");
+		
+		// Botao Mudar / Ativar
+		html.append("<tr><td align=\"center\">");
+		html.append("<button value=\"").append(localize(lang, "Change / Activate Subclass", "Mudar / Ativar Subclasse")).append("\" action=\"bypass -h _bbssubclassmaster;menu_change\" back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\" width=\"280\" height=\"30\" />");
+		html.append("</td></tr>");
+		
+		// Botao Remover
+		html.append("<tr><td align=\"center\">");
+		html.append("<button value=\"").append(localize(lang, "Remove Subclass", "Remover Subclasse")).append("\" action=\"bypass -h _bbssubclassmaster;menu_remove\" back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\" width=\"280\" height=\"30\" />");
+		html.append("</td></tr>");
+		
+		html.append("</table><br>");
+		
+		html.append("</td></tr></table><br>");
+		
+		// Botao Voltar
+		html.append("<button value=\"").append(localize(lang, "Back to Services", "Voltar aos Servicos")).append("\" action=\"bypass _bbstop;merchant/servicesMain.html\" back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\" width=\"140\" height=\"25\" />");
+		
+		html.append("</center></body></html>");
+		return html.toString();
+	}
+	
+	private String getAddSubclassPage(Player player)
+	{
+		final String lang = player.getLang();
+		final StringBuilder html = new StringBuilder(3072);
+		
+		html.append("<html noscrollbar><body><center>");
+		html.append(getHeaderHtml(player));
+		
+		html.append("<table width=720 cellpadding=0 cellspacing=0 border=0 background=\"L2UI_CT1.Windows_DF_Drawer_Bg\">");
+		html.append("<tr><td align=center><br>");
+		
+		html.append("<font color=\"FFE497\" name=\"__SYSTEMWORLDFONT\">").append(localize(lang, "A D D   N E W   S U B C L A S S", "A D I C I O N A R   N O V A   S U B C L A S S E")).append("</font><br><br>");
+		
+		if (player.getTotalSubClasses() >= Config.MAX_SUBCLASS)
+		{
+			html.append("<font color=\"AAAAAA\">").append(localize(lang, "You have already reached the subclass limit (" + Config.MAX_SUBCLASS + ").", "Voce ja atingiu o limite de subclasses (" + Config.MAX_SUBCLASS + ").")).append("</font><br><br>");
+		}
+		else if (player.getLevel() < MIN_LEVEL_FOR_SUBCLASS)
+		{
+			html.append("<font color=\"FF5555\">").append(localize(lang, "You must be at least level " + MIN_LEVEL_FOR_SUBCLASS + " to add a subclass.", "Voce precisa estar pelo menos no nivel " + MIN_LEVEL_FOR_SUBCLASS + " para adicionar uma subclasse.")).append("</font><br><br>");
+>>>>>>> 6662aa1e (Added Vote System, Donate System and a lot of features on Community Board)
 		}
 		else
 		{
-			if (Config.SUBCLASS_BUY_ITEM_COUNT > 0)
+			boolean canAdd = true;
+			for (SubClassHolder subClass : player.getSubClasses().values())
 			{
+<<<<<<< HEAD
 				final ItemTemplate item = ItemData.getInstance().getTemplate(Config.SUBCLASS_BUY_ITEM_ID);
 				final String itemName = item == null ? "ID: " + Config.SUBCLASS_BUY_ITEM_ID : item.getName();
 				html.append(localize(lang, "Cost to add: ", "Custo para adicionar: ")).append(formatAdena(Config.SUBCLASS_BUY_ITEM_COUNT)).append(' ').append(escapeHtml(itemName)).append("<br>");
@@ -458,9 +597,77 @@ public class SubClassMasterBoard implements IParseBoardHandler
 							html.append(button(getClassName(sub.getId()), "add_subclass;" + sub.getId(), 210));
 						}
 						html.append("</td>");
-					}
-					html.append("</tr>");
+=======
+				if (subClass.getLevel() < MIN_LEVEL_FOR_SUBCLASS)
+				{
+					canAdd = false;
+					break;
 				}
+			}
+			
+			if (!canAdd)
+			{
+				html.append("<font color=\"FF5555\">").append(localize(lang, "All your existing subclasses must be at least level " + MIN_LEVEL_FOR_SUBCLASS + ".", "Todas as suas subclasses atuais precisam estar no nivel " + MIN_LEVEL_FOR_SUBCLASS + ".")).append("</font><br><br>");
+			}
+			else
+			{
+				if ((Config.SUBCLASS_BUY_ITEM_ID > 0) && (Config.SUBCLASS_BUY_ITEM_COUNT > 0))
+				{
+					final ItemTemplate item = ItemData.getInstance().getTemplate(Config.SUBCLASS_BUY_ITEM_ID);
+					final String itemName = (item != null) ? item.getName() : ("ID: " + Config.SUBCLASS_BUY_ITEM_ID);
+					final String itemIcon = ((item != null) && (item.getIcon() != null)) ? item.getIcon() : "icon.etc_question_mark_i00";
+					
+					html.append("<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr>");
+					html.append("<td><img src=\"").append(itemIcon).append("\" width=\"32\" height=\"32\"></td>");
+					html.append("<td>&nbsp; <font color=\"CDB67F\">").append(localize(lang, "Required: ", "Requisito: ")).append("</font><font color=\"FFFFFF\">").append(formatAdena(Config.SUBCLASS_BUY_ITEM_COUNT)).append(" ").append(itemName).append("</font></td>");
+					html.append("</tr></table><br>");
+				}
+				
+				final Set<PlayerClass> availableSubs = getAvailableSubClasses(player);
+				if ((availableSubs == null) || availableSubs.isEmpty())
+				{
+					html.append("<font color=\"FF5555\">").append(localize(lang, "No subclasses available.", "Nenhuma subclasse disponivel.")).append("</font><br><br>");
+				}
+				else
+				{
+					html.append("<font color=\"F2C75C\">").append(localize(lang, "Select a Subclass to Add:", "Selecione uma Subclasse para Adicionar:")).append("</font><br><br>");
+					
+					// Grade em 2 colunas padronizada
+					html.append("<table border=\"0\" cellspacing=\"4\" cellpadding=\"2\" width=\"640\">");
+					
+					int colCount = 0;
+					for (PlayerClass possible : availableSubs)
+					{
+						if ((colCount % 2) == 0)
+						{
+							if (colCount != 0)
+							{
+								html.append("</tr>");
+							}
+							html.append("<tr>");
+						}
+						
+						final String className = getClassName(possible.getId());
+						
+						html.append("<td fixwidth=\"315\" align=\"center\">");
+						html.append("<button value=\"").append(className).append("\" action=\"bypass -h _bbssubclassmaster;add_subclass;").append(possible.getId()).append("\" back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\" width=\"300\" height=\"26\" />");
+						html.append("</td>");
+						
+						colCount++;
+>>>>>>> 6662aa1e (Added Vote System, Donate System and a lot of features on Community Board)
+					}
+					
+					if (colCount > 0)
+					{
+						if ((colCount % 2) != 0)
+						{
+							html.append("<td fixwidth=\"315\"></td>");
+						}
+						html.append("</tr>");
+					}
+					html.append("</table><br>");
+				}
+<<<<<<< HEAD
 				html.append("</table><br>");
 				if (page > 1) { html.append("<a action=\"bypass _bbssubclassmaster;page;").append(page - 1).append("\">").append(localize(lang, "Previous", "Anterior")).append("</a> "); }
 				html.append(localize(lang, "Page ", "Pagina ")).append(page).append('/').append(pages);
@@ -481,6 +688,132 @@ public class SubClassMasterBoard implements IParseBoardHandler
 		}
 		html.append("</table><br><button value=\"").append(localize(lang, "Back", "Voltar")).append("\" action=\"bypass _bbstop;merchant/blacksmithMain.html\" width=120 height=24 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\">");
 		return html.append("</center></body></html>").toString();
+=======
+			}
+		}
+		
+		html.append("</td></tr></table><br>");
+		html.append("<button value=\"").append(localize(lang, "Back", "Voltar")).append("\" action=\"bypass -h _bbssubclassmaster\" back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\" width=\"140\" height=\"25\" />");
+		
+		html.append("</center></body></html>");
+		return html.toString();
+	}
+	
+	private String getChangeSubclassPage(Player player)
+	{
+		final String lang = player.getLang();
+		final StringBuilder html = new StringBuilder(2048);
+		
+		html.append("<html noscrollbar><body><center>");
+		html.append(getHeaderHtml(player));
+		
+		html.append("<table width=720 cellpadding=0 cellspacing=0 border=0 background=\"L2UI_CT1.Windows_DF_Drawer_Bg\">");
+		html.append("<tr><td align=center><br>");
+		
+		html.append("<font color=\"FFE497\" name=\"__SYSTEMWORLDFONT\">").append(localize(lang, "S W I T C H   C L A S S", "A LT E R A R   O U   A T I V A R   C L A S S E")).append("</font><br><br>");
+		
+		html.append("<table border=\"0\" cellspacing=\"2\" cellpadding=\"4\" width=\"640\" bgcolor=\"161616\">");
+		
+		// Linha da Classe Base
+		final boolean isBaseActive = player.getClassIndex() == 0;
+		html.append("<tr>");
+		html.append("<td width=\"400\" align=\"left\"><font color=\"CDB67F\">[Base] ").append(getClassName(player.getBaseClass())).append("</font>");
+		if (isBaseActive)
+		{
+			html.append(" <font color=\"32C332\">[").append(localize(lang, "Active", "Ativa")).append("]</font>");
+		}
+		html.append("</td>");
+		
+		html.append("<td width=\"240\" align=\"center\">");
+		if (!isBaseActive)
+		{
+			html.append("<button value=\"").append(localize(lang, "Activate", "Ativar")).append("\" action=\"bypass -h _bbssubclassmaster;change_to_base\" back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\" width=\"130\" height=\"24\" />");
+		}
+		else
+		{
+			html.append("<font color=\"4F4F4F\">-</font>");
+		}
+		html.append("</td>");
+		html.append("</tr>");
+		
+		// Linhas das Subclasses
+		for (SubClassHolder sub : player.getSubClasses().values())
+		{
+			final boolean isActive = player.getClassIndex() == sub.getClassIndex();
+			final String subName = getClassName(sub.getId());
+			
+			html.append("<tr>");
+			html.append("<td width=\"400\" align=\"left\"><font color=\"FFFFFF\">[Sub #").append(sub.getClassIndex()).append("] ").append(subName).append(" (Lv. ").append(sub.getLevel()).append(")</font>");
+			if (isActive)
+			{
+				html.append(" <font color=\"32C332\">[").append(localize(lang, "Active", "Ativa")).append("]</font>");
+			}
+			html.append("</td>");
+			
+			html.append("<td width=\"240\" align=\"center\">");
+			if (!isActive)
+			{
+				html.append("<button value=\"").append(localize(lang, "Activate", "Ativar")).append("\" action=\"bypass -h _bbssubclassmaster;switch_subclass;").append(sub.getClassIndex()).append("\" back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\" width=\"130\" height=\"24\" />");
+			}
+			else
+			{
+				html.append("<font color=\"4F4F4F\">-</font>");
+			}
+			html.append("</td>");
+			html.append("</tr>");
+		}
+		
+		html.append("</table><br>");
+		
+		html.append("</td></tr></table><br>");
+		html.append("<button value=\"").append(localize(lang, "Back", "Voltar")).append("\" action=\"bypass -h _bbssubclassmaster\" back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\" width=\"140\" height=\"25\" />");
+		
+		html.append("</center></body></html>");
+		return html.toString();
+	}
+	
+	private String getRemoveSubclassPage(Player player)
+	{
+		final String lang = player.getLang();
+		final StringBuilder html = new StringBuilder(2048);
+		
+		html.append("<html noscrollbar><body><center>");
+		html.append(getHeaderHtml(player));
+		
+		html.append("<table width=720 cellpadding=0 cellspacing=0 border=0 background=\"L2UI_CT1.Windows_DF_Drawer_Bg\">");
+		html.append("<tr><td align=center><br>");
+		
+		html.append("<font color=\"FFE497\" name=\"__SYSTEMWORLDFONT\">").append(localize(lang, "R E M O V E   S U B C L A S S", "R E M O V E R   S U B C L A S S E")).append("</font><br><br>");
+		
+		if (player.getSubClasses().isEmpty())
+		{
+			html.append("<font color=\"AAAAAA\">").append(localize(lang, "You don't have any subclasses to remove.", "Voce nao possui subclasses para remover.")).append("</font><br><br>");
+		}
+		else
+		{
+			html.append("<table border=\"0\" cellspacing=\"2\" cellpadding=\"4\" width=\"640\" bgcolor=\"161616\">");
+			
+			for (SubClassHolder sub : player.getSubClasses().values())
+			{
+				final String subName = getClassName(sub.getId());
+				
+				html.append("<tr>");
+				html.append("<td width=\"400\" align=\"left\"><font color=\"FFFFFF\">[Sub #").append(sub.getClassIndex()).append("] ").append(subName).append(" (Lv. ").append(sub.getLevel()).append(")</font></td>");
+				html.append("<td width=\"240\" align=\"center\">");
+				html.append("<button value=\"").append(localize(lang, "Delete", "Remover")).append("\" action=\"bypass -h _bbssubclassmaster;remove_subclass;").append(sub.getClassIndex()).append("\" back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\" width=\"130\" height=\"24\" />");
+				html.append("</td>");
+				html.append("</tr>");
+			}
+			
+			html.append("</table><br>");
+		}
+		
+		html.append("</td></tr></table><br>");
+		html.append("<button value=\"").append(localize(lang, "Back", "Voltar")).append("\" action=\"bypass -h _bbssubclassmaster\" back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\" width=\"140\" height=\"25\" />");
+		
+		html.append("</center></body></html>");
+		return html.toString();
+>>>>>>> 6662aa1e (Added Vote System, Donate System and a lot of features on Community Board)
 	}
 
 	private static String button(String label, String action, int width)
@@ -630,8 +963,7 @@ public class SubClassMasterBoard implements IParseBoardHandler
 		}
 		if (OlympiadManager.getInstance().isRegisteredInComp(player))
 		{
-			player.sendMessage(localize(lang, "Leave the Olympiad queue before managing subclasses.", "Saia da fila das Olimpiadas antes de gerenciar subclasses."));
-			return false;
+			OlympiadManager.getInstance().unRegisterNoble(player);
 		}
 		if (player.isAlikeDead())
 		{

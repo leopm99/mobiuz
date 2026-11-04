@@ -5,3 +5,5 @@ handlers/communityboard/SubClassMasterBoard.java
 handlers/communityboard/HomeBoard.java
 handlers/communityboard/ColorChangeBoard.java
 handlers/communityboard/DropSearchBoard.java
+
+handlers/communityboard/AuctionHouseBoard.java

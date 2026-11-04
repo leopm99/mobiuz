@@ -40,5 +40,6 @@ public enum ItemLocation
 	LEASE,
 	REFUND,
 	MAIL,
-	FREIGHT
+	FREIGHT,
+	AUCTION
 }

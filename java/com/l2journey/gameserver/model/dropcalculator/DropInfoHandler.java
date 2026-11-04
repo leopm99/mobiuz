@@ -19,145 +19,143 @@
 package com.l2journey.gameserver.model.dropcalculator;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.function.IntFunction;
+import java.util.Set;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
-import com.l2journey.gameserver.data.xml.ItemData;
+import com.l2journey.Config;
 import com.l2journey.gameserver.data.xml.NpcData;
-import com.l2journey.gameserver.model.actor.enums.npc.DropType;
 import com.l2journey.gameserver.model.actor.holders.npc.DropGroupHolder;
 import com.l2journey.gameserver.model.actor.holders.npc.DropHolder;
 import com.l2journey.gameserver.model.actor.templates.NpcTemplate;
-import com.l2journey.gameserver.model.item.ItemTemplate;
 
-/** Immutable reverse and forward drop indexes, rebuilt after NPC data reloads. */
+/** Index of base drop percentages, rebuilt after NPC data reloads. */
 public class DropInfoHandler
 {
-	private record Snapshot(Map<Integer, List<DropInfoHolder>> items, Map<Integer, List<DropInfoHolder>> npcs, List<NpcTemplate> templates, long revision) { }
+	private static final Logger LOGGER = Logger.getLogger(DropInfoHandler.class.getName());
+	public static final Set<Integer> HERBS = Stream.of(IntStream.range(8154, 8158), IntStream.range(8600, 8615), IntStream.range(8952, 8954), IntStream.range(10655, 10658), IntStream.range(10432, 10434), IntStream.of(13028)).flatMapToInt(s -> s).boxed().collect(Collectors.toUnmodifiableSet());
 	private volatile Snapshot _snapshot;
-	private final boolean _live;
-
-	private DropInfoHandler()
+	
+	private record Snapshot(long revision, List<Integer> restricted, Map<Integer, List<DropInfoHolder>> drops, Map<Integer, List<DropInfoHolder>> byNpc)
 	{
-		_live = true;
 	}
-
-	public DropInfoHandler(Collection<NpcTemplate> templates, IntFunction<ItemTemplate> items)
+	
+	public DropInfoHandler()
 	{
-		_live = false;
-		_snapshot = build(templates, items, 0);
+		load();
 	}
-
+	
+	public void load()
+	{
+		final NpcData data = NpcData.getInstance();
+		synchronized (data)
+		{
+			final Map<Integer, List<DropInfoHolder>> drops = new HashMap<>();
+			final List<Integer> restricted = restrictedIds();
+			for (NpcTemplate npc : data.getTemplates(template -> !restricted.contains(template.getId())))
+			{
+				if (npc.getDropGroups() != null)
+				{
+					for (DropGroupHolder group : npc.getDropGroups())
+					{
+						for (DropHolder drop : group.getDropList())
+						{
+							add(drops, npc, drop, false, group.getChance() / 100d);
+						}
+					}
+				}
+				if (npc.getDropList() != null)
+				{
+					for (DropHolder drop : npc.getDropList())
+					{
+						add(drops, npc, drop, false, 1d);
+					}
+				}
+				if (npc.getSpoilList() != null)
+				{
+					for (DropHolder drop : npc.getSpoilList())
+					{
+						add(drops, npc, drop, true, 1d);
+					}
+				}
+			}
+			drops.replaceAll((id, list) -> list.stream().sorted(Comparator.comparingInt(DropInfoHolder::getLevel)).toList());
+			final Map<Integer, List<DropInfoHolder>> byNpc = new HashMap<>();
+			drops.values().forEach(list -> list.forEach(drop -> byNpc.computeIfAbsent(drop.getNpcId(), id -> new ArrayList<>()).add(drop)));
+			byNpc.replaceAll((id, list) -> List.copyOf(list));
+			_snapshot = new Snapshot(data.getRevision(), restricted, Map.copyOf(drops), Map.copyOf(byNpc));
+			LOGGER.info(() -> "DropInfoHandler: Loaded " + drops.size() + " drop data for calculator.");
+		}
+	}
+	
+	private static void add(Map<Integer, List<DropInfoHolder>> index, NpcTemplate npc, DropHolder drop, boolean spoil, double groupChance)
+	{
+		if (!HERBS.contains(drop.getItemId()))
+		{
+			index.computeIfAbsent(drop.getItemId(), id -> new ArrayList<>()).add(new DropInfoHolder(npc.getId(), npc.getName(), npc.getLevel(), drop.getMin(), drop.getMax(), drop.getChance() * groupChance, spoil));
+		}
+	}
+	
+	private static List<Integer> restrictedIds()
+	{
+		return Config.RESTRICTED_MOB_DROPLIST_IDS == null ? List.of() : List.copyOf(Config.RESTRICTED_MOB_DROPLIST_IDS);
+	}
+	
 	private Snapshot snapshot()
 	{
-		if (_live)
+		final NpcData data = NpcData.getInstance();
+		synchronized (data)
 		{
-			final NpcData data = NpcData.getInstance();
-			if ((_snapshot == null) || (_snapshot.revision() != data.getRevision()))
+			if ((_snapshot == null) || (_snapshot.revision() != data.getRevision()) || !_snapshot.restricted().equals(restrictedIds()))
 			{
-				synchronized (data)
-				{
-					if ((_snapshot == null) || (_snapshot.revision() != data.getRevision()))
-					{
-						_snapshot = build(data.getTemplates(n -> true), ItemData.getInstance()::getTemplate, data.getRevision());
-					}
-				}
+				load();
 			}
-		}
-		return _snapshot;
-	}
-
-	private static Snapshot build(Collection<NpcTemplate> templates, IntFunction<ItemTemplate> items, long revision)
-	{
-		final Map<Integer, List<DropInfoHolder>> byItem = new HashMap<>();
-		final Map<Integer, List<DropInfoHolder>> byNpc = new HashMap<>();
-		for (NpcTemplate npc : templates)
-		{
-			final List<DropInfoHolder> drops = new ArrayList<>();
-			if (npc.getDropGroups() != null)
-			{
-				int number = 0;
-				for (DropGroupHolder group : npc.getDropGroups())
-				{
-					number++;
-					for (DropHolder drop : group.getDropList())
-					{
-						add(drops, npc, drop, DropType.DROP, group.getChance() / 100d, number, items);
-					}
-				}
-			}
-			if (npc.getDropList() != null)
-			{
-				for (DropHolder drop : npc.getDropList()) { add(drops, npc, drop, DropType.DROP, 1, 0, items); }
-			}
-			if (npc.getSpoilList() != null)
-			{
-				for (DropHolder drop : npc.getSpoilList()) { add(drops, npc, drop, DropType.SPOIL, 1, 0, items); }
-			}
-			byNpc.put(npc.getId(), List.copyOf(drops));
-			for (DropInfoHolder drop : drops) { byItem.computeIfAbsent(drop.itemId(), _ -> new ArrayList<>()).add(drop); }
-		}
-		byItem.replaceAll((_, drops) -> drops.stream().sorted(Comparator.comparingInt((DropInfoHolder d) -> d.npc().getLevel()).thenComparingInt(d -> d.npc().getId())).toList());
-		return new Snapshot(Map.copyOf(byItem), Map.copyOf(byNpc), List.copyOf(templates), revision);
-	}
-
-	private static void add(List<DropInfoHolder> result, NpcTemplate npc, DropHolder drop, DropType type, double groupChance, int group, IntFunction<ItemTemplate> items)
-	{
-		final ItemTemplate item = items.apply(drop.getItemId());
-		// Use the actual herb marker instead of hardcoded ID ranges from another chronicle.
-		if ((item != null) && !item.hasExImmediateEffect())
-		{
-			result.add(new DropInfoHolder(npc, drop.getItemId(), type, drop.getMin(), drop.getMax(), drop.getChance() * groupChance, group));
+			return _snapshot;
 		}
 	}
-
-	public List<DropInfoHolder> getDrop(int itemId)
+	
+	/**
+	 * Return a per-request copy; callers may sort it without changing the index.
+	 * @param itemId
+	 * @return
+	 */
+	public ArrayList<DropInfoHolder> getDrop(int itemId)
 	{
-		return snapshot().items().getOrDefault(itemId, List.of());
+		return new ArrayList<>(snapshot().drops().getOrDefault(itemId, List.of()));
 	}
-
-	public List<DropInfoHolder> getNpcDrops(int npcId)
+	
+	public Map<Integer, ArrayList<DropInfoHolder>> getInfo()
 	{
-		return snapshot().npcs().getOrDefault(npcId, List.of());
+		final Map<Integer, ArrayList<DropInfoHolder>> result = new HashMap<>();
+		snapshot().drops().forEach((id, drops) -> result.put(id, new ArrayList<>(drops)));
+		return result;
 	}
-
-	public List<ItemTemplate> searchItems(String query, int sort)
+	
+	public int getDropsCount(int npcId, boolean spoil)
 	{
-		final String needle = query.trim().toLowerCase(Locale.ROOT);
-		final List<ItemTemplate> found = new ArrayList<>();
-		for (int id : snapshot().items().keySet())
-		{
-			final ItemTemplate item = ItemData.getInstance().getTemplate(id);
-			if ((item != null) && (Integer.toString(id).equals(needle) || item.getName().toLowerCase(Locale.ROOT).contains(needle))) { found.add(item); }
-		}
-		final Comparator<ItemTemplate> names = Comparator.comparing(ItemTemplate::getName, String.CASE_INSENSITIVE_ORDER).thenComparingInt(ItemTemplate::getId);
-		final Comparator<ItemTemplate> order = switch (sort)
-		{
-			case 1 -> Comparator.comparingLong((ItemTemplate i) -> getDrop(i.getId()).stream().filter(d -> !d.isSpoil()).count()).reversed().thenComparing(names);
-			case 2 -> Comparator.comparingLong((ItemTemplate i) -> getDrop(i.getId()).stream().filter(DropInfoHolder::isSpoil).count()).reversed().thenComparing(names);
-			default -> names;
-		};
-		return found.stream().sorted(order).toList();
+		return (int) snapshot().byNpc().getOrDefault(npcId, List.of()).stream().filter(drop -> drop.isSweep() == spoil).count();
 	}
-
-	public List<NpcTemplate> searchNpcs(String query, int sort)
+	
+	public List<NpcTemplate> searchNpcs(String name)
 	{
-		final String needle = query.trim().toLowerCase(Locale.ROOT);
-		final Comparator<NpcTemplate> names = Comparator.comparing(NpcTemplate::getName, String.CASE_INSENSITIVE_ORDER).thenComparingInt(NpcTemplate::getId);
-		final Comparator<NpcTemplate> order = switch (sort)
-		{
-			case 1 -> Comparator.comparingInt((NpcTemplate n) -> n.getLevel()).reversed().thenComparing(names);
-			case 2 -> Comparator.comparingInt((NpcTemplate n) -> getNpcDrops(n.getId()).size()).reversed().thenComparing(names);
-			default -> names;
-		};
-		return snapshot().templates().stream().filter(n -> Integer.toString(n.getId()).equals(needle) || n.getName().toLowerCase(Locale.ROOT).contains(needle)).sorted(order).toList();
+		final String query = name.toLowerCase(java.util.Locale.ROOT);
+		final NpcData data = NpcData.getInstance();
+		return snapshot().byNpc().keySet().stream().map(data::getTemplate).filter(java.util.Objects::nonNull).filter(npc -> npc.getName().toLowerCase(java.util.Locale.ROOT).contains(query)).collect(Collectors.toCollection(ArrayList::new));
 	}
-
-	public static DropInfoHandler getInstance() { return SingletonHolder.INSTANCE; }
-	private static class SingletonHolder { private static final DropInfoHandler INSTANCE = new DropInfoHandler(); }
+	
+	public static DropInfoHandler getInstance()
+	{
+		return SingletonHolder.INSTANCE;
+	}
+	
+	private static class SingletonHolder
+	{
+		protected static final DropInfoHandler INSTANCE = new DropInfoHandler();
+	}
 }

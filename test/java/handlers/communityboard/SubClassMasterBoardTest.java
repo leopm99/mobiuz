@@ -404,10 +404,10 @@ class SubClassMasterBoardTest
 		Config.COMMUNITYBOARD_BLACKSMITH = false;
 		final String enabled = (String) method.invoke(null, 720, "br");
 		assertTrue(enabled.contains("Serviços"));
-		assertTrue(enabled.contains("merchant/blacksmithMain.html"));
+		assertTrue(enabled.contains("merchant/servicesMain.html"));
 		assertFalse(enabled.contains("bypass _bbssubclassmaster"));
 		Config.SUBCLASS_MASTER_BOARD = false;
-		assertFalse(((String) method.invoke(null, 720, "br")).contains("merchant/blacksmithMain.html"));
+		assertFalse(((String) method.invoke(null, 720, "br")).contains("merchant/servicesMain.html"));
 	}
 
 	@Test

@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='utf-8'?>
+<list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/skillTrees.xsd">
+	<skillTree type="rebirthSkillTree">
+		<skill skillName="Rebirth Guidance" skillId="35200" skillLevel="1" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Guidance" skillId="35200" skillLevel="2" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Guidance" skillId="35200" skillLevel="3" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Haste" skillId="35201" skillLevel="1" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Haste" skillId="35201" skillLevel="2" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Haste" skillId="35201" skillLevel="3" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Health" skillId="35202" skillLevel="1" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Health" skillId="35202" skillLevel="2" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Health" skillId="35202" skillLevel="3" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Mana" skillId="35203" skillLevel="1" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Mana" skillId="35203" skillLevel="2" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Mana" skillId="35203" skillLevel="3" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Wind Walk" skillId="35204" skillLevel="1" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Wind Walk" skillId="35204" skillLevel="2" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Wind Walk" skillId="35204" skillLevel="3" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Focus" skillId="35205" skillLevel="1" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Focus" skillId="35205" skillLevel="2" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Focus" skillId="35205" skillLevel="3" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Might" skillId="35206" skillLevel="1" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Might" skillId="35206" skillLevel="2" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Might" skillId="35206" skillLevel="3" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Empower" skillId="35207" skillLevel="1" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Empower" skillId="35207" skillLevel="2" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Empower" skillId="35207" skillLevel="3" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Shield" skillId="35208" skillLevel="1" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Shield" skillId="35208" skillLevel="2" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Shield" skillId="35208" skillLevel="3" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Magic Barrier" skillId="35209" skillLevel="1" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Magic Barrier" skillId="35209" skillLevel="2" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Magic Barrier" skillId="35209" skillLevel="3" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Agility" skillId="35210" skillLevel="1" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Agility" skillId="35210" skillLevel="2" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Agility" skillId="35210" skillLevel="3" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Acumen" skillId="35211" skillLevel="1" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Acumen" skillId="35211" skillLevel="2" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+		<skill skillName="Rebirth Acumen" skillId="35211" skillLevel="3" getLevel="1">
+			<item id="2822" count="1" />
+		</skill>
+	</skillTree>
+</list>

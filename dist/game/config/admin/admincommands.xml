@@ -90,6 +90,7 @@
 	<admin command="give_item_to_all" accessLevel="100" confirmDlg="true" />
 	<admin command="show_inventory" accessLevel="100" />
 	<admin command="delete_item" accessLevel="100" confirmDlg="true" />
+	<admin command="inventory_delete" accessLevel="100" confirmDlg="true" />
 	<admin command="open_wh" accessLevel="100" confirmDlg="true" />
 	<admin command="open_clan_wh" accessLevel="100" confirmDlg="true" />
 

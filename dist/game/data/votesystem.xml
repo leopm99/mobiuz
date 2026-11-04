@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Stable IDs 0..10 are retained; 11 contains shared global rewards. -->
+<!-- Per-site options: individualEnabled/globalEnabled (true/false), globalStep (votes), -->
+<!-- checkInterval (seconds; 0 uses the INI interval), timeZone (IANA name). -->
+<!-- Optional globalItems overrides the shared global rewards for a site. -->
+<list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="xsd/votesystem.xsd">
+
+   <votesite name="l2.topgameserver.net" ordinal="0">
+       <items>
+       <item itemId="57" itemCount="100000" />
+       </items>
+   </votesite>
+   <votesite name="ItopZ.com" ordinal="1">
+       <items>
+       <item itemId="57" itemCount="100000" />
+       </items>
+   </votesite>
+   <votesite name="L2Top.co" ordinal="2">
+       <items>
+       <item itemId="57" itemCount="100000" />
+       <item itemId="6673" itemCount="1"/>
+       </items>
+   </votesite>
+   <votesite name="L2Votes.com" ordinal="3">
+       <items>
+       <item itemId="57" itemCount="100000" />
+       </items>
+   </votesite>
+   <votesite name="Hopzone.net" ordinal="4">
+       <items>
+       <item itemId="57" itemCount="100000" />
+       </items>
+   </votesite>
+   <votesite name="L2Network.eu" ordinal="5">
+       <items>
+       <item itemId="57" itemCount="100000" />
+       <item itemId="6673" itemCount="1"/>
+       </items>
+   </votesite>
+   <votesite name="L2Topservers.com" ordinal="6">
+       <items>
+       <item itemId="57" itemCount="100000" />
+       <item itemId="6673" itemCount="1"/>
+       </items>
+   </votesite>
+   <votesite name="top.l2jbrasil.com" ordinal="7">
+       <items>
+       <item itemId="57" itemCount="100000" />
+       <item itemId="6673" itemCount="1"/>
+       </items>
+   </votesite>
+   <votesite name="MMOTOP.eu" ordinal="8">
+       <items>
+       <item itemId="57" itemCount="100000" />
+       <item itemId="6673" itemCount="1"/>
+       </items>
+   </votesite>
+   <votesite name="L2Topzone.com" ordinal="9">
+       <items>
+       <item itemId="57" itemCount="100000" />
+   </items>
+   </votesite>
+   <votesite name="L2Servers.com" ordinal="10">
+       <items>
+       <item itemId="57" itemCount="100000" />
+       <item itemId="6673" itemCount="1"/>
+       </items>
+   </votesite>
+   <votesite name="globalVotes" ordinal="11">
+       <items>
+       <item itemId="57" itemCount="100000" />
+       <item itemId="6673" itemCount="1"/>
+   </items>
+   </votesite>
+    <votesite ordinal="12" name="Hopzone.eu" individualEnabled="false" globalEnabled="false" globalStep="50" checkInterval="300" timeZone="UTC">
+        <items>
+            <item itemId="57" itemCount="100000" />
+        </items>
+    </votesite>
+    <votesite ordinal="13" name="Hotservers.org" individualEnabled="false" globalEnabled="false" globalStep="50" checkInterval="300" timeZone="Europe/Athens">
+        <items>
+            <item itemId="57" itemCount="100000" />
+        </items>
+    </votesite>
+    <votesite ordinal="14" name="L2Rankzone.com" individualEnabled="false" globalEnabled="false" globalStep="50" checkInterval="300" timeZone="Europe/Athens">
+        <items>
+            <item itemId="57" itemCount="100000" />
+        </items>
+    </votesite>
+    <votesite ordinal="15" name="Top4TeamBR" individualEnabled="false" globalEnabled="false" globalStep="50" checkInterval="300" timeZone="America/Sao_Paulo">
+        <items>
+            <item itemId="57" itemCount="100000" />
+        </items>
+    </votesite>
+</list>

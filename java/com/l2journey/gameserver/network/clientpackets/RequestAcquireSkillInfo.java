@@ -28,6 +28,7 @@
  */
 package com.l2journey.gameserver.network.clientpackets;
 
+import com.l2journey.RebirthEngineConfigs;
 import com.l2journey.gameserver.data.xml.SkillData;
 import com.l2journey.gameserver.data.xml.SkillTreeData;
 import com.l2journey.gameserver.model.SkillLearn;
@@ -100,7 +101,7 @@ public class RequestAcquireSkillInfo extends ClientPacket
 			}
 			case CLASS:
 			{
-				if (trainer.getTemplate().canTeach(player.getLearningClass()))
+				if (trainer.getTemplate().canTeach(player.getLearningClass()) || (trainer.getId() == RebirthEngineConfigs.REBIRTH_SKILL_SELLER_ID))
 				{
 					final int customSp = s.getCalculatedLevelUpSp(player.getPlayerClass(), player.getLearningClass());
 					player.sendPacket(new AcquireSkillInfo(_skillType, s, customSp));

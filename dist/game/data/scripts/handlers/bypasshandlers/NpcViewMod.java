@@ -62,7 +62,7 @@ import com.l2journey.gameserver.util.HtmlUtil;
 public class NpcViewMod implements IBypassHandler
 {
 	private static final String PH_RESPAWN = "%respawn%";
-
+	
 	private static final String[] COMMANDS =
 	{
 		"NpcViewMod"
@@ -132,7 +132,8 @@ public class NpcViewMod implements IBypassHandler
 						return false;
 					}
 					final int page = st.hasMoreElements() ? Integer.parseInt(st.nextToken()) : 0;
-					sendNpcDropList(player, npc, dropListType, page);
+					final String backBypass = "NpcViewMod view " + npc.getObjectId();
+					sendNpcDropList(player, npc, dropListType, page, backBypass);
 				}
 				catch (NumberFormatException _)
 				{
@@ -368,7 +369,7 @@ public class NpcViewMod implements IBypassHandler
 		return sb.toString();
 	}
 	
-	private void sendNpcDropList(Player player, Npc npc, DropType dropType, int pageValue)
+	public static void sendNpcDropList(Player player, Npc npc, DropType dropType, int pageValue, String backBypass)
 	{
 		List<DropHolder> dropList = null;
 		if (dropType == DropType.SPOIL)
@@ -625,6 +626,7 @@ public class NpcViewMod implements IBypassHandler
 		html = html.replace("%dropListButtons%", getDropListButtons(npc));
 		html = html.replace("%pages%", pagesSb.toString());
 		html = html.replace("%items%", bodySb.toString() + limitReachedMsg);
+		html = html.replace("%back_bypass%", backBypass);
 		HtmlUtil.sendCBHtml(player, html);
 	}
 }

@@ -192,6 +192,10 @@ public class Message
 	
 	public String getSenderName()
 	{
+		if (_sendBySystem == MessageSenderType.AUCTION_MANAGER.ordinal())
+		{
+			return "Auction Manager";
+		}
 		if (_senderName == null)
 		{
 			if (_sendBySystem != 0)
@@ -308,6 +312,12 @@ public class Message
 	public int getSendBySystem()
 	{
 		return _sendBySystem;
+	}
+
+	/** Custom system senders use the ordinary name field without sending an unknown client type. */
+	public int getClientSenderType()
+	{
+		return _sendBySystem == MessageSenderType.AUCTION_MANAGER.ordinal() ? MessageSenderType.PLAYER.ordinal() : _sendBySystem;
 	}
 	
 	public boolean isReturned()

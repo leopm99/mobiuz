@@ -63,6 +63,7 @@ import com.l2journey.gameserver.network.serverpackets.ServerClose;
 import com.l2journey.gameserver.network.serverpackets.SystemMessage;
 import com.l2journey.gameserver.taskmanagers.GameTimeTaskManager;
 import com.l2journey.gameserver.util.Broadcast;
+import com.l2journey.gameserver.votesystem.handler.VoteManager;
 
 /**
  * This class provides the functions for shutting down and restarting the server.<br>
@@ -328,6 +329,22 @@ public class Shutdown extends Thread
 		
 		final TimeCounter tc = new TimeCounter();
 		final TimeCounter tc1 = new TimeCounter();
+		
+		com.l2journey.gameserver.auctionhouse.AuctionHouseManager.getInstance().shutdown();
+		com.l2journey.gameserver.donation.DonationTasks.shutdown();
+
+		if (Config.ENABLE_VOTE_SYSTEM)
+		{
+			try
+			{
+				VoteManager.getInstance().shutdown();
+				LOGGER.info("Vote Reward System: Tasks stopped and data saved(" + tc.getEstimatedTimeAndRestartCounter() + "ms).");
+			}
+			catch (Exception e)
+			{
+				LOGGER.log(Level.WARNING, "Error shutting down vote reward system.", e);
+			}
+		}
 		
 		try
 		{

@@ -18,14 +18,83 @@
  */
 package com.l2journey.gameserver.model.dropcalculator;
 
-import com.l2journey.gameserver.model.actor.enums.npc.DropType;
-import com.l2journey.gameserver.model.actor.templates.NpcTemplate;
-
-/** An independent drop roll. Chance is a percentage, including its group chance. */
-public record DropInfoHolder(NpcTemplate npc, int itemId, DropType type, long min, long max, double chance, int group)
+/**
+ * @author vGodFather
+ */
+public class DropInfoHolder
 {
-	public boolean isSpoil()
+private final int _npcId;
+	private final String _npcName;
+	private final byte _npcLevel;
+	private final long _minDrop;
+	private final long _maxDrop;
+	private final double _chance;
+	private final boolean _isSweep;
+	
+	public DropInfoHolder(int npcId, String npcName, byte level, long min, long max, double chance, boolean sweep)
 	{
-		return type == DropType.SPOIL;
+		_npcId = npcId;
+		_npcName = npcName;
+		_npcLevel = level;
+		_minDrop = min;
+		_maxDrop = max;
+		_chance = chance;
+		_isSweep = sweep;
 	}
+	
+	public int getNpcId()
+	{
+		return _npcId;
+	}
+	
+public String getName()
+	{
+		return _npcName;
+	}
+	
+public byte getLevel()
+	{
+		return _npcLevel;
+	}
+	
+public boolean isSweep()
+	{
+		return _isSweep;
+	}
+	
+/**
+	 * Returns the minimum quantity of items dropped
+	 * @return int
+	 */
+	public long getMin()
+	{
+		return _minDrop;
+	}
+	
+	/**
+	 * Returns the maximum quantity of items dropped
+	 * @return int
+	 */
+	public long getMax()
+	{
+		return _maxDrop;
+	}
+	
+	/**
+	 * Returns the chance of having a drop
+	 * @return int
+	 */
+	public double getChance()
+	{
+		return _chance;
+	}
+	
+/**
+	 * Sets the value for maximal quantity of dopped items
+	 * @param maxdrop : int designating the quantity of dropped items
+	 */
+/**
+	 * Sets the chance of having the item for a drop
+	 * @param chance : int designating the chance
+	 */
 }

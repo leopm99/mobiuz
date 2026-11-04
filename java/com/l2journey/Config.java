@@ -57,6 +57,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 import java.util.StringTokenizer;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
@@ -92,7 +93,12 @@ import com.l2journey.gameserver.util.FloodProtectorConfig;
  * @author KingHanker, Zoinha
  */
 // Assigned from ini files in load(), including a second time from AdminReload, so these fields stay public static and non-final.
-@SuppressWarnings({ "java:S3008", "java:S1444", "java:S1104" })
+@SuppressWarnings(
+{
+	"java:S3008",
+	"java:S1444",
+	"java:S1104"
+})
 public class Config
 {
 	private static final String ALTGAMECANCELBYHIT = "AltGameCancelByHit";
@@ -101,7 +107,7 @@ public class Config
 	private static final String N_00FF00 = "00FF00";
 	private static final String TITLE = "Title";
 	private static final String HEXID = "HexID";
-
+	
 	private static final Logger LOGGER = Logger.getLogger(Config.class.getName());
 	
 	// --------------------------------------------------
@@ -121,6 +127,7 @@ public class Config
 	private static final String GEODATA_CONFIG_FILE = "./config/admin/geodata.ini";
 	private static final String ID_MANAGER_CONFIG_FILE = "./config/admin/idmanager.ini";
 	private static final String RATES_CONFIG_FILE = "./config/admin/rates.ini";
+	private static final String VOTE_SYSTEM_FILE = "./config/admin/votesystem.ini";
 	
 	// --------------------------------------------------
 	// Pasta IPConfig -
@@ -173,6 +180,7 @@ public class Config
 	private static final String STARTING_TITLE_CONFIG_FILE = "./config/player/startingtitle.ini";
 	private static final String USER_PANEL_COMMANDS = "./config/player/userpanel.ini";
 	private static final String WAREHOUSE_SORTING_CONFIG_FILE = "./config/player/warehousesorting.ini";
+	private static final String VOICED_COMMANDS_CONFIG_FILE = "./config/player/voicedcommands.ini";
 	
 	// --------------------------------------------------
 	// Pasta Security -
@@ -262,7 +270,7 @@ public class Config
 	public static String[] COLOR_CHANGE_COLOR_NAMES;
 	public static int COLOR_CHANGE_ITEM_ID;
 	public static long COLOR_CHANGE_ITEM_AMOUNT;
-	public static boolean SUBCLASS_MASTER_BOARD;
+	public static boolean ENABLE_SUBCLASS_BOARD;
 	public static int SUBCLASS_BUY_ITEM_ID;
 	public static long SUBCLASS_BUY_ITEM_COUNT;
 	public static int COMMUNITYBOARD_CURRENCY;
@@ -287,6 +295,26 @@ public class Config
 	public static boolean COMMUNITYBOARD_PLAYER_RANKING;
 	public static boolean COMMUNITYBOARD_BLACKSMITH;
 	public static boolean COMMUNITYBOARD_MERCHANT;
+	public static boolean COMMUNITY_AUCTION_ENABLED;
+	public static boolean COMMUNITY_AUCTION_PEACE_ONLY;
+	public static double COMMUNITY_AUCTION_FEE_PERCENT;
+	public static long COMMUNITY_AUCTION_MIN_FEE;
+	public static int COMMUNITY_AUCTION_MAX_LISTINGS;
+	public static boolean NOBLESSE_SERVICE;
+	public static int NOBLESSE_ITEM_ID;
+	public static long NOBLESSE_ITEM_COUNT;
+	public static int NOBLESSE_TIARA_ID;
+	public static boolean HERO_SERVICE_ENABLED;
+	public static int HERO_SERVICE_ITEM_ID;
+	public static long HERO_SERVICE_ITEM_COUNT;
+	public static boolean CLASS_MASTER_BOARD;
+	public static boolean ENABLE_DROP_CALCULATOR;
+	public static boolean ENABLE_TELEPORT_FUNCTION;
+	public static boolean ALLOW_TELEPORT_FROM_PEACE_ZONE_ONLY;
+	public static boolean ALLOW_FREE_TELEPORT;
+	public static int[] TELEPORT_PRICE;
+	public static List<Integer> RESTRICTED_TELEPORT_IDS;
+	public static List<Integer> RESTRICTED_MOB_DROPLIST_IDS;
 	
 	// --------------------------------------------------
 	// Gerenciador de Email Customizado
@@ -583,6 +611,59 @@ public class Config
 	public static int BOSS_DROP_MIN_LEVEL;
 	public static int BOSS_DROP_MAX_LEVEL;
 	public static List<DropHolder> BOSS_DROP_LIST = new ArrayList<>();
+	
+	// ---------------------------------------------------
+	// VOTE SYSTEM
+	// ---------------------------------------------------
+	public static boolean ENABLE_VOTE_SYSTEM;
+	public static boolean ENABLE_INDIVIDUAL_VOTE;
+	public static boolean ENABLE_GLOBAL_VOTE;
+	public static long NEXT_TIME_TO_AUTO_UPDATE_TOTAL_VOTE;
+	public static long NEXT_TIME_TO_AUTO_UPDATE_INDIVIDUAL_VOTES;
+	public static long NEXT_TIME_TO_AUTO_CLEAN_INECESARY_VOTES;
+	public static long NEXT_TIME_TO_CHECK_AUTO_GLOBAL_VOTES_REWARD;
+	public static long INTERVAL_TO_NEXT_VOTE;
+	public static int GLOBAL_VOTES_AMOUNT_TO_NEXT_REWARD;
+	public static boolean ENABLE_VOTING_COMMAND;
+	public static String VOTING_COMMAND;
+	public static String VOTE_LINK_TGS;
+	public static String TGS_API_KEY;
+	public static String VOTE_LINK_TOP_CO;
+	public static String TOP_CO_SRV_ID;
+	public static String VOTE_LINK_ITOPZ;
+	public static String ITOPZ_API_KEY;
+	public static String ITOPZ_SRV_ID;
+	public static String VOTE_LINK_VTS;
+	public static String VTS_API_KEY;
+	public static String VTS_SID;
+	public static String VOTE_LINK_HZ;
+	public static String HZ_API_KEY;
+	public static String VOTE_NETWORK_LINK;
+	public static String VOTE_NETWORK_USER_NAME;
+	public static String VOTE_NETWORK_API_KEY;
+	public static String VOTE_LINK_TSS;
+	public static String TSS_API_TOKEN;
+	public static String TS_SRV_ID;
+	public static String TS_DOMAIN_NAME;
+	public static String BRASIL_VOTE_LINK;
+	public static String BRASIL_USER_NAME;
+	public static String VOTE_LINK_MMOTOP;
+	public static String MMOTOP_API_KEY;
+	public static String VOTE_LINK_TZ;
+	public static String TZ_API_KEY;
+	public static String VOTE_LINK_SERVERS;
+	public static String SERVERS_HASH_CODE;
+	public static String SERVERS_SRV_ID;
+	public static String TEST_IP;
+	public static int VOTE_CONNECT_TIMEOUT = 5000;
+	public static int VOTE_READ_TIMEOUT = 5000;
+	public static long VOTE_QUERY_COOLDOWN = 15000;
+	public static String HOPZONE_EU_API_KEY;
+	public static String HOPZONE_EU_SERVER_ID;
+	public static String HOTSERVERS_API_KEY;
+	public static String HOTSERVERS_SERVER_ID;
+	public static String L2RANKZONE_API_KEY;
+	public static String TOP4TEAMBR_USER_NAME;
 	
 	// --------------------------------------------------
 	// Pasta Npcs
@@ -1625,10 +1706,37 @@ public class Config
 	public static byte[] HEX_ID;
 	public static boolean ENABLE_GUI;
 	public static boolean DARK_THEME;
+	
+	// --------------------------------------------------
+	// Voiced Commands
+	// --------------------------------------------------
+	public static boolean TOMOB_COMMAND_ENABLED;
+	public static String TOMOB_COMMAND;
+	public static boolean TOMOB_PEACE_ZONE_ONLY;
+	public static boolean TOMOB_FREE_TP;
+	public static int TOMOB_TP_TIME;
+	public static int TOMOB_TP_ITEM_ID;
+	public static int TOMOB_TP_ITEM_COUNT;
+	public static boolean ENABLE_SIEGE_VCMD;
+	public static boolean ENABLE_GNU_PANEL;
+	public static boolean ENABLE_SEVEN_RB_COMMAND;
+	public static boolean TELEPORTS_VOICED_COMMAND;
+	public static boolean ALLOW_GOTOCL_COMMAND;
+	public static boolean ALLOW_GOTOPL_COMMAND;
+	public static int TOCL_ITEM_CONSUME_ID;
+	public static long TOCL_ITEM_CONSUME_COUNT;
+	public static boolean COMMAND_RES;
+	public static int ITEM_ID_RESS;
+	public static int PRICE_RESS;
+	public static boolean INSTANCE_REUSE_CLEAR_ENABLED;
+	public static int INSTANCE_REUSE_CLEAR_ITEM_ID;
+	public static long INSTANCE_REUSE_CLEAR_ITEM_COUNT;
+	public static Set<Integer> INSTANCE_REUSE_CLEAR_ALLOWED_IDS;
+	
 	private Config()
 	{
 	}
-
+	
 	/**
 	 * Esta classe inicializa todas as variaveis globais para configuracao.<br>
 	 * Se a chave nao aparecer no arquivo de propriedades, um valor padrao e definido por esta classe.
@@ -1655,6 +1763,7 @@ public class Config
 			loadGeoDataConfig();
 			loadIdManagerConfig();
 			loadRatesConfig();
+			loadVoteManagerConfig();
 			
 			// Pasta Npcs -
 			loadBossAnnouncementsConfig();
@@ -1697,6 +1806,7 @@ public class Config
 			loadStartingTitleConfig();
 			loadUserPanel();
 			loadWarehouseSortingConfig();
+			loadvoicedCommandsConfig();
 			
 			// Pasta Security -
 			loadCaptchaConfig();
@@ -1851,12 +1961,12 @@ public class Config
 		COMMUNITYBOARD_BUFFER = communityBoardConfig.getBoolean("CommunityBoardBuffer", true);
 		COMMUNITYBOARD_BUFFER_PREMIUM = communityBoardConfig.getBoolean("CommunityBoardBufferPremium", true);
 		COMMUNITYBOARD_DROP_SEARCH = communityBoardConfig.getBoolean("CommunityBoardDropSearch", true);
-		COLOR_CHANGE_SERVICE_ENABLED = communityBoardConfig.getBoolean("ColorChangeServiceEnabled", false);
-		COLOR_CHANGE_COLORS = communityBoardConfig.getString("ColorChangeColors", "FFFFFF;FF0000;00FF00;0000FF;FFD700;FF69B4;00FFFF").split(";", -1);
-		COLOR_CHANGE_COLOR_NAMES = communityBoardConfig.getString("ColorChangeColorNames", "White;Red;Green;Blue;Gold;Pink;Cyan").split(";", -1);
+		COLOR_CHANGE_SERVICE_ENABLED = communityBoardConfig.getBoolean("EnableColorChangeService", true);
+		COLOR_CHANGE_COLORS = communityBoardConfig.getString("ColorChangeColors", "FFFFFF;FF0000;00FF00;0000FF;FFD700;FF69B4;00FFFF;FFA500;9932CC;C0C0C0").split(";", -1);
+		COLOR_CHANGE_COLOR_NAMES = communityBoardConfig.getString("ColorChangeColorNames", "White;Red;Green;Blue;Gold;Pink;Cyan;Orange;Purple;Silver").split(";", -1);
 		COLOR_CHANGE_ITEM_ID = communityBoardConfig.getInt("ColorChangeItemId", 57);
 		COLOR_CHANGE_ITEM_AMOUNT = communityBoardConfig.getLong("ColorChangeItemAmount", 0);
-		SUBCLASS_MASTER_BOARD = communityBoardConfig.getBoolean("SubClassMasterBoard", false);
+		ENABLE_SUBCLASS_BOARD = communityBoardConfig.getBoolean("EnableSubClassBoard", true);
 		SUBCLASS_BUY_ITEM_ID = communityBoardConfig.getInt("SubClassBuyItemId", 57);
 		SUBCLASS_BUY_ITEM_COUNT = Math.max(0L, communityBoardConfig.getLong("SubClassBuyItemCount", 0));
 		COMMUNITYBOARD_CURRENCY = communityBoardConfig.getInt("CommunityCurrencyId", 57);
@@ -1873,6 +1983,11 @@ public class Config
 		COMMUNITYBOARD_PLAYER_RANKING = communityBoardConfig.getBoolean("CommunityBoardPlayerRanking", true);
 		COMMUNITYBOARD_BLACKSMITH = communityBoardConfig.getBoolean("CommunityBoardBlacksmith", true);
 		COMMUNITYBOARD_MERCHANT = communityBoardConfig.getBoolean("CommunityBoardMerchant", true);
+		COMMUNITY_AUCTION_ENABLED = communityBoardConfig.getBoolean("CommunityAuctionEnabled", false);
+		COMMUNITY_AUCTION_PEACE_ONLY = communityBoardConfig.getBoolean("CommunityAuctionPeaceOnly", true);
+		COMMUNITY_AUCTION_FEE_PERCENT = communityBoardConfig.getDouble("CommunityAuctionFeePercent", 0.5);
+		COMMUNITY_AUCTION_MIN_FEE = communityBoardConfig.getLong("CommunityAuctionMinimumFee", 10000);
+		COMMUNITY_AUCTION_MAX_LISTINGS = communityBoardConfig.getInt("CommunityAuctionMaxListings", 10);
 		COMMUNITY_PREMIUM_SYSTEM_ENABLED = communityBoardConfig.getBoolean("CommunityPremiumSystem", false);
 		COMMUNITY_PREMIUM_COIN_ID = communityBoardConfig.getInt("CommunityPremiumBuyCoinId", 57);
 		COMMUNITY_PREMIUM_PRICE_PER_DAY = communityBoardConfig.getInt("CommunityPremiumPricePerDay", 1000000);
@@ -1885,6 +2000,86 @@ public class Config
 		}
 		
 		DAILY_REWARD_ENABLED = communityBoardConfig.getBoolean("DailyRewardEnabled", true);
+		NOBLESSE_SERVICE = communityBoardConfig.getBoolean("NoblesseService", false);
+		NOBLESSE_ITEM_ID = communityBoardConfig.getInt("NoblesseItemId", 57);
+		NOBLESSE_ITEM_COUNT = communityBoardConfig.getInt("NoblesseItemCount", 100000000);
+		NOBLESSE_TIARA_ID = communityBoardConfig.getInt("NoblesseTiaraId", 7694);
+		HERO_SERVICE_ENABLED = communityBoardConfig.getBoolean("HeroServiceEnabled", false);
+		HERO_SERVICE_ITEM_ID = communityBoardConfig.getInt("HeroServiceItemId", 57); // Adena
+		HERO_SERVICE_ITEM_COUNT = communityBoardConfig.getInt("HeroServiceItemCount", 1000000);
+		CLASS_MASTER_BOARD = communityBoardConfig.getBoolean("ClassMasterCommunityBoard", true);
+		String currencyLine = communityBoardConfig.getString("ClassMasterCurrencyId", "57;57;57");
+		String priceLine = communityBoardConfig.getString("ClassMasterPrice", "0;0;0");
+		
+		String[] currencyLines = currencyLine.split(";");
+		String[] priceLines = priceLine.split(";");
+		
+		for (int classLevel = 0; classLevel < Math.min(currencyLines.length, priceLines.length); classLevel++)
+		{
+			String[] currencyIds = currencyLines[classLevel].split(",");
+			String[] amounts = priceLines[classLevel].split(",");
+			
+			List<ItemPrice> itemPrices = new ArrayList<>();
+			for (int i = 0; i < Math.min(currencyIds.length, amounts.length); i++)
+			{
+				try
+				{
+					int itemId = Integer.parseInt(currencyIds[i].trim());
+					long amount = Long.parseLong(amounts[i].trim());
+					if (amount > 0)
+					{
+						itemPrices.add(new ItemPrice(itemId, amount));
+					}
+				}
+				catch (NumberFormatException e)
+				{
+					LOGGER.warning("Invalid CLASS_MASTER config at index " + classLevel + ", entry " + i);
+				}
+			}
+			CLASS_MASTER_PRICES.put(classLevel, itemPrices);
+		}
+		
+		ENABLE_DROP_CALCULATOR = communityBoardConfig.getBoolean("EnableDropCalculator", false);
+		ENABLE_TELEPORT_FUNCTION = communityBoardConfig.getBoolean("EnableTeleportFunction", false);
+		ALLOW_TELEPORT_FROM_PEACE_ZONE_ONLY = communityBoardConfig.getBoolean("AllowTeleportFromPeaceOnly", false);
+		ALLOW_FREE_TELEPORT = communityBoardConfig.getBoolean("AllowFreeTeleport", false);
+		
+		final String[] prices = communityBoardConfig.getString("TeleportPrice", "57,1000").split(",");
+		TELEPORT_PRICE = new int[prices.length];
+		for (int i = 0; i < prices.length; i++)
+		{
+			TELEPORT_PRICE[i] = Integer.parseInt(prices[i]);
+		}
+		
+		String[] modIds = communityBoardConfig.getString("RestrictedMobIdsForTeleport", "25188;29163").trim().split(";");
+		RESTRICTED_TELEPORT_IDS = new ArrayList<>(modIds.length);
+		for (String modId : modIds)
+		{
+			try
+			{
+				RESTRICTED_TELEPORT_IDS.add(Integer.parseInt(modId));
+			}
+			catch (NumberFormatException nfe)
+			{
+				LOGGER.warning("DropCalculator" + ": Wrong mob Id RestrictedMobIdsForTeleport passed: " + modId);
+				LOGGER.warning(nfe.getMessage());
+			}
+		}
+		
+		String[] dropIds = communityBoardConfig.getString("RestrictedMobIdsInDropCalc", "25188;29163").trim().split(";");
+		RESTRICTED_MOB_DROPLIST_IDS = new ArrayList<>(dropIds.length);
+		for (String dropId : dropIds)
+		{
+			try
+			{
+				RESTRICTED_MOB_DROPLIST_IDS.add(Integer.parseInt(dropId));
+			}
+			catch (NumberFormatException nfe)
+			{
+				LOGGER.warning("DropCalculator" + ": Wrong mob Id RestrictedMobIdsInDropCalc passed: " + dropId);
+				LOGGER.warning(nfe.getMessage());
+			}
+		}
 	}
 	
 	/**
@@ -2337,6 +2532,64 @@ public class Config
 			}
 			BOSS_DROP_LIST.add(new DropHolder(DropType.DROP, Integer.parseInt(s.split(",")[0]), Integer.parseInt(s.split(",")[1]), Integer.parseInt(s.split(",")[2]), (Double.parseDouble(s.split(",")[3]))));
 		}
+		
+	}
+	
+	/**
+	 * Carrega o arquivo votesystem.ini (se existir).
+	 */
+	private static void loadVoteManagerConfig()
+	{
+		final ConfigReader voteManagerConfig = new ConfigReader(VOTE_SYSTEM_FILE);
+		ENABLE_VOTE_SYSTEM = voteManagerConfig.getBoolean("EnableVoteSystem", true);
+		ENABLE_INDIVIDUAL_VOTE = voteManagerConfig.getBoolean("EnableIndividualVote", true);
+		ENABLE_GLOBAL_VOTE = voteManagerConfig.getBoolean("EnableGlobalVote", true);
+		NEXT_TIME_TO_AUTO_UPDATE_TOTAL_VOTE = TimeUnit.MINUTES.toMillis(voteManagerConfig.getInt("NextTimeToAutoUpdateTotalVote", 60));// -> minutes
+		NEXT_TIME_TO_AUTO_UPDATE_INDIVIDUAL_VOTES = TimeUnit.MINUTES.toMillis(voteManagerConfig.getInt("NextTimeToAutoUpdateIndividualVotes", 60));// -> minutes
+		NEXT_TIME_TO_AUTO_CLEAN_INECESARY_VOTES = TimeUnit.MINUTES.toMillis(voteManagerConfig.getInt("NextTimeToAutoCleanInnecesaryVotes", 30));// -> minutes
+		NEXT_TIME_TO_CHECK_AUTO_GLOBAL_VOTES_REWARD = TimeUnit.MINUTES.toMillis(voteManagerConfig.getInt("NextTimeToCheckAutoGlobalVotesReward", 5));// -> minutes
+		INTERVAL_TO_NEXT_VOTE = TimeUnit.HOURS.toMillis(voteManagerConfig.getInt("IntervalTimeToNextVote", 12)); // -> hours
+		GLOBAL_VOTES_AMOUNT_TO_NEXT_REWARD = voteManagerConfig.getInt("GlobalVotesAmountToNextReward", 50);
+		ENABLE_VOTING_COMMAND = voteManagerConfig.getBoolean("EnableVotingCommand", true);
+		VOTING_COMMAND = voteManagerConfig.getString("VotingCommand", "getreward");
+		VOTE_LINK_TGS = voteManagerConfig.getString("VoteLinkTgs", "");
+		TGS_API_KEY = voteManagerConfig.getString("TgsApiKey", "");
+		VOTE_LINK_TOP_CO = voteManagerConfig.getString("VoteLinkTopCo", "");
+		TOP_CO_SRV_ID = voteManagerConfig.getString("TopCoSrvId", "");
+		VOTE_LINK_ITOPZ = voteManagerConfig.getString("VoteLinkItopz", "");
+		ITOPZ_API_KEY = voteManagerConfig.getString("ItopzZpiKey", "");
+		ITOPZ_SRV_ID = voteManagerConfig.getString("ItopzSrvId", "");
+		VOTE_LINK_VTS = voteManagerConfig.getString("VoteLinkVts", "");
+		VTS_API_KEY = voteManagerConfig.getString("VtsApiKey", "");
+		VTS_SID = voteManagerConfig.getString("VtsSid", "");
+		VOTE_LINK_HZ = voteManagerConfig.getString("VoteLinkHz", "");
+		HZ_API_KEY = voteManagerConfig.getString("HzApiKey", "");
+		VOTE_NETWORK_LINK = voteManagerConfig.getString("VoteNetworkLink", "");
+		VOTE_NETWORK_USER_NAME = voteManagerConfig.getString("VoteNetworkUserName", "");
+		VOTE_NETWORK_API_KEY = voteManagerConfig.getString("VoteNetworkApiKey", "");
+		VOTE_LINK_TSS = voteManagerConfig.getString("VoteLinkTss", "");
+		TSS_API_TOKEN = voteManagerConfig.getString("TssApiToken", "");
+		TS_SRV_ID = voteManagerConfig.getString("TsSrvId", "");
+		TS_DOMAIN_NAME = voteManagerConfig.getString("TsDomainName", "");
+		BRASIL_VOTE_LINK = voteManagerConfig.getString("BrasilVoteLink", "");
+		BRASIL_USER_NAME = voteManagerConfig.getString("BrasilUserName", "");
+		VOTE_LINK_MMOTOP = voteManagerConfig.getString("VoteLinkMmotop", "");
+		MMOTOP_API_KEY = voteManagerConfig.getString("MmotopApiKey", "");
+		VOTE_LINK_TZ = voteManagerConfig.getString("VoteLinkTz", "");
+		TZ_API_KEY = voteManagerConfig.getString("TzApiKey", "");
+		VOTE_LINK_SERVERS = voteManagerConfig.getString("VoteLinkServers", "");
+		SERVERS_HASH_CODE = voteManagerConfig.getString("ServersHashCode", "");
+		SERVERS_SRV_ID = voteManagerConfig.getString("ServersSrvId", "");
+		TEST_IP = voteManagerConfig.getString("TestIp", "");
+		VOTE_CONNECT_TIMEOUT = Math.clamp(voteManagerConfig.getInt("VoteConnectTimeout", 5000), 1000, 30000);
+		VOTE_READ_TIMEOUT = Math.clamp(voteManagerConfig.getInt("VoteReadTimeout", 5000), 1000, 30000);
+		VOTE_QUERY_COOLDOWN = TimeUnit.SECONDS.toMillis(Math.clamp(voteManagerConfig.getInt("VoteQueryCooldown", 15), 1, 300));
+		HOPZONE_EU_API_KEY = voteManagerConfig.getString("HopzoneEuApiKey", "");
+		HOPZONE_EU_SERVER_ID = voteManagerConfig.getString("HopzoneEuServerId", "");
+		HOTSERVERS_API_KEY = voteManagerConfig.getString("HotserversApiKey", "");
+		HOTSERVERS_SERVER_ID = voteManagerConfig.getString("HotserversServerId", "");
+		L2RANKZONE_API_KEY = voteManagerConfig.getString("L2RankzoneApiKey", "");
+		TOP4TEAMBR_USER_NAME = voteManagerConfig.getString("Top4TeamBrUserName", "");
 	}
 	
 	// ----------------------------------------------
@@ -2826,6 +3079,64 @@ public class Config
 		BANKING_SYSTEM_ENABLED = bankingConfig.getBoolean("BankingEnabled", false);
 		BANKING_SYSTEM_GOLDBARS = bankingConfig.getInt("BankingGoldbarCount", 1);
 		BANKING_SYSTEM_ADENA = bankingConfig.getInt("BankingAdenaCount", 500000000);
+	}
+	
+	/**
+	 * Carrega o arquivo voicedCommandsConfig (se existir).
+	 */
+	private static void loadvoicedCommandsConfig()
+	{
+		final ConfigReader voicedCommandsConfig = new ConfigReader(VOICED_COMMANDS_CONFIG_FILE);
+		TOMOB_COMMAND_ENABLED = voicedCommandsConfig.getBoolean("EnableToMobCommand", false);
+		TOMOB_COMMAND = voicedCommandsConfig.getString("ToMobCommand", "mob");
+		TOMOB_PEACE_ZONE_ONLY = voicedCommandsConfig.getBoolean("ToMobCommandPeaceZoneOnly", false);
+		TOMOB_FREE_TP = voicedCommandsConfig.getBoolean("ToMobCommandItemFree", false);
+		TOMOB_TP_TIME = voicedCommandsConfig.getInt("ToMobCommandScapeTime", 10);
+		TOMOB_TP_ITEM_ID = voicedCommandsConfig.getInt("RequiredItemId", 57);
+		TOMOB_TP_ITEM_COUNT = voicedCommandsConfig.getInt("RequiredItemCount", 1);
+		ENABLE_SIEGE_VCMD = voicedCommandsConfig.getBoolean("EnableSiegeCommand", false);
+		ENABLE_GNU_PANEL = voicedCommandsConfig.getBoolean("EnableGNUPanel", false);
+		ENABLE_SEVEN_RB_COMMAND = voicedCommandsConfig.getBoolean("EnableSevenRBVCmd", false);
+		TELEPORTS_VOICED_COMMAND = voicedCommandsConfig.getBoolean("EnableTeleportsVCmd", false);
+		ALLOW_GOTOCL_COMMAND = voicedCommandsConfig.getBoolean("EnableTeleportToClanLeader", false);
+		ALLOW_GOTOPL_COMMAND = voicedCommandsConfig.getBoolean("EnableTeleportToPartyLeader", false);
+		TOCL_ITEM_CONSUME_ID = voicedCommandsConfig.getInt("ToClRequiredItemId", 57);
+		TOCL_ITEM_CONSUME_COUNT = voicedCommandsConfig.getLong("ToClRequiredItemCount", 1000);
+		COMMAND_RES = voicedCommandsConfig.getBoolean("EnableRessCommand", false);
+		ITEM_ID_RESS = voicedCommandsConfig.getInt("RessCommandItemId", 57);
+		PRICE_RESS = voicedCommandsConfig.getInt("RessCommandItemCount", 57);
+		INSTANCE_REUSE_CLEAR_ENABLED = voicedCommandsConfig.getBoolean("EnableInstanceReuseClear", false);
+		INSTANCE_REUSE_CLEAR_ITEM_ID = voicedCommandsConfig.getInt("InstanceReuseClearItemId", 57);
+		INSTANCE_REUSE_CLEAR_ITEM_COUNT = voicedCommandsConfig.getLong("InstanceReuseClearItemCount", 1000);
+		final Set<Integer> resetIds = new HashSet<>();
+		for (String value : voicedCommandsConfig.getString("InstanceReuseClearAllowedIds", "").split(";"))
+		{
+			if (value.isBlank())
+			{
+				continue;
+			}
+			try
+			{
+				final int id = Integer.parseInt(value.trim());
+				if (id <= 0)
+				{
+					throw new NumberFormatException();
+				}
+				resetIds.add(id);
+			}
+			catch (NumberFormatException e)
+			{
+				LOGGER.warning("Invalid InstanceReuseClearAllowedIds entry: " + value + ". Service disabled.");
+				INSTANCE_REUSE_CLEAR_ENABLED = false;
+			}
+		}
+		INSTANCE_REUSE_CLEAR_ALLOWED_IDS = Set.copyOf(resetIds);
+		if ((INSTANCE_REUSE_CLEAR_ITEM_ID <= 0) || (INSTANCE_REUSE_CLEAR_ITEM_COUNT <= 0))
+		{
+			LOGGER.warning("Invalid instance reuse reset price. Service disabled.");
+			INSTANCE_REUSE_CLEAR_ENABLED = false;
+		}
+		
 	}
 	
 	/**
@@ -4154,6 +4465,20 @@ public class Config
 			}
 		}
 		return serverType;
+	}
+	
+	public static final Map<Integer, List<ItemPrice>> CLASS_MASTER_PRICES = new HashMap<>();
+	
+	public static class ItemPrice
+	{
+		public final int itemId;
+		public final long amount;
+		
+		public ItemPrice(int itemId, long amount)
+		{
+			this.itemId = itemId;
+			this.amount = amount;
+		}
 	}
 	
 	public static class ClassMasterSettings

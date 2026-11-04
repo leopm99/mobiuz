@@ -78,29 +78,30 @@ import com.l2journey.gameserver.network.serverpackets.WareHouseWithdrawalList;
  */
 public class HomeBoard implements IParseBoardHandler
 {
-	private static final String HTML_PATH = "data/html/CommunityBoard/";
-	private static final String ACESSAR = "Acessar";
-	private static final String N_1F1F1F = "1F1F1F";
-	private static final String N_161616 = "161616";
-	private static final String ACCESS = "Access";
-	private static final String HTML_PATH_KEY = ".html";
-
 	// Carrega TipsBoard (e a dica ativa) na inicializacao do servidor.
 	static
 	{
 		TipsBoard.getInstance();
 	}
-
+	
 	// SQL Queries
 	private static final String COUNT_FAVORITES = "SELECT COUNT(*) AS favorites FROM `bbs_favorites` WHERE `playerId`=?";
 	private final TopBoard topBoard = new TopBoard();
-
+	private final SubClassMasterBoard subClassBoard = new SubClassMasterBoard();
+	private final ColorChangeBoard colorChangeBoard = new ColorChangeBoard();
+	private final ClassMasterBoard classMasterBoard = new ClassMasterBoard();
+	private final NoblessBoard noblessBoard = new NoblessBoard();
+	private final HeroBoard heroBoard = new HeroBoard();
+	private final ClanService clanService = new ClanService();
+	private final RouletteService rouletteService = new RouletteService();
+	private final DropCalculatorBoard dropCalcBoard = new DropCalculatorBoard();
+	
 	private static final String[] COMMANDS =
 	{
 		"_bbshome",
 		"_bbstop",
 	};
-
+	
 	private static final String[] CUSTOM_COMMANDS =
 	{
 		Config.COMMUNITY_PREMIUM_SYSTEM_ENABLED ? "_bbspremium" : null,
@@ -113,9 +114,12 @@ public class HomeBoard implements IParseBoardHandler
 		// Warehouse, Augment e Draw fazem parte do BlackSmith.
 		Config.COMMUNITYBOARD_BLACKSMITH ? "_bbswarhouse" : null,
 		Config.COMMUNITYBOARD_BLACKSMITH ? "_bbsaugment" : null,
-		Config.COMMUNITYBOARD_BLACKSMITH ? "_bbsdraw" : null
+		Config.COMMUNITYBOARD_BLACKSMITH ? "_bbsdraw" : null,
+		Config.ENABLE_SUBCLASS_BOARD ? "_bbssubclassmaster" : null,
+		Config.ENABLE_SUBCLASS_BOARD ? "_bbssub" : null,
+		Config.COLOR_CHANGE_SERVICE_ENABLED ? "_bbcolorchange" : null
 	};
-
+	
 	private static final BiPredicate<String, Player> COMBAT_CHECK = (command, player) ->
 	{
 		boolean commandCheck = false;
@@ -127,12 +131,12 @@ public class HomeBoard implements IParseBoardHandler
 				break;
 			}
 		}
-
+		
 		return commandCheck && (player.isCastingNow() || player.isCastingSimultaneouslyNow() || player.isInCombat() || player.isInDuel() || player.isInOlympiadMode() || player.isInsideZone(ZoneId.SIEGE) || player.isInsideZone(ZoneId.PVP) || (player.getPvpFlag() > 0) || player.isAlikeDead() || player.isOnEvent() || player.isInStoreMode());
 	};
-
+	
 	private static final Predicate<Player> KARMA_CHECK = player -> Config.COMMUNITYBOARD_KARMA_DISABLED && (player.getKarma() > 0);
-
+	
 	/**
 	 * Returns the Portuguese string when {@code lang} is {@code br}, otherwise the English string.
 	 * @param lang player language code
@@ -144,7 +148,7 @@ public class HomeBoard implements IParseBoardHandler
 	{
 		return "br".equals(lang) ? br : en;
 	}
-
+	
 	/**
 	 * Builds the top row with feature cards (Buffer, Buffer Premium, DropSearch, Teleport). Cards are filtered by their corresponding configs and resized to fit the 720px row.
 	 * @param lang player language code
@@ -165,7 +169,7 @@ public class HomeBoard implements IParseBoardHandler
 				"bypass _bbsbuffer"
 			});
 		}
-		if (Config.isCommunityPremiumBufferEnabled())
+		if (Config.COMMUNITYBOARD_BUFFER_PREMIUM)
 		{
 			cells.add(new String[]
 			{
@@ -181,10 +185,10 @@ public class HomeBoard implements IParseBoardHandler
 			cells.add(new String[]
 			{
 				"icon.action046",
-				localize(lang, "Drop Calculator", "Calculadora de Drops"),
+				"Drop Search",
 				localize(lang, "Find any item", "Encontre qualquer item"),
 				localize(lang, "Search", "Pesquisar"),
-				"bypass _bbsdrop"
+				"bypass _bbstop;dropsearch/main.html"
 			});
 		}
 		if (Config.COMMUNITYBOARD_ENABLE_TELEPORTS)
@@ -198,17 +202,17 @@ public class HomeBoard implements IParseBoardHandler
 				"bypass _bbstop;gatekeeper/main.html"
 			});
 		}
-
+		
 		if (cells.isEmpty())
 		{
 			return "";
 		}
-
+		
 		// Each cell shares the 720px row equally (max 4 cells).
 		final int count = cells.size();
 		final int cellWidth = 720 / count;
 		final int innerWidth = cellWidth - 4; // accounts for cellpadding/spacing.
-
+		
 		final StringBuilder sb = new StringBuilder(2048);
 		sb.append("<table width=720 cellpadding=2 cellspacing=2 border=0><tr>");
 		for (String[] c : cells)
@@ -230,7 +234,7 @@ public class HomeBoard implements IParseBoardHandler
 		sb.append("</tr></table>");
 		return sb.toString();
 	}
-
+	
 	/**
 	 * Builds the full row containing the "Raid Boss Watch" panel and the "Hot Features" panel. Each panel is rendered only if its corresponding config is enabled. When only one of them is enabled, that panel expands laterally to occupy the full 720px width. When both are disabled, an empty string
 	 * is returned (the entire row is omitted from the page).
@@ -245,7 +249,7 @@ public class HomeBoard implements IParseBoardHandler
 		{
 			return "";
 		}
-
+		
 		// When both are enabled, keep the original side-by-side dimensions.
 		// When only one is enabled, that panel takes the full 720px row.
 		final int bossOuter;
@@ -266,7 +270,7 @@ public class HomeBoard implements IParseBoardHandler
 		{
 			hotOuter = 0;
 		}
-
+		
 		final StringBuilder sb = new StringBuilder(4096);
 		sb.append("<table width=732 height=210 cellpadding=2 cellspacing=2 border=0><tr>");
 		if (epicEnabled)
@@ -280,7 +284,7 @@ public class HomeBoard implements IParseBoardHandler
 		sb.append("</tr></table><br1>");
 		return sb.toString();
 	}
-
+	
 	/**
 	 * Builds the "Raid Boss Watch" panel as a single &lt;td&gt; cell with the given outer width.
 	 * @param outerWidth target width for the outer cell (e.g. 336 when paired with hot features, 720 when alone)
@@ -294,25 +298,37 @@ public class HomeBoard implements IParseBoardHandler
 		final boolean wide = outerWidth >= 720;
 		final int nameColWidth = wide ? (innerWidth / 2) - 10 : 140;
 		final int statusColWidth = wide ? (innerWidth / 2) - 10 : 180;
-
+		
 		final StringBuilder sb = new StringBuilder(2048);
 		sb.append("<td fixwidth=").append(outerWidth).append(" valign=top background=\"L2UI_CT1.Windows_DF_Drawer_Bg\">");
 		sb.append("<table width=").append(outerWidth).append(" cellpadding=2 cellspacing=0 border=0>");
-		sb.append("<tr><td height=10></td></tr>");
+		sb.append("<tr><td height=4></td></tr>");
+		appendBossCornerEffects(sb, innerWidth);
 		sb.append("<tr><td height=24 align=center bgcolor=\"2A2418\"><font name=\"hs9\" color=\"F2C75C\">").append(localize(lang, "Raid Boss Status", "Status dos Raid Bosses")).append("</font></td></tr>");
 		sb.append("<tr><td><table width=").append(innerWidth).append(" cellpadding=2 cellspacing=1 border=0>");
-		appendBossRow(sb, N_1F1F1F, "Antharas", "%antharas_status%", nameColWidth, statusColWidth);
-		appendBossRow(sb, N_161616, "Valakas", "%valakas_status%", nameColWidth, statusColWidth);
-		appendBossRow(sb, N_1F1F1F, "Baium", "%baium_status%", nameColWidth, statusColWidth);
-		appendBossRow(sb, N_161616, "Beleth", "%beleth_status%", nameColWidth, statusColWidth);
-		appendBossRow(sb, N_1F1F1F, "Core", "%core_status%", nameColWidth, statusColWidth);
-		appendBossRow(sb, N_161616, "Orfen", "%orfen_status%", nameColWidth, statusColWidth);
-		appendBossRow(sb, N_1F1F1F, "Queen Ant", "%queenant_status%", nameColWidth, statusColWidth);
+		appendBossRow(sb, "1F1F1F", "Antharas", "%antharas_status%", nameColWidth, statusColWidth);
+		appendBossRow(sb, "161616", "Valakas", "%valakas_status%", nameColWidth, statusColWidth);
+		appendBossRow(sb, "1F1F1F", "Baium", "%baium_status%", nameColWidth, statusColWidth);
+		appendBossRow(sb, "161616", "Beleth", "%beleth_status%", nameColWidth, statusColWidth);
+		appendBossRow(sb, "1F1F1F", "Core", "%core_status%", nameColWidth, statusColWidth);
+		appendBossRow(sb, "161616", "Orfen", "%orfen_status%", nameColWidth, statusColWidth);
+		appendBossRow(sb, "1F1F1F", "Queen Ant", "%queenant_status%", nameColWidth, statusColWidth);
 		sb.append("</table></td></tr>");
+		appendBossCornerEffects(sb, innerWidth);
+		sb.append("<tr><td height=4></td></tr>");
 		sb.append("</table></td>");
 		return sb.toString();
 	}
-
+	
+	private static void appendBossCornerEffects(StringBuilder sb, int width)
+	{
+		sb.append("<tr><td align=center><table width=").append(width).append(" cellpadding=0 cellspacing=0 border=0><tr>");
+		sb.append("<td width=8></td><td width=16 height=16><img src=\"L2UI_CT1.RadarMap_DF_iCN_Target01\" width=16 height=16></td>");
+		sb.append("<td width=").append(width - 48).append("></td>");
+		sb.append("<td width=16 height=16><img src=\"L2UI_CT1.RadarMap_DF_iCN_Target01\" width=16 height=16></td><td width=8></td>");
+		sb.append("</tr></table></td></tr>");
+	}
+	
 	private static void appendBossRow(StringBuilder sb, String bg, String name, String statusPlaceholder, int nameWidth, int statusWidth)
 	{
 		sb.append("<tr>");
@@ -320,14 +336,14 @@ public class HomeBoard implements IParseBoardHandler
 		sb.append("<td bgcolor=\"").append(bg).append("\" width=").append(statusWidth).append(" height=20 align=center>").append(statusPlaceholder).append("</td>");
 		sb.append("</tr>");
 	}
-
+	
 	private static String buildHotFeaturesBlock(int outerWidth, String lang)
 	{
 		final StringBuilder sb = new StringBuilder(2048);
 		sb.append("<td fixwidth=").append(outerWidth).append(" valign=top background=\"L2UI_CT1.Windows_DF_Drawer_Bg\">");
-
+		
 		// Build the list of enabled cells.
-		// Ordem fixa: Ranking, Services, Merchant, Premium, Delevel, Recompensa.
+		// Ordem fixa de exibicao (linha 1: Ranking, BlackSmith, Merchant; linha 2: Premium, Delevel, Recompensa).
 		final List<String[]> cells = new ArrayList<>(6);
 		// Ranking (TopBoard built-in).
 		if (Config.COMMUNITYBOARD_PLAYER_RANKING)
@@ -340,15 +356,15 @@ public class HomeBoard implements IParseBoardHandler
 				"bypass _bbstopboard"
 			});
 		}
-		// Services groups the enabled Blacksmith and character services.
-		if (Config.COMMUNITYBOARD_BLACKSMITH || Config.SUBCLASS_MASTER_BOARD || Config.COLOR_CHANGE_SERVICE_ENABLED)
+		// BlackSmith (acessivel quando multisells estao habilitados, pois usa _bbsmultisell internamente).
+		if (Config.COMMUNITYBOARD_BLACKSMITH)
 		{
 			cells.add(new String[]
 			{
 				"L2UI.Crystalize_active",
+				"BlackSmith",
 				localize(lang, "Services", "Serviços"),
-				localize(lang, ACCESS, ACESSAR),
-				"bypass _bbstop;merchant/blacksmithMain.html"
+				"bypass _bbstop;merchant/servicesMain.html"
 			});
 		}
 		if (Config.COMMUNITYBOARD_MERCHANT)
@@ -361,13 +377,13 @@ public class HomeBoard implements IParseBoardHandler
 				"bypass _bbstop;merchant/gmshop.html"
 			});
 		}
-		if (Config.isCommunityPremiumShopEnabled())
+		if (Config.COMMUNITY_PREMIUM_SYSTEM_ENABLED)
 		{
 			cells.add(new String[]
 			{
 				"BranchSys2.br_spirit_rune_i00",
 				"Premium",
-				localize(lang, ACCESS, ACESSAR),
+				localize(lang, "Access", "Acessar"),
 				"bypass _bbstop;premium/main.html"
 			});
 		}
@@ -377,7 +393,7 @@ public class HomeBoard implements IParseBoardHandler
 			{
 				"icon.skill1411",
 				"Delevel",
-				localize(lang, ACCESS, ACESSAR),
+				localize(lang, "Access", "Acessar"),
 				"bypass _bbstop;delevel/main.html"
 			});
 		}
@@ -391,20 +407,20 @@ public class HomeBoard implements IParseBoardHandler
 				"bypass -h voice .dailyreward"
 			});
 		}
-
+		
 		// Quando o painel ocupa toda a largura, distribui mais celulas por linha.
 		final int cellsPerRow = outerWidth >= 720 ? 6 : 3;
 		final int cellWidth = (outerWidth - 12) / cellsPerRow;
 		final int buttonWidth = cellWidth - 24;
-
+		
 		sb.append("<table width=").append(outerWidth).append(" cellpadding=2 cellspacing=0 border=0>");
 		sb.append("<tr><td height=15></td></tr>");
-
+		
 		// Layout em linhas com cores alternadas.
 		final String[] bgColors =
 		{
-			N_161616,
-			N_1F1F1F
+			"161616",
+			"1F1F1F"
 		};
 		int cellIndex = 0;
 		for (int i = 0; i < cells.size(); i += cellsPerRow)
@@ -427,7 +443,7 @@ public class HomeBoard implements IParseBoardHandler
 		sb.append("</td>");
 		return sb.toString();
 	}
-
+	
 	/**
 	 * Returns the list of supported Community Board commands.
 	 * @return Array of command strings
@@ -439,60 +455,17 @@ public class HomeBoard implements IParseBoardHandler
 		commands.addAll(Arrays.asList(COMMANDS));
 		commands.addAll(Arrays.asList(CUSTOM_COMMANDS));
 		commands.addAll(Arrays.asList(topBoard.getCommunityBoardCommands()));
+		commands.addAll(Arrays.asList(subClassBoard.getCommunityBoardCommands()));
+		commands.addAll(Arrays.asList(colorChangeBoard.getCommunityBoardCommands()));
+		commands.addAll(Arrays.asList(classMasterBoard.getCommunityBoardCommands()));
+		commands.addAll(Arrays.asList(noblessBoard.getCommunityBoardCommands()));
+		commands.addAll(Arrays.asList(heroBoard.getCommunityBoardCommands()));
+		commands.addAll(Arrays.asList(clanService.getCommunityBoardCommands()));
+		commands.addAll(Arrays.asList(rouletteService.getCommunityBoardCommands()));
+		commands.addAll(Arrays.asList(dropCalcBoard.getCommunityBoardCommands()));
 		return commands.stream().filter(Objects::nonNull).toArray(String[]::new);
 	}
-
-
-	/** Builds a three-column service menu; adding an entry automatically adds rows. */
-	private static String buildServicesRows(String lang)
-	{
-		// { icon, title, description, action }. Each service retains its own enable flag.
-		final List<String[]> services = new ArrayList<>();
-		if (Config.COMMUNITYBOARD_BLACKSMITH)
-		{
-			services.add(new String[] { "icon.skill0629", "Warehouse", localize(lang, "Store and retrieve your items.", "Guarde e retire seus itens."), "bypass _bbstop;merchant/warehouse.html" });
-			services.add(new String[] { "icon.etc_int_symbol_i01", "Symbol Maker", localize(lang, "Apply or remove your dyes.", "Aplique ou remova suas tatuagens."), "bypass _bbstop;merchant/symbolMaker.html" });
-			services.add(new String[] { "icon.skill0818", "Blacksmith", localize(lang, "Improve your equipment.", "Aprimore seus equipamentos."), "bypass _bbstop;merchant/blacksmith.html" });
-		}
-		if (Config.SUBCLASS_MASTER_BOARD)
-		{
-			services.add(new String[] { "Icon.skill0755", "Subclass Master", localize(lang, "Manage your subclasses.", "Gerencie suas subclasses."), "bypass _bbssubclassmaster" });
-		}
-		if (Config.COLOR_CHANGE_SERVICE_ENABLED)
-		{
-			services.add(new String[] { "icon.etc_int_symbol_i01", localize(lang, "Name & Title Color", "Cor do Nome e Título"), localize(lang, "Customize your name and title.", "Personalize seu nome e título."), "bypass _bbcolorchange" });
-		}
-		if (services.isEmpty())
-		{
-			return "<table width=720><tr><td align=center>" + localize(lang, "No services are currently available.", "Nenhum serviço disponível no momento.") + "</td></tr></table>";
-		}
-		final int columns = 3;
-		final StringBuilder html = new StringBuilder(4096);
-		html.append("<table width=720 cellpadding=4 cellspacing=4 border=0>");
-		for (int i = 0; i < services.size(); i += columns)
-		{
-			html.append("<tr>");
-			for (int column = 0; column < columns; column++)
-			{
-				if ((i + column) >= services.size())
-				{
-					html.append("<td fixwidth=226></td>");
-					continue;
-				}
-				final String[] service = services.get(i + column);
-				html.append("<td fixwidth=226 height=130 align=center valign=top background=\"L2UI_CT1.Windows_DF_Drawer_Bg\">");
-				html.append("<br><img src=\"").append(service[0]).append("\" width=32 height=32><br1>");
-				html.append("<font color=\"F2C75C\">").append(service[1]).append("</font><br1>");
-				html.append("<font color=\"AE9977\">").append(service[2]).append("</font><br>");
-				html.append("<button value=\"").append(localize(lang, ACCESS, ACESSAR)).append("\" action=\"").append(service[3]);
-				html.append("\" width=160 height=24 back=\"L2UI_CT1.Button_DF_Down\" fore=\"L2UI_CT1.Button_DF\"><br></td>");
-			}
-			html.append("</tr>");
-		}
-		html.append("</table>");
-		return html.toString();
-	}
-
+	
 	/**
 	 * Parses and executes a Community Board command for the given player.
 	 * @param command The command string
@@ -513,27 +486,27 @@ public class HomeBoard implements IParseBoardHandler
 			player.sendMessage("You can't use the Community Board right now.");
 			return false;
 		}
-
+		
 		if (KARMA_CHECK.test(player))
 		{
 			player.sendMessage("Players with Karma cannot use the Community Board.");
 			return false;
 		}
-
+		
 		if (Config.COMMUNITYBOARD_PEACE_ONLY && !player.isInsideZone(ZoneId.PEACE))
 		{
 			player.sendMessage("Community Board cannot be used out of peace zone.");
 			return false;
 		}
-
+		
 		String returnHtml = null;
 		if (command.equals("_bbshome") || command.equals("_bbstop"))
 		{
 			CommunityBoardHandler.getInstance().addBypass(player, "Home", command);
 			returnHtml = HtmCache.getInstance().getHtm(player, "data/html/CommunityBoard/home.html");
-
+			
 			final String lang = player.getLang();
-
+			
 			// Injeta os blocos dinamicos PRIMEIRO, antes das substituicoes de placeholders
 			// individuais (%antharas_status%, etc.), pois esses placeholders existem
 			// dentro do HTML gerado por buildBossHotSection().
@@ -542,11 +515,11 @@ public class HomeBoard implements IParseBoardHandler
 			returnHtml = returnHtml.replace("%boss_hot_section%", buildBossHotSection(lang));
 			returnHtml = returnHtml.replace("%top_features_block%", buildTopFeaturesBlock(lang));
 			returnHtml = returnHtml.replace("%tip_block%", TipsBoard.getInstance().getActiveTipHtml());
-
+			
 			returnHtml = returnHtml.replace("%fav_count%", Integer.toString(getFavoriteCount(player)));
-			returnHtml = returnHtml.replace("%region_count%", Integer.toString(getRegionCount()));
+			returnHtml = returnHtml.replace("%region_count%", Integer.toString(getRegionCount(player)));
 			returnHtml = returnHtml.replace("%clan_count%", Integer.toString(ClanTable.getInstance().getClanCount()));
-
+			
 			// Epic boss status replacement
 			returnHtml = returnHtml.replace("%antharas_status%", HomeBoard.getBossStatus(29068, lang));
 			returnHtml = returnHtml.replace("%baium_status%", HomeBoard.getBossStatus(29020, lang));
@@ -560,30 +533,44 @@ public class HomeBoard implements IParseBoardHandler
 		{
 			return topBoard.parseCommunityBoardCommand(command, player);
 		}
+		else if (command.startsWith("_bbsclassmaster"))
+		{
+			return classMasterBoard.parseCommunityBoardCommand(command, player);
+		}
+		else if (command.startsWith("_bbssubclassmaster"))
+		{
+			return subClassBoard.parseCommunityBoardCommand(command, player);
+		}
+		else if (command.startsWith("_bbspurchase_noblesse"))
+		{
+			return noblessBoard.parseCommunityBoardCommand(command, player);
+		}
+		else if (command.startsWith("_bbspurchase_hero"))
+		{
+			return heroBoard.parseCommunityBoardCommand(command, player);
+		}
+		else if (command.startsWith("_bbsclan"))
+		{
+			return clanService.parseCommunityBoardCommand(command, player);
+		}
+		else if (command.startsWith("_bbsroulette"))
+		{
+			return rouletteService.parseCommunityBoardCommand(command, player);
+		}
+		else if (command.startsWith("_bbcolorchange"))
+		{
+			return colorChangeBoard.parseCommunityBoardCommand(command, player);
+		}
+		else if (Arrays.stream(dropCalcBoard.getCommunityBoardCommands()).anyMatch(command::startsWith))
+		{
+			return dropCalcBoard.parseCommunityBoardCommand(command, player);
+		}
 		else if (command.startsWith("_bbstop;"))
 		{
 			final String path = command.replace("_bbstop;", "");
-			if (path.equals("dropsearch/main.html"))
+			if (!path.isEmpty() && path.endsWith(".html"))
 			{
-				return new DropSearchBoard().parseCommunityBoardCommand("_bbsdrop", player);
-			}
-			else if (path.equals("merchant/blacksmithMain.html"))
-			{
-				final String lang = player.getLang();
-				CommunityBoardHandler.getInstance().addBypass(player, localize(lang, "Services", "Serviços"), "_bbstop;merchant/blacksmithMain.html");
-				returnHtml = HtmCache.getInstance().getHtm(player, HTML_PATH + "merchant/blacksmithMain.html");
-				returnHtml = returnHtml.replace("%services_title%", localize(lang, "Services", "Serviços"))
-					.replace("%services_description%", localize(lang, "Everything you need for your character, in one place.", "Tudo que seu personagem precisa, em um só lugar."))
-					.replace("%services_rows%", buildServicesRows(lang))
-					.replace("%back_label%", localize(lang, "Back", "Voltar"));
-			}
-			else if (path.startsWith("premium/") && !Config.isCommunityPremiumShopEnabled())
-			{
-				player.sendMessage(localize(player.getLang(), "Premium system is currently disabled.", "O sistema premium esta desativado no momento."));
-			}
-			else if (!path.isEmpty() && path.endsWith(HTML_PATH_KEY))
-			{
-				returnHtml = HtmCache.getInstance().getHtm(player, HTML_PATH + path);
+				returnHtml = HtmCache.getInstance().getHtm(player, "data/html/CommunityBoard/" + path);
 			}
 		}
 		else if (command.startsWith("_bbsmultisell"))
@@ -592,8 +579,13 @@ public class HomeBoard implements IParseBoardHandler
 			final String[] buypassOptions = fullBypass.split(",");
 			final int multisellId = Integer.parseInt(buypassOptions[0]);
 			final String page = buypassOptions[1];
-			returnHtml = HtmCache.getInstance().getHtm(player, HTML_PATH + page + HTML_PATH_KEY);
+			returnHtml = HtmCache.getInstance().getHtm(player, "data/html/CommunityBoard/" + page + ".html");
+			if (returnHtml != null)
+			{
+				CommunityBoardHandler.separateAndSend(returnHtml, player);
+			}
 			MultisellData.getInstance().separateAndSend(multisellId, player, null, false);
+			return true;
 		}
 		else if (command.startsWith("_bbsexcmultisell"))
 		{
@@ -601,13 +593,18 @@ public class HomeBoard implements IParseBoardHandler
 			final String[] buypassOptions = fullBypass.split(",");
 			final int multisellId = Integer.parseInt(buypassOptions[0]);
 			final String page = buypassOptions[1];
-			returnHtml = HtmCache.getInstance().getHtm(player, HTML_PATH + page + HTML_PATH_KEY);
+			returnHtml = HtmCache.getInstance().getHtm(player, "data/html/CommunityBoard/" + page + ".html");
+			if (returnHtml != null)
+			{
+				CommunityBoardHandler.separateAndSend(returnHtml, player);
+			}
 			MultisellData.getInstance().separateAndSend(multisellId, player, null, true);
+			return true;
 		}
 		else if (command.startsWith("_bbssell"))
 		{
 			final String page = command.replace("_bbssell;", "");
-			returnHtml = HtmCache.getInstance().getHtm(player, HTML_PATH + page + HTML_PATH_KEY);
+			returnHtml = HtmCache.getInstance().getHtm(player, "data/html/CommunityBoard/" + page + ".html");
 			player.sendPacket(new BuyList(BuyListData.getInstance().getBuyList(423), player.getAdena(), 0));
 			player.sendPacket(new ExBuySellList(player, false));
 		}
@@ -622,7 +619,7 @@ public class HomeBoard implements IParseBoardHandler
 					player.sendPacket(SystemMessageId.YOUR_WAREHOUSE_IS_FULL);
 					return false;
 				}
-
+				
 				player.setWarehouseOpenedViaCommunityBoard(true);
 				player.setInventoryBlockingStatus(true);
 				player.sendPacket(new WareHouseDepositList(player, 1));
@@ -634,13 +631,13 @@ public class HomeBoard implements IParseBoardHandler
 				{
 					return false;
 				}
-
+				
 				if (player.getClan() == null)
 				{
 					player.sendPacket(SystemMessageId.YOU_ARE_NOT_A_CLAN_MEMBER_AND_CANNOT_PERFORM_THIS_ACTION);
 					return false;
 				}
-
+				
 				player.sendPacket(ActionFailed.STATIC_PACKET);
 				player.setActiveWarehouse(player.getClan().getWarehouse());
 				if (player.getClan().getLevel() == 0)
@@ -648,7 +645,7 @@ public class HomeBoard implements IParseBoardHandler
 					player.sendPacket(SystemMessageId.ONLY_CLANS_OF_CLAN_LEVEL_1_OR_HIGHER_CAN_USE_A_CLAN_WAREHOUSE);
 					return false;
 				}
-
+				
 				player.setActiveWarehouse(player.getClan().getWarehouse());
 				player.setWarehouseOpenedViaCommunityBoard(true);
 				player.setInventoryBlockingStatus(true);
@@ -663,7 +660,7 @@ public class HomeBoard implements IParseBoardHandler
 					player.sendPacket(SystemMessageId.YOU_HAVE_NOT_DEPOSITED_ANY_ITEMS_IN_YOUR_WAREHOUSE);
 					return false;
 				}
-
+				
 				player.setWarehouseOpenedViaCommunityBoard(true);
 				player.sendPacket(new WareHouseWithdrawalList(player, 1));
 			}
@@ -673,30 +670,30 @@ public class HomeBoard implements IParseBoardHandler
 				{
 					return false;
 				}
-
+				
 				if (player.getClan() == null)
 				{
 					player.sendPacket(SystemMessageId.YOU_DO_NOT_HAVE_THE_RIGHT_TO_USE_THE_CLAN_WAREHOUSE);
 					return false;
 				}
-
+				
 				player.sendPacket(ActionFailed.STATIC_PACKET);
 				if (!player.hasAccess(ClanAccess.ACCESS_WAREHOUSE))
 				{
 					player.sendPacket(SystemMessageId.YOU_DO_NOT_HAVE_THE_RIGHT_TO_USE_THE_CLAN_WAREHOUSE);
 					return false;
 				}
-
+				
 				if (player.getClan().getLevel() == 0)
 				{
 					player.sendPacket(SystemMessageId.ONLY_CLANS_OF_CLAN_LEVEL_1_OR_HIGHER_CAN_USE_A_CLAN_WAREHOUSE);
 					return false;
 				}
-
+				
 				player.setActiveWarehouse(player.getClan().getWarehouse());
 				player.setWarehouseOpenedViaCommunityBoard(true);
 				player.setInventoryBlockingStatus(true);
-
+				
 				player.sendPacket(new WareHouseWithdrawalList(player, 4));
 			}
 		}
@@ -778,42 +775,35 @@ public class HomeBoard implements IParseBoardHandler
 		}
 		else if (command.startsWith("_bbspremium"))
 		{
-			if (!Config.isCommunityPremiumShopEnabled())
+			final String fullBypass = command.replace("_bbspremium;", "");
+			final String[] buypassOptions = fullBypass.split(",");
+			final int premiumDays = Integer.parseInt(buypassOptions[0]);
+			if ((premiumDays < 1) || (premiumDays > 30) || (player.getInventory().getInventoryItemCount(Config.COMMUNITY_PREMIUM_COIN_ID, -1) < (Config.COMMUNITY_PREMIUM_PRICE_PER_DAY * premiumDays)))
 			{
-				player.sendMessage(localize(player.getLang(), "Premium system is currently disabled.", "O sistema premium esta desativado no momento."));
+				player.sendMessage("Not enough currency!");
 			}
 			else
 			{
-				final String fullBypass = command.replace("_bbspremium;", "");
-				final String[] buypassOptions = fullBypass.split(",");
-				final int premiumDays = Integer.parseInt(buypassOptions[0]);
-				if ((premiumDays < 1) || (premiumDays > 30) || (player.getInventory().getInventoryItemCount(Config.COMMUNITY_PREMIUM_COIN_ID, -1) < (Config.COMMUNITY_PREMIUM_PRICE_PER_DAY * premiumDays)))
+				player.destroyItemByItemId(ItemProcessType.FEE, Config.COMMUNITY_PREMIUM_COIN_ID, (long) (Config.COMMUNITY_PREMIUM_PRICE_PER_DAY) * premiumDays, player, true);
+				PremiumManager.getInstance().addPremiumTime(player.getAccountName(), premiumDays, TimeUnit.DAYS);
+				player.sendMessage("Your account will now have premium status until " + new SimpleDateFormat("dd.MM.yyyy HH:mm").format(PremiumManager.getInstance().getPremiumExpiration(player.getAccountName())) + ".");
+				if (EventsConfig.PC_CAFE_RETAIL_LIKE)
 				{
-					player.sendMessage("Not enough currency!");
+					PcCafePointsManager.getInstance().run(player);
 				}
-				else
-				{
-					player.destroyItemByItemId(ItemProcessType.FEE, Config.COMMUNITY_PREMIUM_COIN_ID, (long) (Config.COMMUNITY_PREMIUM_PRICE_PER_DAY) * premiumDays, player, true);
-					PremiumManager.getInstance().addPremiumTime(player.getAccountName(), premiumDays, TimeUnit.DAYS);
-					player.sendMessage("Your account will now have premium status until " + new SimpleDateFormat("dd.MM.yyyy HH:mm").format(PremiumManager.getInstance().getPremiumExpiration(player.getAccountName())) + ".");
-					if (EventsConfig.PC_CAFE_RETAIL_LIKE)
-					{
-						PcCafePointsManager.getInstance().run(player);
-					}
-
-					returnHtml = HtmCache.getInstance().getHtm(player, "data/html/CommunityBoard/premium/thankyou.html");
-				}
+				
+				returnHtml = HtmCache.getInstance().getHtm(player, "data/html/CommunityBoard/premium/thankyou.html");
 			}
 		}
-
+		
 		if (returnHtml != null)
 		{
 			CommunityBoardHandler.separateAndSend(returnHtml, player);
 		}
-
+		
 		return false;
 	}
-
+	
 	/**
 	 * Gets the Favorite links for the given player.
 	 * @param player the player
@@ -838,19 +828,20 @@ public class HomeBoard implements IParseBoardHandler
 		{
 			LOG.warning(FavoriteBoard.class.getSimpleName() + ": Couldn't load favorites count for " + player);
 		}
-
+		
 		return count;
 	}
-
+	
 	/**
 	 * Gets the registered regions count for the given player.
+	 * @param player the player
 	 * @return the registered regions count
 	 */
-	private static int getRegionCount()
+	private static int getRegionCount(Player player)
 	{
 		return 0; // TODO: Implement.
 	}
-
+	
 	/**
 	 * Returns the status of the boss for Community Board HTML.
 	 * @param bossId Boss NPC ID
@@ -864,10 +855,8 @@ public class HomeBoard implements IParseBoardHandler
 		{
 			return "?";
 		}
-
+		
 		final long respawnTime = info.getLong("respawn_time");
-		return (respawnTime <= System.currentTimeMillis())
-			? "<font color=\"32C332\">" + localize(lang, "Is Alive", "Vivo") + "</font>"
-			: "<font color=\"FF3333\">" + localize(lang, "Is Dead", "Morto") + "</font>";
+		return (respawnTime <= System.currentTimeMillis()) ? "<font color=\"32C332\">" + localize(lang, "Is Alive", "Vivo") + "</font>" : "<font color=\"FF3333\">" + localize(lang, "Is Dead", "Morto") + "</font>";
 	}
 }

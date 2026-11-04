@@ -39,12 +39,15 @@ import java.util.logging.Logger;
 
 import com.l2journey.Config;
 import com.l2journey.EventsConfig;
+import com.l2journey.RebirthEngineConfigs;
 import com.l2journey.commons.database.DatabaseFactory;
 import com.l2journey.commons.enums.ServerMode;
 import com.l2journey.commons.network.ConnectionManager;
 import com.l2journey.commons.threads.ThreadPool;
 import com.l2journey.commons.util.DeadlockWatcher;
+import com.l2journey.gameserver.auctionhouse.AuctionHouseManager;
 import com.l2journey.gameserver.cache.HtmCache;
+import com.l2journey.gameserver.cache.ImagesCache;
 import com.l2journey.gameserver.data.AugmentationData;
 import com.l2journey.gameserver.data.BotReportTable;
 import com.l2journey.gameserver.data.MerchantPriceConfigTable;
@@ -161,6 +164,7 @@ import com.l2journey.gameserver.model.groups.matching.PartyMatchRoomList;
 import com.l2journey.gameserver.model.groups.matching.PartyMatchWaitingList;
 import com.l2journey.gameserver.model.olympiad.Hero;
 import com.l2journey.gameserver.model.olympiad.Olympiad;
+import com.l2journey.gameserver.model.phantom.PhantomManager;
 import com.l2journey.gameserver.model.sevensigns.SevenSigns;
 import com.l2journey.gameserver.model.sevensigns.SevenSignsFestival;
 import com.l2journey.gameserver.model.visualSystem.DressMeLoader;
@@ -168,13 +172,14 @@ import com.l2journey.gameserver.network.GameClient;
 import com.l2journey.gameserver.network.GamePacketHandler;
 import com.l2journey.gameserver.network.NpcStringId;
 import com.l2journey.gameserver.network.SystemMessageId;
-import com.l2journey.gameserver.model.phantom.PhantomManager;
 import com.l2journey.gameserver.scripting.ScriptEngineManager;
 import com.l2journey.gameserver.taskmanagers.GameTimeTaskManager;
 import com.l2journey.gameserver.taskmanagers.ItemLifeTimeTaskManager;
 import com.l2journey.gameserver.taskmanagers.ItemsAutoDestroyTaskManager;
 import com.l2journey.gameserver.taskmanagers.PersistentTaskManager;
 import com.l2journey.gameserver.util.Broadcast;
+import com.l2journey.gameserver.votesystem.handler.VoteManager;
+import com.l2journey.gameserver.votesystem.util.VoteSiteData;
 import com.l2journey.tools.dashboard.DashboardControlServer;
 
 public class GameServer
@@ -198,6 +203,7 @@ public class GameServer
 		// Initialize config
 		Config.load(ServerMode.GAME);
 		EventsConfig.load();
+		RebirthEngineConfigs.load();
 		
 		printSection("Database");
 		DatabaseFactory.init();
@@ -302,6 +308,24 @@ public class GameServer
 		GrandBossManager.getInstance().initZones();
 		EventDropManager.getInstance();
 		
+		com.l2journey.gameserver.donation.DonationConfig.load();
+		if (com.l2journey.gameserver.donation.DonationConfig.DONATION_ENABLED)
+		{
+			com.l2journey.gameserver.donation.DonationManager.getInstance();
+		}
+
+		printSection("Vote Reward System");
+		if (Config.ENABLE_VOTE_SYSTEM)
+		{
+			VoteSiteData.getInstance();
+			VoteManager.getInstance();
+			LOGGER.info("Vote Reward System: Enabled.");
+		}
+		else
+		{
+			LOGGER.info("Vote Reward System: Disabled.");
+		}
+		
 		printSection("Olympiad");
 		Olympiad.getInstance();
 		Hero.getInstance();
@@ -312,6 +336,8 @@ public class GameServer
 		// Call to load caches
 		printSection("Cache");
 		HtmCache.getInstance();
+		// Read and convert custom images before the first player request.
+		ImagesCache.getInstance();
 		CrestTable.getInstance();
 		TeleportLocationTable.getInstance();
 		UIData.getInstance();
@@ -414,6 +440,7 @@ public class GameServer
 		{
 			MailManager.getInstance();
 		}
+		AuctionHouseManager.getInstance().start();
 		if (Config.CUSTOM_MAIL_MANAGER_ENABLED)
 		{
 			CustomMailManager.getInstance();

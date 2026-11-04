@@ -33,7 +33,7 @@
 		<set name="reuseDelay" val="10000" />
 		<effects>
 			<effect name="ManaHealOverTime" ticks="3">
-				<param power="50" />
+				<param power="100" />
 			</effect>
 		</effects>
 	</skill>

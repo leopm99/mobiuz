@@ -49,5 +49,6 @@ public enum ItemProcessType
 	RESTORE,
 	REWARD,
 	QUEST,
-	DESTROY
+	DESTROY,
+	CONSUME
 }
