@@ -607,7 +607,7 @@ public class EffectList
 	 */
 	private void stopAndRemove(boolean broadcast, SkillFinishType type, BuffInfo info, Queue<BuffInfo> buffs)
 	{
-		if (info == null)
+		if ((info == null) || (buffs == null))
 		{
 			return;
 		}

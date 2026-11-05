@@ -347,7 +347,7 @@ public class PhantomFactory
 		return (race == Race.HUMAN) || (race == Race.ELF) || (race == Race.DARK_ELF) || (race == Race.ORC) || (race == Race.DWARF) || (race == Race.KAMAEL);
 	}
 	
-	private static String buildUniqueName()
+	static String buildUniqueName()
 	{
 		for (int i = 0; i < 1000; i++)
 		{
@@ -356,15 +356,15 @@ public class PhantomFactory
 			switch (Rnd.get(3))
 			{
 				case 0:
-					name = PREFIXES[Rnd.get(PREFIXES.length)];
+					name = Rnd.pick(PREFIXES);
 					break;
 				
 				case 1:
-					name = FIRST_NAMES[Rnd.get(FIRST_NAMES.length)];
+					name = Rnd.pick(FIRST_NAMES);
 					break;
 				
 				default:
-					name = SUFFIXES[Rnd.get(SUFFIXES.length)];
+					name = Rnd.pick(SUFFIXES);
 					break;
 			}
 			

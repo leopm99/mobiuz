@@ -135,7 +135,7 @@ public class PhantomProgression
 		}
 	}
 	
-	private static void handleClassChange(Player bot, int lvl)
+	static void handleClassChange(Player bot, int lvl)
 	{
 		PlayerClass currentClass = bot.getPlayerClass();
 		if (currentClass == null)
@@ -167,47 +167,88 @@ public class PhantomProgression
 		
 		PlayerClass newClass = null;
 		int chance = Rnd.get(100);
-		
+		int levelCap = bot.getVariables().getInt(VAR_LEVEL_CAP, 85);
+
 		switch (currentClass)
 		{
 			case MAGE:
-				newClass = (chance < 85) ? PlayerClass.WIZARD : PlayerClass.CLERIC;
+				newClass = chooseHumanMageFirstClass(chance, levelCap);
 				break;
 			case ELVEN_MAGE:
-				newClass = (chance < 85) ? PlayerClass.ELVEN_WIZARD : PlayerClass.ORACLE;
+				newClass = chooseElvenMageFirstClass(chance, levelCap);
 				break;
 			case DARK_MAGE:
-				newClass = (chance < 85) ? PlayerClass.DARK_WIZARD : PlayerClass.SHILLIEN_ORACLE;
+				newClass = chooseDarkMageFirstClass(chance, levelCap);
 				break;
 			case WIZARD:
-				if (chance < 40)
-				{
-					newClass = PlayerClass.SORCERER;
-				}
-				else if (chance < 80)
-				{
-					newClass = PlayerClass.NECROMANCER;
-				}
-				else
-				{
-					newClass = PlayerClass.WARLOCK;
-				}
+				newClass = chooseWizardSecondClass(chance);
+				break;
+			case CLERIC:
+				newClass = PlayerClass.BISHOP;
 				break;
 			default:
 			{
 				break;
 			}
 		}
-		
+
 		if (newClass == null)
 		{
 			newClass = nextClasses.get(Rnd.get(nextClasses.size()));
 		}
-		
+
+		completeClassChange(bot, currentClass, newClass);
+	}
+
+	/**
+	 * @param levelCap the phantom's max level cap
+	 * @return {@code true} when healer first-class rolls are allowed
+	 */
+	static boolean allowsHealerRoll(int levelCap)
+	{
+		return levelCap >= 40;
+	}
+
+	static PlayerClass chooseHumanMageFirstClass(int chance, int levelCap)
+	{
+		return (allowsHealerRoll(levelCap) && (chance >= 85)) ? PlayerClass.CLERIC : PlayerClass.WIZARD;
+	}
+
+	static PlayerClass chooseElvenMageFirstClass(int chance, int levelCap)
+	{
+		return (allowsHealerRoll(levelCap) && (chance >= 85)) ? PlayerClass.ORACLE : PlayerClass.ELVEN_WIZARD;
+	}
+
+	static PlayerClass chooseDarkMageFirstClass(int chance, int levelCap)
+	{
+		return (allowsHealerRoll(levelCap) && (chance >= 85)) ? PlayerClass.SHILLIEN_ORACLE : PlayerClass.DARK_WIZARD;
+	}
+
+	static PlayerClass chooseWizardSecondClass(int chance)
+	{
+		if (chance < 40)
+		{
+			return PlayerClass.SORCERER;
+		}
+		if (chance < 80)
+		{
+			return PlayerClass.NECROMANCER;
+		}
+		return PlayerClass.WARLOCK;
+	}
+
+	/**
+	 * Applies class change and grants the new class skills immediately.
+	 * @param bot the phantom
+	 * @param previousClass previous class for logging
+	 * @param newClass destination class
+	 */
+	static void completeClassChange(Player bot, PlayerClass previousClass, PlayerClass newClass)
+	{
 		bot.setPlayerClass(newClass.getId());
 		bot.setBaseClass(newClass.getId());
+		bot.giveAvailableSkills(true, true, true);
 		bot.broadcastUserInfo();
-		
-		PhantomManager.logToFile(bot.getName(), "Class change: " + currentClass + " -> " + newClass);
+		PhantomManager.logToFile(bot.getName(), "Class change: " + previousClass + " -> " + newClass);
 	}
 }

@@ -121,7 +121,11 @@ public class InitialShortcutData implements IXmlReader
 				{
 					if ("slot".equals(b.getNodeName()))
 					{
-						list.add(createShortcut(pageId, b));
+						final Shortcut shortcut = createShortcut(pageId, b);
+						if (shortcut != null)
+						{
+							list.add(shortcut);
+						}
 					}
 				}
 			}
@@ -227,12 +231,16 @@ public class InitialShortcutData implements IXmlReader
 	private Shortcut createShortcut(int pageId, Node b)
 	{
 		final NamedNodeMap attrs = b.getAttributes();
-		final int slotId = parseInteger(attrs, "slotId");
+		final Integer slotId = parseInteger(attrs, "slotId");
 		final ShortcutType shortcutType = parseEnum(attrs, ShortcutType.class, "shortcutType");
-		final int shortcutId = parseInteger(attrs, "shortcutId");
+		final Integer shortcutId = parseInteger(attrs, "shortcutId");
+		if ((slotId == null) || (shortcutId == null))
+		{
+			return null;
+		}
 		final int shortcutLevel = parseInteger(attrs, "shortcutLevel", 0);
 		final int characterType = parseInteger(attrs, "characterType", 0);
-		return new Shortcut(slotId, pageId, shortcutType, shortcutId, shortcutLevel, characterType);
+		return new Shortcut(slotId.intValue(), pageId, shortcutType, shortcutId.intValue(), shortcutLevel, characterType);
 	}
 	
 	/**

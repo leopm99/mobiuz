@@ -85,6 +85,7 @@ public class GameGuardReply extends ClientPacket
 	{
 		try
 		{
+			// Server SHA-1 of the 8-byte client reply vs the 20-byte VALID token; the client does not hash. Another algorithm never matches (#6).
 			final MessageDigest md = MessageDigest.getInstance("SHA");
 			final byte[] result = md.digest(_reply);
 			if (Arrays.equals(result, VALID))

@@ -75,17 +75,36 @@ public class Fish implements Cloneable
 		_fishGrade = getGradeId(set.getString("fishGrade"));
 	}
 	
+	/**
+	 * Field-copy constructor used by {@link #clone()}. Keep field list aligned with the {@link StatSet} constructor;
+	 * {@code Object.clone()} used to pick up new fields automatically.
+	 * @param other the fish to copy
+	 */
+	private Fish(Fish other)
+	{
+		_fishId = other._fishId;
+		_itemId = other._itemId;
+		_itemName = other._itemName;
+		_fishGroup = other._fishGroup;
+		_fishLevel = other._fishLevel;
+		_fishBiteRate = other._fishBiteRate;
+		_fishGuts = other._fishGuts;
+		_fishHp = other._fishHp;
+		_fishMaxLength = other._fishMaxLength;
+		_fishLengthRate = other._fishLengthRate;
+		_hpRegen = other._hpRegen;
+		_startCombatTime = other._startCombatTime;
+		_combatDuration = other._combatDuration;
+		_gutsCheckTime = other._gutsCheckTime;
+		_gutsCheckProbability = other._gutsCheckProbability;
+		_cheatingProb = other._cheatingProb;
+		_fishGrade = other._fishGrade;
+	}
+	
 	@Override
 	public Fish clone()
 	{
-		try
-		{
-			return (Fish) super.clone();
-		}
-		catch (CloneNotSupportedException _)
-		{
-			return null;
-		}
+		return new Fish(this);
 	}
 	
 	/**

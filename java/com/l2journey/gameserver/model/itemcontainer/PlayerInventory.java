@@ -923,13 +923,19 @@ public class PlayerInventory extends Inventory
 	 */
 	public boolean validateCapacityByItemId(int itemId)
 	{
+		final ItemTemplate template = ItemData.getInstance().getTemplate(itemId);
+		if (template == null)
+		{
+			return false;
+		}
+		
 		int slots = 0;
 		final Item invItem = getItemByItemId(itemId);
 		if ((invItem == null) || !invItem.isStackable())
 		{
 			slots++;
 		}
-		return validateCapacity(slots, ItemData.getInstance().getTemplate(itemId).isQuestItem());
+		return validateCapacity(slots, template.isQuestItem());
 	}
 	
 	@Override

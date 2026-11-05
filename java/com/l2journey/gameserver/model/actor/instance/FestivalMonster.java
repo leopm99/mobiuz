@@ -101,6 +101,11 @@ public class FestivalMonster extends Monster
 		}
 		
 		final Player partyLeader = associatedParty.getLeader();
+		if (partyLeader == null)
+		{
+			return;
+		}
+		
 		final Item addedOfferings = partyLeader.getInventory().addItem(ItemProcessType.REWARD, SevenSignsFestival.FESTIVAL_OFFERING_ID, _bonusMultiplier, partyLeader, this);
 		final InventoryUpdate iu = new InventoryUpdate();
 		if (addedOfferings.getCount() != _bonusMultiplier)

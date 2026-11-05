@@ -618,18 +618,13 @@ public class BlockCheckerManager
 				msg.addString("Red Team");
 				_holder.broadCastPacketToTeam(msg);
 			}
-			else if (_bluePoints > _redPoints)
+			else
 			{
 				rewardAsWinner(false);
 				rewardAsLooser(true);
 				final SystemMessage msg = new SystemMessage(SystemMessageId.THE_C1_TEAM_HAS_WON);
 				msg.addString("Blue Team");
 				_holder.broadCastPacketToTeam(msg);
-			}
-			else
-			{
-				rewardAsLooser(true);
-				rewardAsLooser(false);
 			}
 		}
 		

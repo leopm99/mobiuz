@@ -327,7 +327,7 @@
 		<!-- Level 3: Delivers a powerful blow that strikes the target with 35 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit is possible. -->
 		<!-- Level 4: Delivers a powerful blow that strikes the target with 46 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit is possible. -->
 		<!-- Level 5: Delivers a powerful blow that strikes the target with 61 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit is possible. -->
-		<!-- Level 6: Delivers a powerful blow that strikes the target with 55 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit is possible. -->
+		<!-- Level 6: Delivers a powerful blow that strikes the target with 65 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit is possible. -->
 		<!-- Level 7: Delivers a powerful blow that strikes the target with 71 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit is possible. -->
 		<!-- Level 8: Delivers a powerful blow that strikes the target with 78 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit is possible. -->
 		<!-- Level 9: Delivers a powerful blow that strikes the target with 84 Power added to P. Atk. Requires a sword or blunt weapon. Over-hit is possible. -->
@@ -1373,7 +1373,7 @@
 	</skill>
 	<skill id="9" levels="34" name="Sonic Buster" enchantGroup1="2" enchantGroup2="2" enchantGroup3="2" enchantGroup4="2" enchantGroup5="2" enchantGroup6="2" enchantGroup7="2">
 		<!-- Level 1: Supplements the user's P. Atk. with 111 Power in a powerful burst of energy. Requires a sword, blunt weapon or dualsword weapon whose 2nd energy stage has been recharged. Consumes 3 Energy Stones. Over-hit and critical hit are possible. -->
-		<!-- Level 2: Supplements the user's P. Atk. with 111 Power in a powerful burst of energy. Requires a sword, blunt weapon or dualsword weapon whose 2nd energy stage has been recharged. Consumes 3 Energy Stones. Over-hit and critical hit are possible. -->
+		<!-- Level 2: Supplements the user's P. Atk. with 118 Power in a powerful burst of energy. Requires a sword, blunt weapon or dualsword weapon whose 2nd energy stage has been recharged. Consumes 3 Energy Stones. Over-hit and critical hit are possible. -->
 		<!-- Level 3: Supplements the user's P. Atk. with 124 Power in a powerful burst of energy. Requires a sword, blunt weapon or dualsword weapon whose 2nd energy stage has been recharged. Consumes 3 Energy Stones. Over-hit and critical hit are possible. -->
 		<!-- Level 4: Supplements the user's P. Atk. with 132 Power in a powerful burst of energy. Requires a sword, blunt weapon or dualsword weapon whose 2nd energy stage has been recharged. Consumes 3 Energy Stones. Over-hit and critical hit are possible. -->
 		<!-- Level 5: Supplements the user's P. Atk. with 139 Power in a powerful burst of energy. Requires a sword, blunt weapon or dualsword weapon whose 2nd energy stage has been recharged. Consumes 3 Energy Stones. Over-hit and critical hit are possible. -->
@@ -1619,7 +1619,7 @@
 		<table name="#effectPoints">-99 -102 -104 -107 -109 -112 -114 -117 -119 -121 -124 -126 -129 -131 -133 -136 -138 -140 -142 -144 -146 -148 -150 -152 -154 -156 -157 -159 -160 -162 -163 -164 -166 -167</table>
 		<table name="#magicLevel">41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74</table>
 		<table name="#mpConsume">46 47 49 50 52 53 55 56 58 59 59 61 62 64 65 67 69 70 71 73 73 75 76 77 79 80 81 83 84 85 86 88 89 90</table>
-		<table name="#power">111 111 124 132 139 147 155 163 172 181 190 199 209 219 229 240 251 262 273 284 296 308 320 332 344 357 369 382 394 407 420 432 445 457</table>
+		<table name="#power">111 118 124 132 139 147 155 163 172 181 190 199 209 219 229 240 251 262 273 284 296 308 320 332 344 357 369 382 394 407 420 432 445 457</table>
 		<table name="#ench1Power">461 465 469 474 478 482 486 490 494 498 502 506 511 515 519 523 527 531 535 539 543 548 552 556 560 564 568 572 576 581</table>
 		<table name="#ench2MpConsume">88 87 85 84 82 81 79 78 76 75 73 72 70 69 67 66 64 63 61 60 58 57 55 54 52 51 49 48 46 45</table>
 		<table name="#ench7pvpPower">465 473 481 489 497 505 513 521 529 537 545 553 561 569 577 585 593 601 609 617 625 633 641 649 657 665 673 681 689 696</table>
@@ -2744,7 +2744,7 @@
 		<table name="#magicLevel">38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74</table>
 		<table name="#mpConsume">72 74 76 76 79 81 83 86 88 91 93 96 99 99 101 104 106 109 111 114 116 119 121 122 124 126 129 131 133 135 138 140 142 144 146 148 150</table>
 		<table name="#power">984 1046 1110 1178 1249 1322 1399 1479 1562 1647 1736 1828 1923 2021 2123 2227 2333 2443 2555 2670 2788 2908 3030 3154 3280 3408 3537 3668 3800 3933 4067 4201 4336 4470 4604 4738 4870</table>
-		<table name="#ench1Power">4915 4959 5003 5047 5090 5134 5178 5222 5266 5310 5354 5398 5442 5486 5529 5573 5617 5561 5705 5749 5793 5837 5881 5925 5968 6012 6056 6100 6144 6188</table>
+		<table name="#ench1Power">4915 4959 5003 5047 5090 5134 5178 5222 5266 5310 5354 5398 5442 5486 5529 5573 5617 5661 5705 5749 5793 5837 5881 5925 5968 6012 6056 6100 6144 6188</table>
 		<table name="#ench2MpConsume">148 145 143 140 138 135 133 130 128 125 122 120 118 115 112 110 108 105 102 100 98 95 93 90 88 85 83 80 78 75</table>
 		<table name="#enchDuel">4977 5083 5188 5294 5400 5506 5611 5717 5823 5929 6034 6140 6246 6352 6458 6563 6669 6775 6881 6986 7092 7198 7304 7410 7515 7621 7727 7833 7938 8044</table>
 		<table name="#enchElementPower">1 3 5 6 8 10 11 13 15 16 18 20 21 23 25 26 28 30 31 33 35 36 38 40 41 43 45 46 48 50</table>
@@ -3641,7 +3641,7 @@
 		<table name="#effectPoints">-305 -313 -321 -329 -338 -346 -354 -363 -371 -379 -387 -395 -404 -412 -420 -428 -435 -443 -451 -458 -465 -472 -479 -486 -493 -499 -506 -512 -517 -523 -528 -533 -538 -543 -547 -551 -554</table>
 		<table name="#magicLevel">38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74</table>
 		<table name="#mpConsume">54 56 57 57 59 61 63 65 66 68 70 72 74 74 76 78 80 82 84 86 87 89 91 91 93 95 97 98 100 102 103 105 106 108 109 111 112</table>
-		<table name="#power">1107 1176 1249 1325 1405 1488 1574 1664 1757 1853 1953 2057 2164 2274 2388 2505 2625 2748 2875 3004 3136 3217 3408 3548 3690 3834 3980 4127 4275 4425 4575 4726 4878 5029 5180 5330 5479</table>
+		<table name="#power">1107 1176 1249 1325 1405 1488 1574 1664 1757 1853 1953 2057 2164 2274 2388 2505 2625 2748 2875 3004 3136 3271 3408 3548 3690 3834 3980 4127 4275 4425 4575 4726 4878 5029 5180 5330 5479</table>
 		<table name="#ench1Power">5493 5506 5520 5534 5547 5561 5575 5588 5602 5616 5629 5643 5657 5670 5684 5698 5711 5725 5738 5752 5766 5779 5793 5802 5820 5834 5848 5861 5875 5889</table>
 		<table name="#ench2MpConsume">110 108 106 104 102 100 99 97 95 93 91 89 87 85 83 82 80 78 76 74 72 70 69 67 65 63 61 59 57 56</table>
 		<table name="#enchDuel">5552 5624 5697 5769 5842 5914 5987 6059 6132 6204 6277 6350 6422 6495 6567 6640 6712 6785 6857 6930 7002 7075 7147 7220 7292 7365 7437 7510 7583 7655</table>
@@ -6482,7 +6482,7 @@
 		<table name="#effectPoints">-266 -304 -333</table>
 		<table name="#hpConsume">399 455 499</table>
 		<table name="#magicLevel">55 64 74</table>
-		<table name="#power">4580 6332 9132</table>
+		<table name="#power">4580 6632 9132</table>
 		<table name="#ench1Power">9214 9296 9378 9461 9543 9625 9708 9790 9872 9955 10037 10119 10201 10284 10366 10448 10531 10613 10695 10778 10860 10942 11024 11107 11189 11271 11354 11436 11518 11601</table>
 		<table name="#ench2HpConsume">489 481 473 464 456 448 439 431 423 415 406 398 390 382 373 365 357 349 340 332 324 316 307 299 291 283 274 266 258 250</table>
 		<table name="#enchElementPower">1 3 5 6 8 10 11 13 15 16 18 20 21 23 25 26 28 30 31 33 35 36 38 40 41 43 45 46 48 50</table>
@@ -6490,10 +6490,7 @@
 		<set name="icon" val="icon.skill0081" />
 		<set name="operateType" val="A1" />
 		<set name="targetType" val="ONE" />
-		<set name="abnormalLevel" val="1" />
-		<set name="abnormalType" val="STUN" />
-		<set name="abnormalVisualEffect" val="STUN" />
-		<set name="baseCritRate" val="15" />
+		<set name="baseCritRate" val="20" />
 		<set name="castRange" val="40" />
 		<set name="coolTime" val="440" />
 		<set name="effectPoint" val="#effectPoints" />
@@ -6501,8 +6498,6 @@
 		<set name="hitTime" val="1360" />
 		<set name="hpConsume" val="#hpConsume" />
 		<set name="ignoreShld" val="true" />
-		<set name="isDebuff" val="true" />
-		<set name="lvlBonusRate" val="2" />
 		<set name="magicLevel" val="#magicLevel" />
 		<set name="nextActionAttack" val="true" />
 		<set name="overHit" val="true" />

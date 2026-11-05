@@ -193,7 +193,7 @@ public class RequestEnchantItem extends ClientPacket
 		final Item loggedScroll = scroll;
 		
 		final InventoryUpdate iu = new InventoryUpdate();
-		synchronized (item)
+		synchronized (item.getMutationLock())
 		{
 			// last validation check
 			if ((item.getOwnerId() != player.getObjectId()) || !item.isEnchantable())

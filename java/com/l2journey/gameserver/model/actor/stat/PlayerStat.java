@@ -20,17 +20,20 @@
  */
 package com.l2journey.gameserver.model.actor.stat;
 
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import com.l2journey.Config;
 import com.l2journey.gameserver.data.xml.ExperienceData;
 import com.l2journey.gameserver.data.xml.PetDataTable;
 import com.l2journey.gameserver.model.PetLevelData;
+import com.l2journey.gameserver.model.actor.Creature;
 import com.l2journey.gameserver.model.actor.Player;
 import com.l2journey.gameserver.model.actor.holders.player.SubClassHolder;
 import com.l2journey.gameserver.model.actor.instance.ClassMaster;
 import com.l2journey.gameserver.model.actor.instance.Pet;
 import com.l2journey.gameserver.model.actor.status.PlayerStatus;
+import com.l2journey.gameserver.model.actor.templates.PlayerTemplate;
 import com.l2journey.gameserver.model.actor.transform.TransformTemplate;
 import com.l2journey.gameserver.model.clan.Clan;
 import com.l2journey.gameserver.model.effects.EffectType;
@@ -367,16 +370,21 @@ public class PlayerStat extends PlayableStat
 	@Override
 	public Player getActiveChar()
 	{
-		return super.getActiveChar().asPlayer();
+		final Creature creature = getCreature();
+		if (!(creature instanceof Player player))
+		{
+			throw new IllegalStateException("PlayerStat active character");
+		}
+		return player;
 	}
 	
 	@Override
 	public long getExp()
 	{
-		final Player player = getActiveChar();
-		if (player.isSubClassActive())
+		final SubClassHolder holder = findActiveSubClass();
+		if (holder != null)
 		{
-			return player.getSubClasses().get(player.getClassIndex()).getExp();
+			return holder.getExp();
 		}
 		return super.getExp();
 	}
@@ -389,10 +397,10 @@ public class PlayerStat extends PlayableStat
 	@Override
 	public void setExp(long value)
 	{
-		final Player player = getActiveChar();
-		if (player.isSubClassActive())
+		final SubClassHolder holder = findActiveSubClass();
+		if (holder != null)
 		{
-			player.getSubClasses().get(player.getClassIndex()).setExp(value);
+			holder.setExp(value);
 		}
 		else
 		{
@@ -463,20 +471,17 @@ public class PlayerStat extends PlayableStat
 	public void setPausedNevitHourglassStatus(boolean value)
 	{
 		_pausedNevitHourglass = value;
-		getActiveChar().sendPacket(new ExVoteSystemInfo(getActiveChar()));
+		final Player player = getActiveChar();
+		player.sendPacket(new ExVoteSystemInfo(player));
 	}
 	
 	@Override
 	public byte getLevel()
 	{
-		final Player player = getActiveChar();
-		if (player.isSubClassActive())
+		final SubClassHolder holder = findActiveSubClass();
+		if (holder != null)
 		{
-			final SubClassHolder holder = player.getSubClasses().get(player.getClassIndex());
-			if (holder != null)
-			{
-				return holder.getLevel();
-			}
+			return holder.getLevel();
 		}
 		return super.getLevel();
 	}
@@ -495,10 +500,10 @@ public class PlayerStat extends PlayableStat
 			level = (byte) (ExperienceData.getInstance().getMaxLevel() - 1);
 		}
 		
-		final Player player = getActiveChar();
-		if (player.isSubClassActive())
+		final SubClassHolder holder = findActiveSubClass();
+		if (holder != null)
 		{
-			player.getSubClasses().get(player.getClassIndex()).setLevel(value);
+			holder.setLevel(value);
 		}
 		else
 		{
@@ -511,19 +516,16 @@ public class PlayerStat extends PlayableStat
 	{
 		// Get the Max CP (base+modifier) of the Player
 		final Player player = getActiveChar();
-		final int val = (player == null) ? 1 : (int) calcStat(Stat.MAX_CP, player.getTemplate().getBaseCpMax(player.getLevel()));
+		final int val = (int) calcStat(Stat.MAX_CP, requireTemplate(player).getBaseCpMax(player.getLevel()));
 		if (val != _oldMaxCp)
 		{
 			_oldMaxCp = val;
 			
 			// Launch a regen task if the new Max CP is higher than the old one
-			if (player != null)
+			final PlayerStatus status = player.getStatus();
+			if (status.getCurrentCp() != val)
 			{
-				final PlayerStatus status = player.getStatus();
-				if (status.getCurrentCp() != val)
-				{
-					status.setCurrentCp(status.getCurrentCp()); // trigger start of regeneration
-				}
+				status.setCurrentCp(status.getCurrentCp()); // trigger start of regeneration
 			}
 		}
 		return val;
@@ -534,19 +536,16 @@ public class PlayerStat extends PlayableStat
 	{
 		// Get the Max HP (base+modifier) of the Player
 		final Player player = getActiveChar();
-		final int val = (player == null) ? 1 : (int) calcStat(Stat.MAX_HP, player.getTemplate().getBaseHpMax(player.getLevel()));
+		final int val = (int) calcStat(Stat.MAX_HP, requireTemplate(player).getBaseHpMax(player.getLevel()));
 		if (val != _oldMaxHp)
 		{
 			_oldMaxHp = val;
 			
 			// Launch a regen task if the new Max HP is higher than the old one
-			if (player != null)
+			final PlayerStatus status = player.getStatus();
+			if (status.getCurrentHp() != val)
 			{
-				final PlayerStatus status = player.getStatus();
-				if (status.getCurrentHp() != val)
-				{
-					status.setCurrentHp(status.getCurrentHp()); // trigger start of regeneration
-				}
+				status.setCurrentHp(status.getCurrentHp()); // trigger start of regeneration
 			}
 		}
 		return val;
@@ -557,19 +556,16 @@ public class PlayerStat extends PlayableStat
 	{
 		// Get the Max MP (base+modifier) of the Player
 		final Player player = getActiveChar();
-		final int val = (player == null) ? 1 : (int) calcStat(Stat.MAX_MP, player.getTemplate().getBaseMpMax(player.getLevel()));
+		final int val = (int) calcStat(Stat.MAX_MP, requireTemplate(player).getBaseMpMax(player.getLevel()));
 		if (val != _oldMaxMp)
 		{
 			_oldMaxMp = val;
 			
 			// Launch a regen task if the new Max MP is higher than the old one
-			if (player != null)
+			final PlayerStatus status = player.getStatus();
+			if (status.getCurrentMp() != val)
 			{
-				final PlayerStatus status = player.getStatus();
-				if (status.getCurrentMp() != val)
-				{
-					status.setCurrentMp(status.getCurrentMp()); // trigger start of regeneration
-				}
+				status.setCurrentMp(status.getCurrentMp()); // trigger start of regeneration
 			}
 		}
 		return val;
@@ -578,10 +574,10 @@ public class PlayerStat extends PlayableStat
 	@Override
 	public long getSp()
 	{
-		final Player player = getActiveChar();
-		if (player.isSubClassActive())
+		final SubClassHolder holder = findActiveSubClass();
+		if (holder != null)
 		{
-			return player.getSubClasses().get(player.getClassIndex()).getSp();
+			return holder.getSp();
 		}
 		return super.getSp();
 	}
@@ -594,10 +590,10 @@ public class PlayerStat extends PlayableStat
 	@Override
 	public void setSp(long value)
 	{
-		final Player player = getActiveChar();
-		if (player.isSubClassActive())
+		final SubClassHolder holder = findActiveSubClass();
+		if (holder != null)
 		{
-			player.getSubClasses().get(player.getClassIndex()).setSp(value);
+			holder.setSp(value);
 		}
 		else
 		{
@@ -881,7 +877,8 @@ public class PlayerStat extends PlayableStat
 	 */
 	public byte getVitalityLevel()
 	{
-		if (getActiveChar().getNevitSystem().isAdventBlessingActive())
+		final Player player = getActiveChar();
+		if (player.getNevitSystem().isAdventBlessingActive())
 		{
 			return 4;
 		}
@@ -998,5 +995,20 @@ public class PlayerStat extends PlayableStat
 	public double getBonusSpoilRateMultiplier()
 	{
 		return 1 + (calcStat(Stat.BONUS_SPOIL_RATE, 0, null, null) / 100);
+	}
+	
+	private SubClassHolder findActiveSubClass()
+	{
+		final Player player = getActiveChar();
+		if (!player.isSubClassActive())
+		{
+			return null;
+		}
+		return player.getSubClasses().get(player.getClassIndex());
+	}
+	
+	private static PlayerTemplate requireTemplate(Player player)
+	{
+		return Objects.requireNonNull(player.getTemplate(), "Player template");
 	}
 }

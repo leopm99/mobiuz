@@ -342,7 +342,7 @@ public abstract class ItemContainer
 		}
 		
 		Item targetitem = sourceitem.isStackable() ? target.getItemByItemId(sourceitem.getId()) : null;
-		synchronized (sourceitem)
+		synchronized (sourceitem.getMutationLock())
 		{
 			// check if this item still present in this container
 			if (getItemByObjectId(objectId) != sourceitem)
@@ -426,7 +426,7 @@ public abstract class ItemContainer
 	 */
 	public Item destroyItem(ItemProcessType process, Item item, long count, Player actor, Object reference)
 	{
-		synchronized (item)
+		synchronized (item.getMutationLock())
 		{
 			// Adjust item quantity
 			if (item.getCount() > count)

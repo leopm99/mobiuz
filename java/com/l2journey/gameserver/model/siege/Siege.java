@@ -111,8 +111,9 @@ public class Siege implements Siegable
 	public Siege(Castle castle)
 	{
 		_castle = castle;
-		_siegeGuardManager = new SiegeGuardManager(getCastle());
-		final SiegeScheduleDate schedule = SiegeScheduleData.getInstance().getScheduleDateForCastleId(_castle.getResidenceId());
+		final Castle bound = getCastle();
+		_siegeGuardManager = new SiegeGuardManager(bound);
+		final SiegeScheduleDate schedule = SiegeScheduleData.getInstance().getScheduleDateForCastleId(bound.getResidenceId());
 		if ((schedule != null) && schedule.siegeEnabled())
 		{
 			startAutoTask();
@@ -1575,7 +1576,12 @@ public class Siege implements Siegable
 	
 	public Castle getCastle()
 	{
-		return _castle == null ? null : _castle;
+		final Castle castle = _castle;
+		if (castle == null)
+		{
+			throw new IllegalStateException("Siege castle");
+		}
+		return castle;
 	}
 	
 	@Override

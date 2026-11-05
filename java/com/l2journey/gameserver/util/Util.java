@@ -42,8 +42,6 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.StringJoiner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -809,20 +807,65 @@ public final class Util
 		return range;
 	}
 	
-	private static Pattern _pattern = Pattern.compile("<!--TEMPLET(\\d+)(.*?)TEMPLET-->", Pattern.DOTALL);
+	private static final String TEMPLET_OPEN = "<!--TEMPLET";
+	private static final String TEMPLET_CLOSE = "TEMPLET-->";
 	
 	public static Map<Integer, String> parseTemplate(String html)
 	{
-		Matcher m = _pattern.matcher(html);
-		Map<Integer, String> tpls = new HashMap<>();
-		while (m.find())
+		final Map<Integer, String> tpls = new HashMap<>();
+		final StringBuilder remainder = new StringBuilder();
+		int from = 0;
+		while (from < html.length())
 		{
-			tpls.put(Integer.parseInt(m.group(1)), m.group(2));
-			html = html.replace(m.group(0), "");
+			final int open = html.indexOf(TEMPLET_OPEN, from);
+			if (open < 0)
+			{
+				remainder.append(html, from, html.length());
+				break;
+			}
+			
+			remainder.append(html, from, open);
+			final int pos = open + TEMPLET_OPEN.length();
+			final int idEnd = scanAsciiDigits(html, pos);
+			if (idEnd == pos)
+			{
+				remainder.append(TEMPLET_OPEN);
+				from = pos;
+			}
+			else
+			{
+				final int close = html.indexOf(TEMPLET_CLOSE, idEnd);
+				if (close < 0)
+				{
+					remainder.append(html, open, html.length());
+					from = html.length();
+				}
+				else
+				{
+					tpls.put(Integer.parseInt(html.substring(pos, idEnd)), html.substring(idEnd, close));
+					from = close + TEMPLET_CLOSE.length();
+				}
+			}
 		}
 		
-		tpls.put(0, html);
+		tpls.put(0, remainder.toString());
 		return tpls;
+	}
+	
+	/**
+	 * Advances past consecutive ASCII digits starting at {@code start}.
+	 * @param text input to scan
+	 * @param start index of the first candidate digit
+	 * @return index of the first non-digit character, or {@code text.length()}
+	 */
+	private static int scanAsciiDigits(String text, int start)
+	{
+		int i = start;
+		while ((i < text.length()) && (text.charAt(i) >= '0') && (text.charAt(i) <= '9'))
+		{
+			i++;
+		}
+		return i;
 	}
 	
 	/**

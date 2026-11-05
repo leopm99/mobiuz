@@ -22,6 +22,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLongFieldUpdater;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -46,6 +47,7 @@ public class ItemAuction
 	
 	private static final long ENDING_TIME_EXTEND_5 = TimeUnit.MILLISECONDS.convert(5, TimeUnit.MINUTES);
 	private static final long ENDING_TIME_EXTEND_3 = TimeUnit.MILLISECONDS.convert(3, TimeUnit.MINUTES);
+	private static final AtomicLongFieldUpdater<ItemAuction> ENDING_TIME = AtomicLongFieldUpdater.newUpdater(ItemAuction.class, "_endingTime");
 	
 	private final int _auctionId;
 	private final int _instanceId;
@@ -348,7 +350,7 @@ public class ItemAuction
 				case INITIAL:
 				{
 					_auctionEndingExtendState = ItemAuctionExtendState.EXTEND_BY_5_MIN;
-					_endingTime += ENDING_TIME_EXTEND_5;
+					ENDING_TIME.addAndGet(this, ENDING_TIME_EXTEND_5);
 					broadcastToAllBidders(new SystemMessage(SystemMessageId.BIDDER_EXISTS_THE_AUCTION_TIME_HAS_BEEN_EXTENDED_BY_5_MINUTES));
 					break;
 				}
@@ -357,7 +359,7 @@ public class ItemAuction
 					if (getAndSetLastBidPlayerObjectId(player.getObjectId()) != player.getObjectId())
 					{
 						_auctionEndingExtendState = ItemAuctionExtendState.EXTEND_BY_3_MIN;
-						_endingTime += ENDING_TIME_EXTEND_3;
+						ENDING_TIME.addAndGet(this, ENDING_TIME_EXTEND_3);
 						broadcastToAllBidders(new SystemMessage(SystemMessageId.BIDDER_EXISTS_AUCTION_TIME_HAS_BEEN_EXTENDED_BY_3_MINUTES));
 					}
 					break;
@@ -367,7 +369,7 @@ public class ItemAuction
 					if ((Config.ALT_ITEM_AUCTION_TIME_EXTENDS_ON_BID > 0) && (getAndSetLastBidPlayerObjectId(player.getObjectId()) != player.getObjectId()))
 					{
 						_auctionEndingExtendState = ItemAuctionExtendState.EXTEND_BY_CONFIG_PHASE_A;
-						_endingTime += Config.ALT_ITEM_AUCTION_TIME_EXTENDS_ON_BID;
+						ENDING_TIME.addAndGet(this, Config.ALT_ITEM_AUCTION_TIME_EXTENDS_ON_BID);
 					}
 					break;
 				}
@@ -376,7 +378,7 @@ public class ItemAuction
 					if ((getAndSetLastBidPlayerObjectId(player.getObjectId()) != player.getObjectId()) && (_scheduledAuctionEndingExtendState == ItemAuctionExtendState.EXTEND_BY_CONFIG_PHASE_B))
 					{
 						_auctionEndingExtendState = ItemAuctionExtendState.EXTEND_BY_CONFIG_PHASE_B;
-						_endingTime += Config.ALT_ITEM_AUCTION_TIME_EXTENDS_ON_BID;
+						ENDING_TIME.addAndGet(this, Config.ALT_ITEM_AUCTION_TIME_EXTENDS_ON_BID);
 					}
 					break;
 				}
@@ -384,7 +386,7 @@ public class ItemAuction
 				{
 					if ((getAndSetLastBidPlayerObjectId(player.getObjectId()) != player.getObjectId()) && (_scheduledAuctionEndingExtendState == ItemAuctionExtendState.EXTEND_BY_CONFIG_PHASE_A))
 					{
-						_endingTime += Config.ALT_ITEM_AUCTION_TIME_EXTENDS_ON_BID;
+						ENDING_TIME.addAndGet(this, Config.ALT_ITEM_AUCTION_TIME_EXTENDS_ON_BID);
 						_auctionEndingExtendState = ItemAuctionExtendState.EXTEND_BY_CONFIG_PHASE_A;
 					}
 				}

@@ -2,17 +2,24 @@ package com.l2journey.gameserver.model.phantom;
 
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.util.Random;
+import java.util.function.IntSupplier;
+import java.util.function.Supplier;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.l2journey.PhantomConfig;
 import com.l2journey.commons.database.DatabaseFactory;
+import com.l2journey.commons.util.Rnd;
 import com.l2journey.gameserver.managers.IdManager;
 import com.l2journey.gameserver.model.actor.Player;
 
 public class PhantomGenerator
 {
+	private static final Logger LOGGER = Logger.getLogger(PhantomGenerator.class.getName());
+	
 	// --------------------------------------------------------------------------
 	// CONFIGURACAO DE SPAWN E CLASSES (SOMENTE MAGOS/XAMAS)
 	// --------------------------------------------------------------------------
@@ -110,14 +117,18 @@ public class PhantomGenerator
 	private PhantomGenerator()
 	{
 	}
-
+	
 	public static void createInGame(int cantidad, Player gm)
 	{
-		Random rnd = new Random();
+		createInGame(cantidad, gm, Path.of("config", "PhantomPlayers.xml"), DatabaseFactory::getConnection, () -> IdManager.getInstance().getNextId());
+	}
+	
+	static void createInGame(int cantidad, Player gm, Path xmlPath, Supplier<Connection> connections, IntSupplier nextCharId)
+	{
 		int creados = 0;
 		String query = "INSERT IGNORE INTO `characters` (`charId`, `account_name`, `char_name`, `level`, `maxHp`, `curHp`, `maxCp`, `curCp`, `maxMp`, `curMp`, `face`, `hairStyle`, `hairColor`, `sex`, `x`, `y`, `z`, `race`, `classid`, `base_class`, `title`, `online`, `accesslevel`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
-		try (Connection con = DatabaseFactory.getConnection();
+		try (Connection con = connections.get();
 			PreparedStatement ps = con.prepareStatement(query))
 		{
 			ps.setString(2, "PhantomAuto");
@@ -136,23 +147,18 @@ public class PhantomGenerator
 			ps.setInt(23, 0);
 			for (int i = 0; i < cantidad; i++)
 			{
-				int charId = IdManager.getInstance().getNextId();
-				String charName = SYL_1[rnd.nextInt(SYL_1.length)] + SYL_2[rnd.nextInt(SYL_2.length)] + SYL_3[rnd.nextInt(SYL_3.length)];
-				
-				int classIndex = rnd.nextInt(CLASSES.length);
-				int classId = CLASSES[classIndex];
-				int race = RACES[classIndex];
-				int sex = rnd.nextInt(2);
+				int charId = nextCharId.getAsInt();
+				PhantomRoll roll = rollPhantomAttributes();
 				
 				ps.setInt(1, charId);
-				ps.setString(3, charName);
-				ps.setInt(11, rnd.nextInt(3));
-				ps.setInt(12, rnd.nextInt(4));
-				ps.setInt(13, rnd.nextInt(3));
-				ps.setInt(14, sex);
-				ps.setInt(18, race);
-				ps.setInt(19, classId);
-				ps.setInt(20, classId);
+				ps.setString(3, roll.name());
+				ps.setInt(11, roll.face());
+				ps.setInt(12, roll.hairStyle());
+				ps.setInt(13, roll.hairColor());
+				ps.setInt(14, roll.sex());
+				ps.setInt(18, roll.race());
+				ps.setInt(19, roll.classId());
+				ps.setInt(20, roll.classId());
 				
 				ps.addBatch();
 				PhantomConfig.PHANTOM_IDS.add(charId);
@@ -160,7 +166,7 @@ public class PhantomGenerator
 			}
 			
 			ps.executeBatch();
-			saveXML();
+			saveXML(xmlPath);
 			if (gm != null)
 			{
 				gm.sendMessage("¡Éxito! Se han creado " + creados + " Phantoms Magos/Chamanes nuevos.");
@@ -172,16 +178,39 @@ public class PhantomGenerator
 			{
 				gm.sendMessage("Error creando phantoms: " + e.getMessage());
 			}
-			e.printStackTrace();
+			logCreateFailure(e);
 		}
+	}
+	
+	static PhantomRoll rollPhantomAttributes()
+	{
+		final String name = Rnd.pick(SYL_1) + Rnd.pick(SYL_2) + Rnd.pick(SYL_3);
+		final int classId = Rnd.pick(CLASSES);
+		final int race = RACES[switch (classId)
+		{
+			case 10 -> 0;
+			case 25 -> 1;
+			case 38 -> 2;
+			default -> 3;
+		}];
+		return new PhantomRoll(name, classId, race, Rnd.get(2), Rnd.get(3), Rnd.get(4), Rnd.get(3));
+	}
+	
+	record PhantomRoll(String name, int classId, int race, int sex, int face, int hairStyle, int hairColor)
+	{
+	}
+	
+	static void logCreateFailure(Exception e)
+	{
+		LOGGER.log(Level.SEVERE, e, () -> "Failed to create phantoms: " + e.getMessage());
 	}
 	
 	// --------------------------------------------------------------------------
 	// SALVAMENTO EM XML
 	// --------------------------------------------------------------------------
-	private static void saveXML()
+	static void saveXML(Path target)
 	{
-		try (FileWriter fw = new FileWriter("config/PhantomPlayers.xml");
+		try (FileWriter fw = new FileWriter(target.toFile());
 			PrintWriter pw = new PrintWriter(fw))
 		{
 			pw.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<list>");
@@ -193,7 +222,12 @@ public class PhantomGenerator
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
+			logSaveFailure(e);
 		}
+	}
+	
+	static void logSaveFailure(Exception e)
+	{
+		LOGGER.log(Level.SEVERE, e, () -> "Failed to save PhantomPlayers.xml: " + e.getMessage());
 	}
 }

@@ -29,6 +29,8 @@
 package com.l2journey.gameserver.model.actor.instance;
 
 import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.l2journey.EventsConfig;
 import com.l2journey.gameserver.managers.games.UndergroundColiseumManager;
@@ -45,10 +47,17 @@ import com.l2journey.gameserver.network.serverpackets.NpcHtmlMessage;
 
 public class UCManager extends Folk
 {
+	private static final Logger LOGGER = Logger.getLogger(UCManager.class.getName());
+	
 	public UCManager(NpcTemplate template)
 	{
 		super(template);
 		setInstanceType(InstanceType.UCManagerInstance);
+	}
+	
+	static void logRegisterFailure(Exception e)
+	{
+		LOGGER.log(Level.SEVERE, e, () -> "Failed to register party for Underground Coliseum: " + e.getMessage());
 	}
 	
 	@Override
@@ -165,7 +174,7 @@ public class UCManager extends Folk
 			}
 			catch (Exception e)
 			{
-				e.printStackTrace();
+				logRegisterFailure(e);
 			}
 		}
 		else if (actualCommand.equalsIgnoreCase("cancel"))

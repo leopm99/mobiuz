@@ -28,11 +28,15 @@
  */
 package com.l2journey.gameserver.model.actor.stat;
 
+import java.util.Objects;
+
 import com.l2journey.gameserver.data.xml.ExperienceData;
 import com.l2journey.gameserver.data.xml.PetDataTable;
+import com.l2journey.gameserver.model.PetLevelData;
 import com.l2journey.gameserver.model.actor.Creature;
 import com.l2journey.gameserver.model.actor.Player;
 import com.l2journey.gameserver.model.actor.instance.Pet;
+import com.l2journey.gameserver.model.actor.templates.NpcTemplate;
 import com.l2journey.gameserver.model.skill.Skill;
 import com.l2journey.gameserver.model.stats.Stat;
 import com.l2journey.gameserver.network.SystemMessageId;
@@ -143,45 +147,43 @@ public class PetStat extends SummonStat
 	public long getExpForLevel(int level)
 	{
 		final Pet pet = getActiveChar();
-		try
+		final PetLevelData data = PetDataTable.getInstance().getPetLevelData(pet.getId(), level);
+		if (data == null)
 		{
-			return PetDataTable.getInstance().getPetLevelData(pet.getId(), level).getPetMaxExp();
+			LOGGER.warning("Pet objectId:" + pet.getObjectId() + ", NpcId:" + pet.getId() + ", level:" + level + " is missing data from pets_stats table!");
 		}
-		catch (NullPointerException e)
-		{
-			if (pet != null)
-			{
-				LOGGER.warning("Pet objectId:" + pet.getObjectId() + ", NpcId:" + pet.getId() + ", level:" + level + " is missing data from pets_stats table!");
-			}
-			throw e;
-		}
+		return requireLevelData(data, pet.getId(), level).getPetMaxExp();
 	}
 	
 	@Override
 	public Pet getActiveChar()
 	{
-		return super.getActiveChar().asPet();
+		final Creature creature = getCreature();
+		if (!(creature instanceof Pet pet))
+		{
+			throw new IllegalStateException("PetStat active character");
+		}
+		return pet;
 	}
 	
 	public int getFeedBattle()
 	{
-		return getActiveChar().getPetLevelData().getPetFeedBattle();
+		return requireLevelData().getPetFeedBattle();
 	}
 	
 	public int getFeedNormal()
 	{
-		return getActiveChar().getPetLevelData().getPetFeedNormal();
+		return requireLevelData().getPetFeedNormal();
 	}
 	
 	@Override
 	public void setLevel(byte value)
 	{
 		final Pet pet = getActiveChar();
-		pet.setPetData(PetDataTable.getInstance().getPetLevelData(pet.getTemplate().getId(), value));
-		if (pet.getPetLevelData() == null)
-		{
-			throw new IllegalArgumentException("No pet data for npc: " + pet.getTemplate().getId() + " level: " + value);
-		}
+		final NpcTemplate template = Objects.requireNonNull(pet.getTemplate(), "Pet template");
+		final int npcId = template.getId();
+		final PetLevelData data = requireLevelData(PetDataTable.getInstance().getPetLevelData(npcId, value), npcId, value);
+		pet.setPetData(data);
 		pet.stopFeed();
 		super.setLevel(value);
 		
@@ -195,43 +197,43 @@ public class PetStat extends SummonStat
 	
 	public int getMaxFeed()
 	{
-		return getActiveChar().getPetLevelData().getPetMaxFeed();
+		return requireLevelData().getPetMaxFeed();
 	}
 	
 	@Override
 	public int getMaxHp()
 	{
-		return (int) calcStat(Stat.MAX_HP, getActiveChar().getPetLevelData().getPetMaxHP(), null, null);
+		return (int) calcStat(Stat.MAX_HP, requireLevelData().getPetMaxHP(), null, null);
 	}
 	
 	@Override
 	public int getMaxMp()
 	{
-		return (int) calcStat(Stat.MAX_MP, getActiveChar().getPetLevelData().getPetMaxMP(), null, null);
+		return (int) calcStat(Stat.MAX_MP, requireLevelData().getPetMaxMP(), null, null);
 	}
 	
 	@Override
 	public double getMAtk(Creature target, Skill skill)
 	{
-		return calcStat(Stat.MAGIC_ATTACK, getActiveChar().getPetLevelData().getPetMAtk(), target, skill);
+		return calcStat(Stat.MAGIC_ATTACK, requireLevelData().getPetMAtk(), target, skill);
 	}
 	
 	@Override
 	public double getMDef(Creature target, Skill skill)
 	{
-		return calcStat(Stat.MAGIC_DEFENCE, getActiveChar().getPetLevelData().getPetMDef(), target, skill);
+		return calcStat(Stat.MAGIC_DEFENCE, requireLevelData().getPetMDef(), target, skill);
 	}
 	
 	@Override
 	public double getPAtk(Creature target)
 	{
-		return calcStat(Stat.POWER_ATTACK, getActiveChar().getPetLevelData().getPetPAtk(), target, null);
+		return calcStat(Stat.POWER_ATTACK, requireLevelData().getPetPAtk(), target, null);
 	}
 	
 	@Override
 	public double getPDef(Creature target)
 	{
-		return calcStat(Stat.POWER_DEFENCE, getActiveChar().getPetLevelData().getPetPDef(), target, null);
+		return calcStat(Stat.POWER_DEFENCE, requireLevelData().getPetPDef(), target, null);
 	}
 	
 	@Override
@@ -250,5 +252,20 @@ public class PetStat extends SummonStat
 	public int getMaxLevel()
 	{
 		return ExperienceData.getInstance().getMaxPetLevel();
+	}
+	
+	private PetLevelData requireLevelData()
+	{
+		final Pet pet = getActiveChar();
+		return requireLevelData(pet.getPetLevelData(), pet.getId(), getLevel());
+	}
+	
+	private static PetLevelData requireLevelData(PetLevelData data, int npcId, int level)
+	{
+		if (data == null)
+		{
+			throw new IllegalArgumentException("No pet data for npc: " + npcId + " level: " + level);
+		}
+		return data;
 	}
 }

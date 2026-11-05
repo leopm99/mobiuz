@@ -34,6 +34,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -58,7 +59,7 @@ public class World
 	private static final Logger LOGGER = Logger.getLogger(World.class.getName());
 	
 	public static volatile int MAX_CONNECTED_COUNT = 0;
-	public static volatile int OFFLINE_TRADE_COUNT = 0;
+	public static final AtomicInteger OFFLINE_TRADE_COUNT = new AtomicInteger();
 	
 	/** Gracia border Flying objects not allowed to the east of it. */
 	public static final int GRACIA_MAX_X = -166168;

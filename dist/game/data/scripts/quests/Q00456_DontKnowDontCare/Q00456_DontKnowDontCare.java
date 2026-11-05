@@ -300,7 +300,7 @@ public class Q00456_DontKnowDontCare extends Quest
 			final Player attacker = aggro.getAttacker().asPlayer();
 			if (attacker.isInParty() //
 				&& attacker.getParty().isInCommandChannel() //
-				&& attacker.getParty().getCommandChannel().equals(cc) // only players from the same cc are allowed
+				&& attacker.getParty().getCommandChannel().hasSameLeader(cc) // only players from the same cc are allowed
 				&& LocationUtil.checkIfInRange(Config.ALT_PARTY_RANGE, npc, attacker, true))
 			{
 				allowedPlayers.add(attacker.getObjectId());

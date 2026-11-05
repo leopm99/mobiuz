@@ -264,13 +264,14 @@ public class CommandChannel extends AbstractPlayerGroup
 	}
 	
 	/**
-	 * Check whether the leader of this command channel is the same as the leader of the specified command channel<br>
-	 * (which essentially means they're the same group).
-	 * @param cc the other command channel to check against
-	 * @return {@code true} if this command channel equals the specified command channel, {@code false} otherwise
+	 * Check whether this command channel's leader object id matches the other channel's leader object id.<br>
+	 * A missing leader has object id {@code 0}, so two leaderless channels match.<br>
+	 * Do not replace this with {@link Object#equals(Object)}: parties are hash keys in a command channel, and the leader can change.
+	 * @param other the other command channel to check against
+	 * @return {@code true} if both channels have the same leader object id, {@code false} otherwise
 	 */
-	public boolean equals(CommandChannel cc)
+	public boolean hasSameLeader(CommandChannel other)
 	{
-		return (cc != null) && (getLeaderObjectId() == cc.getLeaderObjectId());
+		return (other != null) && (getLeaderObjectId() == other.getLeaderObjectId());
 	}
 }

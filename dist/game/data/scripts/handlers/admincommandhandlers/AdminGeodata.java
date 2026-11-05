@@ -41,6 +41,8 @@ public class AdminGeodata implements IAdminCommandHandler
 		"admin_geo_can_move",
 		"admin_geo_can_see",
 		"admin_geogrid",
+		"admin_geomap",
+		"admin_geocell",
 	};
 	
 	@Override
@@ -129,6 +131,22 @@ public class AdminGeodata implements IAdminCommandHandler
 			case "admin_geogrid":
 			{
 				GeoUtils.debugGrid(activeChar);
+				break;
+			}
+			case "admin_geomap":
+			{
+				activeChar.sendMessage(GeoUtils.formatGeoMap(activeChar.getX(), activeChar.getY()));
+				break;
+			}
+			case "admin_geocell":
+			{
+				final GeoData geoData = GeoData.getInstance();
+				final int geoX = geoData.getGeoX(activeChar.getX());
+				final int geoY = geoData.getGeoY(activeChar.getY());
+				final int geoZ = geoData.getNearestZ(geoX, geoY, activeChar.getZ());
+				final int worldX = geoData.getWorldX(geoX);
+				final int worldY = geoData.getWorldY(geoY);
+				activeChar.sendMessage("GeoCell: " + geoX + ", " + geoY + ". XYZ (" + worldX + ", " + worldY + ", " + geoZ + ")");
 				break;
 			}
 			default:

@@ -121,6 +121,11 @@ public class SummonStatus extends PlayableStatus
 	@Override
 	public Summon getActiveChar()
 	{
-		return super.getActiveChar().asSummon();
+		final Creature creature = getCreature();
+		if (!(creature instanceof Summon summon))
+		{
+			throw new IllegalStateException("SummonStatus active character");
+		}
+		return summon;
 	}
 }

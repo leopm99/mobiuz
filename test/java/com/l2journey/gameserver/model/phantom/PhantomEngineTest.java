@@ -21,11 +21,13 @@
  */
 package com.l2journey.gameserver.model.phantom;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.never;
@@ -41,6 +43,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 
 import com.l2journey.Config;
+import com.l2journey.PhantomConfig;
 import com.l2journey.commons.threads.ThreadPool;
 import com.l2journey.gameserver.model.Location;
 import com.l2journey.gameserver.model.actor.Player;
@@ -77,6 +80,7 @@ class PhantomEngineTest
 		PhantomEngine.activePhantoms.clear();
 		PhantomEngine.isRunning = false;
 		PhantomState.clear();
+		PhantomConfig.ROUTES.clear();
 		Config.PHANTOM_ENABLE = _phantomEnableWas;
 		if (_debugWasOn != PhantomManager.isDebugMode())
 		{
@@ -210,6 +214,101 @@ class PhantomEngineTest
 			verify(future).cancel(false);
 			assertTrue(PhantomState.RETURN_UNTIL.isEmpty());
 		}
+	}
+
+	@Test
+	void handleDeadPhantomSchedulesReviveOnceAndSetsMood()
+	{
+		Player bot = mockReadyBot(88);
+		when(bot.isDead()).thenReturn(true);
+		ScheduledFuture<?> future = mock(ScheduledFuture.class);
+
+		try (MockedStatic<ThreadPool> threadPool = mockStatic(ThreadPool.class))
+		{
+			threadPool.when(() -> ThreadPool.schedule(any(Runnable.class), anyLong())).thenReturn(future);
+			assertTrue(PhantomEngine.handleDeadPhantom(bot));
+			assertEquals(PhantomMood.Mood.ANNOYED, PhantomMood.getMood(bot));
+			assertFalse(PhantomEngine.handleDeadPhantom(bot));
+		}
+		PhantomMood.clear();
+		PhantomState.REVIVING_PHANTOMS.clear();
+	}
+
+	@Test
+	void handleDeadPhantomReviveCallbackRunsWhenActive()
+	{
+		Player bot = mockReadyBot(89);
+		when(bot.isDead()).thenReturn(true);
+		when(bot.isSpawned()).thenReturn(false);
+		when(bot.getMaxHp()).thenReturn(200);
+		when(bot.getMaxMp()).thenReturn(150);
+		when(bot.getLevel()).thenReturn(45);
+		PhantomConfig.ROUTES.clear();
+		PhantomConfig.ROUTES.add(new PhantomConfig.FarmZone(40, 50, 111, 222, 333, 1, 2, 3));
+		com.l2journey.gameserver.model.actor.templates.PlayerTemplate template = mock(com.l2journey.gameserver.model.actor.templates.PlayerTemplate.class);
+		when(bot.getTemplate()).thenReturn(template);
+		when(template.getCreationPoint()).thenReturn(new Location(5, 6, 7));
+		AtomicReference<Runnable> scheduled = new AtomicReference<>();
+
+		try (MockedStatic<ThreadPool> threadPool = mockStatic(ThreadPool.class);
+			MockedStatic<PhantomGeo> geo = mockStatic(PhantomGeo.class))
+		{
+			threadPool.when(() -> ThreadPool.schedule(any(Runnable.class), anyLong())).thenAnswer(inv ->
+			{
+				scheduled.set(inv.getArgument(0));
+				return mock(ScheduledFuture.class);
+			});
+			geo.when(() -> PhantomGeo.getNpcLikeSpawn(any(Location.class))).thenAnswer(inv -> inv.getArgument(0));
+
+			assertTrue(PhantomEngine.handleDeadPhantom(bot));
+			PhantomEngine.isRunning = true;
+			PhantomEngine.activePhantoms.add(bot);
+			when(bot.isOnline()).thenReturn(true);
+			when(bot.isDead()).thenReturn(false);
+			scheduled.get().run();
+
+			verify(bot).doRevive();
+			verify(bot).setCurrentHp(200);
+			verify(bot).setCurrentMp(150);
+			verify(bot).spawnMe(111, 222, 333);
+			verify(bot, atLeastOnce()).broadcastUserInfo();
+			assertFalse(PhantomState.REVIVING_PHANTOMS.contains(89));
+			assertEquals(45, PhantomState.HUNT_LEVEL_BAND.get(89).intValue());
+		}
+		PhantomMood.clear();
+		PhantomState.REVIVING_PHANTOMS.clear();
+	}
+
+	@Test
+	void handleDeadPhantomReviveCallbackSkipsWhenOffline()
+	{
+		Player bot = mockReadyBot(90);
+		when(bot.isDead()).thenReturn(true);
+		AtomicReference<Runnable> scheduled = new AtomicReference<>();
+
+		try (MockedStatic<ThreadPool> threadPool = mockStatic(ThreadPool.class))
+		{
+			threadPool.when(() -> ThreadPool.schedule(any(Runnable.class), anyLong())).thenAnswer(inv ->
+			{
+				scheduled.set(inv.getArgument(0));
+				return mock(ScheduledFuture.class);
+			});
+			assertTrue(PhantomEngine.handleDeadPhantom(bot));
+			PhantomEngine.isRunning = true;
+			PhantomEngine.activePhantoms.add(bot);
+			when(bot.isOnline()).thenReturn(false);
+			scheduled.get().run();
+			verify(bot, never()).doRevive();
+			assertFalse(PhantomState.REVIVING_PHANTOMS.contains(90));
+		}
+		PhantomMood.clear();
+		PhantomState.REVIVING_PHANTOMS.clear();
+	}
+
+	@Test
+	void handleDeadPhantomNullReturnsFalse()
+	{
+		assertFalse(PhantomEngine.handleDeadPhantom(null));
 	}
 	
 	private static Player mockReadyBot(int objectId)

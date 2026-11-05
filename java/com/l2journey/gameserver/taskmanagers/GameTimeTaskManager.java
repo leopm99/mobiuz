@@ -30,6 +30,7 @@ package com.l2journey.gameserver.taskmanagers;
 
 import java.util.Calendar;
 
+import com.l2journey.commons.threads.Pauses;
 import com.l2journey.commons.threads.ThreadPool;
 import com.l2journey.gameserver.managers.DayNightSpawnManager;
 import com.l2journey.gameserver.model.World;
@@ -48,7 +49,7 @@ import com.l2journey.gameserver.network.serverpackets.SystemMessage;
  * GameTime task manager class.
  * @author Forsaiken, Mobius
  */
-public class GameTimeTaskManager extends Thread
+public class GameTimeTaskManager implements Runnable
 {
 	public static final int TICKS_PER_SECOND = 10; // Not able to change this without checking through code.
 	public static final int MILLIS_IN_TICK = 1000 / TICKS_PER_SECOND;
@@ -58,6 +59,7 @@ public class GameTimeTaskManager extends Thread
 	public static final int TICKS_PER_IG_DAY = SECONDS_PER_IG_DAY * TICKS_PER_SECOND;
 	
 	private final long _referenceTime;
+	private final Thread _thread;
 	private boolean _isNight;
 	private int _gameTicks;
 	private int _gameTime;
@@ -65,10 +67,6 @@ public class GameTimeTaskManager extends Thread
 	
 	protected GameTimeTaskManager()
 	{
-		super("GameTimeTaskManager");
-		super.setDaemon(true);
-		super.setPriority(MAX_PRIORITY);
-		
 		final Calendar c = Calendar.getInstance();
 		c.set(Calendar.HOUR_OF_DAY, 0);
 		c.set(Calendar.MINUTE, 0);
@@ -76,62 +74,98 @@ public class GameTimeTaskManager extends Thread
 		c.set(Calendar.MILLISECOND, 0);
 		_referenceTime = c.getTimeInMillis();
 		
-		super.start();
+		_thread = Thread.ofVirtual().name("GameTimeTaskManager").unstarted(this);
+		_thread.start();
+	}
+	
+	/**
+	 * Interrupts the game-time virtual thread.
+	 */
+	public void interrupt()
+	{
+		_thread.interrupt();
+	}
+	
+	/**
+	 * @return the game-time virtual thread
+	 */
+	Thread workerThread()
+	{
+		return _thread;
 	}
 	
 	@Override
 	public void run()
 	{
+		runClock();
+	}
+	
+	/**
+	 * Game-time loop. Stops when the thread is interrupted.
+	 */
+	void runClock()
+	{
 		while (true)
 		{
-			_gameTicks = (int) ((System.currentTimeMillis() - _referenceTime) / MILLIS_IN_TICK);
-			_gameTime = (_gameTicks % TICKS_PER_IG_DAY) / MILLIS_IN_TICK;
-			_gameHour = _gameTime / 60;
-			
-			if ((_gameHour < 6) != _isNight)
+			updateGameTime();
+			if (!Pauses.sleep(MILLIS_IN_TICK))
 			{
-				_isNight = !_isNight;
-				
-				// Shadow Sense skill for Dark Elf players.
-				for (Player player : World.getInstance().getPlayers())
+				break;
+			}
+		}
+	}
+	
+	/**
+	 * Updates tick/hour state and applies day/night changes when the boundary is crossed.
+	 */
+	void updateGameTime()
+	{
+		_gameTicks = (int) ((System.currentTimeMillis() - _referenceTime) / MILLIS_IN_TICK);
+		_gameTime = (_gameTicks % TICKS_PER_IG_DAY) / MILLIS_IN_TICK;
+		_gameHour = _gameTime / 60;
+		
+		if ((_gameHour < 6) != _isNight)
+		{
+			onDayNightChange();
+		}
+	}
+	
+	/**
+	 * Applies a day/night transition (Shadow Sense and spawn notifications).
+	 */
+	void onDayNightChange()
+	{
+		_isNight = !_isNight;
+		
+		// Shadow Sense skill for Dark Elf players.
+		for (Player player : World.getInstance().getPlayers())
+		{
+			if (player.getRace() == Race.DARK_ELF)
+			{
+				final Skill shadowSense = player.getKnownSkill(CommonSkill.SHADOW_SENSE.getId());
+				if (shadowSense != null)
 				{
-					if (player.getRace() == Race.DARK_ELF)
+					if (_isNight)
 					{
-						final Skill shadowSense = player.getKnownSkill(CommonSkill.SHADOW_SENSE.getId());
-						if (shadowSense != null)
-						{
-							if (_isNight)
-							{
-								// It is night, apply the skill.
-								player.sendPacket(new SystemMessage(SystemMessageId.IT_IS_NOW_MIDNIGHT_AND_THE_EFFECT_OF_S1_CAN_BE_FELT).addSkillName(shadowSense));
-								player.addSkill(shadowSense, false);
-							}
-							else
-							{
-								// It is day, remove the skill.
-								player.sendPacket(new SystemMessage(SystemMessageId.IT_IS_DAWN_AND_THE_EFFECT_OF_S1_WILL_NOW_DISAPPEAR).addSkillName(shadowSense));
-								player.getEffectList().stopSkillEffects(SkillFinishType.NORMAL, shadowSense);
-							}
-						}
+						// It is night, apply the skill.
+						player.sendPacket(new SystemMessage(SystemMessageId.IT_IS_NOW_MIDNIGHT_AND_THE_EFFECT_OF_S1_CAN_BE_FELT).addSkillName(shadowSense));
+						player.addSkill(shadowSense, false);
+					}
+					else
+					{
+						// It is day, remove the skill.
+						player.sendPacket(new SystemMessage(SystemMessageId.IT_IS_DAWN_AND_THE_EFFECT_OF_S1_WILL_NOW_DISAPPEAR).addSkillName(shadowSense));
+						player.getEffectList().stopSkillEffects(SkillFinishType.NORMAL, shadowSense);
 					}
 				}
-				
-				ThreadPool.execute(() -> DayNightSpawnManager.getInstance().notifyChangeMode());
-				
-				if (EventDispatcher.getInstance().hasListener(EventType.ON_DAY_NIGHT_CHANGE))
-				{
-					EventDispatcher.getInstance().notifyEventAsync(new OnDayNightChange(_isNight));
-				}
 			}
-			
-			try
-			{
-				Thread.sleep(MILLIS_IN_TICK);
-			}
-			catch (InterruptedException _)
-			{
-				// Ignore.
-			}
+		}
+		
+		ThreadPool.execute(() -> DayNightSpawnManager.getInstance().notifyChangeMode());
+		
+		if (EventDispatcher.getInstance().hasListener(EventType.ON_DAY_NIGHT_CHANGE))
+		{
+			EventDispatcher.getInstance().notifyEventAsync(new OnDayNightChange(_isNight));
 		}
 	}
 	

@@ -1849,7 +1849,7 @@ public class Clan
 		final int pledgeType = getAvailablePledgeTypes(pledgeTypeValue);
 		if (pledgeType == 0)
 		{
-			if (pledgeType == SUBUNIT_ACADEMY)
+			if (pledgeTypeValue == SUBUNIT_ACADEMY)
 			{
 				player.sendPacket(SystemMessageId.YOUR_CLAN_HAS_ALREADY_ESTABLISHED_A_CLAN_ACADEMY);
 			}
@@ -2148,7 +2148,7 @@ public class Clan
 		_rank = rank;
 	}
 	
-	public int getRank()
+	public synchronized int getRank()
 	{
 		return _rank;
 	}

@@ -231,5 +231,6 @@
 		<respawnPoint X="-114619" Y="-153720" Z="-6720" isChaotic="true" />
 		<respawnPoint X="-114595" Y="-153080" Z="-6720" isChaotic="true" />
 		<respawnPoint X="-114619" Y="-152528" Z="-6720" isChaotic="true" />
+		<map X="16" Y="13" />
 	</region>
 </list>

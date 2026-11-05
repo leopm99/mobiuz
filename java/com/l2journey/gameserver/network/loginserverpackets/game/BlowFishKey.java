@@ -48,6 +48,7 @@ public class BlowFishKey extends BaseWritablePacket
 		writeByte(0x00);
 		try
 		{
+			// Raw RSA: the login server expects unpadded output and strips leading zeros (#7).
 			final Cipher rsaCipher = Cipher.getInstance("RSA/ECB/nopadding");
 			rsaCipher.init(Cipher.ENCRYPT_MODE, publicKey);
 			final byte[] encrypted = rsaCipher.doFinal(blowfishKey);

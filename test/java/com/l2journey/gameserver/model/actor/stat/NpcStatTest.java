@@ -1,0 +1,74 @@
+/*
+ * Copyright (c) 2025 L2Journey Project
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+package com.l2journey.gameserver.model.actor.stat;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import org.junit.jupiter.api.Test;
+
+import com.l2journey.gameserver.model.actor.Npc;
+import com.l2journey.gameserver.model.actor.templates.NpcTemplate;
+
+/**
+ * Unit tests for null-safe NPC access in {@link NpcStat}.
+ */
+class NpcStatTest
+{
+	@Test
+	void getActiveCharReturnsNpcAndRejectsNullCreature()
+	{
+		final Npc npc = mock(Npc.class);
+		final NpcStat stat = new NpcStat(npc);
+		assertEquals(npc, stat.getActiveChar());
+		
+		final NpcStat nullStat = new NpcStat(null);
+		assertThrows(IllegalStateException.class, nullStat::getActiveChar);
+	}
+	
+	@Test
+	void levelAndAttackAngleUseTemplate()
+	{
+		final Npc npc = mock(Npc.class);
+		final NpcTemplate template = mock(NpcTemplate.class);
+		when(npc.getTemplate()).thenReturn(template);
+		when(template.getLevel()).thenReturn((byte) 42);
+		when(template.getBaseAttackAngle()).thenReturn(120);
+		
+		final NpcStat stat = new NpcStat(npc);
+		assertEquals((byte) 42, stat.getLevel());
+		assertEquals(120, stat.getPhysicalAttackAngle());
+	}
+	
+	@Test
+	void nullTemplateThrows()
+	{
+		final Npc npc = mock(Npc.class);
+		when(npc.getTemplate()).thenReturn(null);
+		
+		final NpcStat stat = new NpcStat(npc);
+		assertThrows(NullPointerException.class, stat::getLevel);
+		assertThrows(NullPointerException.class, stat::getPhysicalAttackAngle);
+	}
+}

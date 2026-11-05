@@ -168,7 +168,7 @@
 		<table name="#mpConsume">73 93 113 131 150 172 183 194 204</table>
 		<table name="#ench1ActivateRates">0 1 2 2 3 4 4 5 6 6 7 8 8 9 10 10 11 12 12 13 14 14 15 16 16 17 18 18 19 20</table>
 		<table name="#ench2ActivateRates">0 0 1 1 1 2 2 2 3 3 3 4 4 4 5 5 5 6 6 6 7 7 7 8 8 8 9 9 9 10</table>
-		<table name="#ench3EarthPower">6 8 9 11 12 14 15 17 18 20 21 23 24 26 27 23 30 32 33 35 36 38 39 41 42 44 45 47 48 50</table>
+		<table name="#ench3EarthPower">6 8 9 11 12 14 15 17 18 20 21 23 24 26 27 29 30 32 33 35 36 38 39 41 42 44 45 47 48 50</table>
 		<table name="#enchMagicLvl">76 76 76 77 77 77 78 78 78 79 79 79 80 80 80 81 81 81 82 82 82 83 83 83 84 84 84 85 85 85</table>
 		<set name="icon" val="icon.skill0302" />
 		<set name="operateType" val="A1" />
@@ -279,7 +279,7 @@
 		<table name="#abnormalLevels">1 2 3 4</table>
 		<table name="#effectPoints">438 549 597 635</table>
 		<table name="#hpConsume">185 271 316 364</table>
-		<table name="#magicLevel">40 58 64 70</table>
+		<table name="#magicLevel">46 58 64 70</table>
 		<table name="#maxMp">1.1 1.15 1.2 1.25</table>
 		<table name="#ench1abnormalLevel">4 4 4 4 4 4 4 4 4 5 5 5 5 5 5 5 5 5 5 6 6 6 6 6 6 6 6 6 6 6</table>
 		<table name="#ench1hpConsume">358 352 346 340 334 328 322 316 310 304 298 292 286 280 274 267 261 255 249 243 237 231 225 219 213 207 201 195 189 183</table>
@@ -1806,7 +1806,7 @@
 		<table name="#effectPoints">-425 -431 -438 -444 -449 -455 -460 -466 -471 -475 -480 -484 -488 -492 -496 -499</table>
 		<table name="#hpConsume">208 212 212 217 221 225 229 233 237 240 244 248 251 255 258 261</table>
 		<table name="#magicLevel">59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74</table>
-		<table name="#power">4558 4750 4944 5142 5342 5545 5751 5958 6166 6376 6586 6797 7006 7218 7427 7635</table>
+		<table name="#power">4558 4750 4944 5142 5342 5545 5751 5958 6166 6376 6586 6797 7008 7218 7427 7635</table>
 		<table name="#ench1Power">7710 7779 7848 7917 7986 8055 8123 8192 8261 8330 8399 8468 8537 8605 8674 8743 8812 8881 8950 9019 9088 9156 9225 9294 9363 9432 9501 9570 9639 9707</table>
 		<table name="#ench2HpConsume">259 256 252 249 245 242 239 235 232 228 225 222 218 215 211 208 205 201 198 195 191 188 184 181 178 174 171 167 164 161</table>
 		<table name="#enchDuel">7768 7901 8035 8168 8302 8435 8569 8702 8836 8969 9103 9236 9370 9503 9637 9770 9903 10037 10170 10304 10437 10571 10704 10838 10971 11105 11238 11372 11505 11639</table>
@@ -3557,7 +3557,7 @@
 		<!-- Level 313 (+13 Earth Attack): Supplements the user's P. Atk. with 4848 Power in an Earth-shattering spear thrust. Requires a polearm. Over-hit and critical hit are possible. Ignores Shield Defense. Target may be canceled. Enchant Earth Attack: Increases Earth damage by 46. -->
 		<!-- Level 314 (+14 Earth Attack): Supplements the user's P. Atk. with 4848 Power in an Earth-shattering spear thrust. Requires a polearm. Over-hit and critical hit are possible. Ignores Shield Defense. Target may be canceled. Enchant Earth Attack: Increases Earth damage by 48. -->
 		<!-- Level 315 (+15 Earth Attack): Supplements the user's P. Atk. with 4848 Power in an Earth-shattering spear thrust. Requires a polearm. Over-hit and critical hit are possible. Ignores Shield Defense. Target may be canceled. Enchant Earth Attack: Increases Earth damage by 50. -->
-		<table name="#ench1Power">5201 5228 5254 5281 5307 5334 5360 5387 5413 5440 5466 5693 5519 5546 5572</table>
+		<table name="#ench1Power">5201 5228 5254 5281 5307 5334 5360 5387 5413 5440 5466 5493 5519 5546 5572</table>
 		<table name="#ench2hpConsume">328 317 306 294 283 272 260 249 238 227 215 204 193 181 170</table>
 		<table name="#ench2mpConsume">75 72 70 67 65 62 60 57 54 52 49 47 44 42 39</table>
 		<table name="#ench3elementPower">22 24 26 28 30 32 34 36 38 40 42 44 46 48 50</table>
@@ -3612,7 +3612,7 @@
 		<set name="mpConsume" val="70" />
 		<set name="nextActionAttack" val="true" />
 		<set name="overHit" val="true" />
-		<set name="power" val="5" />
+		<set name="power" val="0" />
 		<set name="reuseDelay" val="3000" />
 		<conditions msgId="113" addName="1">
 			<using kind="SWORD,BLUNT" />

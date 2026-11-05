@@ -63,7 +63,12 @@ public class SummonEffectTable
 	
 	private Collection<SummonEffect> getServitorEffects(Player owner, int referenceSkill)
 	{
-		return containsOwner(owner) ? getServitorEffects(owner).get(referenceSkill) : null;
+		final Map<Integer, Collection<SummonEffect>> effects = getServitorEffects(owner);
+		if (effects == null)
+		{
+			return null;
+		}
+		return effects.get(referenceSkill);
 	}
 	
 	private boolean containsOwner(Player owner)
@@ -108,18 +113,22 @@ public class SummonEffectTable
 	
 	public void clearServitorEffects(Player owner, int referenceSkill)
 	{
-		if (containsOwner(owner))
+		final Map<Integer, Collection<SummonEffect>> effects = getServitorEffects(owner);
+		if (effects == null)
 		{
-			getServitorEffects(owner).getOrDefault(referenceSkill, Collections.emptyList()).clear();
+			return;
+		}
+		final Collection<SummonEffect> skillEffects = effects.get(referenceSkill);
+		if (skillEffects != null)
+		{
+			skillEffects.clear();
 		}
 	}
 	
 	public void addServitorEffect(Player owner, int referenceSkill, Skill skill, int effectCurTime)
 	{
-		_servitorEffects.putIfAbsent(owner.getObjectId(), new ConcurrentHashMap<>());
-		_servitorEffects.get(owner.getObjectId()).putIfAbsent(owner.getClassIndex(), new ConcurrentHashMap<>());
-		getServitorEffects(owner).putIfAbsent(referenceSkill, ConcurrentHashMap.newKeySet());
-		getServitorEffects(owner).get(referenceSkill).add(new SummonEffect(skill, effectCurTime));
+		final Map<Integer, Collection<SummonEffect>> effects = _servitorEffects.computeIfAbsent(owner.getObjectId(), _ -> new ConcurrentHashMap<>()).computeIfAbsent(owner.getClassIndex(), _ -> new ConcurrentHashMap<>());
+		effects.computeIfAbsent(referenceSkill, _ -> ConcurrentHashMap.newKeySet()).add(new SummonEffect(skill, effectCurTime));
 	}
 	
 	public void removeServitorEffects(Player owner, int referenceSkill, int skillId)

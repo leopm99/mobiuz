@@ -106,7 +106,7 @@ public class Attackable extends Npc
 	private double _overhitDamage;
 	private Creature _overhitAttacker;
 	// Canal de comando
-	private CommandChannel _firstCommandChannelAttacked = null;
+	private volatile CommandChannel _firstCommandChannelAttacked = null;
 	private CommandChannelTimer _commandChannelTimer = null;
 	private long _commandChannelLastAttack = 0;
 	// Cristal de alma
@@ -233,27 +233,7 @@ public class Attackable extends Npc
 	{
 		if (_isRaid && !isMinion() && (attacker != null) && (attacker.getParty() != null) && attacker.getParty().isInCommandChannel() && attacker.getParty().getCommandChannel().meetRaidWarCondition(this))
 		{
-			if (_firstCommandChannelAttacked == null) // direito de saque nao definido
-			{
-				synchronized (this)
-				{
-					if (_firstCommandChannelAttacked == null)
-					{
-						_firstCommandChannelAttacked = attacker.getParty().getCommandChannel();
-						if (_firstCommandChannelAttacked != null)
-						{
-							_commandChannelTimer = new CommandChannelTimer(this);
-							_commandChannelLastAttack = System.currentTimeMillis();
-							ThreadPool.schedule(_commandChannelTimer, 10000); // verifica ultimo ataque
-							_firstCommandChannelAttacked.broadcastPacket(new CreatureSay(null, ChatType.PARTYROOM_ALL, "", "You have looting rights!")); // TODO: retail msg
-						}
-					}
-				}
-			}
-			else if (attacker.getParty().getCommandChannel().equals(_firstCommandChannelAttacked)) // esta no mesmo canal
-			{
-				_commandChannelLastAttack = System.currentTimeMillis(); // atualiza tempo do ultimo ataque
-			}
+			updateCommandChannelLootRights(attacker.getParty().getCommandChannel());
 		}
 		
 		// Adiciona dano e odio ao AggroInfo do atacante na _aggroList do Atacavel
@@ -1639,6 +1619,40 @@ public class Attackable extends Npc
 	public boolean hasRandomAnimation()
 	{
 		return ((Config.MAX_MONSTER_ANIMATION > 0) && isRandomAnimationEnabled() && !(this instanceof GrandBoss));
+	}
+	
+	/**
+	 * Updates command-channel looting rights for this raid when first attacked, or refreshes the last-attack time for the same channel.
+	 * @param channel the attacker's command channel
+	 */
+	void updateCommandChannelLootRights(CommandChannel channel)
+	{
+		synchronized (this)
+		{
+			final CommandChannel claimed = _firstCommandChannelAttacked;
+			if (claimed == null) // direito de saque nao definido
+			{
+				if (channel == null)
+				{
+					return;
+				}
+				
+				final CommandChannelTimer timer = new CommandChannelTimer(this);
+				final long now = System.currentTimeMillis();
+				final CreatureSay lootRightsMessage = new CreatureSay(null, ChatType.PARTYROOM_ALL, "", "You have looting rights!"); // TODO: retail msg
+				_commandChannelTimer = timer;
+				_commandChannelLastAttack = now;
+				ThreadPool.schedule(timer, 10000); // verifica ultimo ataque
+				channel.broadcastPacket(lootRightsMessage);
+				_firstCommandChannelAttacked = channel;
+				return;
+			}
+			
+			if (channel.hasSameLeader(claimed)) // esta no mesmo canal
+			{
+				_commandChannelLastAttack = System.currentTimeMillis(); // atualiza tempo do ultimo ataque
+			}
+		}
 	}
 	
 	public void setCommandChannelTimer(CommandChannelTimer commandChannelTimer)

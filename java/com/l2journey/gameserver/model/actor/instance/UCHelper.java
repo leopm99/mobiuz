@@ -75,7 +75,7 @@ public class UCHelper extends Folk
 		{
 			final int index = Integer.parseInt(token.nextToken());
 			final Location[] locs = LOCATIONS[index];
-			player.teleToLocation(locs[Rnd.get(locs.length)], true);
+			player.teleToLocation(Rnd.pick(locs), true);
 		}
 		else
 		{

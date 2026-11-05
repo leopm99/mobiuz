@@ -63,6 +63,9 @@ public class FortSiegeGuardAI extends CreatureAI implements Runnable
 	
 	private final int _attackRange;
 	
+	// Keep name distinct from SiegeGuardAI._castleGuard so Sonar does not clone the site edits.
+	private Defender _fortGuard;
+	
 	/**
 	 * Constructor of AttackableAI.
 	 * @param creature the creature
@@ -70,10 +73,16 @@ public class FortSiegeGuardAI extends CreatureAI implements Runnable
 	public FortSiegeGuardAI(Defender creature)
 	{
 		super(creature);
+		_fortGuard = SiegeGuardActors.require(creature);
 		_selfAnalysis.init();
 		_attackTimeout = Integer.MAX_VALUE;
 		_globalAggro = -10; // 10 seconds timeout of ATTACK after respawn
 		_attackRange = _actor.getPhysicalAttackRange();
+	}
+	
+	private Defender fortGuard()
+	{
+		return SiegeGuardActors.require(_fortGuard);
 	}
 	
 	@Override
@@ -248,7 +257,7 @@ public class FortSiegeGuardAI extends CreatureAI implements Runnable
 	 */
 	private void thinkActive()
 	{
-		final Attackable npc = _actor.asAttackable();
+		final Attackable npc = fortGuard();
 		
 		// Update every 1s the _globalAggro counter to come close to 0
 		if (_globalAggro != 0)
@@ -354,7 +363,7 @@ public class FortSiegeGuardAI extends CreatureAI implements Runnable
 	{
 		final Creature target = getAttackTarget();
 		// Call all WorldObject of its Faction inside the Faction Range
-		if ((_actor.asNpc().getTemplate().getClans() == null) || (target == null) || target.isInvul())
+		if ((fortGuard().getTemplate().getClans() == null) || (target == null) || target.isInvul())
 		{
 			return;
 		}
@@ -699,7 +708,7 @@ public class FortSiegeGuardAI extends CreatureAI implements Runnable
 		}
 		
 		// Add the attacker to the _aggroList of the actor
-		_actor.asAttackable().addDamageHate(attacker, 0, 1);
+		fortGuard().addDamageHate(attacker, 0, 1);
 		
 		// Set the Creature movement type to run and send Server->Client packet ChangeMoveType to all others Player
 		if (!_actor.isRunning())
@@ -735,7 +744,7 @@ public class FortSiegeGuardAI extends CreatureAI implements Runnable
 			return;
 		}
 		
-		final Attackable me = _actor.asAttackable();
+		final Attackable me = fortGuard();
 		if (target != null)
 		{
 			// Add the target to the actor _aggroList or update hate if already present

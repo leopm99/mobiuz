@@ -83,7 +83,7 @@ public class Q00247_PossessorOfAPreciousSoul4 extends Quest
 				}
 				break;
 			case "31745-5.html":
-				if (st.isCond(2))
+				if (st.isStarted() && st.isCond(2))
 				{
 					player.setNoble(true);
 					addExpAndSp(player, 93836, 0);

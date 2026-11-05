@@ -19,6 +19,7 @@ package com.l2journey.gameserver.model.conditions;
 import com.l2journey.gameserver.model.actor.Creature;
 import com.l2journey.gameserver.model.item.ItemTemplate;
 import com.l2journey.gameserver.model.item.instance.Item;
+import com.l2journey.gameserver.model.itemcontainer.Inventory;
 import com.l2journey.gameserver.model.skill.Skill;
 
 /**
@@ -48,7 +49,13 @@ public class ConditionSlotItemType extends ConditionInventory
 			return false;
 		}
 		
-		final Item itemSlot = effector.getInventory().getPaperdollItem(_slot);
+		final Inventory inventory = effector.getInventory();
+		if (inventory == null)
+		{
+			return false;
+		}
+		
+		final Item itemSlot = inventory.getPaperdollItem(_slot);
 		if (itemSlot == null)
 		{
 			return false;

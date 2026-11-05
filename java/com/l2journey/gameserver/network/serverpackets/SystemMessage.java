@@ -263,7 +263,7 @@ public class SystemMessage extends ServerPacket
 	public SystemMessage addItemName(int id)
 	{
 		final ItemTemplate item = ItemData.getInstance().getTemplate(id);
-		if (item.getDisplayId() != id)
+		if ((item != null) && (item.getDisplayId() != id))
 		{
 			return addString(item.getName());
 		}

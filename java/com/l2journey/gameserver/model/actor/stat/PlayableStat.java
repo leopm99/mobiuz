@@ -20,13 +20,17 @@
  */
 package com.l2journey.gameserver.model.actor.stat;
 
+import java.util.Objects;
 import java.util.logging.Logger;
 
 import com.l2journey.Config;
 import com.l2journey.gameserver.data.xml.ExperienceData;
 import com.l2journey.gameserver.data.xml.PetDataTable;
 import com.l2journey.gameserver.managers.ZoneManager;
+import com.l2journey.gameserver.model.actor.Creature;
 import com.l2journey.gameserver.model.actor.Playable;
+import com.l2journey.gameserver.model.actor.instance.Pet;
+import com.l2journey.gameserver.model.actor.templates.NpcTemplate;
 import com.l2journey.gameserver.model.events.EventDispatcher;
 import com.l2journey.gameserver.model.events.EventType;
 import com.l2journey.gameserver.model.events.holders.actor.playable.OnPlayableExpChanged;
@@ -68,12 +72,7 @@ public class PlayableStat extends CreatureStat
 		}
 		
 		setExp(getExp() + value);
-		byte minimumLevel = 1;
-		if (playable.isPet())
-		{
-			// get minimum level from NpcTemplate
-			minimumLevel = (byte) PetDataTable.getInstance().getPetMinLevel(playable.asPet().getTemplate().getId());
-		}
+		final byte minimumLevel = petMinimumLevel(playable);
 		
 		byte level = minimumLevel; // minimum level
 		for (byte tmp = level; tmp <= getMaxLevel(); tmp++)
@@ -103,13 +102,8 @@ public class PlayableStat extends CreatureStat
 		}
 		
 		setExp(getExp() - value);
-		byte minimumLevel = 1;
 		final Playable playable = getActiveChar();
-		if (playable.isPet())
-		{
-			// get minimum level from NpcTemplate
-			minimumLevel = (byte) PetDataTable.getInstance().getPetMinLevel(playable.asPet().getTemplate().getId());
-		}
+		final byte minimumLevel = petMinimumLevel(playable);
 		byte level = minimumLevel;
 		for (byte tmp = level; tmp <= getMaxLevel(); tmp++)
 		{
@@ -260,7 +254,12 @@ public class PlayableStat extends CreatureStat
 	@Override
 	public Playable getActiveChar()
 	{
-		return super.getActiveChar().asPlayable();
+		final Creature creature = getCreature();
+		if (!(creature instanceof Playable playable))
+		{
+			throw new IllegalStateException("PlayableStat active character");
+		}
+		return playable;
 	}
 	
 	public int getMaxLevel()
@@ -271,7 +270,18 @@ public class PlayableStat extends CreatureStat
 	@Override
 	public int getPhysicalAttackAngle()
 	{
-		final Weapon weapon = getActiveChar().getActiveWeaponItem();
+		final Playable playable = getActiveChar();
+		final Weapon weapon = playable.getActiveWeaponItem();
 		return weapon != null ? weapon.getBaseAttackAngle() : super.getPhysicalAttackAngle();
+	}
+	
+	private static byte petMinimumLevel(Playable playable)
+	{
+		if (!(playable instanceof Pet pet))
+		{
+			return 1;
+		}
+		final NpcTemplate template = Objects.requireNonNull(pet.getTemplate(), "Pet template");
+		return (byte) PetDataTable.getInstance().getPetMinLevel(template.getId());
 	}
 }

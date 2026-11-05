@@ -159,4 +159,48 @@ public class Rnd
 	{
 		return ThreadLocalRandom.current().nextGaussian();
 	}
+	
+	/**
+	 * @param <T> element type
+	 * @param values array to pick from
+	 * @return a random element from {@code values}
+	 * @throws IllegalArgumentException if {@code values} is empty
+	 */
+	public static <T> T pick(T[] values)
+	{
+		requireNonEmpty(values.length);
+		return values[ThreadLocalRandom.current().nextInt(values.length)];
+	}
+	
+	/**
+	 * @param values character array to pick from
+	 * @return a random character from {@code values}
+	 * @throws IllegalArgumentException if {@code values} is empty
+	 */
+	public static char pick(char[] values)
+	{
+		requireNonEmpty(values.length);
+		return values[ThreadLocalRandom.current().nextInt(values.length)];
+	}
+	
+	/**
+	 * @param values int array to pick from
+	 * @return a random int from {@code values}, or {@code 0} when empty
+	 */
+	public static int pick(int[] values)
+	{
+		if (values.length == 0)
+		{
+			return 0;
+		}
+		return values[ThreadLocalRandom.current().nextInt(values.length)];
+	}
+	
+	private static void requireNonEmpty(int length)
+	{
+		if (length == 0)
+		{
+			throw new IllegalArgumentException("values is empty");
+		}
+	}
 }

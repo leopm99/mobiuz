@@ -172,7 +172,7 @@ public class ItemManager
 	 */
 	public static void destroyItem(ItemProcessType process, Item item, Player actor, Object reference)
 	{
-		synchronized (item)
+		synchronized (item.getMutationLock())
 		{
 			final long old = item.getCount();
 			item.setCount(0);

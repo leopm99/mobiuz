@@ -7,10 +7,13 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
+import com.l2journey.commons.util.Rnd;
 import com.l2journey.gameserver.data.xml.ItemData;
 import com.l2journey.gameserver.model.actor.Player;
 import com.l2journey.gameserver.model.item.enums.ItemProcessType;
 import com.l2journey.gameserver.model.item.instance.Item;
+import com.l2journey.gameserver.model.item.type.CrystalType;
+import com.l2journey.gameserver.model.itemcontainer.Inventory;
 import com.l2journey.gameserver.network.serverpackets.ExAutoSoulShot;
 
 public class PhantomEquipment
@@ -18,8 +21,25 @@ public class PhantomEquipment
 	private static final Logger LOGGER = Logger.getLogger(PhantomEquipment.class.getName());
 	private static final int INVENTORY_CLEAN_LIMIT = 25;
 	private static final long PROGRESSION_INTERVAL_MS = 10000L;
+	private static final int DEMON_HORNS = 8187;
 	private static final Set<Integer> REPORTED_MISSING_ITEMS = ConcurrentHashMap.newKeySet();
 	private static final Map<Integer, Long> LAST_PROGRESSION_CHECK = new ConcurrentHashMap<>();
+	private static final Map<Integer, Boolean> HAIR_ASSIGNED = new ConcurrentHashMap<>();
+	private static final int[] HAIR_ACCESSORIES =
+	{
+		5808,
+		7694,
+		8185,
+		8918,
+		8919,
+		8922,
+		13511,
+		13512,
+		13513,
+		13514,
+		13515,
+		20020
+	};
 
 	// --- NO-GRADE (Nivel 1 ao 19) ---
 	private static final int[] MAGE_KIT_NG =
@@ -35,8 +55,7 @@ public class PhantomEquipment
 		878,
 		878,
 		846,
-		19,
-		8187
+		19
 	};
 	private static final int[] FIGHTER_KIT_NG =
 	{
@@ -51,8 +70,7 @@ public class PhantomEquipment
 		44,
 		51,
 		39,
-		19,
-		8187
+		19
 	};
 	private static final int[] KAMAEL_KIT_NG =
 	{
@@ -66,8 +84,7 @@ public class PhantomEquipment
 		9033,
 		44,
 		51,
-		39,
-		8187
+		39
 	};
 
 	// --- GRAU D (Nivel 20 ao 39) ---
@@ -83,8 +100,7 @@ public class PhantomEquipment
 		850,
 		881,
 		913,
-		627,
-		8187
+		627
 	};
 	private static final int[] LIGHT_KIT_D =
 	{
@@ -98,8 +114,7 @@ public class PhantomEquipment
 		881,
 		850,
 		881,
-		913,
-		8187
+		913
 	};
 	private static final int[] HEAVY_KIT_D =
 	{
@@ -114,8 +129,7 @@ public class PhantomEquipment
 		881,
 		850,
 		881,
-		913,
-		8187
+		913
 	};
 
 	// --- GRAU C (Nivel 40 ao 51) ---
@@ -133,8 +147,7 @@ public class PhantomEquipment
 		857,
 		888,
 		888,
-		2494,
-		8187
+		2494
 	};
 	private static final int[] LIGHT_KIT_C =
 	{
@@ -149,8 +162,7 @@ public class PhantomEquipment
 		857,
 		857,
 		888,
-		888,
-		8187
+		888
 	};
 	private static final int[] HEAVY_KIT_C =
 	{
@@ -165,8 +177,7 @@ public class PhantomEquipment
 		857,
 		857,
 		888,
-		888,
-		8187
+		888
 	};
 
 	// --- GRAU B (Nivel 52 ao 60) ---
@@ -184,7 +195,6 @@ public class PhantomEquipment
 		864,
 		895,
 		895,
-		8187,
 		14796
 	};
 	private static final int[] LIGHT_KIT_B =
@@ -199,8 +209,7 @@ public class PhantomEquipment
 		864,
 		864,
 		895,
-		6660,
-		8187
+		6660
 	};
 	private static final int[] HEAVY_KIT_B =
 	{
@@ -215,8 +224,7 @@ public class PhantomEquipment
 		864,
 		864,
 		895,
-		6660,
-		8187
+		6660
 	};
 
 	// --- GRAU A (Nivel 61 ao 75) ---
@@ -233,7 +241,6 @@ public class PhantomEquipment
 		862,
 		893,
 		893,
-		8187,
 		14925,
 		14796
 	};
@@ -250,7 +257,6 @@ public class PhantomEquipment
 		862,
 		893,
 		6660,
-		8187,
 		14925
 	};
 	private static final int[] HEAVY_KIT_A =
@@ -266,7 +272,6 @@ public class PhantomEquipment
 		862,
 		893,
 		6660,
-		8187,
 		14925
 	};
 
@@ -287,7 +292,6 @@ public class PhantomEquipment
 		858,
 		889,
 		889,
-		8187,
 		14929
 	};
 	private static final int[] LIGHT_KIT_S =
@@ -304,7 +308,6 @@ public class PhantomEquipment
 		858,
 		889,
 		6660,
-		8187,
 		14929
 	};
 	private static final int[] HEAVY_KIT_S =
@@ -321,7 +324,6 @@ public class PhantomEquipment
 		889,
 		6657,
 		6660,
-		8187,
 		14929
 	};
 
@@ -341,7 +343,6 @@ public class PhantomEquipment
 		858,
 		889,
 		889,
-		8187,
 		14929
 	};
 	private static final int[] LIGHT_KIT_S84 =
@@ -358,7 +359,6 @@ public class PhantomEquipment
 		858,
 		889,
 		6660,
-		8187,
 		14929
 	};
 	private static final int[] HEAVY_KIT_S84 =
@@ -375,7 +375,6 @@ public class PhantomEquipment
 		889,
 		6657,
 		6660,
-		8187,
 		14929
 	};
 
@@ -397,6 +396,7 @@ public class PhantomEquipment
 
 		updateGearByLevel(bot);
 		enforceEquipment(bot);
+		ensureRandomHair(bot);
 		ensureShots(bot);
 		ensureArrows(bot);
 		limpiarMochila(bot);
@@ -428,11 +428,13 @@ public class PhantomEquipment
 	public static void unregisterBot(int objectId)
 	{
 		LAST_PROGRESSION_CHECK.remove(objectId);
+		HAIR_ASSIGNED.remove(objectId);
 	}
 
 	public static void clearRuntimeState()
 	{
 		LAST_PROGRESSION_CHECK.clear();
+		HAIR_ASSIGNED.clear();
 	}
 
 	private static int[] getActiveKit(Player bot)
@@ -1019,6 +1021,26 @@ public class PhantomEquipment
 		return false;
 	}
 
+	/**
+	 * Target enchant level for phantom kit gear by crystal grade.
+	 * @param grade item crystal type
+	 * @param weapon {@code true} when the item is a weapon
+	 * @return enchant level to enforce
+	 */
+	static int targetEnchantForGrade(CrystalType grade, boolean weapon)
+	{
+		return switch (grade)
+		{
+			case NONE, D -> weapon ? 0 : 16;
+			case C -> weapon ? 3 : 16;
+			case B -> weapon ? 8 : 16;
+			case A -> weapon ? 10 : 16;
+			case S -> weapon ? 15 : 16;
+			case S84 -> 16;
+			case S80 -> 0;
+		};
+	}
+
 	private static void enforceEquipment(Player bot)
 	{
 		int[] kitCorrecto = getActiveKit(bot);
@@ -1030,125 +1052,7 @@ public class PhantomEquipment
 		{
 			if ((item != null) && item.isEquipable() && isItemInKit(item.getId(), kitCorrecto))
 			{
-				int targetEnchant = 0;
-
-				boolean isWeapon = item.isWeapon();
-				long slot = item.getTemplate().getBodyPart();
-				// Identificamos se e uma joia conforme o slot
-				boolean isJoya = (slot == 8) || (slot == 2) || (slot == 4) || (slot == 6) || (slot == 16) || (slot == 32) || (slot == 48);
-
-				// Avaliamos o grau do item para atribuir o enchant correspondente
-				switch (item.getTemplate().getCrystalType())
-				{
-					case NONE: // No-Grade
-						if (isWeapon)
-						{
-							targetEnchant = 0;
-						}
-						else if (isJoya)
-						{
-							targetEnchant = 16;
-						}
-						else
-						{
-							targetEnchant = 16; // Armor / Set
-						}
-						break;
-
-					case D: // Grau D
-						if (isWeapon)
-						{
-							targetEnchant = 0;
-						}
-						else if (isJoya)
-						{
-							targetEnchant = 16;
-						}
-						else
-						{
-							targetEnchant = 16; // Armor / Set
-						}
-						break;
-
-					case C: // Grau C
-						if (isWeapon)
-						{
-							targetEnchant = 3;
-						}
-						else if (isJoya)
-						{
-							targetEnchant = 16;
-						}
-						else
-						{
-							targetEnchant = 16;
-						}
-						break;
-
-					case B: // Grau B
-						if (isWeapon)
-						{
-							targetEnchant = 8;
-						}
-						else if (isJoya)
-						{
-							targetEnchant = 16;
-						}
-						else
-						{
-							targetEnchant = 16;
-						}
-						break;
-
-					case A: // Grau A
-						if (isWeapon)
-						{
-							targetEnchant = 10;
-						}
-						else if (isJoya)
-						{
-							targetEnchant = 16;
-						}
-						else
-						{
-							targetEnchant = 16;
-						}
-						break;
-
-					case S: // Grau S
-						if (isWeapon)
-						{
-							targetEnchant = 15;
-						}
-						else if (isJoya)
-						{
-							targetEnchant = 16;
-						}
-						else
-						{
-							targetEnchant = 16;
-						}
-						break;
-
-					case S84: // Grau S84
-						if (isWeapon)
-						{
-							targetEnchant = 16;
-						}
-						else if (isJoya)
-						{
-							targetEnchant = 16;
-						}
-						else
-						{
-							targetEnchant = 16;
-						}
-						break;
-
-					default:
-						targetEnchant = 0;
-						break;
-				}
+				int targetEnchant = targetEnchantForGrade(item.getTemplate().getCrystalType(), item.isWeapon());
 
 				// Aplicamos o encantamento somente se o item precisar
 				if (item.getEnchantLevel() < targetEnchant)
@@ -1171,8 +1075,7 @@ public class PhantomEquipment
 		int targetAmmoId = -1;
 		int classId = bot.getBaseClass();
 
-		// Identificamos se e um arqueiro Kamael (Warder, Arbalester, Trickster)
-		boolean isKamaelArcher = ((classId == 126) || (classId == 130) || (classId == 134));
+		boolean isKamaelArcher = usesBolts(classId);
 
 		if (isKamaelArcher)
 		{
@@ -1221,6 +1124,77 @@ public class PhantomEquipment
 
 		bot.getInventory().refreshWeight();
 		bot.broadcastUserInfo();
+	}
+
+	/**
+	 * Equips one random hair accessory when none from the pool is worn.
+	 * Demon Horns do not count as already chosen and are replaced once.
+	 * @param bot the phantom
+	 */
+	static void ensureRandomHair(Player bot)
+	{
+		if ((bot == null) || bot.isDead())
+		{
+			return;
+		}
+
+		Item hair = bot.getInventory().getPaperdollItem(Inventory.PAPERDOLL_HAIR);
+		Item hair2 = bot.getInventory().getPaperdollItem(Inventory.PAPERDOLL_HAIR2);
+		boolean poolHairWorn = isPoolHair(hair) || isPoolHair(hair2);
+		boolean onlyDemonHorns = wearingOnlyDemonHorns(hair, hair2);
+
+		if (poolHairWorn && !onlyDemonHorns)
+		{
+			HAIR_ASSIGNED.put(bot.getObjectId(), Boolean.TRUE);
+			return;
+		}
+
+		if (HAIR_ASSIGNED.getOrDefault(bot.getObjectId(), Boolean.FALSE) && !onlyDemonHorns)
+		{
+			return;
+		}
+
+		int hairId = HAIR_ACCESSORIES[Rnd.get(HAIR_ACCESSORIES.length)];
+		Item owned = bot.getInventory().getItemByItemId(hairId);
+		if (owned == null)
+		{
+			owned = bot.getInventory().addItem(ItemProcessType.REWARD, hairId, 1, bot, null);
+		}
+		if ((owned != null) && !owned.isEquipped())
+		{
+			bot.getInventory().equipItem(owned);
+		}
+		HAIR_ASSIGNED.put(bot.getObjectId(), Boolean.TRUE);
+		bot.broadcastUserInfo();
+	}
+
+	private static boolean isPoolHair(Item item)
+	{
+		if (item == null)
+		{
+			return false;
+		}
+		int id = item.getId();
+		for (int hairId : HAIR_ACCESSORIES)
+		{
+			if (hairId == id)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private static boolean wearingOnlyDemonHorns(Item hair, Item hair2)
+	{
+		boolean hasDemon = ((hair != null) && (hair.getId() == DEMON_HORNS)) || ((hair2 != null) && (hair2.getId() == DEMON_HORNS));
+		if (!hasDemon)
+		{
+			return false;
+		}
+		boolean otherPool = ((hair != null) && (hair.getId() != DEMON_HORNS) && isPoolHair(hair))
+			|| ((hair2 != null) && (hair2.getId() != DEMON_HORNS) && isPoolHair(hair2));
+		return !otherPool;
 	}
 
 	public static void cleanInventory(Player bot)
@@ -1287,14 +1261,30 @@ public class PhantomEquipment
 		bot.sendPacket(new ExAutoSoulShot(shotId, 1));
 	}
 
+	/**
+	 * @param classId base class id
+	 * @return {@code true} when the class uses crossbow bolts
+	 */
+	static boolean usesBolts(int classId)
+	{
+		return (classId == 126) || (classId == 130) || (classId == 134);
+	}
+
+	/**
+	 * @param classId base class id
+	 * @return {@code true} when the class uses bow arrows
+	 */
+	static boolean usesArrows(int classId)
+	{
+		return (classId == 9) || (classId == 24) || (classId == 37) || (classId == 92) || (classId == 102) || (classId == 109);
+	}
+
 	// --- SISTEMA INDEPENDENTE PARA AS FLECHAS E VIROTES ---
 	private static void ensureArrows(Player bot)
 	{
 		int classId = bot.getBaseClass();
-		// Arqueiros normais (Humanos, Elfos, Elfos Negros)
-		boolean isArcher = ((classId == 9) || (classId == 24) || (classId == 37) || (classId == 92) || (classId == 102) || (classId == 109));
-		// Arqueiros Kamael (Usam Besta e Virotes)
-		boolean isKamaelArcher = ((classId == 130) || (classId == 134));
+		boolean isArcher = usesArrows(classId);
+		boolean isKamaelArcher = usesBolts(classId);
 
 		if (!isArcher && !isKamaelArcher)
 		{

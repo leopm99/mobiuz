@@ -54,7 +54,7 @@ public class RequestExOustFromMPCC extends ClientPacket
 		final Player target = World.getInstance().getPlayer(_name);
 		final Player player = getPlayer();
 		final Party party = player.getParty();
-		if ((target != null) && target.isInParty() && (party != null) && party.isInCommandChannel() && target.getParty().isInCommandChannel() && party.getCommandChannel().getLeader().equals(player) && party.getCommandChannel().equals(target.getParty().getCommandChannel()))
+		if ((target != null) && target.isInParty() && (party != null) && party.isInCommandChannel() && target.getParty().isInCommandChannel() && party.getCommandChannel().getLeader().equals(player) && party.getCommandChannel().hasSameLeader(target.getParty().getCommandChannel()))
 		{
 			if (player.equals(target))
 			{

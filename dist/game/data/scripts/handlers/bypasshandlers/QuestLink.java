@@ -35,6 +35,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.l2journey.Config;
 import com.l2journey.gameserver.data.xml.NpcData;
@@ -57,8 +58,10 @@ import com.l2journey.gameserver.network.serverpackets.NpcHtmlMessage;
 
 public class QuestLink implements IBypassHandler
 {
+	private static final Logger LOGGER = Logger.getLogger(QuestLink.class.getName());
 	private static final int TO_LEAD_AND_BE_LED = 118;
 	private static final int THE_LEADER_AND_THE_FOLLOWER = 123;
+	private static final int TUTORIAL = 255;
 	private static final String[] COMMANDS =
 	{
 		"Quest"
@@ -114,7 +117,7 @@ public class QuestLink implements IBypassHandler
 		for (Quest quest : quests)
 		{
 			// Skip tutorial links.
-			if ((quest == null) || (quest.getId() == 255))
+			if ((quest == null) || (quest.getId() == TUTORIAL))
 			{
 				continue;
 			}
@@ -349,7 +352,9 @@ public class QuestLink implements IBypassHandler
 		}
 		else if (options.size() == 1)
 		{
-			showQuestWindow(player, npc, options.stream().findFirst().get().getName());
+			final Quest only = options.iterator().next();
+			final String questId = (only.getId() == TUTORIAL) ? "" : only.getName();
+			showQuestWindow(player, npc, questId);
 		}
 		else
 		{

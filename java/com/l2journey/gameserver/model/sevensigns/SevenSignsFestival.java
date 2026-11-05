@@ -27,6 +27,7 @@ import java.util.Map;
 import java.util.StringJoiner;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ScheduledFuture;
+import java.util.function.LongPredicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -1728,12 +1729,31 @@ public class SevenSignsFestival
 	}
 	
 	/**
+	 * Creates a festival manager for unit tests without scheduling it.
+	 * @return a new festival manager instance
+	 */
+	FestivalManager newFestivalManager()
+	{
+		return new FestivalManager();
+	}
+	
+	/**
 	 * The FestivalManager class is the main runner of all the festivals. It is used for easier integration and management of all running festivals.
 	 * @author Tempy
 	 */
-	private class FestivalManager implements Runnable
+	class FestivalManager implements Runnable
 	{
 		protected Map<Integer, DarknessFestival> _festivalInstances;
+		
+		/**
+		 * Optional pause hook for unit tests. When set, replaces {@link Object#wait(long)}.
+		 */
+		LongPredicate _pauseHook;
+		
+		/**
+		 * Optional fault injected at the start of {@link #run()} for unit tests.
+		 */
+		Exception _testException;
 		
 		public FestivalManager()
 		{
@@ -1747,11 +1767,44 @@ public class SevenSignsFestival
 			setNextFestivalStart(Config.ALT_FESTIVAL_CYCLE_LENGTH - FESTIVAL_SIGNUP_TIME);
 		}
 		
+		/**
+		 * Waits while holding this manager's monitor. Restores the interrupt flag and returns {@code false} when interrupted.
+		 * @param millis wait duration
+		 * @return {@code true} if the wait completed
+		 */
+		boolean pause(long millis)
+		{
+			if (_pauseHook != null)
+			{
+				return _pauseHook.test(millis);
+			}
+			try
+			{
+				synchronized (this)
+				{
+					wait(millis);
+				}
+				return true;
+			}
+			catch (InterruptedException _)
+			{
+				Thread.currentThread().interrupt();
+				return false;
+			}
+		}
+		
 		@Override
 		public synchronized void run()
 		{
 			try
 			{
+				if (_testException != null)
+				{
+					final Exception fault = _testException;
+					_testException = null;
+					throw fault;
+				}
+				
 				// The manager shouldn't be running if Seal Validation is in effect.
 				if (SevenSigns.getInstance().isSealValidationPeriod())
 				{
@@ -1770,13 +1823,9 @@ public class SevenSignsFestival
 				}
 				
 				// Stand by until the allowed signup period has elapsed.
-				try
+				if (!pause(FESTIVAL_SIGNUP_TIME))
 				{
-					wait(FESTIVAL_SIGNUP_TIME);
-				}
-				catch (Exception _)
-				{
-					// Ignore.
+					return;
 				}
 				
 				// Clear past participants, they can no longer register their score if not done so already.
@@ -1796,22 +1845,18 @@ public class SevenSignsFestival
 				{
 					if ((_duskFestivalParticipants.isEmpty() && _dawnFestivalParticipants.isEmpty()))
 					{
-						try
+						setNextCycleStart();
+						setNextFestivalStart(Config.ALT_FESTIVAL_CYCLE_LENGTH - FESTIVAL_SIGNUP_TIME);
+						if (!pause(Config.ALT_FESTIVAL_CYCLE_LENGTH - FESTIVAL_SIGNUP_TIME))
 						{
-							setNextCycleStart();
-							setNextFestivalStart(Config.ALT_FESTIVAL_CYCLE_LENGTH - FESTIVAL_SIGNUP_TIME);
-							wait(Config.ALT_FESTIVAL_CYCLE_LENGTH - FESTIVAL_SIGNUP_TIME);
-							for (DarknessFestival festivalInst : _festivalInstances.values())
-							{
-								if (!festivalInst._npcInsts.isEmpty())
-								{
-									festivalInst.unspawnMobs();
-								}
-							}
+							return;
 						}
-						catch (Exception _)
+						for (DarknessFestival festivalInst : _festivalInstances.values())
 						{
-							// Ignore.
+							if (!festivalInst._npcInsts.isEmpty())
+							{
+								festivalInst.unspawnMobs();
+							}
 						}
 					}
 					else
@@ -1845,13 +1890,9 @@ public class SevenSignsFestival
 				sendMessageToAll(NpcStringId.THE_MAIN_EVENT_IS_NOW_STARTING);
 				
 				// Stand by for a short length of time before starting the festival.
-				try
+				if (!pause(Config.ALT_FESTIVAL_FIRST_SPAWN))
 				{
-					wait(Config.ALT_FESTIVAL_FIRST_SPAWN);
-				}
-				catch (Exception _)
-				{
-					// Ignore.
+					return;
 				}
 				
 				elapsedTime = Config.ALT_FESTIVAL_FIRST_SPAWN;
@@ -1868,13 +1909,9 @@ public class SevenSignsFestival
 				}
 				
 				// After a short time period, move all idle spawns to the center of the arena.
-				try
+				if (!pause(Config.ALT_FESTIVAL_FIRST_SWARM - Config.ALT_FESTIVAL_FIRST_SPAWN))
 				{
-					wait(Config.ALT_FESTIVAL_FIRST_SWARM - Config.ALT_FESTIVAL_FIRST_SPAWN);
-				}
-				catch (Exception _)
-				{
-					// Ignore.
+					return;
 				}
 				
 				elapsedTime += Config.ALT_FESTIVAL_FIRST_SWARM - Config.ALT_FESTIVAL_FIRST_SPAWN;
@@ -1884,13 +1921,9 @@ public class SevenSignsFestival
 				}
 				
 				// Stand by until the time comes for the second spawn.
-				try
+				if (!pause(Config.ALT_FESTIVAL_SECOND_SPAWN - Config.ALT_FESTIVAL_FIRST_SWARM))
 				{
-					wait(Config.ALT_FESTIVAL_SECOND_SPAWN - Config.ALT_FESTIVAL_FIRST_SWARM);
-				}
-				catch (Exception _)
-				{
-					// Ignore.
+					return;
 				}
 				
 				// Spawn an extra set of monsters (archers) on the free platforms with
@@ -1913,13 +1946,9 @@ public class SevenSignsFestival
 				elapsedTime += Config.ALT_FESTIVAL_SECOND_SPAWN - Config.ALT_FESTIVAL_FIRST_SWARM;
 				
 				// After another short time period, again move all idle spawns to the center of the arena.
-				try
+				if (!pause(Config.ALT_FESTIVAL_SECOND_SWARM - Config.ALT_FESTIVAL_SECOND_SPAWN))
 				{
-					wait(Config.ALT_FESTIVAL_SECOND_SWARM - Config.ALT_FESTIVAL_SECOND_SPAWN);
-				}
-				catch (Exception _)
-				{
-					// Ignore.
+					return;
 				}
 				
 				for (DarknessFestival festivalInst : _festivalInstances.values())
@@ -1930,13 +1959,9 @@ public class SevenSignsFestival
 				elapsedTime += Config.ALT_FESTIVAL_SECOND_SWARM - Config.ALT_FESTIVAL_SECOND_SPAWN;
 				
 				// Stand by until the time comes for the chests to be spawned.
-				try
+				if (!pause(Config.ALT_FESTIVAL_CHEST_SPAWN - Config.ALT_FESTIVAL_SECOND_SWARM))
 				{
-					wait(Config.ALT_FESTIVAL_CHEST_SPAWN - Config.ALT_FESTIVAL_SECOND_SWARM);
-				}
-				catch (Exception _)
-				{
-					// Ignore.
+					return;
 				}
 				
 				// Spawn the festival chests, which enable the team to gain greater rewards
@@ -1950,13 +1975,9 @@ public class SevenSignsFestival
 				elapsedTime += Config.ALT_FESTIVAL_CHEST_SPAWN - Config.ALT_FESTIVAL_SECOND_SWARM;
 				
 				// Stand by and wait until it's time to end the festival.
-				try
+				if (!pause(Config.ALT_FESTIVAL_LENGTH - elapsedTime))
 				{
-					wait(Config.ALT_FESTIVAL_LENGTH - elapsedTime);
-				}
-				catch (Exception _)
-				{
-					// Ignore.
+					return;
 				}
 				
 				// Participants can no longer opt to increase the challenge, as the festival will soon close.
@@ -1979,6 +2000,10 @@ public class SevenSignsFestival
 			}
 			catch (Exception e)
 			{
+				if (e instanceof InterruptedException)
+				{
+					Thread.currentThread().interrupt();
+				}
 				LOGGER.warning(e.getMessage());
 			}
 		}
@@ -2121,6 +2146,11 @@ public class SevenSignsFestival
 			catch (Exception e)
 			{
 				LOGGER.log(Level.WARNING, e, () -> "SevenSignsFestival: Error while spawning Festival Witch ID " + _witchSpawn._npcId + ": " + e.getMessage());
+			}
+			
+			if (_witchInst == null)
+			{
+				return;
 			}
 			
 			// Make it appear as though the Witch has apparated there.

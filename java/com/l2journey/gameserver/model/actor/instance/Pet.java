@@ -1350,7 +1350,13 @@ public class Pet extends Summon
 	@Override
 	public boolean isHungry()
 	{
-		return _curFed < ((getPetData().getHungryLimit() / 100f) * getPetLevelData().getPetMaxFeed());
+		final PetData petData = getPetData();
+		final PetLevelData levelData = getPetLevelData();
+		if ((petData == null) || (levelData == null))
+		{
+			return false;
+		}
+		return _curFed < ((petData.getHungryLimit() / 100f) * levelData.getPetMaxFeed());
 	}
 	
 	/**
@@ -1386,13 +1392,15 @@ public class Pet extends Summon
 	@Override
 	public short getSoulShotsPerHit()
 	{
-		return getPetLevelData().getPetSoulShot();
+		final PetLevelData levelData = getPetLevelData();
+		return levelData != null ? levelData.getPetSoulShot() : 1;
 	}
 	
 	@Override
 	public short getSpiritShotsPerHit()
 	{
-		return getPetLevelData().getPetSpiritShot();
+		final PetLevelData levelData = getPetLevelData();
+		return levelData != null ? levelData.getPetSpiritShot() : 1;
 	}
 	
 	@Override

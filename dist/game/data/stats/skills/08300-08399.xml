@@ -465,7 +465,7 @@
 		<!-- Head is enlarged. -->
 		<set name="icon" val="icon.etc_pig_candy_i00" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="0" />
 		<set name="abnormalTime" val="1800" />
 		<set name="abnormalType" val="BIG_HEAD" />
@@ -482,9 +482,17 @@
 	<skill id="8326" levels="1" name="Wild Rose Pig Candy">
 		<!-- Increases Speed by 20. -->
 		<set name="icon" val="icon.etc_pig_candy_i00" />
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="operateType" val="A2" />
+		<set name="targetType" val="SELF" />
+		<set name="abnormalTime" val="1800" />
+		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="1" />
+		<set name="reuseDelay" val="20000" />
+		<effects>
+			<effect name="Buff">
+				<add stat="runSpd" val="20" />
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8327" levels="1" name="Release Seal on Agathion - Juju">
 		<!-- Removes the seal of Agathion. -->
@@ -524,7 +532,7 @@
 		<!-- Summons your friend. -->
 		<set name="icon" val="icon.etc_summon_aga_agit_i00" />
 		<set name="operateType" val="A1" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="ONE" />
 		<set name="effectPoint" val="1000" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="1" />
@@ -668,7 +676,7 @@
 		<!-- Mounts a Guardian's Strider. -->
 		<set name="icon" val="icon.skilltransform3" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="1" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="TRANSFORM" />
@@ -1083,7 +1091,7 @@
 		<!-- Increases Resistance to shock/mind attack by 20% and shock/mind attack bonus by 20%. Recovers 4% of the damage to the enemy as your HP. Excludes damage caused by skills and long-range attack. -->
 		<set name="icon" val="icon.event_six_party_earing_i00" />
 		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="magicLevel" val="75" />
 		<effects>
 			<effect name="AttackTrait">
@@ -1131,29 +1139,68 @@
 		<!-- Increases Casting Spd./Max MP/Resistance to Dark, and decreases MP Consumption/magic cancel rate against damage. -->
 		<set name="icon" val="icon.armor_t93_ue_i00" />
 		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="magicLevel" val="1" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="mAtkSpd" val="1.15" /> <!-- Casting Spd. +15% -->
+				<add stat="maxMp" val="321" /> <!-- Max MP +321 -->
+				<sub stat="cancel" val="15" /> <!-- Magic Cancel Rate -15 -->
+				<mul stat="magicalMpConsumeRate" val="0.94" /> <!-- MP Consumption -6% -->
+				<add stat="darkRes" val="8" /> <!-- Dark Resistance +8 -->
+			</effect>
+			<effect name="EnableCloak" />
+		</effects>
 	</skill>
 	<skill id="8366" levels="1" name="Dynasty Jewel Leather Armor">
 		<!-- Increases P. Atk./Max HP/Critical Rate/Resistance to Dark/Critical Damage. -->
 		<set name="icon" val="icon.armor_t91_uw_i00" />
 		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="magicLevel" val="1" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="pAtk" val="1.066" /> <!-- P. Atk. +6.6% -->
+				<add stat="maxHp" val="492" /> <!-- Max HP +492 -->
+				<add stat="critRate" val="29.5" /> <!-- Critical Rate +29.5 -->
+				<add stat="critDmgAdd" val="282" /> <!-- Critical Damage +282 -->
+				<add stat="darkRes" val="8" /> <!-- Dark Resistance +8 -->
+			</effect>
+			<effect name="EnableCloak" />
+		</effects>
 	</skill>
 	<skill id="8367" levels="1" name="Dynasty Jewel Leather Armor">
 		<!-- Increases P. Atk./Max HP/Resistance to Dark, and decreases MP consumption. -->
 		<set name="icon" val="icon.armor_t91_uf_i00" />
 		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="magicLevel" val="1" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="pAtk" val="1.066" /> <!-- P. Atk. +6.6% -->
+				<add stat="maxHp" val="492" /> <!-- Max HP +492 -->
+				<add stat="darkRes" val="8" /> <!-- Dark Resistance +8 -->
+				<mul stat="physicalMpConsumeRate" val="0.94" /> <!-- MP Consumption -6% -->
+			</effect>
+			<effect name="EnableCloak" />
+		</effects>
 	</skill>
 	<skill id="8368" levels="1" name="Dynasty Jewel Leather Armor">
 		<!-- Increases Casting Spd./Max MP/Resistance to Dark, and decreases MP Consumption/magic cancel rate against damage. -->
 		<set name="icon" val="icon.armor_t93_ue_i00" />
 		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="magicLevel" val="1" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="mAtkSpd" val="1.15" /> <!-- Casting Spd. +15% -->
+				<add stat="maxMp" val="321" /> <!-- Max MP +321 -->
+				<sub stat="cancel" val="15" /> <!-- Magic Cancel Rate -15 -->
+				<mul stat="magicalMpConsumeRate" val="0.94" /> <!-- MP Consumption -6% -->
+				<add stat="darkRes" val="8" /> <!-- Dark Resistance +8 -->
+			</effect>
+			<effect name="EnableCloak" />
+		</effects>
 	</skill>
 	<skill id="8369" levels="1" name="Halloween Pumpkin Card">
 		<!-- Showed the Halloween Pumpkin Card. -->
@@ -1195,7 +1242,7 @@
 		<!-- Mask's effect. For 60 minutes, increases Max HP and Max MP by 10%, P. Atk. by 5%, and Resistance to Earth by 5. -->
 		<set name="icon" val="icon.ev_frankenstein_mask_i00" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="1" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="SIGNAL_D" />
@@ -1204,12 +1251,20 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="1" />
 		<set name="reuseDelay" val="7200000" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="maxHp" val="1.1" /> <!-- Max HP +10% -->
+				<mul stat="maxMp" val="1.1" /> <!-- Max MP +10% -->
+				<mul stat="pAtk" val="1.05" /> <!-- P. Atk. +5% -->
+				<add stat="earthRes" val="5" /> <!-- Resistance to Earth +5 -->
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8373" levels="1" name="Silent Scream's Mask">
 		<!-- Mask's effect. For 60 minutes, increases Max HP and Max MP by 10%, Critical rate by 5%, and Resistance to Wind by 5. -->
 		<set name="icon" val="icon.ev_scream_mask_i00" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="1" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="SIGNAL_D" />
@@ -1218,12 +1273,20 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="1" />
 		<set name="reuseDelay" val="7200000" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="maxHp" val="1.1" /> <!-- Max HP +10% -->
+				<mul stat="maxMp" val="1.1" /> <!-- Max MP +10% -->
+				<mul stat="critRate" val="1.05" /> <!-- Critical Rate +5% -->
+				<add stat="windRes" val="5" /> <!-- Resistance to Wind +5 -->
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8374" levels="1" name="Wrathful Spirit's Mask">
 		<!-- Mask's effect. For 60 minutes, increases Max HP and Max MP by 10%, Speed by 5%, and Resistance to Fire by 5. -->
 		<set name="icon" val="icon.ev_doccabi_mask_i00" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="1" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="SIGNAL_D" />
@@ -1232,12 +1295,20 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="1" />
 		<set name="reuseDelay" val="7200000" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="maxHp" val="1.1" /> <!-- Max HP +10% -->
+				<mul stat="maxMp" val="1.1" /> <!-- Max MP +10% -->
+				<mul stat="runSpd" val="1.05" /> <!-- Speed +5% -->
+				<add stat="fireRes" val="5" /> <!-- Resistance to Fire +5 -->
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8375" levels="1" name="Unrotten Corpse's Mask">
 		<!-- Mask's effect. For 60 minutes, increases Max HP and Max MP by 10%, skill's MP consumption by 5%, and Resistance to Dark by 5. -->
 		<set name="icon" val="icon.ev_mummy_mask_i00" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="1" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="SIGNAL_D" />
@@ -1246,12 +1317,21 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="1" />
 		<set name="reuseDelay" val="7200000" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="maxHp" val="1.1" /> <!-- Max HP +10% -->
+				<mul stat="maxMp" val="1.1" /> <!-- Max MP +10% -->
+				<mul stat="physicalMpConsumeRate" val="1.05" /> <!-- MP Consumption +5% -->
+				<mul stat="magicalMpConsumeRate" val="1.05" /> <!-- MP Consumption +5% -->
+				<add stat="darkRes" val="5" /> <!-- Resistance to Dark +5 -->
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8376" levels="1" name="Planet X235 Alien Mask's Effect">
 		<!-- Mask's effect: for 60 minutes, increases Max HP and Max MP by 10%, magic damage's Prominent Damage occurrence by 2, and Resistance to Water by 5. -->
 		<set name="icon" val="icon.ev_alien_mask_i00" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="1" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="SIGNAL_D" />
@@ -1260,12 +1340,20 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="1" />
 		<set name="reuseDelay" val="7200000" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="maxHp" val="1.1" /> <!-- Max HP +10% -->
+				<mul stat="maxMp" val="1.1" /> <!-- Max MP +10% -->
+				<add stat="mCritRate" val="2" /> <!-- Prominent (Critical) Magic Damage chance +2 -->
+				<add stat="waterRes" val="5" /> <!-- Resistance to Water +5 -->
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8377" levels="1" name="Golden Jack O'Lantern Mask's Effect">
 		<!-- Mask's effect. For 60 minutes, increases Max HP and Max MP by 20%, Speed by 10%, and Resistance to debuffs by 10%. -->
 		<set name="icon" val="icon.ev_golden_jack0_mask_i00" />
 		<set name="operateType" val="A2" />
-		<set name="targetType" val="NONE" />
+		<set name="targetType" val="SELF" />
 		<set name="abnormalLevel" val="1" />
 		<set name="abnormalTime" val="3600" />
 		<set name="abnormalType" val="SIGNAL_D" />
@@ -1274,6 +1362,14 @@
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
 		<set name="magicLevel" val="1" />
 		<set name="reuseDelay" val="82800000" />
+		<effects>
+			<effect name="Buff">
+				<mul stat="maxHp" val="1.2" /> <!-- Max HP +20% -->
+				<mul stat="maxMp" val="1.2" /> <!-- Max MP +20% -->
+				<mul stat="runSpd" val="1.1" /> <!-- Speed +10% -->
+				<sub stat="debuffVuln" val="10" /> <!-- Resistance to debuffs +10% -->
+			</effect>
+		</effects>
 	</skill>
 	<skill id="8378" levels="1" name="Beast Training - Release All">
 		<!-- Release all beasts. -->

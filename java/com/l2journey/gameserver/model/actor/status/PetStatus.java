@@ -80,6 +80,11 @@ public class PetStatus extends SummonStatus
 	@Override
 	public Pet getActiveChar()
 	{
-		return super.getActiveChar().asPet();
+		final Creature creature = getCreature();
+		if (!(creature instanceof Pet pet))
+		{
+			throw new IllegalStateException("PetStatus active character");
+		}
+		return pet;
 	}
 }

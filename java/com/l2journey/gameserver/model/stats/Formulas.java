@@ -2208,6 +2208,11 @@ public class Formulas
 	
 	public static boolean calcBlowSuccess(Creature creature, Creature target, Skill skill)
 	{
+		if (creature == null)
+		{
+			return false;
+		}
+		
 		final double dexMod = BaseStat.DEX.calcBonus(creature);
 		// Apply DEX Mod.
 		final double blowChance = skill.getBlowChance();

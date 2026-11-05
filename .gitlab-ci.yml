@@ -9,6 +9,7 @@ workflow:
 
 stages:
   - test
+  - build
   - quality
 
 variables:
@@ -39,6 +40,21 @@ unit-test:
       - build/jacoco/jacoco.xml
     expire_in: 1 hour
 
+# Full distribution build (jars + Dashboard.jar + L2Journey.zip). Separate from unit-test
+# so the default Ant cleanup target does not wipe JaCoCo artifacts used by Sonar.
+package:
+  stage: build
+  image: eclipse-temurin:25-jdk
+  needs:
+    - job: unit-test
+  before_script:
+    - apt-get update && apt-get install -y --no-install-recommends ant
+  script:
+    - ant
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
 sonarcloud-check:
   stage: quality
   image:
@@ -47,10 +63,7 @@ sonarcloud-check:
   needs:
     - job: unit-test
       artifacts: true
-  cache:
-    key: "${CI_JOB_NAME}"
-    paths:
-      - .sonar/cache
+  # No job cache: Docker Desktop runners fail preparing the GitLab cache volume for this image.
   script:
     - sonar-scanner
   rules:

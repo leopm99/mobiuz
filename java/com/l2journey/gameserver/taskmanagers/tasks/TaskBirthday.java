@@ -65,7 +65,7 @@ public class TaskBirthday extends PersistentTask
 		LOGGER.info(() -> "BirthdayManager: " + giveBirthdayGifts(task.getLastActivation()) + " gifts sent.");
 	}
 	
-	private int giveBirthdayGifts(long lastActivation)
+	int giveBirthdayGifts(long lastActivation)
 	{
 		int birthdayGiftCount = 0;
 		try (Connection con = DatabaseFactory.getConnection();
@@ -76,7 +76,7 @@ public class TaskBirthday extends PersistentTask
 			{
 				while (rs.next())
 				{
-					final String text = Config.ALT_BIRTHDAY_MAIL_TEXT.replaceAll("$c1", rs.getString("char_name")).replaceAll("$s1", Integer.toString(rs.getInt("age")));
+					final String text = Config.ALT_BIRTHDAY_MAIL_TEXT.replace("$c1", rs.getString("char_name")).replace("$s1", Integer.toString(rs.getInt("age")));
 					final Message msg = new Message(rs.getInt("charId"), Config.ALT_BIRTHDAY_MAIL_SUBJECT, text, MessageSenderType.ALEGRIA);
 					msg.createAttachments().addItem(ItemProcessType.REWARD, Config.ALT_BIRTHDAY_GIFT, 1, null, null);
 					MailManager.getInstance().sendMessage(msg);

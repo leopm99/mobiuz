@@ -64,9 +64,9 @@ public class SecondaryPasswordAuth
 	private static final String VAR_PWD = "secauth_pwd";
 	private static final String VAR_WTE = "secauth_wte";
 	
-	private static final String SELECT_PASSWORD = "SELECT var, value FROM account_gsdata WHERE account_name=? AND var LIKE 'secauth_%'";
-	private static final String INSERT_PASSWORD = "INSERT INTO account_gsdata VALUES (?, ?, ?)";
-	private static final String UPDATE_PASSWORD = "UPDATE account_gsdata SET value=? WHERE account_name=? AND var=?";
+	private static final String SEC_AUTH_SELECT = "SELECT var, value FROM account_gsdata WHERE account_name=? AND var LIKE 'secauth_%'";
+	private static final String SEC_AUTH_INSERT = "INSERT INTO account_gsdata VALUES (?, ?, ?)";
+	private static final String SEC_AUTH_UPDATE = "UPDATE account_gsdata SET value=? WHERE account_name=? AND var=?";
 	
 	private static final String INSERT_ATTEMPT = "INSERT INTO account_gsdata VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE value=?";
 	
@@ -87,7 +87,7 @@ public class SecondaryPasswordAuth
 		String var = null;
 		String value = null;
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement statement = con.prepareStatement(SELECT_PASSWORD))
+			PreparedStatement statement = con.prepareStatement(SEC_AUTH_SELECT))
 		{
 			statement.setString(1, _activeClient.getAccountName());
 			try (ResultSet rs = statement.executeQuery())
@@ -130,7 +130,7 @@ public class SecondaryPasswordAuth
 		
 		final String password = cryptPassword(value);
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement statement = con.prepareStatement(INSERT_PASSWORD))
+			PreparedStatement statement = con.prepareStatement(SEC_AUTH_INSERT))
 		{
 			statement.setString(1, _activeClient.getAccountName());
 			statement.setString(2, VAR_PWD);
@@ -187,7 +187,7 @@ public class SecondaryPasswordAuth
 		
 		final String password = cryptPassword(newPassword);
 		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement statement = con.prepareStatement(UPDATE_PASSWORD))
+			PreparedStatement statement = con.prepareStatement(SEC_AUTH_UPDATE))
 		{
 			statement.setString(1, password);
 			statement.setString(2, _activeClient.getAccountName());
@@ -261,6 +261,7 @@ public class SecondaryPasswordAuth
 	{
 		try
 		{
+			// SHA-1 Base64 is the stored secauth_pwd value, independent of accounts.password (#6).
 			final MessageDigest md = MessageDigest.getInstance("SHA");
 			final byte[] raw = password.getBytes(StandardCharsets.UTF_8);
 			final byte[] hash = md.digest(raw);

@@ -1205,7 +1205,7 @@ public class Skill
 			}
 		}
 		
-		return !(!GeoData.getInstance().canSeeTarget(caster, target));
+		return GeoData.getInstance().canSeeTarget(caster, target);
 	}
 	
 	public static boolean addSummon(Creature caster, Player owner, int radius, boolean isDead)

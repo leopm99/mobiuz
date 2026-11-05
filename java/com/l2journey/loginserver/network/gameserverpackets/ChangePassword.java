@@ -83,6 +83,7 @@ public class ChangePassword extends BaseReadablePacket
 		{
 			try
 			{
+				// This instance digests both passwords and must match accounts.password checked at login (#6).
 				final MessageDigest md = MessageDigest.getInstance("SHA");
 				final byte[] raw = md.digest(curpass.getBytes(StandardCharsets.UTF_8));
 				final String curpassEnc = Base64.getEncoder().encodeToString(raw);

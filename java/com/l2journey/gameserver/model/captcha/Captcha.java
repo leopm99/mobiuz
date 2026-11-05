@@ -116,12 +116,12 @@ public class Captcha
 		return imageMap;
 	}
 	
-	private static char[] generateCaptchaText()
+	static char[] generateCaptchaText()
 	{
 		final char[] text = new char[CAPTCHA_WORD_LENGTH];
 		for (int i = 0; i < CAPTCHA_WORD_LENGTH; i++)
 		{
-			text[i] = CAPTCHA_TEXT_POSSIBILITIES[Rnd.get(CAPTCHA_TEXT_POSSIBILITIES.length)];
+			text[i] = Rnd.pick(CAPTCHA_TEXT_POSSIBILITIES);
 		}
 		return text;
 	}

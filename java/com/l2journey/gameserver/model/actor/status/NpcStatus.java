@@ -65,6 +65,11 @@ public class NpcStatus extends CreatureStatus
 	@Override
 	public Npc getActiveChar()
 	{
-		return super.getActiveChar().asNpc();
+		final Creature creature = getCreature();
+		if (!(creature instanceof Npc npc))
+		{
+			throw new IllegalStateException("NpcStatus active character");
+		}
+		return npc;
 	}
 }

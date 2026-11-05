@@ -35,6 +35,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Future;
+import java.util.logging.Logger;
 
 import com.l2journey.Config;
 import com.l2journey.commons.threads.ThreadPool;
@@ -53,6 +54,8 @@ import com.l2journey.gameserver.network.serverpackets.Earthquake;
  */
 public class DimensionalRift
 {
+	private static final Logger LOGGER = Logger.getLogger(DimensionalRift.class.getName());
+	
 	protected byte _type;
 	protected Party _party;
 	protected List<Byte> _completedRooms = new ArrayList<>();
@@ -74,11 +77,16 @@ public class DimensionalRift
 	
 	public DimensionalRift(Party party, byte type, byte room)
 	{
-		DimensionalRiftManager.getInstance().getRoom(type, room).setPartyInside(true);
+		final DimensionalRiftRoom riftRoom = DimensionalRiftManager.getInstance().getRoom(type, room);
+		if (riftRoom == null)
+		{
+			throw new IllegalStateException("Dimensional rift room type " + type + " room " + room + " is not loaded");
+		}
+		riftRoom.setPartyInside(true);
 		_type = type;
 		_party = party;
 		_choosenRoom = room;
-		final Location coords = getRoomCoord(room);
+		final Location coords = riftRoom.getTeleportCoorinates();
 		party.setDimensionalRift(this);
 		for (Player p : party.getMembers())
 		{
@@ -332,9 +340,15 @@ public class DimensionalRift
 			while (DimensionalRiftManager.getInstance().getRoom(_type, _choosenRoom).isPartyInside());
 		}
 		
-		DimensionalRiftManager.getInstance().getRoom(_type, _choosenRoom).setPartyInside(true);
+		final DimensionalRiftRoom riftRoom = DimensionalRiftManager.getInstance().getRoom(_type, _choosenRoom);
+		if (riftRoom == null)
+		{
+			LOGGER.warning(() -> getClass().getSimpleName() + ": Room type " + _type + " room " + _choosenRoom + " is not loaded; cannot teleport");
+			return;
+		}
+		riftRoom.setPartyInside(true);
 		checkBossRoom(_choosenRoom);
-		player.teleToLocation(getRoomCoord(_choosenRoom));
+		player.teleToLocation(riftRoom.getTeleportCoorinates());
 	}
 	
 	protected void teleportToWaitingRoom(Player player)
@@ -370,7 +384,11 @@ public class DimensionalRift
 			earthQuakeTask = null;
 		}
 		
-		DimensionalRiftManager.getInstance().getRoom(_type, _choosenRoom).unspawn().setPartyInside(false);
+		final DimensionalRiftRoom riftRoom = DimensionalRiftManager.getInstance().getRoom(_type, _choosenRoom);
+		if (riftRoom != null)
+		{
+			riftRoom.unspawn().setPartyInside(false);
+		}
 		DimensionalRiftManager.getInstance().killRift(this);
 	}
 	
@@ -479,12 +497,18 @@ public class DimensionalRift
 	
 	public void checkBossRoom(byte room)
 	{
-		isBossRoom = DimensionalRiftManager.getInstance().getRoom(_type, room).isBossRoom();
+		final DimensionalRiftRoom riftRoom = DimensionalRiftManager.getInstance().getRoom(_type, room);
+		isBossRoom = (riftRoom != null) && riftRoom.isBossRoom();
 	}
 	
 	public Location getRoomCoord(byte room)
 	{
-		return DimensionalRiftManager.getInstance().getRoom(_type, room).getTeleportCoorinates();
+		final DimensionalRiftRoom riftRoom = DimensionalRiftManager.getInstance().getRoom(_type, room);
+		if (riftRoom == null)
+		{
+			throw new IllegalStateException("Dimensional rift room type " + _type + " room " + room + " is not loaded");
+		}
+		return riftRoom.getTeleportCoorinates();
 	}
 	
 	public byte getMaxJumps()

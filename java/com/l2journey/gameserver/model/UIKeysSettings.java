@@ -99,55 +99,98 @@ public class UIKeysSettings
 	 */
 	public void saveInDB()
 	{
-		String query;
 		if (_saved)
 		{
 			return;
 		}
 		
-		// TODO(Zoey76): Refactor this to use batch.
-		query = "REPLACE INTO character_ui_categories (`charId`, `catId`, `order`, `cmdId`) VALUES ";
-		for (Map.Entry<Integer, List<Integer>> entry : _storedCategories.entrySet())
+		if (hasCategoryRows())
 		{
-			int category = entry.getKey();
-			int order = 0;
-			for (int key : entry.getValue())
+			try (Connection con = DatabaseFactory.getConnection();
+				PreparedStatement statement = con.prepareStatement("REPLACE INTO character_ui_categories (`charId`, `catId`, `order`, `cmdId`) VALUES (?,?,?,?)"))
 			{
-				query += "(" + _playerObjId + ", " + category + ", " + order++ + ", " + key + "),";
+				for (Map.Entry<Integer, List<Integer>> entry : _storedCategories.entrySet())
+				{
+					int category = entry.getKey();
+					int order = 0;
+					for (int key : entry.getValue())
+					{
+						statement.setInt(1, _playerObjId);
+						statement.setInt(2, category);
+						statement.setInt(3, order++);
+						statement.setInt(4, key);
+						statement.addBatch();
+					}
+				}
+				statement.executeBatch();
+			}
+			catch (Exception e)
+			{
+				LOGGER.log(Level.WARNING, e, () -> "Exception: saveInDB(): " + e.getMessage());
 			}
 		}
-		query = query.substring(0, query.length() - 1) + "; ";
-		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement statement = con.prepareStatement(query))
-		{
-			statement.execute();
-		}
-		catch (Exception e)
-		{
-			LOGGER.log(Level.WARNING, e, () -> "Exception: saveInDB(): " + e.getMessage());
-		}
 		
-		query = "REPLACE INTO character_ui_actions (`charId`, `cat`, `order`, `cmd`, `key`, `tgKey1`, `tgKey2`, `show`) VALUES";
-		for (List<ActionKey> keyLst : _storedKeys.values())
+		if (hasActionRows())
 		{
-			int order = 0;
-			for (ActionKey key : keyLst)
+			try (Connection con = DatabaseFactory.getConnection();
+				PreparedStatement statement = con.prepareStatement("REPLACE INTO character_ui_actions (`charId`, `cat`, `order`, `cmd`, `key`, `tgKey1`, `tgKey2`, `show`) VALUES (?,?,?,?,?,?,?,?)"))
 			{
-				query += key.getSqlSaveString(_playerObjId, order++) + ",";
+				for (List<ActionKey> keyLst : _storedKeys.values())
+				{
+					int order = 0;
+					for (ActionKey key : keyLst)
+					{
+						statement.setInt(1, _playerObjId);
+						statement.setInt(2, key.getCategory());
+						statement.setInt(3, order++);
+						statement.setInt(4, key.getCommandId());
+						statement.setInt(5, key.getKeyId());
+						statement.setInt(6, key.getToogleKey1());
+						statement.setInt(7, key.getToogleKey2());
+						statement.setInt(8, key.getShowStatus());
+						statement.addBatch();
+					}
+				}
+				statement.executeBatch();
 			}
-		}
-		query = query.substring(0, query.length() - 1) + ";";
-		
-		try (Connection con = DatabaseFactory.getConnection();
-			PreparedStatement statement = con.prepareStatement(query))
-		{
-			statement.execute();
-		}
-		catch (Exception e)
-		{
-			LOGGER.log(Level.WARNING, e, () -> "Exception: saveInDB(): " + e.getMessage());
+			catch (Exception e)
+			{
+				LOGGER.log(Level.WARNING, e, () -> "Exception: saveInDB(): " + e.getMessage());
+			}
 		}
 		_saved = true;
+	}
+	
+	private boolean hasCategoryRows()
+	{
+		if (_storedCategories == null)
+		{
+			return false;
+		}
+		for (List<Integer> commands : _storedCategories.values())
+		{
+			if ((commands != null) && !commands.isEmpty())
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private boolean hasActionRows()
+	{
+		if (_storedKeys == null)
+		{
+			return false;
+		}
+		for (List<ActionKey> keys : _storedKeys.values())
+		{
+			if ((keys != null) && !keys.isEmpty())
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public void getCatsFromDB()

@@ -73,6 +73,11 @@ public class AttackableStatus extends NpcStatus
 	@Override
 	public Attackable getActiveChar()
 	{
-		return super.getActiveChar().asAttackable();
+		final Creature creature = getCreature();
+		if (!(creature instanceof Attackable attackable))
+		{
+			throw new IllegalStateException("AttackableStatus active character");
+		}
+		return attackable;
 	}
 }

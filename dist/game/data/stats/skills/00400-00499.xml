@@ -132,7 +132,7 @@
 		<!-- Level 429 (+29 Holy Attack): Inflicts holy damage on the enemy with 1841 Power added to P. Atk. and greatly provokes the enemy. For 30 seconds, decreases Critical Rate by 50% and Resistance to every type of close range weapon by 20. Requires a sword or blunt weapon to be equipped. Over-hit and critical hit are possible. Enchant Alignment Attack Holy: Holy attribute of 49 is bestowed. -->
 		<!-- Level 430 (+30 Holy Attack): Inflicts holy damage on the enemy with 1841 Power added to P. Atk. and greatly provokes the enemy. For 30 seconds, decreases Critical Rate by 50% and Resistance to every type of close range weapon by 20. Requires a sword or blunt weapon to be equipped. Over-hit and critical hit are possible. Enchant Alignment Attack Holy: Holy attribute of 50 is bestowed. -->
 		<table name="#abnormalLevels">1 1 1 1 1 2 2 2 2 3</table>
-		<table name="#effectPoints">-1046 -1098 -1132 -1163 -1193 -1221 -1247 -1270 -1291 -1309</table>
+		<table name="#effectPoints">-1255 -1318 -1358 -1396 -1432 -1465 -1496 -1524 -1549 -1570</table>
 		<table name="#magicLevel">55 58 60 62 64 66 68 70 72 74</table>
 		<table name="#mpConsume">52 56 58 60 62 64 66 68 70 72</table>
 		<table name="#power">924 1054 1146 1240 1337 1437 1538 1639 1741 1841</table>
@@ -366,7 +366,7 @@
 		<!-- Level 430 (+30 Dark Attack): Inflicts dark damage on the enemy with 2104 Power added to P. Atk. and greatly provokes the enemy. For 30 seconds, decreases Critical Damage by 35% and Resistance to every type of close range weapon by 20. Requires a sword, blunt weapon, or dualsword. Over-hit and critical hit are possible. Enchant Alignment Attack Dark: dark attribute of 50 is bestowed. -->
 		<table name="#abnormalLevels">1 1 1 1 2 2 2 2 2 3</table>
 		<table name="#cAtk">0.75 0.75 0.75 0.75 0.75 0.7 0.7 0.7 0.7 0.65</table>
-		<table name="#effectPoints">-1046 -1098 -1132 -1163 -1193 -1221 -1247 -1270 -1291 -1309</table>
+		<table name="#effectPoints">-1255 -1318 -1358 -1396 -1432 -1465 -1496 -1524 -1549 -1570</table>
 		<table name="#magicLevel">55 58 60 62 64 66 68 70 72 74</table>
 		<table name="#mpConsume">52 56 58 60 62 64 66 68 70 72</table>
 		<table name="#power">1056 1205 1309 1417 1528 1642 1757 1873 1989 2104</table>
@@ -710,7 +710,7 @@
 		<!-- Level 230 (+30 Chance): Provokes nearby enemies to attack, then immobilizes them for 10 seconds. Enchant Chance: Increases the success rate. -->
 		<table name="#effectPoints">-1098 -1163 -1221 -1270 -1309</table>
 		<table name="#magicLevel">58 62 66 70 74</table>
-		<table name="#mpConsume">40 43 46 59 51</table>
+		<table name="#mpConsume">40 43 46 49 51</table>
 		<table name="#ench1EffectPoints">-1396 -1484 -1572 -1660 -1748 -1836 -1923 -2011 -2099 -2187 -2275 -2363 -2450 -2538 -2626 -2714 -2802 -2890 -2977 -3065 -3153 -3241 -3329 -3417 -3505 -3592 -3680 -3768 -3856 -3944</table>
 		<table name="#ench2ActivateRates">40 41 42 42 43 44 44 45 46 46 47 48 48 49 50 50 51 52 52 53 54 54 55 56 56 57 58 58 59 60</table>
 		<table name="#enchMagicLvl">76 76 76 77 77 77 78 78 78 79 79 79 80 80 80 81 81 81 82 82 82 83 83 83 84 84 84 85 85 85</table>
@@ -1072,7 +1072,7 @@
 		<table name="#rCrit">33 66 100</table>
 		<table name="#runSpd">10 20 30</table>
 		<table name="#ench1def">1.503 1.506 1.51 1.513 1.516 1.52 1.523 1.526 1.53 1.533 1.536 1.54 1.543 1.546 1.55 1.553 1.556 1.56 1.563 1.566 1.57 1.573 1.576 1.58 1.583 1.586 1.59 1.593 1.596 1.6</table>
-		<table name="#ench1pAtkSpd">1.305 1.31 1.315 1.32 1.325 1.33 1.335 1.34 1.345 1.35 1.35 1.36 1.365 1.37 1.375 1.38 1.385 1.39 1.395 1.4 1.405 1.41 1.415 1.42 1.425 1.43 1.435 1.44 1.445 1.45</table>
+		<table name="#ench1pAtkSpd">1.305 1.31 1.315 1.32 1.325 1.33 1.335 1.34 1.345 1.35 1.355 1.36 1.365 1.37 1.375 1.38 1.385 1.39 1.395 1.4 1.405 1.41 1.415 1.42 1.425 1.43 1.435 1.44 1.445 1.45</table>
 		<table name="#ench2mpConsume">167 164 161 158 155 153 150 147 144 141 138 136 133 130 127 124 121 119 116 113 110 107 104 102 99 96 93 90 87 85</table>
 		<table name="#ench3reuseDelay">295000 290000 285000 280000 275000 270000 265000 260000 255000 250000 245000 240000 235000 230000 225000 220000 215000 210000 205000 200000 195000 190000 185000 180000 175000 170000 165000 160000 155000 150000</table>
 		<table name="#ench4AbnormalTimes">62 64 66 68 70 72 74 76 78 80 82 84 86 88 90 92 94 96 98 100 102 104 106 108 110 112 114 116 118 120</table>
@@ -1158,21 +1158,21 @@
 		<table name="#debuff">0.9 0.9 0.9 0.85 0.85 0.8 0.8 0.75 0.75 0.7</table>
 		<table name="#effectPoints">-523 -549 -566 -582 -597 -611 -624 -635 -646 -655</table>
 		<table name="#magicLevel">55 58 60 62 64 66 68 70 72 74</table>
-		<table name="#mpConsume">78 84 87 90 93 96 99 102 105 107</table>
-		<table name="#power">229 262 284 308 332 357 382 407 432 457</table>
+		<table name="#mpConsume">39 42 44 45 47 48 50 51 53 54</table>
+		<table name="#power">687 784 852 923 995 1069 1144 1220 1295 1370</table>
 		<set name="icon" val="icon.skill0407" />
 		<set name="operateType" val="A2" />
 		<set name="targetType" val="AURA" />
 		<set name="abnormalLevel" val="#abnormalLevels" />
 		<set name="abnormalTime" val="10" />
 		<set name="abnormalType" val="ALL_SPEED_DOWN" />
-		<set name="activateRate" val="50" />
+		<set name="activateRate" val="80" />
 		<set name="affectLimit" val="6-12" />
 		<set name="affectRange" val="150" />
 		<set name="baseCritRate" val="10" />
 		<set name="basicProperty" val="MEN" />
 		<set name="effectPoint" val="#effectPoints" />
-		<set name="hitTime" val="3000" />
+		<set name="hitTime" val="1500" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="1" />
 		<set name="magicLevel" val="#magicLevel" />
@@ -1951,7 +1951,7 @@
 	<skill id="414" levels="8" name="Dead Eye" enchantGroup1="1">
 		<!-- Level 1: For 2 minutes, when using a bow, increases one's own Accuracy by 1, P. Atk. by 124, and Critical Damage by 20%. Decreases Atk. Spd. by 10%. Requires a bow. -->
 		<!-- Level 2: For 2 minutes, when using a bow, increases one's own Accuracy by 1, P. Atk. by 134, and Critical Damage by 20%. Decreases Atk. Spd. by 10%. Requires a bow. -->
-		<!-- Level 3: For 2 minutes, when using a bow, increases one's own Accuracy by 2, P. Atk. by 155, and Critical Damage by 20%. Decreases Atk. Spd. by 10%. Requires a bow. -->
+		<!-- Level 3: For 2 minutes, when using a bow, increases one's own Accuracy by 2, P. Atk. by 145, and Critical Damage by 20%. Decreases Atk. Spd. by 10%. Requires a bow. -->
 		<!-- Level 4: For 2 minutes, when using a bow, increases one's own Accuracy by 2, P. Atk. by 155, and Critical Damage by 20%. Decreases Atk. Spd. by 10%. Requires a bow. -->
 		<!-- Level 5: For 2 minutes, when using a bow, increases one's own Accuracy by 2, P. Atk. by 166, and Critical Damage by 20%. Decreases Atk. Spd. by 10%. Requires a bow. -->
 		<!-- Level 6: For 2 minutes, when using a bow, increases one's own Accuracy by 3, P. Atk. by 177, and Critical Damage by 20%. Decreases Atk. Spd. by 10%. Requires a bow. -->
@@ -1991,8 +1991,8 @@
 		<table name="#accCombat">1 1 2 2 2 3 3 3</table>
 		<table name="#effectPoints">566 582 597 611 624 635 646 655</table>
 		<table name="#magicLevel">60 62 64 66 68 70 72 74</table>
-		<table name="#mpConsume">28 29 30 31 32 33 34 35</table>
-		<table name="#pAtk">124 134 155 155 166 177 188 199</table>
+		<table name="#mpConsume">28 29 30 31 32 33 34 34</table>
+		<table name="#pAtk">124 134 145 155 166 177 188 199</table>
 		<table name="#ench1pAtk">211 213 214 216 217 219 220 221 223 224 226 227 229 230 231 233 234 236 237 239 240 242 243 244 246 247 249 250 252 253</table>
 		<set name="icon" val="icon.skill0414" />
 		<set name="operateType" val="A2" />
@@ -2190,7 +2190,7 @@
 		<set name="itemConsumeId" val="1661" /> <!-- Thief Key -->
 		<set name="magicLevel" val="#magicLevel" />
 		<set name="mpConsume" val="#mpConsume" />
-		<set name="reuseDelay" val="600000" />
+		<set name="reuseDelay" val="1800000" />
 		<set name="capsuled_items_skill" val="#extractableItems" />
 		<conditions msgId="129">
 			<and>
@@ -2610,7 +2610,7 @@
 		<!-- Level 229 (+29 Cost): Increases Resistance to Stun attacks by 15 and Resistance to Sleep attacks by 30. Continuously consumes MP proportionately to the user's level. Enchant Cost: Decreases maintaining MP. -->
 		<!-- Level 230 (+30 Cost): Increases Resistance to Stun attacks by 15 and Resistance to Sleep attacks by 30. Continuously consumes MP proportionately to the user's level. Enchant Cost: Decreases maintaining MP. -->
 		<table name="#magicLevel">58 66 74</table>
-		<table name="#mpConsume">13 14 15</table>
+		<table name="#mpConsume">11 13 14</table>
 		<table name="#trait_shock">5 10 15</table>
 		<table name="#trait_sleep">10 20 30</table>
 		<table name="#ench1Trait_shock">16 16 16 17 17 17 18 18 18 19 19 19 19 20 20 20 21 21 21 22 22 22 22 23 23 23 24 24 24 25</table>
@@ -3991,7 +3991,6 @@
 		<set name="magicLevel" val="80" />
 		<set name="mpConsume" val="44" />
 		<set name="mpInitialConsume" val="36" />
-		<set name="power" val="200" />
 		<set name="reuseDelay" val="1800000" />
 		<effects>
 			<effect name="SummonNpc">
@@ -4013,7 +4012,6 @@
 		<set name="magicLevel" val="80" />
 		<set name="mpConsume" val="44" />
 		<set name="mpInitialConsume" val="36" />
-		<set name="power" val="200" />
 		<set name="reuseDelay" val="1800000" />
 		<effects>
 			<effect name="SummonNpc">
@@ -4034,7 +4032,6 @@
 		<set name="magicLevel" val="80" />
 		<set name="mpConsume" val="44" />
 		<set name="mpInitialConsume" val="36" />
-		<set name="power" val="200" />
 		<set name="reuseDelay" val="1800000" />
 		<effects>
 			<effect name="SummonNpc">
@@ -4055,7 +4052,6 @@
 		<set name="magicLevel" val="80" />
 		<set name="mpConsume" val="44" />
 		<set name="mpInitialConsume" val="36" />
-		<set name="power" val="200" />
 		<set name="reuseDelay" val="1800000" />
 		<effects>
 			<effect name="SummonNpc">
@@ -4076,7 +4072,6 @@
 		<set name="magicLevel" val="80" />
 		<set name="mpConsume" val="44" />
 		<set name="mpInitialConsume" val="36" />
-		<set name="power" val="200" />
 		<set name="reuseDelay" val="1800000" />
 		<effects>
 			<effect name="SummonNpc">
@@ -4097,7 +4092,6 @@
 		<set name="magicLevel" val="80" />
 		<set name="mpConsume" val="44" />
 		<set name="mpInitialConsume" val="36" />
-		<set name="power" val="200" />
 		<set name="reuseDelay" val="1800000" />
 		<effects>
 			<effect name="SummonNpc">
@@ -4118,7 +4112,6 @@
 		<set name="magicLevel" val="80" />
 		<set name="mpConsume" val="44" />
 		<set name="mpInitialConsume" val="36" />
-		<set name="power" val="200" />
 		<set name="reuseDelay" val="1800000" />
 		<effects>
 			<effect name="SummonNpc">
@@ -6231,7 +6224,7 @@
 		<table name="#effectRange">600 600 600 600 600 600 600 600 600 600 700 700 700 700 700 700 700 700 700 700 800 800 800 800 800 800 800 800</table>
 		<table name="#magicLevel">47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74</table>
 		<table name="#mpInitialConsume">46 47 48 50 50 51 52 53 55 56 57 58 60 61 61 62 63 65 66 67 68 69 70 71 72 73 74 75</table>
-		<table name="#power">742 782 823 866 910 955 1002 1050 1100 1150 1202 1255 1309 1364 1420 1476 1531 1592 1651 1710 1770 1830 1891 1951 2012 2072 2132 2192</table>
+		<table name="#power">742 782 823 866 910 955 1002 1050 1100 1150 1202 1255 1309 1364 1420 1476 1534 1592 1651 1710 1770 1830 1891 1951 2012 2072 2132 2192</table>
 		<table name="#ench1Power">2212 2231 2251 2271 2291 2310 2330 2350 2370 2389 2409 2429 2449 2468 2488 2508 2528 2547 2567 2587 2607 2626 2646 2666 2686 2705 2725 2745 2765 2784</table>
 		<table name="#ench2mpInitialConsume">73 72 71 69 68 67 66 64 63 62 61 59 58 57 56 54 53 52 50 49 48 47 45 44 43 42 40 39 38 37</table>
 		<table name="#ench2Power">2196 2200 2204 2209 2213 2217 2222 2226 2230 2234 2239 2243 2247 2252 2256 2260 2265 2269 2273 2277 2282 2286 2290 2295 2299 2303 2308 2312 2316 2320</table>

@@ -1,7 +1,12 @@
 # L2Journey
 
-[![pipeline status](https://gitlab.com/l2journey/l2journey/badges/main/pipeline.svg?ignore_skipped=true)](https://gitlab.com/l2journey/l2journey/-/commits/main)
-[![coverage report](https://gitlab.com/l2journey/l2journey/badges/main/coverage.svg)](https://gitlab.com/l2journey/l2journey/-/commits/main)
+[![pipeline status](https://gitlab.com/l2journey/l2journey/badges/main/pipeline.svg?ignore_skipped=true)](https://gitlab.com/l2journey/l2journey/-/commits/main) [![Latest Release](https://gitlab.com/l2journey/l2journey/-/badges/release.svg)](https://gitlab.com/l2journey/l2journey/-/releases) [![Core coverage](https://gitlab.com/l2journey/l2journey/badges/main/coverage.svg)](https://gitlab.com/l2journey/l2journey/-/commits/main)
+
+## Quality Status
+[![Quality gate status](https://sonarcloud.io/api/project_badges/measure?project=l2journey_l2journey&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=l2journey_l2journey) [![Core + Scripts Coverage](https://sonarcloud.io/api/project_badges/measure?project=l2journey_l2journey&metric=coverage)](https://sonarcloud.io/summary/new_code?id=l2journey_l2journey)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=l2journey_l2journey&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=l2journey_l2journey) [![Security issues](https://sonarcloud.io/api/project_badges/measure?project=l2journey_l2journey&metric=software_quality_security_issues)](https://sonarcloud.io/summary/new_code?id=l2journey_l2journey)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=l2journey_l2journey&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=l2journey_l2journey) [![Reliability issues](https://sonarcloud.io/api/project_badges/measure?project=l2journey_l2journey&metric=software_quality_reliability_issues)](https://sonarcloud.io/summary/new_code?id=l2journey_l2journey)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=l2journey_l2journey&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=l2journey_l2journey) [![Maintainability issues](https://sonarcloud.io/api/project_badges/measure?project=l2journey_l2journey&metric=software_quality_maintainability_issues)](https://sonarcloud.io/summary/new_code?id=l2journey_l2journey)
 
 L2Journey is a High Five login and game server for Lineage II. It is derived from [L2J Mobius](https://gitlab.com/MobiusDevelopment/L2J_Mobius) (`CT_2.6_HighFive`) and adds project-specific systems, fixes, and PT-BR content.
 
@@ -89,7 +94,7 @@ The calculator separates base percentages (including group probability) from nom
 
 Player-dialog HTML coverage (excludes `dist/game/data/html/admin/`):
 
-`█░░░░░░░░░ 9% (1,967 / 21,235 HTML files)`
+`█░░░░░░░░░ 9% (1,981 / 21,235 HTML files)`
 
 Recount with PowerShell from the repository root:
 

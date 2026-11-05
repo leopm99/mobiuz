@@ -820,7 +820,7 @@ public abstract class Inventory extends ItemContainer
 			return null;
 		}
 		
-		synchronized (item)
+		synchronized (item.getMutationLock())
 		{
 			if (!_items.contains(item))
 			{
@@ -855,7 +855,7 @@ public abstract class Inventory extends ItemContainer
 			return null;
 		}
 		
-		synchronized (item)
+		synchronized (item.getMutationLock())
 		{
 			if (!_items.contains(item))
 			{

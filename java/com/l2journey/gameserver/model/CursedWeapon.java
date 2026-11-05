@@ -239,8 +239,8 @@ public class CursedWeapon
 			Broadcast.toAllOnlinePlayers(rs);
 			Broadcast.toAllOnlinePlayers(eq);
 
-			final MapRegion mapRegion = MapRegionManager.getInstance().getMapRegion(player.getX(), player.getY());
-			LOGGER.log(Level.INFO, () -> _name + " dropped from " + attackable.getName() + " near " + mapRegion.getTown() + " by " + player.getName() + ".");
+			final String town = MapRegionManager.getInstance().getClosestTownName(player);
+			LOGGER.log(Level.INFO, () -> _name + " dropped from " + attackable.getName() + " near " + town + " by " + player.getName() + ".");
 		}
 		else
 		{

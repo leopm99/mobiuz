@@ -136,7 +136,7 @@ public class SQLAccountManager
 				}
 				else if (_mode.equals("5"))
 				{
-					System.exit(0);
+					break;
 				}
 				
 				_uname = "";
@@ -190,6 +190,7 @@ public class SQLAccountManager
 		try (Connection con = DatabaseFactory.getConnection();
 			PreparedStatement ps = con.prepareStatement("REPLACE accounts(login, password, accessLevel) VALUES (?, ?, ?)"))
 		{
+			// Must match accounts.password checked at login (#6).
 			final MessageDigest md = MessageDigest.getInstance("SHA");
 			final byte[] newPassword = md.digest(password.getBytes("UTF-8"));
 			ps.setString(1, account);

@@ -611,7 +611,7 @@
 		<set name="effectPoint" val="-1" />
 		<set name="effectRange" val="1100" />
 		<set name="hitTime" val="100" />
-		<set name="magicLevel" val="72" />
+		<set name="magicLevel" val="40" />
 		<set name="mpConsume" val="50" />
 		<set name="reuseDelay" val="75000" />
 		<effects>
@@ -892,7 +892,7 @@
 	</skill>
 	<skill id="832" levels="2" name="Fast Recovery">
 		<!-- Increases HP/MP/CP Recovery Bonus. -->
-		<table name="#magicLevel">43 49</table>
+		<table name="#magicLevel">43 43</table>
 		<table name="#regHpCp">4 6</table>
 		<table name="#regMp">2 4</table>
 		<set name="icon" val="icon.skill0832" />
@@ -2434,6 +2434,7 @@
 		<!-- Level 5: Inflicts a powerful blow with 10266 Power. -->
 		<!-- Level 6: Inflicts a powerful blow with 10440 Power. -->
 		<table name="#effectPoints">-676 -679 -681 -684 -687 -689</table>
+		<table name="#magicLevel">80 81 82 83 84 85</table>
 		<table name="#mpConsume">72 73 74 74 75 75</table>
 		<table name="#pvePower">9503 9702 9896 10084 10266 10440</table>
 		<table name="#pvpPower">3168 3234 3299 3362 3422 3480</table>
@@ -2444,7 +2445,7 @@
 		<set name="effectPoint" val="#effectPoints" />
 		<set name="effectRange" val="400" />
 		<set name="hitTime" val="1000" />
-		<set name="magicLevel" val="80" />
+		<set name="magicLevel" val="#magicLevel" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="nextActionAttack" val="true" />
 		<set name="power" val="#pvePower" />
@@ -2462,6 +2463,7 @@
 		<!-- Level 5: Inflicts a powerful long-range attack with 10266 Power. -->
 		<!-- Level 6: Inflicts a powerful long-range attack with 10440 Power. -->
 		<table name="#effectPoints">-676 -679 -681 -684 -687 -689</table>
+		<table name="#magicLevel">80 81 82 83 84 85</table>
 		<table name="#mpConsume">72 73 74 74 75 75</table>
 		<table name="#pvePower">9503 9702 9896 10084 10266 10440</table>
 		<table name="#pvpPower">3168 3234 3299 3362 3422 3480</table>
@@ -2472,7 +2474,7 @@
 		<set name="effectPoint" val="#effectPoints" />
 		<set name="effectRange" val="1500" />
 		<set name="hitTime" val="4000" />
-		<set name="magicLevel" val="80" />
+		<set name="magicLevel" val="#magicLevel" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="power" val="#pvePower" />
 		<set name="pvpPower" val="#pvpPower" />
@@ -2489,6 +2491,7 @@
 		<!-- Level 5: Inflicts a powerful blow on nearby enemies with 5475 Power. -->
 		<!-- Level 6: Inflicts a powerful blow on nearby enemies with 5568 Power. -->
 		<table name="#effectPoints">-676 -679 -681 -684 -687 -689</table>
+		<table name="#magicLevel">80 81 82 83 84 85</table>
 		<table name="#mpConsume">72 73 74 74 75 75</table>
 		<table name="#pvePower">5068 5175 5278 5379 5475 5568</table>
 		<table name="#pvpPower">1690 1725 1760 1793 1825 1856</table>
@@ -2499,7 +2502,7 @@
 		<set name="affectRange" val="100" />
 		<set name="effectPoint" val="#effectPoints" />
 		<set name="hitTime" val="4000" />
-		<set name="magicLevel" val="80" />
+		<set name="magicLevel" val="#magicLevel" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="power" val="#pvePower" />
 		<set name="pvpPower" val="#pvpPower" />
@@ -2516,6 +2519,7 @@
 		<!-- Level 5: Uses the cry of danger to decrease P. Def./M. Def./Speed/Atk. Spd. of nearby enemies and decreases Magic Spd. Power 3422. -->
 		<!-- Level 6: Uses the cry of danger to decrease P. Def./M. Def./Speed/Atk. Spd. of nearby enemies and decreases Magic Spd. Power 3480. -->
 		<table name="#effectPoints">-676 -679 -681 -684 -687 -689</table>
+		<table name="#magicLevel">80 81 82 83 84 85</table>
 		<table name="#mpConsume">72 73 74 74 75 75</table>
 		<table name="#pvePower">3168 3234 3299 3362 3422 3480</table>
 		<table name="#pvpPower">1056 1078 1100 1121 1141 1160</table>
@@ -2533,7 +2537,7 @@
 		<set name="hitTime" val="4000" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="1" />
-		<set name="magicLevel" val="80" />
+		<set name="magicLevel" val="#magicLevel" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="power" val="#pvePower" />
 		<set name="pvpPower" val="#pvpPower" />

@@ -82,7 +82,7 @@ public class Fort extends AbstractResidence
 	
 	private final List<Door> _doors = new ArrayList<>();
 	private StaticObject _flagPole = null;
-	private FortSiege _siege = null;
+	private volatile FortSiege _siege = null;
 	private Calendar _siegeDate;
 	private Calendar _lastOwnedTime;
 	private SiegeZone _zone;

@@ -1,0 +1,38 @@
+---
+description: How to list GitLab issues and merge requests with glab
+alwaysApply: true
+---
+
+# Listing issues and merge requests
+
+`glab issue list` and `glab mr list` do not accept `--state`. These fail with `Unknown flag: --state`:
+
+```bash
+glab issue list --state opened
+glab mr list --state opened
+```
+
+Open items are the default. `--opened` still runs and prints a deprecation warning; omit it.
+
+## Issues
+
+```bash
+glab issue list                 # open
+glab issue list --closed        # closed only
+glab issue list --all           # open and closed
+glab issue list --per-page 50
+glab issue view 10
+```
+
+## Merge requests
+
+```bash
+glab mr list                    # open
+glab mr list --closed           # closed, not merged
+glab mr list --merged           # merged
+glab mr list --all              # open, closed, and merged
+glab mr view 12
+```
+
+- Pass status with `--closed`, `--merged`, or `--all`. Do not pass `--state <value>`.
+- `glab issue list` has no `--merged` flag. Only `glab mr list` does.

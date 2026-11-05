@@ -49,6 +49,11 @@ public class SiegeFlagStatus extends NpcStatus
 	@Override
 	public SiegeFlag getActiveChar()
 	{
-		return (SiegeFlag) super.getActiveChar();
+		final Creature creature = getCreature();
+		if (!(creature instanceof SiegeFlag flag))
+		{
+			throw new IllegalStateException("SiegeFlagStatus active character");
+		}
+		return flag;
 	}
 }

@@ -228,7 +228,12 @@ public enum Stat
 	
 	public static Stat valueOfXml(String name)
 	{
-		String internName = name.intern();
+		if (name == null)
+		{
+			throw new NoSuchElementException("Unknown name for enum Stat");
+		}
+		
+		final String internName = name.intern();
 		for (Stat s : values())
 		{
 			if (s.getValue().equals(internName))

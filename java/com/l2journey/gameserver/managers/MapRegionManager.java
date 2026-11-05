@@ -185,6 +185,10 @@ public class MapRegionManager implements IXmlReader
 	 */
 	public MapRegion getMapRegion(WorldObject obj)
 	{
+		if (obj == null)
+		{
+			return null;
+		}
 		return getMapRegion(obj.getX(), obj.getY());
 	}
 	
@@ -421,6 +425,11 @@ public class MapRegionManager implements IXmlReader
 	
 	public Location getNearestKarmaRespawn(Player player)
 	{
+		if (player == null)
+		{
+			return REGIONS.get(DEFAULT_RESPAWN).getChaoticSpawnLoc();
+		}
+		
 		try
 		{
 			final RespawnZone zone = ZoneManager.getInstance().getZone(player, RespawnZone.class);
@@ -430,12 +439,23 @@ public class MapRegionManager implements IXmlReader
 			}
 			
 			// Opposing race check.
-			if (getMapRegion(player).getBannedRace().containsKey(player.getRace()))
+			final MapRegion region = getMapRegion(player);
+			if (region == null)
 			{
-				return REGIONS.get(getMapRegion(player).getBannedRace().get(player.getRace())).getChaoticSpawnLoc();
+				if (player.isFlyingMounted())
+				{
+					return REGIONS.get("union_base_of_kserth").getChaoticSpawnLoc();
+				}
+				
+				return REGIONS.get(DEFAULT_RESPAWN).getChaoticSpawnLoc();
 			}
 			
-			return getMapRegion(player).getChaoticSpawnLoc();
+			if (region.getBannedRace().containsKey(player.getRace()))
+			{
+				return REGIONS.get(region.getBannedRace().get(player.getRace())).getChaoticSpawnLoc();
+			}
+			
+			return region.getChaoticSpawnLoc();
 		}
 		catch (Exception _)
 		{
@@ -459,12 +479,18 @@ public class MapRegionManager implements IXmlReader
 			}
 			
 			// Opposing race check.
-			if (getMapRegion(creature).getBannedRace().containsKey(creature.getRace()))
+			final MapRegion region = getMapRegion(creature);
+			if (region == null)
 			{
-				return REGIONS.get(getMapRegion(creature).getBannedRace().get(creature.getRace())).getSpawnLoc();
+				return REGIONS.get(DEFAULT_RESPAWN).getSpawnLoc();
 			}
 			
-			return getMapRegion(creature).getSpawnLoc();
+			if (region.getBannedRace().containsKey(creature.getRace()))
+			{
+				return REGIONS.get(region.getBannedRace().get(creature.getRace())).getSpawnLoc();
+			}
+			
+			return region.getSpawnLoc();
 		}
 		catch (Exception _)
 		{

@@ -1,0 +1,39 @@
+---
+description: GitLab Flavored Markdown and GitLab-specific references
+alwaysApply: true
+---
+
+# GitLab Flavored Markdown
+
+When writing text GitLab will render (issues, merge requests, comments, wiki, milestones, releases, or Markdown in this repo), use GitLab Flavored Markdown: https://docs.gitlab.com/user/markdown/
+
+## References
+
+These shorthand references become links. They do not work inside inline code, code blocks, or Markdown snippet files.
+
+| Target | This project | Another project |
+| --- | --- | --- |
+| Issue | `#123` | `namespace/project#123` |
+| Merge request | `!123` | `namespace/project!123` |
+| Epic | `&123` or `[epic:123]` | `group&123` |
+| Label | `~bug` or `~"feature request"` | `namespace/project~bug` |
+| Milestone | `%v1.0` or `%"release candidate"` | `namespace/project%v1.0` |
+| Snippet | `$123` | `namespace/project$123` |
+| Commit | `9ba12248` (8–40 hex digits) | `namespace/project@9ba12248` |
+| Commit range | `9ba12248...b19a04f5` | `namespace/project@9ba12248...b19a04f5` |
+| User, group, team | `@user`, `@group`, `@all` | |
+| Wiki page | `[[Page title]]` | `[wiki_page:namespace/project:Page title]` |
+
+- A merge request is `!123`. `#123` is an issue (or, in a group, sometimes an epic).
+- A milestone is `%title` or `%"Title With Spaces"`. Never write `Milestone #3` — `#3` links to issue `#3`, not milestone iid 3.
+- Same namespace, other project: `project!123` or `project#123` (project slug only).
+- Append `+` to include the title (`!123+`) or `+s` for the summary (`#123+s`).
+- Escape a literal with a backslash: `\#123`, `\!123`, `\~bug`, `\%v1.0`.
+- Issue and merge request titles allow only code spans, emoji, autolinks, and these references.
+
+## Other GLFM the agent should prefer
+
+- Task lists: `- [ ]`, `- [x]`, and `- [~]` (inapplicable).
+- Table of contents, on its own line in a description or wiki: `[[_TOC_]]`.
+- Alerts: `> [!note]`, `> [!tip]`, `> [!important]`, `> [!caution]`, `> [!warning]`.
+- Diagrams in ` ```mermaid ` or ` ```plantuml ` fences.

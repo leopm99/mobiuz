@@ -21,23 +21,31 @@
  */
 package com.l2journey.gameserver.ai;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.lang.reflect.Method;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
 
 import com.l2journey.Config;
+import com.l2journey.gameserver.GeoData;
 import com.l2journey.gameserver.model.Location;
 import com.l2journey.gameserver.model.Spawn;
 import com.l2journey.gameserver.model.actor.Creature;
 import com.l2journey.gameserver.model.actor.instance.Monster;
+import com.l2journey.gameserver.model.actor.templates.CreatureTemplate;
+import com.l2journey.gameserver.model.actor.templates.NpcTemplate;
 
 /**
  * Regression tests for aggro-distance leash behavior in {@link AttackableAI}.
@@ -158,6 +166,44 @@ class AttackableAITest
 		verify(creatureAi).setIntention(Intention.MOVE_TO, spawnLoc);
 	}
 	
+	@Test
+	void targetReconsiderUsesMostHateAggroWhenInRange() throws Exception
+	{
+		final long hate = 3500L;
+		final Creature hated = mock(Creature.class);
+		final CreatureTemplate hatedTemplate = mock(CreatureTemplate.class);
+		when(hatedTemplate.getCollisionRadius()).thenReturn(10);
+		when(hated.getTemplate()).thenReturn(hatedTemplate);
+		when(hated.isDead()).thenReturn(false);
+		when(hated.isMoving()).thenReturn(false);
+		
+		final NpcTemplate actorTemplate = mock(NpcTemplate.class);
+		when(actorTemplate.getCollisionRadius()).thenReturn(20);
+		
+		final Monster npc = mock(Monster.class);
+		when(npc.asAttackable()).thenReturn(npc);
+		when(npc.getTemplate()).thenReturn(actorTemplate);
+		when(npc.getPhysicalAttackRange()).thenReturn(40);
+		when(npc.calculateDistance2D(hated)).thenReturn(30.0);
+		when(npc.getMostHated()).thenReturn(hated);
+		when(npc.getHateList()).thenReturn(List.of(hated));
+		when(npc.getHating(hated)).thenReturn(hate);
+		
+		final GeoData geoData = mock(GeoData.class);
+		when(geoData.canSeeTarget(npc, hated)).thenReturn(true);
+		
+		final TestableAttackableAI ai = new TestableAttackableAI(npc);
+		try (MockedStatic<GeoData> geoStatic = mockStatic(GeoData.class))
+		{
+			geoStatic.when(GeoData::getInstance).thenReturn(geoData);
+			ai.invokeTargetReconsider();
+		}
+		
+		verify(npc).addDamageHate(hated, 0, hate);
+		verify(npc).setTarget(hated);
+		assertEquals(hated, ai.getAttackTarget());
+	}
+	
 	private static Monster monsterBeyondSpawn(boolean raid, int instanceId, double distance)
 	{
 		Location spawnLoc = new Location(0, 0, 0);
@@ -188,6 +234,13 @@ class AttackableAITest
 		private void invokeThinkAttack()
 		{
 			thinkAttack();
+		}
+		
+		private void invokeTargetReconsider() throws Exception
+		{
+			final Method method = AttackableAI.class.getDeclaredMethod("targetReconsider");
+			method.setAccessible(true);
+			method.invoke(this);
 		}
 		
 		@Override

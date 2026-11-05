@@ -74,16 +74,20 @@ public class UIData implements IXmlReader
 	
 	private void parseCategory(Node n)
 	{
-		final int cat = parseInteger(n.getAttributes(), "id");
+		final Integer cat = parseInteger(n.getAttributes(), "id");
+		if (cat == null)
+		{
+			return;
+		}
 		for (Node d = n.getFirstChild(); d != null; d = d.getNextSibling())
 		{
 			if ("commands".equalsIgnoreCase(d.getNodeName()))
 			{
-				parseCommands(cat, d);
+				parseCommands(cat.intValue(), d);
 			}
 			else if ("keys".equalsIgnoreCase(d.getNodeName()))
 			{
-				parseKeys(cat, d);
+				parseKeys(cat.intValue(), d);
 			}
 		}
 	}

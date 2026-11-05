@@ -950,7 +950,11 @@ public class CastleChamberlain extends AbstractNpcAI
 				if (isOwner(player, npc) && player.hasAccess(ClanAccess.CASTLE_VAULT))
 				{
 					final long amount = (st.hasMoreTokens()) ? Long.parseLong(st.nextToken()) : 0;
-					if (amount <= castle.getTreasury())
+					if (amount <= 0)
+					{
+						htmltext = HTML_CHAMBERLAIN_01;
+					}
+					else if (amount <= castle.getTreasury())
 					{
 						castle.addToTreasuryNoTax((-1) * amount);
 						giveAdena(player, amount, false);

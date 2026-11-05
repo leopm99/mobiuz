@@ -66,6 +66,11 @@ public abstract class AbstractItemPacket extends ServerPacket
 	
 	protected void writeItem(ItemInfo item, WritableBuffer buffer)
 	{
+		if (item.getItem() == null)
+		{
+			return;
+		}
+		
 		buffer.writeInt(item.getObjectId()); // ObjectId
 		buffer.writeInt(item.getItem().getDisplayId()); // ItemId
 		buffer.writeInt(item.getLocation()); // T1

@@ -22,6 +22,7 @@
 package com.l2journey.gameserver.ai;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -43,8 +44,11 @@ import com.l2journey.PhantomConfig;
 import com.l2journey.commons.threads.ThreadPool;
 import com.l2journey.gameserver.model.Location;
 import com.l2journey.gameserver.model.actor.Player;
+import com.l2journey.gameserver.model.actor.instance.Monster;
 import com.l2journey.gameserver.model.phantom.PhantomEngine;
 import com.l2journey.gameserver.model.phantom.PhantomManager;
+import com.l2journey.gameserver.model.phantom.PhantomMood;
+import com.l2journey.gameserver.model.phantom.PhantomSpoil;
 import com.l2journey.gameserver.model.phantom.PhantomState;
 
 /**
@@ -100,6 +104,12 @@ class PhantomAITest
 		PhantomAI.thinkAndFarm(bot);
 		
 		verify(bot, never()).getAI();
+	}
+
+	@Test
+	void hasLiveLockedFarmTargetRejectsNullBot()
+	{
+		assertFalse(PhantomAI.hasLiveLockedFarmTarget(null));
 	}
 	
 	@Test
@@ -228,6 +238,195 @@ class PhantomAITest
 		assertFalse(PhantomAI.shouldPauseThinkForTownRest(true, true, false));
 		assertFalse(PhantomAI.shouldPauseThinkForTownRest(true, false, true));
 		assertFalse(PhantomAI.shouldPauseThinkForTownRest(false, false, false));
+	}
+
+	@Test
+	void isRangedKiterIncludesWarder()
+	{
+		assertTrue(PhantomAI.isRangedKiter(126));
+		assertTrue(PhantomAI.isRangedKiter(9));
+		assertFalse(PhantomAI.isRangedKiter(0));
+	}
+
+	@Test
+	void isFarmCandidateRejectsForbiddenNames()
+	{
+		Monster questMob = mock(Monster.class);
+		when(questMob.isDead()).thenReturn(false);
+		when(questMob.isAttackable()).thenReturn(true);
+		when(questMob.isRaid()).thenReturn(false);
+		when(questMob.getName()).thenReturn("Quest Chest");
+		when(questMob.getTemplate()).thenReturn(null);
+		assertFalse(PhantomAI.isFarmCandidate(questMob));
+
+		Monster titled = mock(Monster.class);
+		com.l2journey.gameserver.model.actor.templates.NpcTemplate template = mock(com.l2journey.gameserver.model.actor.templates.NpcTemplate.class);
+		when(titled.isDead()).thenReturn(false);
+		when(titled.isAttackable()).thenReturn(true);
+		when(titled.isRaid()).thenReturn(false);
+		when(titled.getName()).thenReturn("Wolf");
+		when(titled.getTemplate()).thenReturn(template);
+		when(template.getTitle()).thenReturn("Quest");
+		assertFalse(PhantomAI.isFarmCandidate(titled));
+	}
+
+	@Test
+	void isCommittedToTargetRequiresAttackOrCast()
+	{
+		Monster mob = mock(Monster.class);
+		Player idle = mock(Player.class);
+		CreatureAI ai = mock(CreatureAI.class);
+		when(idle.getTarget()).thenReturn(mob);
+		when(idle.isAttackingNow()).thenReturn(false);
+		when(idle.isCastingNow()).thenReturn(false);
+		when(idle.getAI()).thenReturn(ai);
+		when(ai.getIntention()).thenReturn(Intention.IDLE);
+		assertFalse(PhantomAI.isCommittedToTarget(idle, mob));
+		assertFalse(PhantomAI.isCommittedToTarget(null, mob));
+		assertFalse(PhantomAI.isCommittedToTarget(idle, null));
+
+		Player wrongTarget = mock(Player.class);
+		when(wrongTarget.getTarget()).thenReturn(null);
+		assertFalse(PhantomAI.isCommittedToTarget(wrongTarget, mob));
+
+		when(idle.isAttackingNow()).thenReturn(true);
+		assertTrue(PhantomAI.isCommittedToTarget(idle, mob));
+
+		when(idle.isAttackingNow()).thenReturn(false);
+		when(idle.isCastingNow()).thenReturn(true);
+		assertTrue(PhantomAI.isCommittedToTarget(idle, mob));
+
+		when(idle.isCastingNow()).thenReturn(false);
+		when(ai.getIntention()).thenReturn(Intention.ATTACK);
+		assertTrue(PhantomAI.isCommittedToTarget(idle, mob));
+
+		when(ai.getIntention()).thenReturn(Intention.CAST);
+		assertTrue(PhantomAI.isCommittedToTarget(idle, mob));
+	}
+
+	@Test
+	void resolveLockedFarmTargetDropsWeakPrey()
+	{
+		Player bot = mock(Player.class);
+		when(bot.getObjectId()).thenReturn(90);
+		when(bot.getLevel()).thenReturn(61);
+		Monster gremlin = mock(Monster.class);
+		when(gremlin.isDead()).thenReturn(false);
+		when(gremlin.isSpawned()).thenReturn(true);
+		when(gremlin.isAttackable()).thenReturn(true);
+		when(gremlin.getLevel()).thenReturn(1);
+		PhantomAI.rememberFarmTarget(90, gremlin);
+
+		try (MockedStatic<PhantomSpoil> spoil = mockStatic(PhantomSpoil.class))
+		{
+			spoil.when(() -> PhantomSpoil.shouldSweepCorpse(bot, gremlin)).thenReturn(false);
+			assertNull(PhantomAI.resolveLockedFarmTarget(bot, 90));
+			assertNull(PhantomAI.resolveLockedFarmTarget(bot, 90));
+		}
+	}
+
+	@Test
+	void isFarmCandidateAcceptsValidMonster()
+	{
+		assertFalse(PhantomAI.isFarmCandidate(null));
+
+		Monster dead = mock(Monster.class);
+		when(dead.isDead()).thenReturn(true);
+		assertFalse(PhantomAI.isFarmCandidate(dead));
+
+		Monster notAttackable = mock(Monster.class);
+		when(notAttackable.isDead()).thenReturn(false);
+		when(notAttackable.isAttackable()).thenReturn(false);
+		assertFalse(PhantomAI.isFarmCandidate(notAttackable));
+
+		Monster raid = mock(Monster.class);
+		when(raid.isDead()).thenReturn(false);
+		when(raid.isAttackable()).thenReturn(true);
+		when(raid.isRaid()).thenReturn(true);
+		assertFalse(PhantomAI.isFarmCandidate(raid));
+
+		Monster ok = mock(Monster.class);
+		when(ok.isDead()).thenReturn(false);
+		when(ok.isAttackable()).thenReturn(true);
+		when(ok.isRaid()).thenReturn(false);
+		when(ok.getName()).thenReturn("Wolf");
+		when(ok.getTemplate()).thenReturn(null);
+		assertTrue(PhantomAI.isFarmCandidate(ok));
+	}
+
+	@Test
+	void isTargetedByAnotherDetectsCommittedHolders()
+	{
+		Monster mob = mock(Monster.class);
+		Player bot = mock(Player.class);
+		when(bot.getSummon()).thenReturn(null);
+
+		when(mob.getTarget()).thenReturn(bot);
+		assertFalse(PhantomAI.isTargetedByAnother(bot, mob));
+
+		Player holder = mock(Player.class);
+		CreatureAI holderAi = mock(CreatureAI.class);
+		when(holder.isPlayer()).thenReturn(true);
+		when(holder.asPlayer()).thenReturn(holder);
+		when(holder.getTarget()).thenReturn(mob);
+		when(holder.isAttackingNow()).thenReturn(true);
+		when(holder.isCastingNow()).thenReturn(false);
+		when(holder.getAI()).thenReturn(holderAi);
+		when(mob.getTarget()).thenReturn(holder);
+
+		try (MockedStatic<com.l2journey.gameserver.model.World> world = mockStatic(com.l2journey.gameserver.model.World.class))
+		{
+			com.l2journey.gameserver.model.World worldInstance = mock(com.l2journey.gameserver.model.World.class);
+			world.when(com.l2journey.gameserver.model.World::getInstance).thenReturn(worldInstance);
+			when(worldInstance.getVisibleObjectsInRange(mob, Player.class, 1000)).thenReturn(java.util.List.of());
+			assertTrue(PhantomAI.isTargetedByAnother(bot, mob));
+
+			when(holder.isAttackingNow()).thenReturn(false);
+			when(holderAi.getIntention()).thenReturn(Intention.IDLE);
+			assertFalse(PhantomAI.isTargetedByAnother(bot, mob));
+
+			Player nearby = mock(Player.class);
+			CreatureAI nearbyAi = mock(CreatureAI.class);
+			when(nearby.isAlikeDead()).thenReturn(false);
+			when(nearby.getTarget()).thenReturn(mob);
+			when(nearby.isAttackingNow()).thenReturn(false);
+			when(nearby.isCastingNow()).thenReturn(false);
+			when(nearby.getAI()).thenReturn(nearbyAi);
+			when(nearbyAi.getIntention()).thenReturn(Intention.ATTACK);
+			when(mob.getTarget()).thenReturn(null);
+			when(worldInstance.getVisibleObjectsInRange(mob, Player.class, 1000)).thenReturn(java.util.List.of(nearby));
+			assertTrue(PhantomAI.isTargetedByAnother(bot, mob));
+		}
+	}
+
+	@Test
+	void unregisterBotClearsCasualChatAndMood()
+	{
+		Player bot = mock(Player.class);
+		when(bot.getObjectId()).thenReturn(77);
+		PhantomMood.onGoodThing(bot);
+		assertTrue(PhantomMood.getMood(bot) == PhantomMood.Mood.CHEERFUL);
+		PhantomAI.unregisterBot(77);
+		assertTrue(PhantomMood.getMood(bot) == PhantomMood.Mood.NEUTRAL);
+		PhantomAI.clearRuntimeState();
+	}
+
+	@Test
+	void thinkAndFarmReturnsWhenMoodPauses()
+	{
+		Player bot = mock(Player.class);
+		when(bot.getObjectId()).thenReturn(44);
+		when(bot.isDead()).thenReturn(false);
+		when(bot.isInCombat()).thenReturn(true);
+		when(bot.getCurrentHp()).thenReturn(100.0);
+		when(bot.getMaxHp()).thenReturn(100);
+		PhantomEngine.isRunning = true;
+		PhantomEngine.activePhantoms.add(bot);
+		assertTrue(PhantomMood.canReactNow(bot));
+		assertTrue(PhantomMood.shouldPauseThink(bot));
+		PhantomAI.thinkAndFarm(bot);
+		verify(bot, never()).getAI();
+		PhantomMood.clear();
 	}
 	
 	private static Player mockMoveBot(int objectId)

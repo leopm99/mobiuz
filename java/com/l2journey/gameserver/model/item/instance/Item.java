@@ -180,6 +180,9 @@ public class Item extends WorldObject
 	
 	private final ReentrantLock _dbLock = new ReentrantLock();
 	
+	/** Monitor for item mutation (destroy, drop, transfer, enchant, pickup). */
+	private final Object _mutationLock = new Object();
+	
 	private Elementals[] _elementals = null;
 	
 	private ScheduledFuture<?> _itemLootShedule = null;
@@ -271,7 +274,7 @@ public class Item extends WorldObject
 		// Create a server->client GetItem packet to pick up the Item
 		creature.broadcastPacket(new GetItem(this, creature.getObjectId()));
 		
-		synchronized (this)
+		synchronized (_mutationLock)
 		{
 			setSpawned(false);
 		}
@@ -429,6 +432,15 @@ public class Item extends WorldObject
 	public ItemLocation getItemLocation()
 	{
 		return _loc;
+	}
+	
+	/**
+	 * Monitor for item mutation (destroy, drop, transfer, enchant, pickup).
+	 * @return the private final lock object for this item
+	 */
+	public final Object getMutationLock()
+	{
+		return _mutationLock;
 	}
 	
 	/**

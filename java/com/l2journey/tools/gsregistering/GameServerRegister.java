@@ -54,8 +54,9 @@ public class GameServerRegister extends BaseGameServerRegister
 		_in = new LineNumberReader(new InputStreamReader(System.in));
 		boolean choiceOk = false;
 		String choice;
+		boolean running = true;
 		
-		while (true)
+		while (running)
 		{
 			hr();
 			System.out.println("GSRegister");
@@ -99,7 +100,7 @@ public class GameServerRegister extends BaseGameServerRegister
 						}
 						case 5:
 						{
-							System.exit(0);
+							running = false;
 							break;
 						}
 						default:

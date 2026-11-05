@@ -325,6 +325,20 @@ public class BuffInfo
 	 */
 	public void onTick(AbstractEffect effect)
 	{
+		// Continuous ticks on a creature removed from the world (decay/deleteMe paths that stop BuffFinishTask
+		// without cancelling EffectTickTask) would otherwise run forever.
+		if (!_effected.isSpawned() && !_effected.isTeleporting())
+		{
+			final EffectTaskInfo task = getEffectTask(effect);
+			if ((task != null) && (task.getScheduledFuture() != null))
+			{
+				task.getScheduledFuture().cancel(true);
+			}
+
+			_effected.getEffectList().stopSkillEffects(SkillFinishType.REMOVED, _skill);
+			return;
+		}
+
 		boolean continueForever = false;
 		// If the effect is in use, allow it to affect the effected.
 		if (_isInUse)

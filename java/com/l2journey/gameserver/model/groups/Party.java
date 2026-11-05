@@ -1030,14 +1030,21 @@ public class Party extends AbstractPlayerGroup
 		{
 			return;
 		}
+		
+		final Player leader = getLeader();
+		if (leader == null)
+		{
+			return;
+		}
+		
 		_changeRequestDistributionType = partyDistributionType;
 		_changeDistributionTypeAnswers = new HashSet<>();
 		_changeDistributionTypeRequestTask = ThreadPool.schedule(() -> finishLootRequest(false), PARTY_DISTRIBUTION_TYPE_REQUEST_TIMEOUT.toMillis());
-		broadcastToPartyMembers(getLeader(), new ExAskModifyPartyLooting(getLeader().getName(), partyDistributionType));
+		broadcastToPartyMembers(leader, new ExAskModifyPartyLooting(leader.getName(), partyDistributionType));
 		
 		final SystemMessage sm = new SystemMessage(SystemMessageId.REQUESTING_APPROVAL_FOR_CHANGING_PARTY_LOOT_TO_S1);
 		sm.addSystemString(partyDistributionType.getSysStringId());
-		getLeader().sendPacket(sm);
+		leader.sendPacket(sm);
 	}
 	
 	public synchronized void answerLootChangeRequest(Player member, boolean answer)
@@ -1108,12 +1115,14 @@ public class Party extends AbstractPlayerGroup
 	}
 	
 	/**
-	 * Check whether the leader of this party is the same as the leader of the specified party (which essentially means they're the same group).
-	 * @param party the other party to check against
-	 * @return {@code true} if this party equals the specified party, {@code false} otherwise
+	 * Check whether this party's leader object id matches the other party's leader object id.<br>
+	 * A missing leader has object id {@code 0}, so two leaderless parties match.<br>
+	 * Do not replace this with {@link Object#equals(Object)}: parties are hash keys in a command channel, and the leader can change.
+	 * @param other the other party to check against
+	 * @return {@code true} if both parties have the same leader object id, {@code false} otherwise
 	 */
-	public boolean equals(Party party)
+	public boolean hasSameLeader(Party other)
 	{
-		return (party != null) && (getLeaderObjectId() == party.getLeaderObjectId());
+		return (other != null) && (getLeaderObjectId() == other.getLeaderObjectId());
 	}
 }

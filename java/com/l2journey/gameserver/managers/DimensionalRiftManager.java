@@ -270,7 +270,13 @@ public class DimensionalRiftManager
 	
 	public void teleportToWaitingRoom(Player player)
 	{
-		player.teleToLocation(getRoom((byte) 0, (byte) 0).getTeleportCoorinates());
+		final DimensionalRiftRoom waitingRoom = getRoom((byte) 0, (byte) 0);
+		if (waitingRoom == null)
+		{
+			LOGGER.warning(() -> getClass().getSimpleName() + ": Waiting room is not loaded; cannot teleport " + player);
+			return;
+		}
+		player.teleToLocation(waitingRoom.getTeleportCoorinates());
 	}
 	
 	public synchronized void start(Player player, byte type, Npc npc)

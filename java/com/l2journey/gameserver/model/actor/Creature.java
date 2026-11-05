@@ -301,7 +301,7 @@ public abstract class Creature extends WorldObject
 	
 	private final Map<Integer, RelationCache> _knownRelations = new ConcurrentHashMap<>();
 	
-	private Set<Creature> _seenCreatures = null;
+	private volatile Set<Creature> _seenCreatures = null;
 	private int _seenCreatureRange = Config.ALT_PARTY_RANGE;
 	
 	/** Uma lista contendo os itens dropados deste fake player. */
@@ -2401,6 +2401,11 @@ public abstract class Creature extends WorldObject
 	 */
 	public void removeTimeStamp(Skill skill)
 	{
+		if (skill == null)
+		{
+			return;
+		}
+		
 		_reuseTimeStampsSkills.remove(skill.getReuseHashCode());
 	}
 	
@@ -3649,6 +3654,34 @@ public abstract class Creature extends WorldObject
 	}
 	
 	/**
+	 * Result of re-checking {@link #_move} after a blocked step while {@code updatePosition} still holds a snapshot.
+	 */
+	private enum BlockedStep
+	{
+		FINISHED,
+		STOP_CLIENT,
+		CONTINUE
+	}
+	
+	/**
+	 * Marks the geodata path as finished when {@code move} is still this creature's active move data.<br>
+	 * Another thread may have cleared or replaced {@link #_move} during a geo or door check.
+	 * @param move the {@link MoveData} snapshot from the start of {@link #updatePosition()}
+	 * @return {@link BlockedStep#STOP_CLIENT} when the snapshot is still installed; {@link BlockedStep#FINISHED} when movement was cleared; {@link BlockedStep#CONTINUE} when a newer move replaced it
+	 */
+	private BlockedStep onBlockedStep(MoveData move)
+	{
+		final MoveData current = _move;
+		if (current != move)
+		{
+			return (current == null) ? BlockedStep.FINISHED : BlockedStep.CONTINUE;
+		}
+		
+		current.onGeodataPathIndex = -1;
+		return BlockedStep.STOP_CLIENT;
+	}
+	
+	/**
 	 * Adiciona uma Func ao conjunto de Calculators da Creature.<br>
 	 * <br>
 	 * <b><u>Conceito</u>:</b> Uma Creature possui uma tabela de Calculators chamada <b>_calculators</b>.<br>
@@ -4287,7 +4320,12 @@ public abstract class Creature extends WorldObject
 				final int y = yPrev + y1;
 				if (!GeoData.getInstance().canMove(xPrev, yPrev, zPrev, x, y, zPrev, getInstanceId()))
 				{
-					_move.onGeodataPathIndex = -1;
+					final BlockedStep blocked = onBlockedStep(move);
+					if (blocked != BlockedStep.STOP_CLIENT)
+					{
+						return blocked == BlockedStep.FINISHED;
+					}
+					
 					stopMove(asPlayer().getLastServerPosition());
 					return true;
 				}
@@ -4308,7 +4346,12 @@ public abstract class Creature extends WorldObject
 					final int y = yPrev + y1;
 					if (!GeoData.getInstance().canMove(xPrev, yPrev, zPrev, x, y, zPrev, getInstanceId()))
 					{
-						_move.onGeodataPathIndex = -1;
+						final BlockedStep blocked = onBlockedStep(move);
+						if (blocked != BlockedStep.STOP_CLIENT)
+						{
+							return blocked == BlockedStep.FINISHED;
+						}
+						
 						if (hasAI())
 						{
 							if (getAI().isFollowing())
@@ -4336,7 +4379,12 @@ public abstract class Creature extends WorldObject
 						final int y = yPrev + y1;
 						if (!GeoData.getInstance().canMove(xPrev, yPrev, zPrev, x, y, zPrev, getInstanceId()))
 						{
-							_move.onGeodataPathIndex = -1;
+							final BlockedStep blocked = onBlockedStep(move);
+							if (blocked != BlockedStep.STOP_CLIENT)
+							{
+								return blocked == BlockedStep.FINISHED;
+							}
+							
 							broadcastPacket(new StopMove(this));
 							return true;
 						}
@@ -4361,7 +4409,12 @@ public abstract class Creature extends WorldObject
 								if ((hasDoors && DoorData.getInstance().checkIfDoorsBetween(xPrev, yPrev, zPrev, x, y, zPrev, getInstanceId(), false)) //
 									|| (hasFences && FenceData.getInstance().checkIfFenceBetween(xPrev, yPrev, zPrev, x, y, getInstanceId())))
 								{
-									_move.onGeodataPathIndex = -1;
+									final BlockedStep blocked = onBlockedStep(move);
+									if (blocked != BlockedStep.STOP_CLIENT)
+									{
+										return blocked == BlockedStep.FINISHED;
+									}
+									
 									if (hasAI())
 									{
 										if (getAI().isFollowing())

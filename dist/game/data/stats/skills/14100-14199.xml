@@ -1,31 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../xsd/skills.xsd">
 	<skill id="14156" levels="1" name="Snake">
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="icon" val="icon.skill0006" />
+		<set name="operateType" val="A1" />
+		<set name="targetType" val="ONE" />
+		<set name="castRange" val="150" />
+		<set name="effectPoint" val="-64" />
+		<set name="effectRange" val="200" />
+		<set name="hitTime" val="1500" />
+		<set name="magicLevel" val="8" />
+		<set name="mpConsume" val="11" />
+		<set name="power" val="115" />
+		<set name="reuseDelay" val="3000" />
+		<effects>
+			<effect name="PhysicalDamage" />
+		</effects>
 	</skill>
 	<skill id="14157" levels="1" name="Long Snake">
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="icon" val="icon.skill0006" />
+		<set name="operateType" val="A1" />
+		<set name="targetType" val="AREA" />
+		<set name="affectRange" val="250" />
+		<set name="castRange" val="400" />
+		<set name="effectPoint" val="-64" />
+		<set name="effectRange" val="900" />
+		<set name="hitTime" val="2000" />
+		<set name="magicLevel" val="8" />
+		<set name="mpConsume" val="11" />
+		<set name="power" val="115" />
+		<set name="reuseDelay" val="5000" />
+		<effects>
+			<effect name="PhysicalDamage" />
+		</effects>
 	</skill>
-	<skill id="14158" levels="1" name="Crawler Spear">
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+	<skill id="14158" levels="2" name="Crawler Spear">
+		<set name="icon" val="icon.skill0006" />
+		<set name="operateType" val="A1" />
+		<set name="targetType" val="AREA" />
+		<set name="affectRange" val="200" />
+		<set name="castRange" val="200" />
+		<set name="effectPoint" val="-76" />
+		<set name="effectRange" val="400" />
+		<set name="hitTime" val="2000" />
+		<set name="magicLevel" val="12" />
+		<set name="mpConsume" val="15" />
+		<set name="power" val="100" />
+		<set name="reuseDelay" val="5000" />
+		<effects>
+			<effect name="PhysicalDamage" />
+		</effects>
 	</skill>
-	<skill id="14164" levels="1" name="Akain Jet">
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+	<skill id="14164" levels="1" name="Arcane Jet">
+		<set name="icon" val="icon.skill1275" />
+		<set name="operateType" val="A1" />
+		<set name="targetType" val="ONE" />
+		<set name="castRange" val="300" />
+		<set name="effectPoint" val="-104" />
+		<set name="effectRange" val="800" />
+		<set name="hitTime" val="2500" />
+		<set name="isMagic" val="1" /> <!-- Magic Skill -->
+		<set name="magicLevel" val="20" />
+		<set name="mpConsume" val="13" />
+		<set name="mpInitialConsume" val="4" />
+		<set name="power" val="4" />
+		<set name="reuseDelay" val="5000" />
+		<effects>
+			<effect name="MagicalDamage" />
+		</effects>
 	</skill>
-	<skill id="14165" levels="1" name="Akain Burst">
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+	<skill id="14165" levels="1" name="Arcane Bust">
+		<set name="icon" val="icon.skill1275" />
+		<set name="operateType" val="A1" />
+		<set name="targetType" val="FRONT_AREA" />
+		<set name="affectRange" val="250" />
+		<set name="castRange" val="300" />
+		<set name="effectPoint" val="-104" />
+		<set name="effectRange" val="800" />
+		<set name="fanRange" val="0,0,90,250" />
+		<set name="hitTime" val="2500" />
+		<set name="isMagic" val="1" /> <!-- Magic Skill -->
+		<set name="magicLevel" val="20" />
+		<set name="mpConsume" val="16" />
+		<set name="mpInitialConsume" val="4" />
+		<set name="power" val="4" />
+		<set name="reuseDelay" val="5000" />
+		<effects>
+			<effect name="MagicalDamage" />
+		</effects>
 	</skill>
 	<skill id="14167" levels="1" name="Black Powder">
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="icon" val="icon.skill0006" />
+		<set name="operateType" val="A1" />
+		<set name="targetType" val="ONE" />
+		<set name="castRange" val="400" />
+		<set name="effectPoint" val="-96" />
+		<set name="effectRange" val="900" />
+		<set name="hitTime" val="1500" />
+		<set name="magicLevel" val="18" />
+		<set name="mpConsume" val="18" />
+		<set name="power" val="150" />
+		<set name="reuseDelay" val="5000" />
+		<effects>
+			<effect name="PhysicalDamage" />
+		</effects>
 	</skill>
-	<skill id="14168" levels="1" name="Throw Granade">
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+	<skill id="14168" levels="1" name="Throw Grenade">
+		<set name="icon" val="icon.skill1275" />
+		<set name="operateType" val="A1" />
+		<set name="targetType" val="AREA" />
+		<set name="affectRange" val="400" />
+		<set name="castRange" val="400" />
+		<set name="effectPoint" val="-96" />
+		<set name="effectRange" val="900" />
+		<set name="hitTime" val="1500" />
+		<set name="isMagic" val="1" /> <!-- Magic Skill -->
+		<set name="magicLevel" val="18" />
+		<set name="mpConsume" val="15" />
+		<set name="mpInitialConsume" val="4" />
+		<set name="power" val="4" />
+		<set name="reuseDelay" val="5000" />
+		<effects>
+			<effect name="MagicalDamage" />
+		</effects>
 	</skill>
 </list>

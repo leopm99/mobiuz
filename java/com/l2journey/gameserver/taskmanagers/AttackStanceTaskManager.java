@@ -123,11 +123,15 @@ public class AttackStanceTaskManager implements Runnable
 		
 		if (creature.isPlayable())
 		{
-			for (Cubic cubic : creature.asPlayer().getCubics().values())
+			final Player player = creature.asPlayer();
+			if (player != null)
 			{
-				if (cubic.getId() != Cubic.LIFE_CUBIC)
+				for (Cubic cubic : player.getCubics().values())
 				{
-					cubic.doAction();
+					if (cubic.getId() != Cubic.LIFE_CUBIC)
+					{
+						cubic.doAction();
+					}
 				}
 			}
 		}

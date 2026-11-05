@@ -56,6 +56,7 @@ public class BlowFishKey extends BaseReadablePacket
 		try
 		{
 			byte[] tempDecryptKey;
+			// Raw RSA: matches the gameserver encrypt and the leading-zero strip below (#7).
 			final Cipher rsaCipher = Cipher.getInstance("RSA/ECB/nopadding");
 			rsaCipher.init(Cipher.DECRYPT_MODE, server.getPrivateKey());
 			tempDecryptKey = rsaCipher.doFinal(tempKey);

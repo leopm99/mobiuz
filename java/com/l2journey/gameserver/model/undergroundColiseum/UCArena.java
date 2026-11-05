@@ -32,9 +32,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ScheduledFuture;
+import java.util.function.LongPredicate;
 
 import com.l2journey.Config;
 import com.l2journey.EventsConfig;
+import com.l2journey.commons.threads.Pauses;
 import com.l2journey.commons.threads.ThreadPool;
 import com.l2journey.gameserver.data.SpawnTable;
 import com.l2journey.gameserver.model.Spawn;
@@ -168,6 +170,18 @@ public class UCArena
 		_taskFuture = ThreadPool.schedule(new UCRunningTask(this), time);
 	}
 	
+	/**
+	 * Cancels a pending arena task, if any. Used by tests after {@link #prepareStart(LongPredicate)}.
+	 */
+	void cancelTask()
+	{
+		if (_taskFuture != null)
+		{
+			_taskFuture.cancel(false);
+			_taskFuture = null;
+		}
+	}
+	
 	public void runTaskNow()
 	{
 		if (_taskFuture != null)
@@ -264,83 +278,62 @@ public class UCArena
 	
 	public void prepareStart()
 	{
+		prepareStart(Pauses::sleep);
+	}
+	
+	/**
+	 * Countdown before match start. Stops when {@code pause} returns {@code false} (interrupt).
+	 * @param pause interrupt-aware pause; typically {@link Pauses#sleep(long)}
+	 */
+	void prepareStart(LongPredicate pause)
+	{
 		_isBattleNow = true;
 		broadcastToAll(new ExShowScreenMessage(NpcStringId.MATCH_BEGINS_IN_S1_MINUTE_S_PLEASE_GATHER_AROUND_THE_ADMINISTRATOR, 2, 5000, "1"));
-		try
+		if (!pause.test(30000))
 		{
-			Thread.sleep(30000);
-		}
-		catch (InterruptedException _)
-		{
+			return;
 		}
 		
 		broadcastToAll(new ExShowScreenMessage(NpcStringId.S1_SECOND_S_REMAINING, 2, 5000, "30"));
-		try
+		if (!pause.test(20000))
 		{
-			Thread.sleep(20000);
-		}
-		catch (InterruptedException _)
-		{
+			return;
 		}
 		
 		broadcastToAll(new ExShowScreenMessage(NpcStringId.S1_SECOND_S_REMAINING, 2, 3000, "10"));
-		
-		try
+		if (!pause.test(5000))
 		{
-			Thread.sleep(5000);
-		}
-		catch (InterruptedException _)
-		{
+			return;
 		}
 		
 		broadcastToAll(new ExShowScreenMessage(NpcStringId.S1_SECOND_S_REMAINING, 2, 1000, "5"));
-		
-		try
+		if (!pause.test(1000))
 		{
-			Thread.sleep(1000);
-		}
-		catch (InterruptedException _)
-		{
+			return;
 		}
 		
 		broadcastToAll(new ExShowScreenMessage(NpcStringId.S1_SECOND_S_REMAINING, 2, 1000, "4"));
-		
-		try
+		if (!pause.test(1000))
 		{
-			Thread.sleep(1000);
-		}
-		catch (InterruptedException _)
-		{
+			return;
 		}
 		
 		broadcastToAll(new ExShowScreenMessage(NpcStringId.S1_SECOND_S_REMAINING, 2, 1000, "3"));
-		
-		try
+		if (!pause.test(1000))
 		{
-			Thread.sleep(1000);
-		}
-		catch (InterruptedException _)
-		{
+			return;
 		}
 		
 		broadcastToAll(new ExShowScreenMessage(NpcStringId.S1_SECOND_S_REMAINING, 2, 1000, "2"));
-		
-		try
+		if (!pause.test(1000))
 		{
-			Thread.sleep(1000);
-		}
-		catch (InterruptedException _)
-		{
+			return;
 		}
 		
 		broadcastToAll(new ExShowScreenMessage(NpcStringId.S1_SECOND_S_REMAINING, 2, 1000, "1"));
-		
-		try
+		if (!pause.test(1000))
 		{
-			Thread.sleep(1000);
-		}
-		catch (InterruptedException _)
-		{
+			return;
 		}
 		
 		boolean isValid = true;

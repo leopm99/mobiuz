@@ -354,6 +354,20 @@ public class PhantomEngine
 	 */
 	public static boolean movePhantomToWithReturn(Player phantom, Location loc, String reason)
 	{
+		return movePhantomToWithReturn(phantom, loc, reason, null);
+	}
+	
+	/**
+	 * Plays Blessed SoE Return animation (skill 2036, 400ms), then relocates.
+	 * Ignores the request if a Return relocate is already pending for this phantom.
+	 * @param phantom the phantom to relocate
+	 * @param loc destination
+	 * @param reason log reason
+	 * @param afterMove runs after a successful relocate, or {@code null}
+	 * @return {@code true} if the cast was started
+	 */
+	public static boolean movePhantomToWithReturn(Player phantom, Location loc, String reason, Runnable afterMove)
+	{
 		if ((phantom == null) || (loc == null))
 		{
 			return false;
@@ -390,6 +404,10 @@ public class PhantomEngine
 				return;
 			}
 			movePhantomTo(phantom, dest, reason);
+			if (afterMove != null)
+			{
+				afterMove.run();
+			}
 		}, RETURN_HIT_TIME_MS);
 		PENDING_RETURN.put(objectId, future);
 		return true;
@@ -498,7 +516,7 @@ public class PhantomEngine
 	
 	private static void spawnPhantom(Player phantom)
 	{
-		Location spot = PhantomHuntingSpots.getRandomSpot(phantom.getLevel());
+		Location spot = PhantomHuntingSpots.resolveHuntSpot(phantom.getLevel());
 		if (spot == null)
 		{
 			PhantomConfig.FarmZone zone = PhantomConfig.getIdealZone(phantom.getLevel());
@@ -506,6 +524,7 @@ public class PhantomEngine
 		}
 		Location safe = PhantomGeo.getNpcLikeSpawn(spot);
 		movePhantomTo(phantom, safe, "Spawn zona leveo");
+		PhantomState.HUNT_LEVEL_BAND.put(phantom.getObjectId(), PhantomHuntingSpots.levelBand(phantom.getLevel()));
 	}
 	
 	private static void spawnAtCreationPoint(Player phantom)
@@ -517,6 +536,45 @@ public class PhantomEngine
 		PhantomState.NEXT_HUNT_TELEPORT.put(phantom.getObjectId(), System.currentTimeMillis() + 30000L);
 	}
 	
+	/**
+	 * Schedules revive once per death and updates mood. Safe to call every AI tick while dead.
+	 * @param bot the dead phantom
+	 * @return {@code true} when a revive was scheduled this call
+	 */
+	static boolean handleDeadPhantom(Player bot)
+	{
+		if ((bot == null) || !PhantomState.REVIVING_PHANTOMS.add(bot.getObjectId()))
+		{
+			return false;
+		}
+
+		PhantomMood.onDeath(bot);
+		ThreadPool.schedule(() ->
+		{
+			try
+			{
+				if (isRunning && activePhantoms.contains(bot) && bot.isOnline())
+				{
+					bot.doRevive();
+					bot.setCurrentHp(bot.getMaxHp());
+					bot.setCurrentMp(bot.getMaxMp());
+					spawnPhantom(bot);
+					bot.broadcastUserInfo();
+					PhantomState.MP_RECOVERY_STATE.put(bot.getObjectId(), false);
+				}
+			}
+			catch (Exception e)
+			{
+				PhantomManager.logException(bot.getName(), "Error revive", e);
+			}
+			finally
+			{
+				PhantomState.REVIVING_PHANTOMS.remove(bot.getObjectId());
+			}
+		}, 15000);
+		return true;
+	}
+
 	public static void startPhantomAI(Player bot)
 	{
 		if ((bot == null) || !isRunning)
@@ -572,33 +630,7 @@ public class PhantomEngine
 				}
 				else
 				{
-					if (!PhantomState.REVIVING_PHANTOMS.add(bot.getObjectId()))
-					{
-						return;
-					}
-					ThreadPool.schedule(() ->
-					{
-						try
-						{
-							if (isRunning && activePhantoms.contains(bot) && bot.isOnline())
-							{
-								bot.doRevive();
-								bot.setCurrentHp(bot.getMaxHp());
-								bot.setCurrentMp(bot.getMaxMp());
-								spawnAtCreationPoint(bot);
-								bot.broadcastUserInfo();
-								PhantomState.MP_RECOVERY_STATE.put(bot.getObjectId(), false);
-							}
-						}
-						catch (Exception e)
-						{
-							PhantomManager.logException(bot.getName(), "Error revive", e);
-						}
-						finally
-						{
-							PhantomState.REVIVING_PHANTOMS.remove(bot.getObjectId());
-						}
-					}, 15000);
+					handleDeadPhantom(bot);
 				}
 			}
 			catch (Exception e)

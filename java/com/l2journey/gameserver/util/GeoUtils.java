@@ -32,6 +32,7 @@ import java.awt.Color;
 
 import com.l2journey.commons.terrain.geoengine.Direction;
 import com.l2journey.gameserver.GeoData;
+import com.l2journey.gameserver.model.World;
 import com.l2journey.gameserver.model.actor.Player;
 import com.l2journey.gameserver.network.serverpackets.ExServerPrimitive;
 
@@ -116,6 +117,23 @@ public final class GeoUtils
 		return Color.RED;
 	}
 	
+	/**
+	 * Formats the geodata region id and inclusive world bounds for the given world position.
+	 * @param worldX world X coordinate
+	 * @param worldY world Y coordinate
+	 * @return message such as {@code GeoMap: 11_10 (-294912,-262144 to -262145,-229377)}
+	 */
+	public static String formatGeoMap(int worldX, int worldY)
+	{
+		final int x = ((worldX - World.WORLD_X_MIN) >> 15) + World.TILE_X_MIN;
+		final int y = ((worldY - World.WORLD_Y_MIN) >> 15) + World.TILE_Y_MIN;
+		final int minX = (x - World.TILE_ZERO_COORD_X) * World.TILE_SIZE;
+		final int minY = (y - World.TILE_ZERO_COORD_Y) * World.TILE_SIZE;
+		final int maxX = (minX + World.TILE_SIZE) - 1;
+		final int maxY = (minY + World.TILE_SIZE) - 1;
+		return "GeoMap: " + x + "_" + y + " (" + minX + "," + minY + " to " + maxX + "," + maxY + ")";
+	}
+	
 	public static void debugGrid(Player player)
 	{
 		int geoRadius = 10;
@@ -145,11 +163,6 @@ public final class GeoUtils
 						player.sendPacket(exsp);
 					}
 					exsp = new ExServerPrimitive("DebugGrid_" + iPacket, player.getX(), player.getY(), -16000);
-				}
-				
-				if (exsp == null)
-				{
-					throw new IllegalStateException();
 				}
 				
 				int gx = playerGx + dx;

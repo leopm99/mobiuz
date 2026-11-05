@@ -421,4 +421,13 @@ public class CreatureStatus
 	{
 		return _creature;
 	}
+	
+	/**
+	 * Raw creature bound to this status, without {@code asPlayable}/{@code asSummon}/{@code asPet} casts used by subclass {@link #getActiveChar()} overrides.
+	 * @return the creature passed to the constructor, which may be {@code null}
+	 */
+	protected final Creature getCreature()
+	{
+		return _creature;
+	}
 }

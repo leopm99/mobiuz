@@ -1027,6 +1027,11 @@ public class CreatureAI extends AbstractAI
 			return false; // skill radius -1
 		}
 		
+		if (_actor == null)
+		{
+			throw new IllegalStateException("AI actor");
+		}
+		
 		// Check if actor and target are on different floors inside multi-floor zones (e.g., Tower of Insolence)
 		if (_actor.isInsideZone(ZoneId.MULTI_FLOOR) && target.isCreature() && GeoData.getInstance().areOnDifferentFloors(_actor.getX(), _actor.getY(), _actor.getZ(), target.getX(), target.getY(), target.getZ()))
 		{

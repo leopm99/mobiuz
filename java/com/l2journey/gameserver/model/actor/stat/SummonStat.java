@@ -20,6 +20,7 @@
  */
 package com.l2journey.gameserver.model.actor.stat;
 
+import com.l2journey.gameserver.model.actor.Creature;
 import com.l2journey.gameserver.model.actor.Summon;
 
 public class SummonStat extends PlayableStat
@@ -32,6 +33,11 @@ public class SummonStat extends PlayableStat
 	@Override
 	public Summon getActiveChar()
 	{
-		return super.getActiveChar().asSummon();
+		final Creature creature = getCreature();
+		if (!(creature instanceof Summon summon))
+		{
+			throw new IllegalStateException("SummonStat active character");
+		}
+		return summon;
 	}
 }

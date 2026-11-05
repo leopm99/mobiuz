@@ -20,7 +20,11 @@
  */
 package com.l2journey.gameserver.model.actor.stat;
 
+import java.util.Objects;
+
+import com.l2journey.gameserver.model.actor.Creature;
 import com.l2journey.gameserver.model.actor.Npc;
+import com.l2journey.gameserver.model.actor.templates.NpcTemplate;
 
 public class NpcStat extends CreatureStat
 {
@@ -32,18 +36,28 @@ public class NpcStat extends CreatureStat
 	@Override
 	public byte getLevel()
 	{
-		return getActiveChar().getTemplate().getLevel();
+		return requireTemplate().getLevel();
 	}
 	
 	@Override
 	public Npc getActiveChar()
 	{
-		return super.getActiveChar().asNpc();
+		final Creature creature = getCreature();
+		if (!(creature instanceof Npc npc))
+		{
+			throw new IllegalStateException("NpcStat active character");
+		}
+		return npc;
 	}
 	
 	@Override
 	public int getPhysicalAttackAngle()
 	{
-		return getActiveChar().getTemplate().getBaseAttackAngle();
+		return requireTemplate().getBaseAttackAngle();
+	}
+	
+	private NpcTemplate requireTemplate()
+	{
+		return Objects.requireNonNull(getActiveChar().getTemplate(), "Npc template");
 	}
 }

@@ -210,7 +210,7 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 	private final Queue<AbstractEventListener> _listeners = new PriorityBlockingQueue<>();
 	private final Map<Predicate<Player>, String> _startCondition = LinkedHashMap.newLinkedHashMap(1);
 	private final Map<String, List<QuestTimer>> _questTimers = new HashMap<>();
-	private TimerExecutor<String> _timerExecutor;
+	private volatile TimerExecutor<String> _timerExecutor;
 	
 	private final int _questId;
 	private final Path _scriptFile;
@@ -5149,11 +5149,11 @@ public class Quest implements IEventTimerEvent<String>, IEventTimerCancel<String
 	/**
 	 * Get a random entry.
 	 * @param array of Integers.
-	 * @return one Integer from array.
+	 * @return one Integer from array, or {@code 0} when empty.
 	 */
 	public static int getRandomEntry(int... array)
 	{
-		return array[getRandom(array.length)];
+		return Rnd.pick(array);
 	}
 	
 	/**

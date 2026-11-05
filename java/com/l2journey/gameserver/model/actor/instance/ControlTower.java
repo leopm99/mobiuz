@@ -35,7 +35,7 @@ import com.l2journey.gameserver.model.actor.templates.NpcTemplate;
  */
 public class ControlTower extends Tower
 {
-	private Collection<Spawn> _guards;
+	private volatile Collection<Spawn> _guards;
 	
 	/**
 	 * Creates a control tower.

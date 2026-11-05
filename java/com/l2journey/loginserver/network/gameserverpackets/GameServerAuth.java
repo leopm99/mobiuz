@@ -123,14 +123,10 @@ public class GameServerAuth extends BaseReadablePacket
 	
 	private boolean attachRegisteredGameServer(GameServerInfo gsi)
 	{
-		synchronized (gsi)
+		if (!gsi.tryAttach(_server, _port, _hosts, _maxPlayers))
 		{
-			if (gsi.isAuthed())
-			{
-				_server.forceClose(LoginServerFail.REASON_ALREADY_LOGGED8IN);
-				return false;
-			}
-			_server.attachGameServerInfo(gsi, _port, _hosts, _maxPlayers);
+			_server.forceClose(LoginServerFail.REASON_ALREADY_LOGGED8IN);
+			return false;
 		}
 		return true;
 	}

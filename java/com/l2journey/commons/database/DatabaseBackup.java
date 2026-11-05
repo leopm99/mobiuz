@@ -89,13 +89,11 @@ public class DatabaseBackup
 		}
 		
 		// Dump to file.
-		final String mysqldumpPath = System.getProperty("os.name").toLowerCase().contains("win") ? Config.MYSQL_BIN_PATH : "";
-		try
+		runDump(() ->
 		{
-			// Java 17
-			// Java 18
+			final String mysqldumpPath = System.getProperty("os.name").toLowerCase().contains("win") ? Config.MYSQL_BIN_PATH : "";
 			final String backupFileName = Config.BACKUP_PATH + (Config.SERVER_MODE == ServerMode.GAME ? "game" : "login") + new SimpleDateFormat("_yyyy_MM_dd_HH_mm'.sql'").format(new Date());
-			final String databaseName = Config.DATABASE_URL.replace("jdbc:mysql://", "").replaceAll(".*\\/|\\?.*", "");
+			final String databaseName = databaseName(Config.DATABASE_URL);
 			final String[] command =
 			{
 				mysqldumpPath + "mysqldump",
@@ -106,13 +104,47 @@ public class DatabaseBackup
 				"-r",
 				backupFileName
 			};
-			
-			final Process process = Runtime.getRuntime().exec(command);
-			process.waitFor();
+			Runtime.getRuntime().exec(command).waitFor();
+		});
+	}
+	
+	/**
+	 * Extracts the database name from a JDBC MySQL URL.
+	 * Drops the query string, then returns the path segment after the last {@code /}.
+	 * @param jdbcUrl JDBC URL such as {@code jdbc:mysql://host:3306/dbname?params}
+	 * @return database name, or empty string when the path ends with {@code /}
+	 */
+	static String databaseName(String jdbcUrl)
+	{
+		final int query = jdbcUrl.indexOf('?');
+		final String withoutQuery = query < 0 ? jdbcUrl : jdbcUrl.substring(0, query);
+		final int slash = withoutQuery.lastIndexOf('/');
+		return slash < 0 ? withoutQuery : withoutQuery.substring(slash + 1);
+	}
+	
+	/**
+	 * Runs a mysqldump wait. Restores the interrupt flag when interrupted.
+	 * @param dump wait task that may throw
+	 */
+	static void runDump(DumpTask dump)
+	{
+		try
+		{
+			dump.run();
+		}
+		catch (InterruptedException _)
+		{
+			Thread.currentThread().interrupt();
 		}
 		catch (Exception _)
 		{
-			// Ignore.
+			// Ignore dump failures (missing mysqldump, IO errors).
 		}
+	}
+	
+	@FunctionalInterface
+	interface DumpTask
+	{
+		void run() throws Exception;
 	}
 }

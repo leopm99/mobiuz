@@ -70,7 +70,6 @@ public class SoIManager
 	
 	protected SoIManager()
 	{
-		checkStageAndSpawn();
 		if (isSeedOpen())
 		{
 			openSeed(getOpenedTime());
@@ -110,7 +109,6 @@ public class SoIManager
 		setCohemenesCount(0);
 		setEkimusCount(0);
 		setHoEDefCount(0);
-		checkStageAndSpawn();
 		LOGGER.info(() -> "Seed of Infinity Manager: Set to stage " + stage);
 	}
 	
@@ -149,25 +147,6 @@ public class SoIManager
 			if (ch != null)
 			{
 				ch.teleToLocation(-183285, 205996, -12896);
-			}
-		}
-	}
-	
-	public static void checkStageAndSpawn()
-	{
-		switch (getCurrentStage())
-		{
-			case 1, 4:
-			{
-				break;
-			}
-			case 5:
-			{
-				break;
-			}
-			default:
-			{
-				break;
 			}
 		}
 	}
@@ -253,7 +232,7 @@ public class SoIManager
 	
 	public static void teleportInSeed(Player player)
 	{
-		player.teleToLocation(openSeedTeleportLocs[Rnd.get(openSeedTeleportLocs.length)], false);
+		player.teleToLocation(Rnd.pick(openSeedTeleportLocs), false);
 	}
 	
 	/**

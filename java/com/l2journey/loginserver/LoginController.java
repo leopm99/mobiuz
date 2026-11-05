@@ -32,6 +32,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.GeneralSecurityException;
 import java.security.KeyPairGenerator;
 import java.security.MessageDigest;
+import java.security.SecureRandom;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.spec.RSAKeyGenParameterSpec;
 import java.sql.Connection;
@@ -80,6 +81,7 @@ public class LoginController
 	public static final int LOGIN_TIMEOUT = 5 * 60 * 1000; // 5 minutes.
 	
 	private static final int BLOWFISH_KEYS = 20;
+	private static final SecureRandom BLOWFISH_KEY_RANDOM = new SecureRandom();
 	protected byte[][] _blowfishKeys;
 	protected ScrambledKeyPair[] _keyPairs;
 	
@@ -122,6 +124,7 @@ public class LoginController
 	/**
 	 * This is mostly to force the initialization of the Crypto Implementation, avoiding it being done on runtime when its first needed.<br>
 	 * In short it avoids the worst-case execution time on runtime by doing it on loading.
+	 * Boot warmup must use {@code RSA/ECB/nopadding} so it matches live client and gameserver decrypts (#7).
 	 * @param key Any private RSA Key just for testing purposes.
 	 * @throws GeneralSecurityException if a underlying exception was thrown by the Cipher
 	 */
@@ -138,10 +141,7 @@ public class LoginController
 		
 		for (int i = 0; i < BLOWFISH_KEYS; i++)
 		{
-			for (int j = 0; j < _blowfishKeys[i].length; j++)
-			{
-				_blowfishKeys[i][j] = (byte) (Rnd.get(0, 255));
-			}
+			BLOWFISH_KEY_RANDOM.nextBytes(_blowfishKeys[i]);
 		}
 		LOGGER.info(() -> "Stored " + _blowfishKeys.length + " keys for Blowfish communication.");
 	}
@@ -151,7 +151,7 @@ public class LoginController
 	 */
 	public byte[] getBlowfishKey()
 	{
-		return _blowfishKeys[(int) (Math.random() * BLOWFISH_KEYS)];
+		return _blowfishKeys[BLOWFISH_KEY_RANDOM.nextInt(BLOWFISH_KEYS)];
 	}
 	
 	public SessionKey assignSessionKeyToClient(String account, LoginClient client)
@@ -228,6 +228,7 @@ public class LoginController
 				return null;
 			}
 			
+			// SHA-1 Base64 is the accounts.password format shared with change-password and SQLAccountManager (#6).
 			final MessageDigest md = MessageDigest.getInstance("SHA");
 			final byte[] raw = password.getBytes(StandardCharsets.UTF_8);
 			final String hashBase64 = Base64.getEncoder().encodeToString(md.digest(raw));

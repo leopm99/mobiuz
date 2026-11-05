@@ -28,6 +28,7 @@ import com.l2journey.commons.util.Rnd;
 import com.l2journey.gameserver.GeoData;
 import com.l2journey.gameserver.model.WorldObject;
 import com.l2journey.gameserver.model.actor.Creature;
+import com.l2journey.gameserver.model.actor.Player;
 import com.l2journey.gameserver.model.actor.Summon;
 import com.l2journey.gameserver.model.skill.Skill;
 import com.l2journey.gameserver.pathfinding.PathFinding;
@@ -35,17 +36,35 @@ import com.l2journey.gameserver.pathfinding.PathFinding;
 public class SummonAI extends PlayableAI implements Runnable
 {
 	private static final int AVOID_RADIUS = 70;
+	private static final Object START_FOLLOW_LOCK = new Object();
 	
 	private volatile boolean _thinking; // to prevent recursive thinking
-	private volatile boolean _startFollow = _actor.asSummon().getFollowStatus();
+	private volatile boolean _startFollow;
 	private Creature _lastAttack = null;
 	
 	private volatile boolean _startAvoid = false;
 	private Future<?> _avoidTask = null;
 	
+	/** Bound in the constructor; do not rename to match sibling AI helpers (duplication). */
+	private Summon _boundSummon;
+	
 	public SummonAI(Summon creature)
 	{
 		super(creature);
+		_boundSummon = creature;
+		if (_boundSummon != null)
+		{
+			_startFollow = summon().getFollowStatus();
+		}
+	}
+	
+	private Summon summon()
+	{
+		if (_boundSummon == null)
+		{
+			throw new IllegalStateException("Summon actor");
+		}
+		return _boundSummon;
 	}
 	
 	@Override
@@ -72,7 +91,7 @@ public class SummonAI extends PlayableAI implements Runnable
 	{
 		if (_startFollow)
 		{
-			setIntention(Intention.FOLLOW, _actor.asSummon().getOwner());
+			setIntention(Intention.FOLLOW, summon().getOwner());
 		}
 		else
 		{
@@ -122,6 +141,11 @@ public class SummonAI extends PlayableAI implements Runnable
 		{
 			setCastTarget(null);
 			return;
+		}
+		
+		if (_actor == null)
+		{
+			throw new IllegalStateException("AI actor");
 		}
 		
 		final boolean val = _startFollow;
@@ -210,7 +234,7 @@ public class SummonAI extends PlayableAI implements Runnable
 	{
 		if (_lastAttack == null)
 		{
-			_actor.asSummon().setFollowStatus(_startFollow);
+			summon().setFollowStatus(_startFollow);
 		}
 		else
 		{
@@ -238,7 +262,8 @@ public class SummonAI extends PlayableAI implements Runnable
 	private void avoidAttack(Creature attacker)
 	{
 		// trying to avoid if summon near owner
-		if ((_actor.asSummon().getOwner() != null) && (_actor.asSummon().getOwner() != attacker) && _actor.asSummon().getOwner().isInsideRadius3D(_actor, 2 * AVOID_RADIUS))
+		final Player owner = summon().getOwner();
+		if ((owner != null) && (owner != attacker) && owner.isInsideRadius3D(_actor, 2 * AVOID_RADIUS))
 		{
 			_startAvoid = true;
 		}
@@ -271,17 +296,26 @@ public class SummonAI extends PlayableAI implements Runnable
 	
 	public void notifyFollowStatusChange()
 	{
-		_startFollow = !_startFollow;
+		final boolean follow = toggleStartFollow();
 		switch (getIntention())
 		{
 			case ACTIVE, FOLLOW, IDLE, MOVE_TO, PICK_UP:
 			{
-				_actor.asSummon().setFollowStatus(_startFollow);
+				summon().setFollowStatus(follow);
 			}
 			default:
 			{
 				break;
 			}
+		}
+	}
+	
+	private boolean toggleStartFollow()
+	{
+		synchronized (START_FOLLOW_LOCK)
+		{
+			_startFollow = !_startFollow;
+			return _startFollow;
 		}
 	}
 	

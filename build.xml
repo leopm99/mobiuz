@@ -128,6 +128,8 @@
 				<exclude name="**/accountmanager/**" />
 				<exclude name="**/registerserver/**" />
 				<exclude name="**/tools/dashboard/Dashboard.class" />
+				<exclude name="**/tools/dashboard/Dashboard$*.class" />
+				<exclude name="**/tools/dashboard/SystemCommand.class" />
 			</fileset>
 			<manifest>
 				<attribute name="Build-By" value="${user.name}" />
@@ -139,14 +141,18 @@
 		</jar>
 	</target>
 
+	<!-- Standalone Swing UI only. DashboardControlServer stays in GameServer.jar (started by GameServer). -->
 	<target name="dashboard" depends="checkRequirements" description="Compile and package JourneyDash on its own, independent from the server jars.">
 		<tstamp>
 			<format property="time.stamp" pattern="yyyy-MM-dd HH:mm:ss z" />
 		</tstamp>
 		<delete dir="${build.bin}/dashboard" quiet="true" />
 		<mkdir dir="${build.bin}/dashboard" />
-		<javac srcdir="${src}" destdir="${build.bin}/dashboard" compiler="modern" debug="true" debuglevel="lines,vars,source" includeantruntime="false" source="25" target="25" encoding="UTF-8">
+		<mkdir dir="${build.dist}" />
+		<!-- Empty sourcepath so javac does not follow imports into gameserver sources (GeoData lives in geoengine.jar). -->
+		<javac srcdir="${src}" destdir="${build.bin}/dashboard" sourcepath="" compiler="modern" debug="true" debuglevel="lines,vars,source" includeantruntime="false" source="25" target="25" encoding="UTF-8">
 			<include name="**/tools/dashboard/Dashboard.java" />
+			<include name="**/tools/dashboard/SystemCommand.java" />
 		</javac>
 		<!-- Built into build.dist (a temp folder removed by cleanup) so it only ends up inside the zip, not left behind in dist. -->
 		<jar destfile="${build.dist}/Dashboard.jar" level="9">

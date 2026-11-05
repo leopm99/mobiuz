@@ -488,7 +488,6 @@ public class GameServer
 					Shutdown.getInstance().startShutdown(null, 60, true);
 				}
 			});
-			deadlockWatcher.setDaemon(true);
 			deadlockWatcher.start();
 		}
 		

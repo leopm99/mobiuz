@@ -38,11 +38,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * A dedicated thread to periodically monitor for deadlocks and provide detailed reports when detected.<br>
+ * A dedicated virtual thread to periodically monitor for deadlocks and provide detailed reports when detected.<br>
  * Allows for custom action when a deadlock is found by executing a user-defined callback.
  * @author Mobius
  */
-public class DeadlockWatcher extends Thread
+public class DeadlockWatcher implements Runnable
 {
 	private static final Logger LOGGER = Logger.getLogger(DeadlockWatcher.class.getName());
 	
@@ -52,13 +52,49 @@ public class DeadlockWatcher extends Thread
 	private final Duration _checkInterval;
 	private final Runnable _deadlockCallback;
 	private final ThreadMXBean _threadMXBean;
+	private Thread _thread;
 	
 	public DeadlockWatcher(Duration checkInterval, Runnable deadlockCallback)
 	{
-		super("DeadlockWatcher");
 		_checkInterval = checkInterval;
 		_deadlockCallback = deadlockCallback;
 		_threadMXBean = ManagementFactory.getThreadMXBean();
+	}
+	
+	/**
+	 * Starts this watcher on a named virtual thread.
+	 */
+	public void start()
+	{
+		_thread = Thread.ofVirtual().name("DeadlockWatcher").unstarted(this);
+		_thread.start();
+	}
+	
+	/**
+	 * Interrupts the watcher virtual thread, if started.
+	 */
+	public void interrupt()
+	{
+		if (_thread != null)
+		{
+			_thread.interrupt();
+		}
+	}
+	
+	/**
+	 * @return {@code true} if the watcher virtual thread was interrupted
+	 */
+	boolean isInterrupted()
+	{
+		return (_thread != null) && _thread.isInterrupted();
+	}
+	
+	/**
+	 * @return the watcher virtual thread, or {@code null} if not started
+	 */
+	Thread thread()
+	{
+		return _thread;
 	}
 	
 	@Override

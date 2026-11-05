@@ -501,6 +501,11 @@ public class KrateisCubeManager implements IXmlReader
 	
 	private void getManagerMessage(KrateiMsgType state)
 	{
+		if (_manager == null)
+		{
+			return;
+		}
+		
 		final long lastTime = _nextMatchTime - System.currentTimeMillis();
 		switch (state)
 		{

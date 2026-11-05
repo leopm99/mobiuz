@@ -30,6 +30,7 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -105,6 +106,7 @@ public final class Dashboard
 	private volatile ProcessMetrics _loginMetrics = ProcessMetrics.EMPTY;
 	private volatile ProcessMetrics _gameMetrics = ProcessMetrics.EMPTY;
 	private volatile int _refreshTick;
+	private static final AtomicIntegerFieldUpdater<Dashboard> REFRESH_TICK = AtomicIntegerFieldUpdater.newUpdater(Dashboard.class, "_refreshTick");
 	private JTabbedPane _tabs;
 	private final AtomicBoolean _closing = new AtomicBoolean();
 	
@@ -537,13 +539,23 @@ public final class Dashboard
 		try
 		{
 			append(output, "[Dashboard] Iniciando " + script + "...");
-			final Process process = new ProcessBuilder("cmd.exe", "/c", script).directory(directory.toFile()).redirectErrorStream(true).start();
+			final Process process = startServerProcess(directory, script);
 			new Thread(() -> readConsole(process, output), "Dashboard-" + type).start();
 		}
 		catch (IOException e)
 		{
 			append(output, "[Dashboard] Falha ao iniciar: " + e.getMessage());
 		}
+	}
+	
+	static Process startServerProcess(Path directory, String script) throws IOException
+	{
+		return SystemCommand.start(directory, true, SystemCommand.windows("System32", "cmd.exe"), "/c", script);
+	}
+	
+	static Process startPowershell(boolean redirectErrorStream, String command) throws IOException
+	{
+		return SystemCommand.start(null, redirectErrorStream, SystemCommand.windows("System32", "WindowsPowerShell", "v1.0", "powershell.exe"), "-NoProfile", "-Command", command);
 	}
 	
 	private void readConsole(Process process, JTextArea output)
@@ -622,15 +634,35 @@ public final class Dashboard
 		return process.pid();
 	}
 	
-	private static void killTree(long pid)
+	static void killTree(long pid)
+	{
+		awaitProcess(() -> SystemCommand.start(null, true, SystemCommand.windows("System32", "taskkill.exe"), "/F", "/T", "/PID", Long.toString(pid)).waitFor(4, TimeUnit.SECONDS));
+	}
+	
+	/**
+	 * Runs a process wait and restores the interrupt flag when interrupted.
+	 * @param wait task that may call {@link Process#waitFor()}
+	 */
+	static void awaitProcess(ProcessWait wait)
 	{
 		try
 		{
-			new ProcessBuilder("taskkill", "/F", "/T", "/PID", Long.toString(pid)).redirectErrorStream(true).start().waitFor(4, TimeUnit.SECONDS);
+			wait.run();
+		}
+		catch (InterruptedException _)
+		{
+			Thread.currentThread().interrupt();
 		}
 		catch (Exception _)
 		{
+			// Process tools are optional (missing binaries, restricted Windows sessions).
 		}
+	}
+	
+	@FunctionalInterface
+	interface ProcessWait
+	{
+		void run() throws Exception;
 	}
 	
 	// Garante que os dois servidores sejam encerrados quando a janela do dashboard fechar, evitando processos orfaos.
@@ -668,7 +700,7 @@ public final class Dashboard
 		_loginThreads.setText(login.map(p -> Integer.toString(_loginMetrics.threads)).orElse("--"));
 		_gameThreads.setText(game.map(p -> Integer.toString(_gameMetrics.threads)).orElse("--"));
 		// As consultas via jcmd/powershell sao custosas de iniciar; executa-las a um terco da taxa de atualizacao.
-		if ((_refreshTick++ % 3) == 0)
+		if ((REFRESH_TICK.getAndIncrement(this) % 3) == 0)
 		{
 			requestProcessMetrics(login, game);
 		}
@@ -727,55 +759,80 @@ public final class Dashboard
 	
 	private ProcessMetrics queryMetrics(ProcessHandle process)
 	{
+		return queryMetrics(process.pid(), () ->
+		{
+			final String command = "(Get-Process -Id " + process.pid() + " -ErrorAction Stop).Threads.Count";
+			final Process probe = startPowershell(false, command);
+			try (BufferedReader reader = new BufferedReader(new InputStreamReader(probe.getInputStream(), StandardCharsets.UTF_8)))
+			{
+				return Integer.parseInt(reader.readLine().trim());
+			}
+			finally
+			{
+				probe.waitFor(3, TimeUnit.SECONDS);
+			}
+		});
+	}
+	
+	/**
+	 * Queries process metrics. Restores the interrupt flag when the probe wait is interrupted.
+	 * @param pid process id for heap lookup
+	 * @param threadsProbe returns the thread count (may wait on a process)
+	 * @return metrics snapshot
+	 */
+	static ProcessMetrics queryMetrics(long pid, ThreadCountProbe threadsProbe)
+	{
 		int threads = 0;
 		try
 		{
-			final String command = "(Get-Process -Id " + process.pid() + " -ErrorAction Stop).Threads.Count";
-			final Process probe = new ProcessBuilder("powershell.exe", "-NoProfile", "-Command", command).start();
-			try (BufferedReader reader = new BufferedReader(new InputStreamReader(probe.getInputStream(), StandardCharsets.UTF_8)))
-			{
-				threads = Integer.parseInt(reader.readLine().trim());
-			}
-			probe.waitFor(3, TimeUnit.SECONDS);
+			threads = threadsProbe.read();
+		}
+		catch (InterruptedException _)
+		{
+			Thread.currentThread().interrupt();
 		}
 		catch (Exception _)
 		{
 			// A consulta ao sistema operacional so fica indisponivel em uma sessao restrita do Windows.
 		}
-		return new ProcessMetrics(threads, heapUsed(process.pid()));
+		return new ProcessMetrics(threads, heapUsed(pid));
+	}
+	
+	@FunctionalInterface
+	interface ThreadCountProbe
+	{
+		int read() throws Exception;
 	}
 	
 	// O "java" simples no PATH costuma apontar para o shim javapath da Oracle, que so contem java(w).exe, nao o jcmd;
 	// resolver o jcmd pelo diretorio de instalacao da propria JVM em execucao evita uma falha silenciosa de "nao foi possivel executar o programa".
-	private static final Path JCMD = resolveJcmd();
+	private static final Optional<Path> JCMD = SystemCommand.resolveJcmd();
 	
-	private static Path resolveJcmd()
+	static long heapUsed(long pid)
 	{
-		for (String home : new String[]
+		if (JCMD.isEmpty())
 		{
-			System.getProperty("java.home"),
-			System.getenv("JAVA_HOME")
-		})
-		{
-			if (home != null)
-			{
-				final Path candidate = Paths.get(home, "bin", "jcmd.exe");
-				if (Files.isRegularFile(candidate))
-				{
-					return candidate;
-				}
-			}
+			return 0;
 		}
-		return Paths.get("jcmd");
+		return heapUsed(() ->
+		{
+			final Process probe = SystemCommand.start(null, true, JCMD, Long.toString(pid), "GC.heap_info");
+			final String output = new String(probe.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
+			probe.waitFor(3, TimeUnit.SECONDS);
+			return output;
+		});
 	}
 	
-	private static long heapUsed(long pid)
+	/**
+	 * Parses heap usage from a jcmd probe. Restores the interrupt flag when interrupted.
+	 * @param probe returns jcmd GC.heap_info output
+	 * @return used heap bytes, or 0 when unavailable
+	 */
+	static long heapUsed(HeapInfoProbe probe)
 	{
 		try
 		{
-			final Process probe = new ProcessBuilder(JCMD.toString(), Long.toString(pid), "GC.heap_info").redirectErrorStream(true).start();
-			final String output = new String(probe.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
-			probe.waitFor(3, TimeUnit.SECONDS);
+			final String output = probe.read();
 			final Matcher match = HEAP_INFO.matcher(output);
 			if (match.find())
 			{
@@ -788,11 +845,21 @@ public final class Dashboard
 				});
 			}
 		}
+		catch (InterruptedException _)
+		{
+			Thread.currentThread().interrupt();
+		}
 		catch (Exception _)
 		{
 			// O jcmd e opcional em tempo de execucao; o monitoramento de memoria continua disponivel sem ele.
 		}
 		return 0;
+	}
+	
+	@FunctionalInterface
+	interface HeapInfoProbe
+	{
+		String read() throws Exception;
 	}
 	
 	private static Optional<ProcessHandle> find(String name)
@@ -820,7 +887,7 @@ public final class Dashboard
 		{
 			// Mesma preferencia pelo processo filho: evita pegar o shim (ex: javapath) em vez da JVM real.
 			final String script = "$m=Get-CimInstance Win32_Process | Where-Object {$_.Name -eq 'java.exe' -and $_.CommandLine -match '" + name + "'}; $c=$m | Where-Object {$m.ProcessId -contains $_.ParentProcessId} | Select-Object -First 1; if ($c) { $c.ProcessId } else { $m | Select-Object -First 1 -ExpandProperty ProcessId }";
-			final Process probe = new ProcessBuilder("powershell.exe", "-NoProfile", "-Command", script).redirectErrorStream(true).start();
+			final Process probe = startPowershell(true, script);
 			try (BufferedReader reader = new BufferedReader(new InputStreamReader(probe.getInputStream(), StandardCharsets.UTF_8)))
 			{
 				final String pid = reader.readLine();

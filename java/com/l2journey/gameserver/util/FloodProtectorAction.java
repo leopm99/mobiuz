@@ -184,6 +184,13 @@ public class FloodProtectorAction
 		final StringBuilder output = new StringBuilder(100);
 		output.append(_config.floodProtectorType);
 		output.append(": ");
+		if (_client == null)
+		{
+			Arrays.stream(lines).forEach(output::append);
+			LOGGER.warning(() -> output.toString());
+			return;
+		}
+		
 		String address = null;
 		try
 		{

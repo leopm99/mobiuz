@@ -419,12 +419,17 @@ public class AttackableAI extends CreatureAI
 			setCastTarget(null);
 			return;
 		}
-
+		
+		if (_actor == null)
+		{
+			throw new IllegalStateException("AI actor");
+		}
+		
 		if (maybeMoveToPawn(getCastTarget(), _actor.getMagicalAttackRange(_skill)))
 		{
 			return;
 		}
-
+		
 		clientStopMoving(null);
 		setIntention(Intention.ACTIVE);
 		_actor.doCast(_skill);
@@ -1252,10 +1257,6 @@ public class AttackableAI extends CreatureAI
 		final double dist = npc.calculateDistance2D(mostHate);
 		final int dist2 = (int) dist - collision;
 		int range = npc.getPhysicalAttackRange() + combinedCollision;
-		if (npc.getAiType() == AIType.ARCHER)
-		{
-			range = 850 + combinedCollision; // Base bow range for NPCs.
-		}
 
 		if (mostHate.isMoving())
 		{
@@ -1754,14 +1755,14 @@ public class AttackableAI extends CreatureAI
 			return;
 		}
 
-		final Attackable npc = getActiveChar();
+		final Attackable npc = attackable();
 		if (npc.getTarget() == null)
 		{
 			npc.setTarget(target);
 		}
-
+		
 		final double dist = npc.calculateDistance2D(target);
-
+		
 		// TODO(Zoey76): Review this "magic changes".
 		final int random = Rnd.get(100);
 		if (!target.isImmobilized() && (random < 15) && tryCast(npc, target, AISkillScope.IMMOBILIZE, dist))
@@ -1825,6 +1826,11 @@ public class AttackableAI extends CreatureAI
 	 */
 	private static boolean checkSkillCastConditions(Attackable caster, Skill skill)
 	{
+		if (caster == null)
+		{
+			throw new IllegalStateException("Attackable actor");
+		}
+		
 		// MP insuficiente.
 		// Personagem esta no modo "skill desabilitada".
 		if ((caster.isCastingNow() && !skill.isSimultaneousCast()) || (skill.getMpConsume() >= caster.getCurrentMp()) || caster.isSkillDisabled(skill))
@@ -1843,7 +1849,7 @@ public class AttackableAI extends CreatureAI
 			return null;
 		}
 
-		final Attackable actor = getActiveChar();
+		final Attackable actor = attackable();
 		if (!sk.hasEffectType(EffectType.DISPEL, EffectType.DISPEL_BY_SLOT))
 		{
 			if (!positive)
@@ -1988,7 +1994,7 @@ public class AttackableAI extends CreatureAI
 		double dist = 0;
 		double dist2 = 0;
 		int range = 0;
-		final Attackable actor = getActiveChar();
+		final Attackable actor = attackable();
 		if (actor.getHateList() != null)
 		{
 			for (Creature obj : actor.getHateList())
@@ -2096,7 +2102,7 @@ public class AttackableAI extends CreatureAI
 
 				if (dist2 <= range)
 				{
-					actor.addDamageHate(obj, 0, mostHate != null ? actor.getHating(mostHate) : 2000);
+					actor.addDamageHate(obj, 0, actor.getHating(mostHate));
 					actor.setTarget(obj);
 					setAttackTarget(obj);
 					return;
@@ -2356,7 +2362,7 @@ public class AttackableAI extends CreatureAI
 	@Override
 	protected void onActionAggression(Creature target, int aggro)
 	{
-		final Attackable me = getActiveChar();
+		final Attackable me = attackable();
 		if (me.isDead() || (target == null))
 		{
 			return;
@@ -2410,7 +2416,17 @@ public class AttackableAI extends CreatureAI
 	{
 		return _actor.asAttackable();
 	}
-
+	
+	private Attackable attackable()
+	{
+		final Attackable attackable = _actor.asAttackable();
+		if (attackable == null)
+		{
+			throw new IllegalStateException("Attackable actor");
+		}
+		return attackable;
+	}
+	
 	public int getFearTime()
 	{
 		return _fearTime;

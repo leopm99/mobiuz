@@ -421,6 +421,11 @@ public class PlayerStatus extends PlayableStatus
 	@Override
 	public Player getActiveChar()
 	{
-		return super.getActiveChar().asPlayer();
+		final Creature creature = getCreature();
+		if (!(creature instanceof Player player))
+		{
+			throw new IllegalStateException("PlayerStatus active character");
+		}
+		return player;
 	}
 }

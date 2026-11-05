@@ -28,8 +28,10 @@
  */
 package handlers.effecthandlers;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import com.l2journey.gameserver.model.StatSet;
@@ -37,7 +39,9 @@ import com.l2journey.gameserver.model.actor.Creature;
 import com.l2journey.gameserver.model.conditions.Condition;
 import com.l2journey.gameserver.model.effects.AbstractEffect;
 import com.l2journey.gameserver.model.skill.AbnormalType;
+import com.l2journey.gameserver.model.skill.BuffInfo;
 import com.l2journey.gameserver.model.skill.Skill;
+import com.l2journey.gameserver.util.BlockedAbnormalSlotRelease;
 
 /**
  * Block Buff Slot effect implementation.
@@ -66,10 +70,29 @@ public class BlockAbnormalSlot extends AbstractEffect
 		}
 	}
 	
+	/**
+	 * @return the abnormal types this effect blocks
+	 */
+	public Set<AbnormalType> getBlockAbnormalSlots()
+	{
+		return _blockAbnormalSlots;
+	}
+	
 	@Override
 	public void onExit(Creature effector, Creature effected, Skill skill)
 	{
-		effected.getEffectList().removeBlockedAbnormalTypes(_blockAbnormalSlots);
+		final List<Set<AbnormalType>> remaining = new ArrayList<>();
+		for (BuffInfo info : effected.getEffectList().getEffects())
+		{
+			for (AbstractEffect effect : info.getEffects())
+			{
+				if (effect instanceof BlockAbnormalSlot block)
+				{
+					remaining.add(block.getBlockAbnormalSlots());
+				}
+			}
+		}
+		effected.getEffectList().removeBlockedAbnormalTypes(BlockedAbnormalSlotRelease.slotsToRelease(_blockAbnormalSlots, remaining));
 	}
 	
 	@Override

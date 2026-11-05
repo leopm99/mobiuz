@@ -1264,32 +1264,7 @@ public class NpcTemplate extends CreatureTemplate
 	
 	public static boolean isAssignableTo(Class<?> subValue, Class<?> clazz)
 	{
-		// If clazz represents an interface
-		if (clazz.isInterface())
-		{
-			// check if obj implements the clazz interface
-			for (Class<?> interface1 : subValue.getInterfaces())
-			{
-				if (clazz.getName().equals(interface1.getName()))
-				{
-					return true;
-				}
-			}
-		}
-		else
-		{
-			Class<?> sub = subValue;
-			do
-			{
-				if (sub.getName().equals(clazz.getName()))
-				{
-					return true;
-				}
-				sub = sub.getSuperclass();
-			}
-			while (sub != null);
-		}
-		return false;
+		return clazz.isAssignableFrom(subValue);
 	}
 	
 	/**

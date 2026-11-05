@@ -186,19 +186,31 @@ public class Transform
 	public float getCollisionHeight(Player player)
 	{
 		final TransformTemplate template = getTemplate(player);
-		return template != null ? template.getCollisionHeight() : player.getCollisionHeight();
+		if (template != null)
+		{
+			return template.getCollisionHeight();
+		}
+		return player != null ? player.getCollisionHeight() : 0;
 	}
 	
 	public float getCollisionRadius(Player player)
 	{
 		final TransformTemplate template = getTemplate(player);
-		return template != null ? template.getCollisionRadius() : player.getCollisionRadius();
+		if (template != null)
+		{
+			return template.getCollisionRadius();
+		}
+		return player != null ? player.getCollisionRadius() : 0;
 	}
 	
 	public int getBaseAttackRange(Player player)
 	{
 		final TransformTemplate template = getTemplate(player);
-		return template != null ? template.getBaseAttackRange() : player.getTemplate().getBaseAttackRange();
+		if (template != null)
+		{
+			return template.getBaseAttackRange();
+		}
+		return player != null ? player.getTemplate().getBaseAttackRange() : 0;
 	}
 	
 	public void onTransform(Player player)
@@ -371,7 +383,11 @@ public class Transform
 	public int getBaseDefBySlot(Player player, int slot)
 	{
 		final TransformTemplate template = getTemplate(player);
-		return template != null ? template.getDefense(slot) : player.getTemplate().getBaseDefBySlot(slot);
+		if (template != null)
+		{
+			return template.getDefense(slot);
+		}
+		return player != null ? player.getTemplate().getBaseDefBySlot(slot) : 0;
 	}
 	
 	/**

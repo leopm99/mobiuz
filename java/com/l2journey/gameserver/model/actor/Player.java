@@ -53,6 +53,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 import java.util.logging.Level;
 
 import com.l2journey.Config;
@@ -171,6 +172,7 @@ import com.l2journey.gameserver.model.actor.instance.Door;
 import com.l2journey.gameserver.model.actor.instance.EventMonster;
 import com.l2journey.gameserver.model.actor.instance.FriendlyMob;
 import com.l2journey.gameserver.model.actor.instance.Guard;
+import com.l2journey.gameserver.model.actor.instance.Pet;
 import com.l2journey.gameserver.model.actor.instance.TamedBeast;
 import com.l2journey.gameserver.model.actor.instance.Trap;
 import com.l2journey.gameserver.model.actor.stat.PlayerStat;
@@ -920,6 +922,7 @@ public class Player extends Playable
 	private Map<Integer, Skill> _customSkills = null;
 	
 	private volatile int _actionMask;
+	private static final AtomicIntegerFieldUpdater<Player> ACTION_MASK = AtomicIntegerFieldUpdater.newUpdater(Player.class, "_actionMask");
 	
 	private Map<Stat, Double> _servitorShare;
 	
@@ -13224,9 +13227,10 @@ public class Player extends Playable
 			return;
 		}
 		
-		if (hasSummon())
+		final Pet pet = hasSummon() ? _summon.asPet() : null;
+		if (pet != null)
 		{
-			setCurrentFeed(_summon.asPet().getCurrentFed());
+			setCurrentFeed(pet.getCurrentFed());
 			_controlItemId = _summon.getControlObjectId();
 			sendPacket(new SetupGauge(getObjectId(), 3, (_curFeed * 10000) / getFeedConsume(), (getMaxFeed() * 10000) / getFeedConsume()));
 			
@@ -14963,13 +14967,9 @@ public class Player extends Playable
 	 */
 	public boolean addAction(PlayerAction act)
 	{
-		if (!hasAction(act))
-		{
-			_actionMask |= act.getMask();
-			return true;
-		}
-		
-		return false;
+		final int mask = act.getMask();
+		final int previous = ACTION_MASK.getAndAccumulate(this, mask, (current, bit) -> (current & bit) == bit ? current : current | bit);
+		return (previous & mask) != mask;
 	}
 	
 	/**
@@ -14978,13 +14978,9 @@ public class Player extends Playable
 	 */
 	public boolean removeAction(PlayerAction act)
 	{
-		if (hasAction(act))
-		{
-			_actionMask &= ~act.getMask();
-			return true;
-		}
-		
-		return false;
+		final int mask = act.getMask();
+		final int previous = ACTION_MASK.getAndAccumulate(this, mask, (current, bit) -> (current & bit) == bit ? current & ~bit : current);
+		return (previous & mask) == mask;
 	}
 	
 	/**

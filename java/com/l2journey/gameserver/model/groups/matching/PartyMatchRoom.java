@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.l2journey.gameserver.managers.MapRegionManager;
+import com.l2journey.gameserver.model.MapRegion;
 import com.l2journey.gameserver.model.actor.Player;
 import com.l2journey.gameserver.network.SystemMessageId;
 import com.l2journey.gameserver.network.serverpackets.ExManagePartyRoomMember;
@@ -161,7 +162,8 @@ public class PartyMatchRoom
 	 */
 	public int getLocation()
 	{
-		return MapRegionManager.getInstance().getMapRegion(_members.get(0)).getBbs();
+		final MapRegion region = MapRegionManager.getInstance().getMapRegion(_members.get(0));
+		return region == null ? 0 : region.getBbs();
 	}
 	
 	public int getMembers()

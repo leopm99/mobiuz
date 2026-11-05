@@ -33,6 +33,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
@@ -115,7 +116,6 @@ public class DDSConverter
 		{
 			String s = "nullValue.FileIsNull";
 			LOGGER.severe(() -> s + " " + new IllegalArgumentException(s));
-			new IllegalArgumentException(s);
 			return null;
 		}
 		
@@ -123,7 +123,6 @@ public class DDSConverter
 		{
 			String s1 = "DDSConverter.NoFileOrNoPermission";
 			LOGGER.severe(() -> s1 + " " + new IllegalArgumentException(s1));
-			new IllegalArgumentException(s1);
 			return null;
 		}
 		
@@ -134,8 +133,7 @@ public class DDSConverter
 		}
 		catch (IOException e)
 		{
-			e.printStackTrace();
-			// LOG.error("Error while reading Image that needs to be DDSConverted", e);
+			LOGGER.log(Level.SEVERE, e, () -> "Error while reading image that needs to be DDSConverted: " + e.getMessage());
 		}
 		
 		if (bufferedimage == null)

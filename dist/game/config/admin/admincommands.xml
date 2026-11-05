@@ -58,6 +58,7 @@
 	<admin command="areacancel" accessLevel="100" />
 	<admin command="removereuse" accessLevel="100" />
 	<admin command="switch_gm_buffs" accessLevel="100" />
+	<admin command="npcinfo" accessLevel="100" />
 
 	<!-- ADMIN CAMERA -->
 	<admin command="camera" accessLevel="100" />

@@ -46,6 +46,7 @@ import com.l2journey.gameserver.model.skill.enums.SkillFinishType;
 import com.l2journey.gameserver.network.SystemMessageId;
 import com.l2journey.gameserver.network.serverpackets.NpcHtmlMessage;
 import com.l2journey.gameserver.network.serverpackets.SkillCoolTime;
+import com.l2journey.gameserver.util.BuffEffectsBackBypass;
 import com.l2journey.gameserver.util.BuffTargetResolver;
 import com.l2journey.gameserver.util.GMAudit;
 
@@ -415,6 +416,7 @@ public class AdminBuffs implements IAdminCommandHandler
 		
 		html.replace("%targetName%", target.getName());
 		html.replace("%targetObjId%", target.getObjectId());
+		html.replace("%backBypass%", BuffEffectsBackBypass.forTarget(target));
 		html.replace("%buffs%", result.getBodyTemplate().toString());
 		html.replace("%skillSize%", skills.size());
 		activeChar.sendPacket(html);

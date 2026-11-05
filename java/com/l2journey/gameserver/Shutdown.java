@@ -34,6 +34,7 @@ import java.util.logging.Logger;
 import com.l2journey.Config;
 import com.l2journey.commons.database.DatabaseBackup;
 import com.l2journey.commons.database.DatabaseFactory;
+import com.l2journey.commons.threads.Pauses;
 import com.l2journey.commons.threads.ThreadPool;
 import com.l2journey.gameserver.data.BotReportTable;
 import com.l2journey.gameserver.data.SchemeBufferTable;
@@ -89,8 +90,8 @@ public class Shutdown extends Thread
 	private static Shutdown _counterInstance;
 	private static boolean _countdownFinished;
 	
-	private int _secondsShut;
-	private int _shutdownMode;
+	int _secondsShut;
+	int _shutdownMode;
 	
 	/**
 	 * This function starts a shutdown count down (Copied from Function startShutdown())
@@ -271,48 +272,44 @@ public class Shutdown extends Thread
 	/**
 	 * This counts the countdown and reports it to all players countdown is aborted if mode changes to ABORT.
 	 */
-	private void countdown()
+	void countdown()
 	{
-		try
+		while (_secondsShut > 0)
 		{
-			while (_secondsShut > 0)
+			// Rehabilitate previous server status if shutdown is aborted.
+			if (_shutdownMode == ABORT)
 			{
-				// Rehabilitate previous server status if shutdown is aborted.
-				if (_shutdownMode == ABORT)
+				if (LoginServerThread.getInstance().getServerStatus() == ServerStatus.STATUS_DOWN)
 				{
-					if (LoginServerThread.getInstance().getServerStatus() == ServerStatus.STATUS_DOWN)
-					{
-						LoginServerThread.getInstance().setServerStatus((Config.SERVER_GMONLY) ? ServerStatus.STATUS_GM_ONLY : ServerStatus.STATUS_AUTO);
-					}
+					LoginServerThread.getInstance().setServerStatus((Config.SERVER_GMONLY) ? ServerStatus.STATUS_GM_ONLY : ServerStatus.STATUS_AUTO);
+				}
+				break;
+			}
+			
+			switch (_secondsShut)
+			{
+				case 540, 480, 420, 360, 300, 240, 180, 120, 60, 30, 10, 5, 4, 3, 2, 1:
+				{
+					sendServerQuit(_secondsShut);
+				}
+				default:
+				{
 					break;
 				}
-				
-				switch (_secondsShut)
-				{
-					case 540, 480, 420, 360, 300, 240, 180, 120, 60, 30, 10, 5, 4, 3, 2, 1:
-					{
-						sendServerQuit(_secondsShut);
-					}
-					default:
-					{
-						break;
-					}
-				}
-				
-				// Prevent players from logging in.
-				if ((_secondsShut <= 60) && (LoginServerThread.getInstance().getServerStatus() != ServerStatus.STATUS_DOWN))
-				{
-					LoginServerThread.getInstance().setServerStatus(ServerStatus.STATUS_DOWN);
-				}
-				
-				_secondsShut--;
-				
-				Thread.sleep(1000);
 			}
-		}
-		catch (Exception _)
-		{
-			// this will never happen
+			
+			// Prevent players from logging in.
+			if ((_secondsShut <= 60) && (LoginServerThread.getInstance().getServerStatus() != ServerStatus.STATUS_DOWN))
+			{
+				LoginServerThread.getInstance().setServerStatus(ServerStatus.STATUS_DOWN);
+			}
+			
+			_secondsShut--;
+			
+			if (!Pauses.sleep(1000))
+			{
+				return;
+			}
 		}
 	}
 	
@@ -531,14 +528,15 @@ public class Shutdown extends Thread
 			LOGGER.info("Bot Report Table: Successfully saved reports to database!");
 		}
 		
-		try
-		{
-			Thread.sleep(5000);
-		}
-		catch (Exception _)
-		{
-			// this will never happen
-		}
+		pauseAfterSave();
+	}
+	
+	/**
+	 * Short pause after saving data so pending work can settle. Restores the interrupt flag and returns when interrupted.
+	 */
+	void pauseAfterSave()
+	{
+		Pauses.sleep(5000);
 	}
 	
 	/**

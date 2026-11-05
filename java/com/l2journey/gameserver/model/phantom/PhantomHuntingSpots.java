@@ -24,6 +24,12 @@ public class PhantomHuntingSpots
 	// Inicializamos o Logger oficial do console
 	private static final Logger LOGGER = Logger.getLogger(PhantomHuntingSpots.class.getName());
 	
+	/** Gap at which a monster is too weak for this phantom (spot search stays tighter). */
+	static final int WEAK_PREY_LEVEL_GAP = 10;
+	
+	/** Cooldown after leaving a weak-prey camp so the next think does not hop again immediately. */
+	static final long WEAK_PREY_RELOCATE_COOLDOWN_MS = 5000L;
+	
 	private static final Map<Integer, Integer> NPC_LEVELS = new HashMap<>();
 	private static final Map<Integer, String> NPC_NAMES = new HashMap<>();
 	private static final Map<Integer, List<Location>> SPOTS_BY_LEVEL = new HashMap<>();
@@ -31,6 +37,35 @@ public class PhantomHuntingSpots
 	private static boolean _loaded = false;
 	private PhantomHuntingSpots()
 	{
+	}
+	
+	/**
+	 * @param botLevel phantom level
+	 * @param monsterLevel target monster level
+	 * @return {@code true} when the monster is at least {@link #WEAK_PREY_LEVEL_GAP} levels below the bot
+	 */
+	public static boolean isPreyTooWeak(int botLevel, int monsterLevel)
+	{
+		return (botLevel - monsterLevel) >= WEAK_PREY_LEVEL_GAP;
+	}
+	
+	/**
+	 * @param sawMonster whether any farm candidate was visible
+	 * @param sawAcceptablePrey whether any candidate passed {@link #isPreyTooWeak(int, int)}
+	 * @return {@code true} when monsters were seen and every one was too weak
+	 */
+	public static boolean onlyWeakPrey(boolean sawMonster, boolean sawAcceptablePrey)
+	{
+		return sawMonster && !sawAcceptablePrey;
+	}
+	
+	/**
+	 * @param level phantom level
+	 * @return hunt band used by {@link PhantomState#HUNT_LEVEL_BAND}
+	 */
+	public static int levelBand(int level)
+	{
+		return Math.max(1, (level / 5) * 5);
 	}
 
 	public static synchronized void load()
@@ -62,26 +97,20 @@ public class PhantomHuntingSpots
 	
 	public static boolean relocateForLevelIfNeeded(Player bot)
 	{
-		int band = getLevelBand(bot.getLevel());
+		int band = levelBand(bot.getLevel());
 		int objectId = bot.getObjectId();
-		
-		if (System.currentTimeMillis() < PhantomState.NEXT_HUNT_TELEPORT.getOrDefault(objectId, 0L))
-		{
-			return false;
-		}
 		
 		// CHEQUEO ANTI-ESTANCAMIENTO: Se o bot respawnou na cidade, seu alvo sera de nivel muito baixo
 		// ou diretamente nao tera alvo. Se ja passou de faixa e nao esta no seu spot, forcamos.
 		boolean forceRelocate = false;
+		boolean weakPreyForce = false;
 		if ((bot.getTarget() != null) && bot.getTarget().isNpc())
 		{
-			int targetId = ((com.l2journey.gameserver.model.actor.Npc) bot.getTarget()).getId();
-			Integer targetLevel = NPC_LEVELS.get(targetId);
-			
-			// Se o alvo existe, e a diferenca de nivel e absurda (ex: bot 15 batendo em um nivel 1)
-			if ((targetLevel != null) && ((bot.getLevel() - targetLevel) >= 10))
+			int targetLevel = bot.getTarget().asNpc().getLevel();
+			if (isPreyTooWeak(bot.getLevel(), targetLevel))
 			{
 				forceRelocate = true;
+				weakPreyForce = true;
 			}
 		}
 		else if (bot.isInsideZone(com.l2journey.gameserver.model.zone.ZoneId.PEACE) || bot.isInsideZone(com.l2journey.gameserver.model.zone.ZoneId.TOWN))
@@ -90,40 +119,109 @@ public class PhantomHuntingSpots
 			forceRelocate = true;
 		}
 		
+		long now = System.currentTimeMillis();
+		long nextTeleport = PhantomState.NEXT_HUNT_TELEPORT.getOrDefault(objectId, 0L);
+		if (now < nextTeleport)
+		{
+			long remaining = nextTeleport - now;
+			// Bypass the long creation lock, not the short post-land weak-prey cooldown.
+			if (!weakPreyForce || (remaining <= WEAK_PREY_RELOCATE_COOLDOWN_MS))
+			{
+				return false;
+			}
+		}
+		
 		// Se NAO forcamos a realocacao e esta na sua faixa de nivel correta, ignoramos.
 		if (!forceRelocate && (PhantomState.HUNT_LEVEL_BAND.getOrDefault(objectId, -1) == band))
 		{
 			return false;
 		}
 		
-		Location spot = getRandomSpot(bot.getLevel());
+		Location spot = resolveHuntSpot(bot.getLevel());
 		if (spot == null)
 		{
 			return false;
 		}
 		
-		return travelToLevelSpot(bot, spot, "Viajando a spot de leveo L" + bot.getLevel() + (forceRelocate ? " (Rescate)" : ""));
+		String reason = "Viajando a spot de leveo L" + bot.getLevel() + (forceRelocate ? " (Rescate)" : "");
+		return travelToLevelSpot(bot, spot, reason, weakPreyForce);
+	}
+	
+	/**
+	 * Leaves a camp where every visible monster is too weak for this phantom.
+	 * @param bot the phantom
+	 * @return {@code true} when a relocate cast was started
+	 */
+	public static boolean travelAwayFromWeakPrey(Player bot)
+	{
+		if (bot == null)
+		{
+			return false;
+		}
+		int objectId = bot.getObjectId();
+		if (System.currentTimeMillis() < PhantomState.NEXT_HUNT_TELEPORT.getOrDefault(objectId, 0L))
+		{
+			return false;
+		}
+		Location spot = resolveHuntSpot(bot.getLevel());
+		if (spot == null)
+		{
+			return false;
+		}
+		return travelToLevelSpot(bot, spot, "Leaving weak prey L" + bot.getLevel(), true);
 	}
 	
 	public static boolean travelToLevelSpot(Player bot, String reason)
 	{
-		Location spot = getRandomSpot(bot.getLevel());
+		Location spot = resolveHuntSpot(bot.getLevel());
 		if (spot == null)
 		{
 			return false;
 		}
 		
-		return travelToLevelSpot(bot, spot, reason);
+		return travelToLevelSpot(bot, spot, reason, false);
+	}
+
+	/**
+	 * Prefers a spawn outside peace/town. Falls back to the ideal route farm point.
+	 * @param playerLevel phantom level
+	 * @return hunt location, or {@code null} when no route exists
+	 */
+	static Location resolveHuntSpot(int playerLevel)
+	{
+		Location spot = getRandomSpotOutsidePeaceOrTown(playerLevel, 10);
+		if (spot != null)
+		{
+			return spot;
+		}
+		return getRouteFarmFallback(playerLevel);
+	}
+
+	/**
+	 * @param playerLevel phantom level
+	 * @return ideal zone farm point, or {@code null}
+	 */
+	static Location getRouteFarmFallback(int playerLevel)
+	{
+		com.l2journey.PhantomConfig.FarmZone zone = com.l2journey.PhantomConfig.getIdealZone(playerLevel);
+		if (zone == null)
+		{
+			return null;
+		}
+		return new Location(zone.spotX, zone.spotY, zone.spotZ);
 	}
 	
 	public static boolean travelToLevelSpot(Player bot, Location spot, String reason)
 	{
-		if (spot == null)
+		return travelToLevelSpot(bot, spot, reason, false);
+	}
+	
+	static boolean travelToLevelSpot(Player bot, Location spot, String reason, boolean weakPreyCooldown)
+	{
+		if ((bot == null) || (spot == null))
 		{
 			return false;
 		}
-		
-		PhantomState.HUNT_LEVEL_BAND.put(bot.getObjectId(), getLevelBand(bot.getLevel()));
 		
 		Location safe = PhantomGeo.getNpcLikeSpawn(spot);
 		if (safe == null)
@@ -131,8 +229,27 @@ public class PhantomHuntingSpots
 			safe = spot;
 		}
 		
-		PhantomEngine.movePhantomToWithReturn(bot, safe, reason);
-		PhantomManager.logToFile(bot.getName(), reason + ": " + safe.getX() + ", " + safe.getY() + ", " + safe.getZ());
+		final int objectId = bot.getObjectId();
+		final int band = levelBand(bot.getLevel());
+		final Location land = safe;
+		boolean started = PhantomEngine.movePhantomToWithReturn(bot, land, reason, () ->
+		{
+			PhantomState.HUNT_LEVEL_BAND.put(objectId, band);
+			if (weakPreyCooldown)
+			{
+				long cooldownUntil = System.currentTimeMillis() + WEAK_PREY_RELOCATE_COOLDOWN_MS;
+				if (PhantomState.NEXT_HUNT_TELEPORT.getOrDefault(objectId, 0L) < cooldownUntil)
+				{
+					PhantomState.NEXT_HUNT_TELEPORT.put(objectId, cooldownUntil);
+				}
+			}
+		});
+		if (!started)
+		{
+			return false;
+		}
+		
+		PhantomManager.logToFile(bot.getName(), reason + ": " + land.getX() + ", " + land.getY() + ", " + land.getZ());
 		return true;
 	}
 	
@@ -184,10 +301,6 @@ public class PhantomHuntingSpots
 		return null;
 	}
 	
-	private static int getLevelBand(int level)
-	{
-		return Math.max(1, (level / 5) * 5);
-	}
 	
 	private static void loadNpcLevels(File dir)
 	{
@@ -394,6 +507,21 @@ public class PhantomHuntingSpots
 				|| lowerName.contains("tutorial")
 				|| lowerName.contains("event")
 				|| lowerName.contains("chest")
-				|| lowerName.contains("treasure chest");
+				|| lowerName.contains("treasure chest")
+				|| lowerName.contains("quest")
+				|| lowerName.contains("box");
+	}
+
+	/**
+	 * @param title npc template title
+	 * @return {@code true} when the title marks a quest target
+	 */
+	public static boolean isForbiddenTargetTitle(String title)
+	{
+		if (title == null)
+		{
+			return false;
+		}
+		return title.toLowerCase().contains("quest");
 	}
 }

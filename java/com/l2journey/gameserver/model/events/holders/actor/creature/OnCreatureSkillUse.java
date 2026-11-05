@@ -52,7 +52,7 @@ public class OnCreatureSkillUse implements IBaseEvent
 	{
 	}
 	
-	public Creature getCaster()
+	public synchronized Creature getCaster()
 	{
 		return _caster;
 	}
@@ -62,7 +62,7 @@ public class OnCreatureSkillUse implements IBaseEvent
 		_caster = caster;
 	}
 	
-	public Skill getSkill()
+	public synchronized Skill getSkill()
 	{
 		return _skill;
 	}
@@ -72,7 +72,7 @@ public class OnCreatureSkillUse implements IBaseEvent
 		_skill = skill;
 	}
 	
-	public boolean isSimultaneously()
+	public synchronized boolean isSimultaneously()
 	{
 		return _simultaneously;
 	}
@@ -82,7 +82,7 @@ public class OnCreatureSkillUse implements IBaseEvent
 		_simultaneously = simultaneously;
 	}
 	
-	public Creature getTarget()
+	public synchronized Creature getTarget()
 	{
 		return _target;
 	}
@@ -92,7 +92,7 @@ public class OnCreatureSkillUse implements IBaseEvent
 		_target = target;
 	}
 	
-	public Collection<WorldObject> getTargets()
+	public synchronized Collection<WorldObject> getTargets()
 	{
 		return _targets;
 	}

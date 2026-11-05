@@ -348,6 +348,11 @@ public class Spawn extends Location
 	{
 		try
 		{
+			if (_template == null)
+			{
+				return null;
+			}
+			
 			// Check if the spawn is not a Pet, Decoy or Trap spawn.
 			if (_template.isType("Pet") || _template.isType("Decoy") || _template.isType("Trap"))
 			{

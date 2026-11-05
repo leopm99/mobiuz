@@ -64,6 +64,17 @@ class PhantomEquipmentTest
 	}
 	
 	@Test
+	void usesBoltsIncludesWarder()
+	{
+		assertTrue(PhantomEquipment.usesBolts(126));
+		assertTrue(PhantomEquipment.usesBolts(130));
+		assertTrue(PhantomEquipment.usesBolts(134));
+		assertFalse(PhantomEquipment.usesBolts(9));
+		assertTrue(PhantomEquipment.usesArrows(9));
+		assertFalse(PhantomEquipment.usesArrows(126));
+	}
+
+	@Test
 	void nullBotIsRejected()
 	{
 		assertFalse(PhantomEquipment.beginProgressionCheck(null));

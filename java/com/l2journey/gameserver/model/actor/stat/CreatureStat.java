@@ -152,6 +152,15 @@ public class CreatureStat
 	}
 	
 	/**
+	 * Raw creature bound to this stat, without {@code asPlayable}/{@code asSummon}/{@code asPet} casts used by subclass {@link #getActiveChar()} overrides.
+	 * @return the creature passed to the constructor, which may be {@code null}
+	 */
+	protected final Creature getCreature()
+	{
+		return _creature;
+	}
+	
+	/**
 	 * @return the Attack Speed multiplier (base+modifier) of the Creature to get proper animations.
 	 */
 	public float getAttackSpeedMultiplier()
@@ -542,13 +551,13 @@ public class CreatureStat
 		{
 			baseAttackRange = transform.getBaseAttackRange(_creature.asPlayer());
 		}
-		else if (weapon != null)
+		else if ((weapon == null) || _creature.isNpc()) // NPC weapons add no stats, use the template range.
 		{
-			baseAttackRange = weapon.getBaseAttackRange();
+			baseAttackRange = _creature.getTemplate().getBaseAttackRange();
 		}
 		else
 		{
-			baseAttackRange = _creature.getTemplate().getBaseAttackRange();
+			baseAttackRange = weapon.getBaseAttackRange();
 		}
 		return (int) calcStat(Stat.POWER_ATTACK_RANGE, baseAttackRange, null, null);
 	}

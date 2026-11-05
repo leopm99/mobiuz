@@ -60,6 +60,11 @@ public class ConditionUsingItemType extends Condition
 		}
 		
 		final Inventory inv = effector.getInventory();
+		if (inv == null)
+		{
+			return false;
+		}
+		
 		if (_armor)
 		{
 			final Item chest = inv.getPaperdollItem(Inventory.PAPERDOLL_CHEST);

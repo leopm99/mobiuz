@@ -50,7 +50,7 @@ public class ConditionTargetMyPartyExceptMe extends Condition
 			player.sendPacket(SystemMessageId.YOU_CANNOT_USE_THIS_ON_YOURSELF);
 			isPartyMember = false;
 		}
-		else if (!player.isInParty() || !player.getParty().equals(effected.getParty()))
+		else if (!player.isInParty() || !player.getParty().hasSameLeader(effected.getParty()))
 		{
 			final SystemMessage sm = new SystemMessage(SystemMessageId.S1_CANNOT_BE_USED_DUE_TO_UNSUITABLE_TERMS);
 			sm.addSkillName(skill);

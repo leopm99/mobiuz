@@ -95,13 +95,9 @@ public class Defender extends Attackable
 			{
 				activeSiegeId = _castle.getResidenceId();
 			}
-			else if (_hall != null)
-			{
-				activeSiegeId = _hall.getId();
-			}
 			else
 			{
-				activeSiegeId = 0;
+				activeSiegeId = _hall.getId();
 			}
 			
 			// Check if player is an enemy of this defender npc
@@ -214,13 +210,9 @@ public class Defender extends Attackable
 					{
 						activeSiegeId = _castle.getResidenceId();
 					}
-					else if (_hall != null)
-					{
-						activeSiegeId = _hall.getId();
-					}
 					else
 					{
-						activeSiegeId = 0;
+						activeSiegeId = _hall.getId();
 					}
 					
 					// Do not add hate on defenders.

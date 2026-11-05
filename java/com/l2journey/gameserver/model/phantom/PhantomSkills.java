@@ -11,6 +11,7 @@ import com.l2journey.gameserver.model.actor.Creature;
 import com.l2journey.gameserver.model.actor.Player;
 import com.l2journey.gameserver.model.actor.Summon;
 import com.l2journey.gameserver.model.item.enums.ItemProcessType;
+import com.l2journey.gameserver.model.item.enums.ShotType;
 import com.l2journey.gameserver.model.skill.Skill;
 import com.l2journey.gameserver.model.skill.targets.TargetType;
 import com.l2journey.gameserver.util.LocationUtil;
@@ -27,25 +28,18 @@ public class PhantomSkills
 		1461,
 		1462
 	};
+	private static final int INQUISITOR_BISHOP = 1520;
+	private static final int INQUISITOR_ELDER = 1521;
+	private static final int INQUISITOR_SHILLIEN = 1522;
+	private static final int DIVINE_PUNISHMENT = 1523;
+	private static final int SURRENDER_TO_DIVINE = 1524;
+	private static final int SWITCH_STANCE = 838;
 	private static final List<Integer> CUBIC_SKILL_IDS = Arrays.asList(22, 278, 33, 10, 67, 449, 1280, 1281, 1279);
-	private static final List<Integer> BANNED_ATTACK_SKILLS = Arrays.asList(162, 228, 1400, 1181, 1147, 314, 315, 316, 328, 329, 330);
+	private static final List<Integer> BANNED_ATTACK_SKILLS = Arrays.asList(162, 228, 1400, 1181, 1147, 314, 315, 316, 328, 329, 330, SWITCH_STANCE, 1528);
 	private static final Map<String, Long> CAST_TIMERS = new ConcurrentHashMap<>();
 	private static final Map<Integer, Integer> FIGHTER_ATTACK_PROFILES = new ConcurrentHashMap<>();
 	private static final Map<Integer, MageAttackProfile> MAGE_ATTACK_PROFILES = new ConcurrentHashMap<>();
 	private static final List<Integer> FORBIDDEN_FALLBACK = Arrays.asList(1151, 1159, 1288, 1266, 1267, 1417);
-
-	private static final List<Integer> SUMMON_SKILL_IDS = Arrays.asList(1334, // Cursed Man (Necromancer)
-		1278, // Silhouette (Phantom Summoner)
-		1227, // Kai the Cat (Warlock)
-		1226, // Merrow the Unicorn (Elemental Summoner)
-		283, // Pantera DA
-		912, // Imperial Phoenix
-		1277, // Mew the Cat (Elven Wizard)
-		1276, // Kat the Cat (Human Wizard)
-		1128, // Shadow (Dark Wizard)
-		1111, // Reanimated Man (Human Wizard/Necro)
-		25 // Mechanic Golem (Artisan)
-	);
 
 	static
 	{
@@ -132,11 +126,171 @@ public class PhantomSkills
 		registerFighterProfile(125, 468); // Trooper
 		registerFighterProfile(18, 3); // elven Fighter
 		registerFighterProfile(31, 3); // Dark Fighter
+		registerFighterProfile(47, 120); // Orc Monk: Stunning Fist
+		registerFighterProfile(126, 487); // Warder: Penetrating Shot
+		registerFighterProfile(135, 504); // Inspector: Triple Thrust
 		// registerFighterProfile(54, 100); // scavenger
 
 	}
 	private PhantomSkills()
 	{
+	}
+
+	/**
+	 * Preferred summon skill ids for the bot's class, highest priority first.
+	 * @param bot the phantom
+	 * @return ordered summon skill ids, or an empty list
+	 */
+	static List<Integer> getSummonPriority(Player bot)
+	{
+		if (bot == null)
+		{
+			return List.of();
+		}
+
+		return switch (bot.getActiveClass())
+		{
+			case 14 -> List.of(1276); // Warlock: Kai the Cat
+			case 96 -> List.of(1406, 1276); // Arcana Lord: Feline King, Kai
+			case 28 -> List.of(1277); // Elemental Summoner: Merrow
+			case 104 -> List.of(1407, 1277); // Elemental Master: Magnus, Merrow
+			case 13 -> List.of(1129); // Necromancer: Reanimated Man
+			case 95 -> List.of(1334); // Soultaker: Cursed Man
+			case 41 -> List.of(1278); // Phantom Summoner: Soulless
+			case 111 -> List.of(1408, 1278); // Spectral Master: Spectral Lord, Soulless
+			case 6, 91 -> List.of(283); // Dark Avenger / Hell Knight: Dark Panther
+			case 90 -> List.of(912); // Phoenix Knight: Imperial Phoenix
+			case 56, 57, 118 -> List.of(25); // Artisan / Warsmith / Maestro: Mechanic Golem
+			default -> List.of();
+		};
+	}
+
+	static Skill getPreferredSummonSkill(Player bot)
+	{
+		if (bot == null)
+		{
+			return null;
+		}
+		for (int summonId : getSummonPriority(bot))
+		{
+			Skill skill = bot.getKnownSkill(summonId);
+			if (skill != null)
+			{
+				return skill;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * @param bot the phantom
+	 * @return the Inquisitor skill for Bishop / Elder / Shillien Elder lines, or {@code null}
+	 */
+	static Skill getInquisitorSkill(Player bot)
+	{
+		if (bot == null)
+		{
+			return null;
+		}
+		Skill skill = bot.getKnownSkill(INQUISITOR_BISHOP);
+		if (skill == null)
+		{
+			skill = bot.getKnownSkill(INQUISITOR_ELDER);
+		}
+		if (skill == null)
+		{
+			skill = bot.getKnownSkill(INQUISITOR_SHILLIEN);
+		}
+		return skill;
+	}
+
+	/**
+	 * Casts Inquisitor when the bot knows it and is not already in stance.
+	 * @param bot the phantom
+	 * @return {@code true} when this tick was consumed by the transform cast
+	 */
+	public static boolean handleInquisitorForm(Player bot)
+	{
+		if ((bot == null) || bot.isDead() || bot.isCastingNow() || bot.isInStance())
+		{
+			return false;
+		}
+
+		Skill inquisitor = getInquisitorSkill(bot);
+		if ((inquisitor == null) || bot.isSkillDisabled(inquisitor) || (bot.getCurrentMp() < inquisitor.getMpConsume()))
+		{
+			return false;
+		}
+
+		bot.stopMove(null);
+		bot.getAI().setIntention(Intention.CAST, inquisitor, bot);
+		return true;
+	}
+
+	/**
+	 * While in Inquisitor stance, casts Surrender to the Divine then Divine Punishment.
+	 * The cast is issued even when the target is still out of range, so the combat AI closes the same way a Spellsinger or Spellhowler does.
+	 * @param bot the phantom
+	 * @param target the combat target
+	 * @return {@code true} when this tick stays on the Inquisitor cast. {@code false} when the stance spells are unavailable and the normal mage attack should run
+	 */
+	public static boolean tryInquisitorAttack(Player bot, Creature target)
+	{
+		if ((bot == null) || !bot.isInStance())
+		{
+			return false;
+		}
+
+		if ((target == null) || target.isDead() || bot.isCastingNow())
+		{
+			return true;
+		}
+
+		Skill attack = selectInquisitorAttackSkill(bot, target);
+		if (attack == null)
+		{
+			return false;
+		}
+
+		if (bot.getAI().getIntention() != Intention.CAST)
+		{
+			bot.setChargedShot(ShotType.BLESSED_SPIRITSHOTS, true);
+			bot.setTarget(target);
+			bot.getAI().setIntention(Intention.CAST, attack, target);
+		}
+		return true;
+	}
+
+	/**
+	 * @param bot the phantom in Inquisitor stance
+	 * @param target the combat target
+	 * @return Surrender to the Divine when the target does not have it, otherwise Divine Punishment, or {@code null} when neither is ready
+	 */
+	static Skill selectInquisitorAttackSkill(Player bot, Creature target)
+	{
+		if ((bot == null) || (target == null))
+		{
+			return null;
+		}
+
+		Skill surrender = bot.getTransformSkill(SURRENDER_TO_DIVINE);
+		if (isInquisitorSkillReady(bot, surrender) && !target.isAffectedBySkill(SURRENDER_TO_DIVINE))
+		{
+			return surrender;
+		}
+
+		Skill punishment = bot.getTransformSkill(DIVINE_PUNISHMENT);
+		if (isInquisitorSkillReady(bot, punishment))
+		{
+			return punishment;
+		}
+
+		return null;
+	}
+
+	private static boolean isInquisitorSkillReady(Player bot, Skill skill)
+	{
+		return (skill != null) && !bot.isSkillDisabled(skill) && (bot.getCurrentMp() >= skill.getMpConsume());
 	}
 
 	private static void registerMageProfile(int classId, int mainNukeId, int debuffId)
@@ -290,21 +444,18 @@ public class PhantomSkills
 
 		if (!hasActiveSummon)
 		{
-			for (int summonId : SUMMON_SKILL_IDS)
+			Skill summonSkill = getPreferredSummonSkill(bot);
+			if ((summonSkill != null) && !bot.isSkillDisabled(summonSkill) && (bot.getCurrentMp() >= summonSkill.getMpConsume()))
 			{
-				Skill summonSkill = bot.getKnownSkill(summonId);
-				if (((summonSkill != null) && !bot.isSkillDisabled(summonSkill)) && (bot.getCurrentMp() >= summonSkill.getMpConsume()))
-				{
-					String key = bot.getObjectId() + "_summon";
-					long lastCast = CAST_TIMERS.getOrDefault(key, 0L);
+				String key = bot.getObjectId() + "_summon";
+				long lastCast = CAST_TIMERS.getOrDefault(key, 0L);
 
-					if ((System.currentTimeMillis() - lastCast) > 10000)
-					{
-						CAST_TIMERS.put(key, System.currentTimeMillis());
-						bot.stopMove(null);
-						bot.getAI().setIntention(Intention.CAST, summonSkill, bot);
-						return true;
-					}
+				if ((System.currentTimeMillis() - lastCast) > 10000)
+				{
+					CAST_TIMERS.put(key, System.currentTimeMillis());
+					bot.stopMove(null);
+					bot.getAI().setIntention(Intention.CAST, summonSkill, bot);
+					return true;
 				}
 			}
 		}
@@ -360,16 +511,28 @@ public class PhantomSkills
 			{
 				givePhantomPetBuffs(summon);
 
-				// Validacao para nao mandar a ordem se ja esta ativado
 				if (!bot.getAutoSoulShot().contains(PET_SOULSHOT))
 				{
 					bot.addAutoSoulShot(PET_SOULSHOT);
 				}
 
-				if ((target != null) && (summon.getTarget() != target))
+				if ((target != null) && !target.isDead())
 				{
-					summon.setTarget(target);
-					summon.getAI().setIntention(Intention.ATTACK, target);
+					String attackKey = bot.getObjectId() + "_summon_attack";
+					long now = System.currentTimeMillis();
+					boolean targetChanged = summon.getTarget() != target;
+					boolean immobilized = summon.isMovementDisabled();
+					boolean intentionLost = summon.getAI().getIntention() != Intention.ATTACK;
+					boolean inactive = !summon.isMoving() && !summon.isAttackingNow() && !summon.isCastingNow();
+					long lastOrder = CAST_TIMERS.getOrDefault(attackKey, 0L);
+					boolean retryAttack = ((now - lastOrder) >= 3000) && (intentionLost || inactive);
+
+					if (!immobilized && (targetChanged || retryAttack))
+					{
+						CAST_TIMERS.put(attackKey, now);
+						summon.setTarget(target);
+						summon.getAI().setIntention(Intention.ATTACK, target);
+					}
 				}
 			}
 		}
@@ -575,6 +738,27 @@ public class PhantomSkills
 		}
 	}
 
+	/**
+	 * Resolves the class maintenance buff (Rapid Shot, Furious Soul, or Combat Aura).
+	 * Tanks are checked after bows so Eva's Templar (99) gets Combat Aura.
+	 * @param classId active class id
+	 * @return skill id, or {@code 0} when the class has no maintenance buff
+	 */
+	static int resolveMaintenanceSkillId(int classId)
+	{
+		switch (classId)
+		{
+			case 9, 24, 37, 92, 102, 109:
+				return 99; // Rapid Shot
+			case 126, 130, 134:
+				return 482; // Furious Soul
+			case 5, 6, 19, 33, 90, 91, 99, 106:
+				return 982; // Combat Aura
+			default:
+				return 0;
+		}
+	}
+
 	public static boolean handleSelfBuffs(Player bot)
 	{
 		if ((bot == null) || bot.isDead() || bot.isCastingNow())
@@ -582,22 +766,21 @@ public class PhantomSkills
 			return false;
 		}
 
-		int classId = getPlayerClassId(bot);
-		List<Integer> archerClasses = Arrays.asList(9, 92, 37, 109, 130, 134);
-
-		if (archerClasses.contains(classId))
+		int skillId = resolveMaintenanceSkillId(getPlayerClassId(bot));
+		if (skillId <= 0)
 		{
-			int rapidShotId = 99;
-			Skill rapidShot = bot.getKnownSkill(rapidShotId);
-
-			if (((rapidShot != null) && !bot.isAffectedBySkill(rapidShotId) && !bot.isSkillDisabled(rapidShot)) && (bot.getCurrentMp() >= rapidShot.getMpConsume()))
-			{
-				bot.stopMove(null);
-				bot.getAI().setIntention(Intention.CAST, rapidShot, bot);
-				return true;
-			}
+			return false;
 		}
-		return false;
+
+		Skill skill = bot.getKnownSkill(skillId);
+		if ((skill == null) || bot.isAffectedBySkill(skillId) || bot.isSkillDisabled(skill) || (bot.getCurrentMp() < skill.getMpConsume()))
+		{
+			return false;
+		}
+
+		bot.stopMove(null);
+		bot.getAI().setIntention(Intention.CAST, skill, bot);
+		return true;
 	}
 
 	public static void unregisterBot(int objectId)

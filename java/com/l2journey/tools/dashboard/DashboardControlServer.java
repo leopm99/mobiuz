@@ -27,6 +27,8 @@ public final class DashboardControlServer
 {
 	private static final Logger LOGGER = Logger.getLogger(DashboardControlServer.class.getName());
 	public static final int PORT = 15432;
+	private static volatile Thread _worker;
+	
 	private DashboardControlServer()
 	{
 	}
@@ -35,7 +37,13 @@ public final class DashboardControlServer
 	{
 		final Thread thread = new Thread(DashboardControlServer::serve, "JourneyDash-Control");
 		thread.setDaemon(true);
+		_worker = thread;
 		thread.start();
+	}
+	
+	static Thread worker()
+	{
+		return _worker;
 	}
 	
 	private static void serve()
@@ -49,7 +57,13 @@ public final class DashboardControlServer
 					BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
 					PrintWriter output = new PrintWriter(socket.getOutputStream(), true, StandardCharsets.UTF_8))
 				{
-					output.println(execute(input.readLine()));
+					final String command = input.readLine();
+					if ("STOP".equals(command))
+					{
+						output.println("OK");
+						break;
+					}
+					output.println(execute(command));
 				}
 				catch (Exception e)
 				{

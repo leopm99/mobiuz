@@ -88,7 +88,7 @@ import com.l2journey.gameserver.network.serverpackets.CharSelectionInfo;
 import com.l2journey.gameserver.network.serverpackets.LoginFail;
 import com.l2journey.gameserver.network.serverpackets.SystemMessage;
 
-public class LoginServerThread extends Thread
+public class LoginServerThread implements Runnable
 {
 	protected static final Logger LOGGER = Logger.getLogger(LoginServerThread.class.getName());
 	protected static final Logger ACCOUNTING_LOGGER = Logger.getLogger("accounting");
@@ -114,10 +114,10 @@ public class LoginServerThread extends Thread
 	private String _serverName;
 	private final List<String> _subnets;
 	private final List<String> _hosts;
+	private Thread _thread;
 	
 	protected LoginServerThread()
 	{
-		super("LoginServerThread");
 		_port = Config.GAME_SERVER_LOGIN_PORT;
 		_gamePort = Config.PORT_GAME;
 		_hostname = Config.GAME_SERVER_LOGIN_HOST;
@@ -136,6 +136,42 @@ public class LoginServerThread extends Thread
 		_subnets = Config.GAME_SERVER_SUBNETS;
 		_hosts = Config.GAME_SERVER_HOSTS;
 		_maxPlayer = Config.MAXIMUM_ONLINE_USERS;
+	}
+	
+	/**
+	 * Starts the login-server connection loop on a named virtual thread.
+	 */
+	public void start()
+	{
+		_thread = Thread.ofVirtual().name("LoginServerThread").unstarted(this);
+		_thread.start();
+	}
+	
+	/**
+	 * Interrupts the login-server virtual thread, if started.
+	 */
+	public void interrupt()
+	{
+		if (_thread != null)
+		{
+			_thread.interrupt();
+		}
+	}
+	
+	/**
+	 * @return {@code true} if the login-server virtual thread was interrupted
+	 */
+	boolean isInterrupted()
+	{
+		return (_thread != null) && _thread.isInterrupted();
+	}
+	
+	/**
+	 * @return the login-server virtual thread, or {@code null} if not started
+	 */
+	Thread workerThread()
+	{
+		return _thread;
 	}
 	
 	@Override
@@ -368,15 +404,16 @@ public class LoginServerThread extends Thread
 				try
 				{
 					_socket.close();
-					if (isInterrupted())
-					{
-						return;
-					}
 				}
 				catch (Exception _)
 				{
 					// Ignore.
 				}
+			}
+			
+			if (isInterrupted())
+			{
+				return;
 			}
 			
 			try

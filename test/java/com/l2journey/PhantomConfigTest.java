@@ -110,4 +110,25 @@ class PhantomConfigTest
 		assertTrue(PhantomConfig.PHANTOM_IDS.isEmpty());
 		assertTrue(Files.size(xmlFile.toPath()) > 0);
 	}
+
+	@Test
+	void defaultRoutesIncludeLevel20To25Spots()
+	{
+		List<PhantomConfig.FarmZone> routes = PhantomConfig.buildDefaultRoutes();
+		boolean foundFirst = false;
+		boolean foundSecond = false;
+		for (PhantomConfig.FarmZone zone : routes)
+		{
+			if ((zone.minLvl == 20) && (zone.maxLvl == 25) && (zone.spotX == -56584) && (zone.spotY == 138962))
+			{
+				foundFirst = true;
+			}
+			if ((zone.minLvl == 20) && (zone.maxLvl == 25) && (zone.spotX == -66786) && (zone.spotY == 103621))
+			{
+				foundSecond = true;
+			}
+		}
+		assertTrue(foundFirst);
+		assertTrue(foundSecond);
+	}
 }

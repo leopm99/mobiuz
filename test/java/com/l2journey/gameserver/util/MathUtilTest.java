@@ -38,15 +38,37 @@ import org.junit.jupiter.api.Test;
  */
 class MathUtilTest
 {
+	private static final double DELTA = 1e-9;
+	
 	@Test
-	void divIntByZeroThrows()
+	void addAndMulCoverPrimitiveOverloads()
 	{
-		assertThrows(ArithmeticException.class, () -> MathUtil.div(1, 0));
+		assertEquals((byte) 3, MathUtil.add((byte) 1, (byte) 2));
+		assertEquals((short) 3, MathUtil.add((short) 1, (short) 2));
+		assertEquals(3, MathUtil.add(1, 2));
+		assertEquals(3.5d, MathUtil.add(1.25d, 2.25d), DELTA);
+		
+		assertEquals((byte) (-2), MathUtil.add((byte) 127, (byte) 127));
+		assertEquals((short) (-2), MathUtil.add((short) 32767, (short) 32767));
+		
+		assertEquals((byte) 6, MathUtil.mul((byte) 2, (byte) 3));
+		assertEquals((short) 6, MathUtil.mul((short) 2, (short) 3));
+		assertEquals(6, MathUtil.mul(2, 3));
+		assertEquals(6.25d, MathUtil.mul(2.5d, 2.5d), DELTA);
+		assertEquals((byte) (-128), MathUtil.mul((byte) 64, (byte) 2));
 	}
 	
 	@Test
-	void divDoubleByZeroThrows()
+	void divCoversPrimitiveOverloadsAndZeroGuards()
 	{
+		assertEquals((byte) 2, MathUtil.div((byte) 6, (byte) 3));
+		assertEquals((short) 2, MathUtil.div((short) 6, (short) 3));
+		assertEquals(2, MathUtil.div(6, 3));
+		assertEquals(2.5d, MathUtil.div(5.0d, 2.0d), DELTA);
+		
+		assertThrows(ArithmeticException.class, () -> MathUtil.div((byte) 1, (byte) 0));
+		assertThrows(ArithmeticException.class, () -> MathUtil.div((short) 1, (short) 0));
+		assertThrows(ArithmeticException.class, () -> MathUtil.div(1, 0));
 		assertThrows(ArithmeticException.class, () -> MathUtil.div(1.0d, 0.0d));
 	}
 	
@@ -54,18 +76,24 @@ class MathUtilTest
 	void clampReturnsMinWhenBelowRange()
 	{
 		assertEquals(0, MathUtil.clamp(-5, 0, 10));
+		assertEquals(0L, MathUtil.clamp(-5L, 0L, 10L));
+		assertEquals(0.0d, MathUtil.clamp(-5.0d, 0.0d, 10.0d), DELTA);
 	}
 	
 	@Test
 	void clampReturnsValueWhenInsideRange()
 	{
 		assertEquals(5, MathUtil.clamp(5, 0, 10));
+		assertEquals(5L, MathUtil.clamp(5L, 0L, 10L));
+		assertEquals(5.0d, MathUtil.clamp(5.0d, 0.0d, 10.0d), DELTA);
 	}
 	
 	@Test
 	void clampReturnsMaxWhenAboveRange()
 	{
 		assertEquals(10, MathUtil.clamp(15, 0, 10));
+		assertEquals(10L, MathUtil.clamp(15L, 0L, 10L));
+		assertEquals(10.0d, MathUtil.clamp(15.0d, 0.0d, 10.0d), DELTA);
 	}
 	
 	@Test
@@ -73,26 +101,43 @@ class MathUtilTest
 	{
 		assertEquals(0, MathUtil.scaleToRange(0, 0, 100, 0, 10));
 		assertEquals(10, MathUtil.scaleToRange(100, 0, 100, 0, 10));
+		assertEquals(0L, MathUtil.scaleToRange(0L, 0L, 100L, 0L, 10L));
+		assertEquals(10L, MathUtil.scaleToRange(100L, 0L, 100L, 0L, 10L));
+		assertEquals(0.0d, MathUtil.scaleToRange(0.0d, 0.0d, 100.0d, 0.0d, 10.0d), DELTA);
+		assertEquals(10.0d, MathUtil.scaleToRange(100.0d, 0.0d, 100.0d, 0.0d, 10.0d), DELTA);
 	}
 	
 	@Test
-	void scaleToRangeMapsMidpointWithIntegerDivision()
+	void scaleToRangeMapsMidpointAndClampsOutsideSource()
 	{
 		assertEquals(5, MathUtil.scaleToRange(50, 0, 100, 0, 10));
+		assertEquals(0, MathUtil.scaleToRange(-20, 0, 100, 0, 10));
+		assertEquals(10, MathUtil.scaleToRange(200, 0, 100, 0, 10));
+		assertEquals(5L, MathUtil.scaleToRange(50L, 0L, 100L, 0L, 10L));
+		assertEquals(5.0d, MathUtil.scaleToRange(50.0d, 0.0d, 100.0d, 0.0d, 10.0d), DELTA);
 	}
 	
 	@Test
 	void minAndMaxFindExtremes()
 	{
-		final int[] values = { 3, -1, 7, 2 };
-		assertEquals(-1, MathUtil.min(values));
-		assertEquals(7, MathUtil.max(values));
+		assertEquals(-1, MathUtil.min(3, -1, 7, 2));
+		assertEquals(7, MathUtil.max(3, -1, 7, 2));
+		assertEquals(-1L, MathUtil.min(3L, -1L, 7L, 2L));
+		assertEquals(7L, MathUtil.max(3L, -1L, 7L, 2L));
+		assertEquals(-1.5d, MathUtil.min(3.0d, -1.5d, 7.0d), DELTA);
+		assertEquals(7.0d, MathUtil.max(3.0d, -1.5d, 7.0d), DELTA);
 	}
 	
 	@Test
 	void indexOfMinAndMaxLocateExtremes()
 	{
-		final int[] values = { 3, -1, 7, 2 };
+		final int[] values =
+		{
+			3,
+			-1,
+			7,
+			2
+		};
 		assertEquals(1, MathUtil.getIndexOfMinValue(values));
 		assertEquals(2, MathUtil.getIndexOfMaxValue(values));
 	}

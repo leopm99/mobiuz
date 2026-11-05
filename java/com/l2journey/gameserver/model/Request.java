@@ -73,7 +73,7 @@ public class Request
 	/**
 	 * @return the Player member of a transaction (ex : FriendInvite, JoinAlly, JoinParty...).
 	 */
-	public Player getPartner()
+	public synchronized Player getPartner()
 	{
 		return _partner;
 	}
@@ -91,7 +91,7 @@ public class Request
 	 * Return the packet originally the came from requester.
 	 * @return
 	 */
-	public ClientPacket getRequestPacket()
+	public synchronized ClientPacket getRequestPacket()
 	{
 		return _requestPacket;
 	}

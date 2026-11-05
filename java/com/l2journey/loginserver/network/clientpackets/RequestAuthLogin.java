@@ -82,6 +82,7 @@ public class RequestAuthLogin extends LoginClientPacket
 		final byte[] decrypted = new byte[_newAuthMethod ? 256 : 128];
 		try
 		{
+			// Raw RSA: official clients encrypt the login block with no padding (#7).
 			final Cipher rsaCipher = Cipher.getInstance("RSA/ECB/nopadding");
 			rsaCipher.init(Cipher.DECRYPT_MODE, client.getRSAPrivateKey());
 			rsaCipher.doFinal(_raw1, 0, 128, decrypted, 0);

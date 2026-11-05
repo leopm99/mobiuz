@@ -115,6 +115,7 @@ import handlers.admincommandhandlers.AdminManor;
 import handlers.admincommandhandlers.AdminMenu;
 import handlers.admincommandhandlers.AdminMessages;
 import handlers.admincommandhandlers.AdminMobGroup;
+import handlers.admincommandhandlers.AdminNpcInfo;
 import handlers.admincommandhandlers.AdminOnline;
 import handlers.admincommandhandlers.AdminPForge;
 import handlers.admincommandhandlers.AdminPathNode;
@@ -423,6 +424,7 @@ public class MasterHandler
 			AdminMenu.class,
 			AdminMessages.class,
 			AdminMobGroup.class,
+			AdminNpcInfo.class,
 			AdminOnline.class,
 			AdminPathNode.class,
 			AdminPcCafePoints.class,

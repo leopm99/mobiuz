@@ -29,6 +29,7 @@
 package com.l2journey.gameserver.network.serverpackets;
 
 import com.l2journey.commons.network.WritableBuffer;
+import com.l2journey.gameserver.model.actor.Player;
 import com.l2journey.gameserver.model.groups.Party;
 import com.l2journey.gameserver.network.GameClient;
 import com.l2journey.gameserver.network.ServerPackets;
@@ -49,7 +50,8 @@ public class ExMPCCPartyInfoUpdate extends ServerPacket
 	 */
 	public ExMPCCPartyInfoUpdate(Party party, int mode)
 	{
-		_name = party.getLeader().getName();
+		final Player leader = party.getLeader();
+		_name = leader != null ? leader.getName() : "";
 		_leaderOID = party.getLeaderObjectId();
 		_memberCount = party.getMemberCount();
 		_mode = mode;

@@ -122,6 +122,7 @@
 		<!-- Level 5: Causes a nearby corpse to burst open, poisoning enemies with 361 Power. Effect 8. -->
 		<!-- Level 6: Causes a nearby corpse to burst open, poisoning enemies with 364 Power. Effect 8. -->
 		<table name="#effectPoints">-338 -340 -341 -342 -344 -345</table>
+		<table name="#magicLevel">80 81 82 83 84 85</table>
 		<table name="#mpConsume">72 73 74 74 75 75</table>
 		<table name="#pvePower">348 351 355 358 361 364</table>
 		<table name="#pvpPower">116 117 119 120 121 122</table>
@@ -144,7 +145,7 @@
 		<set name="isDebuff" val="true" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
 		<set name="lvlBonusRate" val="1" />
-		<set name="magicLevel" val="80" />
+		<set name="magicLevel" val="#magicLevel" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="power" val="#pvePower" />
 		<set name="pvpPower" val="#pvpPower" />
@@ -165,6 +166,7 @@
 		<!-- Level 5: Inflicts a powerful continuous attack on nearby enemies, stunning them with 13688 Power. -->
 		<!-- Level 6: Inflicts a powerful continuous attack on nearby enemies, stunning them with 13920 Power. -->
 		<table name="#effectPoints">-676 -679 -681 -684 -687 -689</table>
+		<table name="#magicLevel">80 81 82 83 84 85</table>
 		<table name="#mpConsume">72 73 74 74 75 75</table>
 		<table name="#pvePower">12670 12936 13195 13446 13688 13920</table>
 		<table name="#pvpPower">4224 4312 4399 4482 4563 4640</table>
@@ -183,7 +185,7 @@
 		<set name="hitTime" val="4000" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="1" />
-		<set name="magicLevel" val="80" />
+		<set name="magicLevel" val="#magicLevel" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="power" val="#pvePower" />
 		<set name="pvpPower" val="#pvpPower" />
@@ -201,6 +203,7 @@
 		<!-- Level 5: Inflicts a mighty straight-line blow with 10266 Power. -->
 		<!-- Level 6: Inflicts a mighty straight-line blow with 10440 Power. -->
 		<table name="#effectPoints">-676 -679 -681 -684 -687 -689</table>
+		<table name="#magicLevel">80 81 82 83 84 85</table>
 		<table name="#mpConsume">72 73 74 74 75 75</table>
 		<table name="#pvePower">9503 9702 9896 10084 10266 10440</table>
 		<table name="#pvpPower">3168 3234 3299 3362 3422 3480</table>
@@ -212,7 +215,7 @@
 		<set name="effectPoint" val="#effectPoints" />
 		<set name="fanRange" val="0,0,900,100" />
 		<set name="hitTime" val="1000" />
-		<set name="magicLevel" val="80" />
+		<set name="magicLevel" val="#magicLevel" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="power" val="#pvePower" />
 		<set name="pvpPower" val="#pvpPower" />
@@ -229,6 +232,7 @@
 		<!-- Level 5: Inflicts a powerful long-range attack with 10266 Power. -->
 		<!-- Level 6: Inflicts a powerful long-range attack with 10440 Power. -->
 		<table name="#effectPoints">-676 -679 -681 -684 -687 -689</table>
+		<table name="#magicLevel">80 81 82 83 84 85</table>
 		<table name="#mpConsume">72 73 74 74 75 75</table>
 		<table name="#pvePower">9503 9702 9896 10084 10266 10440</table>
 		<table name="#pvpPower">3168 3234 3299 3362 3422 3480</table>
@@ -241,7 +245,7 @@
 		<set name="element" val="1" /> <!-- Water -->
 		<set name="elementPower" val="20" />
 		<set name="hitTime" val="4000" />
-		<set name="magicLevel" val="80" />
+		<set name="magicLevel" val="#magicLevel" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="power" val="#pvePower" />
 		<set name="pvpPower" val="#pvpPower" />
@@ -258,6 +262,7 @@
 		<!-- Level 5: Inflicts a powerful blow on nearby enemies with 5475 Power. -->
 		<!-- Level 6: Inflicts a powerful blow on nearby enemies with 5568 Power. -->
 		<table name="#effectPoints">-676 -679 -681 -684 -687 -689</table>
+		<table name="#magicLevel">80 81 82 83 84 85</table>
 		<table name="#mpConsume">72 73 74 74 75 75</table>
 		<table name="#pvePower">5068 5175 5278 5379 5475 5568</table>
 		<table name="#pvpPower">1690 1725 1760 1793 1825 1856</table>
@@ -268,7 +273,7 @@
 		<set name="affectRange" val="80" />
 		<set name="effectPoint" val="#effectPoints" />
 		<set name="hitTime" val="4000" />
-		<set name="magicLevel" val="80" />
+		<set name="magicLevel" val="#magicLevel" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="power" val="#pvePower" />
 		<set name="pvpPower" val="#pvpPower" />
@@ -285,6 +290,7 @@
 		<!-- Level 5: Inflicts continuous damage on nearby enemies with 361 Power, decreasing their Speed, Atk. Spd. and Casting Spd. -->
 		<!-- Level 6: Inflicts continuous damage on nearby enemies with 364 Power, decreasing their Speed, Atk. Spd. and Casting Spd. -->
 		<table name="#effectPoints">-338 -340 -341 -342 -344 -345</table>
+		<table name="#magicLevel">80 81 82 83 84 85</table>
 		<table name="#mpConsume">72 73 74 74 75 75</table>
 		<table name="#pvePower">348 351 355 358 361 364</table>
 		<table name="#pvpPower">116 117 119 120 121 122</table>
@@ -305,7 +311,7 @@
 		<set name="isDebuff" val="true" />
 		<set name="isMagic" val="1" /> <!-- Magic Skill -->
 		<set name="lvlBonusRate" val="1" />
-		<set name="magicLevel" val="80" />
+		<set name="magicLevel" val="#magicLevel" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="power" val="#pvePower" />
 		<set name="pvpPower" val="#pvpPower" />
@@ -329,6 +335,7 @@
 		<!-- Level 5: Strikes enemies with 13688 Power in a mighty rush of Water. Effect 8. -->
 		<!-- Level 6: Strikes enemies with 13920 Power in a mighty rush of Water. Effect 8. -->
 		<table name="#effectPoints">-676 -679 -681 -684 -687 -689</table>
+		<table name="#magicLevel">80 81 82 83 84 85</table>
 		<table name="#mpConsume">72 73 74 74 75 75</table>
 		<table name="#pvePower">12670 12936 13195 13446 13688 13920</table>
 		<table name="#pvpPower">4224 4312 4399 4482 4563 4640</table>
@@ -349,7 +356,7 @@
 		<set name="hitTime" val="4000" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="1" />
-		<set name="magicLevel" val="80" />
+		<set name="magicLevel" val="#magicLevel" />
 		<set name="mpConsume" val="#mpConsume" />
 		<set name="power" val="#pvePower" />
 		<set name="pvpPower" val="#pvpPower" />
@@ -711,7 +718,7 @@
 		<set name="operateType" val="CA1" />
 		<set name="targetType" val="ONE" />
 		<set name="castRange" val="900" />
-		<set name="effectPoint" val="-676" />
+		<set name="effectPoint" val="-1022" />
 		<set name="effectRange" val="1000" />
 		<set name="hitTime" val="3000" />
 		<set name="magicLevel" val="81" />
@@ -979,7 +986,7 @@
 		<set name="effectRange" val="600" />
 		<set name="hitTime" val="6000" />
 		<set name="isMagic" val="2" /> <!-- Static Skill -->
-		<set name="magicLevel" val="81" />
+		<set name="magicLevel" val="85" />
 		<set name="reuseDelay" val="10000" />
 		<conditions msgId="113" addName="1">
 			<player flyMounted="true" />
@@ -1428,7 +1435,7 @@
 		<set name="coolTime" val="720" />
 		<set name="effectPoint" val="-266" />
 		<set name="effectRange" val="400" />
-		<set name="hitTime" val="10800" />
+		<set name="hitTime" val="1080" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="2" />
 		<set name="magicLevel" val="55" />
@@ -2305,7 +2312,7 @@
 		<set name="abnormalType" val="TARGET_LOCK" />
 		<set name="affectLimit" val="10-10" />
 		<set name="affectRange" val="550" />
-		<set name="effectPoint" val="-10000" />
+		<set name="effectPoint" val="-10330" />
 		<set name="hitTime" val="1000" />
 		<set name="isDebuff" val="true" />
 		<set name="magicLevel" val="83" />
@@ -2380,8 +2387,7 @@
 		<set name="affectRange" val="900" />
 		<set name="baseCritRate" val="15" />
 		<set name="castRange" val="900" />
-		<set name="effectPoint" val="-887" />
-		<set name="effectRange" val="1100" />
+		<set name="effectPoint" val="-686" />
 		<set name="fanRange" val="0,0,900,45" />
 		<set name="hitTime" val="3000" />
 		<set name="isPvPOnly" val="true" />
@@ -2405,7 +2411,7 @@
 		<!-- Level 3: For 2 minutes, increases the user's P. Atk. by 15%, Critical Damage by 10%, and Atk. Spd. by 10%. Increases the additional MP consumption when singing while sing/dance effect lasts. -->
 		<table name="#abnormalLevel">1 2 3</table>
 		<table name="#amount">1.05 1.07 1.1</table>
-		<table name="#effectPoints">454 523 635</table>
+		<table name="#effectPoints">486 566 448</table>
 		<table name="#magicLevel">46 52 60</table>
 		<table name="#pAtk">1.05 1.1 1.15</table>
 		<set name="icon" val="icon.skill0988" />
@@ -2419,7 +2425,6 @@
 		<set name="isMagic" val="3" /> <!-- Dance Skill -->
 		<set name="magicLevel" val="#magicLevel" />
 		<set name="mpConsume" val="30" />
-		<set name="mpInitialConsume" val="8" />
 		<set name="reuseDelay" val="3000" />
 		<effects>
 			<effect name="Buff">
@@ -2437,7 +2442,7 @@
 		<set name="abnormalLevel" val="1" />
 		<set name="abnormalTime" val="120" />
 		<set name="abnormalType" val="DANCE_DEFENCE_MOTION1" />
-		<set name="effectPoint" val="635" />
+		<set name="effectPoint" val="1" />
 		<set name="hitTime" val="2500" />
 		<set name="isMagic" val="3" /> <!-- Dance Skill -->
 		<set name="magicLevel" val="60" />
@@ -2461,8 +2466,7 @@
 		<set name="targetType" val="ONE" />
 		<set name="baseCritRate" val="15" />
 		<set name="castRange" val="900" />
-		<set name="effectPoint" val="-887" />
-		<set name="effectRange" val="1400" />
+		<set name="effectPoint" val="-1387" />
 		<set name="hitTime" val="3500" />
 		<set name="magicLevel" val="83" />
 		<set name="mpConsume" val="165" />
@@ -2489,12 +2493,12 @@
 		<set name="baseCritRate" val="15" />
 		<set name="basicProperty" val="MEN" />
 		<set name="castRange" val="300" />
-		<set name="effectPoint" val="-569" />
+		<set name="effectPoint" val="-345" />
 		<set name="effectRange" val="500" />
 		<set name="hitTime" val="1080" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="1" />
-		<set name="magicLevel" val="80" />
+		<set name="magicLevel" val="82" />
 		<set name="mpConsume" val="82" />
 		<set name="nextActionAttack" val="true" />
 		<set name="power" val="3488" />
@@ -2593,12 +2597,12 @@
 		<set name="targetType" val="ONE" />
 		<set name="castRange" val="400" />
 		<set name="coolTime" val="200" />
-		<set name="effectPoint" val="-303" />
+		<set name="effectPoint" val="-379" />
 		<set name="effectRange" val="600" />
 		<set name="flyType" val="CHARGE" />
 		<set name="hitTime" val="800" />
-		<set name="magicLevel" val="32" />
-		<set name="mpInitialConsume" val="20" />
+		<set name="magicLevel" val="40" />
+		<set name="mpInitialConsume" val="38" />
 		<set name="nextActionAttack" val="true" />
 		<set name="reuseDelay" val="3000" />
 		<conditions msgId="113" addName="1">
@@ -2626,14 +2630,14 @@
 		<set name="basicProperty" val="CON" />
 		<set name="castRange" val="600" />
 		<set name="coolTime" val="200" />
-		<set name="effectPoint" val="-669" />
+		<set name="effectPoint" val="-681" />
 		<set name="effectRange" val="800" />
 		<set name="flyType" val="CHARGE" />
 		<set name="hitTime" val="800" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="1" />
-		<set name="magicLevel" val="78" />
-		<set name="mpInitialConsume" val="83" />
+		<set name="magicLevel" val="83" />
+		<set name="mpInitialConsume" val="82" />
 		<set name="nextActionAttack" val="true" />
 		<set name="power" val="4224" />
 		<set name="reuseDelay" val="20000" />
@@ -2663,8 +2667,8 @@
 		<set name="hitTime" val="1500" />
 		<set name="isDebuff" val="true" />
 		<set name="lvlBonusRate" val="1" />
-		<set name="magicLevel" val="74" />
-		<set name="mpConsume" val="55" />
+		<set name="magicLevel" val="82" />
+		<set name="mpConsume" val="79" />
 		<set name="reuseDelay" val="8000" />
 		<effects>
 			<effect name="Disarm">
@@ -2711,7 +2715,7 @@
 		<set name="activateRate" val="80" />
 		<set name="basicProperty" val="MEN" />
 		<set name="castRange" val="40" />
-		<set name="coolTime" val="200" />
+		<set name="coolTime" val="500" />
 		<set name="effectPoint" val="#effectPoints" />
 		<set name="effectRange" val="400" />
 		<set name="hitTime" val="800" />
@@ -2741,7 +2745,7 @@
 		<set name="targetType" val="ONE" />
 		<set name="castRange" val="600" />
 		<set name="coolTime" val="200" />
-		<set name="effectPoint" val="-303" />
+		<set name="effectPoint" val="-630" />
 		<set name="effectRange" val="900" />
 		<set name="flyType" val="CHARGE" />
 		<set name="hitTime" val="800" />

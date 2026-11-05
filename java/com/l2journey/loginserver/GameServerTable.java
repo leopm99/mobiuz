@@ -337,6 +337,7 @@ public class GameServerTable implements IXmlReader
 		// Authentication fields.
 		private int _id;
 		private final byte[] _hexId;
+		private final Object _authLock = new Object();
 		private boolean _isAuthed;
 		// Status information.
 		private GameServerThread _gst;
@@ -424,6 +425,27 @@ public class GameServerTable implements IXmlReader
 		public boolean isAuthed()
 		{
 			return _isAuthed;
+		}
+		
+		/**
+		 * Attaches a game server thread under the auth lock when this registration is not yet authed.
+		 * @param server the connecting game server thread
+		 * @param port the game server port
+		 * @param hosts the game server hosts
+		 * @param maxPlayers the max players
+		 * @return {@code true} if attached, {@code false} if already authed
+		 */
+		public boolean tryAttach(GameServerThread server, int port, String[] hosts, int maxPlayers)
+		{
+			synchronized (_authLock)
+			{
+				if (_isAuthed)
+				{
+					return false;
+				}
+				server.attachGameServerInfo(this, port, hosts, maxPlayers);
+				return true;
+			}
 		}
 		
 		/**
@@ -682,12 +704,17 @@ public class GameServerTable implements IXmlReader
 		 * @param addr the addr
 		 * @return the server address
 		 */
-		@SuppressWarnings("unlikely-arg-type")
 		public String getServerAddress(InetAddress addr)
 		{
+			if (addr == null)
+			{
+				return null;
+			}
+			
+			final byte[] address = addr.getAddress();
 			for (GameServerAddress a : _addrs)
 			{
-				if (a.equals(addr))
+				if (a.isInSubnet(address))
 				{
 					return a.getServerAddress();
 				}

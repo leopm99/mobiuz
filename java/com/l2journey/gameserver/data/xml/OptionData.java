@@ -214,14 +214,18 @@ public class OptionData implements IXmlReader
 	private void parseFuncs(NamedNodeMap attrs, String functionName, Options op)
 	{
 		final Stat stat = Stat.valueOfXml(parseString(attrs, "stat"));
-		final double val = parseDouble(attrs, "val");
+		final Double val = parseDouble(attrs, "val");
+		if (val == null)
+		{
+			return;
+		}
 		int order = -1;
 		final Node orderNode = attrs.getNamedItem("order");
 		if (orderNode != null)
 		{
 			order = Integer.parseInt(orderNode.getNodeValue());
 		}
-		op.addFunc(new FuncTemplate(null, null, functionName, order, stat, val));
+		op.addFunc(new FuncTemplate(null, null, functionName, order, stat, val.doubleValue()));
 	}
 	
 	public Options getOptions(int id)

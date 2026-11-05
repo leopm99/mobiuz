@@ -342,7 +342,7 @@ public class OfflineTraderTable
 				}
 			}
 			
-			World.OFFLINE_TRADE_COUNT = nTraders;
+			World.OFFLINE_TRADE_COUNT.set(nTraders);
 			final int loggedNTraders = nTraders;
 			LOGGER.info(() -> getClass().getSimpleName() + ": Loaded " + loggedNTraders + " offline traders.");
 			
@@ -489,7 +489,7 @@ public class OfflineTraderTable
 	
 	public synchronized void removeTrader(int traderObjId)
 	{
-		World.OFFLINE_TRADE_COUNT--;
+		World.OFFLINE_TRADE_COUNT.decrementAndGet();
 		
 		try (Connection con = DatabaseFactory.getConnection();
 			PreparedStatement stm1 = con.prepareStatement(CLEAR_OFFLINE_TABLE_ITEMS_PLAYER);
@@ -566,7 +566,7 @@ public class OfflineTraderTable
 			return false;
 		}
 		
-		World.OFFLINE_TRADE_COUNT++;
+		World.OFFLINE_TRADE_COUNT.incrementAndGet();
 		
 		final GameClient client = player.getClient();
 		client.close(ServerClose.STATIC_PACKET);

@@ -26,9 +26,12 @@ import com.l2journey.gameserver.model.phantom.PhantomEquipment;
 import com.l2journey.gameserver.model.phantom.PhantomGeo;
 import com.l2journey.gameserver.model.phantom.PhantomHuntingSpots;
 import com.l2journey.gameserver.model.phantom.PhantomManager;
+import com.l2journey.gameserver.model.phantom.PhantomMood;
 import com.l2journey.gameserver.model.phantom.PhantomSkills;
+import com.l2journey.gameserver.model.phantom.PhantomSpoil;
 import com.l2journey.gameserver.model.phantom.PhantomState;
 import com.l2journey.gameserver.model.phantom.PhantomWalk;
+import com.l2journey.gameserver.model.zone.ZoneId;
 import com.l2journey.gameserver.model.skill.Skill;
 import com.l2journey.gameserver.util.LocationUtil;
 
@@ -59,6 +62,8 @@ public class PhantomAI
 	private static final Map<Integer, Long> LAST_MP_POTION_TIME = new ConcurrentHashMap<>();
 
 	private static final Map<Integer, Monster> LAST_TARGET = new ConcurrentHashMap<>();
+	private static final Map<Integer, Long> LAST_CASUAL_CHAT_AT = new ConcurrentHashMap<>();
+	private static final long CASUAL_CHAT_ROLL_INTERVAL_MS = 10000L;
 
 	public static void unregisterBot(int objectId)
 	{
@@ -70,10 +75,12 @@ public class PhantomAI
 
 		LAST_HP_POTION_TIME.remove(objectId);
 		LAST_MP_POTION_TIME.remove(objectId);
+		LAST_CASUAL_CHAT_AT.remove(objectId);
 
 		PhantomSkills.unregisterBot(objectId);
 		PhantomCursedHunt.unregisterBot(objectId);
 		PhantomEquipment.unregisterBot(objectId);
+		PhantomMood.unregister(objectId);
 		PhantomEngine.cancelReturnRelocate(objectId);
 		PhantomState.unregister(objectId);
 	}
@@ -88,8 +95,11 @@ public class PhantomAI
 
 		LAST_HP_POTION_TIME.clear();
 		LAST_MP_POTION_TIME.clear();
+		LAST_CASUAL_CHAT_AT.clear();
 		PhantomCursedHunt.clear();
 		PhantomEquipment.clearRuntimeState();
+		PhantomChat.clearRuntimeState();
+		PhantomMood.clear();
 		PhantomEngine.clearPendingReturns();
 	}
 
@@ -106,10 +116,20 @@ public class PhantomAI
 			return;
 		}
 
+		if (PhantomMood.shouldPauseThink(bot))
+		{
+			return;
+		}
+
 		final boolean cursedWielder = bot.isCursedWeaponEquipped();
 		final boolean cursedHunter = !cursedWielder && PhantomCursedHunt.hasActiveWeapon() && PhantomCursedHunt.isHunter(bot);
 		PhantomWalk.update(bot, shouldSkipTownVisit(cursedWielder, cursedHunter));
-		if (shouldPauseThinkForTownRest(PhantomWalk.isResting(bot), cursedWielder, cursedHunter) || handlePartyLeash(bot))
+		if (shouldPauseThinkForTownRest(PhantomWalk.isResting(bot), cursedWielder, cursedHunter))
+		{
+			greetWhileRestingInTown(bot);
+			return;
+		}
+		if (handlePartyLeash(bot))
 		{
 			return;
 		}
@@ -124,7 +144,7 @@ public class PhantomAI
 		handleSkillLevelUp(bot, botId, shots[0], shots[1]);
 		handleItemRefill(bot, botId, shots[0], shots[1]);
 
-		if (bot.getCurrentHpPercent() <= 70)
+		if ((bot.getCurrentHpPercent() <= 70) && !PhantomMood.makesMistake(bot, 10))
 		{
 			useHpPotion(bot);
 		}
@@ -315,6 +335,7 @@ public class PhantomAI
 			LAST_SKILL_LEVEL.put(botId, currentLevel);
 			bot.addAutoSoulShot(ssId);
 			bot.addAutoSoulShot(bssId);
+			PhantomMood.onGoodThing(bot);
 		}
 	}
 
@@ -395,7 +416,7 @@ public class PhantomAI
 	 */
 	private static void handleFarmLootOrIdle(Player bot, int botId)
 	{
-		if (!hasLiveLockedFarmTarget(bot) && tryPickupLoot(bot))
+		if (consumeSweepBeforeLoot(bot, botId) || (!hasLiveLockedFarmTarget(bot) && tryPickupLoot(bot)))
 		{
 			return;
 		}
@@ -403,7 +424,16 @@ public class PhantomAI
 		Monster farmTarget = findFarmTarget(bot);
 		if (farmTarget == null)
 		{
+			if (System.currentTimeMillis() < PhantomState.RETURN_UNTIL.getOrDefault(botId, 0L))
+			{
+				return;
+			}
 			handleNoFarmTarget(bot);
+			return;
+		}
+
+		if (consumeDeadFarmTarget(bot, botId, farmTarget))
+		{
 			return;
 		}
 
@@ -789,8 +819,80 @@ public class PhantomAI
 		}
 	}
 
-	private static boolean hasLiveLockedFarmTarget(Player bot)
+	static void greetWhileRestingInTown(Player bot)
 	{
+		if ((bot != null) && bot.isInsideZone(ZoneId.PEACE))
+		{
+			PhantomChat.attemptBotConversation(bot);
+		}
+	}
+
+	static void rememberFarmTarget(int botId, Monster monster)
+	{
+		if (monster == null)
+		{
+			LAST_TARGET.remove(botId);
+			return;
+		}
+		LAST_TARGET.put(botId, monster);
+	}
+
+	static boolean consumeSweepBeforeLoot(Player bot, int botId)
+	{
+		Monster locked = LAST_TARGET.get(botId);
+		if (PhantomSpoil.shouldSweepCorpse(bot, locked))
+		{
+			if (PhantomSpoil.isSweepOnCooldown(bot, locked) || PhantomSpoil.trySweep(bot, locked))
+			{
+				return true;
+			}
+			LAST_TARGET.remove(botId);
+		}
+		else if ((locked != null) && locked.isDead() && PhantomSpoil.isSpoiler(bot))
+		{
+			LAST_TARGET.remove(botId);
+		}
+		return false;
+	}
+
+	static boolean consumeDeadFarmTarget(Player bot, int botId, Monster farmTarget)
+	{
+		if ((farmTarget == null) || !farmTarget.isDead())
+		{
+			return false;
+		}
+		if (PhantomSpoil.isSweepOnCooldown(bot, farmTarget) || (PhantomSpoil.shouldSweepCorpse(bot, farmTarget) && PhantomSpoil.trySweep(bot, farmTarget)))
+		{
+			return true;
+		}
+		LAST_TARGET.remove(botId);
+		return true;
+	}
+
+	static boolean castSpoilOrInquisitor(Player bot, Creature target)
+	{
+		if ((bot == null) || (target == null))
+		{
+			return false;
+		}
+		if (PhantomSpoil.trySpoil(bot, target))
+		{
+			return true;
+		}
+		return !bot.isCursedWeaponEquipped() && PhantomSkills.handleInquisitorForm(bot);
+	}
+
+	static boolean castInquisitorAttack(Player bot, Creature target)
+	{
+		return (bot != null) && !bot.isCursedWeaponEquipped() && bot.isInStance() && PhantomSkills.tryInquisitorAttack(bot, target);
+	}
+
+	static boolean hasLiveLockedFarmTarget(Player bot)
+	{
+		if (bot == null)
+		{
+			return false;
+		}
 		Monster locked = LAST_TARGET.get(bot.getObjectId());
 		if ((locked == null) || locked.isDead() || !isCurrentTargetValid(locked))
 		{
@@ -862,7 +964,15 @@ public class PhantomAI
 			return locked;
 		}
 
-		Monster chosen = scanFarmTargets(bot);
+		FarmScan scan = scanFarmTargets(bot);
+		if (PhantomHuntingSpots.onlyWeakPrey(scan.sawMonster(), scan.sawAcceptablePrey()))
+		{
+			LAST_TARGET.remove(botId);
+			PhantomState.EMPTY_TARGET_COUNTERS.put(botId, 0);
+			PhantomHuntingSpots.travelAwayFromWeakPrey(bot);
+			return null;
+		}
+		Monster chosen = scan.target();
 		if (chosen != null)
 		{
 			PhantomState.STUCK_COUNTERS.put(botId, 0);
@@ -871,12 +981,15 @@ public class PhantomAI
 		return chosen;
 	}
 
-	private static Monster scanFarmTargets(Player bot)
+	private static FarmScan scanFarmTargets(Player bot)
 	{
 		Monster closestAggroMob = null;
 		double bestAggroDistance = Double.MAX_VALUE;
 		Monster closestPassiveMob = null;
 		double bestPassiveDistance = Double.MAX_VALUE;
+		boolean sawMonster = false;
+		boolean sawAcceptablePrey = false;
+		int botLevel = bot.getLevel();
 
 		for (Monster m : World.getInstance().getVisibleObjectsInRange(bot, Monster.class, 3000))
 		{
@@ -884,6 +997,13 @@ public class PhantomAI
 			{
 				continue;
 			}
+
+			sawMonster = true;
+			if (PhantomHuntingSpots.isPreyTooWeak(botLevel, m.getLevel()))
+			{
+				continue;
+			}
+			sawAcceptablePrey = true;
 
 			double distance = LocationUtil.calculateDistance(bot, m, true, false);
 			boolean isAttackingUs = (m.getTarget() == bot) || ((bot.getSummon() != null) && (m.getTarget() == bot.getSummon()));
@@ -903,18 +1023,38 @@ public class PhantomAI
 			}
 		}
 
-		return (closestAggroMob != null) ? closestAggroMob : closestPassiveMob;
+		Monster chosen = (closestAggroMob != null) ? closestAggroMob : closestPassiveMob;
+		return new FarmScan(chosen, sawMonster, sawAcceptablePrey);
 	}
 
-	private static Monster resolveLockedFarmTarget(Player bot, int botId)
+	/**
+	 * Result of one farm-monster scan around a phantom.
+	 * @param target chosen monster, or {@code null}
+	 * @param sawMonster whether any farm candidate was visible
+	 * @param sawAcceptablePrey whether any candidate was not too weak
+	 */
+	record FarmScan(Monster target, boolean sawMonster, boolean sawAcceptablePrey)
+	{
+	}
+
+	static Monster resolveLockedFarmTarget(Player bot, int botId)
 	{
 		Monster currentLocked = LAST_TARGET.get(botId);
 		if (currentLocked == null)
 		{
 			return null;
 		}
+		if (PhantomSpoil.shouldSweepCorpse(bot, currentLocked))
+		{
+			return currentLocked;
+		}
 		if (!currentLocked.isDead() && isCurrentTargetValid(currentLocked))
 		{
+			if (PhantomHuntingSpots.isPreyTooWeak(bot.getLevel(), currentLocked.getLevel()))
+			{
+				LAST_TARGET.remove(botId);
+				return null;
+			}
 			double dist = LocationUtil.calculateDistance(bot, currentLocked, true, false);
 			if ((dist <= 3500) && PhantomGeo.canSeeTarget(bot, currentLocked))
 			{
@@ -925,19 +1065,19 @@ public class PhantomAI
 		return null;
 	}
 
-	private static boolean isFarmCandidate(Monster m)
+	static boolean isFarmCandidate(Monster m)
 	{
 		if ((m == null) || m.isDead() || !m.isAttackable() || m.isRaid())
 		{
 			return false;
 		}
-		if (m.getName() != null)
+		if (PhantomHuntingSpots.isForbiddenTargetName(m.getName()))
 		{
-			String name = m.getName();
-			if (name.contains("Chest") || name.contains("chest") || name.contains("Box") || name.contains("box"))
-			{
-				return false;
-			}
+			return false;
+		}
+		if ((m.getTemplate() != null) && PhantomHuntingSpots.isForbiddenTargetTitle(m.getTemplate().getTitle()))
+		{
+			return false;
 		}
 		return true;
 	}
@@ -947,27 +1087,50 @@ public class PhantomAI
 		return (m != null) && m.isSpawned() && m.isAttackable();
 	}
 
-	private static boolean isTargetedByAnother(Player bot, Monster m)
+	static boolean isTargetedByAnother(Player bot, Monster m)
 	{
 		if ((m.getTarget() == bot) || ((bot.getSummon() != null) && (m.getTarget() == bot.getSummon())))
 		{
 			return false;
 		}
 
-		if ((m.getTarget() != null) && (m.getTarget() != bot) && ((bot.getSummon() == null) || (m.getTarget() != bot.getSummon())))
+		if ((m.getTarget() != null) && m.getTarget().isPlayer() && (m.getTarget() != bot) && ((bot.getSummon() == null) || (m.getTarget() != bot.getSummon())))
 		{
-			return true;
+			Player holder = m.getTarget().asPlayer();
+			if (isCommittedToTarget(holder, m))
+			{
+				return true;
+			}
 		}
 
 		for (Player p : World.getInstance().getVisibleObjectsInRange(m, Player.class, 1000))
 		{
-			if ((p != null) && (p != bot) && !p.isAlikeDead() && (p.getTarget() == m))
+			if ((p != null) && (p != bot) && !p.isAlikeDead() && (p.getTarget() == m) && isCommittedToTarget(p, m))
 			{
 				return true;
 			}
 		}
 
 		return false;
+	}
+
+	/**
+	 * @param player nearby player
+	 * @param m the monster
+	 * @return {@code true} when the player is attacking or casting on the monster
+	 */
+	static boolean isCommittedToTarget(Player player, Monster m)
+	{
+		if ((player == null) || (m == null) || (player.getTarget() != m))
+		{
+			return false;
+		}
+		if (player.isAttackingNow() || player.isCastingNow())
+		{
+			return true;
+		}
+		Intention intention = player.getAI().getIntention();
+		return (intention == Intention.ATTACK) || (intention == Intention.CAST);
 	}
 
 	private static void handleNoFarmTarget(Player bot)
@@ -1005,20 +1168,26 @@ public class PhantomAI
 		}
 	}
 
-	public static boolean tryKite(Player bot, Monster mob)
+	/**
+	 * @param classId active class id
+	 * @return {@code true} when the class should kite while farming
+	 */
+	static boolean isRangedKiter(int classId)
 	{
-		int classId = bot.getActiveClass();
-
-		final boolean isArcher = (classId == 9)
+		return (classId == 9)
 			|| (classId == 24)
 			|| (classId == 37)
 			|| (classId == 92)
 			|| (classId == 102)
 			|| (classId == 109)
+			|| (classId == 126)
 			|| (classId == 130)
 			|| (classId == 134);
+	}
 
-		if (!isArcher)
+	public static boolean tryKite(Player bot, Monster mob)
+	{
+		if (!isRangedKiter(bot.getActiveClass()))
 		{
 			return false;
 		}
@@ -1080,6 +1249,7 @@ public class PhantomAI
 				5, 90, // Paladin / Phoenix Knight
 				33, 106, // Shillien Knight / Shillien Templar
 				20, 99, // Temple Knight / Eva's Templar
+				13, 95, // Necromancer / Soultaker
 				14, 96, // Warlock / Arcana Lord
 				28, 104, // Elemental Summoner / Elemental Master
 				41, 111, // Phantom Summoner / Spectral Master
@@ -1122,12 +1292,22 @@ public class PhantomAI
 			return;
 		}
 
+		if (castSpoilOrInquisitor(bot, target))
+		{
+			return;
+		}
+
 		if (canUseSummons(bot) && PhantomSkills.handleCombatSummons(bot, target))
 		{
 			return;
 		}
 
 		assistSummonAttack(bot, target);
+
+		if (castInquisitorAttack(bot, target))
+		{
+			return;
+		}
 
 		if (tryMageAttack(bot, target))
 		{
@@ -1301,14 +1481,25 @@ public class PhantomAI
 
 	private static void tryCasualChat(Player bot)
 	{
-		if (Rnd.get(100) < 1)
+		int botId = bot.getObjectId();
+		long now = System.currentTimeMillis();
+		long last = LAST_CASUAL_CHAT_AT.getOrDefault(botId, 0L);
+		if ((now - last) < CASUAL_CHAT_ROLL_INTERVAL_MS)
 		{
-			Player nearby = World.getInstance().getVisibleObjectsInRange(bot, Player.class, 1000).stream().filter(p -> !p.isDead() && !PhantomEngine.activePhantoms.contains(p)).findFirst().orElse(null);
+			return;
+		}
+		LAST_CASUAL_CHAT_AT.put(botId, now);
 
-			if (nearby != null)
-			{
-				PhantomChat.requestChatResponse(bot, nearby, false);
-			}
+		double chancePermille = 10 * PhantomMood.getTalkFactor(bot);
+		if (Rnd.get(1000) >= chancePermille)
+		{
+			return;
+		}
+
+		Player nearby = World.getInstance().getVisibleObjectsInRange(bot, Player.class, 1000).stream().filter(p -> !p.isDead() && !PhantomEngine.activePhantoms.contains(p)).findFirst().orElse(null);
+		if (nearby != null)
+		{
+			PhantomChat.requestChatResponse(bot, nearby, false);
 		}
 	}
 

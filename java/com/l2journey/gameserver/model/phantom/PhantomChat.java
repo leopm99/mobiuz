@@ -1,12 +1,39 @@
 package com.l2journey.gameserver.model.phantom;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+import com.l2journey.commons.threads.ThreadPool;
 import com.l2journey.commons.util.Rnd;
+import com.l2journey.gameserver.model.World;
 import com.l2journey.gameserver.model.actor.Player;
 import com.l2journey.gameserver.network.enums.ChatType;
 import com.l2journey.gameserver.network.serverpackets.CreatureSay;
+import com.l2journey.gameserver.util.LocationUtil;
 
 public class PhantomChat
 {
+	private static final Map<Integer, Long> LAST_TOWN_CHAT_AT = new ConcurrentHashMap<>();
+	private static final long TOWN_CHAT_COOLDOWN_MS = 45000L;
+	private static final int TOWN_CHAT_XY = 800;
+	private static final int TOWN_CHAT_Z = 300;
+
+	private static final String[] GREETINGS =
+	{
+		"hola",
+		"que tal",
+		"buenas",
+		"ey",
+		"como va"
+	};
+	private static final String[] TOWN_REPLIES =
+	{
+		"todo bien",
+		"aqui ando",
+		"que tal",
+		"buenas",
+		"ey"
+	};
 	// Mensagens que dizem quando morrem
 	public static final String[] DEATH_MESSAGES =
 	{
@@ -77,10 +104,10 @@ public class PhantomChat
 	}
 	
 	/**
-	 * Mantemos este nome de metodo (requestGemini) para NAO quebrar a compatibilidade com o script PhantomAI, mas agora usa nosso sistema de frases aleatorias.
-	 * @param bot
-	 * @param sender
-	 * @param isPrivate
+	 * Schedules a random Spanish reply after a short typing delay.
+	 * @param bot the phantom
+	 * @param sender the player being answered, or {@code null} for casual chat
+	 * @param isPrivate {@code true} for whisper replies
 	 */
 	public static void requestChatResponse(Player bot, Player sender, boolean isPrivate)
 	{
@@ -107,7 +134,25 @@ public class PhantomChat
 			replyText = CASUAL_MESSAGES[Rnd.get(CASUAL_MESSAGES.length)];
 		}
 		
-		botReply(bot, sender, replyText, isPrivate);
+		int typingDelay = calculateTypingTime(replyText, Rnd.get(500, 1500));
+		ThreadPool.schedule(() ->
+		{
+			if (bot.isOnline() && !bot.isDead())
+			{
+				botReply(bot, sender, replyText, isPrivate);
+			}
+		}, typingDelay);
+	}
+
+	/**
+	 * @param text reply text
+	 * @param jitterMs random extra delay in ms
+	 * @return total typing delay in ms
+	 */
+	static int calculateTypingTime(String text, int jitterMs)
+	{
+		int length = (text == null) ? 0 : text.length();
+		return 1500 + (length * 120) + Math.max(0, jitterMs);
 	}
 	
 	/**
@@ -121,7 +166,110 @@ public class PhantomChat
 			return;
 		}
 		
-		String text = DEATH_MESSAGES[Rnd.get(DEATH_MESSAGES.length)];
+		String text = Rnd.pick(DEATH_MESSAGES);
 		bot.broadcastPacket(new CreatureSay(bot, ChatType.GENERAL, bot.getName(), text));
+	}
+
+	/**
+	 * While resting in a peace zone, occasionally greets a nearby phantom and schedules a reply.
+	 * @param bot the resting phantom
+	 */
+	public static void attemptBotConversation(Player bot)
+	{
+		if (!isEligibleForTownChat(bot))
+		{
+			return;
+		}
+
+		long now = System.currentTimeMillis();
+		long last = LAST_TOWN_CHAT_AT.getOrDefault(bot.getObjectId(), 0L);
+		if (!isTownChatCooldownReady(now, last))
+		{
+			return;
+		}
+
+		if (!passesTownChatRoll(Rnd.get(100)))
+		{
+			return;
+		}
+
+		Player partner = findNearbyPhantom(bot);
+		if (partner == null)
+		{
+			return;
+		}
+
+		LAST_TOWN_CHAT_AT.put(bot.getObjectId(), now);
+		LAST_TOWN_CHAT_AT.put(partner.getObjectId(), now);
+
+		String greeting = GREETINGS[Rnd.get(GREETINGS.length)];
+		bot.broadcastPacket(new CreatureSay(bot, ChatType.GENERAL, bot.getName(), greeting));
+		scheduleTownReply(partner);
+	}
+
+	/**
+	 * Schedules a short greeting reply. Town chat does not use the farm or trade lines.
+	 * @param partner the phantom who answers
+	 */
+	static void scheduleTownReply(Player partner)
+	{
+		if ((partner == null) || partner.isDead())
+		{
+			return;
+		}
+
+		String replyText = TOWN_REPLIES[Rnd.get(TOWN_REPLIES.length)];
+		int typingDelay = calculateTypingTime(replyText, Rnd.get(500, 1500));
+		ThreadPool.schedule(() ->
+		{
+			if (partner.isOnline() && !partner.isDead())
+			{
+				partner.broadcastPacket(new CreatureSay(partner, ChatType.GENERAL, partner.getName(), replyText));
+			}
+		}, typingDelay);
+	}
+
+	static boolean isEligibleForTownChat(Player bot)
+	{
+		return (bot != null) && !bot.isDead() && bot.isOnline();
+	}
+
+	static boolean isTownChatCooldownReady(long now, long lastAt)
+	{
+		return (now - lastAt) >= TOWN_CHAT_COOLDOWN_MS;
+	}
+
+	static boolean passesTownChatRoll(int roll)
+	{
+		return roll < 10;
+	}
+
+	private static Player findNearbyPhantom(Player bot)
+	{
+		Player best = null;
+		double bestDist = Double.MAX_VALUE;
+		for (Player other : World.getInstance().getVisibleObjects(bot, Player.class))
+		{
+			if ((other == null) || (other == bot) || other.isDead() || (other.getClient() != null))
+			{
+				continue;
+			}
+			if (Math.abs(bot.getZ() - other.getZ()) > TOWN_CHAT_Z)
+			{
+				continue;
+			}
+			double dist = LocationUtil.calculateDistance(bot.getX(), bot.getY(), 0, other.getX(), other.getY(), 0, false, false);
+			if ((dist <= TOWN_CHAT_XY) && (dist < bestDist))
+			{
+				bestDist = dist;
+				best = other;
+			}
+		}
+		return best;
+	}
+
+	public static void clearRuntimeState()
+	{
+		LAST_TOWN_CHAT_AT.clear();
 	}
 }

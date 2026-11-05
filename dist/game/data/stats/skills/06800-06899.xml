@@ -12,9 +12,18 @@
 	</skill>
 	<skill id="6802" levels="1" name="Presentation - SSQ2 General Purpose 6">
 		<set name="icon" val="icon.skill0922" />
-		<set name="operateType" val="P" />
-		<set name="targetType" val="NONE" />
+		<set name="operateType" val="A2" />
+		<set name="targetType" val="ONE" />
+		<set name="abnormalLevel" val="1" />
+		<set name="abnormalTime" val="86400" />
+		<set name="abnormalType" val="HIDE" />
+		<set name="abnormalVisualEffect" val="STEALTH" />
 		<set name="blockedInOlympiad" val="true" />
+		<set name="effectPoint" val="679" />
+		<set name="magicLevel" val="-2" />
+		<effects>
+			<effect name="Hide" />
+		</effects>
 	</skill>
 	<skill id="6803" levels="1" name="Arena Haste">
 		<!-- Increases Atk. Spd. by 33% for 5 minutes. -->
